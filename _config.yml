@@ -12,10 +12,10 @@ linkedin_username: linkedin
 facebook_username: facebook
 
 # External API
-giscus_repo:
-giscus_repoId:
-giscus_category:
-giscus_categoryId:
+giscus_repo: "[devKobe24/devKobe24.github.io]"
+giscus_repoId: "[R_kgDOLQxRgw]"
+giscus_category: "[Q&A]"
+giscus_categoryId: "[DIC_kwDOLQxRg84CdK27]"
 goatcounter_code:
 google_analytics:
 

@@ -5,7 +5,6 @@ tags:
     - Programming Language
 date: "2024-02-13"
 thumbnail: "/assets/img/thumbnail/java.jpeg"
-bookmark: true
 ---
 
 메서드의 필요성을 알기위해서 아래의 코드를 보고 실제로 느껴보겠습니다.

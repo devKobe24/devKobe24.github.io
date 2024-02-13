@@ -1,7 +1,7 @@
 title: devkobe24.com
 description: "Kobe - Developer blog"
 logo_img: "/assets/img/favicon.webp"
-profile_img: "/assets/img/profile.jpg"
+profile_img: "/assets/img/profile.webp"
 
 # Social Links
 email: dev.skyachieve91@gmail.com
@@ -24,6 +24,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-loading-lazy
 
 exclude:
   - docs/

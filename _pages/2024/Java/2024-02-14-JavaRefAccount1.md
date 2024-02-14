@@ -3,7 +3,7 @@ title: "☕️[Java] 메서드 리펙토링 - 입.출금"
 tags:
     - Java
     - Programming Language
-date: 2024-02-14 13:33:00
+date: "2024-02-14"
 thumbnail: "/assets/img/thumbnail/java.jpeg"
 ---
 

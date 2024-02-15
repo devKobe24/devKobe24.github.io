@@ -34,4 +34,4 @@ thumbnail: "/assets/img/thumbnail/database.jpeg"
 ## 참고 문서
 
 - [How to fix [Errno 13] Permission denied error on MySQL](https://medium.com/@kjavaman12/how-to-fix-errno-13-permission-denied-error-on-mysql-71b35e0efdd1)
-- [윤카일의 개발공간 | [mysql] mysql 실행 -> 접속 -> 접속 끊기 -> 종료 (+ 데몬으로 실행 및 종료)](https://yoons-development-space.tistory.com/11)
+- [윤카일의 개발공간](https://yoons-development-space.tistory.com/11)

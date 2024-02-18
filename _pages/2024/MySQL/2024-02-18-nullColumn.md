@@ -3,7 +3,7 @@ title: "🐋[MySQL] null 컬럼 변경하기."
 tags:
     - MySQL
 date: "2024-02-18"
-thumbnail: "/assets/img/thumbnail/database.jpeg"
+thumbnail: "/assets/img/thumbnail/mysql.jpeg"
 ---
 
 # 테이블 null 컬럼 -> not null 으로 변경하기.

@@ -1,9 +1,9 @@
 ---
-title: "🐋[SQL] MySQL Server Start/Stop"
+title: "🐋[MySQL] MySQL Server Start/Stop"
 tags:
     - MySQL
 date: "2024-02-16"
-thumbnail: "/assets/img/thumbnail/database.jpeg"
+thumbnail: "/assets/img/thumbnail/mysql.jpeg"
 ---
 
 # MySQL Server Start/Stop

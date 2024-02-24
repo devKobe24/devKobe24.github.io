@@ -141,3 +141,4 @@ public MemberConstruct(String name, int age) {
 }
 ```
 * `this()`가 생성자 코드의 첫줄에 사용되지 않았습니다.
+

@@ -4,7 +4,7 @@ logo_img: "/assets/img/favicon.webp"
 profile_img: "/assets/img/profile.jpg"
 
 # Social Links
-email: dev.skyachieve91@gmail.com
+email: "dev.skyachieve91@gmail.com"
 github_username: devKobe24
 twitter_username: twitter
 instagram_username: instagram
@@ -43,7 +43,7 @@ defaults:
       layout: "page"
       date: "1900-01-01"
 
-# Markdown newline activator 
+# Markdown newline activator
 kramdown:
   input: GFM
   hard_wrap: true

@@ -1,4 +1,4 @@
-i---
+---
 title: "☕️[Java] 캡슐화"
 tags:
     - Java

@@ -39,7 +39,6 @@ Live demo is available [here](https://byanko55.github.io)
 * Table of Contents
 * Visitor Counter (*goatcounter*)
 
-<br></br>
 
 ## Installation
 
@@ -58,7 +57,6 @@ Create a clean site directory (Follow the **Instruction 1~4** described [here](h
 The following materials are redundant, so remove them.
 * index.markdown
 * about.markdown
-* 404.html
 <br></br>
 
 Then, add this line to your Jekyll site's `Gemfile`:
@@ -88,7 +86,7 @@ instagram_username: instagram
 linkedin_username: linkedin
 facebook_username: facebook
 ```
-<br></br>
+
 
 ### Run site locally
 
@@ -97,7 +95,7 @@ From the site root directory, install the dependencies:
 ```
 bundle install
 ```
-<br></br>
+
 
 Start a Jekyll service.
 
@@ -117,7 +115,6 @@ You can find useful manuals for customizing your site from the below table:
 |Posting guidelines|[link](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/Posting%20Guide.md)|
 |Enabling ***comment system***|[link](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/Comment%20System.md)|
 |Enabling ***Visitor counter***|[link](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/Visitor%20Counter.md)|
-<br></br>
 
 ## Contribution
 If you would like to report a bug or request a new feature, please open [an issue](https://github.com/byanko55/jekyll-theme-satellite/issues) We are open to any kind of feedback or collaboration.

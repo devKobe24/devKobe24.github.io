@@ -1,4 +1,4 @@
-i---
+---
 title: "☕️[Java] 여러가지 연산자(1)"
 tags:
     - Java

@@ -30,7 +30,7 @@ thumbnail: "/assets/img/thumbnail/blog.jpeg"
 
 이렇게 생각해 볼까요?
 
-<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%87%E1%85%A1%E1%86%B8%E1%84%8B%E1%85%A1%E1%84%8C%E1%85%A5%E1%84%8A%E1%85%B5.jpeg?raw=true" width = "300"><br>
+<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%87%E1%85%A1%E1%86%B8%E1%84%8B%E1%85%A1%E1%84%8C%E1%85%A5%E1%84%8A%E1%85%B5.jpeg?raw=true"><br>
 
 웹사이트를 마치 컬러링북처럼 생각한다면, 프론트엔드 개발자는 그림을 그리고 색칠하는 사람이에요 🧑‍🎨
 
@@ -41,11 +41,11 @@ thumbnail: "/assets/img/thumbnail/blog.jpeg"
 즉, 프론트엔드는 우리가 웹사이트에서 보고 만지는 모든 것을 아름답고 재미있게 만들어 주는 중요한 일을 한답니다!
 
 ## 3️⃣ 백엔드.
-<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%92%E1%85%A2%E1%84%8F%E1%85%A5.jpeg?raw=true" width = "250"><br>
+<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%92%E1%85%A2%E1%84%8F%E1%85%A5.jpeg?raw=true"><br>
 
 백엔드는 웹사이트에서 우리가 눈에 보이지 않는 부분을 다루는 일을 해요.(그렇다고 뭐.. 해커 이런건 아닙니다.. 완전히 달라요...)
 
-<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%86%E1%85%A1%E1%84%89%E1%85%AE%E1%86%AF%E1%84%89%E1%85%A1.jpeg?raw=true" width = "250"><br>
+<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%86%E1%85%A1%E1%84%89%E1%85%AE%E1%86%AF%E1%84%89%E1%85%A1.jpeg?raw=true"><br>
 
 이것은 마치 마술사가 무대 뒤에서 마술을 준비하는 것과 비슷해요! 🪄
 
@@ -63,7 +63,7 @@ thumbnail: "/assets/img/thumbnail/blog.jpeg"
 
 저는 어렸을 때 레고를 참 좋아했어요 :)
 
-<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%90%E1%85%A6%E1%84%8F%E1%85%B3%E1%84%82%E1%85%B5%E1%86%A8%E1%84%85%E1%85%A6%E1%84%80%E1%85%A9.jpeg?raw=true" width = "250"><br>
+<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%90%E1%85%A6%E1%84%8F%E1%85%B3%E1%84%82%E1%85%B5%E1%86%A8%E1%84%85%E1%85%A6%E1%84%80%E1%85%A9.jpeg?raw=true"><br>
 
 그 중에서도 테크닉 레고를 가장 좋아했었어요 :)
 
@@ -77,7 +77,7 @@ thumbnail: "/assets/img/thumbnail/blog.jpeg"
 
 그리고나서 조금 커서는 루어 낚시를 좋아하게 되었어요.
 
-<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%85%E1%85%AE%E1%84%8B%E1%85%A5.jpeg?raw=true" width = "250"><br>
+<img src = "https://github.com/devKobe24/images/blob/main/%E1%84%85%E1%85%AE%E1%84%8B%E1%85%A5.jpeg?raw=true"><br>
 
 이 루어 낚시는 "배스" 라는 어종을 대상으로 하는 낚시인데, 이 어종에 대한 여러가지 공부를 해야 했었어요.
 

@@ -548,6 +548,7 @@
             
             
             
+            
 
     
     
@@ -900,6 +901,74 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
+                            1️⃣ 시스템 패키지 업데이트
+
+  먼저 시스템 패키지를 업데이트 합니다.
+
+
+sudo dnf update -y
+
+
+2️⃣ Amazon Corretto 8 저장소 추가.
+
+  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
+    
+      Correttio 8은 Java 8과 호환됩니다.
+    
+  
+
+
+sudo dnf install -y java-1.8.0-amazon-corretto
+
+
+3️⃣ Java 8 설치 확인
+
+  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
+
+
+java -version
+
+
+
+  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
+
+
+4️⃣ 기본 Java 버전 설정
+
+
+  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
+    
+      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
+    
+  
+  먼저 현재 사용 가능한 Java 버전을 확인합니다.
+
+
+sudo alternatives --config java
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2496,34 +2565,6 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
-                            
-  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
-  알고리즘
-  피자 나눠 먹기(2)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-13-ReasonOfRearIsntSetToMinusOneInCircularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -2787,6 +2828,34 @@ Middle element: 40
 
   알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
 이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
+                            
+  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
+  알고리즘
+  피자 나눠 먹기(2)
 
 
                         </a>
@@ -3726,6 +3795,201 @@ public class PolymorphismExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
+                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
+                            1️⃣ 제네릭(Generic)
+
+Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
+
+제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
+
+2️⃣ 제네릭(Generic)의 주요 개념.
+
+
+  타입 매개변수 :
+    
+      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
+    
+  
+  타입 안정성 :
+    
+      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
+    
+  
+  재사용성 :
+    
+      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
+    
+  
+
+
+3️⃣ 제네릭 클래스.
+
+제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
+
+일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
+
+예제.
+
+// Box 클래스
+public class Box&lt;T&gt; {
+	private T item;
+
+	public void setItem(T item) {
+		this.item = item;
+	}
+
+	public T getItem() {
+		return item;
+	}
+}
+
+// Main 클래스
+public class Main {
+
+	public static void main(String[] args) {
+		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
+		stringBox.setItem("Hello");
+		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
+
+		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+		integerBox.setItem(123);
+		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
+	}
+}
+
+
+4️⃣ 제네릭 메서드.
+
+제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
+
+예제.
+
+public class GenericMethodExample {
+	public static &lt;T&gt; void printArray(T[] array) {
+		for (T element : array) {
+			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Integer[] intArray = {1, 2, 3, 4, 5};
+		String[] strArray = {"A", "B", "C", "D"};
+
+		printArray(intArray); // 1 2 3 4 5 
+		printArray(strArray); // A B C D 
+	}
+}
+
+
+5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
+
+제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
+
+상한 제한 (Upper Bound)
+
+public class BoundedTypeExample&lt;T extends Number&gt; {
+	private T number;
+
+	public BoundedTypeExample(T number) {
+		this.number = number;
+	}
+
+	public void printNumber() {
+		System.out.println("Number: " + number);
+	}
+
+	public static void main(String[] args) {
+		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
+		intExample.printNumber(); // Number: 123
+
+		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
+		doubleExample.printNumber(); // Number: 45.67
+	}
+}
+
+
+
+  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
+
+
+하한 제한 (Lower Bound)
+
+하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
+
+예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LowerBoundWildcardExample {
+	public static void addNumbers(List&lt;? super Integer&gt; list) {
+		for (int i = 0; i &lt; 5; i++) {
+			list.add(i);
+		}
+	}
+
+	public static void main(String[] args) {
+		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
+		addNumbers(numberList);
+		System.out.println(numberList); // [0, 1, 2, 3, 4]
+	}
+}
+
+
+6️⃣ 제네릭의 제한 사항.
+
+
+  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
+
+
+// 올바르지 않음
+Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
+
+
+
+  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
+
+
+public class GenericClass&lt;T&gt; {
+    private static T item; // 컴파일 오류
+}
+
+
+
+  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
+
+
+// 올바르지 않음
+T[] array = new T[10]; // 컴파일 오류
+
+
+
+  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
+이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-06-08-PrimitiveAndWrapper.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -3977,201 +4241,6 @@ public class Main {
 
 
   이 예제에서는 기본 타입과 래퍼 클래스를 사용하여 변수레 값을 저장하고, 컬렉션에 저장된 래퍼 클래스 객체를 사용하려 연산을 수행하는 과정을 보여줍니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
-                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
-                            1️⃣ 제네릭(Generic)
-
-Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
-
-제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
-
-2️⃣ 제네릭(Generic)의 주요 개념.
-
-
-  타입 매개변수 :
-    
-      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
-    
-  
-  타입 안정성 :
-    
-      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
-    
-  
-  재사용성 :
-    
-      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
-    
-  
-
-
-3️⃣ 제네릭 클래스.
-
-제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
-
-일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
-
-예제.
-
-// Box 클래스
-public class Box&lt;T&gt; {
-	private T item;
-
-	public void setItem(T item) {
-		this.item = item;
-	}
-
-	public T getItem() {
-		return item;
-	}
-}
-
-// Main 클래스
-public class Main {
-
-	public static void main(String[] args) {
-		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
-		stringBox.setItem("Hello");
-		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
-
-		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
-		integerBox.setItem(123);
-		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
-	}
-}
-
-
-4️⃣ 제네릭 메서드.
-
-제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
-
-예제.
-
-public class GenericMethodExample {
-	public static &lt;T&gt; void printArray(T[] array) {
-		for (T element : array) {
-			System.out.print(element + " ");
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		Integer[] intArray = {1, 2, 3, 4, 5};
-		String[] strArray = {"A", "B", "C", "D"};
-
-		printArray(intArray); // 1 2 3 4 5 
-		printArray(strArray); // A B C D 
-	}
-}
-
-
-5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
-
-제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
-
-상한 제한 (Upper Bound)
-
-public class BoundedTypeExample&lt;T extends Number&gt; {
-	private T number;
-
-	public BoundedTypeExample(T number) {
-		this.number = number;
-	}
-
-	public void printNumber() {
-		System.out.println("Number: " + number);
-	}
-
-	public static void main(String[] args) {
-		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
-		intExample.printNumber(); // Number: 123
-
-		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
-		doubleExample.printNumber(); // Number: 45.67
-	}
-}
-
-
-
-  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
-
-
-하한 제한 (Lower Bound)
-
-하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
-
-예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class LowerBoundWildcardExample {
-	public static void addNumbers(List&lt;? super Integer&gt; list) {
-		for (int i = 0; i &lt; 5; i++) {
-			list.add(i);
-		}
-	}
-
-	public static void main(String[] args) {
-		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
-		addNumbers(numberList);
-		System.out.println(numberList); // [0, 1, 2, 3, 4]
-	}
-}
-
-
-6️⃣ 제네릭의 제한 사항.
-
-
-  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
-
-
-// 올바르지 않음
-Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
-
-
-
-  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
-
-
-public class GenericClass&lt;T&gt; {
-    private static T item; // 컴파일 오류
-}
-
-
-
-  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
-
-
-// 올바르지 않음
-T[] array = new T[10]; // 컴파일 오류
-
-
-
-  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
-이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -5333,32 +5402,6 @@ Is deque empty? false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
-                            
-  IntStream
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-06-03-IntStream.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -5615,6 +5658,32 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
 📚 참고 문헌.
 
   Java Docs - IntStream
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
+                            
+  IntStream
 
 
                         </a>
@@ -6983,168 +7052,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
-                        <a href="/Backend/AnD/2024-05-27-Node.html" class="txt_post">
-                            1️⃣ Node(노드).
-
-Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
-
-노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
-
-1️⃣ Node의 구성 요소.
-
-
-  
-    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
-  
-  
-    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
-    
-      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
-      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
-      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
-      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
-    
-  
-
-
-Singly Linked List의 Node
-Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-
-public class Node {
-  int data; // 노드가 저장하는 데이터
-  Node next; // 다음 노드를 가리키는 포인터
-
-  public Node(int data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-
-Doubly Linked List의 Node
-Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-public class DoublyNode {
-  int data; // 노드가 저장하는 데이터
-  DoublyNode next; // 다음 노드를 가리키는 포인터
-  DoublyNode prev; // 이전 노드를 가리키는 포인터
-
-  public DoublyNode(int data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
-  }
-}
-
-
-2️⃣ Node를 사용하는 예제.
-
-Singly Linked List
-
-Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
-
-아래는 Singly Linked List를 구현한 예제입니다.
-
-//SinglyLinkedList
-public class SinglyLinkedList {
-  private Node head;
-
-  public SinglyLinkedList() {
-    this.head = null;
-  }
-
-  // 리스트의 맨 앞에 노드 추가
-  public void addFirst(int data) {
-    Node newNode = new Node(data);
-    newNode.next = head;
-    head = newNode;
-  }
-
-  // 리스트의 맨 끝에 노드 추가
-  public void addLast(int data) {
-    Node newNode = new Node(data);
-    if (head == null) {
-      head = newNode;
-      return;
-    }
-    Node current = head;
-    while (current.next != null) {
-      current = current.next;
-    }
-    current.next = newNode;
-  }
-
-  // 리스트의 특정 값 삭제
-  public void delete(int data) {
-    if (head == null) {
-      return;
-    }
-
-    if (head.data == data) {
-      head = head.next;
-      return;
-    }
-
-    Node current = head;
-
-    while (current.next != null &amp;&amp; current.next.data != data) {
-      current = current.next;
-    }
-
-    if (current.next != null) {
-      current.next = current.next.next;
-    }
-  }
-
-  // 리스트 출력
-  public void printList() {
-    Node current = head;
-    while (current != null) {
-      System.out.print(current.data + " ");
-      current = current.next;
-    }
-    System.out.println();
-  }
-}
-
-// Main
-public class Main {
-
-  public static void main(String[] args) {
-    // Singly Linked List 생성
-    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-
-    singlyLinkedList.addFirst(1);
-    singlyLinkedList.addLast(2);
-    singlyLinkedList.addLast(3);
-    singlyLinkedList.printList(); // 1 2 3
-
-    singlyLinkedList.delete(2);
-    singlyLinkedList.printList(); // 1 3
-  }
-}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -7479,6 +7386,168 @@ public class Main {
 
     System.out.println("\nSearch for 40: " + bst.search(40)); // 출력: true
     System.out.println("Search for 90: " + bst.search(90)); // 출력: false
+  }
+}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
+                        <a href="/Backend/AnD/2024-05-27-Node.html" class="txt_post">
+                            1️⃣ Node(노드).
+
+Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
+
+노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
+
+1️⃣ Node의 구성 요소.
+
+
+  
+    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
+  
+  
+    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
+    
+      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
+      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
+      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
+      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
+    
+  
+
+
+Singly Linked List의 Node
+Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+
+public class Node {
+  int data; // 노드가 저장하는 데이터
+  Node next; // 다음 노드를 가리키는 포인터
+
+  public Node(int data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+
+Doubly Linked List의 Node
+Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+public class DoublyNode {
+  int data; // 노드가 저장하는 데이터
+  DoublyNode next; // 다음 노드를 가리키는 포인터
+  DoublyNode prev; // 이전 노드를 가리키는 포인터
+
+  public DoublyNode(int data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+
+2️⃣ Node를 사용하는 예제.
+
+Singly Linked List
+
+Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
+
+아래는 Singly Linked List를 구현한 예제입니다.
+
+//SinglyLinkedList
+public class SinglyLinkedList {
+  private Node head;
+
+  public SinglyLinkedList() {
+    this.head = null;
+  }
+
+  // 리스트의 맨 앞에 노드 추가
+  public void addFirst(int data) {
+    Node newNode = new Node(data);
+    newNode.next = head;
+    head = newNode;
+  }
+
+  // 리스트의 맨 끝에 노드 추가
+  public void addLast(int data) {
+    Node newNode = new Node(data);
+    if (head == null) {
+      head = newNode;
+      return;
+    }
+    Node current = head;
+    while (current.next != null) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  // 리스트의 특정 값 삭제
+  public void delete(int data) {
+    if (head == null) {
+      return;
+    }
+
+    if (head.data == data) {
+      head = head.next;
+      return;
+    }
+
+    Node current = head;
+
+    while (current.next != null &amp;&amp; current.next.data != data) {
+      current = current.next;
+    }
+
+    if (current.next != null) {
+      current.next = current.next.next;
+    }
+  }
+
+  // 리스트 출력
+  public void printList() {
+    Node current = head;
+    while (current != null) {
+      System.out.print(current.data + " ");
+      current = current.next;
+    }
+    System.out.println();
+  }
+}
+
+// Main
+public class Main {
+
+  public static void main(String[] args) {
+    // Singly Linked List 생성
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+    singlyLinkedList.addFirst(1);
+    singlyLinkedList.addLast(2);
+    singlyLinkedList.addLast(3);
+    singlyLinkedList.printList(); // 1 2 3
+
+    singlyLinkedList.delete(2);
+    singlyLinkedList.printList(); // 1 3
   }
 }
 
@@ -8500,6 +8569,230 @@ Dequeue: 7
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html"><h1 class="title_post">📦[DS,Algorithm] 선형 자료구조 - 배열</h1></a>
+                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="txt_post">
+                            1️⃣ 선형 자료구조 - 배열.
+
+자료구조 관점에서 배열을 이해하고 여러 방법으로 구현 가능
+
+1️⃣ 배열(Array).
+
+자료구조 관점에서 배열(Array)은 동일한 타입의 데이터를 연속된 메모리 공간에 저장하는 선형 자료구조입니다.
+
+배열은 조정된 크기를 가지며, 인덱스를 사용하여 각 요소에 빠르게 접근할 수 있는 특징이 있습니다.
+
+배열은 가장 기본적이고 널리 사용되는 자료구조 중 하나입니다.
+
+특징.
+
+  고정된 크기(Fixed Size)
+    
+      배열은 선언 시 크기가 결정되며, 배열의 크기는 변경할 수 없습니다. 이 크기는 배열을 사용하는 동안 고정되어 있습니다.
+      예: ‘int[] numbers = new int[10];‘(크기가 10인 정수형 배열)
+    
+  
+  연속된 메모리 공간(Contiguous Memory Allocation)
+    
+      배열의 요소들은 메모리상에 연속적으로 배치됩니다. 이는 인덱스를 통한 빠른 접근을 가능하게 합니다.
+      첫 번째 요소의 메모리 주소를 기준으로 인덱스를 사용하여 다른 요소의 주소를 계산할 수 있습니다.
+    
+  
+  인덱스를 통한 접근(Indexing)
+    
+      배열의 각 요소는 인덱스를 통해 접근할 수 있습니다. 인덱스는 0부터 시작하여 배열의 크기 -1까지의 값을 가집니다.
+      예: ‘numbers[0]’,’numbers[1]‘,…,’numbers[9]‘
+    
+  
+  동일한 데이터 타입(Homogeneous Data Type)
+    
+      배열은 동일한 데이터 타입의 요소들로 구성됩니다. 즉, 배열 내 모든 요소는 같은 데이터 타입이어야 합니다.
+      예: 정수형 배열, 문자열 배열 등.
+    
+  
+
+
+장점.
+
+  빠른 접근 속도(Fast Access) :
+    
+      인덱스를 사용하여 O(1) 시간 복잡도로 배열의 임의의 요소에 접근할 수 있습니다. 이는 배열의 주요 장점 중 하나입니다.
+    
+  
+  간단한 구현(Simple Implementation) :
+    
+      배열은 데이터 구조가 간단하여 구현이 용이합니다. 기본적인 자료구조로, 다른 복잡한 자료구조의 기초가 됩니다.
+    
+  
+
+
+단점.
+
+
+  고정된 크기(Fixed Size) :
+    
+      배열의 크기는 선언 시 결정되며, 크기를 변경할 수 없습니다. 이는 크기를 사전에 정확히 예측하기 어려운 경우 비효율적일 수 있습니다.
+    
+  
+  삽입 및 삭제의 비효율성(Inefficient Insertions and Deletions) :
+    
+      배열의 중간에 요소를 삽입하거나 삭제할 경우, 요소들을 이동시켜야 하기 때문에 O(n) 시간이 소요됩니다. 이는 큰 배열의 경우 성능 저하를 초래할 수 있습니다.
+    
+  
+  메모리 낭비(Memory Waste) :
+    
+      배열의 크기를 너무 크게 설정하면 사용되지 않는 메모리가 낭비될 수 있고, 너무 작게 설정하면 충분한 데이터를 저장할 수 없습니다.
+    
+  
+
+
+배열의 사용 예시.
+
+
+  정수형 배열 선언 및 초기화
+    int[] numbers = new int[5];
+numbers[0] = 10;
+numbers[1] = 20;
+numbers[2] = 30;
+numbers[3] = 40;
+numbers[4] = 50;
+    
+  
+  배열의 요소 접근
+    int firstElement = numbers[0]; // 10
+int lastElement = numbers[4]; // 50
+    
+  
+  배열의 순회
+    for (int i = 0; i &lt; numbers.length; i++) {
+  System.out.println(numbers[i]);
+}
+    
+  
+
+
+마무리.
+
+배열은 다양한 상황에서 기본적인 데이터 저장과 접근 방법을 제공하며, 특정 요구사항에 맞춰 다른 자료구조와 함께 사용되기도 합니다.
+
+배열의 빠른 접근 속도와 간단한 구조 덕분에, 많은 알고리즘과 프로그램에서 핵심적인 역할을 합니다.
+
+
+
+2️⃣ 배열 직접 구현.
+// CustomArray 클래스
+public class CustomArray {
+  private int[] data;
+  private int size;
+
+  // 특정 용량으로 배열을 초기화하는 생성자
+  public CustomArray(int capacity) {
+    data = new int[capacity];
+    size = 0;
+  }
+
+  // 배열의 크기를 가져오는 메서드
+  public int size() {
+    return size;
+  }
+
+  // 배열이 비어 있는지 확인하는 메서드
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  // 특정 인덱스의 요소를 가져오는 메서드
+  public int get(int index) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+    return data[index];
+  }
+
+  // 특정 인덱스에 요소를 설정하는 메서드
+  public void set(int index, int value) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+    data[index] = value;
+  }
+
+  // 배열에 요소를 추가하는 메서드
+  public void add(int value) {
+    if (size == data.length) {
+      throw new IllegalStateException("Array is full");
+    }
+    data[size] = value;
+    size++;
+  }
+
+  // 특정 인덱스의 요소를 삭제하는 메서드
+  public void remove(int index) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+
+    for (int i = index; i &lt; size - 1; i++) {
+      data[i] = data[i + 1];
+    }
+    size--;
+  }
+
+  // 모든 요소를 출력하는 메서드
+  public void print() {
+    for (int i = 0; i &lt; size; i++) {
+      System.out.print(data[i] + " ");
+    }
+    System.out.println();
+  }
+}
+
+
+설명.
+
+  필드:
+    
+      ‘data’ : 실제 데이터를 저장하는 배열.
+      ‘size’ : 현재 배열에 저장된 요소의 개수.
+    
+  
+  생성자:
+    
+      ‘CustomArray(int capacity)’ : 초기 용량을 설정하여 배열을 초기화 합니다.
+    
+  
+  메서드:
+    
+      ‘size()’ : 현재 배열에 저장된 요소의 개수를 반환합니다.
+      ‘isEmpty()’ : 배열이 비어있는지 확인합니다.
+      ‘get(int index)’ : 특정 인덱스의 요소를 반환합니다.
+      ‘set(int index, int value)’ : 특정 인덱스의 요소를 설정합니다.
+      ‘add(int value)’ : 배열의 마지막에 요소를 추가합니다.
+      ‘remove(int index)’ : 특정 인덱스의 요소를 제거하고, 이후의 요소들을 앞으로 이동시킵니다.
+      ‘print()’ : 배열의 모든 요소를 출력합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-05-21-IntroDataStructureAndAlgorithm.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -8860,407 +9153,6 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html"><h1 class="title_post">📦[DS,Algorithm] 선형 자료구조 - 배열</h1></a>
-                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="txt_post">
-                            1️⃣ 선형 자료구조 - 배열.
-
-자료구조 관점에서 배열을 이해하고 여러 방법으로 구현 가능
-
-1️⃣ 배열(Array).
-
-자료구조 관점에서 배열(Array)은 동일한 타입의 데이터를 연속된 메모리 공간에 저장하는 선형 자료구조입니다.
-
-배열은 조정된 크기를 가지며, 인덱스를 사용하여 각 요소에 빠르게 접근할 수 있는 특징이 있습니다.
-
-배열은 가장 기본적이고 널리 사용되는 자료구조 중 하나입니다.
-
-특징.
-
-  고정된 크기(Fixed Size)
-    
-      배열은 선언 시 크기가 결정되며, 배열의 크기는 변경할 수 없습니다. 이 크기는 배열을 사용하는 동안 고정되어 있습니다.
-      예: ‘int[] numbers = new int[10];‘(크기가 10인 정수형 배열)
-    
-  
-  연속된 메모리 공간(Contiguous Memory Allocation)
-    
-      배열의 요소들은 메모리상에 연속적으로 배치됩니다. 이는 인덱스를 통한 빠른 접근을 가능하게 합니다.
-      첫 번째 요소의 메모리 주소를 기준으로 인덱스를 사용하여 다른 요소의 주소를 계산할 수 있습니다.
-    
-  
-  인덱스를 통한 접근(Indexing)
-    
-      배열의 각 요소는 인덱스를 통해 접근할 수 있습니다. 인덱스는 0부터 시작하여 배열의 크기 -1까지의 값을 가집니다.
-      예: ‘numbers[0]’,’numbers[1]‘,…,’numbers[9]‘
-    
-  
-  동일한 데이터 타입(Homogeneous Data Type)
-    
-      배열은 동일한 데이터 타입의 요소들로 구성됩니다. 즉, 배열 내 모든 요소는 같은 데이터 타입이어야 합니다.
-      예: 정수형 배열, 문자열 배열 등.
-    
-  
-
-
-장점.
-
-  빠른 접근 속도(Fast Access) :
-    
-      인덱스를 사용하여 O(1) 시간 복잡도로 배열의 임의의 요소에 접근할 수 있습니다. 이는 배열의 주요 장점 중 하나입니다.
-    
-  
-  간단한 구현(Simple Implementation) :
-    
-      배열은 데이터 구조가 간단하여 구현이 용이합니다. 기본적인 자료구조로, 다른 복잡한 자료구조의 기초가 됩니다.
-    
-  
-
-
-단점.
-
-
-  고정된 크기(Fixed Size) :
-    
-      배열의 크기는 선언 시 결정되며, 크기를 변경할 수 없습니다. 이는 크기를 사전에 정확히 예측하기 어려운 경우 비효율적일 수 있습니다.
-    
-  
-  삽입 및 삭제의 비효율성(Inefficient Insertions and Deletions) :
-    
-      배열의 중간에 요소를 삽입하거나 삭제할 경우, 요소들을 이동시켜야 하기 때문에 O(n) 시간이 소요됩니다. 이는 큰 배열의 경우 성능 저하를 초래할 수 있습니다.
-    
-  
-  메모리 낭비(Memory Waste) :
-    
-      배열의 크기를 너무 크게 설정하면 사용되지 않는 메모리가 낭비될 수 있고, 너무 작게 설정하면 충분한 데이터를 저장할 수 없습니다.
-    
-  
-
-
-배열의 사용 예시.
-
-
-  정수형 배열 선언 및 초기화
-    int[] numbers = new int[5];
-numbers[0] = 10;
-numbers[1] = 20;
-numbers[2] = 30;
-numbers[3] = 40;
-numbers[4] = 50;
-    
-  
-  배열의 요소 접근
-    int firstElement = numbers[0]; // 10
-int lastElement = numbers[4]; // 50
-    
-  
-  배열의 순회
-    for (int i = 0; i &lt; numbers.length; i++) {
-  System.out.println(numbers[i]);
-}
-    
-  
-
-
-마무리.
-
-배열은 다양한 상황에서 기본적인 데이터 저장과 접근 방법을 제공하며, 특정 요구사항에 맞춰 다른 자료구조와 함께 사용되기도 합니다.
-
-배열의 빠른 접근 속도와 간단한 구조 덕분에, 많은 알고리즘과 프로그램에서 핵심적인 역할을 합니다.
-
-
-
-2️⃣ 배열 직접 구현.
-// CustomArray 클래스
-public class CustomArray {
-  private int[] data;
-  private int size;
-
-  // 특정 용량으로 배열을 초기화하는 생성자
-  public CustomArray(int capacity) {
-    data = new int[capacity];
-    size = 0;
-  }
-
-  // 배열의 크기를 가져오는 메서드
-  public int size() {
-    return size;
-  }
-
-  // 배열이 비어 있는지 확인하는 메서드
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-  // 특정 인덱스의 요소를 가져오는 메서드
-  public int get(int index) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-    return data[index];
-  }
-
-  // 특정 인덱스에 요소를 설정하는 메서드
-  public void set(int index, int value) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-    data[index] = value;
-  }
-
-  // 배열에 요소를 추가하는 메서드
-  public void add(int value) {
-    if (size == data.length) {
-      throw new IllegalStateException("Array is full");
-    }
-    data[size] = value;
-    size++;
-  }
-
-  // 특정 인덱스의 요소를 삭제하는 메서드
-  public void remove(int index) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-
-    for (int i = index; i &lt; size - 1; i++) {
-      data[i] = data[i + 1];
-    }
-    size--;
-  }
-
-  // 모든 요소를 출력하는 메서드
-  public void print() {
-    for (int i = 0; i &lt; size; i++) {
-      System.out.print(data[i] + " ");
-    }
-    System.out.println();
-  }
-}
-
-
-설명.
-
-  필드:
-    
-      ‘data’ : 실제 데이터를 저장하는 배열.
-      ‘size’ : 현재 배열에 저장된 요소의 개수.
-    
-  
-  생성자:
-    
-      ‘CustomArray(int capacity)’ : 초기 용량을 설정하여 배열을 초기화 합니다.
-    
-  
-  메서드:
-    
-      ‘size()’ : 현재 배열에 저장된 요소의 개수를 반환합니다.
-      ‘isEmpty()’ : 배열이 비어있는지 확인합니다.
-      ‘get(int index)’ : 특정 인덱스의 요소를 반환합니다.
-      ‘set(int index, int value)’ : 특정 인덱스의 요소를 설정합니다.
-      ‘add(int value)’ : 배열의 마지막에 요소를 추가합니다.
-      ‘remove(int index)’ : 특정 인덱스의 요소를 제거하고, 이후의 요소들을 앞으로 이동시킵니다.
-      ‘print()’ : 배열의 모든 요소를 출력합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Math/2024-05-18-Math-1.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
-                        <a href="/Backend/Math/2024-05-18-Math-1.html" class="txt_post">
-                            1️⃣ 기하학 - 설득술로서 발전해 온 수학
-
-1️⃣ 명제와 증명.
-“필요조건” 과 “충분조건” 에 대한 이해는 모든 논리의 기초가 되는 가장 중요한 사항이라 해도 과언이 아닙니다.
-
-수학은 논리와 떼려야 뗄 수 없는 관계라는 것은 모두가 아는 사실이지만 ‘필요’ 와 ‘충분’ 은 수학의 논리 중에서도 가장 중요한 역할을 하는 기본적인 사고방식입니다.
-
-‘이것 없이는 어떠한 수학적 논리도 전개할 수 없다’라고 단언할 수 있을 정도입니다.
-
-또한, ‘부정’을 이용해서 증명하는 방법인 “대우” 와 “귀류법” 의 이해도 매우 중요합니다.
-
-대우는 얼핏 보기에도 복잡해 보이는 명제를 단순화하고, 귀류법은 정면 돌파로는 증명할 수 없는(하기 어려운) 명제를 증명할 때 큰 힘을 발휘합니다.
-
-명제란 무엇인지 먼저 확인해 봅시다.
-
-명제: 참과 거짓을 객관적으로 판정할 수 있는 문장이나 식
-
-
-예를 들어 ‘백두산은 한국에서 가장 높은 산이다’는 명제지만 ‘백두산은 멋있다’는 명제가 아닙니다.
-
-백두산의 높이가 한국에서 가장 높은지는 객관적으로 판정할 수 있지만, 백두산이 멋지다고 느끼는 데는 개인차가 있으며(심지어 대부분이 ‘멋지다’고 생각할지라도) 참과 거짓을 객관적으로 판단할 수 없기 때문입니다.
-
-💡 논리적 사고의 기초: 필요조건과 충분 조건.
-우선 필요조건과 충분조건의 정의를 살펴보겠습니다.
-
-
-  필요조건과 충분조건의 정의
-
-  명제 ‘P이면 Q이다’ 가 참일 때,
-
-  P를(Q이기 위한) “충분조건”
-
-  Q를(P이기 위한) “필요조건”
-
-  이라고 합니다.
-
-
-‘P이면 Q이다’ 에서 P를 ‘재즈’라 하고 Q를 ‘음악’이라 하면 ‘재즈는 음악이다’가 됩니다.
-이는 당연히 참이므로(올바르므로) 정의에 따라
-
-  재즈: 충분조건
-  음악: 필요조건
-
-
-이 됩니다.
-
-확실히 재즈가 되기 위해서는 (적어도) 음악일 필요가 있습니다.
-
-또한, 음악이 되기 위해서 재즈면 (넉넉하게) 충분하다고 할 수 있습니다.
-
-재즈는 음악의 한 장르이므로 이 둘의 관계를 그림으로 표현하면 다음과 같은 모습이 됩니다.
-
-
-
-이처럼 한쪽이 다른 한쪽을 완전히 포함하는 경우를 다음과 같이 집합으로 이해해 보는 것도 매우 중요합니다.
-
-
-  영역이 더 작은 쪽(재즈): 충분조건
-영역이 더 큰 쪽(음악): 필요조건
-
-
-특히 두 개의 명제 ‘P이면 Q다’ 와 ‘Q이면 P다’가 모두 참일 경우에는 ‘P와 Q가 서로의 필요충분조건이다’라고 합니다. 또는 ‘P와 Q는 서로 동치다’ 라고도 합니다.
-
-
-  NOTE : 실수란
-
-  수학에서는 일반적으로 부등식의 범위를 수직선에 나타낼 때,
-
-  등호 없는 부등호(&lt;)는 ○와 대각선
-
-  등호 있는 부등호(≤)는 ●와 (직선에) 수직으로 뻗은 선
-
-  으로 표기합니다.
-
-  예를 들어 1 ≤ x &lt; 4는 다음과 같이 표기합니다.
-
-  
-
-
-우리는 보통 무언가를 고를 때, 자연스레 “필요저건에 따라 후보를 줄여 나갑니다. 그리고 충분조건을 만족하는 후보를 탐색합니다.”
-
-예를 들어 점심 메뉴를 고를 때, ‘8,000원 안팍의 메뉴’처럼 예산이 필요조건이 사람이 적지 않을 것입니다.
-
-거기에 ‘30분 안에 먹을 수 있는 메뉴’ 혹은 ‘깔끔한 맛’ 등의 필요조건을 더 해, 그 모든 필요조건을 만족하는 메뉴로 후보를 줄여 나갑니다.
-
-그리고 남은 메뉴(후보)가 오늘 점심으로 괜찮은지(충분한지) 고민합니다.
-
-그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
-
-이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html"><h1 class="title_post">☕️[Java] 문자열 비교 - 트러블슈팅</h1></a>
-                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="txt_post">
-                            1️⃣ 문자열 비교.
-  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
-    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
-    String personOfNationalMerit = scanner.next();
-
-    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
-    if (personOfNationalMerit != "y" &amp;&amp; personOfNationalMerit != "n") {
-      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
-    }
-    return personOfNationalMerit;
-  }
-
-
-🤔 문제 상황.
-1. 문자열 비교가 안되는 상황.
-
-  ’==’ 연산자를 사용해서 “y” 또는 “n” 외의 다른 문자열이 들어올 경우 커스텀한 에러 를 발생시키려 했지만 정상적인 값인 “y” 와 n 을 넣어도 에러가 발생 하는 문제가 생겼습니다.
-
-
-💻 트러블슈팅.
-1. equals() 메소드의 사용.
-
-자바에서는 문자열 비교를 할 때 ’==’ 연산자를 사용하는 것이 아니라 ‘equals()’ 메소드를 사용해야 합니다.
-
-  ’==’ 연산자는 객체의 레퍼런스를 비교하기 때문에, 두 문자열이 같은 객체를 참조하는지 여부를 확인합니다.
-  ‘equals()’ 메소드는 문자열의 내용을 비교합니다.
-
-
-따라서, “y” 와 “n” 을 비교할 때 ’==’ 대신 ‘equals()’ 를 사용해야 합니다.
-
-  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
-    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
-    String personOfNationalMerit = scanner.next();
-
-    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
-    if (!personOfNationalMerit.equals("y") &amp;&amp; !personOfNationalMerit.equals("n")) {
-      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
-    }
-    return personOfNationalMerit;
-  }
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -9519,6 +9411,211 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Math/2024-05-18-Math-1.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
+                        <a href="/Backend/Math/2024-05-18-Math-1.html" class="txt_post">
+                            1️⃣ 기하학 - 설득술로서 발전해 온 수학
+
+1️⃣ 명제와 증명.
+“필요조건” 과 “충분조건” 에 대한 이해는 모든 논리의 기초가 되는 가장 중요한 사항이라 해도 과언이 아닙니다.
+
+수학은 논리와 떼려야 뗄 수 없는 관계라는 것은 모두가 아는 사실이지만 ‘필요’ 와 ‘충분’ 은 수학의 논리 중에서도 가장 중요한 역할을 하는 기본적인 사고방식입니다.
+
+‘이것 없이는 어떠한 수학적 논리도 전개할 수 없다’라고 단언할 수 있을 정도입니다.
+
+또한, ‘부정’을 이용해서 증명하는 방법인 “대우” 와 “귀류법” 의 이해도 매우 중요합니다.
+
+대우는 얼핏 보기에도 복잡해 보이는 명제를 단순화하고, 귀류법은 정면 돌파로는 증명할 수 없는(하기 어려운) 명제를 증명할 때 큰 힘을 발휘합니다.
+
+명제란 무엇인지 먼저 확인해 봅시다.
+
+명제: 참과 거짓을 객관적으로 판정할 수 있는 문장이나 식
+
+
+예를 들어 ‘백두산은 한국에서 가장 높은 산이다’는 명제지만 ‘백두산은 멋있다’는 명제가 아닙니다.
+
+백두산의 높이가 한국에서 가장 높은지는 객관적으로 판정할 수 있지만, 백두산이 멋지다고 느끼는 데는 개인차가 있으며(심지어 대부분이 ‘멋지다’고 생각할지라도) 참과 거짓을 객관적으로 판단할 수 없기 때문입니다.
+
+💡 논리적 사고의 기초: 필요조건과 충분 조건.
+우선 필요조건과 충분조건의 정의를 살펴보겠습니다.
+
+
+  필요조건과 충분조건의 정의
+
+  명제 ‘P이면 Q이다’ 가 참일 때,
+
+  P를(Q이기 위한) “충분조건”
+
+  Q를(P이기 위한) “필요조건”
+
+  이라고 합니다.
+
+
+‘P이면 Q이다’ 에서 P를 ‘재즈’라 하고 Q를 ‘음악’이라 하면 ‘재즈는 음악이다’가 됩니다.
+이는 당연히 참이므로(올바르므로) 정의에 따라
+
+  재즈: 충분조건
+  음악: 필요조건
+
+
+이 됩니다.
+
+확실히 재즈가 되기 위해서는 (적어도) 음악일 필요가 있습니다.
+
+또한, 음악이 되기 위해서 재즈면 (넉넉하게) 충분하다고 할 수 있습니다.
+
+재즈는 음악의 한 장르이므로 이 둘의 관계를 그림으로 표현하면 다음과 같은 모습이 됩니다.
+
+
+
+이처럼 한쪽이 다른 한쪽을 완전히 포함하는 경우를 다음과 같이 집합으로 이해해 보는 것도 매우 중요합니다.
+
+
+  영역이 더 작은 쪽(재즈): 충분조건
+영역이 더 큰 쪽(음악): 필요조건
+
+
+특히 두 개의 명제 ‘P이면 Q다’ 와 ‘Q이면 P다’가 모두 참일 경우에는 ‘P와 Q가 서로의 필요충분조건이다’라고 합니다. 또는 ‘P와 Q는 서로 동치다’ 라고도 합니다.
+
+
+  NOTE : 실수란
+
+  수학에서는 일반적으로 부등식의 범위를 수직선에 나타낼 때,
+
+  등호 없는 부등호(&lt;)는 ○와 대각선
+
+  등호 있는 부등호(≤)는 ●와 (직선에) 수직으로 뻗은 선
+
+  으로 표기합니다.
+
+  예를 들어 1 ≤ x &lt; 4는 다음과 같이 표기합니다.
+
+  
+
+
+우리는 보통 무언가를 고를 때, 자연스레 “필요저건에 따라 후보를 줄여 나갑니다. 그리고 충분조건을 만족하는 후보를 탐색합니다.”
+
+예를 들어 점심 메뉴를 고를 때, ‘8,000원 안팍의 메뉴’처럼 예산이 필요조건이 사람이 적지 않을 것입니다.
+
+거기에 ‘30분 안에 먹을 수 있는 메뉴’ 혹은 ‘깔끔한 맛’ 등의 필요조건을 더 해, 그 모든 필요조건을 만족하는 메뉴로 후보를 줄여 나갑니다.
+
+그리고 남은 메뉴(후보)가 오늘 점심으로 괜찮은지(충분한지) 고민합니다.
+
+그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
+
+이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html"><h1 class="title_post">☕️[Java] 문자열 비교 - 트러블슈팅</h1></a>
+                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="txt_post">
+                            1️⃣ 문자열 비교.
+  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
+    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
+    String personOfNationalMerit = scanner.next();
+
+    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
+    if (personOfNationalMerit != "y" &amp;&amp; personOfNationalMerit != "n") {
+      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
+    }
+    return personOfNationalMerit;
+  }
+
+
+🤔 문제 상황.
+1. 문자열 비교가 안되는 상황.
+
+  ’==’ 연산자를 사용해서 “y” 또는 “n” 외의 다른 문자열이 들어올 경우 커스텀한 에러 를 발생시키려 했지만 정상적인 값인 “y” 와 n 을 넣어도 에러가 발생 하는 문제가 생겼습니다.
+
+
+💻 트러블슈팅.
+1. equals() 메소드의 사용.
+
+자바에서는 문자열 비교를 할 때 ’==’ 연산자를 사용하는 것이 아니라 ‘equals()’ 메소드를 사용해야 합니다.
+
+  ’==’ 연산자는 객체의 레퍼런스를 비교하기 때문에, 두 문자열이 같은 객체를 참조하는지 여부를 확인합니다.
+  ‘equals()’ 메소드는 문자열의 내용을 비교합니다.
+
+
+따라서, “y” 와 “n” 을 비교할 때 ’==’ 대신 ‘equals()’ 를 사용해야 합니다.
+
+  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
+    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
+    String personOfNationalMerit = scanner.next();
+
+    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
+    if (!personOfNationalMerit.equals("y") &amp;&amp; !personOfNationalMerit.equals("n")) {
+      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
+    }
+    return personOfNationalMerit;
+  }
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-17-TIL.html" class="txt_post">
+                            
+  연습 문제 풀이(2)
+  예외 처리 - 트러블슈팅
+  문자열 처리 - 트러블슈팅
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-17-ExceptionHandling-Troubleshooting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -9570,34 +9667,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
   
   ‘scanner.next()’ 를 호출하여 잘못된 입력을 버리고, 다음 입력을 기다리도록 합니다.
   사용자가 유효한 숫자를 입력하면 ‘age’ 를 반환하고 메소드를 종료합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-17-TIL.html" class="txt_post">
-                            
-  연습 문제 풀이(2)
-  예외 처리 - 트러블슈팅
-  문자열 처리 - 트러블슈팅
 
 
                         </a>
@@ -10060,6 +10129,294 @@ first.ifPresent(System.out::println); // 출력 Alice
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-13-TIL.html"><h1 class="title_post">📝 [TIL] 240513 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-13-TIL.html" class="txt_post">
+                            
+  컬렉션 프레임워크
+  HashMap에 key 값은 항상 int 여야 할까요?
+  람다식
+  람다식은 하나만!
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html"><h1 class="title_post">☕️[Java] 람다식은 하나만!</h1></a>
+                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="txt_post">
+                            람다식은 하나만!😆
+자바에서는 “하나의 추상 메소드를 갖는 인터페에스에 대해서만 람다식을 직접 사용할 수 있습니다.”
+이를 함수형 인터페이스라고 부르며, 람다식은 이런 함수형 인터페이스의 구현을 간단히 할 수 있는 방법을 제공합니다.
+
+하지만 아래의 코드와 같이 인터페이스 내에 두 개의 추상 메서드 (‘plus’, ‘minus’)가 있기 때문에, 이 인터페이스를 람다식으로 직접 구현하는 것은 불가능합니다.
+
+interface Carculator {
+    public abstract int plus(int x, int y);
+    public abstract int minus(int x, int y);
+}
+
+
+람다식을 사용하려면 함수형 인터페이스가 필요하므로, 두 메소드 각각을 위한 두 개의 별도의 인터페이스를 정의하거나 기존 인터페이스 중 하나를 수정해야 합니다.
+
+아래의 코드는 이를 위해 각 메소드를 분리하여 두 개의 함수형 인터페이스를 만든 예시입니다.
+interface Calculator {
+  public abstract int operation(int x, int y);
+}
+public class Main {
+
+  public static void main(String[] args) {
+    Calculator plus = (x, y) -&gt; { return x + y; };
+    System.out.println(plus.operation(10,2)); // 12
+    Calculator minus = (x, y) -&gt; { return x - y; };
+    System.out.println(minus.operation(10,2)); // 8
+  }
+}
+
+
+위 코드는 각 연산을 람다식으로 간단히 구현하고 있습니다.
+만약 원래의 ‘Carculator’ 인터페이스를 유지고하고 싶다면 이를 직접적으로 람다식으로 구현할 수는 없으며, 대신 익명 클래스나 정규 클래스를 사용해야 합니다.
+
+아래의 코드는 익명 클래스를 사용하는 방법을 보여줍니다.
+Calculator calclator = new Calculator() {
+    @Override
+    public int plus(int x, int y) {
+        return x + y;
+    }
+    
+    @Override
+    public int minus(int x, int y) {
+        return x - y;
+    }
+}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-13-lambda.html"><h1 class="title_post">☕️[Java] 람다식</h1></a>
+                        <a href="/Backend/Java/2024-05-13-lambda.html" class="txt_post">
+                            1️⃣ 람다식.
+
+1. 람다 표현식(Lambda Expression)
+자바 프로그래밍에서 람다식 또는 람다 표현식(Lambda Expression)은 간결한 방식으로 익명 함수(anonymous function)를 제공하는 기능입니다.
+
+자바 8부터 도입된 이 기능은 함수형 프로그래밍의 일부 개념을 자바에 도입하여, 코드를 더 간결하고 명료하게 만들어 주며 특히 컬렉션의 요소를 처리할 때 유용하게 사용됩니다.
+
+1.2 람다식의 특징.
+
+  익명성 : 람다는 이름이 없기 때문에 익명으로 처리됩니다.
+  함수 : 람다는 메서드와 유사하지만, 독립적으로 존재할 수 있는 함수입니다.
+  전달성 : 람다 표현식은 메서드 인자로 전달되거나 변수에 저장될 수 있습니다.
+  간결성 : 코드의 간결성을 높여, 불필요한 반복을 줄여줍니다.
+
+
+1.3 람다 표현식의 기본 구조.
+람타 표현식은 주로 매개 변수를 받아들여 결과를 반환하는 식의 형태로 작성됩니다.
+
+일반적인 형태는 다음과 같습니다.
+(parameters) -&gt; expression
+또는
+(parameters) -&gt; { statements; }
+
+
+  매개 변수 : 괄호 안에 정의되며, 매개 변수의 타입을 명시할 수도 있고 생략할 수도 있습니다.
+    
+      매개 변수가 하나뿐인 경우, 괄호도 생략할 수 있습니다.
+    
+  
+  
+    화살표(-&gt;) : 매개 변수와 몸체를 구분짓는 역할을 합니다.
+  
+  몸체 : 람다의 실행 로직을 담고 있으며, 식(expression) 또는 문장(statements)이 올 수 있습니다.
+    
+      식은 단일 실행 결과를 반환하며, 중괄호는 생략할 수 있습니다.
+      문장은 중괄호 안에 작성되며, 여러 줄의 코드를 포함할 수 있습니다.
+    
+  
+
+
+1.4 예시
+
+  Thread 실행하기
+    new Thread(() -&gt; System.out.println("Hello from a thread")).start();
+    
+  
+  리스트의 각 요소 출력하기
+    List&lt;String&gt; list = Arrays.asList("Apple", "Banana", "Cherry");
+list.forEach(item -&gt; System.out.println(item));
+    
+  
+  Comparator를 통한 정렬
+    List&lt;String&gt; cities = Arrays.asList("Seoul", "New York", "London");
+Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
+    
+  
+
+
+1.5 📝 정리.
+람다 표현식은 이벤트 리스너, 스레드의 실행 코드 등 여러 곳에서 기존에 익명 클래스를 사용하던 부분을 대체하여 코드를 더 간결하게 만들 수 있습니다.
+
+또한, 스트림 API와 함께 사용될 때 강력한 데이터 처리 기능을 제공하여 복잡한 컬렉션 처리를 단순화시킬 수 있습니다.
+
+
+
+2. 람다식의 장점.
+자바에서 람다식(Lambda Expression)을 사용하는 것은 여러 가지 장점을 제공합니다.
+
+이러한 장점들은 프로그래밍 스타일, 코드의 간결성, 효율성 및 기능성 측면에서 특히 두드러집니다.
+
+2.1 람다식의 주요 장점들.
+
+  1. 코드의 간결성 : 람다식을 사용하면 복잡한 익명 클래스를 사용할 필요가 없어지므로 코드를 훨씬 간결하게 작성할 수 있습니다.
+    
+      예를 들어, 스레드를 실행하거나 이벤트 리스너를 설정할 때 몇 줄의 코드로 작성할 수 있습니다.
+    
+  
+  2. 가독성 향상 : 람다식은 기존의 익명 클래스보다 훨씬 읽기 쉽고 이해하기 쉬운 코드를 작성할 수 있게 합니다.
+    
+      이는 유지보수 시간을 줄이고 코드의 질을 향상시키는 데 도움이 됩니다.
+    
+  
+  3. 함수형 프로그래밍 지원 : 람다식은 자바에 함수형 프로그래밍 스타일을 도입하였습니다.
+    
+      이는 데이터 처리와 조작을 보다 선언적으로 표현할 수 있게 해, 복잡한 데이터 처리 로직을 간결하고 효율적으로 작성할 수 있도록 합니다.
+    
+  
+  4. 코드의 재사용성 증가 : 람다식을 사용하면 특정 동작을 수행하는 코드 블록을 쉽게 재사용할 수 있습니다.
+    
+      람다식은 변수처럼 취급될 수 있어, 메소드에 인자로 전달하거나 변수에 할당하여 다른 위치에서 사용할 수 있습니다.
+    
+  
+  5. 병렬 실행 용이 : 자바 8 이후로 스트림 API와 결합된 람다식은 컬렉션 처리를 병렬로 쉽게 수행할 수 있게 해줍니다.
+    
+      이는 ‘parallelStream()’ 과 같은 메소드를 사용하여 멀티코어 프로세서의 이점을 쉽게 활용할 수 있게 합니다.
+    
+  
+  6. 지연 실행(Lazy Evaluation) : 람다식은 지연 실행을 가능하게 합니다.
+    
+      예를 들어, 조건이 충족될 때까지 코드 실행을 지연시키거나, 필요할 때만 데이터를 처리하도록 할 수 있습니다.
+        
+          이는 성능 최적화에 도움을 줄 수 있습니다.
+        
+      
+    
+  
+  7. 함수 인터페이스와의 호환성 : 람다식은 단일 추상 메소드를 가진 인터페이스(함수 인터페이스)와 호환됩니다.
+    
+      이는 많은 내장 함수 인터페이스(‘Runnable’, ‘Callable’, ‘Comparator’ 등)와 사용자 정의 함수 인터페이스에 람다식을 적용할 수 있음을 의미합니다.
+    
+  
+
+
+2.2 📝 정리.
+이러한 장점들로 인해 람다식은 자바 프로그래머들 사이에서 매우 인기 있는 기능이 되었으며, 모던 자바 코드에서는 필수적인 요소로 자리 잡고 있습니다.
+
+
+
+3. 람다식의 단점.
+자바에서 람다식을 사용하면 여러 가지 장점이 있지만, 몇 가지 단점 또는 주의할 점도 있습니다.
+
+3.1 람다식의 사용과 관련된 단점.
+
+  1. 디버깅의 어려움 : 람다식은 익명 함수이기 때문에 디버깅이 더 복잡할 수 있습니다.
+    
+      스택 트레이스에서 람다식이 어디에 위치하는지 명확하게 표시되지 않아 오류를 추적하기 어려울 수 있습니다.
+    
+  
+  2. 코드의 남용 : 람다식을 과도하게 사용하면 코드가 오히려 더 복잡해지고 이해하기 어려워질 수 있습니다.
+    
+      특히 람다 내부에 긴 로직이나 조건문을 넣을 경우 가독성이 떨어질 수 있습니다.
+    
+  
+  3. 람다 캡처링 오버헤드 : 람다식은 주변 환경의 변수를 캡처(Capture)할 수 있습니다.
+    
+      이 때, 람다가 외부 변수를 캡처 할 경우 추가적인 비용이 발생할 수 있으며, 이는 성능에 영향을 줄 수 있습니다.
+    
+  
+  4. 직렬화의 문제 : 람다식은 기본적으로 직렬화가 보장되지 않습니다.
+    
+      따라서 람다식을 사용하는 객체를 직렬화하려고 할 때 문제가 발생할 수 있습니다.
+        
+          이는 분산 시스템에서 특히 중요한 이슈가 될 수 있습니다.
+        
+      
+    
+  
+  5. 학습 곡선 : 자바 8 이전의 버전에 익숙한 개발자들에게 람다식과 스트림 API는 새로운 패러다임을 익혀야 하는 도전과제를 제시합니다.
+    
+      이는 초기 학습 곡선을 가파르게 만들 수 있습니다.
+    
+  
+  6. 타입 추론의 복잡성 : 람다식에서는 자바 컴파일러가 타입을 추론해야 하는데, 때때로 이 추론이 개발자의 의도와 다른게 이루어질 수 있습니다.
+    
+      이는 코드의 명확성을 떨어뜨릴 수 있습니다.
+    
+  
+  7. 함수형 인터페이스의 제약 : 람다식은 단 하나의 추상 메소드를 가진 함수형 인터페이스와 함꼐 사용됩니다.
+    
+      때로는 이런 제약이 프로그램 설계를 더 복잡하게 만들 수 있습니다.
+    
+  
+
+
+3.2 📝 정리.
+람다식의 단점들은 주로 개발과 관련된 트레이드오프와 관련이 있으며, 이러한 단점을 이해하고 적절히 관리한다면 람다식을 효과적으로 사용할 수 있습니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -10432,283 +10789,224 @@ hashCode() 메소드의 주요 용도
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-lambda.html"><h1 class="title_post">☕️[Java] 람다식</h1></a>
-                        <a href="/Backend/Java/2024-05-13-lambda.html" class="txt_post">
-                            1️⃣ 람다식.
-
-1. 람다 표현식(Lambda Expression)
-자바 프로그래밍에서 람다식 또는 람다 표현식(Lambda Expression)은 간결한 방식으로 익명 함수(anonymous function)를 제공하는 기능입니다.
-
-자바 8부터 도입된 이 기능은 함수형 프로그래밍의 일부 개념을 자바에 도입하여, 코드를 더 간결하고 명료하게 만들어 주며 특히 컬렉션의 요소를 처리할 때 유용하게 사용됩니다.
-
-1.2 람다식의 특징.
-
-  익명성 : 람다는 이름이 없기 때문에 익명으로 처리됩니다.
-  함수 : 람다는 메서드와 유사하지만, 독립적으로 존재할 수 있는 함수입니다.
-  전달성 : 람다 표현식은 메서드 인자로 전달되거나 변수에 저장될 수 있습니다.
-  간결성 : 코드의 간결성을 높여, 불필요한 반복을 줄여줍니다.
+                        <a href="/Backend/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-12-TIL.html" class="txt_post">
+                            
+  입출력(2)
+  예외 처리
 
 
-1.3 람다 표현식의 기본 구조.
-람타 표현식은 주로 매개 변수를 받아들여 결과를 반환하는 식의 형태로 작성됩니다.
-
-일반적인 형태는 다음과 같습니다.
-(parameters) -&gt; expression
-또는
-(parameters) -&gt; { statements; }
-
-
-  매개 변수 : 괄호 안에 정의되며, 매개 변수의 타입을 명시할 수도 있고 생략할 수도 있습니다.
-    
-      매개 변수가 하나뿐인 경우, 괄호도 생략할 수 있습니다.
-    
-  
-  
-    화살표(-&gt;) : 매개 변수와 몸체를 구분짓는 역할을 합니다.
-  
-  몸체 : 람다의 실행 로직을 담고 있으며, 식(expression) 또는 문장(statements)이 올 수 있습니다.
-    
-      식은 단일 실행 결과를 반환하며, 중괄호는 생략할 수 있습니다.
-      문장은 중괄호 안에 작성되며, 여러 줄의 코드를 포함할 수 있습니다.
-    
-  
-
-
-1.4 예시
-
-  Thread 실행하기
-    new Thread(() -&gt; System.out.println("Hello from a thread")).start();
-    
-  
-  리스트의 각 요소 출력하기
-    List&lt;String&gt; list = Arrays.asList("Apple", "Banana", "Cherry");
-list.forEach(item -&gt; System.out.println(item));
-    
-  
-  Comparator를 통한 정렬
-    List&lt;String&gt; cities = Arrays.asList("Seoul", "New York", "London");
-Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
-    
-  
-
-
-1.5 📝 정리.
-람다 표현식은 이벤트 리스너, 스레드의 실행 코드 등 여러 곳에서 기존에 익명 클래스를 사용하던 부분을 대체하여 코드를 더 간결하게 만들 수 있습니다.
-
-또한, 스트림 API와 함께 사용될 때 강력한 데이터 처리 기능을 제공하여 복잡한 컬렉션 처리를 단순화시킬 수 있습니다.
-
-
-
-2. 람다식의 장점.
-자바에서 람다식(Lambda Expression)을 사용하는 것은 여러 가지 장점을 제공합니다.
-
-이러한 장점들은 프로그래밍 스타일, 코드의 간결성, 효율성 및 기능성 측면에서 특히 두드러집니다.
-
-2.1 람다식의 주요 장점들.
-
-  1. 코드의 간결성 : 람다식을 사용하면 복잡한 익명 클래스를 사용할 필요가 없어지므로 코드를 훨씬 간결하게 작성할 수 있습니다.
-    
-      예를 들어, 스레드를 실행하거나 이벤트 리스너를 설정할 때 몇 줄의 코드로 작성할 수 있습니다.
-    
-  
-  2. 가독성 향상 : 람다식은 기존의 익명 클래스보다 훨씬 읽기 쉽고 이해하기 쉬운 코드를 작성할 수 있게 합니다.
-    
-      이는 유지보수 시간을 줄이고 코드의 질을 향상시키는 데 도움이 됩니다.
-    
-  
-  3. 함수형 프로그래밍 지원 : 람다식은 자바에 함수형 프로그래밍 스타일을 도입하였습니다.
-    
-      이는 데이터 처리와 조작을 보다 선언적으로 표현할 수 있게 해, 복잡한 데이터 처리 로직을 간결하고 효율적으로 작성할 수 있도록 합니다.
-    
-  
-  4. 코드의 재사용성 증가 : 람다식을 사용하면 특정 동작을 수행하는 코드 블록을 쉽게 재사용할 수 있습니다.
-    
-      람다식은 변수처럼 취급될 수 있어, 메소드에 인자로 전달하거나 변수에 할당하여 다른 위치에서 사용할 수 있습니다.
-    
-  
-  5. 병렬 실행 용이 : 자바 8 이후로 스트림 API와 결합된 람다식은 컬렉션 처리를 병렬로 쉽게 수행할 수 있게 해줍니다.
-    
-      이는 ‘parallelStream()’ 과 같은 메소드를 사용하여 멀티코어 프로세서의 이점을 쉽게 활용할 수 있게 합니다.
-    
-  
-  6. 지연 실행(Lazy Evaluation) : 람다식은 지연 실행을 가능하게 합니다.
-    
-      예를 들어, 조건이 충족될 때까지 코드 실행을 지연시키거나, 필요할 때만 데이터를 처리하도록 할 수 있습니다.
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
         
-          이는 성능 최적화에 도움을 줄 수 있습니다.
         
-      
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html"><h1 class="title_post">☕️[Java] 입출력(2)</h1></a>
+                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="txt_post">
+                            1️⃣ 입출력(2)
+
+1. 파일 출력.
+자바 프로그래밍에서 파일 출력은 프로그램이 데이터를 쓰는 과정을 말합니다.
+이 과정을 통해 프로그램은 실행 결과를 저장하거나, 사용자가 입력한 정보를 파일에 기록하고, 다른 프로그램이나 나중에 프로그램 자체가 다시 사용할 수 있는 형태로 데이터를 출력할 수 있습니다.
+
+2. 파일 출력을 수행하기 위한 기본 방법들.
+
+  1. FileOutputStream 사용
     
-  
-  7. 함수 인터페이스와의 호환성 : 람다식은 단일 추상 메소드를 가진 인터페이스(함수 인터페이스)와 호환됩니다.
-    
-      이는 많은 내장 함수 인터페이스(‘Runnable’, ‘Callable’, ‘Comparator’ 등)와 사용자 정의 함수 인터페이스에 람다식을 적용할 수 있음을 의미합니다.
+      ‘FileOutputStream’ 클래스는 바이트 단위의 출력을 파일에 직접 쓸 때 사용됩니다.
+      이 클래스를 사용하면 이미지, 비디오 파일, 이진 데이터 등을 파일로 저장할 수 있습니다.
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
     
   
 
+
+public class FileOutputExample {
+    public static void main(String[] args) {
+        String data = “Hello, this is a test.”;
+        try (FileOutputStream out = new FileOutputStream(“output.txt”)) {
+            out.write(data.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **2. PrintWriter 사용**
+    - **'PrintWriter'** 는 문자 데이터를 출력할 때 사용됩니다.
+    - 이 클래스는 파일에 텍스트를 쓸 때 편리하며, 자동 플러싱 기능, 줄 단위 출력 등의 메소드를 제공합니다.
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class PrintWriteExample {
+    public static void main(String[] args) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
+            writer.println("Hello, this is a test.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. FileWriter 사용
+    
+      ‘FileWriter’ 는 자바에서 파일에 텍스트 데이터를 쓰기 위한 간편한 방법 중 하나입니다.
+      이 클래스는 내부적으로 문자 데이터를 파일에 쓸 수 있도록 ‘OutputStreamWriter’ 를 사용하여 바이트 스트림을 문자 스트림으로 변환합니다.
+      ‘FileWriter’ 는 텍스트 파일을 쉽게 작성할 수 있도록 해주며, 생성자를 통해 다양한 방식으로 파일을 열 수 있습니다.
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+    
+  
+
+
+public class FileWriterExample {
+    pulbic static void main(String[] args) {
+        try (FileWriter writer = new FileWriter(“output.txt”, true)) {
+            writer.write(“Hello, this is a test.”);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **4. BufferedWriter 사용**
+    - **'BufferedWrite'** 는 버퍼링을 통해 효율적으로 파일에 문자 데이터를 쓸 수 있도록 합니다.
+    - **'FileWriter'** 와 함께 사용되어, 더 큰 데이터를 처리할 때 성능을 개선합니다.
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterExample {
+    public static void main(String[] args) {
+        String content = "Hello, this is a test.";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+2. 파일 입력.
+
+자바 프로그래밍에서 파일 입력은 프로그램이 파일로부터 데이터를 읽어들이는 과정을 말합니다.
+
+이 데이터는 텍스트나 바이너리 형태일 수 있으며, 파일에서 데이터를 읽어 프로그램 내에서 사용할 수 있도록 만드는 것이 목적입니다.
+
+파일 입력을 위해 자바는 다양한 입출력 클래스를 제공합니다.
+
+2.1 주로 사용되는 파일 입력 방법.
+
+
+  1. FileInputStream 사용
+    
+      ‘FileInputStream’ 은 바이트 단위로 파일에서 데이터를 읽는 데 사용됩니다.
+      이 클래스는 이미지, 비디오 파일, 실행 파일등의 이진 데이터 처리에 주로 사용됩니다.
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+    
+  
+
+
+public class FileInputStreamExample {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream(“input.dat”)) {
+            int content;
+            while ((content = fis.read()) != -1) {
+                // content 변수에 한 바이트씩 읽어들인 데이터를 저장
+                System.out.print((char) content);
+            }
+        } catch (IOExecption e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **2. BufferedRead** 와 **FileReader 사용**
+    - **'BufferedReader'** 와 **'FileReader'** 는 텍스트 데이터를 효과적으로 읽기 위해 함께 사용됩니다.
+    - **'FileReader'** 는 파일에서 문자 데이터를 읽어들이며, **'BufferedReader'** 는 버퍼링을 통해 읽기 성능을 향상 시킵니다.
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        try (BufferedReader br new BufferedReader(new FileReader("input.txt"))) {
+            String line;
+            while ((line = br.readline()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. Scanner 사용
+    
+      ‘Scanner’ 클래스는 텍스트 파일을 읽을 때 유용하며, 특히 토큰화(tokenizing)된 데이터를 처리할 때 편리합니다.
+      ‘Scanner’ 는 정규식을 사용하여 입력을 구분자로 분리하고, 다양한 타입으로 데이터를 읽어들일 수 있습니다.
+```java
+import java.io.File;
+import java.util.Scanner;
+    
+  
+
+
+public class ScannerExample {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(new File(“input.txt”))) {
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
 2.2 📝 정리.
-이러한 장점들로 인해 람다식은 자바 프로그래머들 사이에서 매우 인기 있는 기능이 되었으며, 모던 자바 코드에서는 필수적인 요소로 자리 잡고 있습니다.
-
-
-
-3. 람다식의 단점.
-자바에서 람다식을 사용하면 여러 가지 장점이 있지만, 몇 가지 단점 또는 주의할 점도 있습니다.
-
-3.1 람다식의 사용과 관련된 단점.
-
-  1. 디버깅의 어려움 : 람다식은 익명 함수이기 때문에 디버깅이 더 복잡할 수 있습니다.
-    
-      스택 트레이스에서 람다식이 어디에 위치하는지 명확하게 표시되지 않아 오류를 추적하기 어려울 수 있습니다.
-    
-  
-  2. 코드의 남용 : 람다식을 과도하게 사용하면 코드가 오히려 더 복잡해지고 이해하기 어려워질 수 있습니다.
-    
-      특히 람다 내부에 긴 로직이나 조건문을 넣을 경우 가독성이 떨어질 수 있습니다.
-    
-  
-  3. 람다 캡처링 오버헤드 : 람다식은 주변 환경의 변수를 캡처(Capture)할 수 있습니다.
-    
-      이 때, 람다가 외부 변수를 캡처 할 경우 추가적인 비용이 발생할 수 있으며, 이는 성능에 영향을 줄 수 있습니다.
-    
-  
-  4. 직렬화의 문제 : 람다식은 기본적으로 직렬화가 보장되지 않습니다.
-    
-      따라서 람다식을 사용하는 객체를 직렬화하려고 할 때 문제가 발생할 수 있습니다.
-        
-          이는 분산 시스템에서 특히 중요한 이슈가 될 수 있습니다.
-        
-      
-    
-  
-  5. 학습 곡선 : 자바 8 이전의 버전에 익숙한 개발자들에게 람다식과 스트림 API는 새로운 패러다임을 익혀야 하는 도전과제를 제시합니다.
-    
-      이는 초기 학습 곡선을 가파르게 만들 수 있습니다.
-    
-  
-  6. 타입 추론의 복잡성 : 람다식에서는 자바 컴파일러가 타입을 추론해야 하는데, 때때로 이 추론이 개발자의 의도와 다른게 이루어질 수 있습니다.
-    
-      이는 코드의 명확성을 떨어뜨릴 수 있습니다.
-    
-  
-  7. 함수형 인터페이스의 제약 : 람다식은 단 하나의 추상 메소드를 가진 함수형 인터페이스와 함꼐 사용됩니다.
-    
-      때로는 이런 제약이 프로그램 설계를 더 복잡하게 만들 수 있습니다.
-    
-  
-
-
-3.2 📝 정리.
-람다식의 단점들은 주로 개발과 관련된 트레이드오프와 관련이 있으며, 이러한 단점을 이해하고 적절히 관리한다면 람다식을 효과적으로 사용할 수 있습니다.
-
-
+이렇게 다양한 방법을 통해 파일로부터 데이터를 읽을 수 있으며, 각 방법은 사용하는 데이터 타입과 처리할 데이터의 양에 따라 선택할 수 있습니다.
+파일에서 데이터를 읽는 것은 데이터를 처리하거나, 설정 정보를 불러오거나, 사용자 데이터를 읽는 등 다양한 목적으로 활용됩니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-13-TIL.html"><h1 class="title_post">📝 [TIL] 240513 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-13-TIL.html" class="txt_post">
-                            
-  컬렉션 프레임워크
-  HashMap에 key 값은 항상 int 여야 할까요?
-  람다식
-  람다식은 하나만!
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html"><h1 class="title_post">☕️[Java] 람다식은 하나만!</h1></a>
-                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="txt_post">
-                            람다식은 하나만!😆
-자바에서는 “하나의 추상 메소드를 갖는 인터페에스에 대해서만 람다식을 직접 사용할 수 있습니다.”
-이를 함수형 인터페이스라고 부르며, 람다식은 이런 함수형 인터페이스의 구현을 간단히 할 수 있는 방법을 제공합니다.
-
-하지만 아래의 코드와 같이 인터페이스 내에 두 개의 추상 메서드 (‘plus’, ‘minus’)가 있기 때문에, 이 인터페이스를 람다식으로 직접 구현하는 것은 불가능합니다.
-
-interface Carculator {
-    public abstract int plus(int x, int y);
-    public abstract int minus(int x, int y);
-}
-
-
-람다식을 사용하려면 함수형 인터페이스가 필요하므로, 두 메소드 각각을 위한 두 개의 별도의 인터페이스를 정의하거나 기존 인터페이스 중 하나를 수정해야 합니다.
-
-아래의 코드는 이를 위해 각 메소드를 분리하여 두 개의 함수형 인터페이스를 만든 예시입니다.
-interface Calculator {
-  public abstract int operation(int x, int y);
-}
-public class Main {
-
-  public static void main(String[] args) {
-    Calculator plus = (x, y) -&gt; { return x + y; };
-    System.out.println(plus.operation(10,2)); // 12
-    Calculator minus = (x, y) -&gt; { return x - y; };
-    System.out.println(minus.operation(10,2)); // 8
-  }
-}
-
-
-위 코드는 각 연산을 람다식으로 간단히 구현하고 있습니다.
-만약 원래의 ‘Carculator’ 인터페이스를 유지고하고 싶다면 이를 직접적으로 람다식으로 구현할 수는 없으며, 대신 익명 클래스나 정규 클래스를 사용해야 합니다.
-
-아래의 코드는 익명 클래스를 사용하는 방법을 보여줍니다.
-Calculator calclator = new Calculator() {
-    @Override
-    public int plus(int x, int y) {
-        return x + y;
-    }
-    
-    @Override
-    public int minus(int x, int y) {
-        return x - y;
-    }
-}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
+                                <span class="date">· 2024-05-12</span>
                             
                         </div>
                     </div>
@@ -10931,235 +11229,6 @@ public class Main {
     
   
 
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-12-TIL.html" class="txt_post">
-                            
-  입출력(2)
-  예외 처리
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html"><h1 class="title_post">☕️[Java] 입출력(2)</h1></a>
-                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="txt_post">
-                            1️⃣ 입출력(2)
-
-1. 파일 출력.
-자바 프로그래밍에서 파일 출력은 프로그램이 데이터를 쓰는 과정을 말합니다.
-이 과정을 통해 프로그램은 실행 결과를 저장하거나, 사용자가 입력한 정보를 파일에 기록하고, 다른 프로그램이나 나중에 프로그램 자체가 다시 사용할 수 있는 형태로 데이터를 출력할 수 있습니다.
-
-2. 파일 출력을 수행하기 위한 기본 방법들.
-
-  1. FileOutputStream 사용
-    
-      ‘FileOutputStream’ 클래스는 바이트 단위의 출력을 파일에 직접 쓸 때 사용됩니다.
-      이 클래스를 사용하면 이미지, 비디오 파일, 이진 데이터 등을 파일로 저장할 수 있습니다.
-```java
-import java.io.FileOutputStream;
-import java.io.IOException;
-    
-  
-
-
-public class FileOutputExample {
-    public static void main(String[] args) {
-        String data = “Hello, this is a test.”;
-        try (FileOutputStream out = new FileOutputStream(“output.txt”)) {
-            out.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **2. PrintWriter 사용**
-    - **'PrintWriter'** 는 문자 데이터를 출력할 때 사용됩니다.
-    - 이 클래스는 파일에 텍스트를 쓸 때 편리하며, 자동 플러싱 기능, 줄 단위 출력 등의 메소드를 제공합니다.
-```java
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-public class PrintWriteExample {
-    public static void main(String[] args) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
-            writer.println("Hello, this is a test.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. FileWriter 사용
-    
-      ‘FileWriter’ 는 자바에서 파일에 텍스트 데이터를 쓰기 위한 간편한 방법 중 하나입니다.
-      이 클래스는 내부적으로 문자 데이터를 파일에 쓸 수 있도록 ‘OutputStreamWriter’ 를 사용하여 바이트 스트림을 문자 스트림으로 변환합니다.
-      ‘FileWriter’ 는 텍스트 파일을 쉽게 작성할 수 있도록 해주며, 생성자를 통해 다양한 방식으로 파일을 열 수 있습니다.
-```java
-import java.io.FileWriter;
-import java.io.IOException;
-    
-  
-
-
-public class FileWriterExample {
-    pulbic static void main(String[] args) {
-        try (FileWriter writer = new FileWriter(“output.txt”, true)) {
-            writer.write(“Hello, this is a test.”);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **4. BufferedWriter 사용**
-    - **'BufferedWrite'** 는 버퍼링을 통해 효율적으로 파일에 문자 데이터를 쓸 수 있도록 합니다.
-    - **'FileWriter'** 와 함께 사용되어, 더 큰 데이터를 처리할 때 성능을 개선합니다.
-```java
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-public class BufferedWriterExample {
-    public static void main(String[] args) {
-        String content = "Hello, this is a test.";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
-            writer.write(content);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-2. 파일 입력.
-
-자바 프로그래밍에서 파일 입력은 프로그램이 파일로부터 데이터를 읽어들이는 과정을 말합니다.
-
-이 데이터는 텍스트나 바이너리 형태일 수 있으며, 파일에서 데이터를 읽어 프로그램 내에서 사용할 수 있도록 만드는 것이 목적입니다.
-
-파일 입력을 위해 자바는 다양한 입출력 클래스를 제공합니다.
-
-2.1 주로 사용되는 파일 입력 방법.
-
-
-  1. FileInputStream 사용
-    
-      ‘FileInputStream’ 은 바이트 단위로 파일에서 데이터를 읽는 데 사용됩니다.
-      이 클래스는 이미지, 비디오 파일, 실행 파일등의 이진 데이터 처리에 주로 사용됩니다.
-```java
-import java.io.FileInputStream;
-import java.io.IOException;
-    
-  
-
-
-public class FileInputStreamExample {
-    public static void main(String[] args) {
-        try (FileInputStream fis = new FileInputStream(“input.dat”)) {
-            int content;
-            while ((content = fis.read()) != -1) {
-                // content 변수에 한 바이트씩 읽어들인 데이터를 저장
-                System.out.print((char) content);
-            }
-        } catch (IOExecption e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **2. BufferedRead** 와 **FileReader 사용**
-    - **'BufferedReader'** 와 **'FileReader'** 는 텍스트 데이터를 효과적으로 읽기 위해 함께 사용됩니다.
-    - **'FileReader'** 는 파일에서 문자 데이터를 읽어들이며, **'BufferedReader'** 는 버퍼링을 통해 읽기 성능을 향상 시킵니다.
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-public class BufferedReaderExample {
-    public static void main(String[] args) {
-        try (BufferedReader br new BufferedReader(new FileReader("input.txt"))) {
-            String line;
-            while ((line = br.readline()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. Scanner 사용
-    
-      ‘Scanner’ 클래스는 텍스트 파일을 읽을 때 유용하며, 특히 토큰화(tokenizing)된 데이터를 처리할 때 편리합니다.
-      ‘Scanner’ 는 정규식을 사용하여 입력을 구분자로 분리하고, 다양한 타입으로 데이터를 읽어들일 수 있습니다.
-```java
-import java.io.File;
-import java.util.Scanner;
-    
-  
-
-
-public class ScannerExample {
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(new File(“input.txt”))) {
-            while (scanner.hasNextLine()) {
-                System.out.println(scanner.nextLine());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-2.2 📝 정리.
-이렇게 다양한 방법을 통해 파일로부터 데이터를 읽을 수 있으며, 각 방법은 사용하는 데이터 타입과 처리할 데이터의 양에 따라 선택할 수 있습니다.
-파일에서 데이터를 읽는 것은 데이터를 처리하거나, 설정 정보를 불러오거나, 사용자 데이터를 읽는 등 다양한 목적으로 활용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -12187,32 +12256,6 @@ button.addActionListener(new ActionListener() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
-                            
-  상속
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-09-Inheritance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -12421,21 +12464,21 @@ public class Dog extends Animal {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-08-TIL.html"><h1 class="title_post">📝 [TIL] 240508 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-08-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
                             
-  클래스와 객체(2)
+  상속
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-08</span>
+                                <span class="date">· 2024-05-09</span>
                             
                         </div>
                     </div>
@@ -12733,6 +12776,32 @@ public class Test {
 ‘static’ 메소드와 ‘static’ 변수는 클래스 레벨에서 관리되어 클래스의 모든 인스턴스에 의해 공유되는 특성을 가지고 있습니다.
 
 이를 통해 클래스 전체에 영향을 미치는 작업을 수행할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-08-TIL.html"><h1 class="title_post">📝 [TIL] 240508 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-08-TIL.html" class="txt_post">
+                            
+  클래스와 객체(2)
+
 
                         </a>
                         <div class="info-post">
@@ -13893,179 +13962,17 @@ for (String name : names) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-05-VariousOperator-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-05-VariousOperator-2.html"><h1 class="title_post">☕️[Java] 여러가지 연산자(2)</h1></a>
-                        <a href="/Backend/Java/2024-05-05-VariousOperator-2.html" class="txt_post">
-                            1️⃣ 비트 연산자에 대한 이해
+                        <a href="/Backend/TIL/2024-05-05-TIL.html"><h1 class="title_post">📝 [TIL] 240505 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-05-TIL.html" class="txt_post">
+                            
+  여러가지 연산자(1)
+  여러가지 연산자(2)
+  조건문
 
-1. 2진법.
-자바 프로그래밍에서의 이진법은 컴퓨터의 지본 숫자 시스템을 참조하는 것입니다.
-컴퓨터는 데이터를 0과 1의 형태, 즉 이진수로 처리합니다.
-자바에서도 이러한 이진법을 사용하여 데이터를 저장, 처리하며 다양한 연산을 수행할 수 있습니다.
-
-1.1 자바에서 2진법을 사용하는 예.
-
-  1. 이진 리터럴 : 자바 7 이상부터는 정수를 이진 리터럴로 직접 표현할 수 있습니다.
-    
-      예를 들어, ‘int x = 0b1010;’ 은 이진수 ‘1010’ 이고, 십진수로 10입니다.
-    
-  
-  2. 비트 연산자 : 자바는 비트 연산을 수행할 수 있는 여러 연산자를 제공합니다.
-    
-      예를 들어, 다음과 같습니다.
-        
-          '&amp;' (AND 연산자)
-          '|' (OR 연산자)
-          '^' (XOR 연산자)
-          '~' (NOT 연산자)
-          '&lt;&lt;' (왼쪽 시프트)
-          '&gt;&gt;' (오른쪽 시프트)
-          '&gt;&gt;&gt;' (부호 없는 오른쪽 시프트)
-            
-              이들 연산자는 주로 효율적인 수치 계산, 저수준 프로그래밍, 암호와 작업 등에 사용됩니다.
-            
-          
-        
-      
-    
-  
-  3. 이진 데이터 조작 : 파일이나 네트워크를 통해 바이트 단위로 데이터를 읽고 쓸 때, 이진 형식으로 데이터를 처리합니다.
-    
-      자바에서는 'byte' 자료형을 이용하여 이진 데이터를 직접 다룰 수 있습니다.
-    
-  
-
-
-📝 정리
-이진법을 사용하는 주된 이유는 컴퓨터 하드웨어가 전기 신호로 작동하기 때문에 0과 1, 즉 이진 상태를 나타내는 전기의 켜짐과 꺼짐 상태로 모든 데이터를 표현하기 편리하기 때문입니다.
-이렇게 함으로써, 프로그래밍에서 더욱 직접적이고 효율적인 하드웨어 조작이 가능해집니다.
-
-
-
-2. 2의 보수.
-자바 프로그래밍에서의 2의 보수(2’s complement)는 음수를 표현하기 위한 방법입니다.
-컴퓨터 시스템은 보통 이진법을 사용하여 데이터를 저장하고 처리하는데, 이진법에서 음수를 표현하기 위해 가장 널리 사용되는 방법이 2의 보수입니다.
-
-2.1 2의 보수 생성 과정.
-
-  1. 원래 숫자의 이진 표현을 얻습니다.
-    
-      예를 들어, 5의 이진 표현은 ‘0101’ 입니다.
-    
-  
-  2. 이진 표현의 모든 비트를 반전시킵니다.
-    
-      즉, 0은 1로, 1은 0으로 변경합니다.
-      5의 경우 ‘0101’ 이 ‘1010’ 이 됩니다.
-    
-  
-  3. 반전된 값에 1을 더합니다.
-    
-      이렇게 하면 ‘1011’ 이됩니다.
-    
-  
-
-
-이렇게 생성된 ‘1011’ 은 -5를 나타냅니다.
-이 방법은 자바를 포함한 대부분의 프로그래밍 언어와 컴퓨터 시스템에서 음수를 표현하는 표준 방법입니다.
-
-2.2 2의 보수의 장점.
-
-  덧셈 연산만으로 뺄셈을 할 수 있습니다.
-    
-      예를 들어, 5-5를 계산하려면 5와 -5의 2의 보수를 더하면 됩니다.
-        
-          이진법으로는 ‘1010 + 1011 = 10000’ 이고, 최상위 비트(캐리 비트)는 무시합니다.
-            
-              따라서 결과는 ‘0000’ 이 됩니다.
-            
-          
-        
-      
-    
-  
-  오버플로 처리가 간단합니다.
-    
-      캐리 비트는 무시하면서 자연스럽게 오버플로를 처리할 수 있습니다.
-    
-  
-
-
-2.3 자바에서의 활용.
-자바에서는 정수형 타입(‘int’, ‘long’, ‘short’, ‘byte’) 이 이진법으로 2의 보수 형태로 저장되고 처리됩니다.
-이는 자바의 모든 정수 연산에 내장된 메커니즘입니다.
-예를 들어, 자바에서 ‘-5’ 를 선언하면 내부적으로는 ‘5’ 의 2의 보수인 ‘111…11011’ (32비트 시스템에서의 표현)으로 저장됩니다.
-
-📝 정리
-2의 보수 방식은 음수를 다루기 위한 효과적인 방법이며, 프로그래머가 별도의 조치를 취하지 않아도 시스템이 자동으로 처리해 주기 때문에 매우 편리합니다.
-
-
-
-3. 비트 논리연산자.
-자바 프로그래밍에서 비트 논리연산자는 비트 단위로 논리 연산을 수행하는 연산자입니다.
-이들 연산자는 주로 정수 타입의 변수에 사용되며, 각 비트를 독립적으로 비교하여 결과를 반환합니다.
-비트 논리연산자는 주로 저수준 프로그래밍, 효율적인 데이터 처리, 상태 플래그 관리, 암호화 등의 작업에 활용됩니다.
-
-자바에서 사용되는 주요 비트 논리 연산자는 다음과 같습니다.
-
-
-  1. AND 연산자(‘&amp;’) : 두 피연산자의 비트가 모두 1일 경우에만 결과의 해당 비트를 1로 설정합니다.
-    
-      예를 들어, ‘5 &amp; 3’ 은 이진수로 ‘0101 &amp; 0011’ 을 계산하여 ‘0001’ 이 되므로, 결과는 ‘1’ 입니다.
-    
-  
-  
-    
-      
-        
-          **2. OR 연산자(‘
-          ’) :** 두 피연산자 중 하나라도 비트가 1이면 결과의 해당 비트를 1로 설정합니다.
-        
-      
-    
-    
-      
-        
-          
-            
-              예를 들어, **‘5
-              3’** 은 이진수로 **‘0101
-              0011’** 을 계산하여 ‘0111’ 이 되므로, 결과는 ‘7’ 입니다.
-            
-          
-        
-      
-    
-  
-  3. XOR 연산자(‘^’) : 두 피연산자의 비트가 서로 다를 경우 결과의 해당 비트를 1로 설정합니다.
-    
-      예를 들어, ‘5 ^ 3’ 은 이진수로 ‘0101 ^ 0011’ 을 계산하여 ‘0110’ 이 되므로, 결과는 ‘6’ 입니다.
-    
-  
-  4. NOT 연산자(‘~’) : 피연산자의 모든 비트를 반전시킵니다.(1은 0으로, 0은 1로).
-    
-      예를 들어, ‘~5’ 는 이진수로 ‘~0101’ 을 계산하여 ‘…1010’(무한히 많은 1 다음에 1010)이 되고, 이는 보통 32비트 시스템에서 ‘-6’ 으로 해석됩니다.
-    
-  
-  5. 왼쪽 시프트(‘«’) : 모든 비트를 왼쪽으로 지정된 수만틈 이동시키고, 오른쪽은 0으로 채웁니다.
-    
-      예를 들어.‘3 « 2’ 는 ‘0011’ 을 왼쪽으로 2비트 이동하여 ‘1100’ 이 되므로, 결과는 ‘12’ 입니다.
-    
-  
-  6. 오른쪽 시프트(‘»’) : 모든 비트를 오른쪽으로 지정된 수만큼 이동시키고, 왼쪽은 최상위 비트(부호 비트)의 값으로 채웁니다.
-    
-      예를 들어, ‘-8 » 2’ 는 ‘11111000’ 을 오른쪽으로 2비트 이동하여 ‘11111110’ 이 되므로, 결과는 ‘-2’ 입니다.
-    
-  
-  7. 부호 없는 오른쪽 시프트(‘»&gt;’) : 모든 비트를 오른쪽으로 지정된 수만큼 이동시키고, 왼쪽은 0으로 채웁니다. 이는 부호 비트를 무시하고, 순수하게 비트를 오른쪽으로 이동시키기 때문에 음수에 사용했을 때 결과가 달라집니다.
-
-
-📝 정리
-
-이러한 비트 논리 연산자들은 데이터의 특정 비트를 직접 조작할 필요가 있는 경우에 유용하며, 자바 프로그래밍에서 중요한 도구입니다.
 
                         </a>
                         <div class="info-post">
@@ -14221,34 +14128,6 @@ System.out.println("학점: " + grade);
 📝 정리.
 ‘switch’ 문은 코드의 가독성을 높이고, 많은 조건 분기를 간결하게 처리할 수 있는 방법을 제공합니다.
 이는 특히 각 조건이 명확할 때 더욱 유용하며, 코드의 구조를 명확하게 표현할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-05-TIL.html"><h1 class="title_post">📝 [TIL] 240505 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-05-TIL.html" class="txt_post">
-                            
-  여러가지 연산자(1)
-  여러가지 연산자(2)
-  조건문
-
 
                         </a>
                         <div class="info-post">
@@ -14537,21 +14416,185 @@ public class TernaryExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-05-VariousOperator-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(4)
+                        <a href="/Backend/Java/2024-05-05-VariousOperator-2.html"><h1 class="title_post">☕️[Java] 여러가지 연산자(2)</h1></a>
+                        <a href="/Backend/Java/2024-05-05-VariousOperator-2.html" class="txt_post">
+                            1️⃣ 비트 연산자에 대한 이해
 
+1. 2진법.
+자바 프로그래밍에서의 이진법은 컴퓨터의 지본 숫자 시스템을 참조하는 것입니다.
+컴퓨터는 데이터를 0과 1의 형태, 즉 이진수로 처리합니다.
+자바에서도 이러한 이진법을 사용하여 데이터를 저장, 처리하며 다양한 연산을 수행할 수 있습니다.
+
+1.1 자바에서 2진법을 사용하는 예.
+
+  1. 이진 리터럴 : 자바 7 이상부터는 정수를 이진 리터럴로 직접 표현할 수 있습니다.
+    
+      예를 들어, ‘int x = 0b1010;’ 은 이진수 ‘1010’ 이고, 십진수로 10입니다.
+    
+  
+  2. 비트 연산자 : 자바는 비트 연산을 수행할 수 있는 여러 연산자를 제공합니다.
+    
+      예를 들어, 다음과 같습니다.
+        
+          '&amp;' (AND 연산자)
+          '|' (OR 연산자)
+          '^' (XOR 연산자)
+          '~' (NOT 연산자)
+          '&lt;&lt;' (왼쪽 시프트)
+          '&gt;&gt;' (오른쪽 시프트)
+          '&gt;&gt;&gt;' (부호 없는 오른쪽 시프트)
+            
+              이들 연산자는 주로 효율적인 수치 계산, 저수준 프로그래밍, 암호와 작업 등에 사용됩니다.
+            
+          
+        
+      
+    
+  
+  3. 이진 데이터 조작 : 파일이나 네트워크를 통해 바이트 단위로 데이터를 읽고 쓸 때, 이진 형식으로 데이터를 처리합니다.
+    
+      자바에서는 'byte' 자료형을 이용하여 이진 데이터를 직접 다룰 수 있습니다.
+    
+  
+
+
+📝 정리
+이진법을 사용하는 주된 이유는 컴퓨터 하드웨어가 전기 신호로 작동하기 때문에 0과 1, 즉 이진 상태를 나타내는 전기의 켜짐과 꺼짐 상태로 모든 데이터를 표현하기 편리하기 때문입니다.
+이렇게 함으로써, 프로그래밍에서 더욱 직접적이고 효율적인 하드웨어 조작이 가능해집니다.
+
+
+
+2. 2의 보수.
+자바 프로그래밍에서의 2의 보수(2’s complement)는 음수를 표현하기 위한 방법입니다.
+컴퓨터 시스템은 보통 이진법을 사용하여 데이터를 저장하고 처리하는데, 이진법에서 음수를 표현하기 위해 가장 널리 사용되는 방법이 2의 보수입니다.
+
+2.1 2의 보수 생성 과정.
+
+  1. 원래 숫자의 이진 표현을 얻습니다.
+    
+      예를 들어, 5의 이진 표현은 ‘0101’ 입니다.
+    
+  
+  2. 이진 표현의 모든 비트를 반전시킵니다.
+    
+      즉, 0은 1로, 1은 0으로 변경합니다.
+      5의 경우 ‘0101’ 이 ‘1010’ 이 됩니다.
+    
+  
+  3. 반전된 값에 1을 더합니다.
+    
+      이렇게 하면 ‘1011’ 이됩니다.
+    
+  
+
+
+이렇게 생성된 ‘1011’ 은 -5를 나타냅니다.
+이 방법은 자바를 포함한 대부분의 프로그래밍 언어와 컴퓨터 시스템에서 음수를 표현하는 표준 방법입니다.
+
+2.2 2의 보수의 장점.
+
+  덧셈 연산만으로 뺄셈을 할 수 있습니다.
+    
+      예를 들어, 5-5를 계산하려면 5와 -5의 2의 보수를 더하면 됩니다.
+        
+          이진법으로는 ‘1010 + 1011 = 10000’ 이고, 최상위 비트(캐리 비트)는 무시합니다.
+            
+              따라서 결과는 ‘0000’ 이 됩니다.
+            
+          
+        
+      
+    
+  
+  오버플로 처리가 간단합니다.
+    
+      캐리 비트는 무시하면서 자연스럽게 오버플로를 처리할 수 있습니다.
+    
+  
+
+
+2.3 자바에서의 활용.
+자바에서는 정수형 타입(‘int’, ‘long’, ‘short’, ‘byte’) 이 이진법으로 2의 보수 형태로 저장되고 처리됩니다.
+이는 자바의 모든 정수 연산에 내장된 메커니즘입니다.
+예를 들어, 자바에서 ‘-5’ 를 선언하면 내부적으로는 ‘5’ 의 2의 보수인 ‘111…11011’ (32비트 시스템에서의 표현)으로 저장됩니다.
+
+📝 정리
+2의 보수 방식은 음수를 다루기 위한 효과적인 방법이며, 프로그래머가 별도의 조치를 취하지 않아도 시스템이 자동으로 처리해 주기 때문에 매우 편리합니다.
+
+
+
+3. 비트 논리연산자.
+자바 프로그래밍에서 비트 논리연산자는 비트 단위로 논리 연산을 수행하는 연산자입니다.
+이들 연산자는 주로 정수 타입의 변수에 사용되며, 각 비트를 독립적으로 비교하여 결과를 반환합니다.
+비트 논리연산자는 주로 저수준 프로그래밍, 효율적인 데이터 처리, 상태 플래그 관리, 암호화 등의 작업에 활용됩니다.
+
+자바에서 사용되는 주요 비트 논리 연산자는 다음과 같습니다.
+
+
+  1. AND 연산자(‘&amp;’) : 두 피연산자의 비트가 모두 1일 경우에만 결과의 해당 비트를 1로 설정합니다.
+    
+      예를 들어, ‘5 &amp; 3’ 은 이진수로 ‘0101 &amp; 0011’ 을 계산하여 ‘0001’ 이 되므로, 결과는 ‘1’ 입니다.
+    
+  
+  
+    
+      
+        
+          **2. OR 연산자(‘
+          ’) :** 두 피연산자 중 하나라도 비트가 1이면 결과의 해당 비트를 1로 설정합니다.
+        
+      
+    
+    
+      
+        
+          
+            
+              예를 들어, **‘5
+              3’** 은 이진수로 **‘0101
+              0011’** 을 계산하여 ‘0111’ 이 되므로, 결과는 ‘7’ 입니다.
+            
+          
+        
+      
+    
+  
+  3. XOR 연산자(‘^’) : 두 피연산자의 비트가 서로 다를 경우 결과의 해당 비트를 1로 설정합니다.
+    
+      예를 들어, ‘5 ^ 3’ 은 이진수로 ‘0101 ^ 0011’ 을 계산하여 ‘0110’ 이 되므로, 결과는 ‘6’ 입니다.
+    
+  
+  4. NOT 연산자(‘~’) : 피연산자의 모든 비트를 반전시킵니다.(1은 0으로, 0은 1로).
+    
+      예를 들어, ‘~5’ 는 이진수로 ‘~0101’ 을 계산하여 ‘…1010’(무한히 많은 1 다음에 1010)이 되고, 이는 보통 32비트 시스템에서 ‘-6’ 으로 해석됩니다.
+    
+  
+  5. 왼쪽 시프트(‘«’) : 모든 비트를 왼쪽으로 지정된 수만틈 이동시키고, 오른쪽은 0으로 채웁니다.
+    
+      예를 들어.‘3 « 2’ 는 ‘0011’ 을 왼쪽으로 2비트 이동하여 ‘1100’ 이 되므로, 결과는 ‘12’ 입니다.
+    
+  
+  6. 오른쪽 시프트(‘»’) : 모든 비트를 오른쪽으로 지정된 수만큼 이동시키고, 왼쪽은 최상위 비트(부호 비트)의 값으로 채웁니다.
+    
+      예를 들어, ‘-8 » 2’ 는 ‘11111000’ 을 오른쪽으로 2비트 이동하여 ‘11111110’ 이 되므로, 결과는 ‘-2’ 입니다.
+    
+  
+  7. 부호 없는 오른쪽 시프트(‘»&gt;’) : 모든 비트를 오른쪽으로 지정된 수만큼 이동시키고, 왼쪽은 0으로 채웁니다. 이는 부호 비트를 무시하고, 순수하게 비트를 오른쪽으로 이동시키기 때문에 음수에 사용했을 때 결과가 달라집니다.
+
+
+📝 정리
+
+이러한 비트 논리 연산자들은 데이터의 특정 비트를 직접 조작할 필요가 있는 경우에 유용하며, 자바 프로그래밍에서 중요한 도구입니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-04</span>
+                                <span class="date">· 2024-05-05</span>
                             
                         </div>
                     </div>
@@ -14778,6 +14821,32 @@ public class Box&lt;T extends Number&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(4)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-05-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -14967,76 +15036,6 @@ public class ArrayExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-03-TypeComparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-03-TypeComparison.html"><h1 class="title_post">☕️[Java] 타입 비교.</h1></a>
-                        <a href="/Backend/Java/2024-05-03-TypeComparison.html" class="txt_post">
-                            타입 비교.
-자바 프로그래밍에서 두 변수의 타입이 같은지 비교하는 방법은 몇 가지 상황에 따라 다릅니다.
-여기서는 변수가 기본형(Primitive types) 인 경우와 참조형(Reference types) 인 경우로 나누어 설명하겠습니다.
-
-1️⃣ 기본형 변수의 타입 비교.
-기본형 변수의 경우, 자바는 정적 타입 언어이기 때문에 변수의 타입이 코드 작성 시 결정됩니다.
-두 변수가 같은 기본형 타입인지 비교하는 일반적인 상황은 적으며, 주로 타입을 확인하거나 변환할 때 컴파일러가 자동으로 처리합니다.
-그러나 명시적으로 확인하고 싶다면, 두 변수의 타입을 직접 코드에서 확인할 수 있습니다.
-이는 일반적인 코딩 상황보다는 주로 제네릭 코드나 리플렉션을 사용할 때 발생합니다.
-
-2️⃣ 참조형 변수의 타입 비교.
-참조형 변수의 경우 타입 비교는 다음 두 가지 방법으로 이루어질 수 있습니다.
-
-2.1 instanceof 연산자 사용.
-instanceof 연산자는 특정 객체가 지정된 클래스의 인스턴스이거나 그 서브클래스의 인스턴스인지를 검사합니다.
-
-  이 방법은 주로 객체의 타입을 확인할 때 사용됩니다.
-
-
-Object a = "Hello";
-Object b = new String("Hello");
-
-if (a instanceof String &amp;&amp; b instanceof String) {
-    System.out.println("두 객체는 같은 타입입니다.");
-}
-
-
-2.2 getClass() 메서드 사용.
-객체의 정확한 클래스를 알고 싶을 때 getClass() 메서드를 사용할 수 있습니다.
-이 메서드는 객체의 런타임 클래스를 리턴합니다.
-
-  두 객체의 클래스가 정확히 같은지 비교할 때 유용합니다.
-
-
-Object a = new Integer(5);
-Object b = new Double(5.0);
-
-if (a.getClass().equals(b.getClass())) {
-    System.out.println("두 객체는 같은 클래스입니다.")
-} else {
-    System.out.println("두 객체는 다른 클래스입니다.")
-}
-
-
-📝 마무리.
-이 방법들은 객체의 타입을 정확히 확인할 수 있으며, 특히 다형석을 활용하는 객체지향 프로그래밍에서 유용하게 사용됩니다.
-또한, 테스트 코드나 동적 타입 처리가 필요한 상황에서 자주 사용됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-03-VariablesAndDataTypes-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -15136,6 +15135,76 @@ if (a.getClass().equals(b.getClass())) {
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-03-TypeComparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-03-TypeComparison.html"><h1 class="title_post">☕️[Java] 타입 비교.</h1></a>
+                        <a href="/Backend/Java/2024-05-03-TypeComparison.html" class="txt_post">
+                            타입 비교.
+자바 프로그래밍에서 두 변수의 타입이 같은지 비교하는 방법은 몇 가지 상황에 따라 다릅니다.
+여기서는 변수가 기본형(Primitive types) 인 경우와 참조형(Reference types) 인 경우로 나누어 설명하겠습니다.
+
+1️⃣ 기본형 변수의 타입 비교.
+기본형 변수의 경우, 자바는 정적 타입 언어이기 때문에 변수의 타입이 코드 작성 시 결정됩니다.
+두 변수가 같은 기본형 타입인지 비교하는 일반적인 상황은 적으며, 주로 타입을 확인하거나 변환할 때 컴파일러가 자동으로 처리합니다.
+그러나 명시적으로 확인하고 싶다면, 두 변수의 타입을 직접 코드에서 확인할 수 있습니다.
+이는 일반적인 코딩 상황보다는 주로 제네릭 코드나 리플렉션을 사용할 때 발생합니다.
+
+2️⃣ 참조형 변수의 타입 비교.
+참조형 변수의 경우 타입 비교는 다음 두 가지 방법으로 이루어질 수 있습니다.
+
+2.1 instanceof 연산자 사용.
+instanceof 연산자는 특정 객체가 지정된 클래스의 인스턴스이거나 그 서브클래스의 인스턴스인지를 검사합니다.
+
+  이 방법은 주로 객체의 타입을 확인할 때 사용됩니다.
+
+
+Object a = "Hello";
+Object b = new String("Hello");
+
+if (a instanceof String &amp;&amp; b instanceof String) {
+    System.out.println("두 객체는 같은 타입입니다.");
+}
+
+
+2.2 getClass() 메서드 사용.
+객체의 정확한 클래스를 알고 싶을 때 getClass() 메서드를 사용할 수 있습니다.
+이 메서드는 객체의 런타임 클래스를 리턴합니다.
+
+  두 객체의 클래스가 정확히 같은지 비교할 때 유용합니다.
+
+
+Object a = new Integer(5);
+Object b = new Double(5.0);
+
+if (a.getClass().equals(b.getClass())) {
+    System.out.println("두 객체는 같은 클래스입니다.")
+} else {
+    System.out.println("두 객체는 다른 클래스입니다.")
+}
+
+
+📝 마무리.
+이 방법들은 객체의 타입을 정확히 확인할 수 있으며, 특히 다형석을 활용하는 객체지향 프로그래밍에서 유용하게 사용됩니다.
+또한, 테스트 코드나 동적 타입 처리가 필요한 상황에서 자주 사용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -15785,6 +15854,196 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/AnD.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-01-AnD-1.html"><h1 class="title_post">[AnD] 두 수의 합.</h1></a>
+                        <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="txt_post">
+                            문제 설명 🤓
+
+0 이상의 두 정수가 문자열 a, b로 주어질 때, a + b의 값을 문자열로 return 하는 solution 함수를 작성해 주세요.
+
+솔루션 📝
+
+import java.math.BigInteger;
+
+class Solution {
+    public String solution(String a, String b) {
+        String answer = "";
+
+        BigInteger bigNumberA = new BigInteger(a);
+        BigInteger bigNumberB = new BigInteger(b);
+
+        answer = bigNumberA.add(bigNumberB).toString();
+
+        return answer;
+    }
+}
+
+
+트러블슈팅 🏀
+
+1. NumberFormatException 에러(1).
+
+입출력의 예시 중 가장 긴 입력 예시인 a : “18446744073709551615”, b : “305793246910280479981” 에서 에러가 발생 했습니다.
+
+1️⃣ 콘솔에 나타난 에러 메시지
+
+콘솔에 나타난 에러 메시지는 아래와 같았습니다.
+
+Exception in thread "main" java.lang.NumberFormatException: For input string: "18446744073709551615"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:662)
+	at java.base/java.lang.Integer.valueOf(Integer.java:989)
+	at programmers.test1.Solution.solution(Solution.java:8)
+	at programmers.test1.SolutionMain.main(SolutionMain.java:7)
+
+Process finished with exit code 1
+
+
+2️⃣ 본격적인 트러블슈팅
+
+이 메시지를 하나씩 해석하고 트러블슈팅을 이어갔습니다.
+
+먼저 이 오류 메시지는 NumberFormatException 이 발생했다는 것을 나타냅니다.
+
+  특히 “For input string: “18446744073709551615”는 Java에서 정수로 변환하려는 문자열이 정부 범위를 벗어났음을 의미합니다.
+
+
+Java의 Integer.parseInt() 메소드는 문자열을 정수(Int)로 변환할 때 사용됩니다.
+
+  그러나 Int 자료형은 -2,147,483,648,648 부터 2,147,483,648,647까지의 값을 저정할 수 있습니다.
+    
+      제공된 문자열 “18446744073709551615”는 이 범위를 훨씬 초과합니다.
+    
+  
+
+
+3️⃣ 해결 방법
+
+이 문제를 해결하려면 다음과 같은 방법을 고려할 수 있습니다.
+
+1. 타입 변경
+
+  int 대신 long 타입을 사용하거나, 이보다 더 큰 범위가 필요하다면, BigInteger 클래스를 사용할 수 있습니다.
+  long 의 범위는 -9,223,372,036,854,775,808부터 9,223,372,036,854,775,807 까지입니다.
+
+
+2. 입력 검증
+
+  입력 값이 정수 타입으로 변환 가능한지, 그리고 해당 타입의 범위 내에 있는지 검증하는 로직을 추가합니다.
+
+
+
+  코드를 수정할 때는 적절한 데이터 타입을 사용하도록 주의해야 합니다.
+예를 들어, long 으로 변경하려면 Long.parseLong() 을 사용할 수 있습니다.
+
+
+2. NumberFormatException 에러(2)
+
+이번에는 위의 트러블슈팅을 활용하여 코드를 만든 결과 NumberFormatException 에러를 다시 발생 시킨 케이스 입니다.
+
+  이번에는 Long.parseLong() 메소드를 사용하면서 발생했습니다.
+    
+      문자열 “18446744073709551615”는 이번에도 범위를 벗어난 값으로 처리되었습니다.
+    
+  
+
+
+long 자료형의 최대값은 9,223,372,036,854,775,807dlqslek.
+
+  제공된 값 “18446744073709551615”는 이 최대값을 초과합니다.
+    
+      따라서, long 으로도 처리할 수 없으며, Java에서 이러한 큰 숫자를 다루려면 BigInteger 클래스를 사용해야 합니다.
+        
+          BigInteger 는 사실상 제한 없는 정밀도의 정수를 다룰 수 있어 이와 같은 큰 숫자를 취급할 때 유용합니다.
+        
+      
+    
+  
+
+
+BigInteger를 사용하는 예시 코드.
+import java.math.BigInteger;
+
+public class Solution {
+    public void solution(String input) {
+        BigInteger bigNumber = new BigInteger(input);
+        // bigNumber를 사용한 다른 로직
+    }
+}
+
+public class SolutionMain {
+    public static void main(String[] args) {
+        new Solution().solution("18446744073709551615");
+    }
+}
+
+
+  이 코드는 BigInteger 를 사용하여 입력된 숫자를 처리하고, 필요한 로직을 수행할 수 있도록 구성되어 있습니다.
+
+
+3. BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법.
+두 문자열을 받아 큰 범위의 문자열을 BigInteger 클래스를 사용하여 받아오고 변환하는 데 까지는 성공하였으나 입력된 두 개의 큰 범위 값의 BigInteger 를 어떻게 합쳐야 할지를 몰라 검색해 봤습니다.
+
+1️⃣ Java에서 BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법
+
+  BigInteger 클래스는 불변(immutable) 객체 이므로 두 BigInteger 인스턴스를 더할 때, 새로운 BigInteger 객체가 반환됩니다.
+
+
+2️⃣ BigInteger 객체를 더하는 방법 예시 코드
+import java.math.BigInteger;
+
+public class Main {
+    public static void main(String[] args) {
+        // 두 큰 수를 BigInteger로 생성
+        BigInteger number1 = new BigInteger("12345678901234567890");
+        BigInteger number2 = new BigInteger("98765432109876543210");
+        
+        // 두 수를 더함
+        BigInteger sum = number1.add(number2);
+        
+        // 결과 출력
+        System.out.println("Sum: " + sum.toSting())
+    }
+}
+
+
+이 코드는 다음과 같은 단계를 거칩니다.
+
+1. 두 개의 BigInteger 인스턴스 number1 과 number2 를 생성합니다.
+
+  이들은 문자열로부터 생성되며, 매우 큰 수를 나타낼 수 있습니다.
+
+
+2. add 메소드를 사용하여 number1 과 number2 를 더합니다.
+
+  이 메소드는 두 수의 합을 나타내는 새로운 BigInteger 객체를 반환합니다.
+
+
+3. 덧셈 결과를 출력합니다.
+
+
+  BigInteger 를 사용하면 정수의 범위에 제한 없이 수학적 연산을 수행할 수 있어, 매우 큰 수를 처리해야 할 때 유용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-01-AboutJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -16121,196 +16380,6 @@ JVM의 구성 요소.
 2. 실행 엔진(Excution Engine) : 로드된 클래스 파일의 바이트코드를 실행합니다. 이 엔진은 바이트코드를 해것하거나 필요에 따라 JTI(Just-In-Time) 컴파일러를 사용하여 바이트코드를 직접 기계 코드로 변환하여 실행 속도를 높일 수 있습니다.
 3. 가비지 컬렉터(Garbage Collector) : JVM이 사용하지 않는 메모리 자원을 자동으로 회수합니다.
 4. 메모리(Runtime Data Area) : JVM은 프로그램 실행을 위해 필요한 다양한 메모리 영역을 관리합니다. 이는 힙(Heap), 스택(Stack), 메소드 영역(Method Area), 프로그램 카운터(Program Counter) 등이 포함됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/AnD.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-01-AnD-1.html"><h1 class="title_post">[AnD] 두 수의 합.</h1></a>
-                        <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="txt_post">
-                            문제 설명 🤓
-
-0 이상의 두 정수가 문자열 a, b로 주어질 때, a + b의 값을 문자열로 return 하는 solution 함수를 작성해 주세요.
-
-솔루션 📝
-
-import java.math.BigInteger;
-
-class Solution {
-    public String solution(String a, String b) {
-        String answer = "";
-
-        BigInteger bigNumberA = new BigInteger(a);
-        BigInteger bigNumberB = new BigInteger(b);
-
-        answer = bigNumberA.add(bigNumberB).toString();
-
-        return answer;
-    }
-}
-
-
-트러블슈팅 🏀
-
-1. NumberFormatException 에러(1).
-
-입출력의 예시 중 가장 긴 입력 예시인 a : “18446744073709551615”, b : “305793246910280479981” 에서 에러가 발생 했습니다.
-
-1️⃣ 콘솔에 나타난 에러 메시지
-
-콘솔에 나타난 에러 메시지는 아래와 같았습니다.
-
-Exception in thread "main" java.lang.NumberFormatException: For input string: "18446744073709551615"
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:662)
-	at java.base/java.lang.Integer.valueOf(Integer.java:989)
-	at programmers.test1.Solution.solution(Solution.java:8)
-	at programmers.test1.SolutionMain.main(SolutionMain.java:7)
-
-Process finished with exit code 1
-
-
-2️⃣ 본격적인 트러블슈팅
-
-이 메시지를 하나씩 해석하고 트러블슈팅을 이어갔습니다.
-
-먼저 이 오류 메시지는 NumberFormatException 이 발생했다는 것을 나타냅니다.
-
-  특히 “For input string: “18446744073709551615”는 Java에서 정수로 변환하려는 문자열이 정부 범위를 벗어났음을 의미합니다.
-
-
-Java의 Integer.parseInt() 메소드는 문자열을 정수(Int)로 변환할 때 사용됩니다.
-
-  그러나 Int 자료형은 -2,147,483,648,648 부터 2,147,483,648,647까지의 값을 저정할 수 있습니다.
-    
-      제공된 문자열 “18446744073709551615”는 이 범위를 훨씬 초과합니다.
-    
-  
-
-
-3️⃣ 해결 방법
-
-이 문제를 해결하려면 다음과 같은 방법을 고려할 수 있습니다.
-
-1. 타입 변경
-
-  int 대신 long 타입을 사용하거나, 이보다 더 큰 범위가 필요하다면, BigInteger 클래스를 사용할 수 있습니다.
-  long 의 범위는 -9,223,372,036,854,775,808부터 9,223,372,036,854,775,807 까지입니다.
-
-
-2. 입력 검증
-
-  입력 값이 정수 타입으로 변환 가능한지, 그리고 해당 타입의 범위 내에 있는지 검증하는 로직을 추가합니다.
-
-
-
-  코드를 수정할 때는 적절한 데이터 타입을 사용하도록 주의해야 합니다.
-예를 들어, long 으로 변경하려면 Long.parseLong() 을 사용할 수 있습니다.
-
-
-2. NumberFormatException 에러(2)
-
-이번에는 위의 트러블슈팅을 활용하여 코드를 만든 결과 NumberFormatException 에러를 다시 발생 시킨 케이스 입니다.
-
-  이번에는 Long.parseLong() 메소드를 사용하면서 발생했습니다.
-    
-      문자열 “18446744073709551615”는 이번에도 범위를 벗어난 값으로 처리되었습니다.
-    
-  
-
-
-long 자료형의 최대값은 9,223,372,036,854,775,807dlqslek.
-
-  제공된 값 “18446744073709551615”는 이 최대값을 초과합니다.
-    
-      따라서, long 으로도 처리할 수 없으며, Java에서 이러한 큰 숫자를 다루려면 BigInteger 클래스를 사용해야 합니다.
-        
-          BigInteger 는 사실상 제한 없는 정밀도의 정수를 다룰 수 있어 이와 같은 큰 숫자를 취급할 때 유용합니다.
-        
-      
-    
-  
-
-
-BigInteger를 사용하는 예시 코드.
-import java.math.BigInteger;
-
-public class Solution {
-    public void solution(String input) {
-        BigInteger bigNumber = new BigInteger(input);
-        // bigNumber를 사용한 다른 로직
-    }
-}
-
-public class SolutionMain {
-    public static void main(String[] args) {
-        new Solution().solution("18446744073709551615");
-    }
-}
-
-
-  이 코드는 BigInteger 를 사용하여 입력된 숫자를 처리하고, 필요한 로직을 수행할 수 있도록 구성되어 있습니다.
-
-
-3. BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법.
-두 문자열을 받아 큰 범위의 문자열을 BigInteger 클래스를 사용하여 받아오고 변환하는 데 까지는 성공하였으나 입력된 두 개의 큰 범위 값의 BigInteger 를 어떻게 합쳐야 할지를 몰라 검색해 봤습니다.
-
-1️⃣ Java에서 BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법
-
-  BigInteger 클래스는 불변(immutable) 객체 이므로 두 BigInteger 인스턴스를 더할 때, 새로운 BigInteger 객체가 반환됩니다.
-
-
-2️⃣ BigInteger 객체를 더하는 방법 예시 코드
-import java.math.BigInteger;
-
-public class Main {
-    public static void main(String[] args) {
-        // 두 큰 수를 BigInteger로 생성
-        BigInteger number1 = new BigInteger("12345678901234567890");
-        BigInteger number2 = new BigInteger("98765432109876543210");
-        
-        // 두 수를 더함
-        BigInteger sum = number1.add(number2);
-        
-        // 결과 출력
-        System.out.println("Sum: " + sum.toSting())
-    }
-}
-
-
-이 코드는 다음과 같은 단계를 거칩니다.
-
-1. 두 개의 BigInteger 인스턴스 number1 과 number2 를 생성합니다.
-
-  이들은 문자열로부터 생성되며, 매우 큰 수를 나타낼 수 있습니다.
-
-
-2. add 메소드를 사용하여 number1 과 number2 를 더합니다.
-
-  이 메소드는 두 수의 합을 나타내는 새로운 BigInteger 객체를 반환합니다.
-
-
-3. 덧셈 결과를 출력합니다.
-
-
-  BigInteger 를 사용하면 정수의 범위에 제한 없이 수학적 연산을 수행할 수 있어, 매우 큰 수를 처리해야 할 때 유용합니다.
-
 
                         </a>
                         <div class="info-post">
@@ -20488,6 +20557,17 @@ public class Main {
             'url'      : "/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no2.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-07-19"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240726_AWS_JAVA_INSTALL.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-07-26"
         });
     
 

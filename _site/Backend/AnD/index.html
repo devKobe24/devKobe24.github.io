@@ -548,6 +548,7 @@
             
             
             
+            
 
     
     
@@ -3795,168 +3796,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
-                        <a href="/Backend/AnD/2024-05-27-Node.html" class="txt_post">
-                            1️⃣ Node(노드).
-
-Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
-
-노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
-
-1️⃣ Node의 구성 요소.
-
-
-  
-    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
-  
-  
-    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
-    
-      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
-      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
-      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
-      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
-    
-  
-
-
-Singly Linked List의 Node
-Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-
-public class Node {
-  int data; // 노드가 저장하는 데이터
-  Node next; // 다음 노드를 가리키는 포인터
-
-  public Node(int data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-
-Doubly Linked List의 Node
-Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-public class DoublyNode {
-  int data; // 노드가 저장하는 데이터
-  DoublyNode next; // 다음 노드를 가리키는 포인터
-  DoublyNode prev; // 이전 노드를 가리키는 포인터
-
-  public DoublyNode(int data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
-  }
-}
-
-
-2️⃣ Node를 사용하는 예제.
-
-Singly Linked List
-
-Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
-
-아래는 Singly Linked List를 구현한 예제입니다.
-
-//SinglyLinkedList
-public class SinglyLinkedList {
-  private Node head;
-
-  public SinglyLinkedList() {
-    this.head = null;
-  }
-
-  // 리스트의 맨 앞에 노드 추가
-  public void addFirst(int data) {
-    Node newNode = new Node(data);
-    newNode.next = head;
-    head = newNode;
-  }
-
-  // 리스트의 맨 끝에 노드 추가
-  public void addLast(int data) {
-    Node newNode = new Node(data);
-    if (head == null) {
-      head = newNode;
-      return;
-    }
-    Node current = head;
-    while (current.next != null) {
-      current = current.next;
-    }
-    current.next = newNode;
-  }
-
-  // 리스트의 특정 값 삭제
-  public void delete(int data) {
-    if (head == null) {
-      return;
-    }
-
-    if (head.data == data) {
-      head = head.next;
-      return;
-    }
-
-    Node current = head;
-
-    while (current.next != null &amp;&amp; current.next.data != data) {
-      current = current.next;
-    }
-
-    if (current.next != null) {
-      current.next = current.next.next;
-    }
-  }
-
-  // 리스트 출력
-  public void printList() {
-    Node current = head;
-    while (current != null) {
-      System.out.print(current.data + " ");
-      current = current.next;
-    }
-    System.out.println();
-  }
-}
-
-// Main
-public class Main {
-
-  public static void main(String[] args) {
-    // Singly Linked List 생성
-    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-
-    singlyLinkedList.addFirst(1);
-    singlyLinkedList.addLast(2);
-    singlyLinkedList.addLast(3);
-    singlyLinkedList.printList(); // 1 2 3
-
-    singlyLinkedList.delete(2);
-    singlyLinkedList.printList(); // 1 3
-  }
-}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -4291,6 +4130,168 @@ public class Main {
 
     System.out.println("\nSearch for 40: " + bst.search(40)); // 출력: true
     System.out.println("Search for 90: " + bst.search(90)); // 출력: false
+  }
+}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
+                        <a href="/Backend/AnD/2024-05-27-Node.html" class="txt_post">
+                            1️⃣ Node(노드).
+
+Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
+
+노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
+
+1️⃣ Node의 구성 요소.
+
+
+  
+    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
+  
+  
+    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
+    
+      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
+      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
+      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
+      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
+    
+  
+
+
+Singly Linked List의 Node
+Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+
+public class Node {
+  int data; // 노드가 저장하는 데이터
+  Node next; // 다음 노드를 가리키는 포인터
+
+  public Node(int data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+
+Doubly Linked List의 Node
+Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+public class DoublyNode {
+  int data; // 노드가 저장하는 데이터
+  DoublyNode next; // 다음 노드를 가리키는 포인터
+  DoublyNode prev; // 이전 노드를 가리키는 포인터
+
+  public DoublyNode(int data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+
+2️⃣ Node를 사용하는 예제.
+
+Singly Linked List
+
+Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
+
+아래는 Singly Linked List를 구현한 예제입니다.
+
+//SinglyLinkedList
+public class SinglyLinkedList {
+  private Node head;
+
+  public SinglyLinkedList() {
+    this.head = null;
+  }
+
+  // 리스트의 맨 앞에 노드 추가
+  public void addFirst(int data) {
+    Node newNode = new Node(data);
+    newNode.next = head;
+    head = newNode;
+  }
+
+  // 리스트의 맨 끝에 노드 추가
+  public void addLast(int data) {
+    Node newNode = new Node(data);
+    if (head == null) {
+      head = newNode;
+      return;
+    }
+    Node current = head;
+    while (current.next != null) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  // 리스트의 특정 값 삭제
+  public void delete(int data) {
+    if (head == null) {
+      return;
+    }
+
+    if (head.data == data) {
+      head = head.next;
+      return;
+    }
+
+    Node current = head;
+
+    while (current.next != null &amp;&amp; current.next.data != data) {
+      current = current.next;
+    }
+
+    if (current.next != null) {
+      current.next = current.next.next;
+    }
+  }
+
+  // 리스트 출력
+  public void printList() {
+    Node current = head;
+    while (current != null) {
+      System.out.print(current.data + " ");
+      current = current.next;
+    }
+    System.out.println();
+  }
+}
+
+// Main
+public class Main {
+
+  public static void main(String[] args) {
+    // Singly Linked List 생성
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+    singlyLinkedList.addFirst(1);
+    singlyLinkedList.addLast(2);
+    singlyLinkedList.addLast(3);
+    singlyLinkedList.printList(); // 1 2 3
+
+    singlyLinkedList.delete(2);
+    singlyLinkedList.printList(); // 1 3
   }
 }
 
@@ -5176,6 +5177,230 @@ Dequeue: 7
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html"><h1 class="title_post">📦[DS,Algorithm] 선형 자료구조 - 배열</h1></a>
+                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="txt_post">
+                            1️⃣ 선형 자료구조 - 배열.
+
+자료구조 관점에서 배열을 이해하고 여러 방법으로 구현 가능
+
+1️⃣ 배열(Array).
+
+자료구조 관점에서 배열(Array)은 동일한 타입의 데이터를 연속된 메모리 공간에 저장하는 선형 자료구조입니다.
+
+배열은 조정된 크기를 가지며, 인덱스를 사용하여 각 요소에 빠르게 접근할 수 있는 특징이 있습니다.
+
+배열은 가장 기본적이고 널리 사용되는 자료구조 중 하나입니다.
+
+특징.
+
+  고정된 크기(Fixed Size)
+    
+      배열은 선언 시 크기가 결정되며, 배열의 크기는 변경할 수 없습니다. 이 크기는 배열을 사용하는 동안 고정되어 있습니다.
+      예: ‘int[] numbers = new int[10];‘(크기가 10인 정수형 배열)
+    
+  
+  연속된 메모리 공간(Contiguous Memory Allocation)
+    
+      배열의 요소들은 메모리상에 연속적으로 배치됩니다. 이는 인덱스를 통한 빠른 접근을 가능하게 합니다.
+      첫 번째 요소의 메모리 주소를 기준으로 인덱스를 사용하여 다른 요소의 주소를 계산할 수 있습니다.
+    
+  
+  인덱스를 통한 접근(Indexing)
+    
+      배열의 각 요소는 인덱스를 통해 접근할 수 있습니다. 인덱스는 0부터 시작하여 배열의 크기 -1까지의 값을 가집니다.
+      예: ‘numbers[0]’,’numbers[1]‘,…,’numbers[9]‘
+    
+  
+  동일한 데이터 타입(Homogeneous Data Type)
+    
+      배열은 동일한 데이터 타입의 요소들로 구성됩니다. 즉, 배열 내 모든 요소는 같은 데이터 타입이어야 합니다.
+      예: 정수형 배열, 문자열 배열 등.
+    
+  
+
+
+장점.
+
+  빠른 접근 속도(Fast Access) :
+    
+      인덱스를 사용하여 O(1) 시간 복잡도로 배열의 임의의 요소에 접근할 수 있습니다. 이는 배열의 주요 장점 중 하나입니다.
+    
+  
+  간단한 구현(Simple Implementation) :
+    
+      배열은 데이터 구조가 간단하여 구현이 용이합니다. 기본적인 자료구조로, 다른 복잡한 자료구조의 기초가 됩니다.
+    
+  
+
+
+단점.
+
+
+  고정된 크기(Fixed Size) :
+    
+      배열의 크기는 선언 시 결정되며, 크기를 변경할 수 없습니다. 이는 크기를 사전에 정확히 예측하기 어려운 경우 비효율적일 수 있습니다.
+    
+  
+  삽입 및 삭제의 비효율성(Inefficient Insertions and Deletions) :
+    
+      배열의 중간에 요소를 삽입하거나 삭제할 경우, 요소들을 이동시켜야 하기 때문에 O(n) 시간이 소요됩니다. 이는 큰 배열의 경우 성능 저하를 초래할 수 있습니다.
+    
+  
+  메모리 낭비(Memory Waste) :
+    
+      배열의 크기를 너무 크게 설정하면 사용되지 않는 메모리가 낭비될 수 있고, 너무 작게 설정하면 충분한 데이터를 저장할 수 없습니다.
+    
+  
+
+
+배열의 사용 예시.
+
+
+  정수형 배열 선언 및 초기화
+    int[] numbers = new int[5];
+numbers[0] = 10;
+numbers[1] = 20;
+numbers[2] = 30;
+numbers[3] = 40;
+numbers[4] = 50;
+    
+  
+  배열의 요소 접근
+    int firstElement = numbers[0]; // 10
+int lastElement = numbers[4]; // 50
+    
+  
+  배열의 순회
+    for (int i = 0; i &lt; numbers.length; i++) {
+  System.out.println(numbers[i]);
+}
+    
+  
+
+
+마무리.
+
+배열은 다양한 상황에서 기본적인 데이터 저장과 접근 방법을 제공하며, 특정 요구사항에 맞춰 다른 자료구조와 함께 사용되기도 합니다.
+
+배열의 빠른 접근 속도와 간단한 구조 덕분에, 많은 알고리즘과 프로그램에서 핵심적인 역할을 합니다.
+
+
+
+2️⃣ 배열 직접 구현.
+// CustomArray 클래스
+public class CustomArray {
+  private int[] data;
+  private int size;
+
+  // 특정 용량으로 배열을 초기화하는 생성자
+  public CustomArray(int capacity) {
+    data = new int[capacity];
+    size = 0;
+  }
+
+  // 배열의 크기를 가져오는 메서드
+  public int size() {
+    return size;
+  }
+
+  // 배열이 비어 있는지 확인하는 메서드
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  // 특정 인덱스의 요소를 가져오는 메서드
+  public int get(int index) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+    return data[index];
+  }
+
+  // 특정 인덱스에 요소를 설정하는 메서드
+  public void set(int index, int value) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+    data[index] = value;
+  }
+
+  // 배열에 요소를 추가하는 메서드
+  public void add(int value) {
+    if (size == data.length) {
+      throw new IllegalStateException("Array is full");
+    }
+    data[size] = value;
+    size++;
+  }
+
+  // 특정 인덱스의 요소를 삭제하는 메서드
+  public void remove(int index) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+
+    for (int i = index; i &lt; size - 1; i++) {
+      data[i] = data[i + 1];
+    }
+    size--;
+  }
+
+  // 모든 요소를 출력하는 메서드
+  public void print() {
+    for (int i = 0; i &lt; size; i++) {
+      System.out.print(data[i] + " ");
+    }
+    System.out.println();
+  }
+}
+
+
+설명.
+
+  필드:
+    
+      ‘data’ : 실제 데이터를 저장하는 배열.
+      ‘size’ : 현재 배열에 저장된 요소의 개수.
+    
+  
+  생성자:
+    
+      ‘CustomArray(int capacity)’ : 초기 용량을 설정하여 배열을 초기화 합니다.
+    
+  
+  메서드:
+    
+      ‘size()’ : 현재 배열에 저장된 요소의 개수를 반환합니다.
+      ‘isEmpty()’ : 배열이 비어있는지 확인합니다.
+      ‘get(int index)’ : 특정 인덱스의 요소를 반환합니다.
+      ‘set(int index, int value)’ : 특정 인덱스의 요소를 설정합니다.
+      ‘add(int value)’ : 배열의 마지막에 요소를 추가합니다.
+      ‘remove(int index)’ : 특정 인덱스의 요소를 제거하고, 이후의 요소들을 앞으로 이동시킵니다.
+      ‘print()’ : 배열의 모든 요소를 출력합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-05-21-IntroDataStructureAndAlgorithm.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -5519,230 +5744,6 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
 사용자는 ‘ArrayListStack’ 의 내부 구현을 알 필요 없이 ‘Stack’ 인터페이스를 통해 스택 연산을 사용할 수 있습니다.
 
 이는 ADT의 주요 장점 중 하나인 구현의 독립성을 잘 보여줍니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html"><h1 class="title_post">📦[DS,Algorithm] 선형 자료구조 - 배열</h1></a>
-                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="txt_post">
-                            1️⃣ 선형 자료구조 - 배열.
-
-자료구조 관점에서 배열을 이해하고 여러 방법으로 구현 가능
-
-1️⃣ 배열(Array).
-
-자료구조 관점에서 배열(Array)은 동일한 타입의 데이터를 연속된 메모리 공간에 저장하는 선형 자료구조입니다.
-
-배열은 조정된 크기를 가지며, 인덱스를 사용하여 각 요소에 빠르게 접근할 수 있는 특징이 있습니다.
-
-배열은 가장 기본적이고 널리 사용되는 자료구조 중 하나입니다.
-
-특징.
-
-  고정된 크기(Fixed Size)
-    
-      배열은 선언 시 크기가 결정되며, 배열의 크기는 변경할 수 없습니다. 이 크기는 배열을 사용하는 동안 고정되어 있습니다.
-      예: ‘int[] numbers = new int[10];‘(크기가 10인 정수형 배열)
-    
-  
-  연속된 메모리 공간(Contiguous Memory Allocation)
-    
-      배열의 요소들은 메모리상에 연속적으로 배치됩니다. 이는 인덱스를 통한 빠른 접근을 가능하게 합니다.
-      첫 번째 요소의 메모리 주소를 기준으로 인덱스를 사용하여 다른 요소의 주소를 계산할 수 있습니다.
-    
-  
-  인덱스를 통한 접근(Indexing)
-    
-      배열의 각 요소는 인덱스를 통해 접근할 수 있습니다. 인덱스는 0부터 시작하여 배열의 크기 -1까지의 값을 가집니다.
-      예: ‘numbers[0]’,’numbers[1]‘,…,’numbers[9]‘
-    
-  
-  동일한 데이터 타입(Homogeneous Data Type)
-    
-      배열은 동일한 데이터 타입의 요소들로 구성됩니다. 즉, 배열 내 모든 요소는 같은 데이터 타입이어야 합니다.
-      예: 정수형 배열, 문자열 배열 등.
-    
-  
-
-
-장점.
-
-  빠른 접근 속도(Fast Access) :
-    
-      인덱스를 사용하여 O(1) 시간 복잡도로 배열의 임의의 요소에 접근할 수 있습니다. 이는 배열의 주요 장점 중 하나입니다.
-    
-  
-  간단한 구현(Simple Implementation) :
-    
-      배열은 데이터 구조가 간단하여 구현이 용이합니다. 기본적인 자료구조로, 다른 복잡한 자료구조의 기초가 됩니다.
-    
-  
-
-
-단점.
-
-
-  고정된 크기(Fixed Size) :
-    
-      배열의 크기는 선언 시 결정되며, 크기를 변경할 수 없습니다. 이는 크기를 사전에 정확히 예측하기 어려운 경우 비효율적일 수 있습니다.
-    
-  
-  삽입 및 삭제의 비효율성(Inefficient Insertions and Deletions) :
-    
-      배열의 중간에 요소를 삽입하거나 삭제할 경우, 요소들을 이동시켜야 하기 때문에 O(n) 시간이 소요됩니다. 이는 큰 배열의 경우 성능 저하를 초래할 수 있습니다.
-    
-  
-  메모리 낭비(Memory Waste) :
-    
-      배열의 크기를 너무 크게 설정하면 사용되지 않는 메모리가 낭비될 수 있고, 너무 작게 설정하면 충분한 데이터를 저장할 수 없습니다.
-    
-  
-
-
-배열의 사용 예시.
-
-
-  정수형 배열 선언 및 초기화
-    int[] numbers = new int[5];
-numbers[0] = 10;
-numbers[1] = 20;
-numbers[2] = 30;
-numbers[3] = 40;
-numbers[4] = 50;
-    
-  
-  배열의 요소 접근
-    int firstElement = numbers[0]; // 10
-int lastElement = numbers[4]; // 50
-    
-  
-  배열의 순회
-    for (int i = 0; i &lt; numbers.length; i++) {
-  System.out.println(numbers[i]);
-}
-    
-  
-
-
-마무리.
-
-배열은 다양한 상황에서 기본적인 데이터 저장과 접근 방법을 제공하며, 특정 요구사항에 맞춰 다른 자료구조와 함께 사용되기도 합니다.
-
-배열의 빠른 접근 속도와 간단한 구조 덕분에, 많은 알고리즘과 프로그램에서 핵심적인 역할을 합니다.
-
-
-
-2️⃣ 배열 직접 구현.
-// CustomArray 클래스
-public class CustomArray {
-  private int[] data;
-  private int size;
-
-  // 특정 용량으로 배열을 초기화하는 생성자
-  public CustomArray(int capacity) {
-    data = new int[capacity];
-    size = 0;
-  }
-
-  // 배열의 크기를 가져오는 메서드
-  public int size() {
-    return size;
-  }
-
-  // 배열이 비어 있는지 확인하는 메서드
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-  // 특정 인덱스의 요소를 가져오는 메서드
-  public int get(int index) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-    return data[index];
-  }
-
-  // 특정 인덱스에 요소를 설정하는 메서드
-  public void set(int index, int value) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-    data[index] = value;
-  }
-
-  // 배열에 요소를 추가하는 메서드
-  public void add(int value) {
-    if (size == data.length) {
-      throw new IllegalStateException("Array is full");
-    }
-    data[size] = value;
-    size++;
-  }
-
-  // 특정 인덱스의 요소를 삭제하는 메서드
-  public void remove(int index) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-
-    for (int i = index; i &lt; size - 1; i++) {
-      data[i] = data[i + 1];
-    }
-    size--;
-  }
-
-  // 모든 요소를 출력하는 메서드
-  public void print() {
-    for (int i = 0; i &lt; size; i++) {
-      System.out.print(data[i] + " ");
-    }
-    System.out.println();
-  }
-}
-
-
-설명.
-
-  필드:
-    
-      ‘data’ : 실제 데이터를 저장하는 배열.
-      ‘size’ : 현재 배열에 저장된 요소의 개수.
-    
-  
-  생성자:
-    
-      ‘CustomArray(int capacity)’ : 초기 용량을 설정하여 배열을 초기화 합니다.
-    
-  
-  메서드:
-    
-      ‘size()’ : 현재 배열에 저장된 요소의 개수를 반환합니다.
-      ‘isEmpty()’ : 배열이 비어있는지 확인합니다.
-      ‘get(int index)’ : 특정 인덱스의 요소를 반환합니다.
-      ‘set(int index, int value)’ : 특정 인덱스의 요소를 설정합니다.
-      ‘add(int value)’ : 배열의 마지막에 요소를 추가합니다.
-      ‘remove(int index)’ : 특정 인덱스의 요소를 제거하고, 이후의 요소들을 앞으로 이동시킵니다.
-      ‘print()’ : 배열의 모든 요소를 출력합니다.
-    
-  
-
 
                         </a>
                         <div class="info-post">
@@ -10090,6 +10091,17 @@ public class Main {
             'url'      : "/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no2.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-07-19"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240726_AWS_JAVA_INSTALL.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-07-26"
         });
     
 

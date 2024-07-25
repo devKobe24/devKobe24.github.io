@@ -548,6 +548,7 @@
             
             
             
+            
 
     
     
@@ -1078,69 +1079,6 @@ CONCAT
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-02-ORDERBY.html"><h1 class="title_post">💉[SQL] ORDER BY</h1></a>
-                        <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="txt_post">
-                            ORDER BY
-‘ORDER BY’ 절은 SQL 쿼리의 결과를 특정 기준에 따라 정렬할 때 사용됩니다.
-
-  이를 통해 반환된 데이터를 오름차순(ASC) 또는 내림차순(DESC)으로 정렬할 수 있으며, 숫자, 문자열, 날짜 등 다양한 데이터 타입에 적용할 수 있습니다.
-  ‘ORDER BY’ 는 데이터를 보다 읽기 쉽고 분석하기 용이하게 정렬하여 제공함으로써, 데이터 리포팅, 사용자 인터페이스에서의 데이터 표시, 데이터 분석 등 다양한 상황에서 유용하게 사용됩니다.
-
-
-‘OREDER BY’ 사용 예
-
-  특정 열에 따른 오름차순 정렬: 직원들을 이름순으로 정렬하고 싶을 때
-    SELECT * FROM emploees ORDER BY name ASC;
-    
-    이 쿼리는 ‘employees’ 테이블의 모든 행을 ‘name’ 열 기준으로 오름차순으로 정렬하여 반환합니다.
-  
-  특정 열에 따른 내림차순 정렬: 최신 주문부터 표시하고 싶을 때
-    SELECT * FROM orders ORDER BY order_by DESC;
-    
-    이 쿼리는 ‘orders’ 테이블의 모든 행을 ‘order_date’ 열 기준으로 내림차순으로 정렬하여 반환합니다.
-  
-  여러 열에 따른 정렬: 부서별로 그룹화하고, 각 부서 내에서 급여가 높은 순으로 정렬하고 싶을 때
-    SELECT * FROM employees ORDER BY department ASC, salary DESC;
-    
-    이 쿼리는 먼저 ‘department’ 열로 오름차순으로 정렬하고, 같은 부서 내에서는 ‘salary’ 열을 기준으로 내림차순으로 정렬합니다.
-  
-
-
-‘ORDER BY’ 절의 특징
-
-  기본적으로 ‘ORDER BY’ 는 오름차순(ASC)으로 정렬합니다. 내림차순으로 정렬하고 싶다면 각 열 이름 뒤에 ‘DESC’ 키워드를 명시해야 합니다.
-  여러 열을 기준으로 정렬할 수 있으며, 이 경우 첫 번째 열을 기준으로 정렬한 후 동일한 값에 대해서는 다음 열의 순서에 따라 정렬합니다.
-  ‘SELECT’ 쿼리의 마지막 부분에 위치하며, ‘WHERE’, ‘GROUP BY’, ‘HAVING’ 절 뒤에 명시됩니다.
-
-
-사용 시 고려사항
-
-  ‘ORDER BY’ 를 사용할 때는 정렬하고자 하는 열이 인덱싱되어 있는지 확인하는 것이 좋습니다. 특히 대규모 데이터셋을 다룰 때, 인덱스의 유무는 쿼리 성능에 큰 영향을 미칩니다.
-  복잡한 쿼리에서는 ‘ORDER BY’ 로 인한 추가적인 처리 시간이 필요할 수 있으므로, 성능과 관련하여 적절한 테스트가 필요합니다.
-
-
-‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -1188,6 +1126,69 @@ CONCAT
 
 
 ‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/SQL/2024-04-02-ORDERBY.html"><h1 class="title_post">💉[SQL] ORDER BY</h1></a>
+                        <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="txt_post">
+                            ORDER BY
+‘ORDER BY’ 절은 SQL 쿼리의 결과를 특정 기준에 따라 정렬할 때 사용됩니다.
+
+  이를 통해 반환된 데이터를 오름차순(ASC) 또는 내림차순(DESC)으로 정렬할 수 있으며, 숫자, 문자열, 날짜 등 다양한 데이터 타입에 적용할 수 있습니다.
+  ‘ORDER BY’ 는 데이터를 보다 읽기 쉽고 분석하기 용이하게 정렬하여 제공함으로써, 데이터 리포팅, 사용자 인터페이스에서의 데이터 표시, 데이터 분석 등 다양한 상황에서 유용하게 사용됩니다.
+
+
+‘OREDER BY’ 사용 예
+
+  특정 열에 따른 오름차순 정렬: 직원들을 이름순으로 정렬하고 싶을 때
+    SELECT * FROM emploees ORDER BY name ASC;
+    
+    이 쿼리는 ‘employees’ 테이블의 모든 행을 ‘name’ 열 기준으로 오름차순으로 정렬하여 반환합니다.
+  
+  특정 열에 따른 내림차순 정렬: 최신 주문부터 표시하고 싶을 때
+    SELECT * FROM orders ORDER BY order_by DESC;
+    
+    이 쿼리는 ‘orders’ 테이블의 모든 행을 ‘order_date’ 열 기준으로 내림차순으로 정렬하여 반환합니다.
+  
+  여러 열에 따른 정렬: 부서별로 그룹화하고, 각 부서 내에서 급여가 높은 순으로 정렬하고 싶을 때
+    SELECT * FROM employees ORDER BY department ASC, salary DESC;
+    
+    이 쿼리는 먼저 ‘department’ 열로 오름차순으로 정렬하고, 같은 부서 내에서는 ‘salary’ 열을 기준으로 내림차순으로 정렬합니다.
+  
+
+
+‘ORDER BY’ 절의 특징
+
+  기본적으로 ‘ORDER BY’ 는 오름차순(ASC)으로 정렬합니다. 내림차순으로 정렬하고 싶다면 각 열 이름 뒤에 ‘DESC’ 키워드를 명시해야 합니다.
+  여러 열을 기준으로 정렬할 수 있으며, 이 경우 첫 번째 열을 기준으로 정렬한 후 동일한 값에 대해서는 다음 열의 순서에 따라 정렬합니다.
+  ‘SELECT’ 쿼리의 마지막 부분에 위치하며, ‘WHERE’, ‘GROUP BY’, ‘HAVING’ 절 뒤에 명시됩니다.
+
+
+사용 시 고려사항
+
+  ‘ORDER BY’ 를 사용할 때는 정렬하고자 하는 열이 인덱싱되어 있는지 확인하는 것이 좋습니다. 특히 대규모 데이터셋을 다룰 때, 인덱스의 유무는 쿼리 성능에 큰 영향을 미칩니다.
+  복잡한 쿼리에서는 ‘ORDER BY’ 로 인한 추가적인 처리 시간이 필요할 수 있으므로, 성능과 관련하여 적절한 테스트가 필요합니다.
+
+
+‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
 
                         </a>
                         <div class="info-post">
@@ -6345,6 +6346,17 @@ SQL 이란 언어를 이용하여 데이터베이스에 요청을 하는 질의�
             'url'      : "/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no2.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-07-19"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240726_AWS_JAVA_INSTALL.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-07-26"
         });
     
 

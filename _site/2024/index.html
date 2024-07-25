@@ -548,6 +548,7 @@
             
             
             
+            
 
     
     
@@ -3257,6 +3258,190 @@ StringEqual(String: str1, String: str2):
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
+                            복합 자료 구조.
+다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
+
+예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
+
+  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
+    
+      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
+    
+  
+
+
+CoffeeRecord {
+    String: Name
+    String: Brand
+    Integer: Rating
+    Float: Cost_Per_Pound
+    Boolean: Is_Dark_Roast
+    String: Other_Notes
+}
+
+
+
+  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
+
+
+속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+
+  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
+
+
+자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
+
+객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
+
+객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
+
+복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
+
+last_record.name = "Sublime Blend"
+
+
+  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html"><h1 class="title_post">📦[DataStructure] 변수</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="txt_post">
+                            변수.
+
+개변 데이터 조각을 종종 변수(variable)에 저장하곤 합니다.
+
+
+  변수(variable) : 컴퓨터 메모리 내 데이터 위치(또는 주소)를 표현하는 이름입니다.
+    
+      프로그램 실행 중 변경되는 정보를 추적할 수 있게 합니다.
+        
+          예를 들어 For 루프를 몇 번지나갔는지 세어야 할 경우, 게임에서 플레이어의 점수를 추적해야하는 경우 등
+        
+      
+    
+  
+
+
+변수가 없으면 프로그램의 내부 상태를 추적, 평가(evaluate), 변경(update)할 수 없습니다.
+
+  변수를 생성하면 시스템이 그것을 자동으로 할당하고 위치를 지정합니다.
+    
+      그리고 나서 원하는 변수 이름을 사용해 자유롭게 해당 위치에 데이터를 쓰고, 데이터를 쓸 때 사용한 변수 이름을 사용해 저장된 데이터를 읽을 수 있습니다.
+    
+  
+
+
+변수 이름만 알고 있다면 데이터의 메모리 위치를 알 필요가 없습니다.
+
+컴퓨터 메모리를 여러 상자가 일렬로 늘어선 것처럼 생각할 수도 있습니다.
+
+  각 변수는 저장한 데이터의 크기에 따라 하나 이상의 인접한 상자를 차지합니다.
+
+
+아래 그림은 Level, Score, AveScore라는 세 변수를 보여줍니다.
+
+
+
+
+  여기서 평균 점수(AveScore)는 메모리 상자를 두 개 사용하는 부동 소수점 수(floating point number, 소수점이 있는 숫자)입니다.
+
+
+어떤 측면에서 변수는 종이 문서를 담는 폴더에 붙은 종이 라벨과 비슷합니다.
+
+아래 그림처럼 라벨을 붙인 후에는 폴더의 순서나 정확한 위치를 기억할 필요가 없습니다.
+
+  그 이유는 라벨로 폴더를 찾으면 되기 때문입니다.
+    
+      이때 충분한 정보가 포함된 이름을 사용하는 것이 중요합니다.
+        
+          만약에 파일 캐비닛에 할 일, 중요한 일, 다른 할 일, 그 밖의 일과 같이 이름이 겹치는(이를 오버로드(overload)라고 말합니다) 폴더가 많을 경우 내용을 파악하기 어렵습니다.
+            
+              마찬가지로, 변수의 이름이 모호하면 변수가 어떤 값을 나타내는지 추측하기 어려워집니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+많은 프로그래밍 언어에서 변수는 정수(integer), 부동 소수점 값(float), 불린 값(Boolean) 등과 같이 저장된 데이터의 타입과 연관이 있습니다.
+
+  타입은 변수가 얼마나 많은 메모리를 차지하고 메모리에 저장된 내용을 어떻게 사용해야 하는지를 프로그램에 알려줍니다.
+    
+      예를 들어, 불린 변수는 제한된 범위의 값(즉, 참과 거짓)만 저장하며 적은 양의 메모리만 사용하는 경우가 많습니다.
+      반면, 2배 정밀도(double-precision) 부동 소수점 수는 훨씬 더 크고 정확한 숫자를 저장하므로 여러 상자를 사용합니다.
+    
+  
+
+
+타입을 정의하는 문법이나 타입을 명시적으로 정의해야만 하는지 여부는 프로그래밍 언어마다 다릅니다.
+
+아래 예제를 봐봅시다.
+
+예제에서는 변수를 명시할 때 언어와 무관한 &lt;타입&gt;: &lt;변수이름&gt;이라는 의사 코드(pseudocode) 형식을 사용합니다.
+
+Integer: coffee_count = 5
+Float: percentage_words_spelled_correctly = 21.0
+Boolean: had_enough_coffee = False
+
+
+가씀 Type이라는 타입이 지정된 변수도 있습니다.
+
+  이 타입은 어떻게 구현하는지에 따라 다양한 타입이 될 수 있다는 사실을 나타냅니다.
+    
+      대부분의 프로그래밍 언어에서 일반적으로 사용되는 구문을 사용해 변수를 다룰 것입니다.
+    
+  
+
+
+예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
+coffee_count = coffee_count + 1
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/DataStructure/2024-04-21-DataStructure3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -3429,179 +3614,33 @@ A[j] = Temp
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/2024/TIL/2024-04-19-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html"><h1 class="title_post">📦[DataStructure] 변수</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="txt_post">
-                            변수.
-
-개변 데이터 조각을 종종 변수(variable)에 저장하곤 합니다.
+                        <a href="/2024/TIL/2024-04-19-TIL.html"><h1 class="title_post">📝 [TIL] 240419 Today I Learned.</h1></a>
+                        <a href="/2024/TIL/2024-04-19-TIL.html" class="txt_post">
+                            Java
 
 
-  변수(variable) : 컴퓨터 메모리 내 데이터 위치(또는 주소)를 표현하는 이름입니다.
-    
-      프로그램 실행 중 변경되는 정보를 추적할 수 있게 합니다.
-        
-          예를 들어 For 루프를 몇 번지나갔는지 세어야 할 경우, 게임에서 플레이어의 점수를 추적해야하는 경우 등
-        
-      
-    
-  
+  Java ‘Class 클래스’ 학습
+  Java ‘Class 클래스’ 정리
+  Java ‘System 클래스’ 학습
+  Java ‘System 클래스’ 정리
 
 
-변수가 없으면 프로그램의 내부 상태를 추적, 평가(evaluate), 변경(update)할 수 없습니다.
-
-  변수를 생성하면 시스템이 그것을 자동으로 할당하고 위치를 지정합니다.
-    
-      그리고 나서 원하는 변수 이름을 사용해 자유롭게 해당 위치에 데이터를 쓰고, 데이터를 쓸 때 사용한 변수 이름을 사용해 저장된 데이터를 읽을 수 있습니다.
-    
-  
+CS
 
 
-변수 이름만 알고 있다면 데이터의 메모리 위치를 알 필요가 없습니다.
-
-컴퓨터 메모리를 여러 상자가 일렬로 늘어선 것처럼 생각할 수도 있습니다.
-
-  각 변수는 저장한 데이터의 크기에 따라 하나 이상의 인접한 상자를 차지합니다.
-
-
-아래 그림은 Level, Score, AveScore라는 세 변수를 보여줍니다.
-
-
-
-
-  여기서 평균 점수(AveScore)는 메모리 상자를 두 개 사용하는 부동 소수점 수(floating point number, 소수점이 있는 숫자)입니다.
-
-
-어떤 측면에서 변수는 종이 문서를 담는 폴더에 붙은 종이 라벨과 비슷합니다.
-
-아래 그림처럼 라벨을 붙인 후에는 폴더의 순서나 정확한 위치를 기억할 필요가 없습니다.
-
-  그 이유는 라벨로 폴더를 찾으면 되기 때문입니다.
-    
-      이때 충분한 정보가 포함된 이름을 사용하는 것이 중요합니다.
-        
-          만약에 파일 캐비닛에 할 일, 중요한 일, 다른 할 일, 그 밖의 일과 같이 이름이 겹치는(이를 오버로드(overload)라고 말합니다) 폴더가 많을 경우 내용을 파악하기 어렵습니다.
-            
-              마찬가지로, 변수의 이름이 모호하면 변수가 어떤 값을 나타내는지 추측하기 어려워집니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-많은 프로그래밍 언어에서 변수는 정수(integer), 부동 소수점 값(float), 불린 값(Boolean) 등과 같이 저장된 데이터의 타입과 연관이 있습니다.
-
-  타입은 변수가 얼마나 많은 메모리를 차지하고 메모리에 저장된 내용을 어떻게 사용해야 하는지를 프로그램에 알려줍니다.
-    
-      예를 들어, 불린 변수는 제한된 범위의 값(즉, 참과 거짓)만 저장하며 적은 양의 메모리만 사용하는 경우가 많습니다.
-      반면, 2배 정밀도(double-precision) 부동 소수점 수는 훨씬 더 크고 정확한 숫자를 저장하므로 여러 상자를 사용합니다.
-    
-  
-
-
-타입을 정의하는 문법이나 타입을 명시적으로 정의해야만 하는지 여부는 프로그래밍 언어마다 다릅니다.
-
-아래 예제를 봐봅시다.
-
-예제에서는 변수를 명시할 때 언어와 무관한 &lt;타입&gt;: &lt;변수이름&gt;이라는 의사 코드(pseudocode) 형식을 사용합니다.
-
-Integer: coffee_count = 5
-Float: percentage_words_spelled_correctly = 21.0
-Boolean: had_enough_coffee = False
-
-
-가씀 Type이라는 타입이 지정된 변수도 있습니다.
-
-  이 타입은 어떻게 구현하는지에 따라 다양한 타입이 될 수 있다는 사실을 나타냅니다.
-    
-      대부분의 프로그래밍 언어에서 일반적으로 사용되는 구문을 사용해 변수를 다룰 것입니다.
-    
-  
-
-
-예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
-coffee_count = coffee_count + 1
+  ‘빠른 CPU를 위한 설계 기법’
+  ‘명령어 병렬 처리 기법’
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-04-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
-                            복합 자료 구조.
-다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
-
-예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
-
-  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
-    
-      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
-    
-  
-
-
-CoffeeRecord {
-    String: Name
-    String: Brand
-    Integer: Rating
-    Float: Cost_Per_Pound
-    Boolean: Is_Dark_Roast
-    String: Other_Notes
-}
-
-
-
-  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
-
-
-속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
-
-  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
-
-
-자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
-
-객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
-
-객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
-
-복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
-
-last_record.name = "Sublime Blend"
-
-
-  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-21</span>
+                                <span class="date">· 2024-04-19</span>
                             
                         </div>
                     </div>
@@ -4394,44 +4433,6 @@ CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/TIL/2024-04-19-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/TIL/2024-04-19-TIL.html"><h1 class="title_post">📝 [TIL] 240419 Today I Learned.</h1></a>
-                        <a href="/2024/TIL/2024-04-19-TIL.html" class="txt_post">
-                            Java
-
-
-  Java ‘Class 클래스’ 학습
-  Java ‘Class 클래스’ 정리
-  Java ‘System 클래스’ 학습
-  Java ‘System 클래스’ 정리
-
-
-CS
-
-
-  ‘빠른 CPU를 위한 설계 기법’
-  ‘명령어 병렬 처리 기법’
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -4816,6 +4817,104 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
+                            래퍼 클래스 - 오토 박싱.
+
+오토 박싱 - Autoboxing
+
+자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
+다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
+
+package lang.wrapper;
+
+public class AutoboxingMain1 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = Integer.valueOf(value);
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue.intValue();
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+
+  박싱: valueOf()
+  언박싱: xxxValue() (예: intValue(), doubleValue())
+
+
+개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
+그래서 많은 개발자들이 불편함을 호소했습니다.
+
+  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
+
+
+오토 박싱, 언박싱
+package lang.wrapper;
+
+public class AutoboxingMain2 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
+덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
+따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
+
+Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
+
+int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-17-WrapperClass-JavaWrapperClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -4932,104 +5031,6 @@ intValue() - 언박싱(Unboxing)
 
 
   참고로 래퍼 클래스는 객체를 그대로 출력해도 내부에 있는 값을 문자로 출력하도록 toString()을 재정의 해두었습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
-                            래퍼 클래스 - 오토 박싱.
-
-오토 박싱 - Autoboxing
-
-자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
-다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
-
-package lang.wrapper;
-
-public class AutoboxingMain1 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = Integer.valueOf(value);
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue.intValue();
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-
-  박싱: valueOf()
-  언박싱: xxxValue() (예: intValue(), doubleValue())
-
-
-개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
-그래서 많은 개발자들이 불편함을 호소했습니다.
-
-  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
-
-
-오토 박싱, 언박싱
-package lang.wrapper;
-
-public class AutoboxingMain2 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
-덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
-따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
-
-Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
-
-int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -5890,6 +5891,337 @@ StringBuilder를 직접 사용하는 것이 더 좋은 경우
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/CS/2024-04-11-register.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/CS/2024-04-11-register.html"><h1 class="title_post">💾 [CS] 레지스터</h1></a>
+                        <a href="/2024/CS/2024-04-11-register.html" class="txt_post">
+                            레지스터.
+
+  프로그램 속 명령어와 데이터는 실행 전후로 반드시 레지스터에 저장됩니다.
+    
+      따라서 레지스터에 저장된 값만 잘 관찰해도 프로그램의 실행 흐름을 파악할 수 있습니다
+        
+          다시 말해 레지스터 속 값을 유심히 관찰하면 프로그램을 실행할 때 CPU 내에서 무슨 일이 벌어지고 있는지, 어떤 명령어가 어떻게 수행되는지 알 수 있습니다.
+        
+      
+    
+  
+
+
+반드시 알아야 할 레지스터.
+
+
+  프로그램 카운터
+  명령어 레지스터
+  메모리 주소 레지스터
+  메모리 버퍼 레지스터
+  플래스 레지스터
+  범용 레지스터
+  스택 포인터
+  베이스 레지스터
+
+
+프로그램 카운터.
+
+  프로그램 카운터(PC: Program Counter) : 메모리에서 가져올 명령어의 주소, 즉 메모리에서 읽어 들일 명령어의 주소를 저장합니다.
+    
+      프로그램 카운터를 명령어 포인터(IP: Instruction Pointer) 라고 부르는 CPU도 있습니다.
+    
+  
+
+
+명령어 레지스터.
+
+  명령어 레지스터(IR: Instruction Register) : 해석할 명령어, 즉 방금 메로미에서 읽어 들인 명령어를 저장하는 레지스터입니다.
+    
+      제어장치는 명령어를 레지스터 속 명령어를 받아들이고 이를 해석한 뒤 제어 신호를 내보냅니다.
+    
+  
+
+
+메모리 주소 레지스터.
+
+  메모리 주소 레지스터(MAR: Memory Address Register) : 메모리 주소를 저장하는 레지스터입니다. CPU가 읽어 들이고자 하는 주소 값을 주소 버스로 보낼 때 메모리 주소 레지스터를 거치게 됩니다.
+
+
+메모리 버퍼 레지스터.
+
+  메모리 버퍼 레지스터(MBR: Memory buffer register) : 메모리와 주고받을 값(데이터와 명령어)을 저장하는 레지스터입니다.
+    
+      즉, 메모리에 쓰고 싶은 값이나 메모리로부터 전달받은 값은 메모리 버퍼 레지스터를 거칩니다.
+        
+          CPU가 주소 버스로 내보낼 값이 메모리 주소 레지스터를 거친다면, 데이터 버스로 주고 받을 값은 메모리 버퍼 레지스터를 거칩니다.
+            
+              메모리 버퍼 레지스터는 메모리 데이터 레지스터(MDR: Memory Data Register)라고도 불립니다.
+            
+          
+        
+      
+    
+  
+
+
+메모리에 저장된 프로그램을 실행하는 과정에서 프로그램 카운터, 명령어 레지스터, 메모리 주소 레지스터, 메모리 버퍼 레지스터에 어떤 값들이 담기는지 알아봅시다.
+
+1.
+CPU로 실행할 프로그램이 1000번지부터 1500번지까지 저장되어 있다고 가정하겠습니다,
+그리고 1000번지에는 1101₍₂₎이 저장되어 있다고 가정하겠습니다.
+
+
+
+2.
+프로그램을 처음부터 실행하기 위해 프로그램 카운터에는 1000이 저장됩니다.
+이는 메모리에서 가져올 명령어가 1000번지에 있다는 걸 의미합니다.
+
+
+
+3.
+1000번지를 읽어 들이기 위해서는 주소 버스로 100번지를 내보내야 합니다.
+이를 위해 메모리 주소 레지스터에는 1000이 저장됩니다.
+
+
+
+4.
+‘메모리 읽기’ 제어 신호와 메모리 주소 레지스터 값이 각각 제어 버스와 주소 버스를 통해 메모리로 보내집니다.
+
+
+
+5.
+메모리 1000번지에 저장된 값은 데이터 버스를 통해 메모리 버퍼 레지스터로 전달되고, 프로그램 카운터는 증가되어 다음 명령어를 읽어 들일 준비를 합니다.
+
+
+
+6.
+메모리 버퍼 레지스터에 저장된 값은 명령어 레지스터로 이동합니다.
+
+
+
+7.
+제어장치는 명령어 레지스터의 명령어를 해석하고 제어 신호를 발생시킵니다.
+
+5단계에서 프로그램 카운터 값이 증가한 것을 확인했습니다.
+
+  프로그램 카운터 값이 증가했으니 1000번지 명령어 처리가 끝나면 CPU는 다음 명령어(1001번지)를 읽어 들입니다.
+
+
+이처럼 프로그램 카운터는 지속적으로 증가하며 계속해서 다음 명령어를 읽어 들일 준비를 합니다.
+
+  이 과정이 반복되면서 CPU는 프로그램을 차례대로 실행해 나갑니다.
+    
+      결국 CPU가 메모리 속 프로그램을 순차적으로 읽어 들이고 실행해 나갈 수 있는 이유는 CPU 속 프로그램 카운터가 꾸준히 증가하기 때문입니다.
+    
+  
+
+
+
+
+범용 레지스터
+
+  범용 레지스터(general purpose register) : 다양하고 일반적인 상황에서 자유롭게 사용할 수 있는 레지스터입니다.
+    
+      메모리 버퍼 레지스터는 테이터 버스로 주고받을 값만 저장하고, 메모리 주소 레지스터는 주소 버스로 내보낼 주소값만 저장하지만, 범용 레지스터는 데이터와 주소를 모두 저장할 수 있습니다.
+        
+          일반적으로 CPU 안에는 여러 개의 범용 레지스터들이 있고, 현대 대다수 CPU는 모두 범용 레지스터를 가지고 있습니다.
+        
+      
+    
+  
+
+
+플레그 레지스터
+
+  플래그 레지스터(Flag register) : 연산 결과 또는 CPU 상태에 대한 부가적인 정보를 저장하는 레지스터입니다.
+
+
+특정 레지스터를 이용한 주소 지정 방식(1): 스택 주소 지정 방식.
+
+  스택 주소 지정 방식 : 스택과 스택 포인터를 이용한 주소 지정 방식
+    
+      스택은 한쪽 끝이 막혀 있는 통과 같은 저장 공간입니다.
+        
+          그래서 스택은 가장 최근에 저장하는 값부터 꺼낼 수 있습니다.
+            
+              여기서 스택 포인터란 스택의 꼭대기를 가리키는 레지스터입니다.
+                
+                  즉, 스택 포인터는 스택에 마지막으로 저장한 값의 위치를 저장하는 레지스터입니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+예를 들어 봅시다.
+
+가령 다음과 같이 위에서부터 주소가 매겨져 있고 아래부터 차곡차곡 데이터가 저장되어 있는 스택이 있다고 가정해봅시다.
+
+  이때 스택 포인터는 스택의 제일 꼭대기 주소, 즉 4번지를 저장하고 있습니다.
+    
+      이는 ‘스택 포인터가 스택의 꼭대기를 가리키고 있다’고 볼 수 있겠죠.
+        
+          쉽게 말해, 스택 포인터는 스택의 어디까지 데이터가 캐워져 있는지에 대한 표시라고 보면 됩니다.
+        
+      
+    
+  
+
+
+
+
+
+
+그럼 이 스택에서 데이터를 꺼낼 때는 어떤 데이터부터 꺼내게 될까요?
+
+  1 -&gt; 2 -&gt; 3 순서대로 꺼낼 수 있습니다.
+    
+      여기서 하나의 데이터를 꺼내면 스택에는 2와 3이 남고, 스택의 꼭대기 주소가 달라졌기 때문에 스택 포인터는 5번지를 가리킵니다.
+    
+  
+
+
+
+
+반대로 스택에 데이터를 추가한다면 어떻게 될까요?
+
+  현재 스텍세 4라는 데이터를 저장하면 스택의 꼭대기에 4가 저장됩니다.
+    
+      이때 스택의 꼭대기 주소가 달라졌기 때문에 스택 포인터는 4번지를 가리킵니다.
+    
+  
+
+
+그런데 스택이라는 것은 도대체 어디에 있는 걸까요?
+
+  스택은 메모리 안에 있습니다.
+    
+      정확히는 메모리 안에 스택처럼 사용할 영역이 정해져 있습니다.
+        
+          이를 스택 영역이라고 합니다.
+            
+              이 영역은 다른 주소 공간과는 다르게 스택처럼 사용하기 암묵적으로 약속된 영역입니다.
+            
+          
+        
+      
+    
+  
+
+
+특정 레지스터를 이용한 주소 지정 방식(2): 변위 주소 지정 방식
+
+
+
+
+  변위 주소 지정 방식(displacement addressing mode) : 오퍼랜드 필드의 값(변위)과 특정 레지스터의 값을 더하여 유효 주소를 얻어내는 주소 지정 방식입니다.
+
+
+그래서 변위 주소 지정방식을 사용하는 명령어는 다음 그림과 같이 연산 코드 필드, 어떤 레지스터의 값과 더할지를 나타내는 레지스터 필드, 그리고 주소를 담고있는 오퍼랜드 필드가 있습니다.
+
+
+
+이때, 변위 주소 지정 방식은 오퍼랜드 필드의 주소와 어떤 레지스터를 더하는지에 따라 상대 주소 지정 방식, 베이스 레지스터 주소 지정 방식 등으로 나뉩니다.
+
+상대 주소 지정 방식
+
+  상대 주소 지정 방식(relative addressing mode) : 오퍼랜드와 프로그램 카운터와 값을 더하여 유효 주소를 얻는 방식입니다.
+    
+      프로그램 카운터에는 읽어 들일 명령어의 주소가 저장되어 있습니다.
+        
+          만약 오퍼랜드가 음수, 가령 -3이였다면 CPU는 읽어 들이기로 한 명령어로부터 ‘세 번째 이전’ 번지로 접근합니다.
+            
+              한마디로 실행하려는 명령어의 세 칸 이전 번지 명령어를 실행하는 것이지요
+            
+          
+        
+      
+    
+  
+
+
+
+
+반면, 오퍼랜드가 양수, 가열 3이었다면 CPU는 읽어 들이기로 했던 명령어의 ‘세 번째 이후’ 번지로 접근합니다.
+
+  즉, 실행하려는 명령어에서 세 칸 건너뛴 번지를 실행하는 겁니다.
+
+
+
+
+상대 주소 지정 방식은 프로그래밍 언어의 if문과 유사하게 모든 코드를 실행하는 것이 아닌, 분기하여 특정 주소의 코드를 실행할 때 사용됩니다.
+
+베이스 레지스터 주소 지정 방식
+
+  베이스 레지스터 주소 지정 방식(base-register addressing mode) : 오퍼랜드와 베이스 레지스터의 값을 더하여 유효 주소를 얻는 방식입니다.
+
+
+여기서 베이스 레지스터는 ‘기준 주소’, 오퍼랜드는 ‘기준 주소로부터 떨어진 거리’로서의 역할을 합니다.
+
+  즉, 베이스 레지스터 주소 지정 방식은 베이스 레지스터 속 기준 주소로부터 얼마나 떨어져 있는 주소에 접근할 것인지를 연산하여 유효 주소를 얻어내는 방식입니다.
+
+
+가령 베이스 레지스터에 200이라는 값이 있고 오퍼랜드가 40이라면 이는 “기준 주소 200번지로부터 40만큼 떨어진 240번지로 접근하라”를 의미합니다.
+
+또 베이스 레지스터에 550이라는 값이 담겨 있고 오퍼랜드가 50이라면 이는 “기준 주소 550번지로부터 50만큼 떨어진 600번지로 접근하라”를 의미하는 명령어 입니다.
+
+
+
+키워드로 정리하는 핵심 포인트
+
+  프로그램 카운터 는 메모리에서 가져올 명령어의 주소, 명령어 레지스터는 해석할 명령어를 저장합니다.
+  메모리 주소 레지스터는 메모리의 주소, 메모리 버퍼 레지스터는 메모리와 주고받을 데이터를 저장합니다.
+  범용 레지스터는 데이터와 주소를 모두 저장하고, 플래그 레지스터는 연산 결과 혹은 CPU 상태에 대한 부가 정보를 저장합니다.
+  스택 포인터는 스택 최상단의 위치를 저장합니다.
+  베이스 레지스터에 저장된 주소는 기준 주소로서의 역할을 합니다.
+
+
+더 알아보기
+
+  Jump
+    
+      Jump 명령어는 프로그램의 실행 흐름을 끊고 지정된 주소로 점프합니다.
+    
+  
+  Conditional Jump
+    
+      Conditional Jump 명령어는 특정 조건이 충족될 때에만 주어진 주소로 점프합니다.
+    
+  
+  Call
+    
+      Call 명령어는 현재 위치를 저장하고 지정된 주소로 이동합니다.
+      현재 위치를 저장하기 위해 스택을 사용합니다.
+      주로 서브루틴(하위 루틴 또는 함수)을 호출할 때 사용됩니다.
+    
+  
+  Return
+    
+      Return 명령어는 서브루틴에서 호출자로 복귀합니다.
+      호출된 서브루틴이 실행을 마치고 호출자로 돌아갈 때 사용됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -6253,337 +6585,6 @@ string = DCBA
 “만드는 사람이 수고로우면 쓰는 사람이 편하고, 만드는 사람이 편하면 쓰는 사람이 수고롭다” 는 말이 있습니다.
 메서드 체이닝은 구현하는 입장에서는 번거롭지만 사용하는 개발자는 편리합니다.
 참고로 자바의 라이브러리와 오픈 소스들은 메서드 체이닝 방식을 종종 사용합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/CS/2024-04-11-register.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/CS/2024-04-11-register.html"><h1 class="title_post">💾 [CS] 레지스터</h1></a>
-                        <a href="/2024/CS/2024-04-11-register.html" class="txt_post">
-                            레지스터.
-
-  프로그램 속 명령어와 데이터는 실행 전후로 반드시 레지스터에 저장됩니다.
-    
-      따라서 레지스터에 저장된 값만 잘 관찰해도 프로그램의 실행 흐름을 파악할 수 있습니다
-        
-          다시 말해 레지스터 속 값을 유심히 관찰하면 프로그램을 실행할 때 CPU 내에서 무슨 일이 벌어지고 있는지, 어떤 명령어가 어떻게 수행되는지 알 수 있습니다.
-        
-      
-    
-  
-
-
-반드시 알아야 할 레지스터.
-
-
-  프로그램 카운터
-  명령어 레지스터
-  메모리 주소 레지스터
-  메모리 버퍼 레지스터
-  플래스 레지스터
-  범용 레지스터
-  스택 포인터
-  베이스 레지스터
-
-
-프로그램 카운터.
-
-  프로그램 카운터(PC: Program Counter) : 메모리에서 가져올 명령어의 주소, 즉 메모리에서 읽어 들일 명령어의 주소를 저장합니다.
-    
-      프로그램 카운터를 명령어 포인터(IP: Instruction Pointer) 라고 부르는 CPU도 있습니다.
-    
-  
-
-
-명령어 레지스터.
-
-  명령어 레지스터(IR: Instruction Register) : 해석할 명령어, 즉 방금 메로미에서 읽어 들인 명령어를 저장하는 레지스터입니다.
-    
-      제어장치는 명령어를 레지스터 속 명령어를 받아들이고 이를 해석한 뒤 제어 신호를 내보냅니다.
-    
-  
-
-
-메모리 주소 레지스터.
-
-  메모리 주소 레지스터(MAR: Memory Address Register) : 메모리 주소를 저장하는 레지스터입니다. CPU가 읽어 들이고자 하는 주소 값을 주소 버스로 보낼 때 메모리 주소 레지스터를 거치게 됩니다.
-
-
-메모리 버퍼 레지스터.
-
-  메모리 버퍼 레지스터(MBR: Memory buffer register) : 메모리와 주고받을 값(데이터와 명령어)을 저장하는 레지스터입니다.
-    
-      즉, 메모리에 쓰고 싶은 값이나 메모리로부터 전달받은 값은 메모리 버퍼 레지스터를 거칩니다.
-        
-          CPU가 주소 버스로 내보낼 값이 메모리 주소 레지스터를 거친다면, 데이터 버스로 주고 받을 값은 메모리 버퍼 레지스터를 거칩니다.
-            
-              메모리 버퍼 레지스터는 메모리 데이터 레지스터(MDR: Memory Data Register)라고도 불립니다.
-            
-          
-        
-      
-    
-  
-
-
-메모리에 저장된 프로그램을 실행하는 과정에서 프로그램 카운터, 명령어 레지스터, 메모리 주소 레지스터, 메모리 버퍼 레지스터에 어떤 값들이 담기는지 알아봅시다.
-
-1.
-CPU로 실행할 프로그램이 1000번지부터 1500번지까지 저장되어 있다고 가정하겠습니다,
-그리고 1000번지에는 1101₍₂₎이 저장되어 있다고 가정하겠습니다.
-
-
-
-2.
-프로그램을 처음부터 실행하기 위해 프로그램 카운터에는 1000이 저장됩니다.
-이는 메모리에서 가져올 명령어가 1000번지에 있다는 걸 의미합니다.
-
-
-
-3.
-1000번지를 읽어 들이기 위해서는 주소 버스로 100번지를 내보내야 합니다.
-이를 위해 메모리 주소 레지스터에는 1000이 저장됩니다.
-
-
-
-4.
-‘메모리 읽기’ 제어 신호와 메모리 주소 레지스터 값이 각각 제어 버스와 주소 버스를 통해 메모리로 보내집니다.
-
-
-
-5.
-메모리 1000번지에 저장된 값은 데이터 버스를 통해 메모리 버퍼 레지스터로 전달되고, 프로그램 카운터는 증가되어 다음 명령어를 읽어 들일 준비를 합니다.
-
-
-
-6.
-메모리 버퍼 레지스터에 저장된 값은 명령어 레지스터로 이동합니다.
-
-
-
-7.
-제어장치는 명령어 레지스터의 명령어를 해석하고 제어 신호를 발생시킵니다.
-
-5단계에서 프로그램 카운터 값이 증가한 것을 확인했습니다.
-
-  프로그램 카운터 값이 증가했으니 1000번지 명령어 처리가 끝나면 CPU는 다음 명령어(1001번지)를 읽어 들입니다.
-
-
-이처럼 프로그램 카운터는 지속적으로 증가하며 계속해서 다음 명령어를 읽어 들일 준비를 합니다.
-
-  이 과정이 반복되면서 CPU는 프로그램을 차례대로 실행해 나갑니다.
-    
-      결국 CPU가 메모리 속 프로그램을 순차적으로 읽어 들이고 실행해 나갈 수 있는 이유는 CPU 속 프로그램 카운터가 꾸준히 증가하기 때문입니다.
-    
-  
-
-
-
-
-범용 레지스터
-
-  범용 레지스터(general purpose register) : 다양하고 일반적인 상황에서 자유롭게 사용할 수 있는 레지스터입니다.
-    
-      메모리 버퍼 레지스터는 테이터 버스로 주고받을 값만 저장하고, 메모리 주소 레지스터는 주소 버스로 내보낼 주소값만 저장하지만, 범용 레지스터는 데이터와 주소를 모두 저장할 수 있습니다.
-        
-          일반적으로 CPU 안에는 여러 개의 범용 레지스터들이 있고, 현대 대다수 CPU는 모두 범용 레지스터를 가지고 있습니다.
-        
-      
-    
-  
-
-
-플레그 레지스터
-
-  플래그 레지스터(Flag register) : 연산 결과 또는 CPU 상태에 대한 부가적인 정보를 저장하는 레지스터입니다.
-
-
-특정 레지스터를 이용한 주소 지정 방식(1): 스택 주소 지정 방식.
-
-  스택 주소 지정 방식 : 스택과 스택 포인터를 이용한 주소 지정 방식
-    
-      스택은 한쪽 끝이 막혀 있는 통과 같은 저장 공간입니다.
-        
-          그래서 스택은 가장 최근에 저장하는 값부터 꺼낼 수 있습니다.
-            
-              여기서 스택 포인터란 스택의 꼭대기를 가리키는 레지스터입니다.
-                
-                  즉, 스택 포인터는 스택에 마지막으로 저장한 값의 위치를 저장하는 레지스터입니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-예를 들어 봅시다.
-
-가령 다음과 같이 위에서부터 주소가 매겨져 있고 아래부터 차곡차곡 데이터가 저장되어 있는 스택이 있다고 가정해봅시다.
-
-  이때 스택 포인터는 스택의 제일 꼭대기 주소, 즉 4번지를 저장하고 있습니다.
-    
-      이는 ‘스택 포인터가 스택의 꼭대기를 가리키고 있다’고 볼 수 있겠죠.
-        
-          쉽게 말해, 스택 포인터는 스택의 어디까지 데이터가 캐워져 있는지에 대한 표시라고 보면 됩니다.
-        
-      
-    
-  
-
-
-
-
-
-
-그럼 이 스택에서 데이터를 꺼낼 때는 어떤 데이터부터 꺼내게 될까요?
-
-  1 -&gt; 2 -&gt; 3 순서대로 꺼낼 수 있습니다.
-    
-      여기서 하나의 데이터를 꺼내면 스택에는 2와 3이 남고, 스택의 꼭대기 주소가 달라졌기 때문에 스택 포인터는 5번지를 가리킵니다.
-    
-  
-
-
-
-
-반대로 스택에 데이터를 추가한다면 어떻게 될까요?
-
-  현재 스텍세 4라는 데이터를 저장하면 스택의 꼭대기에 4가 저장됩니다.
-    
-      이때 스택의 꼭대기 주소가 달라졌기 때문에 스택 포인터는 4번지를 가리킵니다.
-    
-  
-
-
-그런데 스택이라는 것은 도대체 어디에 있는 걸까요?
-
-  스택은 메모리 안에 있습니다.
-    
-      정확히는 메모리 안에 스택처럼 사용할 영역이 정해져 있습니다.
-        
-          이를 스택 영역이라고 합니다.
-            
-              이 영역은 다른 주소 공간과는 다르게 스택처럼 사용하기 암묵적으로 약속된 영역입니다.
-            
-          
-        
-      
-    
-  
-
-
-특정 레지스터를 이용한 주소 지정 방식(2): 변위 주소 지정 방식
-
-
-
-
-  변위 주소 지정 방식(displacement addressing mode) : 오퍼랜드 필드의 값(변위)과 특정 레지스터의 값을 더하여 유효 주소를 얻어내는 주소 지정 방식입니다.
-
-
-그래서 변위 주소 지정방식을 사용하는 명령어는 다음 그림과 같이 연산 코드 필드, 어떤 레지스터의 값과 더할지를 나타내는 레지스터 필드, 그리고 주소를 담고있는 오퍼랜드 필드가 있습니다.
-
-
-
-이때, 변위 주소 지정 방식은 오퍼랜드 필드의 주소와 어떤 레지스터를 더하는지에 따라 상대 주소 지정 방식, 베이스 레지스터 주소 지정 방식 등으로 나뉩니다.
-
-상대 주소 지정 방식
-
-  상대 주소 지정 방식(relative addressing mode) : 오퍼랜드와 프로그램 카운터와 값을 더하여 유효 주소를 얻는 방식입니다.
-    
-      프로그램 카운터에는 읽어 들일 명령어의 주소가 저장되어 있습니다.
-        
-          만약 오퍼랜드가 음수, 가령 -3이였다면 CPU는 읽어 들이기로 한 명령어로부터 ‘세 번째 이전’ 번지로 접근합니다.
-            
-              한마디로 실행하려는 명령어의 세 칸 이전 번지 명령어를 실행하는 것이지요
-            
-          
-        
-      
-    
-  
-
-
-
-
-반면, 오퍼랜드가 양수, 가열 3이었다면 CPU는 읽어 들이기로 했던 명령어의 ‘세 번째 이후’ 번지로 접근합니다.
-
-  즉, 실행하려는 명령어에서 세 칸 건너뛴 번지를 실행하는 겁니다.
-
-
-
-
-상대 주소 지정 방식은 프로그래밍 언어의 if문과 유사하게 모든 코드를 실행하는 것이 아닌, 분기하여 특정 주소의 코드를 실행할 때 사용됩니다.
-
-베이스 레지스터 주소 지정 방식
-
-  베이스 레지스터 주소 지정 방식(base-register addressing mode) : 오퍼랜드와 베이스 레지스터의 값을 더하여 유효 주소를 얻는 방식입니다.
-
-
-여기서 베이스 레지스터는 ‘기준 주소’, 오퍼랜드는 ‘기준 주소로부터 떨어진 거리’로서의 역할을 합니다.
-
-  즉, 베이스 레지스터 주소 지정 방식은 베이스 레지스터 속 기준 주소로부터 얼마나 떨어져 있는 주소에 접근할 것인지를 연산하여 유효 주소를 얻어내는 방식입니다.
-
-
-가령 베이스 레지스터에 200이라는 값이 있고 오퍼랜드가 40이라면 이는 “기준 주소 200번지로부터 40만큼 떨어진 240번지로 접근하라”를 의미합니다.
-
-또 베이스 레지스터에 550이라는 값이 담겨 있고 오퍼랜드가 50이라면 이는 “기준 주소 550번지로부터 50만큼 떨어진 600번지로 접근하라”를 의미하는 명령어 입니다.
-
-
-
-키워드로 정리하는 핵심 포인트
-
-  프로그램 카운터 는 메모리에서 가져올 명령어의 주소, 명령어 레지스터는 해석할 명령어를 저장합니다.
-  메모리 주소 레지스터는 메모리의 주소, 메모리 버퍼 레지스터는 메모리와 주고받을 데이터를 저장합니다.
-  범용 레지스터는 데이터와 주소를 모두 저장하고, 플래그 레지스터는 연산 결과 혹은 CPU 상태에 대한 부가 정보를 저장합니다.
-  스택 포인터는 스택 최상단의 위치를 저장합니다.
-  베이스 레지스터에 저장된 주소는 기준 주소로서의 역할을 합니다.
-
-
-더 알아보기
-
-  Jump
-    
-      Jump 명령어는 프로그램의 실행 흐름을 끊고 지정된 주소로 점프합니다.
-    
-  
-  Conditional Jump
-    
-      Conditional Jump 명령어는 특정 조건이 충족될 때에만 주어진 주소로 점프합니다.
-    
-  
-  Call
-    
-      Call 명령어는 현재 위치를 저장하고 지정된 주소로 이동합니다.
-      현재 위치를 저장하기 위해 스택을 사용합니다.
-      주로 서브루틴(하위 루틴 또는 함수)을 호출할 때 사용됩니다.
-    
-  
-  Return
-    
-      Return 명령어는 서브루틴에서 호출자로 복귀합니다.
-      호출된 서브루틴이 실행을 마치고 호출자로 돌아갈 때 사용됩니다.
-    
-  
-
 
                         </a>
                         <div class="info-post">
@@ -8970,69 +8971,6 @@ ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-02-ORDERBY.html"><h1 class="title_post">💉[SQL] ORDER BY</h1></a>
-                        <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="txt_post">
-                            ORDER BY
-‘ORDER BY’ 절은 SQL 쿼리의 결과를 특정 기준에 따라 정렬할 때 사용됩니다.
-
-  이를 통해 반환된 데이터를 오름차순(ASC) 또는 내림차순(DESC)으로 정렬할 수 있으며, 숫자, 문자열, 날짜 등 다양한 데이터 타입에 적용할 수 있습니다.
-  ‘ORDER BY’ 는 데이터를 보다 읽기 쉽고 분석하기 용이하게 정렬하여 제공함으로써, 데이터 리포팅, 사용자 인터페이스에서의 데이터 표시, 데이터 분석 등 다양한 상황에서 유용하게 사용됩니다.
-
-
-‘OREDER BY’ 사용 예
-
-  특정 열에 따른 오름차순 정렬: 직원들을 이름순으로 정렬하고 싶을 때
-    SELECT * FROM emploees ORDER BY name ASC;
-    
-    이 쿼리는 ‘employees’ 테이블의 모든 행을 ‘name’ 열 기준으로 오름차순으로 정렬하여 반환합니다.
-  
-  특정 열에 따른 내림차순 정렬: 최신 주문부터 표시하고 싶을 때
-    SELECT * FROM orders ORDER BY order_by DESC;
-    
-    이 쿼리는 ‘orders’ 테이블의 모든 행을 ‘order_date’ 열 기준으로 내림차순으로 정렬하여 반환합니다.
-  
-  여러 열에 따른 정렬: 부서별로 그룹화하고, 각 부서 내에서 급여가 높은 순으로 정렬하고 싶을 때
-    SELECT * FROM employees ORDER BY department ASC, salary DESC;
-    
-    이 쿼리는 먼저 ‘department’ 열로 오름차순으로 정렬하고, 같은 부서 내에서는 ‘salary’ 열을 기준으로 내림차순으로 정렬합니다.
-  
-
-
-‘ORDER BY’ 절의 특징
-
-  기본적으로 ‘ORDER BY’ 는 오름차순(ASC)으로 정렬합니다. 내림차순으로 정렬하고 싶다면 각 열 이름 뒤에 ‘DESC’ 키워드를 명시해야 합니다.
-  여러 열을 기준으로 정렬할 수 있으며, 이 경우 첫 번째 열을 기준으로 정렬한 후 동일한 값에 대해서는 다음 열의 순서에 따라 정렬합니다.
-  ‘SELECT’ 쿼리의 마지막 부분에 위치하며, ‘WHERE’, ‘GROUP BY’, ‘HAVING’ 절 뒤에 명시됩니다.
-
-
-사용 시 고려사항
-
-  ‘ORDER BY’ 를 사용할 때는 정렬하고자 하는 열이 인덱싱되어 있는지 확인하는 것이 좋습니다. 특히 대규모 데이터셋을 다룰 때, 인덱스의 유무는 쿼리 성능에 큰 영향을 미칩니다.
-  복잡한 쿼리에서는 ‘ORDER BY’ 로 인한 추가적인 처리 시간이 필요할 수 있으므로, 성능과 관련하여 적절한 테스트가 필요합니다.
-
-
-‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -9263,6 +9201,69 @@ Address b = a;
 
   메모리 구조를 보면 바로 답이 나오겠지만, 개발을 하다 보면 누구나 이런 실수할 수 있을 것 같다는 생각도 함께 들 것입니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/SQL/2024-04-02-ORDERBY.html"><h1 class="title_post">💉[SQL] ORDER BY</h1></a>
+                        <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="txt_post">
+                            ORDER BY
+‘ORDER BY’ 절은 SQL 쿼리의 결과를 특정 기준에 따라 정렬할 때 사용됩니다.
+
+  이를 통해 반환된 데이터를 오름차순(ASC) 또는 내림차순(DESC)으로 정렬할 수 있으며, 숫자, 문자열, 날짜 등 다양한 데이터 타입에 적용할 수 있습니다.
+  ‘ORDER BY’ 는 데이터를 보다 읽기 쉽고 분석하기 용이하게 정렬하여 제공함으로써, 데이터 리포팅, 사용자 인터페이스에서의 데이터 표시, 데이터 분석 등 다양한 상황에서 유용하게 사용됩니다.
+
+
+‘OREDER BY’ 사용 예
+
+  특정 열에 따른 오름차순 정렬: 직원들을 이름순으로 정렬하고 싶을 때
+    SELECT * FROM emploees ORDER BY name ASC;
+    
+    이 쿼리는 ‘employees’ 테이블의 모든 행을 ‘name’ 열 기준으로 오름차순으로 정렬하여 반환합니다.
+  
+  특정 열에 따른 내림차순 정렬: 최신 주문부터 표시하고 싶을 때
+    SELECT * FROM orders ORDER BY order_by DESC;
+    
+    이 쿼리는 ‘orders’ 테이블의 모든 행을 ‘order_date’ 열 기준으로 내림차순으로 정렬하여 반환합니다.
+  
+  여러 열에 따른 정렬: 부서별로 그룹화하고, 각 부서 내에서 급여가 높은 순으로 정렬하고 싶을 때
+    SELECT * FROM employees ORDER BY department ASC, salary DESC;
+    
+    이 쿼리는 먼저 ‘department’ 열로 오름차순으로 정렬하고, 같은 부서 내에서는 ‘salary’ 열을 기준으로 내림차순으로 정렬합니다.
+  
+
+
+‘ORDER BY’ 절의 특징
+
+  기본적으로 ‘ORDER BY’ 는 오름차순(ASC)으로 정렬합니다. 내림차순으로 정렬하고 싶다면 각 열 이름 뒤에 ‘DESC’ 키워드를 명시해야 합니다.
+  여러 열을 기준으로 정렬할 수 있으며, 이 경우 첫 번째 열을 기준으로 정렬한 후 동일한 값에 대해서는 다음 열의 순서에 따라 정렬합니다.
+  ‘SELECT’ 쿼리의 마지막 부분에 위치하며, ‘WHERE’, ‘GROUP BY’, ‘HAVING’ 절 뒤에 명시됩니다.
+
+
+사용 시 고려사항
+
+  ‘ORDER BY’ 를 사용할 때는 정렬하고자 하는 열이 인덱싱되어 있는지 확인하는 것이 좋습니다. 특히 대규모 데이터셋을 다룰 때, 인덱스의 유무는 쿼리 성능에 큰 영향을 미칩니다.
+  복잡한 쿼리에서는 ‘ORDER BY’ 로 인한 추가적인 처리 시간이 필요할 수 있으므로, 성능과 관련하여 적절한 테스트가 필요합니다.
+
+
+‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
 
                         </a>
                         <div class="info-post">
@@ -9931,62 +9932,6 @@ Java의 고급 언어 특성은 백엔드 개발에서 여러 가지 장점을 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-03-31-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/SQL/2024-03-31-sql.html"><h1 class="title_post">💉[SQL] SQL 문의 기본 구조, SQL</h1></a>
-                        <a href="/2024/SQL/2024-03-31-sql.html" class="txt_post">
-                            SQL
-
-  SQL은 “데이터베이스와 대화를 하기 위한 언어”
-  SQL(Structured Query Language)은 데이터베이스 관리를 위해 널리 사용되는 쿼리 언어.
-
-
-Query(쿼리)
-
-  데이터베이스에 저장된 데이터에 접근하거나 조직하기 위한 명령어.
-
-
-SQL 문의 기본 구조
-SELECT # '데이터 조회'의 명령어로 필수 구문
-FROM # '어디에서 데이터를 조회할까'의 명령어로 필수 구문
-WHERE # 조건을 지정해주는 구문
-
-
-  조건을 지정하는 방법.
-    
-      비교 연산자: &lt;, &gt;, =, &lt;&gt;(같지 않다)
-      다양한 구문: IN, BETWEEN, LIKE
-      여러가지 조건의 적용: AND, OR, NOT
-    
-  
-
-
-참고 자료
-
-  테이블과 컬럼, SQL
-  WHERE란?
-  AND, OR, NOT
-  BETWEEN, IN, LIKE
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -10241,6 +10186,62 @@ System.out.println()
       예) ObjectPrinter는 Object에 의존합니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/SQL/2024-03-31-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/SQL/2024-03-31-sql.html"><h1 class="title_post">💉[SQL] SQL 문의 기본 구조, SQL</h1></a>
+                        <a href="/2024/SQL/2024-03-31-sql.html" class="txt_post">
+                            SQL
+
+  SQL은 “데이터베이스와 대화를 하기 위한 언어”
+  SQL(Structured Query Language)은 데이터베이스 관리를 위해 널리 사용되는 쿼리 언어.
+
+
+Query(쿼리)
+
+  데이터베이스에 저장된 데이터에 접근하거나 조직하기 위한 명령어.
+
+
+SQL 문의 기본 구조
+SELECT # '데이터 조회'의 명령어로 필수 구문
+FROM # '어디에서 데이터를 조회할까'의 명령어로 필수 구문
+WHERE # 조건을 지정해주는 구문
+
+
+  조건을 지정하는 방법.
+    
+      비교 연산자: &lt;, &gt;, =, &lt;&gt;(같지 않다)
+      다양한 구문: IN, BETWEEN, LIKE
+      여러가지 조건의 적용: AND, OR, NOT
+    
+  
+
+
+참고 자료
+
+  테이블과 컬럼, SQL
+  WHERE란?
+  AND, OR, NOT
+  BETWEEN, IN, LIKE
 
 
                         </a>
@@ -34866,6 +34867,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no2.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-07-19"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240726_AWS_JAVA_INSTALL.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-07-26"
         });
     
 

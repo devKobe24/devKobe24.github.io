@@ -549,6 +549,7 @@
             
             
             
+            
 
     
     
@@ -2731,184 +2732,6 @@ Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html"><h1 class="title_post">☕️[Java] HashMap에 key 값은 항상 int 여야 할까요?</h1></a>
-                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="txt_post">
-                            🤔 HashMap에 key 값은 항상 int 여야 할까요?
-
-강의와 예제 코드를 열심히 보고 따라서 타이핑하고 있던 중 “문뜩!” 떠올랐습니다. 🤩
-
-‘HashMap에 key 값은 항상 int 여야 할까요?🤔’
-
-그래서 구글링과 챗 지피티 그리고 Java의 정석 도서를 살펴본 후 이 글을 쓰게 되었습니다 :)
-
-
-
-🙅‍♂️ 대답은 “아니오!” 입니다.
-
-자바 프로그래밍에서 ‘HashMap’ 의 키 값은 ‘int’ 형일 필요는 없다고 합니다.
-
-‘HashMap’ 은 키로서 어떠한 객체도 사용할 수 있으며, 기는 자바의 ‘제네릭’ 을 통해 다양한 유형의 객체를 키로 사용할 수 있게 해준다고 합니다.
-(오! “제네릭” 은 아직 안배웠지만 🥲 Swift에서 봐서 비슷한 느낌 같은데?!)
-
-키 객체는 ‘Object’ 클래스의 ‘hashCode()’ 메소드와 ‘equals()’ 메소드를 적절히 구현해야 합니다.
-(‘Object’ 클래스는 무엇이고,  ‘hashCode()’ 메소드와 ‘equals()’ 메소드는 무엇인가?!! 🤪)
-
-이는 ‘HashMap’ 이 키의 해시 코드를 사용하여 데이터를 저장하고 검색하기 때문입니다.
-(도통 무슨 소리인지 몰라서 아래 “제네릭”. “Object 클래스”, “hashCode()”, “equals()”를 정리했어요 ㅎㅎ)
-
-‘HashMap’ 을 사용할 때, 키로 사용되는 객체의 ‘hashCode()’ 메소드가 효율적이고 일관성 있는 값을 반환해야 합니다.
-또한, ‘equalse()’ 메소드는 객체의 동등성을 정확하게 판단할 수 있어야 합니다.
-이 두 메소드의 구현이 적절히 이루어져야 ‘HashMap’ 이 키의 중복 없이 정확하게 데이터를 관리할 수 있습니다.
-
-예시 - String 객체를 키로 사용하는 ‘HashMap’
-import java.util.HashMap;
-
-public class Example {
-    public static void main(String[] args) {
-        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
-        map.put("one", 1);
-        map.put("two", 2);
-        map.put("three", 3);
-        
-        System.out.println(map.get("two")); // 출력: 2
-    }
-}
-
-
-
-  위 예시에서 보듯, ‘String’ 외에도 사용자가 정의한 어떠한 객체든 ‘hashCode()’ 와 ‘equals()’ 가 적절히 구현되어 있다면 키로 사용할 수 있습니다.
-    
-      따라서 ‘int’ 만을 키로 사용해야 하는 것은 아닙니다.
-    
-  
-
-
-
-
-1️⃣ 제네릭(Generic).
-자바에서 ‘제네릭(Generic)’ 은 클래스, 인터페이스, 메소드를 정의할 때 타입(Type)을 하나의 매개변수처럼 취급하여, 다양한 데이터 타입을 사용할 수 있도록 하는 프로그래밍 기법입니다.
-
-제네릭을 사용하면 컴파일 시점에 타입 안정성을 제공하고, 타입 캐스팅을 줄여 코드를 더 간결하고 읽기 쉽게 만들 수 있습니다.
-
-제네릭 기본 문법.
-제네릭은 타입 매개변수를 사용하여 구현됩니다.
-
-타입 매개변수는 보통 한 글자로 표현되며, 일반적으로 다음과 같은 문자를 사용합니다.
-
-
-  ‘E’ : Element(컬렉션에서 사용되는 요소)
-  ‘K’ : Key(키)
-  ‘V’ : Value(값)
-  ‘T’ : Type(일반적인 타입)
-  ‘S’, ‘U’, ‘V’ 등 - 두 번째, 세 번째, 네 번째 타입을 나타내기 위해 사용
-
-
-예시: 제네릭을 사용한 클래스와 메소드
-// 제네릭 클래스 예시
-public class Box&lt;T&gt; {
-    private T t; // T는 이 클래스가 다루는 객체의 타입을 매개변수화합니다.
-    
-    public void set(T t) {
-        this.t = t;
-    }
-    
-    public T get() {
-        return t;
-    }
-}
-
-// 제네릭 메소드 예시
-public static &lt;T&gt; void printArray(T[] inputArray) {
-    for (T element : inputArray) {
-        System.out.print(element + " ");
-    }
-    System.out.println();
-}
-
-
-  위 예시에서 ‘Box’ 클래스는 타입 매개변수 ‘T’ 를 사용하여 다양한 타입을 저장하고 반환할 수 있는 범용 컨테이너로 사용됩니다.
-  ‘printArray’ 메소드는 어떤 배열 타입도 받아들일 수 있으며, 그 요소들을 출력합니다.
-
-
-
-
-2️⃣ Object 클래스.
-자바 프로그래밍에서 ‘Object’ 클래스는 자바의 클래스 계층 구조에서 가장 상위에 위치하는 클래스입니다.
-
-모든 자바 클래스는 직접적이거나 간접적으로 ‘Object’ 클래스를 상속받습니다.
-
-이는 ‘Object’ 클래스가 자바에서 모든 클래스의 근본(base)이라는 의미 입니다.
-
-‘Object’ 클래스는 자바의 ‘java.lang’ 패키지에 포함되어 있으며, 모든 객체에 공통적으로 필요한 메서드를 제공합니다.
-
-Object 클래스의 의의.
-‘Object’ 클래스의 메서드들은 자바의 모든 클래스에 기본적인 기능을 제공합니다.
-
-이로 인해, 개발자는 어떤 클래스를 만들 때도 이러한 기본적인 메서드들을 새로 작성하지 않고도, 필요에 따라 이를 상속받아 확장하거나 재정의할 수 있습니다.
-
-‘Object’ 클래스는 자바의 모든 클래스와 객체에 공통적인 근복적인 메커니즘을 제공하는 중추적인 역할을 합니다.
-
-
-
-3️⃣ Object 클래스의 hashCode() 메소드.
-자바의 ‘Object’ 클래스에서 ‘hashCode()’ 메소드는 객체의 메모리 주소를 기반으로 계산된 정수 값을 반환하는 메소드입니다.
-
-이 메소드는 객체의 해시 코드를 제공하며, 해시 기반 컬렉션(예: ‘HashMap’, ‘HashSet’, ‘Hashtable’ 등)에서 객체를 효율적으로 관리하기 위해 사용됩니다.
-
-hashCode() 메소드의 주요 용도
-
-  1. 해시 테이블 사용 : ‘hashCode()’ 는 특히 해시 테이블을 사용하는 자료 구조에서 중요합니다.
-    
-      객체의 해시 코드를 사용하여, 해당 객체가 저장되거나 검색될 해시 버킷을 결정합니다.
-        
-          이로 인해 데이터의 삽입, 검색, 삭제 작업이 빠르게 수행될 수 있습니다.
-        
-      
-    
-  
-  2. 객체의 동등성의 빠른 검증 : ‘hashCode()’ 메소드는 ‘equals()’ 메소드와 함께 사용되어 객체의 동등성을 검사합니다.
-    
-      두 객체가 같다면 반드시 같은 해시 코드를 반환해야 합니다.
-        
-          따라서, 해시 코드가 다른 두 객체는 결코 같을 수 없으므로, ‘equals()’ 호출 전에 해시 코드를 먼저 확인함으로써 불필요한 비교를 줄일 수 있습니다.
-        
-      
-    
-  
-
-
-
-
-4️⃣ Object 클래스의 equals() 메소드.
-자바 프로그래밍에서 ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체가 동등한지 비교하는데 사용됩니다.
-
-이 메소드는 ‘Object’ 클래스에서 모든 클래스로 상속되며, 특히 객체의 동등성을 판단할 때 중요한 역할을 합니다.
-
-기본적으로, ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체의 참조가 같은지 확인합니다.
-
-즉, 두 객체가 메모리상에서 같은 위치를 가리키는지 검사합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-13-CollectionFramework.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -3085,6 +2908,184 @@ hashCode() 메소드의 주요 용도
 
 4.4 📝 정리.
 ‘Map’ 인터페이스는 다양한 애플리케이션에서 설정, 프로파일, 사용자 세션 등의 데이터를 키와 값의 형태로 관리할 때 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html"><h1 class="title_post">☕️[Java] HashMap에 key 값은 항상 int 여야 할까요?</h1></a>
+                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="txt_post">
+                            🤔 HashMap에 key 값은 항상 int 여야 할까요?
+
+강의와 예제 코드를 열심히 보고 따라서 타이핑하고 있던 중 “문뜩!” 떠올랐습니다. 🤩
+
+‘HashMap에 key 값은 항상 int 여야 할까요?🤔’
+
+그래서 구글링과 챗 지피티 그리고 Java의 정석 도서를 살펴본 후 이 글을 쓰게 되었습니다 :)
+
+
+
+🙅‍♂️ 대답은 “아니오!” 입니다.
+
+자바 프로그래밍에서 ‘HashMap’ 의 키 값은 ‘int’ 형일 필요는 없다고 합니다.
+
+‘HashMap’ 은 키로서 어떠한 객체도 사용할 수 있으며, 기는 자바의 ‘제네릭’ 을 통해 다양한 유형의 객체를 키로 사용할 수 있게 해준다고 합니다.
+(오! “제네릭” 은 아직 안배웠지만 🥲 Swift에서 봐서 비슷한 느낌 같은데?!)
+
+키 객체는 ‘Object’ 클래스의 ‘hashCode()’ 메소드와 ‘equals()’ 메소드를 적절히 구현해야 합니다.
+(‘Object’ 클래스는 무엇이고,  ‘hashCode()’ 메소드와 ‘equals()’ 메소드는 무엇인가?!! 🤪)
+
+이는 ‘HashMap’ 이 키의 해시 코드를 사용하여 데이터를 저장하고 검색하기 때문입니다.
+(도통 무슨 소리인지 몰라서 아래 “제네릭”. “Object 클래스”, “hashCode()”, “equals()”를 정리했어요 ㅎㅎ)
+
+‘HashMap’ 을 사용할 때, 키로 사용되는 객체의 ‘hashCode()’ 메소드가 효율적이고 일관성 있는 값을 반환해야 합니다.
+또한, ‘equalse()’ 메소드는 객체의 동등성을 정확하게 판단할 수 있어야 합니다.
+이 두 메소드의 구현이 적절히 이루어져야 ‘HashMap’ 이 키의 중복 없이 정확하게 데이터를 관리할 수 있습니다.
+
+예시 - String 객체를 키로 사용하는 ‘HashMap’
+import java.util.HashMap;
+
+public class Example {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("one", 1);
+        map.put("two", 2);
+        map.put("three", 3);
+        
+        System.out.println(map.get("two")); // 출력: 2
+    }
+}
+
+
+
+  위 예시에서 보듯, ‘String’ 외에도 사용자가 정의한 어떠한 객체든 ‘hashCode()’ 와 ‘equals()’ 가 적절히 구현되어 있다면 키로 사용할 수 있습니다.
+    
+      따라서 ‘int’ 만을 키로 사용해야 하는 것은 아닙니다.
+    
+  
+
+
+
+
+1️⃣ 제네릭(Generic).
+자바에서 ‘제네릭(Generic)’ 은 클래스, 인터페이스, 메소드를 정의할 때 타입(Type)을 하나의 매개변수처럼 취급하여, 다양한 데이터 타입을 사용할 수 있도록 하는 프로그래밍 기법입니다.
+
+제네릭을 사용하면 컴파일 시점에 타입 안정성을 제공하고, 타입 캐스팅을 줄여 코드를 더 간결하고 읽기 쉽게 만들 수 있습니다.
+
+제네릭 기본 문법.
+제네릭은 타입 매개변수를 사용하여 구현됩니다.
+
+타입 매개변수는 보통 한 글자로 표현되며, 일반적으로 다음과 같은 문자를 사용합니다.
+
+
+  ‘E’ : Element(컬렉션에서 사용되는 요소)
+  ‘K’ : Key(키)
+  ‘V’ : Value(값)
+  ‘T’ : Type(일반적인 타입)
+  ‘S’, ‘U’, ‘V’ 등 - 두 번째, 세 번째, 네 번째 타입을 나타내기 위해 사용
+
+
+예시: 제네릭을 사용한 클래스와 메소드
+// 제네릭 클래스 예시
+public class Box&lt;T&gt; {
+    private T t; // T는 이 클래스가 다루는 객체의 타입을 매개변수화합니다.
+    
+    public void set(T t) {
+        this.t = t;
+    }
+    
+    public T get() {
+        return t;
+    }
+}
+
+// 제네릭 메소드 예시
+public static &lt;T&gt; void printArray(T[] inputArray) {
+    for (T element : inputArray) {
+        System.out.print(element + " ");
+    }
+    System.out.println();
+}
+
+
+  위 예시에서 ‘Box’ 클래스는 타입 매개변수 ‘T’ 를 사용하여 다양한 타입을 저장하고 반환할 수 있는 범용 컨테이너로 사용됩니다.
+  ‘printArray’ 메소드는 어떤 배열 타입도 받아들일 수 있으며, 그 요소들을 출력합니다.
+
+
+
+
+2️⃣ Object 클래스.
+자바 프로그래밍에서 ‘Object’ 클래스는 자바의 클래스 계층 구조에서 가장 상위에 위치하는 클래스입니다.
+
+모든 자바 클래스는 직접적이거나 간접적으로 ‘Object’ 클래스를 상속받습니다.
+
+이는 ‘Object’ 클래스가 자바에서 모든 클래스의 근본(base)이라는 의미 입니다.
+
+‘Object’ 클래스는 자바의 ‘java.lang’ 패키지에 포함되어 있으며, 모든 객체에 공통적으로 필요한 메서드를 제공합니다.
+
+Object 클래스의 의의.
+‘Object’ 클래스의 메서드들은 자바의 모든 클래스에 기본적인 기능을 제공합니다.
+
+이로 인해, 개발자는 어떤 클래스를 만들 때도 이러한 기본적인 메서드들을 새로 작성하지 않고도, 필요에 따라 이를 상속받아 확장하거나 재정의할 수 있습니다.
+
+‘Object’ 클래스는 자바의 모든 클래스와 객체에 공통적인 근복적인 메커니즘을 제공하는 중추적인 역할을 합니다.
+
+
+
+3️⃣ Object 클래스의 hashCode() 메소드.
+자바의 ‘Object’ 클래스에서 ‘hashCode()’ 메소드는 객체의 메모리 주소를 기반으로 계산된 정수 값을 반환하는 메소드입니다.
+
+이 메소드는 객체의 해시 코드를 제공하며, 해시 기반 컬렉션(예: ‘HashMap’, ‘HashSet’, ‘Hashtable’ 등)에서 객체를 효율적으로 관리하기 위해 사용됩니다.
+
+hashCode() 메소드의 주요 용도
+
+  1. 해시 테이블 사용 : ‘hashCode()’ 는 특히 해시 테이블을 사용하는 자료 구조에서 중요합니다.
+    
+      객체의 해시 코드를 사용하여, 해당 객체가 저장되거나 검색될 해시 버킷을 결정합니다.
+        
+          이로 인해 데이터의 삽입, 검색, 삭제 작업이 빠르게 수행될 수 있습니다.
+        
+      
+    
+  
+  2. 객체의 동등성의 빠른 검증 : ‘hashCode()’ 메소드는 ‘equals()’ 메소드와 함께 사용되어 객체의 동등성을 검사합니다.
+    
+      두 객체가 같다면 반드시 같은 해시 코드를 반환해야 합니다.
+        
+          따라서, 해시 코드가 다른 두 객체는 결코 같을 수 없으므로, ‘equals()’ 호출 전에 해시 코드를 먼저 확인함으로써 불필요한 비교를 줄일 수 있습니다.
+        
+      
+    
+  
+
+
+
+
+4️⃣ Object 클래스의 equals() 메소드.
+자바 프로그래밍에서 ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체가 동등한지 비교하는데 사용됩니다.
+
+이 메소드는 ‘Object’ 클래스에서 모든 클래스로 상속되며, 특히 객체의 동등성을 판단할 때 중요한 역할을 합니다.
+
+기본적으로, ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체의 참조가 같은지 확인합니다.
+
+즉, 두 객체가 메모리상에서 같은 위치를 가리키는지 검사합니다.
 
 
                         </a>
@@ -12076,6 +12077,17 @@ JVM의 구성 요소.
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240726_AWS_JAVA_INSTALL.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-07-26"
+        });
+    
+
+        posts.push({
+            'title'    : "💾[Database] MySQL DB에 한글 삽입.",
+            'path'     : "Backend > DB",
+            'type'     : "post",
+            'tags'     : "Database, MySQL",
+            'url'      : "/Backend/DB/2024-07-26-korean-mysql.html",
+            'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-07-26"
         });
     

@@ -551,6 +551,7 @@
             
             
             
+            
 
     
     
@@ -10546,52 +10547,239 @@ LIKE
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-03-29-WHERE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-29-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/SQL/2024-03-29-WHERE.html"><h1 class="title_post">💉[SQL] WHERE란?</h1></a>
-                        <a href="/2024/SQL/2024-03-29-WHERE.html" class="txt_post">
-                            WHERE ?
+                        <a href="/2024/Java/2024-03-29-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
+                        <a href="/2024/Java/2024-03-29-toString.html" class="txt_post">
+                            toString()
+Object.toString() 메서드는 객체의 정보를 문자열 형태로 제공합니다.
 
-SQL에서 ‘WHERE’ 절은 데이터베이스에서 특정 조건을 만족하는 행(row)을 검색할 때 사용됩니다.
-
-  기본적으로 ‘SELECT’, ‘UPDATE’, ‘DELETE’ 문에서 데이터를 필터링하기 위해 사용되며, 이를 통해 반환되거나 영향을 받는 데이터의 범위를 좁힐 수 있습니다.
-
-
-WHERE 절의 기본 구조
-SELECT column1, column2, ...
-FROM table_name
-WHERE conditionl
+  그래서 디버깅과 로깅에 유용하게 사용됩니다.
+  이 메서드는 Object 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
 
 
-  ‘SELECT’ 문에서는 특정 조건을 만족하는 행을 선택해 반환합니다.
-  ‘UPDATE’ 문에서는 특정 조건을 만족하는 행에 대해서만 업데이트를 수행합니다.
-  ‘DELETE’ 문에서는 특정 조건을 만족하는 행을 삭제합니다.
+코드로 확인해봅시다.
+
+package lang.object.tostring;
+
+public class ToStringMain1 {
+
+  public static void main(String[] args) {
+    Object object = new Object();
+    String string = object.toString();
+
+    //toString() 반환값 출력
+    System.out.println(string);
+
+    // object 직접 출력
+    System.out.println(object);
+  }
+}
 
 
-조건의 사용
-‘WHERE’ 절에서 사용할 수 있는 조건에는 다음과 같은 것들이 있습니다.
+실행 결과
+java.lang.Object@a09ee92
+java.lang.Object@a09ee92
 
 
-  비교 연산자(’=’, ‘!=’, ‘&lt;’, ‘&gt;’, ‘&lt;=’, ‘&gt;=’)
-  논리 연산자(‘AND’, ‘OR’, ‘NOT’)
-  범위 검색(‘BETWEEN’)
-  목록에서 선택(‘IN’)
-  패턴 매칭(‘LIKE’)
-  NULL 값 검사(‘IS NULL’)
+Object.toString()
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
 
 
-예시
-예를 들어, 이름이 ‘Jhon’인 사람의 정보를 찾고 싶다면 다음과 같이 쿼리를 작성할 수 있습니다.
-SELECT * FROM users WHERE name = 'Jhon';
+  Object가 제공하는 toString() 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다
 
 
-또는 나이가 18세 이상인 모든 사용자를 찾고 싶다면 다음과 같이 작성할 수 있습니다.
-SELECT * FROM users WHERE age &gt;= 18;
+println()과 toString()
+그런데 toString()의 결과를 출력한 코드와 object를 println()에 직접 출력한 코드의 결과가 완전히 같습니다.
+String string = object.toString();
+
+//toString() 반환값 출력
+System.out.println(string);
+
+// object 직접 출력
+System.out.println(object);
 
 
-‘WHERE’ 절을 사용함으로써, 큰 데이터베이스 내에서도 필요한 데이터를 효율적으로 찾아낼 수 있습니다.
+System.out.println() 메서드는 사실 내부에서 toString()을 호출합니다.
+Object 타입(자식 포함)이 println()에 인수로 전달되면 내부에서 obj.toString() 메서드를 호출해서 결과를 출력합니다.
+public void println(Object x) {
+    String s = String.valueOf(x);
+    // ...
+}
+
+
+public static String valueOf(Object obj) {
+    return (obj == null) ? "null" : obj.toString();
+}
+
+
+따라서 println()을 사용할 때, toString()을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
+
+toString() 오버라이딩.
+Object.toString() 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
+
+  그래서 보통 toString()을 재정의(오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
+
+
+
+
+package lang.object.tostring;
+
+public class Car {
+
+  private String carName;
+
+  public Car(String carName) {
+    this.carName = carName;
+  }
+}
+
+
+package lang.object.tostring;
+
+public class Dog {
+
+  private String dogName;
+  private int age;
+
+  public Dog(String dogName, int age) {
+    this.dogName = dogName;
+    this.age = age;
+  }
+
+  @Override
+  public String toString() {
+    return "Dog{" +
+        "dogName='" + dogName + '\'' +
+        ", age=" + age +
+        '}';
+  }
+}
+
+
+package lang.object.tostring;
+
+public class ObjectPrinter {
+  public static void print(Object obj) {
+    String string = "객체 정보 출력: " + obj.toString();
+    System.out.println(string);
+  }
+}
+
+
+package lang.object.tostring;
+
+public class ToStringMain2 {
+
+  public static void main(String[] args) {
+    Car car = new Car("Model Y");
+    Dog dog1 = new Dog("멍멍이1", 2);
+    Dog dog2 = new Dog("멍멍이2", 5);
+
+    System.out.println("1. 단순 toString 호출");
+    System.out.println(car.toString());
+    System.out.println(dog1.toString());
+    System.out.println(dog2.toString());
+
+    System.out.println("2. println 내부에서 toString 호출");
+    System.out.println(car);
+    System.out.println(dog1);
+    System.out.println(dog2);
+
+    System.out.println("3. Object 다용성 활용");
+    ObjectPrinter.print(car);
+    ObjectPrinter.print(dog1);
+    ObjectPrinter.print(dog2);
+  }
+}
+
+
+실행 결과
+1. 단순 toString 호출
+lang.object.tostring.Car@452b3a41
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+
+2. println 내부에서 toString 호출
+lang.object.tostring.Car@452b3a41
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+
+3. Object 다용성 활용
+객체 정보 출력: lang.object.tostring.Car@452b3a41
+객체 정보 출력: Dog{dogName='멍멍이1', age=2}
+객체 정보 출력: Dog{dogName='멍멍이2', age=5}
+
+
+Car 인스턴스는 toString()을 재정의 하지 않습니다.
+
+  따라서 Object가 제공하는 기본 toString() 메서드를 사용합니다.
+
+
+Dog 인스턴스는 toString()을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
+
+
+
+
+  Object obj의 인수로 car(Car)가 전달됩니다.
+  메서드 내부에서 obj.toString()을 호출합니다.
+  obj는 Object 타입입니다.
+    
+      따라서 Object에 있는 toString()을 찾습니다.
+        
+          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. 재정의된 메서드가 없습니다.
+            
+              Object.toString()을 실행합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+ObjectPrinter.print(dog) // main에서 호출
+void print(Object obj = dog(Dog)) { // 인수 전달
+    String string = "객체 정보 출력: " + obj.toString();
+}
+
+
+  Object obj의 인수로 dog(Dog) 가 전달 됩니다.
+  메서드 내부에서 obj.toString()을 호출합니다.
+  obj는 Object 타입입니다.
+    
+      따라서 Object에 있는 toString()을 찾습니다.
+        
+          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. Dog에 재정의된 메서드가 있습니다.
+            
+              Dog.toString()을 실행합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  참고 - 객체의 참조값 직접 출력
+toString()은 기본으로 객체의 참조값을 출력합니다.
+그런데 toString()이나 hashCode()를 재정의하면 객체의 참조값을 출력할 수 없습니다.
+이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
+  String refValue = Integer.toHexString(System.identityHashCode(dog1));
+System.out.println("refValue = " + refValue)
+  
+
+  실행 결과
+  refValue = 72ea2f77
+  
+
 
                         </a>
                         <div class="info-post">
@@ -10896,239 +11084,52 @@ Object가 없다면?
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-29-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/SQL/2024-03-29-WHERE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-29-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
-                        <a href="/2024/Java/2024-03-29-toString.html" class="txt_post">
-                            toString()
-Object.toString() 메서드는 객체의 정보를 문자열 형태로 제공합니다.
+                        <a href="/2024/SQL/2024-03-29-WHERE.html"><h1 class="title_post">💉[SQL] WHERE란?</h1></a>
+                        <a href="/2024/SQL/2024-03-29-WHERE.html" class="txt_post">
+                            WHERE ?
 
-  그래서 디버깅과 로깅에 유용하게 사용됩니다.
-  이 메서드는 Object 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
+SQL에서 ‘WHERE’ 절은 데이터베이스에서 특정 조건을 만족하는 행(row)을 검색할 때 사용됩니다.
 
+  기본적으로 ‘SELECT’, ‘UPDATE’, ‘DELETE’ 문에서 데이터를 필터링하기 위해 사용되며, 이를 통해 반환되거나 영향을 받는 데이터의 범위를 좁힐 수 있습니다.
 
-코드로 확인해봅시다.
 
-package lang.object.tostring;
+WHERE 절의 기본 구조
+SELECT column1, column2, ...
+FROM table_name
+WHERE conditionl
 
-public class ToStringMain1 {
 
-  public static void main(String[] args) {
-    Object object = new Object();
-    String string = object.toString();
+  ‘SELECT’ 문에서는 특정 조건을 만족하는 행을 선택해 반환합니다.
+  ‘UPDATE’ 문에서는 특정 조건을 만족하는 행에 대해서만 업데이트를 수행합니다.
+  ‘DELETE’ 문에서는 특정 조건을 만족하는 행을 삭제합니다.
 
-    //toString() 반환값 출력
-    System.out.println(string);
 
-    // object 직접 출력
-    System.out.println(object);
-  }
-}
+조건의 사용
+‘WHERE’ 절에서 사용할 수 있는 조건에는 다음과 같은 것들이 있습니다.
 
 
-실행 결과
-java.lang.Object@a09ee92
-java.lang.Object@a09ee92
+  비교 연산자(’=’, ‘!=’, ‘&lt;’, ‘&gt;’, ‘&lt;=’, ‘&gt;=’)
+  논리 연산자(‘AND’, ‘OR’, ‘NOT’)
+  범위 검색(‘BETWEEN’)
+  목록에서 선택(‘IN’)
+  패턴 매칭(‘LIKE’)
+  NULL 값 검사(‘IS NULL’)
 
 
-Object.toString()
-public String toString() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode());
-}
+예시
+예를 들어, 이름이 ‘Jhon’인 사람의 정보를 찾고 싶다면 다음과 같이 쿼리를 작성할 수 있습니다.
+SELECT * FROM users WHERE name = 'Jhon';
 
 
-  Object가 제공하는 toString() 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다
+또는 나이가 18세 이상인 모든 사용자를 찾고 싶다면 다음과 같이 작성할 수 있습니다.
+SELECT * FROM users WHERE age &gt;= 18;
 
 
-println()과 toString()
-그런데 toString()의 결과를 출력한 코드와 object를 println()에 직접 출력한 코드의 결과가 완전히 같습니다.
-String string = object.toString();
-
-//toString() 반환값 출력
-System.out.println(string);
-
-// object 직접 출력
-System.out.println(object);
-
-
-System.out.println() 메서드는 사실 내부에서 toString()을 호출합니다.
-Object 타입(자식 포함)이 println()에 인수로 전달되면 내부에서 obj.toString() 메서드를 호출해서 결과를 출력합니다.
-public void println(Object x) {
-    String s = String.valueOf(x);
-    // ...
-}
-
-
-public static String valueOf(Object obj) {
-    return (obj == null) ? "null" : obj.toString();
-}
-
-
-따라서 println()을 사용할 때, toString()을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
-
-toString() 오버라이딩.
-Object.toString() 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
-
-  그래서 보통 toString()을 재정의(오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
-
-
-
-
-package lang.object.tostring;
-
-public class Car {
-
-  private String carName;
-
-  public Car(String carName) {
-    this.carName = carName;
-  }
-}
-
-
-package lang.object.tostring;
-
-public class Dog {
-
-  private String dogName;
-  private int age;
-
-  public Dog(String dogName, int age) {
-    this.dogName = dogName;
-    this.age = age;
-  }
-
-  @Override
-  public String toString() {
-    return "Dog{" +
-        "dogName='" + dogName + '\'' +
-        ", age=" + age +
-        '}';
-  }
-}
-
-
-package lang.object.tostring;
-
-public class ObjectPrinter {
-  public static void print(Object obj) {
-    String string = "객체 정보 출력: " + obj.toString();
-    System.out.println(string);
-  }
-}
-
-
-package lang.object.tostring;
-
-public class ToStringMain2 {
-
-  public static void main(String[] args) {
-    Car car = new Car("Model Y");
-    Dog dog1 = new Dog("멍멍이1", 2);
-    Dog dog2 = new Dog("멍멍이2", 5);
-
-    System.out.println("1. 단순 toString 호출");
-    System.out.println(car.toString());
-    System.out.println(dog1.toString());
-    System.out.println(dog2.toString());
-
-    System.out.println("2. println 내부에서 toString 호출");
-    System.out.println(car);
-    System.out.println(dog1);
-    System.out.println(dog2);
-
-    System.out.println("3. Object 다용성 활용");
-    ObjectPrinter.print(car);
-    ObjectPrinter.print(dog1);
-    ObjectPrinter.print(dog2);
-  }
-}
-
-
-실행 결과
-1. 단순 toString 호출
-lang.object.tostring.Car@452b3a41
-Dog{dogName='멍멍이1', age=2}
-Dog{dogName='멍멍이2', age=5}
-
-2. println 내부에서 toString 호출
-lang.object.tostring.Car@452b3a41
-Dog{dogName='멍멍이1', age=2}
-Dog{dogName='멍멍이2', age=5}
-
-3. Object 다용성 활용
-객체 정보 출력: lang.object.tostring.Car@452b3a41
-객체 정보 출력: Dog{dogName='멍멍이1', age=2}
-객체 정보 출력: Dog{dogName='멍멍이2', age=5}
-
-
-Car 인스턴스는 toString()을 재정의 하지 않습니다.
-
-  따라서 Object가 제공하는 기본 toString() 메서드를 사용합니다.
-
-
-Dog 인스턴스는 toString()을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
-
-
-
-
-  Object obj의 인수로 car(Car)가 전달됩니다.
-  메서드 내부에서 obj.toString()을 호출합니다.
-  obj는 Object 타입입니다.
-    
-      따라서 Object에 있는 toString()을 찾습니다.
-        
-          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. 재정의된 메서드가 없습니다.
-            
-              Object.toString()을 실행합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-ObjectPrinter.print(dog) // main에서 호출
-void print(Object obj = dog(Dog)) { // 인수 전달
-    String string = "객체 정보 출력: " + obj.toString();
-}
-
-
-  Object obj의 인수로 dog(Dog) 가 전달 됩니다.
-  메서드 내부에서 obj.toString()을 호출합니다.
-  obj는 Object 타입입니다.
-    
-      따라서 Object에 있는 toString()을 찾습니다.
-        
-          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. Dog에 재정의된 메서드가 있습니다.
-            
-              Dog.toString()을 실행합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  참고 - 객체의 참조값 직접 출력
-toString()은 기본으로 객체의 참조값을 출력합니다.
-그런데 toString()이나 hashCode()를 재정의하면 객체의 참조값을 출력할 수 없습니다.
-이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
-  String refValue = Integer.toHexString(System.identityHashCode(dog1));
-System.out.println("refValue = " + refValue)
-  
-
-  실행 결과
-  refValue = 72ea2f77
-  
-
+‘WHERE’ 절을 사용함으로써, 큰 데이터베이스 내에서도 필요한 데이터를 효율적으로 찾아낼 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -34902,6 +34903,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Post/2024-07-28-ipAndport.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-07-28"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] attribute의 의미와 역할",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-07-31-attribute.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-07-31"
         });
     
 

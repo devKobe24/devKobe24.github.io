@@ -552,6 +552,7 @@
             
             
             
+            
 
     
     
@@ -966,6 +967,69 @@ User user = (User) request.getSession().getAttribute("user");
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-07-31-EntityListeners.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-07-31-EntityListeners.html"><h1 class="title_post">☕️[Java] @EntityListeners 어노테이션.</h1></a>
+                        <a href="/Backend/Java/2024-07-31-EntityListeners.html" class="txt_post">
+                            ☕️[Java] @EntityListeners 어노테이션.
+
+1️⃣ 사용 방법.
+
+
+  @EntityListeners 어노테이션은 엔티티 클래스 또는 매핑된 슈퍼클래스에서 사용할 수 있으며, 하나 이상의 리스너 클래스를 지정할 수 있습니다.
+    
+      이 리스너 클래스들은 앞서 언급한 이벤트를 처리할 메소드들을 포함하고 있어야 합니다.
+    
+  
+
+
+import javax.persistence.EntityListeners;
+import javax.persistence.PostPersist;
+
+@EntityListeners(MyEntityListner.class)
+public class MyEntity {
+    // 엔티티 필드와 메서드
+}
+
+public class MyEntityListner {
+    @PostPersist
+    public void afterPersist(Object entity) {
+        System.out.println("Entity has been persisted: " + entity);
+    }
+}
+
+
+2️⃣ 사용 사례.
+
+  엔티티 리스너는 로깅, 유효성 검사, 보안 검사, 비즈니스 로직 실행 등 다양한 목적으로 사용할 수 있습니다.
+    
+      
+        예를 들어, 사용자 계정의 엔티티가 데이터베이스에 저장될 때 비밀번호 강도를 자동으로 검증하거나, 엔티티가 업데이트 될 때 특정 필드의 변경을 추적할 수 있습니다.
+      
+    
+  
+
+
+이처럼 @EntityListeners는 JPA 엔티티의 생명주기에 자동으로 반응하는 메소드를 구현함으로써, 엔티티와 관련된 비즈니스 로직을 분리하고 관리하는 데 큰 도움을 줍니다.
 
                         </a>
                         <div class="info-post">
@@ -2753,34 +2817,6 @@ Java의 Primitive Type(기본형)은 총 8가지가 있습니다.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
-                            
-  Studing English through Newsletters
-  Metacognition JAVA의 정석 - 기본형 크기와 특징
-  [수학] 명제와 증명 학습
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/ENG/240616-ENG-STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -2875,6 +2911,34 @@ Java의 Primitive Type(기본형)은 총 8가지가 있습니다.
 
   “Rust에서 RESTful API를 구축해 봅시다”
   📝Reference
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
+                            
+  Studing English through Newsletters
+  Metacognition JAVA의 정석 - 기본형 크기와 특징
+  [수학] 명제와 증명 학습
 
 
                         </a>
@@ -5730,6 +5794,32 @@ Is deque empty? false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
+                            
+  IntStream
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-06-03-IntStream.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -5986,32 +6076,6 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
 📚 참고 문헌.
 
   Java Docs - IntStream
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
-                            
-  IntStream
 
 
                         </a>
@@ -12138,16 +12202,191 @@ hashCode() 메소드의 주요 용도
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-12-TIL.html" class="txt_post">
-                            
-  입출력(2)
-  예외 처리
+                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html"><h1 class="title_post">☕️[Java] 입출력(2)</h1></a>
+                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="txt_post">
+                            1️⃣ 입출력(2)
 
+1. 파일 출력.
+자바 프로그래밍에서 파일 출력은 프로그램이 데이터를 쓰는 과정을 말합니다.
+이 과정을 통해 프로그램은 실행 결과를 저장하거나, 사용자가 입력한 정보를 파일에 기록하고, 다른 프로그램이나 나중에 프로그램 자체가 다시 사용할 수 있는 형태로 데이터를 출력할 수 있습니다.
+
+2. 파일 출력을 수행하기 위한 기본 방법들.
+
+  1. FileOutputStream 사용
+    
+      ‘FileOutputStream’ 클래스는 바이트 단위의 출력을 파일에 직접 쓸 때 사용됩니다.
+      이 클래스를 사용하면 이미지, 비디오 파일, 이진 데이터 등을 파일로 저장할 수 있습니다.
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+    
+  
+
+
+public class FileOutputExample {
+    public static void main(String[] args) {
+        String data = “Hello, this is a test.”;
+        try (FileOutputStream out = new FileOutputStream(“output.txt”)) {
+            out.write(data.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **2. PrintWriter 사용**
+    - **'PrintWriter'** 는 문자 데이터를 출력할 때 사용됩니다.
+    - 이 클래스는 파일에 텍스트를 쓸 때 편리하며, 자동 플러싱 기능, 줄 단위 출력 등의 메소드를 제공합니다.
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class PrintWriteExample {
+    public static void main(String[] args) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
+            writer.println("Hello, this is a test.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. FileWriter 사용
+    
+      ‘FileWriter’ 는 자바에서 파일에 텍스트 데이터를 쓰기 위한 간편한 방법 중 하나입니다.
+      이 클래스는 내부적으로 문자 데이터를 파일에 쓸 수 있도록 ‘OutputStreamWriter’ 를 사용하여 바이트 스트림을 문자 스트림으로 변환합니다.
+      ‘FileWriter’ 는 텍스트 파일을 쉽게 작성할 수 있도록 해주며, 생성자를 통해 다양한 방식으로 파일을 열 수 있습니다.
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+    
+  
+
+
+public class FileWriterExample {
+    pulbic static void main(String[] args) {
+        try (FileWriter writer = new FileWriter(“output.txt”, true)) {
+            writer.write(“Hello, this is a test.”);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **4. BufferedWriter 사용**
+    - **'BufferedWrite'** 는 버퍼링을 통해 효율적으로 파일에 문자 데이터를 쓸 수 있도록 합니다.
+    - **'FileWriter'** 와 함께 사용되어, 더 큰 데이터를 처리할 때 성능을 개선합니다.
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterExample {
+    public static void main(String[] args) {
+        String content = "Hello, this is a test.";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+2. 파일 입력.
+
+자바 프로그래밍에서 파일 입력은 프로그램이 파일로부터 데이터를 읽어들이는 과정을 말합니다.
+
+이 데이터는 텍스트나 바이너리 형태일 수 있으며, 파일에서 데이터를 읽어 프로그램 내에서 사용할 수 있도록 만드는 것이 목적입니다.
+
+파일 입력을 위해 자바는 다양한 입출력 클래스를 제공합니다.
+
+2.1 주로 사용되는 파일 입력 방법.
+
+
+  1. FileInputStream 사용
+    
+      ‘FileInputStream’ 은 바이트 단위로 파일에서 데이터를 읽는 데 사용됩니다.
+      이 클래스는 이미지, 비디오 파일, 실행 파일등의 이진 데이터 처리에 주로 사용됩니다.
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+    
+  
+
+
+public class FileInputStreamExample {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream(“input.dat”)) {
+            int content;
+            while ((content = fis.read()) != -1) {
+                // content 변수에 한 바이트씩 읽어들인 데이터를 저장
+                System.out.print((char) content);
+            }
+        } catch (IOExecption e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **2. BufferedRead** 와 **FileReader 사용**
+    - **'BufferedReader'** 와 **'FileReader'** 는 텍스트 데이터를 효과적으로 읽기 위해 함께 사용됩니다.
+    - **'FileReader'** 는 파일에서 문자 데이터를 읽어들이며, **'BufferedReader'** 는 버퍼링을 통해 읽기 성능을 향상 시킵니다.
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        try (BufferedReader br new BufferedReader(new FileReader("input.txt"))) {
+            String line;
+            while ((line = br.readline()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. Scanner 사용
+    
+      ‘Scanner’ 클래스는 텍스트 파일을 읽을 때 유용하며, 특히 토큰화(tokenizing)된 데이터를 처리할 때 편리합니다.
+      ‘Scanner’ 는 정규식을 사용하여 입력을 구분자로 분리하고, 다양한 타입으로 데이터를 읽어들일 수 있습니다.
+```java
+import java.io.File;
+import java.util.Scanner;
+    
+  
+
+
+public class ScannerExample {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(new File(“input.txt”))) {
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+2.2 📝 정리.
+이렇게 다양한 방법을 통해 파일로부터 데이터를 읽을 수 있으며, 각 방법은 사용하는 데이터 타입과 처리할 데이터의 양에 따라 선택할 수 있습니다.
+파일에서 데이터를 읽는 것은 데이터를 처리하거나, 설정 정보를 불러오거나, 사용자 데이터를 읽는 등 다양한 목적으로 활용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -12393,191 +12632,16 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html"><h1 class="title_post">☕️[Java] 입출력(2)</h1></a>
-                        <a href="/Backend/Java/2024-05-12-Input-Ouput-2.html" class="txt_post">
-                            1️⃣ 입출력(2)
+                        <a href="/Backend/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-12-TIL.html" class="txt_post">
+                            
+  입출력(2)
+  예외 처리
 
-1. 파일 출력.
-자바 프로그래밍에서 파일 출력은 프로그램이 데이터를 쓰는 과정을 말합니다.
-이 과정을 통해 프로그램은 실행 결과를 저장하거나, 사용자가 입력한 정보를 파일에 기록하고, 다른 프로그램이나 나중에 프로그램 자체가 다시 사용할 수 있는 형태로 데이터를 출력할 수 있습니다.
-
-2. 파일 출력을 수행하기 위한 기본 방법들.
-
-  1. FileOutputStream 사용
-    
-      ‘FileOutputStream’ 클래스는 바이트 단위의 출력을 파일에 직접 쓸 때 사용됩니다.
-      이 클래스를 사용하면 이미지, 비디오 파일, 이진 데이터 등을 파일로 저장할 수 있습니다.
-```java
-import java.io.FileOutputStream;
-import java.io.IOException;
-    
-  
-
-
-public class FileOutputExample {
-    public static void main(String[] args) {
-        String data = “Hello, this is a test.”;
-        try (FileOutputStream out = new FileOutputStream(“output.txt”)) {
-            out.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **2. PrintWriter 사용**
-    - **'PrintWriter'** 는 문자 데이터를 출력할 때 사용됩니다.
-    - 이 클래스는 파일에 텍스트를 쓸 때 편리하며, 자동 플러싱 기능, 줄 단위 출력 등의 메소드를 제공합니다.
-```java
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-public class PrintWriteExample {
-    public static void main(String[] args) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
-            writer.println("Hello, this is a test.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. FileWriter 사용
-    
-      ‘FileWriter’ 는 자바에서 파일에 텍스트 데이터를 쓰기 위한 간편한 방법 중 하나입니다.
-      이 클래스는 내부적으로 문자 데이터를 파일에 쓸 수 있도록 ‘OutputStreamWriter’ 를 사용하여 바이트 스트림을 문자 스트림으로 변환합니다.
-      ‘FileWriter’ 는 텍스트 파일을 쉽게 작성할 수 있도록 해주며, 생성자를 통해 다양한 방식으로 파일을 열 수 있습니다.
-```java
-import java.io.FileWriter;
-import java.io.IOException;
-    
-  
-
-
-public class FileWriterExample {
-    pulbic static void main(String[] args) {
-        try (FileWriter writer = new FileWriter(“output.txt”, true)) {
-            writer.write(“Hello, this is a test.”);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **4. BufferedWriter 사용**
-    - **'BufferedWrite'** 는 버퍼링을 통해 효율적으로 파일에 문자 데이터를 쓸 수 있도록 합니다.
-    - **'FileWriter'** 와 함께 사용되어, 더 큰 데이터를 처리할 때 성능을 개선합니다.
-```java
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-public class BufferedWriterExample {
-    public static void main(String[] args) {
-        String content = "Hello, this is a test.";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
-            writer.write(content);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-2. 파일 입력.
-
-자바 프로그래밍에서 파일 입력은 프로그램이 파일로부터 데이터를 읽어들이는 과정을 말합니다.
-
-이 데이터는 텍스트나 바이너리 형태일 수 있으며, 파일에서 데이터를 읽어 프로그램 내에서 사용할 수 있도록 만드는 것이 목적입니다.
-
-파일 입력을 위해 자바는 다양한 입출력 클래스를 제공합니다.
-
-2.1 주로 사용되는 파일 입력 방법.
-
-
-  1. FileInputStream 사용
-    
-      ‘FileInputStream’ 은 바이트 단위로 파일에서 데이터를 읽는 데 사용됩니다.
-      이 클래스는 이미지, 비디오 파일, 실행 파일등의 이진 데이터 처리에 주로 사용됩니다.
-```java
-import java.io.FileInputStream;
-import java.io.IOException;
-    
-  
-
-
-public class FileInputStreamExample {
-    public static void main(String[] args) {
-        try (FileInputStream fis = new FileInputStream(“input.dat”)) {
-            int content;
-            while ((content = fis.read()) != -1) {
-                // content 변수에 한 바이트씩 읽어들인 데이터를 저장
-                System.out.print((char) content);
-            }
-        } catch (IOExecption e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **2. BufferedRead** 와 **FileReader 사용**
-    - **'BufferedReader'** 와 **'FileReader'** 는 텍스트 데이터를 효과적으로 읽기 위해 함께 사용됩니다.
-    - **'FileReader'** 는 파일에서 문자 데이터를 읽어들이며, **'BufferedReader'** 는 버퍼링을 통해 읽기 성능을 향상 시킵니다.
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-public class BufferedReaderExample {
-    public static void main(String[] args) {
-        try (BufferedReader br new BufferedReader(new FileReader("input.txt"))) {
-            String line;
-            while ((line = br.readline()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. Scanner 사용
-    
-      ‘Scanner’ 클래스는 텍스트 파일을 읽을 때 유용하며, 특히 토큰화(tokenizing)된 데이터를 처리할 때 편리합니다.
-      ‘Scanner’ 는 정규식을 사용하여 입력을 구분자로 분리하고, 다양한 타입으로 데이터를 읽어들일 수 있습니다.
-```java
-import java.io.File;
-import java.util.Scanner;
-    
-  
-
-
-public class ScannerExample {
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(new File(“input.txt”))) {
-            while (scanner.hasNextLine()) {
-                System.out.println(scanner.nextLine());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-2.2 📝 정리.
-이렇게 다양한 방법을 통해 파일로부터 데이터를 읽을 수 있으며, 각 방법은 사용하는 데이터 타입과 처리할 데이터의 양에 따라 선택할 수 있습니다.
-파일에서 데이터를 읽는 것은 데이터를 처리하거나, 설정 정보를 불러오거나, 사용자 데이터를 읽는 등 다양한 목적으로 활용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -25752,125 +25816,6 @@ Java의 고급 언어 특성은 백엔드 개발에서 여러 가지 장점을 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
-                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
-                            equals() - 1.동일성과 동등성
-Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
-
-자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
-
-  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
-  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
-
-
-단어 정리
-“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
-
-
-  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
-  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
-    
-      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-
-
-예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-User a = new User("id-100") // 참조 x001
-User b = new User("id-100") // 참조 x002
-
-
-
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
-    
-      따라서 동일성은 다르지만, 동등성은 같습니다.
-    
-  
-
-
-문자의 경우도 마찬가지입니다.
-String s1 = "hello";
-String s2 = "hello";
-
-
-  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
-
-
-예제를 통해서 동일성과 동등성을 비교해봅시다.
-
-package lang.object.equals;
-
-public class EqualsMainV1 {
-
-  public static void main(String[] args) {
-    UserV1 user1 = new UserV1("id-100");
-    UserV1 user2 = new UserV1("id-100");
-
-    System.out.println("identity = " + (user1 == user2));
-    System.out.println("equlity = " + (user1.equals(user2)));
-  }
-}
-
-
-실행 결과
-identity = false
-equlity = false
-
-
-
-
-동일성 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안
-return false
-false
-
-
-동등성이라는 개념은 각각의 클래스 마다 다릅니다.
-
-어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
-어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-
-따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
-그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-31-ObjectAndOCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -26063,6 +26008,125 @@ WHERE # 조건을 지정해주는 구문
   AND, OR, NOT
   BETWEEN, IN, LIKE
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
+                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
+                            equals() - 1.동일성과 동등성
+Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
+
+자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
+
+  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
+  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+
+
+단어 정리
+“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
+
+
+  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
+  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
+    
+      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+
+
+예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+User a = new User("id-100") // 참조 x001
+User b = new User("id-100") // 참조 x002
+
+
+
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
+    
+      따라서 동일성은 다르지만, 동등성은 같습니다.
+    
+  
+
+
+문자의 경우도 마찬가지입니다.
+String s1 = "hello";
+String s2 = "hello";
+
+
+  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
+
+
+예제를 통해서 동일성과 동등성을 비교해봅시다.
+
+package lang.object.equals;
+
+public class EqualsMainV1 {
+
+  public static void main(String[] args) {
+    UserV1 user1 = new UserV1("id-100");
+    UserV1 user2 = new UserV1("id-100");
+
+    System.out.println("identity = " + (user1 == user2));
+    System.out.println("equlity = " + (user1.equals(user2)));
+  }
+}
+
+
+실행 결과
+identity = false
+equlity = false
+
+
+
+
+동일성 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안
+return false
+false
+
+
+동등성이라는 개념은 각각의 클래스 마다 다릅니다.
+
+어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
+어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+
+따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
+그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
 
                         </a>
                         <div class="info-post">
@@ -50748,6 +50812,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Post/2024-07-28-ipAndport.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-07-28"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] @EntityListeners 어노테이션.",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-07-31-EntityListeners.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-07-31"
         });
     
 

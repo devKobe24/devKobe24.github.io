@@ -553,6 +553,7 @@
             
             
             
+            
 
     
     
@@ -968,6 +969,96 @@ User user = (User) request.getSession().getAttribute("user");
     
       첫 번째 경우는 객체 지향 프로그래밍의 핵심 요소로 클래스의 속성을 정의합니다.
       두 번째 경우에는 웹 애플리케이션의 상태 관리를 돕는 수단으로서 활용됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-07-31-MainBuildFail.html"><h1 class="title_post">☕️[Java] Main 클래스 생성 후 오류 대처.</h1></a>
+                        <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="txt_post">
+                            ☕️[Java] Main 클래스 생성 후 오류 대처.
+
+1️⃣ 메인 클래스 생성.
+
+  모든 프로젝트에는 메인 클래스가 있어야 합니다.
+    
+      직접 만든 클래스를 메인 클래스로 사용하기 위해 다음과 같이 코드를 입력했다고 가정해봅시다.
+    
+  
+
+
+// PortfolioBolgApplication.java
+
+package com.devkobe.portfolioBlog;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PortfolioBolgApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(PortfolioBolgApplication.class, args);
+    }
+}
+
+
+
+  코드 작성이 끝났다면 클래스 왼쪽에 실행 아이콘 ▶︎을 누르고, [RUN] 버튼을 눌러 클래스를 실행했을 경우 콘솔창에서 애플리케이션이 실행되면 성공입니다.
+
+
+2️⃣ 실패했을 경우.
+
+Process 'command...bin/java 'finshed with non-zero exit value 1'
+
+
+  콘솔창에 위와 같은 오류 발생시에는 다음과 같이 순차적으로 해결하면 됩니다.
+    
+      
+        
+          Settings 로 들어갑니다.
+        
+      
+      
+        
+          Build, Excecution, Deplyment 카테고리를 찾아 펼칩니다.
+        
+      
+      
+        
+          하위에 Gradle을 클릭합니다.
+        
+      
+      
+        
+          ‘Build and run using’ 이라는 색션을 찾습니다.
+            
+              이것의 선택값이 ‘Gradle(default)’ 일 것입니다.
+            
+            
+              이 값을 ‘IntelliJ IDEA’ 로 바꿔 프로젝트를 다시 시작합니다.
+            
+          
+        
+      
     
   
 
@@ -2726,6 +2817,34 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
+                            
+  Studing English through Newsletters
+  Metacognition JAVA의 정석 - 기본형 크기와 특징
+  [수학] 명제와 증명 학습
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/ENG/240616-ENG-STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -2838,23 +2957,23 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
                             
-  Studing English through Newsletters
-  Metacognition JAVA의 정석 - 기본형 크기와 특징
-  [수학] 명제와 증명 학습
+  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
+  알고리즘
+  피자 나눠 먹기(2)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-06-16</span>
+                                <span class="date">· 2024-06-13</span>
                             
                         </div>
                     </div>
@@ -2866,16 +2985,73 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
-                            
-  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
-  알고리즘
-  피자 나눠 먹기(2)
+                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html"><h1 class="title_post">📦[DS,Algorithm] 알고리즘(Algorithm)</h1></a>
+                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="txt_post">
+                            1️⃣ 알고리즘(Algorithm).
+
+알고리즘(Algorithm)은 주어진 문제를 해결하기 위해 일련의 명확한 단계로 구성된 절차나 방법을 의미합니다.
+
+쉽게 말해, 알고리즘은 문제 해결을 위한 일련의 규칙 또는 지침입니다.
+
+1️⃣ 알고리즘(Algorithm)의 정의.
+
+알고리즘은 다음과 같은 요소를 갖춘 절차를 말합니다.
+
+
+  
+    입력(Input) : 알고리즘이 처리할 하나 이상의 값이 주어집니다.
+  
+  
+    출력(Output) : 알고리즘의 수행 결과로 하나 이상의 값이 생성됩니다.
+  
+  
+    명확성(Definiteness) : 각 단계는 명확하게 정의되어 있어야 합니다. 모호한 부분 없이 명확한 지침이어야 합니다.
+  
+  
+    유한성(Finiteness) : 알고리즘은 유한한 단계 내에서 종료되어야 합니다. 즉, 알고리즘은 무한히 실행되지 않고, 한정된 단계 내에서 끝나야 합니다.
+  
+  
+    유효성(Effectiveness) : 알고리즘의 모든 단계는 실제로 수행 가능해야 하며, 사람이 직접 수행할 수 있을 정도로 기본적인 연산으로 구성되어 있어야 합니다.
+  
+
+
+2️⃣ 알고리즘의 특성
+
+알고리즘은 다음과 같은 특성을 가질 수 있습니다.
+
+
+  
+    정확성(Correctness) : 알고리즘은 올바른 결과를 생성해야 합니다.
+  
+  
+    시간 복잡도(Time Complexity) : 알고리즘이 문제를 해결하는 데 걸리는 시간입니다. 일반적으로 크기에 대한 함수로 표현됩니다.
+  
+  
+    공간 복잡도(Space Complexity) : 알고리즘이 문제를 해결하는 데 사용하는 메모리 양입니다. 이 또한 입력 크기에 대한 함수로 표현됩니다.
+  
+  
+    효율성(Efficiency) : 알고리즘이 주어진 자원을 얼마나 효율적으로 사용하는지 나타냅니다. 여기에서는 시간 복잡도와 공간 복잡도가 포함됩니다.
+  
+  
+    확장성(Scalability) : 알고리즘이 입력 크기에 따라 얼마나 잘 동작하는지 나타냅니다. 확장성 있는 알고리즘은 큰 입력 크기에서도 효율적으로 작동합니다.
+  
+
+
+3️⃣ 알고리즘의 중요성.
+
+알고리즘(Algorithm)은 컴퓨터 과학 및 프로그래밍에서 핵심적인 역할을 합니다.
+
+효율적인 알고리즘을 사용하면 컴퓨터 프로그램이 더 빠르고 적은 자원을 사용하여 문제를 해결할 수 있습니다.
+
+또한 알고리즘은 문제 해결의 논리적이고 체계적인 접근 방식을 제공하여 복잡한 문제를 단순화하고 해결하는 데 도움을 줍니다.
+
+
+  알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
+이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
 
 
                         </a>
@@ -3090,80 +3266,22 @@ Middle element: 40
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html"><h1 class="title_post">📦[DS,Algorithm] 알고리즘(Algorithm)</h1></a>
-                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="txt_post">
-                            1️⃣ 알고리즘(Algorithm).
-
-알고리즘(Algorithm)은 주어진 문제를 해결하기 위해 일련의 명확한 단계로 구성된 절차나 방법을 의미합니다.
-
-쉽게 말해, 알고리즘은 문제 해결을 위한 일련의 규칙 또는 지침입니다.
-
-1️⃣ 알고리즘(Algorithm)의 정의.
-
-알고리즘은 다음과 같은 요소를 갖춘 절차를 말합니다.
-
-
-  
-    입력(Input) : 알고리즘이 처리할 하나 이상의 값이 주어집니다.
-  
-  
-    출력(Output) : 알고리즘의 수행 결과로 하나 이상의 값이 생성됩니다.
-  
-  
-    명확성(Definiteness) : 각 단계는 명확하게 정의되어 있어야 합니다. 모호한 부분 없이 명확한 지침이어야 합니다.
-  
-  
-    유한성(Finiteness) : 알고리즘은 유한한 단계 내에서 종료되어야 합니다. 즉, 알고리즘은 무한히 실행되지 않고, 한정된 단계 내에서 끝나야 합니다.
-  
-  
-    유효성(Effectiveness) : 알고리즘의 모든 단계는 실제로 수행 가능해야 하며, 사람이 직접 수행할 수 있을 정도로 기본적인 연산으로 구성되어 있어야 합니다.
-  
-
-
-2️⃣ 알고리즘의 특성
-
-알고리즘은 다음과 같은 특성을 가질 수 있습니다.
-
-
-  
-    정확성(Correctness) : 알고리즘은 올바른 결과를 생성해야 합니다.
-  
-  
-    시간 복잡도(Time Complexity) : 알고리즘이 문제를 해결하는 데 걸리는 시간입니다. 일반적으로 크기에 대한 함수로 표현됩니다.
-  
-  
-    공간 복잡도(Space Complexity) : 알고리즘이 문제를 해결하는 데 사용하는 메모리 양입니다. 이 또한 입력 크기에 대한 함수로 표현됩니다.
-  
-  
-    효율성(Efficiency) : 알고리즘이 주어진 자원을 얼마나 효율적으로 사용하는지 나타냅니다. 여기에서는 시간 복잡도와 공간 복잡도가 포함됩니다.
-  
-  
-    확장성(Scalability) : 알고리즘이 입력 크기에 따라 얼마나 잘 동작하는지 나타냅니다. 확장성 있는 알고리즘은 큰 입력 크기에서도 효율적으로 작동합니다.
-  
-
-
-3️⃣ 알고리즘의 중요성.
-
-알고리즘(Algorithm)은 컴퓨터 과학 및 프로그래밍에서 핵심적인 역할을 합니다.
-
-효율적인 알고리즘을 사용하면 컴퓨터 프로그램이 더 빠르고 적은 자원을 사용하여 문제를 해결할 수 있습니다.
-
-또한 알고리즘은 문제 해결의 논리적이고 체계적인 접근 방식을 제공하여 복잡한 문제를 단순화하고 해결하는 데 도움을 줍니다.
-
-
-  알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
-이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
+                        <a href="/Backend/TIL/2024-06-12-TIL.html"><h1 class="title_post">📝 [TIL] 240612 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-12-TIL.html" class="txt_post">
+                            
+  Deque에서의 front와 rear의 변화 정리 및 복습.
+  Circular Queue(원형 큐)의 중간 지점 찾기.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-06-13</span>
+                                <span class="date">· 2024-06-12</span>
                             
                         </div>
                     </div>
@@ -3292,33 +3410,6 @@ public class CircularQueue {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-12-TIL.html"><h1 class="title_post">📝 [TIL] 240612 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-12-TIL.html" class="txt_post">
-                            
-  Deque에서의 front와 rear의 변화 정리 및 복습.
-  Circular Queue(원형 큐)의 중간 지점 찾기.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-06-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -3335,6 +3426,32 @@ public class CircularQueue {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-06-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-10-TIL.html"><h1 class="title_post">📝 [TIL] 240610 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-10-TIL.html" class="txt_post">
+                            
+  deque에서의 front와 rear의 변화
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-10</span>
                             
                         </div>
                     </div>
@@ -3482,32 +3599,6 @@ public class DequeExample {
 
   이 예시 코드는 ‘front’ 와 ‘rear’ 가 데이터의 삽입 및 삭제 연산에 따라 어떻게 변하는지 잘 보여줍니다.
 ‘Deque’ 는 이처럼 양쪽 끝에서의 삽입과 삭제 연산을 지원하므로, ‘front’ 와 ‘rear’ 의 위치는 동적입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-10-TIL.html"><h1 class="title_post">📝 [TIL] 240610 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-10-TIL.html" class="txt_post">
-                            
-  deque에서의 front와 rear의 변화
 
 
                         </a>
@@ -4096,6 +4187,201 @@ public void enqueue(int element) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
+                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
+                            1️⃣ 제네릭(Generic)
+
+Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
+
+제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
+
+2️⃣ 제네릭(Generic)의 주요 개념.
+
+
+  타입 매개변수 :
+    
+      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
+    
+  
+  타입 안정성 :
+    
+      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
+    
+  
+  재사용성 :
+    
+      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
+    
+  
+
+
+3️⃣ 제네릭 클래스.
+
+제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
+
+일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
+
+예제.
+
+// Box 클래스
+public class Box&lt;T&gt; {
+	private T item;
+
+	public void setItem(T item) {
+		this.item = item;
+	}
+
+	public T getItem() {
+		return item;
+	}
+}
+
+// Main 클래스
+public class Main {
+
+	public static void main(String[] args) {
+		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
+		stringBox.setItem("Hello");
+		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
+
+		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+		integerBox.setItem(123);
+		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
+	}
+}
+
+
+4️⃣ 제네릭 메서드.
+
+제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
+
+예제.
+
+public class GenericMethodExample {
+	public static &lt;T&gt; void printArray(T[] array) {
+		for (T element : array) {
+			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Integer[] intArray = {1, 2, 3, 4, 5};
+		String[] strArray = {"A", "B", "C", "D"};
+
+		printArray(intArray); // 1 2 3 4 5 
+		printArray(strArray); // A B C D 
+	}
+}
+
+
+5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
+
+제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
+
+상한 제한 (Upper Bound)
+
+public class BoundedTypeExample&lt;T extends Number&gt; {
+	private T number;
+
+	public BoundedTypeExample(T number) {
+		this.number = number;
+	}
+
+	public void printNumber() {
+		System.out.println("Number: " + number);
+	}
+
+	public static void main(String[] args) {
+		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
+		intExample.printNumber(); // Number: 123
+
+		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
+		doubleExample.printNumber(); // Number: 45.67
+	}
+}
+
+
+
+  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
+
+
+하한 제한 (Lower Bound)
+
+하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
+
+예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LowerBoundWildcardExample {
+	public static void addNumbers(List&lt;? super Integer&gt; list) {
+		for (int i = 0; i &lt; 5; i++) {
+			list.add(i);
+		}
+	}
+
+	public static void main(String[] args) {
+		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
+		addNumbers(numberList);
+		System.out.println(numberList); // [0, 1, 2, 3, 4]
+	}
+}
+
+
+6️⃣ 제네릭의 제한 사항.
+
+
+  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
+
+
+// 올바르지 않음
+Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
+
+
+
+  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
+
+
+public class GenericClass&lt;T&gt; {
+    private static T item; // 컴파일 오류
+}
+
+
+
+  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
+
+
+// 올바르지 않음
+T[] array = new T[10]; // 컴파일 오류
+
+
+
+  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
+이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-06-08-PrimitiveAndWrapper.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -4347,201 +4633,6 @@ public class Main {
 
 
   이 예제에서는 기본 타입과 래퍼 클래스를 사용하여 변수레 값을 저장하고, 컬렉션에 저장된 래퍼 클래스 객체를 사용하려 연산을 수행하는 과정을 보여줍니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
-                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
-                            1️⃣ 제네릭(Generic)
-
-Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
-
-제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
-
-2️⃣ 제네릭(Generic)의 주요 개념.
-
-
-  타입 매개변수 :
-    
-      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
-    
-  
-  타입 안정성 :
-    
-      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
-    
-  
-  재사용성 :
-    
-      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
-    
-  
-
-
-3️⃣ 제네릭 클래스.
-
-제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
-
-일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
-
-예제.
-
-// Box 클래스
-public class Box&lt;T&gt; {
-	private T item;
-
-	public void setItem(T item) {
-		this.item = item;
-	}
-
-	public T getItem() {
-		return item;
-	}
-}
-
-// Main 클래스
-public class Main {
-
-	public static void main(String[] args) {
-		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
-		stringBox.setItem("Hello");
-		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
-
-		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
-		integerBox.setItem(123);
-		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
-	}
-}
-
-
-4️⃣ 제네릭 메서드.
-
-제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
-
-예제.
-
-public class GenericMethodExample {
-	public static &lt;T&gt; void printArray(T[] array) {
-		for (T element : array) {
-			System.out.print(element + " ");
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		Integer[] intArray = {1, 2, 3, 4, 5};
-		String[] strArray = {"A", "B", "C", "D"};
-
-		printArray(intArray); // 1 2 3 4 5 
-		printArray(strArray); // A B C D 
-	}
-}
-
-
-5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
-
-제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
-
-상한 제한 (Upper Bound)
-
-public class BoundedTypeExample&lt;T extends Number&gt; {
-	private T number;
-
-	public BoundedTypeExample(T number) {
-		this.number = number;
-	}
-
-	public void printNumber() {
-		System.out.println("Number: " + number);
-	}
-
-	public static void main(String[] args) {
-		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
-		intExample.printNumber(); // Number: 123
-
-		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
-		doubleExample.printNumber(); // Number: 45.67
-	}
-}
-
-
-
-  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
-
-
-하한 제한 (Lower Bound)
-
-하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
-
-예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class LowerBoundWildcardExample {
-	public static void addNumbers(List&lt;? super Integer&gt; list) {
-		for (int i = 0; i &lt; 5; i++) {
-			list.add(i);
-		}
-	}
-
-	public static void main(String[] args) {
-		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
-		addNumbers(numberList);
-		System.out.println(numberList); // [0, 1, 2, 3, 4]
-	}
-}
-
-
-6️⃣ 제네릭의 제한 사항.
-
-
-  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
-
-
-// 올바르지 않음
-Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
-
-
-
-  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
-
-
-public class GenericClass&lt;T&gt; {
-    private static T item; // 컴파일 오류
-}
-
-
-
-  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
-
-
-// 올바르지 않음
-T[] array = new T[10]; // 컴파일 오류
-
-
-
-  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
-이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -6003,6 +6094,33 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-02-TIL.html"><h1 class="title_post">📝 [TIL] 240602 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-02-TIL.html" class="txt_post">
+                            
+  자바의 배열
+  JAVA DOCS 보는 법
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-06-02-HowToReadJavaDocs.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -6349,33 +6467,6 @@ public static void insertion(int[] array, int index, int insertValue) {
 
   배열은 이러한 특성들로 인해 빠른 접근이 필요한 상황에서는 매우 유용하지만, 삽입 및 삭제가 빈번히 일어나는 경우에는 비효율적일 수 있습니다.
 따라서 상황에 맞게 적절한 자료구조를 선택하는 것이 중요합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-02-TIL.html"><h1 class="title_post">📝 [TIL] 240602 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-02-TIL.html" class="txt_post">
-                            
-  자바의 배열
-  JAVA DOCS 보는 법
 
 
                         </a>
@@ -7220,6 +7311,168 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
+                        <a href="/Backend/AnD/2024-05-27-Node.html" class="txt_post">
+                            1️⃣ Node(노드).
+
+Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
+
+노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
+
+1️⃣ Node의 구성 요소.
+
+
+  
+    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
+  
+  
+    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
+    
+      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
+      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
+      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
+      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
+    
+  
+
+
+Singly Linked List의 Node
+Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+
+public class Node {
+  int data; // 노드가 저장하는 데이터
+  Node next; // 다음 노드를 가리키는 포인터
+
+  public Node(int data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+
+Doubly Linked List의 Node
+Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+public class DoublyNode {
+  int data; // 노드가 저장하는 데이터
+  DoublyNode next; // 다음 노드를 가리키는 포인터
+  DoublyNode prev; // 이전 노드를 가리키는 포인터
+
+  public DoublyNode(int data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+
+2️⃣ Node를 사용하는 예제.
+
+Singly Linked List
+
+Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
+
+아래는 Singly Linked List를 구현한 예제입니다.
+
+//SinglyLinkedList
+public class SinglyLinkedList {
+  private Node head;
+
+  public SinglyLinkedList() {
+    this.head = null;
+  }
+
+  // 리스트의 맨 앞에 노드 추가
+  public void addFirst(int data) {
+    Node newNode = new Node(data);
+    newNode.next = head;
+    head = newNode;
+  }
+
+  // 리스트의 맨 끝에 노드 추가
+  public void addLast(int data) {
+    Node newNode = new Node(data);
+    if (head == null) {
+      head = newNode;
+      return;
+    }
+    Node current = head;
+    while (current.next != null) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  // 리스트의 특정 값 삭제
+  public void delete(int data) {
+    if (head == null) {
+      return;
+    }
+
+    if (head.data == data) {
+      head = head.next;
+      return;
+    }
+
+    Node current = head;
+
+    while (current.next != null &amp;&amp; current.next.data != data) {
+      current = current.next;
+    }
+
+    if (current.next != null) {
+      current.next = current.next.next;
+    }
+  }
+
+  // 리스트 출력
+  public void printList() {
+    Node current = head;
+    while (current != null) {
+      System.out.print(current.data + " ");
+      current = current.next;
+    }
+    System.out.println();
+  }
+}
+
+// Main
+public class Main {
+
+  public static void main(String[] args) {
+    // Singly Linked List 생성
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+    singlyLinkedList.addFirst(1);
+    singlyLinkedList.addLast(2);
+    singlyLinkedList.addLast(3);
+    singlyLinkedList.printList(); // 1 2 3
+
+    singlyLinkedList.delete(2);
+    singlyLinkedList.printList(); // 1 3
+  }
+}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -7707,195 +7960,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
-                        <a href="/Backend/AnD/2024-05-27-Node.html" class="txt_post">
-                            1️⃣ Node(노드).
-
-Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
-
-노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
-
-1️⃣ Node의 구성 요소.
-
-
-  
-    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
-  
-  
-    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
-    
-      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
-      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
-      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
-      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
-    
-  
-
-
-Singly Linked List의 Node
-Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-
-public class Node {
-  int data; // 노드가 저장하는 데이터
-  Node next; // 다음 노드를 가리키는 포인터
-
-  public Node(int data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-
-Doubly Linked List의 Node
-Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-public class DoublyNode {
-  int data; // 노드가 저장하는 데이터
-  DoublyNode next; // 다음 노드를 가리키는 포인터
-  DoublyNode prev; // 이전 노드를 가리키는 포인터
-
-  public DoublyNode(int data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
-  }
-}
-
-
-2️⃣ Node를 사용하는 예제.
-
-Singly Linked List
-
-Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
-
-아래는 Singly Linked List를 구현한 예제입니다.
-
-//SinglyLinkedList
-public class SinglyLinkedList {
-  private Node head;
-
-  public SinglyLinkedList() {
-    this.head = null;
-  }
-
-  // 리스트의 맨 앞에 노드 추가
-  public void addFirst(int data) {
-    Node newNode = new Node(data);
-    newNode.next = head;
-    head = newNode;
-  }
-
-  // 리스트의 맨 끝에 노드 추가
-  public void addLast(int data) {
-    Node newNode = new Node(data);
-    if (head == null) {
-      head = newNode;
-      return;
-    }
-    Node current = head;
-    while (current.next != null) {
-      current = current.next;
-    }
-    current.next = newNode;
-  }
-
-  // 리스트의 특정 값 삭제
-  public void delete(int data) {
-    if (head == null) {
-      return;
-    }
-
-    if (head.data == data) {
-      head = head.next;
-      return;
-    }
-
-    Node current = head;
-
-    while (current.next != null &amp;&amp; current.next.data != data) {
-      current = current.next;
-    }
-
-    if (current.next != null) {
-      current.next = current.next.next;
-    }
-  }
-
-  // 리스트 출력
-  public void printList() {
-    Node current = head;
-    while (current != null) {
-      System.out.print(current.data + " ");
-      current = current.next;
-    }
-    System.out.println();
-  }
-}
-
-// Main
-public class Main {
-
-  public static void main(String[] args) {
-    // Singly Linked List 생성
-    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-
-    singlyLinkedList.addFirst(1);
-    singlyLinkedList.addLast(2);
-    singlyLinkedList.addLast(3);
-    singlyLinkedList.printList(); // 1 2 3
-
-    singlyLinkedList.delete(2);
-    singlyLinkedList.printList(); // 1 3
-  }
-}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
-                            
-  해시 테이블(Hash Table)
-  해시 맵 정리
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-05-25-HashTable.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -8111,23 +8175,22 @@ Contains key 'one': false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-24-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-24-TIL.html"><h1 class="title_post">📝 [TIL] 240524 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-24-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
                             
-  배열 문제 풀이
-  배열 정리
-  해시(Hash)
+  해시 테이블(Hash Table)
+  해시 맵 정리
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-24</span>
+                                <span class="date">· 2024-05-25</span>
                             
                         </div>
                     </div>
@@ -8276,6 +8339,292 @@ public class Main {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-24-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-24-TIL.html"><h1 class="title_post">📝 [TIL] 240524 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-24-TIL.html" class="txt_post">
+                            
+  배열 문제 풀이
+  배열 정리
+  해시(Hash)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-23-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-23-TIL.html"><h1 class="title_post">📝 [TIL] 240523 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-23-TIL.html" class="txt_post">
+                            
+  큐(Queue)
+  원형 큐(Circular Queue)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-23-circularQueue.html"><h1 class="title_post">📦[DS,Algorithm] 원형 큐(Circular Queue)</h1></a>
+                        <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="txt_post">
+                            1️⃣ 원형 큐(Circular Queue).
+
+원형 큐(Circular Queue)란, “고정된 크기의 배열” 을 사용하여 구현된 큐로서, 배열의 끝에 도달하면 다시 배열의 시작 부분으로 돌아가는 구조를 가진 큐입니다.
+
+이를 통해 큐가 꽉 차 있는지, 비어 있는지를 효율적으로 관리할 수 있으며, 공간을 효율적으로 사용할 수 있습니다.
+
+1️⃣ 원형 큐의 특징.
+
+  
+    
+      선입선출(FIFO, First In First Out) : 일반적인 큐와 마찬가지로 먼저 들어간 데이터가 먼저 나오는 구조입니다.
+    
+  
+  
+    
+      순환 구조 : 배열의 끝에 도달하면 다시 처음으로 돌아갑니다. 이를 통해 고정된 크기의 배열을 이용하여 메모리를 효율적으로 사용합니다.
+    
+  
+  3 고정 크기 : 큐의 최대 크기는 배열의 크기로 제한 됩니다.
+
+
+2️⃣ 원형 큐의 주요 연산.
+
+  
+    
+      Enqueue : 큐의 뒤쪽(rear)에 새로운 요소를 추가합니다.
+    
+  
+  
+    
+      Dequeue : 큐의 앞쪽(front)에서 요소를 제거하고 반환합니다.
+    
+  
+  
+    
+      Peek : 큐의 앞쪽(front) 요소를 제거하지 않고 반환합니다.
+    
+  
+  
+    
+      IsEmpty : 큐가 비어 있는지 여부를 확인합니다.
+    
+  
+  
+    
+      IsFull : 큐가 가득 찼는지 여부를 확인합니다.
+    
+  
+
+
+3️⃣ 원형 큐의 장점.
+
+  메모리 효율성 : 고정된 크기의 배열을 사용하여 메모리를 효율적으로 사용합니다.
+  연속된 메모리 사용 : 배열을 사용하여 메모리를 연속적으로 사용하므로 캐시 효율성이 높습니다.
+
+
+4️⃣ 원형 큐의 단점.
+
+  고정 크기 제한 : 크기가 고정되어 있으므로, 큐가 가득 찬 경우 더 이상 요소를 추가할 수 없습니다. 이 문제를 해결하려면 동적으로 크기를 조절할 수 있는 방법을 추가로 구현해야 합니다.
+
+
+5️⃣ 원형 큐의 구현 예제
+
+// CircularQueue
+public class CircularQueue {
+  private int[] queue;
+  private int front;
+  private int rear;
+  private int size;
+  private int capacity;
+
+  // 원형 큐 초기화
+  public CircularQueue(int capacity) {
+    this.capacity = capacity;
+    queue = new int[capacity];
+    front = 0;
+    rear = -1;
+    size = 0;
+  }
+
+  // 큐에 요소 추가
+  public void enqueue(int element) {
+    if (isFull()) {
+      System.out.println("Queue is full");
+      return;
+    }
+
+    rear = (rear + 1) % capacity;
+    queue[rear] = element;
+    size++;
+  }
+
+  // 큐에서 요소 제거 및 반환
+  public int dequeue() {
+    if (isEmpty()) {
+      System.out.println("Queue is empty");
+      return -1;
+    }
+    int element = queue[front];
+    front = (front + 1) % capacity;
+    size--;
+    return element;
+  }
+
+  // 큐의 앞쪽 요소 반환
+  public int peek() {
+    if (isEmpty()) {
+      System.out.println("Queue is empty");
+      return -1;
+    }
+    return queue[front];
+  }
+
+  // 큐가 비어 있는지 확인
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  // 큐가 가득 찼는지 확인
+  public boolean isFull() {
+    return size == capacity;
+  }
+
+  // 큐의 크기 반환
+  public int getSize() {
+    return size;
+  }
+}
+
+// Main
+public class Main {
+
+  public static void main(String[] args) {
+    CircularQueue circularQueue = new CircularQueue(5);
+
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+    circularQueue.enqueue(3);
+    circularQueue.enqueue(4);
+    circularQueue.enqueue(5);
+
+    System.out.println("Dequeue: " + circularQueue.dequeue());
+    System.out.println("Dequeue: " + circularQueue.dequeue());
+
+    circularQueue.enqueue(6);
+    circularQueue.enqueue(7);
+
+    System.out.println("Peek: " + circularQueue.peek());
+
+    while (!circularQueue.isEmpty()) {
+      System.out.println("Dequeue: " + circularQueue.dequeue());
+    }
+  }
+}
+
+// 출력
+/*
+Dequeue: 1
+Dequeue: 2
+Peek: 3
+Dequeue: 3
+Dequeue: 4
+Dequeue: 5
+Dequeue: 6
+Dequeue: 7
+ */
+
+
+코드 설명.
+
+
+  
+    
+      CircularQueue 클래스:
+        
+          ‘queue’ : 큐를 저장하는 배열.
+          ‘front’ : 큐의 앞쪽 인덱스.
+          ‘rear’ : 큐의 뒤쪽 인덱스.
+          ‘size’ : 현재 큐에 저장된 요소의 개수.
+          ‘capacity’ : 큐의 최대 크기.
+        
+      
+    
+  
+  
+    
+      메서드:
+        
+          ‘enqueue(int element)’ : 큐가 가득 차지 않았으면 요소를 큐에 추가합니다.
+          ‘dequeue()’ : 큐가 비어 있지 않으면 큐의 앞쪽 요소를 제거하고 반환합니다.
+          ‘peek()’ : 큐의 앞쪽 요소를 제거하지 않고 반환합니다.
+          ‘isEmpty()’ : 큐가 비어 있는지 확인합니다.
+          ‘isFull()’ : 큐가 가득 찼는지 확인합니다.
+          ‘getSize()’ : 큐의 현재 크기를 반환합니다.
+        
+      
+    
+  
+  
+    
+      main 메서드:
+        
+          원형 큐를 생성하고 여러 연산을 수행하여 큐의 동작을 테스트합니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-23</span>
                             
                         </div>
                     </div>
@@ -8540,264 +8889,6 @@ Dequeued element: 3
 Dequeued element: 4
 Dequeued element: 5
  * /
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-23-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-23-TIL.html"><h1 class="title_post">📝 [TIL] 240523 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-23-TIL.html" class="txt_post">
-                            
-  큐(Queue)
-  원형 큐(Circular Queue)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-23-circularQueue.html"><h1 class="title_post">📦[DS,Algorithm] 원형 큐(Circular Queue)</h1></a>
-                        <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="txt_post">
-                            1️⃣ 원형 큐(Circular Queue).
-
-원형 큐(Circular Queue)란, “고정된 크기의 배열” 을 사용하여 구현된 큐로서, 배열의 끝에 도달하면 다시 배열의 시작 부분으로 돌아가는 구조를 가진 큐입니다.
-
-이를 통해 큐가 꽉 차 있는지, 비어 있는지를 효율적으로 관리할 수 있으며, 공간을 효율적으로 사용할 수 있습니다.
-
-1️⃣ 원형 큐의 특징.
-
-  
-    
-      선입선출(FIFO, First In First Out) : 일반적인 큐와 마찬가지로 먼저 들어간 데이터가 먼저 나오는 구조입니다.
-    
-  
-  
-    
-      순환 구조 : 배열의 끝에 도달하면 다시 처음으로 돌아갑니다. 이를 통해 고정된 크기의 배열을 이용하여 메모리를 효율적으로 사용합니다.
-    
-  
-  3 고정 크기 : 큐의 최대 크기는 배열의 크기로 제한 됩니다.
-
-
-2️⃣ 원형 큐의 주요 연산.
-
-  
-    
-      Enqueue : 큐의 뒤쪽(rear)에 새로운 요소를 추가합니다.
-    
-  
-  
-    
-      Dequeue : 큐의 앞쪽(front)에서 요소를 제거하고 반환합니다.
-    
-  
-  
-    
-      Peek : 큐의 앞쪽(front) 요소를 제거하지 않고 반환합니다.
-    
-  
-  
-    
-      IsEmpty : 큐가 비어 있는지 여부를 확인합니다.
-    
-  
-  
-    
-      IsFull : 큐가 가득 찼는지 여부를 확인합니다.
-    
-  
-
-
-3️⃣ 원형 큐의 장점.
-
-  메모리 효율성 : 고정된 크기의 배열을 사용하여 메모리를 효율적으로 사용합니다.
-  연속된 메모리 사용 : 배열을 사용하여 메모리를 연속적으로 사용하므로 캐시 효율성이 높습니다.
-
-
-4️⃣ 원형 큐의 단점.
-
-  고정 크기 제한 : 크기가 고정되어 있으므로, 큐가 가득 찬 경우 더 이상 요소를 추가할 수 없습니다. 이 문제를 해결하려면 동적으로 크기를 조절할 수 있는 방법을 추가로 구현해야 합니다.
-
-
-5️⃣ 원형 큐의 구현 예제
-
-// CircularQueue
-public class CircularQueue {
-  private int[] queue;
-  private int front;
-  private int rear;
-  private int size;
-  private int capacity;
-
-  // 원형 큐 초기화
-  public CircularQueue(int capacity) {
-    this.capacity = capacity;
-    queue = new int[capacity];
-    front = 0;
-    rear = -1;
-    size = 0;
-  }
-
-  // 큐에 요소 추가
-  public void enqueue(int element) {
-    if (isFull()) {
-      System.out.println("Queue is full");
-      return;
-    }
-
-    rear = (rear + 1) % capacity;
-    queue[rear] = element;
-    size++;
-  }
-
-  // 큐에서 요소 제거 및 반환
-  public int dequeue() {
-    if (isEmpty()) {
-      System.out.println("Queue is empty");
-      return -1;
-    }
-    int element = queue[front];
-    front = (front + 1) % capacity;
-    size--;
-    return element;
-  }
-
-  // 큐의 앞쪽 요소 반환
-  public int peek() {
-    if (isEmpty()) {
-      System.out.println("Queue is empty");
-      return -1;
-    }
-    return queue[front];
-  }
-
-  // 큐가 비어 있는지 확인
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-  // 큐가 가득 찼는지 확인
-  public boolean isFull() {
-    return size == capacity;
-  }
-
-  // 큐의 크기 반환
-  public int getSize() {
-    return size;
-  }
-}
-
-// Main
-public class Main {
-
-  public static void main(String[] args) {
-    CircularQueue circularQueue = new CircularQueue(5);
-
-    circularQueue.enqueue(1);
-    circularQueue.enqueue(2);
-    circularQueue.enqueue(3);
-    circularQueue.enqueue(4);
-    circularQueue.enqueue(5);
-
-    System.out.println("Dequeue: " + circularQueue.dequeue());
-    System.out.println("Dequeue: " + circularQueue.dequeue());
-
-    circularQueue.enqueue(6);
-    circularQueue.enqueue(7);
-
-    System.out.println("Peek: " + circularQueue.peek());
-
-    while (!circularQueue.isEmpty()) {
-      System.out.println("Dequeue: " + circularQueue.dequeue());
-    }
-  }
-}
-
-// 출력
-/*
-Dequeue: 1
-Dequeue: 2
-Peek: 3
-Dequeue: 3
-Dequeue: 4
-Dequeue: 5
-Dequeue: 6
-Dequeue: 7
- */
-
-
-코드 설명.
-
-
-  
-    
-      CircularQueue 클래스:
-        
-          ‘queue’ : 큐를 저장하는 배열.
-          ‘front’ : 큐의 앞쪽 인덱스.
-          ‘rear’ : 큐의 뒤쪽 인덱스.
-          ‘size’ : 현재 큐에 저장된 요소의 개수.
-          ‘capacity’ : 큐의 최대 크기.
-        
-      
-    
-  
-  
-    
-      메서드:
-        
-          ‘enqueue(int element)’ : 큐가 가득 차지 않았으면 요소를 큐에 추가합니다.
-          ‘dequeue()’ : 큐가 비어 있지 않으면 큐의 앞쪽 요소를 제거하고 반환합니다.
-          ‘peek()’ : 큐의 앞쪽 요소를 제거하지 않고 반환합니다.
-          ‘isEmpty()’ : 큐가 비어 있는지 확인합니다.
-          ‘isFull()’ : 큐가 가득 찼는지 확인합니다.
-          ‘getSize()’ : 큐의 현재 크기를 반환합니다.
-        
-      
-    
-  
-  
-    
-      main 메서드:
-        
-          원형 큐를 생성하고 여러 연산을 수행하여 큐의 동작을 테스트합니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -9481,152 +9572,6 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html"><h1 class="title_post">📝[blog post] 나는 어떤 백엔드 개발자가 되고 싶은걸까?</h1></a>
-                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="txt_post">
-                            🤔 나는 어떤 백엔드 개발자가 되고 싶은걸까?
-
-🙋‍♂️ 백엔드 개발자의 역할과 책임
-
-어떤 백엔드 개발자가 되고 싶은지 말하기 전에 백엔드 개발자는 어떤 역할과 책임이 있는지 알아보아야 할 것 같아요.
-
-1️⃣ 웹 서버 개발.
-
-  웹 서버 및 API 개발.
-  HTTP 요청 및 응답 처리.
-  RESTful 서비스 설계 및 구현.
-
-
-2️⃣ 데이터베이스 관리.
-
-  데이터베이스 설계 및 최적화.
-  SQL 및 NoSQL 데이터베이스 작업.
-  데이터 모델링 및 스키마 설계.
-
-
-3️⃣ 서버 사이드 로직.
-
-  비즈니스 로직 구현.
-  사용자 인증 및 권한 관리.
-  데이터 유효성 검사.
-
-
-4️⃣ API 개발 및 통합.
-
-  외부 API와의 통합 작업.
-  내부 API 설계 및 개발.
-  API 문서화 및 유지보수.
-
-
-5️⃣ 성능 최적화.
-
-  서버 성능 모니터링 및 튜닝.
-  캐싱 전략 설계 및 구현.
-  로드 밸런싱 및 스케일링.
-
-
-6️⃣ 보안 관리.
-
-  데이터 보안 및 암호화.
-  OWASP 및 기타 보안 지침 준수.
-  침입 탐지 및 대응.
-
-
-7️⃣ 클라우드 컴퓨팅.
-
-  AWS, Azure, GCP 등 클라우드 플랫폼 사용.
-  클라우드 기반 서비스 배포 및 관리.
-  컨테이나화 및 오케이스트레이션(Docker, Kubernetes)
-
-
-8️⃣ DevOps와 CI/CD.
-
-  지속적 통합 및 배포(CI/CD) 파이프라인 구축.
-  서버 및 서비스의 자동화 및 오케스트레이션.
-  인프라스트럭처 코드화(Infrastructure as Code).
-
-
-9️⃣ 로그 및 모니터링.
-
-  애플리케이션 및 서버 로그 관리.
-  모니터링 도구 설정(예: Prometheus, Grafana).
-  로그 분석 및 문제 해결.
-
-
-백엔드 개발자는 일반적으로 이 모든 역할을 하나의 프로젝트 내에서 수행하지 않아요.
-회사나 팀의 구조에 따라 특정 역할에 집중하게 된답니다.
-예를 들어, 일부 개발자는 데이터베이스 관리에 중점을 두고, 다른 개발자는 클라우드 인프라 관리에 집중할 수 있습니다.
-
-🙋‍♂️ 내가 되고 싶은 백엔드 개발자.
-
-  
-    
-      맡은 역할과 책임에 최선을 다하는 개발자
-        
-          저는 맡은 바에 항상 최선을 다해 임무를 완수합니다.
-          내가 맡은 바에는 책임이라는 것이 따르기 때문에 항상 최선을 다해야 한다고 생각합니다.
-        
-      
-    
-  
-  
-    
-      소통을 잘하는 백엔드 개발자.
-        
-          커뮤니케이션이 정말 중요하다고 생각합니다.
-          하나의 프로그램을 만들기 위해서는 많은 사람들이 함께 만들어가는 것 이기 때문에 함께 협력하고 소통을 잘해야 합니다.
-        
-      
-    
-  
-  
-    
-      유연한 사고를 가진 백엔드 개발자.
-        
-          나 자신의 의견 또는 생각 역시도 틀릴 수 있다는 것을 항상 인지하고 여러 모든 의견을 유연하게 받아들일 수 있는 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-  
-    
-      말이 아닌 코드로 증명하는 개발자.
-        
-          말로만 대단한 듯이 말하는 개발자가 아닌 진짜 코드로 증명해내는 그런 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-  
-    
-      겸손과 꾸준한 성장을 하는 백엔드 개발자.
-        
-          겸손의 미덕을 알고 있습니다. 언제나 배움의 자세를 가지고 항상 배우려 노력하며 꾸준히 성장하는 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
@@ -9889,6 +9834,152 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html"><h1 class="title_post">📝[blog post] 나는 어떤 백엔드 개발자가 되고 싶은걸까?</h1></a>
+                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="txt_post">
+                            🤔 나는 어떤 백엔드 개발자가 되고 싶은걸까?
+
+🙋‍♂️ 백엔드 개발자의 역할과 책임
+
+어떤 백엔드 개발자가 되고 싶은지 말하기 전에 백엔드 개발자는 어떤 역할과 책임이 있는지 알아보아야 할 것 같아요.
+
+1️⃣ 웹 서버 개발.
+
+  웹 서버 및 API 개발.
+  HTTP 요청 및 응답 처리.
+  RESTful 서비스 설계 및 구현.
+
+
+2️⃣ 데이터베이스 관리.
+
+  데이터베이스 설계 및 최적화.
+  SQL 및 NoSQL 데이터베이스 작업.
+  데이터 모델링 및 스키마 설계.
+
+
+3️⃣ 서버 사이드 로직.
+
+  비즈니스 로직 구현.
+  사용자 인증 및 권한 관리.
+  데이터 유효성 검사.
+
+
+4️⃣ API 개발 및 통합.
+
+  외부 API와의 통합 작업.
+  내부 API 설계 및 개발.
+  API 문서화 및 유지보수.
+
+
+5️⃣ 성능 최적화.
+
+  서버 성능 모니터링 및 튜닝.
+  캐싱 전략 설계 및 구현.
+  로드 밸런싱 및 스케일링.
+
+
+6️⃣ 보안 관리.
+
+  데이터 보안 및 암호화.
+  OWASP 및 기타 보안 지침 준수.
+  침입 탐지 및 대응.
+
+
+7️⃣ 클라우드 컴퓨팅.
+
+  AWS, Azure, GCP 등 클라우드 플랫폼 사용.
+  클라우드 기반 서비스 배포 및 관리.
+  컨테이나화 및 오케이스트레이션(Docker, Kubernetes)
+
+
+8️⃣ DevOps와 CI/CD.
+
+  지속적 통합 및 배포(CI/CD) 파이프라인 구축.
+  서버 및 서비스의 자동화 및 오케스트레이션.
+  인프라스트럭처 코드화(Infrastructure as Code).
+
+
+9️⃣ 로그 및 모니터링.
+
+  애플리케이션 및 서버 로그 관리.
+  모니터링 도구 설정(예: Prometheus, Grafana).
+  로그 분석 및 문제 해결.
+
+
+백엔드 개발자는 일반적으로 이 모든 역할을 하나의 프로젝트 내에서 수행하지 않아요.
+회사나 팀의 구조에 따라 특정 역할에 집중하게 된답니다.
+예를 들어, 일부 개발자는 데이터베이스 관리에 중점을 두고, 다른 개발자는 클라우드 인프라 관리에 집중할 수 있습니다.
+
+🙋‍♂️ 내가 되고 싶은 백엔드 개발자.
+
+  
+    
+      맡은 역할과 책임에 최선을 다하는 개발자
+        
+          저는 맡은 바에 항상 최선을 다해 임무를 완수합니다.
+          내가 맡은 바에는 책임이라는 것이 따르기 때문에 항상 최선을 다해야 한다고 생각합니다.
+        
+      
+    
+  
+  
+    
+      소통을 잘하는 백엔드 개발자.
+        
+          커뮤니케이션이 정말 중요하다고 생각합니다.
+          하나의 프로그램을 만들기 위해서는 많은 사람들이 함께 만들어가는 것 이기 때문에 함께 협력하고 소통을 잘해야 합니다.
+        
+      
+    
+  
+  
+    
+      유연한 사고를 가진 백엔드 개발자.
+        
+          나 자신의 의견 또는 생각 역시도 틀릴 수 있다는 것을 항상 인지하고 여러 모든 의견을 유연하게 받아들일 수 있는 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+  
+    
+      말이 아닌 코드로 증명하는 개발자.
+        
+          말로만 대단한 듯이 말하는 개발자가 아닌 진짜 코드로 증명해내는 그런 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+  
+    
+      겸손과 꾸준한 성장을 하는 백엔드 개발자.
+        
+          겸손의 미덕을 알고 있습니다. 언제나 배움의 자세를 가지고 항상 배우려 노력하며 꾸준히 성장하는 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -9899,6 +9990,71 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
   연습 문제 풀이(2)
   예외 처리 - 트러블슈팅
   문자열 처리 - 트러블슈팅
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html"><h1 class="title_post">📝[blog post] 연습 문제 풀이 정리(2)</h1></a>
+                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="txt_post">
+                            1️⃣ 수열과 재귀.
+
+연습 문제를 풀다보니 수열과 재귀에 대해 많은 수학적 사고력이 필요하겠다는 생각이 들었습니다.
+
+
+  수열 : 수학에서 수의 나열을 의미합니다.
+    
+      즉, 어떤 규착에 따라 나열된 수들의 집합을 말합니다.
+      수열은 각 수를 나타내는 일련의 할(terms)으로 구성되며, 각 항은 특정 위치(index)를 가집니다.
+      수열의 예로는 다음과 같은 것들이 있습니다.
+        
+          등차수열: 각 항이 일정한 값만큼 증가하거나 감소하는 수열(예: 2, 5, 8, 11…)(각 항이 3씩 증가)
+          등비수열: 각 항이 일정한 비율로 증가하거나 감소하는 수열(예: 3, 9, 27, 81…)(각 항이 이전 항의 3배)
+          피보나치 수열: 첫 두 항이 0과 1이고, 그 이후의 각 항이 바로 앞 두항의 합인 수열(예: 0, 1, 1, 2, 3, 5, 8….)
+            
+              수열은 다양한 수학적 문제를 해결하는 데 사용되며, 특히 함수, 극한, 미적분 등의 주제와 밀접한 관련이 있습니다.
+            
+          
+        
+      
+    
+  
+  재귀 : 프로그래밍과 수학에서 사용되는 개념으로, 어떤 함수나 알고리즘이 자기 자신을 호출하는 방식울 말합니다.
+    
+      재귀를 통해 복잡한 문제를 더 작은 하위 문제로 나누어 해결할 수 있습니다.
+      재귀 함수는 기본적으로 두 가지 부분으로 구성됩니다.
+        
+          1. 기저 조건(Base Case) : 재귀 호출이 더 이상 필요하지 않은 경우를 정의합니다. 기저 조건이 충족되면 함수는 더 이상 자기 자신을 호출하지 않고 종료됩니다.
+          2. 재귀 호출(Recursive Call) : 함수가 자기 자신을 호출하여 문제를 더 작은 부분으로 나누어 해결하려고 시도합니다.
+            
+              재귀는 문제를 단순하고 직관적으로 표현할 수 있는 강력한 도구이지만, 재귀 호출이 과도하면 스택 오버플로(stack overflow)가 발생할 수 있으므로 주의가 필요합니다.
+                
+                  따라서 재귀를 사용할 때는 기저 조건을 잘 정의하고, 필요할 경우 반복(iteration)으로 문제를 해결하는 방법도 고려해야 합니다.
+                
+              
+            
+          
+        
+      
+    
+  
 
 
                         </a>
@@ -9968,71 +10124,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
   
   ‘scanner.next()’ 를 호출하여 잘못된 입력을 버리고, 다음 입력을 기다리도록 합니다.
   사용자가 유효한 숫자를 입력하면 ‘age’ 를 반환하고 메소드를 종료합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html"><h1 class="title_post">📝[blog post] 연습 문제 풀이 정리(2)</h1></a>
-                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="txt_post">
-                            1️⃣ 수열과 재귀.
-
-연습 문제를 풀다보니 수열과 재귀에 대해 많은 수학적 사고력이 필요하겠다는 생각이 들었습니다.
-
-
-  수열 : 수학에서 수의 나열을 의미합니다.
-    
-      즉, 어떤 규착에 따라 나열된 수들의 집합을 말합니다.
-      수열은 각 수를 나타내는 일련의 할(terms)으로 구성되며, 각 항은 특정 위치(index)를 가집니다.
-      수열의 예로는 다음과 같은 것들이 있습니다.
-        
-          등차수열: 각 항이 일정한 값만큼 증가하거나 감소하는 수열(예: 2, 5, 8, 11…)(각 항이 3씩 증가)
-          등비수열: 각 항이 일정한 비율로 증가하거나 감소하는 수열(예: 3, 9, 27, 81…)(각 항이 이전 항의 3배)
-          피보나치 수열: 첫 두 항이 0과 1이고, 그 이후의 각 항이 바로 앞 두항의 합인 수열(예: 0, 1, 1, 2, 3, 5, 8….)
-            
-              수열은 다양한 수학적 문제를 해결하는 데 사용되며, 특히 함수, 극한, 미적분 등의 주제와 밀접한 관련이 있습니다.
-            
-          
-        
-      
-    
-  
-  재귀 : 프로그래밍과 수학에서 사용되는 개념으로, 어떤 함수나 알고리즘이 자기 자신을 호출하는 방식울 말합니다.
-    
-      재귀를 통해 복잡한 문제를 더 작은 하위 문제로 나누어 해결할 수 있습니다.
-      재귀 함수는 기본적으로 두 가지 부분으로 구성됩니다.
-        
-          1. 기저 조건(Base Case) : 재귀 호출이 더 이상 필요하지 않은 경우를 정의합니다. 기저 조건이 충족되면 함수는 더 이상 자기 자신을 호출하지 않고 종료됩니다.
-          2. 재귀 호출(Recursive Call) : 함수가 자기 자신을 호출하여 문제를 더 작은 부분으로 나누어 해결하려고 시도합니다.
-            
-              재귀는 문제를 단순하고 직관적으로 표현할 수 있는 강력한 도구이지만, 재귀 호출이 과도하면 스택 오버플로(stack overflow)가 발생할 수 있으므로 주의가 필요합니다.
-                
-                  따라서 재귀를 사용할 때는 기저 조건을 잘 정의하고, 필요할 경우 반복(iteration)으로 문제를 해결하는 방법도 고려해야 합니다.
-                
-              
-            
-          
-        
-      
-    
-  
 
 
                         </a>
@@ -10527,200 +10618,6 @@ Calculator calclator = new Calculator() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-13-CollectionFramework.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-CollectionFramework.html"><h1 class="title_post">☕️[Java] 컬렉션 프레임워크</h1></a>
-                        <a href="/Backend/Java/2024-05-13-CollectionFramework.html" class="txt_post">
-                            1️⃣ 컬렉션 프레임워크
-
-1. 컬렉션 프레임워크(Collection Framework)
-자바 컬렉션 프레임워크는 자료 구조를 효율적으로 관리하고 조작할 수 있는 방법을 제공하는 통합 아키텍처입니다.
-이 프레임워크는 다양한 인터페이스와 구현을 포함하며, 다양한 종류의 컬렉션들을 제어하고, 데이터 집합을 효율적으로 관리하기 위한 알고리즘을 제공합니다.
-
-1.2 컬렉션 프레임워크의 구요 구성 요소.
-
-  1. 인터페이스(Interface) : 컬렉션 프레임워크의 핵심 인터페이스로는 ‘Collection’, ‘List’, ‘Queue’ 등이 있으며 각각 다른 형태의 데이터 집합을 추상화합니다.
-    
-      예를 들어, ‘List’ 는 순서가 있는 데이터 집합을, ‘Set’ 은 중복을 허용하지 않는 데이터 집합을 나타냅니다.
-    
-  
-  2. 구현(Implementation) : 이러한 인터페이스를 실제로 구현한 클래스들로, ‘ArrayList’, ‘LinkedList’, ‘HashSet’, ‘TreeSet’, ‘PriorityQueue’ 등이 포함됩니다.
-    
-      각 클래스는 컬렉션 인터페이스를 구현하며, 데이터의 특성에 따라 선택하여 사용할 수 있습니다.
-    
-  
-  3. 알고리즘(Algorithm) : 컬렉션 데이터를 처리하는 데 필요한 다양한 알고리즘이 제공됩니다.
-    
-      이 알고리즘은 정렬, 검색, 순환 및 변환 등을 포함하며, 이들은 대부분 ‘Collections’ 클래스에 정적 메소드로 제공됩니다.
-    
-  
-
-
-1.3 📝 정리.
-컬렉션 프레임워크를 사용하면 데이터를 보다 효율적으로 처리할 수 있고, 기능의 재사용성 및 유지 보수성이 향상됩니다.
-또한, 자바 개발자로서 다양한 데이터 컬렉션을 쉽게 처리하고, 표준화된 방법으로 데이터를 조작할 수 있는 능력을 갖추게 됩니다.
-
-
-
-2. List 인터페이스.
-자바 프로그래밍에서 ‘List’ 인터페이스는 ‘java.util’ 패키지의 일부로, 순서가 있는 컬렉션을 나타냅니다.
-이 인터페이스를 사용하면 사용자가 목록의 특정 위치에 접근, 삽입, 삭제를 할 수 있는 동시에, 목록의 요소들이 입력된 순서대로 저장 및 관리됩니다.
-‘List’ 는 중복된 요소의 저장을 허용하기 때문에, 같은 값을 가진 요소를 여러 개 포함할 수 있습니다.
-
-2.1 List 인터페이스의 주요 메서드.
-
-  add(E e) : 리스트의 끝에 요소를 추가합니다.
-  add(int index, E element) : 리스트의 특정 위치에 요소를 삽입합니다.
-  remove(Object o) : 리스트에서 지정된 요소를 삭제합니다.
-  remove(int index) : 리스트에서 지정된 위치의 요소를 삭제합니다.
-  get(int index) : 지정된 위치에 있는 요소를 반환합니다.
-  set(int index, E element) : 리스트의 특정 위치에 요소를 설정(교체)합니다.
-  indexOf(Object o) : 객체를 찾고, 리스트 내의 첫 번째 등장 위치를 반환합니다.
-  size() : 리스트에 있는 요소의 수를 반환합니다.
-  clear() : 리스트에서 모든 요소를 제거합니다.
-
-
-2.3 가장 널리 사용되는 구현체.
-‘List’ 인터페이스는 다양한 구현체를 가지고 있으며, 가장 널리 사용되는 구현체는 ‘ArrayList’, ‘LinkedList’ 그리고 ‘Vector’ 입니다.
-
-각 구현체는 내부적인 데이터 관리 방식이 다르므로, 사용 상황에 따라 적합한 구현체를 선택할 수 있습니다.
-
-
-  ‘ArrayList’ : 내부적으로 배열을 사용하여 요소들을 관리합니다. 인덱스를 통한 빠른 접근이 가능하지만, 크기 조정이 필요할 때 비용이 많이 들 수 있습니다.
-  ‘LinkedList :’ 내부적으로 양방향 연결 리스트를 사용합니다. 데이터의 삽입과 삭제가 빈번하게 일어나는 경우 유용합니다.
-  Vector : ‘ArrayList’ 와 비슷하지만, 모든 메소드가 동기화되어 있어 멀티스레드 환경에서 사용하기에 안전합니다.
-
-
-2.4 📝 정리.
-이러한 특성들로 인해 ‘List’ 인터페이스는 자바에서 데이터를 순차적으로 처리할 필요가 있는 다양한 애플리케이션에서 중요하게 사용됩니다.
-
-
-
-3. Set 인터페이스.
-자바 프로그래밍에서 ‘Set’ 인터페이스는 ‘java.util’ 패키지의 일부이며, 중복을 허용하지 않는 요소의 컬렉션을 나타냅니다.
-
-‘Set’ 은 ‘Collection’ 인터페이스를 확장하는 인터페이스로서, 집합의 개념을 구현합니다.
-이는 각 요소가 컬렉션 내에서 유일하게 존재해야 함을 의미합니다.
-
-인덱스로 요소를 관리하는 ‘List’ 인터페이스와 달리, ‘Set’ 은 요소의 순서를 유지하지 않습니다.
-
-3.1 Set의 주요 특징.
-
-  중복 불허 : 같은 요소의 중복을 허용하지 않으며, 이미 ‘Set’ 에 존재하는 요소를 추가하려고 시도하면 그 요소는 컬렉션에 추가되지 않습니다.
-  순서 보장 없음 : 대부분의 ‘Set’ 구현체는 요소의 저장 순서를 유지하지 않습니다. 그러나 ‘LinkedHashSet’ 과 같은 특정 구현체는 요소의 삽입 순서를 유지할 수 있습니다.
-  값에 의한 접근 : ‘Set’ 은 인덱스를 사용하지 않고 값에 의해 요소에 접근합니다.
-
-
-3.2 주요 메서드.
-‘Set’ 인터페이스는 ‘Collection’ 인터페이스에서 상속받은 다양한 메소드를 포함합니다.
-주요 메서드는 다음과 같습니다.
-
-
-  add(E e): 요소 e를 Set에 추가합니다. 이미 존재하는 요소를 추가하려는 경우, 요소는 추가되지 않고 false를 반환합니다.
-  remove(Object o): 지정된 객체 o를 Set에서 제거합니다.
-  contains(Object o): Set이 지정된 객체 o를 포함하고 있는지 여부를 반환합니다.
-  size(): Set의 요소 개수를 반환합니다.
-  isEmpty(): Set이 비어 있는지 여부를 반환합니다.
-  clear(): Set의 모든 요소를 제거합니다
-
-
-3.3 주요 구현체.
-‘Set’ 인터페이스는 여러 가지 방법으로 구현될 수 있으며, 각 구현체는 다른 특성을 가집니다.
-
-
-  HashSet : 가장 널리 사용되는 ‘Set’ 구현체로, 해시 테이블을 사용하여 요소를 저장합니다. 요소의 삽입, 삭제, 검색 작업은 평균적으로 상수 시간(O(1))이 걸립니다.
-  LinkedHashSet : ‘HashSet’ 의 확장으로, 요소의 삽입 순서를 유지합니다.
-  TreeSet : 레드-블랙 트리 구조를 사용하여 요소를 저장합니다. 요소는 자연적 순서 또는 비교자에 의해 정렬됩니다.
-    
-      이로 인해 삽입, 삭제, 검색 작업에 로그 시간(O(log n))이 걸립니다.
-    
-  
-
-
-3.4 📝 정리.
-‘Set’ 인터페이스는 주로 중복을 허용하지 않는 데이터 컬렉션을 다루는 데 사용되며, 특히 요소의 유일성을 보장하는데 유용합니다.
-
-
-
-4. Map 인터페이스.
-자바에서 ‘Map’ 인터페이스는 ‘java.util’ 패키지에 속하며, 키(key)와 값(value) 쌍으로 이루어진 데이터를 저장하는 자료구조를 정의합니다.
-
-‘Map’ 은 키의 중복을 허용하지 않으면서 각 키는 하나의 값에 매핑됩니다.
-
-값은 중복될 수 있지만, 각 키는 유일해야 합니다.
-
-이러한 특성 때문에 ‘Map’ 은 키를 통해 빠르게 데이터를 검색할 수 있는 효율적인 수단을 제공합니다.
-
-4.1 Map의 주요 특징.
-
-  키 기반 데이터 접근 : 키를 사용하여 데이터에 접근하므로, 키에 대한 빠른 검색, 삽입, 삭제가 가능합니다.
-  키의 유일성 : 같은 키를 다시 ‘Map’ 에 추가하려고 하면 기존 키에 연결된 값이 새 값으로 대체됩니다.
-  값의 중복 허용 : 같은 값을 가진 여러 키가 ‘Map’ 에 존재할 수 있습니다.
-
-
-4.2 주요 메서드
-‘Map’ 인터페이스는 데이터를 관리하기 위해 다음과 같은 주요 메소드를 제공합니다.
-
-
-  put(K key, V value): 키와 값을 Map에 추가합니다. 이미 키가 존재하면, 해당 키의 값이 새로운 값으로 업데이트 됩니다.
-  get(Object key): 지정된 키에 연결된 값을 반환합니다. 키가 존재하지 않는 경우, null을 반환합니다.
-  remove(Object key): 지정된 키와 그 키에 매핑된 값을 Map에서 제거합니다.
-  containsKey(Object key): Map에 특정 키가 있는지 검사합니다.
-  containsValue(Object value): Map에 특정 값이 하나 이상 있는지 검사합니다.
-  keySet(): Map의 모든 키를 Set 형태로 반환합니다.
-  values(): Map의 모든 값을 컬렉션 형태로 반환합니다.
-  entrySet(): Map의 모든 “키-값” 쌍을 Set 형태의 Map.Entry 객체로 반환합니다.
-  size(): Map에 저장된 “키-값” 쌍의 개수를 반환합니다.
-  clear(): Map의 모든 요소를 제거합니다.
-
-
-4.3 주요 구현체
-‘Map’ 인터페이스의 주요 구현체로는 다음과 같은 클래스들이 있습니다.
-
-  HashMap : 가장 일반적으로 사용되는 ‘Map’ 구현체로, 해시 테이블을 사용합니다.
-    
-      요소의 순서를 보장하지 않으며, 키와 값에 ‘null’ 을 허용합니다.
-    
-  
-  LinkedHashMap : ‘HashMap’ 을 상속받아 구현된 클래스로, 요소의 삽입 순서를 유지합니다.
-    
-      이는 순회 시 삽인된 순서대로 요소를 얻을 수 있게 해줍니다.
-    
-  
-  TreeMap : 레드-블랙 트리를 기반으로 하는 ‘Map’ 구현체로, 모든 키가 자연적 순서대로 정렬됩니다.
-    
-      정렬된 순서로의 접근이 필요할 때 유용합니다.
-    
-  
-  Hashtable : ‘HashMap’ 과 유사하지만, 모든 메소드가 동기화되어 있어 멀티스레드 환경에서 사용하기에 안전합니다.
-    
-      그러나 성능이 ‘HashMap’ 보다 느리고, 키와 값에 ‘null’ 을 허용하지 않습니다.
-    
-  
-
-
-4.4 📝 정리.
-‘Map’ 인터페이스는 다양한 애플리케이션에서 설정, 프로파일, 사용자 세션 등의 데이터를 키와 값의 형태로 관리할 때 유용하게 사용됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -11079,6 +10976,227 @@ hashCode() 메소드의 주요 용도
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-13-CollectionFramework.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-13-CollectionFramework.html"><h1 class="title_post">☕️[Java] 컬렉션 프레임워크</h1></a>
+                        <a href="/Backend/Java/2024-05-13-CollectionFramework.html" class="txt_post">
+                            1️⃣ 컬렉션 프레임워크
+
+1. 컬렉션 프레임워크(Collection Framework)
+자바 컬렉션 프레임워크는 자료 구조를 효율적으로 관리하고 조작할 수 있는 방법을 제공하는 통합 아키텍처입니다.
+이 프레임워크는 다양한 인터페이스와 구현을 포함하며, 다양한 종류의 컬렉션들을 제어하고, 데이터 집합을 효율적으로 관리하기 위한 알고리즘을 제공합니다.
+
+1.2 컬렉션 프레임워크의 구요 구성 요소.
+
+  1. 인터페이스(Interface) : 컬렉션 프레임워크의 핵심 인터페이스로는 ‘Collection’, ‘List’, ‘Queue’ 등이 있으며 각각 다른 형태의 데이터 집합을 추상화합니다.
+    
+      예를 들어, ‘List’ 는 순서가 있는 데이터 집합을, ‘Set’ 은 중복을 허용하지 않는 데이터 집합을 나타냅니다.
+    
+  
+  2. 구현(Implementation) : 이러한 인터페이스를 실제로 구현한 클래스들로, ‘ArrayList’, ‘LinkedList’, ‘HashSet’, ‘TreeSet’, ‘PriorityQueue’ 등이 포함됩니다.
+    
+      각 클래스는 컬렉션 인터페이스를 구현하며, 데이터의 특성에 따라 선택하여 사용할 수 있습니다.
+    
+  
+  3. 알고리즘(Algorithm) : 컬렉션 데이터를 처리하는 데 필요한 다양한 알고리즘이 제공됩니다.
+    
+      이 알고리즘은 정렬, 검색, 순환 및 변환 등을 포함하며, 이들은 대부분 ‘Collections’ 클래스에 정적 메소드로 제공됩니다.
+    
+  
+
+
+1.3 📝 정리.
+컬렉션 프레임워크를 사용하면 데이터를 보다 효율적으로 처리할 수 있고, 기능의 재사용성 및 유지 보수성이 향상됩니다.
+또한, 자바 개발자로서 다양한 데이터 컬렉션을 쉽게 처리하고, 표준화된 방법으로 데이터를 조작할 수 있는 능력을 갖추게 됩니다.
+
+
+
+2. List 인터페이스.
+자바 프로그래밍에서 ‘List’ 인터페이스는 ‘java.util’ 패키지의 일부로, 순서가 있는 컬렉션을 나타냅니다.
+이 인터페이스를 사용하면 사용자가 목록의 특정 위치에 접근, 삽입, 삭제를 할 수 있는 동시에, 목록의 요소들이 입력된 순서대로 저장 및 관리됩니다.
+‘List’ 는 중복된 요소의 저장을 허용하기 때문에, 같은 값을 가진 요소를 여러 개 포함할 수 있습니다.
+
+2.1 List 인터페이스의 주요 메서드.
+
+  add(E e) : 리스트의 끝에 요소를 추가합니다.
+  add(int index, E element) : 리스트의 특정 위치에 요소를 삽입합니다.
+  remove(Object o) : 리스트에서 지정된 요소를 삭제합니다.
+  remove(int index) : 리스트에서 지정된 위치의 요소를 삭제합니다.
+  get(int index) : 지정된 위치에 있는 요소를 반환합니다.
+  set(int index, E element) : 리스트의 특정 위치에 요소를 설정(교체)합니다.
+  indexOf(Object o) : 객체를 찾고, 리스트 내의 첫 번째 등장 위치를 반환합니다.
+  size() : 리스트에 있는 요소의 수를 반환합니다.
+  clear() : 리스트에서 모든 요소를 제거합니다.
+
+
+2.3 가장 널리 사용되는 구현체.
+‘List’ 인터페이스는 다양한 구현체를 가지고 있으며, 가장 널리 사용되는 구현체는 ‘ArrayList’, ‘LinkedList’ 그리고 ‘Vector’ 입니다.
+
+각 구현체는 내부적인 데이터 관리 방식이 다르므로, 사용 상황에 따라 적합한 구현체를 선택할 수 있습니다.
+
+
+  ‘ArrayList’ : 내부적으로 배열을 사용하여 요소들을 관리합니다. 인덱스를 통한 빠른 접근이 가능하지만, 크기 조정이 필요할 때 비용이 많이 들 수 있습니다.
+  ‘LinkedList :’ 내부적으로 양방향 연결 리스트를 사용합니다. 데이터의 삽입과 삭제가 빈번하게 일어나는 경우 유용합니다.
+  Vector : ‘ArrayList’ 와 비슷하지만, 모든 메소드가 동기화되어 있어 멀티스레드 환경에서 사용하기에 안전합니다.
+
+
+2.4 📝 정리.
+이러한 특성들로 인해 ‘List’ 인터페이스는 자바에서 데이터를 순차적으로 처리할 필요가 있는 다양한 애플리케이션에서 중요하게 사용됩니다.
+
+
+
+3. Set 인터페이스.
+자바 프로그래밍에서 ‘Set’ 인터페이스는 ‘java.util’ 패키지의 일부이며, 중복을 허용하지 않는 요소의 컬렉션을 나타냅니다.
+
+‘Set’ 은 ‘Collection’ 인터페이스를 확장하는 인터페이스로서, 집합의 개념을 구현합니다.
+이는 각 요소가 컬렉션 내에서 유일하게 존재해야 함을 의미합니다.
+
+인덱스로 요소를 관리하는 ‘List’ 인터페이스와 달리, ‘Set’ 은 요소의 순서를 유지하지 않습니다.
+
+3.1 Set의 주요 특징.
+
+  중복 불허 : 같은 요소의 중복을 허용하지 않으며, 이미 ‘Set’ 에 존재하는 요소를 추가하려고 시도하면 그 요소는 컬렉션에 추가되지 않습니다.
+  순서 보장 없음 : 대부분의 ‘Set’ 구현체는 요소의 저장 순서를 유지하지 않습니다. 그러나 ‘LinkedHashSet’ 과 같은 특정 구현체는 요소의 삽입 순서를 유지할 수 있습니다.
+  값에 의한 접근 : ‘Set’ 은 인덱스를 사용하지 않고 값에 의해 요소에 접근합니다.
+
+
+3.2 주요 메서드.
+‘Set’ 인터페이스는 ‘Collection’ 인터페이스에서 상속받은 다양한 메소드를 포함합니다.
+주요 메서드는 다음과 같습니다.
+
+
+  add(E e): 요소 e를 Set에 추가합니다. 이미 존재하는 요소를 추가하려는 경우, 요소는 추가되지 않고 false를 반환합니다.
+  remove(Object o): 지정된 객체 o를 Set에서 제거합니다.
+  contains(Object o): Set이 지정된 객체 o를 포함하고 있는지 여부를 반환합니다.
+  size(): Set의 요소 개수를 반환합니다.
+  isEmpty(): Set이 비어 있는지 여부를 반환합니다.
+  clear(): Set의 모든 요소를 제거합니다
+
+
+3.3 주요 구현체.
+‘Set’ 인터페이스는 여러 가지 방법으로 구현될 수 있으며, 각 구현체는 다른 특성을 가집니다.
+
+
+  HashSet : 가장 널리 사용되는 ‘Set’ 구현체로, 해시 테이블을 사용하여 요소를 저장합니다. 요소의 삽입, 삭제, 검색 작업은 평균적으로 상수 시간(O(1))이 걸립니다.
+  LinkedHashSet : ‘HashSet’ 의 확장으로, 요소의 삽입 순서를 유지합니다.
+  TreeSet : 레드-블랙 트리 구조를 사용하여 요소를 저장합니다. 요소는 자연적 순서 또는 비교자에 의해 정렬됩니다.
+    
+      이로 인해 삽입, 삭제, 검색 작업에 로그 시간(O(log n))이 걸립니다.
+    
+  
+
+
+3.4 📝 정리.
+‘Set’ 인터페이스는 주로 중복을 허용하지 않는 데이터 컬렉션을 다루는 데 사용되며, 특히 요소의 유일성을 보장하는데 유용합니다.
+
+
+
+4. Map 인터페이스.
+자바에서 ‘Map’ 인터페이스는 ‘java.util’ 패키지에 속하며, 키(key)와 값(value) 쌍으로 이루어진 데이터를 저장하는 자료구조를 정의합니다.
+
+‘Map’ 은 키의 중복을 허용하지 않으면서 각 키는 하나의 값에 매핑됩니다.
+
+값은 중복될 수 있지만, 각 키는 유일해야 합니다.
+
+이러한 특성 때문에 ‘Map’ 은 키를 통해 빠르게 데이터를 검색할 수 있는 효율적인 수단을 제공합니다.
+
+4.1 Map의 주요 특징.
+
+  키 기반 데이터 접근 : 키를 사용하여 데이터에 접근하므로, 키에 대한 빠른 검색, 삽입, 삭제가 가능합니다.
+  키의 유일성 : 같은 키를 다시 ‘Map’ 에 추가하려고 하면 기존 키에 연결된 값이 새 값으로 대체됩니다.
+  값의 중복 허용 : 같은 값을 가진 여러 키가 ‘Map’ 에 존재할 수 있습니다.
+
+
+4.2 주요 메서드
+‘Map’ 인터페이스는 데이터를 관리하기 위해 다음과 같은 주요 메소드를 제공합니다.
+
+
+  put(K key, V value): 키와 값을 Map에 추가합니다. 이미 키가 존재하면, 해당 키의 값이 새로운 값으로 업데이트 됩니다.
+  get(Object key): 지정된 키에 연결된 값을 반환합니다. 키가 존재하지 않는 경우, null을 반환합니다.
+  remove(Object key): 지정된 키와 그 키에 매핑된 값을 Map에서 제거합니다.
+  containsKey(Object key): Map에 특정 키가 있는지 검사합니다.
+  containsValue(Object value): Map에 특정 값이 하나 이상 있는지 검사합니다.
+  keySet(): Map의 모든 키를 Set 형태로 반환합니다.
+  values(): Map의 모든 값을 컬렉션 형태로 반환합니다.
+  entrySet(): Map의 모든 “키-값” 쌍을 Set 형태의 Map.Entry 객체로 반환합니다.
+  size(): Map에 저장된 “키-값” 쌍의 개수를 반환합니다.
+  clear(): Map의 모든 요소를 제거합니다.
+
+
+4.3 주요 구현체
+‘Map’ 인터페이스의 주요 구현체로는 다음과 같은 클래스들이 있습니다.
+
+  HashMap : 가장 일반적으로 사용되는 ‘Map’ 구현체로, 해시 테이블을 사용합니다.
+    
+      요소의 순서를 보장하지 않으며, 키와 값에 ‘null’ 을 허용합니다.
+    
+  
+  LinkedHashMap : ‘HashMap’ 을 상속받아 구현된 클래스로, 요소의 삽입 순서를 유지합니다.
+    
+      이는 순회 시 삽인된 순서대로 요소를 얻을 수 있게 해줍니다.
+    
+  
+  TreeMap : 레드-블랙 트리를 기반으로 하는 ‘Map’ 구현체로, 모든 키가 자연적 순서대로 정렬됩니다.
+    
+      정렬된 순서로의 접근이 필요할 때 유용합니다.
+    
+  
+  Hashtable : ‘HashMap’ 과 유사하지만, 모든 메소드가 동기화되어 있어 멀티스레드 환경에서 사용하기에 안전합니다.
+    
+      그러나 성능이 ‘HashMap’ 보다 느리고, 키와 값에 ‘null’ 을 허용하지 않습니다.
+    
+  
+
+
+4.4 📝 정리.
+‘Map’ 인터페이스는 다양한 애플리케이션에서 설정, 프로파일, 사용자 세션 등의 데이터를 키와 값의 형태로 관리할 때 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-12-TIL.html" class="txt_post">
+                            
+  입출력(2)
+  예외 처리
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-12</span>
                             
                         </div>
                     </div>
@@ -11520,22 +11638,23 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-12-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
                             
-  입출력(2)
-  예외 처리
+  인터페이스
+  내부 클래스
+  입출력(1)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-12</span>
+                                <span class="date">· 2024-05-11</span>
                             
                         </div>
                     </div>
@@ -12048,34 +12167,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-05-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -12557,6 +12648,32 @@ button.addActionListener(new ActionListener() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
+                            
+  상속
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-09-Inheritance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -12765,21 +12882,21 @@ public class Dog extends Animal {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-08-TIL.html"><h1 class="title_post">📝 [TIL] 240508 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-08-TIL.html" class="txt_post">
                             
-  상속
+  클래스와 객체(2)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-09</span>
+                                <span class="date">· 2024-05-08</span>
                             
                         </div>
                     </div>
@@ -13083,59 +13200,6 @@ public class Test {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-08-TIL.html"><h1 class="title_post">📝 [TIL] 240508 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-08-TIL.html" class="txt_post">
-                            
-  클래스와 객체(2)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-07-TIL.html"><h1 class="title_post">📝 [TIL] 240507 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-07-TIL.html" class="txt_post">
-                            
-  다차원 배열
-  클래스와 객체(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-07</span>
                             
                         </div>
                     </div>
@@ -13812,6 +13876,33 @@ public class Test {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-07-TIL.html"><h1 class="title_post">📝 [TIL] 240507 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-07-TIL.html" class="txt_post">
+                            
+  다차원 배열
+  클래스와 객체(1)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-05-06-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -14252,34 +14343,6 @@ for (String name : names) {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-05-TIL.html"><h1 class="title_post">📝 [TIL] 240505 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-05-TIL.html" class="txt_post">
-                            
-  여러가지 연산자(1)
-  여러가지 연산자(2)
-  조건문
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-05</span>
                             
                         </div>
                     </div>
@@ -14907,6 +14970,60 @@ public class TernaryExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-05-TIL.html"><h1 class="title_post">📝 [TIL] 240505 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-05-TIL.html" class="txt_post">
+                            
+  여러가지 연산자(1)
+  여러가지 연산자(2)
+  조건문
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(4)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-04-VariablesAndDataTypes-4.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -15105,32 +15222,6 @@ public class Box&lt;T extends Number&gt; {
 
 📝 정리.
 제네릭스(Generics)를 사용함으로써 개발자는 보다 타입-안전하고 유지보수가 용이한 코드를 작성할 수 있으며, 실행 시 타입 관련 문제를 효과적으로 줄일 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(4)
-
 
                         </a>
                         <div class="info-post">
@@ -15734,89 +15825,6 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-02-VariablesAndDataTypes-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-02-VariablesAndDataTypes-1.html"><h1 class="title_post">☕️[Java] 자바 - 변수와 자료형(1)</h1></a>
-                        <a href="/Backend/Java/2024-05-02-VariablesAndDataTypes-1.html" class="txt_post">
-                            변수와 자료형(1)
-
-🙋‍♂️ 변수 이름 규칙
-자바 프로그래밍에서 변수를 명명할 때 따라야 할 몇 가지 기본적인 규칙과 관례가 있습니다.
-이러한 규칙을 준수하는 것은 코드의 가독성과 유지보수성을 높이는 데 중요합니다.
-다음은 자바에서 변수 이름을 지정할 때 고려해야 할 주요 규칙들 입니다.
-
-1️⃣ 기본 규칙.
-
-  **문자와 숫자, (Underscore), $ 사용가능 :** 변수 이름은 문자(letter) 나 밑줄(, Underscore) 또는 $(달러 기호)로 시작할 수 있습니다.
-    
-      그러나 숫자로 시작할 수는 없습니다.
-    
-  
-  숫자로 시작할 수 없다 : 첫 글자로는 숫자로 변수 이름을 시작할 수 없습니다.
-    
-      그러나 첫 글자 이후에는 숫자가 포함될 수 있습니다.
-    
-  
-  대문자와 소문자를 구분함 : 변수 이름을 명명시, 대문자와 소문자를 구분합니다.
-    
-      예를 들어 int apple = 1;, int Apple = 2;, int APPLE = 3;은 모두 다른 변수로 취급됩니다.
-    
-  
-  공백을 허용하지 않음 : 변수 이름을 명명시 공백이 들어가서는 않됩니다.
-    
-      예를 들어 int my friends = 7;과 같이 공백이 들어가서는 안됩니다.
-    
-  
-  특수 문자 제한 : ‘_(underscore)’와 ‘$’를 제외한 특수 문자는 변수명으로 사용할 수 없습니다.
-    
-      예를 들어 ‘@’, ‘#’, ‘%’ 등은 변수 이름으로 사용할 수 없습니다.
-    
-  
-  자바 예약어 사용 금지 : int, class, static 등 자바에서 이미 의미를 갖는 예약어는 변수 이름으로 사용할 수 없습니다.
-
-
-2️⃣ 표기법 및 관례(컨벤션)
-
-  카멜 케이스 : 첫 단어는 소문자로 시작하고, 이어지는 각 단어의 첫 글자는 대문자로 시작합니다.
-    
-      예를 들어, firstName, totalAmount 등 입니다.
-    
-  
-  파스칼 케이스 : 각 문자의 첫 문자를 대문자로 표기합니다.
-    
-      예를 들어, MyFriends, ToTalCount 등 입니다.
-    
-  
-  의미 있는 이름 : 변수 이름은 그 변수가 무엇을 의미하는지 명확하게 표현해야 합니다.
-    
-      예를 들어, numberOfStudents 는 학생 수를, temperature는 온도를 나타내는 등의 명확한 이름을 사용하는 것이 좋습니다.
-    
-  
-  상수 이름 규칙 : 상수(변하지 않는 값)는 모두 대문자를 사용하며, 단어 사이는 밑줄(‘_‘)로 구분합니다.
-    
-      예를 들어 MAX_HEIGHT, TOTAL_COUNT 등 입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -16155,185 +16163,78 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/AnD.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-02-VariablesAndDataTypes-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-01-AnD-1.html"><h1 class="title_post">[AnD] 두 수의 합.</h1></a>
-                        <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="txt_post">
-                            문제 설명 🤓
+                        <a href="/Backend/Java/2024-05-02-VariablesAndDataTypes-1.html"><h1 class="title_post">☕️[Java] 자바 - 변수와 자료형(1)</h1></a>
+                        <a href="/Backend/Java/2024-05-02-VariablesAndDataTypes-1.html" class="txt_post">
+                            변수와 자료형(1)
 
-0 이상의 두 정수가 문자열 a, b로 주어질 때, a + b의 값을 문자열로 return 하는 solution 함수를 작성해 주세요.
+🙋‍♂️ 변수 이름 규칙
+자바 프로그래밍에서 변수를 명명할 때 따라야 할 몇 가지 기본적인 규칙과 관례가 있습니다.
+이러한 규칙을 준수하는 것은 코드의 가독성과 유지보수성을 높이는 데 중요합니다.
+다음은 자바에서 변수 이름을 지정할 때 고려해야 할 주요 규칙들 입니다.
 
-솔루션 📝
+1️⃣ 기본 규칙.
 
-import java.math.BigInteger;
-
-class Solution {
-    public String solution(String a, String b) {
-        String answer = "";
-
-        BigInteger bigNumberA = new BigInteger(a);
-        BigInteger bigNumberB = new BigInteger(b);
-
-        answer = bigNumberA.add(bigNumberB).toString();
-
-        return answer;
-    }
-}
-
-
-트러블슈팅 🏀
-
-1. NumberFormatException 에러(1).
-
-입출력의 예시 중 가장 긴 입력 예시인 a : “18446744073709551615”, b : “305793246910280479981” 에서 에러가 발생 했습니다.
-
-1️⃣ 콘솔에 나타난 에러 메시지
-
-콘솔에 나타난 에러 메시지는 아래와 같았습니다.
-
-Exception in thread "main" java.lang.NumberFormatException: For input string: "18446744073709551615"
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:662)
-	at java.base/java.lang.Integer.valueOf(Integer.java:989)
-	at programmers.test1.Solution.solution(Solution.java:8)
-	at programmers.test1.SolutionMain.main(SolutionMain.java:7)
-
-Process finished with exit code 1
-
-
-2️⃣ 본격적인 트러블슈팅
-
-이 메시지를 하나씩 해석하고 트러블슈팅을 이어갔습니다.
-
-먼저 이 오류 메시지는 NumberFormatException 이 발생했다는 것을 나타냅니다.
-
-  특히 “For input string: “18446744073709551615”는 Java에서 정수로 변환하려는 문자열이 정부 범위를 벗어났음을 의미합니다.
-
-
-Java의 Integer.parseInt() 메소드는 문자열을 정수(Int)로 변환할 때 사용됩니다.
-
-  그러나 Int 자료형은 -2,147,483,648,648 부터 2,147,483,648,647까지의 값을 저정할 수 있습니다.
+  **문자와 숫자, (Underscore), $ 사용가능 :** 변수 이름은 문자(letter) 나 밑줄(, Underscore) 또는 $(달러 기호)로 시작할 수 있습니다.
     
-      제공된 문자열 “18446744073709551615”는 이 범위를 훨씬 초과합니다.
+      그러나 숫자로 시작할 수는 없습니다.
     
   
-
-
-3️⃣ 해결 방법
-
-이 문제를 해결하려면 다음과 같은 방법을 고려할 수 있습니다.
-
-1. 타입 변경
-
-  int 대신 long 타입을 사용하거나, 이보다 더 큰 범위가 필요하다면, BigInteger 클래스를 사용할 수 있습니다.
-  long 의 범위는 -9,223,372,036,854,775,808부터 9,223,372,036,854,775,807 까지입니다.
-
-
-2. 입력 검증
-
-  입력 값이 정수 타입으로 변환 가능한지, 그리고 해당 타입의 범위 내에 있는지 검증하는 로직을 추가합니다.
-
-
-
-  코드를 수정할 때는 적절한 데이터 타입을 사용하도록 주의해야 합니다.
-예를 들어, long 으로 변경하려면 Long.parseLong() 을 사용할 수 있습니다.
-
-
-2. NumberFormatException 에러(2)
-
-이번에는 위의 트러블슈팅을 활용하여 코드를 만든 결과 NumberFormatException 에러를 다시 발생 시킨 케이스 입니다.
-
-  이번에는 Long.parseLong() 메소드를 사용하면서 발생했습니다.
+  숫자로 시작할 수 없다 : 첫 글자로는 숫자로 변수 이름을 시작할 수 없습니다.
     
-      문자열 “18446744073709551615”는 이번에도 범위를 벗어난 값으로 처리되었습니다.
+      그러나 첫 글자 이후에는 숫자가 포함될 수 있습니다.
     
   
-
-
-long 자료형의 최대값은 9,223,372,036,854,775,807dlqslek.
-
-  제공된 값 “18446744073709551615”는 이 최대값을 초과합니다.
+  대문자와 소문자를 구분함 : 변수 이름을 명명시, 대문자와 소문자를 구분합니다.
     
-      따라서, long 으로도 처리할 수 없으며, Java에서 이러한 큰 숫자를 다루려면 BigInteger 클래스를 사용해야 합니다.
-        
-          BigInteger 는 사실상 제한 없는 정밀도의 정수를 다룰 수 있어 이와 같은 큰 숫자를 취급할 때 유용합니다.
-        
-      
+      예를 들어 int apple = 1;, int Apple = 2;, int APPLE = 3;은 모두 다른 변수로 취급됩니다.
     
   
+  공백을 허용하지 않음 : 변수 이름을 명명시 공백이 들어가서는 않됩니다.
+    
+      예를 들어 int my friends = 7;과 같이 공백이 들어가서는 안됩니다.
+    
+  
+  특수 문자 제한 : ‘_(underscore)’와 ‘$’를 제외한 특수 문자는 변수명으로 사용할 수 없습니다.
+    
+      예를 들어 ‘@’, ‘#’, ‘%’ 등은 변수 이름으로 사용할 수 없습니다.
+    
+  
+  자바 예약어 사용 금지 : int, class, static 등 자바에서 이미 의미를 갖는 예약어는 변수 이름으로 사용할 수 없습니다.
 
 
-BigInteger를 사용하는 예시 코드.
-import java.math.BigInteger;
+2️⃣ 표기법 및 관례(컨벤션)
 
-public class Solution {
-    public void solution(String input) {
-        BigInteger bigNumber = new BigInteger(input);
-        // bigNumber를 사용한 다른 로직
-    }
-}
-
-public class SolutionMain {
-    public static void main(String[] args) {
-        new Solution().solution("18446744073709551615");
-    }
-}
-
-
-  이 코드는 BigInteger 를 사용하여 입력된 숫자를 처리하고, 필요한 로직을 수행할 수 있도록 구성되어 있습니다.
-
-
-3. BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법.
-두 문자열을 받아 큰 범위의 문자열을 BigInteger 클래스를 사용하여 받아오고 변환하는 데 까지는 성공하였으나 입력된 두 개의 큰 범위 값의 BigInteger 를 어떻게 합쳐야 할지를 몰라 검색해 봤습니다.
-
-1️⃣ Java에서 BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법
-
-  BigInteger 클래스는 불변(immutable) 객체 이므로 두 BigInteger 인스턴스를 더할 때, 새로운 BigInteger 객체가 반환됩니다.
-
-
-2️⃣ BigInteger 객체를 더하는 방법 예시 코드
-import java.math.BigInteger;
-
-public class Main {
-    public static void main(String[] args) {
-        // 두 큰 수를 BigInteger로 생성
-        BigInteger number1 = new BigInteger("12345678901234567890");
-        BigInteger number2 = new BigInteger("98765432109876543210");
-        
-        // 두 수를 더함
-        BigInteger sum = number1.add(number2);
-        
-        // 결과 출력
-        System.out.println("Sum: " + sum.toSting())
-    }
-}
-
-
-이 코드는 다음과 같은 단계를 거칩니다.
-
-1. 두 개의 BigInteger 인스턴스 number1 과 number2 를 생성합니다.
-
-  이들은 문자열로부터 생성되며, 매우 큰 수를 나타낼 수 있습니다.
-
-
-2. add 메소드를 사용하여 number1 과 number2 를 더합니다.
-
-  이 메소드는 두 수의 합을 나타내는 새로운 BigInteger 객체를 반환합니다.
-
-
-3. 덧셈 결과를 출력합니다.
-
-
-  BigInteger 를 사용하면 정수의 범위에 제한 없이 수학적 연산을 수행할 수 있어, 매우 큰 수를 처리해야 할 때 유용합니다.
+  카멜 케이스 : 첫 단어는 소문자로 시작하고, 이어지는 각 단어의 첫 글자는 대문자로 시작합니다.
+    
+      예를 들어, firstName, totalAmount 등 입니다.
+    
+  
+  파스칼 케이스 : 각 문자의 첫 문자를 대문자로 표기합니다.
+    
+      예를 들어, MyFriends, ToTalCount 등 입니다.
+    
+  
+  의미 있는 이름 : 변수 이름은 그 변수가 무엇을 의미하는지 명확하게 표현해야 합니다.
+    
+      예를 들어, numberOfStudents 는 학생 수를, temperature는 온도를 나타내는 등의 명확한 이름을 사용하는 것이 좋습니다.
+    
+  
+  상수 이름 규칙 : 상수(변하지 않는 값)는 모두 대문자를 사용하며, 단어 사이는 밑줄(‘_‘)로 구분합니다.
+    
+      예를 들어 MAX_HEIGHT, TOTAL_COUNT 등 입니다.
+    
+  
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-01</span>
+                                <span class="date">· 2024-05-02</span>
                             
                         </div>
                     </div>
@@ -16681,6 +16582,196 @@ JVM의 구성 요소.
 2. 실행 엔진(Excution Engine) : 로드된 클래스 파일의 바이트코드를 실행합니다. 이 엔진은 바이트코드를 해것하거나 필요에 따라 JTI(Just-In-Time) 컴파일러를 사용하여 바이트코드를 직접 기계 코드로 변환하여 실행 속도를 높일 수 있습니다.
 3. 가비지 컬렉터(Garbage Collector) : JVM이 사용하지 않는 메모리 자원을 자동으로 회수합니다.
 4. 메모리(Runtime Data Area) : JVM은 프로그램 실행을 위해 필요한 다양한 메모리 영역을 관리합니다. 이는 힙(Heap), 스택(Stack), 메소드 영역(Method Area), 프로그램 카운터(Program Counter) 등이 포함됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/AnD.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-01-AnD-1.html"><h1 class="title_post">[AnD] 두 수의 합.</h1></a>
+                        <a href="/Backend/AnD/2024-05-01-AnD-1.html" class="txt_post">
+                            문제 설명 🤓
+
+0 이상의 두 정수가 문자열 a, b로 주어질 때, a + b의 값을 문자열로 return 하는 solution 함수를 작성해 주세요.
+
+솔루션 📝
+
+import java.math.BigInteger;
+
+class Solution {
+    public String solution(String a, String b) {
+        String answer = "";
+
+        BigInteger bigNumberA = new BigInteger(a);
+        BigInteger bigNumberB = new BigInteger(b);
+
+        answer = bigNumberA.add(bigNumberB).toString();
+
+        return answer;
+    }
+}
+
+
+트러블슈팅 🏀
+
+1. NumberFormatException 에러(1).
+
+입출력의 예시 중 가장 긴 입력 예시인 a : “18446744073709551615”, b : “305793246910280479981” 에서 에러가 발생 했습니다.
+
+1️⃣ 콘솔에 나타난 에러 메시지
+
+콘솔에 나타난 에러 메시지는 아래와 같았습니다.
+
+Exception in thread "main" java.lang.NumberFormatException: For input string: "18446744073709551615"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:662)
+	at java.base/java.lang.Integer.valueOf(Integer.java:989)
+	at programmers.test1.Solution.solution(Solution.java:8)
+	at programmers.test1.SolutionMain.main(SolutionMain.java:7)
+
+Process finished with exit code 1
+
+
+2️⃣ 본격적인 트러블슈팅
+
+이 메시지를 하나씩 해석하고 트러블슈팅을 이어갔습니다.
+
+먼저 이 오류 메시지는 NumberFormatException 이 발생했다는 것을 나타냅니다.
+
+  특히 “For input string: “18446744073709551615”는 Java에서 정수로 변환하려는 문자열이 정부 범위를 벗어났음을 의미합니다.
+
+
+Java의 Integer.parseInt() 메소드는 문자열을 정수(Int)로 변환할 때 사용됩니다.
+
+  그러나 Int 자료형은 -2,147,483,648,648 부터 2,147,483,648,647까지의 값을 저정할 수 있습니다.
+    
+      제공된 문자열 “18446744073709551615”는 이 범위를 훨씬 초과합니다.
+    
+  
+
+
+3️⃣ 해결 방법
+
+이 문제를 해결하려면 다음과 같은 방법을 고려할 수 있습니다.
+
+1. 타입 변경
+
+  int 대신 long 타입을 사용하거나, 이보다 더 큰 범위가 필요하다면, BigInteger 클래스를 사용할 수 있습니다.
+  long 의 범위는 -9,223,372,036,854,775,808부터 9,223,372,036,854,775,807 까지입니다.
+
+
+2. 입력 검증
+
+  입력 값이 정수 타입으로 변환 가능한지, 그리고 해당 타입의 범위 내에 있는지 검증하는 로직을 추가합니다.
+
+
+
+  코드를 수정할 때는 적절한 데이터 타입을 사용하도록 주의해야 합니다.
+예를 들어, long 으로 변경하려면 Long.parseLong() 을 사용할 수 있습니다.
+
+
+2. NumberFormatException 에러(2)
+
+이번에는 위의 트러블슈팅을 활용하여 코드를 만든 결과 NumberFormatException 에러를 다시 발생 시킨 케이스 입니다.
+
+  이번에는 Long.parseLong() 메소드를 사용하면서 발생했습니다.
+    
+      문자열 “18446744073709551615”는 이번에도 범위를 벗어난 값으로 처리되었습니다.
+    
+  
+
+
+long 자료형의 최대값은 9,223,372,036,854,775,807dlqslek.
+
+  제공된 값 “18446744073709551615”는 이 최대값을 초과합니다.
+    
+      따라서, long 으로도 처리할 수 없으며, Java에서 이러한 큰 숫자를 다루려면 BigInteger 클래스를 사용해야 합니다.
+        
+          BigInteger 는 사실상 제한 없는 정밀도의 정수를 다룰 수 있어 이와 같은 큰 숫자를 취급할 때 유용합니다.
+        
+      
+    
+  
+
+
+BigInteger를 사용하는 예시 코드.
+import java.math.BigInteger;
+
+public class Solution {
+    public void solution(String input) {
+        BigInteger bigNumber = new BigInteger(input);
+        // bigNumber를 사용한 다른 로직
+    }
+}
+
+public class SolutionMain {
+    public static void main(String[] args) {
+        new Solution().solution("18446744073709551615");
+    }
+}
+
+
+  이 코드는 BigInteger 를 사용하여 입력된 숫자를 처리하고, 필요한 로직을 수행할 수 있도록 구성되어 있습니다.
+
+
+3. BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법.
+두 문자열을 받아 큰 범위의 문자열을 BigInteger 클래스를 사용하여 받아오고 변환하는 데 까지는 성공하였으나 입력된 두 개의 큰 범위 값의 BigInteger 를 어떻게 합쳐야 할지를 몰라 검색해 봤습니다.
+
+1️⃣ Java에서 BigInteger 클래스를 사용하여 두 큰 정수를 더하는 방법
+
+  BigInteger 클래스는 불변(immutable) 객체 이므로 두 BigInteger 인스턴스를 더할 때, 새로운 BigInteger 객체가 반환됩니다.
+
+
+2️⃣ BigInteger 객체를 더하는 방법 예시 코드
+import java.math.BigInteger;
+
+public class Main {
+    public static void main(String[] args) {
+        // 두 큰 수를 BigInteger로 생성
+        BigInteger number1 = new BigInteger("12345678901234567890");
+        BigInteger number2 = new BigInteger("98765432109876543210");
+        
+        // 두 수를 더함
+        BigInteger sum = number1.add(number2);
+        
+        // 결과 출력
+        System.out.println("Sum: " + sum.toSting())
+    }
+}
+
+
+이 코드는 다음과 같은 단계를 거칩니다.
+
+1. 두 개의 BigInteger 인스턴스 number1 과 number2 를 생성합니다.
+
+  이들은 문자열로부터 생성되며, 매우 큰 수를 나타낼 수 있습니다.
+
+
+2. add 메소드를 사용하여 number1 과 number2 를 더합니다.
+
+  이 메소드는 두 수의 합을 나타내는 새로운 BigInteger 객체를 반환합니다.
+
+
+3. 덧셈 결과를 출력합니다.
+
+
+  BigInteger 를 사용하면 정수의 범위에 제한 없이 수학적 연산을 수행할 수 있어, 매우 큰 수를 처리해야 할 때 유용합니다.
+
 
                         </a>
                         <div class="info-post">
@@ -20900,6 +20991,17 @@ JVM의 구성 요소.
             'type'     : "post",
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-07-31-EntityListeners.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-07-31"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] Main 클래스 생성 후 오류 대처.",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-07-31-MainBuildFail.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-07-31"
         });

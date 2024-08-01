@@ -555,6 +555,7 @@
             
             
             
+            
 
     
     
@@ -909,6 +910,91 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/DB/2024-08-01-Transaction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/DB/2024-08-01-Transaction.html"><h1 class="title_post">💾[Database] 트랜잭션의 의미와 역할.</h1></a>
+                        <a href="/Backend/DB/2024-08-01-Transaction.html" class="txt_post">
+                            💾[Database] 트랜잭션의 의미와 역할.
+
+  트랜잭션은 데이터베이스 관리 시스템(DBMS)에서 데이터의 일관성과 정확성을 유지하기 위해 사용되는 기본 단위입니다.
+  데이터베이스에서 수행하는 작업들을 안전하게 실행하여, 여러 작업이 모두 성공하거나 모두 실패하도록 보장하는 역할을 합니다.
+
+
+1️⃣ 트랜잭션의 주요 특징(ACID).
+
+
+  1. 원자성(Atomicity)
+    
+      트랜잭션 내의 모든 연산은 원자적으로 처리됩니다. 즉, 연산들은 모두 완벽하게 수행되거나 아예 수행되지 않아야 합니다.
+      트랜잭션 중 하나라도 실패하면 전체 트랜잭션은 롤백(취소)되어 원래 상태로 복구됩니다.
+    
+  
+  2. 일관성(Consistency)
+    
+      트랜잭션이 실행되지 전과 후에 데이터베이스의 상태는 일관된 상태를 유지해야 합니다.
+      트랜잭션은 데이터베이스의 일관된 상태를 받아 변경 후에도 그 일관성을 유지하는 변경만을 수행해야 합니다.
+        
+          이는 데이터의 무결성 제약 조건들을 준수함을 의미합니다.
+        
+      
+    
+  
+  3. 독립성(Isolation)
+    
+      동시에 여러 트랜잭션이 실행될 때, 각 트랜잭션이 다른 트랜잭션의 연산에 영향을 받지 않아야 합니다. 이를 통해 데이터베이스의 안정성을 보장합니다.
+      DBMS는 이러한 독립성을 보장하기 위해 다양한 격리 수준(Isolation Level)을 제공합니다.
+    
+  
+  4. 지속성(Durability)
+    
+      트랜잭션이 성공적으로 완료되면, 그 결과는 영구적으로 데이터베이스에 반영도어야 합니다.
+      시스템 장애가 발생해도 이러한 트랜잭션 결과는 손실되지 않습니다.
+    
+  
+
+
+2️⃣ 트랜잭션의 역할.
+
+
+  데이터 무결성 유지
+    
+      트랜잭션은 데이터의 정확성과 일관성을 유지하며 데이터베이스 시스템의 신뢰성을 보장합니다.
+    
+  
+  시스템 장애 대응
+    
+      시스템 오류나 장애 발생 시, 트랜잭션은 롤백을 통해 데이터베이스를 안정적인 상태로 복구할 수 있게 돕습니다.
+    
+  
+  동시성 제어
+    
+      다수의 사용자가 데이터베이스에 동시에 접근할 때, 트랜잭션은 각각의 사용자가 데이터를 안전하게 읽고, 쓸 수 있도록 관리합니다.
+    
+  
+
+
+
+
+트랜잭션은 데이터베이스 시스템에서 꼭 필요한 기능으로, 데이터의 일관성과 안정성을 보장하는 중요한 메커니즘 입니다. 이를 통해 사용자는 데이터베이스의 신뢰성 있는 동작을 기대할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -5354,6 +5440,17 @@ DBMS에는 MySQL 외에도 많은 종류의 프로그램이 있습니다.
             'url'      : "/Backend/Java/2024-07-31-attribute.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-07-31"
+        });
+    
+
+        posts.push({
+            'title'    : "💾[Database] 트랜잭션의 의미와 역할.",
+            'path'     : "Backend > DB",
+            'type'     : "post",
+            'tags'     : "Database",
+            'url'      : "/Backend/DB/2024-08-01-Transaction.html",
+            'image'    : "/assets/img/thumbnail/database.jpeg",
+            'date'     : "2024-08-01"
         });
     
 

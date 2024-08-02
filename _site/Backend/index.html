@@ -556,6 +556,7 @@
             
             
             
+            
 
     
     
@@ -912,6 +913,109 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-02-Transactional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-02-Transactional.html"><h1 class="title_post">☕️[Java] @Transactional의 역할과 의미.</h1></a>
+                        <a href="/Backend/Java/2024-08-02-Transactional.html" class="txt_post">
+                            ☕️[Java] @Transactional의 역할과 의미.
+
+
+  @Transaction 어노테이션은 스프링 프레임워크에서 제공하는 선언적 트랜젝션 관리 기능을 활용하기 위해 사용됩니다.
+  이 어노테이션을 사용함으로써, 특정 메서드 또는 클래스 전체에 걸쳐 데이터베이스 트랜잭션의 경계를 설정할 수 있습니다.
+  트랜잭션은 일련의 연산들이 전부 성공적으로 완료되거나, 하나라도 실패할 경우 전체를 취소(롤백)하여 데이터의 일관성과 정합성을 보장하는 것을 목적으로 합니다.
+
+
+1️⃣ @Transactional의 주요 기능과 특징.
+
+
+  1. 자동 롤백
+    
+      @Transactional 이 적용된 메서드에서 런타임 예외(RuntimeException)가 발생하면, 그 트랜잭션에서 수행된 모든 변경이 자동으로 롤백됩니다.
+      이는 데이터의 일관성을 유지하는 데 필수적입니다.
+    
+  
+  2. 프로파게이션(Propagation)
+    
+      트랜잭션의 전파 행위를 제어합니다.
+        
+          예를 들어, 이미 진행 중인 트랜잭션이 있을 때 새로운 트랜잭션을 시작할 것인지, 아니면 기존 트랜잭션을 참여할 것인지 결정할 수 있습니다.
+            
+              REQUIRED(기본값) : 이미 진행 중인 트랜잭션이 있다면 그 트랜잭션이 참여하고, 없다면 새로운 트랜잭션을 시작합니다.
+              REQUIRED_NEW : 항상 새로운 트랜잭션을 시작합니다. 이미 진행 중인 트랜잭션이 있다면 잠시 보류합니다.
+            
+          
+        
+      
+    
+  
+  3. 격리 수준(Isolation Level)
+    
+      다른 트랜잭션이 데이터에 동시에 접근했을 때 발생할 수 있는 문제를 제어합니다.
+        
+          예를 들어, READ_COMMITTEED, REPEATED_READ, SERIALIZABLE 등 다양한 격리 수준을 지정할 수 있습니다.
+        
+      
+    
+  
+  4. 읽기 전용(Read-Only)
+    
+      트랜잭션을 읽기 전용으로 설정할 수 있어, 데이터 수정이 이루어지지 않는다는 것을 데이터베이스 최적화 엔진에 알려 성능을 향상시킬 수 있습니다.
+    
+  
+  5. 롤백 규칙(Rollback Rules)
+    
+      특정 예외가 발생했을 때 롤백을 수행할지 아니면 커밋을 수행할지를 세밀하게 제어할 수 있습니다.
+      기본적으로 런타임 예외에서는 롤백을 수행하고, 체크 예외에서는 커밋을 수행합니다.
+    
+  
+
+
+2️⃣ 사용 예제.
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TransactionalService {
+    
+    @Transactional(readOnly = true)
+    public User getUser(Long id) {
+        return userRepository.findById(id);
+    }
+    
+    @Transactional(rollbackFor = Exception.class)
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+}
+
+
+  위 예시처럼, getUser 메서드는 데이터를 변경하지 않고 조회만 수행하기 때문에 readOnly = true 로 설정했습니다.
+  반면, updateUser 메서드는 데이터를 변경할 가능성이 있으므로, 모든 예외(Exception)가 발생할 경우 롤백하도록 설정했습니다.
+
+
+
+
+@Transactional 을 사용함으로써 개발자는 복잡한 트랜잭션 관리 코드를 직접 작성하지 않고도, 스프링 프레임워크가 제공하는 선언적 방식을 통해 간단하게 트랜잭션을 관리할 수 있게 됩니다.
+이는 애플리케이션의 데이터 처리 로직을 더욱 안정적이고 효율적으로 만듭니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-01-SerializationAndDeserialization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -1247,6 +1351,69 @@ User user = (User) request.getSession().getAttribute("user");
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-07-31-EntityListeners.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-07-31-EntityListeners.html"><h1 class="title_post">☕️[Java] @EntityListeners 어노테이션.</h1></a>
+                        <a href="/Backend/Java/2024-07-31-EntityListeners.html" class="txt_post">
+                            ☕️[Java] @EntityListeners 어노테이션.
+
+1️⃣ 사용 방법.
+
+
+  @EntityListeners 어노테이션은 엔티티 클래스 또는 매핑된 슈퍼클래스에서 사용할 수 있으며, 하나 이상의 리스너 클래스를 지정할 수 있습니다.
+    
+      이 리스너 클래스들은 앞서 언급한 이벤트를 처리할 메소드들을 포함하고 있어야 합니다.
+    
+  
+
+
+import javax.persistence.EntityListeners;
+import javax.persistence.PostPersist;
+
+@EntityListeners(MyEntityListner.class)
+public class MyEntity {
+    // 엔티티 필드와 메서드
+}
+
+public class MyEntityListner {
+    @PostPersist
+    public void afterPersist(Object entity) {
+        System.out.println("Entity has been persisted: " + entity);
+    }
+}
+
+
+2️⃣ 사용 사례.
+
+  엔티티 리스너는 로깅, 유효성 검사, 보안 검사, 비즈니스 로직 실행 등 다양한 목적으로 사용할 수 있습니다.
+    
+      
+        예를 들어, 사용자 계정의 엔티티가 데이터베이스에 저장될 때 비밀번호 강도를 자동으로 검증하거나, 엔티티가 업데이트 될 때 특정 필드의 변경을 추적할 수 있습니다.
+      
+    
+  
+
+
+이처럼 @EntityListeners는 JPA 엔티티의 생명주기에 자동으로 반응하는 메소드를 구현함으로써, 엔티티와 관련된 비즈니스 로직을 분리하고 관리하는 데 큰 도움을 줍니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -1337,69 +1504,6 @@ Process 'command...bin/java 'finshed with non-zero exit value 1'
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-07-31-EntityListeners.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-07-31-EntityListeners.html"><h1 class="title_post">☕️[Java] @EntityListeners 어노테이션.</h1></a>
-                        <a href="/Backend/Java/2024-07-31-EntityListeners.html" class="txt_post">
-                            ☕️[Java] @EntityListeners 어노테이션.
-
-1️⃣ 사용 방법.
-
-
-  @EntityListeners 어노테이션은 엔티티 클래스 또는 매핑된 슈퍼클래스에서 사용할 수 있으며, 하나 이상의 리스너 클래스를 지정할 수 있습니다.
-    
-      이 리스너 클래스들은 앞서 언급한 이벤트를 처리할 메소드들을 포함하고 있어야 합니다.
-    
-  
-
-
-import javax.persistence.EntityListeners;
-import javax.persistence.PostPersist;
-
-@EntityListeners(MyEntityListner.class)
-public class MyEntity {
-    // 엔티티 필드와 메서드
-}
-
-public class MyEntityListner {
-    @PostPersist
-    public void afterPersist(Object entity) {
-        System.out.println("Entity has been persisted: " + entity);
-    }
-}
-
-
-2️⃣ 사용 사례.
-
-  엔티티 리스너는 로깅, 유효성 검사, 보안 검사, 비즈니스 로직 실행 등 다양한 목적으로 사용할 수 있습니다.
-    
-      
-        예를 들어, 사용자 계정의 엔티티가 데이터베이스에 저장될 때 비밀번호 강도를 자동으로 검증하거나, 엔티티가 업데이트 될 때 특정 필드의 변경을 추적할 수 있습니다.
-      
-    
-  
-
-
-이처럼 @EntityListeners는 JPA 엔티티의 생명주기에 자동으로 반응하는 메소드를 구현함으로써, 엔티티와 관련된 비즈니스 로직을 분리하고 관리하는 데 큰 도움을 줍니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-07-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-07-28-ipAndport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -1445,6 +1549,74 @@ public class MyEntityListner {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-07-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
+                            1️⃣ 시스템 패키지 업데이트
+
+  먼저 시스템 패키지를 업데이트 합니다.
+
+
+sudo dnf update -y
+
+
+2️⃣ Amazon Corretto 8 저장소 추가.
+
+  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
+    
+      Correttio 8은 Java 8과 호환됩니다.
+    
+  
+
+
+sudo dnf install -y java-1.8.0-amazon-corretto
+
+
+3️⃣ Java 8 설치 확인
+
+  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
+
+
+java -version
+
+
+
+  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
+
+
+4️⃣ 기본 Java 버전 설정
+
+
+  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
+    
+      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
+    
+  
+  먼저 현재 사용 가능한 Java 버전을 확인합니다.
+
+
+sudo alternatives --config java
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-26</span>
                             
                         </div>
                     </div>
@@ -1555,63 +1727,207 @@ sudo systemctl restart mysqld
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
-                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
-                            1️⃣ 시스템 패키지 업데이트
+                        <a href="/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no1.html"><h1 class="title_post">📝[Post] 자바다식(Java多識) - 1</h1></a>
+                        <a href="/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no1.html" class="txt_post">
+                            자바다식(Java多識) 1편.
 
-  먼저 시스템 패키지를 업데이트 합니다.
+1. ‘mainClassName’ 속성 추가.
+
+메인 클래스의 경로를 지정해주는 속성을 추가하는 방법입니다.
+초기 진입점을 지정해준다고 생각하면 됩니다.
 
 
-sudo dnf update -y
+  application 블록 안에 메인 클래스 이름을 지정합니다. 예를 들어, 메인 클래스가 com.example.Main 이라고 가정합니다.
+  아래의 코드는 bundle.gradle 파일 내부에서 수정해야 합니다.
 
 
-2️⃣ Amazon Corretto 8 저장소 추가.
+plugins {
+    id 'java'
+    id 'application'
+}
 
-  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
+application {
+    mainClassName = 'com.example.Main' // 여기에 메인 클래스의 경로를 입력합니다.
+    applicationDefaultJvmArgs = [
+        "-XX:+EnableDynamicAgentLoading",
+        "-Djdk.instrument.traceUsage"
+    ]
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Your dependencies here
+}
+
+
+메인 클래스 예시
+
+
+  예를 들어, 메인 클래스는 다음과 같이 생겼을 수 있습니다.
+
+
+package com.example;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+
+
+
+
+2. @ExtendWith 어노테이션.
+
+
+  @ExtendWith 어노테이션은 Junit 5에서 제공하는 기능으로, 테스트 클래스나 메서드에 확장 기능을 추가할 수 있도록 해줍니다.
+  JUnit 5의 확장 모델은 다양한 확장 기능을 통해 테스트 실행의 특정 지점에서 사용자 정의 동작을 수행할 수 있게 합니다.
+
+
+@ExtendWith 어노테이션의 역할
+
+
+  확장 클래스 지정 : @ExtendWith 어노테이션은 확장 클래스를 지정할 수 있습니다. 지정된 확장 클래스는 테스트 라이프사이클의 특정 지점에서 호출됩니다.
     
-      Correttio 8은 Java 8과 호환됩니다.
+      예를 들어, 테스트 실행 전후, 각 테스트 메서드 전후 등 다양한 시점에서 특정 동작을 추가할 수 있습니다.
+    
+  
+  
+    컨텍스트 설정 및 주입 : 확장 기능을 통해 테스트 컨텍스트를 설정하고, 테스트 메서드에 필요한 객체나 리소스를 주입할 수 있습니다. 이를 통해 테스트 코드를 더 간결하고 모듈화할 수 있습니다.
+  
+  조건부 실행 : 특정 조건에 따라 테스트 메서드를 실행하거나 건너뛸 수 있도록 지원합니다.
+    
+      예를 들어, 특정 환경 설정이나 시스템 상태에 따라 테스트 실행 여부를 결정할 수 있습니다.
+    
+  
+  커스텀 어서션 및 보고 : 확장을 통해 사용자 정의 어서션 로직을 추가하거나 테스트 결과를 커스텀 방식으로 보고할 수 있습니다.
+
+
+예제 코드
+
+아래는 @ExtendWith 어노테이션을 사용한 간단한 예제입니다.
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.Test;
+
+class MyExtension implements BeforeEachCallback {
+    @Override
+    public void beforeEach(ExtensionContext context) {
+        System.out.println("Before each test method");
+    }
+}
+
+@ExtendWith(MyExtension.class)
+public class MyTest {
+    
+    @Test
+    void testMethod1() {
+        System.out.println("Test method 1");
+    }
+    
+    @Test
+    void testMethod2() {
+        System.out.println("Test method 2");
+    }
+}
+
+
+
+  위 코드에서 MyExtension 클래스는 BeforeEachCallback 인터페이스를 구현하여 각 테스트 메서드가 실행되기 전에 메시지를 출력합니다.
+  @ExtendWith(MyExtension.class) 어노테이션을 통해 MyTest 클래스에 이 확장 기능을 추가했습니다.
+    
+      따라서 각 테스트 메서드 실행 전에 “Before each test method” 메시지가 출력됩니다.
+    
+  
+  이처럼 @ExtendWith 어노테이션은 JUnit 5의 확장 모델을 활용하여 테스트에 필요한 다양한 기능을 추가할 수 있게 해줍니다.
+
+
+
+
+3. 어서션(Assertion)
+
+
+  어서션(Assertion)은 프로그래밍 및 소프트웨어 테스트에서 코드의 특정 상태나 조건이 참인지 확인하는 데 사용되는 문장이나 명령문을 의미합니다.
+  어서션을 통해 코드의 논리적 일관성과 정확성을 검증할 수 있으며, 주로 디버깅과 테스트에 사용됩니다.
+
+
+주요 기능과 목적.
+
+
+  
+    조건 검증 : 어서션(Assertion)은 특정 조건이 참인지 검증합니다. 조건이 거짓이면 프로그램은 즉시 실행을 중단하고 오류를 보고합니다.
+  
+  
+    디버깅 도구 : 어서션(Assertion)은 개발 중에 코드의 오류를 조기에 발견하고 수정하는 데 도움이 됩니다. 코드의 가정이 잘못된 경우 어서션을 통해 문제를 빨리 찾을 수 있습니다.
+  
+  
+    문서화 : 어서션(Assertion)은 코드의 논리적 전제 조건을 명시적으로 표현하여, 코드가 어떤 상태에 작동해야 하는지 명확하게 나타냅니다.
+  
+
+
+어서션(Assertion)의 예
+
+
+  자바(Java)
+    public void setAge(int age) {
+ assert age &gt; 0 : "Age must be positive";
+ this.age = age;
+}
+    
+  
+  JUnit (Java)
+```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+
+public class MyTest {
+
+@Test
+void testAddition() {
+    int result = 2 + 3;
+    assertEquals(5, result, "2 + 3 should equal 5");
+} } ```
+
+
+어서션 사용 시기
+
+  개발 중 : 개발자가 코드의 논리적 일관성을 검증하기 위해 사용합니다. 디버깅 과정에서 주로 사용되며, 프로덕션 환경에서는 보통 비활성화합니다.
+  테스트 코드 : 테스트 프레임워크(JUnit, TestNG 등)를 사용하여 테스트를 작성할 때, 특정 조건이 기대한 대로 동작하는지 확인합니다.
+
+
+주의 사항
+
+  프로덕션 코드에서의 사용 : 어서션은 주로 개발 및 테스트 환경에서 사용되며, 프로덕션 환경에서는 비활성화되는 경우가 많습니다. 프로덕션 환경에서 조건 검증이 필요한 경우에는 예외 처리를 사용합니다.
+  부작용 없는 코드 : 어서션 내부에서는 부작용이 없는 코드를 사용하는 것이 좋습니다. 어서션은 상태를 변경하지 않고 조건만 검증해야 합니다.
+
+
+요약.
+
+
+  어서션은 코드의 특정 조건이 참임을 검증하는 도구로, 디버깅과 테스트 과정에서 코드의 논리적 일관성을 유지하는데 중요한 역할을 합니다.
+    
+      이를 통해 개발자는 코드의 가정과 실제 동작이 일치하는지 확인하고, 문제를 조기에 발견하여 수정할 수 있습니다.
     
   
 
 
-sudo dnf install -y java-1.8.0-amazon-corretto
-
-
-3️⃣ Java 8 설치 확인
-
-  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
-
-
-java -version
-
-
-
-  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
-
-
-4️⃣ 기본 Java 버전 설정
-
-
-  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
-    
-      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
-    
-  
-  먼저 현재 사용 가능한 Java 버전을 확인합니다.
-
-
-sudo alternatives --config java
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-07-26</span>
+                                <span class="date">· 2024-07-19</span>
                             
                         </div>
                     </div>
@@ -1824,218 +2140,6 @@ public class Main {
 
 위 예시처럼 Lombok의 @Builder 를 사용하면 빌더 패턴을 간단하게 구현하고 사용할 수 있습니다.
 이로 인해 객체 생성 코드가 더 깔끔하고 직관적으로 변합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-07-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no1.html"><h1 class="title_post">📝[Post] 자바다식(Java多識) - 1</h1></a>
-                        <a href="/Backend/Java%E5%A4%9A%E8%AD%98/2024-07-19-no1.html" class="txt_post">
-                            자바다식(Java多識) 1편.
-
-1. ‘mainClassName’ 속성 추가.
-
-메인 클래스의 경로를 지정해주는 속성을 추가하는 방법입니다.
-초기 진입점을 지정해준다고 생각하면 됩니다.
-
-
-  application 블록 안에 메인 클래스 이름을 지정합니다. 예를 들어, 메인 클래스가 com.example.Main 이라고 가정합니다.
-  아래의 코드는 bundle.gradle 파일 내부에서 수정해야 합니다.
-
-
-plugins {
-    id 'java'
-    id 'application'
-}
-
-application {
-    mainClassName = 'com.example.Main' // 여기에 메인 클래스의 경로를 입력합니다.
-    applicationDefaultJvmArgs = [
-        "-XX:+EnableDynamicAgentLoading",
-        "-Djdk.instrument.traceUsage"
-    ]
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    // Your dependencies here
-}
-
-
-메인 클래스 예시
-
-
-  예를 들어, 메인 클래스는 다음과 같이 생겼을 수 있습니다.
-
-
-package com.example;
-
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-}
-
-
-
-
-2. @ExtendWith 어노테이션.
-
-
-  @ExtendWith 어노테이션은 Junit 5에서 제공하는 기능으로, 테스트 클래스나 메서드에 확장 기능을 추가할 수 있도록 해줍니다.
-  JUnit 5의 확장 모델은 다양한 확장 기능을 통해 테스트 실행의 특정 지점에서 사용자 정의 동작을 수행할 수 있게 합니다.
-
-
-@ExtendWith 어노테이션의 역할
-
-
-  확장 클래스 지정 : @ExtendWith 어노테이션은 확장 클래스를 지정할 수 있습니다. 지정된 확장 클래스는 테스트 라이프사이클의 특정 지점에서 호출됩니다.
-    
-      예를 들어, 테스트 실행 전후, 각 테스트 메서드 전후 등 다양한 시점에서 특정 동작을 추가할 수 있습니다.
-    
-  
-  
-    컨텍스트 설정 및 주입 : 확장 기능을 통해 테스트 컨텍스트를 설정하고, 테스트 메서드에 필요한 객체나 리소스를 주입할 수 있습니다. 이를 통해 테스트 코드를 더 간결하고 모듈화할 수 있습니다.
-  
-  조건부 실행 : 특정 조건에 따라 테스트 메서드를 실행하거나 건너뛸 수 있도록 지원합니다.
-    
-      예를 들어, 특정 환경 설정이나 시스템 상태에 따라 테스트 실행 여부를 결정할 수 있습니다.
-    
-  
-  커스텀 어서션 및 보고 : 확장을 통해 사용자 정의 어서션 로직을 추가하거나 테스트 결과를 커스텀 방식으로 보고할 수 있습니다.
-
-
-예제 코드
-
-아래는 @ExtendWith 어노테이션을 사용한 간단한 예제입니다.
-
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.BeforeEachCallback;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.Test;
-
-class MyExtension implements BeforeEachCallback {
-    @Override
-    public void beforeEach(ExtensionContext context) {
-        System.out.println("Before each test method");
-    }
-}
-
-@ExtendWith(MyExtension.class)
-public class MyTest {
-    
-    @Test
-    void testMethod1() {
-        System.out.println("Test method 1");
-    }
-    
-    @Test
-    void testMethod2() {
-        System.out.println("Test method 2");
-    }
-}
-
-
-
-  위 코드에서 MyExtension 클래스는 BeforeEachCallback 인터페이스를 구현하여 각 테스트 메서드가 실행되기 전에 메시지를 출력합니다.
-  @ExtendWith(MyExtension.class) 어노테이션을 통해 MyTest 클래스에 이 확장 기능을 추가했습니다.
-    
-      따라서 각 테스트 메서드 실행 전에 “Before each test method” 메시지가 출력됩니다.
-    
-  
-  이처럼 @ExtendWith 어노테이션은 JUnit 5의 확장 모델을 활용하여 테스트에 필요한 다양한 기능을 추가할 수 있게 해줍니다.
-
-
-
-
-3. 어서션(Assertion)
-
-
-  어서션(Assertion)은 프로그래밍 및 소프트웨어 테스트에서 코드의 특정 상태나 조건이 참인지 확인하는 데 사용되는 문장이나 명령문을 의미합니다.
-  어서션을 통해 코드의 논리적 일관성과 정확성을 검증할 수 있으며, 주로 디버깅과 테스트에 사용됩니다.
-
-
-주요 기능과 목적.
-
-
-  
-    조건 검증 : 어서션(Assertion)은 특정 조건이 참인지 검증합니다. 조건이 거짓이면 프로그램은 즉시 실행을 중단하고 오류를 보고합니다.
-  
-  
-    디버깅 도구 : 어서션(Assertion)은 개발 중에 코드의 오류를 조기에 발견하고 수정하는 데 도움이 됩니다. 코드의 가정이 잘못된 경우 어서션을 통해 문제를 빨리 찾을 수 있습니다.
-  
-  
-    문서화 : 어서션(Assertion)은 코드의 논리적 전제 조건을 명시적으로 표현하여, 코드가 어떤 상태에 작동해야 하는지 명확하게 나타냅니다.
-  
-
-
-어서션(Assertion)의 예
-
-
-  자바(Java)
-    public void setAge(int age) {
- assert age &gt; 0 : "Age must be positive";
- this.age = age;
-}
-    
-  
-  JUnit (Java)
-```java
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
-
-
-public class MyTest {
-
-@Test
-void testAddition() {
-    int result = 2 + 3;
-    assertEquals(5, result, "2 + 3 should equal 5");
-} } ```
-
-
-어서션 사용 시기
-
-  개발 중 : 개발자가 코드의 논리적 일관성을 검증하기 위해 사용합니다. 디버깅 과정에서 주로 사용되며, 프로덕션 환경에서는 보통 비활성화합니다.
-  테스트 코드 : 테스트 프레임워크(JUnit, TestNG 등)를 사용하여 테스트를 작성할 때, 특정 조건이 기대한 대로 동작하는지 확인합니다.
-
-
-주의 사항
-
-  프로덕션 코드에서의 사용 : 어서션은 주로 개발 및 테스트 환경에서 사용되며, 프로덕션 환경에서는 비활성화되는 경우가 많습니다. 프로덕션 환경에서 조건 검증이 필요한 경우에는 예외 처리를 사용합니다.
-  부작용 없는 코드 : 어서션 내부에서는 부작용이 없는 코드를 사용하는 것이 좋습니다. 어서션은 상태를 변경하지 않고 조건만 검증해야 합니다.
-
-
-요약.
-
-
-  어서션은 코드의 특정 조건이 참임을 검증하는 도구로, 디버깅과 테스트 과정에서 코드의 논리적 일관성을 유지하는데 중요한 역할을 합니다.
-    
-      이를 통해 개발자는 코드의 가정과 실제 동작이 일치하는지 확인하고, 문제를 조기에 발견하여 수정할 수 있습니다.
-    
-  
-
 
 
 
@@ -2915,6 +3019,32 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
+                            
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/ENG/240618_ENG_STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -2988,21 +3118,21 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-06-17-TIL.html"><h1 class="title_post">📝 [TIL] 240617 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-17-TIL.html" class="txt_post">
                             
-
+  수학, 필요.충분 조건
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-06-18</span>
+                                <span class="date">· 2024-06-17</span>
                             
                         </div>
                     </div>
@@ -3031,32 +3161,6 @@ sudo reboot
 
 
 
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-17-TIL.html"><h1 class="title_post">📝 [TIL] 240617 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-17-TIL.html" class="txt_post">
-                            
-  수학, 필요.충분 조건
 
 
                         </a>
@@ -3225,91 +3329,6 @@ sudo reboot
   원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
   알고리즘
   피자 나눠 먹기(2)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html"><h1 class="title_post">📦[DS,Algorithm] 알고리즘(Algorithm)</h1></a>
-                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="txt_post">
-                            1️⃣ 알고리즘(Algorithm).
-
-알고리즘(Algorithm)은 주어진 문제를 해결하기 위해 일련의 명확한 단계로 구성된 절차나 방법을 의미합니다.
-
-쉽게 말해, 알고리즘은 문제 해결을 위한 일련의 규칙 또는 지침입니다.
-
-1️⃣ 알고리즘(Algorithm)의 정의.
-
-알고리즘은 다음과 같은 요소를 갖춘 절차를 말합니다.
-
-
-  
-    입력(Input) : 알고리즘이 처리할 하나 이상의 값이 주어집니다.
-  
-  
-    출력(Output) : 알고리즘의 수행 결과로 하나 이상의 값이 생성됩니다.
-  
-  
-    명확성(Definiteness) : 각 단계는 명확하게 정의되어 있어야 합니다. 모호한 부분 없이 명확한 지침이어야 합니다.
-  
-  
-    유한성(Finiteness) : 알고리즘은 유한한 단계 내에서 종료되어야 합니다. 즉, 알고리즘은 무한히 실행되지 않고, 한정된 단계 내에서 끝나야 합니다.
-  
-  
-    유효성(Effectiveness) : 알고리즘의 모든 단계는 실제로 수행 가능해야 하며, 사람이 직접 수행할 수 있을 정도로 기본적인 연산으로 구성되어 있어야 합니다.
-  
-
-
-2️⃣ 알고리즘의 특성
-
-알고리즘은 다음과 같은 특성을 가질 수 있습니다.
-
-
-  
-    정확성(Correctness) : 알고리즘은 올바른 결과를 생성해야 합니다.
-  
-  
-    시간 복잡도(Time Complexity) : 알고리즘이 문제를 해결하는 데 걸리는 시간입니다. 일반적으로 크기에 대한 함수로 표현됩니다.
-  
-  
-    공간 복잡도(Space Complexity) : 알고리즘이 문제를 해결하는 데 사용하는 메모리 양입니다. 이 또한 입력 크기에 대한 함수로 표현됩니다.
-  
-  
-    효율성(Efficiency) : 알고리즘이 주어진 자원을 얼마나 효율적으로 사용하는지 나타냅니다. 여기에서는 시간 복잡도와 공간 복잡도가 포함됩니다.
-  
-  
-    확장성(Scalability) : 알고리즘이 입력 크기에 따라 얼마나 잘 동작하는지 나타냅니다. 확장성 있는 알고리즘은 큰 입력 크기에서도 효율적으로 작동합니다.
-  
-
-
-3️⃣ 알고리즘의 중요성.
-
-알고리즘(Algorithm)은 컴퓨터 과학 및 프로그래밍에서 핵심적인 역할을 합니다.
-
-효율적인 알고리즘을 사용하면 컴퓨터 프로그램이 더 빠르고 적은 자원을 사용하여 문제를 해결할 수 있습니다.
-
-또한 알고리즘은 문제 해결의 논리적이고 체계적인 접근 방식을 제공하여 복잡한 문제를 단순화하고 해결하는 데 도움을 줍니다.
-
-
-  알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
-이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
 
 
                         </a>
@@ -3506,6 +3525,91 @@ Middle element: 40
 
   위 코드에서 ‘rear’ 를 0으로 설정함으로써 큐의 인덱싱과 상태 처리가 단순해지고, 이해하기 쉬워집니다.
 이는 코드의 가독성과 유지보수성을 높이는 데 도움이 됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html"><h1 class="title_post">📦[DS,Algorithm] 알고리즘(Algorithm)</h1></a>
+                        <a href="/Backend/AnD/2024-06-13-AboutAlgorithm.html" class="txt_post">
+                            1️⃣ 알고리즘(Algorithm).
+
+알고리즘(Algorithm)은 주어진 문제를 해결하기 위해 일련의 명확한 단계로 구성된 절차나 방법을 의미합니다.
+
+쉽게 말해, 알고리즘은 문제 해결을 위한 일련의 규칙 또는 지침입니다.
+
+1️⃣ 알고리즘(Algorithm)의 정의.
+
+알고리즘은 다음과 같은 요소를 갖춘 절차를 말합니다.
+
+
+  
+    입력(Input) : 알고리즘이 처리할 하나 이상의 값이 주어집니다.
+  
+  
+    출력(Output) : 알고리즘의 수행 결과로 하나 이상의 값이 생성됩니다.
+  
+  
+    명확성(Definiteness) : 각 단계는 명확하게 정의되어 있어야 합니다. 모호한 부분 없이 명확한 지침이어야 합니다.
+  
+  
+    유한성(Finiteness) : 알고리즘은 유한한 단계 내에서 종료되어야 합니다. 즉, 알고리즘은 무한히 실행되지 않고, 한정된 단계 내에서 끝나야 합니다.
+  
+  
+    유효성(Effectiveness) : 알고리즘의 모든 단계는 실제로 수행 가능해야 하며, 사람이 직접 수행할 수 있을 정도로 기본적인 연산으로 구성되어 있어야 합니다.
+  
+
+
+2️⃣ 알고리즘의 특성
+
+알고리즘은 다음과 같은 특성을 가질 수 있습니다.
+
+
+  
+    정확성(Correctness) : 알고리즘은 올바른 결과를 생성해야 합니다.
+  
+  
+    시간 복잡도(Time Complexity) : 알고리즘이 문제를 해결하는 데 걸리는 시간입니다. 일반적으로 크기에 대한 함수로 표현됩니다.
+  
+  
+    공간 복잡도(Space Complexity) : 알고리즘이 문제를 해결하는 데 사용하는 메모리 양입니다. 이 또한 입력 크기에 대한 함수로 표현됩니다.
+  
+  
+    효율성(Efficiency) : 알고리즘이 주어진 자원을 얼마나 효율적으로 사용하는지 나타냅니다. 여기에서는 시간 복잡도와 공간 복잡도가 포함됩니다.
+  
+  
+    확장성(Scalability) : 알고리즘이 입력 크기에 따라 얼마나 잘 동작하는지 나타냅니다. 확장성 있는 알고리즘은 큰 입력 크기에서도 효율적으로 작동합니다.
+  
+
+
+3️⃣ 알고리즘의 중요성.
+
+알고리즘(Algorithm)은 컴퓨터 과학 및 프로그래밍에서 핵심적인 역할을 합니다.
+
+효율적인 알고리즘을 사용하면 컴퓨터 프로그램이 더 빠르고 적은 자원을 사용하여 문제를 해결할 수 있습니다.
+
+또한 알고리즘은 문제 해결의 논리적이고 체계적인 접근 방식을 제공하여 복잡한 문제를 단순화하고 해결하는 데 도움을 줍니다.
+
+
+  알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
+이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
 
 
                         </a>
@@ -4445,201 +4549,6 @@ public void enqueue(int element) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
-                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
-                            1️⃣ 제네릭(Generic)
-
-Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
-
-제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
-
-2️⃣ 제네릭(Generic)의 주요 개념.
-
-
-  타입 매개변수 :
-    
-      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
-    
-  
-  타입 안정성 :
-    
-      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
-    
-  
-  재사용성 :
-    
-      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
-    
-  
-
-
-3️⃣ 제네릭 클래스.
-
-제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
-
-일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
-
-예제.
-
-// Box 클래스
-public class Box&lt;T&gt; {
-	private T item;
-
-	public void setItem(T item) {
-		this.item = item;
-	}
-
-	public T getItem() {
-		return item;
-	}
-}
-
-// Main 클래스
-public class Main {
-
-	public static void main(String[] args) {
-		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
-		stringBox.setItem("Hello");
-		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
-
-		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
-		integerBox.setItem(123);
-		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
-	}
-}
-
-
-4️⃣ 제네릭 메서드.
-
-제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
-
-예제.
-
-public class GenericMethodExample {
-	public static &lt;T&gt; void printArray(T[] array) {
-		for (T element : array) {
-			System.out.print(element + " ");
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		Integer[] intArray = {1, 2, 3, 4, 5};
-		String[] strArray = {"A", "B", "C", "D"};
-
-		printArray(intArray); // 1 2 3 4 5 
-		printArray(strArray); // A B C D 
-	}
-}
-
-
-5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
-
-제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
-
-상한 제한 (Upper Bound)
-
-public class BoundedTypeExample&lt;T extends Number&gt; {
-	private T number;
-
-	public BoundedTypeExample(T number) {
-		this.number = number;
-	}
-
-	public void printNumber() {
-		System.out.println("Number: " + number);
-	}
-
-	public static void main(String[] args) {
-		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
-		intExample.printNumber(); // Number: 123
-
-		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
-		doubleExample.printNumber(); // Number: 45.67
-	}
-}
-
-
-
-  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
-
-
-하한 제한 (Lower Bound)
-
-하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
-
-예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class LowerBoundWildcardExample {
-	public static void addNumbers(List&lt;? super Integer&gt; list) {
-		for (int i = 0; i &lt; 5; i++) {
-			list.add(i);
-		}
-	}
-
-	public static void main(String[] args) {
-		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
-		addNumbers(numberList);
-		System.out.println(numberList); // [0, 1, 2, 3, 4]
-	}
-}
-
-
-6️⃣ 제네릭의 제한 사항.
-
-
-  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
-
-
-// 올바르지 않음
-Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
-
-
-
-  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
-
-
-public class GenericClass&lt;T&gt; {
-    private static T item; // 컴파일 오류
-}
-
-
-
-  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
-
-
-// 올바르지 않음
-T[] array = new T[10]; // 컴파일 오류
-
-
-
-  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
-이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-06-08-PrimitiveAndWrapper.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -4909,22 +4818,190 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-07-TIL.html"><h1 class="title_post">📝 [TIL] 240607 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-07-TIL.html" class="txt_post">
-                            
-  LinkedList를 이용한 Deque
-  분수의 덧셈 복습
+                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
+                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
+                            1️⃣ 제네릭(Generic)
+
+Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
+
+제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
+
+2️⃣ 제네릭(Generic)의 주요 개념.
+
+
+  타입 매개변수 :
+    
+      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
+    
+  
+  타입 안정성 :
+    
+      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
+    
+  
+  재사용성 :
+    
+      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
+    
+  
+
+
+3️⃣ 제네릭 클래스.
+
+제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
+
+일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
+
+예제.
+
+// Box 클래스
+public class Box&lt;T&gt; {
+	private T item;
+
+	public void setItem(T item) {
+		this.item = item;
+	}
+
+	public T getItem() {
+		return item;
+	}
+}
+
+// Main 클래스
+public class Main {
+
+	public static void main(String[] args) {
+		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
+		stringBox.setItem("Hello");
+		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
+
+		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+		integerBox.setItem(123);
+		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
+	}
+}
+
+
+4️⃣ 제네릭 메서드.
+
+제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
+
+예제.
+
+public class GenericMethodExample {
+	public static &lt;T&gt; void printArray(T[] array) {
+		for (T element : array) {
+			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Integer[] intArray = {1, 2, 3, 4, 5};
+		String[] strArray = {"A", "B", "C", "D"};
+
+		printArray(intArray); // 1 2 3 4 5 
+		printArray(strArray); // A B C D 
+	}
+}
+
+
+5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
+
+제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
+
+상한 제한 (Upper Bound)
+
+public class BoundedTypeExample&lt;T extends Number&gt; {
+	private T number;
+
+	public BoundedTypeExample(T number) {
+		this.number = number;
+	}
+
+	public void printNumber() {
+		System.out.println("Number: " + number);
+	}
+
+	public static void main(String[] args) {
+		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
+		intExample.printNumber(); // Number: 123
+
+		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
+		doubleExample.printNumber(); // Number: 45.67
+	}
+}
+
+
+
+  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
+
+
+하한 제한 (Lower Bound)
+
+하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
+
+예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LowerBoundWildcardExample {
+	public static void addNumbers(List&lt;? super Integer&gt; list) {
+		for (int i = 0; i &lt; 5; i++) {
+			list.add(i);
+		}
+	}
+
+	public static void main(String[] args) {
+		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
+		addNumbers(numberList);
+		System.out.println(numberList); // [0, 1, 2, 3, 4]
+	}
+}
+
+
+6️⃣ 제네릭의 제한 사항.
+
+
+  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
+
+
+// 올바르지 않음
+Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
+
+
+
+  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
+
+
+public class GenericClass&lt;T&gt; {
+    private static T item; // 컴파일 오류
+}
+
+
+
+  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
+
+
+// 올바르지 않음
+T[] array = new T[10]; // 컴파일 오류
+
+
+
+  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
+이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-06-07</span>
+                                <span class="date">· 2024-06-08</span>
                             
                         </div>
                     </div>
@@ -5137,6 +5214,33 @@ Popped element: 4
 
   위 예시 코드에서는 ‘LinkedList‘ 를 ‘Deque‘ 로 사용하여 다양한 연산을 수행하는 방법을 보여줍니다.
 ‘LinkedList‘ 는 이중 연결 리스트를 사용하기 때문에 양쪽 끝에서의 삽입과 삭제가 빠르고 효율적입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-07-TIL.html"><h1 class="title_post">📝 [TIL] 240607 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-07-TIL.html" class="txt_post">
+                            
+  LinkedList를 이용한 Deque
+  분수의 덧셈 복습
 
 
                         </a>
@@ -5376,6 +5480,36 @@ Popped element: 4
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-06-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-05-TIL.html"><h1 class="title_post">📝 [TIL] 240605 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-05-TIL.html" class="txt_post">
+                            
+  Deque(덱, 데크))
+  코딩테스트 입문 - 두 수의 합
+  코딩테스트 입문 - 두 수의 차
+  코딩테스트 입문 - 두 수의 곱
+  코딩테스트 입문 - 몫 구하기
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-05</span>
                             
                         </div>
                     </div>
@@ -6022,36 +6156,6 @@ Is deque empty? false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-05-TIL.html"><h1 class="title_post">📝 [TIL] 240605 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-05-TIL.html" class="txt_post">
-                            
-  Deque(덱, 데크))
-  코딩테스트 입문 - 두 수의 합
-  코딩테스트 입문 - 두 수의 차
-  코딩테스트 입문 - 두 수의 곱
-  코딩테스트 입문 - 몫 구하기
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -6352,6 +6456,184 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-06-02-ArrayOfJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-06-02-ArrayOfJava.html"><h1 class="title_post">📦[DS,Algorithm] Java의 배열.</h1></a>
+                        <a href="/Backend/AnD/2024-06-02-ArrayOfJava.html" class="txt_post">
+                            1️⃣ Java의 배열.
+
+1️⃣ 배열이란 무엇인가?
+
+배열(Array)은 동일한 타입의 여러 요소를 하나의 변수로 관리할 수 있게 해주는 자료구조입니다.
+
+배열은 연속된 메모리 공간에 할당되며, 각 요소는 인덱스를 통해 접근할 수 있습니다.
+
+2️⃣ 배열의 선언과 초기화.
+
+Java에서 배열은 다음과 같이 선언하고 초기화할 수 있습니다.
+
+int[] array = new int[5]; // 크기가 5인 정수형 배열 선언.
+int[] array = {10, 20, 30, 40, 50}; // 초기화와 동시에 배열 선언
+
+
+3️⃣ 배열의 요소와 접근.
+
+배열의 각 요소는 인덱스를 통해 접근할 수 있으며, 인덱스는 0부터 시작합니다.
+
+int firstElement = array[0]; // element = 10, 첫 번째 요소에 접근
+array[1] = 25; // [10, 25, 30, 40, 50], 두 번째 요소에 값 25를 저장
+
+
+4️⃣ 배열의 시간 복잡도.
+
+배열의 시간 복잡도는 연산의 종류에 따라 다릅니다.
+
+아래는 일반적인 배열 연산과 그 시간 복잡도를 설명한 것입니다.
+
+1. 접근(Access)
+
+
+  특정 인덱스의 요소에 접근하는 시간 복잡도는 O(1)입니다.
+    
+      이유 : 배열은 연속된 메모리 공간에 저장되므로 인덱스를 통해 바로 접근할 수 있기 때문입니다.
+    
+  
+
+
+// 접근(Access)
+int element = array[2]; 
+// element = 30,  time complexity = O(1)
+// [10, 25, 30, 40, 50]
+
+
+2. 탐색(Search)
+
+
+  배열에서 특정 값을 찾는 시간 복잡도는 O(n)입니다.
+    
+      이유: 최악의 경우 배열의 모든 요소를 검사해야 할 수도 있기 때문입니다.
+    
+  
+
+
+boolean found = false;
+int target = 30;
+
+for (int i = 0; i &lt; array.length; i++) {
+    if (array[i] == target) { // i = 2, array[i] = 30
+        found = true;
+        break;
+    }
+}
+// [10, 25, 30, 40, 50]
+
+
+3. 삽입(Insertion)
+
+
+  배열의 끝에 요소를 추가하는 시간 복잡도는 O(1)입니다.
+  배열의 특정 위치에 요소를 삽입하는 시간 복잡도는 O(n)입니다.
+    
+      이유: 특정 위치에 삽입하기 위해서는 해당 위치 이후의 모든 요소를 한 칸씩 뒤로 밀어야 하기 때문입니다.
+    
+  
+
+
+// 삽입(Insertion)
+
+// 배열 삽입시 index가 array.length가 아니고 array.length - 1인 이유는
+// array.length는 배열의 크기, 즉 5를 나타내기 때문입니다.
+// index는 0부터 시작하기 때문에 배열의 크기가 5인 배열의 끝 index는 4입니다.
+// 때문에 array.length - 1을 해줍니다.
+
+array[array.length - 1] = 60; // 배열 끝에 삽입 (O(1)), [10, 25, 30, 40, 60]
+
+// 배열 중간에 삽입하는 메서드
+public static void insertion(int[] array, int index, int insertValue) {
+  // 배열 중간에 삽입(O(n))
+  for (int i = array.length - 1; i &gt; index; i--) {
+    array[i] = array[i - 1];
+  }
+  array[index] = insertValue;
+  System.out.println(Arrays.toString(array));
+}
+
+
+4. 삭제(Deletion)
+
+
+  배열의 끝에서 요소를 제거하는 시간 복잡도는 O(1)입니다.
+  배열의 특정 위치의 요소를 제거하는 시간 복잡도는 O(n)입니다.
+    
+      이유: 특정 위치의 요소를 제거한 후에는 해당 위치 이후의 모든 요소를 한 칸씩 앞으로 당겨야 하기 때문입니다.
+    
+  
+
+
+// 삭제(Deletion)
+    array[array.length - 1] = 0; // 배열의 끝에서 삭제 ((O(1)), [10, 25, 30, 77, 0]
+    System.out.println(Arrays.toString(array));
+
+    // 배열 중간에서 삭제하는 메서드
+    int deletionValue = deletion(array, 2);
+    System.out.println(deletionValue); // 30
+
+// 배열 중간에 삭제하는 메서드
+  public static int deletion(int[] array, int index) {
+    // 배열 중간에 삭제(O(n))
+    int[] returnValue = new int[array.length];
+
+    for (int i = index, j = 0; i &lt; array.length - 1 ; i++) {
+      returnValue[j] = array[i];
+      j++;
+      array[i] = array[i + 1];
+
+    }
+    array[array.length - 1] = 0; // 마지막 요소 초기화.
+    int deletionValue = returnValue[0]; // 배열을 메모리에서 지우기
+    returnValue = null;
+    return deletionValue;
+  }
+
+
+5️⃣ 배열의 장점과 단점.
+
+장점.
+
+  빠른 접근 속도 : 인덱스를 통해 O(1) 시간에 요소를 접근할 수 있습니다.
+  메모리 효율 : 연속된 메모리 공간을 사용하므로 메모리 사용이 효율적입니다.
+
+
+단점.
+
+  고정된 크기 : 배열의 크기는 선언 시에 고정되므로, 실행 중에 크기를 변경할 수 없습니다.
+  삽입 및 삭제의 비효율성 : 배열 중간에 요소를 삽입하거나 삭제할 때 O(n)의 시간이 소요됩니다.
+  연속된 메모리 할당 필요 : 큰 배열을 사용할 떄는 연속된 메모리 공간이 필요하여 메모리 할당에 제한이 있을 수 있습니다.
+
+
+
+  배열은 이러한 특성들로 인해 빠른 접근이 필요한 상황에서는 매우 유용하지만, 삽입 및 삭제가 빈번히 일어나는 경우에는 비효율적일 수 있습니다.
+따라서 상황에 맞게 적절한 자료구조를 선택하는 것이 중요합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -6565,210 +6847,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-06-02-ArrayOfJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-06-02-ArrayOfJava.html"><h1 class="title_post">📦[DS,Algorithm] Java의 배열.</h1></a>
-                        <a href="/Backend/AnD/2024-06-02-ArrayOfJava.html" class="txt_post">
-                            1️⃣ Java의 배열.
-
-1️⃣ 배열이란 무엇인가?
-
-배열(Array)은 동일한 타입의 여러 요소를 하나의 변수로 관리할 수 있게 해주는 자료구조입니다.
-
-배열은 연속된 메모리 공간에 할당되며, 각 요소는 인덱스를 통해 접근할 수 있습니다.
-
-2️⃣ 배열의 선언과 초기화.
-
-Java에서 배열은 다음과 같이 선언하고 초기화할 수 있습니다.
-
-int[] array = new int[5]; // 크기가 5인 정수형 배열 선언.
-int[] array = {10, 20, 30, 40, 50}; // 초기화와 동시에 배열 선언
-
-
-3️⃣ 배열의 요소와 접근.
-
-배열의 각 요소는 인덱스를 통해 접근할 수 있으며, 인덱스는 0부터 시작합니다.
-
-int firstElement = array[0]; // element = 10, 첫 번째 요소에 접근
-array[1] = 25; // [10, 25, 30, 40, 50], 두 번째 요소에 값 25를 저장
-
-
-4️⃣ 배열의 시간 복잡도.
-
-배열의 시간 복잡도는 연산의 종류에 따라 다릅니다.
-
-아래는 일반적인 배열 연산과 그 시간 복잡도를 설명한 것입니다.
-
-1. 접근(Access)
-
-
-  특정 인덱스의 요소에 접근하는 시간 복잡도는 O(1)입니다.
-    
-      이유 : 배열은 연속된 메모리 공간에 저장되므로 인덱스를 통해 바로 접근할 수 있기 때문입니다.
-    
-  
-
-
-// 접근(Access)
-int element = array[2]; 
-// element = 30,  time complexity = O(1)
-// [10, 25, 30, 40, 50]
-
-
-2. 탐색(Search)
-
-
-  배열에서 특정 값을 찾는 시간 복잡도는 O(n)입니다.
-    
-      이유: 최악의 경우 배열의 모든 요소를 검사해야 할 수도 있기 때문입니다.
-    
-  
-
-
-boolean found = false;
-int target = 30;
-
-for (int i = 0; i &lt; array.length; i++) {
-    if (array[i] == target) { // i = 2, array[i] = 30
-        found = true;
-        break;
-    }
-}
-// [10, 25, 30, 40, 50]
-
-
-3. 삽입(Insertion)
-
-
-  배열의 끝에 요소를 추가하는 시간 복잡도는 O(1)입니다.
-  배열의 특정 위치에 요소를 삽입하는 시간 복잡도는 O(n)입니다.
-    
-      이유: 특정 위치에 삽입하기 위해서는 해당 위치 이후의 모든 요소를 한 칸씩 뒤로 밀어야 하기 때문입니다.
-    
-  
-
-
-// 삽입(Insertion)
-
-// 배열 삽입시 index가 array.length가 아니고 array.length - 1인 이유는
-// array.length는 배열의 크기, 즉 5를 나타내기 때문입니다.
-// index는 0부터 시작하기 때문에 배열의 크기가 5인 배열의 끝 index는 4입니다.
-// 때문에 array.length - 1을 해줍니다.
-
-array[array.length - 1] = 60; // 배열 끝에 삽입 (O(1)), [10, 25, 30, 40, 60]
-
-// 배열 중간에 삽입하는 메서드
-public static void insertion(int[] array, int index, int insertValue) {
-  // 배열 중간에 삽입(O(n))
-  for (int i = array.length - 1; i &gt; index; i--) {
-    array[i] = array[i - 1];
-  }
-  array[index] = insertValue;
-  System.out.println(Arrays.toString(array));
-}
-
-
-4. 삭제(Deletion)
-
-
-  배열의 끝에서 요소를 제거하는 시간 복잡도는 O(1)입니다.
-  배열의 특정 위치의 요소를 제거하는 시간 복잡도는 O(n)입니다.
-    
-      이유: 특정 위치의 요소를 제거한 후에는 해당 위치 이후의 모든 요소를 한 칸씩 앞으로 당겨야 하기 때문입니다.
-    
-  
-
-
-// 삭제(Deletion)
-    array[array.length - 1] = 0; // 배열의 끝에서 삭제 ((O(1)), [10, 25, 30, 77, 0]
-    System.out.println(Arrays.toString(array));
-
-    // 배열 중간에서 삭제하는 메서드
-    int deletionValue = deletion(array, 2);
-    System.out.println(deletionValue); // 30
-
-// 배열 중간에 삭제하는 메서드
-  public static int deletion(int[] array, int index) {
-    // 배열 중간에 삭제(O(n))
-    int[] returnValue = new int[array.length];
-
-    for (int i = index, j = 0; i &lt; array.length - 1 ; i++) {
-      returnValue[j] = array[i];
-      j++;
-      array[i] = array[i + 1];
-
-    }
-    array[array.length - 1] = 0; // 마지막 요소 초기화.
-    int deletionValue = returnValue[0]; // 배열을 메모리에서 지우기
-    returnValue = null;
-    return deletionValue;
-  }
-
-
-5️⃣ 배열의 장점과 단점.
-
-장점.
-
-  빠른 접근 속도 : 인덱스를 통해 O(1) 시간에 요소를 접근할 수 있습니다.
-  메모리 효율 : 연속된 메모리 공간을 사용하므로 메모리 사용이 효율적입니다.
-
-
-단점.
-
-  고정된 크기 : 배열의 크기는 선언 시에 고정되므로, 실행 중에 크기를 변경할 수 없습니다.
-  삽입 및 삭제의 비효율성 : 배열 중간에 요소를 삽입하거나 삭제할 때 O(n)의 시간이 소요됩니다.
-  연속된 메모리 할당 필요 : 큰 배열을 사용할 떄는 연속된 메모리 공간이 필요하여 메모리 할당에 제한이 있을 수 있습니다.
-
-
-
-  배열은 이러한 특성들로 인해 빠른 접근이 필요한 상황에서는 매우 유용하지만, 삽입 및 삭제가 빈번히 일어나는 경우에는 비효율적일 수 있습니다.
-따라서 상황에 맞게 적절한 자료구조를 선택하는 것이 중요합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-01-TIL.html" class="txt_post">
-                            
-  배열의 특정 인덱스의 요소를 삭제하는 방법.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-01-RemoveSpecificIndexFromArray.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -6886,6 +6964,32 @@ public class Main {
       기존 배열 사용 : 메모리를 절약할 수 있지만, 배열의 마지막 요소는 기본값으로 설정해야 합니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-01-TIL.html" class="txt_post">
+                            
+  배열의 특정 인덱스의 요소를 삭제하는 방법.
 
 
                         </a>
@@ -7569,6 +7673,139 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-27-TIL.html" class="txt_post">
+                            
+  노드(Node)
+  장치 컨트롤러와 장치 드라이버
+  트리(Tree)
+  이진 트리(Binary Tree)
+  완전 이진 트리(Complete Binary Tree)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-27-Tree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-27-Tree.html"><h1 class="title_post">📦[DS,Algorithm] 트리(Tree)</h1></a>
+                        <a href="/Backend/AnD/2024-05-27-Tree.html" class="txt_post">
+                            1️⃣ 트리(Tree).
+
+트리(Tree) 는 계층적 구조를 나타내는 자료구조로, 노드(Node)와 에지(Edge)로 구성됩니다.
+
+트리는 사이클이 없는 연결 그래프(Connected Graph)이며, 계층적 데이터 표현에 매우 유용합니다.
+
+트리는 부모-자식 관계를 가지며, 데이터의 조직화와 검색, 계층적 데이터 표현에 사용됩니다.
+
+1️⃣ 트리의 구성 요소.
+
+
+  
+    노드(Node) : 트리의 기본 단위로, 데이터를 저장합니다.
+  
+  
+    에지(Edge) : 노드와 노드를 연결하는 선으로, 부모-자식 관계를 나타냅니다.
+  
+  
+    루트(Root) : 트리의 최상위 노드로, 부모 노드가 없습니다.
+  
+  
+    부모(Parent) : 다른 노드를 가리키는 노드입니다.
+  
+  
+    자식(Child) : 부모 노드에 의해 가리켜지는 노드입니다.
+  
+  
+    잎(Leaf) : 자식 노드가 없는 노드입니다.
+  
+  
+    내부 노드(Internal Node) : 자식 노드가 있는 노드입니다.
+  
+  
+    레벨(Level) : 루트 노드에서 특정 노드까지의 에지 수를 나타냅니다.
+  
+  
+    높이(Height) : 트리의 최대 레벨을 의미합니다.
+  
+
+
+2️⃣ 트리의 특성.
+
+
+  계층적 구조 : 트리는 계층적 구조로 데이터를 조직화합니다.
+  사이클 없음 : 트리는 사이클이 없는 그래프입니다.
+  연결성 : 모든 노드는 하나의 연결된 구성 요소로 되어 있습니다.
+  한 개의 루트 노드 : 트리는 하나의 루트 노드를 가지며, 루트 노드는 트리의 시작점입니다.
+
+
+3️⃣ 트리의 종류.
+
+
+  
+    이진 트리(Binary Tree) : 각 노드가 최대 두 개의 자식 노드를 가질 수 있는 트리입니다.
+  
+  
+    이진 탐색 트리(Binary Search Tree, BST) : 이진 트리의 일종으로, 왼쪽 자식 노드의 값이 부모 노드의 값보다 작고, 오른쪽 자식 노드의 값이 부모 노드의 값보다 큰 특성을 가집니다.
+  
+  
+    균형 이진 트리(Balanced Binary Tree) : AVL 트리, 레드-블랙 트리 등과 같이 트리의 높이가 균형을 이루도록 유지하는 트리입니다.
+  
+  
+    B-트리(B-Tree) : 데이터베이스와 파일 시스템에서 사용되는 트리로, 자식 노드의 수가 정해진 다진 트리(Multiway Tree)입니다.
+  
+  
+    힙(Heap) : 완전 이진 트리의 일종으로, 부모 노드의 값이 자식 노드의 값보다 크거나 작은 특성을 가집니다.
+  
+  
+    트라이(Trie) : 문자열 검색을 위한 트리 자료구조로, 접두사 검색에 유용합니다.
+  
+
+
+4️⃣ 트리의 주요 연산.
+
+
+  삽입(Insertion) : 트리에 새로운 노드를 추가합니다.
+  삭제(Deletion) : 트리에서 노드를 제거합니다.
+  탐색(Search) : 트리에서 특정 값을 찾습니다.
+  순회(Traversal) : 트리의 모든 노드를 방문합니다. 전위(Preorder), 중위(Inorder), 후위(Postorder), 레벨 순회(Level Order) 방식이 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -7713,139 +7950,6 @@ public class Main {
     singlyLinkedList.printList(); // 1 3
   }
 }
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-27-TIL.html" class="txt_post">
-                            
-  노드(Node)
-  장치 컨트롤러와 장치 드라이버
-  트리(Tree)
-  이진 트리(Binary Tree)
-  완전 이진 트리(Complete Binary Tree)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-27-Tree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-27-Tree.html"><h1 class="title_post">📦[DS,Algorithm] 트리(Tree)</h1></a>
-                        <a href="/Backend/AnD/2024-05-27-Tree.html" class="txt_post">
-                            1️⃣ 트리(Tree).
-
-트리(Tree) 는 계층적 구조를 나타내는 자료구조로, 노드(Node)와 에지(Edge)로 구성됩니다.
-
-트리는 사이클이 없는 연결 그래프(Connected Graph)이며, 계층적 데이터 표현에 매우 유용합니다.
-
-트리는 부모-자식 관계를 가지며, 데이터의 조직화와 검색, 계층적 데이터 표현에 사용됩니다.
-
-1️⃣ 트리의 구성 요소.
-
-
-  
-    노드(Node) : 트리의 기본 단위로, 데이터를 저장합니다.
-  
-  
-    에지(Edge) : 노드와 노드를 연결하는 선으로, 부모-자식 관계를 나타냅니다.
-  
-  
-    루트(Root) : 트리의 최상위 노드로, 부모 노드가 없습니다.
-  
-  
-    부모(Parent) : 다른 노드를 가리키는 노드입니다.
-  
-  
-    자식(Child) : 부모 노드에 의해 가리켜지는 노드입니다.
-  
-  
-    잎(Leaf) : 자식 노드가 없는 노드입니다.
-  
-  
-    내부 노드(Internal Node) : 자식 노드가 있는 노드입니다.
-  
-  
-    레벨(Level) : 루트 노드에서 특정 노드까지의 에지 수를 나타냅니다.
-  
-  
-    높이(Height) : 트리의 최대 레벨을 의미합니다.
-  
-
-
-2️⃣ 트리의 특성.
-
-
-  계층적 구조 : 트리는 계층적 구조로 데이터를 조직화합니다.
-  사이클 없음 : 트리는 사이클이 없는 그래프입니다.
-  연결성 : 모든 노드는 하나의 연결된 구성 요소로 되어 있습니다.
-  한 개의 루트 노드 : 트리는 하나의 루트 노드를 가지며, 루트 노드는 트리의 시작점입니다.
-
-
-3️⃣ 트리의 종류.
-
-
-  
-    이진 트리(Binary Tree) : 각 노드가 최대 두 개의 자식 노드를 가질 수 있는 트리입니다.
-  
-  
-    이진 탐색 트리(Binary Search Tree, BST) : 이진 트리의 일종으로, 왼쪽 자식 노드의 값이 부모 노드의 값보다 작고, 오른쪽 자식 노드의 값이 부모 노드의 값보다 큰 특성을 가집니다.
-  
-  
-    균형 이진 트리(Balanced Binary Tree) : AVL 트리, 레드-블랙 트리 등과 같이 트리의 높이가 균형을 이루도록 유지하는 트리입니다.
-  
-  
-    B-트리(B-Tree) : 데이터베이스와 파일 시스템에서 사용되는 트리로, 자식 노드의 수가 정해진 다진 트리(Multiway Tree)입니다.
-  
-  
-    힙(Heap) : 완전 이진 트리의 일종으로, 부모 노드의 값이 자식 노드의 값보다 크거나 작은 특성을 가집니다.
-  
-  
-    트라이(Trie) : 문자열 검색을 위한 트리 자료구조로, 접두사 검색에 유용합니다.
-  
-
-
-4️⃣ 트리의 주요 연산.
-
-
-  삽입(Insertion) : 트리에 새로운 노드를 추가합니다.
-  삭제(Deletion) : 트리에서 노드를 제거합니다.
-  탐색(Search) : 트리에서 특정 값을 찾습니다.
-  순회(Traversal) : 트리의 모든 노드를 방문합니다. 전위(Preorder), 중위(Inorder), 후위(Postorder), 레벨 순회(Level Order) 방식이 있습니다.
 
 
                         </a>
@@ -8218,6 +8322,33 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
+                            
+  해시 테이블(Hash Table)
+  해시 맵 정리
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-05-25-HashTable.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -8433,22 +8564,23 @@ Contains key 'one': false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-24-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-24-TIL.html"><h1 class="title_post">📝 [TIL] 240524 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-24-TIL.html" class="txt_post">
                             
-  해시 테이블(Hash Table)
-  해시 맵 정리
+  배열 문제 풀이
+  배열 정리
+  해시(Hash)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-25</span>
+                                <span class="date">· 2024-05-24</span>
                             
                         </div>
                     </div>
@@ -8590,34 +8722,6 @@ public class Main {
     return hexString.toString();
   }
 }
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-24-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-24-TIL.html"><h1 class="title_post">📝 [TIL] 240524 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-24-TIL.html" class="txt_post">
-                            
-  배열 문제 풀이
-  배열 정리
-  해시(Hash)
 
 
                         </a>
@@ -9803,15 +9907,134 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-18-TIL.html"><h1 class="title_post">📝 [TIL] 240518 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-18-TIL.html" class="txt_post">
-                            
-  수학적 귀납법
-  명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.
+                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html"><h1 class="title_post">📝[blog post] 나는 어떤 백엔드 개발자가 되고 싶은걸까?</h1></a>
+                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="txt_post">
+                            🤔 나는 어떤 백엔드 개발자가 되고 싶은걸까?
+
+🙋‍♂️ 백엔드 개발자의 역할과 책임
+
+어떤 백엔드 개발자가 되고 싶은지 말하기 전에 백엔드 개발자는 어떤 역할과 책임이 있는지 알아보아야 할 것 같아요.
+
+1️⃣ 웹 서버 개발.
+
+  웹 서버 및 API 개발.
+  HTTP 요청 및 응답 처리.
+  RESTful 서비스 설계 및 구현.
+
+
+2️⃣ 데이터베이스 관리.
+
+  데이터베이스 설계 및 최적화.
+  SQL 및 NoSQL 데이터베이스 작업.
+  데이터 모델링 및 스키마 설계.
+
+
+3️⃣ 서버 사이드 로직.
+
+  비즈니스 로직 구현.
+  사용자 인증 및 권한 관리.
+  데이터 유효성 검사.
+
+
+4️⃣ API 개발 및 통합.
+
+  외부 API와의 통합 작업.
+  내부 API 설계 및 개발.
+  API 문서화 및 유지보수.
+
+
+5️⃣ 성능 최적화.
+
+  서버 성능 모니터링 및 튜닝.
+  캐싱 전략 설계 및 구현.
+  로드 밸런싱 및 스케일링.
+
+
+6️⃣ 보안 관리.
+
+  데이터 보안 및 암호화.
+  OWASP 및 기타 보안 지침 준수.
+  침입 탐지 및 대응.
+
+
+7️⃣ 클라우드 컴퓨팅.
+
+  AWS, Azure, GCP 등 클라우드 플랫폼 사용.
+  클라우드 기반 서비스 배포 및 관리.
+  컨테이나화 및 오케이스트레이션(Docker, Kubernetes)
+
+
+8️⃣ DevOps와 CI/CD.
+
+  지속적 통합 및 배포(CI/CD) 파이프라인 구축.
+  서버 및 서비스의 자동화 및 오케스트레이션.
+  인프라스트럭처 코드화(Infrastructure as Code).
+
+
+9️⃣ 로그 및 모니터링.
+
+  애플리케이션 및 서버 로그 관리.
+  모니터링 도구 설정(예: Prometheus, Grafana).
+  로그 분석 및 문제 해결.
+
+
+백엔드 개발자는 일반적으로 이 모든 역할을 하나의 프로젝트 내에서 수행하지 않아요.
+회사나 팀의 구조에 따라 특정 역할에 집중하게 된답니다.
+예를 들어, 일부 개발자는 데이터베이스 관리에 중점을 두고, 다른 개발자는 클라우드 인프라 관리에 집중할 수 있습니다.
+
+🙋‍♂️ 내가 되고 싶은 백엔드 개발자.
+
+  
+    
+      맡은 역할과 책임에 최선을 다하는 개발자
+        
+          저는 맡은 바에 항상 최선을 다해 임무를 완수합니다.
+          내가 맡은 바에는 책임이라는 것이 따르기 때문에 항상 최선을 다해야 한다고 생각합니다.
+        
+      
+    
+  
+  
+    
+      소통을 잘하는 백엔드 개발자.
+        
+          커뮤니케이션이 정말 중요하다고 생각합니다.
+          하나의 프로그램을 만들기 위해서는 많은 사람들이 함께 만들어가는 것 이기 때문에 함께 협력하고 소통을 잘해야 합니다.
+        
+      
+    
+  
+  
+    
+      유연한 사고를 가진 백엔드 개발자.
+        
+          나 자신의 의견 또는 생각 역시도 틀릴 수 있다는 것을 항상 인지하고 여러 모든 의견을 유연하게 받아들일 수 있는 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+  
+    
+      말이 아닌 코드로 증명하는 개발자.
+        
+          말로만 대단한 듯이 말하는 개발자가 아닌 진짜 코드로 증명해내는 그런 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+  
+    
+      겸손과 꾸준한 성장을 하는 백엔드 개발자.
+        
+          겸손의 미덕을 알고 있습니다. 언제나 배움의 자세를 가지고 항상 배우려 노력하며 꾸준히 성장하는 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -10092,134 +10315,15 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html"><h1 class="title_post">📝[blog post] 나는 어떤 백엔드 개발자가 되고 싶은걸까?</h1></a>
-                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="txt_post">
-                            🤔 나는 어떤 백엔드 개발자가 되고 싶은걸까?
-
-🙋‍♂️ 백엔드 개발자의 역할과 책임
-
-어떤 백엔드 개발자가 되고 싶은지 말하기 전에 백엔드 개발자는 어떤 역할과 책임이 있는지 알아보아야 할 것 같아요.
-
-1️⃣ 웹 서버 개발.
-
-  웹 서버 및 API 개발.
-  HTTP 요청 및 응답 처리.
-  RESTful 서비스 설계 및 구현.
-
-
-2️⃣ 데이터베이스 관리.
-
-  데이터베이스 설계 및 최적화.
-  SQL 및 NoSQL 데이터베이스 작업.
-  데이터 모델링 및 스키마 설계.
-
-
-3️⃣ 서버 사이드 로직.
-
-  비즈니스 로직 구현.
-  사용자 인증 및 권한 관리.
-  데이터 유효성 검사.
-
-
-4️⃣ API 개발 및 통합.
-
-  외부 API와의 통합 작업.
-  내부 API 설계 및 개발.
-  API 문서화 및 유지보수.
-
-
-5️⃣ 성능 최적화.
-
-  서버 성능 모니터링 및 튜닝.
-  캐싱 전략 설계 및 구현.
-  로드 밸런싱 및 스케일링.
-
-
-6️⃣ 보안 관리.
-
-  데이터 보안 및 암호화.
-  OWASP 및 기타 보안 지침 준수.
-  침입 탐지 및 대응.
-
-
-7️⃣ 클라우드 컴퓨팅.
-
-  AWS, Azure, GCP 등 클라우드 플랫폼 사용.
-  클라우드 기반 서비스 배포 및 관리.
-  컨테이나화 및 오케이스트레이션(Docker, Kubernetes)
-
-
-8️⃣ DevOps와 CI/CD.
-
-  지속적 통합 및 배포(CI/CD) 파이프라인 구축.
-  서버 및 서비스의 자동화 및 오케스트레이션.
-  인프라스트럭처 코드화(Infrastructure as Code).
-
-
-9️⃣ 로그 및 모니터링.
-
-  애플리케이션 및 서버 로그 관리.
-  모니터링 도구 설정(예: Prometheus, Grafana).
-  로그 분석 및 문제 해결.
-
-
-백엔드 개발자는 일반적으로 이 모든 역할을 하나의 프로젝트 내에서 수행하지 않아요.
-회사나 팀의 구조에 따라 특정 역할에 집중하게 된답니다.
-예를 들어, 일부 개발자는 데이터베이스 관리에 중점을 두고, 다른 개발자는 클라우드 인프라 관리에 집중할 수 있습니다.
-
-🙋‍♂️ 내가 되고 싶은 백엔드 개발자.
-
-  
-    
-      맡은 역할과 책임에 최선을 다하는 개발자
-        
-          저는 맡은 바에 항상 최선을 다해 임무를 완수합니다.
-          내가 맡은 바에는 책임이라는 것이 따르기 때문에 항상 최선을 다해야 한다고 생각합니다.
-        
-      
-    
-  
-  
-    
-      소통을 잘하는 백엔드 개발자.
-        
-          커뮤니케이션이 정말 중요하다고 생각합니다.
-          하나의 프로그램을 만들기 위해서는 많은 사람들이 함께 만들어가는 것 이기 때문에 함께 협력하고 소통을 잘해야 합니다.
-        
-      
-    
-  
-  
-    
-      유연한 사고를 가진 백엔드 개발자.
-        
-          나 자신의 의견 또는 생각 역시도 틀릴 수 있다는 것을 항상 인지하고 여러 모든 의견을 유연하게 받아들일 수 있는 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-  
-    
-      말이 아닌 코드로 증명하는 개발자.
-        
-          말로만 대단한 듯이 말하는 개발자가 아닌 진짜 코드로 증명해내는 그런 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-  
-    
-      겸손과 꾸준한 성장을 하는 백엔드 개발자.
-        
-          겸손의 미덕을 알고 있습니다. 언제나 배움의 자세를 가지고 항상 배우려 노력하며 꾸준히 성장하는 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
+                        <a href="/Backend/TIL/2024-05-18-TIL.html"><h1 class="title_post">📝 [TIL] 240518 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-18-TIL.html" class="txt_post">
+                            
+  수학적 귀납법
+  명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.
 
 
                         </a>
@@ -10876,179 +10980,166 @@ Calculator calclator = new Calculator() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-lambda.html"><h1 class="title_post">☕️[Java] 람다식</h1></a>
-                        <a href="/Backend/Java/2024-05-13-lambda.html" class="txt_post">
-                            1️⃣ 람다식.
+                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html"><h1 class="title_post">☕️[Java] HashMap에 key 값은 항상 int 여야 할까요?</h1></a>
+                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="txt_post">
+                            🤔 HashMap에 key 값은 항상 int 여야 할까요?
 
-1. 람다 표현식(Lambda Expression)
-자바 프로그래밍에서 람다식 또는 람다 표현식(Lambda Expression)은 간결한 방식으로 익명 함수(anonymous function)를 제공하는 기능입니다.
+강의와 예제 코드를 열심히 보고 따라서 타이핑하고 있던 중 “문뜩!” 떠올랐습니다. 🤩
 
-자바 8부터 도입된 이 기능은 함수형 프로그래밍의 일부 개념을 자바에 도입하여, 코드를 더 간결하고 명료하게 만들어 주며 특히 컬렉션의 요소를 처리할 때 유용하게 사용됩니다.
+‘HashMap에 key 값은 항상 int 여야 할까요?🤔’
 
-1.2 람다식의 특징.
-
-  익명성 : 람다는 이름이 없기 때문에 익명으로 처리됩니다.
-  함수 : 람다는 메서드와 유사하지만, 독립적으로 존재할 수 있는 함수입니다.
-  전달성 : 람다 표현식은 메서드 인자로 전달되거나 변수에 저장될 수 있습니다.
-  간결성 : 코드의 간결성을 높여, 불필요한 반복을 줄여줍니다.
-
-
-1.3 람다 표현식의 기본 구조.
-람타 표현식은 주로 매개 변수를 받아들여 결과를 반환하는 식의 형태로 작성됩니다.
-
-일반적인 형태는 다음과 같습니다.
-(parameters) -&gt; expression
-또는
-(parameters) -&gt; { statements; }
-
-
-  매개 변수 : 괄호 안에 정의되며, 매개 변수의 타입을 명시할 수도 있고 생략할 수도 있습니다.
-    
-      매개 변수가 하나뿐인 경우, 괄호도 생략할 수 있습니다.
-    
-  
-  
-    화살표(-&gt;) : 매개 변수와 몸체를 구분짓는 역할을 합니다.
-  
-  몸체 : 람다의 실행 로직을 담고 있으며, 식(expression) 또는 문장(statements)이 올 수 있습니다.
-    
-      식은 단일 실행 결과를 반환하며, 중괄호는 생략할 수 있습니다.
-      문장은 중괄호 안에 작성되며, 여러 줄의 코드를 포함할 수 있습니다.
-    
-  
-
-
-1.4 예시
-
-  Thread 실행하기
-    new Thread(() -&gt; System.out.println("Hello from a thread")).start();
-    
-  
-  리스트의 각 요소 출력하기
-    List&lt;String&gt; list = Arrays.asList("Apple", "Banana", "Cherry");
-list.forEach(item -&gt; System.out.println(item));
-    
-  
-  Comparator를 통한 정렬
-    List&lt;String&gt; cities = Arrays.asList("Seoul", "New York", "London");
-Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
-    
-  
-
-
-1.5 📝 정리.
-람다 표현식은 이벤트 리스너, 스레드의 실행 코드 등 여러 곳에서 기존에 익명 클래스를 사용하던 부분을 대체하여 코드를 더 간결하게 만들 수 있습니다.
-
-또한, 스트림 API와 함께 사용될 때 강력한 데이터 처리 기능을 제공하여 복잡한 컬렉션 처리를 단순화시킬 수 있습니다.
+그래서 구글링과 챗 지피티 그리고 Java의 정석 도서를 살펴본 후 이 글을 쓰게 되었습니다 :)
 
 
 
-2. 람다식의 장점.
-자바에서 람다식(Lambda Expression)을 사용하는 것은 여러 가지 장점을 제공합니다.
+🙅‍♂️ 대답은 “아니오!” 입니다.
 
-이러한 장점들은 프로그래밍 스타일, 코드의 간결성, 효율성 및 기능성 측면에서 특히 두드러집니다.
+자바 프로그래밍에서 ‘HashMap’ 의 키 값은 ‘int’ 형일 필요는 없다고 합니다.
 
-2.1 람다식의 주요 장점들.
+‘HashMap’ 은 키로서 어떠한 객체도 사용할 수 있으며, 기는 자바의 ‘제네릭’ 을 통해 다양한 유형의 객체를 키로 사용할 수 있게 해준다고 합니다.
+(오! “제네릭” 은 아직 안배웠지만 🥲 Swift에서 봐서 비슷한 느낌 같은데?!)
 
-  1. 코드의 간결성 : 람다식을 사용하면 복잡한 익명 클래스를 사용할 필요가 없어지므로 코드를 훨씬 간결하게 작성할 수 있습니다.
-    
-      예를 들어, 스레드를 실행하거나 이벤트 리스너를 설정할 때 몇 줄의 코드로 작성할 수 있습니다.
-    
-  
-  2. 가독성 향상 : 람다식은 기존의 익명 클래스보다 훨씬 읽기 쉽고 이해하기 쉬운 코드를 작성할 수 있게 합니다.
-    
-      이는 유지보수 시간을 줄이고 코드의 질을 향상시키는 데 도움이 됩니다.
-    
-  
-  3. 함수형 프로그래밍 지원 : 람다식은 자바에 함수형 프로그래밍 스타일을 도입하였습니다.
-    
-      이는 데이터 처리와 조작을 보다 선언적으로 표현할 수 있게 해, 복잡한 데이터 처리 로직을 간결하고 효율적으로 작성할 수 있도록 합니다.
-    
-  
-  4. 코드의 재사용성 증가 : 람다식을 사용하면 특정 동작을 수행하는 코드 블록을 쉽게 재사용할 수 있습니다.
-    
-      람다식은 변수처럼 취급될 수 있어, 메소드에 인자로 전달하거나 변수에 할당하여 다른 위치에서 사용할 수 있습니다.
-    
-  
-  5. 병렬 실행 용이 : 자바 8 이후로 스트림 API와 결합된 람다식은 컬렉션 처리를 병렬로 쉽게 수행할 수 있게 해줍니다.
-    
-      이는 ‘parallelStream()’ 과 같은 메소드를 사용하여 멀티코어 프로세서의 이점을 쉽게 활용할 수 있게 합니다.
-    
-  
-  6. 지연 실행(Lazy Evaluation) : 람다식은 지연 실행을 가능하게 합니다.
-    
-      예를 들어, 조건이 충족될 때까지 코드 실행을 지연시키거나, 필요할 때만 데이터를 처리하도록 할 수 있습니다.
+키 객체는 ‘Object’ 클래스의 ‘hashCode()’ 메소드와 ‘equals()’ 메소드를 적절히 구현해야 합니다.
+(‘Object’ 클래스는 무엇이고,  ‘hashCode()’ 메소드와 ‘equals()’ 메소드는 무엇인가?!! 🤪)
+
+이는 ‘HashMap’ 이 키의 해시 코드를 사용하여 데이터를 저장하고 검색하기 때문입니다.
+(도통 무슨 소리인지 몰라서 아래 “제네릭”. “Object 클래스”, “hashCode()”, “equals()”를 정리했어요 ㅎㅎ)
+
+‘HashMap’ 을 사용할 때, 키로 사용되는 객체의 ‘hashCode()’ 메소드가 효율적이고 일관성 있는 값을 반환해야 합니다.
+또한, ‘equalse()’ 메소드는 객체의 동등성을 정확하게 판단할 수 있어야 합니다.
+이 두 메소드의 구현이 적절히 이루어져야 ‘HashMap’ 이 키의 중복 없이 정확하게 데이터를 관리할 수 있습니다.
+
+예시 - String 객체를 키로 사용하는 ‘HashMap’
+import java.util.HashMap;
+
+public class Example {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("one", 1);
+        map.put("two", 2);
+        map.put("three", 3);
         
-          이는 성능 최적화에 도움을 줄 수 있습니다.
+        System.out.println(map.get("two")); // 출력: 2
+    }
+}
+
+
+
+  위 예시에서 보듯, ‘String’ 외에도 사용자가 정의한 어떠한 객체든 ‘hashCode()’ 와 ‘equals()’ 가 적절히 구현되어 있다면 키로 사용할 수 있습니다.
+    
+      따라서 ‘int’ 만을 키로 사용해야 하는 것은 아닙니다.
+    
+  
+
+
+
+
+1️⃣ 제네릭(Generic).
+자바에서 ‘제네릭(Generic)’ 은 클래스, 인터페이스, 메소드를 정의할 때 타입(Type)을 하나의 매개변수처럼 취급하여, 다양한 데이터 타입을 사용할 수 있도록 하는 프로그래밍 기법입니다.
+
+제네릭을 사용하면 컴파일 시점에 타입 안정성을 제공하고, 타입 캐스팅을 줄여 코드를 더 간결하고 읽기 쉽게 만들 수 있습니다.
+
+제네릭 기본 문법.
+제네릭은 타입 매개변수를 사용하여 구현됩니다.
+
+타입 매개변수는 보통 한 글자로 표현되며, 일반적으로 다음과 같은 문자를 사용합니다.
+
+
+  ‘E’ : Element(컬렉션에서 사용되는 요소)
+  ‘K’ : Key(키)
+  ‘V’ : Value(값)
+  ‘T’ : Type(일반적인 타입)
+  ‘S’, ‘U’, ‘V’ 등 - 두 번째, 세 번째, 네 번째 타입을 나타내기 위해 사용
+
+
+예시: 제네릭을 사용한 클래스와 메소드
+// 제네릭 클래스 예시
+public class Box&lt;T&gt; {
+    private T t; // T는 이 클래스가 다루는 객체의 타입을 매개변수화합니다.
+    
+    public void set(T t) {
+        this.t = t;
+    }
+    
+    public T get() {
+        return t;
+    }
+}
+
+// 제네릭 메소드 예시
+public static &lt;T&gt; void printArray(T[] inputArray) {
+    for (T element : inputArray) {
+        System.out.print(element + " ");
+    }
+    System.out.println();
+}
+
+
+  위 예시에서 ‘Box’ 클래스는 타입 매개변수 ‘T’ 를 사용하여 다양한 타입을 저장하고 반환할 수 있는 범용 컨테이너로 사용됩니다.
+  ‘printArray’ 메소드는 어떤 배열 타입도 받아들일 수 있으며, 그 요소들을 출력합니다.
+
+
+
+
+2️⃣ Object 클래스.
+자바 프로그래밍에서 ‘Object’ 클래스는 자바의 클래스 계층 구조에서 가장 상위에 위치하는 클래스입니다.
+
+모든 자바 클래스는 직접적이거나 간접적으로 ‘Object’ 클래스를 상속받습니다.
+
+이는 ‘Object’ 클래스가 자바에서 모든 클래스의 근본(base)이라는 의미 입니다.
+
+‘Object’ 클래스는 자바의 ‘java.lang’ 패키지에 포함되어 있으며, 모든 객체에 공통적으로 필요한 메서드를 제공합니다.
+
+Object 클래스의 의의.
+‘Object’ 클래스의 메서드들은 자바의 모든 클래스에 기본적인 기능을 제공합니다.
+
+이로 인해, 개발자는 어떤 클래스를 만들 때도 이러한 기본적인 메서드들을 새로 작성하지 않고도, 필요에 따라 이를 상속받아 확장하거나 재정의할 수 있습니다.
+
+‘Object’ 클래스는 자바의 모든 클래스와 객체에 공통적인 근복적인 메커니즘을 제공하는 중추적인 역할을 합니다.
+
+
+
+3️⃣ Object 클래스의 hashCode() 메소드.
+자바의 ‘Object’ 클래스에서 ‘hashCode()’ 메소드는 객체의 메모리 주소를 기반으로 계산된 정수 값을 반환하는 메소드입니다.
+
+이 메소드는 객체의 해시 코드를 제공하며, 해시 기반 컬렉션(예: ‘HashMap’, ‘HashSet’, ‘Hashtable’ 등)에서 객체를 효율적으로 관리하기 위해 사용됩니다.
+
+hashCode() 메소드의 주요 용도
+
+  1. 해시 테이블 사용 : ‘hashCode()’ 는 특히 해시 테이블을 사용하는 자료 구조에서 중요합니다.
+    
+      객체의 해시 코드를 사용하여, 해당 객체가 저장되거나 검색될 해시 버킷을 결정합니다.
         
-      
-    
-  
-  7. 함수 인터페이스와의 호환성 : 람다식은 단일 추상 메소드를 가진 인터페이스(함수 인터페이스)와 호환됩니다.
-    
-      이는 많은 내장 함수 인터페이스(‘Runnable’, ‘Callable’, ‘Comparator’ 등)와 사용자 정의 함수 인터페이스에 람다식을 적용할 수 있음을 의미합니다.
-    
-  
-
-
-2.2 📝 정리.
-이러한 장점들로 인해 람다식은 자바 프로그래머들 사이에서 매우 인기 있는 기능이 되었으며, 모던 자바 코드에서는 필수적인 요소로 자리 잡고 있습니다.
-
-
-
-3. 람다식의 단점.
-자바에서 람다식을 사용하면 여러 가지 장점이 있지만, 몇 가지 단점 또는 주의할 점도 있습니다.
-
-3.1 람다식의 사용과 관련된 단점.
-
-  1. 디버깅의 어려움 : 람다식은 익명 함수이기 때문에 디버깅이 더 복잡할 수 있습니다.
-    
-      스택 트레이스에서 람다식이 어디에 위치하는지 명확하게 표시되지 않아 오류를 추적하기 어려울 수 있습니다.
-    
-  
-  2. 코드의 남용 : 람다식을 과도하게 사용하면 코드가 오히려 더 복잡해지고 이해하기 어려워질 수 있습니다.
-    
-      특히 람다 내부에 긴 로직이나 조건문을 넣을 경우 가독성이 떨어질 수 있습니다.
-    
-  
-  3. 람다 캡처링 오버헤드 : 람다식은 주변 환경의 변수를 캡처(Capture)할 수 있습니다.
-    
-      이 때, 람다가 외부 변수를 캡처 할 경우 추가적인 비용이 발생할 수 있으며, 이는 성능에 영향을 줄 수 있습니다.
-    
-  
-  4. 직렬화의 문제 : 람다식은 기본적으로 직렬화가 보장되지 않습니다.
-    
-      따라서 람다식을 사용하는 객체를 직렬화하려고 할 때 문제가 발생할 수 있습니다.
-        
-          이는 분산 시스템에서 특히 중요한 이슈가 될 수 있습니다.
+          이로 인해 데이터의 삽입, 검색, 삭제 작업이 빠르게 수행될 수 있습니다.
         
       
     
   
-  5. 학습 곡선 : 자바 8 이전의 버전에 익숙한 개발자들에게 람다식과 스트림 API는 새로운 패러다임을 익혀야 하는 도전과제를 제시합니다.
+  2. 객체의 동등성의 빠른 검증 : ‘hashCode()’ 메소드는 ‘equals()’ 메소드와 함께 사용되어 객체의 동등성을 검사합니다.
     
-      이는 초기 학습 곡선을 가파르게 만들 수 있습니다.
-    
-  
-  6. 타입 추론의 복잡성 : 람다식에서는 자바 컴파일러가 타입을 추론해야 하는데, 때때로 이 추론이 개발자의 의도와 다른게 이루어질 수 있습니다.
-    
-      이는 코드의 명확성을 떨어뜨릴 수 있습니다.
-    
-  
-  7. 함수형 인터페이스의 제약 : 람다식은 단 하나의 추상 메소드를 가진 함수형 인터페이스와 함꼐 사용됩니다.
-    
-      때로는 이런 제약이 프로그램 설계를 더 복잡하게 만들 수 있습니다.
+      두 객체가 같다면 반드시 같은 해시 코드를 반환해야 합니다.
+        
+          따라서, 해시 코드가 다른 두 객체는 결코 같을 수 없으므로, ‘equals()’ 호출 전에 해시 코드를 먼저 확인함으로써 불필요한 비교를 줄일 수 있습니다.
+        
+      
     
   
 
 
-3.2 📝 정리.
-람다식의 단점들은 주로 개발과 관련된 트레이드오프와 관련이 있으며, 이러한 단점을 이해하고 적절히 관리한다면 람다식을 효과적으로 사용할 수 있습니다.
 
+
+4️⃣ Object 클래스의 equals() 메소드.
+자바 프로그래밍에서 ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체가 동등한지 비교하는데 사용됩니다.
+
+이 메소드는 ‘Object’ 클래스에서 모든 클래스로 상속되며, 특히 객체의 동등성을 판단할 때 중요한 역할을 합니다.
+
+기본적으로, ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체의 참조가 같은지 확인합니다.
+
+즉, 두 객체가 메모리상에서 같은 위치를 가리키는지 검사합니다.
 
 
                         </a>
@@ -11261,166 +11352,179 @@ Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html"><h1 class="title_post">☕️[Java] HashMap에 key 값은 항상 int 여야 할까요?</h1></a>
-                        <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="txt_post">
-                            🤔 HashMap에 key 값은 항상 int 여야 할까요?
+                        <a href="/Backend/Java/2024-05-13-lambda.html"><h1 class="title_post">☕️[Java] 람다식</h1></a>
+                        <a href="/Backend/Java/2024-05-13-lambda.html" class="txt_post">
+                            1️⃣ 람다식.
 
-강의와 예제 코드를 열심히 보고 따라서 타이핑하고 있던 중 “문뜩!” 떠올랐습니다. 🤩
+1. 람다 표현식(Lambda Expression)
+자바 프로그래밍에서 람다식 또는 람다 표현식(Lambda Expression)은 간결한 방식으로 익명 함수(anonymous function)를 제공하는 기능입니다.
 
-‘HashMap에 key 값은 항상 int 여야 할까요?🤔’
+자바 8부터 도입된 이 기능은 함수형 프로그래밍의 일부 개념을 자바에 도입하여, 코드를 더 간결하고 명료하게 만들어 주며 특히 컬렉션의 요소를 처리할 때 유용하게 사용됩니다.
 
-그래서 구글링과 챗 지피티 그리고 Java의 정석 도서를 살펴본 후 이 글을 쓰게 되었습니다 :)
+1.2 람다식의 특징.
 
-
-
-🙅‍♂️ 대답은 “아니오!” 입니다.
-
-자바 프로그래밍에서 ‘HashMap’ 의 키 값은 ‘int’ 형일 필요는 없다고 합니다.
-
-‘HashMap’ 은 키로서 어떠한 객체도 사용할 수 있으며, 기는 자바의 ‘제네릭’ 을 통해 다양한 유형의 객체를 키로 사용할 수 있게 해준다고 합니다.
-(오! “제네릭” 은 아직 안배웠지만 🥲 Swift에서 봐서 비슷한 느낌 같은데?!)
-
-키 객체는 ‘Object’ 클래스의 ‘hashCode()’ 메소드와 ‘equals()’ 메소드를 적절히 구현해야 합니다.
-(‘Object’ 클래스는 무엇이고,  ‘hashCode()’ 메소드와 ‘equals()’ 메소드는 무엇인가?!! 🤪)
-
-이는 ‘HashMap’ 이 키의 해시 코드를 사용하여 데이터를 저장하고 검색하기 때문입니다.
-(도통 무슨 소리인지 몰라서 아래 “제네릭”. “Object 클래스”, “hashCode()”, “equals()”를 정리했어요 ㅎㅎ)
-
-‘HashMap’ 을 사용할 때, 키로 사용되는 객체의 ‘hashCode()’ 메소드가 효율적이고 일관성 있는 값을 반환해야 합니다.
-또한, ‘equalse()’ 메소드는 객체의 동등성을 정확하게 판단할 수 있어야 합니다.
-이 두 메소드의 구현이 적절히 이루어져야 ‘HashMap’ 이 키의 중복 없이 정확하게 데이터를 관리할 수 있습니다.
-
-예시 - String 객체를 키로 사용하는 ‘HashMap’
-import java.util.HashMap;
-
-public class Example {
-    public static void main(String[] args) {
-        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
-        map.put("one", 1);
-        map.put("two", 2);
-        map.put("three", 3);
-        
-        System.out.println(map.get("two")); // 출력: 2
-    }
-}
+  익명성 : 람다는 이름이 없기 때문에 익명으로 처리됩니다.
+  함수 : 람다는 메서드와 유사하지만, 독립적으로 존재할 수 있는 함수입니다.
+  전달성 : 람다 표현식은 메서드 인자로 전달되거나 변수에 저장될 수 있습니다.
+  간결성 : 코드의 간결성을 높여, 불필요한 반복을 줄여줍니다.
 
 
+1.3 람다 표현식의 기본 구조.
+람타 표현식은 주로 매개 변수를 받아들여 결과를 반환하는 식의 형태로 작성됩니다.
 
-  위 예시에서 보듯, ‘String’ 외에도 사용자가 정의한 어떠한 객체든 ‘hashCode()’ 와 ‘equals()’ 가 적절히 구현되어 있다면 키로 사용할 수 있습니다.
+일반적인 형태는 다음과 같습니다.
+(parameters) -&gt; expression
+또는
+(parameters) -&gt; { statements; }
+
+
+  매개 변수 : 괄호 안에 정의되며, 매개 변수의 타입을 명시할 수도 있고 생략할 수도 있습니다.
     
-      따라서 ‘int’ 만을 키로 사용해야 하는 것은 아닙니다.
+      매개 변수가 하나뿐인 경우, 괄호도 생략할 수 있습니다.
+    
+  
+  
+    화살표(-&gt;) : 매개 변수와 몸체를 구분짓는 역할을 합니다.
+  
+  몸체 : 람다의 실행 로직을 담고 있으며, 식(expression) 또는 문장(statements)이 올 수 있습니다.
+    
+      식은 단일 실행 결과를 반환하며, 중괄호는 생략할 수 있습니다.
+      문장은 중괄호 안에 작성되며, 여러 줄의 코드를 포함할 수 있습니다.
     
   
 
 
+1.4 예시
 
-
-1️⃣ 제네릭(Generic).
-자바에서 ‘제네릭(Generic)’ 은 클래스, 인터페이스, 메소드를 정의할 때 타입(Type)을 하나의 매개변수처럼 취급하여, 다양한 데이터 타입을 사용할 수 있도록 하는 프로그래밍 기법입니다.
-
-제네릭을 사용하면 컴파일 시점에 타입 안정성을 제공하고, 타입 캐스팅을 줄여 코드를 더 간결하고 읽기 쉽게 만들 수 있습니다.
-
-제네릭 기본 문법.
-제네릭은 타입 매개변수를 사용하여 구현됩니다.
-
-타입 매개변수는 보통 한 글자로 표현되며, 일반적으로 다음과 같은 문자를 사용합니다.
-
-
-  ‘E’ : Element(컬렉션에서 사용되는 요소)
-  ‘K’ : Key(키)
-  ‘V’ : Value(값)
-  ‘T’ : Type(일반적인 타입)
-  ‘S’, ‘U’, ‘V’ 등 - 두 번째, 세 번째, 네 번째 타입을 나타내기 위해 사용
-
-
-예시: 제네릭을 사용한 클래스와 메소드
-// 제네릭 클래스 예시
-public class Box&lt;T&gt; {
-    private T t; // T는 이 클래스가 다루는 객체의 타입을 매개변수화합니다.
+  Thread 실행하기
+    new Thread(() -&gt; System.out.println("Hello from a thread")).start();
     
-    public void set(T t) {
-        this.t = t;
-    }
+  
+  리스트의 각 요소 출력하기
+    List&lt;String&gt; list = Arrays.asList("Apple", "Banana", "Cherry");
+list.forEach(item -&gt; System.out.println(item));
     
-    public T get() {
-        return t;
-    }
-}
-
-// 제네릭 메소드 예시
-public static &lt;T&gt; void printArray(T[] inputArray) {
-    for (T element : inputArray) {
-        System.out.print(element + " ");
-    }
-    System.out.println();
-}
-
-
-  위 예시에서 ‘Box’ 클래스는 타입 매개변수 ‘T’ 를 사용하여 다양한 타입을 저장하고 반환할 수 있는 범용 컨테이너로 사용됩니다.
-  ‘printArray’ 메소드는 어떤 배열 타입도 받아들일 수 있으며, 그 요소들을 출력합니다.
-
-
-
-
-2️⃣ Object 클래스.
-자바 프로그래밍에서 ‘Object’ 클래스는 자바의 클래스 계층 구조에서 가장 상위에 위치하는 클래스입니다.
-
-모든 자바 클래스는 직접적이거나 간접적으로 ‘Object’ 클래스를 상속받습니다.
-
-이는 ‘Object’ 클래스가 자바에서 모든 클래스의 근본(base)이라는 의미 입니다.
-
-‘Object’ 클래스는 자바의 ‘java.lang’ 패키지에 포함되어 있으며, 모든 객체에 공통적으로 필요한 메서드를 제공합니다.
-
-Object 클래스의 의의.
-‘Object’ 클래스의 메서드들은 자바의 모든 클래스에 기본적인 기능을 제공합니다.
-
-이로 인해, 개발자는 어떤 클래스를 만들 때도 이러한 기본적인 메서드들을 새로 작성하지 않고도, 필요에 따라 이를 상속받아 확장하거나 재정의할 수 있습니다.
-
-‘Object’ 클래스는 자바의 모든 클래스와 객체에 공통적인 근복적인 메커니즘을 제공하는 중추적인 역할을 합니다.
-
-
-
-3️⃣ Object 클래스의 hashCode() 메소드.
-자바의 ‘Object’ 클래스에서 ‘hashCode()’ 메소드는 객체의 메모리 주소를 기반으로 계산된 정수 값을 반환하는 메소드입니다.
-
-이 메소드는 객체의 해시 코드를 제공하며, 해시 기반 컬렉션(예: ‘HashMap’, ‘HashSet’, ‘Hashtable’ 등)에서 객체를 효율적으로 관리하기 위해 사용됩니다.
-
-hashCode() 메소드의 주요 용도
-
-  1. 해시 테이블 사용 : ‘hashCode()’ 는 특히 해시 테이블을 사용하는 자료 구조에서 중요합니다.
+  
+  Comparator를 통한 정렬
+    List&lt;String&gt; cities = Arrays.asList("Seoul", "New York", "London");
+Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
     
-      객체의 해시 코드를 사용하여, 해당 객체가 저장되거나 검색될 해시 버킷을 결정합니다.
+  
+
+
+1.5 📝 정리.
+람다 표현식은 이벤트 리스너, 스레드의 실행 코드 등 여러 곳에서 기존에 익명 클래스를 사용하던 부분을 대체하여 코드를 더 간결하게 만들 수 있습니다.
+
+또한, 스트림 API와 함께 사용될 때 강력한 데이터 처리 기능을 제공하여 복잡한 컬렉션 처리를 단순화시킬 수 있습니다.
+
+
+
+2. 람다식의 장점.
+자바에서 람다식(Lambda Expression)을 사용하는 것은 여러 가지 장점을 제공합니다.
+
+이러한 장점들은 프로그래밍 스타일, 코드의 간결성, 효율성 및 기능성 측면에서 특히 두드러집니다.
+
+2.1 람다식의 주요 장점들.
+
+  1. 코드의 간결성 : 람다식을 사용하면 복잡한 익명 클래스를 사용할 필요가 없어지므로 코드를 훨씬 간결하게 작성할 수 있습니다.
+    
+      예를 들어, 스레드를 실행하거나 이벤트 리스너를 설정할 때 몇 줄의 코드로 작성할 수 있습니다.
+    
+  
+  2. 가독성 향상 : 람다식은 기존의 익명 클래스보다 훨씬 읽기 쉽고 이해하기 쉬운 코드를 작성할 수 있게 합니다.
+    
+      이는 유지보수 시간을 줄이고 코드의 질을 향상시키는 데 도움이 됩니다.
+    
+  
+  3. 함수형 프로그래밍 지원 : 람다식은 자바에 함수형 프로그래밍 스타일을 도입하였습니다.
+    
+      이는 데이터 처리와 조작을 보다 선언적으로 표현할 수 있게 해, 복잡한 데이터 처리 로직을 간결하고 효율적으로 작성할 수 있도록 합니다.
+    
+  
+  4. 코드의 재사용성 증가 : 람다식을 사용하면 특정 동작을 수행하는 코드 블록을 쉽게 재사용할 수 있습니다.
+    
+      람다식은 변수처럼 취급될 수 있어, 메소드에 인자로 전달하거나 변수에 할당하여 다른 위치에서 사용할 수 있습니다.
+    
+  
+  5. 병렬 실행 용이 : 자바 8 이후로 스트림 API와 결합된 람다식은 컬렉션 처리를 병렬로 쉽게 수행할 수 있게 해줍니다.
+    
+      이는 ‘parallelStream()’ 과 같은 메소드를 사용하여 멀티코어 프로세서의 이점을 쉽게 활용할 수 있게 합니다.
+    
+  
+  6. 지연 실행(Lazy Evaluation) : 람다식은 지연 실행을 가능하게 합니다.
+    
+      예를 들어, 조건이 충족될 때까지 코드 실행을 지연시키거나, 필요할 때만 데이터를 처리하도록 할 수 있습니다.
         
-          이로 인해 데이터의 삽입, 검색, 삭제 작업이 빠르게 수행될 수 있습니다.
+          이는 성능 최적화에 도움을 줄 수 있습니다.
         
       
     
   
-  2. 객체의 동등성의 빠른 검증 : ‘hashCode()’ 메소드는 ‘equals()’ 메소드와 함께 사용되어 객체의 동등성을 검사합니다.
+  7. 함수 인터페이스와의 호환성 : 람다식은 단일 추상 메소드를 가진 인터페이스(함수 인터페이스)와 호환됩니다.
     
-      두 객체가 같다면 반드시 같은 해시 코드를 반환해야 합니다.
-        
-          따라서, 해시 코드가 다른 두 객체는 결코 같을 수 없으므로, ‘equals()’ 호출 전에 해시 코드를 먼저 확인함으로써 불필요한 비교를 줄일 수 있습니다.
-        
-      
+      이는 많은 내장 함수 인터페이스(‘Runnable’, ‘Callable’, ‘Comparator’ 등)와 사용자 정의 함수 인터페이스에 람다식을 적용할 수 있음을 의미합니다.
     
   
 
 
+2.2 📝 정리.
+이러한 장점들로 인해 람다식은 자바 프로그래머들 사이에서 매우 인기 있는 기능이 되었으며, 모던 자바 코드에서는 필수적인 요소로 자리 잡고 있습니다.
 
 
-4️⃣ Object 클래스의 equals() 메소드.
-자바 프로그래밍에서 ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체가 동등한지 비교하는데 사용됩니다.
 
-이 메소드는 ‘Object’ 클래스에서 모든 클래스로 상속되며, 특히 객체의 동등성을 판단할 때 중요한 역할을 합니다.
+3. 람다식의 단점.
+자바에서 람다식을 사용하면 여러 가지 장점이 있지만, 몇 가지 단점 또는 주의할 점도 있습니다.
 
-기본적으로, ‘Object’ 클래스의 ‘equals()’ 메소드는 두 객체의 참조가 같은지 확인합니다.
+3.1 람다식의 사용과 관련된 단점.
 
-즉, 두 객체가 메모리상에서 같은 위치를 가리키는지 검사합니다.
+  1. 디버깅의 어려움 : 람다식은 익명 함수이기 때문에 디버깅이 더 복잡할 수 있습니다.
+    
+      스택 트레이스에서 람다식이 어디에 위치하는지 명확하게 표시되지 않아 오류를 추적하기 어려울 수 있습니다.
+    
+  
+  2. 코드의 남용 : 람다식을 과도하게 사용하면 코드가 오히려 더 복잡해지고 이해하기 어려워질 수 있습니다.
+    
+      특히 람다 내부에 긴 로직이나 조건문을 넣을 경우 가독성이 떨어질 수 있습니다.
+    
+  
+  3. 람다 캡처링 오버헤드 : 람다식은 주변 환경의 변수를 캡처(Capture)할 수 있습니다.
+    
+      이 때, 람다가 외부 변수를 캡처 할 경우 추가적인 비용이 발생할 수 있으며, 이는 성능에 영향을 줄 수 있습니다.
+    
+  
+  4. 직렬화의 문제 : 람다식은 기본적으로 직렬화가 보장되지 않습니다.
+    
+      따라서 람다식을 사용하는 객체를 직렬화하려고 할 때 문제가 발생할 수 있습니다.
+        
+          이는 분산 시스템에서 특히 중요한 이슈가 될 수 있습니다.
+        
+      
+    
+  
+  5. 학습 곡선 : 자바 8 이전의 버전에 익숙한 개발자들에게 람다식과 스트림 API는 새로운 패러다임을 익혀야 하는 도전과제를 제시합니다.
+    
+      이는 초기 학습 곡선을 가파르게 만들 수 있습니다.
+    
+  
+  6. 타입 추론의 복잡성 : 람다식에서는 자바 컴파일러가 타입을 추론해야 하는데, 때때로 이 추론이 개발자의 의도와 다른게 이루어질 수 있습니다.
+    
+      이는 코드의 명확성을 떨어뜨릴 수 있습니다.
+    
+  
+  7. 함수형 인터페이스의 제약 : 람다식은 단 하나의 추상 메소드를 가진 함수형 인터페이스와 함꼐 사용됩니다.
+    
+      때로는 이런 제약이 프로그램 설계를 더 복잡하게 만들 수 있습니다.
+    
+  
+
+
+3.2 📝 정리.
+람다식의 단점들은 주로 개발과 관련된 트레이드오프와 관련이 있으며, 이러한 단점을 이해하고 적절히 관리한다면 람다식을 효과적으로 사용할 수 있습니다.
+
 
 
                         </a>
@@ -21295,6 +21399,17 @@ public class Main {
             'url'      : "/Backend/Java/2024-08-01-SerializationAndDeserialization.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-01"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] @Transactional의 역할과 의미.",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-08-02-Transactional.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-02"
         });
     
 

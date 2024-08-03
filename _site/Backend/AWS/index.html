@@ -557,6 +557,7 @@
             
             
             
+            
 
     
     
@@ -911,6 +912,66 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240804_AWS_JAVA8_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240804_AWS_JAVA8_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2에 Java8 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240804_AWS_JAVA8_INSTALL.html" class="txt_post">
+                            1️⃣ EC2 인스턴스에 로그인.
+
+  SSH를 통해 EC2 인스턴스에 로그인 합니다.
+    ssh -i "your-key.pem" ec2-user@your-instance-ip
+// 또는
+ssh "config에 등록한 서비스명" 
+    
+  
+
+
+2️⃣ 업데이트 및 패키지 매니저 설치 확인.
+
+  인스턴스의 패키지 리스트를 업데이트하고 , yum 패키지 매니저가 최신 상태인지 확인합니다.
+    sudo yum update -y
+    
+  
+
+
+3️⃣ OpenJDK 8 설치.
+
+  OpenJDK 8은 Amazon Linux 2의 기본 레포지토리에서 사용할 수 있습니다.
+    
+      다음 명령어를 사용하여 설치할 수 있습니다.
+        sudo yum install -y java-1.8.0-openjdk
+        
+      
+    
+  
+
+
+4️⃣ 설치된 Java 버전 확인.
+
+  설치가 성공적으로 완료되었는지 확인하기 위해 Java 버전을 확인합니다.
+    java -version
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -5475,6 +5536,17 @@ sudo reboot
             'url'      : "/Backend/Java/2024-08-02-Transactional.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-02"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2에 Java8 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240804_AWS_JAVA8_INSTALL.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-04"
         });
     
 

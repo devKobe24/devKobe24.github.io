@@ -557,6 +557,7 @@
             
             
             
+            
 
     
     
@@ -915,43 +916,108 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/MySQL/2024-02-19-drop.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
+                            <a href="/2024/MySQL/2024-02-18-selectAndLimit.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/MySQL/2024-02-19-drop.html"><h1 class="title_post">🐋[MySQL] 테이블 삭제하기</h1></a>
-                        <a href="/2024/MySQL/2024-02-19-drop.html" class="txt_post">
-                            테이블 삭제
+                        <a href="/2024/MySQL/2024-02-18-selectAndLimit.html"><h1 class="title_post">🐋[MySQL] SELECT 조회 결과 LIMIT 1000 ROW 해제하기.</h1></a>
+                        <a href="/2024/MySQL/2024-02-18-selectAndLimit.html" class="txt_post">
+                            MySQL에서 SELECT의 조회 결과가 1000개만 출력이 되는 이유.
 
-DROP TABLE 테이블이름; 구문을 사용합니다.
+처음에는 MySQL로 for 문을 만들 수 있는지 호기심에서 시작했습니다.(for문에 대한 포스팅은 따로 올리겠습니다.)
 
-DROP TABLE 테이블이름;
+그래서 다음과 같이 코드를 만들고 실행했습니다.
 
+delimiter $$ 
+create procedure loopInsert()
+begin
+	declare i int;
+	set i = 1;
 
-MySQL은 IF EXISTS 구문을 지원하므로 아래와 같이 테이블이 존재할 경우 삭제하도록 하면 에러를 방지할 수 있습니다.
-DROP TABLE if exists 테이블이름;
+	while (i &lt;= 2000) do
+		insert into test_table (id) values(i);
+    
+		set i = i + 1;
+	end while;
+end $$
 
-
-외래 키(Forgign Key)가 테이블에 있을 경우
-
-만약 다른 테이블에서 foreign key로 삭제하려는 테이블을 참조하는 등 constraint가 있을 경우 삭제되지 않습니다.
-
-이 경우에는 2가지 방법이 있습니다.
-
-
-  참조하는 테이블을 먼저 삭제하는 방법.
-
-
-DROP TABLE if exists 참조하는테이블이름;
-DROP TABLE if exists 삭제하려는테이블이름;
+call loopInsert(); --2000개의 id가 만들어짐.
 
 
+저의 예상은 2000개의 row(필드)가 만들어져 id가 1~2000이 되어 Result 값에 보여질 줄 알았으나 id의 갯수를 세어주는 SQL 문을 만들어 실행 시켜보니 1000 이라는 결과값이 나왔습니다.
 
-  참조 테이블을 계속 사용해야 할 경우 참조 테이블 내부에 외래 키를 삭제한 뒤 삭제하려는 테이블을 DROP 해주면 됩니다.
+SELECT COUNT(id) FROM test_table; -- 결과값 count(id) 1000
 
 
-ALTER TABLE 참조테이블이름 DROP FOREIGN KEY 외래키이름;
-DROP TABLE 삭제할테이블이름;
+그래서 확인을 해보려 다음과 같은 쿼리문을 만들어 실행해봤습니다.
+
+SELECT * FROM test_table; 
+-- Action select * from test_table LIMIT 0, 1000
+-- 결과값 1~999, Response 1000 row(s) returned
+
+
+  여기서 주목할 점은 “Action select * from test_table LIMIT 0, 1000” 입니다.
+    
+      저는 LIMIT 키워드를 발견했고 이 LIMIT을 해제하는 방법을 찾아보았습니다.
+    
+  
+
+
+LIMIT 해제 방법1 : 직접 LIMIT 제한 범위 걸어주기
+
+직접적인 해결 방법은 아니지만,
+쿼리 자체가 ‘LIMIT 1000’으로 고정되기 때문에 쿼리에 LIMIT를 넣어 LIMIT 제한을 늘려주는 방법입니다.
+
+  이 방식은 권장하는 방식은 아니라고 합니다. 이런 방식으로 조회할 수 있다는 방법 중 하나를 제시한 것 뿐이라는 블로그의 글을 보았습니다.
+    
+      아래와 같이 LIMIT 키워드를 쿼리 내에 직접 명시하여 범위를 제공해주는 방법입니다.
+        select * from table_test LIMIT 99999999;
+        
+      
+    
+  
+
+
+LIMIT 해제 방법2 : Workbench 설정 Limit Rows 옵션 해제하기
+
+MySQL에서의 Workbench에는 SELECT 쿼리 조회 결과를 자체적으로 행을 제한해서 보여주는 옵션이 있습니다 이게 기본 값 1000행으로 되있는데, 이 옵션을 변경 또는 해제하면 됩니다.
+
+
+  settings &gt; SQL Execution &gt; SELECT Query Results &gt; Limit Rows 해제
+    
+      혹은 Limit Rows Count 행 수 변경.
+    
+  
+
+
+Limit Rows 옵션의 장.단점.
+
+
+  장점
+    
+      테이블에 속해 있는 데이터의 수를 정확하게 확인할 수 있습니다.
+    
+  
+  단점
+    
+      무분별한 전체 조회는 데이터베이스의 과부하에 영향을 미칠 수 있습니다.
+    
+  
+
+
+결론적으로 쿼리를 작성하고 실행하는 개발자가 상황에 맞게 잘 사용해야 합니다.
+
+즉, 최적화와 DB 성능에 영향에 대해 잘 고민해보고 쿼리를 사용해야 합니다.
+
+
+  예시 1) 테이블 구조 및 데이터 확인 용도.
+    SELECT * FROM 테이블이름 LIMIT 5;
+    
+  
+  예시 2) 조건에 맞는 특정 데이터 확인 용도.
+    SELECT 컬럼명 FROM 테이블명 WHERE 조건입력 LIMIT 5;
+    
+  
 
 
                         </a>
@@ -1073,108 +1139,43 @@ INSERT INTO memberTBL (memberID, memberName, memberAddress) VALUES  ('Thomas', '
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/MySQL/2024-02-18-selectAndLimit.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
+                            <a href="/2024/MySQL/2024-02-19-drop.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/MySQL/2024-02-18-selectAndLimit.html"><h1 class="title_post">🐋[MySQL] SELECT 조회 결과 LIMIT 1000 ROW 해제하기.</h1></a>
-                        <a href="/2024/MySQL/2024-02-18-selectAndLimit.html" class="txt_post">
-                            MySQL에서 SELECT의 조회 결과가 1000개만 출력이 되는 이유.
+                        <a href="/2024/MySQL/2024-02-19-drop.html"><h1 class="title_post">🐋[MySQL] 테이블 삭제하기</h1></a>
+                        <a href="/2024/MySQL/2024-02-19-drop.html" class="txt_post">
+                            테이블 삭제
 
-처음에는 MySQL로 for 문을 만들 수 있는지 호기심에서 시작했습니다.(for문에 대한 포스팅은 따로 올리겠습니다.)
+DROP TABLE 테이블이름; 구문을 사용합니다.
 
-그래서 다음과 같이 코드를 만들고 실행했습니다.
-
-delimiter $$ 
-create procedure loopInsert()
-begin
-	declare i int;
-	set i = 1;
-
-	while (i &lt;= 2000) do
-		insert into test_table (id) values(i);
-    
-		set i = i + 1;
-	end while;
-end $$
-
-call loopInsert(); --2000개의 id가 만들어짐.
+DROP TABLE 테이블이름;
 
 
-저의 예상은 2000개의 row(필드)가 만들어져 id가 1~2000이 되어 Result 값에 보여질 줄 알았으나 id의 갯수를 세어주는 SQL 문을 만들어 실행 시켜보니 1000 이라는 결과값이 나왔습니다.
-
-SELECT COUNT(id) FROM test_table; -- 결과값 count(id) 1000
-
-
-그래서 확인을 해보려 다음과 같은 쿼리문을 만들어 실행해봤습니다.
-
-SELECT * FROM test_table; 
--- Action select * from test_table LIMIT 0, 1000
--- 결과값 1~999, Response 1000 row(s) returned
+MySQL은 IF EXISTS 구문을 지원하므로 아래와 같이 테이블이 존재할 경우 삭제하도록 하면 에러를 방지할 수 있습니다.
+DROP TABLE if exists 테이블이름;
 
 
-  여기서 주목할 점은 “Action select * from test_table LIMIT 0, 1000” 입니다.
-    
-      저는 LIMIT 키워드를 발견했고 이 LIMIT을 해제하는 방법을 찾아보았습니다.
-    
-  
+외래 키(Forgign Key)가 테이블에 있을 경우
+
+만약 다른 테이블에서 foreign key로 삭제하려는 테이블을 참조하는 등 constraint가 있을 경우 삭제되지 않습니다.
+
+이 경우에는 2가지 방법이 있습니다.
 
 
-LIMIT 해제 방법1 : 직접 LIMIT 제한 범위 걸어주기
-
-직접적인 해결 방법은 아니지만,
-쿼리 자체가 ‘LIMIT 1000’으로 고정되기 때문에 쿼리에 LIMIT를 넣어 LIMIT 제한을 늘려주는 방법입니다.
-
-  이 방식은 권장하는 방식은 아니라고 합니다. 이런 방식으로 조회할 수 있다는 방법 중 하나를 제시한 것 뿐이라는 블로그의 글을 보았습니다.
-    
-      아래와 같이 LIMIT 키워드를 쿼리 내에 직접 명시하여 범위를 제공해주는 방법입니다.
-        select * from table_test LIMIT 99999999;
-        
-      
-    
-  
+  참조하는 테이블을 먼저 삭제하는 방법.
 
 
-LIMIT 해제 방법2 : Workbench 설정 Limit Rows 옵션 해제하기
-
-MySQL에서의 Workbench에는 SELECT 쿼리 조회 결과를 자체적으로 행을 제한해서 보여주는 옵션이 있습니다 이게 기본 값 1000행으로 되있는데, 이 옵션을 변경 또는 해제하면 됩니다.
-
-
-  settings &gt; SQL Execution &gt; SELECT Query Results &gt; Limit Rows 해제
-    
-      혹은 Limit Rows Count 행 수 변경.
-    
-  
+DROP TABLE if exists 참조하는테이블이름;
+DROP TABLE if exists 삭제하려는테이블이름;
 
 
-Limit Rows 옵션의 장.단점.
+
+  참조 테이블을 계속 사용해야 할 경우 참조 테이블 내부에 외래 키를 삭제한 뒤 삭제하려는 테이블을 DROP 해주면 됩니다.
 
 
-  장점
-    
-      테이블에 속해 있는 데이터의 수를 정확하게 확인할 수 있습니다.
-    
-  
-  단점
-    
-      무분별한 전체 조회는 데이터베이스의 과부하에 영향을 미칠 수 있습니다.
-    
-  
-
-
-결론적으로 쿼리를 작성하고 실행하는 개발자가 상황에 맞게 잘 사용해야 합니다.
-
-즉, 최적화와 DB 성능에 영향에 대해 잘 고민해보고 쿼리를 사용해야 합니다.
-
-
-  예시 1) 테이블 구조 및 데이터 확인 용도.
-    SELECT * FROM 테이블이름 LIMIT 5;
-    
-  
-  예시 2) 조건에 맞는 특정 데이터 확인 용도.
-    SELECT 컬럼명 FROM 테이블명 WHERE 조건입력 LIMIT 5;
-    
-  
+ALTER TABLE 참조테이블이름 DROP FOREIGN KEY 외래키이름;
+DROP TABLE 삭제할테이블이름;
 
 
                         </a>
@@ -5572,6 +5573,17 @@ Limit Rows 옵션의 장.단점.
             'url'      : "/Backend/Java/2024-08-02-Transactional.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-02"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2에 Java8 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240804_AWS_JAVA8_INSTALL.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-04"
         });
     
 

@@ -559,6 +559,7 @@
             
             
             
+            
 
     
     
@@ -1613,6 +1614,104 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
+                            래퍼 클래스 - 오토 박싱.
+
+오토 박싱 - Autoboxing
+
+자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
+다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
+
+package lang.wrapper;
+
+public class AutoboxingMain1 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = Integer.valueOf(value);
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue.intValue();
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+
+  박싱: valueOf()
+  언박싱: xxxValue() (예: intValue(), doubleValue())
+
+
+개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
+그래서 많은 개발자들이 불편함을 호소했습니다.
+
+  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
+
+
+오토 박싱, 언박싱
+package lang.wrapper;
+
+public class AutoboxingMain2 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
+덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
+따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
+
+Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
+
+int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-17-WrapperClass-JavaWrapperClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -1729,104 +1828,6 @@ intValue() - 언박싱(Unboxing)
 
 
   참고로 래퍼 클래스는 객체를 그대로 출력해도 내부에 있는 값을 문자로 출력하도록 toString()을 재정의 해두었습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
-                            래퍼 클래스 - 오토 박싱.
-
-오토 박싱 - Autoboxing
-
-자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
-다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
-
-package lang.wrapper;
-
-public class AutoboxingMain1 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = Integer.valueOf(value);
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue.intValue();
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-
-  박싱: valueOf()
-  언박싱: xxxValue() (예: intValue(), doubleValue())
-
-
-개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
-그래서 많은 개발자들이 불편함을 호소했습니다.
-
-  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
-
-
-오토 박싱, 언박싱
-package lang.wrapper;
-
-public class AutoboxingMain2 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
-덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
-따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
-
-Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
-
-int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -2278,166 +2279,6 @@ StringBuilder를 직접 사용하는 것이 더 좋은 경우
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
-                            String 최적화.
-자바의 String 최적화
-자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
-
-문자열 리터럴 최적화
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-String 변수 최적화
-문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-String result = str1 + str2;
-
-
-이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
-String result = new StringBuilder().append(str1).append(str2).toString();
-
-
-
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
-
-
-이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
-
-  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
-
-
-String 최적화가 어려운 경우
-다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-package lang.string.builder;
-
-public class LoopStringMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-    String result = "";
-
-    for (int i = 0; i &lt; 100000; i++) {
-      result += "Hello Java ";
-    }
-
-    long endTime = System.currentTimeMillis();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-String result = "";
-for (int i = 0; i &lt; 100000; i++) {
-    result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-
-
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-    
-      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-        
-          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
-            
-              따라서, 이런 상황에서는 최적화가 어렵습니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 2528ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
-
-
-이럴 때는 직접 StringBuilder를 사용하면 됩니다.
-package lang.string.builder;
-
-public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i &lt; 100000; i++) {
-      sb.append("Hello Java ");
-    }
-
-    long endTime = System.currentTimeMillis();
-
-    String result = sb.toString();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 4ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
-
-
-정리
-
-  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-
-
-StringBuilder를 직접 사용하는 것이 더 좋은 경우
-
-  반복문에서 반복해서 문자를 연결할 때
-  조건문을 통해 동적으로 문자열을 조합할 때
-  복잡한 문자열의 특정 부분을 변경해야 할 때
-  매우 긴 대용량 문자열을 다룰 때
-
-
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-11-MethodChaining.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -2641,6 +2482,166 @@ string = DCBA
 “만드는 사람이 수고로우면 쓰는 사람이 편하고, 만드는 사람이 편하면 쓰는 사람이 수고롭다” 는 말이 있습니다.
 메서드 체이닝은 구현하는 입장에서는 번거롭지만 사용하는 개발자는 편리합니다.
 참고로 자바의 라이브러리와 오픈 소스들은 메서드 체이닝 방식을 종종 사용합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
+                            String 최적화.
+자바의 String 최적화
+자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
+
+문자열 리터럴 최적화
+컴파일 전
+String helloWorld = "Hello, " + "World!";
+
+
+컴파일 후
+String helloWorld = "Hello, World!";
+
+따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
+
+String 변수 최적화
+문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+String result = str1 + str2;
+
+
+이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
+String result = new StringBuilder().append(str1).append(str2).toString();
+
+
+
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
+
+
+이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+
+  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
+
+
+String 최적화가 어려운 경우
+다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
+package lang.string.builder;
+
+public class LoopStringMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+    String result = "";
+
+    for (int i = 0; i &lt; 100000; i++) {
+      result += "Hello Java ";
+    }
+
+    long endTime = System.currentTimeMillis();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+String result = "";
+for (int i = 0; i &lt; 100000; i++) {
+    result = new StringBuilder().append(result).append("Hello Java ").toString();
+}
+
+
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+    
+      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+        
+          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+            
+              따라서, 이런 상황에서는 최적화가 어렵습니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 2528ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
+
+
+이럴 때는 직접 StringBuilder를 사용하면 됩니다.
+package lang.string.builder;
+
+public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i &lt; 100000; i++) {
+      sb.append("Hello Java ");
+    }
+
+    long endTime = System.currentTimeMillis();
+
+    String result = sb.toString();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 4ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
+
+
+정리
+
+  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+
+
+StringBuilder를 직접 사용하는 것이 더 좋은 경우
+
+  반복문에서 반복해서 문자를 연결할 때
+  조건문을 통해 동적으로 문자열을 조합할 때
+  복잡한 문자열의 특정 부분을 변경해야 할 때
+  매우 긴 대용량 문자열을 다룰 때
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
+
 
                         </a>
                         <div class="info-post">
@@ -4026,215 +4027,6 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
-                            불변 객체 - 도입
-지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
-
-  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
-    
-      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-        
-          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-        
-      
-    
-  
-
-
-앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
-
-  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
-    Address a = new Address("서울");
-Address b = a;
-    
-  
-
-
-따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-
-  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-
-
-Address a = new Address("서울");
-Address b = new Address("서울");
-
-
-여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
-
-진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-
-
-자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-
-  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-    
-      따라서 이것은 문제가 아닙니다.
-        
-          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
-        
-      
-    
-  
-
-
-만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-
-불변 객체 도입
-객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-
-앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
-
-package lang.immutable.address;
-
-public class ImmutableAddress {
-  private final String value;
-
-  public ImmutableAddress(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return "Address{" +
-        "value='" + value + '\'' +
-        '}';
-  }
-}
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 value의 필드를 final로 선언했습니다.
-    
-  
-  값을 변경할 수 있는 setValue()를 제거했습니다.
-  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-
-
-불변 클래스를 만드는 방법은 아주 단순합니다.
-
-  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-
-
-package lang.immutable.address;
-
-public class RefMain2 {
-
-  public static void main(String[] args) {
-    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
-    ImmutableAddress a = new ImmutableAddress("서울");
-    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-
-    System.out.println("a = " + a);
-    System.out.println("b = " + b);
-
-    // b.setValue("부산"); // 컴파일 오류 발생
-    b = new ImmutableAddress("부산");
-    System.out.println("부산 -&gt; b");
-    System.out.println("a = " + a); // 사이드 이펙트 발생
-    System.out.println("b = " + b);
-  }
-}
-
-
-  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
-  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
-    
-      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
-        
-          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
-        
-      
-    
-  
-  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
-
-
-
-
-  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-정리
-불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-
-  객체의 공유 참조는 막을 수 없습니다.
-    
-      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
-      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-    
-  
-  불변 객체는 값을 변경할 수 없습니다.
-    
-      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-        
-          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-        
-      
-    
-  
-
-
-
-  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
-
-  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-03-SharedReferencesAndSideEffects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -4446,6 +4238,215 @@ b = Address{value='부산'}
     
   
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
+                            불변 객체 - 도입
+지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
+
+  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
+    
+      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+        
+          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+        
+      
+    
+  
+
+
+앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
+
+  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
+    Address a = new Address("서울");
+Address b = a;
+    
+  
+
+
+따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+
+  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
+
+진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+
+  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+    
+      따라서 이것은 문제가 아닙니다.
+        
+          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
+        
+      
+    
+  
+
+
+만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+
+불변 객체 도입
+객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+
+앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
+
+package lang.immutable.address;
+
+public class ImmutableAddress {
+  private final String value;
+
+  public ImmutableAddress(String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return "Address{" +
+        "value='" + value + '\'' +
+        '}';
+  }
+}
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 value의 필드를 final로 선언했습니다.
+    
+  
+  값을 변경할 수 있는 setValue()를 제거했습니다.
+  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+
+
+불변 클래스를 만드는 방법은 아주 단순합니다.
+
+  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+
+
+package lang.immutable.address;
+
+public class RefMain2 {
+
+  public static void main(String[] args) {
+    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
+    ImmutableAddress a = new ImmutableAddress("서울");
+    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+
+    System.out.println("a = " + a);
+    System.out.println("b = " + b);
+
+    // b.setValue("부산"); // 컴파일 오류 발생
+    b = new ImmutableAddress("부산");
+    System.out.println("부산 -&gt; b");
+    System.out.println("a = " + a); // 사이드 이펙트 발생
+    System.out.println("b = " + b);
+  }
+}
+
+
+  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
+  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
+    
+      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
+        
+          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
+        
+      
+    
+  
+  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
+
+
+
+
+  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+정리
+불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+
+  객체의 공유 참조는 막을 수 없습니다.
+    
+      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
+      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+    
+  
+  불변 객체는 값을 변경할 수 없습니다.
+    
+      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+        
+          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+        
+      
+    
+  
+
+
+
+  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
+
+  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
 
 
                         </a>
@@ -4772,125 +4773,6 @@ equals() 메서드를 구현할 때 지켜야 하는 규칙
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
-                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
-                            equals() - 1.동일성과 동등성
-Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
-
-자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
-
-  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
-  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
-
-
-단어 정리
-“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
-
-
-  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
-  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
-    
-      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-
-
-예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-User a = new User("id-100") // 참조 x001
-User b = new User("id-100") // 참조 x002
-
-
-
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
-    
-      따라서 동일성은 다르지만, 동등성은 같습니다.
-    
-  
-
-
-문자의 경우도 마찬가지입니다.
-String s1 = "hello";
-String s2 = "hello";
-
-
-  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
-
-
-예제를 통해서 동일성과 동등성을 비교해봅시다.
-
-package lang.object.equals;
-
-public class EqualsMainV1 {
-
-  public static void main(String[] args) {
-    UserV1 user1 = new UserV1("id-100");
-    UserV1 user2 = new UserV1("id-100");
-
-    System.out.println("identity = " + (user1 == user2));
-    System.out.println("equlity = " + (user1.equals(user2)));
-  }
-}
-
-
-실행 결과
-identity = false
-equlity = false
-
-
-
-
-동일성 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안
-return false
-false
-
-
-동등성이라는 개념은 각각의 클래스 마다 다릅니다.
-
-어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
-어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-
-따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
-그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-31-ObjectAndOCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -5027,6 +4909,125 @@ System.out.println()
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
+                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
+                            equals() - 1.동일성과 동등성
+Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
+
+자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
+
+  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
+  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+
+
+단어 정리
+“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
+
+
+  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
+  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
+    
+      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+
+
+예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+User a = new User("id-100") // 참조 x001
+User b = new User("id-100") // 참조 x002
+
+
+
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
+    
+      따라서 동일성은 다르지만, 동등성은 같습니다.
+    
+  
+
+
+문자의 경우도 마찬가지입니다.
+String s1 = "hello";
+String s2 = "hello";
+
+
+  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
+
+
+예제를 통해서 동일성과 동등성을 비교해봅시다.
+
+package lang.object.equals;
+
+public class EqualsMainV1 {
+
+  public static void main(String[] args) {
+    UserV1 user1 = new UserV1("id-100");
+    UserV1 user2 = new UserV1("id-100");
+
+    System.out.println("identity = " + (user1 == user2));
+    System.out.println("equlity = " + (user1.equals(user2)));
+  }
+}
+
+
+실행 결과
+identity = false
+equlity = false
+
+
+
+
+동일성 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안
+return false
+false
+
+
+동등성이라는 개념은 각각의 클래스 마다 다릅니다.
+
+어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
+어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+
+따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
+그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
 
                         </a>
                         <div class="info-post">
@@ -23403,6 +23404,17 @@ public class Var2 {
             'url'      : "/Backend/Java/2024-08-05-RequiredArgsConstructor.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-05"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 온프레미스(on-premise)란?",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240807_AWS_ON-PREMISE.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-07"
         });
     
 

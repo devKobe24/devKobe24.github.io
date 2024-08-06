@@ -559,6 +559,7 @@
             
             
             
+            
 
     
     
@@ -1216,6 +1217,91 @@ CONCAT
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/SQL/2024-04-01-sqlFlow.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/SQL/2024-04-01-sqlFlow.html"><h1 class="title_post">💉[SQL] Query 작성시 플로우</h1></a>
+                        <a href="/2024/SQL/2024-04-01-sqlFlow.html" class="txt_post">
+                            Query 작성시 플로우.
+
+
+
+어떤 데이터를 조회해야할 경우 바로 Query를 작성하기 보다는 흐름을 가지고 순서대로 작성해보는 것을 추천합니다.
+
+예를 들어 다음과 같은 데이터를 조회한다고 합시다.
+
+“주문 금액이 30,000원 이상인 주문건의 갯수 구하기.”
+
+
+  
+    
+      Query를 적기 전에 흐름을 정리해봅니다.
+        
+          
+            
+              어떤 테이블에서 데이터를 뽑을 것인지 생각해 봅니다.
+            
+          
+        
+        
+          주문 금액이 들어간 데이터를 조회해야 하므로 “주문 테이블” 에서 데이터를 뽑아야 합니다.
+    - 2. 어떤 컬럼을 이용할 것인지 생각해 봅니다.
+          주문 금액 데이터를 조회해야 하므로 “주문 금액” 컬럼을 이용해야 합니다.
+    - 3. 어떤 조건을 지정해야 하는지 생각해봅니다.
+          30,000원 이상 이라는 조건이 있으므로 “30,000 이상” 인 조건을 이용해야 합니다.
+    - 4. 어떤 함수(수식)을 이용해야 하는지 생각해봅니다.
+          주문건의 갯수를 구해야 하므로 “COUNT” 함수를 사용해야 합니다.
+        
+      
+    
+  
+  
+    
+      구문으로 만들어봅니다.
+        
+          
+            
+              어떤 테이블에서 데이터를 뽑을 것인지 생각해 봅니다.
+            
+          
+        
+        
+          from food_orders
+    - 2. 어떤 컬럼을 이용할 것인지 생각해 봅니다.
+          order_id, price
+    - 3. 어떤 조건을 지정해야 하는지 생각해봅니다.
+          where price &gt;= 30000
+    - 4. 어떤 함수(수식)을 이용해야 하는지 생각해봅니다.
+          count(order_id) 혹은 count(1)
+        
+      
+    
+  
+  
+    
+      전체 구조로 합쳐봅니다.
+
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/SQL/2024-04-01-SUMAVGCOUNTMINMAX.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -1451,91 +1537,6 @@ MAX
 
 
 ‘MAX’ 함수는 데이터 세트에서 최대값을 식별할 때 필수적인 도구로, 데이터의 범위를 파악하고 특정 조건에 따른 최대값을 분석하는 데 유용합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/SQL/2024-04-01-sqlFlow.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-01-sqlFlow.html"><h1 class="title_post">💉[SQL] Query 작성시 플로우</h1></a>
-                        <a href="/2024/SQL/2024-04-01-sqlFlow.html" class="txt_post">
-                            Query 작성시 플로우.
-
-
-
-어떤 데이터를 조회해야할 경우 바로 Query를 작성하기 보다는 흐름을 가지고 순서대로 작성해보는 것을 추천합니다.
-
-예를 들어 다음과 같은 데이터를 조회한다고 합시다.
-
-“주문 금액이 30,000원 이상인 주문건의 갯수 구하기.”
-
-
-  
-    
-      Query를 적기 전에 흐름을 정리해봅니다.
-        
-          
-            
-              어떤 테이블에서 데이터를 뽑을 것인지 생각해 봅니다.
-            
-          
-        
-        
-          주문 금액이 들어간 데이터를 조회해야 하므로 “주문 테이블” 에서 데이터를 뽑아야 합니다.
-    - 2. 어떤 컬럼을 이용할 것인지 생각해 봅니다.
-          주문 금액 데이터를 조회해야 하므로 “주문 금액” 컬럼을 이용해야 합니다.
-    - 3. 어떤 조건을 지정해야 하는지 생각해봅니다.
-          30,000원 이상 이라는 조건이 있으므로 “30,000 이상” 인 조건을 이용해야 합니다.
-    - 4. 어떤 함수(수식)을 이용해야 하는지 생각해봅니다.
-          주문건의 갯수를 구해야 하므로 “COUNT” 함수를 사용해야 합니다.
-        
-      
-    
-  
-  
-    
-      구문으로 만들어봅니다.
-        
-          
-            
-              어떤 테이블에서 데이터를 뽑을 것인지 생각해 봅니다.
-            
-          
-        
-        
-          from food_orders
-    - 2. 어떤 컬럼을 이용할 것인지 생각해 봅니다.
-          order_id, price
-    - 3. 어떤 조건을 지정해야 하는지 생각해봅니다.
-          where price &gt;= 30000
-    - 4. 어떤 함수(수식)을 이용해야 하는지 생각해봅니다.
-          count(order_id) 혹은 count(1)
-        
-      
-    
-  
-  
-    
-      전체 구조로 합쳐봅니다.
-
-    
-  
-
 
                         </a>
                         <div class="info-post">
@@ -6477,6 +6478,17 @@ SQL 이란 언어를 이용하여 데이터베이스에 요청을 하는 질의�
             'url'      : "/Backend/Java/2024-08-05-RequiredArgsConstructor.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-05"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 온프레미스(on-premise)란?",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240807_AWS_ON-PREMISE.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-07"
         });
     
 

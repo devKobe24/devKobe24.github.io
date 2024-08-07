@@ -561,6 +561,7 @@
             
             
             
+            
 
     
     
@@ -9378,6 +9379,131 @@ Address b = a;
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-01-equals2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-01-equals2.html"><h1 class="title_post">☕️[Java] equals() - 2. 구현</h1></a>
+                        <a href="/2024/Java/2024-04-01-equals2.html" class="txt_post">
+                            equals() - 2. 구현
+
+UserV2 예제
+UserV2는 id(고객번호)가 같으면 논리적으로 같은 객체로 정의하겠습니다.
+
+package lang.object.equals;
+
+public class UserV2 {
+  private String id;
+
+  public UserV2(String id) {
+    this.id = id;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    UserV2 user = (UserV2) obj;
+    return id.equals(user.id);
+  }
+}
+
+
+  Object의 equals() 메서드를 재정의했습니다.
+  UserV2의 동등성은 id(고객번호)로 비교합니다.
+  equals()는 Object 타입을 매개변수로 사용합니다.
+    
+      따라서 객체의 특정 값을 사용하려면 다운캐스팅이 필요합니다.
+    
+  
+  여기서는 현재 인스턴스(this)에 있는 id 문자열과 비교 대상으로 넘어온 객체의 id 문자열을 비교합니다.
+  UserV2에 있는 id는 String입니다.
+    
+      문자열 비교는 ==이 아니라 equals()를 사용해야 합니다.
+    
+  
+
+
+package lang.object.equals;
+
+public class EqualsMainV2 {
+
+  public static void main(String[] args) {
+    UserV2 user1 = new UserV2("id-100");
+    UserV2 user2 = new UserV2("id-100");
+
+    System.out.println("identity = " + (user1 == user2));
+    System.out.println("equality = " + user1.equals(user2));
+  }
+}
+
+
+실행 결과
+identity = false
+equality = true
+
+
+
+
+
+  동일성(Identity) : 객체의 참조가 다르므로 동일성은 다릅니다.
+  동등성(Equality) : user1, user2는 서로 다른 객체이지만 둘다 같은 id(고객번호)를 가지고 있습니다. 따라서 동등합니다.
+
+
+정확한 equals() 구현
+앞서 UserV2에서 구현한 equals()는 이해를 돕기 위해 매우 간단히 만든 버전이고, 실제로 정확하게 동작하려면 다음과 같이 구현해야 합니다.
+정확한 equals() 메서드를 구현하는 것은 생각보다 쉽지 않습니다.
+
+IntelliJ를 포함한 대부분의 IDE는 정확한 equals() 코드를 자동으로 만들어 줍니다.
+
+  generator 단축키 : ⌘N(macOS) / Alt + Insert(Windows / Linux)
+
+
+@Override
+public boolean equals(Object o) {
+    if (this == 0) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return Objects.equalse(id, user.id);
+}
+
+
+equals() 메서드를 구현할 때 지켜야 하는 규칙
+
+  반사성(Reflexivity): 객체는 자기 자신과 동등해야 합니다.(x.equals(x)는 항상 true).
+  대칭성(Symmetry): 두 객체가 서로에 대해 동일하다고 판단하면, 이는 양방향으로 동일해야 합니다.(x.equals(y)가 true이면 y.equals(x)도 true).
+  추이성(Transitivity): 만약 한 객체가 두 번째 객체와 동일하고, 두 번째 객체가 세 번째 객체와 동일하다면, 첫 번째 객체는 세 번째 객체와도 동일해야 합니다.
+  일관성(Consistency): 두 객체의 상태가 변경되지 않는 한, equals() 메소드는 항상 동일한 값을 반환해야 합니다.
+  null에 대한 비교: 모든 객체는 null과 비교했을 때 false를 반환해야 합니다.
+
+
+실무에서는 대부분 IDE가 만들어주는 equalse()를 사용하므로, 이 규칙을 외우기 보다는 대략 이렇구나 정도로 한번 읽어보고 넘어가면 충분합니다.
+
+정리
+
+  참고로 동일성 비교가 항상 필요한 것은 아닙니다. 동일성 비교가 필요한 경우에만 equals()를 재정의하면 됩니다.
+  equals()와 hashCode()는 보통 함께 사용됩니다.
+    
+      이 부분은 추후에 컬렉션 프레임워크를 학습후 정리하겠습니다.
+    
+  
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/CS/2024-04-01-SourceCodeAndCommands.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -9550,131 +9676,6 @@ Java는 기본적으로 고급 언어의 특성을 많이 가지고 있지만, J
 Q4. Java에서 고급 언어의 특성이 백엔드 개발에 어떤 장점을 제공하나요?
 
 Java의 고급 언어 특성은 백엔드 개발에서 여러 가지 장점을 제공합니다. 첫째, 강력한 객체 지향 프로그래밍(OOP) 지원으로 코드의 재사용성, 확장성, 유지 보수성이 향상됩니다. 둘째, 자동 메모리 관리와 가비지 컬렉션으로 메모리 누수와 같은 문제를 방지하며 개발자가 메모리 관리에 덜 신경 쓰고 로직 개발에 더 집중할 수 있게 합니다. 셋째, 다양한 라이브러리와 프레임워크, 그리고 강력한 개발 도구와 커뮤니티 지원으로 개발 속도와 효율성이 증가합니다. 마지막으로, Java는 플랫폼 독립적인 특성을 가지고 있어, 다양한 운영 체제에서 실행될 수 있는 애플리케이션을 개발할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-01-equals2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-01-equals2.html"><h1 class="title_post">☕️[Java] equals() - 2. 구현</h1></a>
-                        <a href="/2024/Java/2024-04-01-equals2.html" class="txt_post">
-                            equals() - 2. 구현
-
-UserV2 예제
-UserV2는 id(고객번호)가 같으면 논리적으로 같은 객체로 정의하겠습니다.
-
-package lang.object.equals;
-
-public class UserV2 {
-  private String id;
-
-  public UserV2(String id) {
-    this.id = id;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    UserV2 user = (UserV2) obj;
-    return id.equals(user.id);
-  }
-}
-
-
-  Object의 equals() 메서드를 재정의했습니다.
-  UserV2의 동등성은 id(고객번호)로 비교합니다.
-  equals()는 Object 타입을 매개변수로 사용합니다.
-    
-      따라서 객체의 특정 값을 사용하려면 다운캐스팅이 필요합니다.
-    
-  
-  여기서는 현재 인스턴스(this)에 있는 id 문자열과 비교 대상으로 넘어온 객체의 id 문자열을 비교합니다.
-  UserV2에 있는 id는 String입니다.
-    
-      문자열 비교는 ==이 아니라 equals()를 사용해야 합니다.
-    
-  
-
-
-package lang.object.equals;
-
-public class EqualsMainV2 {
-
-  public static void main(String[] args) {
-    UserV2 user1 = new UserV2("id-100");
-    UserV2 user2 = new UserV2("id-100");
-
-    System.out.println("identity = " + (user1 == user2));
-    System.out.println("equality = " + user1.equals(user2));
-  }
-}
-
-
-실행 결과
-identity = false
-equality = true
-
-
-
-
-
-  동일성(Identity) : 객체의 참조가 다르므로 동일성은 다릅니다.
-  동등성(Equality) : user1, user2는 서로 다른 객체이지만 둘다 같은 id(고객번호)를 가지고 있습니다. 따라서 동등합니다.
-
-
-정확한 equals() 구현
-앞서 UserV2에서 구현한 equals()는 이해를 돕기 위해 매우 간단히 만든 버전이고, 실제로 정확하게 동작하려면 다음과 같이 구현해야 합니다.
-정확한 equals() 메서드를 구현하는 것은 생각보다 쉽지 않습니다.
-
-IntelliJ를 포함한 대부분의 IDE는 정확한 equals() 코드를 자동으로 만들어 줍니다.
-
-  generator 단축키 : ⌘N(macOS) / Alt + Insert(Windows / Linux)
-
-
-@Override
-public boolean equals(Object o) {
-    if (this == 0) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    User user = (User) o;
-    return Objects.equalse(id, user.id);
-}
-
-
-equals() 메서드를 구현할 때 지켜야 하는 규칙
-
-  반사성(Reflexivity): 객체는 자기 자신과 동등해야 합니다.(x.equals(x)는 항상 true).
-  대칭성(Symmetry): 두 객체가 서로에 대해 동일하다고 판단하면, 이는 양방향으로 동일해야 합니다.(x.equals(y)가 true이면 y.equals(x)도 true).
-  추이성(Transitivity): 만약 한 객체가 두 번째 객체와 동일하고, 두 번째 객체가 세 번째 객체와 동일하다면, 첫 번째 객체는 세 번째 객체와도 동일해야 합니다.
-  일관성(Consistency): 두 객체의 상태가 변경되지 않는 한, equals() 메소드는 항상 동일한 값을 반환해야 합니다.
-  null에 대한 비교: 모든 객체는 null과 비교했을 때 false를 반환해야 합니다.
-
-
-실무에서는 대부분 IDE가 만들어주는 equalse()를 사용하므로, 이 규칙을 외우기 보다는 대략 이렇구나 정도로 한번 읽어보고 넘어가면 충분합니다.
-
-정리
-
-  참고로 동일성 비교가 항상 필요한 것은 아닙니다. 동일성 비교가 필요한 경우에만 equals()를 재정의하면 됩니다.
-  equals()와 hashCode()는 보통 함께 사용됩니다.
-    
-      이 부분은 추후에 컬렉션 프레임워크를 학습후 정리하겠습니다.
-    
-  
-
-
 
                         </a>
                         <div class="info-post">
@@ -9944,45 +9945,108 @@ MAX
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-03-31-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/SQL/2024-03-31-sql.html"><h1 class="title_post">💉[SQL] SQL 문의 기본 구조, SQL</h1></a>
-                        <a href="/2024/SQL/2024-03-31-sql.html" class="txt_post">
-                            SQL
+                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
+                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
+                            equals() - 1.동일성과 동등성
+Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
 
-  SQL은 “데이터베이스와 대화를 하기 위한 언어”
-  SQL(Structured Query Language)은 데이터베이스 관리를 위해 널리 사용되는 쿼리 언어.
+자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
 
-
-Query(쿼리)
-
-  데이터베이스에 저장된 데이터에 접근하거나 조직하기 위한 명령어.
+  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
+  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
 
 
-SQL 문의 기본 구조
-SELECT # '데이터 조회'의 명령어로 필수 구문
-FROM # '어디에서 데이터를 조회할까'의 명령어로 필수 구문
-WHERE # 조건을 지정해주는 구문
+단어 정리
+“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
 
 
-  조건을 지정하는 방법.
+  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
+  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
     
-      비교 연산자: &lt;, &gt;, =, &lt;&gt;(같지 않다)
-      다양한 구문: IN, BETWEEN, LIKE
-      여러가지 조건의 적용: AND, OR, NOT
+      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
     
   
 
 
-참고 자료
+예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+User a = new User("id-100") // 참조 x001
+User b = new User("id-100") // 참조 x002
 
-  테이블과 컬럼, SQL
-  WHERE란?
-  AND, OR, NOT
-  BETWEEN, IN, LIKE
 
+
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
+    
+      따라서 동일성은 다르지만, 동등성은 같습니다.
+    
+  
+
+
+문자의 경우도 마찬가지입니다.
+String s1 = "hello";
+String s2 = "hello";
+
+
+  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
+
+
+예제를 통해서 동일성과 동등성을 비교해봅시다.
+
+package lang.object.equals;
+
+public class EqualsMainV1 {
+
+  public static void main(String[] args) {
+    UserV1 user1 = new UserV1("id-100");
+    UserV1 user2 = new UserV1("id-100");
+
+    System.out.println("identity = " + (user1 == user2));
+    System.out.println("equlity = " + (user1.equals(user2)));
+  }
+}
+
+
+실행 결과
+identity = false
+equlity = false
+
+
+
+
+동일성 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안
+return false
+false
+
+
+동등성이라는 개념은 각각의 클래스 마다 다릅니다.
+
+어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
+어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+
+따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
+그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
 
                         </a>
                         <div class="info-post">
@@ -10153,108 +10217,45 @@ System.out.println()
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/SQL/2024-03-31-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
-                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
-                            equals() - 1.동일성과 동등성
-Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
+                        <a href="/2024/SQL/2024-03-31-sql.html"><h1 class="title_post">💉[SQL] SQL 문의 기본 구조, SQL</h1></a>
+                        <a href="/2024/SQL/2024-03-31-sql.html" class="txt_post">
+                            SQL
 
-자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
-
-  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
-  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+  SQL은 “데이터베이스와 대화를 하기 위한 언어”
+  SQL(Structured Query Language)은 데이터베이스 관리를 위해 널리 사용되는 쿼리 언어.
 
 
-단어 정리
-“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
+Query(쿼리)
+
+  데이터베이스에 저장된 데이터에 접근하거나 조직하기 위한 명령어.
 
 
-  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
-  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
+SQL 문의 기본 구조
+SELECT # '데이터 조회'의 명령어로 필수 구문
+FROM # '어디에서 데이터를 조회할까'의 명령어로 필수 구문
+WHERE # 조건을 지정해주는 구문
+
+
+  조건을 지정하는 방법.
     
-      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-
-
-예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-User a = new User("id-100") // 참조 x001
-User b = new User("id-100") // 참조 x002
-
-
-
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
-    
-      따라서 동일성은 다르지만, 동등성은 같습니다.
+      비교 연산자: &lt;, &gt;, =, &lt;&gt;(같지 않다)
+      다양한 구문: IN, BETWEEN, LIKE
+      여러가지 조건의 적용: AND, OR, NOT
     
   
 
 
-문자의 경우도 마찬가지입니다.
-String s1 = "hello";
-String s2 = "hello";
+참고 자료
 
+  테이블과 컬럼, SQL
+  WHERE란?
+  AND, OR, NOT
+  BETWEEN, IN, LIKE
 
-  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
-
-
-예제를 통해서 동일성과 동등성을 비교해봅시다.
-
-package lang.object.equals;
-
-public class EqualsMainV1 {
-
-  public static void main(String[] args) {
-    UserV1 user1 = new UserV1("id-100");
-    UserV1 user2 = new UserV1("id-100");
-
-    System.out.println("identity = " + (user1 == user2));
-    System.out.println("equlity = " + (user1.equals(user2)));
-  }
-}
-
-
-실행 결과
-identity = false
-equlity = false
-
-
-
-
-동일성 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안
-return false
-false
-
-
-동등성이라는 개념은 각각의 클래스 마다 다릅니다.
-
-어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
-어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-
-따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
-그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
 
                         </a>
                         <div class="info-post">
@@ -35021,6 +35022,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240807_AWS_ON-PREMISE.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-07"
+        });
+    
+
+        posts.push({
+            'title'    : "📝[Post] 정적 웹사이트와 동적 웹사이트.",
+            'path'     : "Backend > Post",
+            'type'     : "post",
+            'tags'     : "Post, Backend",
+            'url'      : "/Backend/Post/2024-08-07-webpage.html",
+            'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-08-07"
         });
     

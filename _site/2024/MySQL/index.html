@@ -567,6 +567,7 @@
             
             
             
+            
 
     
     
@@ -933,6 +934,61 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/MySQL/2024-02-19-drop.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/MySQL/2024-02-19-drop.html"><h1 class="title_post">🐋[MySQL] 테이블 삭제하기</h1></a>
+                        <a href="/2024/MySQL/2024-02-19-drop.html" class="txt_post">
+                            테이블 삭제
+
+DROP TABLE 테이블이름; 구문을 사용합니다.
+
+DROP TABLE 테이블이름;
+
+
+MySQL은 IF EXISTS 구문을 지원하므로 아래와 같이 테이블이 존재할 경우 삭제하도록 하면 에러를 방지할 수 있습니다.
+DROP TABLE if exists 테이블이름;
+
+
+외래 키(Forgign Key)가 테이블에 있을 경우
+
+만약 다른 테이블에서 foreign key로 삭제하려는 테이블을 참조하는 등 constraint가 있을 경우 삭제되지 않습니다.
+
+이 경우에는 2가지 방법이 있습니다.
+
+
+  참조하는 테이블을 먼저 삭제하는 방법.
+
+
+DROP TABLE if exists 참조하는테이블이름;
+DROP TABLE if exists 삭제하려는테이블이름;
+
+
+
+  참조 테이블을 계속 사용해야 할 경우 참조 테이블 내부에 외래 키를 삭제한 뒤 삭제하려는 테이블을 DROP 해주면 됩니다.
+
+
+ALTER TABLE 참조테이블이름 DROP FOREIGN KEY 외래키이름;
+DROP TABLE 삭제할테이블이름;
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/MySQL/2024-02-18-selectAndLimit.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
                         
                     </div>
@@ -1138,61 +1194,6 @@ INSERT INTO memberTBL (memberID, memberAddress) VALUES ('Thomas', '경기 부천
 
 만약 여러 개의 행(row)을 동시에 입력하고 싶을 경우에는 아래와 같이 여러 개의 행을 동시에 입력이 가능합니다.
 INSERT INTO memberTBL (memberID, memberName, memberAddress) VALUES  ('Thomas', '토마스', '경기 부천시 중동'), ('Edward', '에드워드', '서울 은평구 증산동'), ('Henrv', '헨리', '인천 남구 주안동'), ('Gorden', '고든', '경기 성남시 분당구');
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/MySQL/2024-02-19-drop.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/mysql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/MySQL/2024-02-19-drop.html"><h1 class="title_post">🐋[MySQL] 테이블 삭제하기</h1></a>
-                        <a href="/2024/MySQL/2024-02-19-drop.html" class="txt_post">
-                            테이블 삭제
-
-DROP TABLE 테이블이름; 구문을 사용합니다.
-
-DROP TABLE 테이블이름;
-
-
-MySQL은 IF EXISTS 구문을 지원하므로 아래와 같이 테이블이 존재할 경우 삭제하도록 하면 에러를 방지할 수 있습니다.
-DROP TABLE if exists 테이블이름;
-
-
-외래 키(Forgign Key)가 테이블에 있을 경우
-
-만약 다른 테이블에서 foreign key로 삭제하려는 테이블을 참조하는 등 constraint가 있을 경우 삭제되지 않습니다.
-
-이 경우에는 2가지 방법이 있습니다.
-
-
-  참조하는 테이블을 먼저 삭제하는 방법.
-
-
-DROP TABLE if exists 참조하는테이블이름;
-DROP TABLE if exists 삭제하려는테이블이름;
-
-
-
-  참조 테이블을 계속 사용해야 할 경우 참조 테이블 내부에 외래 키를 삭제한 뒤 삭제하려는 테이블을 DROP 해주면 됩니다.
-
-
-ALTER TABLE 참조테이블이름 DROP FOREIGN KEY 외래키이름;
-DROP TABLE 삭제할테이블이름;
 
 
                         </a>
@@ -5678,6 +5679,17 @@ DROP TABLE 삭제할테이블이름;
             'url'      : "/Backend/Network/2024-08-09-network-cidr.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-09"
+        });
+    
+
+        posts.push({
+            'title'    : "📝[Post] Nginx 설치방법.",
+            'path'     : "Backend > Post",
+            'type'     : "post",
+            'tags'     : "Post, Backend",
+            'url'      : "/Backend/Post/2024-08-11-Nginx.html",
+            'image'    : "/assets/img/thumbnail/blog.jpeg",
+            'date'     : "2024-08-11"
         });
     
 

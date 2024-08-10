@@ -567,6 +567,7 @@
             
             
             
+            
 
     
     
@@ -929,6 +930,157 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-08-11-Nginx.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-11-Nginx.html"><h1 class="title_post">📝[Post] Nginx 설치방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-11-Nginx.html" class="txt_post">
+                            🙋‍♂️ Nginx 를 소스에서 직접 컴파일하여 설치하는 방법.
+
+  이 방법은 Homebrew를 사용하지 않고도 Nginx를 설치하는 방법입니다.
+  이 방법은 macOS를 기반으로 설치하는 방법을 설명합니다.
+
+
+1️⃣ 필요한 도구 설치.
+
+  Nginx를 컴파일하려면 Xcode 와 Xcode Command Line Tools 가 필요합니다.
+    
+      Xcode Command Line Tools 설치.
+    
+  
+
+
+xcode-select --install
+
+
+  프롬프트가 나타나면 설치를 진행합니다.
+
+
+2️⃣ 소스 코드 다운로드.
+
+
+  Nginx의 최신 소스 코드를 Nginx 공식 사이트에서 다운로드하거나 wget 명령어를 사용하여 다운로드할 수 있습니다.
+
+
+curl -O http://nginx.org/download/nginx-1.26.1.tar.gz
+
+
+
+  위 명령어에서 nginx-1.26.1 은 설치할 Nginx 버전에 따라 달라질 수 있습니다.
+    
+      최신 버전을 사용하려면 공식 사이트에서 최신 버전 번호를 확인하세요.
+    
+  
+
+
+3️⃣ 소스 코드 압축 해제.
+
+  다운로드한 소스 코드를 압축 해제합니다.
+
+
+tar -zxvf nginx-1.26.1.tar.gz
+cd nginx-1.26.1
+
+
+4️⃣ Nginx 컴파일 및 설치.
+
+  Nginx를 컴파일하기 위해 몇 가지 옵션을 지정한 후, make 명령어를 사용하여 컴파일하고 설치합니다.
+
+
+./configure
+make
+sudo make install
+
+
+
+  이 명령어는 기본 설정으로 Nginx를 컴파일하고 /usr/local/nginx 에 설치합니다.
+  ./configure 명령어에 다양한 옵션을 추가하여 컴파일 설정을 조정할 수 있습니다.
+
+
+5️⃣ Nginx 실행.
+
+  컴파일이 완료되면, Nginx를 다음 명령어로 실행할 수 있습니다.
+
+
+sudo /usr/local/nginx/sbin/nginx
+
+
+
+  이제 Nginx가 실행 중일 것입니다.
+    
+      http://localhost 에 접속하여 Nginx 기본 환영 페이지를 확인할 수 있습니다.
+    
+  
+
+
+6️⃣ Nginx 설정 파일
+
+  소스에서 설치한 Nginx의 설정 파일은 /usr/local/nginx/conf/nginx.conf 에 있습니다.
+    
+      이 파일을 편집하여 설정을 변경할 수 있습니다.
+    
+  
+
+
+sudo vi /usr/local/nginx/conf/nginx.conf
+
+
+
+  설정을 변경한 후 Nginx를 재시작하여 변경 사항을 적용해야 합니다.
+
+
+sudo /usr/local/nginx/sbin/nginx -s reload
+
+
+7️⃣ Nginx 서비스 관리
+
+  Nginx를 시작하고 중지하는 명령어는 다음과 같습니다.
+    
+      
+        
+          Nginx 시작.
+              sudo /usr/local/nginx/sbin/nginx
+            
+          
+        
+      
+      
+        
+          Nginx 중지.
+              sudo /usr/local/nginx/sbin/nginx -s stop
+            
+          
+        
+      
+      
+        
+          Nginx 재시작.
+              sudo /usr/local/nginx/sbin/nginx -s reload
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -6246,6 +6398,17 @@ public class Main {
             'url'      : "/Backend/Network/2024-08-09-network-cidr.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-09"
+        });
+    
+
+        posts.push({
+            'title'    : "📝[Post] Nginx 설치방법.",
+            'path'     : "Backend > Post",
+            'type'     : "post",
+            'tags'     : "Post, Backend",
+            'url'      : "/Backend/Post/2024-08-11-Nginx.html",
+            'image'    : "/assets/img/thumbnail/blog.jpeg",
+            'date'     : "2024-08-11"
         });
     
 

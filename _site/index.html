@@ -569,6 +569,7 @@
             
             
             
+            
 
     
     
@@ -925,6 +926,54 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
+
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+    
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
+    
+  
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
+
+
+
+
+
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
+    
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
+    
+  
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -26875,131 +26924,6 @@ MAX
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-01-equals2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-01-equals2.html"><h1 class="title_post">☕️[Java] equals() - 2. 구현</h1></a>
-                        <a href="/2024/Java/2024-04-01-equals2.html" class="txt_post">
-                            equals() - 2. 구현
-
-UserV2 예제
-UserV2는 id(고객번호)가 같으면 논리적으로 같은 객체로 정의하겠습니다.
-
-package lang.object.equals;
-
-public class UserV2 {
-  private String id;
-
-  public UserV2(String id) {
-    this.id = id;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    UserV2 user = (UserV2) obj;
-    return id.equals(user.id);
-  }
-}
-
-
-  Object의 equals() 메서드를 재정의했습니다.
-  UserV2의 동등성은 id(고객번호)로 비교합니다.
-  equals()는 Object 타입을 매개변수로 사용합니다.
-    
-      따라서 객체의 특정 값을 사용하려면 다운캐스팅이 필요합니다.
-    
-  
-  여기서는 현재 인스턴스(this)에 있는 id 문자열과 비교 대상으로 넘어온 객체의 id 문자열을 비교합니다.
-  UserV2에 있는 id는 String입니다.
-    
-      문자열 비교는 ==이 아니라 equals()를 사용해야 합니다.
-    
-  
-
-
-package lang.object.equals;
-
-public class EqualsMainV2 {
-
-  public static void main(String[] args) {
-    UserV2 user1 = new UserV2("id-100");
-    UserV2 user2 = new UserV2("id-100");
-
-    System.out.println("identity = " + (user1 == user2));
-    System.out.println("equality = " + user1.equals(user2));
-  }
-}
-
-
-실행 결과
-identity = false
-equality = true
-
-
-
-
-
-  동일성(Identity) : 객체의 참조가 다르므로 동일성은 다릅니다.
-  동등성(Equality) : user1, user2는 서로 다른 객체이지만 둘다 같은 id(고객번호)를 가지고 있습니다. 따라서 동등합니다.
-
-
-정확한 equals() 구현
-앞서 UserV2에서 구현한 equals()는 이해를 돕기 위해 매우 간단히 만든 버전이고, 실제로 정확하게 동작하려면 다음과 같이 구현해야 합니다.
-정확한 equals() 메서드를 구현하는 것은 생각보다 쉽지 않습니다.
-
-IntelliJ를 포함한 대부분의 IDE는 정확한 equals() 코드를 자동으로 만들어 줍니다.
-
-  generator 단축키 : ⌘N(macOS) / Alt + Insert(Windows / Linux)
-
-
-@Override
-public boolean equals(Object o) {
-    if (this == 0) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    User user = (User) o;
-    return Objects.equalse(id, user.id);
-}
-
-
-equals() 메서드를 구현할 때 지켜야 하는 규칙
-
-  반사성(Reflexivity): 객체는 자기 자신과 동등해야 합니다.(x.equals(x)는 항상 true).
-  대칭성(Symmetry): 두 객체가 서로에 대해 동일하다고 판단하면, 이는 양방향으로 동일해야 합니다.(x.equals(y)가 true이면 y.equals(x)도 true).
-  추이성(Transitivity): 만약 한 객체가 두 번째 객체와 동일하고, 두 번째 객체가 세 번째 객체와 동일하다면, 첫 번째 객체는 세 번째 객체와도 동일해야 합니다.
-  일관성(Consistency): 두 객체의 상태가 변경되지 않는 한, equals() 메소드는 항상 동일한 값을 반환해야 합니다.
-  null에 대한 비교: 모든 객체는 null과 비교했을 때 false를 반환해야 합니다.
-
-
-실무에서는 대부분 IDE가 만들어주는 equalse()를 사용하므로, 이 규칙을 외우기 보다는 대략 이렇구나 정도로 한번 읽어보고 넘어가면 충분합니다.
-
-정리
-
-  참고로 동일성 비교가 항상 필요한 것은 아닙니다. 동일성 비교가 필요한 경우에만 equals()를 재정의하면 됩니다.
-  equals()와 hashCode()는 보통 함께 사용됩니다.
-    
-      이 부분은 추후에 컬렉션 프레임워크를 학습후 정리하겠습니다.
-    
-  
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-01-SourceCodeAndCommands.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -27172,6 +27096,131 @@ Java는 기본적으로 고급 언어의 특성을 많이 가지고 있지만, J
 Q4. Java에서 고급 언어의 특성이 백엔드 개발에 어떤 장점을 제공하나요?
 
 Java의 고급 언어 특성은 백엔드 개발에서 여러 가지 장점을 제공합니다. 첫째, 강력한 객체 지향 프로그래밍(OOP) 지원으로 코드의 재사용성, 확장성, 유지 보수성이 향상됩니다. 둘째, 자동 메모리 관리와 가비지 컬렉션으로 메모리 누수와 같은 문제를 방지하며 개발자가 메모리 관리에 덜 신경 쓰고 로직 개발에 더 집중할 수 있게 합니다. 셋째, 다양한 라이브러리와 프레임워크, 그리고 강력한 개발 도구와 커뮤니티 지원으로 개발 속도와 효율성이 증가합니다. 마지막으로, Java는 플랫폼 독립적인 특성을 가지고 있어, 다양한 운영 체제에서 실행될 수 있는 애플리케이션을 개발할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-01-equals2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-01-equals2.html"><h1 class="title_post">☕️[Java] equals() - 2. 구현</h1></a>
+                        <a href="/2024/Java/2024-04-01-equals2.html" class="txt_post">
+                            equals() - 2. 구현
+
+UserV2 예제
+UserV2는 id(고객번호)가 같으면 논리적으로 같은 객체로 정의하겠습니다.
+
+package lang.object.equals;
+
+public class UserV2 {
+  private String id;
+
+  public UserV2(String id) {
+    this.id = id;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    UserV2 user = (UserV2) obj;
+    return id.equals(user.id);
+  }
+}
+
+
+  Object의 equals() 메서드를 재정의했습니다.
+  UserV2의 동등성은 id(고객번호)로 비교합니다.
+  equals()는 Object 타입을 매개변수로 사용합니다.
+    
+      따라서 객체의 특정 값을 사용하려면 다운캐스팅이 필요합니다.
+    
+  
+  여기서는 현재 인스턴스(this)에 있는 id 문자열과 비교 대상으로 넘어온 객체의 id 문자열을 비교합니다.
+  UserV2에 있는 id는 String입니다.
+    
+      문자열 비교는 ==이 아니라 equals()를 사용해야 합니다.
+    
+  
+
+
+package lang.object.equals;
+
+public class EqualsMainV2 {
+
+  public static void main(String[] args) {
+    UserV2 user1 = new UserV2("id-100");
+    UserV2 user2 = new UserV2("id-100");
+
+    System.out.println("identity = " + (user1 == user2));
+    System.out.println("equality = " + user1.equals(user2));
+  }
+}
+
+
+실행 결과
+identity = false
+equality = true
+
+
+
+
+
+  동일성(Identity) : 객체의 참조가 다르므로 동일성은 다릅니다.
+  동등성(Equality) : user1, user2는 서로 다른 객체이지만 둘다 같은 id(고객번호)를 가지고 있습니다. 따라서 동등합니다.
+
+
+정확한 equals() 구현
+앞서 UserV2에서 구현한 equals()는 이해를 돕기 위해 매우 간단히 만든 버전이고, 실제로 정확하게 동작하려면 다음과 같이 구현해야 합니다.
+정확한 equals() 메서드를 구현하는 것은 생각보다 쉽지 않습니다.
+
+IntelliJ를 포함한 대부분의 IDE는 정확한 equals() 코드를 자동으로 만들어 줍니다.
+
+  generator 단축키 : ⌘N(macOS) / Alt + Insert(Windows / Linux)
+
+
+@Override
+public boolean equals(Object o) {
+    if (this == 0) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return Objects.equalse(id, user.id);
+}
+
+
+equals() 메서드를 구현할 때 지켜야 하는 규칙
+
+  반사성(Reflexivity): 객체는 자기 자신과 동등해야 합니다.(x.equals(x)는 항상 true).
+  대칭성(Symmetry): 두 객체가 서로에 대해 동일하다고 판단하면, 이는 양방향으로 동일해야 합니다.(x.equals(y)가 true이면 y.equals(x)도 true).
+  추이성(Transitivity): 만약 한 객체가 두 번째 객체와 동일하고, 두 번째 객체가 세 번째 객체와 동일하다면, 첫 번째 객체는 세 번째 객체와도 동일해야 합니다.
+  일관성(Consistency): 두 객체의 상태가 변경되지 않는 한, equals() 메소드는 항상 동일한 값을 반환해야 합니다.
+  null에 대한 비교: 모든 객체는 null과 비교했을 때 false를 반환해야 합니다.
+
+
+실무에서는 대부분 IDE가 만들어주는 equalse()를 사용하므로, 이 규칙을 외우기 보다는 대략 이렇구나 정도로 한번 읽어보고 넘어가면 충분합니다.
+
+정리
+
+  참고로 동일성 비교가 항상 필요한 것은 아닙니다. 동일성 비교가 필요한 경우에만 equals()를 재정의하면 됩니다.
+  equals()와 hashCode()는 보통 함께 사용됩니다.
+    
+      이 부분은 추후에 컬렉션 프레임워크를 학습후 정리하겠습니다.
+    
+  
+
+
 
                         </a>
                         <div class="info-post">
@@ -52363,6 +52412,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Network/2024-08-14-network-ip.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-14"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 가상화",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240815_AWS_Virtualization.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-15"
         });
     
 

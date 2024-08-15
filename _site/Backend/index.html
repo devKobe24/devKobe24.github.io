@@ -575,6 +575,7 @@
             
             
             
+            
 
     
     
@@ -939,6 +940,193 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Network/2024-08-16-system-basic-term.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Network/2024-08-16-system-basic-term.html"><h1 class="title_post">🌐[Network] 시스템 기초 용어.</h1></a>
+                        <a href="/Backend/Network/2024-08-16-system-basic-term.html" class="txt_post">
+                            🌐[Network] 시스템 기초 용어.
+
+
+  위 그림과 같이 네트워크는 외형적으로 시스템과 전송 매체의 조합으로 구성됩니다.
+  데이터 통신을 위한 전송 매체는 전송 대역, 전송 속도, 전송 오류율과 같은 물리적인 특성이 주 관심사이므로 논리적인 기능은 비교적 단순합니다.
+  시스템은 전송 매체를 이용해 다양한 연동 형태로 구성할 수 있으므로 개념의 폭이 넓고 복잡합니다.
+
+
+1️⃣ 시스템의 구분.
+
+  네트워크를 구성하는 시스템이 반드시 일반 컴퓨터처럼 복잡한 기능을 수행해야 하는 것은 아니지만, 데이터 전송 기능을 포함하여 일정 정도의 컴퓨팅 기능을 보유합니다.
+  네트워크 시스템은 수행 기능에 따라 다음과 같이 다양한 명칭으로 부를 수 있습니다.
+    
+      노드, 라우터, 호스트, 클라이언트, 서버
+    
+  
+
+
+1️⃣ 노드(Node)
+
+  노드(Node)는 컴퓨터 이론 분야에서 특정 시스템을 가리키는 가장 일반적인 용어로 사용됩니다.
+  인터넷에서도 상호 연결된 시스템을 표현할 수 있는 가장 포괄적 의미로 사용되므로 데이터를 주고받을 수 있는 모든 시스템을 통칭합니다.
+  노드는 인터넷 내부를 구성하는 라우터와 인터넷 바깥쪽에 연결되어 데이터를 주고받는 호스트로 구분됩니다.
+
+
+2️⃣ 라우터(Router)
+
+  라우터(Router)는 인터넷 내부를 구성하며, 기본으로 데이터 전송 기능을 포함합니다.
+  라우터의 주요 역할은 데이터 중개 기능이며, 인터넷 바깥쪽에 연결된 호스트들 사이의 데이터 전송이 인터넷 내부에서 최적의 경로를 통하여 이루어지도록 합니다.
+
+
+3️⃣ 호스트(Host)
+
+  호스트(Host)는 인터넷 바깥쪽에 연결되어 일반 사용자들의 네트워크 접속 창구 역할을 합니다.
+  일반적인 컴퓨팅 기능을 갖춘 호스트는 네트워크 응용 프로그램을 실행할 수 있고, 사용자는 이 프로그램을 이용하여 다양한 인터넷 서비스를 제공받습니다.
+  호스트는 로스트 사이에 제공되는 서비스를 기준으로 클라이언트와 서버로 나눌 수 있습니다.
+
+
+4️⃣ 클라이언트(Client)와 서버(Server)
+
+  클라이언트(Client)는 임의의 인터넷 서비스를 이용하는 응용 프로그램이고, 서버(Server)는 서비스를 제공하는 응용 프로그램입니다.
+  클라이언트와 서버의 개념은 서비스 단위로 이루어지므로 임의의 호스트가 클라이언트나 서버로 고정되지 않습니다.
+    
+      이용하는 서비스의 종류에 따라서 클라이언트가 될 수도 있고, 서버가 될 수도 있습니다.
+        
+          그러므로 특정 서비스를 기준으로 상대적인 관점에서 클라이언트와 서버라는 용어를 사용합니다.
+        
+      
+    
+  
+  일반적으로 응용 프로그램 혹은 서비스 단위가 아닌 호스트 단위로도 클라이언트와 서버를 사용하기도 합니다.
+    
+      즉, 다양한 서비스를 제공하는 목적으로 특화된 호스트의 경우 호스트 자체를 서버라 부르기도 합니다.
+    
+  
+  서버는 클라이언트보다 먼저 실행 상태가 되어 클라이언트의 요청에 대기해야 합니다.
+    
+      그리고 영원히 종료하지 않으면서 클라이언트의 요청이 있을 때마다 서비스를 반복해서 제공합니다.
+    
+  
+
+
+2️⃣ 클라이언트(Client)와 서버(Server)
+
+
+  위 그림은 임의의 응용 서비스를 기준으로 클라이언트와 서버의 상대적인 관계를 설명합니다.
+  FTP(File Transfer Protocol)는 원격 호스트끼리 파일 송수신 기능을 제공하는 서비스이고, 텔넷(Telnet)은 원격 호스트에 로그인하는 서비스를 제공합니다.
+  호스트 2는 FTP 서비스를 제공하고, 호스트 3은 텔넷 서비스를 제공합니다.
+  먼저, FTP 서비스를 살펴보면 호스트 1은 호스트 2에 FTP 서비스를 요청합니다.
+    
+      따라서 FTP 서비스를 기준으로 하면 호스트 1이 클라이언트가 되고, 호스트 2는 서버가 됩니다.
+      반면, 텔넷 서비스는 호스트 2가 호스트 3에 서비스를 요청합니다.
+        
+          텔넷 서비스를 기준으로 하면 호스트 2가 클라이언트이고, 호스트 3은 서버입니다.
+            
+              따라서 호스트 2는 사용하는 응용 서비스의 종류에 따라 클라이언트가 되기도 하고 서버가 되기도 합니다.
+                
+                  결론적으로 클라이언트와 서버라는 용어는 서비스 이용의 상대적 위치에 따라 결정됨을 알 수 있습니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  서버의 명칭을 특정 호스트에 전용으로 부여해서 사용할 수도 있습니다.
+  특히 다양한 서비스 기능을 제공하는 대형 시스템을 서버로 설정해 다수의 클라이언트가 접속해서 서비스를 이용하도록 할 수 있습니다.
+    
+      그러나 기능적인 관점에서는 위 그림에서처럼 호스트에서 실행되는 응용 서비스별로 구분하는 것이 더 정확합니다.
+    
+  
+  인터넷에서 네트워크 서비스의 기능은 대부분 응용 프로그램으로 구현되므로 보통 클라이언트 프로세스, 서버 프로세스라는 호칭이 더 자연스러울 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
+                            ☁️[AWS] 서버리스.
+
+  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
+    
+      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
+    
+  
+  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
+
+
+
+
+☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
+
+  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
+    
+      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
+    
+  
+  폐쇄형 클라우드
+    
+      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
+    
+  
+  개방형 클라우드
+    
+      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
+    
+  
+  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
+    
+      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
+        
+          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+        
+      
+    
+  
+  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+    
+      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+    
+  
+  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -1017,6 +1205,63 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
+                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
+
+  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
+  SaaS(Software as a Service)
+    
+      응용 프로그램을 서비스로 제공하는 형태입니다.
+      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
+    
+  
+  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
+    
+      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
+      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
+    
+  
+  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
+    
+      PaaS
+        
+          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
+          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
+          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
+        
+      
+      IaaS
+        
+          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
+          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
+
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -1077,63 +1322,6 @@
       Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
         
           이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
-                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
-
-  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
-  SaaS(Software as a Service)
-    
-      응용 프로그램을 서비스로 제공하는 형태입니다.
-      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
-    
-  
-  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
-    
-      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
-      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
-    
-  
-  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
-    
-      PaaS
-        
-          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
-          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
-          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
-        
-      
-      IaaS
-        
-          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
-          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
-
         
       
     
@@ -1323,76 +1511,6 @@
     
   
   기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
-
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
-                            ☁️[AWS] 서버리스.
-
-  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
-    
-      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
-    
-  
-  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
-
-
-
-
-☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
-
-  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
-    
-      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
-    
-  
-  폐쇄형 클라우드
-    
-      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
-    
-  
-  개방형 클라우드
-    
-      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
-    
-  
-  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
-    
-      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
-        
-          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
-        
-      
-    
-  
-  폐쇄형 클라우드는 온프레미스에 가깝습니다.
-    
-      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
-    
-  
-  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
 
 
 
@@ -5028,33 +5146,6 @@ Middle element: 40
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-12-TIL.html"><h1 class="title_post">📝 [TIL] 240612 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-12-TIL.html" class="txt_post">
-                            
-  Deque에서의 front와 rear의 변화 정리 및 복습.
-  Circular Queue(원형 큐)의 중간 지점 찾기.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-12-CircularQueueFindMiddleIndex.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -5155,6 +5246,33 @@ public class CircularQueue {
 또한, 큐의 중간 요소를 반환하는 ‘getMiddle’ 메서드를 정의합니다.
 
 이 메서드는 현재 큐의 크기와 시작 인덱스를 사용하여 중간 인덱스를 계산한 후 해당 인덱스의 요소를 반환합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-12-TIL.html"><h1 class="title_post">📝 [TIL] 240612 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-12-TIL.html" class="txt_post">
+                            
+  Deque에서의 front와 rear의 변화 정리 및 복습.
+  Circular Queue(원형 큐)의 중간 지점 찾기.
+
 
                         </a>
                         <div class="info-post">
@@ -11334,6 +11452,268 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Math/2024-05-18-Math.html"><h1 class="title_post">[Math] 수학적 귀납법</h1></a>
+                        <a href="/Backend/Math/2024-05-18-Math.html" class="txt_post">
+                            📝 수학적 귀납법이란?
+수학적 귀납법은 자연수에 대한 명제의 참 여부를 증명하는 데 사용되는 강력한 수학적 증명 기법입니다.
+이를 통해 무한히 많은 경우에 대해 명제가 참임을 보일 수 있습니다.
+
+수학적 귀납법은 주로 ‘기본 단계’ 와 ‘귀납 단계’ 로 이루어집니다.
+
+1️⃣ 기본 단계(Base Case)
+명제가 첫 번째 자연수 n = 1(또는 특정 시작점 n = k)에 대해 참임을 증명합니다.
+
+2️⃣ 귀납 단계(Inductive Step)
+명제가 임의의 자연수 n = k에 대해 참이라고 가정했을 때, n = k + 1에도 참임을 증명합니다.
+
+이를 좀 더 형식적으로 설명하면 다음과 같습니다.
+
+
+  기본 단계:
+    P(1)이 참임을 증명합니다.
+    
+  
+  귀납 단계:
+    P(k)가 참이라고 가정합니다.(귀납 가정)
+P(k+1)이 참임을 증명합니다.
+    
+  
+
+
+기본 단계와 귀납 단계가 모두 성립하면, 수학적 귀납법에 의해 모든 자연수 n에 대해 명제 P(n)이 참임을 증명할 수 있습니다.
+
+3️⃣ 예제
+자연수 n에 대해 다음 명제를 증명해봅시다:
+1+2+3+...+n= n(n+1)/2
+
+
+
+  기본 단계:
+n = 1일때,
+    1 = 1(1+1)/2 = 2/2 = 1
+    
+  
+
+
+따라서 P(1)은 참입니다.
+
+
+  귀납 단계:
+P(k)가 참이라고 가정합니다 즉,
+    1+2+3+...+k = k(k+1)/2
+    
+    이 가정하에 P(k+1)이 참임을 증명합니다.
+  
+
+
+1+2+3+...+k+(k+1) = k(k+1)/2+(k+1)
+
+
+우변을 정리하면,
+k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
+
+
+이는 P(k+1) 입니다.
+
+기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Math/2024-05-18-Math-1.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
+                        <a href="/Backend/Math/2024-05-18-Math-1.html" class="txt_post">
+                            1️⃣ 기하학 - 설득술로서 발전해 온 수학
+
+1️⃣ 명제와 증명.
+“필요조건” 과 “충분조건” 에 대한 이해는 모든 논리의 기초가 되는 가장 중요한 사항이라 해도 과언이 아닙니다.
+
+수학은 논리와 떼려야 뗄 수 없는 관계라는 것은 모두가 아는 사실이지만 ‘필요’ 와 ‘충분’ 은 수학의 논리 중에서도 가장 중요한 역할을 하는 기본적인 사고방식입니다.
+
+‘이것 없이는 어떠한 수학적 논리도 전개할 수 없다’라고 단언할 수 있을 정도입니다.
+
+또한, ‘부정’을 이용해서 증명하는 방법인 “대우” 와 “귀류법” 의 이해도 매우 중요합니다.
+
+대우는 얼핏 보기에도 복잡해 보이는 명제를 단순화하고, 귀류법은 정면 돌파로는 증명할 수 없는(하기 어려운) 명제를 증명할 때 큰 힘을 발휘합니다.
+
+명제란 무엇인지 먼저 확인해 봅시다.
+
+명제: 참과 거짓을 객관적으로 판정할 수 있는 문장이나 식
+
+
+예를 들어 ‘백두산은 한국에서 가장 높은 산이다’는 명제지만 ‘백두산은 멋있다’는 명제가 아닙니다.
+
+백두산의 높이가 한국에서 가장 높은지는 객관적으로 판정할 수 있지만, 백두산이 멋지다고 느끼는 데는 개인차가 있으며(심지어 대부분이 ‘멋지다’고 생각할지라도) 참과 거짓을 객관적으로 판단할 수 없기 때문입니다.
+
+💡 논리적 사고의 기초: 필요조건과 충분 조건.
+우선 필요조건과 충분조건의 정의를 살펴보겠습니다.
+
+
+  필요조건과 충분조건의 정의
+
+  명제 ‘P이면 Q이다’ 가 참일 때,
+
+  P를(Q이기 위한) “충분조건”
+
+  Q를(P이기 위한) “필요조건”
+
+  이라고 합니다.
+
+
+‘P이면 Q이다’ 에서 P를 ‘재즈’라 하고 Q를 ‘음악’이라 하면 ‘재즈는 음악이다’가 됩니다.
+이는 당연히 참이므로(올바르므로) 정의에 따라
+
+  재즈: 충분조건
+  음악: 필요조건
+
+
+이 됩니다.
+
+확실히 재즈가 되기 위해서는 (적어도) 음악일 필요가 있습니다.
+
+또한, 음악이 되기 위해서 재즈면 (넉넉하게) 충분하다고 할 수 있습니다.
+
+재즈는 음악의 한 장르이므로 이 둘의 관계를 그림으로 표현하면 다음과 같은 모습이 됩니다.
+
+
+
+이처럼 한쪽이 다른 한쪽을 완전히 포함하는 경우를 다음과 같이 집합으로 이해해 보는 것도 매우 중요합니다.
+
+
+  영역이 더 작은 쪽(재즈): 충분조건
+영역이 더 큰 쪽(음악): 필요조건
+
+
+특히 두 개의 명제 ‘P이면 Q다’ 와 ‘Q이면 P다’가 모두 참일 경우에는 ‘P와 Q가 서로의 필요충분조건이다’라고 합니다. 또는 ‘P와 Q는 서로 동치다’ 라고도 합니다.
+
+
+  NOTE : 실수란
+
+  수학에서는 일반적으로 부등식의 범위를 수직선에 나타낼 때,
+
+  등호 없는 부등호(&lt;)는 ○와 대각선
+
+  등호 있는 부등호(≤)는 ●와 (직선에) 수직으로 뻗은 선
+
+  으로 표기합니다.
+
+  예를 들어 1 ≤ x &lt; 4는 다음과 같이 표기합니다.
+
+  
+
+
+우리는 보통 무언가를 고를 때, 자연스레 “필요저건에 따라 후보를 줄여 나갑니다. 그리고 충분조건을 만족하는 후보를 탐색합니다.”
+
+예를 들어 점심 메뉴를 고를 때, ‘8,000원 안팍의 메뉴’처럼 예산이 필요조건이 사람이 적지 않을 것입니다.
+
+거기에 ‘30분 안에 먹을 수 있는 메뉴’ 혹은 ‘깔끔한 맛’ 등의 필요조건을 더 해, 그 모든 필요조건을 만족하는 메뉴로 후보를 줄여 나갑니다.
+
+그리고 남은 메뉴(후보)가 오늘 점심으로 괜찮은지(충분한지) 고민합니다.
+
+그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
+
+이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html"><h1 class="title_post">☕️[Java] 문자열 비교 - 트러블슈팅</h1></a>
+                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="txt_post">
+                            1️⃣ 문자열 비교.
+  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
+    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
+    String personOfNationalMerit = scanner.next();
+
+    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
+    if (personOfNationalMerit != "y" &amp;&amp; personOfNationalMerit != "n") {
+      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
+    }
+    return personOfNationalMerit;
+  }
+
+
+🤔 문제 상황.
+1. 문자열 비교가 안되는 상황.
+
+  ’==’ 연산자를 사용해서 “y” 또는 “n” 외의 다른 문자열이 들어올 경우 커스텀한 에러 를 발생시키려 했지만 정상적인 값인 “y” 와 n 을 넣어도 에러가 발생 하는 문제가 생겼습니다.
+
+
+💻 트러블슈팅.
+1. equals() 메소드의 사용.
+
+자바에서는 문자열 비교를 할 때 ’==’ 연산자를 사용하는 것이 아니라 ‘equals()’ 메소드를 사용해야 합니다.
+
+  ’==’ 연산자는 객체의 레퍼런스를 비교하기 때문에, 두 문자열이 같은 객체를 참조하는지 여부를 확인합니다.
+  ‘equals()’ 메소드는 문자열의 내용을 비교합니다.
+
+
+따라서, “y” 와 “n” 을 비교할 때 ’==’ 대신 ‘equals()’ 를 사용해야 합니다.
+
+  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
+    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
+    String personOfNationalMerit = scanner.next();
+
+    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
+    if (!personOfNationalMerit.equals("y") &amp;&amp; !personOfNationalMerit.equals("n")) {
+      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
+    }
+    return personOfNationalMerit;
+  }
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -11463,268 +11843,6 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
     
   
 
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Math/2024-05-18-Math.html"><h1 class="title_post">[Math] 수학적 귀납법</h1></a>
-                        <a href="/Backend/Math/2024-05-18-Math.html" class="txt_post">
-                            📝 수학적 귀납법이란?
-수학적 귀납법은 자연수에 대한 명제의 참 여부를 증명하는 데 사용되는 강력한 수학적 증명 기법입니다.
-이를 통해 무한히 많은 경우에 대해 명제가 참임을 보일 수 있습니다.
-
-수학적 귀납법은 주로 ‘기본 단계’ 와 ‘귀납 단계’ 로 이루어집니다.
-
-1️⃣ 기본 단계(Base Case)
-명제가 첫 번째 자연수 n = 1(또는 특정 시작점 n = k)에 대해 참임을 증명합니다.
-
-2️⃣ 귀납 단계(Inductive Step)
-명제가 임의의 자연수 n = k에 대해 참이라고 가정했을 때, n = k + 1에도 참임을 증명합니다.
-
-이를 좀 더 형식적으로 설명하면 다음과 같습니다.
-
-
-  기본 단계:
-    P(1)이 참임을 증명합니다.
-    
-  
-  귀납 단계:
-    P(k)가 참이라고 가정합니다.(귀납 가정)
-P(k+1)이 참임을 증명합니다.
-    
-  
-
-
-기본 단계와 귀납 단계가 모두 성립하면, 수학적 귀납법에 의해 모든 자연수 n에 대해 명제 P(n)이 참임을 증명할 수 있습니다.
-
-3️⃣ 예제
-자연수 n에 대해 다음 명제를 증명해봅시다:
-1+2+3+...+n= n(n+1)/2
-
-
-
-  기본 단계:
-n = 1일때,
-    1 = 1(1+1)/2 = 2/2 = 1
-    
-  
-
-
-따라서 P(1)은 참입니다.
-
-
-  귀납 단계:
-P(k)가 참이라고 가정합니다 즉,
-    1+2+3+...+k = k(k+1)/2
-    
-    이 가정하에 P(k+1)이 참임을 증명합니다.
-  
-
-
-1+2+3+...+k+(k+1) = k(k+1)/2+(k+1)
-
-
-우변을 정리하면,
-k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
-
-
-이는 P(k+1) 입니다.
-
-기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html"><h1 class="title_post">☕️[Java] 문자열 비교 - 트러블슈팅</h1></a>
-                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="txt_post">
-                            1️⃣ 문자열 비교.
-  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
-    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
-    String personOfNationalMerit = scanner.next();
-
-    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
-    if (personOfNationalMerit != "y" &amp;&amp; personOfNationalMerit != "n") {
-      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
-    }
-    return personOfNationalMerit;
-  }
-
-
-🤔 문제 상황.
-1. 문자열 비교가 안되는 상황.
-
-  ’==’ 연산자를 사용해서 “y” 또는 “n” 외의 다른 문자열이 들어올 경우 커스텀한 에러 를 발생시키려 했지만 정상적인 값인 “y” 와 n 을 넣어도 에러가 발생 하는 문제가 생겼습니다.
-
-
-💻 트러블슈팅.
-1. equals() 메소드의 사용.
-
-자바에서는 문자열 비교를 할 때 ’==’ 연산자를 사용하는 것이 아니라 ‘equals()’ 메소드를 사용해야 합니다.
-
-  ’==’ 연산자는 객체의 레퍼런스를 비교하기 때문에, 두 문자열이 같은 객체를 참조하는지 여부를 확인합니다.
-  ‘equals()’ 메소드는 문자열의 내용을 비교합니다.
-
-
-따라서, “y” 와 “n” 을 비교할 때 ’==’ 대신 ‘equals()’ 를 사용해야 합니다.
-
-  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
-    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
-    String personOfNationalMerit = scanner.next();
-
-    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
-    if (!personOfNationalMerit.equals("y") &amp;&amp; !personOfNationalMerit.equals("n")) {
-      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
-    }
-    return personOfNationalMerit;
-  }
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Math/2024-05-18-Math-1.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
-                        <a href="/Backend/Math/2024-05-18-Math-1.html" class="txt_post">
-                            1️⃣ 기하학 - 설득술로서 발전해 온 수학
-
-1️⃣ 명제와 증명.
-“필요조건” 과 “충분조건” 에 대한 이해는 모든 논리의 기초가 되는 가장 중요한 사항이라 해도 과언이 아닙니다.
-
-수학은 논리와 떼려야 뗄 수 없는 관계라는 것은 모두가 아는 사실이지만 ‘필요’ 와 ‘충분’ 은 수학의 논리 중에서도 가장 중요한 역할을 하는 기본적인 사고방식입니다.
-
-‘이것 없이는 어떠한 수학적 논리도 전개할 수 없다’라고 단언할 수 있을 정도입니다.
-
-또한, ‘부정’을 이용해서 증명하는 방법인 “대우” 와 “귀류법” 의 이해도 매우 중요합니다.
-
-대우는 얼핏 보기에도 복잡해 보이는 명제를 단순화하고, 귀류법은 정면 돌파로는 증명할 수 없는(하기 어려운) 명제를 증명할 때 큰 힘을 발휘합니다.
-
-명제란 무엇인지 먼저 확인해 봅시다.
-
-명제: 참과 거짓을 객관적으로 판정할 수 있는 문장이나 식
-
-
-예를 들어 ‘백두산은 한국에서 가장 높은 산이다’는 명제지만 ‘백두산은 멋있다’는 명제가 아닙니다.
-
-백두산의 높이가 한국에서 가장 높은지는 객관적으로 판정할 수 있지만, 백두산이 멋지다고 느끼는 데는 개인차가 있으며(심지어 대부분이 ‘멋지다’고 생각할지라도) 참과 거짓을 객관적으로 판단할 수 없기 때문입니다.
-
-💡 논리적 사고의 기초: 필요조건과 충분 조건.
-우선 필요조건과 충분조건의 정의를 살펴보겠습니다.
-
-
-  필요조건과 충분조건의 정의
-
-  명제 ‘P이면 Q이다’ 가 참일 때,
-
-  P를(Q이기 위한) “충분조건”
-
-  Q를(P이기 위한) “필요조건”
-
-  이라고 합니다.
-
-
-‘P이면 Q이다’ 에서 P를 ‘재즈’라 하고 Q를 ‘음악’이라 하면 ‘재즈는 음악이다’가 됩니다.
-이는 당연히 참이므로(올바르므로) 정의에 따라
-
-  재즈: 충분조건
-  음악: 필요조건
-
-
-이 됩니다.
-
-확실히 재즈가 되기 위해서는 (적어도) 음악일 필요가 있습니다.
-
-또한, 음악이 되기 위해서 재즈면 (넉넉하게) 충분하다고 할 수 있습니다.
-
-재즈는 음악의 한 장르이므로 이 둘의 관계를 그림으로 표현하면 다음과 같은 모습이 됩니다.
-
-
-
-이처럼 한쪽이 다른 한쪽을 완전히 포함하는 경우를 다음과 같이 집합으로 이해해 보는 것도 매우 중요합니다.
-
-
-  영역이 더 작은 쪽(재즈): 충분조건
-영역이 더 큰 쪽(음악): 필요조건
-
-
-특히 두 개의 명제 ‘P이면 Q다’ 와 ‘Q이면 P다’가 모두 참일 경우에는 ‘P와 Q가 서로의 필요충분조건이다’라고 합니다. 또는 ‘P와 Q는 서로 동치다’ 라고도 합니다.
-
-
-  NOTE : 실수란
-
-  수학에서는 일반적으로 부등식의 범위를 수직선에 나타낼 때,
-
-  등호 없는 부등호(&lt;)는 ○와 대각선
-
-  등호 있는 부등호(≤)는 ●와 (직선에) 수직으로 뻗은 선
-
-  으로 표기합니다.
-
-  예를 들어 1 ≤ x &lt; 4는 다음과 같이 표기합니다.
-
-  
-
-
-우리는 보통 무언가를 고를 때, 자연스레 “필요저건에 따라 후보를 줄여 나갑니다. 그리고 충분조건을 만족하는 후보를 탐색합니다.”
-
-예를 들어 점심 메뉴를 고를 때, ‘8,000원 안팍의 메뉴’처럼 예산이 필요조건이 사람이 적지 않을 것입니다.
-
-거기에 ‘30분 안에 먹을 수 있는 메뉴’ 혹은 ‘깔끔한 맛’ 등의 필요조건을 더 해, 그 모든 필요조건을 만족하는 메뉴로 후보를 줄여 나갑니다.
-
-그리고 남은 메뉴(후보)가 오늘 점심으로 괜찮은지(충분한지) 고민합니다.
-
-그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
-
-이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
 
                         </a>
                         <div class="info-post">
@@ -17754,106 +17872,6 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html"><h1 class="title_post">☕️[Java] 코테 맛보기(1) - 코테를 위한 자바 프로그래밍 언어 사용 숙련도</h1></a>
-                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html" class="txt_post">
-                            😋 코테 맛보기.
-
-코딩 테스트를 위해 자바 프로그래밍 언어를 사용하려면 몇 가지 중요한 요소에 숙력도를 갖추어야 합니다.
-자바는 많은 기업들이 코딩 테스트에 사용하는 언어 중 하나이며, 효과적인 문제 해결을 위해 다음과 같은 능력을 개발하는 것이 중요합니다.
-효과적인 문제 해결을 위해 다음과 같은 능력을 개발하는 것이 중요합니다.
-
-1️⃣ 기본 문법 숙지.
-
-  자바의 기본 문법과 프로그래밍 구조에 익숙해져야 합니다.
-    
-      변수, 데이터 타입, 연산자, 제어문(if, for, while 등), 메소드 호출 등 기본적인 구성 요소를 이해하고 사용할 수 있어야 합니다.
-    
-  
-
-
-2️⃣ 객체 지향 프로그래밍(OOP)이해.
-
-  자바는 객체 지향 프로그래밍 언어입니다.
-    
-      클래스, 객체, 상속, 다형성, 캡슐화 등의 객체 지향 개념을 이해하고 이를 문제 해결에 적절히 적용할 수 있어야 합니다.
-      OOP 개념은 코드의 재사용성과 모듈성을 높여줘 효율적인 프로그래밍을 가능하게 합니다.
-    
-  
-
-
-3️⃣ 표준 라이브러리 사용.
-
-  자바의 표준 라이브러리에는 다양한 자료구조와 알고리즘이 구현되어 있습니다.
-    
-      java.util 패키지 내의 컬렉션 프레임워크(리스트, 맵, 셋 등)를 비롯해, 유용한 유틸리티 클래스들을 활용할 줄 알아야 합니다.
-        
-          이러한 라이브러리들은 코딩 테스트에서 효율적인 코드 작성을 돕습니다.
-        
-      
-    
-  
-
-
-4️⃣ 알고리즘과 자료구조.
-
-  다양한 알고리즘과 자료구조에 대한 이해가 중요합니다.
-    
-      정렬, 탐색, 그래프 이론, 동적 프로그래밍 등의 알고리즘과 배열, 스택, 큐, 링크드 리스트, 트리 등의 자료구조에 대한 깊은 이해가 필요합니다.
-        
-          이는 문제를 효과적으로 분석하고 최적의 해결책을 구현하는 데 결정적입니다.
-        
-      
-    
-  
-
-
-5️⃣ 문제 해결 능력.
-
-  실제 코딩 테스트에서는 다양한 유형의 문제가 제시됩니다.
-    
-      문제를 빠르게 이해하고 효과적인 해결책을 설계할 수 있는 능력이 필요합니다.
-        
-          이는 실전 연습을 통해 향상시킬 수 있으며, 온라인 코딩 플랫폼에서 다양한 문제를 풀어 보는 것이 좋습니다.
-        
-      
-    
-  
-
-
-6️⃣ 테스트와 디버깅
-
-  코드가 예상대로 동작하는지 검증하고, 오류를 찾아 수정할 수 있는 능력도 중요합니다.
-    
-      자바에서 제공하는 디버깅 도구를 사용하여 코드를 단계별로 실행하고, 변순의 상태를 확인하며 문제를 진단할 수 있어야 합니다.
-    
-  
-
-
-📝 정리.
-코딩 테스트를 위한 자바 숙련도는 이론적 지식과 실제 적용 능력의 조합을 요구합니다.
-이를 위해 개념 학습과 함께 많은 실습을 병행하는 것이 중요합니다.
-시간을 정해두고 실전처럼 문제를 풀어보는 연습을 꾸준히 하면, 효과적으로 자바를 활용하여 코딩 테스트에서 좋은 성과를 낼 수 있을 것입니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-02-IntroJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -17991,6 +18009,106 @@ if (a.getClass().equals(b.getClass())) {
 📝 마무리.
 자바의 이러한 실행 과정은 코드의 플랫폼 독립성을 보장하고, 안정적이며 보안적인 실행 환경을 제공합니다.
 이 모든 과정은 개발자로부터 대부분 숨겨져 있으며, 개발자는 주로 소스 코드 작성과 일부 디버깅에 집중할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html"><h1 class="title_post">☕️[Java] 코테 맛보기(1) - 코테를 위한 자바 프로그래밍 언어 사용 숙련도</h1></a>
+                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html" class="txt_post">
+                            😋 코테 맛보기.
+
+코딩 테스트를 위해 자바 프로그래밍 언어를 사용하려면 몇 가지 중요한 요소에 숙력도를 갖추어야 합니다.
+자바는 많은 기업들이 코딩 테스트에 사용하는 언어 중 하나이며, 효과적인 문제 해결을 위해 다음과 같은 능력을 개발하는 것이 중요합니다.
+효과적인 문제 해결을 위해 다음과 같은 능력을 개발하는 것이 중요합니다.
+
+1️⃣ 기본 문법 숙지.
+
+  자바의 기본 문법과 프로그래밍 구조에 익숙해져야 합니다.
+    
+      변수, 데이터 타입, 연산자, 제어문(if, for, while 등), 메소드 호출 등 기본적인 구성 요소를 이해하고 사용할 수 있어야 합니다.
+    
+  
+
+
+2️⃣ 객체 지향 프로그래밍(OOP)이해.
+
+  자바는 객체 지향 프로그래밍 언어입니다.
+    
+      클래스, 객체, 상속, 다형성, 캡슐화 등의 객체 지향 개념을 이해하고 이를 문제 해결에 적절히 적용할 수 있어야 합니다.
+      OOP 개념은 코드의 재사용성과 모듈성을 높여줘 효율적인 프로그래밍을 가능하게 합니다.
+    
+  
+
+
+3️⃣ 표준 라이브러리 사용.
+
+  자바의 표준 라이브러리에는 다양한 자료구조와 알고리즘이 구현되어 있습니다.
+    
+      java.util 패키지 내의 컬렉션 프레임워크(리스트, 맵, 셋 등)를 비롯해, 유용한 유틸리티 클래스들을 활용할 줄 알아야 합니다.
+        
+          이러한 라이브러리들은 코딩 테스트에서 효율적인 코드 작성을 돕습니다.
+        
+      
+    
+  
+
+
+4️⃣ 알고리즘과 자료구조.
+
+  다양한 알고리즘과 자료구조에 대한 이해가 중요합니다.
+    
+      정렬, 탐색, 그래프 이론, 동적 프로그래밍 등의 알고리즘과 배열, 스택, 큐, 링크드 리스트, 트리 등의 자료구조에 대한 깊은 이해가 필요합니다.
+        
+          이는 문제를 효과적으로 분석하고 최적의 해결책을 구현하는 데 결정적입니다.
+        
+      
+    
+  
+
+
+5️⃣ 문제 해결 능력.
+
+  실제 코딩 테스트에서는 다양한 유형의 문제가 제시됩니다.
+    
+      문제를 빠르게 이해하고 효과적인 해결책을 설계할 수 있는 능력이 필요합니다.
+        
+          이는 실전 연습을 통해 향상시킬 수 있으며, 온라인 코딩 플랫폼에서 다양한 문제를 풀어 보는 것이 좋습니다.
+        
+      
+    
+  
+
+
+6️⃣ 테스트와 디버깅
+
+  코드가 예상대로 동작하는지 검증하고, 오류를 찾아 수정할 수 있는 능력도 중요합니다.
+    
+      자바에서 제공하는 디버깅 도구를 사용하여 코드를 단계별로 실행하고, 변순의 상태를 확인하며 문제를 진단할 수 있어야 합니다.
+    
+  
+
+
+📝 정리.
+코딩 테스트를 위한 자바 숙련도는 이론적 지식과 실제 적용 능력의 조합을 요구합니다.
+이를 위해 개념 학습과 함께 많은 실습을 병행하는 것이 중요합니다.
+시간을 정해두고 실전처럼 문제를 풀어보는 연습을 꾸준히 하면, 효과적으로 자바를 활용하여 코딩 테스트에서 좋은 성과를 낼 수 있을 것입니다.
 
                         </a>
                         <div class="info-post">
@@ -22988,6 +23106,17 @@ public class Main {
             'url'      : "/Backend/Network/2024-08-15-network-basic-term.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-15"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 시스템 기초 용어.",
+            'path'     : "Backend > Network",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Backend/Network/2024-08-16-system-basic-term.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-08-16"
         });
     
 

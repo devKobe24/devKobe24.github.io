@@ -573,6 +573,7 @@
             
             
             
+            
 
     
     
@@ -937,107 +938,67 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
-                            ☁️[AWS] 가상화.
+                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
+                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
 
-  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
-  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
-  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
+  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
+
+
+1️⃣ 인바운드 규칙(Inbound Rules)
+인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
+이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
+
+  예시
     
-      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
-여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
-    
-  
-  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
-
-
-
-
-
-  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
-    
-      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
-    
-  
-  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
-
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
+      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
         
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
-                            ☁️[AWS] 서버리스.
-
-  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
-    
-      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
-    
-  
-  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
-
-
-
-
-☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
-
-  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
-    
-      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
-    
-  
-  폐쇄형 클라우드
-    
-      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
-    
-  
-  개방형 클라우드
-    
-      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
-    
-  
-  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
-    
-      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
-        
-          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
         
       
+      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
     
   
-  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+  중요한 점
     
-      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
+      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
     
   
-  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
 
 
+2️⃣ 아웃바운드 규칙(Outbound Rules)
+아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
+기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
 
+  예시
+    
+      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
+      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
+    
+  
+  중요한 점
+    
+      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
+    
+  
+
+
+3️⃣ 보안 그룹 작동 방식
+
+  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
+  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
+  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
+
+
+🙋‍♂️ 마무리
+보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
+인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -1176,6 +1137,124 @@
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
+
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+    
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
+    
+  
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
+
+
+
+
+
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
+    
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
+    
+  
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
+                            ☁️[AWS] 서버리스.
+
+  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
+    
+      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
+    
+  
+  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
+
+
+
+
+☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
+
+  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
+    
+      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
+    
+  
+  폐쇄형 클라우드
+    
+      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
+    
+  
+  개방형 클라우드
+    
+      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
+    
+  
+  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
+    
+      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
+        
+          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+        
+      
+    
+  
+  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+    
+      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+    
+  
+  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
+
+
 
 
                         </a>
@@ -1436,6 +1515,111 @@ sudo /usr/local/nginx/sbin/nginx -s reload
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html"><h1 class="title_post">☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.</h1></a>
+                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="txt_post">
+                            ☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.
+“저의 상황을 예로 들어 설명하도록 하겠습니다.”
+
+
+  로컬 macBook에서 Amazon Linux 2023 EC2 서버로 파일을 업로드하는 방법 중 가장 일반적인 방법은 scp(secure copy) 를 사용하는 것 입니다.
+    
+      이 명령을 통해 안전하게 파일을 복사할 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ 아래 설명하는 단계들은 로컬에서 이루어져야 합니다.
+
+
+1️⃣ EC2 인스턴스 연결 정보 확인.
+
+  먼저 EC2 인스턴스의 퍼블릭 IP 주소와 연결에 사용하는 키 페어 파일(.pem)을 확인합니다.
+
+
+2️⃣ 로컬 macBook에서 scp 명령어 사용.
+
+  scp 명령어를 사용하여 로컬 파일을 EC2 인스턴스로 업로드합니다.
+    
+      예를 들어, 로컬 파일 localfile.txt 를 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
+    
+  
+
+
+scp -i /path/to/your-key-pair.pem /path/to/localfile.txt ec2-uesr@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
+
+
+👉 예제.
+
+  키 페어 파일 경로 : /Users/bingGu/.ssh/my-key-pair.pem
+  로컬 파일 경로 : /Users/bingGu/Documents/localfile.txt
+  EC2 퍼블릭 IP : 43.201.230.99
+
+
+/Users/bingGu/Documents/localfile.txt ec2-user@43.201.230.99:/home/ec2-user/
+
+
+3️⃣ 디렉토리 업로드.
+
+  만약 디렉토리를 업로드 하고 싶다면 -r 옵션을 사용하여 디렉토리를 재귀적으로 업로드할 수 있습니다.
+    
+      예를 들어, 로컬 디렉토리 localdir 을 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
+    
+  
+
+
+scp -r -i /path/to/your-key-pair.pem /path/to/localdir ec2-user@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
+
+
+4️⃣ 업로드 확인.
+
+  EC2 인스턴스에 SSH로 접속하여 파일이나 디렉토리가 정상적으로 업로드되었는지 확인합니다.
+
+
+ssh -i /path/to/your-key-pair.pem ec2-user@&lt;EC2-Instance-Public-IP&gt;
+ls /home/ec2-user/
+
+
+🎯 Troubleshooting
+
+  Permission Denied : 키 파일의 권한이 적절하지 않을 때 발생할 수 있습니다.
+    
+      다음 명령어로 권한을 조정합니다.
+        chmod 400 /path/to/your-key-pair.pem
+        
+      
+    
+  
+  Host Key Verification Failed : 로컬 머신의 SSH 설정에서 이전에 연결한 적 없는 서버에 대해 경고가 뜨는 경우, 다음 명령어로 knows_hosts 파일을 업데이트할 수 있습니다.
+    ssh-keygen -R &lt;EC2-Instance-Public-IP&gt;
+    
+  
+
+
+
+  🙋‍♂️ 이 단계를 따르면 로컬 macBook에서 Amazon Linux 2023 EC2 인스턴스로 파일을 성골적으로 업로드할 수 있을 것입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Network/2024-08-09-network-cidr.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -1537,111 +1721,6 @@ sudo /usr/local/nginx/sbin/nginx -s reload
 
 
   🙋‍♂️ CIDR 블록을 설계할 때, 사용하려는 네트워크 규모와 IP 주소 요구 사항을 염두에 두고, 적절한 서브넷 마스크 길이를 선택하는 것이 중요합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html"><h1 class="title_post">☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.</h1></a>
-                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="txt_post">
-                            ☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.
-“저의 상황을 예로 들어 설명하도록 하겠습니다.”
-
-
-  로컬 macBook에서 Amazon Linux 2023 EC2 서버로 파일을 업로드하는 방법 중 가장 일반적인 방법은 scp(secure copy) 를 사용하는 것 입니다.
-    
-      이 명령을 통해 안전하게 파일을 복사할 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ 아래 설명하는 단계들은 로컬에서 이루어져야 합니다.
-
-
-1️⃣ EC2 인스턴스 연결 정보 확인.
-
-  먼저 EC2 인스턴스의 퍼블릭 IP 주소와 연결에 사용하는 키 페어 파일(.pem)을 확인합니다.
-
-
-2️⃣ 로컬 macBook에서 scp 명령어 사용.
-
-  scp 명령어를 사용하여 로컬 파일을 EC2 인스턴스로 업로드합니다.
-    
-      예를 들어, 로컬 파일 localfile.txt 를 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
-    
-  
-
-
-scp -i /path/to/your-key-pair.pem /path/to/localfile.txt ec2-uesr@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
-
-
-👉 예제.
-
-  키 페어 파일 경로 : /Users/bingGu/.ssh/my-key-pair.pem
-  로컬 파일 경로 : /Users/bingGu/Documents/localfile.txt
-  EC2 퍼블릭 IP : 43.201.230.99
-
-
-/Users/bingGu/Documents/localfile.txt ec2-user@43.201.230.99:/home/ec2-user/
-
-
-3️⃣ 디렉토리 업로드.
-
-  만약 디렉토리를 업로드 하고 싶다면 -r 옵션을 사용하여 디렉토리를 재귀적으로 업로드할 수 있습니다.
-    
-      예를 들어, 로컬 디렉토리 localdir 을 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
-    
-  
-
-
-scp -r -i /path/to/your-key-pair.pem /path/to/localdir ec2-user@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
-
-
-4️⃣ 업로드 확인.
-
-  EC2 인스턴스에 SSH로 접속하여 파일이나 디렉토리가 정상적으로 업로드되었는지 확인합니다.
-
-
-ssh -i /path/to/your-key-pair.pem ec2-user@&lt;EC2-Instance-Public-IP&gt;
-ls /home/ec2-user/
-
-
-🎯 Troubleshooting
-
-  Permission Denied : 키 파일의 권한이 적절하지 않을 때 발생할 수 있습니다.
-    
-      다음 명령어로 권한을 조정합니다.
-        chmod 400 /path/to/your-key-pair.pem
-        
-      
-    
-  
-  Host Key Verification Failed : 로컬 머신의 SSH 설정에서 이전에 연결한 적 없는 서버에 대해 경고가 뜨는 경우, 다음 명령어로 knows_hosts 파일을 업데이트할 수 있습니다.
-    ssh-keygen -R &lt;EC2-Instance-Public-IP&gt;
-    
-  
-
-
-
-  🙋‍♂️ 이 단계를 따르면 로컬 macBook에서 Amazon Linux 2023 EC2 인스턴스로 파일을 성골적으로 업로드할 수 있을 것입니다.
 
 
                         </a>
@@ -1831,55 +1910,6 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -1912,6 +1942,55 @@ ls /home/ec2-user/
       그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
         
           하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
         
       
     
@@ -5188,237 +5267,6 @@ public class DequeExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-06-09-polymorphism.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-06-09-polymorphism.html"><h1 class="title_post">☕️[Java] 다형성(Polymorphism)</h1></a>
-                        <a href="/Backend/Java/2024-06-09-polymorphism.html" class="txt_post">
-                            1️⃣ 다형성(Polymorphism).
-
-‘다형성(Polymorphism)’ 은 ‘객체 지향 프로그래밍(OOP)’ 의 중요한 개념 중 하나로, 같은 인터페이스를 통해 서로 다른 데이터 타입의 객체를 조작할 수 있도록 합니다.
-
-다형성은 코드의 재사용성과 유연성을 높여주며, 유지보수를 쉽게 해줍니다.
-
-Java에서 ‘다형성’ 은 주로 ‘상속’ 과 ‘인터페이스’ 를 통해 구현됩니다.
-
-2️⃣ 다형성의 개념.
-
-다형성은 “하나의 인터페이스로 여러 가지 형태를 구현할 수 있는 능력” 을 의미합니다.
-
-이는 같은 메서드가 다양한 객체에서 다르게 동작할 수 있게 합니다.
-
-3️⃣ 다형성의 두 가지 형태.
-
-1️⃣ 컴파일 시간 다형성(Compile-time Polymorphism)
-
-
-  
-    메서드 오버로딩(Method Overloading)을 통해 구현됩니다.
-  
-  
-    컴파일 시점에 어떤 메서드가 호출될지 결정됩니다.
-  
-  
-    같은 이름의 메서드를 여러 개 정의하지만, 매개변수의 타입이나 개수가 달라야 합니다.
-  
-
-
-2️⃣ 런타임 다형성 (Runtime Polymorphism)
-
-
-  
-    메서드 오버라이딩(Method Overriding)을 통해 구현됩니다.
-  
-  
-    실행 시점에 어떤 메서드가 호출될지 결정됩니다.
-  
-  
-    부모 클래스의 메서드를 자식 클래스에서 재정의하여 사용합니다.
-  
-
-
-4️⃣ 컴파일 시간 다형성(Method Overloading).
-
-메서드 오버로딩은 같은 클래스 내에서 같은 이름을 가진 메서드를 여러 개 정의하는 것입니다.
-
-단, 매개변수의 수나 타입이 달라야 합니다.
-
-💻 예제.
-
-public class MathOperations {
-	// 정수 두 개의 합
-	public int add(int a, int b) {
-		return a + b;
-	}
-
-	// 실수 두 개의 합
-	public double add(double a, double b) {
-		return a + b;
-	}
-
-	// 새 개의 정수의 합
-	public int add(int a, int b, int c) {
-		return a + b + c;
-	}
-
-	public static void main(String[] args) {
-		MathOperations mathOperations = new MathOperations();
-		System.out.println(mathOperations.add(1, 2)); // 3
-		System.out.println(mathOperations.add(1.5, 2.5)); // 4.0
-		System.out.println(mathOperations.add(1, 2, 3)); // 6
-	}
-}
-
-
-5️⃣ 런타임 다형성(Method Overriding).
-
-메서드 오버라이딩은 자식 클래스가 부모 클래스의 메서드를 재정의하는 것을 말합니다.
-
-이를 통해 자식 클래스의 객체가 부모 클래스의 메서드를 호출할 때, 자식 클래스의 메서드가 실행되도록 합니다.
-
-💻 예제.
-
-class Animal {
-	void makeSound() {
-		System.out.println("Animal makes a sound");
-	}
-}
-
-class Dog extends Animal {
-	@Override
-	void makeSound() {
-		System.out.println("Dog barks");
-	}
-}
-
-class Cat extends Animal {
-	@Override
-	void makeSound() {
-		System.out.println("Cat meows");
-	}
-}
-
-public class Main {
-
-	public static void main(String[] args) {
-		Animal myDog = new Dog(); // Animal 타입으로 Dog 객체 생성
-		Animal myCat = new Cat(); // Animal 타입으로 Cat 객체 생성
-
-		myDog.makeSound(); // Dog barks
-		myCat.makeSound(); // Cat meows
-	}
-}
-
-
-6️⃣ 인터페이스를 통한 다형성.
-
-인터페이스를 통해서도 다형성을 구현할 수 있습니다.
-
-인터페이스는 메서드의 서명만을 정의하며, 이를 구현하는 클래스가 메서드의 구체적인 동작을 정의합니다.
-
-💻 예제.
-
-interface Shape {
-	void draw();
-}
-
-class Circle implements Shape {
-	@Override
-	public void draw() {
-		System.out.println("Drawing a Circle");
-	}
-}
-
-class Square implements Shape {
-	@Override
-	public void draw() {
-		System.out.println("Drawing a Square");
-	}
-}
-
-public class Main {
-
-	public static void main(String[] args) {
-		Shape myShape1 = new Circle();
-		Shape myShape2 = new Square();
-
-		myShape1.draw(); // Drawing a Circle
-		myShape2.draw(); // Drawing a Square
-	}
-}
-
-
-7️⃣ 다형성의 장점.
-
-
-  
-    코드 재사용성 : 상위 클래스나 인터페이스를 사용하여 다양한 하위 클래스나 구현체를 다룰 수 있어 코드의 재사용성이 높아집니다.
-  
-  
-    유연성 : 새로운 클래스나 기능을 추가할 때 기존 코드를 수정할 필요 없이 확장할 수 있습니다.
-  
-  
-    유지보수성 : 코드를 이해하고 유지보수하는 것이 더 쉬워집니다. 메서드의 호출이 어디서 어떻게 이루어지는지 명확하기 때문입니다.
-  
-
-
-8️⃣ 예제: 다형성의 실질적 사용.
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-public class PolymorphismExample {
-
-	public static void main(String[] args) {
-		List&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
-		List&lt;String&gt; linkedList = new LinkedList&lt;&gt;();
-
-		arrayList.add("ArrayList Item");
-		linkedList.add("LinkedList Item");
-
-		printList(arrayList); // ArrayList Item
-		printList(linkedList); // LinkedList Item
-	}
-
-	public static void printList(List&lt;String&gt; list) {
-		for (String item : list) {
-			System.out.println(item);
-		}
-	}
-}
-
-
-
-  이 예제에서는 ‘List‘ 인터페이스를 사용하여 ‘ArrayList‘ 와 ‘LinkedList‘ 를 동일한 방식으로 처리합니다.
-이를 통해 다양한 구현체를 다룰 수 있는 유연한 코드를 작성할 수 있습니다.
-
-
-📝 결론.
-
-다형성은 객체 지향 프로그래밍의 핵심 개념 중 하나로, 코드의 유연성과 재사용성을 크게 향상시킵니다.
-
-이를 통해 다양한 형태의 객체를 동일한 방식으로 다룰 수 있으며, 새로운 기능을 쉽게 확장하고 유지보수할 수 있습니다.
-
-다형성은 상속과 인터페이스를 통해 구현되며, 메서드 오버로딩과 오버라이딩을 통해 다양한 형태를 취할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-09-CircularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -5701,6 +5549,237 @@ public void enqueue(int element) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-06-09-polymorphism.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-06-09-polymorphism.html"><h1 class="title_post">☕️[Java] 다형성(Polymorphism)</h1></a>
+                        <a href="/Backend/Java/2024-06-09-polymorphism.html" class="txt_post">
+                            1️⃣ 다형성(Polymorphism).
+
+‘다형성(Polymorphism)’ 은 ‘객체 지향 프로그래밍(OOP)’ 의 중요한 개념 중 하나로, 같은 인터페이스를 통해 서로 다른 데이터 타입의 객체를 조작할 수 있도록 합니다.
+
+다형성은 코드의 재사용성과 유연성을 높여주며, 유지보수를 쉽게 해줍니다.
+
+Java에서 ‘다형성’ 은 주로 ‘상속’ 과 ‘인터페이스’ 를 통해 구현됩니다.
+
+2️⃣ 다형성의 개념.
+
+다형성은 “하나의 인터페이스로 여러 가지 형태를 구현할 수 있는 능력” 을 의미합니다.
+
+이는 같은 메서드가 다양한 객체에서 다르게 동작할 수 있게 합니다.
+
+3️⃣ 다형성의 두 가지 형태.
+
+1️⃣ 컴파일 시간 다형성(Compile-time Polymorphism)
+
+
+  
+    메서드 오버로딩(Method Overloading)을 통해 구현됩니다.
+  
+  
+    컴파일 시점에 어떤 메서드가 호출될지 결정됩니다.
+  
+  
+    같은 이름의 메서드를 여러 개 정의하지만, 매개변수의 타입이나 개수가 달라야 합니다.
+  
+
+
+2️⃣ 런타임 다형성 (Runtime Polymorphism)
+
+
+  
+    메서드 오버라이딩(Method Overriding)을 통해 구현됩니다.
+  
+  
+    실행 시점에 어떤 메서드가 호출될지 결정됩니다.
+  
+  
+    부모 클래스의 메서드를 자식 클래스에서 재정의하여 사용합니다.
+  
+
+
+4️⃣ 컴파일 시간 다형성(Method Overloading).
+
+메서드 오버로딩은 같은 클래스 내에서 같은 이름을 가진 메서드를 여러 개 정의하는 것입니다.
+
+단, 매개변수의 수나 타입이 달라야 합니다.
+
+💻 예제.
+
+public class MathOperations {
+	// 정수 두 개의 합
+	public int add(int a, int b) {
+		return a + b;
+	}
+
+	// 실수 두 개의 합
+	public double add(double a, double b) {
+		return a + b;
+	}
+
+	// 새 개의 정수의 합
+	public int add(int a, int b, int c) {
+		return a + b + c;
+	}
+
+	public static void main(String[] args) {
+		MathOperations mathOperations = new MathOperations();
+		System.out.println(mathOperations.add(1, 2)); // 3
+		System.out.println(mathOperations.add(1.5, 2.5)); // 4.0
+		System.out.println(mathOperations.add(1, 2, 3)); // 6
+	}
+}
+
+
+5️⃣ 런타임 다형성(Method Overriding).
+
+메서드 오버라이딩은 자식 클래스가 부모 클래스의 메서드를 재정의하는 것을 말합니다.
+
+이를 통해 자식 클래스의 객체가 부모 클래스의 메서드를 호출할 때, 자식 클래스의 메서드가 실행되도록 합니다.
+
+💻 예제.
+
+class Animal {
+	void makeSound() {
+		System.out.println("Animal makes a sound");
+	}
+}
+
+class Dog extends Animal {
+	@Override
+	void makeSound() {
+		System.out.println("Dog barks");
+	}
+}
+
+class Cat extends Animal {
+	@Override
+	void makeSound() {
+		System.out.println("Cat meows");
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		Animal myDog = new Dog(); // Animal 타입으로 Dog 객체 생성
+		Animal myCat = new Cat(); // Animal 타입으로 Cat 객체 생성
+
+		myDog.makeSound(); // Dog barks
+		myCat.makeSound(); // Cat meows
+	}
+}
+
+
+6️⃣ 인터페이스를 통한 다형성.
+
+인터페이스를 통해서도 다형성을 구현할 수 있습니다.
+
+인터페이스는 메서드의 서명만을 정의하며, 이를 구현하는 클래스가 메서드의 구체적인 동작을 정의합니다.
+
+💻 예제.
+
+interface Shape {
+	void draw();
+}
+
+class Circle implements Shape {
+	@Override
+	public void draw() {
+		System.out.println("Drawing a Circle");
+	}
+}
+
+class Square implements Shape {
+	@Override
+	public void draw() {
+		System.out.println("Drawing a Square");
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		Shape myShape1 = new Circle();
+		Shape myShape2 = new Square();
+
+		myShape1.draw(); // Drawing a Circle
+		myShape2.draw(); // Drawing a Square
+	}
+}
+
+
+7️⃣ 다형성의 장점.
+
+
+  
+    코드 재사용성 : 상위 클래스나 인터페이스를 사용하여 다양한 하위 클래스나 구현체를 다룰 수 있어 코드의 재사용성이 높아집니다.
+  
+  
+    유연성 : 새로운 클래스나 기능을 추가할 때 기존 코드를 수정할 필요 없이 확장할 수 있습니다.
+  
+  
+    유지보수성 : 코드를 이해하고 유지보수하는 것이 더 쉬워집니다. 메서드의 호출이 어디서 어떻게 이루어지는지 명확하기 때문입니다.
+  
+
+
+8️⃣ 예제: 다형성의 실질적 사용.
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class PolymorphismExample {
+
+	public static void main(String[] args) {
+		List&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+		List&lt;String&gt; linkedList = new LinkedList&lt;&gt;();
+
+		arrayList.add("ArrayList Item");
+		linkedList.add("LinkedList Item");
+
+		printList(arrayList); // ArrayList Item
+		printList(linkedList); // LinkedList Item
+	}
+
+	public static void printList(List&lt;String&gt; list) {
+		for (String item : list) {
+			System.out.println(item);
+		}
+	}
+}
+
+
+
+  이 예제에서는 ‘List‘ 인터페이스를 사용하여 ‘ArrayList‘ 와 ‘LinkedList‘ 를 동일한 방식으로 처리합니다.
+이를 통해 다양한 구현체를 다룰 수 있는 유연한 코드를 작성할 수 있습니다.
+
+
+📝 결론.
+
+다형성은 객체 지향 프로그래밍의 핵심 개념 중 하나로, 코드의 유연성과 재사용성을 크게 향상시킵니다.
+
+이를 통해 다양한 형태의 객체를 동일한 방식으로 다룰 수 있으며, 새로운 기능을 쉽게 확장하고 유지보수할 수 있습니다.
+
+다형성은 상속과 인터페이스를 통해 구현되며, 메서드 오버로딩과 오버라이딩을 통해 다양한 형태를 취할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-06-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -5712,6 +5791,201 @@ public void enqueue(int element) {
   제네릭
   나머지 구하기
   중앙값 구하기
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
+                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
+                            1️⃣ 제네릭(Generic)
+
+Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
+
+제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
+
+2️⃣ 제네릭(Generic)의 주요 개념.
+
+
+  타입 매개변수 :
+    
+      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
+    
+  
+  타입 안정성 :
+    
+      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
+    
+  
+  재사용성 :
+    
+      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
+    
+  
+
+
+3️⃣ 제네릭 클래스.
+
+제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
+
+일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
+
+예제.
+
+// Box 클래스
+public class Box&lt;T&gt; {
+	private T item;
+
+	public void setItem(T item) {
+		this.item = item;
+	}
+
+	public T getItem() {
+		return item;
+	}
+}
+
+// Main 클래스
+public class Main {
+
+	public static void main(String[] args) {
+		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
+		stringBox.setItem("Hello");
+		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
+
+		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+		integerBox.setItem(123);
+		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
+	}
+}
+
+
+4️⃣ 제네릭 메서드.
+
+제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
+
+예제.
+
+public class GenericMethodExample {
+	public static &lt;T&gt; void printArray(T[] array) {
+		for (T element : array) {
+			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Integer[] intArray = {1, 2, 3, 4, 5};
+		String[] strArray = {"A", "B", "C", "D"};
+
+		printArray(intArray); // 1 2 3 4 5 
+		printArray(strArray); // A B C D 
+	}
+}
+
+
+5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
+
+제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
+
+상한 제한 (Upper Bound)
+
+public class BoundedTypeExample&lt;T extends Number&gt; {
+	private T number;
+
+	public BoundedTypeExample(T number) {
+		this.number = number;
+	}
+
+	public void printNumber() {
+		System.out.println("Number: " + number);
+	}
+
+	public static void main(String[] args) {
+		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
+		intExample.printNumber(); // Number: 123
+
+		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
+		doubleExample.printNumber(); // Number: 45.67
+	}
+}
+
+
+
+  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
+
+
+하한 제한 (Lower Bound)
+
+하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
+
+예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LowerBoundWildcardExample {
+	public static void addNumbers(List&lt;? super Integer&gt; list) {
+		for (int i = 0; i &lt; 5; i++) {
+			list.add(i);
+		}
+	}
+
+	public static void main(String[] args) {
+		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
+		addNumbers(numberList);
+		System.out.println(numberList); // [0, 1, 2, 3, 4]
+	}
+}
+
+
+6️⃣ 제네릭의 제한 사항.
+
+
+  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
+
+
+// 올바르지 않음
+Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
+
+
+
+  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
+
+
+public class GenericClass&lt;T&gt; {
+    private static T item; // 컴파일 오류
+}
+
+
+
+  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
+
+
+// 올바르지 않음
+T[] array = new T[10]; // 컴파일 오류
+
+
+
+  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
+이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -5981,201 +6255,6 @@ public class Main {
 
 
   이 예제에서는 기본 타입과 래퍼 클래스를 사용하여 변수레 값을 저장하고, 컬렉션에 저장된 래퍼 클래스 객체를 사용하려 연산을 수행하는 과정을 보여줍니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
-                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
-                            1️⃣ 제네릭(Generic)
-
-Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
-
-제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
-
-2️⃣ 제네릭(Generic)의 주요 개념.
-
-
-  타입 매개변수 :
-    
-      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
-    
-  
-  타입 안정성 :
-    
-      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
-    
-  
-  재사용성 :
-    
-      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
-    
-  
-
-
-3️⃣ 제네릭 클래스.
-
-제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
-
-일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
-
-예제.
-
-// Box 클래스
-public class Box&lt;T&gt; {
-	private T item;
-
-	public void setItem(T item) {
-		this.item = item;
-	}
-
-	public T getItem() {
-		return item;
-	}
-}
-
-// Main 클래스
-public class Main {
-
-	public static void main(String[] args) {
-		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
-		stringBox.setItem("Hello");
-		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
-
-		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
-		integerBox.setItem(123);
-		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
-	}
-}
-
-
-4️⃣ 제네릭 메서드.
-
-제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
-
-예제.
-
-public class GenericMethodExample {
-	public static &lt;T&gt; void printArray(T[] array) {
-		for (T element : array) {
-			System.out.print(element + " ");
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		Integer[] intArray = {1, 2, 3, 4, 5};
-		String[] strArray = {"A", "B", "C", "D"};
-
-		printArray(intArray); // 1 2 3 4 5 
-		printArray(strArray); // A B C D 
-	}
-}
-
-
-5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
-
-제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
-
-상한 제한 (Upper Bound)
-
-public class BoundedTypeExample&lt;T extends Number&gt; {
-	private T number;
-
-	public BoundedTypeExample(T number) {
-		this.number = number;
-	}
-
-	public void printNumber() {
-		System.out.println("Number: " + number);
-	}
-
-	public static void main(String[] args) {
-		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
-		intExample.printNumber(); // Number: 123
-
-		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
-		doubleExample.printNumber(); // Number: 45.67
-	}
-}
-
-
-
-  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
-
-
-하한 제한 (Lower Bound)
-
-하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
-
-예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class LowerBoundWildcardExample {
-	public static void addNumbers(List&lt;? super Integer&gt; list) {
-		for (int i = 0; i &lt; 5; i++) {
-			list.add(i);
-		}
-	}
-
-	public static void main(String[] args) {
-		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
-		addNumbers(numberList);
-		System.out.println(numberList); // [0, 1, 2, 3, 4]
-	}
-}
-
-
-6️⃣ 제네릭의 제한 사항.
-
-
-  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
-
-
-// 올바르지 않음
-Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
-
-
-
-  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
-
-
-public class GenericClass&lt;T&gt; {
-    private static T item; // 컴파일 오류
-}
-
-
-
-  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
-
-
-// 올바르지 않음
-T[] array = new T[10]; // 컴파일 오류
-
-
-
-  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
-이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -22723,6 +22802,17 @@ public class Main {
             'type'     : "post",
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240815_AWS_BASTION_HOST.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-15"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240815_AWS_RULES.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
             'date'     : "2024-08-15"
         });

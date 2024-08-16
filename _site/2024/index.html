@@ -577,6 +577,7 @@
             
             
             
+            
 
     
     
@@ -9070,70 +9071,6 @@ b = Address{value='부산'}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
-                        <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="txt_post">
-                            GROUP BY
-‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
-
-  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
-  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
-
-
-‘GROUP BY’ 사용 예
-
-  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
-    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
-    
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
-  
-  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
-    SELECT category, AVG(price) FROM products GROUP BY category;
-    
-    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
-  
-  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
-    SELECT department, COUNT(*) FROM employees GROUP BY department;
-    
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
-  
-
-
-‘GROUP BY’ 절의 특징
-
-  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
-  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
-  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
-  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
-
-
-사용 시 고려사항
-
-  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
-  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
-
-
-‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-02-SharingOfBasicTypesAndReferenceTypes.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -9300,6 +9237,70 @@ Address b = a;
 
   메모리 구조를 보면 바로 답이 나오겠지만, 개발을 하다 보면 누구나 이런 실수할 수 있을 것 같다는 생각도 함께 들 것입니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/SQL/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
+                        <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="txt_post">
+                            GROUP BY
+‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
+
+  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
+  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
+
+
+‘GROUP BY’ 사용 예
+
+  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
+    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
+    
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
+  
+  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
+    SELECT category, AVG(price) FROM products GROUP BY category;
+    
+    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
+  
+  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
+    SELECT department, COUNT(*) FROM employees GROUP BY department;
+    
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
+  
+
+
+‘GROUP BY’ 절의 특징
+
+  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
+  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
+  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
+  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
+
+
+사용 시 고려사항
+
+  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
+  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
+
+
+‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
 
                         </a>
                         <div class="info-post">
@@ -35187,6 +35188,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240816_AWS_IP_ADDRESS.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-16"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
             'date'     : "2024-08-16"
         });

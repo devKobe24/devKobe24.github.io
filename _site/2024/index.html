@@ -579,6 +579,7 @@
             
             
             
+            
 
     
     
@@ -8267,6 +8268,126 @@ CONCAT
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html"><h1 class="title_post">☕️[Java] 불변 객체 - 예제</h1></a>
+                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="txt_post">
+                            불변 객체 - 예제
+조금 더 복잡하고 의미있는 예제를 통해서 불변 객체의 사용 예를 확인해봅시다.
+앞의 Address, ImmutableAddress를 그래로 활용합니다.
+
+변경 클래스 사용
+package lang.immutable.address;
+
+public class MemberMainV1 {
+
+  public static void main(String[] args) {
+    Address address = new Address("서울");
+
+    MemberV1 memberA = new MemberV1("회원A", address);
+    MemberV1 memberB = new MemberV1("회원B", address);
+
+    // 회원A, 회원B의 처음 주소는 모두 서울
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+
+    // 회원 B의 주소를 부산으로 변경해야함
+    memberB.getAddress().setValue("부산");
+    System.out.println("부산 -&gt; memberB.address");
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+  }
+}
+
+
+  회원A와 회원B는 둘다 서울에 살고 있습니다.
+    
+      중간에 회원B의 주소를 부산으로 변경해야 합니다.
+      그런데 회원A와 회원B는 같은 Address 인스턴스를 참조하고 있습니다.
+        
+          회원B의 주소를 부산으로 변경하는 순간 회원A의 주소도 부산으로 변경됩니다.
+        
+      
+    
+  
+
+
+실행 결과
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='서울'}}
+부산 -&gt; memberB.address
+memberA = MemberV1{name='회원A', address=Address{value='부산'}}
+memberB = MemberV1{name='회원B', address=Address{value='부산'}}
+
+
+package lang.immutable.address;
+
+public class MemberMainV2 {
+
+  public static void main(String[] args) {
+    ImmutableAddress address = new ImmutableAddress("서울");
+
+    MemberV2 memberA = new MemberV2("회원A", address);
+    MemberV2 memberB = new MemberV2("회원B", address);
+
+    // 회원A, 회원B의 처음 주소는 모두 서울
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+
+    // 회원B의 주소를 부산으로 변경해야함
+    //memberB.getAddress().setValue("부산"); // 컴파일 오류
+
+    memberB.setAddress(new ImmutableAddress("부산"));
+    System.out.println("부산 -&gt; memberB.address");
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+  }
+}
+
+
+  회원B의 주소를 중간에 부산으로 변경하려고 시도합니다.
+    
+      하지만 ImmutableAddress에는 값을 변경할 수 있는 메서드가 없습니다.
+        
+          따라서 컴파일 오류가 발생합니다.
+            
+              결국 memberB.setAddress(new ImmutableAddress("부산"))와 같이 새로운 주소 객체를 만들어서 전달합니다.
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='서울'}}
+부산 -&gt; memberB.address
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='부산'}}
+
+
+사이드 이펙트가 발생하지 않습니다. 회원A는 기존 주소를 그대로 유지합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/CS/2024-04-04-commandStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -8434,126 +8555,6 @@ Q5. JNI(Java Native Interface)는 무엇이며, 왜 사용하나요? Java 애플
 Q6. 가비지 컬렉션(Garbage Collection)의 기본 원리를 설명해 주세요. Java에서 가비지 컬렉터의 작동 방식에 영향을 미칠 수 있는 프로그래밍 관행에는 어떤 것들이 있나요?
 
 답변: 가비지 컬렉션은 참조되지 않는 객체를 자동으로 검출하고, 이를 메모리에서 제거하여 메모리를 회수하는 프로세스입니다. Java에서 가비지 컬렉터의 효율성에 영향을 미칠 수 있는 프로그래밍 관행으로는, 객체 참조를 적절히 해제하는 것, 대용량 객체의 재사용, 그리고 적절한 컬렉션 사용 등이 있습니다. 불필요한 객체 참조를 남겨두지 않고, 메모리 사용량이 큰 객체는 풀링 기법을 사용하여 관리함으로써, 가비지 컬렉터의 부하를 줄이고 애플리케이션의 성능을 개선할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html"><h1 class="title_post">☕️[Java] 불변 객체 - 예제</h1></a>
-                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="txt_post">
-                            불변 객체 - 예제
-조금 더 복잡하고 의미있는 예제를 통해서 불변 객체의 사용 예를 확인해봅시다.
-앞의 Address, ImmutableAddress를 그래로 활용합니다.
-
-변경 클래스 사용
-package lang.immutable.address;
-
-public class MemberMainV1 {
-
-  public static void main(String[] args) {
-    Address address = new Address("서울");
-
-    MemberV1 memberA = new MemberV1("회원A", address);
-    MemberV1 memberB = new MemberV1("회원B", address);
-
-    // 회원A, 회원B의 처음 주소는 모두 서울
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-
-    // 회원 B의 주소를 부산으로 변경해야함
-    memberB.getAddress().setValue("부산");
-    System.out.println("부산 -&gt; memberB.address");
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-  }
-}
-
-
-  회원A와 회원B는 둘다 서울에 살고 있습니다.
-    
-      중간에 회원B의 주소를 부산으로 변경해야 합니다.
-      그런데 회원A와 회원B는 같은 Address 인스턴스를 참조하고 있습니다.
-        
-          회원B의 주소를 부산으로 변경하는 순간 회원A의 주소도 부산으로 변경됩니다.
-        
-      
-    
-  
-
-
-실행 결과
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='서울'}}
-부산 -&gt; memberB.address
-memberA = MemberV1{name='회원A', address=Address{value='부산'}}
-memberB = MemberV1{name='회원B', address=Address{value='부산'}}
-
-
-package lang.immutable.address;
-
-public class MemberMainV2 {
-
-  public static void main(String[] args) {
-    ImmutableAddress address = new ImmutableAddress("서울");
-
-    MemberV2 memberA = new MemberV2("회원A", address);
-    MemberV2 memberB = new MemberV2("회원B", address);
-
-    // 회원A, 회원B의 처음 주소는 모두 서울
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-
-    // 회원B의 주소를 부산으로 변경해야함
-    //memberB.getAddress().setValue("부산"); // 컴파일 오류
-
-    memberB.setAddress(new ImmutableAddress("부산"));
-    System.out.println("부산 -&gt; memberB.address");
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-  }
-}
-
-
-  회원B의 주소를 중간에 부산으로 변경하려고 시도합니다.
-    
-      하지만 ImmutableAddress에는 값을 변경할 수 있는 메서드가 없습니다.
-        
-          따라서 컴파일 오류가 발생합니다.
-            
-              결국 memberB.setAddress(new ImmutableAddress("부산"))와 같이 새로운 주소 객체를 만들어서 전달합니다.
-            
-          
-        
-      
-    
-  
-
-
-실행 결과
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='서울'}}
-부산 -&gt; memberB.address
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='부산'}}
-
-
-사이드 이펙트가 발생하지 않습니다. 회원A는 기존 주소를 그대로 유지합니다.
 
                         </a>
                         <div class="info-post">
@@ -9009,52 +9010,53 @@ b = Address{value='부산'}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                            <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-02-ORDERBY.html"><h1 class="title_post">💉[SQL] ORDER BY</h1></a>
-                        <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="txt_post">
-                            ORDER BY
-‘ORDER BY’ 절은 SQL 쿼리의 결과를 특정 기준에 따라 정렬할 때 사용됩니다.
+                        <a href="/2024/SQL/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
+                        <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="txt_post">
+                            GROUP BY
+‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
 
-  이를 통해 반환된 데이터를 오름차순(ASC) 또는 내림차순(DESC)으로 정렬할 수 있으며, 숫자, 문자열, 날짜 등 다양한 데이터 타입에 적용할 수 있습니다.
-  ‘ORDER BY’ 는 데이터를 보다 읽기 쉽고 분석하기 용이하게 정렬하여 제공함으로써, 데이터 리포팅, 사용자 인터페이스에서의 데이터 표시, 데이터 분석 등 다양한 상황에서 유용하게 사용됩니다.
+  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
+  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
 
 
-‘OREDER BY’ 사용 예
+‘GROUP BY’ 사용 예
 
-  특정 열에 따른 오름차순 정렬: 직원들을 이름순으로 정렬하고 싶을 때
-    SELECT * FROM emploees ORDER BY name ASC;
+  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
+    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
     
-    이 쿼리는 ‘employees’ 테이블의 모든 행을 ‘name’ 열 기준으로 오름차순으로 정렬하여 반환합니다.
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
   
-  특정 열에 따른 내림차순 정렬: 최신 주문부터 표시하고 싶을 때
-    SELECT * FROM orders ORDER BY order_by DESC;
+  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
+    SELECT category, AVG(price) FROM products GROUP BY category;
     
-    이 쿼리는 ‘orders’ 테이블의 모든 행을 ‘order_date’ 열 기준으로 내림차순으로 정렬하여 반환합니다.
+    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
   
-  여러 열에 따른 정렬: 부서별로 그룹화하고, 각 부서 내에서 급여가 높은 순으로 정렬하고 싶을 때
-    SELECT * FROM employees ORDER BY department ASC, salary DESC;
+  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
+    SELECT department, COUNT(*) FROM employees GROUP BY department;
     
-    이 쿼리는 먼저 ‘department’ 열로 오름차순으로 정렬하고, 같은 부서 내에서는 ‘salary’ 열을 기준으로 내림차순으로 정렬합니다.
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
   
 
 
-‘ORDER BY’ 절의 특징
+‘GROUP BY’ 절의 특징
 
-  기본적으로 ‘ORDER BY’ 는 오름차순(ASC)으로 정렬합니다. 내림차순으로 정렬하고 싶다면 각 열 이름 뒤에 ‘DESC’ 키워드를 명시해야 합니다.
-  여러 열을 기준으로 정렬할 수 있으며, 이 경우 첫 번째 열을 기준으로 정렬한 후 동일한 값에 대해서는 다음 열의 순서에 따라 정렬합니다.
-  ‘SELECT’ 쿼리의 마지막 부분에 위치하며, ‘WHERE’, ‘GROUP BY’, ‘HAVING’ 절 뒤에 명시됩니다.
+  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
+  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
+  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
+  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
 
 
 사용 시 고려사항
 
-  ‘ORDER BY’ 를 사용할 때는 정렬하고자 하는 열이 인덱싱되어 있는지 확인하는 것이 좋습니다. 특히 대규모 데이터셋을 다룰 때, 인덱스의 유무는 쿼리 성능에 큰 영향을 미칩니다.
-  복잡한 쿼리에서는 ‘ORDER BY’ 로 인한 추가적인 처리 시간이 필요할 수 있으므로, 성능과 관련하여 적절한 테스트가 필요합니다.
+  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
+  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
 
 
-‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
+‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
 
                         </a>
                         <div class="info-post">
@@ -9255,53 +9257,52 @@ Address b = a;
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                            <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
-                        <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="txt_post">
-                            GROUP BY
-‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
+                        <a href="/2024/SQL/2024-04-02-ORDERBY.html"><h1 class="title_post">💉[SQL] ORDER BY</h1></a>
+                        <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="txt_post">
+                            ORDER BY
+‘ORDER BY’ 절은 SQL 쿼리의 결과를 특정 기준에 따라 정렬할 때 사용됩니다.
 
-  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
-  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
+  이를 통해 반환된 데이터를 오름차순(ASC) 또는 내림차순(DESC)으로 정렬할 수 있으며, 숫자, 문자열, 날짜 등 다양한 데이터 타입에 적용할 수 있습니다.
+  ‘ORDER BY’ 는 데이터를 보다 읽기 쉽고 분석하기 용이하게 정렬하여 제공함으로써, 데이터 리포팅, 사용자 인터페이스에서의 데이터 표시, 데이터 분석 등 다양한 상황에서 유용하게 사용됩니다.
 
 
-‘GROUP BY’ 사용 예
+‘OREDER BY’ 사용 예
 
-  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
-    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
+  특정 열에 따른 오름차순 정렬: 직원들을 이름순으로 정렬하고 싶을 때
+    SELECT * FROM emploees ORDER BY name ASC;
     
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
+    이 쿼리는 ‘employees’ 테이블의 모든 행을 ‘name’ 열 기준으로 오름차순으로 정렬하여 반환합니다.
   
-  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
-    SELECT category, AVG(price) FROM products GROUP BY category;
+  특정 열에 따른 내림차순 정렬: 최신 주문부터 표시하고 싶을 때
+    SELECT * FROM orders ORDER BY order_by DESC;
     
-    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
+    이 쿼리는 ‘orders’ 테이블의 모든 행을 ‘order_date’ 열 기준으로 내림차순으로 정렬하여 반환합니다.
   
-  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
-    SELECT department, COUNT(*) FROM employees GROUP BY department;
+  여러 열에 따른 정렬: 부서별로 그룹화하고, 각 부서 내에서 급여가 높은 순으로 정렬하고 싶을 때
+    SELECT * FROM employees ORDER BY department ASC, salary DESC;
     
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
+    이 쿼리는 먼저 ‘department’ 열로 오름차순으로 정렬하고, 같은 부서 내에서는 ‘salary’ 열을 기준으로 내림차순으로 정렬합니다.
   
 
 
-‘GROUP BY’ 절의 특징
+‘ORDER BY’ 절의 특징
 
-  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
-  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
-  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
-  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
+  기본적으로 ‘ORDER BY’ 는 오름차순(ASC)으로 정렬합니다. 내림차순으로 정렬하고 싶다면 각 열 이름 뒤에 ‘DESC’ 키워드를 명시해야 합니다.
+  여러 열을 기준으로 정렬할 수 있으며, 이 경우 첫 번째 열을 기준으로 정렬한 후 동일한 값에 대해서는 다음 열의 순서에 따라 정렬합니다.
+  ‘SELECT’ 쿼리의 마지막 부분에 위치하며, ‘WHERE’, ‘GROUP BY’, ‘HAVING’ 절 뒤에 명시됩니다.
 
 
 사용 시 고려사항
 
-  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
-  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
+  ‘ORDER BY’ 를 사용할 때는 정렬하고자 하는 열이 인덱싱되어 있는지 확인하는 것이 좋습니다. 특히 대규모 데이터셋을 다룰 때, 인덱스의 유무는 쿼리 성능에 큰 영향을 미칩니다.
+  복잡한 쿼리에서는 ‘ORDER BY’ 로 인한 추가적인 처리 시간이 필요할 수 있으므로, 성능과 관련하여 적절한 테스트가 필요합니다.
 
 
-‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
+‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
 
                         </a>
                         <div class="info-post">
@@ -35189,6 +35190,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240816_AWS_CIDR_BLOCK.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-16"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 방화벽에서 허용된 통신만 통과.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240816_AWS_FIREWALL.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
             'date'     : "2024-08-16"
         });

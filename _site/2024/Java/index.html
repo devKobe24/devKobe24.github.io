@@ -585,6 +585,7 @@
             
             
             
+            
 
     
     
@@ -1647,6 +1648,104 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
+                            래퍼 클래스 - 오토 박싱.
+
+오토 박싱 - Autoboxing
+
+자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
+다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
+
+package lang.wrapper;
+
+public class AutoboxingMain1 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = Integer.valueOf(value);
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue.intValue();
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+
+  박싱: valueOf()
+  언박싱: xxxValue() (예: intValue(), doubleValue())
+
+
+개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
+그래서 많은 개발자들이 불편함을 호소했습니다.
+
+  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
+
+
+오토 박싱, 언박싱
+package lang.wrapper;
+
+public class AutoboxingMain2 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
+덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
+따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
+
+Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
+
+int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-17-WrapperClass-JavaWrapperClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -1763,104 +1862,6 @@ intValue() - 언박싱(Unboxing)
 
 
   참고로 래퍼 클래스는 객체를 그대로 출력해도 내부에 있는 값을 문자로 출력하도록 toString()을 재정의 해두었습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
-                            래퍼 클래스 - 오토 박싱.
-
-오토 박싱 - Autoboxing
-
-자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
-다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
-
-package lang.wrapper;
-
-public class AutoboxingMain1 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = Integer.valueOf(value);
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue.intValue();
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-
-  박싱: valueOf()
-  언박싱: xxxValue() (예: intValue(), doubleValue())
-
-
-개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
-그래서 많은 개발자들이 불편함을 호소했습니다.
-
-  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
-
-
-오토 박싱, 언박싱
-package lang.wrapper;
-
-public class AutoboxingMain2 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
-덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
-따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
-
-Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
-
-int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -2312,166 +2313,6 @@ StringBuilder를 직접 사용하는 것이 더 좋은 경우
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
-                            String 최적화.
-자바의 String 최적화
-자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
-
-문자열 리터럴 최적화
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-String 변수 최적화
-문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-String result = str1 + str2;
-
-
-이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
-String result = new StringBuilder().append(str1).append(str2).toString();
-
-
-
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
-
-
-이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
-
-  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
-
-
-String 최적화가 어려운 경우
-다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-package lang.string.builder;
-
-public class LoopStringMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-    String result = "";
-
-    for (int i = 0; i &lt; 100000; i++) {
-      result += "Hello Java ";
-    }
-
-    long endTime = System.currentTimeMillis();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-String result = "";
-for (int i = 0; i &lt; 100000; i++) {
-    result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-
-
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-    
-      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-        
-          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
-            
-              따라서, 이런 상황에서는 최적화가 어렵습니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 2528ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
-
-
-이럴 때는 직접 StringBuilder를 사용하면 됩니다.
-package lang.string.builder;
-
-public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i &lt; 100000; i++) {
-      sb.append("Hello Java ");
-    }
-
-    long endTime = System.currentTimeMillis();
-
-    String result = sb.toString();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 4ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
-
-
-정리
-
-  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-
-
-StringBuilder를 직접 사용하는 것이 더 좋은 경우
-
-  반복문에서 반복해서 문자를 연결할 때
-  조건문을 통해 동적으로 문자열을 조합할 때
-  복잡한 문자열의 특정 부분을 변경해야 할 때
-  매우 긴 대용량 문자열을 다룰 때
-
-
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-11-MethodChaining.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -2692,171 +2533,155 @@ string = DCBA
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-10-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-04-10-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
-                        <a href="/2024/Java/2024-04-10-StringBuilder.html" class="txt_post">
-                            StringBuilder - 가변 String.
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
+                            String 최적화.
+자바의 String 최적화
+자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
 
-불변인 String 클래스의 단점.
-불변인 String 클래스에도 단점이 있습니다.
-
-다음 예를 봅시다.
-
-  참고로 실제로 작동하는 코드는 아닙니다.
-
-
-두 문자를 더하는 경우 다음과 같이 작동합니다.
-"A" + "B";
-String("A") + String("B"); // 문자는 String 타입.
-String("A").concat(String("B")); // 문자의 더하기는 concat을 사용.
-new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
+문자열 리터럴 최적화
+컴파일 전
+String helloWorld = "Hello, " + "World!";
 
 
-불변인 String의 내부 값은 변경할 수 없습니다.
+컴파일 후
+String helloWorld = "Hello, World!";
 
-따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
+따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
 
-더 많은 문자를 더하는 경우를 살펴봅시다.
-String str = "A" + "B" + "C" + "D";
-String str = String("A") + String("B") + String("C") + String("D");
-String str = new String("AB") + String("C") + String("D");
-String str = new String("ABC") + String("D");
-String str = new String("ABCD");
+String 변수 최적화
+문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+String result = str1 + str2;
 
 
-  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
-    
-      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC")는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD")만 사용됩니다.
-        
-          결과적으로 중간에 만들어진 new String("AB)", new String("ABC")는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
-        
-      
-    
-  
+이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
+String result = new StringBuilder().append(str1).append(str2).toString();
 
 
-불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점입니다.
-문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
-결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
-그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
+
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
 
 
-  참고 : 실제로는 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
+이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+
+  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
 
 
-StringBuilder
-이 문제를 해결하는 방법은 단순합니다.
-
-  바로 불변이 아닌 가변 String이 존재하면 됩니다.
-    
-      가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
-        
-          따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
-        
-      
-    
-  
-
-
-이런 문제를 해결하기 위해 자바는 StringBuilder라는 가변 String을 제공합니다.
-
-  물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
-
-
-StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
-
-public final class StringBuilder {
-    char[] value; // 자바 9 이전
-    char[] value; // 자바 9 이후
-    
-    // 여러 메서드
-    public StringBuilder append(String str) {...}
-    public int length() {...}
-    ...
-}
-
-(실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
-
-StringBuilder 사용 예
-실제 StringBuilder를 어떻게 사용하는지 확인해 봅시다.
-
+String 최적화가 어려운 경우
+다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
 package lang.string.builder;
 
-public class StringBuilderMain1_1 {
+public class LoopStringMain {
 
   public static void main(String[] args) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("A");
-    sb.append("B");
-    sb.append("C");
-    sb.append("D");
-    System.out.println("sb = " + sb);
+    long startTime = System.currentTimeMillis();
+    String result = "";
 
-    sb.insert(4, "Java");
-    System.out.println("sb = " + sb);
+    for (int i = 0; i &lt; 100000; i++) {
+      result += "Hello Java ";
+    }
 
-    sb.delete(4,8);
-    System.out.println("delete = " + sb);
-
-    sb.reverse();
-    System.out.println("reverse = " + sb);
-
-    // StringBuilder(가변) -&gt; String(불변)으로 바꿀 수 있음.
-    String string = sb.toString();
-    System.out.println("string = " + string);
+    long endTime = System.currentTimeMillis();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
   }
 }
 
 
+왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+String result = "";
+for (int i = 0; i &lt; 100000; i++) {
+    result = new StringBuilder().append(result).append("Hello Java ").toString();
+}
 
-  StringBuilder 객체를 생성합니다.
-  append() 메서드를 사용해 여러 문자열을 추가합니다.
-  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
-  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
-  reverse() 메서드로 문자열을 뒤집습니다.
-  마지막으로 toString() 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
+
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+    
+      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+        
+          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+            
+              따라서, 이런 상황에서는 최적화가 어렵습니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 2528ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
+
+
+이럴 때는 직접 StringBuilder를 사용하면 됩니다.
+package lang.string.builder;
+
+public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i &lt; 100000; i++) {
+      sb.append("Hello Java ");
+    }
+
+    long endTime = System.currentTimeMillis();
+
+    String result = sb.toString();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
 
 
 실행 결과
-sb = ABCD
-sb = ABCDJava
-delete = ABCD
-reverse = DCBA
-string = DCBA
+result = Hello Java Hello Java ...
+time = 4ms
 
 
-가변(Mutable) vs 불변(Immutable)
-
-  String은 불변합니다. 즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
-    
-      따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
-        
-          이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
-        
-      
-    
-  
-  반면에, StringBuilder는 가변적입니다.
-    
-      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이때마다 새로운 객체를 생성하지 않습니다.
-        
-          이로 인해 메모리 사용을 줄이고 성늘을 향상시킬 수 있습니다. 단 사이드 이펙트를 주의해야 합니다.
-        
-      
-    
-  
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
 
 
-StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
+정리
+
+  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+
+
+StringBuilder를 직접 사용하는 것이 더 좋은 경우
+
+  반복문에서 반복해서 문자를 연결할 때
+  조건문을 통해 동적으로 문자열을 조합할 때
+  복잡한 문자열의 특정 부분을 변경해야 할 때
+  매우 긴 대용량 문자열을 다룰 때
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
+
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-04-10</span>
+                                <span class="date">· 2024-04-11</span>
                             
                         </div>
                     </div>
@@ -3067,117 +2892,171 @@ format 메서드에서 %d는 숫자 %b는 boolean, %s는 문자열을 뜻합니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-09-StringClassImmutableObject.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-04-10-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-04-09-StringClassImmutableObject.html"><h1 class="title_post">☕️[Java] String 클래스 - 불변객체</h1></a>
-                        <a href="/2024/Java/2024-04-09-StringClassImmutableObject.html" class="txt_post">
-                            String 클래스 - 불변객체
-String은 불변 객체입니다.
-따라서 생성 이후에 절대로 내부의 문자열 값을 변경할 수 없습니다.
+                        <a href="/2024/Java/2024-04-10-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
+                        <a href="/2024/Java/2024-04-10-StringBuilder.html" class="txt_post">
+                            StringBuilder - 가변 String.
+
+불변인 String 클래스의 단점.
+불변인 String 클래스에도 단점이 있습니다.
 
 다음 예를 봅시다.
 
-package lang.string.immutable;
-
-public class StringImmutable1 {
-
-  public static void main(String[] args) {
-    String str = "hello";
-    str.concat(" java");
-    System.out.println("str = " + str);
-  }
-}
+  참고로 실제로 작동하는 코드는 아닙니다.
 
 
-  String.concat() 메서드를 사용하면 기존 문자열에 새로운 문자열을 연결해서 합칠 수 있습니다.
+두 문자를 더하는 경우 다음과 같이 작동합니다.
+"A" + "B";
+String("A") + String("B"); // 문자는 String 타입.
+String("A").concat(String("B")); // 문자의 더하기는 concat을 사용.
+new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
+
+
+불변인 String의 내부 값은 변경할 수 없습니다.
+
+따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
+
+더 많은 문자를 더하는 경우를 살펴봅시다.
+String str = "A" + "B" + "C" + "D";
+String str = String("A") + String("B") + String("C") + String("D");
+String str = new String("AB") + String("C") + String("D");
+String str = new String("ABC") + String("D");
+String str = new String("ABCD");
+
+
+  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
     
-      이 경우 어떤 실행 결과가 나올까요?
+      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC")는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD")만 사용됩니다.
         
-          불변 객체에서 학습한 내용을 떠올려봅시다.
-        
-      
-    
-  
-
-
-실행 결과
-str = hello
-
-실행 결과를 보면 뭔가 이상합니다.
-
-  문자가 전혀 합쳐지지 않았습니다.
-
-
-다음 코드를 봐봅시다.
-package lang.string.immutable;
-
-public class StringImmutable2 {
-
-  public static void main(String[] args) {
-    String str1 = "hello";
-    String str2 = str1.concat(" java");
-    System.out.println("str1 = " + str1);
-    System.out.println("str2 = " + str2);
-  }
-}
-
-
-
-  String은 불변 객체입니다.
-    
-      따라서 변경이 필요한 경우 기존 값을 변경하지 않고, 대신에 새로운 결과를 만들어서 반환합니다.
-    
-  
-
-
-실행 결과
-str1 = hello
-str2 = hello java
-
-
-
-
-  String.concat()은 내부에서 새로운 String 객체를 만들어서 반환합니다.
-    
-      따라서 불변과 기존 객체의 값을 유지합니다.
-    
-  
-
-
-String이 불변으로 설계된 이유.
-String이 불변으로 설계된 이유는 앞서 불변 객체에서 배운 내용에 추가로 다음과 같은 이유도 있습니다.
-
-  문자열 풀에 있는 String 인스턴스의 값이 중간에 변경되면 같은 문자열을 참고하는 다른 변수의 값도 함께 변경됩니다.
-
-
-예를 들어봅시다.
-
-
-
-
-  String은 자바 내부에서 문자열 풀을 통해 최적화를 합니다
-  만약 String 내부의 값을 변경할 수 있다면, 기존에 문자열 풀에서 같은 문자를 참조하는 변수의 모든 문자가 함께 변경되어 버리는 문제가 발생합니다.
-    
-      다음의 경우 str3이 참조하는 문자를 변경하면 str4의 문자도 함께 변경되는 사이드 이펙트 문자가 발생합니다.
-        
-          String str3 = "hello"
-          String str4 = "hello"
+          결과적으로 중간에 만들어진 new String("AB)", new String("ABC")는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
         
       
     
   
 
 
-String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문제가 발생하지 않습니다.
+불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점입니다.
+문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
+결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
+그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
 
+
+  참고 : 실제로는 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
+
+
+StringBuilder
+이 문제를 해결하는 방법은 단순합니다.
+
+  바로 불변이 아닌 가변 String이 존재하면 됩니다.
+    
+      가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
+        
+          따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
+        
+      
+    
+  
+
+
+이런 문제를 해결하기 위해 자바는 StringBuilder라는 가변 String을 제공합니다.
+
+  물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
+
+
+StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
+
+public final class StringBuilder {
+    char[] value; // 자바 9 이전
+    char[] value; // 자바 9 이후
+    
+    // 여러 메서드
+    public StringBuilder append(String str) {...}
+    public int length() {...}
+    ...
+}
+
+(실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
+
+StringBuilder 사용 예
+실제 StringBuilder를 어떻게 사용하는지 확인해 봅시다.
+
+package lang.string.builder;
+
+public class StringBuilderMain1_1 {
+
+  public static void main(String[] args) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("A");
+    sb.append("B");
+    sb.append("C");
+    sb.append("D");
+    System.out.println("sb = " + sb);
+
+    sb.insert(4, "Java");
+    System.out.println("sb = " + sb);
+
+    sb.delete(4,8);
+    System.out.println("delete = " + sb);
+
+    sb.reverse();
+    System.out.println("reverse = " + sb);
+
+    // StringBuilder(가변) -&gt; String(불변)으로 바꿀 수 있음.
+    String string = sb.toString();
+    System.out.println("string = " + string);
+  }
+}
+
+
+
+  StringBuilder 객체를 생성합니다.
+  append() 메서드를 사용해 여러 문자열을 추가합니다.
+  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
+  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
+  reverse() 메서드로 문자열을 뒤집습니다.
+  마지막으로 toString() 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
+
+
+실행 결과
+sb = ABCD
+sb = ABCDJava
+delete = ABCD
+reverse = DCBA
+string = DCBA
+
+
+가변(Mutable) vs 불변(Immutable)
+
+  String은 불변합니다. 즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
+    
+      따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
+        
+          이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
+        
+      
+    
+  
+  반면에, StringBuilder는 가변적입니다.
+    
+      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이때마다 새로운 객체를 생성하지 않습니다.
+        
+          이로 인해 메모리 사용을 줄이고 성늘을 향상시킬 수 있습니다. 단 사이드 이펙트를 주의해야 합니다.
+        
+      
+    
+  
+
+
+StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-04-09</span>
+                                <span class="date">· 2024-04-10</span>
                             
                         </div>
                     </div>
@@ -3367,6 +3246,128 @@ public class StringSearchMain {
 'Java'의 첫 번째 인덱스: 7
 인덱스 10부터 'Java'의 인덱스: 24
 'Java'의 마지막 인덱스: 24
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-09-StringClassImmutableObject.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-09-StringClassImmutableObject.html"><h1 class="title_post">☕️[Java] String 클래스 - 불변객체</h1></a>
+                        <a href="/2024/Java/2024-04-09-StringClassImmutableObject.html" class="txt_post">
+                            String 클래스 - 불변객체
+String은 불변 객체입니다.
+따라서 생성 이후에 절대로 내부의 문자열 값을 변경할 수 없습니다.
+
+다음 예를 봅시다.
+
+package lang.string.immutable;
+
+public class StringImmutable1 {
+
+  public static void main(String[] args) {
+    String str = "hello";
+    str.concat(" java");
+    System.out.println("str = " + str);
+  }
+}
+
+
+  String.concat() 메서드를 사용하면 기존 문자열에 새로운 문자열을 연결해서 합칠 수 있습니다.
+    
+      이 경우 어떤 실행 결과가 나올까요?
+        
+          불변 객체에서 학습한 내용을 떠올려봅시다.
+        
+      
+    
+  
+
+
+실행 결과
+str = hello
+
+실행 결과를 보면 뭔가 이상합니다.
+
+  문자가 전혀 합쳐지지 않았습니다.
+
+
+다음 코드를 봐봅시다.
+package lang.string.immutable;
+
+public class StringImmutable2 {
+
+  public static void main(String[] args) {
+    String str1 = "hello";
+    String str2 = str1.concat(" java");
+    System.out.println("str1 = " + str1);
+    System.out.println("str2 = " + str2);
+  }
+}
+
+
+
+  String은 불변 객체입니다.
+    
+      따라서 변경이 필요한 경우 기존 값을 변경하지 않고, 대신에 새로운 결과를 만들어서 반환합니다.
+    
+  
+
+
+실행 결과
+str1 = hello
+str2 = hello java
+
+
+
+
+  String.concat()은 내부에서 새로운 String 객체를 만들어서 반환합니다.
+    
+      따라서 불변과 기존 객체의 값을 유지합니다.
+    
+  
+
+
+String이 불변으로 설계된 이유.
+String이 불변으로 설계된 이유는 앞서 불변 객체에서 배운 내용에 추가로 다음과 같은 이유도 있습니다.
+
+  문자열 풀에 있는 String 인스턴스의 값이 중간에 변경되면 같은 문자열을 참고하는 다른 변수의 값도 함께 변경됩니다.
+
+
+예를 들어봅시다.
+
+
+
+
+  String은 자바 내부에서 문자열 풀을 통해 최적화를 합니다
+  만약 String 내부의 값을 변경할 수 있다면, 기존에 문자열 풀에서 같은 문자를 참조하는 변수의 모든 문자가 함께 변경되어 버리는 문제가 발생합니다.
+    
+      다음의 경우 str3이 참조하는 문자를 변경하면 str4의 문자도 함께 변경되는 사이드 이펙트 문자가 발생합니다.
+        
+          String str3 = "hello"
+          String str4 = "hello"
+        
+      
+    
+  
+
+
+String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문제가 발생하지 않습니다.
 
 
                         </a>
@@ -3710,70 +3711,6 @@ result2 = hello jave
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
-                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="txt_post">
-                            불변 객체 - 정리.
-지금까지 왜 이렇게 불변 객체 이야기를 많이 했을까요?
-
-  자바에서 가장 많이 사용되는 String 클래스가 바로 불변 객체이기 때문입니다.
-  뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수 많은 클래스가 불변으로 설계되어 있습니다.
-    
-      따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
-    
-  
-
-
-모든 클래스를 불변으로 만드는 것은 아닙니다.
-우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
-
-  예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
-    
-      가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
-        
-          때로는 같은 기능을 하는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
-        
-      
-    
-  
-
-
-클래스를 불변으로 설계하는 이유는 더 많습니다.
-
-  캐시 안정성
-  멀티 쓰레드 안정성
-  엔티티 값 타입
-
-
-지금은 이런 부분을 다 이해할 수는 없습니다.
-
-  관련 내용을 학습하다 보면 자연스럽게 이번에 배운 불변 객체가 떠오르면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
-  프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 됩니다.
-    
-      따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-05-ImmutableObjectChangeValue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -3940,6 +3877,70 @@ obj1 = 10
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
+                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="txt_post">
+                            불변 객체 - 정리.
+지금까지 왜 이렇게 불변 객체 이야기를 많이 했을까요?
+
+  자바에서 가장 많이 사용되는 String 클래스가 바로 불변 객체이기 때문입니다.
+  뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수 많은 클래스가 불변으로 설계되어 있습니다.
+    
+      따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
+    
+  
+
+
+모든 클래스를 불변으로 만드는 것은 아닙니다.
+우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
+
+  예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
+    
+      가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
+        
+          때로는 같은 기능을 하는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
+        
+      
+    
+  
+
+
+클래스를 불변으로 설계하는 이유는 더 많습니다.
+
+  캐시 안정성
+  멀티 쓰레드 안정성
+  엔티티 값 타입
+
+
+지금은 이런 부분을 다 이해할 수는 없습니다.
+
+  관련 내용을 학습하다 보면 자연스럽게 이번에 배운 불변 객체가 떠오르면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
+  프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 됩니다.
+    
+      따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -4049,215 +4050,6 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-04-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
-                            불변 객체 - 도입
-지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
-
-  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
-    
-      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-        
-          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-        
-      
-    
-  
-
-
-앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
-
-  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
-    Address a = new Address("서울");
-Address b = a;
-    
-  
-
-
-따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-
-  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-
-
-Address a = new Address("서울");
-Address b = new Address("서울");
-
-
-여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
-
-진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-
-
-자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-
-  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-    
-      따라서 이것은 문제가 아닙니다.
-        
-          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
-        
-      
-    
-  
-
-
-만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-
-불변 객체 도입
-객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-
-앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
-
-package lang.immutable.address;
-
-public class ImmutableAddress {
-  private final String value;
-
-  public ImmutableAddress(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return "Address{" +
-        "value='" + value + '\'' +
-        '}';
-  }
-}
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 value의 필드를 final로 선언했습니다.
-    
-  
-  값을 변경할 수 있는 setValue()를 제거했습니다.
-  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-
-
-불변 클래스를 만드는 방법은 아주 단순합니다.
-
-  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-
-
-package lang.immutable.address;
-
-public class RefMain2 {
-
-  public static void main(String[] args) {
-    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
-    ImmutableAddress a = new ImmutableAddress("서울");
-    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-
-    System.out.println("a = " + a);
-    System.out.println("b = " + b);
-
-    // b.setValue("부산"); // 컴파일 오류 발생
-    b = new ImmutableAddress("부산");
-    System.out.println("부산 -&gt; b");
-    System.out.println("a = " + a); // 사이드 이펙트 발생
-    System.out.println("b = " + b);
-  }
-}
-
-
-  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
-  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
-    
-      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
-        
-          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
-        
-      
-    
-  
-  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
-
-
-
-
-  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-정리
-불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-
-  객체의 공유 참조는 막을 수 없습니다.
-    
-      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
-      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-    
-  
-  불변 객체는 값을 변경할 수 없습니다.
-    
-      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-        
-          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-        
-      
-    
-  
-
-
-
-  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
-
-  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-03</span>
                             
                         </div>
                     </div>
@@ -4480,6 +4272,215 @@ b = Address{value='부산'}
     
   
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
+                            불변 객체 - 도입
+지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
+
+  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
+    
+      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+        
+          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+        
+      
+    
+  
+
+
+앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
+
+  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
+    Address a = new Address("서울");
+Address b = a;
+    
+  
+
+
+따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+
+  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
+
+진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+
+  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+    
+      따라서 이것은 문제가 아닙니다.
+        
+          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
+        
+      
+    
+  
+
+
+만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+
+불변 객체 도입
+객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+
+앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
+
+package lang.immutable.address;
+
+public class ImmutableAddress {
+  private final String value;
+
+  public ImmutableAddress(String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return "Address{" +
+        "value='" + value + '\'' +
+        '}';
+  }
+}
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 value의 필드를 final로 선언했습니다.
+    
+  
+  값을 변경할 수 있는 setValue()를 제거했습니다.
+  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+
+
+불변 클래스를 만드는 방법은 아주 단순합니다.
+
+  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+
+
+package lang.immutable.address;
+
+public class RefMain2 {
+
+  public static void main(String[] args) {
+    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
+    ImmutableAddress a = new ImmutableAddress("서울");
+    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+
+    System.out.println("a = " + a);
+    System.out.println("b = " + b);
+
+    // b.setValue("부산"); // 컴파일 오류 발생
+    b = new ImmutableAddress("부산");
+    System.out.println("부산 -&gt; b");
+    System.out.println("a = " + a); // 사이드 이펙트 발생
+    System.out.println("b = " + b);
+  }
+}
+
+
+  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
+  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
+    
+      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
+        
+          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
+        
+      
+    
+  
+  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
+
+
+
+
+  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+정리
+불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+
+  객체의 공유 참조는 막을 수 없습니다.
+    
+      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
+      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+    
+  
+  불변 객체는 값을 변경할 수 없습니다.
+    
+      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+        
+          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+        
+      
+    
+  
+
+
+
+  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
+
+  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
 
 
                         </a>
@@ -5615,6 +5616,80 @@ Object가 없다면?
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-28-java-langPackage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-28-java-langPackage.html"><h1 class="title_post">☕️[Java] java.lang 패키지 소개</h1></a>
+                        <a href="/2024/Java/2024-03-28-java-langPackage.html" class="txt_post">
+                            java.lang 패키지 소개.
+자바가 기본적으로 제공하는 라이브러리(클래스 모음)중에 가장 지본이 되는 것이 바로 java.lang 패키지입니다.
+
+여기서 lang은 Language(언어)의 줄임말 입니다.
+
+쉽게 이야기해서 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+java.lang 패키지의 대표적인 클래스들.
+
+  Object : 모든 자바 객체의 부모 클래스
+  String : 문자열
+  Integer, Long, Double : 래퍼 타입, 기본형 데이터 타입을 객체로 만든 것
+  Class : 클래스 메타 정보
+  System: 시스템과 관련된 기본 기능들을 제공
+
+
+“여기 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.”
+
+import 생략 가능
+java.lang 패키지는 모든 자바 애플리케이션에 자동으로 임포트(import)됩니다.
+
+따라서 임포트 구문을 사용하지 않아도 됩니다.
+
+다른 패키지에 있는 클래스를 사용하려면 다음과 같이 임포트를 사용해야 합니다.
+
+package lang;
+
+import java.lang.System;
+
+public class LangMain {
+    
+    public static void main(String[] args) {
+        System.out.println("hello.java");
+    }
+}
+
+
+System 클래스는 java.lang 패키지 소속입니다. 따라서 다음과 같이 임포트를 생략할 수 있습니다.
+
+package lang;
+
+public class LangMain {
+
+  public static void main(String[] args) {
+    System.out.println("hello, java");
+  }
+}
+
+
+  import java.lang.System; 코드를 삭제해도 정상 동작합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-28-ObjectClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -5800,69 +5875,73 @@ Object 클래스는 다형성을 지원하는 기본적인 메커니즘을 제�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-28-java-langPackage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-25-OCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-28-java-langPackage.html"><h1 class="title_post">☕️[Java] java.lang 패키지 소개</h1></a>
-                        <a href="/2024/Java/2024-03-28-java-langPackage.html" class="txt_post">
-                            java.lang 패키지 소개.
-자바가 기본적으로 제공하는 라이브러리(클래스 모음)중에 가장 지본이 되는 것이 바로 java.lang 패키지입니다.
+                        <a href="/2024/Java/2024-03-25-OCP.html"><h1 class="title_post">☕️[Java] OCP(Open-Closed Principle) 원칙</h1></a>
+                        <a href="/2024/Java/2024-03-25-OCP.html" class="txt_post">
+                            OCP(Open-Closed Principle) 원칙.
+좋은 객체 지향 설계 원칙 중 하나로 OCP 원칙이라는 것이 있습니다.
 
-여기서 lang은 Language(언어)의 줄임말 입니다.
-
-쉽게 이야기해서 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-java.lang 패키지의 대표적인 클래스들.
-
-  Object : 모든 자바 객체의 부모 클래스
-  String : 문자열
-  Integer, Long, Double : 래퍼 타입, 기본형 데이터 타입을 객체로 만든 것
-  Class : 클래스 메타 정보
-  System: 시스템과 관련된 기본 기능들을 제공
+  Open for extension : 새로운 기능의 추가나 변경 사항이 생겼을 때, 기존 코드는 확장할 수 있어야 합니다.
+  Closed for modification : 기존의 코드는 수정되지 않아야 합니다.
 
 
-“여기 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.”
+확장에는 열려있고, 변경에는 닫혀 있다는 뜻인데, 쉽게 이야기해서 기존의 코드 수정 없이 새로운 기능을 추가할 수 있다는 의미입니다.
 
-import 생략 가능
-java.lang 패키지는 모든 자바 애플리케이션에 자동으로 임포트(import)됩니다.
-
-따라서 임포트 구문을 사용하지 않아도 됩니다.
-
-다른 패키지에 있는 클래스를 사용하려면 다음과 같이 임포트를 사용해야 합니다.
-
-package lang;
-
-import java.lang.System;
-
-public class LangMain {
-    
-    public static void main(String[] args) {
-        System.out.println("hello.java");
-    }
-}
+  약간 말이 안 맞는 것 같지만 우리가 앞서 개발한 코드가 바로 OCP 원칙을 잘 지키고 있는 코드입니다.
 
 
-System 클래스는 java.lang 패키지 소속입니다. 따라서 다음과 같이 임포트를 생략할 수 있습니다.
+새로운 차량의 추가.
+여기서 새로운 차량을 추가해도 Driver의 코드는 전혀 변경하지 않습니다.
 
-package lang;
+운전할 수 있는 차량의 종류가 계속 늘어나도 Car를 사용하는 Driver의 코드는 전혀 변경하지 않습니다.
 
-public class LangMain {
-
-  public static void main(String[] args) {
-    System.out.println("hello, java");
-  }
-}
+기능을 확장해도 main() 일부를 제외한 프로그램의 핵심 부분의 코드는 전혀 수정하지 않아도 됩니다.
 
 
-  import java.lang.System; 코드를 삭제해도 정상 동작합니다.
+
+확장에 열려있다는 의미.
+Car 인터페이스를 사용해서 새로운 차량을 자유롭게 추가할 수 있습니다.
+Car 인터페이스를 구현해서 기능을 추가할 수 있다는 의미입니다.
+Car 인터페이스를 사용하는 클라이언트 코드인 Driver도 Car 인터페이스를 통해 새롭게 추가된 차량을 자유롭게 호출할 수 있습니다.
+이것이 확장에 열려있다는 의미입니다.
+
+코드 수정은 닫혀 있다는 의미.
+새로운 차를 추가하게 되면 기능이 추가되기 때문에 기존 코드의 수정은 불가피합니다.
+당연히 어딘가의 코드는 수정해야 합니다.
+
+변하지 않는 부분.
+새로운 자동차를 추가할 때 가장 영향을 받는 중요한 클라이언트는 바로 Car의 기능을 사용하는 Driver입니다.
+핵심은 Car 인터페이스를 사용하는 클라이언트인 Driver의 코드를 수정하지 않아도 된다는 뜻입니다.
+
+변하는 부분.
+main()과 같이 새로운 차를 생성하고 Driver에게 필요한 차를 전달해주는 역할은 당연히 코드 수정이 발생합니다.
+main()은 전체 프로그램을 설정하고 조율하는 역할을 합니다.
+이런 부분은 OCP를 지켜도 변경이 필요합니다.
+
+정리.
+
+  Car를 사용하는 클라이언트 코드인 Driver 코드의 변경 없이 새로운 자동차를 확장할 수 있습니다.
+  다형성을 활용하고 역할과 구현을 잘 분리한 덕분에 새로운 자동차를 추가해도 대부분의 핵심 코드들을 그대로 유지할 수 있게 되었습니다.
+
+
+
+  전략 패턴(Strategy Pattern)
+디자인 패턴 중에 가장 중요한 패턴을 하나 뽑으라고 하면 전략 패턴을 뽑을 수 있습니다.
+전략 패턴은 알고리즘을 클라이언트 코드의 변경 없이 쉽게 교체할 수 있습니다.
+방금 설명한 코드가 바로 전략 패턴을 사용한 코드입니다.
+Car 인터페이스가 바로 전략을 정의하는 인터페이스가 되고, 각각의 차량이 전략의 구체적인 구현이 됩니다.
+그리고 전략을 클라이언트 코드(Driver)의 변경 없이 손쉽게 교체할 수 있습니다.
+
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-03-28</span>
+                                <span class="date">· 2024-03-25</span>
                             
                         </div>
                     </div>
@@ -6046,84 +6125,6 @@ Model3Car.offEngine
       car 필드가 Car 타입이므로 Car 타입을 찾아서 실행하지만 메서드 오버라이딩에 의해 Model3Car의 기능이 호출됩니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-25-OCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-25-OCP.html"><h1 class="title_post">☕️[Java] OCP(Open-Closed Principle) 원칙</h1></a>
-                        <a href="/2024/Java/2024-03-25-OCP.html" class="txt_post">
-                            OCP(Open-Closed Principle) 원칙.
-좋은 객체 지향 설계 원칙 중 하나로 OCP 원칙이라는 것이 있습니다.
-
-  Open for extension : 새로운 기능의 추가나 변경 사항이 생겼을 때, 기존 코드는 확장할 수 있어야 합니다.
-  Closed for modification : 기존의 코드는 수정되지 않아야 합니다.
-
-
-확장에는 열려있고, 변경에는 닫혀 있다는 뜻인데, 쉽게 이야기해서 기존의 코드 수정 없이 새로운 기능을 추가할 수 있다는 의미입니다.
-
-  약간 말이 안 맞는 것 같지만 우리가 앞서 개발한 코드가 바로 OCP 원칙을 잘 지키고 있는 코드입니다.
-
-
-새로운 차량의 추가.
-여기서 새로운 차량을 추가해도 Driver의 코드는 전혀 변경하지 않습니다.
-
-운전할 수 있는 차량의 종류가 계속 늘어나도 Car를 사용하는 Driver의 코드는 전혀 변경하지 않습니다.
-
-기능을 확장해도 main() 일부를 제외한 프로그램의 핵심 부분의 코드는 전혀 수정하지 않아도 됩니다.
-
-
-
-확장에 열려있다는 의미.
-Car 인터페이스를 사용해서 새로운 차량을 자유롭게 추가할 수 있습니다.
-Car 인터페이스를 구현해서 기능을 추가할 수 있다는 의미입니다.
-Car 인터페이스를 사용하는 클라이언트 코드인 Driver도 Car 인터페이스를 통해 새롭게 추가된 차량을 자유롭게 호출할 수 있습니다.
-이것이 확장에 열려있다는 의미입니다.
-
-코드 수정은 닫혀 있다는 의미.
-새로운 차를 추가하게 되면 기능이 추가되기 때문에 기존 코드의 수정은 불가피합니다.
-당연히 어딘가의 코드는 수정해야 합니다.
-
-변하지 않는 부분.
-새로운 자동차를 추가할 때 가장 영향을 받는 중요한 클라이언트는 바로 Car의 기능을 사용하는 Driver입니다.
-핵심은 Car 인터페이스를 사용하는 클라이언트인 Driver의 코드를 수정하지 않아도 된다는 뜻입니다.
-
-변하는 부분.
-main()과 같이 새로운 차를 생성하고 Driver에게 필요한 차를 전달해주는 역할은 당연히 코드 수정이 발생합니다.
-main()은 전체 프로그램을 설정하고 조율하는 역할을 합니다.
-이런 부분은 OCP를 지켜도 변경이 필요합니다.
-
-정리.
-
-  Car를 사용하는 클라이언트 코드인 Driver 코드의 변경 없이 새로운 자동차를 확장할 수 있습니다.
-  다형성을 활용하고 역할과 구현을 잘 분리한 덕분에 새로운 자동차를 추가해도 대부분의 핵심 코드들을 그대로 유지할 수 있게 되었습니다.
-
-
-
-  전략 패턴(Strategy Pattern)
-디자인 패턴 중에 가장 중요한 패턴을 하나 뽑으라고 하면 전략 패턴을 뽑을 수 있습니다.
-전략 패턴은 알고리즘을 클라이언트 코드의 변경 없이 쉽게 교체할 수 있습니다.
-방금 설명한 코드가 바로 전략 패턴을 사용한 코드입니다.
-Car 인터페이스가 바로 전략을 정의하는 인터페이스가 되고, 각각의 차량이 전략의 구체적인 구현이 됩니다.
-그리고 전략을 클라이언트 코드(Driver)의 변경 없이 손쉽게 교체할 수 있습니다.
-
 
 
                         </a>
@@ -9049,6 +9050,167 @@ child.childMethod();
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-13-super.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-13-super.html"><h1 class="title_post">☕️[Java] super - 부모 참조</h1></a>
+                        <a href="/2024/Java/2024-03-13-super.html" class="txt_post">
+                            super - 부모 참조.
+
+“부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없습니다.”
+
+  이때 super 키워드를 사용하면 부모를 참조할 수 있습니다.
+  super 는 이름 그대로 부모 클래스에 대한 참조를 나타냅니다.
+
+
+다음 예를 봅시다.
+
+  부모의 필드명과 자식의 필드명 둘 다 value로 똑같습니다.
+  메서드도 hello()로 자식에서 오버라이딩 되어 있습니다.
+    
+      이 때 자식 클래스에서 부모 클래스의 value와 hello()를 호출하고 싶다면 super 키워드를 사용하면 됩니다.
+    
+  
+
+
+
+
+Parent
+package extends1.super1;
+
+public class Parent {
+
+  public String value = "parent";
+
+  public void hello() {
+    System.out.println("Parent.hello");
+  }
+}
+
+
+Child
+package extends1.super1;
+
+public class Child extends Parent {
+  public String value = "child";
+
+  @Override
+  public void hello() {
+    System.out.println("Child.hello");
+  }
+
+  public void call() {
+    System.out.println("this value = " + this.value); // this 생략 가능
+    System.out.println("super value = " + super.value);
+
+    this.hello(); // this 생략 가능
+    super.hello();
+  }
+}
+
+
+call() 메서드를 봅시다.
+
+  this는 자기 자신의 참조를 뜻합니다. this는 생략할 수 있습니다.
+  super는 부모 클래스에 대한 참조를 뜻합니다.
+  필드 이름과 메서드 이름이 같지만 super를 사용해서 부모 클래스에 있는 기능을 사용할 수 있습니다.
+
+
+Super1Main
+package extends1.super1;
+
+public class Super1Main {
+
+  public static void main(String[] args) {
+    Child child = new Child();
+    child.call();
+  }
+}
+
+
+실행 결과
+this value = child
+super value = parent
+Child.hello
+Parent.hello
+
+
+
+  실행 결과를 보면 super를 사용한 경우 부모 클래스의 기능을 사용한 것을 확인할 수 있습니다.
+
+
+super 메모리 그림
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html"><h1 class="title_post">☕️[Java] 클래스와 메서드에 사용되는 final</h1></a>
+                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="txt_post">
+                            클래스와 메서드에 사용되는 final.
+
+클래스에 final
+
+  상속 끝!
+  final로 선언된 클래스는 확장될 수 없습니다.
+    
+      다른 클래스가 final로 선언된 클래스를 상속받을 수 없습니다.
+        
+          예: public final class MyFinalClass {...}
+        
+      
+    
+  
+
+
+메서드에 final
+
+  오버라이딩 끝!
+  final로 선언된 메서드는 오버라이드 될 수 없습니다.
+    
+      상속받은 서브 클래스에서 이 메서드를 변경할 수 없습니다.
+        
+          예: public final void myFinalMethod() {...}
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-13-super2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -9247,167 +9409,6 @@ ClassC 생성자
       단 기본 생성자(super())인 경우 생략 할 수 있습니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html"><h1 class="title_post">☕️[Java] 클래스와 메서드에 사용되는 final</h1></a>
-                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="txt_post">
-                            클래스와 메서드에 사용되는 final.
-
-클래스에 final
-
-  상속 끝!
-  final로 선언된 클래스는 확장될 수 없습니다.
-    
-      다른 클래스가 final로 선언된 클래스를 상속받을 수 없습니다.
-        
-          예: public final class MyFinalClass {...}
-        
-      
-    
-  
-
-
-메서드에 final
-
-  오버라이딩 끝!
-  final로 선언된 메서드는 오버라이드 될 수 없습니다.
-    
-      상속받은 서브 클래스에서 이 메서드를 변경할 수 없습니다.
-        
-          예: public final void myFinalMethod() {...}
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-13-super.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-13-super.html"><h1 class="title_post">☕️[Java] super - 부모 참조</h1></a>
-                        <a href="/2024/Java/2024-03-13-super.html" class="txt_post">
-                            super - 부모 참조.
-
-“부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없습니다.”
-
-  이때 super 키워드를 사용하면 부모를 참조할 수 있습니다.
-  super 는 이름 그대로 부모 클래스에 대한 참조를 나타냅니다.
-
-
-다음 예를 봅시다.
-
-  부모의 필드명과 자식의 필드명 둘 다 value로 똑같습니다.
-  메서드도 hello()로 자식에서 오버라이딩 되어 있습니다.
-    
-      이 때 자식 클래스에서 부모 클래스의 value와 hello()를 호출하고 싶다면 super 키워드를 사용하면 됩니다.
-    
-  
-
-
-
-
-Parent
-package extends1.super1;
-
-public class Parent {
-
-  public String value = "parent";
-
-  public void hello() {
-    System.out.println("Parent.hello");
-  }
-}
-
-
-Child
-package extends1.super1;
-
-public class Child extends Parent {
-  public String value = "child";
-
-  @Override
-  public void hello() {
-    System.out.println("Child.hello");
-  }
-
-  public void call() {
-    System.out.println("this value = " + this.value); // this 생략 가능
-    System.out.println("super value = " + super.value);
-
-    this.hello(); // this 생략 가능
-    super.hello();
-  }
-}
-
-
-call() 메서드를 봅시다.
-
-  this는 자기 자신의 참조를 뜻합니다. this는 생략할 수 있습니다.
-  super는 부모 클래스에 대한 참조를 뜻합니다.
-  필드 이름과 메서드 이름이 같지만 super를 사용해서 부모 클래스에 있는 기능을 사용할 수 있습니다.
-
-
-Super1Main
-package extends1.super1;
-
-public class Super1Main {
-
-  public static void main(String[] args) {
-    Child child = new Child();
-    child.call();
-  }
-}
-
-
-실행 결과
-this value = child
-super value = parent
-Child.hello
-Parent.hello
-
-
-
-  실행 결과를 보면 super를 사용한 경우 부모 클래스의 기능을 사용한 것을 확인할 수 있습니다.
-
-
-super 메모리 그림
 
 
                         </a>
@@ -16372,6 +16373,142 @@ student1 = 30f39991;
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-02-21-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-21-null.html"><h1 class="title_post">☕️[Java] null</h1></a>
+                        <a href="/2024/Java/2024-02-21-null.html" class="txt_post">
+                            null
+친구에게 책을 보내려고 합니다.
+우체국 택배를 보내려고 할 때 책은 준비가 되었지만, 깜빡하고 친구에게 주소를 물어보지 못했습니다.
+즉, 보낼 주소지가 아직 결정되지 않았습니다.
+이 때, 보낼 주소지가 결정될 때 까지는 주소지를 비워두어야 할 것 입니다.
+
+
+  참조형 변수에는 항상 객체가 있는 위치를 가리키는 참조값이 들어갑니다.
+    
+      그런데 아직 가리키는 대상이 없거나, 가리키는 대상을 나중에 입력하고 싶을 경우에는 어떻게 해야할까요?
+    
+  
+  참조형 변수에서 아직 가리키는 대상이 없다면 null이라는 특별한 값을 넣어둘 수 있습니다.
+    
+      null은 값이 존재하지 않는, 없다는 뜻 입니다.
+    
+  
+
+
+“코드를 통해서 null 값에 대해 알아봅시다.”
+
+Data
+package ref;
+
+public class Data {
+  int value;
+}
+
+
+NullMain1
+package ref;
+
+public class NullMain1 {
+
+  public static void main(String[] args) {
+    Data data = null;
+    System.out.println("1. data = " + data);
+    data = new Data();
+    System.out.println("2. data = " + data);
+    data = null;
+    System.out.println("3. data = " + data);
+  }
+}
+
+
+실행 결과
+1. data = null
+2. data = ref.Data@30f39991
+3. data = null
+
+
+Data data = null;
+
+
+  Data 타입을 받을 수 있는 참조형 변수 data를 만들었습니다.
+    
+      그리고 여기에 null 값을 할당했습니다.
+        
+          따라서 data 변수에는 아직 가리키는 객체가 없다는 뜻입니다.
+        
+      
+    
+  
+
+
+data = new Data();
+
+
+
+  이후에 새로운 Data 객체를 생성해서 그 참조값을 data 변수에 할당했습니다.
+    
+      이제 data 변수가 참조할 객체가 존재합니다.
+        
+          여기서 Data 인스턴스의 value 값은 0으로 초기화 되어있습니다.
+        
+      
+    
+  
+
+
+data = null;
+
+
+
+  마지막에는 data에 다시 null 값을 할당했습니다.
+    
+      이렇게 하면 data 변수는 앞서 만든 Data 인스턴스를 더는 참조하지 않습니다.
+    
+  
+
+
+“GC(Garbage Collection) - 아무도 참조하지 않는 인스턴스의 최후”
+
+마지막에 data에 null을 할당했습니다.
+따라서 앞서 생성한 x001(sudo 참조값) Data 인스턴스를 더는 아무도 참조하지 않습니다.
+이렇게 아무도 참조하지 않게 되면 x001이라는 참조값을 다시 구할 방법이 없습니다.
+따라서 해당 인스턴스에 다시 접근할 방법이 없습니다.
+
+  이렇게 아무도 참조하지 않는 인스턴스는 사용되지 않고 메모리 용량만 차지할 뿐입니다.
+
+
+C와 같은 과거 프로그래밍 언어는 개발자가 직접 명령어를 사용해서 인스턴스를 메모리에서 제거해야 했습니다.
+만약 실수로 인스턴스 삭제를 누락할 경우, 메모리에 사용하지 않는 객체가 가득해져서 메모리 부족 오류가 발생하게 됩니다.
+
+“자바는 이런 과정을 자동으로 처리해줍니다.”
+
+  아무도 참조하지 않는 인스턴스가 있으면 JVM의 GC(가비지 컬렉션)가 더 이상 사용하지 않는 인스턴스라 판단하고 해당 인스턴스를 자동으로 메모리에서 제거해줍니다.
+
+
+“객체는 해당 객체를 참조하는 곳이 있으면, JVM이 종료할 때 까지 계속 생존합니다.”
+
+  그런데 중간에 해당 객체를 참조하는 곳이 모두 사라지면 그때 JVM은 필요 없는 객체로 판단하고 GC(가비지 컬렉션)를 사용해서 제거합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -16541,142 +16678,6 @@ static void changeReference(Data dataX) {
 
   기본형: 메서드로 기본형 데이터를 전달하면, 해당 값이 복사되어 전달됩니다. 이 경우, 메서드 내부에서 매개변수(Parameter)의 값을 변경해도, 호출자의 변수 값에는 영향이 없습니다.
   참조형: 메서드로 참조형 데이터를 전달하면, 참조값이 복사되어 전달됩니다. 이 경우, 메서드 내부에서 매개변수(Parameter)로 전달된 객체의 멤버 변수를 변경하면, 호출자의 객체도 변경됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-21-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-21-null.html"><h1 class="title_post">☕️[Java] null</h1></a>
-                        <a href="/2024/Java/2024-02-21-null.html" class="txt_post">
-                            null
-친구에게 책을 보내려고 합니다.
-우체국 택배를 보내려고 할 때 책은 준비가 되었지만, 깜빡하고 친구에게 주소를 물어보지 못했습니다.
-즉, 보낼 주소지가 아직 결정되지 않았습니다.
-이 때, 보낼 주소지가 결정될 때 까지는 주소지를 비워두어야 할 것 입니다.
-
-
-  참조형 변수에는 항상 객체가 있는 위치를 가리키는 참조값이 들어갑니다.
-    
-      그런데 아직 가리키는 대상이 없거나, 가리키는 대상을 나중에 입력하고 싶을 경우에는 어떻게 해야할까요?
-    
-  
-  참조형 변수에서 아직 가리키는 대상이 없다면 null이라는 특별한 값을 넣어둘 수 있습니다.
-    
-      null은 값이 존재하지 않는, 없다는 뜻 입니다.
-    
-  
-
-
-“코드를 통해서 null 값에 대해 알아봅시다.”
-
-Data
-package ref;
-
-public class Data {
-  int value;
-}
-
-
-NullMain1
-package ref;
-
-public class NullMain1 {
-
-  public static void main(String[] args) {
-    Data data = null;
-    System.out.println("1. data = " + data);
-    data = new Data();
-    System.out.println("2. data = " + data);
-    data = null;
-    System.out.println("3. data = " + data);
-  }
-}
-
-
-실행 결과
-1. data = null
-2. data = ref.Data@30f39991
-3. data = null
-
-
-Data data = null;
-
-
-  Data 타입을 받을 수 있는 참조형 변수 data를 만들었습니다.
-    
-      그리고 여기에 null 값을 할당했습니다.
-        
-          따라서 data 변수에는 아직 가리키는 객체가 없다는 뜻입니다.
-        
-      
-    
-  
-
-
-data = new Data();
-
-
-
-  이후에 새로운 Data 객체를 생성해서 그 참조값을 data 변수에 할당했습니다.
-    
-      이제 data 변수가 참조할 객체가 존재합니다.
-        
-          여기서 Data 인스턴스의 value 값은 0으로 초기화 되어있습니다.
-        
-      
-    
-  
-
-
-data = null;
-
-
-
-  마지막에는 data에 다시 null 값을 할당했습니다.
-    
-      이렇게 하면 data 변수는 앞서 만든 Data 인스턴스를 더는 참조하지 않습니다.
-    
-  
-
-
-“GC(Garbage Collection) - 아무도 참조하지 않는 인스턴스의 최후”
-
-마지막에 data에 null을 할당했습니다.
-따라서 앞서 생성한 x001(sudo 참조값) Data 인스턴스를 더는 아무도 참조하지 않습니다.
-이렇게 아무도 참조하지 않게 되면 x001이라는 참조값을 다시 구할 방법이 없습니다.
-따라서 해당 인스턴스에 다시 접근할 방법이 없습니다.
-
-  이렇게 아무도 참조하지 않는 인스턴스는 사용되지 않고 메모리 용량만 차지할 뿐입니다.
-
-
-C와 같은 과거 프로그래밍 언어는 개발자가 직접 명령어를 사용해서 인스턴스를 메모리에서 제거해야 했습니다.
-만약 실수로 인스턴스 삭제를 누락할 경우, 메모리에 사용하지 않는 객체가 가득해져서 메모리 부족 오류가 발생하게 됩니다.
-
-“자바는 이런 과정을 자동으로 처리해줍니다.”
-
-  아무도 참조하지 않는 인스턴스가 있으면 JVM의 GC(가비지 컬렉션)가 더 이상 사용하지 않는 인스턴스라 판단하고 해당 인스턴스를 자동으로 메모리에서 제거해줍니다.
-
-
-“객체는 해당 객체를 참조하는 곳이 있으면, JVM이 종료할 때 까지 계속 생존합니다.”
-
-  그런데 중간에 해당 객체를 참조하는 곳이 모두 사라지면 그때 JVM은 필요 없는 객체로 판단하고 GC(가비지 컬렉션)를 사용해서 제거합니다.
 
 
                         </a>
@@ -23679,6 +23680,17 @@ public class Var2 {
             'url'      : "/Backend/Network/2024-08-16-system-basic-term.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-16"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 구조적 모델",
+            'path'     : "Backend > Network",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Backend/Network/2024-08-18-structural-model.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-08-18"
         });
     
 

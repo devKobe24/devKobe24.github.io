@@ -587,6 +587,7 @@
             
             
             
+            
 
     
     
@@ -8275,126 +8276,6 @@ CONCAT
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html"><h1 class="title_post">☕️[Java] 불변 객체 - 예제</h1></a>
-                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="txt_post">
-                            불변 객체 - 예제
-조금 더 복잡하고 의미있는 예제를 통해서 불변 객체의 사용 예를 확인해봅시다.
-앞의 Address, ImmutableAddress를 그래로 활용합니다.
-
-변경 클래스 사용
-package lang.immutable.address;
-
-public class MemberMainV1 {
-
-  public static void main(String[] args) {
-    Address address = new Address("서울");
-
-    MemberV1 memberA = new MemberV1("회원A", address);
-    MemberV1 memberB = new MemberV1("회원B", address);
-
-    // 회원A, 회원B의 처음 주소는 모두 서울
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-
-    // 회원 B의 주소를 부산으로 변경해야함
-    memberB.getAddress().setValue("부산");
-    System.out.println("부산 -&gt; memberB.address");
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-  }
-}
-
-
-  회원A와 회원B는 둘다 서울에 살고 있습니다.
-    
-      중간에 회원B의 주소를 부산으로 변경해야 합니다.
-      그런데 회원A와 회원B는 같은 Address 인스턴스를 참조하고 있습니다.
-        
-          회원B의 주소를 부산으로 변경하는 순간 회원A의 주소도 부산으로 변경됩니다.
-        
-      
-    
-  
-
-
-실행 결과
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='서울'}}
-부산 -&gt; memberB.address
-memberA = MemberV1{name='회원A', address=Address{value='부산'}}
-memberB = MemberV1{name='회원B', address=Address{value='부산'}}
-
-
-package lang.immutable.address;
-
-public class MemberMainV2 {
-
-  public static void main(String[] args) {
-    ImmutableAddress address = new ImmutableAddress("서울");
-
-    MemberV2 memberA = new MemberV2("회원A", address);
-    MemberV2 memberB = new MemberV2("회원B", address);
-
-    // 회원A, 회원B의 처음 주소는 모두 서울
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-
-    // 회원B의 주소를 부산으로 변경해야함
-    //memberB.getAddress().setValue("부산"); // 컴파일 오류
-
-    memberB.setAddress(new ImmutableAddress("부산"));
-    System.out.println("부산 -&gt; memberB.address");
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-  }
-}
-
-
-  회원B의 주소를 중간에 부산으로 변경하려고 시도합니다.
-    
-      하지만 ImmutableAddress에는 값을 변경할 수 있는 메서드가 없습니다.
-        
-          따라서 컴파일 오류가 발생합니다.
-            
-              결국 memberB.setAddress(new ImmutableAddress("부산"))와 같이 새로운 주소 객체를 만들어서 전달합니다.
-            
-          
-        
-      
-    
-  
-
-
-실행 결과
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='서울'}}
-부산 -&gt; memberB.address
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='부산'}}
-
-
-사이드 이펙트가 발생하지 않습니다. 회원A는 기존 주소를 그대로 유지합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-04-commandStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -8562,6 +8443,126 @@ Q5. JNI(Java Native Interface)는 무엇이며, 왜 사용하나요? Java 애플
 Q6. 가비지 컬렉션(Garbage Collection)의 기본 원리를 설명해 주세요. Java에서 가비지 컬렉터의 작동 방식에 영향을 미칠 수 있는 프로그래밍 관행에는 어떤 것들이 있나요?
 
 답변: 가비지 컬렉션은 참조되지 않는 객체를 자동으로 검출하고, 이를 메모리에서 제거하여 메모리를 회수하는 프로세스입니다. Java에서 가비지 컬렉터의 효율성에 영향을 미칠 수 있는 프로그래밍 관행으로는, 객체 참조를 적절히 해제하는 것, 대용량 객체의 재사용, 그리고 적절한 컬렉션 사용 등이 있습니다. 불필요한 객체 참조를 남겨두지 않고, 메모리 사용량이 큰 객체는 풀링 기법을 사용하여 관리함으로써, 가비지 컬렉터의 부하를 줄이고 애플리케이션의 성능을 개선할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html"><h1 class="title_post">☕️[Java] 불변 객체 - 예제</h1></a>
+                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="txt_post">
+                            불변 객체 - 예제
+조금 더 복잡하고 의미있는 예제를 통해서 불변 객체의 사용 예를 확인해봅시다.
+앞의 Address, ImmutableAddress를 그래로 활용합니다.
+
+변경 클래스 사용
+package lang.immutable.address;
+
+public class MemberMainV1 {
+
+  public static void main(String[] args) {
+    Address address = new Address("서울");
+
+    MemberV1 memberA = new MemberV1("회원A", address);
+    MemberV1 memberB = new MemberV1("회원B", address);
+
+    // 회원A, 회원B의 처음 주소는 모두 서울
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+
+    // 회원 B의 주소를 부산으로 변경해야함
+    memberB.getAddress().setValue("부산");
+    System.out.println("부산 -&gt; memberB.address");
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+  }
+}
+
+
+  회원A와 회원B는 둘다 서울에 살고 있습니다.
+    
+      중간에 회원B의 주소를 부산으로 변경해야 합니다.
+      그런데 회원A와 회원B는 같은 Address 인스턴스를 참조하고 있습니다.
+        
+          회원B의 주소를 부산으로 변경하는 순간 회원A의 주소도 부산으로 변경됩니다.
+        
+      
+    
+  
+
+
+실행 결과
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='서울'}}
+부산 -&gt; memberB.address
+memberA = MemberV1{name='회원A', address=Address{value='부산'}}
+memberB = MemberV1{name='회원B', address=Address{value='부산'}}
+
+
+package lang.immutable.address;
+
+public class MemberMainV2 {
+
+  public static void main(String[] args) {
+    ImmutableAddress address = new ImmutableAddress("서울");
+
+    MemberV2 memberA = new MemberV2("회원A", address);
+    MemberV2 memberB = new MemberV2("회원B", address);
+
+    // 회원A, 회원B의 처음 주소는 모두 서울
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+
+    // 회원B의 주소를 부산으로 변경해야함
+    //memberB.getAddress().setValue("부산"); // 컴파일 오류
+
+    memberB.setAddress(new ImmutableAddress("부산"));
+    System.out.println("부산 -&gt; memberB.address");
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+  }
+}
+
+
+  회원B의 주소를 중간에 부산으로 변경하려고 시도합니다.
+    
+      하지만 ImmutableAddress에는 값을 변경할 수 있는 메서드가 없습니다.
+        
+          따라서 컴파일 오류가 발생합니다.
+            
+              결국 memberB.setAddress(new ImmutableAddress("부산"))와 같이 새로운 주소 객체를 만들어서 전달합니다.
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='서울'}}
+부산 -&gt; memberB.address
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='부산'}}
+
+
+사이드 이펙트가 발생하지 않습니다. 회원A는 기존 주소를 그대로 유지합니다.
 
                         </a>
                         <div class="info-post">
@@ -35320,6 +35321,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Post/2024-08-18-openvpn-change-passwd.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-08-18"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240819_AWS_Nginx_FireWalld.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-19"
         });
     
 

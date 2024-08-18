@@ -587,6 +587,7 @@
             
             
             
+            
 
     
     
@@ -943,6 +944,112 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
+
+1️⃣ 패키지 목록 업데이트
+
+  먼저, 서버의 패키지 목록을 업데이트 합니다.
+    sudo dnf update -y
+    
+  
+
+
+
+  🎯 참고 dnf search {검색어}
+예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
+
+
+2️⃣ Nginx 설치
+
+  다음 명령어로 Nginx를 설치합니다.
+    sudo dnf install nginx -y
+    
+  
+  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
+
+
+3️⃣ Nginx 서비스 시작 및 활성화
+
+  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
+    sudo systemctl start nginx
+sudo systemctl enable nginx
+    
+  
+
+
+4️⃣ 방화벽 설정(선택 사항)
+
+  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
+    
+      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
+    
+  
+
+
+1️⃣ firewalld 설치.
+
+  먼저 'firewalld' 를 설치해야 합니다.
+    sudo dnf install firewalld -y
+    
+  
+
+
+2️⃣ firewalld 서비스 시작 및 활성화
+
+  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
+    sudo systemctl start firewalld
+sudo systemctl enable firewalld
+    
+  
+
+
+3️⃣ HTTP 및 HTTPS 서비스 허용
+
+  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
+    sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+    
+  
+
+
+4️⃣ 방화벽 재시작
+
+  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
+    sudo firewall-cmd --reload
+    
+  
+
+
+5️⃣ 방화벽 상태 확인(선택 사항)
+
+  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
+    sudo firewall-cmd --list-all
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2645,6 +2752,109 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
+                            ☁️[AWS] 클라우드(Cloud)란?
+
+
+  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
+  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
+  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
+  클라우드의 어원은 단어 뜻 그대로 구름입니다.
+    
+      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
+        
+          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
+        
+      
+    
+  
+
+
+
+
+
+  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
+    
+      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
+      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
+        
+          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-08-07-webpage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -2796,109 +3006,6 @@ ls /home/ec2-user/
   이러한 예시들을 통해 정적 웹사이트가 주로 고정된 내용을 제공하는 반면, 동적 웹사이트는 사용자의 입력과 상호작용에 따라 콘텐츠가 변경되는 복잡한 기능을 필요로 함을 알 수 있습니다.
     
       각각의 사례에서 요구하는 기능과 특성에 맞춰 웹사이트의 형태를 결정합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
-                            ☁️[AWS] 클라우드(Cloud)란?
-
-
-  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
-  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
-  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
-  클라우드의 어원은 단어 뜻 그대로 구름입니다.
-    
-      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
-        
-          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
-        
-      
-    
-  
-
-
-
-
-
-  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
-    
-      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
-      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
-        
-          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
     
   
 
@@ -26736,126 +26843,6 @@ CONCAT
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html"><h1 class="title_post">☕️[Java] 불변 객체 - 예제</h1></a>
-                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="txt_post">
-                            불변 객체 - 예제
-조금 더 복잡하고 의미있는 예제를 통해서 불변 객체의 사용 예를 확인해봅시다.
-앞의 Address, ImmutableAddress를 그래로 활용합니다.
-
-변경 클래스 사용
-package lang.immutable.address;
-
-public class MemberMainV1 {
-
-  public static void main(String[] args) {
-    Address address = new Address("서울");
-
-    MemberV1 memberA = new MemberV1("회원A", address);
-    MemberV1 memberB = new MemberV1("회원B", address);
-
-    // 회원A, 회원B의 처음 주소는 모두 서울
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-
-    // 회원 B의 주소를 부산으로 변경해야함
-    memberB.getAddress().setValue("부산");
-    System.out.println("부산 -&gt; memberB.address");
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-  }
-}
-
-
-  회원A와 회원B는 둘다 서울에 살고 있습니다.
-    
-      중간에 회원B의 주소를 부산으로 변경해야 합니다.
-      그런데 회원A와 회원B는 같은 Address 인스턴스를 참조하고 있습니다.
-        
-          회원B의 주소를 부산으로 변경하는 순간 회원A의 주소도 부산으로 변경됩니다.
-        
-      
-    
-  
-
-
-실행 결과
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='서울'}}
-부산 -&gt; memberB.address
-memberA = MemberV1{name='회원A', address=Address{value='부산'}}
-memberB = MemberV1{name='회원B', address=Address{value='부산'}}
-
-
-package lang.immutable.address;
-
-public class MemberMainV2 {
-
-  public static void main(String[] args) {
-    ImmutableAddress address = new ImmutableAddress("서울");
-
-    MemberV2 memberA = new MemberV2("회원A", address);
-    MemberV2 memberB = new MemberV2("회원B", address);
-
-    // 회원A, 회원B의 처음 주소는 모두 서울
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-
-    // 회원B의 주소를 부산으로 변경해야함
-    //memberB.getAddress().setValue("부산"); // 컴파일 오류
-
-    memberB.setAddress(new ImmutableAddress("부산"));
-    System.out.println("부산 -&gt; memberB.address");
-    System.out.println("memberA = " + memberA);
-    System.out.println("memberB = " + memberB);
-  }
-}
-
-
-  회원B의 주소를 중간에 부산으로 변경하려고 시도합니다.
-    
-      하지만 ImmutableAddress에는 값을 변경할 수 있는 메서드가 없습니다.
-        
-          따라서 컴파일 오류가 발생합니다.
-            
-              결국 memberB.setAddress(new ImmutableAddress("부산"))와 같이 새로운 주소 객체를 만들어서 전달합니다.
-            
-          
-        
-      
-    
-  
-
-
-실행 결과
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='서울'}}
-부산 -&gt; memberB.address
-memberA = MemberV1{name='회원A', address=Address{value='서울'}}
-memberB = MemberV1{name='회원B', address=Address{value='부산'}}
-
-
-사이드 이펙트가 발생하지 않습니다. 회원A는 기존 주소를 그대로 유지합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-04-commandStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -27023,6 +27010,126 @@ Q5. JNI(Java Native Interface)는 무엇이며, 왜 사용하나요? Java 애플
 Q6. 가비지 컬렉션(Garbage Collection)의 기본 원리를 설명해 주세요. Java에서 가비지 컬렉터의 작동 방식에 영향을 미칠 수 있는 프로그래밍 관행에는 어떤 것들이 있나요?
 
 답변: 가비지 컬렉션은 참조되지 않는 객체를 자동으로 검출하고, 이를 메모리에서 제거하여 메모리를 회수하는 프로세스입니다. Java에서 가비지 컬렉터의 효율성에 영향을 미칠 수 있는 프로그래밍 관행으로는, 객체 참조를 적절히 해제하는 것, 대용량 객체의 재사용, 그리고 적절한 컬렉션 사용 등이 있습니다. 불필요한 객체 참조를 남겨두지 않고, 메모리 사용량이 큰 객체는 풀링 기법을 사용하여 관리함으로써, 가비지 컬렉터의 부하를 줄이고 애플리케이션의 성능을 개선할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html"><h1 class="title_post">☕️[Java] 불변 객체 - 예제</h1></a>
+                        <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="txt_post">
+                            불변 객체 - 예제
+조금 더 복잡하고 의미있는 예제를 통해서 불변 객체의 사용 예를 확인해봅시다.
+앞의 Address, ImmutableAddress를 그래로 활용합니다.
+
+변경 클래스 사용
+package lang.immutable.address;
+
+public class MemberMainV1 {
+
+  public static void main(String[] args) {
+    Address address = new Address("서울");
+
+    MemberV1 memberA = new MemberV1("회원A", address);
+    MemberV1 memberB = new MemberV1("회원B", address);
+
+    // 회원A, 회원B의 처음 주소는 모두 서울
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+
+    // 회원 B의 주소를 부산으로 변경해야함
+    memberB.getAddress().setValue("부산");
+    System.out.println("부산 -&gt; memberB.address");
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+  }
+}
+
+
+  회원A와 회원B는 둘다 서울에 살고 있습니다.
+    
+      중간에 회원B의 주소를 부산으로 변경해야 합니다.
+      그런데 회원A와 회원B는 같은 Address 인스턴스를 참조하고 있습니다.
+        
+          회원B의 주소를 부산으로 변경하는 순간 회원A의 주소도 부산으로 변경됩니다.
+        
+      
+    
+  
+
+
+실행 결과
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='서울'}}
+부산 -&gt; memberB.address
+memberA = MemberV1{name='회원A', address=Address{value='부산'}}
+memberB = MemberV1{name='회원B', address=Address{value='부산'}}
+
+
+package lang.immutable.address;
+
+public class MemberMainV2 {
+
+  public static void main(String[] args) {
+    ImmutableAddress address = new ImmutableAddress("서울");
+
+    MemberV2 memberA = new MemberV2("회원A", address);
+    MemberV2 memberB = new MemberV2("회원B", address);
+
+    // 회원A, 회원B의 처음 주소는 모두 서울
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+
+    // 회원B의 주소를 부산으로 변경해야함
+    //memberB.getAddress().setValue("부산"); // 컴파일 오류
+
+    memberB.setAddress(new ImmutableAddress("부산"));
+    System.out.println("부산 -&gt; memberB.address");
+    System.out.println("memberA = " + memberA);
+    System.out.println("memberB = " + memberB);
+  }
+}
+
+
+  회원B의 주소를 중간에 부산으로 변경하려고 시도합니다.
+    
+      하지만 ImmutableAddress에는 값을 변경할 수 있는 메서드가 없습니다.
+        
+          따라서 컴파일 오류가 발생합니다.
+            
+              결국 memberB.setAddress(new ImmutableAddress("부산"))와 같이 새로운 주소 객체를 만들어서 전달합니다.
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='서울'}}
+부산 -&gt; memberB.address
+memberA = MemberV1{name='회원A', address=Address{value='서울'}}
+memberB = MemberV1{name='회원B', address=Address{value='부산'}}
+
+
+사이드 이펙트가 발생하지 않습니다. 회원A는 기존 주소를 그대로 유지합니다.
 
                         </a>
                         <div class="info-post">
@@ -53811,6 +53918,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Post/2024-08-18-openvpn-change-passwd.html",
             'image'    : "/assets/img/thumbnail/blog.jpeg",
             'date'     : "2024-08-18"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240819_AWS_Nginx_FireWalld.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-19"
         });
     
 

@@ -591,6 +591,7 @@
             
             
             
+            
 
     
     
@@ -3940,258 +3941,6 @@ Class를 사용하면 클래스의 메타 정보를 기반으로 클래스에 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html"><h1 class="title_post">💾 [CS] 빠른 CPU를 위한 설계 기법</h1></a>
-                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="txt_post">
-                            빠른 CPU를 위한 설계 기법.
-
-클럭
-조금이라도 더 빠른 CPU를 만들려면 어떻게 CPU를 설계해야 할까요?
-
-이전에 학습한 내용을 상기해봅시다.
-
-  컴퓨터 부품들은 ‘클럭 신호’에 맞춰 일사분란하게 움직인다.
-  CPU는 ‘명령어 사이클’이라는 정해진 흐름에 맞춰 명령어들을 실행한다.
-
-
-클럭 신호가 빠르게 반복되면 CPU를 비롯한 컴퓨터 부품들은 그만큼 빠른 박자에 맞춰 움직일 것 입니다.
-
-  즉, 클럭 속도가 높아지면 CPU는 명령어 사이클을 더 빠르게 반복할 것이고, 다른 부품들도 그에 발맞춰 더 빠르게 작동할 것입니다.
-
-
-실제로 클럭 속도가 높은 CPU는 일반적으로 성능이 좋습니다.
-
-  
-    그래서 클럭 속도는 CPU 속도 단위로 간주되기도 합니다.
-  
-  
-    클럭 속도: 헤르츠(Hz) 단위로 측정합니다. 이는 1초에 클럭이 몇 번 반복되는지를 나타냅니다.
-    
-      가령 클럭이 ‘똑-딱-‘하고 1초에 한 번 반복되면 CPU 클럭 속도는 1Hz인 것이고, 클럭이 1초에 100번 반복되면 CPU 클럭 속도는 100Hz인 셈입니다.
-    
-  
-
-
-
-
-실제 CPU 클럭 속도는 위 사진 속 CPU를 보면 알 수 있습니다.
-
-  위 사진 속 CPU를 보면 기본 속도(Base)는 2.5GHz, 최대 속도(Max)는 4.9GHz라는 것을 알 수 있습니다.
-    
-      이는 1초에 클럭이 기본적으로 25억(2.5 x 10⁹)번 반복된다는 것을 나타냅니다.
-        
-          참고: 1GHz는 1,000,000,000(10⁹)Hz입니다.
-        
-      
-    
-  
-
-
-
-  “클럭 속도는 일정하지 않다.”
-‘클럭’이라는 단어만 보고 시계를 떠올려 클럭 속도가 매번 일정하게 유지된다고 생각할 수도 있지만, 실제로는 그렇지 않습니다.
-
-  CPU 사진을 다시 보면 기본 클럭 속도(Base)와 최대 속도(Max)로 나위어 있습니다.
-이처럼 CPU는 계속 일정한 클럭 속도를 유지하기보다는 고성능을 요하는 순간에는 순간적으로 쿨럭 속도를 높이고, 그렇지 않을 때는 유연하게 쿨럭 속도를 낮추기도 합니다.
-최대 클럭 속도를 강제로 더 끌어올릴 수도 있는데, 이런 기법을 오버클럭킹(overclocking) 이라고 합니다.
-
-
-클럭 속도를 무지막지하게 높이면 CPU는 무작정 빨라지지 않습니다.
-
-  그래픽이 많이 요구되는 게임이나 영상 편집과 같이 CPU에 무리가 가는 작업을 장시간 하면 컴퓨터가 뜨겁게 달아오르는 것을 경험해 본 적이 있을 겁니다.
-    
-      클럭 속도를 무작정 높이면 이러한 발열 문제가 더 심각해집니다.
-        
-          이처럼 클럭 속도를 높이는 것은 분명 CPU를 빠르게 만들지만, 클럭 속도만으로 CPU의 성늘을 올리는 것에는 한계가 있습니다.
-        
-      
-    
-  
-
-
-코어와 멀티 코어
-클럭 속도를 높이는 방법 외에 CPU의 성능을 높이는 방법에는 대표적으로 CPU의 코어와 스레드 수를 늘리는 방법이 있습니다.
-
-먼저 코어를 늘리는 방법을 알아봅시다.
-
-코어를 이해하려면 현대적인 관점에서 CPU라는 용어를 재해석해야 합니다.
-
-앞서 CPU를 ‘명령어를 실행하는 부품’이라고 소개했습니다.
-많은 전공 서적들의 전통적인 관점에서 ‘명령어를 실행하는 부품’은 원칙적으로 하나만 존재했습니다.
-하지만 오늘날 CPU는 많은 기술적 발전을 거듭하였고, 그 결과 CPU 내부에는 ‘명령어를 실행하는 부품’을 얼마든지 만들 수 있게 되었습니다.
-
-우리가 지금까지 CPU의 정의로 알고 있었던 ‘명령어를 실행하는 부품’은 오늘날 코어(core) 라는 용어로 사용됩니다.
-
-  다시 말해, 오늘날의 CPU는 단순히 ‘명령어를 실행하는 부품’에서 ‘명령어를 실행하는 부품을 여러 개 포함하는 부품’으로 명칭의 범위가 확장 되었습니다.
-    
-      예를 들어 8코어(Core) CPU는 ‘명령어를 실행하는 부품’을 여덟 개 포함하고 있다고 보면 됩니다.
-    
-  
-
-
-
-
-코어를 여러 개 포함하고 있는 CPU를 멀티코어(multi-core) CPU 또는 멀티코어 프로세서라고 부릅니다.
-
-  이는 CPU 내에 명령어를 처리하는 일꾼이 여러 명 있는 것과 같습니다.
-  당연히 멀티코어의 처리 속도는 단일코어보다 더 빠릅니다.
-    
-      다령 클럭 속도가 2.4GHz인 단일 코어 CPU와 클럭 속도가 1.9GHz인 멀티코어 CPU를 비교하면 일반적으로 후자의 성능이 더 좋습니다.
-    
-  
-
-
-CPU 종류는 CPU 안에 코어가 몇 개 포함되어 있는지에 따라 아래 표와 같이 싱글코어, 듀얼코어, 트리플코어 등으로 나뉩니다.
-
-
-
-코어를 늘릴수록 연산 처리 속도도 빨라질까요?
-
-  CPU의 연산 속도가 꼭 코어 수에 비례하여 증가하지는 않습니다.
-    
-      코어마다 처리할 연산이 적절히 분배되지 않는다면 코어 수에 비례하여 연산 속도가 증가하지 않습니다.
-      또한 처리하고자 하는 작업량보다 코어 수가 지나치게 많아도 성능에는 크게 영향이 없습니다.
-        
-          중요한 것은 코어마다 처리할 명령어들을 얼마나 적절하게 분배하느냐이고 그에 따라서 연산 속도는 크게 달라집니다.
-        
-      
-    
-  
-
-
-스레드와 멀티스레드
-
-  스레드(thread): 사전적 의미는 ‘실행 흐름의 단위’입니다.
-    
-      하지만 이 정의를 활자 그대로 받아들이지 말고 더욱 엄밀하게 이해해야 합니다.
-      CPU에서 사용되는 스레드와 프로그래밍에서 사용되는 스레드는 용례가 다르기 때문입니다.
-    
-  
-
-
-스레드에는 CPU에서 사용되는 하드웨어적 스레드가 있고, 프로그램에서 사용되는 소프트웨어적 스레드가 있습니다.
-
-하드웨어적 스레드
-스레드를 하드웨어적으로 정의하면 ‘하나의 코어가 동시에 처리하는 명령어 단위’를 의미합니다.
-CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의된 하드웨어적 스레드를 의미합니다.
-
-하나의 코어로 여러 명령어를 동시에 처리하는 CPU를 멀티스레드(multithread) 프로세서 또는 멀티스레드 CPU라고 합니다.
-
-
-  하이퍼스레딩(hyper-threading): 인텔의 멀티스레드 기술을 의미합니다.
-    
-      인텔이 자신들의 멀티스레드 기술에 하이퍼스레딩이라는 명칭을 부여한 것입니다.
-    
-  
-
-
-소프트웨어적 스레드
-소프트웨어적으로 정의된 스레드는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
-
-  프로그래밍 언어나 운영체제를 학습할 때 접하는 스레드는 보통 이렇게 소프트웨어적으로 정의된 스레드를 의미합니다.
-
-
-하나의 프로그램은 실행되는 과정에서 한 부분만 실행될 수도 있지만, 프로그램의 여러 부분이 동시에 실행될 수도 있습니다.
-
-
-
-가령 워드 프로세서 프로그램을 개발한다고 가정해봅시다.
-그리고 아래의 기능이 동시에 수행되길 원한다고 해 봅시다.
-
-  사용자로부터 입력받은 내용을 화면에 보여 주는 기능
-  사용자가 입력한 내용이 맞춤법에 맞는지 검사하는 기능
-  사용자가 입력한 내용을 수시로 저장하는 기능
-
-
-이 기능들을 작동시키는 코드를 각각의 스레드로 만들면 동시에 실행할 수 있습니다.
-
-
-
-정리하면, 스레드의 하드웨어적 정의는 ‘하나의 코어가 동시에 처리하는 명령어의 단위’를 의미하고, 소프트웨어적 정의는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
-
-한 번에 하나씩 명령어를 처리하는 1코어 1스레드 CPU도 소프트웨어적 스레드를 수십 개 실행할 수 있습니다.
-1 코어 1 스레드 CPU로도 프로그램의 여러 부분을 동시에 실행할 수 있습니다.
-
-만약 스레드의 사전적 정의(실행 흐름의 단위)만을 암기한다면 ‘1코어 1스레드 CPU가 여러 스레드로 만들어진 프로그램을 실행할 수 있다’라는 말이 어려울 겁니다.
-
-  이런 이유로 하드웨어적 스레드와 소프트웨어적 스레드는 구분하여 기억하는 것이 좋습니다.
-
-
-멀티스레드 프로세서
-하나의 코어로 여러 명령어를 동시에 처리하는 기술인 하드웨어적 스레드를 “멀티스레드 프로세서” 라고 합니다.
-
-멀티스레드 프로세서는 하나의 코어로 여러 명령어를 동시에 처리하는 CPU라고 했었습니다. 어떨게 이런 일이 가능할까요?
-
-  “멀티스레드 프로세서” 를 실제로 설계하는 일은 매우 복잡하지만, 가장 큰 핵심은 레지스터입니다.
-    
-      하나의 코어로 여러 명령어를 동시에 처리하도록 만들려면 프로그램 카운터, 스택 포인터, 메모리 버퍼 레지스터, 메모리 주소 레지스터와 같이 하나의 명령어를 처리하기 위해 꼭 필요한 레지스터를 여러개 가지고 있으면 됩니다.
-        
-          가열 프로그램 카운터가 두 개 있다면 ‘메모리에서 가져올 명령어 주소’를 두 개 지정할 수 있을 것이고, 스택 포인터가 두 개 있다면 두 개의 스택을 관리할 수 있을것 입니다.
-        
-      
-    
-  
-
-
-아래의 그림을 봅시다.
-
-하나의 명령어를 실행하기 위해 꼭 필요한 레지스터들을 편의상 ‘레지스터 세트’라고 표기했습니다.
-
-  레지스터 세트가 한 개인 CPU는 한 개의 명령어를 처리하기 위한 정보들을 기억할 뿐이지만, 레지스터 세트가 두 개인 CPU는 두 개의 명령어를 처리하기 위한 정보들을 기억할 수 있습니다.
-    
-      여기서 ALU와 제어장치가 두 개의 레지스터 세트에 저장된 명령어를 해석하고 실행하면 하나의 코어에서 두 개의 명령어가 동시에 실행됩니다.
-    
-  
-
-
-
-
-하드웨어 스레드를 이용해 하나의 코어로도 여러 명령어를 동시에 처리할 수 있습니다.
-
-  그러나 메모리 속 프로그램 입장에서 봤을 때 하드웨어 스레드는 마치 ‘한 번에 하나의 명령어를 처리하는 CPU’나 다름없습니다.
-    
-      가령 2코어 4스레드 CPU는 한 번에 네 개의 명령어를 처리할 수 있는데, 프로그램 입장에서 봤을 땐 한 번에 하나의 명령어를 처리하는 CPU가 네 개 있는 것처럼 보입니다.
-        
-          그래서 하드웨어 스레드를 논리 프로세서(logical processor) 라고 부르기도 합니다.
-        
-      
-    
-  
-
-
-
-
-“코어” 는 명령어를 실행할 수 있는 ‘하드웨어 부품’이고, “스레드” 는 ‘명령어를 실행하는 단위’입니다.
-“멀티코어 프로세서” 는 명령어를 실행할 수 있는 하드웨어 부품이 CPU 안에 두 개 이상 있는 CPU를 의미하고, “멀티스레드 프로세서” 는 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 의미합니다.
-
-키워드로 정리하는 핵심 포인트
-
-  클럭 속도가 높은 CPU는 빠르게 작동합니다.
-  코어 란 CPU 내에서 명령어를 실행하는 부품입니다.
-  멀티코어 프로세서란 여러 개의 코어를 포함하는 CPU를 말합니다.
-  스레드에는 하드웨어적 스레드와 소프트웨어적 스레드가 있습니다.
-  멀티스레드 프로세서란 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 말합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-19-InstructionParallelProcessingTechnique.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -4483,23 +4232,247 @@ CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/TIL/2024-04-18-TIL.html"><h1 class="title_post">📝 [TIL] 240418 Today I Learned.</h1></a>
-                        <a href="/2024/TIL/2024-04-18-TIL.html" class="txt_post">
-                            JAVA
+                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html"><h1 class="title_post">💾 [CS] 빠른 CPU를 위한 설계 기법</h1></a>
+                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="txt_post">
+                            빠른 CPU를 위한 설계 기법.
 
-  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 학습.
-  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 정리.
+클럭
+조금이라도 더 빠른 CPU를 만들려면 어떻게 CPU를 설계해야 할까요?
+
+이전에 학습한 내용을 상기해봅시다.
+
+  컴퓨터 부품들은 ‘클럭 신호’에 맞춰 일사분란하게 움직인다.
+  CPU는 ‘명령어 사이클’이라는 정해진 흐름에 맞춰 명령어들을 실행한다.
+
+
+클럭 신호가 빠르게 반복되면 CPU를 비롯한 컴퓨터 부품들은 그만큼 빠른 박자에 맞춰 움직일 것 입니다.
+
+  즉, 클럭 속도가 높아지면 CPU는 명령어 사이클을 더 빠르게 반복할 것이고, 다른 부품들도 그에 발맞춰 더 빠르게 작동할 것입니다.
+
+
+실제로 클럭 속도가 높은 CPU는 일반적으로 성능이 좋습니다.
+
+  
+    그래서 클럭 속도는 CPU 속도 단위로 간주되기도 합니다.
+  
+  
+    클럭 속도: 헤르츠(Hz) 단위로 측정합니다. 이는 1초에 클럭이 몇 번 반복되는지를 나타냅니다.
+    
+      가령 클럭이 ‘똑-딱-‘하고 1초에 한 번 반복되면 CPU 클럭 속도는 1Hz인 것이고, 클럭이 1초에 100번 반복되면 CPU 클럭 속도는 100Hz인 셈입니다.
+    
+  
+
+
+
+
+실제 CPU 클럭 속도는 위 사진 속 CPU를 보면 알 수 있습니다.
+
+  위 사진 속 CPU를 보면 기본 속도(Base)는 2.5GHz, 최대 속도(Max)는 4.9GHz라는 것을 알 수 있습니다.
+    
+      이는 1초에 클럭이 기본적으로 25억(2.5 x 10⁹)번 반복된다는 것을 나타냅니다.
+        
+          참고: 1GHz는 1,000,000,000(10⁹)Hz입니다.
+        
+      
+    
+  
+
+
+
+  “클럭 속도는 일정하지 않다.”
+‘클럭’이라는 단어만 보고 시계를 떠올려 클럭 속도가 매번 일정하게 유지된다고 생각할 수도 있지만, 실제로는 그렇지 않습니다.
+
+  CPU 사진을 다시 보면 기본 클럭 속도(Base)와 최대 속도(Max)로 나위어 있습니다.
+이처럼 CPU는 계속 일정한 클럭 속도를 유지하기보다는 고성능을 요하는 순간에는 순간적으로 쿨럭 속도를 높이고, 그렇지 않을 때는 유연하게 쿨럭 속도를 낮추기도 합니다.
+최대 클럭 속도를 강제로 더 끌어올릴 수도 있는데, 이런 기법을 오버클럭킹(overclocking) 이라고 합니다.
+
+
+클럭 속도를 무지막지하게 높이면 CPU는 무작정 빨라지지 않습니다.
+
+  그래픽이 많이 요구되는 게임이나 영상 편집과 같이 CPU에 무리가 가는 작업을 장시간 하면 컴퓨터가 뜨겁게 달아오르는 것을 경험해 본 적이 있을 겁니다.
+    
+      클럭 속도를 무작정 높이면 이러한 발열 문제가 더 심각해집니다.
+        
+          이처럼 클럭 속도를 높이는 것은 분명 CPU를 빠르게 만들지만, 클럭 속도만으로 CPU의 성늘을 올리는 것에는 한계가 있습니다.
+        
+      
+    
+  
+
+
+코어와 멀티 코어
+클럭 속도를 높이는 방법 외에 CPU의 성능을 높이는 방법에는 대표적으로 CPU의 코어와 스레드 수를 늘리는 방법이 있습니다.
+
+먼저 코어를 늘리는 방법을 알아봅시다.
+
+코어를 이해하려면 현대적인 관점에서 CPU라는 용어를 재해석해야 합니다.
+
+앞서 CPU를 ‘명령어를 실행하는 부품’이라고 소개했습니다.
+많은 전공 서적들의 전통적인 관점에서 ‘명령어를 실행하는 부품’은 원칙적으로 하나만 존재했습니다.
+하지만 오늘날 CPU는 많은 기술적 발전을 거듭하였고, 그 결과 CPU 내부에는 ‘명령어를 실행하는 부품’을 얼마든지 만들 수 있게 되었습니다.
+
+우리가 지금까지 CPU의 정의로 알고 있었던 ‘명령어를 실행하는 부품’은 오늘날 코어(core) 라는 용어로 사용됩니다.
+
+  다시 말해, 오늘날의 CPU는 단순히 ‘명령어를 실행하는 부품’에서 ‘명령어를 실행하는 부품을 여러 개 포함하는 부품’으로 명칭의 범위가 확장 되었습니다.
+    
+      예를 들어 8코어(Core) CPU는 ‘명령어를 실행하는 부품’을 여덟 개 포함하고 있다고 보면 됩니다.
+    
+  
+
+
+
+
+코어를 여러 개 포함하고 있는 CPU를 멀티코어(multi-core) CPU 또는 멀티코어 프로세서라고 부릅니다.
+
+  이는 CPU 내에 명령어를 처리하는 일꾼이 여러 명 있는 것과 같습니다.
+  당연히 멀티코어의 처리 속도는 단일코어보다 더 빠릅니다.
+    
+      다령 클럭 속도가 2.4GHz인 단일 코어 CPU와 클럭 속도가 1.9GHz인 멀티코어 CPU를 비교하면 일반적으로 후자의 성능이 더 좋습니다.
+    
+  
+
+
+CPU 종류는 CPU 안에 코어가 몇 개 포함되어 있는지에 따라 아래 표와 같이 싱글코어, 듀얼코어, 트리플코어 등으로 나뉩니다.
+
+
+
+코어를 늘릴수록 연산 처리 속도도 빨라질까요?
+
+  CPU의 연산 속도가 꼭 코어 수에 비례하여 증가하지는 않습니다.
+    
+      코어마다 처리할 연산이 적절히 분배되지 않는다면 코어 수에 비례하여 연산 속도가 증가하지 않습니다.
+      또한 처리하고자 하는 작업량보다 코어 수가 지나치게 많아도 성능에는 크게 영향이 없습니다.
+        
+          중요한 것은 코어마다 처리할 명령어들을 얼마나 적절하게 분배하느냐이고 그에 따라서 연산 속도는 크게 달라집니다.
+        
+      
+    
+  
+
+
+스레드와 멀티스레드
+
+  스레드(thread): 사전적 의미는 ‘실행 흐름의 단위’입니다.
+    
+      하지만 이 정의를 활자 그대로 받아들이지 말고 더욱 엄밀하게 이해해야 합니다.
+      CPU에서 사용되는 스레드와 프로그래밍에서 사용되는 스레드는 용례가 다르기 때문입니다.
+    
+  
+
+
+스레드에는 CPU에서 사용되는 하드웨어적 스레드가 있고, 프로그램에서 사용되는 소프트웨어적 스레드가 있습니다.
+
+하드웨어적 스레드
+스레드를 하드웨어적으로 정의하면 ‘하나의 코어가 동시에 처리하는 명령어 단위’를 의미합니다.
+CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의된 하드웨어적 스레드를 의미합니다.
+
+하나의 코어로 여러 명령어를 동시에 처리하는 CPU를 멀티스레드(multithread) 프로세서 또는 멀티스레드 CPU라고 합니다.
+
+
+  하이퍼스레딩(hyper-threading): 인텔의 멀티스레드 기술을 의미합니다.
+    
+      인텔이 자신들의 멀티스레드 기술에 하이퍼스레딩이라는 명칭을 부여한 것입니다.
+    
+  
+
+
+소프트웨어적 스레드
+소프트웨어적으로 정의된 스레드는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
+
+  프로그래밍 언어나 운영체제를 학습할 때 접하는 스레드는 보통 이렇게 소프트웨어적으로 정의된 스레드를 의미합니다.
+
+
+하나의 프로그램은 실행되는 과정에서 한 부분만 실행될 수도 있지만, 프로그램의 여러 부분이 동시에 실행될 수도 있습니다.
+
+
+
+가령 워드 프로세서 프로그램을 개발한다고 가정해봅시다.
+그리고 아래의 기능이 동시에 수행되길 원한다고 해 봅시다.
+
+  사용자로부터 입력받은 내용을 화면에 보여 주는 기능
+  사용자가 입력한 내용이 맞춤법에 맞는지 검사하는 기능
+  사용자가 입력한 내용을 수시로 저장하는 기능
+
+
+이 기능들을 작동시키는 코드를 각각의 스레드로 만들면 동시에 실행할 수 있습니다.
+
+
+
+정리하면, 스레드의 하드웨어적 정의는 ‘하나의 코어가 동시에 처리하는 명령어의 단위’를 의미하고, 소프트웨어적 정의는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
+
+한 번에 하나씩 명령어를 처리하는 1코어 1스레드 CPU도 소프트웨어적 스레드를 수십 개 실행할 수 있습니다.
+1 코어 1 스레드 CPU로도 프로그램의 여러 부분을 동시에 실행할 수 있습니다.
+
+만약 스레드의 사전적 정의(실행 흐름의 단위)만을 암기한다면 ‘1코어 1스레드 CPU가 여러 스레드로 만들어진 프로그램을 실행할 수 있다’라는 말이 어려울 겁니다.
+
+  이런 이유로 하드웨어적 스레드와 소프트웨어적 스레드는 구분하여 기억하는 것이 좋습니다.
+
+
+멀티스레드 프로세서
+하나의 코어로 여러 명령어를 동시에 처리하는 기술인 하드웨어적 스레드를 “멀티스레드 프로세서” 라고 합니다.
+
+멀티스레드 프로세서는 하나의 코어로 여러 명령어를 동시에 처리하는 CPU라고 했었습니다. 어떨게 이런 일이 가능할까요?
+
+  “멀티스레드 프로세서” 를 실제로 설계하는 일은 매우 복잡하지만, 가장 큰 핵심은 레지스터입니다.
+    
+      하나의 코어로 여러 명령어를 동시에 처리하도록 만들려면 프로그램 카운터, 스택 포인터, 메모리 버퍼 레지스터, 메모리 주소 레지스터와 같이 하나의 명령어를 처리하기 위해 꼭 필요한 레지스터를 여러개 가지고 있으면 됩니다.
+        
+          가열 프로그램 카운터가 두 개 있다면 ‘메모리에서 가져올 명령어 주소’를 두 개 지정할 수 있을 것이고, 스택 포인터가 두 개 있다면 두 개의 스택을 관리할 수 있을것 입니다.
+        
+      
+    
+  
+
+
+아래의 그림을 봅시다.
+
+하나의 명령어를 실행하기 위해 꼭 필요한 레지스터들을 편의상 ‘레지스터 세트’라고 표기했습니다.
+
+  레지스터 세트가 한 개인 CPU는 한 개의 명령어를 처리하기 위한 정보들을 기억할 뿐이지만, 레지스터 세트가 두 개인 CPU는 두 개의 명령어를 처리하기 위한 정보들을 기억할 수 있습니다.
+    
+      여기서 ALU와 제어장치가 두 개의 레지스터 세트에 저장된 명령어를 해석하고 실행하면 하나의 코어에서 두 개의 명령어가 동시에 실행됩니다.
+    
+  
+
+
+
+
+하드웨어 스레드를 이용해 하나의 코어로도 여러 명령어를 동시에 처리할 수 있습니다.
+
+  그러나 메모리 속 프로그램 입장에서 봤을 때 하드웨어 스레드는 마치 ‘한 번에 하나의 명령어를 처리하는 CPU’나 다름없습니다.
+    
+      가령 2코어 4스레드 CPU는 한 번에 네 개의 명령어를 처리할 수 있는데, 프로그램 입장에서 봤을 땐 한 번에 하나의 명령어를 처리하는 CPU가 네 개 있는 것처럼 보입니다.
+        
+          그래서 하드웨어 스레드를 논리 프로세서(logical processor) 라고 부르기도 합니다.
+        
+      
+    
+  
+
+
+
+
+“코어” 는 명령어를 실행할 수 있는 ‘하드웨어 부품’이고, “스레드” 는 ‘명령어를 실행하는 단위’입니다.
+“멀티코어 프로세서” 는 명령어를 실행할 수 있는 하드웨어 부품이 CPU 안에 두 개 이상 있는 CPU를 의미하고, “멀티스레드 프로세서” 는 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 의미합니다.
+
+키워드로 정리하는 핵심 포인트
+
+  클럭 속도가 높은 CPU는 빠르게 작동합니다.
+  코어 란 CPU 내에서 명령어를 실행하는 부품입니다.
+  멀티코어 프로세서란 여러 개의 코어를 포함하는 CPU를 말합니다.
+  스레드에는 하드웨어적 스레드와 소프트웨어적 스레드가 있습니다.
+  멀티스레드 프로세서란 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 말합니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-04-18</span>
+                                <span class="date">· 2024-04-19</span>
                             
                         </div>
                     </div>
@@ -4641,6 +4614,34 @@ sumWrapper = 499999999500000000
   코드 변경 없이 최적화를 하면 가장 좋겠지만, 성능 최적화는 대부분 단순함 보다는 복잡함을 요구하고, 더 많은 코드들을 추가로 만들어야 합니다. 최적화를 위해 유지보수 해야 하는 코드가 더 늘어나는 것입니다. 그런데 진짜 문제는 최적화를 한다고 했지만 전체 애플리케이션의 성능 관점에서 보면 불필요한 최적화를 할 가능성이 있습니다.
   특히 웹 애플리케이션의 경우 메모리 안에서 발생하는 연산 하나보다 네트워크 호출 한 번이 많게는 수십만배 더 오래 걸립니다. 자바 메모리 내부에서 발생하는 연산을 수천번에서 한 번으로 줄이는 것 보다, 네트워크 호출 한 번을 더 줄이는 것이 더 효과적인 경우가 많습니다.
   권장하는 방법은 개발 이후에 성능 테스트를 해보고 정말 문제가 되는 부분을 찾아서 최적화 하는 것입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/TIL/2024-04-18-TIL.html"><h1 class="title_post">📝 [TIL] 240418 Today I Learned.</h1></a>
+                        <a href="/2024/TIL/2024-04-18-TIL.html" class="txt_post">
+                            JAVA
+
+  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 학습.
+  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 정리.
 
 
                         </a>
@@ -5245,181 +5246,6 @@ intValue() - 언박싱(Unboxing)
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 1</h1></a>
-                        <a href="/2024/Java/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="txt_post">
-                            래퍼 클래스 - 기본형의 한계 1
-
-기본형의 한계
-자바는 객체 지향 언어입니다.
-그런데 자바 안에 객체가 아닌 것이 있습니다.
-
-  바로 int, double 같은 기본형(Primitive Type)입니다.
-
-
-기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
-
-  객체가 아님: 기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다. 예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서드를 제공할 수 없습니다.
-    
-      추가로 객체 참고가 필요한 컬렉션 프레임워크를 사용할 수 없습니다. 그리고 제네릭도 사용할 수 없습니다.
-    
-  
-  null 값을 가질 수 없음: 기본형 데이터 타입은 null 값을 가질 수 없습니다. 때로는 데이터가 없음 이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-
-
-기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해봅시다.
-
-  왼쪽의 값이 더 작다 -1
-  두 값이 같다 0
-  왼쪽의 값이 더 크다 1
-
-
-package lang.wrapper;
-
-public class MyIntegerMethodMain0 {
-
-  public static void main(String[] args) {
-    int value = 10;
-    int i1 = compareTo(value, 5);
-    int i2 = compareTo(value, 10);
-    int i3 = compareTo(value, 20);
-    System.out.println("i1 = " + i1);
-    System.out.println("i2 = " + i2);
-    System.out.println("i3 = " + i3);
-  }
-
-  public static int compareTo(int value, int target) {
-    if (value &lt; target) {
-      return -1;
-    } else if (value &gt; target) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-}
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
-    
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-        
-          이런 경우 만약 value가 객체라면 value 객체 스스로 가지 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
-        
-      
-    
-  
-
-
-직접 만든 래퍼 클래스.
-int를 클래스로 만들어 봅시다.
-
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-
-
-다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
-
-  이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-
-
-package lang.wrapper;
-
-public class MyInteger {
-  private final int value;
-
-  public MyInteger(int value) {
-    this.value = value;
-  }
-
-  public int getValue() {
-    return value;
-  }
-
-  public int compareTo(int target) {
-    if (value &lt; target) {
-      return -1;
-    } else if (value &gt; target) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-}
-
-
-
-  MyInteger는 int value라는 단순한 기본형 변수를 하나 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
-      앞에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-      이 클래스는 불변으로 설계했습니다.
-    
-  
-
-
-MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-
-  덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
-
-
-package lang.wrapper;
-
-public class MyIntegerMethodMain1 {
-
-  public static void main(String[] args) {
-    MyInteger myInteger = new MyInteger(10);
-    int i1 = myInteger.compareTo(5);
-    int i2 = myInteger.compareTo(10);
-    int i3 = myInteger.compareTo(20);
-    System.out.println("i1 = " + i1);
-    System.out.println("i2 = " + i2);
-    System.out.println("i3 = " + i3);
-  }
-}
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-15-InstructionCycleAndIntrrupts.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -5665,6 +5491,181 @@ CPU는 이와 같은 과정을 반복해 나가며 프로그램을 실행한다�
   인터럽트 는 CPU의 정상적인 작업을 방해하는 신호입니다.
   인터럽트의 종류에는 예외와 하드웨어 인터럽트가 있습니다.
   인터럽트 서비스 루틴은 인터럽트를 처리하기 위한 동작들로 이루어진 프로그램입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 1</h1></a>
+                        <a href="/2024/Java/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="txt_post">
+                            래퍼 클래스 - 기본형의 한계 1
+
+기본형의 한계
+자바는 객체 지향 언어입니다.
+그런데 자바 안에 객체가 아닌 것이 있습니다.
+
+  바로 int, double 같은 기본형(Primitive Type)입니다.
+
+
+기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
+
+  객체가 아님: 기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다. 예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서드를 제공할 수 없습니다.
+    
+      추가로 객체 참고가 필요한 컬렉션 프레임워크를 사용할 수 없습니다. 그리고 제네릭도 사용할 수 없습니다.
+    
+  
+  null 값을 가질 수 없음: 기본형 데이터 타입은 null 값을 가질 수 없습니다. 때로는 데이터가 없음 이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+
+
+기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해봅시다.
+
+  왼쪽의 값이 더 작다 -1
+  두 값이 같다 0
+  왼쪽의 값이 더 크다 1
+
+
+package lang.wrapper;
+
+public class MyIntegerMethodMain0 {
+
+  public static void main(String[] args) {
+    int value = 10;
+    int i1 = compareTo(value, 5);
+    int i2 = compareTo(value, 10);
+    int i3 = compareTo(value, 20);
+    System.out.println("i1 = " + i1);
+    System.out.println("i2 = " + i2);
+    System.out.println("i3 = " + i3);
+  }
+
+  public static int compareTo(int value, int target) {
+    if (value &lt; target) {
+      return -1;
+    } else if (value &gt; target) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+        
+          이런 경우 만약 value가 객체라면 value 객체 스스로 가지 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+        
+      
+    
+  
+
+
+직접 만든 래퍼 클래스.
+int를 클래스로 만들어 봅시다.
+
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+
+
+다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+
+  이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+
+
+package lang.wrapper;
+
+public class MyInteger {
+  private final int value;
+
+  public MyInteger(int value) {
+    this.value = value;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  public int compareTo(int target) {
+    if (value &lt; target) {
+      return -1;
+    } else if (value &gt; target) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+}
+
+
+
+  MyInteger는 int value라는 단순한 기본형 변수를 하나 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+      앞에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+      이 클래스는 불변으로 설계했습니다.
+    
+  
+
+
+MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+
+  덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+
+
+package lang.wrapper;
+
+public class MyIntegerMethodMain1 {
+
+  public static void main(String[] args) {
+    MyInteger myInteger = new MyInteger(10);
+    int i1 = myInteger.compareTo(5);
+    int i2 = myInteger.compareTo(10);
+    int i3 = myInteger.compareTo(20);
+    System.out.println("i1 = " + i1);
+    System.out.println("i2 = " + i2);
+    System.out.println("i3 = " + i3);
+  }
+}
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
 
 
                         </a>
@@ -5930,6 +5931,166 @@ StringBuilder를 직접 사용하는 것이 더 좋은 경우
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-04-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
+                            String 최적화.
+자바의 String 최적화
+자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
+
+문자열 리터럴 최적화
+컴파일 전
+String helloWorld = "Hello, " + "World!";
+
+
+컴파일 후
+String helloWorld = "Hello, World!";
+
+따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
+
+String 변수 최적화
+문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+String result = str1 + str2;
+
+
+이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
+String result = new StringBuilder().append(str1).append(str2).toString();
+
+
+
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
+
+
+이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+
+  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
+
+
+String 최적화가 어려운 경우
+다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
+package lang.string.builder;
+
+public class LoopStringMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+    String result = "";
+
+    for (int i = 0; i &lt; 100000; i++) {
+      result += "Hello Java ";
+    }
+
+    long endTime = System.currentTimeMillis();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+String result = "";
+for (int i = 0; i &lt; 100000; i++) {
+    result = new StringBuilder().append(result).append("Hello Java ").toString();
+}
+
+
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+    
+      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+        
+          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+            
+              따라서, 이런 상황에서는 최적화가 어렵습니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 2528ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
+
+
+이럴 때는 직접 StringBuilder를 사용하면 됩니다.
+package lang.string.builder;
+
+public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i &lt; 100000; i++) {
+      sb.append("Hello Java ");
+    }
+
+    long endTime = System.currentTimeMillis();
+
+    String result = sb.toString();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 4ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
+
+
+정리
+
+  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+
+
+StringBuilder를 직접 사용하는 것이 더 좋은 경우
+
+  반복문에서 반복해서 문자를 연결할 때
+  조건문을 통해 동적으로 문자열을 조합할 때
+  복잡한 문자열의 특정 부분을 변경해야 할 때
+  매우 긴 대용량 문자열을 다룰 때
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-11</span>
                             
                         </div>
                     </div>
@@ -6474,166 +6635,6 @@ CPU로 실행할 프로그램이 1000번지부터 1500번지까지 저장되어 
       호출된 서브루틴이 실행을 마치고 호출자로 돌아갈 때 사용됩니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
-                            String 최적화.
-자바의 String 최적화
-자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
-
-문자열 리터럴 최적화
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-String 변수 최적화
-문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-String result = str1 + str2;
-
-
-이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
-String result = new StringBuilder().append(str1).append(str2).toString();
-
-
-
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
-
-
-이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
-
-  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
-
-
-String 최적화가 어려운 경우
-다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-package lang.string.builder;
-
-public class LoopStringMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-    String result = "";
-
-    for (int i = 0; i &lt; 100000; i++) {
-      result += "Hello Java ";
-    }
-
-    long endTime = System.currentTimeMillis();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-String result = "";
-for (int i = 0; i &lt; 100000; i++) {
-    result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-
-
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-    
-      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-        
-          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
-            
-              따라서, 이런 상황에서는 최적화가 어렵습니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 2528ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
-
-
-이럴 때는 직접 StringBuilder를 사용하면 됩니다.
-package lang.string.builder;
-
-public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i &lt; 100000; i++) {
-      sb.append("Hello Java ");
-    }
-
-    long endTime = System.currentTimeMillis();
-
-    String result = sb.toString();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 4ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
-
-
-정리
-
-  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-
-
-StringBuilder를 직접 사용하는 것이 더 좋은 경우
-
-  반복문에서 반복해서 문자를 연결할 때
-  조건문을 통해 동적으로 문자열을 조합할 때
-  복잡한 문자열의 특정 부분을 변경해야 할 때
-  매우 긴 대용량 문자열을 다룰 때
-
-
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
 
 
                         </a>
@@ -7345,6 +7346,141 @@ String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-08-StringClassComparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-08-StringClassComparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
+                        <a href="/2024/Java/2024-04-08-StringClassComparison.html" class="txt_post">
+                            String 클래스 - 비교
+String 클래스를 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
+
+  동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
+  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인
+
+
+package lang.string.equals;
+
+public class StringEqualsMain1 {
+
+  public static void main(String[] args) {
+    String str1 = new String("hello");
+    String str2 = new String("hello");
+    System.out.println("new String() == 비교: " + (str1 == str2));
+    System.out.println("new String() equals 비교:" + (str1.equals(str2)));
+
+    String str3 = "hello";
+    String str4 = "hello";
+    System.out.println("리터럴 == 비교: " + (str3 == str4));
+    System.out.println("리터럴 equals 비교: " + (str3.equals(str4)));
+  }
+}
+
+
+실행 결과
+new String() == 비교: false
+new String() equals 비교:true
+리터럴 == 비교: true
+리터럴 equals 비교: true
+
+
+
+
+  str1과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
+    
+      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
+    
+  
+  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
+    
+      따라서 동등성(equals()) 비교에 성공합니다.
+        
+          참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
+        
+      
+    
+  
+
+
+
+
+
+  String str3 = "hello"와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
+  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
+    
+      이때 같은 문자열이 있으면 만들지 않습니다.
+    
+  
+  String str3 - "hello"와 같이 문자열 리터럴을 사용하면 문자열 풀에서 "hello" 라는 문자를 가진 String 인스턴스를 찾습니다.
+    
+      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
+    
+  
+  String str4 = "hello"의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
+  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
+
+
+따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
+
+
+  참고 : 풀(pool)은 자원이 모여있는 곳을 의미합니다.
+프로그래밍에서 풀(pool)은 공용 자원을 모아둔 곳을 뜻합니다.
+여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
+대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
+참고로 문자열 풀은 힙 영역을 사용합니다.
+그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
+
+
+그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까요?
+
+다음 코드를 봅시다.
+
+package lang.string.equals;
+
+public class StringEqualsMain2 {
+
+  public static void main(String[] args) {
+    String str1 = new String("hello");
+    String str2 = new String("hello");
+    System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
+
+    String str3 = "hello";
+    String str4 = "hello";
+    System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
+  }
+
+  private static boolean isSame(String x, String y) {
+    return x == y;
+    //return x.equals(y);
+  }
+}
+
+
+실행 결과
+메서드 호출 비교1: false
+메서드 호출 비교2: true
+
+
+main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
+isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String()으로 만들어진 것인지, 문자열 리터럴로 만들어 진것인지 확인할 수 있는 방법이 없습니다.
+따라서 문자열 비교는 항상 equals()를 사용해서 동등성 비교를 해야 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/CS/2024-04-08-ALUandControlUnit.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -7552,141 +7688,6 @@ ALU의 한계를 넘어서 Java 애플리케이션의 성능을 향상시키기 
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-08-StringClassComparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-08-StringClassComparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
-                        <a href="/2024/Java/2024-04-08-StringClassComparison.html" class="txt_post">
-                            String 클래스 - 비교
-String 클래스를 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
-
-  동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
-  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인
-
-
-package lang.string.equals;
-
-public class StringEqualsMain1 {
-
-  public static void main(String[] args) {
-    String str1 = new String("hello");
-    String str2 = new String("hello");
-    System.out.println("new String() == 비교: " + (str1 == str2));
-    System.out.println("new String() equals 비교:" + (str1.equals(str2)));
-
-    String str3 = "hello";
-    String str4 = "hello";
-    System.out.println("리터럴 == 비교: " + (str3 == str4));
-    System.out.println("리터럴 equals 비교: " + (str3.equals(str4)));
-  }
-}
-
-
-실행 결과
-new String() == 비교: false
-new String() equals 비교:true
-리터럴 == 비교: true
-리터럴 equals 비교: true
-
-
-
-
-  str1과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
-    
-      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
-    
-  
-  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
-    
-      따라서 동등성(equals()) 비교에 성공합니다.
-        
-          참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
-        
-      
-    
-  
-
-
-
-
-
-  String str3 = "hello"와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
-  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
-    
-      이때 같은 문자열이 있으면 만들지 않습니다.
-    
-  
-  String str3 - "hello"와 같이 문자열 리터럴을 사용하면 문자열 풀에서 "hello" 라는 문자를 가진 String 인스턴스를 찾습니다.
-    
-      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
-    
-  
-  String str4 = "hello"의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
-  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
-
-
-따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
-
-
-  참고 : 풀(pool)은 자원이 모여있는 곳을 의미합니다.
-프로그래밍에서 풀(pool)은 공용 자원을 모아둔 곳을 뜻합니다.
-여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
-대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
-참고로 문자열 풀은 힙 영역을 사용합니다.
-그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
-
-
-그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까요?
-
-다음 코드를 봅시다.
-
-package lang.string.equals;
-
-public class StringEqualsMain2 {
-
-  public static void main(String[] args) {
-    String str1 = new String("hello");
-    String str2 = new String("hello");
-    System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
-
-    String str3 = "hello";
-    String str4 = "hello";
-    System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
-  }
-
-  private static boolean isSame(String x, String y) {
-    return x == y;
-    //return x.equals(y);
-  }
-}
-
-
-실행 결과
-메서드 호출 비교1: false
-메서드 호출 비교2: true
-
-
-main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
-isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String()으로 만들어진 것인지, 문자열 리터럴로 만들어 진것인지 확인할 수 있는 방법이 없습니다.
-따라서 문자열 비교는 항상 equals()를 사용해서 동등성 비교를 해야 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-06-StringClassBasic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -7877,6 +7878,70 @@ result2 = hello jave
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
+                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="txt_post">
+                            불변 객체 - 정리.
+지금까지 왜 이렇게 불변 객체 이야기를 많이 했을까요?
+
+  자바에서 가장 많이 사용되는 String 클래스가 바로 불변 객체이기 때문입니다.
+  뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수 많은 클래스가 불변으로 설계되어 있습니다.
+    
+      따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
+    
+  
+
+
+모든 클래스를 불변으로 만드는 것은 아닙니다.
+우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
+
+  예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
+    
+      가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
+        
+          때로는 같은 기능을 하는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
+        
+      
+    
+  
+
+
+클래스를 불변으로 설계하는 이유는 더 많습니다.
+
+  캐시 안정성
+  멀티 쓰레드 안정성
+  엔티티 값 타입
+
+
+지금은 이런 부분을 다 이해할 수는 없습니다.
+
+  관련 내용을 학습하다 보면 자연스럽게 이번에 배운 불변 객체가 떠오르면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
+  프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 됩니다.
+    
+      따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-05-ImmutableObjectChangeValue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -8043,59 +8108,167 @@ obj1 = 10
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/SQL/2024-04-04-ReplaceSubstringConcat.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
-                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="txt_post">
-                            불변 객체 - 정리.
-지금까지 왜 이렇게 불변 객체 이야기를 많이 했을까요?
+                        <a href="/2024/SQL/2024-04-04-ReplaceSubstringConcat.html"><h1 class="title_post">💉[SQL] REPLACE, SUBSTRING, CONCAT</h1></a>
+                        <a href="/2024/SQL/2024-04-04-ReplaceSubstringConcat.html" class="txt_post">
+                            REPLACE
+‘REPLACE’ 함수는 SQL에서 문자열 내의 특정 부분을 다른 문자열로 바꾸고자 할 때 사용됩니다.
 
-  자바에서 가장 많이 사용되는 String 클래스가 바로 불변 객체이기 때문입니다.
-  뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수 많은 클래스가 불변으로 설계되어 있습니다.
+  이 함수는 데이터 정제나 수정 작업에서 특히 유용하며, 기존 문자열 내의 특정 패턴이나 문자를 찾아 이를 새로운 문자열로 대체하는 기능을 제공합니다.
+  ‘REPLACE’ 는 로그 데이터 정리, 사용자 입력 데이터의 표준화, 데이터 마이그레이션 작업 등 다양한 상황에서 활용될 수 있습니다.
+
+
+‘REPLACE’ 사용 예
+
+  특정 문자열 대체: 고객 데이터에서 전화번호 형식을 변경하고 싶을 때
+    SELECT REPLACE(phone_number, '-', '') FROM customers;
     
-      따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
+    이 쿼리는 ‘customers’ 테이블의 ‘phone_number’ 열에서 모든 ’-‘ 를 제거합니다.
+예를 들어, ‘123-456-7890’ 이라는 전화번호가 있을 경우, ‘1234567890’ 으로 변경됩니다.
+  
+  데이터 정제: 사용자의 이메일 주소에서 도메인을 변경하고 싶을 때
+    UPDATE users SET email = REPLACE(email, '@old_domain.com', '@new_domain.com');
     
+    이 쿼리는 ‘users’ 테이블의 ‘email’ 열에서 ‘@old_domail.com’ 을 ‘@new_domain.com’ 으로 변경합니다.
+  
+  텍스트 내용 수정: 상품 설명에서 특정 단어를 새로운 단어로 바꾸고 싶을 때
+    UPDATE products SET description = REPLACE(description, 'oldword', 'newword');
+    
+    이 쿼리는 ‘products’ 테이블의 ‘description’ 열에서 ‘oldword’ 를 ‘newword’ 로 변경합니다.
   
 
 
-모든 클래스를 불변으로 만드는 것은 아닙니다.
-우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
+‘REPLACE’ 함수의 특징.
 
-  예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
+  ‘REPLACE’ 는 대소문자를 구분하여 작동합니다.
     
-      가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
+      대소문자 구분 없이 대체를 하고자 할 경우, 추가적인 함수나 조건을 사용해야 할 수 있습니다.
+    
+  
+  문자열 내에서 지정된 패턴이나 문자열을 찾아 모두 대체합니다.
+    
+      찾고자 하는 문자열이 존재하지 않으면, 원본 문자열이 변경 없이 그대로 반환됩니다.
+    
+  
+  ‘REPLACE’ 함수는 ‘SELECT’, ‘UPDATE’ 등의 쿼리 내에서 사용할 수 있으며, 데이터 조회 또는 수정 작업에 모두 적용할 수 있습니다.
+
+
+사용 시 고려사항
+
+  대량의 데이터를 처리할 때는 ‘REPLACE’ 함수를 사용하는 쿼리의 성능에 주의해야 합니다.
+    
+      특히 ‘UPDATE’ 작업에서는 대체 작업으로 인해 대량의 데이터가 변경될 수 있으므로, 사전에 작업 범위를 잘 파악하고 필요한 백업을 수행하는 것이 좋습니다.
+    
+  
+  문자열 대체 작업을 수행할 때는 원치 않는 데이터 변경을 방지하기 위해, 대체할 문자열이 정확히 일치하는지 사전에 확인하는 것이 중요합니다.
+
+
+‘REPLACE’ 함수는 문자열 데이터를 쉽게 수정하고 정제할 수 있는 강력한 도구로, 데이터베이스 내의 데이터 관리 및 유지보수 작업에 널리 사용됩니다.
+
+SUBSTRING
+‘SUBSTRING’ 함수는 SQL에서 문자열의 특정 부분을 추출할 때 사용됩니다.
+
+  이 함수는 문자열 데이터 내에서 특정 위치를 기준으로 한 부분 문자열(substring)을 반환하며, 데이터 정제, 특정 형식의 데이터 추출, 또는 문자열 처리 작업에서 매우 유용합니다.
+  ‘SUBSTRING’ 은 로그 분석, 데이터 마이그레이션, 사용자 입력의 특정 부분 처리 등 다양한 상황에서 활용될 수 있습니다.
+
+
+‘SUBSTRING’ 사용 예
+
+  특정 위치의 문자열 추출: 사용자 이메일에서 도메인 부분만을 추출하고 싶을 때
+    SELECT SUBSTRING(email FROM POSITION ('@' IN email) + 1) FROM users;
+    
+    이 쿼리는 ‘users’ 테이블의 ‘email’ 열에서 ’@’ 기호 뒤의 도메인 부분을 추출합니다.
+  
+  고정된 형식의 문자열 처리: 전화번호에서 지역 코드를 추출하고 싶을 때
+    SELECT SUBSTRING(phone_number, 1, 3) FROM customers;
+    
+    이 쿼리는 ‘customers’ 테이블의 ‘phone_number’ 열에서 처음 3자리(지역 코드)를 추출합니다.
+  
+  문자열의 특정 부분 수정 작업에 사용: 주소에서 특정 부분을 다른 형식으로 변경하고 싶을 때
+    UPDATE addresses SET street = SUBSTRING(street, 1, 10) || '...' WHERE LENGTH(street) &gt; 10;
+    
+    이 쿼리는 ‘addresses’ 테이블의 ‘street’ 열에서 문자열의 길이가 10자를 초과하는 경우, 처음 10자만을 남기고 그 뒤를 ‘…‘ 으로 대체합니다.
+  
+
+
+‘SUBSTRING’ 함수의 특징
+
+  ‘SUBSTRING’ 은 문자열의 특정 섹션을 반환하는 데 사용되며, 시작 위치와 길이(선택적)를 지정하여 원하는 부분 문자열을 추출할 수 있습니다.
+  다양한 문자열 처리 작업에 활용될 수 있으며, 데이터의 형식을 변경하거나, 특정 패턴에 기반한 정보를 추출하는 등의 목적으로 사용됩니다.
+  함수의 정확한 구문은 사용하는 SQL 데이터베이스 시스템에 따라 약간씩 다를 수 있으므로, 해당 시스템의 문서를 참조하는 것이 좋습니다.
+
+
+사용 시 고려사항
+
+  ‘SUBSTRING’ 함수를 사용할 때는 문자열의 인덱스가 1부터 시작한다는 점을 주의해야 합니다.(대부분의 SQL 시스템에서).
+  대량의 데이터를 처리할 때는 ‘SUBSTRING’ 함수를 사용하는 쿼리의 성능에 주의해야 합니다. 필요한 경우, 적절한 인덱스 사용과 데이터 필터링을 통해 성능을 최적화할 수 있습니다.
+
+
+‘SUBSTRING’ 함수는 문자열 데이터를 효과적으로 처리하고 분석하는 데 있어 필수적인 도구로, 데이터베이스 내에서 다양한 문자열 조작 작업을 수행하는 데 널리 사용됩니다.
+
+CONCAT
+‘CONCAT’ 함수는 SQL에서 두 개 이상의 문자열을 하나로 결합할 때 사용됩니다.
+
+  이 함수는 데이터베이스 내에서 다양한 문자열 정보를 합쳐 새로운 문자열 값을 생성하고자 할 때 유용하며, 보고서 작성, 데이터 형식의 표준화, 사용자 이름이나 주소와 같은 데이터의 결합 등 다양한 상황에서 활용될 수 있습니다.
+
+
+‘CONCAT’ 사용 예
+
+  단순한 문자열 결합: 사용자의 이름과 성을 하나의 문자열로 결합하고 싶을 때
+    SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM users;
+    
+    이 쿼리는 ‘users’ 테이블의 ‘first_name’ 과 ‘last_name’ 을 공백으로 구분하여 결합한 후, ‘full_name’ 이라는 새로운 열로 결과를 반환합니다.
+  
+  복수의 열 결합: 고객의 주소 정보를 하나의 문자열로 결합하고 싶을 때
+    SELECT CONCAT(street_address, ', ', city, state, ' ', postal_code) AS full_address FROM customers;
+    
+    이 쿼리는 ‘customers’ 테이블에서 여러 주소 관련 열을 콤마와 공백을 사용하여 결합하고, 이를 ‘full_address’ 라는 새로운 열로 결과를 반환합니다.
+  
+  데이터 형식 표준화: 상품 코드와 상품 이름을 결합하여 표준 형식의 상품 정보를 생성하고 싶을 떄
+    SELECT CONCAT(product_code, ': ', product_name) AS product_info FROM products;
+    
+    이 쿼리는 ‘products’ 테이블의 ‘product_code’ 와 ‘product_name’ 을 콜론과 공백으로 구분하여 결합한 후,
+‘product_info’ 라는 새로운 열로 결과를 반환합니다.
+  
+
+
+‘CONCAT’ 함수의 특징
+
+  ‘CONCAT’ 함수는 두 개 이상의 문자열을 매개변수로 받아 이들을 순서대로 결합한 새로운 문자열을 생성합니다.
+  거의 모든 SQL 데이터베이스 시스템에서 지원되며, 문자열 처리와 데이터 형식의 변환에 널리 사용됩니다.
+  
+    
+      
         
-          때로는 같은 기능을 하는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
+          일부 데이터베이스 시스템에서는 ‘CONCAT’ 대신 연산자(**’
+           
+          ‘** 등)를 사용하여 문자열을 결합할 수도 있습니다.
         
       
     
   
 
 
-클래스를 불변으로 설계하는 이유는 더 많습니다.
+사용 시 고려사항
 
-  캐시 안정성
-  멀티 쓰레드 안정성
-  엔티티 값 타입
-
-
-지금은 이런 부분을 다 이해할 수는 없습니다.
-
-  관련 내용을 학습하다 보면 자연스럽게 이번에 배운 불변 객체가 떠오르면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
-  프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 됩니다.
+  결합하려는 문자열 중 하나라도 ‘NULL’ 값을 포함하는 경우, ‘CONCAT’ 의 동작은 데이터베이스 시스템에 따라 다를 수 있습니다.
     
-      따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
+      예를 들어, 일부 시스템은 ‘NULL’ 을 빈 문자열로 취급할 수 있으나, 다른 시스템에서는 전체 결과가 ‘NULL’ 이 될 수 있습니다.
     
   
+  복잡한 문자열 결합을 수행할 때는 성능에 주의해야 하며, 특히 대량의 데이터를 처리할 때는 쿼리 성능을 테스트하고 최적화하는 것이 중요합니다.
 
+
+‘CONCAT’ 함수는 문자열 데이터를 결합하고 조작하는 과정에서 필수적인 도구로, 데이터베이스 내에서 다양한 문자열 관련 작업을 구행하는 데 활용됩니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-04-05</span>
+                                <span class="date">· 2024-04-04</span>
                             
                         </div>
                     </div>
@@ -8411,167 +8584,204 @@ Q6. 가비지 컬렉션(Garbage Collection)의 기본 원리를 설명해 주세
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/SQL/2024-04-04-ReplaceSubstringConcat.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-04-ReplaceSubstringConcat.html"><h1 class="title_post">💉[SQL] REPLACE, SUBSTRING, CONCAT</h1></a>
-                        <a href="/2024/SQL/2024-04-04-ReplaceSubstringConcat.html" class="txt_post">
-                            REPLACE
-‘REPLACE’ 함수는 SQL에서 문자열 내의 특정 부분을 다른 문자열로 바꾸고자 할 때 사용됩니다.
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
+                            불변 객체 - 도입
+지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
 
-  이 함수는 데이터 정제나 수정 작업에서 특히 유용하며, 기존 문자열 내의 특정 패턴이나 문자를 찾아 이를 새로운 문자열로 대체하는 기능을 제공합니다.
-  ‘REPLACE’ 는 로그 데이터 정리, 사용자 입력 데이터의 표준화, 데이터 마이그레이션 작업 등 다양한 상황에서 활용될 수 있습니다.
-
-
-‘REPLACE’ 사용 예
-
-  특정 문자열 대체: 고객 데이터에서 전화번호 형식을 변경하고 싶을 때
-    SELECT REPLACE(phone_number, '-', '') FROM customers;
+  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
     
-    이 쿼리는 ‘customers’ 테이블의 ‘phone_number’ 열에서 모든 ’-‘ 를 제거합니다.
-예를 들어, ‘123-456-7890’ 이라는 전화번호가 있을 경우, ‘1234567890’ 으로 변경됩니다.
-  
-  데이터 정제: 사용자의 이메일 주소에서 도메인을 변경하고 싶을 때
-    UPDATE users SET email = REPLACE(email, '@old_domain.com', '@new_domain.com');
-    
-    이 쿼리는 ‘users’ 테이블의 ‘email’ 열에서 ‘@old_domail.com’ 을 ‘@new_domain.com’ 으로 변경합니다.
-  
-  텍스트 내용 수정: 상품 설명에서 특정 단어를 새로운 단어로 바꾸고 싶을 때
-    UPDATE products SET description = REPLACE(description, 'oldword', 'newword');
-    
-    이 쿼리는 ‘products’ 테이블의 ‘description’ 열에서 ‘oldword’ 를 ‘newword’ 로 변경합니다.
-  
-
-
-‘REPLACE’ 함수의 특징.
-
-  ‘REPLACE’ 는 대소문자를 구분하여 작동합니다.
-    
-      대소문자 구분 없이 대체를 하고자 할 경우, 추가적인 함수나 조건을 사용해야 할 수 있습니다.
-    
-  
-  문자열 내에서 지정된 패턴이나 문자열을 찾아 모두 대체합니다.
-    
-      찾고자 하는 문자열이 존재하지 않으면, 원본 문자열이 변경 없이 그대로 반환됩니다.
-    
-  
-  ‘REPLACE’ 함수는 ‘SELECT’, ‘UPDATE’ 등의 쿼리 내에서 사용할 수 있으며, 데이터 조회 또는 수정 작업에 모두 적용할 수 있습니다.
-
-
-사용 시 고려사항
-
-  대량의 데이터를 처리할 때는 ‘REPLACE’ 함수를 사용하는 쿼리의 성능에 주의해야 합니다.
-    
-      특히 ‘UPDATE’ 작업에서는 대체 작업으로 인해 대량의 데이터가 변경될 수 있으므로, 사전에 작업 범위를 잘 파악하고 필요한 백업을 수행하는 것이 좋습니다.
-    
-  
-  문자열 대체 작업을 수행할 때는 원치 않는 데이터 변경을 방지하기 위해, 대체할 문자열이 정확히 일치하는지 사전에 확인하는 것이 중요합니다.
-
-
-‘REPLACE’ 함수는 문자열 데이터를 쉽게 수정하고 정제할 수 있는 강력한 도구로, 데이터베이스 내의 데이터 관리 및 유지보수 작업에 널리 사용됩니다.
-
-SUBSTRING
-‘SUBSTRING’ 함수는 SQL에서 문자열의 특정 부분을 추출할 때 사용됩니다.
-
-  이 함수는 문자열 데이터 내에서 특정 위치를 기준으로 한 부분 문자열(substring)을 반환하며, 데이터 정제, 특정 형식의 데이터 추출, 또는 문자열 처리 작업에서 매우 유용합니다.
-  ‘SUBSTRING’ 은 로그 분석, 데이터 마이그레이션, 사용자 입력의 특정 부분 처리 등 다양한 상황에서 활용될 수 있습니다.
-
-
-‘SUBSTRING’ 사용 예
-
-  특정 위치의 문자열 추출: 사용자 이메일에서 도메인 부분만을 추출하고 싶을 때
-    SELECT SUBSTRING(email FROM POSITION ('@' IN email) + 1) FROM users;
-    
-    이 쿼리는 ‘users’ 테이블의 ‘email’ 열에서 ’@’ 기호 뒤의 도메인 부분을 추출합니다.
-  
-  고정된 형식의 문자열 처리: 전화번호에서 지역 코드를 추출하고 싶을 때
-    SELECT SUBSTRING(phone_number, 1, 3) FROM customers;
-    
-    이 쿼리는 ‘customers’ 테이블의 ‘phone_number’ 열에서 처음 3자리(지역 코드)를 추출합니다.
-  
-  문자열의 특정 부분 수정 작업에 사용: 주소에서 특정 부분을 다른 형식으로 변경하고 싶을 때
-    UPDATE addresses SET street = SUBSTRING(street, 1, 10) || '...' WHERE LENGTH(street) &gt; 10;
-    
-    이 쿼리는 ‘addresses’ 테이블의 ‘street’ 열에서 문자열의 길이가 10자를 초과하는 경우, 처음 10자만을 남기고 그 뒤를 ‘…‘ 으로 대체합니다.
-  
-
-
-‘SUBSTRING’ 함수의 특징
-
-  ‘SUBSTRING’ 은 문자열의 특정 섹션을 반환하는 데 사용되며, 시작 위치와 길이(선택적)를 지정하여 원하는 부분 문자열을 추출할 수 있습니다.
-  다양한 문자열 처리 작업에 활용될 수 있으며, 데이터의 형식을 변경하거나, 특정 패턴에 기반한 정보를 추출하는 등의 목적으로 사용됩니다.
-  함수의 정확한 구문은 사용하는 SQL 데이터베이스 시스템에 따라 약간씩 다를 수 있으므로, 해당 시스템의 문서를 참조하는 것이 좋습니다.
-
-
-사용 시 고려사항
-
-  ‘SUBSTRING’ 함수를 사용할 때는 문자열의 인덱스가 1부터 시작한다는 점을 주의해야 합니다.(대부분의 SQL 시스템에서).
-  대량의 데이터를 처리할 때는 ‘SUBSTRING’ 함수를 사용하는 쿼리의 성능에 주의해야 합니다. 필요한 경우, 적절한 인덱스 사용과 데이터 필터링을 통해 성능을 최적화할 수 있습니다.
-
-
-‘SUBSTRING’ 함수는 문자열 데이터를 효과적으로 처리하고 분석하는 데 있어 필수적인 도구로, 데이터베이스 내에서 다양한 문자열 조작 작업을 수행하는 데 널리 사용됩니다.
-
-CONCAT
-‘CONCAT’ 함수는 SQL에서 두 개 이상의 문자열을 하나로 결합할 때 사용됩니다.
-
-  이 함수는 데이터베이스 내에서 다양한 문자열 정보를 합쳐 새로운 문자열 값을 생성하고자 할 때 유용하며, 보고서 작성, 데이터 형식의 표준화, 사용자 이름이나 주소와 같은 데이터의 결합 등 다양한 상황에서 활용될 수 있습니다.
-
-
-‘CONCAT’ 사용 예
-
-  단순한 문자열 결합: 사용자의 이름과 성을 하나의 문자열로 결합하고 싶을 때
-    SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM users;
-    
-    이 쿼리는 ‘users’ 테이블의 ‘first_name’ 과 ‘last_name’ 을 공백으로 구분하여 결합한 후, ‘full_name’ 이라는 새로운 열로 결과를 반환합니다.
-  
-  복수의 열 결합: 고객의 주소 정보를 하나의 문자열로 결합하고 싶을 때
-    SELECT CONCAT(street_address, ', ', city, state, ' ', postal_code) AS full_address FROM customers;
-    
-    이 쿼리는 ‘customers’ 테이블에서 여러 주소 관련 열을 콤마와 공백을 사용하여 결합하고, 이를 ‘full_address’ 라는 새로운 열로 결과를 반환합니다.
-  
-  데이터 형식 표준화: 상품 코드와 상품 이름을 결합하여 표준 형식의 상품 정보를 생성하고 싶을 떄
-    SELECT CONCAT(product_code, ': ', product_name) AS product_info FROM products;
-    
-    이 쿼리는 ‘products’ 테이블의 ‘product_code’ 와 ‘product_name’ 을 콜론과 공백으로 구분하여 결합한 후,
-‘product_info’ 라는 새로운 열로 결과를 반환합니다.
-  
-
-
-‘CONCAT’ 함수의 특징
-
-  ‘CONCAT’ 함수는 두 개 이상의 문자열을 매개변수로 받아 이들을 순서대로 결합한 새로운 문자열을 생성합니다.
-  거의 모든 SQL 데이터베이스 시스템에서 지원되며, 문자열 처리와 데이터 형식의 변환에 널리 사용됩니다.
-  
-    
-      
+      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
         
-          일부 데이터베이스 시스템에서는 ‘CONCAT’ 대신 연산자(**’
-           
-          ‘** 등)를 사용하여 문자열을 결합할 수도 있습니다.
+          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
         
       
     
   
 
 
-사용 시 고려사항
+앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
 
-  결합하려는 문자열 중 하나라도 ‘NULL’ 값을 포함하는 경우, ‘CONCAT’ 의 동작은 데이터베이스 시스템에 따라 다를 수 있습니다.
-    
-      예를 들어, 일부 시스템은 ‘NULL’ 을 빈 문자열로 취급할 수 있으나, 다른 시스템에서는 전체 결과가 ‘NULL’ 이 될 수 있습니다.
+  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
+    Address a = new Address("서울");
+Address b = a;
     
   
-  복잡한 문자열 결합을 수행할 때는 성능에 주의해야 하며, 특히 대량의 데이터를 처리할 때는 쿼리 성능을 테스트하고 최적화하는 것이 중요합니다.
 
 
-‘CONCAT’ 함수는 문자열 데이터를 결합하고 조작하는 과정에서 필수적인 도구로, 데이터베이스 내에서 다양한 문자열 관련 작업을 구행하는 데 활용됩니다.
+따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+
+  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
+
+진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+
+  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+    
+      따라서 이것은 문제가 아닙니다.
+        
+          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
+        
+      
+    
+  
+
+
+만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+
+불변 객체 도입
+객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+
+앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
+
+package lang.immutable.address;
+
+public class ImmutableAddress {
+  private final String value;
+
+  public ImmutableAddress(String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return "Address{" +
+        "value='" + value + '\'' +
+        '}';
+  }
+}
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 value의 필드를 final로 선언했습니다.
+    
+  
+  값을 변경할 수 있는 setValue()를 제거했습니다.
+  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+
+
+불변 클래스를 만드는 방법은 아주 단순합니다.
+
+  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+
+
+package lang.immutable.address;
+
+public class RefMain2 {
+
+  public static void main(String[] args) {
+    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
+    ImmutableAddress a = new ImmutableAddress("서울");
+    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+
+    System.out.println("a = " + a);
+    System.out.println("b = " + b);
+
+    // b.setValue("부산"); // 컴파일 오류 발생
+    b = new ImmutableAddress("부산");
+    System.out.println("부산 -&gt; b");
+    System.out.println("a = " + a); // 사이드 이펙트 발생
+    System.out.println("b = " + b);
+  }
+}
+
+
+  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
+  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
+    
+      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
+        
+          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
+        
+      
+    
+  
+  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
+
+
+
+
+  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+정리
+불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+
+  객체의 공유 참조는 막을 수 없습니다.
+    
+      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
+      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+    
+  
+  불변 객체는 값을 변경할 수 없습니다.
+    
+      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+        
+          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+        
+      
+    
+  
+
+
+
+  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
+
+  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
+
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-04-04</span>
+                                <span class="date">· 2024-04-03</span>
                             
                         </div>
                     </div>
@@ -8812,215 +9022,6 @@ b = Address{value='부산'}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
-                            불변 객체 - 도입
-지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
-
-  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
-    
-      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-        
-          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-        
-      
-    
-  
-
-
-앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
-
-  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
-    Address a = new Address("서울");
-Address b = a;
-    
-  
-
-
-따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-
-  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-
-
-Address a = new Address("서울");
-Address b = new Address("서울");
-
-
-여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
-
-진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-
-
-자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-
-  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-    
-      따라서 이것은 문제가 아닙니다.
-        
-          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
-        
-      
-    
-  
-
-
-만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-
-불변 객체 도입
-객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-
-앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
-
-package lang.immutable.address;
-
-public class ImmutableAddress {
-  private final String value;
-
-  public ImmutableAddress(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return "Address{" +
-        "value='" + value + '\'' +
-        '}';
-  }
-}
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 value의 필드를 final로 선언했습니다.
-    
-  
-  값을 변경할 수 있는 setValue()를 제거했습니다.
-  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-
-
-불변 클래스를 만드는 방법은 아주 단순합니다.
-
-  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-
-
-package lang.immutable.address;
-
-public class RefMain2 {
-
-  public static void main(String[] args) {
-    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
-    ImmutableAddress a = new ImmutableAddress("서울");
-    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-
-    System.out.println("a = " + a);
-    System.out.println("b = " + b);
-
-    // b.setValue("부산"); // 컴파일 오류 발생
-    b = new ImmutableAddress("부산");
-    System.out.println("부산 -&gt; b");
-    System.out.println("a = " + a); // 사이드 이펙트 발생
-    System.out.println("b = " + b);
-  }
-}
-
-
-  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
-  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
-    
-      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
-        
-          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
-        
-      
-    
-  
-  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
-
-
-
-
-  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-정리
-불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-
-  객체의 공유 참조는 막을 수 없습니다.
-    
-      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
-      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-    
-  
-  불변 객체는 값을 변경할 수 없습니다.
-    
-      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-        
-          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-        
-      
-    
-  
-
-
-
-  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
-
-  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/SQL/2024-04-02-ORDERBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -9067,70 +9068,6 @@ ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성
 
 
 ‘ORDER BY’ 절은 SQL 쿼리의 결과를 사용자가 원하는 순서로 쉽게 정렬할 수 있게 해주며, 데이터의 가독성과 분석의 용이성을 크게 향상시킵니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/SQL/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
-                        <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="txt_post">
-                            GROUP BY
-‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
-
-  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
-  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
-
-
-‘GROUP BY’ 사용 예
-
-  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
-    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
-    
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
-  
-  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
-    SELECT category, AVG(price) FROM products GROUP BY category;
-    
-    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
-  
-  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
-    SELECT department, COUNT(*) FROM employees GROUP BY department;
-    
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
-  
-
-
-‘GROUP BY’ 절의 특징
-
-  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
-  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
-  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
-  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
-
-
-사용 시 고려사항
-
-  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
-  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
-
-
-‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
 
                         </a>
                         <div class="info-post">
@@ -9314,6 +9251,70 @@ Address b = a;
 
   메모리 구조를 보면 바로 답이 나오겠지만, 개발을 하다 보면 누구나 이런 실수할 수 있을 것 같다는 생각도 함께 들 것입니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/SQL/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
+                        <a href="/2024/SQL/2024-04-02-GROUPBY.html" class="txt_post">
+                            GROUP BY
+‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
+
+  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
+  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
+
+
+‘GROUP BY’ 사용 예
+
+  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
+    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
+    
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
+  
+  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
+    SELECT category, AVG(price) FROM products GROUP BY category;
+    
+    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
+  
+  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
+    SELECT department, COUNT(*) FROM employees GROUP BY department;
+    
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
+  
+
+
+‘GROUP BY’ 절의 특징
+
+  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
+  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
+  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
+  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
+
+
+사용 시 고려사항
+
+  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
+  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
+
+
+‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
 
                         </a>
                         <div class="info-post">
@@ -10594,6 +10595,92 @@ NOT
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-29-ObjectArray.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-29-ObjectArray.html"><h1 class="title_post">☕️[Java] Object 배열</h1></a>
+                        <a href="/2024/Java/2024-03-29-ObjectArray.html" class="txt_post">
+                            Object 배열.
+이번에는 Object 배열을 알아봅시다.
+Object는 모든 타입의 객체를 담을 수 있습니다.
+
+  따라서 Object[]을 만들면 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있습니다.
+
+
+package lang.object.poly;
+
+public class ObjectPolyExample2 {
+
+  public static void main(String[] args) {
+    Dog dog = new Dog();
+    Car car = new Car();
+    Object object = new Object(); //Object 인스턴스도 만들 수 있습니다.
+
+    Object[] objects = {dog, car, object};
+    
+    size(objects);
+  }
+
+  private static void size(Object[] objects) {
+    System.out.println("전달된 객체의 수는: " + objects.length);
+  }
+}
+
+
+실행 결과
+전달된 객체의 수는: 3
+
+
+Object[] objects = {dog, car, object};
+// 쉽게 풀어서 설명하면 다음과 같습니다.
+Object objects[0] = new Dog();
+Object objects[1] = new Car();
+Object objects[2] = new Object();
+
+
+Object 타입을 사용한 덕분에 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있었습니다.
+
+
+
+size() 메서드
+size(Object[] objects) 메서드는 배열에 담긴 객체의 수를 세는 역할을 담당합니다.
+
+  이 메서드는 Object 타입의 배열은 세상의 모든 객체를 담을 수 있기 때문에, 새로운 클래스가 추가되거나 변경되어도 이 메서드를 수정하지 않아도 됩니다.
+    
+      지금 만든 size() 메서드는 자바를 사용하는 곳이라면 어디든지 사용될 수 있습니다.
+    
+  
+
+
+Object가 없다면?
+만약 Object와 같은 개념이 없다면 어떻게 될까요?
+
+  void action(Object obj)과 같이 모든 객체를 받을 수 있는 메서드를 만들 수 없습니다.
+  Object[] objects 처럼 모든 객체를 저장할 수 있는 배열을 만들 수 없습니다.
+
+
+물론 Object가 없어도 직접 MyObject와 같은 클래스를 만들고 모든 클래스에서 직접 정의한 MyObject를 상속 받으면 됩니다.
+
+  하지만 하나의 프로젝트를 넘어서 전세계 모든 개발자가 비슷한 클래스를 만들 것이고, 서로 호환되지 않은 수 많은 XxxObject들이 넘쳐날 것입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-29</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/SQL/2024-03-29-WHERE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -11108,166 +11195,6 @@ Object는 모든 객체의 부모이므로 모든 객체를 대상으로 다형�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-29-ObjectArray.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-29-ObjectArray.html"><h1 class="title_post">☕️[Java] Object 배열</h1></a>
-                        <a href="/2024/Java/2024-03-29-ObjectArray.html" class="txt_post">
-                            Object 배열.
-이번에는 Object 배열을 알아봅시다.
-Object는 모든 타입의 객체를 담을 수 있습니다.
-
-  따라서 Object[]을 만들면 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있습니다.
-
-
-package lang.object.poly;
-
-public class ObjectPolyExample2 {
-
-  public static void main(String[] args) {
-    Dog dog = new Dog();
-    Car car = new Car();
-    Object object = new Object(); //Object 인스턴스도 만들 수 있습니다.
-
-    Object[] objects = {dog, car, object};
-    
-    size(objects);
-  }
-
-  private static void size(Object[] objects) {
-    System.out.println("전달된 객체의 수는: " + objects.length);
-  }
-}
-
-
-실행 결과
-전달된 객체의 수는: 3
-
-
-Object[] objects = {dog, car, object};
-// 쉽게 풀어서 설명하면 다음과 같습니다.
-Object objects[0] = new Dog();
-Object objects[1] = new Car();
-Object objects[2] = new Object();
-
-
-Object 타입을 사용한 덕분에 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있었습니다.
-
-
-
-size() 메서드
-size(Object[] objects) 메서드는 배열에 담긴 객체의 수를 세는 역할을 담당합니다.
-
-  이 메서드는 Object 타입의 배열은 세상의 모든 객체를 담을 수 있기 때문에, 새로운 클래스가 추가되거나 변경되어도 이 메서드를 수정하지 않아도 됩니다.
-    
-      지금 만든 size() 메서드는 자바를 사용하는 곳이라면 어디든지 사용될 수 있습니다.
-    
-  
-
-
-Object가 없다면?
-만약 Object와 같은 개념이 없다면 어떻게 될까요?
-
-  void action(Object obj)과 같이 모든 객체를 받을 수 있는 메서드를 만들 수 없습니다.
-  Object[] objects 처럼 모든 객체를 저장할 수 있는 배열을 만들 수 없습니다.
-
-
-물론 Object가 없어도 직접 MyObject와 같은 클래스를 만들고 모든 클래스에서 직접 정의한 MyObject를 상속 받으면 됩니다.
-
-  하지만 하나의 프로젝트를 넘어서 전세계 모든 개발자가 비슷한 클래스를 만들 것이고, 서로 호환되지 않은 수 많은 XxxObject들이 넘쳐날 것입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-29</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-28-java-langPackage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-28-java-langPackage.html"><h1 class="title_post">☕️[Java] java.lang 패키지 소개</h1></a>
-                        <a href="/2024/Java/2024-03-28-java-langPackage.html" class="txt_post">
-                            java.lang 패키지 소개.
-자바가 기본적으로 제공하는 라이브러리(클래스 모음)중에 가장 지본이 되는 것이 바로 java.lang 패키지입니다.
-
-여기서 lang은 Language(언어)의 줄임말 입니다.
-
-쉽게 이야기해서 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-java.lang 패키지의 대표적인 클래스들.
-
-  Object : 모든 자바 객체의 부모 클래스
-  String : 문자열
-  Integer, Long, Double : 래퍼 타입, 기본형 데이터 타입을 객체로 만든 것
-  Class : 클래스 메타 정보
-  System: 시스템과 관련된 기본 기능들을 제공
-
-
-“여기 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.”
-
-import 생략 가능
-java.lang 패키지는 모든 자바 애플리케이션에 자동으로 임포트(import)됩니다.
-
-따라서 임포트 구문을 사용하지 않아도 됩니다.
-
-다른 패키지에 있는 클래스를 사용하려면 다음과 같이 임포트를 사용해야 합니다.
-
-package lang;
-
-import java.lang.System;
-
-public class LangMain {
-    
-    public static void main(String[] args) {
-        System.out.println("hello.java");
-    }
-}
-
-
-System 클래스는 java.lang 패키지 소속입니다. 따라서 다음과 같이 임포트를 생략할 수 있습니다.
-
-package lang;
-
-public class LangMain {
-
-  public static void main(String[] args) {
-    System.out.println("hello, java");
-  }
-}
-
-
-  import java.lang.System; 코드를 삭제해도 정상 동작합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-28-ObjectClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -11453,42 +11380,69 @@ Object 클래스는 다형성을 지원하는 기본적인 메커니즘을 제�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Web/2024-03-27-HowWebBrowsersWork.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sparta.jpg') !important"></a>
+                            <a href="/2024/Java/2024-03-28-java-langPackage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Web/2024-03-27-HowWebBrowsersWork.html"><h1 class="title_post">🌐[Web] 웹 브라우저 작동 원리</h1></a>
-                        <a href="/2024/Web/2024-03-27-HowWebBrowsersWork.html" class="txt_post">
-                            웹 브라우저 작동 원리
+                        <a href="/2024/Java/2024-03-28-java-langPackage.html"><h1 class="title_post">☕️[Java] java.lang 패키지 소개</h1></a>
+                        <a href="/2024/Java/2024-03-28-java-langPackage.html" class="txt_post">
+                            java.lang 패키지 소개.
+자바가 기본적으로 제공하는 라이브러리(클래스 모음)중에 가장 지본이 되는 것이 바로 java.lang 패키지입니다.
+
+여기서 lang은 Language(언어)의 줄임말 입니다.
+
+쉽게 이야기해서 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+java.lang 패키지의 대표적인 클래스들.
+
+  Object : 모든 자바 객체의 부모 클래스
+  String : 문자열
+  Integer, Long, Double : 래퍼 타입, 기본형 데이터 타입을 객체로 만든 것
+  Class : 클래스 메타 정보
+  System: 시스템과 관련된 기본 기능들을 제공
 
 
-  웹은 “개발의 기초” 입니다.
-  
-    웹은 개발을 입문할 때 배우는 개발의 기초라고 할 수 있습니다.
-  
+“여기 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.”
+
+import 생략 가능
+java.lang 패키지는 모든 자바 애플리케이션에 자동으로 임포트(import)됩니다.
+
+따라서 임포트 구문을 사용하지 않아도 됩니다.
+
+다른 패키지에 있는 클래스를 사용하려면 다음과 같이 임포트를 사용해야 합니다.
+
+package lang;
+
+import java.lang.System;
+
+public class LangMain {
+    
+    public static void main(String[] args) {
+        System.out.println("hello.java");
+    }
+}
 
 
-브라우저의 역할은 1. 요청을 보내고, 2. 받은 HTML 파일을 그려줍니다.
+System 클래스는 java.lang 패키지 소속입니다. 따라서 다음과 같이 임포트를 생략할 수 있습니다.
+
+package lang;
+
+public class LangMain {
+
+  public static void main(String[] args) {
+    System.out.println("hello, java");
+  }
+}
 
 
-  클라이언트: 요청하는 쪽
-  서버: 응답하는 쪽
-
-
-
-
-
-  HTML : 뼈대
-  CSS : 꾸미기
-  JS : 움직이기
-
+  import java.lang.System; 코드를 삭제해도 정상 동작합니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-03-27</span>
+                                <span class="date">· 2024-03-28</span>
                             
                         </div>
                     </div>
@@ -11749,6 +11703,243 @@ SQL 이란 언어를 이용하여 데이터베이스에 요청을 하는 질의�
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-03-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Web/2024-03-27-HowWebBrowsersWork.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sparta.jpg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Web/2024-03-27-HowWebBrowsersWork.html"><h1 class="title_post">🌐[Web] 웹 브라우저 작동 원리</h1></a>
+                        <a href="/2024/Web/2024-03-27-HowWebBrowsersWork.html" class="txt_post">
+                            웹 브라우저 작동 원리
+
+
+  웹은 “개발의 기초” 입니다.
+  
+    웹은 개발을 입문할 때 배우는 개발의 기초라고 할 수 있습니다.
+  
+
+
+브라우저의 역할은 1. 요청을 보내고, 2. 받은 HTML 파일을 그려줍니다.
+
+
+  클라이언트: 요청하는 쪽
+  서버: 응답하는 쪽
+
+
+
+
+
+  HTML : 뼈대
+  CSS : 꾸미기
+  JS : 움직이기
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html"><h1 class="title_post">☕️[Java] 다형성 - 역할 구현 예제 3</h1></a>
+                        <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html" class="txt_post">
+                            다형성 - 역할과 구현 예제 3
+
+다형성을 활용하면 역할과 구현을 분리해서, 클라이언트 코드의 변경 없이 구현 객체를 변경할 수 있습니다.
+
+다음 관계에서 Driver가 클라이언트입니다.
+
+예제를 통해서 자세히 알아봅시다.
+
+
+
+앞서 설명한 자동차 예제를 코드로 구현해보겠습니다.
+
+  Driver: 운전자는 자동차(Car)의 역할에만 의존합니다.
+    
+      구현인 K3, Model3 자동차에 의존하지 않습니다.
+        
+          Driver 클래스는 Car car 멤버 변수를 가집니다. 따라서 Car 인터페이스를 참조합니다.
+          인터페이스를 구현한 K3Car, Model3Car에 의존하지 않고, Car인터페이스에만 의존합니다.
+            
+              여기서 설명하는 의존은 클래스 의존 관계를 뜩합니다. 클래스 상에서 어떤 클래스를 알고 있는가를 뜻합니다.
+                
+                  Driver 클래스 코드를 보면 Car 인터페이스만 사용하는 것을 확인할 수 있습니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  Car: 자동차의 역할이고 인터페이스입니다. K3Car, Model3Car 클래스가 인터페이스를 구현합니다.
+
+
+package poly.car1;
+
+public interface Car {
+  void startEngine();
+  void offEngine();
+  void pressAccelerator();
+}
+
+
+package poly.car1;
+
+public class K3Car implements Car {
+  @Override
+  public void startEngine() {
+    System.out.println("K3Car.startEngine");
+  }
+
+  @Override
+  public void offEngine() {
+    System.out.println("K3Car.offEngine");
+  }
+
+  @Override
+  public void pressAccelerator() {
+    System.out.println("K3Car.pressAccelerator");
+  }
+}
+
+
+package poly.car1;
+
+public class Model3Car implements Car{
+  @Override
+  public void startEngine() {
+    System.out.println("Model3Car.startEngine");
+  }
+
+  @Override
+  public void offEngine() {
+    System.out.println("Model3Car.offEngine");
+  }
+
+  @Override
+  public void pressAccelerator() {
+    System.out.println("Model3Car.pressAccelerator");
+  }
+}
+
+
+package poly.car1;
+
+public class Driver {
+  private Car car;
+
+  public void setCar(Car car) {
+    System.out.println("자동차를 설정합니다: " + car);
+    this.car = car;
+  }
+
+  public void drive() {
+    System.out.println("자동차를 운전합니다.");
+    car.startEngine();
+    car.pressAccelerator();
+    car.offEngine();
+  }
+}
+
+
+  Driver는 멤버 변수로 Car car를 가집니다.
+  setCar(Car car): 멤버 변수에 자동차를 설정합니다.
+    
+      외부에서 누군가 이 메서드를 호출해주어야 Driver는 새로운 자동차를 참조하거나 변경할 수 있습니다.
+    
+  
+  drive(): Car 인터페이스가 제공하는 기능들을 통해 자동차를 운전합니다.
+
+
+package poly.car1;
+
+public class CarMain1 {
+
+  public static void main(String[] args) {
+    Driver driver = new Driver();
+
+    // 차량 선택(k3)
+    K3Car k3Car = new K3Car();
+    driver.setCar(k3Car);
+    driver.drive();
+
+    // 차량 변경(k3 -&gt; model3)
+    Model3Car model3Car = new Model3Car();
+    driver.setCar(model3Car);
+    driver.drive();
+  }
+}
+
+
+실행 결과
+자동차를 설정합니다: poly.car1.K3Car@4a574795
+자동차를 운전합니다.
+K3Car.startEngine
+K3Car.pressAccelerator
+K3Car.offEngine
+
+자동차를 설정합니다: poly.car1.Model3Car@23fc625e
+자동차를 운전합니다.
+Model3Car.startEngine
+Model3Car.pressAccelerator
+Model3Car.offEngine
+
+
+
+
+
+  먼저 Driver와 K3Car를 생성합니다.
+  driver.setCar(k3Car)를 호출해서 Driver의 Car car 필드가 K3Car의 인스턴스를 참조하도록 합니다.
+  driver.drive()를 호출하면 x001을 참조합니다.
+    
+      car 필드가 Car 타입이므로 Car 타입을 찾아서 실행하지만 메서드 오버라이딩에 의해 K3Car의 기능이 호출됩니다.
+    
+  
+
+
+
+
+
+  Model3Car를 생성합니다.
+  driver.setCar(model3Car)를 호출해서 Driver의 Car car 필드가 Model3Car의 인스턴스를 참조하도록 변경합니다.
+  driver.drive()를 호출하면 x002을 참조합니다.
+    
+      car 필드가 Car 타입이므로 Car 타입을 찾아서 실행하지만 메서드 오버라이딩에 의해 Model3Car의 기능이 호출됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-25</span>
                             
                         </div>
                     </div>
@@ -12105,196 +12296,6 @@ public class Main {
 
 
 이 구현을 통해 후보자는 UTF-8 인코딩 방식의 이해, Java에서의 문자열 처리, 그리고 바이트 및 이진수 처리에 대한 자신의 지식과 기술을 면접관에게 보여줄 수 있습니다. 이는 Java 백엔드 개발자로서 갖추어야 할 중요한 기술 중 하나입니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html"><h1 class="title_post">☕️[Java] 다형성 - 역할 구현 예제 3</h1></a>
-                        <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html" class="txt_post">
-                            다형성 - 역할과 구현 예제 3
-
-다형성을 활용하면 역할과 구현을 분리해서, 클라이언트 코드의 변경 없이 구현 객체를 변경할 수 있습니다.
-
-다음 관계에서 Driver가 클라이언트입니다.
-
-예제를 통해서 자세히 알아봅시다.
-
-
-
-앞서 설명한 자동차 예제를 코드로 구현해보겠습니다.
-
-  Driver: 운전자는 자동차(Car)의 역할에만 의존합니다.
-    
-      구현인 K3, Model3 자동차에 의존하지 않습니다.
-        
-          Driver 클래스는 Car car 멤버 변수를 가집니다. 따라서 Car 인터페이스를 참조합니다.
-          인터페이스를 구현한 K3Car, Model3Car에 의존하지 않고, Car인터페이스에만 의존합니다.
-            
-              여기서 설명하는 의존은 클래스 의존 관계를 뜩합니다. 클래스 상에서 어떤 클래스를 알고 있는가를 뜻합니다.
-                
-                  Driver 클래스 코드를 보면 Car 인터페이스만 사용하는 것을 확인할 수 있습니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  Car: 자동차의 역할이고 인터페이스입니다. K3Car, Model3Car 클래스가 인터페이스를 구현합니다.
-
-
-package poly.car1;
-
-public interface Car {
-  void startEngine();
-  void offEngine();
-  void pressAccelerator();
-}
-
-
-package poly.car1;
-
-public class K3Car implements Car {
-  @Override
-  public void startEngine() {
-    System.out.println("K3Car.startEngine");
-  }
-
-  @Override
-  public void offEngine() {
-    System.out.println("K3Car.offEngine");
-  }
-
-  @Override
-  public void pressAccelerator() {
-    System.out.println("K3Car.pressAccelerator");
-  }
-}
-
-
-package poly.car1;
-
-public class Model3Car implements Car{
-  @Override
-  public void startEngine() {
-    System.out.println("Model3Car.startEngine");
-  }
-
-  @Override
-  public void offEngine() {
-    System.out.println("Model3Car.offEngine");
-  }
-
-  @Override
-  public void pressAccelerator() {
-    System.out.println("Model3Car.pressAccelerator");
-  }
-}
-
-
-package poly.car1;
-
-public class Driver {
-  private Car car;
-
-  public void setCar(Car car) {
-    System.out.println("자동차를 설정합니다: " + car);
-    this.car = car;
-  }
-
-  public void drive() {
-    System.out.println("자동차를 운전합니다.");
-    car.startEngine();
-    car.pressAccelerator();
-    car.offEngine();
-  }
-}
-
-
-  Driver는 멤버 변수로 Car car를 가집니다.
-  setCar(Car car): 멤버 변수에 자동차를 설정합니다.
-    
-      외부에서 누군가 이 메서드를 호출해주어야 Driver는 새로운 자동차를 참조하거나 변경할 수 있습니다.
-    
-  
-  drive(): Car 인터페이스가 제공하는 기능들을 통해 자동차를 운전합니다.
-
-
-package poly.car1;
-
-public class CarMain1 {
-
-  public static void main(String[] args) {
-    Driver driver = new Driver();
-
-    // 차량 선택(k3)
-    K3Car k3Car = new K3Car();
-    driver.setCar(k3Car);
-    driver.drive();
-
-    // 차량 변경(k3 -&gt; model3)
-    Model3Car model3Car = new Model3Car();
-    driver.setCar(model3Car);
-    driver.drive();
-  }
-}
-
-
-실행 결과
-자동차를 설정합니다: poly.car1.K3Car@4a574795
-자동차를 운전합니다.
-K3Car.startEngine
-K3Car.pressAccelerator
-K3Car.offEngine
-
-자동차를 설정합니다: poly.car1.Model3Car@23fc625e
-자동차를 운전합니다.
-Model3Car.startEngine
-Model3Car.pressAccelerator
-Model3Car.offEngine
-
-
-
-
-
-  먼저 Driver와 K3Car를 생성합니다.
-  driver.setCar(k3Car)를 호출해서 Driver의 Car car 필드가 K3Car의 인스턴스를 참조하도록 합니다.
-  driver.drive()를 호출하면 x001을 참조합니다.
-    
-      car 필드가 Car 타입이므로 Car 타입을 찾아서 실행하지만 메서드 오버라이딩에 의해 K3Car의 기능이 호출됩니다.
-    
-  
-
-
-
-
-
-  Model3Car를 생성합니다.
-  driver.setCar(model3Car)를 호출해서 Driver의 Car car 필드가 Model3Car의 인스턴스를 참조하도록 변경합니다.
-  driver.drive()를 호출하면 x002을 참조합니다.
-    
-      car 필드가 Car 타입이므로 Car 타입을 찾아서 실행하지만 메서드 오버라이딩에 의해 Model3Car의 기능이 호출됩니다.
-    
-  
-
 
                         </a>
                         <div class="info-post">
@@ -14199,6 +14200,173 @@ public class AnimalPolyMain1 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html"><h1 class="title_post">💾 [CS] 컴퓨터 구조의 큰 그림</h1></a>
+                        <a href="/2024/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html" class="txt_post">
+                            컴퓨터 구조의 큰 그림
+
+우리가 알아야 할 컴퓨터 구조 지식은 크게 두 가지 입니다.
+
+  컴퓨터가 이해하는 정보
+  컴퓨터의 네 가지 핵심 부품
+
+
+컴퓨터가 이해하는 정보
+
+
+  데이터
+    
+      컴퓨터가 이해하는 숫자, 문자, 이미지, 동영상과 같은 정적인 정보
+    
+  
+  명령어
+    
+      컴퓨터를 실직적으로 작동 시키는 중요한 정보
+      데이터 없이는 아무것도 할 수 없는 정보 덩어리
+      “데이터를 움직이고 컴퓨터를 작동 시키는 장보”
+    
+  
+
+
+“즉, 명령어는 컴퓨터를 작동시키는 정보이고, 데이터는 명령어를 위해 존재하는 일종의 재료입니다.”
+
+  컴퓨터 프로그램은 ‘명령어들의 모음’으로 정의되기도 합니다.
+    
+      그래서 명령어는 컴퓨터 구조를 학습하는 데 있어 데이터보다 더 중요한 개념.
+    
+  
+
+
+컴퓨터의 4가지 핵심 부품.
+
+
+  중앙처리장치(Central Programming Unit, CPU)
+    
+      컴퓨터의 두뇌
+      메모리에 저장된 명령어를 읽어 들이고, 읽어 들인 명령어를 해석하고, 실행하는 부품입니다.
+      CPU 내부 구성 요소 중 가장 중요한 세 가지는 산술논리연산장치(ALU: Arithmetic Logic Unit), 레지스터(register), 제어장치(CU: Control Unit) 입니다.
+        
+          ALU: 계산기, 계산만을 위해 존재하는 부품, 컴퓨터 내부에서 수행되는 대부분의 계산은 ALU가 도맡아 수행
+          레지스터: CPU 내부의 작은 임시 저장 장치, 프로그램을 실행하는 데 필요한 값들을 임시로 저장, CPU 안에는 여러 개의 레지스터가 존재하고 각기 다른 이름과 역할을 가짐
+          제어장치: 제어 신호(Control Signal)라는 전기 신호를 내보내고 명령어를 해석하는 장치.
+            
+              제어 신호란 컴퓨터 부품들을 관리하고 작동시키기 위한 일종의 전기 신호
+                
+                  CPU가 메모리에 저장된 값을 읽고 싶을 땐 메모리를 향해 “메모리 읽기”라는 제어 신호를 보낸다.
+                  CPU가 메모리에 어떤 값을 저장하고 싶을 땐 메모리를 향해 “메모리 쓰기”라는 제어 신호를 보낸다.
+                
+              
+            
+          
+        
+      
+    
+  
+  주기억장치(Main memory, 메모리)
+    
+      현재 실행되는 프로그램의 명령어와 데이터를 저장하는 부품.
+      즉, 프로그램이 실행되려면 반드시 메모리에 저장되어 있어야 합니다.
+      메모리에 저장된 값의 위치는 주소로 알 수 있습니다.
+    
+  
+  보조기억장치(secondary storage)
+    
+      메모리보다 크기가 크고 전원이 꺼져도 저장된 내용을 잃지 않는 메모리를 보조할 저장 장치
+      보조기억장치는 ‘보관할’ 프로그램을 저장한다고 생각해도 좋다.
+    
+  
+  입출력장치(input/output(I/O) device)
+    
+      마이크, 스피커, 프린터, 마우스, 키보드처럼 컴퓨터 외부에 연결되어 컴퓨터 내부와 정보를 교환하는 장치를 의미.
+      ‘컴퓨터 주변에 붙어 있는 장치’라는 의미에서 “주변장치(peripheral device)”라 통칭하기도 함.
+    
+  
+
+
+
+
+“주소”
+
+  컴퓨터가 빠르게 작동하기 위해서는 메모리 속 명령어와 데이터가 정돈된 위치에 저장되어 있어야 합니다.
+    
+      그래서 메모리에는 저장된 값에 빠르게 효율적으로 접근하기 위해 주소(address)라는 개념이 사용됩니다.
+      주소로 메모리 내 원하는 위치에 접근할 수 있습니다.
+    
+  
+
+
+메인보드와 시스템 버스
+
+  메인보드
+    
+      마더보드(mother board)라고도 부름
+      메인보드에는 앞에서 소개한 부품을 비롯한 여러 컴퓨터 부품을 부착할 수 있는 슬록과 연결 단자가 있습니다.
+      메인 보드에 연력된 부품들은 서로 정보를 주고 받을수 있습니다. 이는 메인보드 내부에 “버스(bus)”라는 통로가 있기 때문입니다.
+    
+  
+  시스템 버스(system bus)
+    
+      여러 버스 가운데 컴퓨터의 네 가지 핵심 부품을 연결하는 가장 중요한 버스입니다.
+      주소 버스, 데이터 버스, 제어 버스로 구성되어 있습니다.
+        
+          주소 버스(address bus): 주소를 주고받는 통로
+          데이터 버스(data bus): 명령어롸 데이터를 주고 받는 통로
+          제어 버스(control bus): 제어 신호를 주고 받는 통로
+        
+      
+    
+  
+
+
+키워드로 정리하는 핵심 포인트
+
+  컴퓨터가 이해하는 정보에는 “데이터” 와 “명령어” 가 있습니다.
+  “메모리” 는 현재 실행되는 프로그램의 명령어와 데이터를 저장하는 부품입니다.
+  “CPU” 는 메모리에 저장된 명령어를 읽어 들이고, 해석하고, 실행하는 부품입니다.
+  “보조기억장치” 는 전원이 꺼져도 보관할 프로그램을 저장하는 부품입니다.
+  “입출력장치” 는 컴퓨터 외부에 연결되어 컴퓨터 내부와 정보를 교환할 수 있는 부품입니다.
+  “시스템 버스” 는 컴퓨터의 네 가지 핵심 부품들이 서로 정보를 주고받는 통로입니다.
+
+
+Q1. “메모리 주소가 무엇이며, iOS 시스템 내에서 어떤 역할을 수행한다고 생각하나요?”
+
+메모리 주소는 컴퓨터 메모리 내에서 데이터나 명령어의 위치를 식별하는 데 사용되는 고유한 식별자입니다. 각 바이트 또는 워드에는 메모리 내의 위치를 나타내는 고유한 주소가 있으며, 이를 통해 CPU와 다른 시스템 구성 요소가 필요한 데이터를 정확히 찾아 읽고 쓸 수 있습니다.
+
+iOS 시스템 내에서 메모리 주소의 역할은 특히 중요합니다. iOS는 메모리 관리에 자동 참조 카운팅(ARC)를 사용하여 객체의 생명 주기를 관리합니다. ARC는 객체에 대한 참조가 더 이상 필요하지 않게 되면 자동으로 메모리를 해제합니다. 이 과정에서 메모리 주소를 사용하여 각 객체의 위치를 파악하고 관리합니다. 따라서, 개발자로서 메모리 주소의 이해는 메모리 누수를 방지하고 앱의 성능을 최적화하는 데 필수적입니다.
+
+또한, 메모리 주소를 이해하는 것은 포인터를 사용한 프로그래밍, 메모리 접근 최적화, 그리고 다양한 메모리 관리 기법을 적용하는 데 중요합니다. 예를 들어, 효율적인 데이터 구조 설계, 대규모 데이터 처리, 멀티스레딩 환경에서의 데이터 공유와 동기화 문제 해결 등은 메모리 주소와 밀접한 관련이 있습니다.
+
+iOS 시스템 내에서 메모리 주소의 관리와 최적화는 앱의 반응 속도, 안정성, 그리고 사용자 경험에 직접적인 영향을 미치기 때문에, 이를 정확히 이해하고 효과적으로 활용하는 능력은 iOS 개발자에게 매우 중요한 자질입니다.
+
+Q2. “메모리 주소가 무엇이며, Java 시스템 내에서 어떤 역할을 수행한다고 생각하나요?”
+
+“메모리 주소는 컴퓨터 메모리 내의 특정 위치를 식별하는 데 사용되는 고유한 식별자입니다. 이 주소를 통해, 컴퓨터 시스템은 메모리 내에서 데이터나 명령어를 정확히 찾아내어 읽고 쓸 수 있습니다. 간단히 말해, 메모리 주소는 컴퓨터 메모리 내의 ‘우편 주소’와 유사한 역할을 수행합니다.
+
+Java 시스템 내에서, 메모리 주소의 역할은 Java 가상 머신(JVM)에 의해 추상화되어 다루어집니다. Java 개발자들은 직접적으로 메모리 주소를 다루지 않으며, 대신 Java가 제공하는 추상화된 메모리 모델을 사용하여 프로그래밍합니다. Java에서는 객체와 배열 등이 힙 메모리에 할당되며, 개발자는 이러한 객체에 대한 참조를 통해 메모리를 접근하게 됩니다. 여기서 ‘참조’는 실제 메모리 주소를 직접적으로 나타내지는 않지만, 특정 객체를 가리키는 역할을 합니다.
+
+JVM은 가비지 컬렉션(Garbage Collection)을 통해 메모리 관리를 자동화합니다. 가비지 컬렉터는 더 이상 사용되지 않는 객체를 자동으로 검출하고, 그 메모리를 회수하여 재사용 가능하게 만듭니다. 이 과정에서 JVM은 내부적으로 메모리 주소를 관리하여, 효율적인 메모리 할당과 해제를 수행합니다.
+
+따라서, Java 시스템 내에서 메모리 주소는 주로 메모리 할당, 객체 참조, 그리고 가비지 컬렉션과 같은 메모리 관리 작업에 중요한 역할을 수행합니다. Java 개발자로서 우리의 역할은 주로 안전하고 효율적인 코드 작성에 초점을 맞추며, JVM이 메모리 관리의 세부 사항을 추상화하고 처리하도록 합니다. 이렇게 함으로써, 개발자는 메모리 관리의 복잡성으로부터 벗어나 비즈니스 로직 구현에 더 집중할 수 있습니다.”
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-18-TakeAdvantageOfPolymorphism1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -14392,173 +14560,6 @@ System.out.println("동물 소리 테스트 종료");
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html"><h1 class="title_post">💾 [CS] 컴퓨터 구조의 큰 그림</h1></a>
-                        <a href="/2024/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html" class="txt_post">
-                            컴퓨터 구조의 큰 그림
-
-우리가 알아야 할 컴퓨터 구조 지식은 크게 두 가지 입니다.
-
-  컴퓨터가 이해하는 정보
-  컴퓨터의 네 가지 핵심 부품
-
-
-컴퓨터가 이해하는 정보
-
-
-  데이터
-    
-      컴퓨터가 이해하는 숫자, 문자, 이미지, 동영상과 같은 정적인 정보
-    
-  
-  명령어
-    
-      컴퓨터를 실직적으로 작동 시키는 중요한 정보
-      데이터 없이는 아무것도 할 수 없는 정보 덩어리
-      “데이터를 움직이고 컴퓨터를 작동 시키는 장보”
-    
-  
-
-
-“즉, 명령어는 컴퓨터를 작동시키는 정보이고, 데이터는 명령어를 위해 존재하는 일종의 재료입니다.”
-
-  컴퓨터 프로그램은 ‘명령어들의 모음’으로 정의되기도 합니다.
-    
-      그래서 명령어는 컴퓨터 구조를 학습하는 데 있어 데이터보다 더 중요한 개념.
-    
-  
-
-
-컴퓨터의 4가지 핵심 부품.
-
-
-  중앙처리장치(Central Programming Unit, CPU)
-    
-      컴퓨터의 두뇌
-      메모리에 저장된 명령어를 읽어 들이고, 읽어 들인 명령어를 해석하고, 실행하는 부품입니다.
-      CPU 내부 구성 요소 중 가장 중요한 세 가지는 산술논리연산장치(ALU: Arithmetic Logic Unit), 레지스터(register), 제어장치(CU: Control Unit) 입니다.
-        
-          ALU: 계산기, 계산만을 위해 존재하는 부품, 컴퓨터 내부에서 수행되는 대부분의 계산은 ALU가 도맡아 수행
-          레지스터: CPU 내부의 작은 임시 저장 장치, 프로그램을 실행하는 데 필요한 값들을 임시로 저장, CPU 안에는 여러 개의 레지스터가 존재하고 각기 다른 이름과 역할을 가짐
-          제어장치: 제어 신호(Control Signal)라는 전기 신호를 내보내고 명령어를 해석하는 장치.
-            
-              제어 신호란 컴퓨터 부품들을 관리하고 작동시키기 위한 일종의 전기 신호
-                
-                  CPU가 메모리에 저장된 값을 읽고 싶을 땐 메모리를 향해 “메모리 읽기”라는 제어 신호를 보낸다.
-                  CPU가 메모리에 어떤 값을 저장하고 싶을 땐 메모리를 향해 “메모리 쓰기”라는 제어 신호를 보낸다.
-                
-              
-            
-          
-        
-      
-    
-  
-  주기억장치(Main memory, 메모리)
-    
-      현재 실행되는 프로그램의 명령어와 데이터를 저장하는 부품.
-      즉, 프로그램이 실행되려면 반드시 메모리에 저장되어 있어야 합니다.
-      메모리에 저장된 값의 위치는 주소로 알 수 있습니다.
-    
-  
-  보조기억장치(secondary storage)
-    
-      메모리보다 크기가 크고 전원이 꺼져도 저장된 내용을 잃지 않는 메모리를 보조할 저장 장치
-      보조기억장치는 ‘보관할’ 프로그램을 저장한다고 생각해도 좋다.
-    
-  
-  입출력장치(input/output(I/O) device)
-    
-      마이크, 스피커, 프린터, 마우스, 키보드처럼 컴퓨터 외부에 연결되어 컴퓨터 내부와 정보를 교환하는 장치를 의미.
-      ‘컴퓨터 주변에 붙어 있는 장치’라는 의미에서 “주변장치(peripheral device)”라 통칭하기도 함.
-    
-  
-
-
-
-
-“주소”
-
-  컴퓨터가 빠르게 작동하기 위해서는 메모리 속 명령어와 데이터가 정돈된 위치에 저장되어 있어야 합니다.
-    
-      그래서 메모리에는 저장된 값에 빠르게 효율적으로 접근하기 위해 주소(address)라는 개념이 사용됩니다.
-      주소로 메모리 내 원하는 위치에 접근할 수 있습니다.
-    
-  
-
-
-메인보드와 시스템 버스
-
-  메인보드
-    
-      마더보드(mother board)라고도 부름
-      메인보드에는 앞에서 소개한 부품을 비롯한 여러 컴퓨터 부품을 부착할 수 있는 슬록과 연결 단자가 있습니다.
-      메인 보드에 연력된 부품들은 서로 정보를 주고 받을수 있습니다. 이는 메인보드 내부에 “버스(bus)”라는 통로가 있기 때문입니다.
-    
-  
-  시스템 버스(system bus)
-    
-      여러 버스 가운데 컴퓨터의 네 가지 핵심 부품을 연결하는 가장 중요한 버스입니다.
-      주소 버스, 데이터 버스, 제어 버스로 구성되어 있습니다.
-        
-          주소 버스(address bus): 주소를 주고받는 통로
-          데이터 버스(data bus): 명령어롸 데이터를 주고 받는 통로
-          제어 버스(control bus): 제어 신호를 주고 받는 통로
-        
-      
-    
-  
-
-
-키워드로 정리하는 핵심 포인트
-
-  컴퓨터가 이해하는 정보에는 “데이터” 와 “명령어” 가 있습니다.
-  “메모리” 는 현재 실행되는 프로그램의 명령어와 데이터를 저장하는 부품입니다.
-  “CPU” 는 메모리에 저장된 명령어를 읽어 들이고, 해석하고, 실행하는 부품입니다.
-  “보조기억장치” 는 전원이 꺼져도 보관할 프로그램을 저장하는 부품입니다.
-  “입출력장치” 는 컴퓨터 외부에 연결되어 컴퓨터 내부와 정보를 교환할 수 있는 부품입니다.
-  “시스템 버스” 는 컴퓨터의 네 가지 핵심 부품들이 서로 정보를 주고받는 통로입니다.
-
-
-Q1. “메모리 주소가 무엇이며, iOS 시스템 내에서 어떤 역할을 수행한다고 생각하나요?”
-
-메모리 주소는 컴퓨터 메모리 내에서 데이터나 명령어의 위치를 식별하는 데 사용되는 고유한 식별자입니다. 각 바이트 또는 워드에는 메모리 내의 위치를 나타내는 고유한 주소가 있으며, 이를 통해 CPU와 다른 시스템 구성 요소가 필요한 데이터를 정확히 찾아 읽고 쓸 수 있습니다.
-
-iOS 시스템 내에서 메모리 주소의 역할은 특히 중요합니다. iOS는 메모리 관리에 자동 참조 카운팅(ARC)를 사용하여 객체의 생명 주기를 관리합니다. ARC는 객체에 대한 참조가 더 이상 필요하지 않게 되면 자동으로 메모리를 해제합니다. 이 과정에서 메모리 주소를 사용하여 각 객체의 위치를 파악하고 관리합니다. 따라서, 개발자로서 메모리 주소의 이해는 메모리 누수를 방지하고 앱의 성능을 최적화하는 데 필수적입니다.
-
-또한, 메모리 주소를 이해하는 것은 포인터를 사용한 프로그래밍, 메모리 접근 최적화, 그리고 다양한 메모리 관리 기법을 적용하는 데 중요합니다. 예를 들어, 효율적인 데이터 구조 설계, 대규모 데이터 처리, 멀티스레딩 환경에서의 데이터 공유와 동기화 문제 해결 등은 메모리 주소와 밀접한 관련이 있습니다.
-
-iOS 시스템 내에서 메모리 주소의 관리와 최적화는 앱의 반응 속도, 안정성, 그리고 사용자 경험에 직접적인 영향을 미치기 때문에, 이를 정확히 이해하고 효과적으로 활용하는 능력은 iOS 개발자에게 매우 중요한 자질입니다.
-
-Q2. “메모리 주소가 무엇이며, Java 시스템 내에서 어떤 역할을 수행한다고 생각하나요?”
-
-“메모리 주소는 컴퓨터 메모리 내의 특정 위치를 식별하는 데 사용되는 고유한 식별자입니다. 이 주소를 통해, 컴퓨터 시스템은 메모리 내에서 데이터나 명령어를 정확히 찾아내어 읽고 쓸 수 있습니다. 간단히 말해, 메모리 주소는 컴퓨터 메모리 내의 ‘우편 주소’와 유사한 역할을 수행합니다.
-
-Java 시스템 내에서, 메모리 주소의 역할은 Java 가상 머신(JVM)에 의해 추상화되어 다루어집니다. Java 개발자들은 직접적으로 메모리 주소를 다루지 않으며, 대신 Java가 제공하는 추상화된 메모리 모델을 사용하여 프로그래밍합니다. Java에서는 객체와 배열 등이 힙 메모리에 할당되며, 개발자는 이러한 객체에 대한 참조를 통해 메모리를 접근하게 됩니다. 여기서 ‘참조’는 실제 메모리 주소를 직접적으로 나타내지는 않지만, 특정 객체를 가리키는 역할을 합니다.
-
-JVM은 가비지 컬렉션(Garbage Collection)을 통해 메모리 관리를 자동화합니다. 가비지 컬렉터는 더 이상 사용되지 않는 객체를 자동으로 검출하고, 그 메모리를 회수하여 재사용 가능하게 만듭니다. 이 과정에서 JVM은 내부적으로 메모리 주소를 관리하여, 효율적인 메모리 할당과 해제를 수행합니다.
-
-따라서, Java 시스템 내에서 메모리 주소는 주로 메모리 할당, 객체 참조, 그리고 가비지 컬렉션과 같은 메모리 관리 작업에 중요한 역할을 수행합니다. Java 개발자로서 우리의 역할은 주로 안전하고 효율적인 코드 작성에 초점을 맞추며, JVM이 메모리 관리의 세부 사항을 추상화하고 처리하도록 합니다. 이렇게 함으로써, 개발자는 메모리 관리의 복잡성으로부터 벗어나 비즈니스 로직 구현에 더 집중할 수 있습니다.”
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-17-polymorphismAndMethodOverriding.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -14702,316 +14703,6 @@ Child.method
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-03-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-15-instanceof.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-15-instanceof.html"><h1 class="title_post">☕️[Java] instanceof</h1></a>
-                        <a href="/2024/Java/2024-03-15-instanceof.html" class="txt_post">
-                            instanceof
-
-다형성에서 참조형 변수는 이름 그대로 다양한 지식을 대상으로 참조할 수 있습니다.
-그런데 참조하는 대상이 다양하기 때문에 어떤 인스턴스를 참조하고 있는지 확인하려면 어떻게 해야할까요?
-
-Parent parent1 = new Parent();
-Parent parent2 = new Child()
-
-
-
-  여기서 Parent는 자신과 같은 Parent의 인스턴스도 참조할 수 있고, 자식 타입인 Child의 인스턴스도 참조할 수 있습니다.
-    
-      이때 parent1, parent2 변수가 참조하는 인스턴스의 타입을 확인하고 싶다면 instanceof 키워드를 사용하면 됩니다.
-    
-  
-
-
-예제를 봅시다.
-
-package poly.basic;
-
-public class CastingMain5 {
-
-  public static void main(String[] args) {
-    Parent parent1 = new Parent();
-    System.out.println("parent1 호출");
-    call(parent1);
-
-    Parent parent2 = new Child();
-    System.out.println("parent2 호출");
-    call(parent2);
-  }
-
-  private static void call(Parent parent) {
-    parent.parentMethod();
-
-    if (parent instanceof Child) {
-      System.out.println("Child 인스턴스 맞음");
-      Child child = (Child) parent;
-      child.childMethod();
-    }
-  }
-}
-
-
-실행 결과
-parent1 호출
-Parent.parentMethod
-parent2 호출
-Parent.parentMethod
-Child 인스턴스 맞음
-Child.childMethod
-
-
-call(Parent parent) 메서드를 봐봅시다.
-
-  이 메서드는 매개변수로 넘어온 parent가 참조하는 타입에 따라서 다른 명령을 수행합니다.
-    
-      참고로 지금처럼 다운캐스팅을 수행하기 전에는 먼저 instanceof를 사용해서 원하는 타입으로 변경이 가능한지 확인한 다음에 다운캐스팅을 수행하는 것이 안전합니다.
-    
-  
-
-
-해당 메서드를 처음 호출할 때 parent는 Parent의 인스턴스를 참조합니다.
-parent instanceof Child // parent는 Parent의 인스턴스
-new Parent() instanceof Child // false
-
-
-
-  parent는 Parent의 인스턴스를 참조하므로 false를 반환합니다.
-
-
-해당 메서드를 다음으로 호출할 때 parent는 Child의 인스턴스를 참조합니다.
-parent instanceof Child // parent는 Child의 인스턴스
-new Child() instanceof Child // true
-
-
-참고로 instanceof 키워드는 오른쪽 대상의 자식 타입을 왼쪽에서 참조하는 경우에도 true를 반환합니다.
-parent instanceof Parent // parent는 Child의 인스턴스
-
-new Parent() instanceof Parent // parent가 Parent의 인스턴스를 참조하는 경우: true
-new Child() instanceof Parent // parent가 Child의 인스턴스를 참조하는 경우: true
-
-
-
-  쉽게 이야기해서 오른쪽에 있는 타입에 왼쪽에 있는 인스턴스의 타입이 들어갈 수 있는지 대입해보면 됩니다.
-    
-      대입이 가능하면 true, 불가능하면 false가 됩니다.
-    
-  
-
-
-new Parent() instanceof Parent
-Parent p = new Parent() // 같은 타입 true
-
-new Child() instancof Parent
-Parent p = new Child() // 부모는 자식을 담을 수 있다. true
-
-new Parent() instanceof Child
-Child c = new Parent() // 자식은 부모를 담을 수 없다. false
-
-new Child() instanceof Child
-Child c = new Child() // 같은 타입 true
-
-
-자바 16 - Pattern Matching for instanceof
-
-자바 16부터는 instanceof를 사용하면서 동시에 변수를 선언할 수 있습니다.
-
-다음 코드를 참고합시다.
-
-package poly.basic;
-
-public class CastingMain6 {
-
-  public static void main(String[] args) {
-    Parent parent1 = new Parent();
-    System.out.println("parent1 호출");
-    call(parent1);
-
-    Parent parent2 = new Child();
-    System.out.println("parent2 호출");
-    call(parent2);
-  }
-
-  private static void call(Parent parent) {
-    parent.parentMethod();
-    // Child 인스턴스인 경우 childMethod() 실행
-    if (parent instanceof Child child) {
-      System.out.println("Child 인스턴스 맞음");
-      child.childMethod();
-    }
-  }
-}
-
-
-실행 결과
-parent1 호출
-Parent.parentMethod
-parent2 호출
-Parent.parentMethod
-Child 인스턴스 맞음
-Child.childMethod
-
-
-
-  덕분에 인스턴스가 맞는 경우 직접 다운캐스팅 하는 코드를 생략할 수 있습니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html"><h1 class="title_post">☕️[Java] 캐스팅의 종류</h1></a>
-                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="txt_post">
-                            캐스팅의 종류
-
-자식 타입의 기능을 사용하려면 다음과 같이 다운 캐스팅 결과를 변수에 담아두고 이후에 기능을 사용하면 됩니다.
-Child child = (Child) poly
-child.childMethod();
-
-
-하지만 다운캐스팅 결과를 변수에 담아두는 과정은 번거롭습니다.
-이런 과정 없이 일시적으로 다운캐스팅을 해서 인스턴스에 있는 하위 클래스의 기능을 바로 호출할 수 있습니다.
-
-다음 코드를 봐봅시다.
-
-일시적 다운 캐스팅
-package poly.basic;
-
-public class CastingMain2 {
-
-  public static void main(String[] args) {
-    // 부모 변수가 자식 인스턴스 참조(다형적 참조)
-    Parent poly = new Child();
-
-    // 단 자식의 기능은 호출할 수 없습니다.(컴파일 오류 발생)
-    // poly.childMethod();
-
-    // 일시적 다운캐스팅 - 해당 메서드를 호출하는 순간만 다운캐스팅
-    ((Child) poly).childMethod();
-  }
-}
-
-
-실행 결과
-Child.childMethod
-
-
-
-
-((Child) poly).childMethod()
-
-
-
-  poly는 Parent 타입입니다. 그런데 이 코드를 실행하면 Parent 타입을 임시로 Child로 변경합니다.
-    
-      그리고 메서드를 호출할 때 Child 타입에서 찾아서 실행합니다.
-    
-  
-
-
-정확히는 poly가 Child 타입으로 바뀌는 것은 아닙니다.
-((Child) poly).childMethod(); // 다운캐스팅을 통해 부모타입을 자식 타입으로 변환 후 기능 호출
-((Child) x001).childMethod(); // 참조값을 읽은 다음 자식 타입으로 다운캐스팅
-
-
-
-  참고로 캐스팅을 한다고 해서 Parent poly의 타입이 변하는 것은 아닙니다.
-    
-      해당 참조값을 꺼내고 꺼낸 참조값이 Child 타입이 되는 것입니다.
-        
-          따라서 poly의 타입은 Parent로 그대로 유지됩니다.
-        
-      
-    
-  
-
-
-이렇게 일시적 다운캐스팅을 사용하면 별도의 변수 없이 인스턴스의 자식 타입의 기능을 사용할 수 있습니다.
-
-업캐스팅
-
-다운캐스팅과 반대로 현재 타입을 부모 타입으로 변경하는 것을 업캐스팅이라고 합니다.
-
-다음 코드를 봅시다.
-
-package poly.basic;
-
-public class CastingMain3 {
-
-  public static void main(String[] args) {
-    Child child = new Child();
-    Parent parent1 = (Parent) child; // 업캐스팅은 생략 가능, 생략 권장.
-    Parent parent2 = child;
-
-    parent1.parentMethod();
-    parent2.parentMethod();
-  }
-}
-
-
-실행 결과
-Parent.parentMethod
-Parent.parentMethod
-
-
-다음 코드를 봐봅시다
-Parent parent1 = (Parent) child;
-
-
-  Child 타입을 Parent 타입에 대입해야 합니다.
-    
-      따라서 타입을 변환하는 캐스팅이 필요합니다.
-    
-  
-
-
-그런데 부모 타입으로 변환하는 경우에는 다음과 같이 캐스팅 코드인 (타입)를 생략할 수 있습니다.
-Parent parent2 = child
-Parent parent2 = new Child()
-
-
-“업캐스팅은 생략할 수 있습니다. 참고로 업캐스팅은 매우 자주 사용하기 때문에 생략을 권장합니다.”
-
-  자바에서 부모는 자식을 담을 수 있습니다. 하지만 그 반대는 안됩니다.(꼭 필요하다면 다운캐스팅을 해야 합니다.)
-
-
-업캐스팅을 생략해도 되고, 다운캐스팅은 왜 개발자가 직접 명시적으로 캐스팅을 해야할까요?
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-15</span>
                             
                         </div>
                     </div>
@@ -15195,6 +14886,316 @@ Child child2 = (Child) parent2
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html"><h1 class="title_post">☕️[Java] 캐스팅의 종류</h1></a>
+                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="txt_post">
+                            캐스팅의 종류
+
+자식 타입의 기능을 사용하려면 다음과 같이 다운 캐스팅 결과를 변수에 담아두고 이후에 기능을 사용하면 됩니다.
+Child child = (Child) poly
+child.childMethod();
+
+
+하지만 다운캐스팅 결과를 변수에 담아두는 과정은 번거롭습니다.
+이런 과정 없이 일시적으로 다운캐스팅을 해서 인스턴스에 있는 하위 클래스의 기능을 바로 호출할 수 있습니다.
+
+다음 코드를 봐봅시다.
+
+일시적 다운 캐스팅
+package poly.basic;
+
+public class CastingMain2 {
+
+  public static void main(String[] args) {
+    // 부모 변수가 자식 인스턴스 참조(다형적 참조)
+    Parent poly = new Child();
+
+    // 단 자식의 기능은 호출할 수 없습니다.(컴파일 오류 발생)
+    // poly.childMethod();
+
+    // 일시적 다운캐스팅 - 해당 메서드를 호출하는 순간만 다운캐스팅
+    ((Child) poly).childMethod();
+  }
+}
+
+
+실행 결과
+Child.childMethod
+
+
+
+
+((Child) poly).childMethod()
+
+
+
+  poly는 Parent 타입입니다. 그런데 이 코드를 실행하면 Parent 타입을 임시로 Child로 변경합니다.
+    
+      그리고 메서드를 호출할 때 Child 타입에서 찾아서 실행합니다.
+    
+  
+
+
+정확히는 poly가 Child 타입으로 바뀌는 것은 아닙니다.
+((Child) poly).childMethod(); // 다운캐스팅을 통해 부모타입을 자식 타입으로 변환 후 기능 호출
+((Child) x001).childMethod(); // 참조값을 읽은 다음 자식 타입으로 다운캐스팅
+
+
+
+  참고로 캐스팅을 한다고 해서 Parent poly의 타입이 변하는 것은 아닙니다.
+    
+      해당 참조값을 꺼내고 꺼낸 참조값이 Child 타입이 되는 것입니다.
+        
+          따라서 poly의 타입은 Parent로 그대로 유지됩니다.
+        
+      
+    
+  
+
+
+이렇게 일시적 다운캐스팅을 사용하면 별도의 변수 없이 인스턴스의 자식 타입의 기능을 사용할 수 있습니다.
+
+업캐스팅
+
+다운캐스팅과 반대로 현재 타입을 부모 타입으로 변경하는 것을 업캐스팅이라고 합니다.
+
+다음 코드를 봅시다.
+
+package poly.basic;
+
+public class CastingMain3 {
+
+  public static void main(String[] args) {
+    Child child = new Child();
+    Parent parent1 = (Parent) child; // 업캐스팅은 생략 가능, 생략 권장.
+    Parent parent2 = child;
+
+    parent1.parentMethod();
+    parent2.parentMethod();
+  }
+}
+
+
+실행 결과
+Parent.parentMethod
+Parent.parentMethod
+
+
+다음 코드를 봐봅시다
+Parent parent1 = (Parent) child;
+
+
+  Child 타입을 Parent 타입에 대입해야 합니다.
+    
+      따라서 타입을 변환하는 캐스팅이 필요합니다.
+    
+  
+
+
+그런데 부모 타입으로 변환하는 경우에는 다음과 같이 캐스팅 코드인 (타입)를 생략할 수 있습니다.
+Parent parent2 = child
+Parent parent2 = new Child()
+
+
+“업캐스팅은 생략할 수 있습니다. 참고로 업캐스팅은 매우 자주 사용하기 때문에 생략을 권장합니다.”
+
+  자바에서 부모는 자식을 담을 수 있습니다. 하지만 그 반대는 안됩니다.(꼭 필요하다면 다운캐스팅을 해야 합니다.)
+
+
+업캐스팅을 생략해도 되고, 다운캐스팅은 왜 개발자가 직접 명시적으로 캐스팅을 해야할까요?
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-15-instanceof.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-15-instanceof.html"><h1 class="title_post">☕️[Java] instanceof</h1></a>
+                        <a href="/2024/Java/2024-03-15-instanceof.html" class="txt_post">
+                            instanceof
+
+다형성에서 참조형 변수는 이름 그대로 다양한 지식을 대상으로 참조할 수 있습니다.
+그런데 참조하는 대상이 다양하기 때문에 어떤 인스턴스를 참조하고 있는지 확인하려면 어떻게 해야할까요?
+
+Parent parent1 = new Parent();
+Parent parent2 = new Child()
+
+
+
+  여기서 Parent는 자신과 같은 Parent의 인스턴스도 참조할 수 있고, 자식 타입인 Child의 인스턴스도 참조할 수 있습니다.
+    
+      이때 parent1, parent2 변수가 참조하는 인스턴스의 타입을 확인하고 싶다면 instanceof 키워드를 사용하면 됩니다.
+    
+  
+
+
+예제를 봅시다.
+
+package poly.basic;
+
+public class CastingMain5 {
+
+  public static void main(String[] args) {
+    Parent parent1 = new Parent();
+    System.out.println("parent1 호출");
+    call(parent1);
+
+    Parent parent2 = new Child();
+    System.out.println("parent2 호출");
+    call(parent2);
+  }
+
+  private static void call(Parent parent) {
+    parent.parentMethod();
+
+    if (parent instanceof Child) {
+      System.out.println("Child 인스턴스 맞음");
+      Child child = (Child) parent;
+      child.childMethod();
+    }
+  }
+}
+
+
+실행 결과
+parent1 호출
+Parent.parentMethod
+parent2 호출
+Parent.parentMethod
+Child 인스턴스 맞음
+Child.childMethod
+
+
+call(Parent parent) 메서드를 봐봅시다.
+
+  이 메서드는 매개변수로 넘어온 parent가 참조하는 타입에 따라서 다른 명령을 수행합니다.
+    
+      참고로 지금처럼 다운캐스팅을 수행하기 전에는 먼저 instanceof를 사용해서 원하는 타입으로 변경이 가능한지 확인한 다음에 다운캐스팅을 수행하는 것이 안전합니다.
+    
+  
+
+
+해당 메서드를 처음 호출할 때 parent는 Parent의 인스턴스를 참조합니다.
+parent instanceof Child // parent는 Parent의 인스턴스
+new Parent() instanceof Child // false
+
+
+
+  parent는 Parent의 인스턴스를 참조하므로 false를 반환합니다.
+
+
+해당 메서드를 다음으로 호출할 때 parent는 Child의 인스턴스를 참조합니다.
+parent instanceof Child // parent는 Child의 인스턴스
+new Child() instanceof Child // true
+
+
+참고로 instanceof 키워드는 오른쪽 대상의 자식 타입을 왼쪽에서 참조하는 경우에도 true를 반환합니다.
+parent instanceof Parent // parent는 Child의 인스턴스
+
+new Parent() instanceof Parent // parent가 Parent의 인스턴스를 참조하는 경우: true
+new Child() instanceof Parent // parent가 Child의 인스턴스를 참조하는 경우: true
+
+
+
+  쉽게 이야기해서 오른쪽에 있는 타입에 왼쪽에 있는 인스턴스의 타입이 들어갈 수 있는지 대입해보면 됩니다.
+    
+      대입이 가능하면 true, 불가능하면 false가 됩니다.
+    
+  
+
+
+new Parent() instanceof Parent
+Parent p = new Parent() // 같은 타입 true
+
+new Child() instancof Parent
+Parent p = new Child() // 부모는 자식을 담을 수 있다. true
+
+new Parent() instanceof Child
+Child c = new Parent() // 자식은 부모를 담을 수 없다. false
+
+new Child() instanceof Child
+Child c = new Child() // 같은 타입 true
+
+
+자바 16 - Pattern Matching for instanceof
+
+자바 16부터는 instanceof를 사용하면서 동시에 변수를 선언할 수 있습니다.
+
+다음 코드를 참고합시다.
+
+package poly.basic;
+
+public class CastingMain6 {
+
+  public static void main(String[] args) {
+    Parent parent1 = new Parent();
+    System.out.println("parent1 호출");
+    call(parent1);
+
+    Parent parent2 = new Child();
+    System.out.println("parent2 호출");
+    call(parent2);
+  }
+
+  private static void call(Parent parent) {
+    parent.parentMethod();
+    // Child 인스턴스인 경우 childMethod() 실행
+    if (parent instanceof Child child) {
+      System.out.println("Child 인스턴스 맞음");
+      child.childMethod();
+    }
+  }
+}
+
+
+실행 결과
+parent1 호출
+Parent.parentMethod
+parent2 호출
+Parent.parentMethod
+Child 인스턴스 맞음
+Child.childMethod
+
+
+
+  덕분에 인스턴스가 맞는 경우 직접 다운캐스팅 하는 코드를 생략할 수 있습니다.
+
 
 
                         </a>
@@ -15471,135 +15472,6 @@ Parent poly = new Child() 이렇게 자식을 참조한 상황에서 poly가 자
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html"><h1 class="title_post">💾 [CS] 컴퓨터 구조를 알아야 하는 이유</h1></a>
-                        <a href="/2024/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html" class="txt_post">
-                            컴퓨터 구조를 알아야 하는 이유.
-
-컴퓨터 구조는 실력 있는 개발자가 되려면 반드시 알아야 할 기본 지식입니다
-
-  why?
-    
-      문제 해결
-        
-          컴퓨터 구조를 이해하고 있다면 문제 상황을 빠르게 진단할 수 있고, 문제 해결의 실마리를 다양하게 찾을 수 있습니다.
-          컴퓨터 구조 지식은 다양한 문제를 스스로 해결할 줄 아는 개발자로 만들어 줍니다.
-        
-      
-      성능, 용량, 비용
-        
-          “컴퓨터 구조애서 배우는 내용은 결국 성능, 용량, 비용과 직결됩니다.”
-            
-              즉, 컴퓨터 구조를 이해하면 입력과 출력에만 집중하는 개발을 넘어 성능, 용량, 비용까지 고려하며 개발하는 개발자가 될 수 있습니다,
-            
-          
-        
-      
-    
-  
-
-
-문제 해결
-컴퓨터 구조를 이해하고 있다면 문제 상황을 빠르게 진단할 수 있고, 문제 해결의 실마리를 다양하게 찾을 수 있습니다.
-
-  컴퓨터 내부를 거리낌 없이 들여다보면 더 좋은 해결책을 고민할 수 있습니다.
-    
-      이러한 사고가 가능한 이들에게 컴퓨터란 ‘미지의 대상’이 아닌 ‘분석의 대상’이기 때문입니다.
-    
-  
-
-
-컴퓨터 구조 지식은 다양한 문제를 스스로 해결할 줄 아는 개발자로 만들어 줍니다.
-
-성능, 용량, 비용
-
-성능, 용량, 비용 문제는 프로그래밍 언어의 문법만 알아서는 해결하기 어렵습니다.
-
-  혼자만 사용하는 프로그램을 만들 떄는 이러한 문제를 생각조차 해 본 적이 없을 수도 있습니다.
-  하지만 유튜브, 워드, 포토샵과 같이 사용자가 많은 프로그램은 필연적으로 성능, 용량, 비용이 고려됩니다.
-    
-      그래서 컴퓨터 구조를 아는 것은 매우 중요합니다.
-    
-  
-
-
-“컴퓨터 구조애서 배우는 내용은 결국 성능, 용량, 비용과 직결됩니다.”
-
-  즉, 컴퓨터 구조를 이해하면 입력과 출력에만 집중하는 개발을 넘어 성능, 용량, 비용까지 고려하며 개발하는 개발자가 될 수 있습니다,
-
-
-핵심 포인트
-
-  컴퓨터 구조를 이해하면 “문제 해결” 능력이 향상 됩니다.
-  컴퓨터 구조를 이해하면 문법만으로는 알기 어려운 “성능/용량/비용” 을 고려하며 개발할 수 있습니다.
-
-
-Q1. iOS 애플리케이션 개발에서 고효율적이고 성능이 우수한 앱을 만들기 위해 컴퓨터 구조에 대한 이해가 왜 중요한지 설명해주세요. 구체적인 예를 들어서 설명해주시기 바랍니다.
-
-답변.
-iOS 애플리케이션 개발에서 컴퓨터 구조에 대한 이해는 여러 면에서 중요합니다.
-
-첫째, 성능 최적와레 있어서 핵심적인 역할을 합니다.
-
-예를 들어, CPU의 멀티코어 구조를 이해함으로써, 병렬 처리와 동시성을 통해 애플리케이션의 성능을 효과적으로 향상시킬 수 있습니다.
-
-이는 앱이 사용자의 입력에 빠르게 반응하고, 더 복잡한 작업을 빠른 시간 안에 처리할 수 있게 만들어 줍니다.
-
-둘째, 메모리 관리에 대한 이해를 통해, 애플리케이션의 효율성을 높일 수 있습니다.
-
-예를 들어, RAM과 캐시의 작동 방식을 이해하면, 데이터를 효율적으로 저장하고 접근하는 방법을 개선할 수 있으며, 이는 애플리케이션의 반응 속도와 전반적인 성능에 긍정적인 영향을 미칩니다.
-
-셋째, 하드웨어와 소프트웨어의 상호작용에 대한 이해는 에너지 효율성을 최적화하는 데 도움이 됩니다.
-
-iOS 장치의 배터리 수명은 사용자 경험의 중요한 부분이며, 컴퓨터 구조에 대한 이해는 개발자가 배터리 소모를 최소화하면서 성능을 극대화할 수 있는 애플리케이션을 설계할 수 있게 돕습니다.
-
-마지막으로 컴퓨터 구조에 대한 깊은 이해는 개발자가 효과적인 코드를 작성하고, 시스템 리소스를 효율적으로 관리하며, 최종 사용자에게 더 나은 경험을 제공할 수 있는 애플리케이션을 만들 수 있도록 합니다.
-
-Q2. 서버 개발자가 컴퓨터 구조에 대한 기본적인 지식을 갖추어야 하는 이유에 대해 설명해주시고, 그 지식이 어떻게 서버 애플리케이션의 성능과 안정성에 영향을 미칠 수 있는지 구체적인 예시를 들어 설명해주세요.
-
-답변.
-서버 개발자에게 컴퓨터 구조에 대한 이해는 애플리케이션의 성능 최적화와 안정성 보장에 필수적입니다.
-
-첫 번째 이유는 성능 최적화와 관련이 있습니다.
-
-예를 들어, CPU의 멀티코어 아키텍처를 이해함으로써 서버 애플리케이션에서 멀티 스레딩과 병렬 처리를 효율적으로 구현할 수 있습니다.
-
-이는 요청 처리량을 증가시키고 응답 시간을 단축시킬 수 있으며, 고객에게 더 나은 서비스 경험을 제공할 수 있습니다.
-
-두 번째 이유는 자원 관리와 관련이 있습니다.
-
-서버 애플리케이션은 종종 대량의 데이터를 처리하고, 메모리 및 CPU 자원을 집중적으로 사용합니다.
-메모리 계층 구조(예: 캐시, 주 메모리)와 이에 대한 이해는 데이터 접근 시간을 최적화하고, 메모리 사용 효율을 극대화하는 방법을 개발자에게 제공합니다.
-이를 통해 시스템의 전반적인 효율성을 향상시킬 수 있습니다.
-
-세 번째 이유는 안정성과 가용성에 있습니다.
-
-서버 개발자는 컴퓨터 구조에 대한 이해를 통해 시스템의 잠재적 한계와 병목 현상을 더 잘 파악할 수 있으며, 이를 바탕으로 더 견고하고 오류에 강한 시스템을 설계할 수 있습니다.
-
-예를 들어, 서버 하드웨어의 장애 지점을 이해하고, 이에 대비한 높은 가용성을 보장하는 소프트웨어 설계를 할 수 있습니다.
-
-종합하면, 컴퓨터 구조에 대한 깊은 이해는 서버 개발자가 성능, 자원 관리, 안정성을 고려한 효율적이고 안정적인 서버 애플리케이션을 설계하고 구현하는 데 있어 필수적입니다.
-이는 최종적으로 사용자 경험을 개선하고, 비즈니스 목표 달성에 기여합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-14-polymorphismAndCasting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -15770,6 +15642,135 @@ child.childMethod();
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html"><h1 class="title_post">💾 [CS] 컴퓨터 구조를 알아야 하는 이유</h1></a>
+                        <a href="/2024/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html" class="txt_post">
+                            컴퓨터 구조를 알아야 하는 이유.
+
+컴퓨터 구조는 실력 있는 개발자가 되려면 반드시 알아야 할 기본 지식입니다
+
+  why?
+    
+      문제 해결
+        
+          컴퓨터 구조를 이해하고 있다면 문제 상황을 빠르게 진단할 수 있고, 문제 해결의 실마리를 다양하게 찾을 수 있습니다.
+          컴퓨터 구조 지식은 다양한 문제를 스스로 해결할 줄 아는 개발자로 만들어 줍니다.
+        
+      
+      성능, 용량, 비용
+        
+          “컴퓨터 구조애서 배우는 내용은 결국 성능, 용량, 비용과 직결됩니다.”
+            
+              즉, 컴퓨터 구조를 이해하면 입력과 출력에만 집중하는 개발을 넘어 성능, 용량, 비용까지 고려하며 개발하는 개발자가 될 수 있습니다,
+            
+          
+        
+      
+    
+  
+
+
+문제 해결
+컴퓨터 구조를 이해하고 있다면 문제 상황을 빠르게 진단할 수 있고, 문제 해결의 실마리를 다양하게 찾을 수 있습니다.
+
+  컴퓨터 내부를 거리낌 없이 들여다보면 더 좋은 해결책을 고민할 수 있습니다.
+    
+      이러한 사고가 가능한 이들에게 컴퓨터란 ‘미지의 대상’이 아닌 ‘분석의 대상’이기 때문입니다.
+    
+  
+
+
+컴퓨터 구조 지식은 다양한 문제를 스스로 해결할 줄 아는 개발자로 만들어 줍니다.
+
+성능, 용량, 비용
+
+성능, 용량, 비용 문제는 프로그래밍 언어의 문법만 알아서는 해결하기 어렵습니다.
+
+  혼자만 사용하는 프로그램을 만들 떄는 이러한 문제를 생각조차 해 본 적이 없을 수도 있습니다.
+  하지만 유튜브, 워드, 포토샵과 같이 사용자가 많은 프로그램은 필연적으로 성능, 용량, 비용이 고려됩니다.
+    
+      그래서 컴퓨터 구조를 아는 것은 매우 중요합니다.
+    
+  
+
+
+“컴퓨터 구조애서 배우는 내용은 결국 성능, 용량, 비용과 직결됩니다.”
+
+  즉, 컴퓨터 구조를 이해하면 입력과 출력에만 집중하는 개발을 넘어 성능, 용량, 비용까지 고려하며 개발하는 개발자가 될 수 있습니다,
+
+
+핵심 포인트
+
+  컴퓨터 구조를 이해하면 “문제 해결” 능력이 향상 됩니다.
+  컴퓨터 구조를 이해하면 문법만으로는 알기 어려운 “성능/용량/비용” 을 고려하며 개발할 수 있습니다.
+
+
+Q1. iOS 애플리케이션 개발에서 고효율적이고 성능이 우수한 앱을 만들기 위해 컴퓨터 구조에 대한 이해가 왜 중요한지 설명해주세요. 구체적인 예를 들어서 설명해주시기 바랍니다.
+
+답변.
+iOS 애플리케이션 개발에서 컴퓨터 구조에 대한 이해는 여러 면에서 중요합니다.
+
+첫째, 성능 최적와레 있어서 핵심적인 역할을 합니다.
+
+예를 들어, CPU의 멀티코어 구조를 이해함으로써, 병렬 처리와 동시성을 통해 애플리케이션의 성능을 효과적으로 향상시킬 수 있습니다.
+
+이는 앱이 사용자의 입력에 빠르게 반응하고, 더 복잡한 작업을 빠른 시간 안에 처리할 수 있게 만들어 줍니다.
+
+둘째, 메모리 관리에 대한 이해를 통해, 애플리케이션의 효율성을 높일 수 있습니다.
+
+예를 들어, RAM과 캐시의 작동 방식을 이해하면, 데이터를 효율적으로 저장하고 접근하는 방법을 개선할 수 있으며, 이는 애플리케이션의 반응 속도와 전반적인 성능에 긍정적인 영향을 미칩니다.
+
+셋째, 하드웨어와 소프트웨어의 상호작용에 대한 이해는 에너지 효율성을 최적화하는 데 도움이 됩니다.
+
+iOS 장치의 배터리 수명은 사용자 경험의 중요한 부분이며, 컴퓨터 구조에 대한 이해는 개발자가 배터리 소모를 최소화하면서 성능을 극대화할 수 있는 애플리케이션을 설계할 수 있게 돕습니다.
+
+마지막으로 컴퓨터 구조에 대한 깊은 이해는 개발자가 효과적인 코드를 작성하고, 시스템 리소스를 효율적으로 관리하며, 최종 사용자에게 더 나은 경험을 제공할 수 있는 애플리케이션을 만들 수 있도록 합니다.
+
+Q2. 서버 개발자가 컴퓨터 구조에 대한 기본적인 지식을 갖추어야 하는 이유에 대해 설명해주시고, 그 지식이 어떻게 서버 애플리케이션의 성능과 안정성에 영향을 미칠 수 있는지 구체적인 예시를 들어 설명해주세요.
+
+답변.
+서버 개발자에게 컴퓨터 구조에 대한 이해는 애플리케이션의 성능 최적화와 안정성 보장에 필수적입니다.
+
+첫 번째 이유는 성능 최적화와 관련이 있습니다.
+
+예를 들어, CPU의 멀티코어 아키텍처를 이해함으로써 서버 애플리케이션에서 멀티 스레딩과 병렬 처리를 효율적으로 구현할 수 있습니다.
+
+이는 요청 처리량을 증가시키고 응답 시간을 단축시킬 수 있으며, 고객에게 더 나은 서비스 경험을 제공할 수 있습니다.
+
+두 번째 이유는 자원 관리와 관련이 있습니다.
+
+서버 애플리케이션은 종종 대량의 데이터를 처리하고, 메모리 및 CPU 자원을 집중적으로 사용합니다.
+메모리 계층 구조(예: 캐시, 주 메모리)와 이에 대한 이해는 데이터 접근 시간을 최적화하고, 메모리 사용 효율을 극대화하는 방법을 개발자에게 제공합니다.
+이를 통해 시스템의 전반적인 효율성을 향상시킬 수 있습니다.
+
+세 번째 이유는 안정성과 가용성에 있습니다.
+
+서버 개발자는 컴퓨터 구조에 대한 이해를 통해 시스템의 잠재적 한계와 병목 현상을 더 잘 파악할 수 있으며, 이를 바탕으로 더 견고하고 오류에 강한 시스템을 설계할 수 있습니다.
+
+예를 들어, 서버 하드웨어의 장애 지점을 이해하고, 이에 대비한 높은 가용성을 보장하는 소프트웨어 설계를 할 수 있습니다.
+
+종합하면, 컴퓨터 구조에 대한 깊은 이해는 서버 개발자가 성능, 자원 관리, 안정성을 고려한 효율적이고 안정적인 서버 애플리케이션을 설계하고 구현하는 데 있어 필수적입니다.
+이는 최종적으로 사용자 경험을 개선하고, 비즈니스 목표 달성에 기여합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/CS/2024-03-14-patternMatchingAndExpressionMatching.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -15840,167 +15841,6 @@ child.childMethod();
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-03-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-13-super.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-13-super.html"><h1 class="title_post">☕️[Java] super - 부모 참조</h1></a>
-                        <a href="/2024/Java/2024-03-13-super.html" class="txt_post">
-                            super - 부모 참조.
-
-“부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없습니다.”
-
-  이때 super 키워드를 사용하면 부모를 참조할 수 있습니다.
-  super 는 이름 그대로 부모 클래스에 대한 참조를 나타냅니다.
-
-
-다음 예를 봅시다.
-
-  부모의 필드명과 자식의 필드명 둘 다 value로 똑같습니다.
-  메서드도 hello()로 자식에서 오버라이딩 되어 있습니다.
-    
-      이 때 자식 클래스에서 부모 클래스의 value와 hello()를 호출하고 싶다면 super 키워드를 사용하면 됩니다.
-    
-  
-
-
-
-
-Parent
-package extends1.super1;
-
-public class Parent {
-
-  public String value = "parent";
-
-  public void hello() {
-    System.out.println("Parent.hello");
-  }
-}
-
-
-Child
-package extends1.super1;
-
-public class Child extends Parent {
-  public String value = "child";
-
-  @Override
-  public void hello() {
-    System.out.println("Child.hello");
-  }
-
-  public void call() {
-    System.out.println("this value = " + this.value); // this 생략 가능
-    System.out.println("super value = " + super.value);
-
-    this.hello(); // this 생략 가능
-    super.hello();
-  }
-}
-
-
-call() 메서드를 봅시다.
-
-  this는 자기 자신의 참조를 뜻합니다. this는 생략할 수 있습니다.
-  super는 부모 클래스에 대한 참조를 뜻합니다.
-  필드 이름과 메서드 이름이 같지만 super를 사용해서 부모 클래스에 있는 기능을 사용할 수 있습니다.
-
-
-Super1Main
-package extends1.super1;
-
-public class Super1Main {
-
-  public static void main(String[] args) {
-    Child child = new Child();
-    child.call();
-  }
-}
-
-
-실행 결과
-this value = child
-super value = parent
-Child.hello
-Parent.hello
-
-
-
-  실행 결과를 보면 super를 사용한 경우 부모 클래스의 기능을 사용한 것을 확인할 수 있습니다.
-
-
-super 메모리 그림
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html"><h1 class="title_post">☕️[Java] 클래스와 메서드에 사용되는 final</h1></a>
-                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="txt_post">
-                            클래스와 메서드에 사용되는 final.
-
-클래스에 final
-
-  상속 끝!
-  final로 선언된 클래스는 확장될 수 없습니다.
-    
-      다른 클래스가 final로 선언된 클래스를 상속받을 수 없습니다.
-        
-          예: public final class MyFinalClass {...}
-        
-      
-    
-  
-
-
-메서드에 final
-
-  오버라이딩 끝!
-  final로 선언된 메서드는 오버라이드 될 수 없습니다.
-    
-      상속받은 서브 클래스에서 이 메서드를 변경할 수 없습니다.
-        
-          예: public final void myFinalMethod() {...}
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-13</span>
                             
                         </div>
                     </div>
@@ -16208,6 +16048,167 @@ ClassC 생성자
   상속 관계에서 자식 클래스의 생성자 첫줄에 반드시 super(...)를 호출해야 합니다.
     
       단 기본 생성자(super())인 경우 생략 할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-13-super.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-13-super.html"><h1 class="title_post">☕️[Java] super - 부모 참조</h1></a>
+                        <a href="/2024/Java/2024-03-13-super.html" class="txt_post">
+                            super - 부모 참조.
+
+“부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없습니다.”
+
+  이때 super 키워드를 사용하면 부모를 참조할 수 있습니다.
+  super 는 이름 그대로 부모 클래스에 대한 참조를 나타냅니다.
+
+
+다음 예를 봅시다.
+
+  부모의 필드명과 자식의 필드명 둘 다 value로 똑같습니다.
+  메서드도 hello()로 자식에서 오버라이딩 되어 있습니다.
+    
+      이 때 자식 클래스에서 부모 클래스의 value와 hello()를 호출하고 싶다면 super 키워드를 사용하면 됩니다.
+    
+  
+
+
+
+
+Parent
+package extends1.super1;
+
+public class Parent {
+
+  public String value = "parent";
+
+  public void hello() {
+    System.out.println("Parent.hello");
+  }
+}
+
+
+Child
+package extends1.super1;
+
+public class Child extends Parent {
+  public String value = "child";
+
+  @Override
+  public void hello() {
+    System.out.println("Child.hello");
+  }
+
+  public void call() {
+    System.out.println("this value = " + this.value); // this 생략 가능
+    System.out.println("super value = " + super.value);
+
+    this.hello(); // this 생략 가능
+    super.hello();
+  }
+}
+
+
+call() 메서드를 봅시다.
+
+  this는 자기 자신의 참조를 뜻합니다. this는 생략할 수 있습니다.
+  super는 부모 클래스에 대한 참조를 뜻합니다.
+  필드 이름과 메서드 이름이 같지만 super를 사용해서 부모 클래스에 있는 기능을 사용할 수 있습니다.
+
+
+Super1Main
+package extends1.super1;
+
+public class Super1Main {
+
+  public static void main(String[] args) {
+    Child child = new Child();
+    child.call();
+  }
+}
+
+
+실행 결과
+this value = child
+super value = parent
+Child.hello
+Parent.hello
+
+
+
+  실행 결과를 보면 super를 사용한 경우 부모 클래스의 기능을 사용한 것을 확인할 수 있습니다.
+
+
+super 메모리 그림
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html"><h1 class="title_post">☕️[Java] 클래스와 메서드에 사용되는 final</h1></a>
+                        <a href="/2024/Java/2024-03-13-finalUsedInClassesAndMethods.html" class="txt_post">
+                            클래스와 메서드에 사용되는 final.
+
+클래스에 final
+
+  상속 끝!
+  final로 선언된 클래스는 확장될 수 없습니다.
+    
+      다른 클래스가 final로 선언된 클래스를 상속받을 수 없습니다.
+        
+          예: public final class MyFinalClass {...}
+        
+      
+    
+  
+
+
+메서드에 final
+
+  오버라이딩 끝!
+  final로 선언된 메서드는 오버라이드 될 수 없습니다.
+    
+      상속받은 서브 클래스에서 이 메서드를 변경할 수 없습니다.
+        
+          예: public final void myFinalMethod() {...}
+        
+      
     
   
 
@@ -17356,172 +17357,6 @@ data.value = 20;
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html"><h1 class="title_post">☕️[Java] final 변수와 상수 2</h1></a>
-                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="txt_post">
-                            final 변수와 상수 2
-
-상수(Constant)
-
-  상수는 변하지 않고, 항상 일정한 값을 갖는 수를 말합니다.
-    
-      자바에서는 보통 단 하나만 존재하는 변하지 않는 고정된 값을 상수라 합니다.
-        
-          이런 이유로 상수는 static final 키워드를 사용합니다.
-        
-      
-    
-  
-
-
-자바 상수 특징
-
-  static final 키워드를 사용합니다.
-  대문자를 사용하고 구분은 _(언더스코어)로 합니다.(관례)
-    
-      일반적인 변수와 상수를 구분하기 위해 이렇게 합니다.
-    
-  
-  필드를 직접 접근해서 사용합니다.
-    
-      상수는 기능이 아니라 고정된 값 자체를 사용하는 것이 목적입니다.
-      상수는 값을 변경할 수 없습니다.
-        
-          따라서 필드에 직접 접근해도 데이터가 변하는 문제가 발생하지 않습니다.
-        
-      
-    
-  
-
-
-package final1;
-
-// 상수
-public class Constant {
-  // 수학 상수
-  public static final double PI = 3.14;
-  // 시간 상수
-  public static final int HOURS_IN_DAY = 24;
-  public static final int MINUTES_IN_HOUR = 60;
-  public static final int SECONDS_IN_MINUTE = 60;
-  // 애플리케이션 설정 상수
-  public static final int MAX_USERS = 1000;
-}
-
-
-
-  애플리케이션 안에는 다양한 상수가 존재할 수 있습니다.
-    
-      수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있습니다.
-        
-          보통 이런 상수들은 애플리케이션 전반에서 사용되기 때문에 public를 자주 사용합니다.
-          물론 특정 위치에서만 사용된다면 다른 접근제어자를 사용하면 됩니다.
-        
-      
-    
-  
-  상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
-  상수는 런타임에 변경할 수 없습니다.
-    
-      상수를 변경하려면 프로그램을 종료하고, 코드를 변경한 다음에 프로그램을 다시 실행해야 합니다.
-    
-  
-
-
-추가로 상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
-다음 두 예제를 비교해봅시다.
-
-ConstantMain1 - 상수 없음
-package final1;
-
-public class ConstantMain2 {
-
-  public static void main(String[] args) {
-    System.out.println("프로그램 최대 참여자 수 " + 1000);
-    int currentUserCount = 999;
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-  }
-
-  private static void process(int currentUserCount) {
-    System.out.println("참여자 수:" + currentUserCount);
-    if (currentUserCount &gt; 1000) {
-      System.out.println("대기자로 등록합니다.");
-    } else {
-      System.out.println("게임에 참여합니다.");
-    }
-  }
-}
-
-이 코드에는 다음과 같은 문제가 있습니다.
-
-
-  만약 프로그램 최대 참여자 수를 현재 1000명에서 2000명으로 변경해야 하면 2곳의 변경 포인트가 발생합니다.
-    
-      만약 애플리케이션의 100곳에서 이 숫자를 사용했다면 100곳을 모두 변경해야 합니다.
-    
-  
-  매직 넘버 문제도 있습니다.
-
-
-ConstatnMain2 - 상수 있음
-package final1;
-
-public class ConstantMain2 {
-
-  public static void main(String[] args) {
-    System.out.println("프로그램 최대 참여자 수 " + Constant.MAX_USERS);
-    int currentUserCount = 999;
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-  }
-
-  private static void process(int currentUserCount) {
-    System.out.println("참여자 수:" + currentUserCount);
-    if (currentUserCount &gt; Constant.MAX_USERS) {
-      System.out.println("대기자로 등록합니다.");
-    } else {
-      System.out.println("게임에 참여합니다.");
-    }
-  }
-}
-
-
-  Constant.MAX_USERS 상수를 사용했습니다.
-    
-      만약 프로그램 최대 참여자 수를 변경해야 하면 Constant.MAX_USERS의 상수 값만 변경하면 됩니다.
-    
-  
-  매직 넘버 문제를 해결했습니다.
-    
-      숫자 1000이 아니라 사람이 인지할 수 있게 MAX_USERS라는 변수명으로 코드를 이해할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-07-finalVariableAndConstant1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -17950,6 +17785,172 @@ c b a
 “키 값이 같아도 정렬시 벨류 값이 처음과 같이 유지가 된다면 그것은 stable하다라고 합니다, 그와 반대로 키 값이 같으나 처음과 달리 벨류의 순서가 바뀔 경우에는 unstable하다 라고 합니다.”
 
   이것도 정렬 알고리즘을 분류하는 기준 중 하나입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html"><h1 class="title_post">☕️[Java] final 변수와 상수 2</h1></a>
+                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="txt_post">
+                            final 변수와 상수 2
+
+상수(Constant)
+
+  상수는 변하지 않고, 항상 일정한 값을 갖는 수를 말합니다.
+    
+      자바에서는 보통 단 하나만 존재하는 변하지 않는 고정된 값을 상수라 합니다.
+        
+          이런 이유로 상수는 static final 키워드를 사용합니다.
+        
+      
+    
+  
+
+
+자바 상수 특징
+
+  static final 키워드를 사용합니다.
+  대문자를 사용하고 구분은 _(언더스코어)로 합니다.(관례)
+    
+      일반적인 변수와 상수를 구분하기 위해 이렇게 합니다.
+    
+  
+  필드를 직접 접근해서 사용합니다.
+    
+      상수는 기능이 아니라 고정된 값 자체를 사용하는 것이 목적입니다.
+      상수는 값을 변경할 수 없습니다.
+        
+          따라서 필드에 직접 접근해도 데이터가 변하는 문제가 발생하지 않습니다.
+        
+      
+    
+  
+
+
+package final1;
+
+// 상수
+public class Constant {
+  // 수학 상수
+  public static final double PI = 3.14;
+  // 시간 상수
+  public static final int HOURS_IN_DAY = 24;
+  public static final int MINUTES_IN_HOUR = 60;
+  public static final int SECONDS_IN_MINUTE = 60;
+  // 애플리케이션 설정 상수
+  public static final int MAX_USERS = 1000;
+}
+
+
+
+  애플리케이션 안에는 다양한 상수가 존재할 수 있습니다.
+    
+      수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있습니다.
+        
+          보통 이런 상수들은 애플리케이션 전반에서 사용되기 때문에 public를 자주 사용합니다.
+          물론 특정 위치에서만 사용된다면 다른 접근제어자를 사용하면 됩니다.
+        
+      
+    
+  
+  상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
+  상수는 런타임에 변경할 수 없습니다.
+    
+      상수를 변경하려면 프로그램을 종료하고, 코드를 변경한 다음에 프로그램을 다시 실행해야 합니다.
+    
+  
+
+
+추가로 상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
+다음 두 예제를 비교해봅시다.
+
+ConstantMain1 - 상수 없음
+package final1;
+
+public class ConstantMain2 {
+
+  public static void main(String[] args) {
+    System.out.println("프로그램 최대 참여자 수 " + 1000);
+    int currentUserCount = 999;
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+  }
+
+  private static void process(int currentUserCount) {
+    System.out.println("참여자 수:" + currentUserCount);
+    if (currentUserCount &gt; 1000) {
+      System.out.println("대기자로 등록합니다.");
+    } else {
+      System.out.println("게임에 참여합니다.");
+    }
+  }
+}
+
+이 코드에는 다음과 같은 문제가 있습니다.
+
+
+  만약 프로그램 최대 참여자 수를 현재 1000명에서 2000명으로 변경해야 하면 2곳의 변경 포인트가 발생합니다.
+    
+      만약 애플리케이션의 100곳에서 이 숫자를 사용했다면 100곳을 모두 변경해야 합니다.
+    
+  
+  매직 넘버 문제도 있습니다.
+
+
+ConstatnMain2 - 상수 있음
+package final1;
+
+public class ConstantMain2 {
+
+  public static void main(String[] args) {
+    System.out.println("프로그램 최대 참여자 수 " + Constant.MAX_USERS);
+    int currentUserCount = 999;
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+  }
+
+  private static void process(int currentUserCount) {
+    System.out.println("참여자 수:" + currentUserCount);
+    if (currentUserCount &gt; Constant.MAX_USERS) {
+      System.out.println("대기자로 등록합니다.");
+    } else {
+      System.out.println("게임에 참여합니다.");
+    }
+  }
+}
+
+
+  Constant.MAX_USERS 상수를 사용했습니다.
+    
+      만약 프로그램 최대 참여자 수를 변경해야 하면 Constant.MAX_USERS의 상수 값만 변경하면 됩니다.
+    
+  
+  매직 넘버 문제를 해결했습니다.
+    
+      숫자 1000이 아니라 사람이 인지할 수 있게 MAX_USERS라는 변수명으로 코드를 이해할 수 있습니다.
+    
+  
 
 
                         </a>
@@ -18773,12 +18774,12 @@ after: *hello java*
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-04-staticVariable1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-04-static1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-04-staticVariable1.html"><h1 class="title_post">☕️[Java] static 변수1</h1></a>
-                        <a href="/2024/Java/2024-03-04-staticVariable1.html" class="txt_post">
+                        <a href="/2024/Java/2024-03-04-static1.html"><h1 class="title_post">☕️[Java] static 변수1</h1></a>
+                        <a href="/2024/Java/2024-03-04-static1.html" class="txt_post">
                             static 변수 1
 
 sttic 키워드는 주로 멤버 변수와 메서드에 사용됩니다.
@@ -18971,12 +18972,12 @@ C count=3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-04-static1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-04-staticVariable1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-04-static1.html"><h1 class="title_post">☕️[Java] static 변수1</h1></a>
-                        <a href="/2024/Java/2024-03-04-static1.html" class="txt_post">
+                        <a href="/2024/Java/2024-03-04-staticVariable1.html"><h1 class="title_post">☕️[Java] static 변수1</h1></a>
+                        <a href="/2024/Java/2024-03-04-staticVariable1.html" class="txt_post">
                             static 변수 1
 
 sttic 키워드는 주로 멤버 변수와 메서드에 사용됩니다.
@@ -21610,168 +21611,6 @@ public class PackageMain1 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-25-packageImport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-packageImport.html"><h1 class="title_post">☕️[Java] 패키지 - import</h1></a>
-                        <a href="/2024/Java/2024-02-25-packageImport.html" class="txt_post">
-                            패키지 - import
-
-import
-
-package pack;
-
-public class PackageMain1 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   pack.a.User user = new pack.a.User();
-  }
-}
-
-
-  위 코드와 같이 패키지가 다르다고 pack.a.User와 같이 항상 전체 경로를 적어주는 것은 불편합니다.
-    
-      “이때는 import를 사용하면 됩니다.”
-    
-  
-
-
-PackageMain2
-package pack;
-
-import pack.a.User;
-
-public class PackageMain2 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   User user = new User();
-  }
-}
-
-
-실행 결과
-패키지 pack Data 생성
-패키지 pack.a 회원 생성
-
-
-
-  코드에서 첫줄에는 package를 사용하고, 다음 줄에는 import를 사용할 수 있습니다.
-    
-      import를 사용하면 다른 패키지에 있는 클래스를 가져와서 사용할 수 있습니다.
-        
-          import를 사용한 덕분에 코드에서는 패키지 명을 생략하고 클래스 이름만 적을 수 있습니다.
-        
-      
-    
-  
-
-
-
-  참고로 특정 패키지에 포함된 모든 클래스를 포함해서 사용하고 싶으면 import 시점에 *(별)을 사용하면 됩니다.
-
-
-패키지 별(*)사용
-
-tree 구조
-* pack -&gt; [Package]
-├──* Data -&gt; (Class)
-├──* PackageMain1 -&gt; (Class)
-├──* PackageMain1 -&gt; (Class)
-└──* a -&gt; [Package]
-   ├──* User -&gt; (Class)
-   └──* UserManager -&gt; (Class)
-
-
-package pack;
-
-import pack.a.*; // pack.a의 모든 클래스 사용
-
-public class PackageMain2 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   User user = new User(); // import 사용으로 패키지 명 생략 가능
-   UserManager manager = new UserManager(); // import 사용으로 패키지 명 생략 가능
-  }
-}
-
-
-  이렇게 하면 pack.a 패키지에 있는 모든 클래스를 패키지 명을 생략하고 사용할 수 있습니다.
-
-
-실행 결과
-패키지 pack Data 생성
-패키지 pack.a 회원 생성
-패키지 pack.a 회원 매니저 생성
-
-
-클래스 이름 중복
-패키지 덕분에 클래스 이름이 같아도 패키지 이름으로 구분해서 같은 이름의 클래스를 사용할 수 있습니다.
-
-pack.a.User
-pack.b.User
-
-
-“이런 경우 클래스 이름이 둘다 User이지만 패키지 이름으로 대상을 구분할 수 있습니다.”
-
-  이렇게 이름이 같은 경우 둘다 사용하고 싶으면 어떻게 해야할까요?
-
-
-pack.b.User
-package pack.b;
-
-public class User {
-  public  User() {
-    System.out.println("패키지 pack.b 회원 생성");
-  }
-}
-
-
-PackageMain3
-package pack;
-
-import pack.a.User;
-
-public class PackageMain3 {
-
-  public static void main(String[] args) {
-    User userA = new User();
-    pack.b.User userB = new pack.b.User();
-  }
-}
-
-
-
-  같은 이름의 클래스가 있다면 import는 둘중 하나만 선택할 수 있습니다.
-    
-      이때는 자주 사용하는 클래스를 import하고 나머지를 패키지를 포함한 전체 경로를 적어주면 됩니다.
-        
-          물론 둘다 전체 경로를 적어준다면 import를 사용하지 않아도 됩니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -22035,6 +21874,168 @@ public class MemberDefault {
   생성자는 반드시 호출되어야 합니다.
   생성자가 없으면 기본 생성자가 제공됩니다.
   생성자가 하나라도 있으면 기본 생성자가 제공되지 않습니다. 이 경우 개발자가 정의한 생성자를 직접 호출해야합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-25-packageImport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-25-packageImport.html"><h1 class="title_post">☕️[Java] 패키지 - import</h1></a>
+                        <a href="/2024/Java/2024-02-25-packageImport.html" class="txt_post">
+                            패키지 - import
+
+import
+
+package pack;
+
+public class PackageMain1 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   pack.a.User user = new pack.a.User();
+  }
+}
+
+
+  위 코드와 같이 패키지가 다르다고 pack.a.User와 같이 항상 전체 경로를 적어주는 것은 불편합니다.
+    
+      “이때는 import를 사용하면 됩니다.”
+    
+  
+
+
+PackageMain2
+package pack;
+
+import pack.a.User;
+
+public class PackageMain2 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   User user = new User();
+  }
+}
+
+
+실행 결과
+패키지 pack Data 생성
+패키지 pack.a 회원 생성
+
+
+
+  코드에서 첫줄에는 package를 사용하고, 다음 줄에는 import를 사용할 수 있습니다.
+    
+      import를 사용하면 다른 패키지에 있는 클래스를 가져와서 사용할 수 있습니다.
+        
+          import를 사용한 덕분에 코드에서는 패키지 명을 생략하고 클래스 이름만 적을 수 있습니다.
+        
+      
+    
+  
+
+
+
+  참고로 특정 패키지에 포함된 모든 클래스를 포함해서 사용하고 싶으면 import 시점에 *(별)을 사용하면 됩니다.
+
+
+패키지 별(*)사용
+
+tree 구조
+* pack -&gt; [Package]
+├──* Data -&gt; (Class)
+├──* PackageMain1 -&gt; (Class)
+├──* PackageMain1 -&gt; (Class)
+└──* a -&gt; [Package]
+   ├──* User -&gt; (Class)
+   └──* UserManager -&gt; (Class)
+
+
+package pack;
+
+import pack.a.*; // pack.a의 모든 클래스 사용
+
+public class PackageMain2 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   User user = new User(); // import 사용으로 패키지 명 생략 가능
+   UserManager manager = new UserManager(); // import 사용으로 패키지 명 생략 가능
+  }
+}
+
+
+  이렇게 하면 pack.a 패키지에 있는 모든 클래스를 패키지 명을 생략하고 사용할 수 있습니다.
+
+
+실행 결과
+패키지 pack Data 생성
+패키지 pack.a 회원 생성
+패키지 pack.a 회원 매니저 생성
+
+
+클래스 이름 중복
+패키지 덕분에 클래스 이름이 같아도 패키지 이름으로 구분해서 같은 이름의 클래스를 사용할 수 있습니다.
+
+pack.a.User
+pack.b.User
+
+
+“이런 경우 클래스 이름이 둘다 User이지만 패키지 이름으로 대상을 구분할 수 있습니다.”
+
+  이렇게 이름이 같은 경우 둘다 사용하고 싶으면 어떻게 해야할까요?
+
+
+pack.b.User
+package pack.b;
+
+public class User {
+  public  User() {
+    System.out.println("패키지 pack.b 회원 생성");
+  }
+}
+
+
+PackageMain3
+package pack;
+
+import pack.a.User;
+
+public class PackageMain3 {
+
+  public static void main(String[] args) {
+    User userA = new User();
+    pack.b.User userB = new pack.b.User();
+  }
+}
+
+
+
+  같은 이름의 클래스가 있다면 import는 둘중 하나만 선택할 수 있습니다.
+    
+      이때는 자주 사용하는 클래스를 import하고 나머지를 패키지를 포함한 전체 경로를 적어주면 됩니다.
+        
+          물론 둘다 전체 경로를 적어준다면 import를 사용하지 않아도 됩니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -22568,6 +22569,210 @@ public class MethodInitMain2 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html"><h1 class="title_post">☕️[Java] 객체 지향 프로그래밍 vs 절차 지향 프로그래밍</h1></a>
+                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="txt_post">
+                            객체 지향 프로그래밍 vs 절차 지향 프로그래밍
+
+  객체 지향 프로그래밍과 절차 지향 프로그래밍은 서로 대치되는 개념이 아닙니다.
+    
+      객체 지향이라도 프로그램의 작동 순서는 중요합니다.
+        
+          다만 어디에 더 초점을 맞추는가에 둘의 차이가 있습니다.
+        
+      
+    
+  
+  객체 지향의 경우 객체의 설계와 관계를 중시합니다.
+    
+      반면 절차 지향의 경우 데이터와 기능이 분리되어 있고, 프로그램이 어떻게 작동하는지 그 순서에 초점을 맞춥니다.
+    
+  
+
+
+절차 지향 프로그래밍
+
+  절차 지향 프로그래밍은 이름 그대로 절차를 지향합니다.
+    
+      쉽게 이야기해서 실행 순서를 중요하게 생각하는 방식입니다.
+    
+  
+  절차 지향 프로그래밍은 프로그램의 흐름을 순차적으로 따르며 처리하는 방식입니다.
+    
+      즉, “어떻게”를 중심으로 프로그래밍 합니다.
+    
+  
+
+
+객체 지향 프로그래밍
+
+  객체 지향 프로그래밍은 이름 그대로 객체를 지향합니다.
+    
+      쉽게 이야기해서 객체를 중요하게 생각하는 방식입니다.
+    
+  
+  객체 지향 프로그래밍은 실제 세계의 사물이나 사건을 객체로 보고, 이러한 객제들 간의 상호작용을 중심으로 프로그래밍하는 방식입니다.
+    
+      즉 “무엇을” 중심으로 프로그래밍 합니다.
+    
+  
+
+
+둘의 중요한 차이
+
+  절차 지향은 데이터와 해당 데이터에 대한 처리 방식이 분리되어 있습니다.
+    
+      반면 객체 지향에서는 데이터와 그 데이터에 대한 행동(메서드)이 하나의 ‘객체’ 안에 함께 포함되어 있습니다.
+    
+  
+
+
+객체란?
+
+  세상의 모든 사물을 단순하게 추상화해보면 속성(데이터)과 기능(메서드) 딱 2가지로 설명할 수 있습니다.
+
+
+자동차
+
+  속성: 색상, 속도
+  기능: 엑셀, 브레이크, 문 열기, 문 닫기
+
+
+동물
+
+  속성: 색상, 키, 온도
+  기능: 먹는다, 걷는다
+
+
+게임 캐릭터
+
+  속성: 레벨, 경험치, 소유한 아이템들
+  기능: 이동, 공격, 아이템 획득
+
+
+“객체 지향 프로그래밍은 모든 사물을 속성과 기능을 가진 객체로 생각하는 것 입니다.”
+
+  객체에는 속성과 기능만 존재합니다.
+    
+      이렇게 단순화하면 세상에 있는 객체들을 컴퓨터 프로그램으로 쉽게 설계할 수 있습니다.
+        
+          이런 장점들 덕분에 지금은 객체 지향 프로그래밍이 가장 많이 사용됩니다.
+            
+              참고로 실세계와 객체가 항상 1:1로 매칭되는 것은 아닙니다.
+            
+          
+        
+      
+    
+  
+
+
+객체 지향의 특징은 속성과 기능을 하나로 묶는 것 뿐만 아니라 캡슐화, 상속, 다형성, 추상화, 메시지 전달 같은 다양한 특징들이 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(2)</h1></a>
+                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="txt_post">
+                            절차 지향 프로그래밍(2) - 데이터 묶음
+“절차 지향 프로그래밍(1)에 작성한 코드에 클래스를 도입합시다.”
+
+MusicPlayerData라는 클래스를 만들고, 음악 플레이어에 사용되는 클래스를 만들고, 음악 플레이어에 사용되는 데이터들을 여기에 묶어서 멤버 변수로 사용해봅시다.
+
+MusicPlayerData
+package oop1;
+
+public class MusicPlayerData {
+  int volume = 0;
+  boolean isOn = false;
+}
+
+
+  음악 플레이어에 사용되는 volume, isOn 속성을 MusicPlayerData의 멤버 변수에 포함했습니다.
+
+
+MusicPlayerMain2
+package oop1;
+
+public class MusicPlayerMain2 {
+
+  public static void main(String[] args) {
+    MusicPlayerData data = new MusicPlayerData();
+
+    // 음악 플레이어 켜기
+    data.isOn = true;
+    System.out.println("음악 플레이어를 시작합니다.");
+
+    // 볼륨 증가
+    data.volume++;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+    // 볼륨 증가
+    data.volume++;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+    // 볼륨 감소
+    data.volume--;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+    // 음악 플레이어 상태
+    System.out.println("음악 플레이어 상태 확인");
+    if (data.isOn) {
+      System.out.println("음악 플레이어 ON, 볼륨:" + data.volume);
+    } else {
+      System.out.println("음악 플레이어 OFF");
+    }
+    // 음악 플레이어 끄기
+    data.isOn = false;
+    System.out.println("음악 플레이어를 종료합니다.");
+  }
+}
+
+
+  음악 플레이어와 관련된 데이터는 MusicPlayerData 클래스에 존재합니다.
+    
+      이 클래스를 사용하도록 기존 로직을 변경했습니다.
+        
+          이후에 프로그램 로직이 더 복잡해져서 다양한 변수들이 추가되더라도 음악 플레이어와 관련된 변수들은 MusicPlayerData data 객체에 속해있으므로 쉽게 구분할 수 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -22685,91 +22890,6 @@ public class MusicPlayerMain3 {
 “데이터와 기능을 하나로 온전히 묶는다는 것이 어떤 의미인지 이해하기 위해 간단한 예시 코드를 만들어봅시다”
 
   이 예시 코드는 다음 포스팅에 이어집니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(2)</h1></a>
-                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="txt_post">
-                            절차 지향 프로그래밍(2) - 데이터 묶음
-“절차 지향 프로그래밍(1)에 작성한 코드에 클래스를 도입합시다.”
-
-MusicPlayerData라는 클래스를 만들고, 음악 플레이어에 사용되는 클래스를 만들고, 음악 플레이어에 사용되는 데이터들을 여기에 묶어서 멤버 변수로 사용해봅시다.
-
-MusicPlayerData
-package oop1;
-
-public class MusicPlayerData {
-  int volume = 0;
-  boolean isOn = false;
-}
-
-
-  음악 플레이어에 사용되는 volume, isOn 속성을 MusicPlayerData의 멤버 변수에 포함했습니다.
-
-
-MusicPlayerMain2
-package oop1;
-
-public class MusicPlayerMain2 {
-
-  public static void main(String[] args) {
-    MusicPlayerData data = new MusicPlayerData();
-
-    // 음악 플레이어 켜기
-    data.isOn = true;
-    System.out.println("음악 플레이어를 시작합니다.");
-
-    // 볼륨 증가
-    data.volume++;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-    // 볼륨 증가
-    data.volume++;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-    // 볼륨 감소
-    data.volume--;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-    // 음악 플레이어 상태
-    System.out.println("음악 플레이어 상태 확인");
-    if (data.isOn) {
-      System.out.println("음악 플레이어 ON, 볼륨:" + data.volume);
-    } else {
-      System.out.println("음악 플레이어 OFF");
-    }
-    // 음악 플레이어 끄기
-    data.isOn = false;
-    System.out.println("음악 플레이어를 종료합니다.");
-  }
-}
-
-
-  음악 플레이어와 관련된 데이터는 MusicPlayerData 클래스에 존재합니다.
-    
-      이 클래스를 사용하도록 기존 로직을 변경했습니다.
-        
-          이후에 프로그램 로직이 더 복잡해져서 다양한 변수들이 추가되더라도 음악 플레이어와 관련된 변수들은 MusicPlayerData data 객체에 속해있으므로 쉽게 구분할 수 있습니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -23115,28 +23235,17 @@ x002.add(); // 2 x002 ValueData 인스턴스에 있는 add() 메서드를 호출
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-02-22-procedure-oriented-programming(1).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html"><h1 class="title_post">☕️[Java] 객체 지향 프로그래밍 vs 절차 지향 프로그래밍</h1></a>
-                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="txt_post">
-                            객체 지향 프로그래밍 vs 절차 지향 프로그래밍
+                        <a href="/2024/Java/2024-02-22-procedure-oriented-programming(1).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(1)</h1></a>
+                        <a href="/2024/Java/2024-02-22-procedure-oriented-programming(1).html" class="txt_post">
+                            객체지향 프로그래밍(1)
 
-  객체 지향 프로그래밍과 절차 지향 프로그래밍은 서로 대치되는 개념이 아닙니다.
-    
-      객체 지향이라도 프로그램의 작동 순서는 중요합니다.
-        
-          다만 어디에 더 초점을 맞추는가에 둘의 차이가 있습니다.
-        
-      
-    
-  
-  객체 지향의 경우 객체의 설계와 관계를 중시합니다.
-    
-      반면 절차 지향의 경우 데이터와 기능이 분리되어 있고, 프로그램이 어떻게 작동하는지 그 순서에 초점을 맞춥니다.
-    
-  
+절차 지향 프로그래밍 vs 객체 지향 프로그래밍
+
+  프로그래밍 방식은 크게 절차 지향 프로그래밍과 객체 지향 프로그래밍으로 나눌 수 있습니다.
 
 
 절차 지향 프로그래밍
@@ -23160,9 +23269,9 @@ x002.add(); // 2 x002 ValueData 인스턴스에 있는 add() 메서드를 호출
       쉽게 이야기해서 객체를 중요하게 생각하는 방식입니다.
     
   
-  객체 지향 프로그래밍은 실제 세계의 사물이나 사건을 객체로 보고, 이러한 객제들 간의 상호작용을 중심으로 프로그래밍하는 방식입니다.
+  객체 지향 프로그래밍은 실제 세계의 사물이나 사건을 객체로 보고, 이러한 객체들 간의 상호작용을 중심으로 프로그래밍하는 방식입니다.
     
-      즉 “무엇을” 중심으로 프로그래밍 합니다.
+      즉, “무엇을” 중심으로 프로그래밍 합니다.
     
   
 
@@ -23170,59 +23279,87 @@ x002.add(); // 2 x002 ValueData 인스턴스에 있는 add() 메서드를 호출
 둘의 중요한 차이
 
   절차 지향은 데이터와 해당 데이터에 대한 처리 방식이 분리되어 있습니다.
-    
-      반면 객체 지향에서는 데이터와 그 데이터에 대한 행동(메서드)이 하나의 ‘객체’ 안에 함께 포함되어 있습니다.
-    
-  
+  반변 객체 지향에서는 데이터와 그 데이터에 대한 행동(메서드)이 하나의 ‘객체’안에 함께 포함되어 있습니다.
 
 
-객체란?
+절차 지향에서 객체 지향으로 점진적으로 코드를 변경해보면서 객체 지향 프로그래밍을 이해해봅시다.
 
-  세상의 모든 사물을 단순하게 추상화해보면 속성(데이터)과 기능(메서드) 딱 2가지로 설명할 수 있습니다.
+“음악 플레이어를 만들어보고 그것을 보면서 이해해봅시다.”
 
+요구 사항:
 
-자동차
-
-  속성: 색상, 속도
-  기능: 엑셀, 브레이크, 문 열기, 문 닫기
-
-
-동물
-
-  속성: 색상, 키, 온도
-  기능: 먹는다, 걷는다
+  음악 플레이어를 켜고 끌 수 있어야 합니다.
+  음악 플레이어의 볼륨을 증가, 감소할 수 있어야 합니다.
+  음악 플레이어의 상태를 확인할 수 있어야 합니다.
 
 
-게임 캐릭터
-
-  속성: 레벨, 경험치, 소유한 아이템들
-  기능: 이동, 공격, 아이템 획득
-
-
-“객체 지향 프로그래밍은 모든 사물을 속성과 기능을 가진 객체로 생각하는 것 입니다.”
-
-  객체에는 속성과 기능만 존재합니다.
-    
-      이렇게 단순화하면 세상에 있는 객체들을 컴퓨터 프로그램으로 쉽게 설계할 수 있습니다.
-        
-          이런 장점들 덕분에 지금은 객체 지향 프로그래밍이 가장 많이 사용됩니다.
-            
-              참고로 실세계와 객체가 항상 1:1로 매칭되는 것은 아닙니다.
-            
-          
-        
-      
-    
-  
+예시 출력:
+음악 플레이어를 시작합니다.
+음악 플레이어 볼륨:1
+음악 플레이어 볼륨:2
+음악 플레이어 볼륨:1
+음악 플레이어 상태 확인
+음악 플레이어 ON, 볼륨:1
+음악 플레이어를 종료합니다.
 
 
-객체 지향의 특징은 속성과 기능을 하나로 묶는 것 뿐만 아니라 캡슐화, 상속, 다형성, 추상화, 메시지 전달 같은 다양한 특징들이 있습니다.
+절차 지향 음악 플레이어1
+package oop1;
+
+public class MusicPlayerMain1 {
+
+  public static void main(String[] args) {
+    int volume = 0;
+    boolean isOn = false;
+
+    // 음악 플레이어 켜기
+    isOn = true;
+    System.out.println("음악 플레이어를 시작합니다.");
+
+    // 볼륨 증가
+    volume++;
+    System.out.println("음악 플레이어 볼륨:" + volume);
+    // 볼륨 증가
+    volume++;
+    System.out.println("음악 플레이어 볼륨:" + volume);
+    // 볼륨 감소
+    volume--;
+    System.out.println("음악 플레이어 볼륨:" + volume);
+    // 음악 플레이어 상태
+    System.out.println("음악 플레이어 상태 확인");
+    if (isOn) {
+      System.out.println("음악 플레이어 ON, 볼륨:" + volume);
+    } else {
+      System.out.println("음악 플레이어 OFF");
+    }
+    // 음악 플레이어 끄기
+    isOn = false;
+    System.out.println("음악 플레이어를 종료합니다.");
+  }
+}
+
+
+실행 결과
+음악 플레이어를 시작합니다.
+음악 플레이어 볼륨:1
+음악 플레이어 볼륨:2
+음악 플레이어 볼륨:1
+음악 플레이어 상태 확인
+음악 플레이어 ON, 볼륨:1
+음악 플레이어를 종료합니다.
+
+
+“순서대로 프로그램이 작동하도록 단순하게 작성했습니다. 이 코드를 점진적으로 변경해봅시다.”
+
+
+  다음 포스트인 “절차 지향 프로그래밍(2)”에서 이어서 포스팅하겠습니다.
+
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-02-23</span>
+                                <span class="date">· 2024-02-22</span>
                             
                         </div>
                     </div>
@@ -23403,142 +23540,6 @@ x002.value // x001.data는 x002 값을 가집니다.
 정리
 
   “NullPointerException이 발생하면 null값에 .(dot)을 찍었다고 생각하면 문제를 쉽게 찾을 수 있습니다.”
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-22</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-22-procedure-oriented-programming(1).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-22-procedure-oriented-programming(1).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(1)</h1></a>
-                        <a href="/2024/Java/2024-02-22-procedure-oriented-programming(1).html" class="txt_post">
-                            객체지향 프로그래밍(1)
-
-절차 지향 프로그래밍 vs 객체 지향 프로그래밍
-
-  프로그래밍 방식은 크게 절차 지향 프로그래밍과 객체 지향 프로그래밍으로 나눌 수 있습니다.
-
-
-절차 지향 프로그래밍
-
-  절차 지향 프로그래밍은 이름 그대로 절차를 지향합니다.
-    
-      쉽게 이야기해서 실행 순서를 중요하게 생각하는 방식입니다.
-    
-  
-  절차 지향 프로그래밍은 프로그램의 흐름을 순차적으로 따르며 처리하는 방식입니다.
-    
-      즉, “어떻게”를 중심으로 프로그래밍 합니다.
-    
-  
-
-
-객체 지향 프로그래밍
-
-  객체 지향 프로그래밍은 이름 그대로 객체를 지향합니다.
-    
-      쉽게 이야기해서 객체를 중요하게 생각하는 방식입니다.
-    
-  
-  객체 지향 프로그래밍은 실제 세계의 사물이나 사건을 객체로 보고, 이러한 객체들 간의 상호작용을 중심으로 프로그래밍하는 방식입니다.
-    
-      즉, “무엇을” 중심으로 프로그래밍 합니다.
-    
-  
-
-
-둘의 중요한 차이
-
-  절차 지향은 데이터와 해당 데이터에 대한 처리 방식이 분리되어 있습니다.
-  반변 객체 지향에서는 데이터와 그 데이터에 대한 행동(메서드)이 하나의 ‘객체’안에 함께 포함되어 있습니다.
-
-
-절차 지향에서 객체 지향으로 점진적으로 코드를 변경해보면서 객체 지향 프로그래밍을 이해해봅시다.
-
-“음악 플레이어를 만들어보고 그것을 보면서 이해해봅시다.”
-
-요구 사항:
-
-  음악 플레이어를 켜고 끌 수 있어야 합니다.
-  음악 플레이어의 볼륨을 증가, 감소할 수 있어야 합니다.
-  음악 플레이어의 상태를 확인할 수 있어야 합니다.
-
-
-예시 출력:
-음악 플레이어를 시작합니다.
-음악 플레이어 볼륨:1
-음악 플레이어 볼륨:2
-음악 플레이어 볼륨:1
-음악 플레이어 상태 확인
-음악 플레이어 ON, 볼륨:1
-음악 플레이어를 종료합니다.
-
-
-절차 지향 음악 플레이어1
-package oop1;
-
-public class MusicPlayerMain1 {
-
-  public static void main(String[] args) {
-    int volume = 0;
-    boolean isOn = false;
-
-    // 음악 플레이어 켜기
-    isOn = true;
-    System.out.println("음악 플레이어를 시작합니다.");
-
-    // 볼륨 증가
-    volume++;
-    System.out.println("음악 플레이어 볼륨:" + volume);
-    // 볼륨 증가
-    volume++;
-    System.out.println("음악 플레이어 볼륨:" + volume);
-    // 볼륨 감소
-    volume--;
-    System.out.println("음악 플레이어 볼륨:" + volume);
-    // 음악 플레이어 상태
-    System.out.println("음악 플레이어 상태 확인");
-    if (isOn) {
-      System.out.println("음악 플레이어 ON, 볼륨:" + volume);
-    } else {
-      System.out.println("음악 플레이어 OFF");
-    }
-    // 음악 플레이어 끄기
-    isOn = false;
-    System.out.println("음악 플레이어를 종료합니다.");
-  }
-}
-
-
-실행 결과
-음악 플레이어를 시작합니다.
-음악 플레이어 볼륨:1
-음악 플레이어 볼륨:2
-음악 플레이어 볼륨:1
-음악 플레이어 상태 확인
-음악 플레이어 ON, 볼륨:1
-음악 플레이어를 종료합니다.
-
-
-“순서대로 프로그램이 작동하도록 단순하게 작성했습니다. 이 코드를 점진적으로 변경해봅시다.”
-
-
-  다음 포스트인 “절차 지향 프로그래밍(2)”에서 이어서 포스팅하겠습니다.
 
 
                         </a>
@@ -23824,6 +23825,329 @@ value2 = 10
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html"><h1 class="title_post">☕️[Java] 기본형과 참조형(3) - 메서드 호출</h1></a>
+                        <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html" class="txt_post">
+                            기본형과 참조형(3) - 메서드 호출
+
+대원칙: 자바는 항상 변수의 값을 복사해서 대입합니다.
+
+  자바에서 변수에 값을 대입하는 것은 변수에 들어 있는 값을 복사해서 대입하는 것입니다.
+  기본형, 참조형 모두 항상 변수에 있는 값을 복사해서 대입합니다.
+    
+      기본형이면 변수에 들어 있는 실제 사용하는 값을 복사해서 대입합니다.
+      참조형이면 변수에 들어 있는 참조값을 복사해서 대입합니다.
+    
+  
+
+
+메서드 호출도 마찬가지입니다. 메서드를 호출할 때 사용하는 매개변수(parameter)도 결국 변수일 뿐 입니다.
+
+  따라서 메서드를 호출할 때 매개변수(parameter)에 값을 전달하는 것도 앞서 설명한 내용과 같이 값을 복사해서 전달합니다.
+
+
+다음 예시 코드를 봐봅시다.
+
+기본형과 메서드 호출
+package ref;
+
+public class MethodChange1 {
+
+  public static void main(String[] args) {
+    int a = 10;
+    System.out.println("메서드 호출 전: a = " + a);
+    changePrimitive(a);
+    System.out.println("메서드 호출 후: a = " + a);
+  }
+
+  static void changePrimitive(int x) {
+   x = 20;
+  }
+}
+
+
+실행 결과
+메서드 호출 전: a = 10
+메서드 호출 후: a = 10
+
+
+1. 메서드 호출
+
+  메서드를 호출할 때 매개변수 x에 변수 a의 값을 전달합니다.
+    int x = a
+    
+  
+  이 코드는 다음과 같이 해석할 수 있습니다.
+    
+      자바에서 변수에 값을 대입하는 것은 항상 값을 복사해서 대입합니다 따라서 변수 a,x 각각 숫자 10을 가지고 있습니다.
+    
+  
+
+
+2. 메서드 안에서 값을 변경
+int a = 10;
+changePrimitive(a);
+
+
+  메서드 안에서 x = 20으로 새로운 값을 대입합니다.
+    
+      결과적으로 x의 값만 20으로 변경되고, a의 값은 10으로 유지됩니다.
+    
+  
+
+
+3. 메서드 종료
+int a = 10;
+changePrimitive(a);
+
+
+  메서드 종료후 값을 확인해보면 a는 10이 출력되는 것을 확인할 수 있습니다.
+    
+      참고로 메서드가 종료되면 매개변수 x는 제거됩니다.
+    
+  
+
+
+참조형과 메서드 호출
+package ref;
+
+public class MethodChange2 {
+
+  public static void main(String[] args) {
+    Data dataA = new Data();
+    dataA.value = 10;
+    System.out.println("메서드 호출 전: dataA.value = " + dataA.value);
+    changeReference(dataA);
+    System.out.println("메서드 호출 전: dataA.value = " + dataA.value);
+  }
+
+  static void changeReference(Data dataX) {
+    dataX.value = 20;
+  }
+}
+
+
+실행 결과
+메서드 호출 전: dataA.value = 10
+메서드 호출 전: dataA.value = 20
+
+
+1. 메서드 호출
+
+
+  메서드를 호출할 때 매개변수 dataX에 변수 dataA의 값을 전달합니다.
+    
+      이 코드는 다음과 같이 해석할 수 있습니다.
+        int dataX = dataA;
+        
+      
+    
+  
+  자바에서 변수에 값을 대입하는 것은 항상 값을 복사해서 대입합니다.
+    
+      변수 dataA는 참조값 x001을 가지고 있다는 가정하에 dataA는 참조값을 복사해서 전달합니다.
+        
+          따라서 변수 dataA, dataX 둘 다 같은 참조값인 x001을 가지게 됩니다.
+            
+              이제 dataX를 통해서도 x001에 있는 Data 인스턴스에 접근할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+2. 메서드 안에서 값을 변경
+static void changeReference(Data dataX) {
+    dataX.value = 20;
+}
+
+
+  메서드 안에서 dataX.value = 20으로 새로운 값을 대입합니다.
+    
+      참조값을 통해 x001 인스턴스에 접근하고 그 안에 있는 value의 값을 20으로 변경했습니다.
+        
+          dataA, dataX 모두 같은 x001 인스턴스를 참조하기 때문에 dataA.value와 dataX.value는 둘다 20이라는 값을 가집니다.
+        
+      
+    
+  
+
+
+3. 메서드 종료
+
+  메서드 종료후 dataA.value의 값을 확인해보면 다음과 같이 20으로 변경된 것을 확인할 수 있습니다.
+    메서드 호출 전: dataA.value = 10
+메서드 호출 전: dataA.value = 20
+    
+  
+
+
+기본형과 참조형의 메서드 호출
+
+자바에서 메서드의 매개변서(Parameter)는 항상 값에 의해 전달됩니다.
+그러나 이 값이 실제 값이냐, 참조(메모리 주소)값이냐에 따라 동작이 달라집니다.
+
+  기본형: 메서드로 기본형 데이터를 전달하면, 해당 값이 복사되어 전달됩니다. 이 경우, 메서드 내부에서 매개변수(Parameter)의 값을 변경해도, 호출자의 변수 값에는 영향이 없습니다.
+  참조형: 메서드로 참조형 데이터를 전달하면, 참조값이 복사되어 전달됩니다. 이 경우, 메서드 내부에서 매개변수(Parameter)로 전달된 객체의 멤버 변수를 변경하면, 호출자의 객체도 변경됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-21-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-21-null.html"><h1 class="title_post">☕️[Java] null</h1></a>
+                        <a href="/2024/Java/2024-02-21-null.html" class="txt_post">
+                            null
+친구에게 책을 보내려고 합니다.
+우체국 택배를 보내려고 할 때 책은 준비가 되었지만, 깜빡하고 친구에게 주소를 물어보지 못했습니다.
+즉, 보낼 주소지가 아직 결정되지 않았습니다.
+이 때, 보낼 주소지가 결정될 때 까지는 주소지를 비워두어야 할 것 입니다.
+
+
+  참조형 변수에는 항상 객체가 있는 위치를 가리키는 참조값이 들어갑니다.
+    
+      그런데 아직 가리키는 대상이 없거나, 가리키는 대상을 나중에 입력하고 싶을 경우에는 어떻게 해야할까요?
+    
+  
+  참조형 변수에서 아직 가리키는 대상이 없다면 null이라는 특별한 값을 넣어둘 수 있습니다.
+    
+      null은 값이 존재하지 않는, 없다는 뜻 입니다.
+    
+  
+
+
+“코드를 통해서 null 값에 대해 알아봅시다.”
+
+Data
+package ref;
+
+public class Data {
+  int value;
+}
+
+
+NullMain1
+package ref;
+
+public class NullMain1 {
+
+  public static void main(String[] args) {
+    Data data = null;
+    System.out.println("1. data = " + data);
+    data = new Data();
+    System.out.println("2. data = " + data);
+    data = null;
+    System.out.println("3. data = " + data);
+  }
+}
+
+
+실행 결과
+1. data = null
+2. data = ref.Data@30f39991
+3. data = null
+
+
+Data data = null;
+
+
+  Data 타입을 받을 수 있는 참조형 변수 data를 만들었습니다.
+    
+      그리고 여기에 null 값을 할당했습니다.
+        
+          따라서 data 변수에는 아직 가리키는 객체가 없다는 뜻입니다.
+        
+      
+    
+  
+
+
+data = new Data();
+
+
+
+  이후에 새로운 Data 객체를 생성해서 그 참조값을 data 변수에 할당했습니다.
+    
+      이제 data 변수가 참조할 객체가 존재합니다.
+        
+          여기서 Data 인스턴스의 value 값은 0으로 초기화 되어있습니다.
+        
+      
+    
+  
+
+
+data = null;
+
+
+
+  마지막에는 data에 다시 null 값을 할당했습니다.
+    
+      이렇게 하면 data 변수는 앞서 만든 Data 인스턴스를 더는 참조하지 않습니다.
+    
+  
+
+
+“GC(Garbage Collection) - 아무도 참조하지 않는 인스턴스의 최후”
+
+마지막에 data에 null을 할당했습니다.
+따라서 앞서 생성한 x001(sudo 참조값) Data 인스턴스를 더는 아무도 참조하지 않습니다.
+이렇게 아무도 참조하지 않게 되면 x001이라는 참조값을 다시 구할 방법이 없습니다.
+따라서 해당 인스턴스에 다시 접근할 방법이 없습니다.
+
+  이렇게 아무도 참조하지 않는 인스턴스는 사용되지 않고 메모리 용량만 차지할 뿐입니다.
+
+
+C와 같은 과거 프로그래밍 언어는 개발자가 직접 명령어를 사용해서 인스턴스를 메모리에서 제거해야 했습니다.
+만약 실수로 인스턴스 삭제를 누락할 경우, 메모리에 사용하지 않는 객체가 가득해져서 메모리 부족 오류가 발생하게 됩니다.
+
+“자바는 이런 과정을 자동으로 처리해줍니다.”
+
+  아무도 참조하지 않는 인스턴스가 있으면 JVM의 GC(가비지 컬렉션)가 더 이상 사용하지 않는 인스턴스라 판단하고 해당 인스턴스를 자동으로 메모리에서 제거해줍니다.
+
+
+“객체는 해당 객체를 참조하는 곳이 있으면, JVM이 종료할 때 까지 계속 생존합니다.”
+
+  그런데 중간에 해당 객체를 참조하는 곳이 모두 사라지면 그때 JVM은 필요 없는 객체로 판단하고 GC(가비지 컬렉션)를 사용해서 제거합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-02-21-referenceTypesAndMethodCalls.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -24070,329 +24394,6 @@ student1 = 30f39991;
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-21-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-21-null.html"><h1 class="title_post">☕️[Java] null</h1></a>
-                        <a href="/2024/Java/2024-02-21-null.html" class="txt_post">
-                            null
-친구에게 책을 보내려고 합니다.
-우체국 택배를 보내려고 할 때 책은 준비가 되었지만, 깜빡하고 친구에게 주소를 물어보지 못했습니다.
-즉, 보낼 주소지가 아직 결정되지 않았습니다.
-이 때, 보낼 주소지가 결정될 때 까지는 주소지를 비워두어야 할 것 입니다.
-
-
-  참조형 변수에는 항상 객체가 있는 위치를 가리키는 참조값이 들어갑니다.
-    
-      그런데 아직 가리키는 대상이 없거나, 가리키는 대상을 나중에 입력하고 싶을 경우에는 어떻게 해야할까요?
-    
-  
-  참조형 변수에서 아직 가리키는 대상이 없다면 null이라는 특별한 값을 넣어둘 수 있습니다.
-    
-      null은 값이 존재하지 않는, 없다는 뜻 입니다.
-    
-  
-
-
-“코드를 통해서 null 값에 대해 알아봅시다.”
-
-Data
-package ref;
-
-public class Data {
-  int value;
-}
-
-
-NullMain1
-package ref;
-
-public class NullMain1 {
-
-  public static void main(String[] args) {
-    Data data = null;
-    System.out.println("1. data = " + data);
-    data = new Data();
-    System.out.println("2. data = " + data);
-    data = null;
-    System.out.println("3. data = " + data);
-  }
-}
-
-
-실행 결과
-1. data = null
-2. data = ref.Data@30f39991
-3. data = null
-
-
-Data data = null;
-
-
-  Data 타입을 받을 수 있는 참조형 변수 data를 만들었습니다.
-    
-      그리고 여기에 null 값을 할당했습니다.
-        
-          따라서 data 변수에는 아직 가리키는 객체가 없다는 뜻입니다.
-        
-      
-    
-  
-
-
-data = new Data();
-
-
-
-  이후에 새로운 Data 객체를 생성해서 그 참조값을 data 변수에 할당했습니다.
-    
-      이제 data 변수가 참조할 객체가 존재합니다.
-        
-          여기서 Data 인스턴스의 value 값은 0으로 초기화 되어있습니다.
-        
-      
-    
-  
-
-
-data = null;
-
-
-
-  마지막에는 data에 다시 null 값을 할당했습니다.
-    
-      이렇게 하면 data 변수는 앞서 만든 Data 인스턴스를 더는 참조하지 않습니다.
-    
-  
-
-
-“GC(Garbage Collection) - 아무도 참조하지 않는 인스턴스의 최후”
-
-마지막에 data에 null을 할당했습니다.
-따라서 앞서 생성한 x001(sudo 참조값) Data 인스턴스를 더는 아무도 참조하지 않습니다.
-이렇게 아무도 참조하지 않게 되면 x001이라는 참조값을 다시 구할 방법이 없습니다.
-따라서 해당 인스턴스에 다시 접근할 방법이 없습니다.
-
-  이렇게 아무도 참조하지 않는 인스턴스는 사용되지 않고 메모리 용량만 차지할 뿐입니다.
-
-
-C와 같은 과거 프로그래밍 언어는 개발자가 직접 명령어를 사용해서 인스턴스를 메모리에서 제거해야 했습니다.
-만약 실수로 인스턴스 삭제를 누락할 경우, 메모리에 사용하지 않는 객체가 가득해져서 메모리 부족 오류가 발생하게 됩니다.
-
-“자바는 이런 과정을 자동으로 처리해줍니다.”
-
-  아무도 참조하지 않는 인스턴스가 있으면 JVM의 GC(가비지 컬렉션)가 더 이상 사용하지 않는 인스턴스라 판단하고 해당 인스턴스를 자동으로 메모리에서 제거해줍니다.
-
-
-“객체는 해당 객체를 참조하는 곳이 있으면, JVM이 종료할 때 까지 계속 생존합니다.”
-
-  그런데 중간에 해당 객체를 참조하는 곳이 모두 사라지면 그때 JVM은 필요 없는 객체로 판단하고 GC(가비지 컬렉션)를 사용해서 제거합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html"><h1 class="title_post">☕️[Java] 기본형과 참조형(3) - 메서드 호출</h1></a>
-                        <a href="/2024/Java/2024-02-21-referenceAndPrimitive3.html" class="txt_post">
-                            기본형과 참조형(3) - 메서드 호출
-
-대원칙: 자바는 항상 변수의 값을 복사해서 대입합니다.
-
-  자바에서 변수에 값을 대입하는 것은 변수에 들어 있는 값을 복사해서 대입하는 것입니다.
-  기본형, 참조형 모두 항상 변수에 있는 값을 복사해서 대입합니다.
-    
-      기본형이면 변수에 들어 있는 실제 사용하는 값을 복사해서 대입합니다.
-      참조형이면 변수에 들어 있는 참조값을 복사해서 대입합니다.
-    
-  
-
-
-메서드 호출도 마찬가지입니다. 메서드를 호출할 때 사용하는 매개변수(parameter)도 결국 변수일 뿐 입니다.
-
-  따라서 메서드를 호출할 때 매개변수(parameter)에 값을 전달하는 것도 앞서 설명한 내용과 같이 값을 복사해서 전달합니다.
-
-
-다음 예시 코드를 봐봅시다.
-
-기본형과 메서드 호출
-package ref;
-
-public class MethodChange1 {
-
-  public static void main(String[] args) {
-    int a = 10;
-    System.out.println("메서드 호출 전: a = " + a);
-    changePrimitive(a);
-    System.out.println("메서드 호출 후: a = " + a);
-  }
-
-  static void changePrimitive(int x) {
-   x = 20;
-  }
-}
-
-
-실행 결과
-메서드 호출 전: a = 10
-메서드 호출 후: a = 10
-
-
-1. 메서드 호출
-
-  메서드를 호출할 때 매개변수 x에 변수 a의 값을 전달합니다.
-    int x = a
-    
-  
-  이 코드는 다음과 같이 해석할 수 있습니다.
-    
-      자바에서 변수에 값을 대입하는 것은 항상 값을 복사해서 대입합니다 따라서 변수 a,x 각각 숫자 10을 가지고 있습니다.
-    
-  
-
-
-2. 메서드 안에서 값을 변경
-int a = 10;
-changePrimitive(a);
-
-
-  메서드 안에서 x = 20으로 새로운 값을 대입합니다.
-    
-      결과적으로 x의 값만 20으로 변경되고, a의 값은 10으로 유지됩니다.
-    
-  
-
-
-3. 메서드 종료
-int a = 10;
-changePrimitive(a);
-
-
-  메서드 종료후 값을 확인해보면 a는 10이 출력되는 것을 확인할 수 있습니다.
-    
-      참고로 메서드가 종료되면 매개변수 x는 제거됩니다.
-    
-  
-
-
-참조형과 메서드 호출
-package ref;
-
-public class MethodChange2 {
-
-  public static void main(String[] args) {
-    Data dataA = new Data();
-    dataA.value = 10;
-    System.out.println("메서드 호출 전: dataA.value = " + dataA.value);
-    changeReference(dataA);
-    System.out.println("메서드 호출 전: dataA.value = " + dataA.value);
-  }
-
-  static void changeReference(Data dataX) {
-    dataX.value = 20;
-  }
-}
-
-
-실행 결과
-메서드 호출 전: dataA.value = 10
-메서드 호출 전: dataA.value = 20
-
-
-1. 메서드 호출
-
-
-  메서드를 호출할 때 매개변수 dataX에 변수 dataA의 값을 전달합니다.
-    
-      이 코드는 다음과 같이 해석할 수 있습니다.
-        int dataX = dataA;
-        
-      
-    
-  
-  자바에서 변수에 값을 대입하는 것은 항상 값을 복사해서 대입합니다.
-    
-      변수 dataA는 참조값 x001을 가지고 있다는 가정하에 dataA는 참조값을 복사해서 전달합니다.
-        
-          따라서 변수 dataA, dataX 둘 다 같은 참조값인 x001을 가지게 됩니다.
-            
-              이제 dataX를 통해서도 x001에 있는 Data 인스턴스에 접근할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-2. 메서드 안에서 값을 변경
-static void changeReference(Data dataX) {
-    dataX.value = 20;
-}
-
-
-  메서드 안에서 dataX.value = 20으로 새로운 값을 대입합니다.
-    
-      참조값을 통해 x001 인스턴스에 접근하고 그 안에 있는 value의 값을 20으로 변경했습니다.
-        
-          dataA, dataX 모두 같은 x001 인스턴스를 참조하기 때문에 dataA.value와 dataX.value는 둘다 20이라는 값을 가집니다.
-        
-      
-    
-  
-
-
-3. 메서드 종료
-
-  메서드 종료후 dataA.value의 값을 확인해보면 다음과 같이 20으로 변경된 것을 확인할 수 있습니다.
-    메서드 호출 전: dataA.value = 10
-메서드 호출 전: dataA.value = 20
-    
-  
-
-
-기본형과 참조형의 메서드 호출
-
-자바에서 메서드의 매개변서(Parameter)는 항상 값에 의해 전달됩니다.
-그러나 이 값이 실제 값이냐, 참조(메모리 주소)값이냐에 따라 동작이 달라집니다.
-
-  기본형: 메서드로 기본형 데이터를 전달하면, 해당 값이 복사되어 전달됩니다. 이 경우, 메서드 내부에서 매개변수(Parameter)의 값을 변경해도, 호출자의 변수 값에는 영향이 없습니다.
-  참조형: 메서드로 참조형 데이터를 전달하면, 참조값이 복사되어 전달됩니다. 이 경우, 메서드 내부에서 매개변수(Parameter)로 전달된 객체의 멤버 변수를 변경하면, 호출자의 객체도 변경됩니다.
 
 
                         </a>
@@ -35344,6 +35345,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240819_AWS_Nginx_FireWalld.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-19"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] 서브넷?",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240819_AWS_SUBNET.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
             'date'     : "2024-08-19"
         });

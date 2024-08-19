@@ -590,6 +590,7 @@
             
             
             
+            
 
     
     
@@ -952,6 +953,67 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html"><h1 class="title_post">☁️[AWS] VPC 및 서브넷 생성.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="txt_post">
+                            ☁️[AWS] VPC 및 서브넷 생성.
+
+  VPC는 EC2 및 기타 AWS 서비스와 마찬가지로 AWS Management Console(GUI) 또는 API를 사용해 생성할 수 있습니다.
+    
+      관리 콘솔에서 생성하는 경우 화면에서 다음 항목을 설정해야 합니다.
+        
+          VPC 이름(Name 태그)
+          CIDR 블록
+          IPv6 설정
+          테넌시(전용 하드웨어 사용 여부)
+        
+      
+    
+  
+  EC2보다 적은 설정 항목으로 즉시 가상 네트워크를 만들 수 있습니다.
+    
+      IPv6 설정은 기본적으로 비활성화돼 있으며 필요에 따라 설정할 수 있습니다.
+      테넌시는 라이선스 및 보안 요구 사항으로 하드웨어를 독점하려는 경우에만 독점 옵션을 지정합니다.
+
+    
+  
+  VPC만으로는 EC2와 같은 자원을 네트워크에 만들 수 없습니다.
+    
+      VPC 안에 더 작은 네트워크 단위인 서브넷을 만들어야 합니다.
+    
+  
+  서브넷은 하나의 AZ(Availablity Zone, 가용 영역)에 걸쳐 있을 수 없습니다.
+    
+      즉, 여러 AZ에 자원을 배치해 가용성을 높이려면 서브넷도 여러 개 만들어야 합니다.
+    
+  
+  서브넷에는 생성할 VPC의 CIDR 블록 범위 내에서 CIDR 블록을 지정해야 합니다.
+    
+      예를 들어 VPC의 CIDR 블록이 10.0.0.0/16인 경우 10.0.0.0/24와 같이 CIDR 블록을 지정합니다.
+
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1352,6 +1414,64 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html"><h1 class="title_post">☁️[AWS] IP 주소(Address)는 네트워크의 번지(주소)</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html" class="txt_post">
+                            ☁️[AWS] IP 주소(Address)는 네트워크의 번지(주소)
+
+
+  브라우저를 통해 웹 사이트에 접속할 때 우리에게 보이는 웹 페이지는 실제로 어느 주소에 존재하는 ‘웹 사이트를 호스팅하는 서버(웹 서버)’에 접속해서 취득한 웹 페이지 정보입니다.
+  웹 서버는 데이터 센터에 있을 수도 있고 AWS와 같은 클라우드 서비스에 있을 수도 있습니다.
+    
+      그리고 웹 서버에 접근하기 위해서는 웹 서버가 그곳에 있다는 특정 정보가 필요합니다.
+        
+          이것이 IP 주소 입니다.
+        
+      
+    
+  
+  웹 사이트에 접속할 때는 이 IP 주소를 바탕으로 위치를 특정해 그곳에 있는 웹 서버에 접속합니다.
+
+  웹 서버뿐만 아니라 PC, 스마트폰 등 네트워크와 연결된 모든 장치에는 IP 주소가 할당됩니다.
+    
+      일반적으로 IPv4가 표준으로 사용됩니다.
+    
+  
+
+
+
+
+  IPv4 외에도 IPv6도 있습니다.
+    
+      IPv4는 주소가 2³²개(=약 43억 개) 존재하는 데 비해 IPv6 주소는 2¹²⁸개(=약 340억 개)가 존재합니다.
+    
+  
+  최근 IPv4만으로는 주소를 할당할 수 없을 정도로 서버나 인터넷에 접속하는 기기가 많아져서 대체할 수 있는 IPv6가 주목받고 있습니다.
+    
+      하지만 IPv6는 아직 보편적으로 보급되지 않았고 기존에 사용하던 기기가 IPv4만 지원하는 경우가 대부분입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -1462,121 +1582,6 @@ nvm use 16
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html"><h1 class="title_post">☁️[AWS] IP 주소(Address)는 네트워크의 번지(주소)</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html" class="txt_post">
-                            ☁️[AWS] IP 주소(Address)는 네트워크의 번지(주소)
-
-
-  브라우저를 통해 웹 사이트에 접속할 때 우리에게 보이는 웹 페이지는 실제로 어느 주소에 존재하는 ‘웹 사이트를 호스팅하는 서버(웹 서버)’에 접속해서 취득한 웹 페이지 정보입니다.
-  웹 서버는 데이터 센터에 있을 수도 있고 AWS와 같은 클라우드 서비스에 있을 수도 있습니다.
-    
-      그리고 웹 서버에 접근하기 위해서는 웹 서버가 그곳에 있다는 특정 정보가 필요합니다.
-        
-          이것이 IP 주소 입니다.
-        
-      
-    
-  
-  웹 사이트에 접속할 때는 이 IP 주소를 바탕으로 위치를 특정해 그곳에 있는 웹 서버에 접속합니다.
-
-  웹 서버뿐만 아니라 PC, 스마트폰 등 네트워크와 연결된 모든 장치에는 IP 주소가 할당됩니다.
-    
-      일반적으로 IPv4가 표준으로 사용됩니다.
-    
-  
-
-
-
-
-  IPv4 외에도 IPv6도 있습니다.
-    
-      IPv4는 주소가 2³²개(=약 43억 개) 존재하는 데 비해 IPv6 주소는 2¹²⁸개(=약 340억 개)가 존재합니다.
-    
-  
-  최근 IPv4만으로는 주소를 할당할 수 없을 정도로 서버나 인터넷에 접속하는 기기가 많아져서 대체할 수 있는 IPv6가 주목받고 있습니다.
-    
-      하지만 IPv6는 아직 보편적으로 보급되지 않았고 기존에 사용하던 기기가 IPv4만 지원하는 경우가 대부분입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
-                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
-
-  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
-  SaaS(Software as a Service)
-    
-      응용 프로그램을 서비스로 제공하는 형태입니다.
-      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
-    
-  
-  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
-    
-      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
-      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
-    
-  
-  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
-    
-      PaaS
-        
-          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
-          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
-          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
-        
-      
-      IaaS
-        
-          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
-          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
-
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
                             
                         </div>
                     </div>
@@ -1844,6 +1849,63 @@ nvm use 16
       Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
         
           이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
+                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
+
+  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
+  SaaS(Software as a Service)
+    
+      응용 프로그램을 서비스로 제공하는 형태입니다.
+      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
+    
+  
+  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
+    
+      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
+      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
+    
+  
+  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
+    
+      PaaS
+        
+          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
+          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
+          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
+        
+      
+      IaaS
+        
+          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
+          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
+
         
       
     
@@ -7033,6 +7095,17 @@ sudo reboot
             'type'     : "post",
             'tags'     : "AWS, Network",
             'url'      : "/Backend/AWS/240819_AWS_VPC.html",
+            'image'    : "/assets/img/thumbnail/aws.jpeg",
+            'date'     : "2024-08-19"
+        });
+    
+
+        posts.push({
+            'title'    : "☁️[AWS] VPC 및 서브넷 생성.",
+            'path'     : "Backend > AWS",
+            'type'     : "post",
+            'tags'     : "AWS, Network",
+            'url'      : "/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html",
             'image'    : "/assets/img/thumbnail/aws.jpeg",
             'date'     : "2024-08-19"
         });

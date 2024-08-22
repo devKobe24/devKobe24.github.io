@@ -608,6 +608,7 @@
             
             
             
+            
 
     
     
@@ -2896,75 +2897,83 @@ OS
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/OS/2024-04-22-OS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/os.jpeg') !important"></a>
+                            <a href="/2024/OS/2024-04-22-OS-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/os.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/OS/2024-04-22-OS.html"><h1 class="title_post">💻[Operating System] 리눅스와 우분투의 차이점</h1></a>
-                        <a href="/2024/OS/2024-04-22-OS.html" class="txt_post">
-                            리눅스와 우분투의 차이점.
+                        <a href="/2024/OS/2024-04-22-OS-2.html"><h1 class="title_post">💻[Operating System] 커널(kernel)이란?</h1></a>
+                        <a href="/2024/OS/2024-04-22-OS-2.html" class="txt_post">
+                            커널(kernel)이란?
 
-“리눅스” 와 “우분투” 의 차이점을 이해하려면 먼저 리눅스가 무엇인지, 그리고 우분투가 어떻게 이와 관련되어 있는지를 알아야 합니다.
+커널의 역할.
+커널(kernel)은 컴퓨터 운영 체제의 핵심 구성 요소로서, 하드웨어와 소프트웨어 리소스 간의 통신을 중재하고 시스템의 모든 주요 기능을 관리하는 역할을 합니다.
 
-리눅스(Linux).
+커널의 기능.
+커널의 기능은 매우 광범위하며, 그 중 몇 가지 주요 기능을 다음과 같이 설명할 수 있습니다.
 
-리눅스는 주로 운영 체제의 커널을 가리키는 용어입니다.
+1. 프로세스 관리.
 
-  커널은 하드웨어와 소프트웨어 컴포넌트 사이에서 통신을 중재하고, 시스템 리소스를 관리하는 핵심 소프트웨어 컴포넌트입니다.
-
-
-
-  여기서 컴포넌트란 무엇일까요?
-  
-    “컴포넌트” 란 일반적으로 더 큰 시스템의 일부로 기능하는 개별적인 부품이나 요소를 의미합니다
-      
-        이 용어는 다양한 분야에서 사용되며, 각각의 맥락에 따라 다소 다른 의미를 가질 수 있습니다.
-          
-            이 포스팅에서는 소프트웨어 개발에서의 컴포넌트만 설명하겠습니다.
-          
-        
-      
+  커널은 시스템에서 실행되는 모든 프로세스(활성 프로그램)의 생성, 실행 및 종료를 관리합니다.
     
-  
-
-  소프트웨어 개발에서의 컴포넌트
-  
-    소프트웨어 개발에서는 컴포넌트가 소프트웨어의 모듈이나 라이브러리 형태로 존재할 수 있습니다.
-      
-        이런 컴포넌트들은 재사용 가능하며, 특정 기능을 수행하기 위해 독립적으로 개발되고 통합될 수 있습니다.
-          
-            예를 들어, 웹 애플리케이션에서 로그인 모듈, 검색 엔진, 사용자 인터페이스 요소 등이 각각의 컴포넌트로 구성될 수 있습니다.
-          
+      프로세스 관리는 프로세스 스케줄링, 상태 관리, 우선순위 할당 등을 포함합니다.
+        
+          이를 통해 시스템 리소스가 효율적으로 활용되고, 여러 프로세스 간에 시스템 리소스를 공정하게 분배할 수 있습니다.
         
       
     
   
 
 
-리눅스 커널은 오픈 소스이며, 1991년 리누스 토발즈에 의해 처음 개발되었습니다.
+2. 메모리 관리.
 
-  리눅스 커널 자체는 독립적으로 사용할 수 없으며, 보통 시스템 라이브러리, 유틸리티, 필수 프로그램 등과 함께 배포되어 전체 운영 체제의 기반을 형성합니다.
-
-
-우분투(Ubuntu).
-
-우분투는 리눅스 커널을 기반으로 한 리눅스 배포판 중 하나입니다.
-
-  이는 사용자 친화적인 인터페이스, 풍부한 소프트웨어 저장소, 정기적인 업데이트 및 지원을 제공하며, 개인용 컴퓨터, 서버, 클라우드 등 다양한 완경에서 사용할 수 있습니다.
+  커널은 시스템의 물리적 메모리(RAM)를 관리하고 각 프로그램에 필요한 메모리 공간을 할당 및 회수합니다.
     
-      우분투는 데비안(Debian) 리눅스 배포판을 기반으로 만들어졌으며, 쉽게 접근할 수 있고 설치 및 사용이 간편하다는 점에서 초보자에게 인기가 많습니다.
+      메모리 관리 기능은 메모리 보호, 메모리 할당, 가상 메모리 시스템을 포함하여, 프로그램이 안정적으로 실행될 수 있도록 지원합니다.
     
   
 
 
-리눅스와 우분투의 주요 차이점.
+3. 디바이스 드라이버와 I/O 관리.
 
-1. 정의와 범위 : 리눅스는 커널의 이름이며, 우분투는 리눅스 커널을 포함한 전체 운영 체제의 한 배포판입니다.
-2. 사용성 : 커널 자체는 기술적인 측면에서만 다루어지지만, 우분투는 끝 사용자를 대상으로 한 GUI와 사용자 친화적 도구를 제공합니다.
-3. 목적 : 리눅스 커널은 다양한 운영 체제의 기반으로 사용됩니다. 반면, 우분투는 개인 사용자와 기업 환경 모두를 겨냥해 특정한 목적과 요구를 충족시키기 위해 개발되었습니다.
+  커널은 하드웨어 디바이스와의 통신을 담당하는 디바이스 드라이버를 관리합니다.
+    
+      입력 및 출력(I/O)장치(예: 키보드, 마우스, 디스플레이, 저장 장치 등)에 대한 접근과 데이터 전송을 총괄하며, 하드웨어의 올바른 동작을 보장합니다.
+    
+  
 
-요약.
-리눅스는 기술적인 컴포넌트(커널)를 지칭하고 우분투는 그 커널을 사용하여 만들어진 하나의 완성된 운영 체제 배포판 입니다.
+
+4. 파일 시스템 관리.
+
+  커널은 파일 시스템을 통해 데이터의 저장 및 검색을 관리합니다.
+    
+      이는 파일 생성, 삭제, 읽기, 쓰기 등의 작업을 포함하며, 사용자와 응용 프로그램이 파일과 디렉토리를 효율적으로 사용할 수 있도록 합니다.
+    
+  
+
+
+5. 보안 및 접근 제어.
+
+  커널은 시스템 보안을 유지하기 위해 사용자 권한 및 접근 제어를 관리합니다.
+    
+      이를 통해 사용자의 권한에 따라 리소스 접근을 제한하고, 시스템의 안전성을 유지합니다.
+    
+  
+
+
+6. 네트워킹
+
+  커널을 네트워크 통신을 관리하여, 컴퓨터가 네트워크를 통해 다른 시스템과 데이터를 교환할 수 있도록 지원합니다.
+
+
+마무리.
+
+  커널은 일반적으로 시스템의 가장 낮은 수준에서 실행되며, 운영 체제의 나머지 부분과 사용자 애플리케이션으로부터 분리되어 있습니다.
+    
+      이는 시스템의 핵심적인 부분을 안정적이고 효율적으로 관리할 수 있도록 하기 위함입니다.
+    
+  
+  커널의 설계와 구현은 운영 체제의 성능, 안정성 및 확장성에 직접적인 영향을 미칩니다.
+
 
                         </a>
                         <div class="info-post">
@@ -3239,83 +3248,75 @@ StringEqual(String: str1, String: str2):
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/OS/2024-04-22-OS-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/os.jpeg') !important"></a>
+                            <a href="/2024/OS/2024-04-22-OS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/os.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/OS/2024-04-22-OS-2.html"><h1 class="title_post">💻[Operating System] 커널(kernel)이란?</h1></a>
-                        <a href="/2024/OS/2024-04-22-OS-2.html" class="txt_post">
-                            커널(kernel)이란?
+                        <a href="/2024/OS/2024-04-22-OS.html"><h1 class="title_post">💻[Operating System] 리눅스와 우분투의 차이점</h1></a>
+                        <a href="/2024/OS/2024-04-22-OS.html" class="txt_post">
+                            리눅스와 우분투의 차이점.
 
-커널의 역할.
-커널(kernel)은 컴퓨터 운영 체제의 핵심 구성 요소로서, 하드웨어와 소프트웨어 리소스 간의 통신을 중재하고 시스템의 모든 주요 기능을 관리하는 역할을 합니다.
+“리눅스” 와 “우분투” 의 차이점을 이해하려면 먼저 리눅스가 무엇인지, 그리고 우분투가 어떻게 이와 관련되어 있는지를 알아야 합니다.
 
-커널의 기능.
-커널의 기능은 매우 광범위하며, 그 중 몇 가지 주요 기능을 다음과 같이 설명할 수 있습니다.
+리눅스(Linux).
 
-1. 프로세스 관리.
+리눅스는 주로 운영 체제의 커널을 가리키는 용어입니다.
 
-  커널은 시스템에서 실행되는 모든 프로세스(활성 프로그램)의 생성, 실행 및 종료를 관리합니다.
-    
-      프로세스 관리는 프로세스 스케줄링, 상태 관리, 우선순위 할당 등을 포함합니다.
+  커널은 하드웨어와 소프트웨어 컴포넌트 사이에서 통신을 중재하고, 시스템 리소스를 관리하는 핵심 소프트웨어 컴포넌트입니다.
+
+
+
+  여기서 컴포넌트란 무엇일까요?
+  
+    “컴포넌트” 란 일반적으로 더 큰 시스템의 일부로 기능하는 개별적인 부품이나 요소를 의미합니다
+      
+        이 용어는 다양한 분야에서 사용되며, 각각의 맥락에 따라 다소 다른 의미를 가질 수 있습니다.
+          
+            이 포스팅에서는 소프트웨어 개발에서의 컴포넌트만 설명하겠습니다.
+          
         
-          이를 통해 시스템 리소스가 효율적으로 활용되고, 여러 프로세스 간에 시스템 리소스를 공정하게 분배할 수 있습니다.
+      
+    
+  
+
+  소프트웨어 개발에서의 컴포넌트
+  
+    소프트웨어 개발에서는 컴포넌트가 소프트웨어의 모듈이나 라이브러리 형태로 존재할 수 있습니다.
+      
+        이런 컴포넌트들은 재사용 가능하며, 특정 기능을 수행하기 위해 독립적으로 개발되고 통합될 수 있습니다.
+          
+            예를 들어, 웹 애플리케이션에서 로그인 모듈, 검색 엔진, 사용자 인터페이스 요소 등이 각각의 컴포넌트로 구성될 수 있습니다.
+          
         
       
     
   
 
 
-2. 메모리 관리.
+리눅스 커널은 오픈 소스이며, 1991년 리누스 토발즈에 의해 처음 개발되었습니다.
 
-  커널은 시스템의 물리적 메모리(RAM)를 관리하고 각 프로그램에 필요한 메모리 공간을 할당 및 회수합니다.
+  리눅스 커널 자체는 독립적으로 사용할 수 없으며, 보통 시스템 라이브러리, 유틸리티, 필수 프로그램 등과 함께 배포되어 전체 운영 체제의 기반을 형성합니다.
+
+
+우분투(Ubuntu).
+
+우분투는 리눅스 커널을 기반으로 한 리눅스 배포판 중 하나입니다.
+
+  이는 사용자 친화적인 인터페이스, 풍부한 소프트웨어 저장소, 정기적인 업데이트 및 지원을 제공하며, 개인용 컴퓨터, 서버, 클라우드 등 다양한 완경에서 사용할 수 있습니다.
     
-      메모리 관리 기능은 메모리 보호, 메모리 할당, 가상 메모리 시스템을 포함하여, 프로그램이 안정적으로 실행될 수 있도록 지원합니다.
-    
-  
-
-
-3. 디바이스 드라이버와 I/O 관리.
-
-  커널은 하드웨어 디바이스와의 통신을 담당하는 디바이스 드라이버를 관리합니다.
-    
-      입력 및 출력(I/O)장치(예: 키보드, 마우스, 디스플레이, 저장 장치 등)에 대한 접근과 데이터 전송을 총괄하며, 하드웨어의 올바른 동작을 보장합니다.
+      우분투는 데비안(Debian) 리눅스 배포판을 기반으로 만들어졌으며, 쉽게 접근할 수 있고 설치 및 사용이 간편하다는 점에서 초보자에게 인기가 많습니다.
     
   
 
 
-4. 파일 시스템 관리.
+리눅스와 우분투의 주요 차이점.
 
-  커널은 파일 시스템을 통해 데이터의 저장 및 검색을 관리합니다.
-    
-      이는 파일 생성, 삭제, 읽기, 쓰기 등의 작업을 포함하며, 사용자와 응용 프로그램이 파일과 디렉토리를 효율적으로 사용할 수 있도록 합니다.
-    
-  
+1. 정의와 범위 : 리눅스는 커널의 이름이며, 우분투는 리눅스 커널을 포함한 전체 운영 체제의 한 배포판입니다.
+2. 사용성 : 커널 자체는 기술적인 측면에서만 다루어지지만, 우분투는 끝 사용자를 대상으로 한 GUI와 사용자 친화적 도구를 제공합니다.
+3. 목적 : 리눅스 커널은 다양한 운영 체제의 기반으로 사용됩니다. 반면, 우분투는 개인 사용자와 기업 환경 모두를 겨냥해 특정한 목적과 요구를 충족시키기 위해 개발되었습니다.
 
-
-5. 보안 및 접근 제어.
-
-  커널은 시스템 보안을 유지하기 위해 사용자 권한 및 접근 제어를 관리합니다.
-    
-      이를 통해 사용자의 권한에 따라 리소스 접근을 제한하고, 시스템의 안전성을 유지합니다.
-    
-  
-
-
-6. 네트워킹
-
-  커널을 네트워크 통신을 관리하여, 컴퓨터가 네트워크를 통해 다른 시스템과 데이터를 교환할 수 있도록 지원합니다.
-
-
-마무리.
-
-  커널은 일반적으로 시스템의 가장 낮은 수준에서 실행되며, 운영 체제의 나머지 부분과 사용자 애플리케이션으로부터 분리되어 있습니다.
-    
-      이는 시스템의 핵심적인 부분을 안정적이고 효율적으로 관리할 수 있도록 하기 위함입니다.
-    
-  
-  커널의 설계와 구현은 운영 체제의 성능, 안정성 및 확장성에 직접적인 영향을 미칩니다.
-
+요약.
+리눅스는 기술적인 컴포넌트(커널)를 지칭하고 우분투는 그 커널을 사용하여 만들어진 하나의 완성된 운영 체제 배포판 입니다.
 
                         </a>
                         <div class="info-post">
@@ -6186,166 +6187,6 @@ string = DCBA
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
-                            String 최적화.
-자바의 String 최적화
-자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
-
-문자열 리터럴 최적화
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-String 변수 최적화
-문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-String result = str1 + str2;
-
-
-이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
-String result = new StringBuilder().append(str1).append(str2).toString();
-
-
-
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
-
-
-이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
-
-  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
-
-
-String 최적화가 어려운 경우
-다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-package lang.string.builder;
-
-public class LoopStringMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-    String result = "";
-
-    for (int i = 0; i &lt; 100000; i++) {
-      result += "Hello Java ";
-    }
-
-    long endTime = System.currentTimeMillis();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-String result = "";
-for (int i = 0; i &lt; 100000; i++) {
-    result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-
-
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-    
-      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-        
-          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
-            
-              따라서, 이런 상황에서는 최적화가 어렵습니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 2528ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
-
-
-이럴 때는 직접 StringBuilder를 사용하면 됩니다.
-package lang.string.builder;
-
-public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i &lt; 100000; i++) {
-      sb.append("Hello Java ");
-    }
-
-    long endTime = System.currentTimeMillis();
-
-    String result = sb.toString();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 4ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
-
-
-정리
-
-  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-
-
-StringBuilder를 직접 사용하는 것이 더 좋은 경우
-
-  반복문에서 반복해서 문자를 연결할 때
-  조건문을 통해 동적으로 문자열을 조합할 때
-  복잡한 문자열의 특정 부분을 변경해야 할 때
-  매우 긴 대용량 문자열을 다룰 때
-
-
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-11-register.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -6659,6 +6500,166 @@ CPU로 실행할 프로그램이 1000번지부터 1500번지까지 저장되어 
       호출된 서브루틴이 실행을 마치고 호출자로 돌아갈 때 사용됩니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
+                            String 최적화.
+자바의 String 최적화
+자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
+
+문자열 리터럴 최적화
+컴파일 전
+String helloWorld = "Hello, " + "World!";
+
+
+컴파일 후
+String helloWorld = "Hello, World!";
+
+따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
+
+String 변수 최적화
+문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+String result = str1 + str2;
+
+
+이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
+String result = new StringBuilder().append(str1).append(str2).toString();
+
+
+
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
+
+
+이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+
+  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
+
+
+String 최적화가 어려운 경우
+다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
+package lang.string.builder;
+
+public class LoopStringMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+    String result = "";
+
+    for (int i = 0; i &lt; 100000; i++) {
+      result += "Hello Java ";
+    }
+
+    long endTime = System.currentTimeMillis();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+String result = "";
+for (int i = 0; i &lt; 100000; i++) {
+    result = new StringBuilder().append(result).append("Hello Java ").toString();
+}
+
+
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+    
+      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+        
+          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+            
+              따라서, 이런 상황에서는 최적화가 어렵습니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 2528ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
+
+
+이럴 때는 직접 StringBuilder를 사용하면 됩니다.
+package lang.string.builder;
+
+public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i &lt; 100000; i++) {
+      sb.append("Hello Java ");
+    }
+
+    long endTime = System.currentTimeMillis();
+
+    String result = sb.toString();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 4ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
+
+
+정리
+
+  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+
+
+StringBuilder를 직접 사용하는 것이 더 좋은 경우
+
+  반복문에서 반복해서 문자를 연결할 때
+  조건문을 통해 동적으로 문자열을 조합할 때
+  복잡한 문자열의 특정 부분을 변경해야 할 때
+  매우 긴 대용량 문자열을 다룰 때
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
 
 
                         </a>
@@ -35558,6 +35559,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Spring/2024-08-22-logging-framework.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-08-22"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 싱글톤 패턴",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-08-23-Singleton.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-08-23"
         });
     
 

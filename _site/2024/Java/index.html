@@ -613,6 +613,7 @@
             
             
             
+            
 
     
     
@@ -2728,182 +2729,6 @@ string = DCBA
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-10-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-10-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
-                        <a href="/2024/Java/2024-04-10-StringBuilder.html" class="txt_post">
-                            StringBuilder - 가변 String.
-
-불변인 String 클래스의 단점.
-불변인 String 클래스에도 단점이 있습니다.
-
-다음 예를 봅시다.
-
-  참고로 실제로 작동하는 코드는 아닙니다.
-
-
-두 문자를 더하는 경우 다음과 같이 작동합니다.
-"A" + "B";
-String("A") + String("B"); // 문자는 String 타입.
-String("A").concat(String("B")); // 문자의 더하기는 concat을 사용.
-new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
-
-
-불변인 String의 내부 값은 변경할 수 없습니다.
-
-따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
-
-더 많은 문자를 더하는 경우를 살펴봅시다.
-String str = "A" + "B" + "C" + "D";
-String str = String("A") + String("B") + String("C") + String("D");
-String str = new String("AB") + String("C") + String("D");
-String str = new String("ABC") + String("D");
-String str = new String("ABCD");
-
-
-  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
-    
-      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC")는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD")만 사용됩니다.
-        
-          결과적으로 중간에 만들어진 new String("AB)", new String("ABC")는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
-        
-      
-    
-  
-
-
-불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점입니다.
-문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
-결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
-그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
-
-
-  참고 : 실제로는 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
-
-
-StringBuilder
-이 문제를 해결하는 방법은 단순합니다.
-
-  바로 불변이 아닌 가변 String이 존재하면 됩니다.
-    
-      가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
-        
-          따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
-        
-      
-    
-  
-
-
-이런 문제를 해결하기 위해 자바는 StringBuilder라는 가변 String을 제공합니다.
-
-  물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
-
-
-StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
-
-public final class StringBuilder {
-    char[] value; // 자바 9 이전
-    char[] value; // 자바 9 이후
-    
-    // 여러 메서드
-    public StringBuilder append(String str) {...}
-    public int length() {...}
-    ...
-}
-
-(실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
-
-StringBuilder 사용 예
-실제 StringBuilder를 어떻게 사용하는지 확인해 봅시다.
-
-package lang.string.builder;
-
-public class StringBuilderMain1_1 {
-
-  public static void main(String[] args) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("A");
-    sb.append("B");
-    sb.append("C");
-    sb.append("D");
-    System.out.println("sb = " + sb);
-
-    sb.insert(4, "Java");
-    System.out.println("sb = " + sb);
-
-    sb.delete(4,8);
-    System.out.println("delete = " + sb);
-
-    sb.reverse();
-    System.out.println("reverse = " + sb);
-
-    // StringBuilder(가변) -&gt; String(불변)으로 바꿀 수 있음.
-    String string = sb.toString();
-    System.out.println("string = " + string);
-  }
-}
-
-
-
-  StringBuilder 객체를 생성합니다.
-  append() 메서드를 사용해 여러 문자열을 추가합니다.
-  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
-  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
-  reverse() 메서드로 문자열을 뒤집습니다.
-  마지막으로 toString() 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
-
-
-실행 결과
-sb = ABCD
-sb = ABCDJava
-delete = ABCD
-reverse = DCBA
-string = DCBA
-
-
-가변(Mutable) vs 불변(Immutable)
-
-  String은 불변합니다. 즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
-    
-      따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
-        
-          이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
-        
-      
-    
-  
-  반면에, StringBuilder는 가변적입니다.
-    
-      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이때마다 새로운 객체를 생성하지 않습니다.
-        
-          이로 인해 메모리 사용을 줄이고 성늘을 향상시킬 수 있습니다. 단 사이드 이펙트를 주의해야 합니다.
-        
-      
-    
-  
-
-
-StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-10-StringClassMethod2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -3086,6 +2911,182 @@ num: 100, bool: true, str: Hello, Java!
 
 format 메서드에서 %d는 숫자 %b는 boolean, %s는 문자열을 뜻합니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-10-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-10-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
+                        <a href="/2024/Java/2024-04-10-StringBuilder.html" class="txt_post">
+                            StringBuilder - 가변 String.
+
+불변인 String 클래스의 단점.
+불변인 String 클래스에도 단점이 있습니다.
+
+다음 예를 봅시다.
+
+  참고로 실제로 작동하는 코드는 아닙니다.
+
+
+두 문자를 더하는 경우 다음과 같이 작동합니다.
+"A" + "B";
+String("A") + String("B"); // 문자는 String 타입.
+String("A").concat(String("B")); // 문자의 더하기는 concat을 사용.
+new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
+
+
+불변인 String의 내부 값은 변경할 수 없습니다.
+
+따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
+
+더 많은 문자를 더하는 경우를 살펴봅시다.
+String str = "A" + "B" + "C" + "D";
+String str = String("A") + String("B") + String("C") + String("D");
+String str = new String("AB") + String("C") + String("D");
+String str = new String("ABC") + String("D");
+String str = new String("ABCD");
+
+
+  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
+    
+      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC")는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD")만 사용됩니다.
+        
+          결과적으로 중간에 만들어진 new String("AB)", new String("ABC")는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
+        
+      
+    
+  
+
+
+불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점입니다.
+문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
+결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
+그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
+
+
+  참고 : 실제로는 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
+
+
+StringBuilder
+이 문제를 해결하는 방법은 단순합니다.
+
+  바로 불변이 아닌 가변 String이 존재하면 됩니다.
+    
+      가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
+        
+          따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
+        
+      
+    
+  
+
+
+이런 문제를 해결하기 위해 자바는 StringBuilder라는 가변 String을 제공합니다.
+
+  물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
+
+
+StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
+
+public final class StringBuilder {
+    char[] value; // 자바 9 이전
+    char[] value; // 자바 9 이후
+    
+    // 여러 메서드
+    public StringBuilder append(String str) {...}
+    public int length() {...}
+    ...
+}
+
+(실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
+
+StringBuilder 사용 예
+실제 StringBuilder를 어떻게 사용하는지 확인해 봅시다.
+
+package lang.string.builder;
+
+public class StringBuilderMain1_1 {
+
+  public static void main(String[] args) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("A");
+    sb.append("B");
+    sb.append("C");
+    sb.append("D");
+    System.out.println("sb = " + sb);
+
+    sb.insert(4, "Java");
+    System.out.println("sb = " + sb);
+
+    sb.delete(4,8);
+    System.out.println("delete = " + sb);
+
+    sb.reverse();
+    System.out.println("reverse = " + sb);
+
+    // StringBuilder(가변) -&gt; String(불변)으로 바꿀 수 있음.
+    String string = sb.toString();
+    System.out.println("string = " + string);
+  }
+}
+
+
+
+  StringBuilder 객체를 생성합니다.
+  append() 메서드를 사용해 여러 문자열을 추가합니다.
+  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
+  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
+  reverse() 메서드로 문자열을 뒤집습니다.
+  마지막으로 toString() 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
+
+
+실행 결과
+sb = ABCD
+sb = ABCDJava
+delete = ABCD
+reverse = DCBA
+string = DCBA
+
+
+가변(Mutable) vs 불변(Immutable)
+
+  String은 불변합니다. 즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
+    
+      따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
+        
+          이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
+        
+      
+    
+  
+  반면에, StringBuilder는 가변적입니다.
+    
+      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이때마다 새로운 객체를 생성하지 않습니다.
+        
+          이로 인해 메모리 사용을 줄이고 성늘을 향상시킬 수 있습니다. 단 사이드 이펙트를 주의해야 합니다.
+        
+      
+    
+  
+
+
+StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
 
                         </a>
                         <div class="info-post">
@@ -4096,6 +4097,215 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
+                            불변 객체 - 도입
+지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
+
+  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
+    
+      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+        
+          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+        
+      
+    
+  
+
+
+앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
+
+  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
+    Address a = new Address("서울");
+Address b = a;
+    
+  
+
+
+따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+
+  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
+
+진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+
+  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+    
+      따라서 이것은 문제가 아닙니다.
+        
+          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
+        
+      
+    
+  
+
+
+만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+
+불변 객체 도입
+객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+
+앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
+
+package lang.immutable.address;
+
+public class ImmutableAddress {
+  private final String value;
+
+  public ImmutableAddress(String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return "Address{" +
+        "value='" + value + '\'' +
+        '}';
+  }
+}
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 value의 필드를 final로 선언했습니다.
+    
+  
+  값을 변경할 수 있는 setValue()를 제거했습니다.
+  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+
+
+불변 클래스를 만드는 방법은 아주 단순합니다.
+
+  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+
+
+package lang.immutable.address;
+
+public class RefMain2 {
+
+  public static void main(String[] args) {
+    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
+    ImmutableAddress a = new ImmutableAddress("서울");
+    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+
+    System.out.println("a = " + a);
+    System.out.println("b = " + b);
+
+    // b.setValue("부산"); // 컴파일 오류 발생
+    b = new ImmutableAddress("부산");
+    System.out.println("부산 -&gt; b");
+    System.out.println("a = " + a); // 사이드 이펙트 발생
+    System.out.println("b = " + b);
+  }
+}
+
+
+  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
+  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
+    
+      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
+        
+          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
+        
+      
+    
+  
+  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
+
+
+
+
+  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+정리
+불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+
+  객체의 공유 참조는 막을 수 없습니다.
+    
+      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
+      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+    
+  
+  불변 객체는 값을 변경할 수 없습니다.
+    
+      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+        
+          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+        
+      
+    
+  
+
+
+
+  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
+
+  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-03-SharedReferencesAndSideEffects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -4307,215 +4517,6 @@ b = Address{value='부산'}
     
   
 
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
-                            불변 객체 - 도입
-지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
-
-  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
-    
-      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-        
-          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-        
-      
-    
-  
-
-
-앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
-
-  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
-    Address a = new Address("서울");
-Address b = a;
-    
-  
-
-
-따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-
-  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-
-
-Address a = new Address("서울");
-Address b = new Address("서울");
-
-
-여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
-
-진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-
-
-자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-
-  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-    
-      따라서 이것은 문제가 아닙니다.
-        
-          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
-        
-      
-    
-  
-
-
-만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-
-불변 객체 도입
-객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-
-앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
-
-package lang.immutable.address;
-
-public class ImmutableAddress {
-  private final String value;
-
-  public ImmutableAddress(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return "Address{" +
-        "value='" + value + '\'' +
-        '}';
-  }
-}
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 value의 필드를 final로 선언했습니다.
-    
-  
-  값을 변경할 수 있는 setValue()를 제거했습니다.
-  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-
-
-불변 클래스를 만드는 방법은 아주 단순합니다.
-
-  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-
-
-package lang.immutable.address;
-
-public class RefMain2 {
-
-  public static void main(String[] args) {
-    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
-    ImmutableAddress a = new ImmutableAddress("서울");
-    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-
-    System.out.println("a = " + a);
-    System.out.println("b = " + b);
-
-    // b.setValue("부산"); // 컴파일 오류 발생
-    b = new ImmutableAddress("부산");
-    System.out.println("부산 -&gt; b");
-    System.out.println("a = " + a); // 사이드 이펙트 발생
-    System.out.println("b = " + b);
-  }
-}
-
-
-  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
-  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
-    
-      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
-        
-          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
-        
-      
-    
-  
-  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
-
-
-
-
-  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-정리
-불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-
-  객체의 공유 참조는 막을 수 없습니다.
-    
-      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
-      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-    
-  
-  불변 객체는 값을 변경할 수 없습니다.
-    
-      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-        
-          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-        
-      
-    
-  
-
-
-
-  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
-
-  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
 
 
                         </a>
@@ -5114,6 +5115,256 @@ System.out.println()
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-29-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-29-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
+                        <a href="/2024/Java/2024-03-29-toString.html" class="txt_post">
+                            toString()
+Object.toString() 메서드는 객체의 정보를 문자열 형태로 제공합니다.
+
+  그래서 디버깅과 로깅에 유용하게 사용됩니다.
+  이 메서드는 Object 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
+
+
+코드로 확인해봅시다.
+
+package lang.object.tostring;
+
+public class ToStringMain1 {
+
+  public static void main(String[] args) {
+    Object object = new Object();
+    String string = object.toString();
+
+    //toString() 반환값 출력
+    System.out.println(string);
+
+    // object 직접 출력
+    System.out.println(object);
+  }
+}
+
+
+실행 결과
+java.lang.Object@a09ee92
+java.lang.Object@a09ee92
+
+
+Object.toString()
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+
+
+  Object가 제공하는 toString() 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다
+
+
+println()과 toString()
+그런데 toString()의 결과를 출력한 코드와 object를 println()에 직접 출력한 코드의 결과가 완전히 같습니다.
+String string = object.toString();
+
+//toString() 반환값 출력
+System.out.println(string);
+
+// object 직접 출력
+System.out.println(object);
+
+
+System.out.println() 메서드는 사실 내부에서 toString()을 호출합니다.
+Object 타입(자식 포함)이 println()에 인수로 전달되면 내부에서 obj.toString() 메서드를 호출해서 결과를 출력합니다.
+public void println(Object x) {
+    String s = String.valueOf(x);
+    // ...
+}
+
+
+public static String valueOf(Object obj) {
+    return (obj == null) ? "null" : obj.toString();
+}
+
+
+따라서 println()을 사용할 때, toString()을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
+
+toString() 오버라이딩.
+Object.toString() 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
+
+  그래서 보통 toString()을 재정의(오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
+
+
+
+
+package lang.object.tostring;
+
+public class Car {
+
+  private String carName;
+
+  public Car(String carName) {
+    this.carName = carName;
+  }
+}
+
+
+package lang.object.tostring;
+
+public class Dog {
+
+  private String dogName;
+  private int age;
+
+  public Dog(String dogName, int age) {
+    this.dogName = dogName;
+    this.age = age;
+  }
+
+  @Override
+  public String toString() {
+    return "Dog{" +
+        "dogName='" + dogName + '\'' +
+        ", age=" + age +
+        '}';
+  }
+}
+
+
+package lang.object.tostring;
+
+public class ObjectPrinter {
+  public static void print(Object obj) {
+    String string = "객체 정보 출력: " + obj.toString();
+    System.out.println(string);
+  }
+}
+
+
+package lang.object.tostring;
+
+public class ToStringMain2 {
+
+  public static void main(String[] args) {
+    Car car = new Car("Model Y");
+    Dog dog1 = new Dog("멍멍이1", 2);
+    Dog dog2 = new Dog("멍멍이2", 5);
+
+    System.out.println("1. 단순 toString 호출");
+    System.out.println(car.toString());
+    System.out.println(dog1.toString());
+    System.out.println(dog2.toString());
+
+    System.out.println("2. println 내부에서 toString 호출");
+    System.out.println(car);
+    System.out.println(dog1);
+    System.out.println(dog2);
+
+    System.out.println("3. Object 다용성 활용");
+    ObjectPrinter.print(car);
+    ObjectPrinter.print(dog1);
+    ObjectPrinter.print(dog2);
+  }
+}
+
+
+실행 결과
+1. 단순 toString 호출
+lang.object.tostring.Car@452b3a41
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+
+2. println 내부에서 toString 호출
+lang.object.tostring.Car@452b3a41
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+
+3. Object 다용성 활용
+객체 정보 출력: lang.object.tostring.Car@452b3a41
+객체 정보 출력: Dog{dogName='멍멍이1', age=2}
+객체 정보 출력: Dog{dogName='멍멍이2', age=5}
+
+
+Car 인스턴스는 toString()을 재정의 하지 않습니다.
+
+  따라서 Object가 제공하는 기본 toString() 메서드를 사용합니다.
+
+
+Dog 인스턴스는 toString()을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
+
+
+
+
+  Object obj의 인수로 car(Car)가 전달됩니다.
+  메서드 내부에서 obj.toString()을 호출합니다.
+  obj는 Object 타입입니다.
+    
+      따라서 Object에 있는 toString()을 찾습니다.
+        
+          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. 재정의된 메서드가 없습니다.
+            
+              Object.toString()을 실행합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+ObjectPrinter.print(dog) // main에서 호출
+void print(Object obj = dog(Dog)) { // 인수 전달
+    String string = "객체 정보 출력: " + obj.toString();
+}
+
+
+  Object obj의 인수로 dog(Dog) 가 전달 됩니다.
+  메서드 내부에서 obj.toString()을 호출합니다.
+  obj는 Object 타입입니다.
+    
+      따라서 Object에 있는 toString()을 찾습니다.
+        
+          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. Dog에 재정의된 메서드가 있습니다.
+            
+              Dog.toString()을 실행합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  참고 - 객체의 참조값 직접 출력
+toString()은 기본으로 객체의 참조값을 출력합니다.
+그런데 toString()이나 hashCode()를 재정의하면 객체의 참조값을 출력할 수 없습니다.
+이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
+  String refValue = Integer.toHexString(System.identityHashCode(dog1));
+System.out.println("refValue = " + refValue)
+  
+
+  실행 결과
+  refValue = 72ea2f77
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-29</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-29-ObjectPolymorphism.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -5383,256 +5634,6 @@ Object가 없다면?
 물론 Object가 없어도 직접 MyObject와 같은 클래스를 만들고 모든 클래스에서 직접 정의한 MyObject를 상속 받으면 됩니다.
 
   하지만 하나의 프로젝트를 넘어서 전세계 모든 개발자가 비슷한 클래스를 만들 것이고, 서로 호환되지 않은 수 많은 XxxObject들이 넘쳐날 것입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-29</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-29-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-29-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
-                        <a href="/2024/Java/2024-03-29-toString.html" class="txt_post">
-                            toString()
-Object.toString() 메서드는 객체의 정보를 문자열 형태로 제공합니다.
-
-  그래서 디버깅과 로깅에 유용하게 사용됩니다.
-  이 메서드는 Object 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
-
-
-코드로 확인해봅시다.
-
-package lang.object.tostring;
-
-public class ToStringMain1 {
-
-  public static void main(String[] args) {
-    Object object = new Object();
-    String string = object.toString();
-
-    //toString() 반환값 출력
-    System.out.println(string);
-
-    // object 직접 출력
-    System.out.println(object);
-  }
-}
-
-
-실행 결과
-java.lang.Object@a09ee92
-java.lang.Object@a09ee92
-
-
-Object.toString()
-public String toString() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode());
-}
-
-
-  Object가 제공하는 toString() 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다
-
-
-println()과 toString()
-그런데 toString()의 결과를 출력한 코드와 object를 println()에 직접 출력한 코드의 결과가 완전히 같습니다.
-String string = object.toString();
-
-//toString() 반환값 출력
-System.out.println(string);
-
-// object 직접 출력
-System.out.println(object);
-
-
-System.out.println() 메서드는 사실 내부에서 toString()을 호출합니다.
-Object 타입(자식 포함)이 println()에 인수로 전달되면 내부에서 obj.toString() 메서드를 호출해서 결과를 출력합니다.
-public void println(Object x) {
-    String s = String.valueOf(x);
-    // ...
-}
-
-
-public static String valueOf(Object obj) {
-    return (obj == null) ? "null" : obj.toString();
-}
-
-
-따라서 println()을 사용할 때, toString()을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
-
-toString() 오버라이딩.
-Object.toString() 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
-
-  그래서 보통 toString()을 재정의(오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
-
-
-
-
-package lang.object.tostring;
-
-public class Car {
-
-  private String carName;
-
-  public Car(String carName) {
-    this.carName = carName;
-  }
-}
-
-
-package lang.object.tostring;
-
-public class Dog {
-
-  private String dogName;
-  private int age;
-
-  public Dog(String dogName, int age) {
-    this.dogName = dogName;
-    this.age = age;
-  }
-
-  @Override
-  public String toString() {
-    return "Dog{" +
-        "dogName='" + dogName + '\'' +
-        ", age=" + age +
-        '}';
-  }
-}
-
-
-package lang.object.tostring;
-
-public class ObjectPrinter {
-  public static void print(Object obj) {
-    String string = "객체 정보 출력: " + obj.toString();
-    System.out.println(string);
-  }
-}
-
-
-package lang.object.tostring;
-
-public class ToStringMain2 {
-
-  public static void main(String[] args) {
-    Car car = new Car("Model Y");
-    Dog dog1 = new Dog("멍멍이1", 2);
-    Dog dog2 = new Dog("멍멍이2", 5);
-
-    System.out.println("1. 단순 toString 호출");
-    System.out.println(car.toString());
-    System.out.println(dog1.toString());
-    System.out.println(dog2.toString());
-
-    System.out.println("2. println 내부에서 toString 호출");
-    System.out.println(car);
-    System.out.println(dog1);
-    System.out.println(dog2);
-
-    System.out.println("3. Object 다용성 활용");
-    ObjectPrinter.print(car);
-    ObjectPrinter.print(dog1);
-    ObjectPrinter.print(dog2);
-  }
-}
-
-
-실행 결과
-1. 단순 toString 호출
-lang.object.tostring.Car@452b3a41
-Dog{dogName='멍멍이1', age=2}
-Dog{dogName='멍멍이2', age=5}
-
-2. println 내부에서 toString 호출
-lang.object.tostring.Car@452b3a41
-Dog{dogName='멍멍이1', age=2}
-Dog{dogName='멍멍이2', age=5}
-
-3. Object 다용성 활용
-객체 정보 출력: lang.object.tostring.Car@452b3a41
-객체 정보 출력: Dog{dogName='멍멍이1', age=2}
-객체 정보 출력: Dog{dogName='멍멍이2', age=5}
-
-
-Car 인스턴스는 toString()을 재정의 하지 않습니다.
-
-  따라서 Object가 제공하는 기본 toString() 메서드를 사용합니다.
-
-
-Dog 인스턴스는 toString()을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
-
-
-
-
-  Object obj의 인수로 car(Car)가 전달됩니다.
-  메서드 내부에서 obj.toString()을 호출합니다.
-  obj는 Object 타입입니다.
-    
-      따라서 Object에 있는 toString()을 찾습니다.
-        
-          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. 재정의된 메서드가 없습니다.
-            
-              Object.toString()을 실행합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-ObjectPrinter.print(dog) // main에서 호출
-void print(Object obj = dog(Dog)) { // 인수 전달
-    String string = "객체 정보 출력: " + obj.toString();
-}
-
-
-  Object obj의 인수로 dog(Dog) 가 전달 됩니다.
-  메서드 내부에서 obj.toString()을 호출합니다.
-  obj는 Object 타입입니다.
-    
-      따라서 Object에 있는 toString()을 찾습니다.
-        
-          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. Dog에 재정의된 메서드가 있습니다.
-            
-              Dog.toString()을 실행합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  참고 - 객체의 참조값 직접 출력
-toString()은 기본으로 객체의 참조값을 출력합니다.
-그런데 toString()이나 hashCode()를 재정의하면 객체의 참조값을 출력할 수 없습니다.
-이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
-  String refValue = Integer.toHexString(System.identityHashCode(dog1));
-System.out.println("refValue = " + refValue)
-  
-
-  실행 결과
-  refValue = 72ea2f77
-  
 
 
                         </a>
@@ -8157,178 +8158,6 @@ Child.method
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-15-instanceof.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-15-instanceof.html"><h1 class="title_post">☕️[Java] instanceof</h1></a>
-                        <a href="/2024/Java/2024-03-15-instanceof.html" class="txt_post">
-                            instanceof
-
-다형성에서 참조형 변수는 이름 그대로 다양한 지식을 대상으로 참조할 수 있습니다.
-그런데 참조하는 대상이 다양하기 때문에 어떤 인스턴스를 참조하고 있는지 확인하려면 어떻게 해야할까요?
-
-Parent parent1 = new Parent();
-Parent parent2 = new Child()
-
-
-
-  여기서 Parent는 자신과 같은 Parent의 인스턴스도 참조할 수 있고, 자식 타입인 Child의 인스턴스도 참조할 수 있습니다.
-    
-      이때 parent1, parent2 변수가 참조하는 인스턴스의 타입을 확인하고 싶다면 instanceof 키워드를 사용하면 됩니다.
-    
-  
-
-
-예제를 봅시다.
-
-package poly.basic;
-
-public class CastingMain5 {
-
-  public static void main(String[] args) {
-    Parent parent1 = new Parent();
-    System.out.println("parent1 호출");
-    call(parent1);
-
-    Parent parent2 = new Child();
-    System.out.println("parent2 호출");
-    call(parent2);
-  }
-
-  private static void call(Parent parent) {
-    parent.parentMethod();
-
-    if (parent instanceof Child) {
-      System.out.println("Child 인스턴스 맞음");
-      Child child = (Child) parent;
-      child.childMethod();
-    }
-  }
-}
-
-
-실행 결과
-parent1 호출
-Parent.parentMethod
-parent2 호출
-Parent.parentMethod
-Child 인스턴스 맞음
-Child.childMethod
-
-
-call(Parent parent) 메서드를 봐봅시다.
-
-  이 메서드는 매개변수로 넘어온 parent가 참조하는 타입에 따라서 다른 명령을 수행합니다.
-    
-      참고로 지금처럼 다운캐스팅을 수행하기 전에는 먼저 instanceof를 사용해서 원하는 타입으로 변경이 가능한지 확인한 다음에 다운캐스팅을 수행하는 것이 안전합니다.
-    
-  
-
-
-해당 메서드를 처음 호출할 때 parent는 Parent의 인스턴스를 참조합니다.
-parent instanceof Child // parent는 Parent의 인스턴스
-new Parent() instanceof Child // false
-
-
-
-  parent는 Parent의 인스턴스를 참조하므로 false를 반환합니다.
-
-
-해당 메서드를 다음으로 호출할 때 parent는 Child의 인스턴스를 참조합니다.
-parent instanceof Child // parent는 Child의 인스턴스
-new Child() instanceof Child // true
-
-
-참고로 instanceof 키워드는 오른쪽 대상의 자식 타입을 왼쪽에서 참조하는 경우에도 true를 반환합니다.
-parent instanceof Parent // parent는 Child의 인스턴스
-
-new Parent() instanceof Parent // parent가 Parent의 인스턴스를 참조하는 경우: true
-new Child() instanceof Parent // parent가 Child의 인스턴스를 참조하는 경우: true
-
-
-
-  쉽게 이야기해서 오른쪽에 있는 타입에 왼쪽에 있는 인스턴스의 타입이 들어갈 수 있는지 대입해보면 됩니다.
-    
-      대입이 가능하면 true, 불가능하면 false가 됩니다.
-    
-  
-
-
-new Parent() instanceof Parent
-Parent p = new Parent() // 같은 타입 true
-
-new Child() instancof Parent
-Parent p = new Child() // 부모는 자식을 담을 수 있다. true
-
-new Parent() instanceof Child
-Child c = new Parent() // 자식은 부모를 담을 수 없다. false
-
-new Child() instanceof Child
-Child c = new Child() // 같은 타입 true
-
-
-자바 16 - Pattern Matching for instanceof
-
-자바 16부터는 instanceof를 사용하면서 동시에 변수를 선언할 수 있습니다.
-
-다음 코드를 참고합시다.
-
-package poly.basic;
-
-public class CastingMain6 {
-
-  public static void main(String[] args) {
-    Parent parent1 = new Parent();
-    System.out.println("parent1 호출");
-    call(parent1);
-
-    Parent parent2 = new Child();
-    System.out.println("parent2 호출");
-    call(parent2);
-  }
-
-  private static void call(Parent parent) {
-    parent.parentMethod();
-    // Child 인스턴스인 경우 childMethod() 실행
-    if (parent instanceof Child child) {
-      System.out.println("Child 인스턴스 맞음");
-      child.childMethod();
-    }
-  }
-}
-
-
-실행 결과
-parent1 호출
-Parent.parentMethod
-parent2 호출
-Parent.parentMethod
-Child 인스턴스 맞음
-Child.childMethod
-
-
-
-  덕분에 인스턴스가 맞는 경우 직접 다운캐스팅 하는 코드를 생략할 수 있습니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -8639,6 +8468,178 @@ Child child2 = (Child) parent2
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-15-instanceof.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-15-instanceof.html"><h1 class="title_post">☕️[Java] instanceof</h1></a>
+                        <a href="/2024/Java/2024-03-15-instanceof.html" class="txt_post">
+                            instanceof
+
+다형성에서 참조형 변수는 이름 그대로 다양한 지식을 대상으로 참조할 수 있습니다.
+그런데 참조하는 대상이 다양하기 때문에 어떤 인스턴스를 참조하고 있는지 확인하려면 어떻게 해야할까요?
+
+Parent parent1 = new Parent();
+Parent parent2 = new Child()
+
+
+
+  여기서 Parent는 자신과 같은 Parent의 인스턴스도 참조할 수 있고, 자식 타입인 Child의 인스턴스도 참조할 수 있습니다.
+    
+      이때 parent1, parent2 변수가 참조하는 인스턴스의 타입을 확인하고 싶다면 instanceof 키워드를 사용하면 됩니다.
+    
+  
+
+
+예제를 봅시다.
+
+package poly.basic;
+
+public class CastingMain5 {
+
+  public static void main(String[] args) {
+    Parent parent1 = new Parent();
+    System.out.println("parent1 호출");
+    call(parent1);
+
+    Parent parent2 = new Child();
+    System.out.println("parent2 호출");
+    call(parent2);
+  }
+
+  private static void call(Parent parent) {
+    parent.parentMethod();
+
+    if (parent instanceof Child) {
+      System.out.println("Child 인스턴스 맞음");
+      Child child = (Child) parent;
+      child.childMethod();
+    }
+  }
+}
+
+
+실행 결과
+parent1 호출
+Parent.parentMethod
+parent2 호출
+Parent.parentMethod
+Child 인스턴스 맞음
+Child.childMethod
+
+
+call(Parent parent) 메서드를 봐봅시다.
+
+  이 메서드는 매개변수로 넘어온 parent가 참조하는 타입에 따라서 다른 명령을 수행합니다.
+    
+      참고로 지금처럼 다운캐스팅을 수행하기 전에는 먼저 instanceof를 사용해서 원하는 타입으로 변경이 가능한지 확인한 다음에 다운캐스팅을 수행하는 것이 안전합니다.
+    
+  
+
+
+해당 메서드를 처음 호출할 때 parent는 Parent의 인스턴스를 참조합니다.
+parent instanceof Child // parent는 Parent의 인스턴스
+new Parent() instanceof Child // false
+
+
+
+  parent는 Parent의 인스턴스를 참조하므로 false를 반환합니다.
+
+
+해당 메서드를 다음으로 호출할 때 parent는 Child의 인스턴스를 참조합니다.
+parent instanceof Child // parent는 Child의 인스턴스
+new Child() instanceof Child // true
+
+
+참고로 instanceof 키워드는 오른쪽 대상의 자식 타입을 왼쪽에서 참조하는 경우에도 true를 반환합니다.
+parent instanceof Parent // parent는 Child의 인스턴스
+
+new Parent() instanceof Parent // parent가 Parent의 인스턴스를 참조하는 경우: true
+new Child() instanceof Parent // parent가 Child의 인스턴스를 참조하는 경우: true
+
+
+
+  쉽게 이야기해서 오른쪽에 있는 타입에 왼쪽에 있는 인스턴스의 타입이 들어갈 수 있는지 대입해보면 됩니다.
+    
+      대입이 가능하면 true, 불가능하면 false가 됩니다.
+    
+  
+
+
+new Parent() instanceof Parent
+Parent p = new Parent() // 같은 타입 true
+
+new Child() instancof Parent
+Parent p = new Child() // 부모는 자식을 담을 수 있다. true
+
+new Parent() instanceof Child
+Child c = new Parent() // 자식은 부모를 담을 수 없다. false
+
+new Child() instanceof Child
+Child c = new Child() // 같은 타입 true
+
+
+자바 16 - Pattern Matching for instanceof
+
+자바 16부터는 instanceof를 사용하면서 동시에 변수를 선언할 수 있습니다.
+
+다음 코드를 참고합시다.
+
+package poly.basic;
+
+public class CastingMain6 {
+
+  public static void main(String[] args) {
+    Parent parent1 = new Parent();
+    System.out.println("parent1 호출");
+    call(parent1);
+
+    Parent parent2 = new Child();
+    System.out.println("parent2 호출");
+    call(parent2);
+  }
+
+  private static void call(Parent parent) {
+    parent.parentMethod();
+    // Child 인스턴스인 경우 childMethod() 실행
+    if (parent instanceof Child child) {
+      System.out.println("Child 인스턴스 맞음");
+      child.childMethod();
+    }
+  }
+}
+
+
+실행 결과
+parent1 호출
+Parent.parentMethod
+parent2 호출
+Parent.parentMethod
+Child 인스턴스 맞음
+Child.childMethod
+
+
+
+  덕분에 인스턴스가 맞는 경우 직접 다운캐스팅 하는 코드를 생략할 수 있습니다.
+
 
 
                         </a>
@@ -12231,27 +12232,140 @@ C count=3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-03-StackAndQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-03-StackAndHeap.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-03-StackAndQueue.html"><h1 class="title_post">☕️[Java] 스택과 큐 자료구조</h1></a>
-                        <a href="/2024/Java/2024-03-03-StackAndQueue.html" class="txt_post">
-                            스택과 큐 자료구조.
+                        <a href="/2024/Java/2024-03-03-StackAndHeap.html"><h1 class="title_post">☕️[Java] 스택 영역과 힙 영역</h1></a>
+                        <a href="/2024/Java/2024-03-03-StackAndHeap.html" class="txt_post">
+                            스택 영역과 힙 영역.
+이번에는 스택 영역과 힙 영역이 함께 사용되는 경우를 알아봅시다.
 
-자바 메모리 구조 중 스택 영역에 대해 알아보기 전에 먼저 스택(Stack)이라는 자료 구조에 대해서 알아봅시다.
+Data
+package memory;
 
-스택 구조
-다음과 같은 1, 2, 3 이름표가 붙은 블럭이 있다고 가정해봅시다.
+public class JavaMemoryMain2 {
+
+  public static void main(String[] args) {
+    System.out.println("main start");
+    method1();
+    System.out.println("main end");
+  }
+
+  static void method1() {
+    System.out.println("method1 start");
+    Data data1 = new Data(10);
+    method2(data1);
+    System.out.println("method1 end");
+  }
+
+  static void method2(Data data2) {
+    System.out.println("method2 start");
+    System.out.println("data.value=" + data2.getValue());
+    System.out.println("method2 end");
+  }
+}
+
+
+
+  main() -&gt; method1() -&gt; method2() 순서로 호출하는 단순한 코드입니다.
+  method1()에서 Data 클래스의 인스턴스를 생성합니다.
+  method1()에서 method2()를 호출할 때 매개변수에 Data 인스턴스의 참조값을 전달합니다.
+
+
+실행 결과
+main start
+method1 start
+method2 start
+data.value=10
+method2 end
+method1 end
+main end
+
+
+그림을 통해 순서대로 알아봅시다.
 
 
 
 
-  이 블럭을 다음과 같이 생긴 통에 넣는다고 생각해봅시다.
+  처음 main() 메서드를 실행합니다.
     
-      위쪽만 열려있기 때문에 위쪽으로 블럭을 넣고, 위쪽으로 블럭을 빼야 합니다.
+      main() 스택 프레임이 생성됩니다.
+    
+  
+
+
+
+
+
+  main()에서 method1()을 실행합니다.
+    
+      method1() 스택 프레임이 생성됩니다.
+    
+  
+  method1()은 지역 변수로 Data data1을 가지고 있습니다.
+    
+      이 지역 변수도 스택 프레임에 포함됩니다.
+    
+  
+  method1()은 new Data(10)를 사용해서 힙 영역에 Data 인스턴스를 생성합니다.
+    
+      그리고 참조값을 data1에 보관합니다.
+    
+  
+
+
+
+
+
+  method1()은 method2()를 호출하면서 Data data2 매개변수에 xoo1 참조값을 넘깁니다.
+    
+      이제 method1()에 있는 data1과 method2()에 있는 data2 지역 변수(매개변수 포함)는 둘다 같은 x001 인스턴스를 참조합니다.
+    
+  
+
+
+
+
+
+  method2()가 종료됩니다.
+    
+      method2()의 스택 프레임이 제거되면서 매개변수 data2도 함께 제거됩니다.
+    
+  
+
+
+
+
+
+  method1()1이 종료됩니다.
+    
+      method1()의 스택 프레임이 제거되면서 지역 변수 data1도 함께 제거됩니다.
+    
+  
+
+
+
+
+
+  method1()이 종료된 직후의 상태를 봅시다.
+    
+      method1()의 스택 프레임이 제거되고 지역 변수 data1도 함께 제거되었습니다.
+    
+  
+  이제 x001 참조값을 가진 Data 인스턴스를 참조하는 곳이 더는 없습니다.
+    
+      참조하는 곳이 없으므로 사용되는 곳도 없습니다.
         
-          쉽게 이야기해서 넣는 곳과 빼는 곳이 같습니다.
+          결과적으로 프로그램에서 더는 사용하지 않는 객체인 것입니다.
+            
+              이런 객체는 메모리만 차지하게 됩니다.
+                
+                  GC(가비지 컬렉션)은 이렇게 참조가 모두 사라진 인스턴스를 찾아서 메모리에서 제거합니다.
+                
+              
+            
+          
         
       
     
@@ -12259,53 +12373,24 @@ C count=3
 
 
 
+  참고: 힙 영역 외부가 아닌, 힙 영역 안에서만 인스턴스끼리 서로 참조하는 경우에도 GC의 대상이 됩니다.
 
 
-  블럭은 1 -&gt; 2 -&gt; 3 순서대로 넣을 수 있습니다.
+정리
 
-
-이번에는 넣은 블럭을 빼봅시다.
-
-
-
-
-  블럭을 빼려면 위에서 부터 순서대로 빼야합니다.
+  지역 변수는 스택 영역에, 객체(인스턴스)는 힙 영역에 관리되는 것을 확인했습니다.
     
-      블럭은 3 -&gt; 2 -&gt; 1 순서로 뺄 수 있습니다.
-    
-  
-
-
-정리하면 다음과 같습니다.
-
-  1(넣기) -&gt; 2(넣기) -&gt; 3(넣기) -&gt; 3(빼기) -&gt; 2(빼기) -&gt; 1(빼기)
-
-
-후입 선출(LIFO, Last In First Out)
-여기서 가장 마지막에 넣은 3번이 가장 먼저 나옵니다.
-
-  이렇게 가장 먼저 나오는 것을 “후입 선출”이라 하고, 이런 자료 구조를 “스택”이라 합니다.
-
-
-선입 선출(FIFO, First In First Out)
-
-  후입 선출과 반대로 가장 먼저 넣은 것이 가장 먼저 나오는 것을 선입 선출이라고 합니다.
-    
-      이런 자료 구조를 “큐(Queue)”라 합니다.
-    
-  
-
-
-큐(Queue) 자료 구조
-
-
-정리하면 다음과 같습니다.
-
-  1(넣기) -&gt; 2(넣기) -&gt; 3(넣기) -&gt; 1(빼기) -&gt; 2(빼기) -&gt; 3(빼기)
-    
-      이런 자료 구조는 각자 필요한 영역이 있습니다.
+      이제 나머지 하나가 남았습니다. 바로 메서드 영역입니다.
         
-          예를 들어 선착순 이벤트를 하는데 고객이 대기해야 한다면 큐 자료 구조를 사용해야 합니다.
+          메서드 영역이 관리하는 변수도 있습니다.
+            
+              이것을 이해하기 위해서는 먼저 static 키워드를 알아야합니다.
+                
+                  static 키워드는 메서드 영역과 밀접한 연관이 있습니다.
+                
+              
+            
+          
         
       
     
@@ -12535,140 +12620,27 @@ main end
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-03-StackAndHeap.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-03-03-StackAndQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-03-03-StackAndHeap.html"><h1 class="title_post">☕️[Java] 스택 영역과 힙 영역</h1></a>
-                        <a href="/2024/Java/2024-03-03-StackAndHeap.html" class="txt_post">
-                            스택 영역과 힙 영역.
-이번에는 스택 영역과 힙 영역이 함께 사용되는 경우를 알아봅시다.
+                        <a href="/2024/Java/2024-03-03-StackAndQueue.html"><h1 class="title_post">☕️[Java] 스택과 큐 자료구조</h1></a>
+                        <a href="/2024/Java/2024-03-03-StackAndQueue.html" class="txt_post">
+                            스택과 큐 자료구조.
 
-Data
-package memory;
+자바 메모리 구조 중 스택 영역에 대해 알아보기 전에 먼저 스택(Stack)이라는 자료 구조에 대해서 알아봅시다.
 
-public class JavaMemoryMain2 {
-
-  public static void main(String[] args) {
-    System.out.println("main start");
-    method1();
-    System.out.println("main end");
-  }
-
-  static void method1() {
-    System.out.println("method1 start");
-    Data data1 = new Data(10);
-    method2(data1);
-    System.out.println("method1 end");
-  }
-
-  static void method2(Data data2) {
-    System.out.println("method2 start");
-    System.out.println("data.value=" + data2.getValue());
-    System.out.println("method2 end");
-  }
-}
-
-
-
-  main() -&gt; method1() -&gt; method2() 순서로 호출하는 단순한 코드입니다.
-  method1()에서 Data 클래스의 인스턴스를 생성합니다.
-  method1()에서 method2()를 호출할 때 매개변수에 Data 인스턴스의 참조값을 전달합니다.
-
-
-실행 결과
-main start
-method1 start
-method2 start
-data.value=10
-method2 end
-method1 end
-main end
-
-
-그림을 통해 순서대로 알아봅시다.
+스택 구조
+다음과 같은 1, 2, 3 이름표가 붙은 블럭이 있다고 가정해봅시다.
 
 
 
 
-  처음 main() 메서드를 실행합니다.
+  이 블럭을 다음과 같이 생긴 통에 넣는다고 생각해봅시다.
     
-      main() 스택 프레임이 생성됩니다.
-    
-  
-
-
-
-
-
-  main()에서 method1()을 실행합니다.
-    
-      method1() 스택 프레임이 생성됩니다.
-    
-  
-  method1()은 지역 변수로 Data data1을 가지고 있습니다.
-    
-      이 지역 변수도 스택 프레임에 포함됩니다.
-    
-  
-  method1()은 new Data(10)를 사용해서 힙 영역에 Data 인스턴스를 생성합니다.
-    
-      그리고 참조값을 data1에 보관합니다.
-    
-  
-
-
-
-
-
-  method1()은 method2()를 호출하면서 Data data2 매개변수에 xoo1 참조값을 넘깁니다.
-    
-      이제 method1()에 있는 data1과 method2()에 있는 data2 지역 변수(매개변수 포함)는 둘다 같은 x001 인스턴스를 참조합니다.
-    
-  
-
-
-
-
-
-  method2()가 종료됩니다.
-    
-      method2()의 스택 프레임이 제거되면서 매개변수 data2도 함께 제거됩니다.
-    
-  
-
-
-
-
-
-  method1()1이 종료됩니다.
-    
-      method1()의 스택 프레임이 제거되면서 지역 변수 data1도 함께 제거됩니다.
-    
-  
-
-
-
-
-
-  method1()이 종료된 직후의 상태를 봅시다.
-    
-      method1()의 스택 프레임이 제거되고 지역 변수 data1도 함께 제거되었습니다.
-    
-  
-  이제 x001 참조값을 가진 Data 인스턴스를 참조하는 곳이 더는 없습니다.
-    
-      참조하는 곳이 없으므로 사용되는 곳도 없습니다.
+      위쪽만 열려있기 때문에 위쪽으로 블럭을 넣고, 위쪽으로 블럭을 빼야 합니다.
         
-          결과적으로 프로그램에서 더는 사용하지 않는 객체인 것입니다.
-            
-              이런 객체는 메모리만 차지하게 됩니다.
-                
-                  GC(가비지 컬렉션)은 이렇게 참조가 모두 사라진 인스턴스를 찾아서 메모리에서 제거합니다.
-                
-              
-            
-          
+          쉽게 이야기해서 넣는 곳과 빼는 곳이 같습니다.
         
       
     
@@ -12676,24 +12648,53 @@ main end
 
 
 
-  참고: 힙 영역 외부가 아닌, 힙 영역 안에서만 인스턴스끼리 서로 참조하는 경우에도 GC의 대상이 됩니다.
 
 
-정리
+  블럭은 1 -&gt; 2 -&gt; 3 순서대로 넣을 수 있습니다.
 
-  지역 변수는 스택 영역에, 객체(인스턴스)는 힙 영역에 관리되는 것을 확인했습니다.
+
+이번에는 넣은 블럭을 빼봅시다.
+
+
+
+
+  블럭을 빼려면 위에서 부터 순서대로 빼야합니다.
     
-      이제 나머지 하나가 남았습니다. 바로 메서드 영역입니다.
+      블럭은 3 -&gt; 2 -&gt; 1 순서로 뺄 수 있습니다.
+    
+  
+
+
+정리하면 다음과 같습니다.
+
+  1(넣기) -&gt; 2(넣기) -&gt; 3(넣기) -&gt; 3(빼기) -&gt; 2(빼기) -&gt; 1(빼기)
+
+
+후입 선출(LIFO, Last In First Out)
+여기서 가장 마지막에 넣은 3번이 가장 먼저 나옵니다.
+
+  이렇게 가장 먼저 나오는 것을 “후입 선출”이라 하고, 이런 자료 구조를 “스택”이라 합니다.
+
+
+선입 선출(FIFO, First In First Out)
+
+  후입 선출과 반대로 가장 먼저 넣은 것이 가장 먼저 나오는 것을 선입 선출이라고 합니다.
+    
+      이런 자료 구조를 “큐(Queue)”라 합니다.
+    
+  
+
+
+큐(Queue) 자료 구조
+
+
+정리하면 다음과 같습니다.
+
+  1(넣기) -&gt; 2(넣기) -&gt; 3(넣기) -&gt; 1(빼기) -&gt; 2(빼기) -&gt; 3(빼기)
+    
+      이런 자료 구조는 각자 필요한 영역이 있습니다.
         
-          메서드 영역이 관리하는 변수도 있습니다.
-            
-              이것을 이해하기 위해서는 먼저 static 키워드를 알아야합니다.
-                
-                  static 키워드는 메서드 영역과 밀접한 연관이 있습니다.
-                
-              
-            
-          
+          예를 들어 선착순 이벤트를 하는데 고객이 대기해야 한다면 큐 자료 구조를 사용해야 합니다.
         
       
     
@@ -13894,128 +13895,15 @@ public class OrderHistory {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-25-packageStart.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-02-25-packageImport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-packageStart.html"><h1 class="title_post">☕️[Java] 패키지 - 시작</h1></a>
-                        <a href="/2024/Java/2024-02-25-packageStart.html" class="txt_post">
-                            패키지 - 시작.
+                        <a href="/2024/Java/2024-02-25-packageImport.html"><h1 class="title_post">☕️[Java] 패키지 - import</h1></a>
+                        <a href="/2024/Java/2024-02-25-packageImport.html" class="txt_post">
+                            패키지 - import
 
-쇼핑몰 시스템을 개발한다고 가정해봅시다.
-다음과 같이 프로그램이 매우 작고 단순해서 클래스가 몇개 없다면 크게 고민할 거리가 없겠지만, 기능이 점점 추가되어서 프로그램이 아주 커지게 된다면 어떻게 될까요?
-
-아주 작은 프로그램
-Order
-User
-Product
-
-
-큰 프로그램
-User
-UserManager
-UserHistory
-Product
-ProductCatalog
-ProductImage
-Order
-OrderService
-OrderHistory
-ShoppingCart
-CartItem
-Payment
-PaymentHistory
-Shipment
-ShipmentTracker
-
-
-
-  매우 많은 클래스가 등장하면서 관련 있는 기능들을 분류해서 관리하고 싶을 것입니다.
-    
-      컴퓨터는 보통 파일을 분류하기 위해 폴더, 디렉토리라는 개념을 제공합니다.
-        
-          자바도 이런 개념을 제공하는데, 이것이 바로 패키지입니다.
-        
-      
-    
-  
-
-
-다음과 같이 카테고리를 만들고 분류해봅시다.
-
-* user
-    * User
-    * UserManager
-    * UserHistory
-* product    
-    * Product
-    * ProductCatalog
-    * ProductImage
-* order
-    * Order
-    * OrderService
-    * OrderHistory
-* cart    
-    * ShoppingCart
-    * CartItem
-* payment    
-    * Payment
-    * PaymentHistory
-* shipping    
-    * Shipment    
-    * ShipmentTracker
-
-
-
-  여기서 user, product 등이 바로 패키지입니다.
-    
-      그리고 해당 패키지 안에 관련된 자바 클래스들을 넣으면 됩니다.
-    
-  
-  패키지(package)는 이름 그대로 물건을 운송하기 위한 포장 용기나 그 포장 묶음을 뜻합니다.
-
-
-패키지 사용
-패키지 사용법을 코드로 확인해봅시다.
-패키지를 먼저 만들고 그 다음에 클래스를 만들어야 합니다.
-패키지 위치에 주의해야합니다.
-
-pcak.Data
-package pack;
-
-public class Data {
-    public Data() {
-        System.out.println("패키지 pack Data 생성")
-    }
-}
-
-
-  패키지를 사용하는 경우 항상 코드 첫 줄에 package pack과 같이 패키지 이름을 적어주어야 합니다.
-  여기서는 pack 패키지에 Data 클래스를 만들었습니다.
-  이후에 Data 인스턴스가 생성되면 생성자를 통해 정보를 출력합니다.
-
-
-pack.a.User
-package pack.a;
-
-public class User {
-
-  public User() {
-    System.out.println("패키지 pack.a 회원 생성");
-  }
-}
-
-
-  pack 하위에 a라는 패키지를 먼저 만듭니다.
-  pack.a 패키지에 User 클래스를 만들었습니다.
-  이후에 User 인스턴스가 생성되면 생성자를 통해 정보를 출력합니다.
-
-
-
-  참고: 생성자에 public을 사용했습니다. 다른 패키지에서 이 클래스의 생성자를 호출하려면 public을 사용해야합니다.
-
-
-pack.PackageMain1
+import
 
 package pack;
 
@@ -14028,7 +13916,25 @@ public class PackageMain1 {
 }
 
 
-  pack 패키지 위치에 PackageMain1 클래스를 만들었습니다.
+  위 코드와 같이 패키지가 다르다고 pack.a.User와 같이 항상 전체 경로를 적어주는 것은 불편합니다.
+    
+      “이때는 import를 사용하면 됩니다.”
+    
+  
+
+
+PackageMain2
+package pack;
+
+import pack.a.User;
+
+public class PackageMain2 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   User user = new User();
+  }
+}
 
 
 실행 결과
@@ -14037,8 +13943,102 @@ public class PackageMain1 {
 
 
 
-  사용자와 같은 위치: PackageMain1과 Data는 같은 pack이라는 패키지에 소속되어 있습니다. 이렇게 같은 패키지에 있는 경우에는 패키지 경로를 생략해도 됩니다.
-  사용자와 다른 위치: PackageMain1과 User는 서로 다른 패키지입니다. 이렇게 패키지가 다르면 pack.a.User와 같이 패키지 전체 경로를 포함해서 클래스를 적어주어야 합니다.
+  코드에서 첫줄에는 package를 사용하고, 다음 줄에는 import를 사용할 수 있습니다.
+    
+      import를 사용하면 다른 패키지에 있는 클래스를 가져와서 사용할 수 있습니다.
+        
+          import를 사용한 덕분에 코드에서는 패키지 명을 생략하고 클래스 이름만 적을 수 있습니다.
+        
+      
+    
+  
+
+
+
+  참고로 특정 패키지에 포함된 모든 클래스를 포함해서 사용하고 싶으면 import 시점에 *(별)을 사용하면 됩니다.
+
+
+패키지 별(*)사용
+
+tree 구조
+* pack -&gt; [Package]
+├──* Data -&gt; (Class)
+├──* PackageMain1 -&gt; (Class)
+├──* PackageMain1 -&gt; (Class)
+└──* a -&gt; [Package]
+   ├──* User -&gt; (Class)
+   └──* UserManager -&gt; (Class)
+
+
+package pack;
+
+import pack.a.*; // pack.a의 모든 클래스 사용
+
+public class PackageMain2 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   User user = new User(); // import 사용으로 패키지 명 생략 가능
+   UserManager manager = new UserManager(); // import 사용으로 패키지 명 생략 가능
+  }
+}
+
+
+  이렇게 하면 pack.a 패키지에 있는 모든 클래스를 패키지 명을 생략하고 사용할 수 있습니다.
+
+
+실행 결과
+패키지 pack Data 생성
+패키지 pack.a 회원 생성
+패키지 pack.a 회원 매니저 생성
+
+
+클래스 이름 중복
+패키지 덕분에 클래스 이름이 같아도 패키지 이름으로 구분해서 같은 이름의 클래스를 사용할 수 있습니다.
+
+pack.a.User
+pack.b.User
+
+
+“이런 경우 클래스 이름이 둘다 User이지만 패키지 이름으로 대상을 구분할 수 있습니다.”
+
+  이렇게 이름이 같은 경우 둘다 사용하고 싶으면 어떻게 해야할까요?
+
+
+pack.b.User
+package pack.b;
+
+public class User {
+  public  User() {
+    System.out.println("패키지 pack.b 회원 생성");
+  }
+}
+
+
+PackageMain3
+package pack;
+
+import pack.a.User;
+
+public class PackageMain3 {
+
+  public static void main(String[] args) {
+    User userA = new User();
+    pack.b.User userB = new pack.b.User();
+  }
+}
+
+
+
+  같은 이름의 클래스가 있다면 import는 둘중 하나만 선택할 수 있습니다.
+    
+      이때는 자주 사용하는 클래스를 import하고 나머지를 패키지를 포함한 전체 경로를 적어주면 됩니다.
+        
+          물론 둘다 전체 경로를 적어준다면 import를 사용하지 않아도 됩니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -14338,15 +14338,128 @@ public class MemberDefault {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-25-packageImport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-02-25-packageStart.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-packageImport.html"><h1 class="title_post">☕️[Java] 패키지 - import</h1></a>
-                        <a href="/2024/Java/2024-02-25-packageImport.html" class="txt_post">
-                            패키지 - import
+                        <a href="/2024/Java/2024-02-25-packageStart.html"><h1 class="title_post">☕️[Java] 패키지 - 시작</h1></a>
+                        <a href="/2024/Java/2024-02-25-packageStart.html" class="txt_post">
+                            패키지 - 시작.
 
-import
+쇼핑몰 시스템을 개발한다고 가정해봅시다.
+다음과 같이 프로그램이 매우 작고 단순해서 클래스가 몇개 없다면 크게 고민할 거리가 없겠지만, 기능이 점점 추가되어서 프로그램이 아주 커지게 된다면 어떻게 될까요?
+
+아주 작은 프로그램
+Order
+User
+Product
+
+
+큰 프로그램
+User
+UserManager
+UserHistory
+Product
+ProductCatalog
+ProductImage
+Order
+OrderService
+OrderHistory
+ShoppingCart
+CartItem
+Payment
+PaymentHistory
+Shipment
+ShipmentTracker
+
+
+
+  매우 많은 클래스가 등장하면서 관련 있는 기능들을 분류해서 관리하고 싶을 것입니다.
+    
+      컴퓨터는 보통 파일을 분류하기 위해 폴더, 디렉토리라는 개념을 제공합니다.
+        
+          자바도 이런 개념을 제공하는데, 이것이 바로 패키지입니다.
+        
+      
+    
+  
+
+
+다음과 같이 카테고리를 만들고 분류해봅시다.
+
+* user
+    * User
+    * UserManager
+    * UserHistory
+* product    
+    * Product
+    * ProductCatalog
+    * ProductImage
+* order
+    * Order
+    * OrderService
+    * OrderHistory
+* cart    
+    * ShoppingCart
+    * CartItem
+* payment    
+    * Payment
+    * PaymentHistory
+* shipping    
+    * Shipment    
+    * ShipmentTracker
+
+
+
+  여기서 user, product 등이 바로 패키지입니다.
+    
+      그리고 해당 패키지 안에 관련된 자바 클래스들을 넣으면 됩니다.
+    
+  
+  패키지(package)는 이름 그대로 물건을 운송하기 위한 포장 용기나 그 포장 묶음을 뜻합니다.
+
+
+패키지 사용
+패키지 사용법을 코드로 확인해봅시다.
+패키지를 먼저 만들고 그 다음에 클래스를 만들어야 합니다.
+패키지 위치에 주의해야합니다.
+
+pcak.Data
+package pack;
+
+public class Data {
+    public Data() {
+        System.out.println("패키지 pack Data 생성")
+    }
+}
+
+
+  패키지를 사용하는 경우 항상 코드 첫 줄에 package pack과 같이 패키지 이름을 적어주어야 합니다.
+  여기서는 pack 패키지에 Data 클래스를 만들었습니다.
+  이후에 Data 인스턴스가 생성되면 생성자를 통해 정보를 출력합니다.
+
+
+pack.a.User
+package pack.a;
+
+public class User {
+
+  public User() {
+    System.out.println("패키지 pack.a 회원 생성");
+  }
+}
+
+
+  pack 하위에 a라는 패키지를 먼저 만듭니다.
+  pack.a 패키지에 User 클래스를 만들었습니다.
+  이후에 User 인스턴스가 생성되면 생성자를 통해 정보를 출력합니다.
+
+
+
+  참고: 생성자에 public을 사용했습니다. 다른 패키지에서 이 클래스의 생성자를 호출하려면 public을 사용해야합니다.
+
+
+pack.PackageMain1
 
 package pack;
 
@@ -14359,25 +14472,7 @@ public class PackageMain1 {
 }
 
 
-  위 코드와 같이 패키지가 다르다고 pack.a.User와 같이 항상 전체 경로를 적어주는 것은 불편합니다.
-    
-      “이때는 import를 사용하면 됩니다.”
-    
-  
-
-
-PackageMain2
-package pack;
-
-import pack.a.User;
-
-public class PackageMain2 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   User user = new User();
-  }
-}
+  pack 패키지 위치에 PackageMain1 클래스를 만들었습니다.
 
 
 실행 결과
@@ -14386,102 +14481,8 @@ public class PackageMain2 {
 
 
 
-  코드에서 첫줄에는 package를 사용하고, 다음 줄에는 import를 사용할 수 있습니다.
-    
-      import를 사용하면 다른 패키지에 있는 클래스를 가져와서 사용할 수 있습니다.
-        
-          import를 사용한 덕분에 코드에서는 패키지 명을 생략하고 클래스 이름만 적을 수 있습니다.
-        
-      
-    
-  
-
-
-
-  참고로 특정 패키지에 포함된 모든 클래스를 포함해서 사용하고 싶으면 import 시점에 *(별)을 사용하면 됩니다.
-
-
-패키지 별(*)사용
-
-tree 구조
-* pack -&gt; [Package]
-├──* Data -&gt; (Class)
-├──* PackageMain1 -&gt; (Class)
-├──* PackageMain1 -&gt; (Class)
-└──* a -&gt; [Package]
-   ├──* User -&gt; (Class)
-   └──* UserManager -&gt; (Class)
-
-
-package pack;
-
-import pack.a.*; // pack.a의 모든 클래스 사용
-
-public class PackageMain2 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   User user = new User(); // import 사용으로 패키지 명 생략 가능
-   UserManager manager = new UserManager(); // import 사용으로 패키지 명 생략 가능
-  }
-}
-
-
-  이렇게 하면 pack.a 패키지에 있는 모든 클래스를 패키지 명을 생략하고 사용할 수 있습니다.
-
-
-실행 결과
-패키지 pack Data 생성
-패키지 pack.a 회원 생성
-패키지 pack.a 회원 매니저 생성
-
-
-클래스 이름 중복
-패키지 덕분에 클래스 이름이 같아도 패키지 이름으로 구분해서 같은 이름의 클래스를 사용할 수 있습니다.
-
-pack.a.User
-pack.b.User
-
-
-“이런 경우 클래스 이름이 둘다 User이지만 패키지 이름으로 대상을 구분할 수 있습니다.”
-
-  이렇게 이름이 같은 경우 둘다 사용하고 싶으면 어떻게 해야할까요?
-
-
-pack.b.User
-package pack.b;
-
-public class User {
-  public  User() {
-    System.out.println("패키지 pack.b 회원 생성");
-  }
-}
-
-
-PackageMain3
-package pack;
-
-import pack.a.User;
-
-public class PackageMain3 {
-
-  public static void main(String[] args) {
-    User userA = new User();
-    pack.b.User userB = new pack.b.User();
-  }
-}
-
-
-
-  같은 이름의 클래스가 있다면 import는 둘중 하나만 선택할 수 있습니다.
-    
-      이때는 자주 사용하는 클래스를 import하고 나머지를 패키지를 포함한 전체 경로를 적어주면 됩니다.
-        
-          물론 둘다 전체 경로를 적어준다면 import를 사용하지 않아도 됩니다.
-        
-      
-    
-  
+  사용자와 같은 위치: PackageMain1과 Data는 같은 pack이라는 패키지에 소속되어 있습니다. 이렇게 같은 패키지에 있는 경우에는 패키지 경로를 생략해도 됩니다.
+  사용자와 다른 위치: PackageMain1과 User는 서로 다른 패키지입니다. 이렇게 패키지가 다르면 pack.a.User와 같이 패키지 전체 경로를 포함해서 클래스를 적어주어야 합니다.
 
 
                         </a>
@@ -15015,288 +15016,6 @@ public class MethodInitMain2 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-23-classAndMethod.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-23-classAndMethod.html"><h1 class="title_post">☕️[Java] 클래스와 메서드</h1></a>
-                        <a href="/2024/Java/2024-02-23-classAndMethod.html" class="txt_post">
-                            클래스와 메서드.
-
-클래스는 데이터인 멤버 변수 뿐 아니라 기능 역할을 하는 메서드도 포함할 수 있습니다.
-
-먼저 멤버 변수만 존재하는 클래스로 간단한 코드를 작성해봅시다.
-
-ValueData
-package oop1;
-
-public class ValueData {
-  int value;
-}
-
-
-ValueDataMain
-package oop1;
-
-public class ValueDataMain {
-
-  public static void main(String[] args) {
-    ValueData valueData = new ValueData();
-    add(valueData);
-    add(valueData);
-    add(valueData);
-    System.out.println("최종 숫자=" + valueData.value);
-  }
-
-  static void add(ValueData valueData) {
-    valueData.value++;
-    System.out.println("숫자 증가 value=" + valueData.value);
-  }
-}
-
-
-실행 결과
-숫자 증가 value=1
-숫자 증가 value=2
-숫자 증가 value=3
-최종 숫자=3
-
-
-  ValueData 라는 인스턴스를 생성하고 외부에서 ValueData.value에 접근해 숫자를 하나씩 증가시키는 단순한 코드입니다.
-    
-      코드를 보면 데이터인 value와 value의 값을 증가시키는 기능은 add() 메서드가 서로 분리되어 있습니다.
-    
-  
-  자바 같은 객체 지향 언어는 클래스 내부에 속성(데이터)과 기능(메서드)을 함께 포함할 수 있습니다.
-    
-      클래스 내부에 멤버 변수 뿐만 아니라 메서드도 함께 포함할 수 있다는 뜻 입니다.
-    
-  
-
-
-“이번에는 숫자를 증가시키는 기능도 클래스에 함께 포함해서 새로운 클래스를 정의해봅시다.”
-
-package oop1;
-
-public class ValueData {
-  int value;
-
-  void add() {
-    value++;
-    System.out.println("숫자 증가 value=" + value);
-  }
-}
-
-
-  이 클래스에는 데이터인 value와 해당 데이터를 사용하는 기능인 add() 메서드를 함께 정의했습니다.
-
-
-이제 이 클래스가 어떻게 사용되는지 확인해봅시다.
-
-
-  참고: 여기서 만드는 add() 메서드에는 static 키워드를 사용하지 않습니다.
-메서드는 객체를 생성해야 호출할 수 있습니다. 그런데 static이 붙으면 객체를 생성하지 않고도 메서드를 호출할 수 있습니다.
-static에 대한 자세한 내용은 추후에 포스팅하겠습니다.
-
-
-ValueObjectMain
-
-package oop1;
-
-public class ValueObjectMain {
-
-  public static void main(String[] args) {
-    ValueData valueData = new ValueData();
-    valueData.add();
-    valueData.add();
-    valueData.add();
-    System.out.println("최종 숫자=" + valueData.value);
-  }
-}
-
-
-실행 결과
-숫자 증가 value=1
-숫자 증가 value=2
-숫자 증가 value=3
-최종 숫자=3
-
-
-인스턴스 생성
-ValueData valueData = new ValueData();
-
-
-  valueData라는 객체를 생성했습니다. 이 객체는 멤버 변수 뿐만 아니라 내분에 기능을 수행하는 add() 메서드도 함께 존재합니다.
-
-
-인스턴스의 메서드 호출
-
-  인스턴스의 메서드를 호출하는 방법은 멤버 변수를 사용하는 방법과 동일합니다.
-    
-      .(dot)을 찍어서 객체 접근한 다음에 원하는 메서드를 호출하면 됩니다.
-        valueData.add(); // 1
-x002.add(); // 2 x002 ValueData 인스턴스에 있는 add() 메서드를 호출합니다.
-        
-      
-    
-  
-  3: add() 메서드를 호출하면 메서드 내부에서 value++을 호출하게 됩니다.
-    
-      이때 value에 접근해야 하는데, 기본으로 본인 인스턴스에 있는 멤버 변수에 접근합니다.
-        
-          본인 인스턴스가 x002 참조값을 사용하므로 자기 자신인 x002.value에 접근하게 됩니다.
-        
-      
-    
-  
-  4: ++ 연산으로 value의 값을 하나 증가시킵니다.
-
-
-정리
-
-  클래스는 속성(데이터, 멤버 변수)과 기능(메서드)을 정의할 수 있습니다.
-  객체는 자신의 메서드를 통해 자신의 멤버 변수에 접근할 수 있습니다.
-    
-      객체의 메서드 내부에서 접근하는 멤버 변수는 객체 자신의 멤버 변수입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html"><h1 class="title_post">☕️[Java] 객체 지향 프로그래밍 vs 절차 지향 프로그래밍</h1></a>
-                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="txt_post">
-                            객체 지향 프로그래밍 vs 절차 지향 프로그래밍
-
-  객체 지향 프로그래밍과 절차 지향 프로그래밍은 서로 대치되는 개념이 아닙니다.
-    
-      객체 지향이라도 프로그램의 작동 순서는 중요합니다.
-        
-          다만 어디에 더 초점을 맞추는가에 둘의 차이가 있습니다.
-        
-      
-    
-  
-  객체 지향의 경우 객체의 설계와 관계를 중시합니다.
-    
-      반면 절차 지향의 경우 데이터와 기능이 분리되어 있고, 프로그램이 어떻게 작동하는지 그 순서에 초점을 맞춥니다.
-    
-  
-
-
-절차 지향 프로그래밍
-
-  절차 지향 프로그래밍은 이름 그대로 절차를 지향합니다.
-    
-      쉽게 이야기해서 실행 순서를 중요하게 생각하는 방식입니다.
-    
-  
-  절차 지향 프로그래밍은 프로그램의 흐름을 순차적으로 따르며 처리하는 방식입니다.
-    
-      즉, “어떻게”를 중심으로 프로그래밍 합니다.
-    
-  
-
-
-객체 지향 프로그래밍
-
-  객체 지향 프로그래밍은 이름 그대로 객체를 지향합니다.
-    
-      쉽게 이야기해서 객체를 중요하게 생각하는 방식입니다.
-    
-  
-  객체 지향 프로그래밍은 실제 세계의 사물이나 사건을 객체로 보고, 이러한 객제들 간의 상호작용을 중심으로 프로그래밍하는 방식입니다.
-    
-      즉 “무엇을” 중심으로 프로그래밍 합니다.
-    
-  
-
-
-둘의 중요한 차이
-
-  절차 지향은 데이터와 해당 데이터에 대한 처리 방식이 분리되어 있습니다.
-    
-      반면 객체 지향에서는 데이터와 그 데이터에 대한 행동(메서드)이 하나의 ‘객체’ 안에 함께 포함되어 있습니다.
-    
-  
-
-
-객체란?
-
-  세상의 모든 사물을 단순하게 추상화해보면 속성(데이터)과 기능(메서드) 딱 2가지로 설명할 수 있습니다.
-
-
-자동차
-
-  속성: 색상, 속도
-  기능: 엑셀, 브레이크, 문 열기, 문 닫기
-
-
-동물
-
-  속성: 색상, 키, 온도
-  기능: 먹는다, 걷는다
-
-
-게임 캐릭터
-
-  속성: 레벨, 경험치, 소유한 아이템들
-  기능: 이동, 공격, 아이템 획득
-
-
-“객체 지향 프로그래밍은 모든 사물을 속성과 기능을 가진 객체로 생각하는 것 입니다.”
-
-  객체에는 속성과 기능만 존재합니다.
-    
-      이렇게 단순화하면 세상에 있는 객체들을 컴퓨터 프로그램으로 쉽게 설계할 수 있습니다.
-        
-          이런 장점들 덕분에 지금은 객체 지향 프로그래밍이 가장 많이 사용됩니다.
-            
-              참고로 실세계와 객체가 항상 1:1로 매칭되는 것은 아닙니다.
-            
-          
-        
-      
-    
-  
-
-
-객체 지향의 특징은 속성과 기능을 하나로 묶는 것 뿐만 아니라 캡슐화, 상속, 다형성, 추상화, 메시지 전달 같은 다양한 특징들이 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -15414,91 +15133,6 @@ public class MusicPlayerMain3 {
 “데이터와 기능을 하나로 온전히 묶는다는 것이 어떤 의미인지 이해하기 위해 간단한 예시 코드를 만들어봅시다”
 
   이 예시 코드는 다음 포스팅에 이어집니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(2)</h1></a>
-                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="txt_post">
-                            절차 지향 프로그래밍(2) - 데이터 묶음
-“절차 지향 프로그래밍(1)에 작성한 코드에 클래스를 도입합시다.”
-
-MusicPlayerData라는 클래스를 만들고, 음악 플레이어에 사용되는 클래스를 만들고, 음악 플레이어에 사용되는 데이터들을 여기에 묶어서 멤버 변수로 사용해봅시다.
-
-MusicPlayerData
-package oop1;
-
-public class MusicPlayerData {
-  int volume = 0;
-  boolean isOn = false;
-}
-
-
-  음악 플레이어에 사용되는 volume, isOn 속성을 MusicPlayerData의 멤버 변수에 포함했습니다.
-
-
-MusicPlayerMain2
-package oop1;
-
-public class MusicPlayerMain2 {
-
-  public static void main(String[] args) {
-    MusicPlayerData data = new MusicPlayerData();
-
-    // 음악 플레이어 켜기
-    data.isOn = true;
-    System.out.println("음악 플레이어를 시작합니다.");
-
-    // 볼륨 증가
-    data.volume++;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-    // 볼륨 증가
-    data.volume++;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-    // 볼륨 감소
-    data.volume--;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-    // 음악 플레이어 상태
-    System.out.println("음악 플레이어 상태 확인");
-    if (data.isOn) {
-      System.out.println("음악 플레이어 ON, 볼륨:" + data.volume);
-    } else {
-      System.out.println("음악 플레이어 OFF");
-    }
-    // 음악 플레이어 끄기
-    data.isOn = false;
-    System.out.println("음악 플레이어를 종료합니다.");
-  }
-}
-
-
-  음악 플레이어와 관련된 데이터는 MusicPlayerData 클래스에 존재합니다.
-    
-      이 클래스를 사용하도록 기존 로직을 변경했습니다.
-        
-          이후에 프로그램 로직이 더 복잡해져서 다양한 변수들이 추가되더라도 음악 플레이어와 관련된 변수들은 MusicPlayerData data 객체에 속해있으므로 쉽게 구분할 수 있습니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -15664,6 +15298,373 @@ MusicPlayer를 보면 음악 플레이어를 구성하기 위한 속성과 기�
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-23-classAndMethod.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-23-classAndMethod.html"><h1 class="title_post">☕️[Java] 클래스와 메서드</h1></a>
+                        <a href="/2024/Java/2024-02-23-classAndMethod.html" class="txt_post">
+                            클래스와 메서드.
+
+클래스는 데이터인 멤버 변수 뿐 아니라 기능 역할을 하는 메서드도 포함할 수 있습니다.
+
+먼저 멤버 변수만 존재하는 클래스로 간단한 코드를 작성해봅시다.
+
+ValueData
+package oop1;
+
+public class ValueData {
+  int value;
+}
+
+
+ValueDataMain
+package oop1;
+
+public class ValueDataMain {
+
+  public static void main(String[] args) {
+    ValueData valueData = new ValueData();
+    add(valueData);
+    add(valueData);
+    add(valueData);
+    System.out.println("최종 숫자=" + valueData.value);
+  }
+
+  static void add(ValueData valueData) {
+    valueData.value++;
+    System.out.println("숫자 증가 value=" + valueData.value);
+  }
+}
+
+
+실행 결과
+숫자 증가 value=1
+숫자 증가 value=2
+숫자 증가 value=3
+최종 숫자=3
+
+
+  ValueData 라는 인스턴스를 생성하고 외부에서 ValueData.value에 접근해 숫자를 하나씩 증가시키는 단순한 코드입니다.
+    
+      코드를 보면 데이터인 value와 value의 값을 증가시키는 기능은 add() 메서드가 서로 분리되어 있습니다.
+    
+  
+  자바 같은 객체 지향 언어는 클래스 내부에 속성(데이터)과 기능(메서드)을 함께 포함할 수 있습니다.
+    
+      클래스 내부에 멤버 변수 뿐만 아니라 메서드도 함께 포함할 수 있다는 뜻 입니다.
+    
+  
+
+
+“이번에는 숫자를 증가시키는 기능도 클래스에 함께 포함해서 새로운 클래스를 정의해봅시다.”
+
+package oop1;
+
+public class ValueData {
+  int value;
+
+  void add() {
+    value++;
+    System.out.println("숫자 증가 value=" + value);
+  }
+}
+
+
+  이 클래스에는 데이터인 value와 해당 데이터를 사용하는 기능인 add() 메서드를 함께 정의했습니다.
+
+
+이제 이 클래스가 어떻게 사용되는지 확인해봅시다.
+
+
+  참고: 여기서 만드는 add() 메서드에는 static 키워드를 사용하지 않습니다.
+메서드는 객체를 생성해야 호출할 수 있습니다. 그런데 static이 붙으면 객체를 생성하지 않고도 메서드를 호출할 수 있습니다.
+static에 대한 자세한 내용은 추후에 포스팅하겠습니다.
+
+
+ValueObjectMain
+
+package oop1;
+
+public class ValueObjectMain {
+
+  public static void main(String[] args) {
+    ValueData valueData = new ValueData();
+    valueData.add();
+    valueData.add();
+    valueData.add();
+    System.out.println("최종 숫자=" + valueData.value);
+  }
+}
+
+
+실행 결과
+숫자 증가 value=1
+숫자 증가 value=2
+숫자 증가 value=3
+최종 숫자=3
+
+
+인스턴스 생성
+ValueData valueData = new ValueData();
+
+
+  valueData라는 객체를 생성했습니다. 이 객체는 멤버 변수 뿐만 아니라 내분에 기능을 수행하는 add() 메서드도 함께 존재합니다.
+
+
+인스턴스의 메서드 호출
+
+  인스턴스의 메서드를 호출하는 방법은 멤버 변수를 사용하는 방법과 동일합니다.
+    
+      .(dot)을 찍어서 객체 접근한 다음에 원하는 메서드를 호출하면 됩니다.
+        valueData.add(); // 1
+x002.add(); // 2 x002 ValueData 인스턴스에 있는 add() 메서드를 호출합니다.
+        
+      
+    
+  
+  3: add() 메서드를 호출하면 메서드 내부에서 value++을 호출하게 됩니다.
+    
+      이때 value에 접근해야 하는데, 기본으로 본인 인스턴스에 있는 멤버 변수에 접근합니다.
+        
+          본인 인스턴스가 x002 참조값을 사용하므로 자기 자신인 x002.value에 접근하게 됩니다.
+        
+      
+    
+  
+  4: ++ 연산으로 value의 값을 하나 증가시킵니다.
+
+
+정리
+
+  클래스는 속성(데이터, 멤버 변수)과 기능(메서드)을 정의할 수 있습니다.
+  객체는 자신의 메서드를 통해 자신의 멤버 변수에 접근할 수 있습니다.
+    
+      객체의 메서드 내부에서 접근하는 멤버 변수는 객체 자신의 멤버 변수입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(2)</h1></a>
+                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(2).html" class="txt_post">
+                            절차 지향 프로그래밍(2) - 데이터 묶음
+“절차 지향 프로그래밍(1)에 작성한 코드에 클래스를 도입합시다.”
+
+MusicPlayerData라는 클래스를 만들고, 음악 플레이어에 사용되는 클래스를 만들고, 음악 플레이어에 사용되는 데이터들을 여기에 묶어서 멤버 변수로 사용해봅시다.
+
+MusicPlayerData
+package oop1;
+
+public class MusicPlayerData {
+  int volume = 0;
+  boolean isOn = false;
+}
+
+
+  음악 플레이어에 사용되는 volume, isOn 속성을 MusicPlayerData의 멤버 변수에 포함했습니다.
+
+
+MusicPlayerMain2
+package oop1;
+
+public class MusicPlayerMain2 {
+
+  public static void main(String[] args) {
+    MusicPlayerData data = new MusicPlayerData();
+
+    // 음악 플레이어 켜기
+    data.isOn = true;
+    System.out.println("음악 플레이어를 시작합니다.");
+
+    // 볼륨 증가
+    data.volume++;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+    // 볼륨 증가
+    data.volume++;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+    // 볼륨 감소
+    data.volume--;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+    // 음악 플레이어 상태
+    System.out.println("음악 플레이어 상태 확인");
+    if (data.isOn) {
+      System.out.println("음악 플레이어 ON, 볼륨:" + data.volume);
+    } else {
+      System.out.println("음악 플레이어 OFF");
+    }
+    // 음악 플레이어 끄기
+    data.isOn = false;
+    System.out.println("음악 플레이어를 종료합니다.");
+  }
+}
+
+
+  음악 플레이어와 관련된 데이터는 MusicPlayerData 클래스에 존재합니다.
+    
+      이 클래스를 사용하도록 기존 로직을 변경했습니다.
+        
+          이후에 프로그램 로직이 더 복잡해져서 다양한 변수들이 추가되더라도 음악 플레이어와 관련된 변수들은 MusicPlayerData data 객체에 속해있으므로 쉽게 구분할 수 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html"><h1 class="title_post">☕️[Java] 객체 지향 프로그래밍 vs 절차 지향 프로그래밍</h1></a>
+                        <a href="/2024/Java/2024-02-23-OOPvsPOPsummary.html" class="txt_post">
+                            객체 지향 프로그래밍 vs 절차 지향 프로그래밍
+
+  객체 지향 프로그래밍과 절차 지향 프로그래밍은 서로 대치되는 개념이 아닙니다.
+    
+      객체 지향이라도 프로그램의 작동 순서는 중요합니다.
+        
+          다만 어디에 더 초점을 맞추는가에 둘의 차이가 있습니다.
+        
+      
+    
+  
+  객체 지향의 경우 객체의 설계와 관계를 중시합니다.
+    
+      반면 절차 지향의 경우 데이터와 기능이 분리되어 있고, 프로그램이 어떻게 작동하는지 그 순서에 초점을 맞춥니다.
+    
+  
+
+
+절차 지향 프로그래밍
+
+  절차 지향 프로그래밍은 이름 그대로 절차를 지향합니다.
+    
+      쉽게 이야기해서 실행 순서를 중요하게 생각하는 방식입니다.
+    
+  
+  절차 지향 프로그래밍은 프로그램의 흐름을 순차적으로 따르며 처리하는 방식입니다.
+    
+      즉, “어떻게”를 중심으로 프로그래밍 합니다.
+    
+  
+
+
+객체 지향 프로그래밍
+
+  객체 지향 프로그래밍은 이름 그대로 객체를 지향합니다.
+    
+      쉽게 이야기해서 객체를 중요하게 생각하는 방식입니다.
+    
+  
+  객체 지향 프로그래밍은 실제 세계의 사물이나 사건을 객체로 보고, 이러한 객제들 간의 상호작용을 중심으로 프로그래밍하는 방식입니다.
+    
+      즉 “무엇을” 중심으로 프로그래밍 합니다.
+    
+  
+
+
+둘의 중요한 차이
+
+  절차 지향은 데이터와 해당 데이터에 대한 처리 방식이 분리되어 있습니다.
+    
+      반면 객체 지향에서는 데이터와 그 데이터에 대한 행동(메서드)이 하나의 ‘객체’ 안에 함께 포함되어 있습니다.
+    
+  
+
+
+객체란?
+
+  세상의 모든 사물을 단순하게 추상화해보면 속성(데이터)과 기능(메서드) 딱 2가지로 설명할 수 있습니다.
+
+
+자동차
+
+  속성: 색상, 속도
+  기능: 엑셀, 브레이크, 문 열기, 문 닫기
+
+
+동물
+
+  속성: 색상, 키, 온도
+  기능: 먹는다, 걷는다
+
+
+게임 캐릭터
+
+  속성: 레벨, 경험치, 소유한 아이템들
+  기능: 이동, 공격, 아이템 획득
+
+
+“객체 지향 프로그래밍은 모든 사물을 속성과 기능을 가진 객체로 생각하는 것 입니다.”
+
+  객체에는 속성과 기능만 존재합니다.
+    
+      이렇게 단순화하면 세상에 있는 객체들을 컴퓨터 프로그램으로 쉽게 설계할 수 있습니다.
+        
+          이런 장점들 덕분에 지금은 객체 지향 프로그래밍이 가장 많이 사용됩니다.
+            
+              참고로 실세계와 객체가 항상 1:1로 매칭되는 것은 아닙니다.
+            
+          
+        
+      
+    
+  
+
+
+객체 지향의 특징은 속성과 기능을 하나로 묶는 것 뿐만 아니라 캡슐화, 상속, 다형성, 추상화, 메시지 전달 같은 다양한 특징들이 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -24022,6 +24023,17 @@ public class Var2 {
             'tags'     : "Network",
             'url'      : "/Backend/Network/2024-08-24-Internetworking.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 정적 컨텐츠.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-08-24-static-content.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-08-24"
         });
     

@@ -612,6 +612,7 @@
             
             
             
+            
 
     
     
@@ -976,6 +977,123 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Network/2024-08-24-Internetworking.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Network/2024-08-24-Internetworking.html"><h1 class="title_post">🌐[Network] 인터네트워킹</h1></a>
+                        <a href="/Backend/Network/2024-08-24-Internetworking.html" class="txt_post">
+                            🌐[Network] 인터네트워킹
+
+
+  네트워크와 네트워크의 연결을 인터네트워킹(Internetworking)이라 하며, 연결되는 네트워크 수가 증가할수록 복잡도가 커집니다.
+  인터넷은 IP 프로토콜을 지원하는 전 세계의 모든 네트워크가 반복 구조로 연결된 시스템을 의미하며, 라우터라는 중개 장비를 사용해서 네트워크들을 연결합니다.
+
+
+1️⃣ 네트워크의 연결
+
+
+
+
+  위 그림처럼 서로 독립적으로 운영되는 2개 이상의 네트워크가 연동되어 정보를 교환하려면, 이를 적절히 연결하여 데이터를 중개할 수 있는 인터네트워킹 시스템이 필요합니다.
+    
+      여기에서 네트워크가 연동된다는 의미는 물리적인 연결뿐 아니라, 데이터 중개에 필요한 상위의 네트워크 프로토콜들이 지원됨을 뜻합니다.
+    
+  
+  인터넷에서 인터네트워킹 시스템의 주요 기능은 전송 데이터의 경로 선택과 관계가 있습니다.
+    
+      예를 들어 위 그림의 네트워크 1에서 유입된 데이터를 네트워크 2와 네트워크 3의 누구에게 보낼 것인가를 선택해야 합니다.
+        
+          이 기능은 7계층 모델에서 네트워크 계층에 포함되므로 인터네트워킹 시스템은 네트워크 계층을 포함한 하위 3개 계층의 기능을 수행합니다.
+        
+      
+    
+  
+  그림의 예는 일반 도로로 비유하자면 삼거리의 경우와 유사하며, 여기서 자동차 내비게이션 기능이 인터네트워킹 시스템의 주요 기능에 해당합니다.
+  인터넷의 내부 구조는 이와 같은 인터네트워킹 시스템들이 복잡하게 연결되어 상호 유기적인 협조 체제로 동작합니다.
+  인터네트워킹 시스템에 연결된 네트워크들은 물리적으로 같은 종류일 필요가 없으며, 상위 계층 프로토콜들이 지원하는 논리적 기능도 다를 수 있습니다.
+    
+      하지만 인터네트워킹 시스템은 연결된 모든 네트워크에 대하여 물리적이고 논리적인 인터페이스를 모두 지원해야 합니다.
+        
+          즉, 위 그림에서 인터네트워킹 시스템은 네트워크 1, 네트워크 2, 네트워크 3과 개별적으로 연동할 수 있어야 합니다.
+          또한 이 과정에서 데이터 표현 방식을 포함해 양쪽 네트워크의 프로토콜이 서로 일치하지 않으면 필요한 변환 작업을 수행해야 합니다.
+            
+              이러한 방식으로 인터네트워킹 시스템은 둘 이상의 네트워크를 유기적으로 연동할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 게이트웨이
+
+  인터네트워킹 시스템은 용어 자체로 의미를 쉽게 설명하고 이해시키기 위한 개념적인 명칭이며, 인터네트워킹 기능을 수행하는 시스템을 일반적으로 게이트웨이(Gateway)라 부릅니다.
+  게이트웨이의 종류는 다양하지만, 일반적으로 지원할 수 있는 기능의 한계에 따라 리피터, 브리지, 라우터 등으로 나뉩니다.
+
+
+1️⃣ 리피터(Repeater)
+
+  리피터(Repeater)는 물리 계층의 기능을 지원합니다.
+  물리적 신호는 전송 거리가 멀수록 감쇄되기 때문에 중간에 이를 보완해주어야 합니다.
+    
+      예를 들어, 사람의 목소리는 멀리 전달될수록 세기가 약해져서 점점 알아들을 수 없게 됩니다.
+        
+          이와 같이 네트워크에서도 무선 신호 혹은 유선의 전기적 신호도 거리가 멀어질수록 신호의 크기가 약해집니다.
+            
+              따라서 리피터는 한쪽에서 입력된 신호를 물리적으로 단순히 증폭하여 다른 쪽으로 중개하는 역할을 합니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 브리스(Bridge)
+
+  리피터는 단순히 신호를 증폭하는 역할을 하며, 전송과정에서 발생하는 물리적인 오류 문제는 다루지 않습니다.
+    
+      이를 보완한 브리지(Bridge)는 리피터 기능에 데이터 링크 계틍의 기능이 추가 된 것으로 물리 계층에서 발생한 오류를 해결해줍니다.
+        
+          예를 들어, 가정에서 사용하는 무선 공유기는 유무선 기능을 모두 지원하는 브리지의 예입니다.
+        
+      
+    
+  
+
+
+3️⃣ 라우터(Router)
+
+  라우터(Router)는 물리 계층, 데이터 링크 계층, 네트워크 계층의 기능을 지원합니다.
+    
+      네트워크 계층은 경로 선택 기능을 제공해야 하므로 임의의 네트워크에서 들어온 데이터를 어느 네트워크로 전달할지 판단할 수 있어야 합니다.
+        
+          이를 위하여 라우터는 자신과 연결된 네트워크와 호스트들의 정보를 유지,관리함으로써 특정 경로가 이용 가능한지 여부와 다수의 경로 중에서 어느 경로가 빠른 데이터 전송을 지원하는지 판단할 수 있어야 합니다.
+        
+      
+    
+  
+  네트워크와 호스트에 대한 정보는 일반적으로 라우팅 테이블(Routing Table)에 보관됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1909,106 +2027,6 @@ public class MyService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-08-22-Object-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-22-Object-Array.html"><h1 class="title_post">☕️[Java] Object 배열</h1></a>
-                        <a href="/Backend/Java/2024-08-22-Object-Array.html" class="txt_post">
-                            ☕️[Java] Object 배열.
-
-1️⃣ Object 배열.
-
-  'Object' 는 모든 타입의 객체를 담을 수 있습니다.
-    
-      따라서 'Object[]' 을 만들면 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있습니다.
-    
-  
-
-
-package langReview.object.poly;
-
-public class ObjectPolyExample2 {
-
-    public static void main(String[] args) {
-        Dog dog = new Dog();
-        Car car = new Car();
-        Object object = new Object(); // Object 인스턴스도 만들 수 있습니다.
-
-        Object[] objects = { dog, car, object };
-
-        size(objects);
-    }
-
-    private static void size(Object[] objects) {
-        System.out.println("전달된 객체의 수는 : " + objects.length);
-    }
-}
-
-
-실행 결과
-
-전달된 객체의 수는 : 3
-
-
-Object[] objects = { dog, car, object };
-// 쉽게 풀어서 설명하면 다음과 같이 코드를 작성할 수 있습니다.
-Object objects[0] = new Dog();
-Object objects[1] = new Car();
-Object objects[2] = new Object();
-
-
-
-  'Object' 타입을 사용한 덕분에 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있게 되었습니다.
-
-
-
-
-size() 메서드
-
-  'size(Object[] objects)' 메서드는 배열에 담긴 객체의 수를 세는 역할을 담당합니다.
-  이 메서드는 'Object' 타입만 사용합니다.
-    
-      'Object' 타입의 배열은 세상의 모든 객체를 담을 수 있기 때문에, 새로운 클래스가 추가되거나 변경되어도 이 메서드를 수정하지 않아도 됩니다.
-        
-          지금 만든 'size()' 메서드는 자바를 사용하는 곳이라면 어디서든지 사용될 수 있습니다.
-        
-      
-    
-  
-
-
-2️⃣ Object가 없다면 어떻게 될까?
-
-  'void actioon(Object obj)' 과 같이 모든 객체를 받을 수 있는 메서드를 만들 수 없게됩니다.
-  'Objectp[] objects' 처럼 모든 객체를 저장할 수 있는 배열을 만들 수 없게됩니다.
-  🤔 직접 구현하면 되지 않을까?
-    
-      'Object' 가 없어도 직접 'MyObject' 와 같은 클래스를 만들고 모든 클래스에서 직접 정의한 'MyObject' 를 상속 받으면 됩니다.
-        
-          🙋‍♂️ 하지만 하나의 프로젝트를 넘어 전세계의 모든 개발자가 비슷한 클래스를 만들 것이고, 서로 호환되지 않는 수많은 'XxxObject' 들이 넘쳐나는 현상이 생길 것입니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-22</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-08-22-logging-framework.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2223,6 +2241,106 @@ public void doSomthing() {
 
   logback은 Java 애플리케이션에서 사용되는 고성능 로깅 프레임워크로, slf4j와 함께 사용됩니다.
   logback은 유연한 설정과 높은 성능, 다양한 기능이 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-22-Object-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-22-Object-Array.html"><h1 class="title_post">☕️[Java] Object 배열</h1></a>
+                        <a href="/Backend/Java/2024-08-22-Object-Array.html" class="txt_post">
+                            ☕️[Java] Object 배열.
+
+1️⃣ Object 배열.
+
+  'Object' 는 모든 타입의 객체를 담을 수 있습니다.
+    
+      따라서 'Object[]' 을 만들면 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있습니다.
+    
+  
+
+
+package langReview.object.poly;
+
+public class ObjectPolyExample2 {
+
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        Car car = new Car();
+        Object object = new Object(); // Object 인스턴스도 만들 수 있습니다.
+
+        Object[] objects = { dog, car, object };
+
+        size(objects);
+    }
+
+    private static void size(Object[] objects) {
+        System.out.println("전달된 객체의 수는 : " + objects.length);
+    }
+}
+
+
+실행 결과
+
+전달된 객체의 수는 : 3
+
+
+Object[] objects = { dog, car, object };
+// 쉽게 풀어서 설명하면 다음과 같이 코드를 작성할 수 있습니다.
+Object objects[0] = new Dog();
+Object objects[1] = new Car();
+Object objects[2] = new Object();
+
+
+
+  'Object' 타입을 사용한 덕분에 세상의 모든 객체를 담을 수 있는 배열을 만들 수 있게 되었습니다.
+
+
+
+
+size() 메서드
+
+  'size(Object[] objects)' 메서드는 배열에 담긴 객체의 수를 세는 역할을 담당합니다.
+  이 메서드는 'Object' 타입만 사용합니다.
+    
+      'Object' 타입의 배열은 세상의 모든 객체를 담을 수 있기 때문에, 새로운 클래스가 추가되거나 변경되어도 이 메서드를 수정하지 않아도 됩니다.
+        
+          지금 만든 'size()' 메서드는 자바를 사용하는 곳이라면 어디서든지 사용될 수 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ Object가 없다면 어떻게 될까?
+
+  'void actioon(Object obj)' 과 같이 모든 객체를 받을 수 있는 메서드를 만들 수 없게됩니다.
+  'Objectp[] objects' 처럼 모든 객체를 저장할 수 있는 배열을 만들 수 없게됩니다.
+  🤔 직접 구현하면 되지 않을까?
+    
+      'Object' 가 없어도 직접 'MyObject' 와 같은 클래스를 만들고 모든 클래스에서 직접 정의한 'MyObject' 를 상속 받으면 됩니다.
+        
+          🙋‍♂️ 하지만 하나의 프로젝트를 넘어 전세계의 모든 개발자가 비슷한 클래스를 만들 것이고, 서로 호환되지 않는 수많은 'XxxObject' 들이 넘쳐나는 현상이 생길 것입니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -2461,87 +2579,6 @@ if (obj instanceof Dog dog) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
-                            ☕️[Java] java.lang 패키지.
-자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
-여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
-즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-1️⃣ java.lang 패키지의 대표적인 클래스들.
-
-  'Object'
-    
-      모든 자바 객체의 부모 클래스.
-    
-  
-  'String'
-    
-      문자열.
-    
-  
-  'Integer, Long, Double'
-    
-      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
-    
-  
-  'Class'
-    
-      클래스 메타 정보.
-    
-  
-  'System'
-    
-      시스템과 관련된 기본 기능들을 제공
-        
-          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
-        
-      
-    
-  
-
-
-2️⃣ import 생략 가능.
-
-  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
-    
-      따라서 'import' 구문을 사용하지 않아도 됩니다.
-    
-  
-
-
-package langReview;
-
-public class LangMain {
-    public static void main(String[] args) {
-        System.out.println("hello java");
-    }
-}
-
-
-  'import java.lang.System' 코드가 없어도 정상 동작합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-08-21-Object-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -2743,6 +2780,87 @@ langReview.object.Child@452b3a41
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
+                            ☕️[Java] java.lang 패키지.
+자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
+여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
+즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+1️⃣ java.lang 패키지의 대표적인 클래스들.
+
+  'Object'
+    
+      모든 자바 객체의 부모 클래스.
+    
+  
+  'String'
+    
+      문자열.
+    
+  
+  'Integer, Long, Double'
+    
+      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
+    
+  
+  'Class'
+    
+      클래스 메타 정보.
+    
+  
+  'System'
+    
+      시스템과 관련된 기본 기능들을 제공
+        
+          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
+        
+      
+    
+  
+
+
+2️⃣ import 생략 가능.
+
+  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
+    
+      따라서 'import' 구문을 사용하지 않아도 됩니다.
+    
+  
+
+
+package langReview;
+
+public class LangMain {
+    public static void main(String[] args) {
+        System.out.println("hello java");
+    }
+}
+
+
+  'import java.lang.System' 코드가 없어도 정상 동작합니다.
 
 
                         </a>
@@ -12587,32 +12705,6 @@ Queue의 크기 : 0
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-29-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-29-TIL.html"><h1 class="title_post">📝 [TIL] 240529 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-29-TIL.html" class="txt_post">
-                            
-  스택 문제 풀이
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-29</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-05-30-VariousInputOutputMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -12961,6 +13053,32 @@ DMA를 위해 시스템 버스를 너무 자주 사용하면 그만큼 CPU가 �
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-05-29</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-29-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-29-TIL.html"><h1 class="title_post">📝 [TIL] 240529 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-29-TIL.html" class="txt_post">
+                            
+  스택 문제 풀이
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-29</span>
                             
@@ -27316,386 +27434,6 @@ StringBuilder를 직접 사용하는 것이 더 좋은 경우
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-11-MethodChaining.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-11-MethodChaining.html"><h1 class="title_post">☕️[Java] 메서드 체이닝 - Method Chaining</h1></a>
-                        <a href="/2024/Java/2024-04-11-MethodChaining.html" class="txt_post">
-                            메서드 체이닝 - Method Chaining.
-간단한 예제 코드로 메서드 체이닝(Method Chaining)에 대해서 알아봅시다.
-
-package lang.string.chaining;
-
-public class ValueAdder {
-
-  private  int value;
-
-  public ValueAdder add(int addValue) {
-    value += addValue;
-    return this;
-  }
-
-  public int getValue() {
-    return value;
-  }
-}
-
-
-
-  단순히 값을 누적해서 더하는 기능을 제공하는 클래스입니다.
-  add() 메서드를 호출할 때 마다 내부의 value에 값을 누적합니다.
-  add() 메서드를 보면 자기 자신(this)의 참조값을 반환합니다. 이 부분을 유의해서 봅시다.
-
-
-package lang.string.chaining;
-
-public class MethodChainingMain1 {
-
-  public static void main(String[] args) {
-    ValueAdder adder = new ValueAdder();
-    adder.add(1);
-    adder.add(2);
-    adder.add(3);
-
-    int result = adder.getValue();
-    System.out.println("result = " + result);
-  }
-}
-
-
-실행 결과
-result = 6
-
-
-
-  add() 메서드를 여러번 호출해서 값을 누적해서 더하고 출력합니다.
-    
-      여기서는 add() 메서드의 반환값은 사용하지 않았습니다.
-    
-  
-
-
-이번에는 add() 메서드의 반환값을 사용해봅시다.
-
-package lang.string.chaining;
-
-public class MethodChainingMain2 {
-
-  public static void main(String[] args) {
-    ValueAdder adder = new ValueAdder();
-    ValueAdder adder1 = adder.add(1);
-    ValueAdder adder2 = adder1.add(2);
-    ValueAdder adder3 = adder2.add(3);
-
-    int result = adder3.getValue();
-    System.out.println("result = " + result);
-  }
-}
-
-
-실행 결과
-result = 6
-
-실행 결과는 기존과 같습니다.
-
-
-
-  adder.add(1)을 호출합니다.
-  add() 메서드는 결과를 누적하고 자기 자신의 참조값인 this(x001)를 반환합니다.
-  adder1 변수는 adder와 같은 x001 인스턴스를 참조합니다.
-
-
-
-
-
-  add()메서드는 자기 자신(this) 메서드의 참조값을 반환합니다.
-    
-      이 반환값을 adder1, adder2, adder3에 보관했습니다.
-        
-          따라서 adder, adder1, adder2, adder3은 모두 같은 참조값을 사용합니다.
-            
-              왜냐하면 add() 메서드가 자기 자신(this)의 참조값을 반환했기 때문입니다.
-            
-          
-        
-      
-    
-  
-
-
-그런데 이 방식은 처음 방식보다 더 불편하고, 코드도 더 잘 읽히지 않습니다.
-이런 방식을 왜 사용하는 것 일까요?
-
-이번에는 방금 사용했던 방식에서 반환된 참조값을 새로운 변수에 담아서 보관하지 않고, 대신에 바로 메서드 호출에 사용해봅시다.
-
-package lang.string.chaining;
-
-public class MethodChainingMain3 {
-
-  public static void main(String[] args) {
-    ValueAdder adder = new ValueAdder();
-    int result = adder.add(1).add(2).add(3).getValue();
-    System.out.println("result = " + result);
-  }
-}
-
-
-실행 결과
-result = 6
-
-
-실행 순서
-
-  add() 메서드를 호출하면 ValueAdder 인스턴스 자신의 참조값(x001)이 반환됩니다.
-    
-      이 반환된 참조값을 변수에 담아두지 않아도 됩니다.
-        
-          대신에 반환된 참조값을 즉시 사용해서 바로 메서드를 호출할 수 있습니다.
-        
-      
-    
-  
-
-
-다음과 같은 순서로 실행됩니다.
-adder.add(1).add(2).add(3).getValue(); // value = 0
-x001.add(1).add(2).add(3).getValue(); // value = 0, x001.add(1)을 호출하면 그 결과로 x001을 반환합니다.
-x001.add(2).add(3).getValue(); // value = 1, x001.add(2)을 호출하면 그 결과로 x001을 반환합니다.
-x001.add(3).getValue(); // value = 3, x001.add(3)을 호출하면 그 결과로 x001을 반환합니다.
-x001.getValue(); // value = 6
-6
-
-
-메서드 호출의 결과로 자기 자신의 참조값을 반환하면, 반환된 참조값을 사용해서 메서드 호출을 계속 이어갈 수 있습니다.
-코드를 보면 .을 찍고 메서드를 계속 연결해서 사용합니다.
-마치 메서드가 체인으로 연결된 것 처럼 보입니다.
-이러한 기법을 메서드 체이닝이라고 합니다.
-물론 실행 결과도 기존과 동일합니다.
-
-기존에는 메서드를 호출할 때 마다 계속 변수명에 .을 찍어야 했습니다. 예) adder.add(1), adder.add(2)
-매서드 체이닝 방식은 메서드가 끝나는 시점에 바로 .을 찍어서 변수명을 생략할 수 있습니다.
-메서드 체이닝이 가능한 이유는 자기 자신의 참조값을 반환하기 때문입니다.
-이 참조값에 .을 찍어서 바로 자신의 메서드를 호출할 수 있습니다.
-
-메서드 체이닝 기법은 코드를 간결하고 읽기 쉽게 만들어줍니다.
-
-StringBuilder와 메서드 체인(Chain)
-StringBuilder는 메서드 체이닝 기법을 제공합니다.
-
-StringBuilder의 append() 메서드를 보면 자기 자신의 참조값을 반환합니다.
-
-public StringBuilder append(String str) {
-    super.append(str);
-    return this;
-}
-
-
-StringBuilder에서 문자열을 변경하는 대부분의 메서드도 메서드 체이닝 기법을 제공하기 위해 자기 자신을 반환합니다. 예) insert(), delete(), reverse()
-
-앞서 StringBuilder를 사용한 코드는 다음과 같이 개선할 수 있습니다.
-package lang.string.builder;
-
-public class StringBuilderMain1_2 {
-
-  public static void main(String[] args) {
-    StringBuilder sb = new StringBuilder();
-    String string = sb.append("A").append("B").append("C").append("D")
-      .insert(4, "Java")
-      .delete(4,8)
-      .reverse()
-      .toString();
-    
-    System.out.println("string = " + string);
-  }
-}
-
-
-실행 결과
-string = DCBA
-
-
-정리
-“만드는 사람이 수고로우면 쓰는 사람이 편하고, 만드는 사람이 편하면 쓰는 사람이 수고롭다” 는 말이 있습니다.
-메서드 체이닝은 구현하는 입장에서는 번거롭지만 사용하는 개발자는 편리합니다.
-참고로 자바의 라이브러리와 오픈 소스들은 메서드 체이닝 방식을 종종 사용합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
-                            String 최적화.
-자바의 String 최적화
-자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
-
-문자열 리터럴 최적화
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-String 변수 최적화
-문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-String result = str1 + str2;
-
-
-이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
-String result = new StringBuilder().append(str1).append(str2).toString();
-
-
-
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
-
-
-이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
-
-  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
-
-
-String 최적화가 어려운 경우
-다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-package lang.string.builder;
-
-public class LoopStringMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-    String result = "";
-
-    for (int i = 0; i &lt; 100000; i++) {
-      result += "Hello Java ";
-    }
-
-    long endTime = System.currentTimeMillis();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-String result = "";
-for (int i = 0; i &lt; 100000; i++) {
-    result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-
-
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-    
-      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-        
-          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
-            
-              따라서, 이런 상황에서는 최적화가 어렵습니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 2528ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
-
-
-이럴 때는 직접 StringBuilder를 사용하면 됩니다.
-package lang.string.builder;
-
-public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i &lt; 100000; i++) {
-      sb.append("Hello Java ");
-    }
-
-    long endTime = System.currentTimeMillis();
-
-    String result = sb.toString();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 4ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
-
-
-정리
-
-  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-
-
-StringBuilder를 직접 사용하는 것이 더 좋은 경우
-
-  반복문에서 반복해서 문자를 연결할 때
-  조건문을 통해 동적으로 문자열을 조합할 때
-  복잡한 문자열의 특정 부분을 변경해야 할 때
-  매우 긴 대용량 문자열을 다룰 때
-
-
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-11-register.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -28010,6 +27748,386 @@ CPU로 실행할 프로그램이 1000번지부터 1500번지까지 저장되어 
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/2024/Java/2024-04-11-StringOptimization.html" class="txt_post">
+                            String 최적화.
+자바의 String 최적화
+자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
+
+문자열 리터럴 최적화
+컴파일 전
+String helloWorld = "Hello, " + "World!";
+
+
+컴파일 후
+String helloWorld = "Hello, World!";
+
+따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
+
+String 변수 최적화
+문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+String result = str1 + str2;
+
+
+이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
+String result = new StringBuilder().append(str1).append(str2).toString();
+
+
+
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
+
+
+이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+
+  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
+
+
+String 최적화가 어려운 경우
+다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
+package lang.string.builder;
+
+public class LoopStringMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+    String result = "";
+
+    for (int i = 0; i &lt; 100000; i++) {
+      result += "Hello Java ";
+    }
+
+    long endTime = System.currentTimeMillis();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+String result = "";
+for (int i = 0; i &lt; 100000; i++) {
+    result = new StringBuilder().append(result).append("Hello Java ").toString();
+}
+
+
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+    
+      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+        
+          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+            
+              따라서, 이런 상황에서는 최적화가 어렵습니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 2528ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
+
+
+이럴 때는 직접 StringBuilder를 사용하면 됩니다.
+package lang.string.builder;
+
+public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i &lt; 100000; i++) {
+      sb.append("Hello Java ");
+    }
+
+    long endTime = System.currentTimeMillis();
+
+    String result = sb.toString();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 4ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
+
+
+정리
+
+  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+
+
+StringBuilder를 직접 사용하는 것이 더 좋은 경우
+
+  반복문에서 반복해서 문자를 연결할 때
+  조건문을 통해 동적으로 문자열을 조합할 때
+  복잡한 문자열의 특정 부분을 변경해야 할 때
+  매우 긴 대용량 문자열을 다룰 때
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-11-MethodChaining.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-11-MethodChaining.html"><h1 class="title_post">☕️[Java] 메서드 체이닝 - Method Chaining</h1></a>
+                        <a href="/2024/Java/2024-04-11-MethodChaining.html" class="txt_post">
+                            메서드 체이닝 - Method Chaining.
+간단한 예제 코드로 메서드 체이닝(Method Chaining)에 대해서 알아봅시다.
+
+package lang.string.chaining;
+
+public class ValueAdder {
+
+  private  int value;
+
+  public ValueAdder add(int addValue) {
+    value += addValue;
+    return this;
+  }
+
+  public int getValue() {
+    return value;
+  }
+}
+
+
+
+  단순히 값을 누적해서 더하는 기능을 제공하는 클래스입니다.
+  add() 메서드를 호출할 때 마다 내부의 value에 값을 누적합니다.
+  add() 메서드를 보면 자기 자신(this)의 참조값을 반환합니다. 이 부분을 유의해서 봅시다.
+
+
+package lang.string.chaining;
+
+public class MethodChainingMain1 {
+
+  public static void main(String[] args) {
+    ValueAdder adder = new ValueAdder();
+    adder.add(1);
+    adder.add(2);
+    adder.add(3);
+
+    int result = adder.getValue();
+    System.out.println("result = " + result);
+  }
+}
+
+
+실행 결과
+result = 6
+
+
+
+  add() 메서드를 여러번 호출해서 값을 누적해서 더하고 출력합니다.
+    
+      여기서는 add() 메서드의 반환값은 사용하지 않았습니다.
+    
+  
+
+
+이번에는 add() 메서드의 반환값을 사용해봅시다.
+
+package lang.string.chaining;
+
+public class MethodChainingMain2 {
+
+  public static void main(String[] args) {
+    ValueAdder adder = new ValueAdder();
+    ValueAdder adder1 = adder.add(1);
+    ValueAdder adder2 = adder1.add(2);
+    ValueAdder adder3 = adder2.add(3);
+
+    int result = adder3.getValue();
+    System.out.println("result = " + result);
+  }
+}
+
+
+실행 결과
+result = 6
+
+실행 결과는 기존과 같습니다.
+
+
+
+  adder.add(1)을 호출합니다.
+  add() 메서드는 결과를 누적하고 자기 자신의 참조값인 this(x001)를 반환합니다.
+  adder1 변수는 adder와 같은 x001 인스턴스를 참조합니다.
+
+
+
+
+
+  add()메서드는 자기 자신(this) 메서드의 참조값을 반환합니다.
+    
+      이 반환값을 adder1, adder2, adder3에 보관했습니다.
+        
+          따라서 adder, adder1, adder2, adder3은 모두 같은 참조값을 사용합니다.
+            
+              왜냐하면 add() 메서드가 자기 자신(this)의 참조값을 반환했기 때문입니다.
+            
+          
+        
+      
+    
+  
+
+
+그런데 이 방식은 처음 방식보다 더 불편하고, 코드도 더 잘 읽히지 않습니다.
+이런 방식을 왜 사용하는 것 일까요?
+
+이번에는 방금 사용했던 방식에서 반환된 참조값을 새로운 변수에 담아서 보관하지 않고, 대신에 바로 메서드 호출에 사용해봅시다.
+
+package lang.string.chaining;
+
+public class MethodChainingMain3 {
+
+  public static void main(String[] args) {
+    ValueAdder adder = new ValueAdder();
+    int result = adder.add(1).add(2).add(3).getValue();
+    System.out.println("result = " + result);
+  }
+}
+
+
+실행 결과
+result = 6
+
+
+실행 순서
+
+  add() 메서드를 호출하면 ValueAdder 인스턴스 자신의 참조값(x001)이 반환됩니다.
+    
+      이 반환된 참조값을 변수에 담아두지 않아도 됩니다.
+        
+          대신에 반환된 참조값을 즉시 사용해서 바로 메서드를 호출할 수 있습니다.
+        
+      
+    
+  
+
+
+다음과 같은 순서로 실행됩니다.
+adder.add(1).add(2).add(3).getValue(); // value = 0
+x001.add(1).add(2).add(3).getValue(); // value = 0, x001.add(1)을 호출하면 그 결과로 x001을 반환합니다.
+x001.add(2).add(3).getValue(); // value = 1, x001.add(2)을 호출하면 그 결과로 x001을 반환합니다.
+x001.add(3).getValue(); // value = 3, x001.add(3)을 호출하면 그 결과로 x001을 반환합니다.
+x001.getValue(); // value = 6
+6
+
+
+메서드 호출의 결과로 자기 자신의 참조값을 반환하면, 반환된 참조값을 사용해서 메서드 호출을 계속 이어갈 수 있습니다.
+코드를 보면 .을 찍고 메서드를 계속 연결해서 사용합니다.
+마치 메서드가 체인으로 연결된 것 처럼 보입니다.
+이러한 기법을 메서드 체이닝이라고 합니다.
+물론 실행 결과도 기존과 동일합니다.
+
+기존에는 메서드를 호출할 때 마다 계속 변수명에 .을 찍어야 했습니다. 예) adder.add(1), adder.add(2)
+매서드 체이닝 방식은 메서드가 끝나는 시점에 바로 .을 찍어서 변수명을 생략할 수 있습니다.
+메서드 체이닝이 가능한 이유는 자기 자신의 참조값을 반환하기 때문입니다.
+이 참조값에 .을 찍어서 바로 자신의 메서드를 호출할 수 있습니다.
+
+메서드 체이닝 기법은 코드를 간결하고 읽기 쉽게 만들어줍니다.
+
+StringBuilder와 메서드 체인(Chain)
+StringBuilder는 메서드 체이닝 기법을 제공합니다.
+
+StringBuilder의 append() 메서드를 보면 자기 자신의 참조값을 반환합니다.
+
+public StringBuilder append(String str) {
+    super.append(str);
+    return this;
+}
+
+
+StringBuilder에서 문자열을 변경하는 대부분의 메서드도 메서드 체이닝 기법을 제공하기 위해 자기 자신을 반환합니다. 예) insert(), delete(), reverse()
+
+앞서 StringBuilder를 사용한 코드는 다음과 같이 개선할 수 있습니다.
+package lang.string.builder;
+
+public class StringBuilderMain1_2 {
+
+  public static void main(String[] args) {
+    StringBuilder sb = new StringBuilder();
+    String string = sb.append("A").append("B").append("C").append("D")
+      .insert(4, "Java")
+      .delete(4,8)
+      .reverse()
+      .toString();
+    
+    System.out.println("string = " + string);
+  }
+}
+
+
+실행 결과
+string = DCBA
+
+
+정리
+“만드는 사람이 수고로우면 쓰는 사람이 편하고, 만드는 사람이 편하면 쓰는 사람이 수고롭다” 는 말이 있습니다.
+메서드 체이닝은 구현하는 입장에서는 번거롭지만 사용하는 개발자는 편리합니다.
+참고로 자바의 라이브러리와 오픈 소스들은 메서드 체이닝 방식을 종종 사용합니다.
 
                         </a>
                         <div class="info-post">
@@ -56984,6 +57102,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Spring/2024-08-23-Thymeleaf.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-08-23"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 인터네트워킹",
+            'path'     : "Backend > Network",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Backend/Network/2024-08-24-Internetworking.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-08-24"
         });
     
 

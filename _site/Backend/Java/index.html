@@ -611,6 +611,7 @@
             
             
             
+            
 
     
     
@@ -981,6 +982,286 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-23-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-23-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
+                        <a href="/Backend/Java/2024-08-23-toString.html" class="txt_post">
+                            ☕️[Java] toString()
+
+1️⃣ toString()
+
+  'Object.toString()' 메서드는 객체의 정보를 문자열 형태로 제공합니다.
+    
+      그래서 디버깅과 로깅에 유용하게 사용됩니다.
+    
+  
+  이 메서드는 'Object' 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
+
+
+package langReview.object.tostring;
+
+public class ToStringMain1 {
+	public static void main(String[] args) {
+		Object object = new Object();
+		String string = object.toString();
+
+		// toString() 반환값 출력
+		System.out.println(string);
+
+		// object 직접 출력
+		System.out.println(object);
+	}
+}
+
+
+실행 결과
+java.lang.Object@b4c966a
+java.lang.Object@b4c966a
+
+
+1️⃣ Object.toString()
+
+
+
+  'Object' 가 제공하는 'toString()' 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다.
+
+
+2️⃣ println()과 toString()
+
+  'toString()' 의 결과를 출력한 코드와 'object' 를 'println()' 에 직접 출력한 코드의 결과가 완전히 같습니다.
+
+
+Object object = new Object();
+String string = object.toString();
+
+// toString() 반환값 출력
+System.out.println(string);
+
+// object 직접 출력
+System.out.println(object);
+
+
+
+  'System.out.println' 메서드는 사실 내부에서 'toString()' 을 호출합니다.
+    
+      'Object' 타입(자식 포함)이 'println()' 에 인수로 전달되면 내부에서 'obj.toString()' 메서드를 호출해서 결과를 출력합니다.
+    
+  
+
+
+
+
+
+
+  따라서 'println()' 을 사용할 때, 'toString()' 을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
+
+
+2️⃣ toString() 오버라이딩.
+
+  'Object.toString()' 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
+    
+      그래서 보통 'toString()' 을 재정의(Overriding, 오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
+    
+  
+
+
+
+
+package langReview.object.tostring;
+
+public class Car {
+
+	private String carName;
+
+	public Car(String carName) {
+		this.carName = carName;
+	}
+}
+
+package langReview.object.tostring;
+
+public class Dog {
+
+	private String dogName;
+	private int age;
+
+	public Dog(String dogName, int age) {
+		this.dogName = dogName;
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "Dog{" +
+				"dogName='" + dogName + '\'' +
+				", age=" + age +
+				'}';
+	}
+}
+
+package langReview.object.tostring;
+
+public class ObjectPrinter {
+	public static void print(Object obj) {
+		String string = "객체 정보 출력: " + obj.toString();
+		System.out.println(string);
+	}
+}
+
+package langReview.object.tostring;
+
+public class ToStringMain2 {
+
+	public static void main(String[] args) {
+		Car car = new Car("Model Y");
+		Dog dog1 = new Dog("멍멍이1", 2);
+		Dog dog2 = new Dog("멍멍이2", 5);
+
+		System.out.println("1. 단순 toString 호출");
+		System.out.println(car.toString());
+		System.out.println(dog1.toString());
+		System.out.println(dog2.toString());
+		System.out.println("=================================");
+		System.out.println("2. println 내부에서 toString 호출");
+		System.out.println(car);
+		System.out.println(dog1);
+		System.out.println(dog2);
+		System.out.println("=================================");
+		System.out.println("3. Object 다형성 활용");
+		ObjectPrinter.print(car);
+		ObjectPrinter.print(dog1);
+		ObjectPrinter.print(dog2);
+	}
+}
+
+
+실행 결과
+1. 단순 toString 호출
+langReview.object.tostring.Car@4e50df2e
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+=================================
+2. println 내부에서 toString 호출
+langReview.object.tostring.Car@4e50df2e
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+=================================
+3. Object 다형성 활용
+객체 정보 출력: langReview.object.tostring.Car@4e50df2e
+객체 정보 출력: Dog{dogName='멍멍이1', age=2}
+객체 정보 출력: Dog{dogName='멍멍이2', age=5}
+
+
+
+  'Car' 인스턴스는 'toString()' 을 재정의 하지 않았습니다.
+    
+      따라서 'Object' 가 제공하는 기본 'toString()' 메서드를 사용합니다.
+    
+  
+  'Dog' 인스턴스는 'toString()' 을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
+
+
+1️⃣ ObjectPrinter.print(Object obj) 분석 - Car 인스턴스
+
+
+
+ObjectPrinter.print(car);
+
+void print(Object obj = car(Car)) { // 인수 전달
+    String string = "객체 정보 출력: " + obj.toString();
+}
+
+
+
+  'Object obj' 의 인수로 'car(Car)' 가 전달됩니다.
+    
+      메서드 내부에서 'obj.toString()' 을 호출합니다.
+      'obj' 는 'Object' 타입입니다.
+        
+          따라서 'Object' 에 있는 'toString()' 을 찾습니다.
+            
+              이때 자식에 재정의(Overriding, 오버라이딩)된 메서드가 있는지 찾아봅니다.
+                
+                  재정의된 메서드가 없을 경우에는 'Object.toString()' 을 실행합니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ ObjectPrinter.print(Object obj) 분석 - Dog 인스턴스
+
+
+
+ObjectPrinter.print(dog); // main에서 호출
+
+void print(Object obj = car(Car)) { // 인수 전달
+    String string = "객체 정보 출력: " + obj.toString();
+}
+
+
+
+  'Object obj' 의 인수로 'dog(Dog)' 가 전달됩니다.
+    
+      메서드 내부에서 'obj.toString()' 을 호출합니다.
+      'obj' 는 'Object' 타입입니다.
+        
+          따라서 'Object' 에 있는 'toString()' 을 찾습니다.
+            
+              이때 자식에 재정의(Overriding, 오버라이딩)된 메서드가 있는지 찾아봅니다.
+                
+                  'Dog' 에 재정의된 메서드가 있습니다.
+                    
+                      'Dog.toString()' 을 실행합니다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고 - 객체의 참조값 직접 출력 
+'toString()' 은 기본으로 객체의 참조값을 출력합니다.
+그런데 'toString()' 이나 'hashCode()' 를 재정의하면 객체의 참조값을 출력할 수 없습니다.
+이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
+
+
+String refValue = Integer.toHexString(System.identityHashCode(dog1));
+System.out.println("refValue = " + refValue);
+
+
+실행 결과
+refValue = 30dae81
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1370,6 +1651,87 @@ if (obj instanceof Dog dog) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
+                            ☕️[Java] java.lang 패키지.
+자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
+여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
+즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+1️⃣ java.lang 패키지의 대표적인 클래스들.
+
+  'Object'
+    
+      모든 자바 객체의 부모 클래스.
+    
+  
+  'String'
+    
+      문자열.
+    
+  
+  'Integer, Long, Double'
+    
+      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
+    
+  
+  'Class'
+    
+      클래스 메타 정보.
+    
+  
+  'System'
+    
+      시스템과 관련된 기본 기능들을 제공
+        
+          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
+        
+      
+    
+  
+
+
+2️⃣ import 생략 가능.
+
+  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
+    
+      따라서 'import' 구문을 사용하지 않아도 됩니다.
+    
+  
+
+
+package langReview;
+
+public class LangMain {
+    public static void main(String[] args) {
+        System.out.println("hello java");
+    }
+}
+
+
+  'import java.lang.System' 코드가 없어도 정상 동작합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-21-Object-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -1571,87 +1933,6 @@ langReview.object.Child@452b3a41
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
-                            ☕️[Java] java.lang 패키지.
-자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
-여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
-즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-1️⃣ java.lang 패키지의 대표적인 클래스들.
-
-  'Object'
-    
-      모든 자바 객체의 부모 클래스.
-    
-  
-  'String'
-    
-      문자열.
-    
-  
-  'Integer, Long, Double'
-    
-      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
-    
-  
-  'Class'
-    
-      클래스 메타 정보.
-    
-  
-  'System'
-    
-      시스템과 관련된 기본 기능들을 제공
-        
-          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
-        
-      
-    
-  
-
-
-2️⃣ import 생략 가능.
-
-  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
-    
-      따라서 'import' 구문을 사용하지 않아도 됩니다.
-    
-  
-
-
-package langReview;
-
-public class LangMain {
-    public static void main(String[] args) {
-        System.out.println("hello java");
-    }
-}
-
-
-  'import java.lang.System' 코드가 없어도 정상 동작합니다.
 
 
                         </a>
@@ -2044,65 +2325,76 @@ Systeom.out.println(user.name + " is" + user.age + " year old.");
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-07-31-attribute.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-07-31-attribute.html"><h1 class="title_post">☕️[Java] attribute의 의미와 역할</h1></a>
-                        <a href="/Backend/Java/2024-07-31-attribute.html" class="txt_post">
-                            ☕️[Java] attribute의 의미와 역할.
+                        <a href="/Backend/Java/2024-07-31-MainBuildFail.html"><h1 class="title_post">☕️[Java] Main 클래스 생성 후 오류 대처.</h1></a>
+                        <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="txt_post">
+                            ☕️[Java] Main 클래스 생성 후 오류 대처.
 
+1️⃣ 메인 클래스 생성.
 
-  Java 백엔드 개발에서 “attribute”라는 용어는 몇 가지 다른 맥락에서 사용될 수 있습니다.
-  주로 두 가지 의미로 사용되는 경우가 많은데, 클래스의 속성 을 의미하는 경우와 웹 개발에서 HTTP 요청이나 세션과 관련된 데이터를 지칭하는 경우입니다.
-
-
-1️⃣ 클래스의 속성(Field or Property)
-
-  Java에서 클래스의 “attribute” 는 해당 클래스의 상태를 정의하는 변수를 말합니다.
+  모든 프로젝트에는 메인 클래스가 있어야 합니다.
     
-      이러한 변수들은 객체의 데이터이터를 저장하고, 클래스의 인스턴스들이 갖는 특징과 상태 정보를 나타냅니다.
-        
-          예를 들어, ‘Person’ 클래스가 있다면, ‘name’, ‘age’ 같은 필드들이 이 클래스의 “attribute” 가 됩니다.
-        
-      
+      직접 만든 클래스를 메인 클래스로 사용하기 위해 다음과 같이 코드를 입력했다고 가정해봅시다.
     
   
 
 
-public class Person {
-    private String name; // Attribute
-    private int age; // Attribute
-    
-    // Constructors, getters, setters 등
+// PortfolioBolgApplication.java
+
+package com.devkobe.portfolioBlog;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PortfolioBolgApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(PortfolioBolgApplication.class, args);
+    }
 }
 
 
-2️⃣ 웹 개발에서의 Attribute
 
-  웹 개발에서 “attribute” 는 주로 세션(Session)이나 요청(Request) 객체에 저장된 데이터를 지칭 합니다.
+  코드 작성이 끝났다면 클래스 왼쪽에 실행 아이콘 ▶︎을 누르고, [RUN] 버튼을 눌러 클래스를 실행했을 경우 콘솔창에서 애플리케이션이 실행되면 성공입니다.
+
+
+2️⃣ 실패했을 경우.
+
+Process 'command...bin/java 'finshed with non-zero exit value 1'
+
+
+  콘솔창에 위와 같은 오류 발생시에는 다음과 같이 순차적으로 해결하면 됩니다.
     
-      이 데이터는 사용자가 웹 사이트를 이용하는 동안 지속되거나 요청 동안에만 존재할 수 있습니다.
+      
         
-          예를 들어, 사용자가 로그인을 하면 그 사용자의 정보를 세션 attribute로 저장하여 다른 페이지에서도 사용자 정보를 유지할 수 있게 합니다.
+          Settings 로 들어갑니다.
         
       
-    
-  
-
-
-// 세션에 사용자 정보 저장
-request.getSession().setAttribute("user", userObject);
-
-// 세션에서 사용자 정보 가져오기
-User user = (User) request.getSession().getAttribute("user");
-
-
-
-  이 두 가지 사용 사례는 Java 백엔드 개발에서 매우 흔하게 접할 수 있으며, 각각의 맥락에서 attribute가 가지는 의미와 역할을 이해하는 것은 중요합니다.
-    
-      첫 번째 경우는 객체 지향 프로그래밍의 핵심 요소로 클래스의 속성을 정의합니다.
-      두 번째 경우에는 웹 애플리케이션의 상태 관리를 돕는 수단으로서 활용됩니다.
+      
+        
+          Build, Excecution, Deplyment 카테고리를 찾아 펼칩니다.
+        
+      
+      
+        
+          하위에 Gradle을 클릭합니다.
+        
+      
+      
+        
+          ‘Build and run using’ 이라는 색션을 찾습니다.
+            
+              이것의 선택값이 ‘Gradle(default)’ 일 것입니다.
+            
+            
+              이 값을 ‘IntelliJ IDEA’ 로 바꿔 프로젝트를 다시 시작합니다.
+            
+          
+        
+      
     
   
 
@@ -2186,76 +2478,65 @@ public class MyEntityListner {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-07-31-attribute.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-07-31-MainBuildFail.html"><h1 class="title_post">☕️[Java] Main 클래스 생성 후 오류 대처.</h1></a>
-                        <a href="/Backend/Java/2024-07-31-MainBuildFail.html" class="txt_post">
-                            ☕️[Java] Main 클래스 생성 후 오류 대처.
+                        <a href="/Backend/Java/2024-07-31-attribute.html"><h1 class="title_post">☕️[Java] attribute의 의미와 역할</h1></a>
+                        <a href="/Backend/Java/2024-07-31-attribute.html" class="txt_post">
+                            ☕️[Java] attribute의 의미와 역할.
 
-1️⃣ 메인 클래스 생성.
 
-  모든 프로젝트에는 메인 클래스가 있어야 합니다.
+  Java 백엔드 개발에서 “attribute”라는 용어는 몇 가지 다른 맥락에서 사용될 수 있습니다.
+  주로 두 가지 의미로 사용되는 경우가 많은데, 클래스의 속성 을 의미하는 경우와 웹 개발에서 HTTP 요청이나 세션과 관련된 데이터를 지칭하는 경우입니다.
+
+
+1️⃣ 클래스의 속성(Field or Property)
+
+  Java에서 클래스의 “attribute” 는 해당 클래스의 상태를 정의하는 변수를 말합니다.
     
-      직접 만든 클래스를 메인 클래스로 사용하기 위해 다음과 같이 코드를 입력했다고 가정해봅시다.
+      이러한 변수들은 객체의 데이터이터를 저장하고, 클래스의 인스턴스들이 갖는 특징과 상태 정보를 나타냅니다.
+        
+          예를 들어, ‘Person’ 클래스가 있다면, ‘name’, ‘age’ 같은 필드들이 이 클래스의 “attribute” 가 됩니다.
+        
+      
     
   
 
 
-// PortfolioBolgApplication.java
-
-package com.devkobe.portfolioBlog;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class PortfolioBolgApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(PortfolioBolgApplication.class, args);
-    }
+public class Person {
+    private String name; // Attribute
+    private int age; // Attribute
+    
+    // Constructors, getters, setters 등
 }
 
 
+2️⃣ 웹 개발에서의 Attribute
 
-  코드 작성이 끝났다면 클래스 왼쪽에 실행 아이콘 ▶︎을 누르고, [RUN] 버튼을 눌러 클래스를 실행했을 경우 콘솔창에서 애플리케이션이 실행되면 성공입니다.
-
-
-2️⃣ 실패했을 경우.
-
-Process 'command...bin/java 'finshed with non-zero exit value 1'
-
-
-  콘솔창에 위와 같은 오류 발생시에는 다음과 같이 순차적으로 해결하면 됩니다.
+  웹 개발에서 “attribute” 는 주로 세션(Session)이나 요청(Request) 객체에 저장된 데이터를 지칭 합니다.
     
-      
+      이 데이터는 사용자가 웹 사이트를 이용하는 동안 지속되거나 요청 동안에만 존재할 수 있습니다.
         
-          Settings 로 들어갑니다.
-        
-      
-      
-        
-          Build, Excecution, Deplyment 카테고리를 찾아 펼칩니다.
+          예를 들어, 사용자가 로그인을 하면 그 사용자의 정보를 세션 attribute로 저장하여 다른 페이지에서도 사용자 정보를 유지할 수 있게 합니다.
         
       
-      
-        
-          하위에 Gradle을 클릭합니다.
-        
-      
-      
-        
-          ‘Build and run using’ 이라는 색션을 찾습니다.
-            
-              이것의 선택값이 ‘Gradle(default)’ 일 것입니다.
-            
-            
-              이 값을 ‘IntelliJ IDEA’ 로 바꿔 프로젝트를 다시 시작합니다.
-            
-          
-        
-      
+    
+  
+
+
+// 세션에 사용자 정보 저장
+request.getSession().setAttribute("user", userObject);
+
+// 세션에서 사용자 정보 가져오기
+User user = (User) request.getSession().getAttribute("user");
+
+
+
+  이 두 가지 사용 사례는 Java 백엔드 개발에서 매우 흔하게 접할 수 있으며, 각각의 맥락에서 attribute가 가지는 의미와 역할을 이해하는 것은 중요합니다.
+    
+      첫 번째 경우는 객체 지향 프로그래밍의 핵심 요소로 클래스의 속성을 정의합니다.
+      두 번째 경우에는 웹 애플리케이션의 상태 관리를 돕는 수단으로서 활용됩니다.
     
   
 
@@ -14071,6 +14352,17 @@ JVM의 구성 요소.
             'type'     : "post",
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-08-23-Class-Instance-Method.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-23"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] toString()",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-08-23-toString.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-23"
         });

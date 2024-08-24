@@ -614,6 +614,7 @@
             
             
             
+            
 
     
     
@@ -1013,6 +1014,78 @@
 
 
 정적 컨텐츠 이미지
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html"><h1 class="title_post">🍃[Spring] MVC와 템플릿 엔진.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="txt_post">
+                            🍃[Spring] MVC와 템플릿 엔진.
+
+  MVC
+    
+      Model
+      View
+      Controller
+    
+  
+  Controller
+
+
+@Controller
+public class HelloController {
+    
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam("name") String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello-template";
+    }
+}
+
+
+
+  View
+
+
+&lt;html xmlns:th="htt[://www.thymeleaf.org"&gt;
+&lt;body&gt;
+&lt;p th:text="'hello ' + ${name}"&gt;hello! empty&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  실행
+    
+      http://localhost:8080/hello-mvc?name=spring
+    
+  
+
+
+
+
+
+  MVC 템플릿 엔진 이미지
+
+
 
 
                         </a>
@@ -1545,71 +1618,6 @@ refValue = 30dae81
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-08-23-Class-Instance-Method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-23-Class-Instance-Method.html"><h1 class="title_post">☕️[Java] 클래스 메서드와 인스턴스 메서드</h1></a>
-                        <a href="/Backend/Java/2024-08-23-Class-Instance-Method.html" class="txt_post">
-                            ☕️[Java] 클래스 메서드와 인스턴스 메서드.
-
-1️⃣ 클래스 메서드.
-package langReview.object.tostring;
-
-public class ObjectPrinter {
-	public static void print(Object obj) {
-		String string = "객체 정보 출력: " + obj.toString();
-		System.out.println(string);
-	}
-}
-
-
-
-  위와 같이 'static' 키워드를 사용하여 클래스에 속한 메서드를 “클래스 메서드” 라고 부릅니다.
-  클래스 메서드는 특정 객체(instance)와 무관하게 클래스 자체에 속하며, 클래스 이름을 통해 직접 호출할 수 있습니다.
-    
-      예를 들어 'ObjectPrinter.print(obj)' 와 같이 사용합니다.
-    
-  
-
-
-2️⃣ 인스턴스 메서드.
-package langReview.object.tostring;
-
-public class ObjectPrinter {
-	public void print(Object obj) {
-		String string = "객체 정보 출력: " + obj.toString();
-		System.out.println(string);
-	}
-}
-
-
-
-  위와 같은 메서드는 '인스턴스 메서드' 라고 부릅니다.
-  인스턴스 메서드는 'static' 키워드가 없으며, 특정 클래스의 인스턴스(객체)와 연관되어 있습니다.
-  인스턴스 메서드는 클래스의 객체를 생성한 후, 그 객체를 통해 호출할 수 있습니다.
-    
-      예를 들어, 'ObjectPrinter printer = new ObjectPrinter();' 로 객체를 생성한 후, 'printer.print(obj);' 와 같이 호출할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-08-23-Singleton.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2057,6 +2065,71 @@ public class MyService {
           애플리케이션 서버가 DataSource를 싱글턴으로 관리함으로써, 서버 전반에 일관된 데이터베이스 연결을 제공하고 효율성을 극대화할 수 있습니다.
         
       
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-23-Class-Instance-Method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-23-Class-Instance-Method.html"><h1 class="title_post">☕️[Java] 클래스 메서드와 인스턴스 메서드</h1></a>
+                        <a href="/Backend/Java/2024-08-23-Class-Instance-Method.html" class="txt_post">
+                            ☕️[Java] 클래스 메서드와 인스턴스 메서드.
+
+1️⃣ 클래스 메서드.
+package langReview.object.tostring;
+
+public class ObjectPrinter {
+	public static void print(Object obj) {
+		String string = "객체 정보 출력: " + obj.toString();
+		System.out.println(string);
+	}
+}
+
+
+
+  위와 같이 'static' 키워드를 사용하여 클래스에 속한 메서드를 “클래스 메서드” 라고 부릅니다.
+  클래스 메서드는 특정 객체(instance)와 무관하게 클래스 자체에 속하며, 클래스 이름을 통해 직접 호출할 수 있습니다.
+    
+      예를 들어 'ObjectPrinter.print(obj)' 와 같이 사용합니다.
+    
+  
+
+
+2️⃣ 인스턴스 메서드.
+package langReview.object.tostring;
+
+public class ObjectPrinter {
+	public void print(Object obj) {
+		String string = "객체 정보 출력: " + obj.toString();
+		System.out.println(string);
+	}
+}
+
+
+
+  위와 같은 메서드는 '인스턴스 메서드' 라고 부릅니다.
+  인스턴스 메서드는 'static' 키워드가 없으며, 특정 클래스의 인스턴스(객체)와 연관되어 있습니다.
+  인스턴스 메서드는 클래스의 객체를 생성한 후, 그 객체를 통해 호출할 수 있습니다.
+    
+      예를 들어, 'ObjectPrinter printer = new ObjectPrinter();' 로 객체를 생성한 후, 'printer.print(obj);' 와 같이 호출할 수 있습니다.
     
   
 
@@ -2629,6 +2702,87 @@ if (obj instanceof Dog dog) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
+                            ☕️[Java] java.lang 패키지.
+자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
+여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
+즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+1️⃣ java.lang 패키지의 대표적인 클래스들.
+
+  'Object'
+    
+      모든 자바 객체의 부모 클래스.
+    
+  
+  'String'
+    
+      문자열.
+    
+  
+  'Integer, Long, Double'
+    
+      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
+    
+  
+  'Class'
+    
+      클래스 메타 정보.
+    
+  
+  'System'
+    
+      시스템과 관련된 기본 기능들을 제공
+        
+          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
+        
+      
+    
+  
+
+
+2️⃣ import 생략 가능.
+
+  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
+    
+      따라서 'import' 구문을 사용하지 않아도 됩니다.
+    
+  
+
+
+package langReview;
+
+public class LangMain {
+    public static void main(String[] args) {
+        System.out.println("hello java");
+    }
+}
+
+
+  'import java.lang.System' 코드가 없어도 정상 동작합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-21-Object-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -2830,87 +2984,6 @@ langReview.object.Child@452b3a41
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
-                            ☕️[Java] java.lang 패키지.
-자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
-여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
-즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-1️⃣ java.lang 패키지의 대표적인 클래스들.
-
-  'Object'
-    
-      모든 자바 객체의 부모 클래스.
-    
-  
-  'String'
-    
-      문자열.
-    
-  
-  'Integer, Long, Double'
-    
-      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
-    
-  
-  'Class'
-    
-      클래스 메타 정보.
-    
-  
-  'System'
-    
-      시스템과 관련된 기본 기능들을 제공
-        
-          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
-        
-      
-    
-  
-
-
-2️⃣ import 생략 가능.
-
-  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
-    
-      따라서 'import' 구문을 사용하지 않아도 됩니다.
-    
-  
-
-
-package langReview;
-
-public class LangMain {
-    public static void main(String[] args) {
-        System.out.println("hello java");
-    }
-}
-
-
-  'import java.lang.System' 코드가 없어도 정상 동작합니다.
 
 
                         </a>
@@ -57162,6 +57235,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "Network",
             'url'      : "/Backend/Network/2024-08-24-Internetworking.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] MVC와 템플릿 엔진.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-08-24-MVC-Template-engine.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-08-24"
         });
     

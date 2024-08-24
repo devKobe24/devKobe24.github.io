@@ -616,6 +616,7 @@
             
             
             
+            
 
     
     
@@ -1015,6 +1016,116 @@
 
 
 정적 컨텐츠 이미지
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html"><h1 class="title_post">🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="txt_post">
+                            🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.
+
+1️⃣ 일반적인 웹 애플리케이션 계층 구조.
+
+
+
+
+  Controller : 웹 MVC의 Controller 역할.
+    
+      사용자의 요청을 받아 이를 처리할 비즈니스 로직(서비스 레이어)에 전달하고, 그 결과를 다시 사용자에게 응답하는 역할을 합니다.
+        
+          주로 HTTP 요청을 처리하고, 올바른 응답을 생성합니다.
+        
+      
+      컨트롤러는 사용자로부터 입력을 받아 해당 입력을 서비스 레이어로 전달하고, 서비스 레이어에서 처리된 결과를 사용자에게 반환합니다.
+        
+          이는 주로 웹 애플리케이션의 엔트포인트(예: '/login', '/signup' 와 같은 URL)에 대응됩니다.
+        
+      
+    
+  
+  Service : 핵심 비즈니스 로직 구현.
+    
+      비즈니스 로직을 처리하는 계층입니다.
+      컨트롤러와 리포지토리 사이에서 중간 역할을 하며, 여러 리포지토리로부터 데이터를 가져오거나 가공하고, 이를 다시 컨트롤러에 전달합니다.
+      서비스 계층은 애플리케이션의 핵심 비즈니스 로직이 위치하는 곳입니다.
+        
+          예를 들어, 사용자 인증, 결제 처리, 이메일 전송 등의 주요 기능이 이 계층에서 처리됩니다.
+        
+      
+    
+  
+  Repository: 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리.
+    
+      데이터베이스와 상호작용하는 계층입니다.
+      데이터의 저장, 검색, 갱신, 삭제 등의 작업을 처리하며, 데이터베이스와의 직접적인 통신을 담당합니다.
+      리포지토리는 데이터를 처리하기 위한 SQL 쿼리나 ORM(Object-Relational Mapping) 작업을 담당합니다.
+      이 계층은 서비스 계층에서 필요한 데이터를 가져오거나, 새 데이터를 저장하는 역할을 합니다.
+    
+  
+  Domain: 비즈니스 도메인 객체.
+    
+      예를 들어 회원, 주문 쿠폰 등등 주로 데이터베이스에 저장하고 관리됨.
+      애플리케이션의 핵심 엔티티(Entity)와 비즈니스 규칙을 정의하는 계층입니다.
+        
+          보통 객체로 표현되며, 비즈니스 로직의 일부를 캡슐화합니다.
+        
+      
+      도메인 계층은 애플리케이션에서 중요한 객체들(예: 'User', 'Product', 'Order' 등)을 정의하고, 이 객체들이 어떤 방식으로 상호작용하는지를 나타냅니다.
+        
+          이는 애플리케이션이 어떤 비즈니스 문제를 해결하는지에 대한 모델을 나타냅니다.
+        
+      
+    
+  
+
+
+2️⃣ 클래스 의존관계.
+
+
+
+  회원 비즈니스 로직에는 회원 서비스가 있다.
+    
+      회원을 저장하는 것은 인터페이스로 설계 되어있다.
+        
+          그 이유는 아직 데이터 저장소가 선정되지 않았음을 가정하고 설계했기 때문이다.
+          그리고 구현체를 우선은 메모리 구현체로 만들것이다.
+            
+              그 이유는 일단 개발은 해야하므로 굉장히 단순한 메모리 기반의 데이터 저장소를 사용하여 메모리 구현체로 만든다.
+                
+                  향후에 메모리 구현체를 구체적인 기술이 선정이 되면(RDB, NoSQL 등) 교체할 것이다.
+                    
+                      교체하려면 Interface가 필요하므로 Interface를 정의한 것이다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+  아직 데이터 저장소가 선정되지 않아서, 우선 인터페이스로 구현 클래스를 변경할 수 있도록 설계
+  데이터 저장소는 RDB, NoSQL 등등 다양한 저장소를 고민중인 상황으로 가정
+  개발을 진행하기 위해서 초기 개발 단계에서는 구현체로 가벼운 메모리 기반의 데이터 저장소 사용
 
 
                         </a>
@@ -57365,6 +57476,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-08-24-MVC-Template-engine.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-08-24-Summary-of-business-requirements.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-08-24"
         });

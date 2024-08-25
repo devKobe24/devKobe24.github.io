@@ -619,6 +619,7 @@
             
             
             
+            
 
     
     
@@ -987,6 +988,164 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
+                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
+                            ☕️[Java] equals() - 1, 동일성과 동등성.
+
+1️⃣ equals() - 1, 동일성과 동등성.
+
+
+  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
+  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
+    
+      동일성(Identity)
+        
+          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+        
+      
+      동등성(Equality)
+        
+          
+            
+              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 단어 정리
+
+  “동일” 은 “완전히 같음 을 의미합니다.”
+  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
+  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
+    
+      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
+      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+    User a = new User("id-100"); // 참조 x001
+User b = new User("id-100"); // 참조 x002
+    
+  
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
+    
+      (주민등록번호가 같다고 가정해도 됩니다.)
+        
+          따라서 동일성은 다르지만, 동등성은 같습니다.
+        
+      
+    
+  
+  문자의 경우도 마찬가지입니다.
+    String s1 = "hello";
+String s2 = "hello";
+    
+  
+  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
+    
+      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
+    
+  
+
+
+3️⃣ UserV1 예제.
+
+public class UserV1 {
+	private String id;
+
+	public UserV1(String id) {
+		this.id = id;
+	}
+}
+
+
+public class EqualsMainV1 {
+
+	public static void main(String[] args) {
+		UserV1 user1 = new UserV1("id-100");
+		UserV1 user2 = new UserV1("id-100");
+
+		System.out.println("Identity = " + (user1 == user2));
+		System.out.println("Equality = " + (user1.equals(user2)));
+	}
+}
+
+
+실행 결과
+Identity = false
+Equality = false
+
+
+
+
+동일성(Identity) 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성(Equality) 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+
+  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
+
+
+Object.equals
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안  
+return false
+false
+
+
+
+  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
+    
+      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+        
+          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
+            
+              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -12927,6 +13086,32 @@ public static void insertion(int[] array, int index, int insertValue) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-01-TIL.html" class="txt_post">
+                            
+  배열의 특정 인덱스의 요소를 삭제하는 방법.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-06-01-RemoveSpecificIndexFromArray.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -13044,32 +13229,6 @@ public class Main {
       기존 배열 사용 : 메모리를 절약할 수 있지만, 배열의 마지막 요소는 기본값으로 설정해야 합니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-01-TIL.html" class="txt_post">
-                            
-  배열의 특정 인덱스의 요소를 삭제하는 방법.
 
 
                         </a>
@@ -14402,6 +14561,33 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
+                            
+  해시 테이블(Hash Table)
+  해시 맵 정리
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-05-25-HashTable.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -14599,33 +14785,6 @@ Value for key 'two': 2
 Removing key 'one': 1
 Contains key 'one': false
 */
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
-                            
-  해시 테이블(Hash Table)
-  해시 맵 정리
 
 
                         </a>
@@ -16014,6 +16173,152 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html"><h1 class="title_post">📝[blog post] 나는 어떤 백엔드 개발자가 되고 싶은걸까?</h1></a>
+                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="txt_post">
+                            🤔 나는 어떤 백엔드 개발자가 되고 싶은걸까?
+
+🙋‍♂️ 백엔드 개발자의 역할과 책임
+
+어떤 백엔드 개발자가 되고 싶은지 말하기 전에 백엔드 개발자는 어떤 역할과 책임이 있는지 알아보아야 할 것 같아요.
+
+1️⃣ 웹 서버 개발.
+
+  웹 서버 및 API 개발.
+  HTTP 요청 및 응답 처리.
+  RESTful 서비스 설계 및 구현.
+
+
+2️⃣ 데이터베이스 관리.
+
+  데이터베이스 설계 및 최적화.
+  SQL 및 NoSQL 데이터베이스 작업.
+  데이터 모델링 및 스키마 설계.
+
+
+3️⃣ 서버 사이드 로직.
+
+  비즈니스 로직 구현.
+  사용자 인증 및 권한 관리.
+  데이터 유효성 검사.
+
+
+4️⃣ API 개발 및 통합.
+
+  외부 API와의 통합 작업.
+  내부 API 설계 및 개발.
+  API 문서화 및 유지보수.
+
+
+5️⃣ 성능 최적화.
+
+  서버 성능 모니터링 및 튜닝.
+  캐싱 전략 설계 및 구현.
+  로드 밸런싱 및 스케일링.
+
+
+6️⃣ 보안 관리.
+
+  데이터 보안 및 암호화.
+  OWASP 및 기타 보안 지침 준수.
+  침입 탐지 및 대응.
+
+
+7️⃣ 클라우드 컴퓨팅.
+
+  AWS, Azure, GCP 등 클라우드 플랫폼 사용.
+  클라우드 기반 서비스 배포 및 관리.
+  컨테이나화 및 오케이스트레이션(Docker, Kubernetes)
+
+
+8️⃣ DevOps와 CI/CD.
+
+  지속적 통합 및 배포(CI/CD) 파이프라인 구축.
+  서버 및 서비스의 자동화 및 오케스트레이션.
+  인프라스트럭처 코드화(Infrastructure as Code).
+
+
+9️⃣ 로그 및 모니터링.
+
+  애플리케이션 및 서버 로그 관리.
+  모니터링 도구 설정(예: Prometheus, Grafana).
+  로그 분석 및 문제 해결.
+
+
+백엔드 개발자는 일반적으로 이 모든 역할을 하나의 프로젝트 내에서 수행하지 않아요.
+회사나 팀의 구조에 따라 특정 역할에 집중하게 된답니다.
+예를 들어, 일부 개발자는 데이터베이스 관리에 중점을 두고, 다른 개발자는 클라우드 인프라 관리에 집중할 수 있습니다.
+
+🙋‍♂️ 내가 되고 싶은 백엔드 개발자.
+
+  
+    
+      맡은 역할과 책임에 최선을 다하는 개발자
+        
+          저는 맡은 바에 항상 최선을 다해 임무를 완수합니다.
+          내가 맡은 바에는 책임이라는 것이 따르기 때문에 항상 최선을 다해야 한다고 생각합니다.
+        
+      
+    
+  
+  
+    
+      소통을 잘하는 백엔드 개발자.
+        
+          커뮤니케이션이 정말 중요하다고 생각합니다.
+          하나의 프로그램을 만들기 위해서는 많은 사람들이 함께 만들어가는 것 이기 때문에 함께 협력하고 소통을 잘해야 합니다.
+        
+      
+    
+  
+  
+    
+      유연한 사고를 가진 백엔드 개발자.
+        
+          나 자신의 의견 또는 생각 역시도 틀릴 수 있다는 것을 항상 인지하고 여러 모든 의견을 유연하게 받아들일 수 있는 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+  
+    
+      말이 아닌 코드로 증명하는 개발자.
+        
+          말로만 대단한 듯이 말하는 개발자가 아닌 진짜 코드로 증명해내는 그런 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+  
+    
+      겸손과 꾸준한 성장을 하는 백엔드 개발자.
+        
+          겸손의 미덕을 알고 있습니다. 언제나 배움의 자세를 가지고 항상 배우려 노력하며 꾸준히 성장하는 백엔드 개발자가 되고 싶습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
@@ -16258,152 +16563,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
     }
     return personOfNationalMerit;
   }
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html"><h1 class="title_post">📝[blog post] 나는 어떤 백엔드 개발자가 되고 싶은걸까?</h1></a>
-                        <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="txt_post">
-                            🤔 나는 어떤 백엔드 개발자가 되고 싶은걸까?
-
-🙋‍♂️ 백엔드 개발자의 역할과 책임
-
-어떤 백엔드 개발자가 되고 싶은지 말하기 전에 백엔드 개발자는 어떤 역할과 책임이 있는지 알아보아야 할 것 같아요.
-
-1️⃣ 웹 서버 개발.
-
-  웹 서버 및 API 개발.
-  HTTP 요청 및 응답 처리.
-  RESTful 서비스 설계 및 구현.
-
-
-2️⃣ 데이터베이스 관리.
-
-  데이터베이스 설계 및 최적화.
-  SQL 및 NoSQL 데이터베이스 작업.
-  데이터 모델링 및 스키마 설계.
-
-
-3️⃣ 서버 사이드 로직.
-
-  비즈니스 로직 구현.
-  사용자 인증 및 권한 관리.
-  데이터 유효성 검사.
-
-
-4️⃣ API 개발 및 통합.
-
-  외부 API와의 통합 작업.
-  내부 API 설계 및 개발.
-  API 문서화 및 유지보수.
-
-
-5️⃣ 성능 최적화.
-
-  서버 성능 모니터링 및 튜닝.
-  캐싱 전략 설계 및 구현.
-  로드 밸런싱 및 스케일링.
-
-
-6️⃣ 보안 관리.
-
-  데이터 보안 및 암호화.
-  OWASP 및 기타 보안 지침 준수.
-  침입 탐지 및 대응.
-
-
-7️⃣ 클라우드 컴퓨팅.
-
-  AWS, Azure, GCP 등 클라우드 플랫폼 사용.
-  클라우드 기반 서비스 배포 및 관리.
-  컨테이나화 및 오케이스트레이션(Docker, Kubernetes)
-
-
-8️⃣ DevOps와 CI/CD.
-
-  지속적 통합 및 배포(CI/CD) 파이프라인 구축.
-  서버 및 서비스의 자동화 및 오케스트레이션.
-  인프라스트럭처 코드화(Infrastructure as Code).
-
-
-9️⃣ 로그 및 모니터링.
-
-  애플리케이션 및 서버 로그 관리.
-  모니터링 도구 설정(예: Prometheus, Grafana).
-  로그 분석 및 문제 해결.
-
-
-백엔드 개발자는 일반적으로 이 모든 역할을 하나의 프로젝트 내에서 수행하지 않아요.
-회사나 팀의 구조에 따라 특정 역할에 집중하게 된답니다.
-예를 들어, 일부 개발자는 데이터베이스 관리에 중점을 두고, 다른 개발자는 클라우드 인프라 관리에 집중할 수 있습니다.
-
-🙋‍♂️ 내가 되고 싶은 백엔드 개발자.
-
-  
-    
-      맡은 역할과 책임에 최선을 다하는 개발자
-        
-          저는 맡은 바에 항상 최선을 다해 임무를 완수합니다.
-          내가 맡은 바에는 책임이라는 것이 따르기 때문에 항상 최선을 다해야 한다고 생각합니다.
-        
-      
-    
-  
-  
-    
-      소통을 잘하는 백엔드 개발자.
-        
-          커뮤니케이션이 정말 중요하다고 생각합니다.
-          하나의 프로그램을 만들기 위해서는 많은 사람들이 함께 만들어가는 것 이기 때문에 함께 협력하고 소통을 잘해야 합니다.
-        
-      
-    
-  
-  
-    
-      유연한 사고를 가진 백엔드 개발자.
-        
-          나 자신의 의견 또는 생각 역시도 틀릴 수 있다는 것을 항상 인지하고 여러 모든 의견을 유연하게 받아들일 수 있는 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-  
-    
-      말이 아닌 코드로 증명하는 개발자.
-        
-          말로만 대단한 듯이 말하는 개발자가 아닌 진짜 코드로 증명해내는 그런 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
-  
-    
-      겸손과 꾸준한 성장을 하는 백엔드 개발자.
-        
-          겸손의 미덕을 알고 있습니다. 언제나 배움의 자세를 가지고 항상 배우려 노력하며 꾸준히 성장하는 백엔드 개발자가 되고 싶습니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -18080,88 +18239,17 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-11-Input-Output-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-11-Input-Output-1.html"><h1 class="title_post">☕️[Java] 입출력(1)</h1></a>
-                        <a href="/Backend/Java/2024-05-11-Input-Output-1.html" class="txt_post">
-                            1️⃣ 입출력(1)
+                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
+                            
+  인터페이스
+  내부 클래스
+  입출력(1)
 
-콘솔 입출력 방법에 대해 직접 구현
-
-1. 콘솔 입력
-자바에서 콘솔 입력을 받는 방법은 여러 가지가 있습니다.
-
-주로 사용되는 몇 가지 방법들을 소개하겠습니다.
-
-
-  1. Scanner 클래스 사용
-    
-      ‘Scanner’ 클래스는 자바의 ‘java.util’ 패키지에 포함되어 있으며, 다양한 타입의 입력을 콘솔에서 받기 위해 널리 사용됩니다.
-      ‘System.in’ 을 ‘Scanner’ 객체에 연결하여 사용자로부터 입력을 받을 수 있습니다.
-```java
-import java.util.Scanner;
-    
-  
-
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(“Enter your name: “);
-        String name = scanner.nextLine();
-        System.out.println(“Hello, “ + name);
-        scanner.close();
-    }
-}
-
-- **2. BufferedReader** 와 **InputStreamReader 사용**
-    - 이 방법은 **'java.io'** 패키지를 사용합니다.
-    - **'InputStreamReader'** 는 바이트 스트림을 문자 스트림으로 변환하는데 사용되고, **'BufferedReader'** 는 텍스트 읽기를 효율적으로 할 수 있게 해 줍니다.
-        - 이 방법은 예외 처리를 필요로하며, 라인 단위로 입력을 받습니다.
-```java
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class Main {
-    public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println("Enter your name: ");
-            String name = reader.readLine();
-            System.out.println("Hello, " + name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. Console 클래스 사용
-    
-      ‘Console’ 클래스는 자바 6 이상에서 사용할 수 있으며, 콘솔에서 비밀번호와 같은 민감한 데이터를 읽을 때 유용합니다.
-      ‘System.console()’ 메소드를 통해 ‘Console’ 객체를 얻을 수 있으나, 이 방법은 IDE에서는 작동하지 않을 수 있습니다.(콘솔 환경에서만 사용 가능.)
-```java
-import java.io.Console;
-    
-  
-
-
-public class Main {
-    public static void main(String[] args) {
-        Console console = System.console();
-        if (console != null) {
-            String name = console.readLine(“Enter your name: “);
-            char[] password = console.readPassword(“Enter your password: “);
-            console.printf(“Hello, %s\n”, name);
-        } else {
-            System.out.println(“No console available”);
-        }
-    }
-}
-```
 
                         </a>
                         <div class="info-post">
@@ -18179,68 +18267,104 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-11-InnerClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-11-InnerClass.html"><h1 class="title_post">☕️[Java] 내부 클래스</h1></a>
-                        <a href="/Backend/Java/2024-05-11-InnerClass.html" class="txt_post">
-                            1️⃣ 내부 클래스.
-내부 클래스의 개념과 종류 이해
-익명 클래스 직접 구현
+                        <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html"><h1 class="title_post">📝[blog post] 프론트엔드와 백엔드는 무엇이 다를까?(+내가 백엔드 개발자가 되고 싶은 이유)</h1></a>
+                        <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="txt_post">
+                            1️⃣ 프론트엔드와 백엔드?
+처음 이 글의 여정을 함께하기에 앞서 프론트엔트가 무엇인가 백엔드가 무엇인지 알아야 할 것 같아요!
 
-1. 내부 클래스(Inner Class).
-자바 프로그래밍에서 내부 클래스(Inner Class)는 다른 클래스의 내부에 정의된 클래스를 말합니다.
+제가 아무것도 모르는 당시 저 두 단어 “프론트엔드”, “백엔드”를 듣고 느낀 것은
 
-내부 클래스는 주로 외부 클래스와 밀접한 관련이 있으며, 외부 클래스의 멤버들에 대한 접근을 용이하게 하기 위해 사용됩니다.
+“프론트엔드”는 뭔가 프론트 데스크 같이 앞에서 누군가가 나를 반겨주는 느낌이였고, “백엔드”는 뒤쪽에서 나를 받쳐주는 든든한 느낌이랄까? 😆
 
-1.1 내부 클래스의 특징.
-자바의 내부 클래스에는 몇 가지 특징이 있습니다.
-이 특징들은 내부 클래스가 어떻게 사용되고, 그들이 주는 이점과 한계를 이해하는 데 도움이 됩니다.
+그저 느낌으로는 알쏭달쏭하니 정확한 의미를 알아보는 여행을 떠나봅시다! 🙋‍♂️
 
-
-  1. 접근성과 밀접성 : 내부 클래스는 외부 클래스의 모든 필드와 메소드(프라이빗 포함)에 접근할 수 있습니다. 이는 내부 클래스가 외부 클래스와 밀접한 작업을 수행할 때 매우 유용합니다.
-    
-      이러한 접근은 내부 클래스가 외부 클래스의 구현 세부사항에 깊이 연결될 수 있게 합니다.
-    
-  
-  2. 캠슐화 증가 : 내부 클래스를 사용하면 관련 있는 부분만을 그룹화하여 외부에 불필요한 정보를 노출하지 않고도 복잡한 코드를 더 잘 구조화할 수 있습니다.
-    
-      이는 코드의 유지보수성과 가독성을 높이는 데 도움이 됩니다.
-    
-  
-  
-    3. 코드의 응집성 : 내부 클래스는 특정 외부 클래스와 매우 강하게 연결되어 있기 때문에, 그 기능이 외부 클래스와 밀접하게 관련된 기능을 수행할 때 코드의 응집력을 높일 수 있습니다.
-  
-  4. 더 나은 논리적 그룹핑 : 특정 기능을 내부 클래스에 구현함으로써, 관련 기능과 데이터를 함께 논리적으로 그룹화할 수 있습니다.
-    
-      이는 전체 코드베이스를 통해 일관성을 유지하고, 기능별로 코드를 정리하는 데 도움이 됩니다.
-    
-  
-  
-    5. 명시적인 컨텍스트 연결 : 내부 클래스는 명시적으로 그들의 외부 클래스의 인스턴스와 연결됩니다. 이는 그들이 외부 클래스의 상태와 행동에 따라 다르게 작동할 수 있음을 의미합니다.
-  
-  
-    6. 다중 상속의 일종의 구현 : 자바는 다중 상속을 지원하지 않지만, 내부 클래스를 통해 비슷한 효과를 낼 수 있습니다. 외부 클래스가 하나 이상의 내부 클래스를 가질 수 있고, 각 내부 클래스는 다른 클래스를 상속받을 수 있으므로 다양한 기능을 조합할 수 있습니다.
-  
-  7. 메모리 및 성능 고려사항 : 내부 클래스는 외부 클래스의 인스턴스와 연결되어 있기 때문에, 외부 클래스의 인스턴스가 메모리에 남아 있는 동안에는 가비지 컬렉션에서 제거되지 않습니다. 이는 메모리 관리 측면에서 고려해야 할 사항입니다.
+2️⃣ 프론트엔드.
+프론트엔드는 웹사이트에서 우리가 볼 수 있는 모든 것들을 만드는 일을 말해요 😆
 
 
-1.2 내부 클래스의 네 가지 유형.
 
-  
-    1. 비정적 중첩 클래스(Non-static Nested Class) 또는 내부 클래스(Inner Class) : 이 클래스는 외부 클래스의 인스턴스 멤버처럼 동작하며, 외부 클래스의 인스턴스에 대한 참조를 가지고 있습니다. 외부 클래스의 인스턴스 멤버와 메소드에 접근할 수 있습니다.
-  
-  
-    2. 정적 중첩 클래스(Static Nested Class) : 이 클래스는 외부 클래스의 정적 멤버처럼 동작하며, 외부 클래스의 인스턴스 멤버에는 접근할 수 없지만, 정적 멤버에는 접근할 수 있습니다.
-  
-  
-    3. 지역 클래스(Local Class) : 특정 메소드 또는 초기화 블록 내부에 정의된 클래스로, 선언된 영역 내에서만 사용할 수 있습니다. 지역 클래스는 해당 메소드 내에서만 사용되므로, 외부로 노출되지 않습니다.
-  
-  
-    4. 익명 클래스(Anonymous Class) : 이름이 없는 클래스로, 일반적으로 단 한 번만 사용되며 주로 리스너(listener) 또는 작은 델리게이션 클래스로 사용됩니다. 클래스 선언과 인스턴스 생성이 동시에 이루어집니다.
-  
+예를 들어, 컴퓨터나 핸드폰으로 책을 보거나 게임을 할 때, 그 화면에 보이는 모든 것들이 바로 프론트엔드에서 만들어진 거예요.(존경합니다 프론트엔드 개발자님들🙇‍♂️)
 
+이렇게 생각해 볼까요?
+
+
+
+웹사이트를 마치 컬러링북처럼 생각한다면, 프론트엔드 개발자는 그림을 그리고 색칠하는 사람이에요 🧑‍🎨
+
+프론트엔드 개발자들은 화면에 나타날 모양이나 색상을 정하고, 어디를 누르면 어떤일이 일어날지도 결정합니다.
+
+예를 들어, ‘스타드’ 버튼을 누르면 게임이 시작되거나, 사진을 클릭하면 커지는 것처럼 말이에요.
+
+즉, 프론트엔드는 우리가 웹사이트에서 보고 만지는 모든 것을 아름답고 재미있게 만들어 주는 중요한 일을 한답니다!
+
+3️⃣ 백엔드.
+
+
+백엔드는 웹사이트에서 우리가 눈에 보이지 않는 부분을 다루는 일을 해요.(그렇다고 뭐.. 해커 이런건 아닙니다.. 완전히 달라요…)
+
+
+
+이것은 마치 마술사가 무대 뒤에서 마술을 준비하는 것과 비슷해요! 🪄
+
+우리가 볼 수는 없지만, 마술이 멋기제 보이도록 도와주죠.
+
+예를 들어, 우리가 컴퓨터로 쇼핑을 할 때, 옷이나 장난감을 고르고 주문 버튼을 눌러요. 이떄 백엔드는 주문한 것이 무엇인지 기억하고, 그 물건을 어디로 보내야 할지 알려줘요.
+
+또한, 우리가 어떤 게임을 하거나 질문을 할 때도, 백엔드는 그 대답을 찾아서 화면에 보여주죠.
+
+백엔드는 컴퓨터와 데이터베이스라는 큰 저장소를 사용해서, 우리가 웹사이트에서 필요한 모든 정보를 처리하고 저장하는 곳이에요.
+
+우리가 보지 못하지만, 웹사이트가 잘 작동하도록 도와주는 매우 중요한 부분이랍니다!
+
+4️⃣ 내가 백엔드 개발자가 되고 싶은 이유.
+
+저는 어렸을 때 레고를 참 좋아했어요 :)
+
+
+
+그 중에서도 테크닉 레고를 가장 좋아했었어요 :)
+
+그 이유는 완성된 것을 보는 것도 좋았지만 조립해 나가면서 그 안에 중심이 되는 코어, 즉 움직임의 중앙부를 제가 직접 조립하고 움직임이 어디서부터 시작되는지를 직접 이해하는 것이 너무 재미있었거든요.
+
+자동차 레고를 만들다보면 직접 엔진를 만들게 됩니다.
+
+그러면 진짜 엔진이 어떻게 움직이고 이 엔진이 어떻게 동작하느냐에 따라 자동차의 다른 부품들이 맞물려 하나씩 동작하는지 상상되는게 너무 행복했었어요.
+
+이런것들이 어렸을 때부터 너무 좋았답니다.
+
+그리고나서 조금 커서는 루어 낚시를 좋아하게 되었어요.
+
+
+
+이 루어 낚시는 “배스” 라는 어종을 대상으로 하는 낚시인데, 이 어종에 대한 여러가지 공부를 해야 했었어요.
+
+먼저, 이 어종이 온도에 민감해 온도에 따라 공격 패턴이 달라요 그래서 그 패턴에 대한 데이터를 수집해야 했었어요.
+
+두 번째, 이 어종은 수중 구조물에 굉장히 예민해요. 자신이 좋아하는 수중 구조물이 따로 있어서 그 수중 구조물을 따로 탐색하고 이해하는 법을 배워야 했었어요.
+
+세 번째, 날씨에 영향을 많이 받는 어종이에요. 햇빛과 그늘 그리고 비가 오는 날과 안오는 날에 따라 먹이 사냥 패턴이 달라져요. 그에 따른 루어 선택과 패턴을 다르게 골라야 합니다.
+
+네 번째, 피딩 타임이라는 이 어종의 먹이 사냥 시간이 있습니다. 이 시간에 따라 어종의 먹이 사냥 패턴이 매우 다양해요.
+
+마지막, 계절에 따라 이 어종이 물 속이 바닥, 중층 또는 상층에 머무는지 이런 데이터가 달라요.
+
+이렇게 이 어종을 낚기 위해서는 수 많은 변수와 데이터들을 조합하여 적절한 위치에 적합한 루어를 선택하여 공격 패턴에 맞는 액션을 주어야 배스가 물어 줍니다.
+
+그럴때 “아 나의 데이터가 맞았구나!” 하는 희열감과 아드레날린 그리고 도파민이 폭발해버리죠.
+
+이런 특성이 저는 백엔드에서도 비슷하게 적용되는 것 같아요.
+
+레고는 백엔드에서의 중심 동작을 알아가는 과정과 직접 동작하는 로직을 만드는 부분에서의 즐거움을 찾아가는 과정에서 재미를 느끼고,
+
+낚시는 백엔드에서 데이터를 찾고 뽑아내어 가공하고 내어주는 부분에서 희열을 느끼는 것 같습니다.
+
+그래서 저의 적성과 맞는 것 같아요.
+
+저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
 
                         </a>
                         <div class="info-post">
@@ -18466,17 +18590,88 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-11-Input-Output-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
+                        <a href="/Backend/Java/2024-05-11-Input-Output-1.html"><h1 class="title_post">☕️[Java] 입출력(1)</h1></a>
+                        <a href="/Backend/Java/2024-05-11-Input-Output-1.html" class="txt_post">
+                            1️⃣ 입출력(1)
 
+콘솔 입출력 방법에 대해 직접 구현
+
+1. 콘솔 입력
+자바에서 콘솔 입력을 받는 방법은 여러 가지가 있습니다.
+
+주로 사용되는 몇 가지 방법들을 소개하겠습니다.
+
+
+  1. Scanner 클래스 사용
+    
+      ‘Scanner’ 클래스는 자바의 ‘java.util’ 패키지에 포함되어 있으며, 다양한 타입의 입력을 콘솔에서 받기 위해 널리 사용됩니다.
+      ‘System.in’ 을 ‘Scanner’ 객체에 연결하여 사용자로부터 입력을 받을 수 있습니다.
+```java
+import java.util.Scanner;
+    
+  
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(“Enter your name: “);
+        String name = scanner.nextLine();
+        System.out.println(“Hello, “ + name);
+        scanner.close();
+    }
+}
+
+- **2. BufferedReader** 와 **InputStreamReader 사용**
+    - 이 방법은 **'java.io'** 패키지를 사용합니다.
+    - **'InputStreamReader'** 는 바이트 스트림을 문자 스트림으로 변환하는데 사용되고, **'BufferedReader'** 는 텍스트 읽기를 효율적으로 할 수 있게 해 줍니다.
+        - 이 방법은 예외 처리를 필요로하며, 라인 단위로 입력을 받습니다.
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Enter your name: ");
+            String name = reader.readLine();
+            System.out.println("Hello, " + name);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. Console 클래스 사용
+    
+      ‘Console’ 클래스는 자바 6 이상에서 사용할 수 있으며, 콘솔에서 비밀번호와 같은 민감한 데이터를 읽을 때 유용합니다.
+      ‘System.console()’ 메소드를 통해 ‘Console’ 객체를 얻을 수 있으나, 이 방법은 IDE에서는 작동하지 않을 수 있습니다.(콘솔 환경에서만 사용 가능.)
+```java
+import java.io.Console;
+    
+  
+
+
+public class Main {
+    public static void main(String[] args) {
+        Console console = System.console();
+        if (console != null) {
+            String name = console.readLine(“Enter your name: “);
+            char[] password = console.readPassword(“Enter your password: “);
+            console.printf(“Hello, %s\n”, name);
+        } else {
+            System.out.println(“No console available”);
+        }
+    }
+}
+```
 
                         </a>
                         <div class="info-post">
@@ -18494,104 +18689,68 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-05-11-InnerClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html"><h1 class="title_post">📝[blog post] 프론트엔드와 백엔드는 무엇이 다를까?(+내가 백엔드 개발자가 되고 싶은 이유)</h1></a>
-                        <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="txt_post">
-                            1️⃣ 프론트엔드와 백엔드?
-처음 이 글의 여정을 함께하기에 앞서 프론트엔트가 무엇인가 백엔드가 무엇인지 알아야 할 것 같아요!
+                        <a href="/Backend/Java/2024-05-11-InnerClass.html"><h1 class="title_post">☕️[Java] 내부 클래스</h1></a>
+                        <a href="/Backend/Java/2024-05-11-InnerClass.html" class="txt_post">
+                            1️⃣ 내부 클래스.
+내부 클래스의 개념과 종류 이해
+익명 클래스 직접 구현
 
-제가 아무것도 모르는 당시 저 두 단어 “프론트엔드”, “백엔드”를 듣고 느낀 것은
+1. 내부 클래스(Inner Class).
+자바 프로그래밍에서 내부 클래스(Inner Class)는 다른 클래스의 내부에 정의된 클래스를 말합니다.
 
-“프론트엔드”는 뭔가 프론트 데스크 같이 앞에서 누군가가 나를 반겨주는 느낌이였고, “백엔드”는 뒤쪽에서 나를 받쳐주는 든든한 느낌이랄까? 😆
+내부 클래스는 주로 외부 클래스와 밀접한 관련이 있으며, 외부 클래스의 멤버들에 대한 접근을 용이하게 하기 위해 사용됩니다.
 
-그저 느낌으로는 알쏭달쏭하니 정확한 의미를 알아보는 여행을 떠나봅시다! 🙋‍♂️
-
-2️⃣ 프론트엔드.
-프론트엔드는 웹사이트에서 우리가 볼 수 있는 모든 것들을 만드는 일을 말해요 😆
-
-
-
-예를 들어, 컴퓨터나 핸드폰으로 책을 보거나 게임을 할 때, 그 화면에 보이는 모든 것들이 바로 프론트엔드에서 만들어진 거예요.(존경합니다 프론트엔드 개발자님들🙇‍♂️)
-
-이렇게 생각해 볼까요?
+1.1 내부 클래스의 특징.
+자바의 내부 클래스에는 몇 가지 특징이 있습니다.
+이 특징들은 내부 클래스가 어떻게 사용되고, 그들이 주는 이점과 한계를 이해하는 데 도움이 됩니다.
 
 
-
-웹사이트를 마치 컬러링북처럼 생각한다면, 프론트엔드 개발자는 그림을 그리고 색칠하는 사람이에요 🧑‍🎨
-
-프론트엔드 개발자들은 화면에 나타날 모양이나 색상을 정하고, 어디를 누르면 어떤일이 일어날지도 결정합니다.
-
-예를 들어, ‘스타드’ 버튼을 누르면 게임이 시작되거나, 사진을 클릭하면 커지는 것처럼 말이에요.
-
-즉, 프론트엔드는 우리가 웹사이트에서 보고 만지는 모든 것을 아름답고 재미있게 만들어 주는 중요한 일을 한답니다!
-
-3️⃣ 백엔드.
-
-
-백엔드는 웹사이트에서 우리가 눈에 보이지 않는 부분을 다루는 일을 해요.(그렇다고 뭐.. 해커 이런건 아닙니다.. 완전히 달라요…)
-
-
-
-이것은 마치 마술사가 무대 뒤에서 마술을 준비하는 것과 비슷해요! 🪄
-
-우리가 볼 수는 없지만, 마술이 멋기제 보이도록 도와주죠.
-
-예를 들어, 우리가 컴퓨터로 쇼핑을 할 때, 옷이나 장난감을 고르고 주문 버튼을 눌러요. 이떄 백엔드는 주문한 것이 무엇인지 기억하고, 그 물건을 어디로 보내야 할지 알려줘요.
-
-또한, 우리가 어떤 게임을 하거나 질문을 할 때도, 백엔드는 그 대답을 찾아서 화면에 보여주죠.
-
-백엔드는 컴퓨터와 데이터베이스라는 큰 저장소를 사용해서, 우리가 웹사이트에서 필요한 모든 정보를 처리하고 저장하는 곳이에요.
-
-우리가 보지 못하지만, 웹사이트가 잘 작동하도록 도와주는 매우 중요한 부분이랍니다!
-
-4️⃣ 내가 백엔드 개발자가 되고 싶은 이유.
-
-저는 어렸을 때 레고를 참 좋아했어요 :)
+  1. 접근성과 밀접성 : 내부 클래스는 외부 클래스의 모든 필드와 메소드(프라이빗 포함)에 접근할 수 있습니다. 이는 내부 클래스가 외부 클래스와 밀접한 작업을 수행할 때 매우 유용합니다.
+    
+      이러한 접근은 내부 클래스가 외부 클래스의 구현 세부사항에 깊이 연결될 수 있게 합니다.
+    
+  
+  2. 캠슐화 증가 : 내부 클래스를 사용하면 관련 있는 부분만을 그룹화하여 외부에 불필요한 정보를 노출하지 않고도 복잡한 코드를 더 잘 구조화할 수 있습니다.
+    
+      이는 코드의 유지보수성과 가독성을 높이는 데 도움이 됩니다.
+    
+  
+  
+    3. 코드의 응집성 : 내부 클래스는 특정 외부 클래스와 매우 강하게 연결되어 있기 때문에, 그 기능이 외부 클래스와 밀접하게 관련된 기능을 수행할 때 코드의 응집력을 높일 수 있습니다.
+  
+  4. 더 나은 논리적 그룹핑 : 특정 기능을 내부 클래스에 구현함으로써, 관련 기능과 데이터를 함께 논리적으로 그룹화할 수 있습니다.
+    
+      이는 전체 코드베이스를 통해 일관성을 유지하고, 기능별로 코드를 정리하는 데 도움이 됩니다.
+    
+  
+  
+    5. 명시적인 컨텍스트 연결 : 내부 클래스는 명시적으로 그들의 외부 클래스의 인스턴스와 연결됩니다. 이는 그들이 외부 클래스의 상태와 행동에 따라 다르게 작동할 수 있음을 의미합니다.
+  
+  
+    6. 다중 상속의 일종의 구현 : 자바는 다중 상속을 지원하지 않지만, 내부 클래스를 통해 비슷한 효과를 낼 수 있습니다. 외부 클래스가 하나 이상의 내부 클래스를 가질 수 있고, 각 내부 클래스는 다른 클래스를 상속받을 수 있으므로 다양한 기능을 조합할 수 있습니다.
+  
+  7. 메모리 및 성능 고려사항 : 내부 클래스는 외부 클래스의 인스턴스와 연결되어 있기 때문에, 외부 클래스의 인스턴스가 메모리에 남아 있는 동안에는 가비지 컬렉션에서 제거되지 않습니다. 이는 메모리 관리 측면에서 고려해야 할 사항입니다.
 
 
+1.2 내부 클래스의 네 가지 유형.
 
-그 중에서도 테크닉 레고를 가장 좋아했었어요 :)
+  
+    1. 비정적 중첩 클래스(Non-static Nested Class) 또는 내부 클래스(Inner Class) : 이 클래스는 외부 클래스의 인스턴스 멤버처럼 동작하며, 외부 클래스의 인스턴스에 대한 참조를 가지고 있습니다. 외부 클래스의 인스턴스 멤버와 메소드에 접근할 수 있습니다.
+  
+  
+    2. 정적 중첩 클래스(Static Nested Class) : 이 클래스는 외부 클래스의 정적 멤버처럼 동작하며, 외부 클래스의 인스턴스 멤버에는 접근할 수 없지만, 정적 멤버에는 접근할 수 있습니다.
+  
+  
+    3. 지역 클래스(Local Class) : 특정 메소드 또는 초기화 블록 내부에 정의된 클래스로, 선언된 영역 내에서만 사용할 수 있습니다. 지역 클래스는 해당 메소드 내에서만 사용되므로, 외부로 노출되지 않습니다.
+  
+  
+    4. 익명 클래스(Anonymous Class) : 이름이 없는 클래스로, 일반적으로 단 한 번만 사용되며 주로 리스너(listener) 또는 작은 델리게이션 클래스로 사용됩니다. 클래스 선언과 인스턴스 생성이 동시에 이루어집니다.
+  
 
-그 이유는 완성된 것을 보는 것도 좋았지만 조립해 나가면서 그 안에 중심이 되는 코어, 즉 움직임의 중앙부를 제가 직접 조립하고 움직임이 어디서부터 시작되는지를 직접 이해하는 것이 너무 재미있었거든요.
-
-자동차 레고를 만들다보면 직접 엔진를 만들게 됩니다.
-
-그러면 진짜 엔진이 어떻게 움직이고 이 엔진이 어떻게 동작하느냐에 따라 자동차의 다른 부품들이 맞물려 하나씩 동작하는지 상상되는게 너무 행복했었어요.
-
-이런것들이 어렸을 때부터 너무 좋았답니다.
-
-그리고나서 조금 커서는 루어 낚시를 좋아하게 되었어요.
-
-
-
-이 루어 낚시는 “배스” 라는 어종을 대상으로 하는 낚시인데, 이 어종에 대한 여러가지 공부를 해야 했었어요.
-
-먼저, 이 어종이 온도에 민감해 온도에 따라 공격 패턴이 달라요 그래서 그 패턴에 대한 데이터를 수집해야 했었어요.
-
-두 번째, 이 어종은 수중 구조물에 굉장히 예민해요. 자신이 좋아하는 수중 구조물이 따로 있어서 그 수중 구조물을 따로 탐색하고 이해하는 법을 배워야 했었어요.
-
-세 번째, 날씨에 영향을 많이 받는 어종이에요. 햇빛과 그늘 그리고 비가 오는 날과 안오는 날에 따라 먹이 사냥 패턴이 달라져요. 그에 따른 루어 선택과 패턴을 다르게 골라야 합니다.
-
-네 번째, 피딩 타임이라는 이 어종의 먹이 사냥 시간이 있습니다. 이 시간에 따라 어종의 먹이 사냥 패턴이 매우 다양해요.
-
-마지막, 계절에 따라 이 어종이 물 속이 바닥, 중층 또는 상층에 머무는지 이런 데이터가 달라요.
-
-이렇게 이 어종을 낚기 위해서는 수 많은 변수와 데이터들을 조합하여 적절한 위치에 적합한 루어를 선택하여 공격 패턴에 맞는 액션을 주어야 배스가 물어 줍니다.
-
-그럴때 “아 나의 데이터가 맞았구나!” 하는 희열감과 아드레날린 그리고 도파민이 폭발해버리죠.
-
-이런 특성이 저는 백엔드에서도 비슷하게 적용되는 것 같아요.
-
-레고는 백엔드에서의 중심 동작을 알아가는 과정과 직접 동작하는 로직을 만드는 부분에서의 즐거움을 찾아가는 과정에서 재미를 느끼고,
-
-낚시는 백엔드에서 데이터를 찾고 뽑아내어 가공하고 내어주는 부분에서 희열을 느끼는 것 같습니다.
-
-그래서 저의 적성과 맞는 것 같아요.
-
-저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
 
                         </a>
                         <div class="info-post">
@@ -18619,176 +18778,6 @@ public class Main {
   다형성
   추상클래스
 
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-10-abstractClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-10-abstractClass.html"><h1 class="title_post">☕️[Java] 추상클래스</h1></a>
-                        <a href="/Backend/Java/2024-05-10-abstractClass.html" class="txt_post">
-                            1️⃣ 추상클래스.
-추상 클래스가 무엇인지 설명할 수 있음
-abstract를 이용하여 추상 클래스 구현
-
-1. 추상 메소드(Abstract Method)
-자바 프로그래밍에서 추상 메소드(abstract method)는 선언만 있고 구현은 없는 메소드입니다.
-이러한 메소드는 추상 클래스(abstract class)나 인터페이스(interface) 내부에서 선언될 수 있으며, 구체적인 행동은 하위 클래스에서 구현됩니다.
-
-추상 메소드를 사용하는 주된 목적은 하위 클래스가 특정 메소드를 반드시 구현하도록 강제하는 것입니다.
-이는 코드의 일관성을 유지하고, 다형성을 통한 유연한 프로그래밍 설계를 가능하게 합니다.
-
-1.2 추상 메소드의 특징.
-
-  선언만 있고 구현이 없음 : 메소드 본체가 없으며, 메소드 선언은 세미콜론(’;’) 으로 끝납니다.
-  하위 클래스에서의 구현 필수 : 추상 메소드를 포함하는 클래스를 상속받는 모든 하위 클래스는 해당 메소드를 구현해야만 인스턴스 생성이 가능합니다.
-  ‘abstract’ 키워드 사용 : 메소드 앞에 ‘abstract’ 키워드를 명시하여 추상 메소드임을 표시합니다.
-
-
-1.3 추상 메소드 예시
-다음은 추상 클래스와 추상 메소드의 간단한 예시입니다.
-abstract class Animal {
-    // 추상 메소드
-    abstract void makeSound();
-    
-    void breathe() {
-        System.out.println("Btrathing...");
-    }
-}
-
-class Dog extends Animal {
-    // 추상 메소드 구현
-    void makeSound() {
-        System.out.println("Bark!");
-    }
-}
-
-class Cat extends Animal {
-    // 추상 메소드 구현
-    void makeSound() {
-        System.out.println("Meow!");
-    }
-}
-
-
-
-  위 예에서 ‘Animal’ 클래스는 ‘makeSound’ 라는 추상 메소드를 포함하고 있습니다.
-  ‘Dog’ 와 ‘Cat’ 클래스는 ‘Animal’ 클래스를 상속받고 ‘makeSound’ 메소드를 각각 다르게 구현하고 있습니다.
-    
-      이는 다형성의 좋은 예로, ‘Animal’ 타입의 참조를 사용하여 각각의 하위 클래스 객체를 다룰 때 동일한 메소드(‘makeSound’)를 호출하더라도 서로 다른 행동(개는 짖고, 고양이는 울음)을 보여줍니다.
-    
-  
-
-
-1.4 결론.
-추상 메소드는 프로그램의 확장성과 유지보수성을 향상시키는 객체 지향 설계의 핵심 요소입니다.
-다양한 상황에 맞춰 동일한 인터페이스에 여러 구현을 제공할 수 있어 유연한 코드 작성이 가능합니다.
-
-
-
-2. 추상 클래스(abstract class)
-자바에서 추상 클래스(abstract class)는 완전하지 않은 클래스로, 추상 클래스 자체로는 인스턴스를 생성할 수 없습니다.
-추상 클래스의 주요 목적은 다른 클래스들의 기본이 되는 클래스를 제공하여 코드의 재사용성을 높이고, 일관된 설계를 유도하는 것입니다.
-추상 클래스는 하나 이상의 추상 메소드를 포함할 수 있으며, 또한 구현된 메소드도 포함할 수 있습니다.
-
-2.1 추상 클래스의 특징.
-
-  1. 인스턴스 생성 불가 : 추상 클래스는 직접적으로 인스턴스를 생성할 수 없습니다. 반드시 상속을 통해 그 기능을 확장하고 구체적인 클래스에서 인스턴스를 생성해야 합니다.
-  2. 추상 메소드 포함 가능 : 추상 클래스는 하나 이상의 메소드를 포함할 수 있습니다. 추상 메소드는 선언만 있고 구현은 없으며, 이를 상속받은 구체적인 클래스에서 구현해야 합니다.
-  3. 구현된 메소드 포함 가능 : 추상 클래스는 구현된 메소드도 포함할 수 있어, 자식 클래스들이 이 메소드를 재사용하거나 오버라이드 할 수 있습니다.
-  4. 생성자 및 필드 포함 가능 : 추상 클래스는 자신의 생성자와 필드(변수)를 가질 수 있으며, 이는 상속받은 클래스에서 사용할 수 있습니다.
-
-
-2.2 추상 클래스의 사용 예시.
-abstract class Animal {
-    abstract void makeSound();
-    
-    void eat() {
-        System.out.println("This animal is eating.");
-    }
-}
-
-class Dog extends Animal {
-    @Override
-    void makeSound() {
-        System.out.println("Bark!");
-    }
-}
-
-class Cat extends Animal {
-    @Override
-    void makeSound() {
-        System.out.println("Meow!");
-    }
-}
-
-
-
-  이 예에서 ‘Animal’ 은 추상 클래스로, ‘makeSound()’ 메소드를 추상 메소드로 포함하고 있습니다.
-    
-      ‘Dog’ 와 ‘Cat’ 은 ‘Animal’ 클래스를 상속받아 ‘makeSound()’ 메소드를 각각 구현합니다.
-      추상 클래스 ‘Animal’ 의 ‘eat()’ 메소드는 모든 동물이 공통적으로 사용할 수 있는 구현된 메소드입니다.
-    
-  
-
-
-2.3 결론.
-추상 클래스는 공통적인 특징을 가진 클래스들 사이의 일반적인 행동을 정의하고, 이를 상속받는 구체적인 클래스들이 이를 구현하도록 하는 데에 주로 사용됩니다.
-
-이를 통해 코드의 재사용성과 유지보수성을 향상시키며, 객체 지향 설계의 일관성과 안정성을 보장할 수 있습니다.
-
-
-
-3. 익명 클래스(anonymous class).
-자바에서 익명 클래스(anonymous class)는 이름이 없는 클래스입니다.
-
-이들은 주로 일회성 사용 목적으로 설계되며, 인터페이스나 추상 클래스를 간편하게 구현하거나, 기존 클래스를 임시로 확장하기 위해 사용됩니다.
-
-익명 클래스는 일반적으로 이벤트 리스너나 작은 콜백 객체 같이 간단한 기능을 수행하는 데에 활용됩니다.
-
-3.1 익명 클래스의 특징.
-
-  1. 이름이 없음 : 익명 클래스는 이름을 가지지 않습니다. 인스턴스 생성 시점에 정의됩니다.
-  2. 즉석에서 정의 및 사용 : 익명 클래스는 즉석에서 정의되어 바로 인스턴스가 생성됩니다. 보통 이들은 한 번만 사용되고 재사용되지 않습니다.
-  3. 상속 및 구현 : 익명 클래스는 상쉬 클래스를 상속하거나 인터페이스를 구현할 수 있습니다. 그러나 다중 상속은 지원하지 않습니다.
-  4. 오직 하나의 인스턴스만 생성 가능 : 익명 클래스로부터 직접적으로 두 개 이상의 객체를 생성할 수는 없습니다. 다시 사용하려면 클래스 정의를 반복해야 합니다.
-  5. 지역 클래스 비슷 : 지역 변수처럼 동작하여 주변 스코프의 변수를 참조할 수 있습니다. 자바 8 이전에는 final 변수만 참조 가능했으나, 자바 8부터는 effectively final(명시적으로 final로 선언되지 않았어도 값이 변경되지 않는 변수) 변수도 참조할 수 있습니다.
-
-
-3.2 익명 클래스의 사용 예.
-button.addActionListener(new ActionListener() {
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("버튼이 클릭되었습니다!");
-    }
-});
-
-
-  위 예제에서 ‘ActionListener’ 인터페이스는 익명 클래스를 통해 구현되었습니다.
-    
-      ‘button.addActionListener’ 메소드에 직접 전달되면서 버튼 클릭 시 “버튼이 클릭되었습니다!”를 출력하는 ‘actionPerformed’ 메소드를 포함하고 있습니다.
-    
-  
-
-
-3.3 결론.
-익명 클래스는 특정 인터페이스나 상위 클래스의 메소드를 구현하거나 오버라이드할 때 사용됩니다.
-짧고 간단한 기능을 구현하는 데 유용하며, 코드의 간결성을 유지할 수 있게 도와줍니다.
-하지만 복잡한 로직이나 반복적으로 사용될 기능에 대해서는 일반 클래스나 지역 클래스를 사용하는 것이 더 적합할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -19090,6 +19079,202 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-05-10-abstractClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-10-abstractClass.html"><h1 class="title_post">☕️[Java] 추상클래스</h1></a>
+                        <a href="/Backend/Java/2024-05-10-abstractClass.html" class="txt_post">
+                            1️⃣ 추상클래스.
+추상 클래스가 무엇인지 설명할 수 있음
+abstract를 이용하여 추상 클래스 구현
+
+1. 추상 메소드(Abstract Method)
+자바 프로그래밍에서 추상 메소드(abstract method)는 선언만 있고 구현은 없는 메소드입니다.
+이러한 메소드는 추상 클래스(abstract class)나 인터페이스(interface) 내부에서 선언될 수 있으며, 구체적인 행동은 하위 클래스에서 구현됩니다.
+
+추상 메소드를 사용하는 주된 목적은 하위 클래스가 특정 메소드를 반드시 구현하도록 강제하는 것입니다.
+이는 코드의 일관성을 유지하고, 다형성을 통한 유연한 프로그래밍 설계를 가능하게 합니다.
+
+1.2 추상 메소드의 특징.
+
+  선언만 있고 구현이 없음 : 메소드 본체가 없으며, 메소드 선언은 세미콜론(’;’) 으로 끝납니다.
+  하위 클래스에서의 구현 필수 : 추상 메소드를 포함하는 클래스를 상속받는 모든 하위 클래스는 해당 메소드를 구현해야만 인스턴스 생성이 가능합니다.
+  ‘abstract’ 키워드 사용 : 메소드 앞에 ‘abstract’ 키워드를 명시하여 추상 메소드임을 표시합니다.
+
+
+1.3 추상 메소드 예시
+다음은 추상 클래스와 추상 메소드의 간단한 예시입니다.
+abstract class Animal {
+    // 추상 메소드
+    abstract void makeSound();
+    
+    void breathe() {
+        System.out.println("Btrathing...");
+    }
+}
+
+class Dog extends Animal {
+    // 추상 메소드 구현
+    void makeSound() {
+        System.out.println("Bark!");
+    }
+}
+
+class Cat extends Animal {
+    // 추상 메소드 구현
+    void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+
+
+  위 예에서 ‘Animal’ 클래스는 ‘makeSound’ 라는 추상 메소드를 포함하고 있습니다.
+  ‘Dog’ 와 ‘Cat’ 클래스는 ‘Animal’ 클래스를 상속받고 ‘makeSound’ 메소드를 각각 다르게 구현하고 있습니다.
+    
+      이는 다형성의 좋은 예로, ‘Animal’ 타입의 참조를 사용하여 각각의 하위 클래스 객체를 다룰 때 동일한 메소드(‘makeSound’)를 호출하더라도 서로 다른 행동(개는 짖고, 고양이는 울음)을 보여줍니다.
+    
+  
+
+
+1.4 결론.
+추상 메소드는 프로그램의 확장성과 유지보수성을 향상시키는 객체 지향 설계의 핵심 요소입니다.
+다양한 상황에 맞춰 동일한 인터페이스에 여러 구현을 제공할 수 있어 유연한 코드 작성이 가능합니다.
+
+
+
+2. 추상 클래스(abstract class)
+자바에서 추상 클래스(abstract class)는 완전하지 않은 클래스로, 추상 클래스 자체로는 인스턴스를 생성할 수 없습니다.
+추상 클래스의 주요 목적은 다른 클래스들의 기본이 되는 클래스를 제공하여 코드의 재사용성을 높이고, 일관된 설계를 유도하는 것입니다.
+추상 클래스는 하나 이상의 추상 메소드를 포함할 수 있으며, 또한 구현된 메소드도 포함할 수 있습니다.
+
+2.1 추상 클래스의 특징.
+
+  1. 인스턴스 생성 불가 : 추상 클래스는 직접적으로 인스턴스를 생성할 수 없습니다. 반드시 상속을 통해 그 기능을 확장하고 구체적인 클래스에서 인스턴스를 생성해야 합니다.
+  2. 추상 메소드 포함 가능 : 추상 클래스는 하나 이상의 메소드를 포함할 수 있습니다. 추상 메소드는 선언만 있고 구현은 없으며, 이를 상속받은 구체적인 클래스에서 구현해야 합니다.
+  3. 구현된 메소드 포함 가능 : 추상 클래스는 구현된 메소드도 포함할 수 있어, 자식 클래스들이 이 메소드를 재사용하거나 오버라이드 할 수 있습니다.
+  4. 생성자 및 필드 포함 가능 : 추상 클래스는 자신의 생성자와 필드(변수)를 가질 수 있으며, 이는 상속받은 클래스에서 사용할 수 있습니다.
+
+
+2.2 추상 클래스의 사용 예시.
+abstract class Animal {
+    abstract void makeSound();
+    
+    void eat() {
+        System.out.println("This animal is eating.");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Bark!");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+
+
+  이 예에서 ‘Animal’ 은 추상 클래스로, ‘makeSound()’ 메소드를 추상 메소드로 포함하고 있습니다.
+    
+      ‘Dog’ 와 ‘Cat’ 은 ‘Animal’ 클래스를 상속받아 ‘makeSound()’ 메소드를 각각 구현합니다.
+      추상 클래스 ‘Animal’ 의 ‘eat()’ 메소드는 모든 동물이 공통적으로 사용할 수 있는 구현된 메소드입니다.
+    
+  
+
+
+2.3 결론.
+추상 클래스는 공통적인 특징을 가진 클래스들 사이의 일반적인 행동을 정의하고, 이를 상속받는 구체적인 클래스들이 이를 구현하도록 하는 데에 주로 사용됩니다.
+
+이를 통해 코드의 재사용성과 유지보수성을 향상시키며, 객체 지향 설계의 일관성과 안정성을 보장할 수 있습니다.
+
+
+
+3. 익명 클래스(anonymous class).
+자바에서 익명 클래스(anonymous class)는 이름이 없는 클래스입니다.
+
+이들은 주로 일회성 사용 목적으로 설계되며, 인터페이스나 추상 클래스를 간편하게 구현하거나, 기존 클래스를 임시로 확장하기 위해 사용됩니다.
+
+익명 클래스는 일반적으로 이벤트 리스너나 작은 콜백 객체 같이 간단한 기능을 수행하는 데에 활용됩니다.
+
+3.1 익명 클래스의 특징.
+
+  1. 이름이 없음 : 익명 클래스는 이름을 가지지 않습니다. 인스턴스 생성 시점에 정의됩니다.
+  2. 즉석에서 정의 및 사용 : 익명 클래스는 즉석에서 정의되어 바로 인스턴스가 생성됩니다. 보통 이들은 한 번만 사용되고 재사용되지 않습니다.
+  3. 상속 및 구현 : 익명 클래스는 상쉬 클래스를 상속하거나 인터페이스를 구현할 수 있습니다. 그러나 다중 상속은 지원하지 않습니다.
+  4. 오직 하나의 인스턴스만 생성 가능 : 익명 클래스로부터 직접적으로 두 개 이상의 객체를 생성할 수는 없습니다. 다시 사용하려면 클래스 정의를 반복해야 합니다.
+  5. 지역 클래스 비슷 : 지역 변수처럼 동작하여 주변 스코프의 변수를 참조할 수 있습니다. 자바 8 이전에는 final 변수만 참조 가능했으나, 자바 8부터는 effectively final(명시적으로 final로 선언되지 않았어도 값이 변경되지 않는 변수) 변수도 참조할 수 있습니다.
+
+
+3.2 익명 클래스의 사용 예.
+button.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("버튼이 클릭되었습니다!");
+    }
+});
+
+
+  위 예제에서 ‘ActionListener’ 인터페이스는 익명 클래스를 통해 구현되었습니다.
+    
+      ‘button.addActionListener’ 메소드에 직접 전달되면서 버튼 클릭 시 “버튼이 클릭되었습니다!”를 출력하는 ‘actionPerformed’ 메소드를 포함하고 있습니다.
+    
+  
+
+
+3.3 결론.
+익명 클래스는 특정 인터페이스나 상위 클래스의 메소드를 구현하거나 오버라이드할 때 사용됩니다.
+짧고 간단한 기능을 구현하는 데 유용하며, 코드의 간결성을 유지할 수 있게 도와줍니다.
+하지만 복잡한 로직이나 반복적으로 사용될 기능에 대해서는 일반 클래스나 지역 클래스를 사용하는 것이 더 적합할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
+                            
+  상속
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-09-Inheritance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -19281,32 +19466,6 @@ public class Dog extends Animal {
 
 📝 정리.
 오버라이딩은 프로그램의 다형성을 구현하는 데 필수적인 기능으로, 상속받은 메소드를 사용하는 대신 서브클래스에 맞게 특화된 기능을 구현할 수 있도록 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
-                            
-  상속
-
 
                         </a>
                         <div class="info-post">
@@ -28130,6 +28289,17 @@ public class Main {
             'type'     : "post",
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-08-25-Object-OCP-2.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-25"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] equals() - 1, 동일성과 동등성",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-08-25-equals-1.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-25"
         });

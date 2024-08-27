@@ -621,6 +621,7 @@
             
             
             
+            
 
     
     
@@ -985,6 +986,204 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-27-primitive-reference-type.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-27-primitive-reference-type.html"><h1 class="title_post">☕️[Java] 기본형과 참조형의 공유</h1></a>
+                        <a href="/Backend/Java/2024-08-27-primitive-reference-type.html" class="txt_post">
+                            ☕️[Java] 기본형과 참조형의 공유
+
+1️⃣ 기본형과 참조형의 공유.
+
+  자바의 데이터 타입을 가장 크게 보면 "기본형(Primitive Type)" 과 "참조형(Reference Type)" 으로 나눌 수 있습니다.
+    
+      “기본형(Primitive Type)” : 하나의 값을 여러 변수에서 절대로 공유하지 않습니다.
+      “참조형(Reference Type)” : 하나의 객체를 참조값을 통해 여러 변수에서 공유할 수 있습니다.
+    
+  
+
+
+2️⃣ 기본형 예제.
+
+  기본형은 하나의 값을 여러 변수에서 절대로 공유하지 않습니다.
+    public class PrimitiveMain {
+
+  public static void main(String[] args) {
+      // 기본형은 절대로 같은 값을 공유하지 않습니다.
+      int a = 10;
+      int b = a; // a -&gt; b, 값 복사 후 대입
+      System.out.println("a = " + a);
+      System.out.println("b = " + b);
+
+      b = 20;
+      System.out.println("20 -&gt; b");
+      System.out.println("a = " + a);
+      System.out.println("b = " + b);
+  }
+}
+    
+  
+
+
+실행 결과
+a = 10
+b = 10
+20 -&gt; b
+a = 10
+b = 20
+
+
+
+
+
+  기본형 변수 "a" 와 "b" 는 절대로 하나의 값을 공유하지 않습니다.
+  "b = a" 라고 하면 자바는 항상 값을 복사해서 대입 합니다.
+    
+      이 경우 "a" 에 있는 값 "10" 을 복사해서 "b" 에 전달합니다.
+    
+  
+  결과적으로 "a" 와 "b" 는 둘 다 "10" 이라는 똑같은 숫자의 값을 가집니다.
+    
+      하지만 "a" 가 가지는 "10" 과 "b" 가 가지는 "10" 은 복사된 완전히 다른 "10" 입니다.
+        
+          메모리 상에서"a" 에 속하는 "10" 과 "b" 에 속하는 "10" 이 각각 별도로 존재합니다.
+        
+      
+    
+  
+
+
+
+
+
+  "b = 20" 이라고 하면 "b" 의 값만 "20" 으로 변경됩니다.
+  "a" 의 값은 "10" 그대로 유지됩니다.
+  "기본형 변수는 하나" 의 값을 절대로 공유하지 않습니다.
+    
+      따라서 값을 변경해도 변수 하나의 값만 변경됩니다.
+      - 여기서 변수 "b" 의 값만 "20" 으로 변경되었습니다.
+    
+  
+
+
+3️⃣ 참조형 예제
+
+public class Address {
+	private String value;
+
+	public Address(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"value='" + value + '\'' +
+				'}';
+	}
+}
+
+public class RefMain1_1 {
+
+	public static void main(String[] args) {
+		// 참조형 변수는 하나의 인스턴스를 공유할 수 있다.
+		Address a = new Address("서울");
+		Address b = a;
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+
+		b.setValue("부산"); // b의 값을 부산으로 변경해야함
+		System.out.println("부산 -&gt; b");
+		System.out.println("a = " + a); // 사이드 이팩트 발생
+		System.out.println("b = " + b);
+	}
+}
+
+
+
+  처음에는 "a, b" 둘 다 서울이라는 주소를 가져야 한다고 가정합니다.
+    
+      따라서 "Address b = a" 코드를 작성했고, 변수 "a, b" 둘 다 서울이라는 주소를 가집니다.
+        
+          이후에 "b" 의 주소를 부산으로 변경합니다.
+            
+              그런데 실행 결과를 보면 "b" 뿐만 아니라 "a" 의 주소도 함께 부산으로 변경되어 버립니다.
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='부산'}
+b = Address{value='부산'}
+
+
+
+  순서대로 코드를 분석해보면 아래와 같습니다.
+
+
+Address a = new Address("서울");
+Address b = a;
+
+
+
+
+
+  참조형 변수들은 같은 참조값을 통해 같은 인스턴스를 참조할 수 있습니다.
+  "b = a" 라고 하면 "a" 에 있는 참조값 "x001" 을 복사해서 "b" 에 전달합니다.
+    
+      자바에서 모든 값 대입은 변수가 가지고 있는 값을 복사해서 전달합니다.
+        
+          변수가 "int" 같은 숫자값을 가지고 있으면 숫자값을 복사해서 전달하고, 참조값을 가지고 있으면 참조값을 복사해서 전달합니다.
+        
+      
+    
+  
+  참조값을 복사해서 전달하므로 결과적으로 "a, b" 같은 "x001" 인스턴스를 참조합니다.
+  기본형 변수는 절대로 같은 값을 공유하지 않습니다.
+    
+      예) "a = 10" , "b = 10" 과 같이 같은 모양의 숫자 "10" 이라는 값을 가질 수는 있지만 같은 값을 공유하는 것은 아닙니다.
+        
+          서로 다른 숫자 "10" 이 두 개 있는것 입니다.
+        
+      
+    
+  
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2262,123 +2461,6 @@ public class HelloController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
-                            🍃[Spring] Welcome Page 구현 및 동작 방법.
-
-1️⃣ Welcom Page 만들기.
-
-  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
-```html
-&lt;!DOCTYPE html&gt;
-
-
-	
-		Hello
-		
-	
-	
-		Hello
-		hello
-	
-
-
-- 스프링 부트가 제공하는 Welcom Page 기능.
-    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
-    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
-
-## 2️⃣ thymeleaf 템플릿 엔진.
-- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
-- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
-- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
-
-```java
-// com/devkobe/hello_spring/controller
-@Controller
-public class HelloController {
-    
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("data", "hello!!");
-        return "hello";
-    }
-}
-
-
-&lt;!-- `resource/static/index.html` --&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-	&lt;head&gt;
-		&lt;title&gt;Hello&lt;/title&gt;
-		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-		Hello
-		&lt;a href="/hello"&gt;hello&lt;/a&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-
-
-&lt;!-- `resource/templates/hello.html` --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-	&lt;title&gt;Hello&lt;/title&gt;
-&lt;/head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;body&gt;
-&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  thymeleaf 템플릿엔진 동작 확인
-    
-      실행 : http://localhost:8080/hello
-    
-  
-  
-    동작 환경 그림.
-
-  
-  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
-    
-      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
-        
-          'resources:template/' + '{ViewName}' + '.html'
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
-IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-08-23-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -3173,6 +3255,123 @@ public class MyService {
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
+                            🍃[Spring] Welcome Page 구현 및 동작 방법.
+
+1️⃣ Welcom Page 만들기.
+
+  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
+```html
+&lt;!DOCTYPE html&gt;
+
+
+	
+		Hello
+		
+	
+	
+		Hello
+		hello
+	
+
+
+- 스프링 부트가 제공하는 Welcom Page 기능.
+    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
+    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
+
+## 2️⃣ thymeleaf 템플릿 엔진.
+- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
+- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
+- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
+
+```java
+// com/devkobe/hello_spring/controller
+@Controller
+public class HelloController {
+    
+    @GetMapping("hello")
+    public String hello(Model model) {
+        model.addAttribute("data", "hello!!");
+        return "hello";
+    }
+}
+
+
+&lt;!-- `resource/static/index.html` --&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Hello&lt;/title&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		Hello
+		&lt;a href="/hello"&gt;hello&lt;/a&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;!-- `resource/templates/hello.html` --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+	&lt;title&gt;Hello&lt;/title&gt;
+&lt;/head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  thymeleaf 템플릿엔진 동작 확인
+    
+      실행 : http://localhost:8080/hello
+    
+  
+  
+    동작 환경 그림.
+
+  
+  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
+    
+      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
+        
+          'resources:template/' + '{ViewName}' + '.html'
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
+IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
 
 
                         </a>
@@ -4043,66 +4242,6 @@ public class LangMain {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html"><h1 class="title_post">🌐[Network] 인터넷의 계층 모델</h1></a>
-                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="txt_post">
-                            🌐[Network] 인터넷의 계층 모델
-
-1️⃣ 인터넷의 계층 모델.
-
-
-
-  위 그림은 FTP 프로그램을 이용하는 경우를 예로 들어 인터넷의 계층 구조를 설명하고 있습니다.
-  인터넷에서는 IP(Internet Protocol)가 네트워크 계층의 기능을 수행하며, TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)는 전송 계층의 기능을 수행합니다.
-    
-      이들 3개의 프로토콜은 인터넷 환경에서 사용자 데이터를 전송하는 핵심 역할을 합니다.
-    
-  
-  전송 계층 이하의 프로토콜들은 호스트의 운영체게 내부에서 구현되며 FTP, 텔넷, 전자 메일 등과 같은 응용 프로그램은 사용자 프로그램 환경에서 계층 5~7이 합쳐져 구현됩니다.
-  위 그림과 같이 양쪽 호스트에는 동일한 기능을 수행하는 프로토콜 스택(Protocol Stack)이 존재합니다.
-    
-      프로토콜 스택은 계층 구조로 이루어진 통신 프로토콜의 집합입니다.
-
-    
-  
-  각 프로토콜의 동작은 위 그림에서 설명한 것과 같은 원리로 이루어집니다.
-    
-      그림에 표시되진 않았지만 두 호스트 사이에는 중개 기능을 수행하는 라우터들이 존재할 수 있습니다.
-    
-  
-  인터넷에서는 IP 프로토콜이 중개 기능을 수행하므로 라우터에는 계층 3까지의 프로토콜이 구현되어 있습니다.
-  FTP 클라이언트가 FTP 서버에 데이터를 전송하는 과정은 다음과 같습니다.
-    
-      FTP 클라이언트가 FTP 서버에 직접 데이터를 전송하는 것은 불가능하므로 먼저 자신의 하위 TCP에 데이터를 보내야합니다.
-      TCP로 보내진 데이터는 IP 프로토콜과 LAN 카드를 거쳐서 이더넷으로 표현된 전송 매체를 통하여 FTP 서버의 LAN 카드에 전달됩니다.
-      FTP 서버에 도착한 데이터는 송신 순서의 반대인 LAN 카드, IP 프로토콜, TCP 프로토콜을 거쳐서 FTP 서버 프로그램에 도착합니다.
-        
-          FTP 서비스에서 데이터 전송은 양방향 통신을 지원하므로 반대 방향의 전송도 가능합니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-20</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240820_AWS_INSTALL_GRADLE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -4165,6 +4304,66 @@ source ~/.bash_profile
   
 
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-20</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html"><h1 class="title_post">🌐[Network] 인터넷의 계층 모델</h1></a>
+                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="txt_post">
+                            🌐[Network] 인터넷의 계층 모델
+
+1️⃣ 인터넷의 계층 모델.
+
+
+
+  위 그림은 FTP 프로그램을 이용하는 경우를 예로 들어 인터넷의 계층 구조를 설명하고 있습니다.
+  인터넷에서는 IP(Internet Protocol)가 네트워크 계층의 기능을 수행하며, TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)는 전송 계층의 기능을 수행합니다.
+    
+      이들 3개의 프로토콜은 인터넷 환경에서 사용자 데이터를 전송하는 핵심 역할을 합니다.
+    
+  
+  전송 계층 이하의 프로토콜들은 호스트의 운영체게 내부에서 구현되며 FTP, 텔넷, 전자 메일 등과 같은 응용 프로그램은 사용자 프로그램 환경에서 계층 5~7이 합쳐져 구현됩니다.
+  위 그림과 같이 양쪽 호스트에는 동일한 기능을 수행하는 프로토콜 스택(Protocol Stack)이 존재합니다.
+    
+      프로토콜 스택은 계층 구조로 이루어진 통신 프로토콜의 집합입니다.
+
+    
+  
+  각 프로토콜의 동작은 위 그림에서 설명한 것과 같은 원리로 이루어집니다.
+    
+      그림에 표시되진 않았지만 두 호스트 사이에는 중개 기능을 수행하는 라우터들이 존재할 수 있습니다.
+    
+  
+  인터넷에서는 IP 프로토콜이 중개 기능을 수행하므로 라우터에는 계층 3까지의 프로토콜이 구현되어 있습니다.
+  FTP 클라이언트가 FTP 서버에 데이터를 전송하는 과정은 다음과 같습니다.
+    
+      FTP 클라이언트가 FTP 서버에 직접 데이터를 전송하는 것은 불가능하므로 먼저 자신의 하위 TCP에 데이터를 보내야합니다.
+      TCP로 보내진 데이터는 IP 프로토콜과 LAN 카드를 거쳐서 이더넷으로 표현된 전송 매체를 통하여 FTP 서버의 LAN 카드에 전달됩니다.
+      FTP 서버에 도착한 데이터는 송신 순서의 반대인 LAN 카드, IP 프로토콜, TCP 프로토콜을 거쳐서 FTP 서버 프로그램에 도착합니다.
+        
+          FTP 서비스에서 데이터 전송은 양방향 통신을 지원하므로 반대 방향의 전송도 가능합니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -5784,45 +5983,6 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
-                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
-
-
-  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
-    
-      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
-    
-  
-  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
-  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
-    
-      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
-      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -5894,6 +6054,102 @@ nvm use 16
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
+                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
+
+
+  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
+    
+      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
+    
+  
+  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
+  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
+    
+      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
+      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
+                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
+
+  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
+  SaaS(Software as a Service)
+    
+      응용 프로그램을 서비스로 제공하는 형태입니다.
+      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
+    
+  
+  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
+    
+      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
+      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
+    
+  
+  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
+    
+      PaaS
+        
+          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
+          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
+          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
+        
+      
+      IaaS
+        
+          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
+          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
+
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
                             
                         </div>
                     </div>
@@ -6300,63 +6556,6 @@ nvm use 16
       Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
         
           이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
-                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
-
-  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
-  SaaS(Software as a Service)
-    
-      응용 프로그램을 서비스로 제공하는 형태입니다.
-      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
-    
-  
-  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
-    
-      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
-      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
-    
-  
-  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
-    
-      PaaS
-        
-          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
-          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
-          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
-        
-      
-      IaaS
-        
-          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
-          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
-
         
       
     
@@ -7926,6 +8125,74 @@ public class MyEntityListner {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
+                            1️⃣ 시스템 패키지 업데이트
+
+  먼저 시스템 패키지를 업데이트 합니다.
+
+
+sudo dnf update -y
+
+
+2️⃣ Amazon Corretto 8 저장소 추가.
+
+  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
+    
+      Correttio 8은 Java 8과 호환됩니다.
+    
+  
+
+
+sudo dnf install -y java-1.8.0-amazon-corretto
+
+
+3️⃣ Java 8 설치 확인
+
+  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
+
+
+java -version
+
+
+
+  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
+
+
+4️⃣ 기본 Java 버전 설정
+
+
+  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
+    
+      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
+    
+  
+  먼저 현재 사용 가능한 Java 버전을 확인합니다.
+
+
+sudo alternatives --config java
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/DB/2024-07-26-korean-mysql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
@@ -8007,74 +8274,6 @@ sudo systemctl restart mysqld
     
   
   이 방법으로 UTF-8 설정을 적용하면 한글 데이터를 MySQL 데이터베이스에 문제 없이 저장할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-07-26</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
-                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
-                            1️⃣ 시스템 패키지 업데이트
-
-  먼저 시스템 패키지를 업데이트 합니다.
-
-
-sudo dnf update -y
-
-
-2️⃣ Amazon Corretto 8 저장소 추가.
-
-  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
-    
-      Correttio 8은 Java 8과 호환됩니다.
-    
-  
-
-
-sudo dnf install -y java-1.8.0-amazon-corretto
-
-
-3️⃣ Java 8 설치 확인
-
-  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
-
-
-java -version
-
-
-
-  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
-
-
-4️⃣ 기본 Java 버전 설정
-
-
-  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
-    
-      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
-    
-  
-  먼저 현재 사용 가능한 Java 버전을 확인합니다.
-
-
-sudo alternatives --config java
 
 
                         </a>
@@ -9385,6 +9584,32 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
+                            
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/ENG/240618_ENG_STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -9440,32 +9665,6 @@ sudo reboot
 
   🙋‍♂️ 해석: “왜 나의 자바 가상 스레드는 플랫폼 스레드보다 느릴까?”
   📝Reference
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
-                            
-
 
 
                         </a>
@@ -9780,34 +9979,6 @@ Java의 Primitive Type(기본형)은 총 8가지가 있습니다.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
-                            
-  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
-  알고리즘
-  피자 나눠 먹기(2)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-13-ReasonOfRearIsntSetToMinusOneInCircularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -10071,6 +10242,34 @@ Middle element: 40
 
   알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
 이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
+                            
+  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
+  알고리즘
+  피자 나눠 먹기(2)
 
 
                         </a>
@@ -11952,36 +12151,6 @@ Popped element: 4
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-05-TIL.html"><h1 class="title_post">📝 [TIL] 240605 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-05-TIL.html" class="txt_post">
-                            
-  Deque(덱, 데크))
-  코딩테스트 입문 - 두 수의 합
-  코딩테스트 입문 - 두 수의 차
-  코딩테스트 입문 - 두 수의 곱
-  코딩테스트 입문 - 몫 구하기
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-05-Deque.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -12599,6 +12768,36 @@ Is deque empty? false
 
   이 예제에서는 요소를 덱의 양쪽 끝에서 삽입할 수 있고, 첫 번째 요소만 제거할 수 있는 출력 제한 덱을 구현했습니다.
 필요에 따라 이 구현을 확장하거나 수정하여 요구사항에 맞게 사용할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-05-TIL.html"><h1 class="title_post">📝 [TIL] 240605 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-05-TIL.html" class="txt_post">
+                            
+  Deque(덱, 데크))
+  코딩테스트 입문 - 두 수의 합
+  코딩테스트 입문 - 두 수의 차
+  코딩테스트 입문 - 두 수의 곱
+  코딩테스트 입문 - 몫 구하기
 
 
                         </a>
@@ -13469,36 +13668,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-30-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-30-TIL.html"><h1 class="title_post">📝 [TIL] 240530 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-30-TIL.html" class="txt_post">
-                            
-  다양한 입출력 방법
-  큐(Queue)
-  큐 구현(LinkedList)
-  큐 구현(List)
-  큐 구현(Array)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-05-30-Queue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -13851,6 +14020,36 @@ Queue의 크기 : 0
   배열 기반 큐는 간단하고 빠르지만 고정된 크기 문제를 해결해야 합니다.
 
   연결 리스트 기반 큐는 동적으로 크기를 조절할 수 있지만 메모리 사용량이 더 많을 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-30-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-30-TIL.html"><h1 class="title_post">📝 [TIL] 240530 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-30-TIL.html" class="txt_post">
+                            
+  다양한 입출력 방법
+  큐(Queue)
+  큐 구현(LinkedList)
+  큐 구현(List)
+  큐 구현(Array)
 
 
                         </a>
@@ -14256,32 +14455,6 @@ DMA를 위해 시스템 버스를 너무 자주 사용하면 그만큼 CPU가 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-28-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-28-TIL.html"><h1 class="title_post">📝 [TIL] 240528 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-28-TIL.html" class="txt_post">
-                            
-  스택(Stack)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-05-28-Stack.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -14495,25 +14668,21 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-28-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-27-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-28-TIL.html"><h1 class="title_post">📝 [TIL] 240528 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-28-TIL.html" class="txt_post">
                             
-  노드(Node)
-  장치 컨트롤러와 장치 드라이버
-  트리(Tree)
-  이진 트리(Binary Tree)
-  완전 이진 트리(Complete Binary Tree)
+  스택(Stack)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-27</span>
+                                <span class="date">· 2024-05-28</span>
                             
                         </div>
                     </div>
@@ -15286,6 +15455,36 @@ CPU와 메모리처럼 전송률이 높은 장치는 1초에도 수많은 데이
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-27-TIL.html" class="txt_post">
+                            
+  노드(Node)
+  장치 컨트롤러와 장치 드라이버
+  트리(Tree)
+  이진 트리(Binary Tree)
+  완전 이진 트리(Complete Binary Tree)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -15704,264 +15903,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-23-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-23-TIL.html"><h1 class="title_post">📝 [TIL] 240523 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-23-TIL.html" class="txt_post">
-                            
-  큐(Queue)
-  원형 큐(Circular Queue)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-23-circularQueue.html"><h1 class="title_post">📦[DS,Algorithm] 원형 큐(Circular Queue)</h1></a>
-                        <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="txt_post">
-                            1️⃣ 원형 큐(Circular Queue).
-
-원형 큐(Circular Queue)란, “고정된 크기의 배열” 을 사용하여 구현된 큐로서, 배열의 끝에 도달하면 다시 배열의 시작 부분으로 돌아가는 구조를 가진 큐입니다.
-
-이를 통해 큐가 꽉 차 있는지, 비어 있는지를 효율적으로 관리할 수 있으며, 공간을 효율적으로 사용할 수 있습니다.
-
-1️⃣ 원형 큐의 특징.
-
-  
-    
-      선입선출(FIFO, First In First Out) : 일반적인 큐와 마찬가지로 먼저 들어간 데이터가 먼저 나오는 구조입니다.
-    
-  
-  
-    
-      순환 구조 : 배열의 끝에 도달하면 다시 처음으로 돌아갑니다. 이를 통해 고정된 크기의 배열을 이용하여 메모리를 효율적으로 사용합니다.
-    
-  
-  3 고정 크기 : 큐의 최대 크기는 배열의 크기로 제한 됩니다.
-
-
-2️⃣ 원형 큐의 주요 연산.
-
-  
-    
-      Enqueue : 큐의 뒤쪽(rear)에 새로운 요소를 추가합니다.
-    
-  
-  
-    
-      Dequeue : 큐의 앞쪽(front)에서 요소를 제거하고 반환합니다.
-    
-  
-  
-    
-      Peek : 큐의 앞쪽(front) 요소를 제거하지 않고 반환합니다.
-    
-  
-  
-    
-      IsEmpty : 큐가 비어 있는지 여부를 확인합니다.
-    
-  
-  
-    
-      IsFull : 큐가 가득 찼는지 여부를 확인합니다.
-    
-  
-
-
-3️⃣ 원형 큐의 장점.
-
-  메모리 효율성 : 고정된 크기의 배열을 사용하여 메모리를 효율적으로 사용합니다.
-  연속된 메모리 사용 : 배열을 사용하여 메모리를 연속적으로 사용하므로 캐시 효율성이 높습니다.
-
-
-4️⃣ 원형 큐의 단점.
-
-  고정 크기 제한 : 크기가 고정되어 있으므로, 큐가 가득 찬 경우 더 이상 요소를 추가할 수 없습니다. 이 문제를 해결하려면 동적으로 크기를 조절할 수 있는 방법을 추가로 구현해야 합니다.
-
-
-5️⃣ 원형 큐의 구현 예제
-
-// CircularQueue
-public class CircularQueue {
-  private int[] queue;
-  private int front;
-  private int rear;
-  private int size;
-  private int capacity;
-
-  // 원형 큐 초기화
-  public CircularQueue(int capacity) {
-    this.capacity = capacity;
-    queue = new int[capacity];
-    front = 0;
-    rear = -1;
-    size = 0;
-  }
-
-  // 큐에 요소 추가
-  public void enqueue(int element) {
-    if (isFull()) {
-      System.out.println("Queue is full");
-      return;
-    }
-
-    rear = (rear + 1) % capacity;
-    queue[rear] = element;
-    size++;
-  }
-
-  // 큐에서 요소 제거 및 반환
-  public int dequeue() {
-    if (isEmpty()) {
-      System.out.println("Queue is empty");
-      return -1;
-    }
-    int element = queue[front];
-    front = (front + 1) % capacity;
-    size--;
-    return element;
-  }
-
-  // 큐의 앞쪽 요소 반환
-  public int peek() {
-    if (isEmpty()) {
-      System.out.println("Queue is empty");
-      return -1;
-    }
-    return queue[front];
-  }
-
-  // 큐가 비어 있는지 확인
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-  // 큐가 가득 찼는지 확인
-  public boolean isFull() {
-    return size == capacity;
-  }
-
-  // 큐의 크기 반환
-  public int getSize() {
-    return size;
-  }
-}
-
-// Main
-public class Main {
-
-  public static void main(String[] args) {
-    CircularQueue circularQueue = new CircularQueue(5);
-
-    circularQueue.enqueue(1);
-    circularQueue.enqueue(2);
-    circularQueue.enqueue(3);
-    circularQueue.enqueue(4);
-    circularQueue.enqueue(5);
-
-    System.out.println("Dequeue: " + circularQueue.dequeue());
-    System.out.println("Dequeue: " + circularQueue.dequeue());
-
-    circularQueue.enqueue(6);
-    circularQueue.enqueue(7);
-
-    System.out.println("Peek: " + circularQueue.peek());
-
-    while (!circularQueue.isEmpty()) {
-      System.out.println("Dequeue: " + circularQueue.dequeue());
-    }
-  }
-}
-
-// 출력
-/*
-Dequeue: 1
-Dequeue: 2
-Peek: 3
-Dequeue: 3
-Dequeue: 4
-Dequeue: 5
-Dequeue: 6
-Dequeue: 7
- */
-
-
-코드 설명.
-
-
-  
-    
-      CircularQueue 클래스:
-        
-          ‘queue’ : 큐를 저장하는 배열.
-          ‘front’ : 큐의 앞쪽 인덱스.
-          ‘rear’ : 큐의 뒤쪽 인덱스.
-          ‘size’ : 현재 큐에 저장된 요소의 개수.
-          ‘capacity’ : 큐의 최대 크기.
-        
-      
-    
-  
-  
-    
-      메서드:
-        
-          ‘enqueue(int element)’ : 큐가 가득 차지 않았으면 요소를 큐에 추가합니다.
-          ‘dequeue()’ : 큐가 비어 있지 않으면 큐의 앞쪽 요소를 제거하고 반환합니다.
-          ‘peek()’ : 큐의 앞쪽 요소를 제거하지 않고 반환합니다.
-          ‘isEmpty()’ : 큐가 비어 있는지 확인합니다.
-          ‘isFull()’ : 큐가 가득 찼는지 확인합니다.
-          ‘getSize()’ : 큐의 현재 크기를 반환합니다.
-        
-      
-    
-  
-  
-    
-      main 메서드:
-        
-          원형 큐를 생성하고 여러 연산을 수행하여 큐의 동작을 테스트합니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-05-23-Queue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -16233,21 +16174,253 @@ Dequeued element: 5
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-22-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-23-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-22-TIL.html"><h1 class="title_post">📝 [TIL] 240522 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-22-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-05-23-TIL.html"><h1 class="title_post">📝 [TIL] 240523 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-23-TIL.html" class="txt_post">
                             
-  다양한 보조기억장치
+  큐(Queue)
+  원형 큐(Circular Queue)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-22</span>
+                                <span class="date">· 2024-05-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-23-circularQueue.html"><h1 class="title_post">📦[DS,Algorithm] 원형 큐(Circular Queue)</h1></a>
+                        <a href="/Backend/AnD/2024-05-23-circularQueue.html" class="txt_post">
+                            1️⃣ 원형 큐(Circular Queue).
+
+원형 큐(Circular Queue)란, “고정된 크기의 배열” 을 사용하여 구현된 큐로서, 배열의 끝에 도달하면 다시 배열의 시작 부분으로 돌아가는 구조를 가진 큐입니다.
+
+이를 통해 큐가 꽉 차 있는지, 비어 있는지를 효율적으로 관리할 수 있으며, 공간을 효율적으로 사용할 수 있습니다.
+
+1️⃣ 원형 큐의 특징.
+
+  
+    
+      선입선출(FIFO, First In First Out) : 일반적인 큐와 마찬가지로 먼저 들어간 데이터가 먼저 나오는 구조입니다.
+    
+  
+  
+    
+      순환 구조 : 배열의 끝에 도달하면 다시 처음으로 돌아갑니다. 이를 통해 고정된 크기의 배열을 이용하여 메모리를 효율적으로 사용합니다.
+    
+  
+  3 고정 크기 : 큐의 최대 크기는 배열의 크기로 제한 됩니다.
+
+
+2️⃣ 원형 큐의 주요 연산.
+
+  
+    
+      Enqueue : 큐의 뒤쪽(rear)에 새로운 요소를 추가합니다.
+    
+  
+  
+    
+      Dequeue : 큐의 앞쪽(front)에서 요소를 제거하고 반환합니다.
+    
+  
+  
+    
+      Peek : 큐의 앞쪽(front) 요소를 제거하지 않고 반환합니다.
+    
+  
+  
+    
+      IsEmpty : 큐가 비어 있는지 여부를 확인합니다.
+    
+  
+  
+    
+      IsFull : 큐가 가득 찼는지 여부를 확인합니다.
+    
+  
+
+
+3️⃣ 원형 큐의 장점.
+
+  메모리 효율성 : 고정된 크기의 배열을 사용하여 메모리를 효율적으로 사용합니다.
+  연속된 메모리 사용 : 배열을 사용하여 메모리를 연속적으로 사용하므로 캐시 효율성이 높습니다.
+
+
+4️⃣ 원형 큐의 단점.
+
+  고정 크기 제한 : 크기가 고정되어 있으므로, 큐가 가득 찬 경우 더 이상 요소를 추가할 수 없습니다. 이 문제를 해결하려면 동적으로 크기를 조절할 수 있는 방법을 추가로 구현해야 합니다.
+
+
+5️⃣ 원형 큐의 구현 예제
+
+// CircularQueue
+public class CircularQueue {
+  private int[] queue;
+  private int front;
+  private int rear;
+  private int size;
+  private int capacity;
+
+  // 원형 큐 초기화
+  public CircularQueue(int capacity) {
+    this.capacity = capacity;
+    queue = new int[capacity];
+    front = 0;
+    rear = -1;
+    size = 0;
+  }
+
+  // 큐에 요소 추가
+  public void enqueue(int element) {
+    if (isFull()) {
+      System.out.println("Queue is full");
+      return;
+    }
+
+    rear = (rear + 1) % capacity;
+    queue[rear] = element;
+    size++;
+  }
+
+  // 큐에서 요소 제거 및 반환
+  public int dequeue() {
+    if (isEmpty()) {
+      System.out.println("Queue is empty");
+      return -1;
+    }
+    int element = queue[front];
+    front = (front + 1) % capacity;
+    size--;
+    return element;
+  }
+
+  // 큐의 앞쪽 요소 반환
+  public int peek() {
+    if (isEmpty()) {
+      System.out.println("Queue is empty");
+      return -1;
+    }
+    return queue[front];
+  }
+
+  // 큐가 비어 있는지 확인
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  // 큐가 가득 찼는지 확인
+  public boolean isFull() {
+    return size == capacity;
+  }
+
+  // 큐의 크기 반환
+  public int getSize() {
+    return size;
+  }
+}
+
+// Main
+public class Main {
+
+  public static void main(String[] args) {
+    CircularQueue circularQueue = new CircularQueue(5);
+
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+    circularQueue.enqueue(3);
+    circularQueue.enqueue(4);
+    circularQueue.enqueue(5);
+
+    System.out.println("Dequeue: " + circularQueue.dequeue());
+    System.out.println("Dequeue: " + circularQueue.dequeue());
+
+    circularQueue.enqueue(6);
+    circularQueue.enqueue(7);
+
+    System.out.println("Peek: " + circularQueue.peek());
+
+    while (!circularQueue.isEmpty()) {
+      System.out.println("Dequeue: " + circularQueue.dequeue());
+    }
+  }
+}
+
+// 출력
+/*
+Dequeue: 1
+Dequeue: 2
+Peek: 3
+Dequeue: 3
+Dequeue: 4
+Dequeue: 5
+Dequeue: 6
+Dequeue: 7
+ */
+
+
+코드 설명.
+
+
+  
+    
+      CircularQueue 클래스:
+        
+          ‘queue’ : 큐를 저장하는 배열.
+          ‘front’ : 큐의 앞쪽 인덱스.
+          ‘rear’ : 큐의 뒤쪽 인덱스.
+          ‘size’ : 현재 큐에 저장된 요소의 개수.
+          ‘capacity’ : 큐의 최대 크기.
+        
+      
+    
+  
+  
+    
+      메서드:
+        
+          ‘enqueue(int element)’ : 큐가 가득 차지 않았으면 요소를 큐에 추가합니다.
+          ‘dequeue()’ : 큐가 비어 있지 않으면 큐의 앞쪽 요소를 제거하고 반환합니다.
+          ‘peek()’ : 큐의 앞쪽 요소를 제거하지 않고 반환합니다.
+          ‘isEmpty()’ : 큐가 비어 있는지 확인합니다.
+          ‘isFull()’ : 큐가 가득 찼는지 확인합니다.
+          ‘getSize()’ : 큐의 현재 크기를 반환합니다.
+        
+      
+    
+  
+  
+    
+      main 메서드:
+        
+          원형 큐를 생성하고 여러 연산을 수행하여 큐의 동작을 테스트합니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-23</span>
                             
                         </div>
                     </div>
@@ -16586,6 +16759,32 @@ A와 같이 쓰레기 값을 저장하고 있는 공간은 사용하지 않을 �
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-05-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-22-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-22-TIL.html"><h1 class="title_post">📝 [TIL] 240522 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-22-TIL.html" class="txt_post">
+                            
+  다양한 보조기억장치
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-22</span>
                             
@@ -18365,294 +18564,6 @@ first.ifPresent(System.out::println); // 출력 Alice
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-13-TIL.html"><h1 class="title_post">📝 [TIL] 240513 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-13-TIL.html" class="txt_post">
-                            
-  컬렉션 프레임워크
-  HashMap에 key 값은 항상 int 여야 할까요?
-  람다식
-  람다식은 하나만!
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html"><h1 class="title_post">☕️[Java] 람다식은 하나만!</h1></a>
-                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="txt_post">
-                            람다식은 하나만!😆
-자바에서는 “하나의 추상 메소드를 갖는 인터페에스에 대해서만 람다식을 직접 사용할 수 있습니다.”
-이를 함수형 인터페이스라고 부르며, 람다식은 이런 함수형 인터페이스의 구현을 간단히 할 수 있는 방법을 제공합니다.
-
-하지만 아래의 코드와 같이 인터페이스 내에 두 개의 추상 메서드 (‘plus’, ‘minus’)가 있기 때문에, 이 인터페이스를 람다식으로 직접 구현하는 것은 불가능합니다.
-
-interface Carculator {
-    public abstract int plus(int x, int y);
-    public abstract int minus(int x, int y);
-}
-
-
-람다식을 사용하려면 함수형 인터페이스가 필요하므로, 두 메소드 각각을 위한 두 개의 별도의 인터페이스를 정의하거나 기존 인터페이스 중 하나를 수정해야 합니다.
-
-아래의 코드는 이를 위해 각 메소드를 분리하여 두 개의 함수형 인터페이스를 만든 예시입니다.
-interface Calculator {
-  public abstract int operation(int x, int y);
-}
-public class Main {
-
-  public static void main(String[] args) {
-    Calculator plus = (x, y) -&gt; { return x + y; };
-    System.out.println(plus.operation(10,2)); // 12
-    Calculator minus = (x, y) -&gt; { return x - y; };
-    System.out.println(minus.operation(10,2)); // 8
-  }
-}
-
-
-위 코드는 각 연산을 람다식으로 간단히 구현하고 있습니다.
-만약 원래의 ‘Carculator’ 인터페이스를 유지고하고 싶다면 이를 직접적으로 람다식으로 구현할 수는 없으며, 대신 익명 클래스나 정규 클래스를 사용해야 합니다.
-
-아래의 코드는 익명 클래스를 사용하는 방법을 보여줍니다.
-Calculator calclator = new Calculator() {
-    @Override
-    public int plus(int x, int y) {
-        return x + y;
-    }
-    
-    @Override
-    public int minus(int x, int y) {
-        return x - y;
-    }
-}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-13-lambda.html"><h1 class="title_post">☕️[Java] 람다식</h1></a>
-                        <a href="/Backend/Java/2024-05-13-lambda.html" class="txt_post">
-                            1️⃣ 람다식.
-
-1. 람다 표현식(Lambda Expression)
-자바 프로그래밍에서 람다식 또는 람다 표현식(Lambda Expression)은 간결한 방식으로 익명 함수(anonymous function)를 제공하는 기능입니다.
-
-자바 8부터 도입된 이 기능은 함수형 프로그래밍의 일부 개념을 자바에 도입하여, 코드를 더 간결하고 명료하게 만들어 주며 특히 컬렉션의 요소를 처리할 때 유용하게 사용됩니다.
-
-1.2 람다식의 특징.
-
-  익명성 : 람다는 이름이 없기 때문에 익명으로 처리됩니다.
-  함수 : 람다는 메서드와 유사하지만, 독립적으로 존재할 수 있는 함수입니다.
-  전달성 : 람다 표현식은 메서드 인자로 전달되거나 변수에 저장될 수 있습니다.
-  간결성 : 코드의 간결성을 높여, 불필요한 반복을 줄여줍니다.
-
-
-1.3 람다 표현식의 기본 구조.
-람타 표현식은 주로 매개 변수를 받아들여 결과를 반환하는 식의 형태로 작성됩니다.
-
-일반적인 형태는 다음과 같습니다.
-(parameters) -&gt; expression
-또는
-(parameters) -&gt; { statements; }
-
-
-  매개 변수 : 괄호 안에 정의되며, 매개 변수의 타입을 명시할 수도 있고 생략할 수도 있습니다.
-    
-      매개 변수가 하나뿐인 경우, 괄호도 생략할 수 있습니다.
-    
-  
-  
-    화살표(-&gt;) : 매개 변수와 몸체를 구분짓는 역할을 합니다.
-  
-  몸체 : 람다의 실행 로직을 담고 있으며, 식(expression) 또는 문장(statements)이 올 수 있습니다.
-    
-      식은 단일 실행 결과를 반환하며, 중괄호는 생략할 수 있습니다.
-      문장은 중괄호 안에 작성되며, 여러 줄의 코드를 포함할 수 있습니다.
-    
-  
-
-
-1.4 예시
-
-  Thread 실행하기
-    new Thread(() -&gt; System.out.println("Hello from a thread")).start();
-    
-  
-  리스트의 각 요소 출력하기
-    List&lt;String&gt; list = Arrays.asList("Apple", "Banana", "Cherry");
-list.forEach(item -&gt; System.out.println(item));
-    
-  
-  Comparator를 통한 정렬
-    List&lt;String&gt; cities = Arrays.asList("Seoul", "New York", "London");
-Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
-    
-  
-
-
-1.5 📝 정리.
-람다 표현식은 이벤트 리스너, 스레드의 실행 코드 등 여러 곳에서 기존에 익명 클래스를 사용하던 부분을 대체하여 코드를 더 간결하게 만들 수 있습니다.
-
-또한, 스트림 API와 함께 사용될 때 강력한 데이터 처리 기능을 제공하여 복잡한 컬렉션 처리를 단순화시킬 수 있습니다.
-
-
-
-2. 람다식의 장점.
-자바에서 람다식(Lambda Expression)을 사용하는 것은 여러 가지 장점을 제공합니다.
-
-이러한 장점들은 프로그래밍 스타일, 코드의 간결성, 효율성 및 기능성 측면에서 특히 두드러집니다.
-
-2.1 람다식의 주요 장점들.
-
-  1. 코드의 간결성 : 람다식을 사용하면 복잡한 익명 클래스를 사용할 필요가 없어지므로 코드를 훨씬 간결하게 작성할 수 있습니다.
-    
-      예를 들어, 스레드를 실행하거나 이벤트 리스너를 설정할 때 몇 줄의 코드로 작성할 수 있습니다.
-    
-  
-  2. 가독성 향상 : 람다식은 기존의 익명 클래스보다 훨씬 읽기 쉽고 이해하기 쉬운 코드를 작성할 수 있게 합니다.
-    
-      이는 유지보수 시간을 줄이고 코드의 질을 향상시키는 데 도움이 됩니다.
-    
-  
-  3. 함수형 프로그래밍 지원 : 람다식은 자바에 함수형 프로그래밍 스타일을 도입하였습니다.
-    
-      이는 데이터 처리와 조작을 보다 선언적으로 표현할 수 있게 해, 복잡한 데이터 처리 로직을 간결하고 효율적으로 작성할 수 있도록 합니다.
-    
-  
-  4. 코드의 재사용성 증가 : 람다식을 사용하면 특정 동작을 수행하는 코드 블록을 쉽게 재사용할 수 있습니다.
-    
-      람다식은 변수처럼 취급될 수 있어, 메소드에 인자로 전달하거나 변수에 할당하여 다른 위치에서 사용할 수 있습니다.
-    
-  
-  5. 병렬 실행 용이 : 자바 8 이후로 스트림 API와 결합된 람다식은 컬렉션 처리를 병렬로 쉽게 수행할 수 있게 해줍니다.
-    
-      이는 ‘parallelStream()’ 과 같은 메소드를 사용하여 멀티코어 프로세서의 이점을 쉽게 활용할 수 있게 합니다.
-    
-  
-  6. 지연 실행(Lazy Evaluation) : 람다식은 지연 실행을 가능하게 합니다.
-    
-      예를 들어, 조건이 충족될 때까지 코드 실행을 지연시키거나, 필요할 때만 데이터를 처리하도록 할 수 있습니다.
-        
-          이는 성능 최적화에 도움을 줄 수 있습니다.
-        
-      
-    
-  
-  7. 함수 인터페이스와의 호환성 : 람다식은 단일 추상 메소드를 가진 인터페이스(함수 인터페이스)와 호환됩니다.
-    
-      이는 많은 내장 함수 인터페이스(‘Runnable’, ‘Callable’, ‘Comparator’ 등)와 사용자 정의 함수 인터페이스에 람다식을 적용할 수 있음을 의미합니다.
-    
-  
-
-
-2.2 📝 정리.
-이러한 장점들로 인해 람다식은 자바 프로그래머들 사이에서 매우 인기 있는 기능이 되었으며, 모던 자바 코드에서는 필수적인 요소로 자리 잡고 있습니다.
-
-
-
-3. 람다식의 단점.
-자바에서 람다식을 사용하면 여러 가지 장점이 있지만, 몇 가지 단점 또는 주의할 점도 있습니다.
-
-3.1 람다식의 사용과 관련된 단점.
-
-  1. 디버깅의 어려움 : 람다식은 익명 함수이기 때문에 디버깅이 더 복잡할 수 있습니다.
-    
-      스택 트레이스에서 람다식이 어디에 위치하는지 명확하게 표시되지 않아 오류를 추적하기 어려울 수 있습니다.
-    
-  
-  2. 코드의 남용 : 람다식을 과도하게 사용하면 코드가 오히려 더 복잡해지고 이해하기 어려워질 수 있습니다.
-    
-      특히 람다 내부에 긴 로직이나 조건문을 넣을 경우 가독성이 떨어질 수 있습니다.
-    
-  
-  3. 람다 캡처링 오버헤드 : 람다식은 주변 환경의 변수를 캡처(Capture)할 수 있습니다.
-    
-      이 때, 람다가 외부 변수를 캡처 할 경우 추가적인 비용이 발생할 수 있으며, 이는 성능에 영향을 줄 수 있습니다.
-    
-  
-  4. 직렬화의 문제 : 람다식은 기본적으로 직렬화가 보장되지 않습니다.
-    
-      따라서 람다식을 사용하는 객체를 직렬화하려고 할 때 문제가 발생할 수 있습니다.
-        
-          이는 분산 시스템에서 특히 중요한 이슈가 될 수 있습니다.
-        
-      
-    
-  
-  5. 학습 곡선 : 자바 8 이전의 버전에 익숙한 개발자들에게 람다식과 스트림 API는 새로운 패러다임을 익혀야 하는 도전과제를 제시합니다.
-    
-      이는 초기 학습 곡선을 가파르게 만들 수 있습니다.
-    
-  
-  6. 타입 추론의 복잡성 : 람다식에서는 자바 컴파일러가 타입을 추론해야 하는데, 때때로 이 추론이 개발자의 의도와 다른게 이루어질 수 있습니다.
-    
-      이는 코드의 명확성을 떨어뜨릴 수 있습니다.
-    
-  
-  7. 함수형 인터페이스의 제약 : 람다식은 단 하나의 추상 메소드를 가진 함수형 인터페이스와 함꼐 사용됩니다.
-    
-      때로는 이런 제약이 프로그램 설계를 더 복잡하게 만들 수 있습니다.
-    
-  
-
-
-3.2 📝 정리.
-람다식의 단점들은 주로 개발과 관련된 트레이드오프와 관련이 있으며, 이러한 단점을 이해하고 적절히 관리한다면 람다식을 효과적으로 사용할 수 있습니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-13-KeyValueInHashMapAlwaysBeInt.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -19007,6 +18918,294 @@ hashCode() 메소드의 주요 용도
 
 4.4 📝 정리.
 ‘Map’ 인터페이스는 다양한 애플리케이션에서 설정, 프로파일, 사용자 세션 등의 데이터를 키와 값의 형태로 관리할 때 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html"><h1 class="title_post">☕️[Java] 람다식은 하나만!</h1></a>
+                        <a href="/Backend/Java/2024-05-13-lambdaIsOnlyOne.html" class="txt_post">
+                            람다식은 하나만!😆
+자바에서는 “하나의 추상 메소드를 갖는 인터페에스에 대해서만 람다식을 직접 사용할 수 있습니다.”
+이를 함수형 인터페이스라고 부르며, 람다식은 이런 함수형 인터페이스의 구현을 간단히 할 수 있는 방법을 제공합니다.
+
+하지만 아래의 코드와 같이 인터페이스 내에 두 개의 추상 메서드 (‘plus’, ‘minus’)가 있기 때문에, 이 인터페이스를 람다식으로 직접 구현하는 것은 불가능합니다.
+
+interface Carculator {
+    public abstract int plus(int x, int y);
+    public abstract int minus(int x, int y);
+}
+
+
+람다식을 사용하려면 함수형 인터페이스가 필요하므로, 두 메소드 각각을 위한 두 개의 별도의 인터페이스를 정의하거나 기존 인터페이스 중 하나를 수정해야 합니다.
+
+아래의 코드는 이를 위해 각 메소드를 분리하여 두 개의 함수형 인터페이스를 만든 예시입니다.
+interface Calculator {
+  public abstract int operation(int x, int y);
+}
+public class Main {
+
+  public static void main(String[] args) {
+    Calculator plus = (x, y) -&gt; { return x + y; };
+    System.out.println(plus.operation(10,2)); // 12
+    Calculator minus = (x, y) -&gt; { return x - y; };
+    System.out.println(minus.operation(10,2)); // 8
+  }
+}
+
+
+위 코드는 각 연산을 람다식으로 간단히 구현하고 있습니다.
+만약 원래의 ‘Carculator’ 인터페이스를 유지고하고 싶다면 이를 직접적으로 람다식으로 구현할 수는 없으며, 대신 익명 클래스나 정규 클래스를 사용해야 합니다.
+
+아래의 코드는 익명 클래스를 사용하는 방법을 보여줍니다.
+Calculator calclator = new Calculator() {
+    @Override
+    public int plus(int x, int y) {
+        return x + y;
+    }
+    
+    @Override
+    public int minus(int x, int y) {
+        return x - y;
+    }
+}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-13-TIL.html"><h1 class="title_post">📝 [TIL] 240513 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-13-TIL.html" class="txt_post">
+                            
+  컬렉션 프레임워크
+  HashMap에 key 값은 항상 int 여야 할까요?
+  람다식
+  람다식은 하나만!
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-13-lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-13-lambda.html"><h1 class="title_post">☕️[Java] 람다식</h1></a>
+                        <a href="/Backend/Java/2024-05-13-lambda.html" class="txt_post">
+                            1️⃣ 람다식.
+
+1. 람다 표현식(Lambda Expression)
+자바 프로그래밍에서 람다식 또는 람다 표현식(Lambda Expression)은 간결한 방식으로 익명 함수(anonymous function)를 제공하는 기능입니다.
+
+자바 8부터 도입된 이 기능은 함수형 프로그래밍의 일부 개념을 자바에 도입하여, 코드를 더 간결하고 명료하게 만들어 주며 특히 컬렉션의 요소를 처리할 때 유용하게 사용됩니다.
+
+1.2 람다식의 특징.
+
+  익명성 : 람다는 이름이 없기 때문에 익명으로 처리됩니다.
+  함수 : 람다는 메서드와 유사하지만, 독립적으로 존재할 수 있는 함수입니다.
+  전달성 : 람다 표현식은 메서드 인자로 전달되거나 변수에 저장될 수 있습니다.
+  간결성 : 코드의 간결성을 높여, 불필요한 반복을 줄여줍니다.
+
+
+1.3 람다 표현식의 기본 구조.
+람타 표현식은 주로 매개 변수를 받아들여 결과를 반환하는 식의 형태로 작성됩니다.
+
+일반적인 형태는 다음과 같습니다.
+(parameters) -&gt; expression
+또는
+(parameters) -&gt; { statements; }
+
+
+  매개 변수 : 괄호 안에 정의되며, 매개 변수의 타입을 명시할 수도 있고 생략할 수도 있습니다.
+    
+      매개 변수가 하나뿐인 경우, 괄호도 생략할 수 있습니다.
+    
+  
+  
+    화살표(-&gt;) : 매개 변수와 몸체를 구분짓는 역할을 합니다.
+  
+  몸체 : 람다의 실행 로직을 담고 있으며, 식(expression) 또는 문장(statements)이 올 수 있습니다.
+    
+      식은 단일 실행 결과를 반환하며, 중괄호는 생략할 수 있습니다.
+      문장은 중괄호 안에 작성되며, 여러 줄의 코드를 포함할 수 있습니다.
+    
+  
+
+
+1.4 예시
+
+  Thread 실행하기
+    new Thread(() -&gt; System.out.println("Hello from a thread")).start();
+    
+  
+  리스트의 각 요소 출력하기
+    List&lt;String&gt; list = Arrays.asList("Apple", "Banana", "Cherry");
+list.forEach(item -&gt; System.out.println(item));
+    
+  
+  Comparator를 통한 정렬
+    List&lt;String&gt; cities = Arrays.asList("Seoul", "New York", "London");
+Collections.sort(cities, (s1, s2) -&gt; s1.compareTo(s2));
+    
+  
+
+
+1.5 📝 정리.
+람다 표현식은 이벤트 리스너, 스레드의 실행 코드 등 여러 곳에서 기존에 익명 클래스를 사용하던 부분을 대체하여 코드를 더 간결하게 만들 수 있습니다.
+
+또한, 스트림 API와 함께 사용될 때 강력한 데이터 처리 기능을 제공하여 복잡한 컬렉션 처리를 단순화시킬 수 있습니다.
+
+
+
+2. 람다식의 장점.
+자바에서 람다식(Lambda Expression)을 사용하는 것은 여러 가지 장점을 제공합니다.
+
+이러한 장점들은 프로그래밍 스타일, 코드의 간결성, 효율성 및 기능성 측면에서 특히 두드러집니다.
+
+2.1 람다식의 주요 장점들.
+
+  1. 코드의 간결성 : 람다식을 사용하면 복잡한 익명 클래스를 사용할 필요가 없어지므로 코드를 훨씬 간결하게 작성할 수 있습니다.
+    
+      예를 들어, 스레드를 실행하거나 이벤트 리스너를 설정할 때 몇 줄의 코드로 작성할 수 있습니다.
+    
+  
+  2. 가독성 향상 : 람다식은 기존의 익명 클래스보다 훨씬 읽기 쉽고 이해하기 쉬운 코드를 작성할 수 있게 합니다.
+    
+      이는 유지보수 시간을 줄이고 코드의 질을 향상시키는 데 도움이 됩니다.
+    
+  
+  3. 함수형 프로그래밍 지원 : 람다식은 자바에 함수형 프로그래밍 스타일을 도입하였습니다.
+    
+      이는 데이터 처리와 조작을 보다 선언적으로 표현할 수 있게 해, 복잡한 데이터 처리 로직을 간결하고 효율적으로 작성할 수 있도록 합니다.
+    
+  
+  4. 코드의 재사용성 증가 : 람다식을 사용하면 특정 동작을 수행하는 코드 블록을 쉽게 재사용할 수 있습니다.
+    
+      람다식은 변수처럼 취급될 수 있어, 메소드에 인자로 전달하거나 변수에 할당하여 다른 위치에서 사용할 수 있습니다.
+    
+  
+  5. 병렬 실행 용이 : 자바 8 이후로 스트림 API와 결합된 람다식은 컬렉션 처리를 병렬로 쉽게 수행할 수 있게 해줍니다.
+    
+      이는 ‘parallelStream()’ 과 같은 메소드를 사용하여 멀티코어 프로세서의 이점을 쉽게 활용할 수 있게 합니다.
+    
+  
+  6. 지연 실행(Lazy Evaluation) : 람다식은 지연 실행을 가능하게 합니다.
+    
+      예를 들어, 조건이 충족될 때까지 코드 실행을 지연시키거나, 필요할 때만 데이터를 처리하도록 할 수 있습니다.
+        
+          이는 성능 최적화에 도움을 줄 수 있습니다.
+        
+      
+    
+  
+  7. 함수 인터페이스와의 호환성 : 람다식은 단일 추상 메소드를 가진 인터페이스(함수 인터페이스)와 호환됩니다.
+    
+      이는 많은 내장 함수 인터페이스(‘Runnable’, ‘Callable’, ‘Comparator’ 등)와 사용자 정의 함수 인터페이스에 람다식을 적용할 수 있음을 의미합니다.
+    
+  
+
+
+2.2 📝 정리.
+이러한 장점들로 인해 람다식은 자바 프로그래머들 사이에서 매우 인기 있는 기능이 되었으며, 모던 자바 코드에서는 필수적인 요소로 자리 잡고 있습니다.
+
+
+
+3. 람다식의 단점.
+자바에서 람다식을 사용하면 여러 가지 장점이 있지만, 몇 가지 단점 또는 주의할 점도 있습니다.
+
+3.1 람다식의 사용과 관련된 단점.
+
+  1. 디버깅의 어려움 : 람다식은 익명 함수이기 때문에 디버깅이 더 복잡할 수 있습니다.
+    
+      스택 트레이스에서 람다식이 어디에 위치하는지 명확하게 표시되지 않아 오류를 추적하기 어려울 수 있습니다.
+    
+  
+  2. 코드의 남용 : 람다식을 과도하게 사용하면 코드가 오히려 더 복잡해지고 이해하기 어려워질 수 있습니다.
+    
+      특히 람다 내부에 긴 로직이나 조건문을 넣을 경우 가독성이 떨어질 수 있습니다.
+    
+  
+  3. 람다 캡처링 오버헤드 : 람다식은 주변 환경의 변수를 캡처(Capture)할 수 있습니다.
+    
+      이 때, 람다가 외부 변수를 캡처 할 경우 추가적인 비용이 발생할 수 있으며, 이는 성능에 영향을 줄 수 있습니다.
+    
+  
+  4. 직렬화의 문제 : 람다식은 기본적으로 직렬화가 보장되지 않습니다.
+    
+      따라서 람다식을 사용하는 객체를 직렬화하려고 할 때 문제가 발생할 수 있습니다.
+        
+          이는 분산 시스템에서 특히 중요한 이슈가 될 수 있습니다.
+        
+      
+    
+  
+  5. 학습 곡선 : 자바 8 이전의 버전에 익숙한 개발자들에게 람다식과 스트림 API는 새로운 패러다임을 익혀야 하는 도전과제를 제시합니다.
+    
+      이는 초기 학습 곡선을 가파르게 만들 수 있습니다.
+    
+  
+  6. 타입 추론의 복잡성 : 람다식에서는 자바 컴파일러가 타입을 추론해야 하는데, 때때로 이 추론이 개발자의 의도와 다른게 이루어질 수 있습니다.
+    
+      이는 코드의 명확성을 떨어뜨릴 수 있습니다.
+    
+  
+  7. 함수형 인터페이스의 제약 : 람다식은 단 하나의 추상 메소드를 가진 함수형 인터페이스와 함꼐 사용됩니다.
+    
+      때로는 이런 제약이 프로그램 설계를 더 복잡하게 만들 수 있습니다.
+    
+  
+
+
+3.2 📝 정리.
+람다식의 단점들은 주로 개발과 관련된 트레이드오프와 관련이 있으며, 이러한 단점을 이해하고 적절히 관리한다면 람다식을 효과적으로 사용할 수 있습니다.
+
 
 
                         </a>
@@ -21773,6 +21972,241 @@ public class Test {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/CS/2024-05-06-addressSpaceInMemory.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/CS/2024-05-06-addressSpaceInMemory.html"><h1 class="title_post">💾 [CS] 메모리의 주소 공간</h1></a>
+                        <a href="/2024/CS/2024-05-06-addressSpaceInMemory.html" class="txt_post">
+                            메모리의 주소 공간.
+
+주소에는 물리 주소와 논리 주소가 있다. 이번 절에서는 이 두 주소의 개념과 차이, 그리고 두 주소 간의 변환 방법을 학습한다.
+
+1. 주소의 종류.
+지금까지 ‘메모리에 저장된 정보의 위치는 주소로 나타낼 수 있다’ 정도로만 설명했지만, 사실 주소에는 두 종류가 있습니다.
+
+
+  1. 물리주소 : 메모리 하드웨어가 사용하는 주소.
+  2. 논리주소 : CPU와 실행 중인 프로그램이 사용하는 주소.
+
+
+2. 물리 주소와 논리 주소.
+CPU와 실행 중인 프로그램은 현재 메모리 몇 번지에 무엇이 저장되어 있는지 다 알고 있지 않습니다.
+
+  그 이유는 메모리에 저장된 정보는 시시각각 변하기 때문입니다.
+
+
+메모리에는 새롭게 실행되는 프로그램이 시시때때로 적재되고, 실행이 끝난 프로그램은 삭제됩니다.
+게다가, 같은 프로그램을 실행하더라도 실행할 때마다 적재되는 주소가 달라질 수 있습니다.
+
+  예를 들어, 1500번지에 적재되었던 프로그램을 다시 실행하면 3000번지, 또 다시 실행하면 2700번지에 적재될 수 있습니다.
+
+
+그렇다면 CPU와 실행 중인 프로그램이 이해하는 주소는 무엇일까요?
+
+주소에는 메모리가 사용하는 물리 주소가 있고, CPU와 실행 중인 프로그램이 사용하는 논리 주소가 있습니다.
+
+
+  물리 주소(Physical address) : 정보가 실제로 저장된 하드웨어상의 주소를 의미.
+  논리 주소(logical address) : CPU와 실행 중인 프로그램이 사용하는 주소, 실행 중인 프로그램 각각에게 부여된 0번지부터 시작되는 주소를 의미함.
+
+
+예를 들어 현재 메모리에 메모장, 게임, 인터넷 브라우저 프로그램이 적재되어 있다고 가정해 보겠습니다.
+메모장, 게임, 인터넷 브라우저 프로그램은 현재 다른 프로그램들이 메모리 몇 번지에 저장되어 있는지,
+다시 말해 다른 프로그램들의 물리 주소가 무엇인지 굳이 알 필요가 없습니다.
+
+새로운 프로그램이 언제든 적재될 수 있고, 실행되지 않은 프로그램은 언제든 메모리에서 사라질 수 있기 때문입니다.
+
+그래서 메모장, 게임, 인터넷 브라우저는 모두 물리 주소가 아닌 0번지부터 시작하는 자신만을 위한 주소인 논리 주소를 가지고 있습니다.
+
+예를 들어, ‘10번지’라는 주소는 메모장에도, 게임에도, 인터넷 브라우저에도 논리 주소로써 존재할 수 있습니다.
+프로그램마다 같은 논리 주소가 얼마든지 있을 수 있다는 뜻입니다.
+그리고 CPU는 이 논리 주소를 받아들이고, 해석하고, 연산합니다.
+
+
+
+정리하면, 메모리가 사용하는 주소는 하드웨어상의 실제 주소인 물리 주소이고, CPU와 실행 중인 프로그램이 사용하는 주소는 각각의 프로그램에 부여된 논리 주소입니다.
+
+그런데 CPU가 이해하는 주소가 논리 주소라고는 해도 CPU가 메모리와 상호작용하려면 논리 주소와 물리 주소 간의 변환이 이루어져야 합니다.
+
+논리 주소와 물리 주소 간에 어떠한 변환도 이루어지지 않는다면 CPU와 메모리는 서로 이해할 수 없는 주소 체계를 가지고 각자 다른 이야기만 할 뿐 결코 상호작용할 수 없을 테니까요.
+
+그렇다면 논리 주소는 어떻게 물리 주소로 변환될까요?
+
+논리 주소와 물리 주소 간의 변환은 CPU와 주소 버스 사이에 위치한 메모리 관리 장치(MMU: Memory Management Unit) 라는 하드웨어에 의해 수행됩니다.
+
+
+
+MMU는 CPU가 발생시킨 논리 주소에 베이스 레지스터 값을 더하여 논리 주소를 물리 주소로 변환합니다.
+예를 들어 현재 베이스 레지스터에 15000이 저장되어 있고 CPU가 발생시킨 논리 주소가 100번지라면 이 논리 주소는 아래 그림처럼 물리 주소 15100번지(100+15000)로 변환됩니다.
+물리 주소 15000번지부터 적재된 프로그램 A의 논리 주소 100번지에는 이렇게 접근이 가능한 것 입니다.
+
+
+
+베이스 레지스터는 프로그램의 가장 작은 물리 주소, 즉 프로그램의 첫 물리 주소를 저장하는 셈이고,
+논리 주소는 프로그램의 시작점으로부터 떨어진 거리인 셈입니다.
+
+3. 메모리 보호 기법.
+메모장 프로그램의 물리 주소가 1000번지부터 1999번지, 인터넷 브라우저 프로그램의 물리 주소가 2000번지부터 2999번지, 게임 프로그램의 물리 주소가 3000번지부터 3999번지라고 가정해 보겠습니다.
+
+만약 메모장 프로그램 명령어 중 ‘(논리 주소) 1500번지에 숫자 100을 저장하라’와 같은 명령어가 있다면 숫자 100은 어떤 물리 주소에 저장될까요? 이 명령어는 실행되어도 안전할까요?
+
+혹은 인터넷 브라우저 프로그램 명령어 중 ‘(논리 주소) 1100번지의 데이터를 삭제하라’와 같은 명령어가 있다면 어떤 물리 주소의 데이터가 삭제될까요? 이 명령어는 실행되어도 안전할까요?
+
+위와 같은 명령어들은 실행되어서는 안 됩니다.
+프로그램의 논리 주소 영역을 벗어났기 때문입니다.
+위 명령어들이 실행된다면 메모장 프로그램 명령어는 애꿏은 인터넷 브라우저 프로그램에 숫자 10을 저장하고, 인터넷 브라우저 프로그램 명령어는 자신과는 전혀 관련 없는 게임 프로그램 정보를 삭제합니다.
+
+이렇게 다른 프로그램의 영역을 침범할 수 있는 명령어는 위험하기 때문에 논리 주소 범위를 벗어나는 명령어 실행을 방지하고 실행 중인 프로그램이 다른 프로그램에 영향을 받지 않도록 보호할 방법이 핑요합니다.
+
+이는 한계 레지스터(limit register) 라는 레지스터가 담당합니다.
+
+베이스 레지스터가 실행 중인 프로그램의 가장 작은 물리 주소를 저장한다면, 한계 레지스터는 논리 주소의 최대 크기를 저장합니다.
+
+즉, 프로그램의 물리 주소 범위는 베이스 레지스터 값 이상, 베이스 레지스터 값 + 한계 레지스터 값 미만이 됩니다.
+
+
+
+CPU가 접근하려는 논리 주소는 한계 레지스터가 저장한 값보다 커서는 안 됩니다.
+한계 레지스터보다 높은 주소 값에 접근하는 것은 곧 프로그램의 범위에 벗어난 메모리 공간에 접근하는 것과 같디 때문입니다.
+
+베이스 레지스터에 100, 한계 레지스터에 150이 저장되어 있다고 해 봅시다.
+이는 물리 주소 시작점이 100번지, 프로그램의 크기(논리 주소의 최대 크기)는 150임을 의미합니다.
+따라서 이 프로그램은 150번지를 넘어서는 논리 주소를 가질 수 없습니다.
+
+이번에는 베이스 레지스터에 1500, 한계 레지스터에 1000이 저장되어 있다고 해 봅시다.
+이는 물리주소 시작점이 1500번지, 프로그램 크기는 1000임을 의미합니다.
+따라서 이 프로그램은 1000번지를 넘어서는 논리 주소를 가질 수 없습니다.
+
+CPU는 메모리에 접근하기 전에 접근하고자 하는 논리 주소가 한계 레지스터보다 작은지를 항상 검사합니다.
+만약 CPU가 한계 레지스터보다 높은 논리 주소에 접근하려고 하면 인터럽트(트랩)를 발생시켜 실행을 중단합니다.
+
+이러한 방식으로 실행 중인 프로그램의 독립적인 실행 공간을 확보하고 하나의 프로그램이 다른 프로그램을 침범하지 못하게 보호할 수 있습니다.
+
+5. 키워드로 정리하는 핵심 키워드
+
+  물리 주소는 메모리 하드웨어상의 주소이고, 논리 주소는 CPU와 실행 중인 프로그램이 사용하는 주소입니다.
+  MMU는 논리 주소를 물리 주소로 변환합니다.
+  베이스 레지스터는 프로그램의 첫 물리 주소를 저장합니다.
+  한계 레지스터는 실행 중인 프로그램의 논리 주소의 최대 크기를 저장합니다.
+
+
+
+
+컴퓨터 시스템에서 “물리 주소(Physical Address)”와 “논리 주소(Logical Address)”는 메모리 관리의 중요한 개념입니다.
+각각은 다음과 같은 의미를 가지며, 시스템의 효율적인 메모리 관리를 위해 사용됩니다.
+
+1.1 논리 주소(Logical Address)
+
+  정의 : 논리 주소는 프로그램이 사용하는 주소입니다.
+    
+      이 주소는 프로그램이 실행되면서 생성되는 주소로, 사용자 또는 프로그램이 접근할 수 있는 주소입니다.
+      이 주소는 가상 메모리 주소라고도 하며, 실제 메모리의 물리적 위치와는 독립적입니다.
+    
+  
+  목적 : 논리 주소의 주요 목적은 각 프로세스가 독립된 주소 공간을 갖게 하여, 프로세스간의 메모리 충돌을 방지하고 보안을 강화하는 데 있습니다.
+    
+      또한, 프로그래밍을 단순화시키고 메모리 관리를 더 유연하게 만듭니다.
+    
+  
+
+
+1.2 물리 주소(Physical Address)
+
+  정의 : 물리 주소는 메모리 장치 내의 실제 위치를 가리키는 주소입니다.
+    
+      이 주소는 시스템의 메모리 관리 유닛(Memory Management Unit, MMU)에 의해 사용되며, 실제 RAM에서 데이터를 찾는 데 사용됩니다.
+    
+  
+  목적 : 물리 주소는 시스템의 메모리를 효율적으로 할당하고 관리하는 데 필요합니다.
+    
+      이를 통해 시스템은 실제 메모리 공간을 최적화하고, 필요한 데이터와 프로그램을 정확한 위치에서 처리할 수 있습니다.
+    
+  
+
+
+1.3 주소 변환(Address Translation)
+논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)에 의해 수행됩니다.
+이 과정은 다음과 같은 방법으로 이루어 집니다.
+
+
+  1. 페이지 테이블 : 운영체제는 페이지 테이블을 사용하여 논리 주소를 물리 주소로 매핑합니다.
+    
+      페이지 테이블을 논리 주소를 페이지로 나누고, 각 페이지가 실제 메모리의 어느 부분에 해당하는지를 나타내는 테이블입니다.
+    
+  
+  
+    2. 변환 조회 버퍼(TLB) : 변환 조회 버퍼는 자주 사용되는 주소 매핑을 캐시하는 작은 메모리로, 주소 변환 과정을 빠르게 만듭니다.
+  
+  3. 주소 변환 과정
+    
+      프로세스가 논리 주소를 생성합니다.
+      MMU는 논리 주소의 페이지 번호를 확인하고, 해당 페이지 번호가 페이지 테이블에 있는지 확인합니다.
+      페이지 테이블에서 해당 페이지의 물리 주소를 찾아 매핑합니다.
+      물리 주소를 사용하여 실제 메모리에서 데이터를 엑세스합니다.
+    
+  
+
+
+📝 정리
+이러한 주소 변환 메커니즘은 메모리 보호, 프로세스 격리, 메모리 사용의 효율성 증가 등을 가능하게 하며, 복잡한 현대의 멀티태스킹 환경에서 중요한 역할을 합니다.
+
+Q1. 물리 주소(Physical Address)’와 ‘논리 주소(Logical Address)’에 대해 설명해 주시겠습니까? 이 두 주소의 개념과 차이점을 구체적으로 말씀해 주시고, 어떻게 논리 주소가 물리 주소로 변환되는지 그 과정에 대해서도 설명해 주세요.
+
+
+  
+    논리 주소는 프로그램이 사용하는 주소로, 프로그램 코드에 의해 참조되는 주소입니다. 이는 운영체제에 의해 관리되며, 프로그램이 메모리에 로드되는 위치와 무관하게 일관성을 유지합니다. 즉, 프로그램이 메모리의 어느 위치에 로드되든지 간에 같은 논리 주소를 사용할 수 있습니다. 논리 주소는 가상 메모리 주소라고도 하며, 이를 통해 개발자는 실제 메모리 구조를 신경 쓰지 않고 프로그래밍할 수 있습니다.
+  
+  
+    물리 주소는 메모리 장치 내의 실제 물리적 위치를 가리킵니다. 즉, 물리 주소는 RAM 내의 실제 데이터나 명령어가 저장된 위치를 나타내며, 메모리 관리 유닛(MMU)에 의해 논리 주소로부터 변환됩니다.
+  
+  
+    논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)을 통해 이루어집니다. 이 과정은 다음과 같습니다:
+    
+      
+        
+          프로세스가 생성하는 논리 주소는 페이지 번호와 오프셋으로 구성됩니다.
+        
+      
+      
+        
+          페이지 번호는 페이지 테이블을 참조하여 해당 페이지가 메모리의 어느 물리적 위치에 있는지 결정합니다. 이 페이지 테이블은 운영 체제에 의해 관리되며, 각 페이지의 물리 주소를 저장합니다.
+        
+      
+      
+        
+          물리 주소는 결정된 페이지 시작 주소에 오프셋을 추가하여 최종적으로 결정됩니다.
+        
+      
+      
+        
+          변환 조회 버퍼(TLB)는 이러한 변환 과정을 가속화하기 위해 자주 사용되는 주소 변환을 캐시합니다.
+            
+              이러한 변환 과정을 통해 시스템은 효율적으로 메모리를 관리하며, 프로세스 간 메모리 격리와 보안을 유지할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-05-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-05-06-loopStatement.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -22185,241 +22619,6 @@ for (String name : names) {
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/CS/2024-05-06-addressSpaceInMemory.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/CS/2024-05-06-addressSpaceInMemory.html"><h1 class="title_post">💾 [CS] 메모리의 주소 공간</h1></a>
-                        <a href="/2024/CS/2024-05-06-addressSpaceInMemory.html" class="txt_post">
-                            메모리의 주소 공간.
-
-주소에는 물리 주소와 논리 주소가 있다. 이번 절에서는 이 두 주소의 개념과 차이, 그리고 두 주소 간의 변환 방법을 학습한다.
-
-1. 주소의 종류.
-지금까지 ‘메모리에 저장된 정보의 위치는 주소로 나타낼 수 있다’ 정도로만 설명했지만, 사실 주소에는 두 종류가 있습니다.
-
-
-  1. 물리주소 : 메모리 하드웨어가 사용하는 주소.
-  2. 논리주소 : CPU와 실행 중인 프로그램이 사용하는 주소.
-
-
-2. 물리 주소와 논리 주소.
-CPU와 실행 중인 프로그램은 현재 메모리 몇 번지에 무엇이 저장되어 있는지 다 알고 있지 않습니다.
-
-  그 이유는 메모리에 저장된 정보는 시시각각 변하기 때문입니다.
-
-
-메모리에는 새롭게 실행되는 프로그램이 시시때때로 적재되고, 실행이 끝난 프로그램은 삭제됩니다.
-게다가, 같은 프로그램을 실행하더라도 실행할 때마다 적재되는 주소가 달라질 수 있습니다.
-
-  예를 들어, 1500번지에 적재되었던 프로그램을 다시 실행하면 3000번지, 또 다시 실행하면 2700번지에 적재될 수 있습니다.
-
-
-그렇다면 CPU와 실행 중인 프로그램이 이해하는 주소는 무엇일까요?
-
-주소에는 메모리가 사용하는 물리 주소가 있고, CPU와 실행 중인 프로그램이 사용하는 논리 주소가 있습니다.
-
-
-  물리 주소(Physical address) : 정보가 실제로 저장된 하드웨어상의 주소를 의미.
-  논리 주소(logical address) : CPU와 실행 중인 프로그램이 사용하는 주소, 실행 중인 프로그램 각각에게 부여된 0번지부터 시작되는 주소를 의미함.
-
-
-예를 들어 현재 메모리에 메모장, 게임, 인터넷 브라우저 프로그램이 적재되어 있다고 가정해 보겠습니다.
-메모장, 게임, 인터넷 브라우저 프로그램은 현재 다른 프로그램들이 메모리 몇 번지에 저장되어 있는지,
-다시 말해 다른 프로그램들의 물리 주소가 무엇인지 굳이 알 필요가 없습니다.
-
-새로운 프로그램이 언제든 적재될 수 있고, 실행되지 않은 프로그램은 언제든 메모리에서 사라질 수 있기 때문입니다.
-
-그래서 메모장, 게임, 인터넷 브라우저는 모두 물리 주소가 아닌 0번지부터 시작하는 자신만을 위한 주소인 논리 주소를 가지고 있습니다.
-
-예를 들어, ‘10번지’라는 주소는 메모장에도, 게임에도, 인터넷 브라우저에도 논리 주소로써 존재할 수 있습니다.
-프로그램마다 같은 논리 주소가 얼마든지 있을 수 있다는 뜻입니다.
-그리고 CPU는 이 논리 주소를 받아들이고, 해석하고, 연산합니다.
-
-
-
-정리하면, 메모리가 사용하는 주소는 하드웨어상의 실제 주소인 물리 주소이고, CPU와 실행 중인 프로그램이 사용하는 주소는 각각의 프로그램에 부여된 논리 주소입니다.
-
-그런데 CPU가 이해하는 주소가 논리 주소라고는 해도 CPU가 메모리와 상호작용하려면 논리 주소와 물리 주소 간의 변환이 이루어져야 합니다.
-
-논리 주소와 물리 주소 간에 어떠한 변환도 이루어지지 않는다면 CPU와 메모리는 서로 이해할 수 없는 주소 체계를 가지고 각자 다른 이야기만 할 뿐 결코 상호작용할 수 없을 테니까요.
-
-그렇다면 논리 주소는 어떻게 물리 주소로 변환될까요?
-
-논리 주소와 물리 주소 간의 변환은 CPU와 주소 버스 사이에 위치한 메모리 관리 장치(MMU: Memory Management Unit) 라는 하드웨어에 의해 수행됩니다.
-
-
-
-MMU는 CPU가 발생시킨 논리 주소에 베이스 레지스터 값을 더하여 논리 주소를 물리 주소로 변환합니다.
-예를 들어 현재 베이스 레지스터에 15000이 저장되어 있고 CPU가 발생시킨 논리 주소가 100번지라면 이 논리 주소는 아래 그림처럼 물리 주소 15100번지(100+15000)로 변환됩니다.
-물리 주소 15000번지부터 적재된 프로그램 A의 논리 주소 100번지에는 이렇게 접근이 가능한 것 입니다.
-
-
-
-베이스 레지스터는 프로그램의 가장 작은 물리 주소, 즉 프로그램의 첫 물리 주소를 저장하는 셈이고,
-논리 주소는 프로그램의 시작점으로부터 떨어진 거리인 셈입니다.
-
-3. 메모리 보호 기법.
-메모장 프로그램의 물리 주소가 1000번지부터 1999번지, 인터넷 브라우저 프로그램의 물리 주소가 2000번지부터 2999번지, 게임 프로그램의 물리 주소가 3000번지부터 3999번지라고 가정해 보겠습니다.
-
-만약 메모장 프로그램 명령어 중 ‘(논리 주소) 1500번지에 숫자 100을 저장하라’와 같은 명령어가 있다면 숫자 100은 어떤 물리 주소에 저장될까요? 이 명령어는 실행되어도 안전할까요?
-
-혹은 인터넷 브라우저 프로그램 명령어 중 ‘(논리 주소) 1100번지의 데이터를 삭제하라’와 같은 명령어가 있다면 어떤 물리 주소의 데이터가 삭제될까요? 이 명령어는 실행되어도 안전할까요?
-
-위와 같은 명령어들은 실행되어서는 안 됩니다.
-프로그램의 논리 주소 영역을 벗어났기 때문입니다.
-위 명령어들이 실행된다면 메모장 프로그램 명령어는 애꿏은 인터넷 브라우저 프로그램에 숫자 10을 저장하고, 인터넷 브라우저 프로그램 명령어는 자신과는 전혀 관련 없는 게임 프로그램 정보를 삭제합니다.
-
-이렇게 다른 프로그램의 영역을 침범할 수 있는 명령어는 위험하기 때문에 논리 주소 범위를 벗어나는 명령어 실행을 방지하고 실행 중인 프로그램이 다른 프로그램에 영향을 받지 않도록 보호할 방법이 핑요합니다.
-
-이는 한계 레지스터(limit register) 라는 레지스터가 담당합니다.
-
-베이스 레지스터가 실행 중인 프로그램의 가장 작은 물리 주소를 저장한다면, 한계 레지스터는 논리 주소의 최대 크기를 저장합니다.
-
-즉, 프로그램의 물리 주소 범위는 베이스 레지스터 값 이상, 베이스 레지스터 값 + 한계 레지스터 값 미만이 됩니다.
-
-
-
-CPU가 접근하려는 논리 주소는 한계 레지스터가 저장한 값보다 커서는 안 됩니다.
-한계 레지스터보다 높은 주소 값에 접근하는 것은 곧 프로그램의 범위에 벗어난 메모리 공간에 접근하는 것과 같디 때문입니다.
-
-베이스 레지스터에 100, 한계 레지스터에 150이 저장되어 있다고 해 봅시다.
-이는 물리 주소 시작점이 100번지, 프로그램의 크기(논리 주소의 최대 크기)는 150임을 의미합니다.
-따라서 이 프로그램은 150번지를 넘어서는 논리 주소를 가질 수 없습니다.
-
-이번에는 베이스 레지스터에 1500, 한계 레지스터에 1000이 저장되어 있다고 해 봅시다.
-이는 물리주소 시작점이 1500번지, 프로그램 크기는 1000임을 의미합니다.
-따라서 이 프로그램은 1000번지를 넘어서는 논리 주소를 가질 수 없습니다.
-
-CPU는 메모리에 접근하기 전에 접근하고자 하는 논리 주소가 한계 레지스터보다 작은지를 항상 검사합니다.
-만약 CPU가 한계 레지스터보다 높은 논리 주소에 접근하려고 하면 인터럽트(트랩)를 발생시켜 실행을 중단합니다.
-
-이러한 방식으로 실행 중인 프로그램의 독립적인 실행 공간을 확보하고 하나의 프로그램이 다른 프로그램을 침범하지 못하게 보호할 수 있습니다.
-
-5. 키워드로 정리하는 핵심 키워드
-
-  물리 주소는 메모리 하드웨어상의 주소이고, 논리 주소는 CPU와 실행 중인 프로그램이 사용하는 주소입니다.
-  MMU는 논리 주소를 물리 주소로 변환합니다.
-  베이스 레지스터는 프로그램의 첫 물리 주소를 저장합니다.
-  한계 레지스터는 실행 중인 프로그램의 논리 주소의 최대 크기를 저장합니다.
-
-
-
-
-컴퓨터 시스템에서 “물리 주소(Physical Address)”와 “논리 주소(Logical Address)”는 메모리 관리의 중요한 개념입니다.
-각각은 다음과 같은 의미를 가지며, 시스템의 효율적인 메모리 관리를 위해 사용됩니다.
-
-1.1 논리 주소(Logical Address)
-
-  정의 : 논리 주소는 프로그램이 사용하는 주소입니다.
-    
-      이 주소는 프로그램이 실행되면서 생성되는 주소로, 사용자 또는 프로그램이 접근할 수 있는 주소입니다.
-      이 주소는 가상 메모리 주소라고도 하며, 실제 메모리의 물리적 위치와는 독립적입니다.
-    
-  
-  목적 : 논리 주소의 주요 목적은 각 프로세스가 독립된 주소 공간을 갖게 하여, 프로세스간의 메모리 충돌을 방지하고 보안을 강화하는 데 있습니다.
-    
-      또한, 프로그래밍을 단순화시키고 메모리 관리를 더 유연하게 만듭니다.
-    
-  
-
-
-1.2 물리 주소(Physical Address)
-
-  정의 : 물리 주소는 메모리 장치 내의 실제 위치를 가리키는 주소입니다.
-    
-      이 주소는 시스템의 메모리 관리 유닛(Memory Management Unit, MMU)에 의해 사용되며, 실제 RAM에서 데이터를 찾는 데 사용됩니다.
-    
-  
-  목적 : 물리 주소는 시스템의 메모리를 효율적으로 할당하고 관리하는 데 필요합니다.
-    
-      이를 통해 시스템은 실제 메모리 공간을 최적화하고, 필요한 데이터와 프로그램을 정확한 위치에서 처리할 수 있습니다.
-    
-  
-
-
-1.3 주소 변환(Address Translation)
-논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)에 의해 수행됩니다.
-이 과정은 다음과 같은 방법으로 이루어 집니다.
-
-
-  1. 페이지 테이블 : 운영체제는 페이지 테이블을 사용하여 논리 주소를 물리 주소로 매핑합니다.
-    
-      페이지 테이블을 논리 주소를 페이지로 나누고, 각 페이지가 실제 메모리의 어느 부분에 해당하는지를 나타내는 테이블입니다.
-    
-  
-  
-    2. 변환 조회 버퍼(TLB) : 변환 조회 버퍼는 자주 사용되는 주소 매핑을 캐시하는 작은 메모리로, 주소 변환 과정을 빠르게 만듭니다.
-  
-  3. 주소 변환 과정
-    
-      프로세스가 논리 주소를 생성합니다.
-      MMU는 논리 주소의 페이지 번호를 확인하고, 해당 페이지 번호가 페이지 테이블에 있는지 확인합니다.
-      페이지 테이블에서 해당 페이지의 물리 주소를 찾아 매핑합니다.
-      물리 주소를 사용하여 실제 메모리에서 데이터를 엑세스합니다.
-    
-  
-
-
-📝 정리
-이러한 주소 변환 메커니즘은 메모리 보호, 프로세스 격리, 메모리 사용의 효율성 증가 등을 가능하게 하며, 복잡한 현대의 멀티태스킹 환경에서 중요한 역할을 합니다.
-
-Q1. 물리 주소(Physical Address)’와 ‘논리 주소(Logical Address)’에 대해 설명해 주시겠습니까? 이 두 주소의 개념과 차이점을 구체적으로 말씀해 주시고, 어떻게 논리 주소가 물리 주소로 변환되는지 그 과정에 대해서도 설명해 주세요.
-
-
-  
-    논리 주소는 프로그램이 사용하는 주소로, 프로그램 코드에 의해 참조되는 주소입니다. 이는 운영체제에 의해 관리되며, 프로그램이 메모리에 로드되는 위치와 무관하게 일관성을 유지합니다. 즉, 프로그램이 메모리의 어느 위치에 로드되든지 간에 같은 논리 주소를 사용할 수 있습니다. 논리 주소는 가상 메모리 주소라고도 하며, 이를 통해 개발자는 실제 메모리 구조를 신경 쓰지 않고 프로그래밍할 수 있습니다.
-  
-  
-    물리 주소는 메모리 장치 내의 실제 물리적 위치를 가리킵니다. 즉, 물리 주소는 RAM 내의 실제 데이터나 명령어가 저장된 위치를 나타내며, 메모리 관리 유닛(MMU)에 의해 논리 주소로부터 변환됩니다.
-  
-  
-    논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)을 통해 이루어집니다. 이 과정은 다음과 같습니다:
-    
-      
-        
-          프로세스가 생성하는 논리 주소는 페이지 번호와 오프셋으로 구성됩니다.
-        
-      
-      
-        
-          페이지 번호는 페이지 테이블을 참조하여 해당 페이지가 메모리의 어느 물리적 위치에 있는지 결정합니다. 이 페이지 테이블은 운영 체제에 의해 관리되며, 각 페이지의 물리 주소를 저장합니다.
-        
-      
-      
-        
-          물리 주소는 결정된 페이지 시작 주소에 오프셋을 추가하여 최종적으로 결정됩니다.
-        
-      
-      
-        
-          변환 조회 버퍼(TLB)는 이러한 변환 과정을 가속화하기 위해 자주 사용되는 주소 변환을 캐시합니다.
-            
-              이러한 변환 과정을 통해 시스템은 효율적으로 메모리를 관리하며, 프로세스 간 메모리 격리와 보안을 유지할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-05-06</span>
                             
@@ -23077,32 +23276,6 @@ public class TernaryExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(4)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-04-VariablesAndDataTypes-4.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -23301,6 +23474,32 @@ public class Box&lt;T extends Number&gt; {
 
 📝 정리.
 제네릭스(Generics)를 사용함으로써 개발자는 보다 타입-안전하고 유지보수가 용이한 코드를 작성할 수 있으며, 실행 시 타입 관련 문제를 효과적으로 줄일 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(4)
+
 
                         </a>
                         <div class="info-post">
@@ -23987,90 +24186,6 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html"><h1 class="title_post">☕️[Java] 코테 맛보기(2) - 코테를 위한 자료구조와 알고리즘 개념 구현 방법 숙지</h1></a>
-                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html" class="txt_post">
-                            😋 코테 맛보기.
-
-코딩 테스트를 준비하기 위해서 자료구조와 알고리즘은 매우 중요한 영역입니다.
-이 분야들에 대한 깊이 있는 이해와 숙지는 테스트에서 성공적인 성과를 내는 데 결정적인 역할을 합니다.
-다음은 코딩 테스트를 위해 필요한 자료구조와 알고리즘의 개념 및 구현 방법에 대한 가이드입니다.
-
-1️⃣ 자료구조.
-
-  기본 자료구조 : 배열, 스택, 큐, 링크드 리스트.
-    
-      이러한 자료구조들은 다양한 문제에서 데이터를 효율적으로 관리하는 기본적인 방법을 제공합니다.
-    
-  
-  고급 자료구조 : 트리(특히 이진 검색 트리), 힙, 그래프, 해시 테이블, 집합 등
-    
-      이들은 보다 복잡한 데이터 관계를 다루는 데 사용되며, 특정 유형의 문제를 해결하는 데 특화되어 있습니다.
-    
-  
-  응용 자료구조 : 트라이, 세그먼트 트리, 유니온 파인드, 비트마스크 등.
-    
-      이들은 특정 알고리즘 문제에 최적화된 솔루션을 제공합니다.
-    
-  
-
-
-2️⃣ 알고리즘.
-
-  정렬 알고리즘 : 버블 정렬, 삽입 정렬, 선택 정렬, 퀵 정렬, 병합 정렬 등.
-    
-      정렬은 많은 문제에서 데이터를 조작하는 기본적인 방법입니다.
-    
-  
-  검색 알고리즘 : 선형 검색, 이진 검색 등
-    
-      데이터 내에서 특정 항목을 찾는 방법입니다.
-    
-  
-  재귀 알고리즘과 백트래킹 : 문제를 더 작은 문제로 나누어 해결하는 기법입니다.
-  동적 프로그래밍 : 복잡한 문제를 간단한 하위 문제로 나누어 해결하고, 그 결과를 저장하여 효율적으로 최종 결과를 도출합니다.
-  그래프 알고리즘 : 깊이 우선 탐색(DFS), 너비 우선 탐색(BFS), 최단 경로 문제(다익스트라, 플로이드-워셜), 최소 신장 트리(크루스칼, 프림) 등을 포함합니다.
-
-
-3️⃣ 코테 준비 방법.
-
-  이론 학습 : 자료구조와 알고리즘의 이론을 철저히 학습합니다.
-    
-      이론적인 이해는 효과적인 구현의 기초가 됩니다.
-    
-  
-  실습 연습 : 이론을 바탕으로 다양한 문제를 실제로 코딩해 봄으로써 실력을 키웁니다.
-    
-      LeetCode, HackerRank, Codeforces, 백준, 프로그래머스 등의 플랫폼에서 문제를 풀어봅니다.
-    
-  
-  알고리즘 패턴 학습 : 자주 출제되는 문제 유형과 그에 대한 표준적인 해결 방법을 익힙니다.
-  시간 관리 연습 : 코딩 테스트에서는 제한된 시간 내에 문제를 해결해야 하므로, 시간 관리 능력을 향상시킬 필요가 있습니다.
-
-
-📝 정리.
-코테를 위한 준비 과정에서 이러한 자료구조와 알고리즘에 대한 이해와 숙련도는 문제를 정확하고 효율적으로 해결할 수 있는 능력을 직접적으로 높여 줍니다.
-따라서, 이 분야에 대한 철저한 준비와 연습을 통해 자신감을 갖고 테스트에 임할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -24308,6 +24423,90 @@ if (a.getClass().equals(b.getClass())) {
 📝 마무리.
 자바의 이러한 실행 과정은 코드의 플랫폼 독립성을 보장하고, 안정적이며 보안적인 실행 환경을 제공합니다.
 이 모든 과정은 개발자로부터 대부분 숨겨져 있으며, 개발자는 주로 소스 코드 작성과 일부 디버깅에 집중할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html"><h1 class="title_post">☕️[Java] 코테 맛보기(2) - 코테를 위한 자료구조와 알고리즘 개념 구현 방법 숙지</h1></a>
+                        <a href="/Backend/Java/2024-05-02-TasteTheCodingTest-2.html" class="txt_post">
+                            😋 코테 맛보기.
+
+코딩 테스트를 준비하기 위해서 자료구조와 알고리즘은 매우 중요한 영역입니다.
+이 분야들에 대한 깊이 있는 이해와 숙지는 테스트에서 성공적인 성과를 내는 데 결정적인 역할을 합니다.
+다음은 코딩 테스트를 위해 필요한 자료구조와 알고리즘의 개념 및 구현 방법에 대한 가이드입니다.
+
+1️⃣ 자료구조.
+
+  기본 자료구조 : 배열, 스택, 큐, 링크드 리스트.
+    
+      이러한 자료구조들은 다양한 문제에서 데이터를 효율적으로 관리하는 기본적인 방법을 제공합니다.
+    
+  
+  고급 자료구조 : 트리(특히 이진 검색 트리), 힙, 그래프, 해시 테이블, 집합 등
+    
+      이들은 보다 복잡한 데이터 관계를 다루는 데 사용되며, 특정 유형의 문제를 해결하는 데 특화되어 있습니다.
+    
+  
+  응용 자료구조 : 트라이, 세그먼트 트리, 유니온 파인드, 비트마스크 등.
+    
+      이들은 특정 알고리즘 문제에 최적화된 솔루션을 제공합니다.
+    
+  
+
+
+2️⃣ 알고리즘.
+
+  정렬 알고리즘 : 버블 정렬, 삽입 정렬, 선택 정렬, 퀵 정렬, 병합 정렬 등.
+    
+      정렬은 많은 문제에서 데이터를 조작하는 기본적인 방법입니다.
+    
+  
+  검색 알고리즘 : 선형 검색, 이진 검색 등
+    
+      데이터 내에서 특정 항목을 찾는 방법입니다.
+    
+  
+  재귀 알고리즘과 백트래킹 : 문제를 더 작은 문제로 나누어 해결하는 기법입니다.
+  동적 프로그래밍 : 복잡한 문제를 간단한 하위 문제로 나누어 해결하고, 그 결과를 저장하여 효율적으로 최종 결과를 도출합니다.
+  그래프 알고리즘 : 깊이 우선 탐색(DFS), 너비 우선 탐색(BFS), 최단 경로 문제(다익스트라, 플로이드-워셜), 최소 신장 트리(크루스칼, 프림) 등을 포함합니다.
+
+
+3️⃣ 코테 준비 방법.
+
+  이론 학습 : 자료구조와 알고리즘의 이론을 철저히 학습합니다.
+    
+      이론적인 이해는 효과적인 구현의 기초가 됩니다.
+    
+  
+  실습 연습 : 이론을 바탕으로 다양한 문제를 실제로 코딩해 봄으로써 실력을 키웁니다.
+    
+      LeetCode, HackerRank, Codeforces, 백준, 프로그래머스 등의 플랫폼에서 문제를 풀어봅니다.
+    
+  
+  알고리즘 패턴 학습 : 자주 출제되는 문제 유형과 그에 대한 표준적인 해결 방법을 익힙니다.
+  시간 관리 연습 : 코딩 테스트에서는 제한된 시간 내에 문제를 해결해야 하므로, 시간 관리 능력을 향상시킬 필요가 있습니다.
+
+
+📝 정리.
+코테를 위한 준비 과정에서 이러한 자료구조와 알고리즘에 대한 이해와 숙련도는 문제를 정확하고 효율적으로 해결할 수 있는 능력을 직접적으로 높여 줍니다.
+따라서, 이 분야에 대한 철저한 준비와 연습을 통해 자신감을 갖고 테스트에 임할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -26137,73 +26336,6 @@ A[j] = Temp
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
-                            복합 자료 구조.
-다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
-
-예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
-
-  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
-    
-      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
-    
-  
-
-
-CoffeeRecord {
-    String: Name
-    String: Brand
-    Integer: Rating
-    Float: Cost_Per_Pound
-    Boolean: Is_Dark_Roast
-    String: Other_Notes
-}
-
-
-
-  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
-
-
-속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
-
-  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
-
-
-자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
-
-객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
-
-객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
-
-복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
-
-last_record.name = "Sublime Blend"
-
-
-  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -26303,6 +26435,73 @@ Boolean: had_enough_coffee = False
 
 예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
 coffee_count = coffee_count + 1
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
+                            복합 자료 구조.
+다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
+
+예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
+
+  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
+    
+      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
+    
+  
+
+
+CoffeeRecord {
+    String: Name
+    String: Brand
+    Integer: Rating
+    Float: Cost_Per_Pound
+    Boolean: Is_Dark_Roast
+    String: Other_Notes
+}
+
+
+
+  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
+
+
+속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+
+  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
+
+
+자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
+
+객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
+
+객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
+
+복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
+
+last_record.name = "Sublime Blend"
+
+
+  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
 
 
                         </a>
@@ -27140,34 +27339,6 @@ CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/TIL/2024-04-18-TIL.html"><h1 class="title_post">📝 [TIL] 240418 Today I Learned.</h1></a>
-                        <a href="/2024/TIL/2024-04-18-TIL.html" class="txt_post">
-                            JAVA
-
-  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 학습.
-  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 정리.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-18-WrapperClass-MainMethodsAndPerformance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -27316,6 +27487,34 @@ sumWrapper = 499999999500000000
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/TIL/2024-04-18-TIL.html"><h1 class="title_post">📝 [TIL] 240418 Today I Learned.</h1></a>
+                        <a href="/2024/TIL/2024-04-18-TIL.html" class="txt_post">
+                            JAVA
+
+  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 학습.
+  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 정리.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/TIL/2024-04-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -27385,6 +27584,104 @@ folder/**/fileName_2.txt
 *.txt
   예외 만들기
 !fileName.txt
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
+                            래퍼 클래스 - 오토 박싱.
+
+오토 박싱 - Autoboxing
+
+자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
+다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
+
+package lang.wrapper;
+
+public class AutoboxingMain1 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = Integer.valueOf(value);
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue.intValue();
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+
+  박싱: valueOf()
+  언박싱: xxxValue() (예: intValue(), doubleValue())
+
+
+개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
+그래서 많은 개발자들이 불편함을 호소했습니다.
+
+  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
+
+
+오토 박싱, 언박싱
+package lang.wrapper;
+
+public class AutoboxingMain2 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
+덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
+따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
+
+Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
+
+int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -27640,104 +27937,6 @@ intValue() - 언박싱(Unboxing)
 
 
   참고로 래퍼 클래스는 객체를 그대로 출력해도 내부에 있는 값을 문자로 출력하도록 toString()을 재정의 해두었습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
-                            래퍼 클래스 - 오토 박싱.
-
-오토 박싱 - Autoboxing
-
-자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
-다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
-
-package lang.wrapper;
-
-public class AutoboxingMain1 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = Integer.valueOf(value);
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue.intValue();
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-
-  박싱: valueOf()
-  언박싱: xxxValue() (예: intValue(), doubleValue())
-
-
-개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
-그래서 많은 개발자들이 불편함을 호소했습니다.
-
-  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
-
-
-오토 박싱, 언박싱
-package lang.wrapper;
-
-public class AutoboxingMain2 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
-덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
-따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
-
-Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
-
-int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -58365,6 +58564,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Java/2024-08-26-equals-2.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-26"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] 기본형과 참조형의 공유",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-08-27-primitive-reference-type.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-27"
         });
     
 

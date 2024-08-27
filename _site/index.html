@@ -622,6 +622,7 @@
             
             
             
+            
 
     
     
@@ -986,6 +987,262 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html"><h1 class="title_post">☕️[Java] 공유 참조와 사이드 이펙트</h1></a>
+                        <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="txt_post">
+                            ☕️[Java] 공유 참조와 사이드 이펙트
+
+1️⃣ 공유 참조와 사이드 이펙트.
+
+  사이드 이펙트(Side Effect)는 프로그래밍에서 어떤 계산이 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 말합니다.
+    
+      앞서 "b" 의 값을 부산으로 변경한 코드를 다시 분석해봅시다.
+    
+  
+
+
+b.setValue("부산"); // b의 값을 부산으로 변경해야함
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+
+
+
+  개발자는 "b" 의 주소값을 서울에서 부산으로 변경할 의도로 값 변경을 시도했습니다.
+    
+      하지만 "a" , "b" 는 같은 인스턴스를 참조합니다.
+        
+          따라서 "a" 의 값도 함께 부산으로 변경되어 버립니다.
+        
+      
+    
+  
+  이렇게 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 사이드 이펙트(Side Effect)라 합니다.
+  프로그래밍에서 사이드 이펙트는 보통 부정적인 의미로 사용되는데, 사이드 이펙트는 프로그래밍의 특정 부분에서 발생한 변경이 의도치 않게 다른 부분에 영향을 미치는 경우에 발생합니다.
+    
+      이로 인해 디버깅이 어려워지고 코드의 안정성이 저하될 수 있습니다.
+    
+  
+
+
+2️⃣ 사이드 이펙트 해결 방안
+
+  생각해보면 문제의 해결방안은 아주 단순합니다.
+    
+      다음과 같이 "a" 와 "b" 가 처음부터 서로 다른 인스턴스를 참조하면 됩니다.
+    
+  
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+public class RefMain1_2 {
+
+	public static void main(String[] args) {
+		Address a = new Address("서울"); // x001
+		Address b = new Address("서울"); // x002
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+
+		b.setValue("부산"); // b의 값을 부산으로 변경해야함
+		System.out.println("부산 -&gt; b");
+		System.out.println("a = " + a); // 사이드 이팩트 발생
+		System.out.println("b = " + b);
+	}
+}
+
+
+실행 결과
+
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+
+  실행 결과를 보면 "b" 의 주소값만 부산으로 변경된 것을 확인할 수 있습니다.
+
+
+그림 - 생성 코드
+
+
+
+
+  "a" 와 "b" 는 서로 다른 "Address" 인스턴스를 참조합니다.
+
+
+그림 - 변경 코드
+
+
+
+
+  "a" 와 "b" 는 서로 다른 인스턴스를 참조합니다.
+    
+      따라서 "b" 가 참조하는 인스턴스의 값을 변경해도 "a" 에는 영향을 주지 않습니다.
+    
+  
+
+
+3️⃣ 여러 변수가 하나의 객체를 공유하는 것을 막을 방법은 없다.
+
+  지금까지 발생한 모든 문제는 같은 객체(인스턴스)를 변수 "a" , "b" 가 함께 공유하기 때문에 발생했습니다.
+    
+      따라서 객체를 공유하지 않으면 문제가 해결됩니다.
+        
+          여기서 변수 "a", "b" 가 각각 다른 주소지로 변경할 수 있어야 합니다.
+            
+              이렇게 하려면 서로 다른 객체를 참조하면 됩니다.
+            
+          
+        
+      
+    
+  
+
+
+객체를 공유.
+Address a = new Address("서울");
+Address b = a;
+
+
+
+  이 경우 "a", "b" 둘 다 같은 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 불가능합니다.
+
+
+객체를 공유하지 않음.
+Address a = new Address("서울");
+Address ㅠ = new Address("서울");
+
+
+
+  
+    이 경우 "a", "b" 는 서로 다른 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 가능합니다.
+  
+  
+    이처럼 단순하게 서로 다른 객체를 참조해서, 같은 객체를 공유하지 않으면 문제가 해결됩니다.
+    
+      즉, 여러 변수가 하나의 객체를 공유하지 않으면 지금까지 설명한 문제들이 발생하지 않습니다.
+        
+          그런데 여기서 문제가 있습니다.
+            
+              하나의 객체를 여러 변수가 공유하지 않도록 강제로 막을 수 있는 방법이 없다는 것입니다.
+                
+                  아래의 예시를 봐봅시다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+참조값의 공유를 막을 수 있는 방법이 없다.
+Address a = new Address("서울");
+Address b = a; // 참조값 대입을 막을 수 있는 방법이 없습니다.
+
+
+
+  "b = a" 와 같은 코드를 작성하지 않도록 해서, 여러 변수가 하나의 참조값을 공유하지 않으면 문제가 해결될 것 같습니다.
+    
+      하지만 "Address" 를 사용하는 개발자 입장에서 실수로 "b = a" 라고 해도 아무런 오류가 발생하지 않습니다.
+        
+          왜냐하면 자바 문법상 "Address b = a" 와 같은 참조형 변수의 대입은 아무런 문제가 없기 때문입니다.
+        
+      
+    
+  
+  다음과 같이 새로운 객체를 참조형 변수에 대입하든, 또는 기존 객체를 참조형 변수에 대입하든, 다음 두 코드 모두 자바 문법상 정상인 코드입니다.
+    Address b = new Address("서울"); // 새로운 객체 참조
+Address b = a; // 기존 객체 공유 참조
+    
+  
+  참조값을 다른 변수에 대입하는 순간 여러 변수가 하나의 객체를 공유하게 됩니다.
+    
+      즉, 객체의 공유를 막을 수 있는 방법이 없습니다!
+    
+  
+  기본형은 항상 값을 복사해서 대입하기 때문에 값이 절대로 공유되지 않습니다.
+    
+      하지만 참조형의 경우 참조값을 복사해서 대입하기 때문에 여러 변수에서 얼마든지 같은 객체를 공유할 수 있습니다.
+    
+  
+  객체의 공유가 꼭 필요할 때도 있지만, 때로는 공유하는 것이 지금과 같은 사이드 이펙트를 만드는 경우도 있습니다.
+    
+      물론 개발자가 신경써서 코드를 작성한다면 사이드 이펙트 문제를 일으키지 않을 수 있습니다.
+        
+          하지만 실제로는 훨씬 더 복잡한 상황에서 이런 문제가 발생합니다.
+```java
+public class RefMain1_3 {
+        
+      
+    
+
+    public static void main(String[] args) {
+      Address a = new Address(“서울”);
+      Address b = a;
+      System.out.println(“a = “ + a);
+      System.out.println(“b = “ + b);
+
+      change(b,"부산");
+  System.out.println("a = " + a); // 사이드 이팩트 발생
+  System.out.println("b = " + b);   }
+    
+
+    private static void change(Address address, String changeAddress) {
+      System.out.println(“주소 값을 변경합니다 -&gt; “ + changeAddress);
+      address.setValue(changeAddress);
+  }
+}
+```
+  
+  앞서 작성한 코드와 같은 코드입니다.
+    
+      단순히 "change()" 메서드만 하나 추가되었습니다.
+      그리고 "change()" 메서드에서 "Address" 인스턴스에 있는 "value" 값을 변경합니다.
+        
+          "main()" 메서드만 보면 "a" 의 값이 함께 부산으로 변경된 이유를 찾기가 더 어렵습니다.
+        
+      
+    
+  
+
+
+실행 결과
+
+a = Address{value='서울'}
+b = Address{value='서울'}
+주소 값을 변경합니다 -&gt; 부산
+a = Address{value='부산'}
+b = Address{value='부산'}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2461,6 +2718,123 @@ public class HelloController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
+                            🍃[Spring] Welcome Page 구현 및 동작 방법.
+
+1️⃣ Welcom Page 만들기.
+
+  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
+```html
+&lt;!DOCTYPE html&gt;
+
+
+	
+		Hello
+		
+	
+	
+		Hello
+		hello
+	
+
+
+- 스프링 부트가 제공하는 Welcom Page 기능.
+    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
+    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
+
+## 2️⃣ thymeleaf 템플릿 엔진.
+- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
+- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
+- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
+
+```java
+// com/devkobe/hello_spring/controller
+@Controller
+public class HelloController {
+    
+    @GetMapping("hello")
+    public String hello(Model model) {
+        model.addAttribute("data", "hello!!");
+        return "hello";
+    }
+}
+
+
+&lt;!-- `resource/static/index.html` --&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Hello&lt;/title&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		Hello
+		&lt;a href="/hello"&gt;hello&lt;/a&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;!-- `resource/templates/hello.html` --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+	&lt;title&gt;Hello&lt;/title&gt;
+&lt;/head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  thymeleaf 템플릿엔진 동작 확인
+    
+      실행 : http://localhost:8080/hello
+    
+  
+  
+    동작 환경 그림.
+
+  
+  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
+    
+      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
+        
+          'resources:template/' + '{ViewName}' + '.html'
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
+IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-23-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -3255,123 +3629,6 @@ public class MyService {
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
-                            🍃[Spring] Welcome Page 구현 및 동작 방법.
-
-1️⃣ Welcom Page 만들기.
-
-  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
-```html
-&lt;!DOCTYPE html&gt;
-
-
-	
-		Hello
-		
-	
-	
-		Hello
-		hello
-	
-
-
-- 스프링 부트가 제공하는 Welcom Page 기능.
-    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
-    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
-
-## 2️⃣ thymeleaf 템플릿 엔진.
-- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
-- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
-- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
-
-```java
-// com/devkobe/hello_spring/controller
-@Controller
-public class HelloController {
-    
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("data", "hello!!");
-        return "hello";
-    }
-}
-
-
-&lt;!-- `resource/static/index.html` --&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-	&lt;head&gt;
-		&lt;title&gt;Hello&lt;/title&gt;
-		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-		Hello
-		&lt;a href="/hello"&gt;hello&lt;/a&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-
-
-&lt;!-- `resource/templates/hello.html` --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-	&lt;title&gt;Hello&lt;/title&gt;
-&lt;/head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;body&gt;
-&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  thymeleaf 템플릿엔진 동작 확인
-    
-      실행 : http://localhost:8080/hello
-    
-  
-  
-    동작 환경 그림.
-
-  
-  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
-    
-      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
-        
-          'resources:template/' + '{ViewName}' + '.html'
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
-IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
 
 
                         </a>
@@ -4242,6 +4499,66 @@ public class LangMain {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html"><h1 class="title_post">🌐[Network] 인터넷의 계층 모델</h1></a>
+                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="txt_post">
+                            🌐[Network] 인터넷의 계층 모델
+
+1️⃣ 인터넷의 계층 모델.
+
+
+
+  위 그림은 FTP 프로그램을 이용하는 경우를 예로 들어 인터넷의 계층 구조를 설명하고 있습니다.
+  인터넷에서는 IP(Internet Protocol)가 네트워크 계층의 기능을 수행하며, TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)는 전송 계층의 기능을 수행합니다.
+    
+      이들 3개의 프로토콜은 인터넷 환경에서 사용자 데이터를 전송하는 핵심 역할을 합니다.
+    
+  
+  전송 계층 이하의 프로토콜들은 호스트의 운영체게 내부에서 구현되며 FTP, 텔넷, 전자 메일 등과 같은 응용 프로그램은 사용자 프로그램 환경에서 계층 5~7이 합쳐져 구현됩니다.
+  위 그림과 같이 양쪽 호스트에는 동일한 기능을 수행하는 프로토콜 스택(Protocol Stack)이 존재합니다.
+    
+      프로토콜 스택은 계층 구조로 이루어진 통신 프로토콜의 집합입니다.
+
+    
+  
+  각 프로토콜의 동작은 위 그림에서 설명한 것과 같은 원리로 이루어집니다.
+    
+      그림에 표시되진 않았지만 두 호스트 사이에는 중개 기능을 수행하는 라우터들이 존재할 수 있습니다.
+    
+  
+  인터넷에서는 IP 프로토콜이 중개 기능을 수행하므로 라우터에는 계층 3까지의 프로토콜이 구현되어 있습니다.
+  FTP 클라이언트가 FTP 서버에 데이터를 전송하는 과정은 다음과 같습니다.
+    
+      FTP 클라이언트가 FTP 서버에 직접 데이터를 전송하는 것은 불가능하므로 먼저 자신의 하위 TCP에 데이터를 보내야합니다.
+      TCP로 보내진 데이터는 IP 프로토콜과 LAN 카드를 거쳐서 이더넷으로 표현된 전송 매체를 통하여 FTP 서버의 LAN 카드에 전달됩니다.
+      FTP 서버에 도착한 데이터는 송신 순서의 반대인 LAN 카드, IP 프로토콜, TCP 프로토콜을 거쳐서 FTP 서버 프로그램에 도착합니다.
+        
+          FTP 서비스에서 데이터 전송은 양방향 통신을 지원하므로 반대 방향의 전송도 가능합니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-20</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240820_AWS_INSTALL_GRADLE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -4304,66 +4621,6 @@ source ~/.bash_profile
   
 
 
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-20</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html"><h1 class="title_post">🌐[Network] 인터넷의 계층 모델</h1></a>
-                        <a href="/Backend/Network/2024-08-20-Internet-layer-model.html" class="txt_post">
-                            🌐[Network] 인터넷의 계층 모델
-
-1️⃣ 인터넷의 계층 모델.
-
-
-
-  위 그림은 FTP 프로그램을 이용하는 경우를 예로 들어 인터넷의 계층 구조를 설명하고 있습니다.
-  인터넷에서는 IP(Internet Protocol)가 네트워크 계층의 기능을 수행하며, TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)는 전송 계층의 기능을 수행합니다.
-    
-      이들 3개의 프로토콜은 인터넷 환경에서 사용자 데이터를 전송하는 핵심 역할을 합니다.
-    
-  
-  전송 계층 이하의 프로토콜들은 호스트의 운영체게 내부에서 구현되며 FTP, 텔넷, 전자 메일 등과 같은 응용 프로그램은 사용자 프로그램 환경에서 계층 5~7이 합쳐져 구현됩니다.
-  위 그림과 같이 양쪽 호스트에는 동일한 기능을 수행하는 프로토콜 스택(Protocol Stack)이 존재합니다.
-    
-      프로토콜 스택은 계층 구조로 이루어진 통신 프로토콜의 집합입니다.
-
-    
-  
-  각 프로토콜의 동작은 위 그림에서 설명한 것과 같은 원리로 이루어집니다.
-    
-      그림에 표시되진 않았지만 두 호스트 사이에는 중개 기능을 수행하는 라우터들이 존재할 수 있습니다.
-    
-  
-  인터넷에서는 IP 프로토콜이 중개 기능을 수행하므로 라우터에는 계층 3까지의 프로토콜이 구현되어 있습니다.
-  FTP 클라이언트가 FTP 서버에 데이터를 전송하는 과정은 다음과 같습니다.
-    
-      FTP 클라이언트가 FTP 서버에 직접 데이터를 전송하는 것은 불가능하므로 먼저 자신의 하위 TCP에 데이터를 보내야합니다.
-      TCP로 보내진 데이터는 IP 프로토콜과 LAN 카드를 거쳐서 이더넷으로 표현된 전송 매체를 통하여 FTP 서버의 LAN 카드에 전달됩니다.
-      FTP 서버에 도착한 데이터는 송신 순서의 반대인 LAN 카드, IP 프로토콜, TCP 프로토콜을 거쳐서 FTP 서버 프로그램에 도착합니다.
-        
-          FTP 서비스에서 데이터 전송은 양방향 통신을 지원하므로 반대 방향의 전송도 가능합니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -6820,6 +7077,111 @@ sudo /usr/local/nginx/sbin/nginx -s reload
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html"><h1 class="title_post">☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.</h1></a>
+                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="txt_post">
+                            ☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.
+“저의 상황을 예로 들어 설명하도록 하겠습니다.”
+
+
+  로컬 macBook에서 Amazon Linux 2023 EC2 서버로 파일을 업로드하는 방법 중 가장 일반적인 방법은 scp(secure copy) 를 사용하는 것 입니다.
+    
+      이 명령을 통해 안전하게 파일을 복사할 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ 아래 설명하는 단계들은 로컬에서 이루어져야 합니다.
+
+
+1️⃣ EC2 인스턴스 연결 정보 확인.
+
+  먼저 EC2 인스턴스의 퍼블릭 IP 주소와 연결에 사용하는 키 페어 파일(.pem)을 확인합니다.
+
+
+2️⃣ 로컬 macBook에서 scp 명령어 사용.
+
+  scp 명령어를 사용하여 로컬 파일을 EC2 인스턴스로 업로드합니다.
+    
+      예를 들어, 로컬 파일 localfile.txt 를 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
+    
+  
+
+
+scp -i /path/to/your-key-pair.pem /path/to/localfile.txt ec2-uesr@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
+
+
+👉 예제.
+
+  키 페어 파일 경로 : /Users/bingGu/.ssh/my-key-pair.pem
+  로컬 파일 경로 : /Users/bingGu/Documents/localfile.txt
+  EC2 퍼블릭 IP : 43.201.230.99
+
+
+/Users/bingGu/Documents/localfile.txt ec2-user@43.201.230.99:/home/ec2-user/
+
+
+3️⃣ 디렉토리 업로드.
+
+  만약 디렉토리를 업로드 하고 싶다면 -r 옵션을 사용하여 디렉토리를 재귀적으로 업로드할 수 있습니다.
+    
+      예를 들어, 로컬 디렉토리 localdir 을 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
+    
+  
+
+
+scp -r -i /path/to/your-key-pair.pem /path/to/localdir ec2-user@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
+
+
+4️⃣ 업로드 확인.
+
+  EC2 인스턴스에 SSH로 접속하여 파일이나 디렉토리가 정상적으로 업로드되었는지 확인합니다.
+
+
+ssh -i /path/to/your-key-pair.pem ec2-user@&lt;EC2-Instance-Public-IP&gt;
+ls /home/ec2-user/
+
+
+🎯 Troubleshooting
+
+  Permission Denied : 키 파일의 권한이 적절하지 않을 때 발생할 수 있습니다.
+    
+      다음 명령어로 권한을 조정합니다.
+        chmod 400 /path/to/your-key-pair.pem
+        
+      
+    
+  
+  Host Key Verification Failed : 로컬 머신의 SSH 설정에서 이전에 연결한 적 없는 서버에 대해 경고가 뜨는 경우, 다음 명령어로 knows_hosts 파일을 업데이트할 수 있습니다.
+    ssh-keygen -R &lt;EC2-Instance-Public-IP&gt;
+    
+  
+
+
+
+  🙋‍♂️ 이 단계를 따르면 로컬 macBook에서 Amazon Linux 2023 EC2 인스턴스로 파일을 성골적으로 업로드할 수 있을 것입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Network/2024-08-09-network-cidr.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -6921,111 +7283,6 @@ sudo /usr/local/nginx/sbin/nginx -s reload
 
 
   🙋‍♂️ CIDR 블록을 설계할 때, 사용하려는 네트워크 규모와 IP 주소 요구 사항을 염두에 두고, 적절한 서브넷 마스크 길이를 선택하는 것이 중요합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html"><h1 class="title_post">☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.</h1></a>
-                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="txt_post">
-                            ☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.
-“저의 상황을 예로 들어 설명하도록 하겠습니다.”
-
-
-  로컬 macBook에서 Amazon Linux 2023 EC2 서버로 파일을 업로드하는 방법 중 가장 일반적인 방법은 scp(secure copy) 를 사용하는 것 입니다.
-    
-      이 명령을 통해 안전하게 파일을 복사할 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ 아래 설명하는 단계들은 로컬에서 이루어져야 합니다.
-
-
-1️⃣ EC2 인스턴스 연결 정보 확인.
-
-  먼저 EC2 인스턴스의 퍼블릭 IP 주소와 연결에 사용하는 키 페어 파일(.pem)을 확인합니다.
-
-
-2️⃣ 로컬 macBook에서 scp 명령어 사용.
-
-  scp 명령어를 사용하여 로컬 파일을 EC2 인스턴스로 업로드합니다.
-    
-      예를 들어, 로컬 파일 localfile.txt 를 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
-    
-  
-
-
-scp -i /path/to/your-key-pair.pem /path/to/localfile.txt ec2-uesr@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
-
-
-👉 예제.
-
-  키 페어 파일 경로 : /Users/bingGu/.ssh/my-key-pair.pem
-  로컬 파일 경로 : /Users/bingGu/Documents/localfile.txt
-  EC2 퍼블릭 IP : 43.201.230.99
-
-
-/Users/bingGu/Documents/localfile.txt ec2-user@43.201.230.99:/home/ec2-user/
-
-
-3️⃣ 디렉토리 업로드.
-
-  만약 디렉토리를 업로드 하고 싶다면 -r 옵션을 사용하여 디렉토리를 재귀적으로 업로드할 수 있습니다.
-    
-      예를 들어, 로컬 디렉토리 localdir 을 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
-    
-  
-
-
-scp -r -i /path/to/your-key-pair.pem /path/to/localdir ec2-user@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
-
-
-4️⃣ 업로드 확인.
-
-  EC2 인스턴스에 SSH로 접속하여 파일이나 디렉토리가 정상적으로 업로드되었는지 확인합니다.
-
-
-ssh -i /path/to/your-key-pair.pem ec2-user@&lt;EC2-Instance-Public-IP&gt;
-ls /home/ec2-user/
-
-
-🎯 Troubleshooting
-
-  Permission Denied : 키 파일의 권한이 적절하지 않을 때 발생할 수 있습니다.
-    
-      다음 명령어로 권한을 조정합니다.
-        chmod 400 /path/to/your-key-pair.pem
-        
-      
-    
-  
-  Host Key Verification Failed : 로컬 머신의 SSH 설정에서 이전에 연결한 적 없는 서버에 대해 경고가 뜨는 경우, 다음 명령어로 knows_hosts 파일을 업데이트할 수 있습니다.
-    ssh-keygen -R &lt;EC2-Instance-Public-IP&gt;
-    
-  
-
-
-
-  🙋‍♂️ 이 단계를 따르면 로컬 macBook에서 Amazon Linux 2023 EC2 인스턴스로 파일을 성골적으로 업로드할 수 있을 것입니다.
 
 
                         </a>
@@ -12151,6 +12408,36 @@ Popped element: 4
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-06-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-05-TIL.html"><h1 class="title_post">📝 [TIL] 240605 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-05-TIL.html" class="txt_post">
+                            
+  Deque(덱, 데크))
+  코딩테스트 입문 - 두 수의 합
+  코딩테스트 입문 - 두 수의 차
+  코딩테스트 입문 - 두 수의 곱
+  코딩테스트 입문 - 몫 구하기
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-06-05-Deque.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -12768,36 +13055,6 @@ Is deque empty? false
 
   이 예제에서는 요소를 덱의 양쪽 끝에서 삽입할 수 있고, 첫 번째 요소만 제거할 수 있는 출력 제한 덱을 구현했습니다.
 필요에 따라 이 구현을 확장하거나 수정하여 요구사항에 맞게 사용할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-05-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-05-TIL.html"><h1 class="title_post">📝 [TIL] 240605 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-05-TIL.html" class="txt_post">
-                            
-  Deque(덱, 데크))
-  코딩테스트 입문 - 두 수의 합
-  코딩테스트 입문 - 두 수의 차
-  코딩테스트 입문 - 두 수의 곱
-  코딩테스트 입문 - 몫 구하기
 
 
                         </a>
@@ -58575,6 +58832,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Java/2024-08-27-primitive-reference-type.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-27"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] 공유 참조와 사이드 이펙트",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-08-28-shared-reference-and-side-effects.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-28"
         });
     
 

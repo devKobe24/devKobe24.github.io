@@ -624,6 +624,7 @@
             
             
             
+            
 
     
     
@@ -1727,6 +1728,48 @@ sudo firewall-cmd --permanent --add-service=https
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -1767,48 +1810,6 @@ nvm use 16
 ✏️ 요약
 
   'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
 
 
                         </a>
@@ -2037,6 +2038,45 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
+                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
+
+
+  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
+    
+      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
+    
+  
+  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
+  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
+    
+      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
+      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -2108,102 +2148,6 @@ nvm use 16
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
-                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
-
-
-  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
-    
-      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
-    
-  
-  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
-  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
-    
-      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
-      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
-                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
-                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
-
-  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
-  SaaS(Software as a Service)
-    
-      응용 프로그램을 서비스로 제공하는 형태입니다.
-      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
-    
-  
-  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
-    
-      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
-      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
-    
-  
-  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
-    
-      PaaS
-        
-          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
-          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
-          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
-        
-      
-      IaaS
-        
-          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
-          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
-
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
                             
                         </div>
                     </div>
@@ -2471,6 +2415,63 @@ nvm use 16
       Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
         
           이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html"><h1 class="title_post">☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.</h1></a>
+                        <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="txt_post">
+                            ☁️[AWS] 서비스 제공 형태에 따른 클라우드 분류.
+
+  클라우드 서비스는 제공하는 서비스에 따라 SasS, PaaS, IaaS 로 나눌 수 있습니다.
+  SaaS(Software as a Service)
+    
+      응용 프로그램을 서비스로 제공하는 형태입니다.
+      많은 사람이 사용하는 Gmail, Dropbox, Office365, Zoom이 대표적인 SaaS 입니다.
+    
+  
+  PaaS(Platform as a Service), IaaS(Infrastructure as a Service)
+    
+      응용 프로그램을 만들기 위한 기능을 서비스로 제공합니다.
+      이 서비스는 직접 응용 프로그램을 개발하는 사용자를 위한 서비스로, 사용자는 제공 받은 기능을 조합해 응용 프로그램을 개발합니다.
+    
+  
+  PaaS와 IaaS의 차이는 클라우드 서비스 제공자가 관리하는 범위입니다.
+    
+      PaaS
+        
+          클라우드 서비스 제공자는 OS 및 미들웨어까지 관리하고, 필수 기능만 사용자에게 제공합니다.
+          AWS에서 관리형 서비스로 제공하는 RDS나 DynamoDB, Lambda 등이 여기에 해당합니다.
+          유지보수는 AWS가 담당하며 사용자는 AWS에서 제공하는 범위 안에서 자유롭게 기능을 이용할 수 있습니다.
+        
+      
+      IaaS
+        
+          서버 및 네트워크 기능만 제공하며 설정과 관리는 사용자의 몫입니다.
+          AWS의 EC2와 VPC, EBS와 같이 사용자가 자유롭게 설정할 수 있는 서비스가 IaaS에 해당합니다.
+
         
       
     
@@ -8013,6 +8014,17 @@ sudo reboot
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-08-28-shared-reference-and-side-effects.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-28"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 프로토콜",
+            'path'     : "Backend > Network",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Backend/Network/2024-08-28-Protocol.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-28"
         });
     

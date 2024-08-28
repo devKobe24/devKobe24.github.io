@@ -623,6 +623,7 @@
             
             
             
+            
 
     
     
@@ -1233,6 +1234,257 @@ b = Address{value='서울'}
 주소 값을 변경합니다 -&gt; 부산
 a = Address{value='부산'}
 b = Address{value='부산'}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-28-Immutable-Object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-28-Immutable-Object.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/Backend/Java/2024-08-28-Immutable-Object.html" class="txt_post">
+                            ☕️[Java] 불변 객체 - 도입.
+
+1️⃣ 불변 객체 - 도입.
+
+  공유하면 안되는 객체를 여러 변수에서 공유하기 때문에 문제가 발생했었습니다.
+    
+      그렇다고 객체의 공유를 막을 수 있는 방법은 없습니다.
+        
+          그러나 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+          객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+            
+              문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+            
+          
+        
+      
+    
+  
+  "a", "b" 는 처음 시점에는 둘 다 "서울" 이라는 주소를 사용해야 합니다.
+    
+      그리고 이후에 "b" 의 주소를 "부산" 으로 변경해야 합니다.
+        Address a = new Address("서울");
+Address b = a;
+        
+      
+    
+  
+  따라서 처음에는 "b = a" 와 같이 "서울" 이라는 "Address" 인스턴스를 "a", "b" 가 함께 사용하는 것이, 다음 코드와 같이 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+    
+      인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+        Address a = new Address("서울");
+Address b = new Address("서울");
+        
+      
+    
+  
+  여기까지는 "Address b = a" 와 같이 공유 참조를 사용해도 아무런 문제가 없습니다.
+    
+      오히려 더 효율적입니다.
+    
+  
+  진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+    b.setValue("부산"); // b의 값을 부산으로 변경해야함
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+    
+  
+  자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+    
+      기본형과 다르게 참조형인 객체는 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+        
+          따라서 이것은 문제가 아닙니다.
+            
+              문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 어디선가 변경했기 때문입니다.
+                
+                  만약 "Address" 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 불변 객체 도입.
+
+  객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+    
+      "Address" 클래스를 상태가 변하지 않는 불변 클래스로 만들어 보겠습니다.
+    
+  
+
+
+public class ImmutableAddress {
+	private final String value;
+
+	public ImmutableAddress(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"value='" + value + '\'' +
+				'}';
+	}
+}
+
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 "value" 의 필드를 "final" 로 선언했습니다.
+      값을 변경할 수 있는 "setValue()" 를 제거했습니다.
+        
+          이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+        
+      
+    
+  
+  불변 클래스를 만드는 방법은 아주 단순합니다.
+    
+      어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+```java
+public class RefMain2 {
+    
+
+    public static void main(String[] args) {
+      ImmutableAddress a = new ImmutableAddress(“서울”);
+      ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+      System.out.println(“a = “ + a);
+      System.out.println(“b = “ + b);
+
+      // b.setValue("부산"); // 컴파일 오류 발생
+  b = new ImmutableAddress("부산");
+  System.out.println("부산 -&gt; b");
+  System.out.println("a = " + a); // 사이드 이팩트 발생
+  System.out.println("b = " + b);   } } ```
+    
+  
+  "ImmutableAddress" 의 경우 값을 변경할 수 있는 "b.setValue()" 메서드 자체가 제거되었습니다.
+    
+      이제 "ImmutableAddress" 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+        
+          "ImmutableAddress" 를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫게 됩니다.
+            
+              예를 들어 "b.setValue("부산")" 을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지합니다.
+                
+                  따라서 어쩔 수 없이 새로운 "ImmutableAddress("부산")" 인스턴스를 생성해서 "b" 에 대입합니다.
+                    
+                      결과적으로 "a", "b" 는 서로 다른 인스턴스를 참조하고, "a" 가 참조하던 "ImmutableAddress" 는 그대로 유지됩니다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+
+  실행 결과를 보면 "a" 의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+
+  "ImmutableAddress" 는 불변 객체입니다.
+    
+      따라서 값을 변경할 수 없습니다.
+    
+  
+
+
+
+
+
+  "ImmutableAddress" 은 불변 객체이므로 "b" 가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+3️⃣ 정리
+
+  불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+    
+      객체의 공유 참조는 막을 수 없습니다.
+        
+          그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+          사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어서 사용하면 됩니다.
+          불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+        
+      
+      불변 객체는 값을 변경할 수 없습니다.
+        
+          따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+            
+              이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고 - 가변(Mutable) 객체 vs 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.
+가변은 사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.
+불변은 사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.
+
+
+
+  "Address" 는 가변 클래스입니다.
+    
+      이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+    
+  
+  "ImmutableAddress" 는 불변 클래스입니다.
+    
+      이 클래스로 객체를 생성하면 불변 객체가 됩니다.
+    
+  
 
 
                         </a>
@@ -5507,48 +5759,6 @@ sudo firewall-cmd --permanent --add-service=https
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -5589,6 +5799,48 @@ nvm use 16
 ✏️ 요약
 
   'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
 
 
                         </a>
@@ -12982,32 +13234,6 @@ Is deque empty? false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
-                            
-  IntStream
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-06-03-IntStream.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -13264,6 +13490,32 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
 📚 참고 문헌.
 
   Java Docs - IntStream
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
+                            
+  IntStream
 
 
                         </a>
@@ -28911,6 +29163,17 @@ public class Main {
             'url'      : "/Backend/Java/2024-08-27-primitive-reference-type.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-27"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] 불변 객체 - 도입",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-08-28-Immutable-Object.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-28"
         });
     
 

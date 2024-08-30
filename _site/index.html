@@ -630,6 +630,7 @@
             
             
             
+            
 
     
     
@@ -994,6 +995,122 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Network/2024-08-31-address-presentaion.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Network/2024-08-31-address-presentaion.html"><h1 class="title_post">🌐[Network] 주소의 표현</h1></a>
+                        <a href="/Backend/Network/2024-08-31-address-presentaion.html" class="txt_post">
+                            🌐[Network] 주소의 표현.
+
+
+  시스템을 설계할 때는 기능이나 목적과 함께 고유의 구분자(Identifier)를 부여하는 방법에 대해서도 우선하여 고려해야 합니다.
+  일반적으로 주소의 개념은 단순히 서로를 구분한다는 고유 목적을 넘어서 주소가 가리키는 대상의 특징을 표현할 수 있습니다.
+  사람들은 문자로 된 이름에 익숙하지만, 0과 1로 디지털화된 환경에서는 구분자를 숫자로 된 주소로 표현할 수밖에 없습니다.
+  디지털 환경에서 숫자로 된 주소 표현 방식은 일반 사용자에게 불편하므로 보통은 외우기 쉬운 문자 형식의 이름을 추가로 사용합니다.
+  주소와 이름은 일대일(1:1) 관계가 이루어지며, 이들은 연결하는 기능이 필요합니다.
+  인터넷에서 일반 사용자는 문자로 된 이름을 사용하고, 인터넷 내부는 숫자로 된 주소를 사용하므로 둘 사이의 변환 기능이 필요합니다.
+  대상을 유일하게 구별하는 구분자는 일반적으로 다음의 네 가지 특징이 있습니다.
+
+
+1️⃣ 유일성
+
+
+  구분자의 가장 중요한 역할은 대상을 서로 구분하여 지칭하는 것입니다.
+    
+      따라서 서로 다른 대상이 같은 구분자를 갖지 않는 유일성을 보장해야 합니다.
+        
+          그러나 이론적으로 완전한 확장성을 전제로 하는 유일성을 보장하기는 불가능합니다.
+            
+              예를 들어, 주민 번호에서 앞쪽 여섯 글자인 생년월일은 100년 이내에 출생한 사람들만 구분할 수 있습니다.
+                
+                  현재는 방편적으로 바로 뒤의 남녀 구분 자리(1900년대 출생자는 1,2를 사용하고, 2000년대 출생자는 3,4를 사용함)를 활용하여 제한적인 확장성을 확보하고 있을 뿐 입니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 확장성
+
+
+  시스템은 시간이 흐르면서 이용자가 증가하는 보편화 과정이 진행되므로 자연스럽게 규모가 확장됩니다.
+    
+      따라서 사용하는 구분자의 양도 증가합니다.
+    
+  
+  시스템의 최대 수용 규모를 예측하여 구분자의 최대 한계를 올바르게 설정하지 않으면, 표현할 수 있는 공간의 크기가 제한되어 시스템의 확장성도 제한받게 됩니다.
+    
+      합리적인 기준을 설정하여 확장의 정도를 예측하고, 또한 그 이후에 대한 고려도 함께 이루어져야 합니다.
+    
+  
+  처음 인터넷을 설계했을 때 지금과 같은 규모로 인터넷을 이용하리라고는 예측하지 못했습니다.
+    
+      그 결과 인터넷 구분자인 IP 주소의 고갈 문제에 직면해 있습니다.
+    
+  
+
+
+3️⃣ 편리성
+
+
+  시스템 설계 과정에서 부여되는 구분자는 시스템의 내부 처리 구조를 효율적으로 운용할 수 있도록 해주어야 합니다.
+    
+      컴퓨터 시스템은 내부적으로 숫자에 기반해 처리되기 때문에 구분자의 체계도 숫자 위주입니다.
+        
+          또한 배치, 검색 등을 원활하게 수행하기 위해 보통 일반인이 의미를 이해할 수 없는 형식을 갖습니다.
+            
+              이처럼 시스템 내부 동작에 종속된 구분자의 주소 체계는 사용자가 쉽게 이해하기 어려우므로 문자로 된 이름을 추가로 부여합니다.
+                
+                  따라서 숫자로 된 주소와 문자로 된 이름을 모두 가지므로 이를 매핑(Mapping)하는 기능이 필요합니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+4️⃣ 정보의 함축
+
+
+  구분자는 응용 환경에 필요한 다양한 정보를 포함하는 경우가 많습니다.
+    
+      예를 들어, 주민 번호는 생년월일, 성별 등을 알 수 있는 숫자로 구성되어 있습니다.
+        
+          집 주소도 광역시부터 시작해 지역을 소규모로 분할하는 구조로 되어 있어 집의 지리적인 위치를 쉽게 가늠할 수 있습니다.
+            
+              이처럼 분자는 응용 환경에 적절히 대응할 수 있는 부가 정보를 포함해야 합니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -8119,34 +8236,56 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
-                            ☁️[AWS] 가상화.
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
+                            ☁️[AWS] 서버리스.
 
-  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
-  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
-  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
     
-      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
-여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
+      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
     
   
-  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
+  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
 
 
 
 
+☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
 
-  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
+  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
     
-      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
+      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
     
   
-  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
+  폐쇄형 클라우드
+    
+      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
+    
+  
+  개방형 클라우드
+    
+      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
+    
+  
+  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
+    
+      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
+        
+          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+        
+      
+    
+  
+  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+    
+      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+    
+  
+  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
 
 
 
@@ -8384,56 +8523,34 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
-                            ☁️[AWS] 서버리스.
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
 
-  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
     
-      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
     
   
-  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
 
 
 
 
-☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
 
-  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
     
-      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
-    
-  
-  폐쇄형 클라우드
-    
-      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
     
   
-  개방형 클라우드
-    
-      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
-    
-  
-  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
-    
-      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
-        
-          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
-        
-      
-    
-  
-  폐쇄형 클라우드는 온프레미스에 가깝습니다.
-    
-      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
-    
-  
-  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
 
 
 
@@ -60538,6 +60655,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-08-31-Immutable-Object.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-08-31"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 주소의 표현",
+            'path'     : "Backend > Network",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Backend/Network/2024-08-31-address-presentaion.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-31"
         });
     

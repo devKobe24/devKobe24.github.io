@@ -633,6 +633,7 @@
             
             
             
+            
 
     
     
@@ -4709,76 +4710,110 @@ sumWrapper = 499999999500000000
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/TIL/2024-04-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/TIL/2024-04-17-TIL.html"><h1 class="title_post">📝 [TIL] 240417 Today I Learned.</h1></a>
-                        <a href="/2024/TIL/2024-04-17-TIL.html" class="txt_post">
-                            Java 학습 및 정리
+                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 2</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="txt_post">
+                            래퍼 클래스 - 기본형의 한계 2
 
-  Java ‘래퍼 클래스 - 기본형의 한계2’ 학습.
-  Java ‘래퍼 클래스 - 기본형의 한계2’ 정리.
-  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 학습
-  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 정리
+기본형과 null
+기본형은 항상 값을 가져야 합니다.
+하지만 때로는 데이터가 ‘없음’이라는 상태가 필요할 수 있습니다.
+다음 코드를 작성해봅시다.
 
+package lang.wrapper;
 
-자료구조
+public class MyIntegerNullMain0 {
 
-  삽입정렬 복습 part 1
-  삽입정렬 복습 part 2
-  삽입정렬 복습 part 3
+  public static void main(String[] args) {
+    int[] intArr = {-1, 0, 1, 2, 3};
+    System.out.println(findValue(intArr, -1)); // -1
+    System.out.println(findValue(intArr, 0));
+    System.out.println(findValue(intArr, 1));
+    System.out.println(findValue(intArr, 100)); // -1
+  }
 
-
-C++ 의 ‘sizeof()’
-C++ 에서 ‘sizeof()’ 는 연산자로 사용되며, 주어진 타입이나 변수의 메모리 크기를 바이트 단위로 반환합니다.
-이 연산자는 컴파일 시간에 그 크기를 결정하므로, 프로그램 실행 도중에는 크기가 변경되지 않습니다.
-
-‘sizeof()’ 연산자의 사용 예시는 다음과 같습니다.
-
-
-  타입의 크기 확인 : ‘sizeof(int)’ 은 ‘int’ 타입의 크기를 바이트 단위로 반환합니다. 보통 ‘int’ 는 4바이트를 사용하지만 시스템에 따라 다를 수 있습니다.
-  변수의 크기 확인 : ‘int x; sizeof(x)’ 는 변수 ‘x’ 의 타입인 ‘int’ 의 크기를 반환합니다.
-  배열의 전체 크기 확인 : ‘int arr[10]; sizeof(arr)’ 는 배열 ‘arr’ 의 전체 크기를 반환합니다. 이 경우 ‘10 * sizeof(int)’ 와 같은 결과를 나타냅니다.
-
-
-‘sizeof()’ 는 특히 메모리 관리를 할 때나 데이터 타입의 크기가 중요한 연산에서 매우 유용합니다.
-
-.gitignore란?
+  private static int findValue(int[] intArr, int target) {
+    for (int value : intArr) {
+      if (value == target) {
+        return value;
+      }
+    }
+    return -1;
+  }
+}
 
 
-  보안상으로 위험성이 있는 파일
-  프로젝트와 관계없는 파일
-  용량이 너무 커서 제외해야되는 파일
 
-
-위와 같은 파일들을 .gitignore 이라는 디렉토리를 만들어 무시할 파일을 넣어 줄 수 있습니다.
-
-사용법
-
-  git init을 한 폴더에 .gitignore 이라는 이름으로 파일을 만듭니다.
+  findValue()는 배열에 찾는 값이 있으면 해당 값을 반환하고, 찾는 값이 없으면 -1을 반환합니다.
+  findValue()는 결과로 int를 반환합니다.
     
-      그 파일 내부에 제외할 파일 혹을 폴더를 명시하면 됩니다.
+      int와 같은 기본형은 항상 값이 있어야 합니다.
+        
+          여기서도 값을 반환할 때 값을 찾지 못하면 숫자 중 하나를 반환해야 하는데 보통 -1 또는 0을 사용합니다.
+        
+      
     
   
 
 
+실행 결과
+-1
+0
+1
+-1
 
-  특정 파일 fileName 제외하기
-fileName.js
-  현재 경로에 있는 fileName_1 만 제외하기(다른경로 fileName_1은 제외되지 않음.)
-/fileName.js
-  특정 폴더 node_module 안의 파일 다 제외하기
-node_module/
-  특정 경로의 특정 파일 제외하기
-folder/my.txt
-  특정 경로 아래의 모든 fileName_2 제외하기
-folder/**/fileName_2.txt
-  특정 확장자 파일 다 제외하기
-*.txt
-  예외 만들기
-!fileName.txt
 
+실행 결과를 보면 입력값이 -1일 때 -1을 반환합니다.
+그런데 배열에 없는 값인 100을 입력해도 같은 -1을 반환합니다.
+입력값이 -1일 때를 생각해보면, 배열에 -1 값이 있어서 -1을 반환한 것인지, 아니면 -1 값이 없어서 -1을 반환한 것인지 명확하지 않습니다.
+
+객체의 경우 데이터가 없다는 null이라는 명확한 값이 존재합니다.
+
+다음 코드를 작성해봅시다.
+
+package lang.wrapper;
+
+public class MyIntegerNullMain1 {
+
+  public static void main(String[] args) {
+    MyInteger[] intArr = {new MyInteger(-1), new MyInteger(0), new MyInteger(1)};
+    System.out.println(findValue(intArr, -1)); // -1
+    System.out.println(findValue(intArr, 0));
+    System.out.println(findValue(intArr, 1));
+    System.out.println(findValue(intArr, 100)); // null
+  }
+
+  private static MyInteger findValue(MyInteger[] intArr, int target) {
+    for (MyInteger myInteger : intArr) {
+      if (myInteger.getValue() == target) {
+        return myInteger;
+      }
+    }
+    return null;
+  }
+}
+
+
+실행 결과
+-1
+0
+1
+null
+
+
+
+  앞서 만든 MyInteger 래퍼 클래서를 사용했습니다.
+  실행 결과를 보면 -1을 입력했을 때는 -1을 반환합니다.
+  100을 입력했을 때는 값이 없다는 null을 반환합니다.
+
+
+기본형은 항상 값이 존재해야 합니다.
+숫자의 경우 0, -1 같은 값이라도 항상 존재해야 합니다.
+반면에 객체인 참조형은 값이 없다는 null을 사용할 수 있습니다.
+물론 null 값을 반환하는 경우 잘못하면 NullPointerException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
 
                         </a>
                         <div class="info-post">
@@ -5028,110 +5063,76 @@ int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/TIL/2024-04-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 2</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="txt_post">
-                            래퍼 클래스 - 기본형의 한계 2
+                        <a href="/2024/TIL/2024-04-17-TIL.html"><h1 class="title_post">📝 [TIL] 240417 Today I Learned.</h1></a>
+                        <a href="/2024/TIL/2024-04-17-TIL.html" class="txt_post">
+                            Java 학습 및 정리
 
-기본형과 null
-기본형은 항상 값을 가져야 합니다.
-하지만 때로는 데이터가 ‘없음’이라는 상태가 필요할 수 있습니다.
-다음 코드를 작성해봅시다.
-
-package lang.wrapper;
-
-public class MyIntegerNullMain0 {
-
-  public static void main(String[] args) {
-    int[] intArr = {-1, 0, 1, 2, 3};
-    System.out.println(findValue(intArr, -1)); // -1
-    System.out.println(findValue(intArr, 0));
-    System.out.println(findValue(intArr, 1));
-    System.out.println(findValue(intArr, 100)); // -1
-  }
-
-  private static int findValue(int[] intArr, int target) {
-    for (int value : intArr) {
-      if (value == target) {
-        return value;
-      }
-    }
-    return -1;
-  }
-}
+  Java ‘래퍼 클래스 - 기본형의 한계2’ 학습.
+  Java ‘래퍼 클래스 - 기본형의 한계2’ 정리.
+  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 학습
+  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 정리
 
 
+자료구조
 
-  findValue()는 배열에 찾는 값이 있으면 해당 값을 반환하고, 찾는 값이 없으면 -1을 반환합니다.
-  findValue()는 결과로 int를 반환합니다.
+  삽입정렬 복습 part 1
+  삽입정렬 복습 part 2
+  삽입정렬 복습 part 3
+
+
+C++ 의 ‘sizeof()’
+C++ 에서 ‘sizeof()’ 는 연산자로 사용되며, 주어진 타입이나 변수의 메모리 크기를 바이트 단위로 반환합니다.
+이 연산자는 컴파일 시간에 그 크기를 결정하므로, 프로그램 실행 도중에는 크기가 변경되지 않습니다.
+
+‘sizeof()’ 연산자의 사용 예시는 다음과 같습니다.
+
+
+  타입의 크기 확인 : ‘sizeof(int)’ 은 ‘int’ 타입의 크기를 바이트 단위로 반환합니다. 보통 ‘int’ 는 4바이트를 사용하지만 시스템에 따라 다를 수 있습니다.
+  변수의 크기 확인 : ‘int x; sizeof(x)’ 는 변수 ‘x’ 의 타입인 ‘int’ 의 크기를 반환합니다.
+  배열의 전체 크기 확인 : ‘int arr[10]; sizeof(arr)’ 는 배열 ‘arr’ 의 전체 크기를 반환합니다. 이 경우 ‘10 * sizeof(int)’ 와 같은 결과를 나타냅니다.
+
+
+‘sizeof()’ 는 특히 메모리 관리를 할 때나 데이터 타입의 크기가 중요한 연산에서 매우 유용합니다.
+
+.gitignore란?
+
+
+  보안상으로 위험성이 있는 파일
+  프로젝트와 관계없는 파일
+  용량이 너무 커서 제외해야되는 파일
+
+
+위와 같은 파일들을 .gitignore 이라는 디렉토리를 만들어 무시할 파일을 넣어 줄 수 있습니다.
+
+사용법
+
+  git init을 한 폴더에 .gitignore 이라는 이름으로 파일을 만듭니다.
     
-      int와 같은 기본형은 항상 값이 있어야 합니다.
-        
-          여기서도 값을 반환할 때 값을 찾지 못하면 숫자 중 하나를 반환해야 하는데 보통 -1 또는 0을 사용합니다.
-        
-      
+      그 파일 내부에 제외할 파일 혹을 폴더를 명시하면 됩니다.
     
   
 
 
-실행 결과
--1
-0
-1
--1
 
+  특정 파일 fileName 제외하기
+fileName.js
+  현재 경로에 있는 fileName_1 만 제외하기(다른경로 fileName_1은 제외되지 않음.)
+/fileName.js
+  특정 폴더 node_module 안의 파일 다 제외하기
+node_module/
+  특정 경로의 특정 파일 제외하기
+folder/my.txt
+  특정 경로 아래의 모든 fileName_2 제외하기
+folder/**/fileName_2.txt
+  특정 확장자 파일 다 제외하기
+*.txt
+  예외 만들기
+!fileName.txt
 
-실행 결과를 보면 입력값이 -1일 때 -1을 반환합니다.
-그런데 배열에 없는 값인 100을 입력해도 같은 -1을 반환합니다.
-입력값이 -1일 때를 생각해보면, 배열에 -1 값이 있어서 -1을 반환한 것인지, 아니면 -1 값이 없어서 -1을 반환한 것인지 명확하지 않습니다.
-
-객체의 경우 데이터가 없다는 null이라는 명확한 값이 존재합니다.
-
-다음 코드를 작성해봅시다.
-
-package lang.wrapper;
-
-public class MyIntegerNullMain1 {
-
-  public static void main(String[] args) {
-    MyInteger[] intArr = {new MyInteger(-1), new MyInteger(0), new MyInteger(1)};
-    System.out.println(findValue(intArr, -1)); // -1
-    System.out.println(findValue(intArr, 0));
-    System.out.println(findValue(intArr, 1));
-    System.out.println(findValue(intArr, 100)); // null
-  }
-
-  private static MyInteger findValue(MyInteger[] intArr, int target) {
-    for (MyInteger myInteger : intArr) {
-      if (myInteger.getValue() == target) {
-        return myInteger;
-      }
-    }
-    return null;
-  }
-}
-
-
-실행 결과
--1
-0
-1
-null
-
-
-
-  앞서 만든 MyInteger 래퍼 클래서를 사용했습니다.
-  실행 결과를 보면 -1을 입력했을 때는 -1을 반환합니다.
-  100을 입력했을 때는 값이 없다는 null을 반환합니다.
-
-
-기본형은 항상 값이 존재해야 합니다.
-숫자의 경우 0, -1 같은 값이라도 항상 존재해야 합니다.
-반면에 객체인 참조형은 값이 없다는 null을 사용할 수 있습니다.
-물론 null 값을 반환하는 경우 잘못하면 NullPointerException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
 
                         </a>
                         <div class="info-post">
@@ -35858,6 +35859,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Network/2024-08-31-address-presentaion.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-08-31"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] 불변 객체 - 값 변경",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-09-01-ImmutableObject-Value-Change.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-01"
         });
     
 

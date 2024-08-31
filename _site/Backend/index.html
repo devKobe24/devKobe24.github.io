@@ -631,6 +631,7 @@
             
             
             
+            
 
     
     
@@ -1327,6 +1328,169 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
 
 
   사이드 이펙트가 발생하지 않습니다. 회원A 는 기존 주소를 그대로 유지합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-08-31-Abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-08-31-Abstraction.html"><h1 class="title_post">💾 [CS] 추상화(Abstraction)</h1></a>
+                        <a href="/Backend/CS/2024-08-31-Abstraction.html" class="txt_post">
+                            💾 [CS] 추상화(Abstraction).
+
+1️⃣ 추상화(Abstraction).
+
+  추상화(Abstraction) 는 객체 지향 프로그래밍(Object-Oriented-Programming, OOP)의 중요한 개념 중 하나로, 복잡한 시스템에서 핵심적인 개념이나 기능만을 추려내어 단순화하는 과정입니다.
+    
+      이를 통해 불필요한 세부 사항을 감추고, 중요한 속성이나 행위만을 노출하여 시스템을 보다 간단하게 이해하고 사용할 수 있게 합니다.
+    
+  
+
+
+1️⃣ 추상화의 핵심 개념.
+
+  1. 본질적인 것만 노출.
+    
+      시스템의 복잡한 내부 구현을 숨기고, 외부에서는 중요한 기능이나 속성만을 사용할 수 있도록 설계합니다.
+        
+          예를 들어, 자동차를 운전할 때 운전자는 엔진의 작동 원리나 내부 구조를 몰라도, 운전대, 가속 페달, 브레이크 등의 중요한 인터페이스를 통해 자동차를 조작할 수 있습니다.
+        
+      
+    
+  
+  2. 복잡성 감소.
+    
+      추상화를 통해 사용자에게 복잡한 시스템을 단순하게 보이도록 하여, 사용자가 시스템을 쉽게 이해하고 사용할 수 있게 합니다.
+        
+          이는 특히 큰 시스템이나 라이브러리를 설계할 때 중요합니다.
+        
+      
+    
+  
+  3. 재사용성과 유지보수성 향상.
+    
+      추상화를 사용하면, 코드의 재사용성을 높이고 유지보수성을 향상시킬 수 있습니다.
+        
+          동일한 추상 인터페이스를 구현하는 여러 클래스가 있을 때, 구체적인 클래스 구현을 신경 쓰지 않고 인터페이스를 통해 일관된 방식으로 코드를 사용할 수 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ 추상화의 예
+
+  추상화는 주로 추상 클래스와 인터페이스 를 통해 구현됩니다.
+
+
+추상 클래스.
+
+  추상 클래스는 하나 이상의 추상 메서드를 초함하는 클래스입니다.
+  추상 메서드는 선언만 되어 있고, 구체적인 구현은 해당 클래스를 상속받는 하위 클래스에서 제공해야 합니다.
+
+
+abstract class Animal {
+    abstract void sound(); // 추상 메서드
+    
+    void breathe() { // 구체적인 메서드
+        System.out.println("Breathing");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+
+
+
+  이 예에서 Animal 클래스는 추상 클래스이고, sound() 메서드는 추상 메서드입니다.
+  Dog 와 Cat 클래스는 sound() 메서드를 구체적으로 구현합니다.
+  Animal 클래스는 동물의 일반적인 특징인 breath() 메서드를 포함하지만, sound() 는 동물마다 다르므로 하위 클래스에서 구체화됩니다.
+
+
+인터페이스
+
+  인터페이스는 추상화의 또 다른 형태로, 클래스가 구현해야 하는 메서드의 선언을 포함합니다.
+  인터페이스 자체는 구현을 가지지 않으며, 구현은 이를 구현하는 클래스에서 제공됩니다.
+
+
+interface Flyable {
+    void fly(); // 추상 메서드
+}
+
+class Bird implements Flyable {
+    @Override
+    public void fly() {
+        System.out.println("Bird is flying");
+    }
+}
+
+class Airplane implements Flyable {
+    @Override
+    public void fly() {
+        System.out.println("Airplane is flying");
+    }
+}
+
+
+
+  여기서 Flyable 인터페이스는 fly() 라는 추상 메서드를 선언하고 있으며, Bird 와 Airplane 클래스는 각각 이 메서드를 구현합니다.
+  Flyable 인터페이스를 통해, 비행할 수 있는 객체들은 동일한 방식으로 취급될 수 있습니다.
+
+
+3️⃣ 추상화의 장점.
+
+  1. 코드의 간결성.
+    
+      중요한 부분만 남기고 복잡한 구현 세부 사항을 숨겨, 코드를 간결하고 이해하기 쉽게 만듭니다.
+    
+  
+  2. 유연한 설계.
+    
+      구체적인 구현에 의존하지 않기 때문에, 다양한 구현체를 쉽게 교체하거나 확장할 수 있습니다.
+    
+  
+  3. 재사용성 증가.
+    
+      추상 클래스나 인터페이스를 통해 여러 클래스에서 공통적으로 사용될 수 있는 구조를 만들 수 있습니다.
+    
+  
+
+
+4️⃣ 요약.
+
+  추상화는 복잡한 시스템에서 불필요한 세부 사항을 감추고 중요한 부분만을 노출하여 시스템을 간단하게 만드는 개념입니다.
+    
+      이를 통해 코드의 복잡성을 줄이고, 유연성과 재사용성을 높이며, 유지보수를 용이하게 할 수 있습니다.
+    
+  
+  추상화는 주로 추상 클래스와 인터페이스를 통해 구현됩니다.
 
 
                         </a>
@@ -3315,355 +3479,6 @@ equals() 메서드를 구현할 때 지켜야 하는 규칙
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
-                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
-                            ☕️[Java] equals() - 1, 동일성과 동등성.
-
-1️⃣ equals() - 1, 동일성과 동등성.
-
-
-  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
-  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
-    
-      동일성(Identity)
-        
-          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
-        
-      
-      동등성(Equality)
-        
-          
-            
-              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 단어 정리
-
-  “동일” 은 “완전히 같음 을 의미합니다.”
-  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
-  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
-    
-      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
-      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-    User a = new User("id-100"); // 참조 x001
-User b = new User("id-100"); // 참조 x002
-    
-  
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
-    
-      (주민등록번호가 같다고 가정해도 됩니다.)
-        
-          따라서 동일성은 다르지만, 동등성은 같습니다.
-        
-      
-    
-  
-  문자의 경우도 마찬가지입니다.
-    String s1 = "hello";
-String s2 = "hello";
-    
-  
-  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
-    
-      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
-    
-  
-
-
-3️⃣ UserV1 예제.
-
-public class UserV1 {
-	private String id;
-
-	public UserV1(String id) {
-		this.id = id;
-	}
-}
-
-
-public class EqualsMainV1 {
-
-	public static void main(String[] args) {
-		UserV1 user1 = new UserV1("id-100");
-		UserV1 user2 = new UserV1("id-100");
-
-		System.out.println("Identity = " + (user1 == user2));
-		System.out.println("Equality = " + (user1.equals(user2)));
-	}
-}
-
-
-실행 결과
-Identity = false
-Equality = false
-
-
-
-
-동일성(Identity) 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성(Equality) 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-
-  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
-
-
-Object.equals
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안  
-return false
-false
-
-
-
-  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
-    
-      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-        
-          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
-            
-              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-25-Object-OCP-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-25-Object-OCP-1.html"><h1 class="title_post">☕️[Java] Object와 OCP - 1</h1></a>
-                        <a href="/Backend/Java/2024-08-25-Object-OCP-1.html" class="txt_post">
-                            ☕️[Java] Object와 OCP - 1.
-
-1️⃣ Object와 OCP.
-
-
-  만약 'Object' 가 없고, 또 'Object' 가 제공하는 'toString()' 이 없다면 서로 아무 관계가 없는 객체의 정보를 출력하기 어려울 것입니다.
-    
-      여기서 아무 관계가 없다는 것은 공통의 부모가 없다는 뜻입니다.
-        
-          아마도 다음의 'BadObjectPrinter' 클래스와 같이 각각의 클래스마다 별도의 메서드를 작성해야 할 것입니다.
-        
-      
-    
-  
-
-
-'BadObjectPrinter'
-public class BadObjectPrinter {
-    public static void print(Car car) { // Car 전용 메서드
-        String string = "객체 정보 출력: " + car.carInfo(); // carInfo() 메서드 만듬
-        System.out.println(string);
-    }
-    
-    public static void print(Dog dog) { // Dog 전용 메서드
-        String string = "객체 정보 출력: " + dog.dogInfo(); //dogInfo() 메서드 만듬
-        System.out.println(string);
-    }
-}
-
-
-1️⃣ 구체적인 것에 의존.
-
-  'BadObjectPrinter' 는 구체적인 타입인 'Car' , 'Dog' 를 사용합니다.
-    
-      따라서 이후에 출력해야 할 구체적인 클래스가 10개로 늘어나면 구체적인 클래스에 맞추어 메서드도 10개로 계속 늘어나게 됩니다.
-        
-          이렇게 'BadObjectPrinter' 클래스가 구체적인 특정 클래스인 'Car' , 'Dog' 를 사용하는 것을 'BadObjectPrinter' 는 'Car' , 'Dog' 에 의존한다고 표현합니다.
-        
-      
-    
-  
-  자바에는 객체의 정보를 사용할 때, 다형적 참조 문제를 해결해줄 'Object' 클래스와 메서드 오버라이딩 문제를 해결해줄 'Object.toString()' 메서드가 있습니다.
-    
-      (물론 직접 'Object' 와 비슷한 공통의 부모 클래스를 만들어서 해결할 수도 있습니다.)
-    
-  
-
-
-2️⃣ 추상적인 것에 의존.
-
-public class ObjectPrinter {
-	public static void print(Object obj) {
-		String string = "객체 정보 출력: " + obj.toString();
-		System.out.println(string);
-	}
-}
-
-
-  위의 'ObjectPrinter' 클래스는 'Car' , 'Dog' 같은 구체적인 클래스를 사용하는 것이 아니라, 추상적인 'Object' 클래스를 사용합니다.
-    
-      이렇게 'ObjectPrinter' 클래스가 'Object' 클래스를 사용하는 것을 'Object' 클래스에 의존한다고 표현합니다.
-    
-  
-  'ObjectPrinter' 는 구체적인 것에 의존하는 것이 아니라 추상적인 것에 의존합니다.
-
-
-
-  추상적 : 여기서 말하는 추상적이라는 뜻은 단순히 추상 클래스나 인터페이스만 뜻하는 것은 아닙니다.
-Animal 과 Dog , Cat 의 관계를 떠올려봅시다.
-Animal 같은 부모 타입으로 올라갈 수록 개념은 더 추상적이게 되고, Dog , Cat 과 같이 하위 타입으로 내려갈 수록 개념은 더 구체적이게 됩니다.
-
-
-
-
-
-  'ObjectPrinter' 와 'Object' 를 사용하는 구조는 다형성을 매우 잘 활용하고 있습니다.
-    
-      다형성을 잘 활용한다는 것은 다형적 참조와 메서드 오버라이딩을 적절하게 사용한다는 뜻입니다.
-    
-  
-
-
-🤔 ObjectPrinter 의 print() 메서드와 전체 구조 분석.
-
-  다형적 참조
-    
-      'print(Object obj)' , 'Object' 타입을 매개변수로 사용해서 다형적 참조를 사용합니다.
-        
-          'Car' , 'Dog' 인스턴스를 포함한 세상의 모든 객체 인스턴스를 인수로 받을 수 있습니다.
-        
-      
-    
-  
-  메서드 오버라이딩
-    
-      'Object' 는 모든 클래스의 부모입니다.
-        
-          따라서 'Dog' , 'Car' 와 같은 구체적인 클래스는 'Object' 가 가지고 있는 'toString()' 메서드를 오버라이딩 할 수 있습니다.
-            
-              따라서 print(Object obj) 메서드는 Dog , Car 와 같은 구체적인 타입에 의존(사용)하지 않고, 추상적인 Object 타입에 의존하면서 런타임에 각 인스턴스의 'toString()' 을 호출할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-3️⃣ OCP 원칙.
-
-  Open : 새로운 클래스를 추가하고, 'toString()' 을 오버라이딩해서 기능을 확장할 수 있습니다.
-  Closed : 새로운 클래스를 추가해도 'Object' 와 'toString()' 을 사용하는 클라이언트 코드인 'ObjectPrinter' 는 변경하지 않아도 됩니다.
-  다형적 참조, 메서드 오버라이딩, 그리고 클라이언트 코드가 구체적인 'Car', 'Dog' 에 의존하는 것이 아니라 추상적인 'Object' 에 의존하면서 OCP 원칙을 지킬 수 있었습니다.
-    
-      덕분에 새로운 클래스를 추가하고 toString() 메서드를 새롭게 오버라이딩해서 기능을 확장할 수 있습니다.
-        
-          그리고 이러한 변화에도 불구하고 클라이언트 코드인 ObjectPrinter 는 변경할 필요가 없습니다.
-        
-      
-    
-  
-  'ObjectPrinter' 는 모든 타입의 부모인 'Object' 를 사용하고, 'Object' 가 제공하는 'toString()' 메서드만 사용합니다.
-    
-      따라서 'ObjectPrinter' 를 사용하면 세상의 모든 객체의 정보('toString()') 를 편리하게 출력할 수 있습니다.
-    
-  
-
-
-2️⃣ System.out.println()
-
-  지금까지 설명한 'ObjectPrinter.print()' 는 사실 'System.out.println()' 의 작동 방식을 설명하기 위해 만든 것입니다.
-  'System.out.println()' 메서드도 'Object' 매개변수를 사용하고 내부에서 'toString()' 을 호출합니다.
-    
-      따라서 'System.out.println()' 를 사용하면 세성의 모든 객체의 정보('toString()')를 편리하게 출력할 수 있습니다.
-    
-  
-
-
-
-
-
-  자바 언어는 객체지향 언어 답게 언어 스스로도 객체지향의 특징을 매우 잘 활용합니다.
-    
-      우리가 지금까지 배운 'toString()' 메서드와 같이, 자바 언어가 기본으로 제공하는 다양한 메서드들은 개발자가 필요에 따라 오버라이딩해서 사용할 수 있도록 설계되어 있습니다.
-    
-  
-
-
-
-  참고 - 정적 의존관계 vs 동적 의존관계
-  
-    
-      정적 의존관계 는 컴파일 시간에 결정되며, 주로 클래스 간의 관계를 의미합니다.
-앞서 보여준 클래스 의존 관계 그림이 바로 정적 의존관계입니다.
-쉽게 이야기해서 프로그램을 실행하지 않고, 클래스 내에서 사용하는 타입들만 보면 쉽게 의존관계를 파악할 수 있습니다.
-    
-    
-      동적 의존관계 는 프로그램을 실행하는 런타임에 확인할 수 있는 의존관계입니다.
-앞서 'ObjectPrinter.print(Object obj)' 에 인자로 어떤 객체가 전달 될 지는 프로그램을 실행해봐야 알 수 있습니다.
-어떤 경우에는 'Car' 인스턴스가 넘어오고, 어떤 경우에는 'Dog' 인스턴스가 넘어옵니다.
-이렇게 런타임에 어떤 인스턴스를 사용하는지를 나타내는 것이 동적 의존관계입니다.
-참고로 단순히 의존관계 또는 어디에 의존한다고 하면 주로 정적 의존관계를 뜻합니다.
-      
-        예) 'ObjectPrinter' 는 'Object' 에 의존합니다.
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-08-25-Object-OCP-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -3984,6 +3799,355 @@ public class Main {
   'Object' 클래스는 모든 클래스의 기반이 되며, OCP를 준수하는 소프트웨어 설계에 있어 중요한 역할을 합니다.
   Object 는 직접적으로 OCP를 구현하지 않지만, 그 위에서 개발자들이 OCP 원칙을 적용할 수 있도록 추상화와 다형성의 기초를 제공합니다.
   OCP를 준수하는 설계를 통해 개발자는 객체 지향 프로그래밍의 이점을 극대화할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-25-Object-OCP-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-25-Object-OCP-1.html"><h1 class="title_post">☕️[Java] Object와 OCP - 1</h1></a>
+                        <a href="/Backend/Java/2024-08-25-Object-OCP-1.html" class="txt_post">
+                            ☕️[Java] Object와 OCP - 1.
+
+1️⃣ Object와 OCP.
+
+
+  만약 'Object' 가 없고, 또 'Object' 가 제공하는 'toString()' 이 없다면 서로 아무 관계가 없는 객체의 정보를 출력하기 어려울 것입니다.
+    
+      여기서 아무 관계가 없다는 것은 공통의 부모가 없다는 뜻입니다.
+        
+          아마도 다음의 'BadObjectPrinter' 클래스와 같이 각각의 클래스마다 별도의 메서드를 작성해야 할 것입니다.
+        
+      
+    
+  
+
+
+'BadObjectPrinter'
+public class BadObjectPrinter {
+    public static void print(Car car) { // Car 전용 메서드
+        String string = "객체 정보 출력: " + car.carInfo(); // carInfo() 메서드 만듬
+        System.out.println(string);
+    }
+    
+    public static void print(Dog dog) { // Dog 전용 메서드
+        String string = "객체 정보 출력: " + dog.dogInfo(); //dogInfo() 메서드 만듬
+        System.out.println(string);
+    }
+}
+
+
+1️⃣ 구체적인 것에 의존.
+
+  'BadObjectPrinter' 는 구체적인 타입인 'Car' , 'Dog' 를 사용합니다.
+    
+      따라서 이후에 출력해야 할 구체적인 클래스가 10개로 늘어나면 구체적인 클래스에 맞추어 메서드도 10개로 계속 늘어나게 됩니다.
+        
+          이렇게 'BadObjectPrinter' 클래스가 구체적인 특정 클래스인 'Car' , 'Dog' 를 사용하는 것을 'BadObjectPrinter' 는 'Car' , 'Dog' 에 의존한다고 표현합니다.
+        
+      
+    
+  
+  자바에는 객체의 정보를 사용할 때, 다형적 참조 문제를 해결해줄 'Object' 클래스와 메서드 오버라이딩 문제를 해결해줄 'Object.toString()' 메서드가 있습니다.
+    
+      (물론 직접 'Object' 와 비슷한 공통의 부모 클래스를 만들어서 해결할 수도 있습니다.)
+    
+  
+
+
+2️⃣ 추상적인 것에 의존.
+
+public class ObjectPrinter {
+	public static void print(Object obj) {
+		String string = "객체 정보 출력: " + obj.toString();
+		System.out.println(string);
+	}
+}
+
+
+  위의 'ObjectPrinter' 클래스는 'Car' , 'Dog' 같은 구체적인 클래스를 사용하는 것이 아니라, 추상적인 'Object' 클래스를 사용합니다.
+    
+      이렇게 'ObjectPrinter' 클래스가 'Object' 클래스를 사용하는 것을 'Object' 클래스에 의존한다고 표현합니다.
+    
+  
+  'ObjectPrinter' 는 구체적인 것에 의존하는 것이 아니라 추상적인 것에 의존합니다.
+
+
+
+  추상적 : 여기서 말하는 추상적이라는 뜻은 단순히 추상 클래스나 인터페이스만 뜻하는 것은 아닙니다.
+Animal 과 Dog , Cat 의 관계를 떠올려봅시다.
+Animal 같은 부모 타입으로 올라갈 수록 개념은 더 추상적이게 되고, Dog , Cat 과 같이 하위 타입으로 내려갈 수록 개념은 더 구체적이게 됩니다.
+
+
+
+
+
+  'ObjectPrinter' 와 'Object' 를 사용하는 구조는 다형성을 매우 잘 활용하고 있습니다.
+    
+      다형성을 잘 활용한다는 것은 다형적 참조와 메서드 오버라이딩을 적절하게 사용한다는 뜻입니다.
+    
+  
+
+
+🤔 ObjectPrinter 의 print() 메서드와 전체 구조 분석.
+
+  다형적 참조
+    
+      'print(Object obj)' , 'Object' 타입을 매개변수로 사용해서 다형적 참조를 사용합니다.
+        
+          'Car' , 'Dog' 인스턴스를 포함한 세상의 모든 객체 인스턴스를 인수로 받을 수 있습니다.
+        
+      
+    
+  
+  메서드 오버라이딩
+    
+      'Object' 는 모든 클래스의 부모입니다.
+        
+          따라서 'Dog' , 'Car' 와 같은 구체적인 클래스는 'Object' 가 가지고 있는 'toString()' 메서드를 오버라이딩 할 수 있습니다.
+            
+              따라서 print(Object obj) 메서드는 Dog , Car 와 같은 구체적인 타입에 의존(사용)하지 않고, 추상적인 Object 타입에 의존하면서 런타임에 각 인스턴스의 'toString()' 을 호출할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+3️⃣ OCP 원칙.
+
+  Open : 새로운 클래스를 추가하고, 'toString()' 을 오버라이딩해서 기능을 확장할 수 있습니다.
+  Closed : 새로운 클래스를 추가해도 'Object' 와 'toString()' 을 사용하는 클라이언트 코드인 'ObjectPrinter' 는 변경하지 않아도 됩니다.
+  다형적 참조, 메서드 오버라이딩, 그리고 클라이언트 코드가 구체적인 'Car', 'Dog' 에 의존하는 것이 아니라 추상적인 'Object' 에 의존하면서 OCP 원칙을 지킬 수 있었습니다.
+    
+      덕분에 새로운 클래스를 추가하고 toString() 메서드를 새롭게 오버라이딩해서 기능을 확장할 수 있습니다.
+        
+          그리고 이러한 변화에도 불구하고 클라이언트 코드인 ObjectPrinter 는 변경할 필요가 없습니다.
+        
+      
+    
+  
+  'ObjectPrinter' 는 모든 타입의 부모인 'Object' 를 사용하고, 'Object' 가 제공하는 'toString()' 메서드만 사용합니다.
+    
+      따라서 'ObjectPrinter' 를 사용하면 세상의 모든 객체의 정보('toString()') 를 편리하게 출력할 수 있습니다.
+    
+  
+
+
+2️⃣ System.out.println()
+
+  지금까지 설명한 'ObjectPrinter.print()' 는 사실 'System.out.println()' 의 작동 방식을 설명하기 위해 만든 것입니다.
+  'System.out.println()' 메서드도 'Object' 매개변수를 사용하고 내부에서 'toString()' 을 호출합니다.
+    
+      따라서 'System.out.println()' 를 사용하면 세성의 모든 객체의 정보('toString()')를 편리하게 출력할 수 있습니다.
+    
+  
+
+
+
+
+
+  자바 언어는 객체지향 언어 답게 언어 스스로도 객체지향의 특징을 매우 잘 활용합니다.
+    
+      우리가 지금까지 배운 'toString()' 메서드와 같이, 자바 언어가 기본으로 제공하는 다양한 메서드들은 개발자가 필요에 따라 오버라이딩해서 사용할 수 있도록 설계되어 있습니다.
+    
+  
+
+
+
+  참고 - 정적 의존관계 vs 동적 의존관계
+  
+    
+      정적 의존관계 는 컴파일 시간에 결정되며, 주로 클래스 간의 관계를 의미합니다.
+앞서 보여준 클래스 의존 관계 그림이 바로 정적 의존관계입니다.
+쉽게 이야기해서 프로그램을 실행하지 않고, 클래스 내에서 사용하는 타입들만 보면 쉽게 의존관계를 파악할 수 있습니다.
+    
+    
+      동적 의존관계 는 프로그램을 실행하는 런타임에 확인할 수 있는 의존관계입니다.
+앞서 'ObjectPrinter.print(Object obj)' 에 인자로 어떤 객체가 전달 될 지는 프로그램을 실행해봐야 알 수 있습니다.
+어떤 경우에는 'Car' 인스턴스가 넘어오고, 어떤 경우에는 'Dog' 인스턴스가 넘어옵니다.
+이렇게 런타임에 어떤 인스턴스를 사용하는지를 나타내는 것이 동적 의존관계입니다.
+참고로 단순히 의존관계 또는 어디에 의존한다고 하면 주로 정적 의존관계를 뜻합니다.
+      
+        예) 'ObjectPrinter' 는 'Object' 에 의존합니다.
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
+                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
+                            ☕️[Java] equals() - 1, 동일성과 동등성.
+
+1️⃣ equals() - 1, 동일성과 동등성.
+
+
+  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
+  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
+    
+      동일성(Identity)
+        
+          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+        
+      
+      동등성(Equality)
+        
+          
+            
+              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 단어 정리
+
+  “동일” 은 “완전히 같음 을 의미합니다.”
+  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
+  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
+    
+      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
+      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+    User a = new User("id-100"); // 참조 x001
+User b = new User("id-100"); // 참조 x002
+    
+  
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
+    
+      (주민등록번호가 같다고 가정해도 됩니다.)
+        
+          따라서 동일성은 다르지만, 동등성은 같습니다.
+        
+      
+    
+  
+  문자의 경우도 마찬가지입니다.
+    String s1 = "hello";
+String s2 = "hello";
+    
+  
+  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
+    
+      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
+    
+  
+
+
+3️⃣ UserV1 예제.
+
+public class UserV1 {
+	private String id;
+
+	public UserV1(String id) {
+		this.id = id;
+	}
+}
+
+
+public class EqualsMainV1 {
+
+	public static void main(String[] args) {
+		UserV1 user1 = new UserV1("id-100");
+		UserV1 user2 = new UserV1("id-100");
+
+		System.out.println("Identity = " + (user1 == user2));
+		System.out.println("Equality = " + (user1.equals(user2)));
+	}
+}
+
+
+실행 결과
+Identity = false
+Equality = false
+
+
+
+
+동일성(Identity) 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성(Equality) 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+
+  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
+
+
+Object.equals
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안  
+return false
+false
+
+
+
+  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
+    
+      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+        
+          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
+            
+              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
+            
+          
+        
+      
+    
+  
 
 
                         </a>
@@ -5719,6 +5883,306 @@ size() 메서드
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-21-Object-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-21-Object-Class.html"><h1 class="title_post">☕️[Java] Object 클래스</h1></a>
+                        <a href="/Backend/Java/2024-08-21-Object-Class.html" class="txt_post">
+                            ☕️[Java] Object 클래스.
+자바에서 모든 클래스의 “최상위 부모 클래스는 항상 'Object' 클래스”  입니다.
+
+
+
+1️⃣ Object 클래스.
+
+package lang.object;
+
+// 부모가 없으면 묵시적으로 Object 클래스를 상속 받습니다.
+public class Parent {
+    public void parentMethod() {
+        System.out.println("Parent.parentMethod");
+    }
+}
+
+
+
+  위 코드는 묵시적으로 'Object' 클래스를 상속 받기 때문에 'extends Object' 코드가 없습니다.
+    
+      위 코드를 명시적으로 구현하면 아래와 같습니다.
+        
+          즉, 위 코드와 아래 코드는 같은 코드입니다.
+        
+      
+    
+  
+
+
+
+  ✏️ 묵시적(Implicit) vs 명시적(Explicit)
+묵시적(Implicit) : 개발자가 코드에 직접 기술하지 않아도 시스템 또는 컴파일러에 의해 자동으로 수행되는 것을 의미.
+명시적(Explicit) : 개발자가 코드에 직접 기술해서 작동하는 것을 의미.
+
+
+package lang.object;
+
+
+public class Parent extends Object {
+    public void parentMethod() {
+        System.out.println("Parent.parentMethod");
+    }
+}
+
+
+  클래스에 상속 받을 부모 클래스가 없으면 “묵시적으로 'Object' 클래스” 를 상속 받습니다.
+    
+      즉, 자바가 'extends Object' 코드를 넣어줍니다.
+        
+          따라서 'extends Object'는 생략하는 것을 권장합니다.
+        
+      
+    
+  
+
+
+package lang.object;
+
+public class Child extends Parent {
+    public void childMethod() {
+        System.out.println("Child.childMethod");
+    }
+}
+
+
+  클래스에 상속 받을 부모 클래스를 명시적으로 지정할 경우에는 'Object' 상속 받지 않습니다.
+    
+      즉, 이미 명시적으로 상속했기 때문에 Java가 'extends Object' 코드를 넣지 않는 것입니다.
+    
+  
+
+
+package langReview.object;
+
+public class ObjectMain {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.childMethod();
+        child.parentMethod();
+
+        // toString()은 Object 클래스의 메서드
+        String string = child.toString();
+        System.out.println(string);
+    }
+}
+
+
+실행 결과
+Child.childMethod
+Parent.parentMethod
+langReview.object.Child@452b3a41
+
+
+실행 결과 그림
+
+  'Parent' 는 'Object' 를 묵시적으로 상속 받았기 때문에 메모리에도 함께 생성됩니다.
+
+
+
+
+
+  
+    
+      'child.toString()' 을 호출합니다.
+    
+  
+  
+    
+      먼저 본인의 타입인 'Child' 에서 'toString()' 을 찾습니다.
+        
+          'toString()' 이 없으므로 부모 타입으로 올라가서 찾습니다.
+        
+      
+    
+  
+  
+    
+      부모 타입인 'Parent' 에서 'toString()' 을 찾습니다.
+        
+          이곳에도 없으므로 부모 타입으로 올라가서 찾습니다.
+        
+      
+    
+  
+  
+    
+      부모 타입인 'Object' 에서 'toString()' 을 찾습니다.
+        
+          부모 타입인 'Object' 에는 'toString()' 이 있으므로 이 메서드를 호출합니다.
+        
+      
+    
+  
+
+
+정리
+
+  자바에서 모든 객체의 최종 부모는 'Object' 다.
+
+
+2️⃣ 자바에서 Object 클래스가 최상위 부모 클래스인 이유.
+모든 클래스가 'Object' 클래스를 상속 받는 이유는 다음과 같습니다.
+
+  공통 기능 제공.
+  다형성의 기본 구현.
+
+
+1️⃣ 공통 기능 제공.
+
+  객체의 정보를 제공하고, 이 객체가 다른 객체와 같은지 비교하고, 객체가 어떤 클래스로 만들어졌는지 확인하는 기능은 모든 객체에게 필요한 기본 기능입니다.
+    
+      이런 기능을 객체를 만들 때 마다 항상 새로운 메서드를 정의해서 만들어야 한다면 상당히 번거로울 것입니다.
+      그리고 막상 만든다고 해도 개발자마다 서로 다른 이름의 메서드를 만들어서 일관성이 없을 것입니다.
+        
+          예를 들어서 객체의 정보를 제공하는 기능을 만든다고 하면 어떤 개발자는 'toString()' 으로 또 어떤 개발자는 'objectInfo()' 와 같이 서로 다른 이름으로 만들 수 있습니다.
+          객체를 비교하는 기능을 만들 때고 어떤 개발자는 'equals()' 로 어떤 개발자는 'same()' 으로 만들 수 있습니다.
+        
+      
+    
+  
+  'Object' 는 모든 객체에 필요한 '공통 기능' 을 제공합니다.
+  'Object' 는 최상위 부모 클래스이기 때문에 모든 객체는 '공통 기능' 을 편리하게 제공(상속) 받을 수 있습니다.
+  'Object' 가 제공하는 기능은 다음과 같습니다.
+    
+      객체의 정보를 제공하는 'toString()'
+      객체의 같음을 비교하는 'equals()'
+      객체의 클래스 정보를 제공하는 'getClass()'
+      기타 여러가지 기능
+    
+  
+  개발자는 모든 객체가 앞서 설명한 메서드를 지원한다는 것을 알고 있습니다.
+    
+      따라서 프로그래밍이 단순화되고, 일관성을 가집니다.
+    
+  
+
+
+2️⃣ 다형성의 기본 구현.
+
+  부모는 자식을 담을 수 있습니다.
+  'Object' 는 모든 클래스의 부모 클래스 입니다.
+    
+      따라서 모든 객체를 참조할 수 있습니다.
+    
+  
+  'Object' 클래스는 다형성을 지원하는 기본적인 메커니즘을 제공합니다.
+    
+      모든 자바 객체는 'Object' 타입으로 처리될 수 있으며, 이는 다양한 타입의 객체를 통합적으로 처리할 수 있게 해줍니다.
+        
+          즉, 'Object' 는 모든 객체를 다 담을 수 있습니다.
+          타입이 다른 객체들을 어딘가에 보관해야 한다면 바로 'Object' 에 보관하면 됩니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
+                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
+                            ☕️[Java] java.lang 패키지.
+자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
+여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
+즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+1️⃣ java.lang 패키지의 대표적인 클래스들.
+
+  'Object'
+    
+      모든 자바 객체의 부모 클래스.
+    
+  
+  'String'
+    
+      문자열.
+    
+  
+  'Integer, Long, Double'
+    
+      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
+    
+  
+  'Class'
+    
+      클래스 메타 정보.
+    
+  
+  'System'
+    
+      시스템과 관련된 기본 기능들을 제공
+        
+          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
+        
+      
+    
+  
+
+
+2️⃣ import 생략 가능.
+
+  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
+    
+      따라서 'import' 구문을 사용하지 않아도 됩니다.
+    
+  
+
+
+package langReview;
+
+public class LangMain {
+    public static void main(String[] args) {
+        System.out.println("hello java");
+    }
+}
+
+
+  'import java.lang.System' 코드가 없어도 정상 동작합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-21-Object-Polymorphism.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -5921,306 +6385,6 @@ if (obj instanceof Dog dog) {
     
   
   ‘결과적으로 다형적 참조는 가능하지만, 메서드 오버라이딩이 안되기 때문에 다형성을 활용하기에는 한계가 있습니다.’
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
-                        <a href="/Backend/Java/2024-08-21-Java-lang.html" class="txt_post">
-                            ☕️[Java] java.lang 패키지.
-자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
-여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
-즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-1️⃣ java.lang 패키지의 대표적인 클래스들.
-
-  'Object'
-    
-      모든 자바 객체의 부모 클래스.
-    
-  
-  'String'
-    
-      문자열.
-    
-  
-  'Integer, Long, Double'
-    
-      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
-    
-  
-  'Class'
-    
-      클래스 메타 정보.
-    
-  
-  'System'
-    
-      시스템과 관련된 기본 기능들을 제공
-        
-          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
-        
-      
-    
-  
-
-
-2️⃣ import 생략 가능.
-
-  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
-    
-      따라서 'import' 구문을 사용하지 않아도 됩니다.
-    
-  
-
-
-package langReview;
-
-public class LangMain {
-    public static void main(String[] args) {
-        System.out.println("hello java");
-    }
-}
-
-
-  'import java.lang.System' 코드가 없어도 정상 동작합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-21-Object-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-21-Object-Class.html"><h1 class="title_post">☕️[Java] Object 클래스</h1></a>
-                        <a href="/Backend/Java/2024-08-21-Object-Class.html" class="txt_post">
-                            ☕️[Java] Object 클래스.
-자바에서 모든 클래스의 “최상위 부모 클래스는 항상 'Object' 클래스”  입니다.
-
-
-
-1️⃣ Object 클래스.
-
-package lang.object;
-
-// 부모가 없으면 묵시적으로 Object 클래스를 상속 받습니다.
-public class Parent {
-    public void parentMethod() {
-        System.out.println("Parent.parentMethod");
-    }
-}
-
-
-
-  위 코드는 묵시적으로 'Object' 클래스를 상속 받기 때문에 'extends Object' 코드가 없습니다.
-    
-      위 코드를 명시적으로 구현하면 아래와 같습니다.
-        
-          즉, 위 코드와 아래 코드는 같은 코드입니다.
-        
-      
-    
-  
-
-
-
-  ✏️ 묵시적(Implicit) vs 명시적(Explicit)
-묵시적(Implicit) : 개발자가 코드에 직접 기술하지 않아도 시스템 또는 컴파일러에 의해 자동으로 수행되는 것을 의미.
-명시적(Explicit) : 개발자가 코드에 직접 기술해서 작동하는 것을 의미.
-
-
-package lang.object;
-
-
-public class Parent extends Object {
-    public void parentMethod() {
-        System.out.println("Parent.parentMethod");
-    }
-}
-
-
-  클래스에 상속 받을 부모 클래스가 없으면 “묵시적으로 'Object' 클래스” 를 상속 받습니다.
-    
-      즉, 자바가 'extends Object' 코드를 넣어줍니다.
-        
-          따라서 'extends Object'는 생략하는 것을 권장합니다.
-        
-      
-    
-  
-
-
-package lang.object;
-
-public class Child extends Parent {
-    public void childMethod() {
-        System.out.println("Child.childMethod");
-    }
-}
-
-
-  클래스에 상속 받을 부모 클래스를 명시적으로 지정할 경우에는 'Object' 상속 받지 않습니다.
-    
-      즉, 이미 명시적으로 상속했기 때문에 Java가 'extends Object' 코드를 넣지 않는 것입니다.
-    
-  
-
-
-package langReview.object;
-
-public class ObjectMain {
-    public static void main(String[] args) {
-        Child child = new Child();
-        child.childMethod();
-        child.parentMethod();
-
-        // toString()은 Object 클래스의 메서드
-        String string = child.toString();
-        System.out.println(string);
-    }
-}
-
-
-실행 결과
-Child.childMethod
-Parent.parentMethod
-langReview.object.Child@452b3a41
-
-
-실행 결과 그림
-
-  'Parent' 는 'Object' 를 묵시적으로 상속 받았기 때문에 메모리에도 함께 생성됩니다.
-
-
-
-
-
-  
-    
-      'child.toString()' 을 호출합니다.
-    
-  
-  
-    
-      먼저 본인의 타입인 'Child' 에서 'toString()' 을 찾습니다.
-        
-          'toString()' 이 없으므로 부모 타입으로 올라가서 찾습니다.
-        
-      
-    
-  
-  
-    
-      부모 타입인 'Parent' 에서 'toString()' 을 찾습니다.
-        
-          이곳에도 없으므로 부모 타입으로 올라가서 찾습니다.
-        
-      
-    
-  
-  
-    
-      부모 타입인 'Object' 에서 'toString()' 을 찾습니다.
-        
-          부모 타입인 'Object' 에는 'toString()' 이 있으므로 이 메서드를 호출합니다.
-        
-      
-    
-  
-
-
-정리
-
-  자바에서 모든 객체의 최종 부모는 'Object' 다.
-
-
-2️⃣ 자바에서 Object 클래스가 최상위 부모 클래스인 이유.
-모든 클래스가 'Object' 클래스를 상속 받는 이유는 다음과 같습니다.
-
-  공통 기능 제공.
-  다형성의 기본 구현.
-
-
-1️⃣ 공통 기능 제공.
-
-  객체의 정보를 제공하고, 이 객체가 다른 객체와 같은지 비교하고, 객체가 어떤 클래스로 만들어졌는지 확인하는 기능은 모든 객체에게 필요한 기본 기능입니다.
-    
-      이런 기능을 객체를 만들 때 마다 항상 새로운 메서드를 정의해서 만들어야 한다면 상당히 번거로울 것입니다.
-      그리고 막상 만든다고 해도 개발자마다 서로 다른 이름의 메서드를 만들어서 일관성이 없을 것입니다.
-        
-          예를 들어서 객체의 정보를 제공하는 기능을 만든다고 하면 어떤 개발자는 'toString()' 으로 또 어떤 개발자는 'objectInfo()' 와 같이 서로 다른 이름으로 만들 수 있습니다.
-          객체를 비교하는 기능을 만들 때고 어떤 개발자는 'equals()' 로 어떤 개발자는 'same()' 으로 만들 수 있습니다.
-        
-      
-    
-  
-  'Object' 는 모든 객체에 필요한 '공통 기능' 을 제공합니다.
-  'Object' 는 최상위 부모 클래스이기 때문에 모든 객체는 '공통 기능' 을 편리하게 제공(상속) 받을 수 있습니다.
-  'Object' 가 제공하는 기능은 다음과 같습니다.
-    
-      객체의 정보를 제공하는 'toString()'
-      객체의 같음을 비교하는 'equals()'
-      객체의 클래스 정보를 제공하는 'getClass()'
-      기타 여러가지 기능
-    
-  
-  개발자는 모든 객체가 앞서 설명한 메서드를 지원한다는 것을 알고 있습니다.
-    
-      따라서 프로그래밍이 단순화되고, 일관성을 가집니다.
-    
-  
-
-
-2️⃣ 다형성의 기본 구현.
-
-  부모는 자식을 담을 수 있습니다.
-  'Object' 는 모든 클래스의 부모 클래스 입니다.
-    
-      따라서 모든 객체를 참조할 수 있습니다.
-    
-  
-  'Object' 클래스는 다형성을 지원하는 기본적인 메커니즘을 제공합니다.
-    
-      모든 자바 객체는 'Object' 타입으로 처리될 수 있으며, 이는 다양한 타입의 객체를 통합적으로 처리할 수 있게 해줍니다.
-        
-          즉, 'Object' 는 모든 객체를 다 담을 수 있습니다.
-          타입이 다른 객체들을 어딘가에 보관해야 한다면 바로 'Object' 에 보관하면 됩니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -7980,45 +8144,6 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
-                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
-
-
-  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
-    
-      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
-    
-  
-  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
-  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
-    
-      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
-      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -8040,6 +8165,45 @@ nvm use 16
     
   
   위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
+                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
+
+
+  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
+    
+      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
+    
+  
+  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
+  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
+    
+      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
+      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
+    
+  
 
 
                         </a>
@@ -13575,33 +13739,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-07-TIL.html"><h1 class="title_post">📝 [TIL] 240607 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-07-TIL.html" class="txt_post">
-                            
-  LinkedList를 이용한 Deque
-  분수의 덧셈 복습
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-07-LinkedListDeque.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -13803,6 +13940,33 @@ Popped element: 4
 
   위 예시 코드에서는 ‘LinkedList‘ 를 ‘Deque‘ 로 사용하여 다양한 연산을 수행하는 방법을 보여줍니다.
 ‘LinkedList‘ 는 이중 연결 리스트를 사용하기 때문에 양쪽 끝에서의 삽입과 삭제가 빠르고 효율적입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-07-TIL.html"><h1 class="title_post">📝 [TIL] 240607 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-07-TIL.html" class="txt_post">
+                            
+  LinkedList를 이용한 Deque
+  분수의 덧셈 복습
 
 
                         </a>
@@ -30724,6 +30888,17 @@ public class Main {
             'url'      : "/Backend/Java/2024-08-30-test-and-reflection.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-30"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 추상화(Abstraction)",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-08-31-Abstraction.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-08-31"
         });
     
 

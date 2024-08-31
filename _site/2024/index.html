@@ -631,6 +631,7 @@
             
             
             
+            
 
     
     
@@ -4531,6 +4532,34 @@ Class를 사용하면 클래스의 메타 정보를 기반으로 클래스에 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/TIL/2024-04-18-TIL.html"><h1 class="title_post">📝 [TIL] 240418 Today I Learned.</h1></a>
+                        <a href="/2024/TIL/2024-04-18-TIL.html" class="txt_post">
+                            JAVA
+
+  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 학습.
+  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 정리.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-18-WrapperClass-MainMethodsAndPerformance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -4679,34 +4708,6 @@ sumWrapper = 499999999500000000
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/TIL/2024-04-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/TIL/2024-04-18-TIL.html"><h1 class="title_post">📝 [TIL] 240418 Today I Learned.</h1></a>
-                        <a href="/2024/TIL/2024-04-18-TIL.html" class="txt_post">
-                            JAVA
-
-  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 학습.
-  Java ‘래퍼 클래스 - 주요 메서드와 성능’ 정리.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/TIL/2024-04-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -4776,225 +4777,6 @@ folder/**/fileName_2.txt
 *.txt
   예외 만들기
 !fileName.txt
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 2</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="txt_post">
-                            래퍼 클래스 - 기본형의 한계 2
-
-기본형과 null
-기본형은 항상 값을 가져야 합니다.
-하지만 때로는 데이터가 ‘없음’이라는 상태가 필요할 수 있습니다.
-다음 코드를 작성해봅시다.
-
-package lang.wrapper;
-
-public class MyIntegerNullMain0 {
-
-  public static void main(String[] args) {
-    int[] intArr = {-1, 0, 1, 2, 3};
-    System.out.println(findValue(intArr, -1)); // -1
-    System.out.println(findValue(intArr, 0));
-    System.out.println(findValue(intArr, 1));
-    System.out.println(findValue(intArr, 100)); // -1
-  }
-
-  private static int findValue(int[] intArr, int target) {
-    for (int value : intArr) {
-      if (value == target) {
-        return value;
-      }
-    }
-    return -1;
-  }
-}
-
-
-
-  findValue()는 배열에 찾는 값이 있으면 해당 값을 반환하고, 찾는 값이 없으면 -1을 반환합니다.
-  findValue()는 결과로 int를 반환합니다.
-    
-      int와 같은 기본형은 항상 값이 있어야 합니다.
-        
-          여기서도 값을 반환할 때 값을 찾지 못하면 숫자 중 하나를 반환해야 하는데 보통 -1 또는 0을 사용합니다.
-        
-      
-    
-  
-
-
-실행 결과
--1
-0
-1
--1
-
-
-실행 결과를 보면 입력값이 -1일 때 -1을 반환합니다.
-그런데 배열에 없는 값인 100을 입력해도 같은 -1을 반환합니다.
-입력값이 -1일 때를 생각해보면, 배열에 -1 값이 있어서 -1을 반환한 것인지, 아니면 -1 값이 없어서 -1을 반환한 것인지 명확하지 않습니다.
-
-객체의 경우 데이터가 없다는 null이라는 명확한 값이 존재합니다.
-
-다음 코드를 작성해봅시다.
-
-package lang.wrapper;
-
-public class MyIntegerNullMain1 {
-
-  public static void main(String[] args) {
-    MyInteger[] intArr = {new MyInteger(-1), new MyInteger(0), new MyInteger(1)};
-    System.out.println(findValue(intArr, -1)); // -1
-    System.out.println(findValue(intArr, 0));
-    System.out.println(findValue(intArr, 1));
-    System.out.println(findValue(intArr, 100)); // null
-  }
-
-  private static MyInteger findValue(MyInteger[] intArr, int target) {
-    for (MyInteger myInteger : intArr) {
-      if (myInteger.getValue() == target) {
-        return myInteger;
-      }
-    }
-    return null;
-  }
-}
-
-
-실행 결과
--1
-0
-1
-null
-
-
-
-  앞서 만든 MyInteger 래퍼 클래서를 사용했습니다.
-  실행 결과를 보면 -1을 입력했을 때는 -1을 반환합니다.
-  100을 입력했을 때는 값이 없다는 null을 반환합니다.
-
-
-기본형은 항상 값이 존재해야 합니다.
-숫자의 경우 0, -1 같은 값이라도 항상 존재해야 합니다.
-반면에 객체인 참조형은 값이 없다는 null을 사용할 수 있습니다.
-물론 null 값을 반환하는 경우 잘못하면 NullPointerException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
-                            래퍼 클래스 - 오토 박싱.
-
-오토 박싱 - Autoboxing
-
-자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
-다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
-
-package lang.wrapper;
-
-public class AutoboxingMain1 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = Integer.valueOf(value);
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue.intValue();
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-
-  박싱: valueOf()
-  언박싱: xxxValue() (예: intValue(), doubleValue())
-
-
-개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
-그래서 많은 개발자들이 불편함을 호소했습니다.
-
-  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
-
-
-오토 박싱, 언박싱
-package lang.wrapper;
-
-public class AutoboxingMain2 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
-덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
-따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
-
-Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
-
-int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -5130,6 +4912,225 @@ intValue() - 언박싱(Unboxing)
 
   참고로 래퍼 클래스는 객체를 그대로 출력해도 내부에 있는 값을 문자로 출력하도록 toString()을 재정의 해두었습니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
+                            래퍼 클래스 - 오토 박싱.
+
+오토 박싱 - Autoboxing
+
+자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
+다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
+
+package lang.wrapper;
+
+public class AutoboxingMain1 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = Integer.valueOf(value);
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue.intValue();
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+
+  박싱: valueOf()
+  언박싱: xxxValue() (예: intValue(), doubleValue())
+
+
+개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
+그래서 많은 개발자들이 불편함을 호소했습니다.
+
+  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
+
+
+오토 박싱, 언박싱
+package lang.wrapper;
+
+public class AutoboxingMain2 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
+덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
+따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
+
+Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
+
+int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 2</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="txt_post">
+                            래퍼 클래스 - 기본형의 한계 2
+
+기본형과 null
+기본형은 항상 값을 가져야 합니다.
+하지만 때로는 데이터가 ‘없음’이라는 상태가 필요할 수 있습니다.
+다음 코드를 작성해봅시다.
+
+package lang.wrapper;
+
+public class MyIntegerNullMain0 {
+
+  public static void main(String[] args) {
+    int[] intArr = {-1, 0, 1, 2, 3};
+    System.out.println(findValue(intArr, -1)); // -1
+    System.out.println(findValue(intArr, 0));
+    System.out.println(findValue(intArr, 1));
+    System.out.println(findValue(intArr, 100)); // -1
+  }
+
+  private static int findValue(int[] intArr, int target) {
+    for (int value : intArr) {
+      if (value == target) {
+        return value;
+      }
+    }
+    return -1;
+  }
+}
+
+
+
+  findValue()는 배열에 찾는 값이 있으면 해당 값을 반환하고, 찾는 값이 없으면 -1을 반환합니다.
+  findValue()는 결과로 int를 반환합니다.
+    
+      int와 같은 기본형은 항상 값이 있어야 합니다.
+        
+          여기서도 값을 반환할 때 값을 찾지 못하면 숫자 중 하나를 반환해야 하는데 보통 -1 또는 0을 사용합니다.
+        
+      
+    
+  
+
+
+실행 결과
+-1
+0
+1
+-1
+
+
+실행 결과를 보면 입력값이 -1일 때 -1을 반환합니다.
+그런데 배열에 없는 값인 100을 입력해도 같은 -1을 반환합니다.
+입력값이 -1일 때를 생각해보면, 배열에 -1 값이 있어서 -1을 반환한 것인지, 아니면 -1 값이 없어서 -1을 반환한 것인지 명확하지 않습니다.
+
+객체의 경우 데이터가 없다는 null이라는 명확한 값이 존재합니다.
+
+다음 코드를 작성해봅시다.
+
+package lang.wrapper;
+
+public class MyIntegerNullMain1 {
+
+  public static void main(String[] args) {
+    MyInteger[] intArr = {new MyInteger(-1), new MyInteger(0), new MyInteger(1)};
+    System.out.println(findValue(intArr, -1)); // -1
+    System.out.println(findValue(intArr, 0));
+    System.out.println(findValue(intArr, 1));
+    System.out.println(findValue(intArr, 100)); // null
+  }
+
+  private static MyInteger findValue(MyInteger[] intArr, int target) {
+    for (MyInteger myInteger : intArr) {
+      if (myInteger.getValue() == target) {
+        return myInteger;
+      }
+    }
+    return null;
+  }
+}
+
+
+실행 결과
+-1
+0
+1
+null
+
+
+
+  앞서 만든 MyInteger 래퍼 클래서를 사용했습니다.
+  실행 결과를 보면 -1을 입력했을 때는 -1을 반환합니다.
+  100을 입력했을 때는 값이 없다는 null을 반환합니다.
+
+
+기본형은 항상 값이 존재해야 합니다.
+숫자의 경우 0, -1 같은 값이라도 항상 존재해야 합니다.
+반면에 객체인 참조형은 값이 없다는 null을 사용할 수 있습니다.
+물론 null 값을 반환하는 경우 잘못하면 NullPointerException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
 
                         </a>
                         <div class="info-post">
@@ -35812,6 +35813,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Java/2024-08-30-test-and-reflection.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-08-30"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 추상화(Abstraction)",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-08-31-Abstraction.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-08-31"
         });
     
 

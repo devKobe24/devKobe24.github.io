@@ -635,6 +635,7 @@
             
             
             
+            
 
     
     
@@ -2048,25 +2049,29 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
-                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
+                        <a href="/Backend/AWS/240816_AWS_DNS.html"><h1 class="title_post">☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_DNS.html" class="txt_post">
+                            ☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.
 
-
-  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
+  일반적으로 어떤 웹 사이트에 접속하기 위해서는 'https://OO.com/'과 같은 URL(Uniform Resource Locator)을 사용합니다.
     
-      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
+      이러한 'https://OO.com/'을 도메인(Domain) 이라고 합니다.
+        
+          도메인은 점으로 연결된 문자열로 구성돼 있으며 기업 이름과 단체 이름을 표현하는 경우가 많습니다.
+          도메인은 해당 문자열에 표시되는 기업, 단체 등이 제공하는 사이트의 주소를 정의합니다.
+        
+      
     
   
-  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
-  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
+  도메인 이름에는 IP 주소가 연결돼 있어 사용자는 도메인 이름만으로 사이트에 접속할 수 있습니다.
+  DNS(Domain Name System) 가 우리 대신 도메인 이름에 연결된 IP 주소를 찾아주기 때문입니다.
     
-      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
-      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
+      이러한 DNS 기능을 이름 해석 이라고 합니다.
+
     
   
 
@@ -2126,29 +2131,25 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_DNS.html"><h1 class="title_post">☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_DNS.html" class="txt_post">
-                            ☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html"><h1 class="title_post">☁️[AWS] 방화벽에서 허용된 통신만 통과.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="txt_post">
+                            ☁️[AWS] 방화벽에서 허용된 통신만 통과.
 
-  일반적으로 어떤 웹 사이트에 접속하기 위해서는 'https://OO.com/'과 같은 URL(Uniform Resource Locator)을 사용합니다.
+
+  인터넷을 통해 전 세계의 다양한 웹 사이트나 서비스에 접속할 수 있지만 전 세계와 연결된다는 것은 각종 악성 코드나 해커의 침입에 노출된다는 뜻과도 같습니다.
     
-      이러한 'https://OO.com/'을 도메인(Domain) 이라고 합니다.
-        
-          도메인은 점으로 연결된 문자열로 구성돼 있으며 기업 이름과 단체 이름을 표현하는 경우가 많습니다.
-          도메인은 해당 문자열에 표시되는 기업, 단체 등이 제공하는 사이트의 주소를 정의합니다.
-        
-      
+      이런 보안 위협으로부터 시스템을 지키기 위해 사용하는 것이 방화벽 입니다.
     
   
-  도메인 이름에는 IP 주소가 연결돼 있어 사용자는 도메인 이름만으로 사이트에 접속할 수 있습니다.
-  DNS(Domain Name System) 가 우리 대신 도메인 이름에 연결된 IP 주소를 찾아주기 때문입니다.
+  방화벽은 이름에서 알 수 있듯이 화재(보안 위협)가 발생했을 때 화재로부터 자산(시스템)을 지키는 역할을 합니다.
+  하드웨어 형태의 방화벽도 있고 소프트웨어 형태로 서버에 설치돼 동작하는 방화벽도 있습니다.
     
-      이러한 DNS 기능을 이름 해석 이라고 합니다.
-
+      일반적으로 사용하는 윈도우 PC에도 ‘보안 센터’ 설정을 보면 방화벽이 설치돼 동작하고 있습니다.
+      AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
     
   
 
@@ -8133,6 +8134,17 @@ sudo reboot
             'type'     : "post",
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-09-01-Immutable-Object-Solve.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-01"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] 불변 객체 - 정리",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-09-01-Immutable-object-summary.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-09-01"
         });

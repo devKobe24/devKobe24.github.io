@@ -639,6 +639,7 @@
             
             
             
+            
 
     
     
@@ -1709,6 +1710,104 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
+                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
+                            래퍼 클래스 - 오토 박싱.
+
+오토 박싱 - Autoboxing
+
+자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
+다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
+
+package lang.wrapper;
+
+public class AutoboxingMain1 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = Integer.valueOf(value);
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue.intValue();
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+
+  박싱: valueOf()
+  언박싱: xxxValue() (예: intValue(), doubleValue())
+
+
+개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
+그래서 많은 개발자들이 불편함을 호소했습니다.
+
+  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
+
+
+오토 박싱, 언박싱
+package lang.wrapper;
+
+public class AutoboxingMain2 {
+
+  public static void main(String[] args) {
+    // Primitive -&gt; Wrapper
+    int value = 7;
+    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+
+    // Wrapper -&gt; Primitive
+    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+
+    System.out.println("boxedValue = " + boxedValue);
+    System.out.println("unboxedValue = " + unboxedValue);
+  }
+}
+
+
+실행 결과
+boxedValue = 7
+unboxedValue = 7
+
+
+오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
+덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
+따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
+
+Integer boxedValue = value; // 오토 박싱(Auto-boxing)
+Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
+
+int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
+int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-17-WrapperClass-JavaWrapperClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -1825,104 +1924,6 @@ intValue() - 언박싱(Unboxing)
 
 
   참고로 래퍼 클래스는 객체를 그대로 출력해도 내부에 있는 값을 문자로 출력하도록 toString()을 재정의 해두었습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱</h1></a>
-                        <a href="/2024/Java/2024-04-17-WrapperClass-AutoBoxing.html" class="txt_post">
-                            래퍼 클래스 - 오토 박싱.
-
-오토 박싱 - Autoboxing
-
-자바에서 int를 Integer로 변환하거나, Integer를 int로 변환하는 부분을 정리해봅시다.
-다음과 같이 valueOf(), intValue() 메서드를 사용하면 됩니다.
-
-package lang.wrapper;
-
-public class AutoboxingMain1 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = Integer.valueOf(value);
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue.intValue();
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-
-  박싱: valueOf()
-  언박싱: xxxValue() (예: intValue(), doubleValue())
-
-
-개발자들이 오랜기간 개발을 하다 보니 기본형을 래퍼 클래스로 변환하거나 또는 래퍼 클래스를 기본형으로 변환하는 일이 자주 발생했습니다.
-그래서 많은 개발자들이 불편함을 호소했습니다.
-
-  자바는 이런 문제를 해결하기 위해 자바 1.5부터 오토 박싱(Auto-boxing), 오토 언박싱(Auto-unboxing)을 지원합니다.
-
-
-오토 박싱, 언박싱
-package lang.wrapper;
-
-public class AutoboxingMain2 {
-
-  public static void main(String[] args) {
-    // Primitive -&gt; Wrapper
-    int value = 7;
-    Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-
-    // Wrapper -&gt; Primitive
-    int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-
-    System.out.println("boxedValue = " + boxedValue);
-    System.out.println("unboxedValue = " + unboxedValue);
-  }
-}
-
-
-실행 결과
-boxedValue = 7
-unboxedValue = 7
-
-
-오토 박싱과 오토 언박싱은 컴파일러가 개발자 대신 valueOf, xxxValue() 등의 코드를 추가해주는 기능입니다.
-덕분에 기본형과 래퍼형을 서로 편리하게 변환할 수 있습니다.
-따라서 AutoboxingMain1과 AutoboxingMain2는 동일하게 작동합니다.
-
-Integer boxedValue = value; // 오토 박싱(Auto-boxing)
-Integer boxedValue = Integer.valueOf(value); // 컴파일 단계에서 추가
-
-int unboxedValue = boxedValue; // 오토 언박싱(Auto-Unboxing)
-int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
 
 
                         </a>
@@ -3772,6 +3773,70 @@ result2 = hello jave
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
+                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="txt_post">
+                            불변 객체 - 정리.
+지금까지 왜 이렇게 불변 객체 이야기를 많이 했을까요?
+
+  자바에서 가장 많이 사용되는 String 클래스가 바로 불변 객체이기 때문입니다.
+  뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수 많은 클래스가 불변으로 설계되어 있습니다.
+    
+      따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
+    
+  
+
+
+모든 클래스를 불변으로 만드는 것은 아닙니다.
+우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
+
+  예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
+    
+      가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
+        
+          때로는 같은 기능을 하는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
+        
+      
+    
+  
+
+
+클래스를 불변으로 설계하는 이유는 더 많습니다.
+
+  캐시 안정성
+  멀티 쓰레드 안정성
+  엔티티 값 타입
+
+
+지금은 이런 부분을 다 이해할 수는 없습니다.
+
+  관련 내용을 학습하다 보면 자연스럽게 이번에 배운 불변 객체가 떠오르면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
+  프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 됩니다.
+    
+      따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-04-05-ImmutableObjectChangeValue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -3938,70 +4003,6 @@ obj1 = 10
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
-                        <a href="/2024/Java/2024-04-05-ImmutableObjectSummary.html" class="txt_post">
-                            불변 객체 - 정리.
-지금까지 왜 이렇게 불변 객체 이야기를 많이 했을까요?
-
-  자바에서 가장 많이 사용되는 String 클래스가 바로 불변 객체이기 때문입니다.
-  뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수 많은 클래스가 불변으로 설계되어 있습니다.
-    
-      따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
-    
-  
-
-
-모든 클래스를 불변으로 만드는 것은 아닙니다.
-우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
-
-  예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
-    
-      가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
-        
-          때로는 같은 기능을 하는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
-        
-      
-    
-  
-
-
-클래스를 불변으로 설계하는 이유는 더 많습니다.
-
-  캐시 안정성
-  멀티 쓰레드 안정성
-  엔티티 값 타입
-
-
-지금은 이런 부분을 다 이해할 수는 없습니다.
-
-  관련 내용을 학습하다 보면 자연스럽게 이번에 배운 불변 객체가 떠오르면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
-  프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 됩니다.
-    
-      따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-04-04-ImmutableObjectExample.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -4111,215 +4112,6 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-04-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
-                            불변 객체 - 도입
-지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
-
-  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
-    
-      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-        
-          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-        
-      
-    
-  
-
-
-앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
-
-  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
-    Address a = new Address("서울");
-Address b = a;
-    
-  
-
-
-따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-
-  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-
-
-Address a = new Address("서울");
-Address b = new Address("서울");
-
-
-여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
-
-진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-
-
-자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-
-  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-    
-      따라서 이것은 문제가 아닙니다.
-        
-          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
-        
-      
-    
-  
-
-
-만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-
-불변 객체 도입
-객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-
-앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
-
-package lang.immutable.address;
-
-public class ImmutableAddress {
-  private final String value;
-
-  public ImmutableAddress(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return "Address{" +
-        "value='" + value + '\'' +
-        '}';
-  }
-}
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 value의 필드를 final로 선언했습니다.
-    
-  
-  값을 변경할 수 있는 setValue()를 제거했습니다.
-  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-
-
-불변 클래스를 만드는 방법은 아주 단순합니다.
-
-  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-
-
-package lang.immutable.address;
-
-public class RefMain2 {
-
-  public static void main(String[] args) {
-    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
-    ImmutableAddress a = new ImmutableAddress("서울");
-    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-
-    System.out.println("a = " + a);
-    System.out.println("b = " + b);
-
-    // b.setValue("부산"); // 컴파일 오류 발생
-    b = new ImmutableAddress("부산");
-    System.out.println("부산 -&gt; b");
-    System.out.println("a = " + a); // 사이드 이펙트 발생
-    System.out.println("b = " + b);
-  }
-}
-
-
-  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
-  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
-    
-      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
-        
-          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
-        
-      
-    
-  
-  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
-
-
-
-
-  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-정리
-불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-
-  객체의 공유 참조는 막을 수 없습니다.
-    
-      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
-      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-    
-  
-  불변 객체는 값을 변경할 수 없습니다.
-    
-      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-        
-          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-        
-      
-    
-  
-
-
-
-  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
-
-  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-03</span>
                             
                         </div>
                     </div>
@@ -4542,6 +4334,215 @@ b = Address{value='부산'}
     
   
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/2024/Java/2024-04-03-ImmutableObjectsIntroduction.html" class="txt_post">
+                            불변 객체 - 도입
+지금까지 발생한 문제를 잘 생각해보면 공유하면 안되는 객체를 여러 변수에서 공유했기 때문에 발생한 문제입니다.
+
+  하지만 앞서 살펴보았듯이 객체의 공유를 막을 수 있는 방법은 없습니다.
+    
+      그런데 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+      객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+        
+          문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+        
+      
+    
+  
+
+
+앞의 예를 떠올려보면 a, b는 처음 시점에는 둘 다 "서울"이라는 주소를 사용해야 합니다.
+
+  그리고 이후에 b의 주소를 "부산"으로 변경해야 합니다.
+    Address a = new Address("서울");
+Address b = a;
+    
+  
+
+
+따라서 처음에는 b = a와 같이 "서울"이라는 Address 인스턴스를 a, b가 함께 사용하는 것이, 다음 코드와 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+
+  인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+여기까지는 Address b = a와 같이 공유 참조를 사용해도 아무런 문제가 없습니다. 오히려 더 효율적입니다.
+
+진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+b.setValue("부산"); // b의 값을 부산으로 변경해야 합니다.
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+
+  기본형과 다르게 참조형인 객체는 처음부터 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+    
+      따라서 이것은 문제가 아닙니다.
+        
+          문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 더이선가 변경했기 때문입니다.
+        
+      
+    
+  
+
+
+만약 Address 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+
+불변 객체 도입
+객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+
+앞서 만들었던 Address 클래스를 상태가 변하지 않는 불변 클래스로 다시 만들어 봅시다.
+
+package lang.immutable.address;
+
+public class ImmutableAddress {
+  private final String value;
+
+  public ImmutableAddress(String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return "Address{" +
+        "value='" + value + '\'' +
+        '}';
+  }
+}
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 value의 필드를 final로 선언했습니다.
+    
+  
+  값을 변경할 수 있는 setValue()를 제거했습니다.
+  이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+
+
+불변 클래스를 만드는 방법은 아주 단순합니다.
+
+  어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+
+
+package lang.immutable.address;
+
+public class RefMain2 {
+
+  public static void main(String[] args) {
+    // 참조형 변수는 하나의 인스턴스를 공유할 수 있습니다.
+    ImmutableAddress a = new ImmutableAddress("서울");
+    ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+
+    System.out.println("a = " + a);
+    System.out.println("b = " + b);
+
+    // b.setValue("부산"); // 컴파일 오류 발생
+    b = new ImmutableAddress("부산");
+    System.out.println("부산 -&gt; b");
+    System.out.println("a = " + a); // 사이드 이펙트 발생
+    System.out.println("b = " + b);
+  }
+}
+
+
+  ImmutableAddress의 경우 값을 변경할 수 있는 b.setValue() 메서드 자체가 제거되었습니다.
+  이제 ImmutableAddress 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+  ImmutableAddress를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫습니다.
+    
+      예를 들어 b.setValue("부산")을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지한다.
+        
+          따라서 어쩔 수 없이 새로운 ImmutableAddress("부산") 인스턴스를 생성해서 b에 대입한다.
+        
+      
+    
+  
+  결과적으로 a, b는 서로 다른 인스턴스를 참조하고, a가 참조하던 ImmutableAddress는 그대로 유지됩니다.
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+실행 결과를 보면 a의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+  ImmutableAddress는 불변 객체입니다. 따라서 값을 변경할 수 없습니다.
+
+
+
+
+  ImmutableAddress은 불변 객체이므로 b가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+정리
+불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+
+  객체의 공유 참조는 막을 수 없습니다.
+    
+      그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+      사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어 사용하면 됩니다.
+      불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+    
+  
+  불변 객체는 값을 변경할 수 없습니다.
+    
+      따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+        
+          이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+        
+      
+    
+  
+
+
+
+  참고 - 가변(Mutable) 객체 VS 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.)
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.(사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.)
+
+  Address 는 가변 클래스입니다. 이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성하면 불변 객체가 됩니다.
 
 
                         </a>
@@ -4868,6 +4869,125 @@ equals() 메서드를 구현할 때 지켜야 하는 규칙
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
+                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
+                            equals() - 1.동일성과 동등성
+Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
+
+자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
+
+  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
+  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+
+
+단어 정리
+“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
+
+
+  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
+  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
+    
+      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+
+
+예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+User a = new User("id-100") // 참조 x001
+User b = new User("id-100") // 참조 x002
+
+
+
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
+    
+      따라서 동일성은 다르지만, 동등성은 같습니다.
+    
+  
+
+
+문자의 경우도 마찬가지입니다.
+String s1 = "hello";
+String s2 = "hello";
+
+
+  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
+
+
+예제를 통해서 동일성과 동등성을 비교해봅시다.
+
+package lang.object.equals;
+
+public class EqualsMainV1 {
+
+  public static void main(String[] args) {
+    UserV1 user1 = new UserV1("id-100");
+    UserV1 user2 = new UserV1("id-100");
+
+    System.out.println("identity = " + (user1 == user2));
+    System.out.println("equlity = " + (user1.equals(user2)));
+  }
+}
+
+
+실행 결과
+identity = false
+equlity = false
+
+
+
+
+동일성 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안
+return false
+false
+
+
+동등성이라는 개념은 각각의 클래스 마다 다릅니다.
+
+어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
+어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+
+따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
+그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-31-ObjectAndOCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -5010,375 +5130,6 @@ System.out.println()
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-03-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-31-equals1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-31-equals1.html"><h1 class="title_post">☕️[Java] equals() - 1.동일성과 동등성</h1></a>
-                        <a href="/2024/Java/2024-03-31-equals1.html" class="txt_post">
-                            equals() - 1.동일성과 동등성
-Object는 동등성 비교를 위한 equals() 메서드를 제공합니다.
-
-자바는 두 객체가 같다라는 표현을 2가지로 분리해서 제공합니다.
-
-  동일성(Idenriry) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인
-  동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
-
-
-단어 정리
-“동일”은 완전히 같음을 의미합니다. 반면 “동등”은 같은 가치나 수준을 의미하지만 그 형태나 외관 등이 완전히 같지는 않을 수 있습니다.
-
-
-  쉽게 이야기해서 동일성은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, 동등성은 논리적으로 같은지 확인하는 것입니다.
-  동일성은 자바 머신 기준이고 메모리 참조가 기준이므로 물리적입니다.
-    
-      반면 동등성은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-
-
-예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-User a = new User("id-100") // 참조 x001
-User b = new User("id-100") // 참조 x002
-
-
-
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.(주민등록번호가 같다고 가정해도 됩니다.)
-    
-      따라서 동일성은 다르지만, 동등성은 같습니다.
-    
-  
-
-
-문자의 경우도 마찬가지입니다.
-String s1 = "hello";
-String s2 = "hello";
-
-
-  이 경우 물리적으로 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello"라는 문자열입니다.(사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다. 이 부분은 추후에 학습하겠습니다.)
-
-
-예제를 통해서 동일성과 동등성을 비교해봅시다.
-
-package lang.object.equals;
-
-public class EqualsMainV1 {
-
-  public static void main(String[] args) {
-    UserV1 user1 = new UserV1("id-100");
-    UserV1 user2 = new UserV1("id-100");
-
-    System.out.println("identity = " + (user1 == user2));
-    System.out.println("equlity = " + (user1.equals(user2)));
-  }
-}
-
-
-실행 결과
-identity = false
-equlity = false
-
-
-
-
-동일성 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-  Object가 기본적으로 제공하는 equals()는 ==으로 동일성 비교를 제공합니다.
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안
-return false
-false
-
-
-동등성이라는 개념은 각각의 클래스 마다 다릅니다.
-
-어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수 있습니다.
-어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-
-따라서 동등성 비교를 사용하고 싶으면 equals() 메서드를 재정의해야 합니다.
-그렇지 않으면 Object는 동일성 비교를 기본으로 제공합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-29-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-29-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
-                        <a href="/2024/Java/2024-03-29-toString.html" class="txt_post">
-                            toString()
-Object.toString() 메서드는 객체의 정보를 문자열 형태로 제공합니다.
-
-  그래서 디버깅과 로깅에 유용하게 사용됩니다.
-  이 메서드는 Object 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
-
-
-코드로 확인해봅시다.
-
-package lang.object.tostring;
-
-public class ToStringMain1 {
-
-  public static void main(String[] args) {
-    Object object = new Object();
-    String string = object.toString();
-
-    //toString() 반환값 출력
-    System.out.println(string);
-
-    // object 직접 출력
-    System.out.println(object);
-  }
-}
-
-
-실행 결과
-java.lang.Object@a09ee92
-java.lang.Object@a09ee92
-
-
-Object.toString()
-public String toString() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode());
-}
-
-
-  Object가 제공하는 toString() 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다
-
-
-println()과 toString()
-그런데 toString()의 결과를 출력한 코드와 object를 println()에 직접 출력한 코드의 결과가 완전히 같습니다.
-String string = object.toString();
-
-//toString() 반환값 출력
-System.out.println(string);
-
-// object 직접 출력
-System.out.println(object);
-
-
-System.out.println() 메서드는 사실 내부에서 toString()을 호출합니다.
-Object 타입(자식 포함)이 println()에 인수로 전달되면 내부에서 obj.toString() 메서드를 호출해서 결과를 출력합니다.
-public void println(Object x) {
-    String s = String.valueOf(x);
-    // ...
-}
-
-
-public static String valueOf(Object obj) {
-    return (obj == null) ? "null" : obj.toString();
-}
-
-
-따라서 println()을 사용할 때, toString()을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
-
-toString() 오버라이딩.
-Object.toString() 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
-
-  그래서 보통 toString()을 재정의(오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
-
-
-
-
-package lang.object.tostring;
-
-public class Car {
-
-  private String carName;
-
-  public Car(String carName) {
-    this.carName = carName;
-  }
-}
-
-
-package lang.object.tostring;
-
-public class Dog {
-
-  private String dogName;
-  private int age;
-
-  public Dog(String dogName, int age) {
-    this.dogName = dogName;
-    this.age = age;
-  }
-
-  @Override
-  public String toString() {
-    return "Dog{" +
-        "dogName='" + dogName + '\'' +
-        ", age=" + age +
-        '}';
-  }
-}
-
-
-package lang.object.tostring;
-
-public class ObjectPrinter {
-  public static void print(Object obj) {
-    String string = "객체 정보 출력: " + obj.toString();
-    System.out.println(string);
-  }
-}
-
-
-package lang.object.tostring;
-
-public class ToStringMain2 {
-
-  public static void main(String[] args) {
-    Car car = new Car("Model Y");
-    Dog dog1 = new Dog("멍멍이1", 2);
-    Dog dog2 = new Dog("멍멍이2", 5);
-
-    System.out.println("1. 단순 toString 호출");
-    System.out.println(car.toString());
-    System.out.println(dog1.toString());
-    System.out.println(dog2.toString());
-
-    System.out.println("2. println 내부에서 toString 호출");
-    System.out.println(car);
-    System.out.println(dog1);
-    System.out.println(dog2);
-
-    System.out.println("3. Object 다용성 활용");
-    ObjectPrinter.print(car);
-    ObjectPrinter.print(dog1);
-    ObjectPrinter.print(dog2);
-  }
-}
-
-
-실행 결과
-1. 단순 toString 호출
-lang.object.tostring.Car@452b3a41
-Dog{dogName='멍멍이1', age=2}
-Dog{dogName='멍멍이2', age=5}
-
-2. println 내부에서 toString 호출
-lang.object.tostring.Car@452b3a41
-Dog{dogName='멍멍이1', age=2}
-Dog{dogName='멍멍이2', age=5}
-
-3. Object 다용성 활용
-객체 정보 출력: lang.object.tostring.Car@452b3a41
-객체 정보 출력: Dog{dogName='멍멍이1', age=2}
-객체 정보 출력: Dog{dogName='멍멍이2', age=5}
-
-
-Car 인스턴스는 toString()을 재정의 하지 않습니다.
-
-  따라서 Object가 제공하는 기본 toString() 메서드를 사용합니다.
-
-
-Dog 인스턴스는 toString()을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
-
-
-
-
-  Object obj의 인수로 car(Car)가 전달됩니다.
-  메서드 내부에서 obj.toString()을 호출합니다.
-  obj는 Object 타입입니다.
-    
-      따라서 Object에 있는 toString()을 찾습니다.
-        
-          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. 재정의된 메서드가 없습니다.
-            
-              Object.toString()을 실행합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-ObjectPrinter.print(dog) // main에서 호출
-void print(Object obj = dog(Dog)) { // 인수 전달
-    String string = "객체 정보 출력: " + obj.toString();
-}
-
-
-  Object obj의 인수로 dog(Dog) 가 전달 됩니다.
-  메서드 내부에서 obj.toString()을 호출합니다.
-  obj는 Object 타입입니다.
-    
-      따라서 Object에 있는 toString()을 찾습니다.
-        
-          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. Dog에 재정의된 메서드가 있습니다.
-            
-              Dog.toString()을 실행합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  참고 - 객체의 참조값 직접 출력
-toString()은 기본으로 객체의 참조값을 출력합니다.
-그런데 toString()이나 hashCode()를 재정의하면 객체의 참조값을 출력할 수 없습니다.
-이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
-  String refValue = Integer.toHexString(System.identityHashCode(dog1));
-System.out.println("refValue = " + refValue)
-  
-
-  실행 결과
-  refValue = 72ea2f77
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-29</span>
                             
                         </div>
                     </div>
@@ -5677,6 +5428,256 @@ Object가 없다면?
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-29-toString.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-29-toString.html"><h1 class="title_post">☕️[Java] toString()</h1></a>
+                        <a href="/2024/Java/2024-03-29-toString.html" class="txt_post">
+                            toString()
+Object.toString() 메서드는 객체의 정보를 문자열 형태로 제공합니다.
+
+  그래서 디버깅과 로깅에 유용하게 사용됩니다.
+  이 메서드는 Object 클래스에 정의되므로 모든 클래스에서 상속받아 사용할 수 있습니다.
+
+
+코드로 확인해봅시다.
+
+package lang.object.tostring;
+
+public class ToStringMain1 {
+
+  public static void main(String[] args) {
+    Object object = new Object();
+    String string = object.toString();
+
+    //toString() 반환값 출력
+    System.out.println(string);
+
+    // object 직접 출력
+    System.out.println(object);
+  }
+}
+
+
+실행 결과
+java.lang.Object@a09ee92
+java.lang.Object@a09ee92
+
+
+Object.toString()
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+
+
+  Object가 제공하는 toString() 메서드는 기본적으로 패키지를 포함한 객체의 이름과 객체의 참조값(해시코드)를 16진수로 제공합니다
+
+
+println()과 toString()
+그런데 toString()의 결과를 출력한 코드와 object를 println()에 직접 출력한 코드의 결과가 완전히 같습니다.
+String string = object.toString();
+
+//toString() 반환값 출력
+System.out.println(string);
+
+// object 직접 출력
+System.out.println(object);
+
+
+System.out.println() 메서드는 사실 내부에서 toString()을 호출합니다.
+Object 타입(자식 포함)이 println()에 인수로 전달되면 내부에서 obj.toString() 메서드를 호출해서 결과를 출력합니다.
+public void println(Object x) {
+    String s = String.valueOf(x);
+    // ...
+}
+
+
+public static String valueOf(Object obj) {
+    return (obj == null) ? "null" : obj.toString();
+}
+
+
+따라서 println()을 사용할 때, toString()을 직접 호출할 필요 없이 객체를 바로 전달하면 객체의 정보를 출력할 수 있습니다.
+
+toString() 오버라이딩.
+Object.toString() 메서드가 클래스 정보와 참조값을 제공하지만 이 정보만으로는 객체의 상태를 적절히 나타내지 못합니다.
+
+  그래서 보통 toString()을 재정의(오버라이딩)해서 보다 유용한 정보를 제공하는 것이 일반적입니다.
+
+
+
+
+package lang.object.tostring;
+
+public class Car {
+
+  private String carName;
+
+  public Car(String carName) {
+    this.carName = carName;
+  }
+}
+
+
+package lang.object.tostring;
+
+public class Dog {
+
+  private String dogName;
+  private int age;
+
+  public Dog(String dogName, int age) {
+    this.dogName = dogName;
+    this.age = age;
+  }
+
+  @Override
+  public String toString() {
+    return "Dog{" +
+        "dogName='" + dogName + '\'' +
+        ", age=" + age +
+        '}';
+  }
+}
+
+
+package lang.object.tostring;
+
+public class ObjectPrinter {
+  public static void print(Object obj) {
+    String string = "객체 정보 출력: " + obj.toString();
+    System.out.println(string);
+  }
+}
+
+
+package lang.object.tostring;
+
+public class ToStringMain2 {
+
+  public static void main(String[] args) {
+    Car car = new Car("Model Y");
+    Dog dog1 = new Dog("멍멍이1", 2);
+    Dog dog2 = new Dog("멍멍이2", 5);
+
+    System.out.println("1. 단순 toString 호출");
+    System.out.println(car.toString());
+    System.out.println(dog1.toString());
+    System.out.println(dog2.toString());
+
+    System.out.println("2. println 내부에서 toString 호출");
+    System.out.println(car);
+    System.out.println(dog1);
+    System.out.println(dog2);
+
+    System.out.println("3. Object 다용성 활용");
+    ObjectPrinter.print(car);
+    ObjectPrinter.print(dog1);
+    ObjectPrinter.print(dog2);
+  }
+}
+
+
+실행 결과
+1. 단순 toString 호출
+lang.object.tostring.Car@452b3a41
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+
+2. println 내부에서 toString 호출
+lang.object.tostring.Car@452b3a41
+Dog{dogName='멍멍이1', age=2}
+Dog{dogName='멍멍이2', age=5}
+
+3. Object 다용성 활용
+객체 정보 출력: lang.object.tostring.Car@452b3a41
+객체 정보 출력: Dog{dogName='멍멍이1', age=2}
+객체 정보 출력: Dog{dogName='멍멍이2', age=5}
+
+
+Car 인스턴스는 toString()을 재정의 하지 않습니다.
+
+  따라서 Object가 제공하는 기본 toString() 메서드를 사용합니다.
+
+
+Dog 인스턴스는 toString()을 재정의 한 덕분에 객체의 상태를 명확하게 확인할 수 있습니다.
+
+
+
+
+  Object obj의 인수로 car(Car)가 전달됩니다.
+  메서드 내부에서 obj.toString()을 호출합니다.
+  obj는 Object 타입입니다.
+    
+      따라서 Object에 있는 toString()을 찾습니다.
+        
+          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. 재정의된 메서드가 없습니다.
+            
+              Object.toString()을 실행합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+ObjectPrinter.print(dog) // main에서 호출
+void print(Object obj = dog(Dog)) { // 인수 전달
+    String string = "객체 정보 출력: " + obj.toString();
+}
+
+
+  Object obj의 인수로 dog(Dog) 가 전달 됩니다.
+  메서드 내부에서 obj.toString()을 호출합니다.
+  obj는 Object 타입입니다.
+    
+      따라서 Object에 있는 toString()을 찾습니다.
+        
+          이때 자식에 재정의(오버라이딩)된 메서드가 있는지 찾아봅니다. Dog에 재정의된 메서드가 있습니다.
+            
+              Dog.toString()을 실행합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  참고 - 객체의 참조값 직접 출력
+toString()은 기본으로 객체의 참조값을 출력합니다.
+그런데 toString()이나 hashCode()를 재정의하면 객체의 참조값을 출력할 수 없습니다.
+이때는 다음 코드를 사용하면 객체의 참조값을 출력할 수 있습니다.
+  String refValue = Integer.toHexString(System.identityHashCode(dog1));
+System.out.println("refValue = " + refValue)
+  
+
+  실행 결과
+  refValue = 72ea2f77
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-29</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-28-java-langPackage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -5936,6 +5937,84 @@ Object 클래스는 다형성을 지원하는 기본적인 메커니즘을 제�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-25-OCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-25-OCP.html"><h1 class="title_post">☕️[Java] OCP(Open-Closed Principle) 원칙</h1></a>
+                        <a href="/2024/Java/2024-03-25-OCP.html" class="txt_post">
+                            OCP(Open-Closed Principle) 원칙.
+좋은 객체 지향 설계 원칙 중 하나로 OCP 원칙이라는 것이 있습니다.
+
+  Open for extension : 새로운 기능의 추가나 변경 사항이 생겼을 때, 기존 코드는 확장할 수 있어야 합니다.
+  Closed for modification : 기존의 코드는 수정되지 않아야 합니다.
+
+
+확장에는 열려있고, 변경에는 닫혀 있다는 뜻인데, 쉽게 이야기해서 기존의 코드 수정 없이 새로운 기능을 추가할 수 있다는 의미입니다.
+
+  약간 말이 안 맞는 것 같지만 우리가 앞서 개발한 코드가 바로 OCP 원칙을 잘 지키고 있는 코드입니다.
+
+
+새로운 차량의 추가.
+여기서 새로운 차량을 추가해도 Driver의 코드는 전혀 변경하지 않습니다.
+
+운전할 수 있는 차량의 종류가 계속 늘어나도 Car를 사용하는 Driver의 코드는 전혀 변경하지 않습니다.
+
+기능을 확장해도 main() 일부를 제외한 프로그램의 핵심 부분의 코드는 전혀 수정하지 않아도 됩니다.
+
+
+
+확장에 열려있다는 의미.
+Car 인터페이스를 사용해서 새로운 차량을 자유롭게 추가할 수 있습니다.
+Car 인터페이스를 구현해서 기능을 추가할 수 있다는 의미입니다.
+Car 인터페이스를 사용하는 클라이언트 코드인 Driver도 Car 인터페이스를 통해 새롭게 추가된 차량을 자유롭게 호출할 수 있습니다.
+이것이 확장에 열려있다는 의미입니다.
+
+코드 수정은 닫혀 있다는 의미.
+새로운 차를 추가하게 되면 기능이 추가되기 때문에 기존 코드의 수정은 불가피합니다.
+당연히 어딘가의 코드는 수정해야 합니다.
+
+변하지 않는 부분.
+새로운 자동차를 추가할 때 가장 영향을 받는 중요한 클라이언트는 바로 Car의 기능을 사용하는 Driver입니다.
+핵심은 Car 인터페이스를 사용하는 클라이언트인 Driver의 코드를 수정하지 않아도 된다는 뜻입니다.
+
+변하는 부분.
+main()과 같이 새로운 차를 생성하고 Driver에게 필요한 차를 전달해주는 역할은 당연히 코드 수정이 발생합니다.
+main()은 전체 프로그램을 설정하고 조율하는 역할을 합니다.
+이런 부분은 OCP를 지켜도 변경이 필요합니다.
+
+정리.
+
+  Car를 사용하는 클라이언트 코드인 Driver 코드의 변경 없이 새로운 자동차를 확장할 수 있습니다.
+  다형성을 활용하고 역할과 구현을 잘 분리한 덕분에 새로운 자동차를 추가해도 대부분의 핵심 코드들을 그대로 유지할 수 있게 되었습니다.
+
+
+
+  전략 패턴(Strategy Pattern)
+디자인 패턴 중에 가장 중요한 패턴을 하나 뽑으라고 하면 전략 패턴을 뽑을 수 있습니다.
+전략 패턴은 알고리즘을 클라이언트 코드의 변경 없이 쉽게 교체할 수 있습니다.
+방금 설명한 코드가 바로 전략 패턴을 사용한 코드입니다.
+Car 인터페이스가 바로 전략을 정의하는 인터페이스가 되고, 각각의 차량이 전략의 구체적인 구현이 됩니다.
+그리고 전략을 클라이언트 코드(Driver)의 변경 없이 손쉽게 교체할 수 있습니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-25-Polymorphism-RoleImplementatioonExample3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -6108,84 +6187,6 @@ Model3Car.offEngine
       car 필드가 Car 타입이므로 Car 타입을 찾아서 실행하지만 메서드 오버라이딩에 의해 Model3Car의 기능이 호출됩니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-25-OCP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-25-OCP.html"><h1 class="title_post">☕️[Java] OCP(Open-Closed Principle) 원칙</h1></a>
-                        <a href="/2024/Java/2024-03-25-OCP.html" class="txt_post">
-                            OCP(Open-Closed Principle) 원칙.
-좋은 객체 지향 설계 원칙 중 하나로 OCP 원칙이라는 것이 있습니다.
-
-  Open for extension : 새로운 기능의 추가나 변경 사항이 생겼을 때, 기존 코드는 확장할 수 있어야 합니다.
-  Closed for modification : 기존의 코드는 수정되지 않아야 합니다.
-
-
-확장에는 열려있고, 변경에는 닫혀 있다는 뜻인데, 쉽게 이야기해서 기존의 코드 수정 없이 새로운 기능을 추가할 수 있다는 의미입니다.
-
-  약간 말이 안 맞는 것 같지만 우리가 앞서 개발한 코드가 바로 OCP 원칙을 잘 지키고 있는 코드입니다.
-
-
-새로운 차량의 추가.
-여기서 새로운 차량을 추가해도 Driver의 코드는 전혀 변경하지 않습니다.
-
-운전할 수 있는 차량의 종류가 계속 늘어나도 Car를 사용하는 Driver의 코드는 전혀 변경하지 않습니다.
-
-기능을 확장해도 main() 일부를 제외한 프로그램의 핵심 부분의 코드는 전혀 수정하지 않아도 됩니다.
-
-
-
-확장에 열려있다는 의미.
-Car 인터페이스를 사용해서 새로운 차량을 자유롭게 추가할 수 있습니다.
-Car 인터페이스를 구현해서 기능을 추가할 수 있다는 의미입니다.
-Car 인터페이스를 사용하는 클라이언트 코드인 Driver도 Car 인터페이스를 통해 새롭게 추가된 차량을 자유롭게 호출할 수 있습니다.
-이것이 확장에 열려있다는 의미입니다.
-
-코드 수정은 닫혀 있다는 의미.
-새로운 차를 추가하게 되면 기능이 추가되기 때문에 기존 코드의 수정은 불가피합니다.
-당연히 어딘가의 코드는 수정해야 합니다.
-
-변하지 않는 부분.
-새로운 자동차를 추가할 때 가장 영향을 받는 중요한 클라이언트는 바로 Car의 기능을 사용하는 Driver입니다.
-핵심은 Car 인터페이스를 사용하는 클라이언트인 Driver의 코드를 수정하지 않아도 된다는 뜻입니다.
-
-변하는 부분.
-main()과 같이 새로운 차를 생성하고 Driver에게 필요한 차를 전달해주는 역할은 당연히 코드 수정이 발생합니다.
-main()은 전체 프로그램을 설정하고 조율하는 역할을 합니다.
-이런 부분은 OCP를 지켜도 변경이 필요합니다.
-
-정리.
-
-  Car를 사용하는 클라이언트 코드인 Driver 코드의 변경 없이 새로운 자동차를 확장할 수 있습니다.
-  다형성을 활용하고 역할과 구현을 잘 분리한 덕분에 새로운 자동차를 추가해도 대부분의 핵심 코드들을 그대로 유지할 수 있게 되었습니다.
-
-
-
-  전략 패턴(Strategy Pattern)
-디자인 패턴 중에 가장 중요한 패턴을 하나 뽑으라고 하면 전략 패턴을 뽑을 수 있습니다.
-전략 패턴은 알고리즘을 클라이언트 코드의 변경 없이 쉽게 교체할 수 있습니다.
-방금 설명한 코드가 바로 전략 패턴을 사용한 코드입니다.
-Car 인터페이스가 바로 전략을 정의하는 인터페이스가 되고, 각각의 차량이 전략의 구체적인 구현이 됩니다.
-그리고 전략을 클라이언트 코드(Driver)의 변경 없이 손쉽게 교체할 수 있습니다.
-
 
 
                         </a>
@@ -8355,6 +8356,144 @@ Child.childMethod
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html"><h1 class="title_post">☕️[Java] 캐스팅의 종류</h1></a>
+                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="txt_post">
+                            캐스팅의 종류
+
+자식 타입의 기능을 사용하려면 다음과 같이 다운 캐스팅 결과를 변수에 담아두고 이후에 기능을 사용하면 됩니다.
+Child child = (Child) poly
+child.childMethod();
+
+
+하지만 다운캐스팅 결과를 변수에 담아두는 과정은 번거롭습니다.
+이런 과정 없이 일시적으로 다운캐스팅을 해서 인스턴스에 있는 하위 클래스의 기능을 바로 호출할 수 있습니다.
+
+다음 코드를 봐봅시다.
+
+일시적 다운 캐스팅
+package poly.basic;
+
+public class CastingMain2 {
+
+  public static void main(String[] args) {
+    // 부모 변수가 자식 인스턴스 참조(다형적 참조)
+    Parent poly = new Child();
+
+    // 단 자식의 기능은 호출할 수 없습니다.(컴파일 오류 발생)
+    // poly.childMethod();
+
+    // 일시적 다운캐스팅 - 해당 메서드를 호출하는 순간만 다운캐스팅
+    ((Child) poly).childMethod();
+  }
+}
+
+
+실행 결과
+Child.childMethod
+
+
+
+
+((Child) poly).childMethod()
+
+
+
+  poly는 Parent 타입입니다. 그런데 이 코드를 실행하면 Parent 타입을 임시로 Child로 변경합니다.
+    
+      그리고 메서드를 호출할 때 Child 타입에서 찾아서 실행합니다.
+    
+  
+
+
+정확히는 poly가 Child 타입으로 바뀌는 것은 아닙니다.
+((Child) poly).childMethod(); // 다운캐스팅을 통해 부모타입을 자식 타입으로 변환 후 기능 호출
+((Child) x001).childMethod(); // 참조값을 읽은 다음 자식 타입으로 다운캐스팅
+
+
+
+  참고로 캐스팅을 한다고 해서 Parent poly의 타입이 변하는 것은 아닙니다.
+    
+      해당 참조값을 꺼내고 꺼낸 참조값이 Child 타입이 되는 것입니다.
+        
+          따라서 poly의 타입은 Parent로 그대로 유지됩니다.
+        
+      
+    
+  
+
+
+이렇게 일시적 다운캐스팅을 사용하면 별도의 변수 없이 인스턴스의 자식 타입의 기능을 사용할 수 있습니다.
+
+업캐스팅
+
+다운캐스팅과 반대로 현재 타입을 부모 타입으로 변경하는 것을 업캐스팅이라고 합니다.
+
+다음 코드를 봅시다.
+
+package poly.basic;
+
+public class CastingMain3 {
+
+  public static void main(String[] args) {
+    Child child = new Child();
+    Parent parent1 = (Parent) child; // 업캐스팅은 생략 가능, 생략 권장.
+    Parent parent2 = child;
+
+    parent1.parentMethod();
+    parent2.parentMethod();
+  }
+}
+
+
+실행 결과
+Parent.parentMethod
+Parent.parentMethod
+
+
+다음 코드를 봐봅시다
+Parent parent1 = (Parent) child;
+
+
+  Child 타입을 Parent 타입에 대입해야 합니다.
+    
+      따라서 타입을 변환하는 캐스팅이 필요합니다.
+    
+  
+
+
+그런데 부모 타입으로 변환하는 경우에는 다음과 같이 캐스팅 코드인 (타입)를 생략할 수 있습니다.
+Parent parent2 = child
+Parent parent2 = new Child()
+
+
+“업캐스팅은 생략할 수 있습니다. 참고로 업캐스팅은 매우 자주 사용하기 때문에 생략을 권장합니다.”
+
+  자바에서 부모는 자식을 담을 수 있습니다. 하지만 그 반대는 안됩니다.(꼭 필요하다면 다운캐스팅을 해야 합니다.)
+
+
+업캐스팅을 생략해도 되고, 다운캐스팅은 왜 개발자가 직접 명시적으로 캐스팅을 해야할까요?
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-15-DowncastingAndPrecaution.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -8527,144 +8666,6 @@ Child child2 = (Child) parent2
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html"><h1 class="title_post">☕️[Java] 캐스팅의 종류</h1></a>
-                        <a href="/2024/Java/2024-03-15-TypesOfCasting.html" class="txt_post">
-                            캐스팅의 종류
-
-자식 타입의 기능을 사용하려면 다음과 같이 다운 캐스팅 결과를 변수에 담아두고 이후에 기능을 사용하면 됩니다.
-Child child = (Child) poly
-child.childMethod();
-
-
-하지만 다운캐스팅 결과를 변수에 담아두는 과정은 번거롭습니다.
-이런 과정 없이 일시적으로 다운캐스팅을 해서 인스턴스에 있는 하위 클래스의 기능을 바로 호출할 수 있습니다.
-
-다음 코드를 봐봅시다.
-
-일시적 다운 캐스팅
-package poly.basic;
-
-public class CastingMain2 {
-
-  public static void main(String[] args) {
-    // 부모 변수가 자식 인스턴스 참조(다형적 참조)
-    Parent poly = new Child();
-
-    // 단 자식의 기능은 호출할 수 없습니다.(컴파일 오류 발생)
-    // poly.childMethod();
-
-    // 일시적 다운캐스팅 - 해당 메서드를 호출하는 순간만 다운캐스팅
-    ((Child) poly).childMethod();
-  }
-}
-
-
-실행 결과
-Child.childMethod
-
-
-
-
-((Child) poly).childMethod()
-
-
-
-  poly는 Parent 타입입니다. 그런데 이 코드를 실행하면 Parent 타입을 임시로 Child로 변경합니다.
-    
-      그리고 메서드를 호출할 때 Child 타입에서 찾아서 실행합니다.
-    
-  
-
-
-정확히는 poly가 Child 타입으로 바뀌는 것은 아닙니다.
-((Child) poly).childMethod(); // 다운캐스팅을 통해 부모타입을 자식 타입으로 변환 후 기능 호출
-((Child) x001).childMethod(); // 참조값을 읽은 다음 자식 타입으로 다운캐스팅
-
-
-
-  참고로 캐스팅을 한다고 해서 Parent poly의 타입이 변하는 것은 아닙니다.
-    
-      해당 참조값을 꺼내고 꺼낸 참조값이 Child 타입이 되는 것입니다.
-        
-          따라서 poly의 타입은 Parent로 그대로 유지됩니다.
-        
-      
-    
-  
-
-
-이렇게 일시적 다운캐스팅을 사용하면 별도의 변수 없이 인스턴스의 자식 타입의 기능을 사용할 수 있습니다.
-
-업캐스팅
-
-다운캐스팅과 반대로 현재 타입을 부모 타입으로 변경하는 것을 업캐스팅이라고 합니다.
-
-다음 코드를 봅시다.
-
-package poly.basic;
-
-public class CastingMain3 {
-
-  public static void main(String[] args) {
-    Child child = new Child();
-    Parent parent1 = (Parent) child; // 업캐스팅은 생략 가능, 생략 권장.
-    Parent parent2 = child;
-
-    parent1.parentMethod();
-    parent2.parentMethod();
-  }
-}
-
-
-실행 결과
-Parent.parentMethod
-Parent.parentMethod
-
-
-다음 코드를 봐봅시다
-Parent parent1 = (Parent) child;
-
-
-  Child 타입을 Parent 타입에 대입해야 합니다.
-    
-      따라서 타입을 변환하는 캐스팅이 필요합니다.
-    
-  
-
-
-그런데 부모 타입으로 변환하는 경우에는 다음과 같이 캐스팅 코드인 (타입)를 생략할 수 있습니다.
-Parent parent2 = child
-Parent parent2 = new Child()
-
-
-“업캐스팅은 생략할 수 있습니다. 참고로 업캐스팅은 매우 자주 사용하기 때문에 생략을 권장합니다.”
-
-  자바에서 부모는 자식을 담을 수 있습니다. 하지만 그 반대는 안됩니다.(꼭 필요하다면 다운캐스팅을 해야 합니다.)
-
-
-업캐스팅을 생략해도 되고, 다운캐스팅은 왜 개발자가 직접 명시적으로 캐스팅을 해야할까요?
 
 
                         </a>
@@ -10072,156 +10073,6 @@ public class CarMain {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-03-08-InheritanceAndAddingFeatures.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-08-InheritanceAndAddingFeatures.html"><h1 class="title_post">☕️[Java] 상속과 기능 추가</h1></a>
-                        <a href="/2024/Java/2024-03-08-InheritanceAndAddingFeatures.html" class="txt_post">
-                            상속과 기능 추가.
-
-이번에는 상속 관계의 장점을 알아보기 위해, 상속 관계에 다음 기능을 추가해보겠습니다.
-
-  모든 차량에 문열기(openDoor()) 기능을 추가합니다.
-  새로운 수소차(HydrogenCar)를 추가합니다.
-    
-      수소차는 fillHydrogen() 기능을 통해 수소를 충전할 수 있습니다.
-    
-  
-
-
-package ex3 - Car
-package extends1.ex3;
-
-public class Car {
-
-  public void move() {
-    System.out.println("차를 이동합니다.");
-  }
-
-  // 추가
-  public void openDoor() {
-    System.out.println("문을 엽니다.");
-  }
-}
-
-
-
-  모든 차량에 문열기 기능을 추가할 때는 상위 부모인 Car에 openDoor() 기능을 추가하면 됩니다.
-    
-      이렇게 하면 Car의 자식들은 해당 기능을 모두 물려받게 됩니다.
-        
-          만약 상속 관계가 아니었다면 각각의 차량에 해당 기능을 모두 추가해야 합니다.
-        
-      
-    
-  
-
-
-package ex3 - ElectricCar
-package extends1.ex3;
-
-public class ElectricCar extends Car {
-
-  public void charge() {
-    System.out.println("충전합니다.");
-  }
-}
-
-
-  기존 코드와 같습니다.
-
-
-package ex3 - GasCar
-package extends1.ex3;
-
-public class GasCar extends Car {
-
-  public void fillUp() {
-    System.out.println("기름을 주유합니다.");
-  }
-}
-
-
-  기존 코드와 같습니다.
-
-
-package ex3 - HydrogenCar
-package extends1.ex3;
-
-public class HydrogenCar extends Car {
-
-  public void fillHydrogen() {
-    System.out.println("수소를 충전합니다.");
-  }
-}
-
-
-  수소차를 추가했습니다.
-  Car를 상속받은 덕분에 move(), openDoor()와 같은 기능을 바로 사용할 수 있습니다.
-  수소차는 전용 기능인 수소 충전(fillHydrogen()) 기능을 제공합니다.
-
-
-package ex3 - CarMain
-package extends1.ex3;
-
-public class CarMain {
-
-  public static void main(String[] args) {
-    ElectricCar electricCar = new ElectricCar();
-    electricCar.move();
-    electricCar.charge();
-    electricCar.openDoor();
-
-    GasCar gasCar = new GasCar();
-    gasCar.move();
-    gasCar.fillUp();
-    gasCar.openDoor();
-
-    HydrogenCar hydrogenCar = new HydrogenCar();
-    hydrogenCar.move();
-    hydrogenCar.fillHydrogen();
-    hydrogenCar.openDoor();
-  }
-}
-
-
-실행 결과
-차를 이동합니다.
-충전합니다.
-문을 엽니다.
-차를 이동합니다.
-기름을 주유합니다.
-문을 엽니다.
-차를 이동합니다.
-수소를 충전합니다.
-문을 엽니다.
-
-
-기능 추가와 클래스 확장
-
-
-
-
-  상속 관계 덕분에 중복은 줄어들고, 새로운 수소차를 편리하게 확장(extend)한 것을 알 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-03-08-extendRelationship.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -10503,6 +10354,156 @@ electricCar.move() 호출
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-03-08-InheritanceAndAddingFeatures.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-08-InheritanceAndAddingFeatures.html"><h1 class="title_post">☕️[Java] 상속과 기능 추가</h1></a>
+                        <a href="/2024/Java/2024-03-08-InheritanceAndAddingFeatures.html" class="txt_post">
+                            상속과 기능 추가.
+
+이번에는 상속 관계의 장점을 알아보기 위해, 상속 관계에 다음 기능을 추가해보겠습니다.
+
+  모든 차량에 문열기(openDoor()) 기능을 추가합니다.
+  새로운 수소차(HydrogenCar)를 추가합니다.
+    
+      수소차는 fillHydrogen() 기능을 통해 수소를 충전할 수 있습니다.
+    
+  
+
+
+package ex3 - Car
+package extends1.ex3;
+
+public class Car {
+
+  public void move() {
+    System.out.println("차를 이동합니다.");
+  }
+
+  // 추가
+  public void openDoor() {
+    System.out.println("문을 엽니다.");
+  }
+}
+
+
+
+  모든 차량에 문열기 기능을 추가할 때는 상위 부모인 Car에 openDoor() 기능을 추가하면 됩니다.
+    
+      이렇게 하면 Car의 자식들은 해당 기능을 모두 물려받게 됩니다.
+        
+          만약 상속 관계가 아니었다면 각각의 차량에 해당 기능을 모두 추가해야 합니다.
+        
+      
+    
+  
+
+
+package ex3 - ElectricCar
+package extends1.ex3;
+
+public class ElectricCar extends Car {
+
+  public void charge() {
+    System.out.println("충전합니다.");
+  }
+}
+
+
+  기존 코드와 같습니다.
+
+
+package ex3 - GasCar
+package extends1.ex3;
+
+public class GasCar extends Car {
+
+  public void fillUp() {
+    System.out.println("기름을 주유합니다.");
+  }
+}
+
+
+  기존 코드와 같습니다.
+
+
+package ex3 - HydrogenCar
+package extends1.ex3;
+
+public class HydrogenCar extends Car {
+
+  public void fillHydrogen() {
+    System.out.println("수소를 충전합니다.");
+  }
+}
+
+
+  수소차를 추가했습니다.
+  Car를 상속받은 덕분에 move(), openDoor()와 같은 기능을 바로 사용할 수 있습니다.
+  수소차는 전용 기능인 수소 충전(fillHydrogen()) 기능을 제공합니다.
+
+
+package ex3 - CarMain
+package extends1.ex3;
+
+public class CarMain {
+
+  public static void main(String[] args) {
+    ElectricCar electricCar = new ElectricCar();
+    electricCar.move();
+    electricCar.charge();
+    electricCar.openDoor();
+
+    GasCar gasCar = new GasCar();
+    gasCar.move();
+    gasCar.fillUp();
+    gasCar.openDoor();
+
+    HydrogenCar hydrogenCar = new HydrogenCar();
+    hydrogenCar.move();
+    hydrogenCar.fillHydrogen();
+    hydrogenCar.openDoor();
+  }
+}
+
+
+실행 결과
+차를 이동합니다.
+충전합니다.
+문을 엽니다.
+차를 이동합니다.
+기름을 주유합니다.
+문을 엽니다.
+차를 이동합니다.
+수소를 충전합니다.
+문을 엽니다.
+
+
+기능 추가와 클래스 확장
+
+
+
+
+  상속 관계 덕분에 중복은 줄어들고, 새로운 수소차를 편리하게 확장(extend)한 것을 알 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-03-07-finalVariableAndReference.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -10598,172 +10599,6 @@ data.value = 20;
 
 
   정리하면 참조형 변수에 final이 붙으면 참조 대상 자체를 다른 대상으로 변경하지 못하는 것이지, 참조하는 대상의 값은 변경할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-03-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html"><h1 class="title_post">☕️[Java] final 변수와 상수 2</h1></a>
-                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="txt_post">
-                            final 변수와 상수 2
-
-상수(Constant)
-
-  상수는 변하지 않고, 항상 일정한 값을 갖는 수를 말합니다.
-    
-      자바에서는 보통 단 하나만 존재하는 변하지 않는 고정된 값을 상수라 합니다.
-        
-          이런 이유로 상수는 static final 키워드를 사용합니다.
-        
-      
-    
-  
-
-
-자바 상수 특징
-
-  static final 키워드를 사용합니다.
-  대문자를 사용하고 구분은 _(언더스코어)로 합니다.(관례)
-    
-      일반적인 변수와 상수를 구분하기 위해 이렇게 합니다.
-    
-  
-  필드를 직접 접근해서 사용합니다.
-    
-      상수는 기능이 아니라 고정된 값 자체를 사용하는 것이 목적입니다.
-      상수는 값을 변경할 수 없습니다.
-        
-          따라서 필드에 직접 접근해도 데이터가 변하는 문제가 발생하지 않습니다.
-        
-      
-    
-  
-
-
-package final1;
-
-// 상수
-public class Constant {
-  // 수학 상수
-  public static final double PI = 3.14;
-  // 시간 상수
-  public static final int HOURS_IN_DAY = 24;
-  public static final int MINUTES_IN_HOUR = 60;
-  public static final int SECONDS_IN_MINUTE = 60;
-  // 애플리케이션 설정 상수
-  public static final int MAX_USERS = 1000;
-}
-
-
-
-  애플리케이션 안에는 다양한 상수가 존재할 수 있습니다.
-    
-      수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있습니다.
-        
-          보통 이런 상수들은 애플리케이션 전반에서 사용되기 때문에 public를 자주 사용합니다.
-          물론 특정 위치에서만 사용된다면 다른 접근제어자를 사용하면 됩니다.
-        
-      
-    
-  
-  상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
-  상수는 런타임에 변경할 수 없습니다.
-    
-      상수를 변경하려면 프로그램을 종료하고, 코드를 변경한 다음에 프로그램을 다시 실행해야 합니다.
-    
-  
-
-
-추가로 상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
-다음 두 예제를 비교해봅시다.
-
-ConstantMain1 - 상수 없음
-package final1;
-
-public class ConstantMain2 {
-
-  public static void main(String[] args) {
-    System.out.println("프로그램 최대 참여자 수 " + 1000);
-    int currentUserCount = 999;
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-  }
-
-  private static void process(int currentUserCount) {
-    System.out.println("참여자 수:" + currentUserCount);
-    if (currentUserCount &gt; 1000) {
-      System.out.println("대기자로 등록합니다.");
-    } else {
-      System.out.println("게임에 참여합니다.");
-    }
-  }
-}
-
-이 코드에는 다음과 같은 문제가 있습니다.
-
-
-  만약 프로그램 최대 참여자 수를 현재 1000명에서 2000명으로 변경해야 하면 2곳의 변경 포인트가 발생합니다.
-    
-      만약 애플리케이션의 100곳에서 이 숫자를 사용했다면 100곳을 모두 변경해야 합니다.
-    
-  
-  매직 넘버 문제도 있습니다.
-
-
-ConstatnMain2 - 상수 있음
-package final1;
-
-public class ConstantMain2 {
-
-  public static void main(String[] args) {
-    System.out.println("프로그램 최대 참여자 수 " + Constant.MAX_USERS);
-    int currentUserCount = 999;
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-    process(currentUserCount++);
-  }
-
-  private static void process(int currentUserCount) {
-    System.out.println("참여자 수:" + currentUserCount);
-    if (currentUserCount &gt; Constant.MAX_USERS) {
-      System.out.println("대기자로 등록합니다.");
-    } else {
-      System.out.println("게임에 참여합니다.");
-    }
-  }
-}
-
-
-  Constant.MAX_USERS 상수를 사용했습니다.
-    
-      만약 프로그램 최대 참여자 수를 변경해야 하면 Constant.MAX_USERS의 상수 값만 변경하면 됩니다.
-    
-  
-  매직 넘버 문제를 해결했습니다.
-    
-      숫자 1000이 아니라 사람이 인지할 수 있게 MAX_USERS라는 변수명으로 코드를 이해할 수 있습니다.
-    
-  
 
 
                         </a>
@@ -11038,6 +10873,172 @@ public class MemberMain {
 실행 결과
 id:dev, name:kobe
 id:dev, name:kang
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-03-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html"><h1 class="title_post">☕️[Java] final 변수와 상수 2</h1></a>
+                        <a href="/2024/Java/2024-03-07-finalVariableAndConstant2.html" class="txt_post">
+                            final 변수와 상수 2
+
+상수(Constant)
+
+  상수는 변하지 않고, 항상 일정한 값을 갖는 수를 말합니다.
+    
+      자바에서는 보통 단 하나만 존재하는 변하지 않는 고정된 값을 상수라 합니다.
+        
+          이런 이유로 상수는 static final 키워드를 사용합니다.
+        
+      
+    
+  
+
+
+자바 상수 특징
+
+  static final 키워드를 사용합니다.
+  대문자를 사용하고 구분은 _(언더스코어)로 합니다.(관례)
+    
+      일반적인 변수와 상수를 구분하기 위해 이렇게 합니다.
+    
+  
+  필드를 직접 접근해서 사용합니다.
+    
+      상수는 기능이 아니라 고정된 값 자체를 사용하는 것이 목적입니다.
+      상수는 값을 변경할 수 없습니다.
+        
+          따라서 필드에 직접 접근해도 데이터가 변하는 문제가 발생하지 않습니다.
+        
+      
+    
+  
+
+
+package final1;
+
+// 상수
+public class Constant {
+  // 수학 상수
+  public static final double PI = 3.14;
+  // 시간 상수
+  public static final int HOURS_IN_DAY = 24;
+  public static final int MINUTES_IN_HOUR = 60;
+  public static final int SECONDS_IN_MINUTE = 60;
+  // 애플리케이션 설정 상수
+  public static final int MAX_USERS = 1000;
+}
+
+
+
+  애플리케이션 안에는 다양한 상수가 존재할 수 있습니다.
+    
+      수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있습니다.
+        
+          보통 이런 상수들은 애플리케이션 전반에서 사용되기 때문에 public를 자주 사용합니다.
+          물론 특정 위치에서만 사용된다면 다른 접근제어자를 사용하면 됩니다.
+        
+      
+    
+  
+  상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
+  상수는 런타임에 변경할 수 없습니다.
+    
+      상수를 변경하려면 프로그램을 종료하고, 코드를 변경한 다음에 프로그램을 다시 실행해야 합니다.
+    
+  
+
+
+추가로 상수는 중앙에서 값을 하나로 관리할 수 있다는 장점도 있습니다.
+다음 두 예제를 비교해봅시다.
+
+ConstantMain1 - 상수 없음
+package final1;
+
+public class ConstantMain2 {
+
+  public static void main(String[] args) {
+    System.out.println("프로그램 최대 참여자 수 " + 1000);
+    int currentUserCount = 999;
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+  }
+
+  private static void process(int currentUserCount) {
+    System.out.println("참여자 수:" + currentUserCount);
+    if (currentUserCount &gt; 1000) {
+      System.out.println("대기자로 등록합니다.");
+    } else {
+      System.out.println("게임에 참여합니다.");
+    }
+  }
+}
+
+이 코드에는 다음과 같은 문제가 있습니다.
+
+
+  만약 프로그램 최대 참여자 수를 현재 1000명에서 2000명으로 변경해야 하면 2곳의 변경 포인트가 발생합니다.
+    
+      만약 애플리케이션의 100곳에서 이 숫자를 사용했다면 100곳을 모두 변경해야 합니다.
+    
+  
+  매직 넘버 문제도 있습니다.
+
+
+ConstatnMain2 - 상수 있음
+package final1;
+
+public class ConstantMain2 {
+
+  public static void main(String[] args) {
+    System.out.println("프로그램 최대 참여자 수 " + Constant.MAX_USERS);
+    int currentUserCount = 999;
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+    process(currentUserCount++);
+  }
+
+  private static void process(int currentUserCount) {
+    System.out.println("참여자 수:" + currentUserCount);
+    if (currentUserCount &gt; Constant.MAX_USERS) {
+      System.out.println("대기자로 등록합니다.");
+    } else {
+      System.out.println("게임에 참여합니다.");
+    }
+  }
+}
+
+
+  Constant.MAX_USERS 상수를 사용했습니다.
+    
+      만약 프로그램 최대 참여자 수를 변경해야 하면 Constant.MAX_USERS의 상수 값만 변경하면 됩니다.
+    
+  
+  매직 넘버 문제를 해결했습니다.
+    
+      숫자 1000이 아니라 사람이 인지할 수 있게 MAX_USERS라는 변수명으로 코드를 이해할 수 있습니다.
+    
+  
 
 
                         </a>
@@ -12993,6 +12994,154 @@ BankAccount를 사용하는 입장에서는 단 3가지 메서드만 알면 됩�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-02-28-accessModifier-5.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-28-accessModifier-5.html"><h1 class="title_post">☕️[Java] 접근 제어자의 사용 - 클래스 레벨</h1></a>
+                        <a href="/2024/Java/2024-02-28-accessModifier-5.html" class="txt_post">
+                            접근 제어자의 사용 - 클래스 레벨
+클래스 레벨의 접근 제어자 규칙
+
+  클래스 레벨의 접근 제어자는 public, default만 사용할 수 있습니다.
+    
+      private, protected는 사용할 수 없습니다.
+    
+  
+  public 클래스는 반드시 파일명과 이름이 같아야 합니다.
+    
+      하나의 자바 파일에 public 클래스는 하나만 등장할 수 있습니다.
+      하나의 자바 파일에 default 접근 제어자를 사용하는 클래스는 무한정 만들 수 있습니다.
+    
+  
+
+
+PublicClass.java 파일
+package access.a;
+
+public class PublicClass {
+    pulbic static void main(String[] args) {
+        PublicClass publicClass = new PublicClass();
+        DefaultClass1 class1 = new DefaultClass1();
+        DefaultClass2 class2 = new DefaultClass2();
+    }
+}
+
+class DefaultClass1 {
+}
+
+class DefaultClass2 {
+}
+
+
+  패키지 위치는 package access.a입니다. 패키지 위치를 꼭 맞추어야 합니다. 주의합시다.
+  PublicClass라는 이름의 클래스를 만들었습니다. 이 클래스는 public 접근 제어자입니다.
+    
+      따라서 파일명과 이 클래스의 이름이 반드시 같아야 합니다.
+        
+          이 클래스는 public이기 때문에 외부에서 접근할 수 있습니다.
+        
+      
+    
+  
+  DefaultClass1, DefaultClass2는 default 접근 제어자입니다.
+    
+      이 클래스는 default이기 때문에 같은 패키지 내부에서만 접근할 수 있습니다.
+    
+  
+  PublicClass의 main()을 보면 각각의 클래스를 사용하는 예를 보여줍니다.
+    
+      PublicClass의 main()을 보면 각각의 클래스를 사용하는 예를 보여줍니다.
+        
+          PublicClass는 public 접근 제어입니다.
+            
+              따라서 어디서든 사용할 수 있습니다.
+                
+                  DefaultClass1, DefaultClass2와는 같은 패키지에 있으므로 사용할 수 있습니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+PublicClassInnerMain
+package access.a;
+
+public class PublicClassInnerMain {
+
+  public static void main(String[] args) {
+    PublicClass publicClass = new PublicClass();
+    DefaultClass1 class1 = new DefaultClass1();
+    DefaultClass2 class2 = new DefaultClass2();
+  }
+}
+
+
+  패키지 위치는 package access.a입니다. 패키지 위치를 꼭 맞춰줘야합니다.
+  PublicClass는 public 클래스입니다.
+    
+      따라서 외부에서 접근할 수 있습니다.
+    
+  
+  PublicClassInnerMain와 DefaultClass1, DefaultClass2는 같은 패키지입니다.
+    
+      따라서 접근할 수 있습니다.
+    
+  
+
+
+PublicClassOuterMain
+package access.b;
+
+//import access.a.DefaultClass1;
+//import access.a.DefaultClass2;
+import access.a.PublicClass;
+
+public class PublicClassOuterMain {
+
+  public static void main(String[] args) {
+    PublicClass publicClass = new PublicClass();
+
+    // 다른 패키지 접근 불가.
+    //DefaultClass1 class1 = new DefaultClass1();
+    //DefaultClass2 class2 = new DefaultClass2();
+  }
+}
+
+
+  패키지 위치는 package accesss.b 입니다. 패키지 위치를 꼭 맞춰야합니다.
+  PublicClass는 public 클래스입니다.
+    
+      따라서 외부에서 접근할 수 있습니다.
+    
+  
+  PublicClassOuterMain와 DefaultClass1, DefaultClass2는 다른 패키지입니다.
+    
+      따라서 접근할 수 없습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-02-28-accessModifier-4.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -13254,154 +13403,6 @@ public class Speacker { // 클래스 레벨
   default는 나의 패키지 안으로 속성과 기능을 숨길 때 사용, 외부 패키지에서 해당 기능을 호출할 수 없습니다.
   protected는 상속 관계로 속성과 기능을 숨길 때 사용, 상속 관계가 아닌 곳에서 해당 기능을 호출할 수 없습니다.
   public은 기능을 숨기지 않고 어디서든 호출할 수 있게 공개합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-28-accessModifier-5.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-28-accessModifier-5.html"><h1 class="title_post">☕️[Java] 접근 제어자의 사용 - 클래스 레벨</h1></a>
-                        <a href="/2024/Java/2024-02-28-accessModifier-5.html" class="txt_post">
-                            접근 제어자의 사용 - 클래스 레벨
-클래스 레벨의 접근 제어자 규칙
-
-  클래스 레벨의 접근 제어자는 public, default만 사용할 수 있습니다.
-    
-      private, protected는 사용할 수 없습니다.
-    
-  
-  public 클래스는 반드시 파일명과 이름이 같아야 합니다.
-    
-      하나의 자바 파일에 public 클래스는 하나만 등장할 수 있습니다.
-      하나의 자바 파일에 default 접근 제어자를 사용하는 클래스는 무한정 만들 수 있습니다.
-    
-  
-
-
-PublicClass.java 파일
-package access.a;
-
-public class PublicClass {
-    pulbic static void main(String[] args) {
-        PublicClass publicClass = new PublicClass();
-        DefaultClass1 class1 = new DefaultClass1();
-        DefaultClass2 class2 = new DefaultClass2();
-    }
-}
-
-class DefaultClass1 {
-}
-
-class DefaultClass2 {
-}
-
-
-  패키지 위치는 package access.a입니다. 패키지 위치를 꼭 맞추어야 합니다. 주의합시다.
-  PublicClass라는 이름의 클래스를 만들었습니다. 이 클래스는 public 접근 제어자입니다.
-    
-      따라서 파일명과 이 클래스의 이름이 반드시 같아야 합니다.
-        
-          이 클래스는 public이기 때문에 외부에서 접근할 수 있습니다.
-        
-      
-    
-  
-  DefaultClass1, DefaultClass2는 default 접근 제어자입니다.
-    
-      이 클래스는 default이기 때문에 같은 패키지 내부에서만 접근할 수 있습니다.
-    
-  
-  PublicClass의 main()을 보면 각각의 클래스를 사용하는 예를 보여줍니다.
-    
-      PublicClass의 main()을 보면 각각의 클래스를 사용하는 예를 보여줍니다.
-        
-          PublicClass는 public 접근 제어입니다.
-            
-              따라서 어디서든 사용할 수 있습니다.
-                
-                  DefaultClass1, DefaultClass2와는 같은 패키지에 있으므로 사용할 수 있습니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-PublicClassInnerMain
-package access.a;
-
-public class PublicClassInnerMain {
-
-  public static void main(String[] args) {
-    PublicClass publicClass = new PublicClass();
-    DefaultClass1 class1 = new DefaultClass1();
-    DefaultClass2 class2 = new DefaultClass2();
-  }
-}
-
-
-  패키지 위치는 package access.a입니다. 패키지 위치를 꼭 맞춰줘야합니다.
-  PublicClass는 public 클래스입니다.
-    
-      따라서 외부에서 접근할 수 있습니다.
-    
-  
-  PublicClassInnerMain와 DefaultClass1, DefaultClass2는 같은 패키지입니다.
-    
-      따라서 접근할 수 있습니다.
-    
-  
-
-
-PublicClassOuterMain
-package access.b;
-
-//import access.a.DefaultClass1;
-//import access.a.DefaultClass2;
-import access.a.PublicClass;
-
-public class PublicClassOuterMain {
-
-  public static void main(String[] args) {
-    PublicClass publicClass = new PublicClass();
-
-    // 다른 패키지 접근 불가.
-    //DefaultClass1 class1 = new DefaultClass1();
-    //DefaultClass2 class2 = new DefaultClass2();
-  }
-}
-
-
-  패키지 위치는 package accesss.b 입니다. 패키지 위치를 꼭 맞춰야합니다.
-  PublicClass는 public 클래스입니다.
-    
-      따라서 외부에서 접근할 수 있습니다.
-    
-  
-  PublicClassOuterMain와 DefaultClass1, DefaultClass2는 다른 패키지입니다.
-    
-      따라서 접근할 수 없습니다.
-    
-  
 
 
                         </a>
@@ -13920,174 +13921,6 @@ public class OrderHistory {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html"><h1 class="title_post">☕️[Java] 생성자 - 오버로딩 this()</h1></a>
-                        <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="txt_post">
-                            생성자 - 오버로딩 this()
-생성자도 메서드 오버로딩처럼 매개변수만 다르게 해서 여러 생성자를 제공할 수 있습니다.
-
-MemberConstruct - 생성자 추가
-package construct;
-
-public class MemberConstruct {
-  String name;
-  int age;
-  int grade;
-
-  // 추가
-  MemberConstruct(String name, int age) {
-    this.name = name;
-    this.age = age;
-    this.grade = 50;
-  }
-
-  MemberConstruct(String name, int age, int grade) {
-    System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
-    this.name = name;
-    this.age = age;
-    this.grade = grade;
-  }
-}
-
-
-기존 MemberConstruct에 생성자를 하나 추가해서 생성자가 2개가 되었습니다.
-MemberConstruct(String name, int age)
-MemberConstruct(String name, int age, int grade)
-
-
-새로 추가한 생성자는 grade를 받지 않습니다. 대신에 grade는 50점이 됩니다.
-
-package construct;
-
-public class ConstructMain2 {
-
-  public static void main(String[] args) {
-    MemberConstruct member1 = new MemberConstruct("user1", 15, 90);
-    MemberConstruct member2 = new MemberConstruct("user2", 16);
-
-    MemberConstruct[] members = { member1, member2 };
-
-    for (MemberConstruct member : members) {
-      System.out.println("이름:" + member.name + " 나이:" + member.age + "성적:" + member.grade);
-    }
-  }
-}
-
-
-실행 결과
-생성자 호출 name=user1,age=15,grade=90
-이름:user1 나이:15성적:90
-이름:user2 나이:16성적:50
-
-
-
-  생성자를 오버로딩 한 덕분에 성적 입력이 꼭 필요한 경우에는 grade가 있는 생성자를 호출하면 되고, 그렇지 않은 경우에는 grade가 없는 생성자를 호출하면 됩니다.
-    
-      grade가 없는 생성자를 호출하면 성적은 50점이 됩니다.
-    
-  
-
-
-this()
-두 생성자를 비교해 보면 코드가 중복되는 부분이 있습니다.
-public MemberConstruct(String name, int age) {
-    this.name = name;
-    this.age = age;
-    this.grade = 50;
-}
-
-public MemberConstruct(String name, int age, int grade) {
-    this.name = name; 
-    this.age = age;
-    this.grade = grade;
-}
-
-
-바로 다음 부분입니다.
-this.name = name;
-this.age = age;
-
-
-이때 this()라는 기능을 사용하면 생성자 내부에서 자신의 생성자를 호출할 수 있습니다.
-
-
-  참고로 this는 인스턴스 자신의 참조값을 가리킵니다. 그래서 자신의 생성자를 호출한다고 생각하면됩니다.
-
-
-MemberConstruct - this() 사용
-package construct;
-
-public class MemberConstruct {
-  String name;
-  int age;
-  int grade;
-
-  // 추가
-  MemberConstruct(String name, int age) {
-    this(name, age, 50);
-  }
-
-  MemberConstruct(String name, int age, int grade) {
-    System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
-    this.name = name;
-    this.age = age;
-    this.grade = grade;
-  }
-}
-
-
-
-  이 코드는 첫번째 생성자 내부에서 두번째 생성자를 호출합니다.
-    MemberConstruct(String name, int age) -&gt; MemberConstruct(String name, int age, int grade)
-    
-  
-  this()를 사용하면 생성자 내부에서 다른 생성자를 호출할 수 있습니다.
-    
-      이 부분을 잘 활용하면 지금과 같이 중복을 제거할 수 있습니다.
-        
-          물론 실행 결과는 기존과 같습니다.
-        
-      
-    
-  
-
-
-this() 규칙
-
-  this()는 생성자 코드의 첫줄에만 작성할 수 있습니다.
-
-
-다음은 규칙 위반입니다.
-이 경우 컴파일 오류가 발생합니다.
-public MemberConstruct(String name, int age) {
-    Sytem.out.println("go");
-    this(name, age, 50);
-}
-
-
-  this()가 생성자 코드의 첫줄에 사용되지 않았습니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-02-25-init(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -14526,40 +14359,29 @@ public class PackageMain3 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-24-init(2).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                            <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/Java/2024-02-24-init(2).html"><h1 class="title_post">☕️[Java] 생성자 - 도입</h1></a>
-                        <a href="/2024/Java/2024-02-24-init(2).html" class="txt_post">
-                            생성자 - 도입
+                        <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html"><h1 class="title_post">☕️[Java] 생성자 - 오버로딩 this()</h1></a>
+                        <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="txt_post">
+                            생성자 - 오버로딩 this()
+생성자도 메서드 오버로딩처럼 매개변수만 다르게 해서 여러 생성자를 제공할 수 있습니다.
 
-  프로그래밍을 하다보면 객체를 생성하고 이후에 바로 초기값을 할당해야 하는 경우가 많습니다.
-    
-      따라서 앞서 initMember(...)와 같은 메서드를 매번 만들어야 합니다.
-        
-          “그래서 대부분의 객체 지향 언어는 객체를 생성하자마자 즉시 필요한 기능을 좀 더 편리하게 수행할 수 있도록 생성자라는 기능을 제공합니다.”
-            
-              생성자를 사용하면 객체를 생성하는 시점에 즉시 필요한 기능을 수행할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-생성자는 앞서 살펴본 initMember(...)와 같이 메서드와 유사하지만 몇가지 다른 특징이 있습니다.
-
-아래 코드를 보면서 이해해봅시다.
-
-MemberConstruct
+MemberConstruct - 생성자 추가
 package construct;
 
 public class MemberConstruct {
   String name;
   int age;
   int grade;
+
+  // 추가
+  MemberConstruct(String name, int age) {
+    this.name = name;
+    this.age = age;
+    this.grade = 50;
+  }
 
   MemberConstruct(String name, int age, int grade) {
     System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
@@ -14570,29 +14392,20 @@ public class MemberConstruct {
 }
 
 
-“다음 부분이 바로 생성자입니다.”
-MemberConstruct(String name, int age, int grade) {
-    System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
-    this.name = name;
-    this.age = age;
-    this.grade = grade;
-}
-
-“생성자는 메서드와 비슷하지만 다음과 같은 차이가 있습니다.”
-
-  생성자의 이름은 클래스 이름과 같아야 합니다. 따라서 첫 글자도 대문자로 시작합니다.
-  생성자는 반환 타입이 없습니다. 비워두워야 합니다.
-  나머지는 메서드와 같습니다.
+기존 MemberConstruct에 생성자를 하나 추가해서 생성자가 2개가 되었습니다.
+MemberConstruct(String name, int age)
+MemberConstruct(String name, int age, int grade)
 
 
-ConstructMain1
+새로 추가한 생성자는 grade를 받지 않습니다. 대신에 grade는 50점이 됩니다.
+
 package construct;
 
-public class ConstructMain1 {
+public class ConstructMain2 {
 
   public static void main(String[] args) {
     MemberConstruct member1 = new MemberConstruct("user1", 15, 90);
-    MemberConstruct member2 = new MemberConstruct("user2", 16, 80);
+    MemberConstruct member2 = new MemberConstruct("user2", 16);
 
     MemberConstruct[] members = { member1, member2 };
 
@@ -14605,121 +14418,104 @@ public class ConstructMain1 {
 
 실행 결과
 생성자 호출 name=user1,age=15,grade=90
-생성자 호출 name=user2,age=16,grade=80
 이름:user1 나이:15성적:90
-이름:user2 나이:16성적:80
+이름:user2 나이:16성적:50
 
 
-생성자 호출
 
-  생성자는 인스턴스를 생성하고 나서 즉시 호출됩니다.
+  생성자를 오버로딩 한 덕분에 성적 입력이 꼭 필요한 경우에는 grade가 있는 생성자를 호출하면 되고, 그렇지 않은 경우에는 grade가 없는 생성자를 호출하면 됩니다.
     
-      생성자를 호출하는 방법은 다음 코드와 같이 new 명령어 다음에 생성자 이름과 매개변수에 맞추어 인수를 전달하면 됩니다.
-        new 생성자이름(생성자에 맞는 인수 목록)
-new 클래스이름(생성자에 맞는 인수 목록)
+      grade가 없는 생성자를 호출하면 성적은 50점이 됩니다.
+    
+  
+
+
+this()
+두 생성자를 비교해 보면 코드가 중복되는 부분이 있습니다.
+public MemberConstruct(String name, int age) {
+    this.name = name;
+    this.age = age;
+    this.grade = 50;
+}
+
+public MemberConstruct(String name, int age, int grade) {
+    this.name = name; 
+    this.age = age;
+    this.grade = grade;
+}
+
+
+바로 다음 부분입니다.
+this.name = name;
+this.age = age;
+
+
+이때 this()라는 기능을 사용하면 생성자 내부에서 자신의 생성자를 호출할 수 있습니다.
+
+
+  참고로 this는 인스턴스 자신의 참조값을 가리킵니다. 그래서 자신의 생성자를 호출한다고 생각하면됩니다.
+
+
+MemberConstruct - this() 사용
+package construct;
+
+public class MemberConstruct {
+  String name;
+  int age;
+  int grade;
+
+  // 추가
+  MemberConstruct(String name, int age) {
+    this(name, age, 50);
+  }
+
+  MemberConstruct(String name, int age, int grade) {
+    System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
+    this.name = name;
+    this.age = age;
+    this.grade = grade;
+  }
+}
+
+
+
+  이 코드는 첫번째 생성자 내부에서 두번째 생성자를 호출합니다.
+    MemberConstruct(String name, int age) -&gt; MemberConstruct(String name, int age, int grade)
+    
+  
+  this()를 사용하면 생성자 내부에서 다른 생성자를 호출할 수 있습니다.
+    
+      이 부분을 잘 활용하면 지금과 같이 중복을 제거할 수 있습니다.
+        
+          물론 실행 결과는 기존과 같습니다.
         
       
     
   
 
 
+this() 규칙
 
-  참고로 생성자 이름이 클래스 이름이기 때문에 둘다 맞는 표현입니다.
-
-
-new MemberConstruct("user1", 15, 90)
+  this()는 생성자 코드의 첫줄에만 작성할 수 있습니다.
 
 
-  이렇게 하면 인스턴스를 생성하고 즉시 해당 생성자를 호출합니다.
-    
-      여기서는 Memeber 인스턴스를 생성하고 바로 MemberConstruct(String name, int age, int grade) 생성자를 호출합니다.
-    
-  
+다음은 규칙 위반입니다.
+이 경우 컴파일 오류가 발생합니다.
+public MemberConstruct(String name, int age) {
+    Sytem.out.println("go");
+    this(name, age, 50);
+}
 
 
+  this()가 생성자 코드의 첫줄에 사용되지 않았습니다.
 
-  참고로 new 키워드를 사용해서 객체를 생성할 때 마지막에 괄호()도 포함해야 하는 이유가 바로 생성자 때문입니다. 객체를 생성하면서 동시에 생성자를 호출한다는 의미를 포함합니다.
-
-
-생성자 장점
-중복 호출 제거
-생성자가 없던 시절에는 생성 직후에 어떤 작업을 수행하기 위해 다음과 같이 메서드를 직접 한번 더 호출해야 했습니다.
-“생성자 덕분에 객체를 생성하면서 동시에 생성 직후에 필요한 작업을 한번에 처리할 수 있게 되었습니다.”
-// 생성자 등장 전
-MemberInit member = new MemberInit();
-member.initMember("user1", 15, 90);
-
-// 생성자 등장 후
-MemberConstruct member = new MemberConstruct("user1", 15, 90);
-
-
-제약 - 생성자 호출 필수
-위 코드에서 생성자 등장 전 코드를 보며 이해해봅시다.
-“이 경우 initMember(...)를 실수로 호출하지 않으면 어떻게 될까요?”
-
-  이 메서드를 실수로 호출하지 않아도 프로그램은 작동합니다.
-    
-      하지만 학생의 이름과 나이, 성적 데이터가 없는 상태로 프로그램이 작동하게 됩니다.
-    
-  
-
-
-“만약에 이 값들을 필수로 반드시 입력해야 한다면, 시스템에 큰 문제가 발생할 수 있습니다.”
-
-  결국 아무 정보가 없는 유령 학생이 시스템 내부에 등장하게 됩니다.
-
-
-생성자의 진짜 장점은 객체를 생성할 때 직접 정의한 생성자가 있다면 “직접 정의한 생성자를 반드시 호출” 해야 한다는 점입니다.
-
-
-  참고로 생성자를 메서드 오버로딩 처럼 여러개 정의할 수 있는데, 이 경우에는 하나만 호출하면 됩니다.
-
-
-“MemberConstruct 클래스의 경우 다음 생성자를 직접 정의했기 때문에 직접 정의한 생성자를 반드시 호출해야 합니다.”
-
-MemberConstruct(String name, int age, int grade) { ... }
-
-
-다음과 같이 직접 정의한 생성자를 호출하지 않으면 컴파일 오류가 발생합니다.
-MemberConstruct member3 = new MemberConstruct(); // 컴파일 오류 발생
-member3.name = "user1";
-
-
-컴파일 오류 메시지
-java: constructor MemberConstruct in class construct.MemberConstruct cannot be applied to given types;
-  required: java.lang.String,int,int
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-
-
-컴파일 오류는 IDE에서 즉시 확인할 수 있는 좋은 오류입니다.
-
-  이 경우 개발자는 객체를 생성할 때, 직접 정의한 생성자를 필수로 호출해야 한다는 것을 바로 알 수 있습니다.
-    
-      그래서 필요한 생성자를 찾아서 다음과 같이 호출할 것입니다.
-        MemberConstruct member = new MemberConstruct("user1", 15, 90);
-        
-      
-    
-  
-
-
-“생성자 덕분에 학생의 이름, 나이, 성적은 항상 필수로 입력하게 됩니다.”
-
-  따라서 아무 정보가 없는 유령 회원이 시스템 내부에 등장할 가능성을 원천 차단합니다.
-
-
-“생성자를 사용하면 필수값 입력을 보장할 수 있습니다.”
-
-
-  참고: 좋은 프로그램은 무한한 자유도가 주어지는 프로그램이 아니라 적절한 제약이 있는 프로그램입니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/2024" class="category">2024</a>
                             
-                                <span class="date">· 2024-02-24</span>
+                                <span class="date">· 2024-02-25</span>
                             
                         </div>
                     </div>
@@ -14926,6 +14722,211 @@ public class MemberThis {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-02-24-init(2).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-24-init(2).html"><h1 class="title_post">☕️[Java] 생성자 - 도입</h1></a>
+                        <a href="/2024/Java/2024-02-24-init(2).html" class="txt_post">
+                            생성자 - 도입
+
+  프로그래밍을 하다보면 객체를 생성하고 이후에 바로 초기값을 할당해야 하는 경우가 많습니다.
+    
+      따라서 앞서 initMember(...)와 같은 메서드를 매번 만들어야 합니다.
+        
+          “그래서 대부분의 객체 지향 언어는 객체를 생성하자마자 즉시 필요한 기능을 좀 더 편리하게 수행할 수 있도록 생성자라는 기능을 제공합니다.”
+            
+              생성자를 사용하면 객체를 생성하는 시점에 즉시 필요한 기능을 수행할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+생성자는 앞서 살펴본 initMember(...)와 같이 메서드와 유사하지만 몇가지 다른 특징이 있습니다.
+
+아래 코드를 보면서 이해해봅시다.
+
+MemberConstruct
+package construct;
+
+public class MemberConstruct {
+  String name;
+  int age;
+  int grade;
+
+  MemberConstruct(String name, int age, int grade) {
+    System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
+    this.name = name;
+    this.age = age;
+    this.grade = grade;
+  }
+}
+
+
+“다음 부분이 바로 생성자입니다.”
+MemberConstruct(String name, int age, int grade) {
+    System.out.println("생성자 호출 name=" + name + ",age=" + age + ",grade=" + grade);
+    this.name = name;
+    this.age = age;
+    this.grade = grade;
+}
+
+“생성자는 메서드와 비슷하지만 다음과 같은 차이가 있습니다.”
+
+  생성자의 이름은 클래스 이름과 같아야 합니다. 따라서 첫 글자도 대문자로 시작합니다.
+  생성자는 반환 타입이 없습니다. 비워두워야 합니다.
+  나머지는 메서드와 같습니다.
+
+
+ConstructMain1
+package construct;
+
+public class ConstructMain1 {
+
+  public static void main(String[] args) {
+    MemberConstruct member1 = new MemberConstruct("user1", 15, 90);
+    MemberConstruct member2 = new MemberConstruct("user2", 16, 80);
+
+    MemberConstruct[] members = { member1, member2 };
+
+    for (MemberConstruct member : members) {
+      System.out.println("이름:" + member.name + " 나이:" + member.age + "성적:" + member.grade);
+    }
+  }
+}
+
+
+실행 결과
+생성자 호출 name=user1,age=15,grade=90
+생성자 호출 name=user2,age=16,grade=80
+이름:user1 나이:15성적:90
+이름:user2 나이:16성적:80
+
+
+생성자 호출
+
+  생성자는 인스턴스를 생성하고 나서 즉시 호출됩니다.
+    
+      생성자를 호출하는 방법은 다음 코드와 같이 new 명령어 다음에 생성자 이름과 매개변수에 맞추어 인수를 전달하면 됩니다.
+        new 생성자이름(생성자에 맞는 인수 목록)
+new 클래스이름(생성자에 맞는 인수 목록)
+        
+      
+    
+  
+
+
+
+  참고로 생성자 이름이 클래스 이름이기 때문에 둘다 맞는 표현입니다.
+
+
+new MemberConstruct("user1", 15, 90)
+
+
+  이렇게 하면 인스턴스를 생성하고 즉시 해당 생성자를 호출합니다.
+    
+      여기서는 Memeber 인스턴스를 생성하고 바로 MemberConstruct(String name, int age, int grade) 생성자를 호출합니다.
+    
+  
+
+
+
+  참고로 new 키워드를 사용해서 객체를 생성할 때 마지막에 괄호()도 포함해야 하는 이유가 바로 생성자 때문입니다. 객체를 생성하면서 동시에 생성자를 호출한다는 의미를 포함합니다.
+
+
+생성자 장점
+중복 호출 제거
+생성자가 없던 시절에는 생성 직후에 어떤 작업을 수행하기 위해 다음과 같이 메서드를 직접 한번 더 호출해야 했습니다.
+“생성자 덕분에 객체를 생성하면서 동시에 생성 직후에 필요한 작업을 한번에 처리할 수 있게 되었습니다.”
+// 생성자 등장 전
+MemberInit member = new MemberInit();
+member.initMember("user1", 15, 90);
+
+// 생성자 등장 후
+MemberConstruct member = new MemberConstruct("user1", 15, 90);
+
+
+제약 - 생성자 호출 필수
+위 코드에서 생성자 등장 전 코드를 보며 이해해봅시다.
+“이 경우 initMember(...)를 실수로 호출하지 않으면 어떻게 될까요?”
+
+  이 메서드를 실수로 호출하지 않아도 프로그램은 작동합니다.
+    
+      하지만 학생의 이름과 나이, 성적 데이터가 없는 상태로 프로그램이 작동하게 됩니다.
+    
+  
+
+
+“만약에 이 값들을 필수로 반드시 입력해야 한다면, 시스템에 큰 문제가 발생할 수 있습니다.”
+
+  결국 아무 정보가 없는 유령 학생이 시스템 내부에 등장하게 됩니다.
+
+
+생성자의 진짜 장점은 객체를 생성할 때 직접 정의한 생성자가 있다면 “직접 정의한 생성자를 반드시 호출” 해야 한다는 점입니다.
+
+
+  참고로 생성자를 메서드 오버로딩 처럼 여러개 정의할 수 있는데, 이 경우에는 하나만 호출하면 됩니다.
+
+
+“MemberConstruct 클래스의 경우 다음 생성자를 직접 정의했기 때문에 직접 정의한 생성자를 반드시 호출해야 합니다.”
+
+MemberConstruct(String name, int age, int grade) { ... }
+
+
+다음과 같이 직접 정의한 생성자를 호출하지 않으면 컴파일 오류가 발생합니다.
+MemberConstruct member3 = new MemberConstruct(); // 컴파일 오류 발생
+member3.name = "user1";
+
+
+컴파일 오류 메시지
+java: constructor MemberConstruct in class construct.MemberConstruct cannot be applied to given types;
+  required: java.lang.String,int,int
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+
+
+컴파일 오류는 IDE에서 즉시 확인할 수 있는 좋은 오류입니다.
+
+  이 경우 개발자는 객체를 생성할 때, 직접 정의한 생성자를 필수로 호출해야 한다는 것을 바로 알 수 있습니다.
+    
+      그래서 필요한 생성자를 찾아서 다음과 같이 호출할 것입니다.
+        MemberConstruct member = new MemberConstruct("user1", 15, 90);
+        
+      
+    
+  
+
+
+“생성자 덕분에 학생의 이름, 나이, 성적은 항상 필수로 입력하게 됩니다.”
+
+  따라서 아무 정보가 없는 유령 회원이 시스템 내부에 등장할 가능성을 원천 차단합니다.
+
+
+“생성자를 사용하면 필수값 입력을 보장할 수 있습니다.”
+
+
+  참고: 좋은 프로그램은 무한한 자유도가 주어지는 프로그램이 아니라 적절한 제약이 있는 프로그램입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-02-24-init(1).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -15030,6 +15031,141 @@ public class MethodInitMain2 {
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-02-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(3)</h1></a>
+                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html" class="txt_post">
+                            절차 지향 프로그래밍(3) - 메서드 추출
+
+코드를 보면 다음과 같이 중복되는 부분들이 있습니다.
+// 볼륨 증가
+data.volume++;
+System.out.println("음악 플레이어 볼륨:" + data.volume);
+
+// 볼륨 증가
+data.volume++;
+System.out.println("음악 플레이어 볼륨:" + data.volume);
+
+
+그리고 각각의 기능들은 이후에 재사용 될 가능성이 높습니다.
+
+  음악 플레이어 켜기, 끄기
+  볼륨 증가, 감소
+  음악 플레이어 상태 출력
+
+
+“메서드를 사용해서 각각의 기능을 구분해봅시다.”
+
+MusicPlayerMain3
+package oop1;
+
+public class MusicPlayerMain3 {
+
+  public static void main(String[] args) {
+    MusicPlayerData data = new MusicPlayerData();
+    // 음악 플레이어 켜기
+    on(data);
+    // 볼륨 증가
+    volumeUp(data);
+    // 볼륨 증가
+    volumeUp(data);
+    // 볼륨 감소
+    volumeDown(data);
+    // 음악 플레이어 상태
+    showStatus(data);
+    // 음악 플레이어 끄기
+    off(data);
+  }
+
+  static void on(MusicPlayerData data) {
+    data.isOn = true;
+    System.out.println("음악 플레이어를 시작합니다.");
+  }
+
+  static void off(MusicPlayerData data) {
+    data.isOn = false;
+    System.out.println("음악 플레이어를 종료합니다.");
+  }
+
+  static void volumeUp(MusicPlayerData data) {
+    data.volume++;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+  }
+
+  static void volumeDown(MusicPlayerData data) {
+    data.volume--;
+    System.out.println("음악 플레이어 볼륨:" + data.volume);
+  }
+
+  static void showStatus(MusicPlayerData data) {
+    System.out.println("음악 플레이어 상태 확인");
+    if (data.isOn) {
+      System.out.println("음악 플레이어 ON, 볼륨:" + data.volume);
+    } else {
+      System.out.println("음악 플레이어 OFF");
+    }
+  }
+}
+
+
+각각의 기능을 메서도로 만든 덕분에 각각의 기능이 모듈화 되었습니다.
+덕분에 다음과 같은 장점이 생겼습니다.
+
+  중복 제거: 로직 중복이 제거되었습니다. 같은 로직이 필요하면 해당 메서드를 여러번 호출하면 됩니다.
+  변경 영향 범위: 기능을 수정할 때 해당 메서드 내부만 변경하면 됩니다.
+  메서드 이름 추가: 메서드 이름을 통해 코드를 더 쉽게 이해할 수 있습니다.
+
+
+
+  모듈화: 쉽게 이야기해서 레고 블럭을 생각하면 됩니다. 필요한 블럭을 가져다 꼽아서 사용할 수 있습니다. 여기서는 음악 플레이어의 기능이 필요하면 해당 기능을 메서드 호출 만으로 손쉽게 사용할 수 있습니다. 이제 음악 플레이어와 관련된 메서드를 조립해서 프로그램을 작성할 수 있습니다.
+
+
+절차 지향 프로그래밍의 한계
+지금까지 클래스를 사용해서 관련된 데이터를 하나로 묶고, 또 메서드를 사용해서 각각의 기능을 모듈화했습니다.
+덕분에 상당히 깔끔하고 읽기 좋고, 유지보수 하기 좋은 코드를 작성할 수 있었습니다.
+하지만 여기서 더 개선할 수는 없을까요?
+
+작성한 코드의 한계는 바로 데이터와 기능이 분리되어 있다는 점입니다.
+음악 플레이어의 데이터는 MusicPlayerData에 있는데, 그 데이터를 사용하는 기능은 MusicPlayerMain3에 있는 각각의 메서드에 분리되어 있습니다.
+그래서 음악 플레이어와 관련된 데이터는 MusicPlayerData를 사용해야 하고, 음악 플레이어와 관련된 기능은 MusicPlayerMain3의 각 메서드를 사용해야 합니다.
+
+데이터와 그 데이터를 사용하는 기능은 매우 밀접하게 연관되어 있습니다.
+각각의 메서드를 보면 대부분 MusicPlayerData의 데이터를 사용합니다.
+따라서 이후에 관련 데이터가 변경되면 MusicPlayerMain3 부분의 메서드들도 함께 변경해야 합니다.
+그리고 이렇게 데이터와 기능이 분리되어 있으면 유지보수 관점에서도 관리 포인트가 2곳으로 늘어납니다.
+
+“객체 지향 프로그래밍이 나오기 전까지는 지금과 같이 데이터와 기능이 분리되어 있었습니다.”
+
+  따라서 지금과 같은 코드가 최선이였습니다.
+    
+      하지만 객체 지향 프로그래밍이 나오면서 데이터와 기능을 온전히 하나로 묶어서 사용할 수 있게 되었습니다.
+    
+  
+
+
+“데이터와 기능을 하나로 온전히 묶는다는 것이 어떤 의미인지 이해하기 위해 간단한 예시 코드를 만들어봅시다”
+
+  이 예시 코드는 다음 포스팅에 이어집니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-23</span>
                             
                         </div>
                     </div>
@@ -15555,141 +15691,6 @@ x002.add(); // 2 x002 ValueData 인스턴스에 있는 add() 메서드를 호출
 
 
 객체 지향의 특징은 속성과 기능을 하나로 묶는 것 뿐만 아니라 캡슐화, 상속, 다형성, 추상화, 메시지 전달 같은 다양한 특징들이 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html"><h1 class="title_post">☕️[Java] 절차 지향 프로그래밍(3)</h1></a>
-                        <a href="/2024/Java/2024-02-23-procedure-oriented-programming(3).html" class="txt_post">
-                            절차 지향 프로그래밍(3) - 메서드 추출
-
-코드를 보면 다음과 같이 중복되는 부분들이 있습니다.
-// 볼륨 증가
-data.volume++;
-System.out.println("음악 플레이어 볼륨:" + data.volume);
-
-// 볼륨 증가
-data.volume++;
-System.out.println("음악 플레이어 볼륨:" + data.volume);
-
-
-그리고 각각의 기능들은 이후에 재사용 될 가능성이 높습니다.
-
-  음악 플레이어 켜기, 끄기
-  볼륨 증가, 감소
-  음악 플레이어 상태 출력
-
-
-“메서드를 사용해서 각각의 기능을 구분해봅시다.”
-
-MusicPlayerMain3
-package oop1;
-
-public class MusicPlayerMain3 {
-
-  public static void main(String[] args) {
-    MusicPlayerData data = new MusicPlayerData();
-    // 음악 플레이어 켜기
-    on(data);
-    // 볼륨 증가
-    volumeUp(data);
-    // 볼륨 증가
-    volumeUp(data);
-    // 볼륨 감소
-    volumeDown(data);
-    // 음악 플레이어 상태
-    showStatus(data);
-    // 음악 플레이어 끄기
-    off(data);
-  }
-
-  static void on(MusicPlayerData data) {
-    data.isOn = true;
-    System.out.println("음악 플레이어를 시작합니다.");
-  }
-
-  static void off(MusicPlayerData data) {
-    data.isOn = false;
-    System.out.println("음악 플레이어를 종료합니다.");
-  }
-
-  static void volumeUp(MusicPlayerData data) {
-    data.volume++;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-  }
-
-  static void volumeDown(MusicPlayerData data) {
-    data.volume--;
-    System.out.println("음악 플레이어 볼륨:" + data.volume);
-  }
-
-  static void showStatus(MusicPlayerData data) {
-    System.out.println("음악 플레이어 상태 확인");
-    if (data.isOn) {
-      System.out.println("음악 플레이어 ON, 볼륨:" + data.volume);
-    } else {
-      System.out.println("음악 플레이어 OFF");
-    }
-  }
-}
-
-
-각각의 기능을 메서도로 만든 덕분에 각각의 기능이 모듈화 되었습니다.
-덕분에 다음과 같은 장점이 생겼습니다.
-
-  중복 제거: 로직 중복이 제거되었습니다. 같은 로직이 필요하면 해당 메서드를 여러번 호출하면 됩니다.
-  변경 영향 범위: 기능을 수정할 때 해당 메서드 내부만 변경하면 됩니다.
-  메서드 이름 추가: 메서드 이름을 통해 코드를 더 쉽게 이해할 수 있습니다.
-
-
-
-  모듈화: 쉽게 이야기해서 레고 블럭을 생각하면 됩니다. 필요한 블럭을 가져다 꼽아서 사용할 수 있습니다. 여기서는 음악 플레이어의 기능이 필요하면 해당 기능을 메서드 호출 만으로 손쉽게 사용할 수 있습니다. 이제 음악 플레이어와 관련된 메서드를 조립해서 프로그램을 작성할 수 있습니다.
-
-
-절차 지향 프로그래밍의 한계
-지금까지 클래스를 사용해서 관련된 데이터를 하나로 묶고, 또 메서드를 사용해서 각각의 기능을 모듈화했습니다.
-덕분에 상당히 깔끔하고 읽기 좋고, 유지보수 하기 좋은 코드를 작성할 수 있었습니다.
-하지만 여기서 더 개선할 수는 없을까요?
-
-작성한 코드의 한계는 바로 데이터와 기능이 분리되어 있다는 점입니다.
-음악 플레이어의 데이터는 MusicPlayerData에 있는데, 그 데이터를 사용하는 기능은 MusicPlayerMain3에 있는 각각의 메서드에 분리되어 있습니다.
-그래서 음악 플레이어와 관련된 데이터는 MusicPlayerData를 사용해야 하고, 음악 플레이어와 관련된 기능은 MusicPlayerMain3의 각 메서드를 사용해야 합니다.
-
-데이터와 그 데이터를 사용하는 기능은 매우 밀접하게 연관되어 있습니다.
-각각의 메서드를 보면 대부분 MusicPlayerData의 데이터를 사용합니다.
-따라서 이후에 관련 데이터가 변경되면 MusicPlayerMain3 부분의 메서드들도 함께 변경해야 합니다.
-그리고 이렇게 데이터와 기능이 분리되어 있으면 유지보수 관점에서도 관리 포인트가 2곳으로 늘어납니다.
-
-“객체 지향 프로그래밍이 나오기 전까지는 지금과 같이 데이터와 기능이 분리되어 있었습니다.”
-
-  따라서 지금과 같은 코드가 최선이였습니다.
-    
-      하지만 객체 지향 프로그래밍이 나오면서 데이터와 기능을 온전히 하나로 묶어서 사용할 수 있게 되었습니다.
-    
-  
-
-
-“데이터와 기능을 하나로 온전히 묶는다는 것이 어떤 의미인지 이해하기 위해 간단한 예시 코드를 만들어봅시다”
-
-  이 예시 코드는 다음 포스팅에 이어집니다.
-
 
                         </a>
                         <div class="info-post">
@@ -24324,6 +24325,17 @@ public class Var2 {
             'url'      : "/Backend/Spring/2024-09-01-when-use-controller-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-01"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 도메인(Domain)의 의미.",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-02-domain.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-02"
         });
     
 

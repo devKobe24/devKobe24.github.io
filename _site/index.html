@@ -643,6 +643,7 @@
             
             
             
+            
 
     
     
@@ -1007,6 +1008,192 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-03-java-spring.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-03-java-spring.html"><h1 class="title_post">🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.</h1></a>
+                        <a href="/Backend/Spring/2024-09-03-java-spring.html" class="txt_post">
+                            🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.
+
+  스프링에서 자바 코드로 스프링 빈을 직접 등록하는 방법은 주로 @Configuration 애노테이션과 @Bean 애노테이션을 사용하여 이루어 집니다.
+    
+      이 방식은 XML 설정 파일 대신 자바 클래스를 사용하여 스프링 빈을 정의하고 관리하는 방법입니다.
+    
+  
+
+
+1️⃣ @Configuration 과 @Bean 을 사용한 빈 등록
+
+  @Configuration
+    
+      이 애노테이션은 해당 클래스가 하나 이상의 @Bean 메서드를 포함하고 있으며, 스프링 컨테이너에서 빈 정의를 생성하고 처리할 수 있는 설정 클래스임을 나타냅니다.
+    
+  
+  @Bean
+    
+      이 애노테이션은 메서드 레벨에서 사용되며, 메서드의 리턴값이 스프링 컨테이너에 의해 관리되는 빈(Bean)이 됨을 나타냅니다.
+    
+  
+
+
+2️⃣ 예시.
+아래는 MemoryMemberRepository 클래스를 자바 코드로 스프링 빈으로 등록하는 방법을 보여주는 예시입니다.
+
+  1. 빈으로 등록할 클래스 정의
+```java
+package com.devkobe.hello_spring.repository;
+
+
+import com.devkobe.hello_spring.domain.Member;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+public class MemoryMemberRepository implements MemberRepository {
+
+private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+private static long sequence = 0L;
+
+@Override
+public Member save(Member member) {
+    member.setId(++sequence);
+    store.put(member.getId(), member);
+    return member;
+}
+
+@Override
+public Optional&lt;Member&gt; findById(Long id) {
+    return Optional.ofNullable(store.get(id));
+}
+
+@Override
+public Optional&lt;Member&gt; findByName(String name) {
+    return store.values().stream()
+            .filter(member -&gt; member.getName().equals(name))
+            .findAny();
+}
+
+@Override
+public List&lt;Member&gt; findAll() {
+    return new ArrayList&lt;&gt;(store.values());
+}
+
+public void clearStore() {
+    store.clear();
+} } ```
+
+
+
+  2. 자바 설정 파일에서 빈 등록
+```java
+package com.devkobe.hello_spring.config;
+
+
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+@Bean
+public MemberRepository memberRepository() {
+    return new MemoryMemberRepository();
+} } ```
+
+
+
+  3. 스프링 컨테이너에서 빈 사용
+```java
+package com.devkobe.hello_spring.service;
+
+
+import com.devkobe.hello_spring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberService {
+
+private final MemberRepository memberRepository;
+
+@Autowired
+public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
+}
+
+// 비즈니스 로직 메서드들... } ```
+
+
+3️⃣ 설명.
+
+  AppConfig 클래스
+    
+      @Configuration 애노테이션을 사용하여 이 클래스가 스프링 설정 클래스로 사용될 것임을 명시합니다.
+      memberRepository() 메서드는 @Bean 애노테이션으로 정의되어 있으며, 이 메서드의 리턴값이 스프링 컨테이너에 의해 관리되는 빈이 됩니다.
+        
+          이 경우, MemoryMemberRepository 객체가 빈으로 등록됩니다.
+        
+      
+    
+  
+  빈 사용
+    
+      MemberService 클래스에서 MemberRepository 타입의 빈이 생성자 주입 방식으로 주입됩니다.
+        
+          이때, AppConfig 클래스에서 등록된 MemoryMemberRepository 빈이 주입됩니다.
+        
+      
+    
+  
+
+
+4️⃣ 왜 자바 설정을 사용할까?
+
+  1. 타입 안정성
+    
+      자바 코드는 컴파일 시점에 타입을 체크할 수 있으므로, XML보다 타입 안정성이 높습니다.
+    
+  
+  2. IDE 지원
+    
+      자바 기반 설정은 IDE의 자동 완성 기능과 리팩토링 도구를 잘 지원받을 수 있습니다.
+    
+  
+  3. 코드 재사용성
+    
+      자바 설정 클래스는 일반 자바 코드처럼 재사용 사능하며, 상속과 조합 등을 활용할 수 있습니다.
+    
+  
+
+
+5️⃣ 결론
+
+  스프링에서 자바 코드로 빈을 등록하는 방법은 @Configuration 과 @Bean 애노테이션을 사용한 방법입니다.
+    
+      이 방식은 XML 기반 설정보다 더 타입 안전하고, 유지보수하기 쉬우며, 현대적인 스프링 애플리케이션에서 자주 사용됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -30384,404 +30571,6 @@ Process finished with exit code 0
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-04-19-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-04-19-Class.html"><h1 class="title_post">☕️[Java] Class 클래스</h1></a>
-                        <a href="/2024/Java/2024-04-19-Class.html" class="txt_post">
-                            Class 클래스.
-자바에서 Class 클래스는 클래스의 정보(메타데이터)를 다루는데 사용됩니다.
-Class 클래스를 통해 개발자는 실행 중인 자바 애플리케이션 내에서 필요한 클래스의 속성과 메소드에 대한 정보를 조회하고 조작할 수 있습니다.
-
-Class 클래스의 주요 기능은 다음과 같습니다.
-
-  타입 정보 얻기: 클래스의 이름, 슈퍼클래스, 인터페이스, 접근 제한자 등과 같은 정보를 조회할 수 있습니다.
-  리플렉션: 클래스에 정의된 메소드, 필드, 생성자 등을 조회하고, 이들을 통해 객체 인스턴스를 생성하거나 메소드를 호출하는 등의 작업을 할 수 있습니다.
-  동적 로딩과 생성: Class.forName() 메서드를 사용하여 클래스를 동적으로 로드하고, newInstance() 메서드를 통해 새로운 인스턴스를 생성할 수 있습니다.
-  애노테이션 처리: 클래스에 적용된 애노테이션(annotation)을 조회하고 처리하는 기능을 제공합니다.
-
-
-예를 들어, String.class는 String 클래스에 대한 Class 객체를 나타내며, 이를 통해 String 클래스에 대한 메타데이터를 조회하거나 조작할 수 있습니다.
-
-다음 코드를 실행해봅시다.
-package lang.clazz;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-public class ClassMetaMain {
-
-  public static void main(String[] args) throws Exception {
-    // Class 조회
-    Class clazz = String.class; // 1. 클래스에서 조회
-    //Class clazz = new String().getClass(); // 2. 인스턴스에서 조회
-    //Class clazz = Class.forName("java.lang.String"); // 3. 문자열로 조회
-
-    // 모든 필드 출력
-    Field[] fields = clazz.getDeclaredFields();
-    for (Field field : fields) {
-      System.out.println("field = " + field.getType() + " " + field.getName());
-    }
-
-    // 모든 메서드 출력
-    Method[] methods = clazz.getDeclaredMethods();
-    for (Method method : methods) {
-      System.out.println("method = " + method);
-    }
-
-    // 상위 클래스 정보 출력
-    System.out.println("Superclass: " + clazz.getSuperclass().getName());
-
-    // 인터페이스 정보 출력
-    Class[] interfaces = clazz.getInterfaces();
-    for (Class i : interfaces) {
-      System.out.println("Interface: = " + i.getName());
-    }
-  }
-}
-
-
-class vs clazz - class는 자바의 예약어입니다. 따라서 패키지명, 변수명으로 사용할 수 없습니다.
-이런 이유로 자바 개발자들은 class 대신 clazz라는 이름을 관행으로 사용합니다.
-clazz는 class와 유사하게 들리고, 이 단어가 class를 의미한다는 것을 쉽게 알 수 있습니다.
-
-주의!
-main() 옆에 throws Exception이 추가된 부분에 주의합시다. 이 코드가 없으면 컴파일 오류가 발생합니다.
-
-실행 결과
-field = class [B value
-...
-method = byte[] java.lang.String.value()
-method = public boolean java.lang.String.equals(java.lang.Object)
-...
-Superclass: java.lang.Object
-Interface: = java.io.Serializable
-Interface: = java.lang.Comparable
-...
-
-
-Class 클래스는 다음과 같이 3가지 방법으로 조회할 수 있습니다.
-Class clazz = String.class; // 1. 클래스에서 조회
-Class clazz = new String().getClass(); // 2. 인스턴스에서 조회
-Class clazz = Clazz.forName("java.lang.String"); // 3. 문자열로 조회
-
-
-Class 클래스의 주요 기능
-
-  getDeclaredFields(): 클래스의 모든 필드를 조회합니다.
-  getDeclaredMethods(): 클래스의 모든 메서드를 조회합니다.
-  getSuperclass(): 클래스의 부모 클래스를 조회합니다.
-  getInterface(): 클래스의 인터페이스들을 조회합니다.
-
-
-실행 결과를 보면 String 클래스의 다양한 정보를 확인할 수 있습니다.
-
-클래스 생성하기
-Class 클래스에는 클래스의 모든 정보가 들어있습니다. 이 정보를 기반으로 인스턴스를 생성하거나, 메서드를 호출하고, 필드의 값도 변경할 수 있습니다.
-
-여기서는 간단하게 인스턴스를 생성해봅시다.
-
-package lang.clazz;
-
-public class ClassCreatMain {
-
-  public static void main(String[] args) throws Exception {
-    //Class helloClass = Hello.class;
-    Class helloClass = Class.forName("lang.clazz.Hello");
-
-    Hello hello = (Hello) helloClass.getDeclaredConstructor().newInstance();
-    String result = hello.hello();
-    System.out.println("result = " + result);
-  }
-}
-
-
-실행 결과
-result = hello!
-
-getDeclaredConstructor().newInstance()
-
-  getDeclaredConstructor() : 생성자를 선택합니다.
-  newInstance() : 선택된 생성자를 기반으로 인스턴스를 생성합니다.
-
-
-리플랙션 - reflection
-Class를 사용하면 클래스의 메타 정보를 기반으로 클래스에 정의된 메소드, 필드, 생성자 등을 조회하고, 이들을 통해 객체 인스턴스를 생성하거나 메소드를 호출하는 작업을 할 수 있습니다.
-이런 작업을 리플렉션이라고 합니다.
-추가로 애노테이션 정보를 읽어서 특별한 기능을 수행할 수도 있습니다.
-최신 프레임워크들은 이런 기능을 적극 활용합니다.
-지금은 Class가 뭔지, 그리고 대략 어떤 기능들을 제공하는지만 알아두면 충분합니다.
-지금은 리플랙션을 학습하는 것 보다 훨씬 더 중요한 기본기들을 학습해야 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html"><h1 class="title_post">💾 [CS] 빠른 CPU를 위한 설계 기법</h1></a>
-                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="txt_post">
-                            빠른 CPU를 위한 설계 기법.
-
-클럭
-조금이라도 더 빠른 CPU를 만들려면 어떻게 CPU를 설계해야 할까요?
-
-이전에 학습한 내용을 상기해봅시다.
-
-  컴퓨터 부품들은 ‘클럭 신호’에 맞춰 일사분란하게 움직인다.
-  CPU는 ‘명령어 사이클’이라는 정해진 흐름에 맞춰 명령어들을 실행한다.
-
-
-클럭 신호가 빠르게 반복되면 CPU를 비롯한 컴퓨터 부품들은 그만큼 빠른 박자에 맞춰 움직일 것 입니다.
-
-  즉, 클럭 속도가 높아지면 CPU는 명령어 사이클을 더 빠르게 반복할 것이고, 다른 부품들도 그에 발맞춰 더 빠르게 작동할 것입니다.
-
-
-실제로 클럭 속도가 높은 CPU는 일반적으로 성능이 좋습니다.
-
-  
-    그래서 클럭 속도는 CPU 속도 단위로 간주되기도 합니다.
-  
-  
-    클럭 속도: 헤르츠(Hz) 단위로 측정합니다. 이는 1초에 클럭이 몇 번 반복되는지를 나타냅니다.
-    
-      가령 클럭이 ‘똑-딱-‘하고 1초에 한 번 반복되면 CPU 클럭 속도는 1Hz인 것이고, 클럭이 1초에 100번 반복되면 CPU 클럭 속도는 100Hz인 셈입니다.
-    
-  
-
-
-
-
-실제 CPU 클럭 속도는 위 사진 속 CPU를 보면 알 수 있습니다.
-
-  위 사진 속 CPU를 보면 기본 속도(Base)는 2.5GHz, 최대 속도(Max)는 4.9GHz라는 것을 알 수 있습니다.
-    
-      이는 1초에 클럭이 기본적으로 25억(2.5 x 10⁹)번 반복된다는 것을 나타냅니다.
-        
-          참고: 1GHz는 1,000,000,000(10⁹)Hz입니다.
-        
-      
-    
-  
-
-
-
-  “클럭 속도는 일정하지 않다.”
-‘클럭’이라는 단어만 보고 시계를 떠올려 클럭 속도가 매번 일정하게 유지된다고 생각할 수도 있지만, 실제로는 그렇지 않습니다.
-
-  CPU 사진을 다시 보면 기본 클럭 속도(Base)와 최대 속도(Max)로 나위어 있습니다.
-이처럼 CPU는 계속 일정한 클럭 속도를 유지하기보다는 고성능을 요하는 순간에는 순간적으로 쿨럭 속도를 높이고, 그렇지 않을 때는 유연하게 쿨럭 속도를 낮추기도 합니다.
-최대 클럭 속도를 강제로 더 끌어올릴 수도 있는데, 이런 기법을 오버클럭킹(overclocking) 이라고 합니다.
-
-
-클럭 속도를 무지막지하게 높이면 CPU는 무작정 빨라지지 않습니다.
-
-  그래픽이 많이 요구되는 게임이나 영상 편집과 같이 CPU에 무리가 가는 작업을 장시간 하면 컴퓨터가 뜨겁게 달아오르는 것을 경험해 본 적이 있을 겁니다.
-    
-      클럭 속도를 무작정 높이면 이러한 발열 문제가 더 심각해집니다.
-        
-          이처럼 클럭 속도를 높이는 것은 분명 CPU를 빠르게 만들지만, 클럭 속도만으로 CPU의 성늘을 올리는 것에는 한계가 있습니다.
-        
-      
-    
-  
-
-
-코어와 멀티 코어
-클럭 속도를 높이는 방법 외에 CPU의 성능을 높이는 방법에는 대표적으로 CPU의 코어와 스레드 수를 늘리는 방법이 있습니다.
-
-먼저 코어를 늘리는 방법을 알아봅시다.
-
-코어를 이해하려면 현대적인 관점에서 CPU라는 용어를 재해석해야 합니다.
-
-앞서 CPU를 ‘명령어를 실행하는 부품’이라고 소개했습니다.
-많은 전공 서적들의 전통적인 관점에서 ‘명령어를 실행하는 부품’은 원칙적으로 하나만 존재했습니다.
-하지만 오늘날 CPU는 많은 기술적 발전을 거듭하였고, 그 결과 CPU 내부에는 ‘명령어를 실행하는 부품’을 얼마든지 만들 수 있게 되었습니다.
-
-우리가 지금까지 CPU의 정의로 알고 있었던 ‘명령어를 실행하는 부품’은 오늘날 코어(core) 라는 용어로 사용됩니다.
-
-  다시 말해, 오늘날의 CPU는 단순히 ‘명령어를 실행하는 부품’에서 ‘명령어를 실행하는 부품을 여러 개 포함하는 부품’으로 명칭의 범위가 확장 되었습니다.
-    
-      예를 들어 8코어(Core) CPU는 ‘명령어를 실행하는 부품’을 여덟 개 포함하고 있다고 보면 됩니다.
-    
-  
-
-
-
-
-코어를 여러 개 포함하고 있는 CPU를 멀티코어(multi-core) CPU 또는 멀티코어 프로세서라고 부릅니다.
-
-  이는 CPU 내에 명령어를 처리하는 일꾼이 여러 명 있는 것과 같습니다.
-  당연히 멀티코어의 처리 속도는 단일코어보다 더 빠릅니다.
-    
-      다령 클럭 속도가 2.4GHz인 단일 코어 CPU와 클럭 속도가 1.9GHz인 멀티코어 CPU를 비교하면 일반적으로 후자의 성능이 더 좋습니다.
-    
-  
-
-
-CPU 종류는 CPU 안에 코어가 몇 개 포함되어 있는지에 따라 아래 표와 같이 싱글코어, 듀얼코어, 트리플코어 등으로 나뉩니다.
-
-
-
-코어를 늘릴수록 연산 처리 속도도 빨라질까요?
-
-  CPU의 연산 속도가 꼭 코어 수에 비례하여 증가하지는 않습니다.
-    
-      코어마다 처리할 연산이 적절히 분배되지 않는다면 코어 수에 비례하여 연산 속도가 증가하지 않습니다.
-      또한 처리하고자 하는 작업량보다 코어 수가 지나치게 많아도 성능에는 크게 영향이 없습니다.
-        
-          중요한 것은 코어마다 처리할 명령어들을 얼마나 적절하게 분배하느냐이고 그에 따라서 연산 속도는 크게 달라집니다.
-        
-      
-    
-  
-
-
-스레드와 멀티스레드
-
-  스레드(thread): 사전적 의미는 ‘실행 흐름의 단위’입니다.
-    
-      하지만 이 정의를 활자 그대로 받아들이지 말고 더욱 엄밀하게 이해해야 합니다.
-      CPU에서 사용되는 스레드와 프로그래밍에서 사용되는 스레드는 용례가 다르기 때문입니다.
-    
-  
-
-
-스레드에는 CPU에서 사용되는 하드웨어적 스레드가 있고, 프로그램에서 사용되는 소프트웨어적 스레드가 있습니다.
-
-하드웨어적 스레드
-스레드를 하드웨어적으로 정의하면 ‘하나의 코어가 동시에 처리하는 명령어 단위’를 의미합니다.
-CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의된 하드웨어적 스레드를 의미합니다.
-
-하나의 코어로 여러 명령어를 동시에 처리하는 CPU를 멀티스레드(multithread) 프로세서 또는 멀티스레드 CPU라고 합니다.
-
-
-  하이퍼스레딩(hyper-threading): 인텔의 멀티스레드 기술을 의미합니다.
-    
-      인텔이 자신들의 멀티스레드 기술에 하이퍼스레딩이라는 명칭을 부여한 것입니다.
-    
-  
-
-
-소프트웨어적 스레드
-소프트웨어적으로 정의된 스레드는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
-
-  프로그래밍 언어나 운영체제를 학습할 때 접하는 스레드는 보통 이렇게 소프트웨어적으로 정의된 스레드를 의미합니다.
-
-
-하나의 프로그램은 실행되는 과정에서 한 부분만 실행될 수도 있지만, 프로그램의 여러 부분이 동시에 실행될 수도 있습니다.
-
-
-
-가령 워드 프로세서 프로그램을 개발한다고 가정해봅시다.
-그리고 아래의 기능이 동시에 수행되길 원한다고 해 봅시다.
-
-  사용자로부터 입력받은 내용을 화면에 보여 주는 기능
-  사용자가 입력한 내용이 맞춤법에 맞는지 검사하는 기능
-  사용자가 입력한 내용을 수시로 저장하는 기능
-
-
-이 기능들을 작동시키는 코드를 각각의 스레드로 만들면 동시에 실행할 수 있습니다.
-
-
-
-정리하면, 스레드의 하드웨어적 정의는 ‘하나의 코어가 동시에 처리하는 명령어의 단위’를 의미하고, 소프트웨어적 정의는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
-
-한 번에 하나씩 명령어를 처리하는 1코어 1스레드 CPU도 소프트웨어적 스레드를 수십 개 실행할 수 있습니다.
-1 코어 1 스레드 CPU로도 프로그램의 여러 부분을 동시에 실행할 수 있습니다.
-
-만약 스레드의 사전적 정의(실행 흐름의 단위)만을 암기한다면 ‘1코어 1스레드 CPU가 여러 스레드로 만들어진 프로그램을 실행할 수 있다’라는 말이 어려울 겁니다.
-
-  이런 이유로 하드웨어적 스레드와 소프트웨어적 스레드는 구분하여 기억하는 것이 좋습니다.
-
-
-멀티스레드 프로세서
-하나의 코어로 여러 명령어를 동시에 처리하는 기술인 하드웨어적 스레드를 “멀티스레드 프로세서” 라고 합니다.
-
-멀티스레드 프로세서는 하나의 코어로 여러 명령어를 동시에 처리하는 CPU라고 했었습니다. 어떨게 이런 일이 가능할까요?
-
-  “멀티스레드 프로세서” 를 실제로 설계하는 일은 매우 복잡하지만, 가장 큰 핵심은 레지스터입니다.
-    
-      하나의 코어로 여러 명령어를 동시에 처리하도록 만들려면 프로그램 카운터, 스택 포인터, 메모리 버퍼 레지스터, 메모리 주소 레지스터와 같이 하나의 명령어를 처리하기 위해 꼭 필요한 레지스터를 여러개 가지고 있으면 됩니다.
-        
-          가열 프로그램 카운터가 두 개 있다면 ‘메모리에서 가져올 명령어 주소’를 두 개 지정할 수 있을 것이고, 스택 포인터가 두 개 있다면 두 개의 스택을 관리할 수 있을것 입니다.
-        
-      
-    
-  
-
-
-아래의 그림을 봅시다.
-
-하나의 명령어를 실행하기 위해 꼭 필요한 레지스터들을 편의상 ‘레지스터 세트’라고 표기했습니다.
-
-  레지스터 세트가 한 개인 CPU는 한 개의 명령어를 처리하기 위한 정보들을 기억할 뿐이지만, 레지스터 세트가 두 개인 CPU는 두 개의 명령어를 처리하기 위한 정보들을 기억할 수 있습니다.
-    
-      여기서 ALU와 제어장치가 두 개의 레지스터 세트에 저장된 명령어를 해석하고 실행하면 하나의 코어에서 두 개의 명령어가 동시에 실행됩니다.
-    
-  
-
-
-
-
-하드웨어 스레드를 이용해 하나의 코어로도 여러 명령어를 동시에 처리할 수 있습니다.
-
-  그러나 메모리 속 프로그램 입장에서 봤을 때 하드웨어 스레드는 마치 ‘한 번에 하나의 명령어를 처리하는 CPU’나 다름없습니다.
-    
-      가령 2코어 4스레드 CPU는 한 번에 네 개의 명령어를 처리할 수 있는데, 프로그램 입장에서 봤을 땐 한 번에 하나의 명령어를 처리하는 CPU가 네 개 있는 것처럼 보입니다.
-        
-          그래서 하드웨어 스레드를 논리 프로세서(logical processor) 라고 부르기도 합니다.
-        
-      
-    
-  
-
-
-
-
-“코어” 는 명령어를 실행할 수 있는 ‘하드웨어 부품’이고, “스레드” 는 ‘명령어를 실행하는 단위’입니다.
-“멀티코어 프로세서” 는 명령어를 실행할 수 있는 하드웨어 부품이 CPU 안에 두 개 이상 있는 CPU를 의미하고, “멀티스레드 프로세서” 는 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 의미합니다.
-
-키워드로 정리하는 핵심 포인트
-
-  클럭 속도가 높은 CPU는 빠르게 작동합니다.
-  코어 란 CPU 내에서 명령어를 실행하는 부품입니다.
-  멀티코어 프로세서란 여러 개의 코어를 포함하는 CPU를 말합니다.
-  스레드에는 하드웨어적 스레드와 소프트웨어적 스레드가 있습니다.
-  멀티스레드 프로세서란 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 말합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/CS/2024-04-19-InstructionParallelProcessingTechnique.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -31056,6 +30845,404 @@ CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의�
   슈퍼 스칼라는 여러 개의 명령어 파이프라인을 두는 기법입니다.
   비순차적 명령어 처리 기법은 파이프라인의 중단을 방지하기 위해 명령어를 순차적으로 처리하지 않는 기법입니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html"><h1 class="title_post">💾 [CS] 빠른 CPU를 위한 설계 기법</h1></a>
+                        <a href="/2024/CS/2024-04-19-DesignTechniquesForFastCPUs.html" class="txt_post">
+                            빠른 CPU를 위한 설계 기법.
+
+클럭
+조금이라도 더 빠른 CPU를 만들려면 어떻게 CPU를 설계해야 할까요?
+
+이전에 학습한 내용을 상기해봅시다.
+
+  컴퓨터 부품들은 ‘클럭 신호’에 맞춰 일사분란하게 움직인다.
+  CPU는 ‘명령어 사이클’이라는 정해진 흐름에 맞춰 명령어들을 실행한다.
+
+
+클럭 신호가 빠르게 반복되면 CPU를 비롯한 컴퓨터 부품들은 그만큼 빠른 박자에 맞춰 움직일 것 입니다.
+
+  즉, 클럭 속도가 높아지면 CPU는 명령어 사이클을 더 빠르게 반복할 것이고, 다른 부품들도 그에 발맞춰 더 빠르게 작동할 것입니다.
+
+
+실제로 클럭 속도가 높은 CPU는 일반적으로 성능이 좋습니다.
+
+  
+    그래서 클럭 속도는 CPU 속도 단위로 간주되기도 합니다.
+  
+  
+    클럭 속도: 헤르츠(Hz) 단위로 측정합니다. 이는 1초에 클럭이 몇 번 반복되는지를 나타냅니다.
+    
+      가령 클럭이 ‘똑-딱-‘하고 1초에 한 번 반복되면 CPU 클럭 속도는 1Hz인 것이고, 클럭이 1초에 100번 반복되면 CPU 클럭 속도는 100Hz인 셈입니다.
+    
+  
+
+
+
+
+실제 CPU 클럭 속도는 위 사진 속 CPU를 보면 알 수 있습니다.
+
+  위 사진 속 CPU를 보면 기본 속도(Base)는 2.5GHz, 최대 속도(Max)는 4.9GHz라는 것을 알 수 있습니다.
+    
+      이는 1초에 클럭이 기본적으로 25억(2.5 x 10⁹)번 반복된다는 것을 나타냅니다.
+        
+          참고: 1GHz는 1,000,000,000(10⁹)Hz입니다.
+        
+      
+    
+  
+
+
+
+  “클럭 속도는 일정하지 않다.”
+‘클럭’이라는 단어만 보고 시계를 떠올려 클럭 속도가 매번 일정하게 유지된다고 생각할 수도 있지만, 실제로는 그렇지 않습니다.
+
+  CPU 사진을 다시 보면 기본 클럭 속도(Base)와 최대 속도(Max)로 나위어 있습니다.
+이처럼 CPU는 계속 일정한 클럭 속도를 유지하기보다는 고성능을 요하는 순간에는 순간적으로 쿨럭 속도를 높이고, 그렇지 않을 때는 유연하게 쿨럭 속도를 낮추기도 합니다.
+최대 클럭 속도를 강제로 더 끌어올릴 수도 있는데, 이런 기법을 오버클럭킹(overclocking) 이라고 합니다.
+
+
+클럭 속도를 무지막지하게 높이면 CPU는 무작정 빨라지지 않습니다.
+
+  그래픽이 많이 요구되는 게임이나 영상 편집과 같이 CPU에 무리가 가는 작업을 장시간 하면 컴퓨터가 뜨겁게 달아오르는 것을 경험해 본 적이 있을 겁니다.
+    
+      클럭 속도를 무작정 높이면 이러한 발열 문제가 더 심각해집니다.
+        
+          이처럼 클럭 속도를 높이는 것은 분명 CPU를 빠르게 만들지만, 클럭 속도만으로 CPU의 성늘을 올리는 것에는 한계가 있습니다.
+        
+      
+    
+  
+
+
+코어와 멀티 코어
+클럭 속도를 높이는 방법 외에 CPU의 성능을 높이는 방법에는 대표적으로 CPU의 코어와 스레드 수를 늘리는 방법이 있습니다.
+
+먼저 코어를 늘리는 방법을 알아봅시다.
+
+코어를 이해하려면 현대적인 관점에서 CPU라는 용어를 재해석해야 합니다.
+
+앞서 CPU를 ‘명령어를 실행하는 부품’이라고 소개했습니다.
+많은 전공 서적들의 전통적인 관점에서 ‘명령어를 실행하는 부품’은 원칙적으로 하나만 존재했습니다.
+하지만 오늘날 CPU는 많은 기술적 발전을 거듭하였고, 그 결과 CPU 내부에는 ‘명령어를 실행하는 부품’을 얼마든지 만들 수 있게 되었습니다.
+
+우리가 지금까지 CPU의 정의로 알고 있었던 ‘명령어를 실행하는 부품’은 오늘날 코어(core) 라는 용어로 사용됩니다.
+
+  다시 말해, 오늘날의 CPU는 단순히 ‘명령어를 실행하는 부품’에서 ‘명령어를 실행하는 부품을 여러 개 포함하는 부품’으로 명칭의 범위가 확장 되었습니다.
+    
+      예를 들어 8코어(Core) CPU는 ‘명령어를 실행하는 부품’을 여덟 개 포함하고 있다고 보면 됩니다.
+    
+  
+
+
+
+
+코어를 여러 개 포함하고 있는 CPU를 멀티코어(multi-core) CPU 또는 멀티코어 프로세서라고 부릅니다.
+
+  이는 CPU 내에 명령어를 처리하는 일꾼이 여러 명 있는 것과 같습니다.
+  당연히 멀티코어의 처리 속도는 단일코어보다 더 빠릅니다.
+    
+      다령 클럭 속도가 2.4GHz인 단일 코어 CPU와 클럭 속도가 1.9GHz인 멀티코어 CPU를 비교하면 일반적으로 후자의 성능이 더 좋습니다.
+    
+  
+
+
+CPU 종류는 CPU 안에 코어가 몇 개 포함되어 있는지에 따라 아래 표와 같이 싱글코어, 듀얼코어, 트리플코어 등으로 나뉩니다.
+
+
+
+코어를 늘릴수록 연산 처리 속도도 빨라질까요?
+
+  CPU의 연산 속도가 꼭 코어 수에 비례하여 증가하지는 않습니다.
+    
+      코어마다 처리할 연산이 적절히 분배되지 않는다면 코어 수에 비례하여 연산 속도가 증가하지 않습니다.
+      또한 처리하고자 하는 작업량보다 코어 수가 지나치게 많아도 성능에는 크게 영향이 없습니다.
+        
+          중요한 것은 코어마다 처리할 명령어들을 얼마나 적절하게 분배하느냐이고 그에 따라서 연산 속도는 크게 달라집니다.
+        
+      
+    
+  
+
+
+스레드와 멀티스레드
+
+  스레드(thread): 사전적 의미는 ‘실행 흐름의 단위’입니다.
+    
+      하지만 이 정의를 활자 그대로 받아들이지 말고 더욱 엄밀하게 이해해야 합니다.
+      CPU에서 사용되는 스레드와 프로그래밍에서 사용되는 스레드는 용례가 다르기 때문입니다.
+    
+  
+
+
+스레드에는 CPU에서 사용되는 하드웨어적 스레드가 있고, 프로그램에서 사용되는 소프트웨어적 스레드가 있습니다.
+
+하드웨어적 스레드
+스레드를 하드웨어적으로 정의하면 ‘하나의 코어가 동시에 처리하는 명령어 단위’를 의미합니다.
+CPU에서 사용하는 스레드라는 용어는 보통 CPU 입장에서 정의된 하드웨어적 스레드를 의미합니다.
+
+하나의 코어로 여러 명령어를 동시에 처리하는 CPU를 멀티스레드(multithread) 프로세서 또는 멀티스레드 CPU라고 합니다.
+
+
+  하이퍼스레딩(hyper-threading): 인텔의 멀티스레드 기술을 의미합니다.
+    
+      인텔이 자신들의 멀티스레드 기술에 하이퍼스레딩이라는 명칭을 부여한 것입니다.
+    
+  
+
+
+소프트웨어적 스레드
+소프트웨어적으로 정의된 스레드는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
+
+  프로그래밍 언어나 운영체제를 학습할 때 접하는 스레드는 보통 이렇게 소프트웨어적으로 정의된 스레드를 의미합니다.
+
+
+하나의 프로그램은 실행되는 과정에서 한 부분만 실행될 수도 있지만, 프로그램의 여러 부분이 동시에 실행될 수도 있습니다.
+
+
+
+가령 워드 프로세서 프로그램을 개발한다고 가정해봅시다.
+그리고 아래의 기능이 동시에 수행되길 원한다고 해 봅시다.
+
+  사용자로부터 입력받은 내용을 화면에 보여 주는 기능
+  사용자가 입력한 내용이 맞춤법에 맞는지 검사하는 기능
+  사용자가 입력한 내용을 수시로 저장하는 기능
+
+
+이 기능들을 작동시키는 코드를 각각의 스레드로 만들면 동시에 실행할 수 있습니다.
+
+
+
+정리하면, 스레드의 하드웨어적 정의는 ‘하나의 코어가 동시에 처리하는 명령어의 단위’를 의미하고, 소프트웨어적 정의는 ‘하나의 프로그램에서 독립적으로 실행되는 단위’를 의미합니다.
+
+한 번에 하나씩 명령어를 처리하는 1코어 1스레드 CPU도 소프트웨어적 스레드를 수십 개 실행할 수 있습니다.
+1 코어 1 스레드 CPU로도 프로그램의 여러 부분을 동시에 실행할 수 있습니다.
+
+만약 스레드의 사전적 정의(실행 흐름의 단위)만을 암기한다면 ‘1코어 1스레드 CPU가 여러 스레드로 만들어진 프로그램을 실행할 수 있다’라는 말이 어려울 겁니다.
+
+  이런 이유로 하드웨어적 스레드와 소프트웨어적 스레드는 구분하여 기억하는 것이 좋습니다.
+
+
+멀티스레드 프로세서
+하나의 코어로 여러 명령어를 동시에 처리하는 기술인 하드웨어적 스레드를 “멀티스레드 프로세서” 라고 합니다.
+
+멀티스레드 프로세서는 하나의 코어로 여러 명령어를 동시에 처리하는 CPU라고 했었습니다. 어떨게 이런 일이 가능할까요?
+
+  “멀티스레드 프로세서” 를 실제로 설계하는 일은 매우 복잡하지만, 가장 큰 핵심은 레지스터입니다.
+    
+      하나의 코어로 여러 명령어를 동시에 처리하도록 만들려면 프로그램 카운터, 스택 포인터, 메모리 버퍼 레지스터, 메모리 주소 레지스터와 같이 하나의 명령어를 처리하기 위해 꼭 필요한 레지스터를 여러개 가지고 있으면 됩니다.
+        
+          가열 프로그램 카운터가 두 개 있다면 ‘메모리에서 가져올 명령어 주소’를 두 개 지정할 수 있을 것이고, 스택 포인터가 두 개 있다면 두 개의 스택을 관리할 수 있을것 입니다.
+        
+      
+    
+  
+
+
+아래의 그림을 봅시다.
+
+하나의 명령어를 실행하기 위해 꼭 필요한 레지스터들을 편의상 ‘레지스터 세트’라고 표기했습니다.
+
+  레지스터 세트가 한 개인 CPU는 한 개의 명령어를 처리하기 위한 정보들을 기억할 뿐이지만, 레지스터 세트가 두 개인 CPU는 두 개의 명령어를 처리하기 위한 정보들을 기억할 수 있습니다.
+    
+      여기서 ALU와 제어장치가 두 개의 레지스터 세트에 저장된 명령어를 해석하고 실행하면 하나의 코어에서 두 개의 명령어가 동시에 실행됩니다.
+    
+  
+
+
+
+
+하드웨어 스레드를 이용해 하나의 코어로도 여러 명령어를 동시에 처리할 수 있습니다.
+
+  그러나 메모리 속 프로그램 입장에서 봤을 때 하드웨어 스레드는 마치 ‘한 번에 하나의 명령어를 처리하는 CPU’나 다름없습니다.
+    
+      가령 2코어 4스레드 CPU는 한 번에 네 개의 명령어를 처리할 수 있는데, 프로그램 입장에서 봤을 땐 한 번에 하나의 명령어를 처리하는 CPU가 네 개 있는 것처럼 보입니다.
+        
+          그래서 하드웨어 스레드를 논리 프로세서(logical processor) 라고 부르기도 합니다.
+        
+      
+    
+  
+
+
+
+
+“코어” 는 명령어를 실행할 수 있는 ‘하드웨어 부품’이고, “스레드” 는 ‘명령어를 실행하는 단위’입니다.
+“멀티코어 프로세서” 는 명령어를 실행할 수 있는 하드웨어 부품이 CPU 안에 두 개 이상 있는 CPU를 의미하고, “멀티스레드 프로세서” 는 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 의미합니다.
+
+키워드로 정리하는 핵심 포인트
+
+  클럭 속도가 높은 CPU는 빠르게 작동합니다.
+  코어 란 CPU 내에서 명령어를 실행하는 부품입니다.
+  멀티코어 프로세서란 여러 개의 코어를 포함하는 CPU를 말합니다.
+  스레드에는 하드웨어적 스레드와 소프트웨어적 스레드가 있습니다.
+  멀티스레드 프로세서란 하나의 코어로 여러 개의 명령어를 동시에 실행할 수 있는 CPU를 말합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-04-19-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-04-19-Class.html"><h1 class="title_post">☕️[Java] Class 클래스</h1></a>
+                        <a href="/2024/Java/2024-04-19-Class.html" class="txt_post">
+                            Class 클래스.
+자바에서 Class 클래스는 클래스의 정보(메타데이터)를 다루는데 사용됩니다.
+Class 클래스를 통해 개발자는 실행 중인 자바 애플리케이션 내에서 필요한 클래스의 속성과 메소드에 대한 정보를 조회하고 조작할 수 있습니다.
+
+Class 클래스의 주요 기능은 다음과 같습니다.
+
+  타입 정보 얻기: 클래스의 이름, 슈퍼클래스, 인터페이스, 접근 제한자 등과 같은 정보를 조회할 수 있습니다.
+  리플렉션: 클래스에 정의된 메소드, 필드, 생성자 등을 조회하고, 이들을 통해 객체 인스턴스를 생성하거나 메소드를 호출하는 등의 작업을 할 수 있습니다.
+  동적 로딩과 생성: Class.forName() 메서드를 사용하여 클래스를 동적으로 로드하고, newInstance() 메서드를 통해 새로운 인스턴스를 생성할 수 있습니다.
+  애노테이션 처리: 클래스에 적용된 애노테이션(annotation)을 조회하고 처리하는 기능을 제공합니다.
+
+
+예를 들어, String.class는 String 클래스에 대한 Class 객체를 나타내며, 이를 통해 String 클래스에 대한 메타데이터를 조회하거나 조작할 수 있습니다.
+
+다음 코드를 실행해봅시다.
+package lang.clazz;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class ClassMetaMain {
+
+  public static void main(String[] args) throws Exception {
+    // Class 조회
+    Class clazz = String.class; // 1. 클래스에서 조회
+    //Class clazz = new String().getClass(); // 2. 인스턴스에서 조회
+    //Class clazz = Class.forName("java.lang.String"); // 3. 문자열로 조회
+
+    // 모든 필드 출력
+    Field[] fields = clazz.getDeclaredFields();
+    for (Field field : fields) {
+      System.out.println("field = " + field.getType() + " " + field.getName());
+    }
+
+    // 모든 메서드 출력
+    Method[] methods = clazz.getDeclaredMethods();
+    for (Method method : methods) {
+      System.out.println("method = " + method);
+    }
+
+    // 상위 클래스 정보 출력
+    System.out.println("Superclass: " + clazz.getSuperclass().getName());
+
+    // 인터페이스 정보 출력
+    Class[] interfaces = clazz.getInterfaces();
+    for (Class i : interfaces) {
+      System.out.println("Interface: = " + i.getName());
+    }
+  }
+}
+
+
+class vs clazz - class는 자바의 예약어입니다. 따라서 패키지명, 변수명으로 사용할 수 없습니다.
+이런 이유로 자바 개발자들은 class 대신 clazz라는 이름을 관행으로 사용합니다.
+clazz는 class와 유사하게 들리고, 이 단어가 class를 의미한다는 것을 쉽게 알 수 있습니다.
+
+주의!
+main() 옆에 throws Exception이 추가된 부분에 주의합시다. 이 코드가 없으면 컴파일 오류가 발생합니다.
+
+실행 결과
+field = class [B value
+...
+method = byte[] java.lang.String.value()
+method = public boolean java.lang.String.equals(java.lang.Object)
+...
+Superclass: java.lang.Object
+Interface: = java.io.Serializable
+Interface: = java.lang.Comparable
+...
+
+
+Class 클래스는 다음과 같이 3가지 방법으로 조회할 수 있습니다.
+Class clazz = String.class; // 1. 클래스에서 조회
+Class clazz = new String().getClass(); // 2. 인스턴스에서 조회
+Class clazz = Clazz.forName("java.lang.String"); // 3. 문자열로 조회
+
+
+Class 클래스의 주요 기능
+
+  getDeclaredFields(): 클래스의 모든 필드를 조회합니다.
+  getDeclaredMethods(): 클래스의 모든 메서드를 조회합니다.
+  getSuperclass(): 클래스의 부모 클래스를 조회합니다.
+  getInterface(): 클래스의 인터페이스들을 조회합니다.
+
+
+실행 결과를 보면 String 클래스의 다양한 정보를 확인할 수 있습니다.
+
+클래스 생성하기
+Class 클래스에는 클래스의 모든 정보가 들어있습니다. 이 정보를 기반으로 인스턴스를 생성하거나, 메서드를 호출하고, 필드의 값도 변경할 수 있습니다.
+
+여기서는 간단하게 인스턴스를 생성해봅시다.
+
+package lang.clazz;
+
+public class ClassCreatMain {
+
+  public static void main(String[] args) throws Exception {
+    //Class helloClass = Hello.class;
+    Class helloClass = Class.forName("lang.clazz.Hello");
+
+    Hello hello = (Hello) helloClass.getDeclaredConstructor().newInstance();
+    String result = hello.hello();
+    System.out.println("result = " + result);
+  }
+}
+
+
+실행 결과
+result = hello!
+
+getDeclaredConstructor().newInstance()
+
+  getDeclaredConstructor() : 생성자를 선택합니다.
+  newInstance() : 선택된 생성자를 기반으로 인스턴스를 생성합니다.
+
+
+리플랙션 - reflection
+Class를 사용하면 클래스의 메타 정보를 기반으로 클래스에 정의된 메소드, 필드, 생성자 등을 조회하고, 이들을 통해 객체 인스턴스를 생성하거나 메소드를 호출하는 작업을 할 수 있습니다.
+이런 작업을 리플렉션이라고 합니다.
+추가로 애노테이션 정보를 읽어서 특별한 기능을 수행할 수도 있습니다.
+최신 프레임워크들은 이런 기능을 적극 활용합니다.
+지금은 Class가 뭔지, 그리고 대략 어떤 기능들을 제공하는지만 알아두면 충분합니다.
+지금은 리플랙션을 학습하는 것 보다 훨씬 더 중요한 기본기들을 학습해야 합니다.
 
                         </a>
                         <div class="info-post">
@@ -62540,6 +62727,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Spring/2024-09-02-container.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-02"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-09-03-java-spring.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-03"
         });
     
 

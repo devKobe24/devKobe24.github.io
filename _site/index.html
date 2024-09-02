@@ -640,6 +640,7 @@
             
             
             
+            
 
     
     
@@ -1266,6 +1267,208 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-02-Business-Logic.html"><h1 class="title_post">💾 [CS] 비즈니스 로직(Business Logic)이란?</h1></a>
+                        <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="txt_post">
+                            💾 [CS] 비즈니스 로직(Business Logic)이란?
+
+1️⃣ 비즈니스 로직(Business Logic).
+
+  비즈니스 로직(Business Logic) 은 소프트웨어 시스템 내에서 특정 비즈니스 도메인에 대한 규칙, 계산, 절차 등을 구현한 부분을 의미합니다.
+    
+      이 로직은 애플리케이션이 실제 비즈니스 요구 사항을 충족하도록 하는 핵심 기능을 담당합니다.
+    
+  
+  비즈니스 로직(Business Logic) 은 시스템이 처리해야 하는 업무 규칙과 관련된 의사결정을 포함하며, 데이터의 유효성 검사를 하고, 비즈니스 프로세스를 관리하고, 관련된 계산을 수행하는 역할을 합니다.
+
+
+2️⃣ 비즈니스 로직의 주요 역할
+
+  1. 도메인 규칙 관리.
+    
+      특정 비즈니스 도메인에서 따라야 하는 규칙을 정의하고 관리합니다.
+        
+          예를 들어, 은행 시스템에서 계좌 이체 시 잔액이 충분해야 한다는 규칙을 비즈니스 로직에서 처리합니다.
+        
+      
+    
+  
+  2. 유효성 검사.
+    
+      입력된 데이터나 시스템 내부에서 사용되는 데이터가 비즈니스 규칙에 맞는지 검증합니다.
+        
+          예를 들어, 사용자가 입력한 주문의 총액이 0보다 큰지, 재고가 충분한지 등을 검사하는 로직이 포함됩니다.
+        
+      
+    
+  
+  3. 비즈니스 프로세스 구현.
+    
+      비즈니스 워크플로우를 구현하여, 각 단계에서 수행해야 하는 작업을 정의하고, 순서대로 실행되도록 관리합니다.
+        
+          예를 들어, 주문 처리 시스템에서 주문 접수, 결제 처리, 배송 준비 등의 단계가 비즈니스 로직에 포함될 수 있습니다.
+        
+      
+    
+  
+  4. 계산과 처리.
+    
+      특정 비즈니스 규칙에 따라 데이터를 계산하거나 처리하는 역할을 합니다.
+        
+          예를 들어, 세금 계산, 할인 적용, 이자 계산 등이 여기에 포함됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 비즈니스 로직의 위치
+
+  비즈니스 로직은 보통 애플리케이션의 Service 계층 에 위치합니다.
+    
+      이 계층은 데이터를 처리하는 로직과 사용자 인터페이스를 담당하는 로직을 분리하여, 코드의 재사용성을 높이고 유지보수를 용이하게 합니다.
+    
+  
+  Service 계층 에서는 비즈니스 로직을 구현하며, 필요한 경우 데이터 접근 계층(Repository) 을 호출하여 데이터를 조회하거나 저장하고, 최종적으로 처리된 결과를 프레젠테이션 계층(Controller) 에 전달합니다.
+
+
+4️⃣ 비즈니스 로직과 다른 로직의 구분
+
+  비즈니스 로직
+    
+      실제 비즈니스와 관련된 모든 규칙과 프로세스를 정의합니다.
+        
+          이는 특정 도메인 지식에 기반하며, 도메인 전문가가 주로 요구 사항을 정의합니다.
+        
+      
+    
+  
+  프레젠테이션 로직
+    
+      사용자 인터페이스와 관련된 로직으로, 사용자에게 데이터를 표시하거나 입력을 받는 것과 관련됩니다.
+    
+  
+  데이터 접근 로직
+    
+      데이터베이스와 상호작용하며, 데이터를 저장하거나 조회하는 작업을 담당합니다.
+    
+  
+
+
+5️⃣ 비즈니스 로직의 중요성
+
+  비즈니스 로직은 애플리케이션의 핵심적인 부분이므로, 이 로직의 정확성은 시스템 전체의 신뢰성과 직결됩니다.
+  잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
+    
+      따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html"><h1 class="title_post">🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.</h1></a>
+                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="txt_post">
+                            🍃[Spring] @Controller 애너테이션 사용시 일어나는 일.
+
+1️⃣ 스프링 프레임워크에서 @Controller 애노테이션 사용시 어떤 일이 일어날까요?
+
+  스프링 프레임워크에서 @Controller 애노테이션을 사용하면, 해당 클래스가 스프링 MVC의 웹 컨트롤러로 동작하도록 설정됩니다.
+  @Controller 는 기본적으로 웹 요청을 처리하고, 적절한 응답을 생성하는 역할을 담당하는 클래스를 정의할 때 사용됩니다.
+
+
+@Controller 애노테이션을 사용하면 다음과 같은 일들이 벌어집니다.
+
+  1. 스프링 빈으로 등록.
+    
+      @Controller 애노테이션이 적용된 클래스는 스프링의 컴포넌트 스캔 메커니즘에 의해 자동으로 스프링 컨텍스트에 빈으로 등록됩니다.
+        
+          이는 @Component 와 유사하게 동작하며, 스프링이 이 클래스를 관리하도록 만듭니다.
+        
+      
+    
+  
+  2. 요청 처리 메서드 매핑.
+    
+      @Controller 가 달린 클래스 내의 메서드들은 @RequestMapping, @GetMapping, @PostMapping 등과 같은 요청 매핑 애노테이션을 통해 특정 HTTP 요청을 처리하는 메서드로 매핑될 수 있습니다.
+        
+          이러한 매핑을 통해 특정 URL로 들어오는 요청이 어떤 메서드에 의해 처리될지 결정됩니다.
+        
+      
+    
+  
+  3. 모델과 뷰.
+    
+      @Controller 는 주로 모델과 뷰를 처리합니다.
+        
+          요청이 컨트롤러에 도달하면, 컨트롤러는 필요한 데이터를 모델에 담고, 적절한 뷰(예: JSP, Thymeleaf 템플릿)를 반환하여 사용자에게 응답을 보냅니다.
+            
+              스프링은 이 작업을 쉽게 할 수 있도록 다양한 기능을 제공합니다.
+            
+          
+        
+      
+    
+  
+  4. 비즈니스 로직과 서비스 계층.
+    
+      컨트롤러는 보통 직접 비즈니스 로직을 처리하지 않고, 서비스 계층을 호출하여 필요한 처리를 위임합니다.
+        
+          컨트롤러는 사용자 입력을 받아 서비스로 전달하고, 서비스의 결과를 받아 사용자에게 반환하는 역할을 합니다.
+        
+      
+    
+  
+  5. 예외 처리.
+    
+      @Controller 애노테이션을 사용하는 클래스는 또한 @ExceptionHandler 를 사용하여 특정 예외를 처리할 수 있습니다.
+        
+          이를 통해 컨트롤러 내에서 발생하는 예외를 잡아 특정 응답을 반환하거나 에러 페이지를 보여줄 수 있습니다.
+        
+      
+    
+  
+
+
+요약하면, @Controller 애노테이션은 해당 클래스를 스프링 MVC에서 요청을 처리하는 컨트롤러로 정의하며, HTTP 요청을 처리하고 적절한 응답을 생성하는데 중요한 역할을 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-01-bean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -1595,6 +1798,72 @@ obj1 = 10
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
+                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="txt_post">
+                            ☕️[Java] 불변 객체 - 정리
+
+1️⃣ 정리.
+
+  자바에서 가장 많이 사용되는 String 클래스는 불변 객체입니다.
+    
+      뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수많은 클래스가 불변으로 설계되어 있습니다.
+        
+          따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
+        
+      
+    
+  
+
+
+모든 클래스를 불변으로 만드는 것은 아닙니다.
+
+  우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
+    
+      예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
+        
+          가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
+            
+              때로는 같은 기능을 하는 클래스를 하나는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+클래스를 불변으로 설계하는 이유는 더 많습니다.
+
+  캐시 안정성.
+  멀티 쓰레드 안정성.
+  엔티티의 값 타입.
+
+
+지금은 이런 부분을 다 이해할 수 없습니다.
+관련 내용을 학습하다보면 자연스럽게 학습한 불변 객체가 생각나면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
+프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 될 것입니다.
+따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-09-01-Immutable-Object-Solve.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -1753,414 +2022,6 @@ immutableDate2 = 2024-9-1
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
-                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="txt_post">
-                            ☕️[Java] 불변 객체 - 정리
-
-1️⃣ 정리.
-
-  자바에서 가장 많이 사용되는 String 클래스는 불변 객체입니다.
-    
-      뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수많은 클래스가 불변으로 설계되어 있습니다.
-        
-          따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
-        
-      
-    
-  
-
-
-모든 클래스를 불변으로 만드는 것은 아닙니다.
-
-  우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
-    
-      예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
-        
-          가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
-            
-              때로는 같은 기능을 하는 클래스를 하나는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-클래스를 불변으로 설계하는 이유는 더 많습니다.
-
-  캐시 안정성.
-  멀티 쓰레드 안정성.
-  엔티티의 값 타입.
-
-
-지금은 이런 부분을 다 이해할 수 없습니다.
-관련 내용을 학습하다보면 자연스럽게 학습한 불변 객체가 생각나면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
-프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 될 것입니다.
-따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html"><h1 class="title_post">🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.</h1></a>
-                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="txt_post">
-                            🍃[Spring] @Controller 애너테이션 사용시 일어나는 일.
-
-1️⃣ 스프링 프레임워크에서 @Controller 애노테이션 사용시 어떤 일이 일어날까요?
-
-  스프링 프레임워크에서 @Controller 애노테이션을 사용하면, 해당 클래스가 스프링 MVC의 웹 컨트롤러로 동작하도록 설정됩니다.
-  @Controller 는 기본적으로 웹 요청을 처리하고, 적절한 응답을 생성하는 역할을 담당하는 클래스를 정의할 때 사용됩니다.
-
-
-@Controller 애노테이션을 사용하면 다음과 같은 일들이 벌어집니다.
-
-  1. 스프링 빈으로 등록.
-    
-      @Controller 애노테이션이 적용된 클래스는 스프링의 컴포넌트 스캔 메커니즘에 의해 자동으로 스프링 컨텍스트에 빈으로 등록됩니다.
-        
-          이는 @Component 와 유사하게 동작하며, 스프링이 이 클래스를 관리하도록 만듭니다.
-        
-      
-    
-  
-  2. 요청 처리 메서드 매핑.
-    
-      @Controller 가 달린 클래스 내의 메서드들은 @RequestMapping, @GetMapping, @PostMapping 등과 같은 요청 매핑 애노테이션을 통해 특정 HTTP 요청을 처리하는 메서드로 매핑될 수 있습니다.
-        
-          이러한 매핑을 통해 특정 URL로 들어오는 요청이 어떤 메서드에 의해 처리될지 결정됩니다.
-        
-      
-    
-  
-  3. 모델과 뷰.
-    
-      @Controller 는 주로 모델과 뷰를 처리합니다.
-        
-          요청이 컨트롤러에 도달하면, 컨트롤러는 필요한 데이터를 모델에 담고, 적절한 뷰(예: JSP, Thymeleaf 템플릿)를 반환하여 사용자에게 응답을 보냅니다.
-            
-              스프링은 이 작업을 쉽게 할 수 있도록 다양한 기능을 제공합니다.
-            
-          
-        
-      
-    
-  
-  4. 비즈니스 로직과 서비스 계층.
-    
-      컨트롤러는 보통 직접 비즈니스 로직을 처리하지 않고, 서비스 계층을 호출하여 필요한 처리를 위임합니다.
-        
-          컨트롤러는 사용자 입력을 받아 서비스로 전달하고, 서비스의 결과를 받아 사용자에게 반환하는 역할을 합니다.
-        
-      
-    
-  
-  5. 예외 처리.
-    
-      @Controller 애노테이션을 사용하는 클래스는 또한 @ExceptionHandler 를 사용하여 특정 예외를 처리할 수 있습니다.
-        
-          이를 통해 컨트롤러 내에서 발생하는 예외를 잡아 특정 응답을 반환하거나 에러 페이지를 보여줄 수 있습니다.
-        
-      
-    
-  
-
-
-요약하면, @Controller 애노테이션은 해당 클래스를 스프링 MVC에서 요청을 처리하는 컨트롤러로 정의하며, HTTP 요청을 처리하고 적절한 응답을 생성하는데 중요한 역할을 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-08-31-Factory-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-08-31-Factory-pattern.html"><h1 class="title_post">💾 [CS] 팩토리 패턴(factory pattern)</h1></a>
-                        <a href="/Backend/CS/2024-08-31-Factory-pattern.html" class="txt_post">
-                            💾 [CS] 팩토리 패턴(factory pattern).
-
-1️⃣ 팩토리 패턴(factory pattern).
-
-  
-    팩토리 패턴(factory pattern)은 객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한 뼈대를 결정하고, 하위 클래스에서 객체 생성에 관한 구체적인 내용을 결정하는 패턴입니다.
-  
-  
-    상위 클래스와 하위 클래스가 분리되기 때문에 느슨한 결합을 가지며 상위 클래스에서는 인스턴스 생성 방식에 대해 전혀 알 필요가 없기 때문에 더 많은 유연성을 갖게 됩니다.
-    
-      그리고 객체 생성 로직이 따로 떼어져 있기 때문에 코드를 리팩터링하더라도 한 곳만 고칠 수 있게 되니 유지 보수성이 증가됩니다.
-        
-          예를 들어 라떼 레시피와 아메리카노 레시피, 우유 레시피라는 구체적인 내용이 들어 있는 하위 클래스가 컨베이어 벨트를 통해 전달되고, 상위 클래스인 바리스타 공장에서 이 레시피들을 토대로 우유 등을 생산하는 생산 공정을 생각하면 됩니다.
-        
-      
-    
-  
-
-
-
-
-2️⃣ 자바의 팩토리 패턴
-
-enum CoffeeType {
-    LATTE,
-    ESPRESSO
-}
-
-abstract class Coffee {
-    protected String name;
-    
-    public String getName() {
-        return name;
-    }
-}
-
-class Latte extends Coffee {
-    public Latte() {
-        name = "latte";
-    }
-}
-
-class Espresso extends Coffee {
-    public Espresso() {
-        name = "Espresso";
-    }
-}
-
-class CoffeeFactory {
-    public static Coffee createCoffee(CoffeeType type) {
-        switch (type) {
-            case LATTE:
-                return new Latte();
-            case ESPRESSO:
-                return new Espresso();
-            default:
-                throw new IllegalArgumentException("Invalid coffee type: " + type);
-        }
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Coffee coffee = CoffeeFactory.createCoffee(CoffeeType.LATTE);
-        System.out.println(coffee.getName()); // latte
-    }
-}
-
-
-3️⃣ 코드 설명.
-
-  팩토리 패턴(Factory Pattern) 은 객체 생성의 로직을 별도의 클래스나 메서드로 분리하여 관리하는 디자인 패턴입니다.
-    
-      이는 객체 생성에 관련된 코드를 클라이언트 코드에서 분리하여, 객체 생성의 변화에 대한 유연성을 높이고 코드의 유지보수성을 개선하는 데 도움이 됩니다.
-    
-  
-  팩토리 패턴 은 크게 팩토리 메서드 패턴 과 추상 팩토리 패턴 으로 구분되며, 위 코드 예시는 팩토리 메스드 패턴 의 전형적인 예입니다.
-
-
-1. CoffeeType 열거형(Enum)
-
-enum CoffeeType {
-    LATTE,
-    ESPRESSO
-}
-
-
-
-  설명 : CoffeeType 은 커피의 종류를 나타내는 열거형(Enum)입니다.
-    
-      이 열거형은 LATTE 와 ESPRESSO 두 가지 타입의 커피를 정의하고 있습니다.
-    
-  
-  역할 : 커피의 종류를 코드 내에서 명확하게 구분하고, CoffeeFactory 에서 커피 객체를 생성할 때 사용됩니다.
-
-
-2. Coffee 추상 클래스.
-
-abstract class Coffee {
-    protected String name;
-    
-    public String getName() {
-        return name;
-    }
-}
-
-
-
-  설명 : Coffee 는 커피 객체의 공통된 속성과 메서드를 정의한 추상 클래스입니다.
-    
-      name 필드는 커피의 이름을 저장하며, getName() 메서드는 커피의 이름을 반환합니다.
-    
-  
-  역할 : 구체적인 커피 클래스들이 상속받아야 하는 공통적인 기능을 정의합니다.
-
-
-3. Latte 와 Espresso 클래스.
-class Latte extends Coffee {
-    public Latte() {
-        name = "latte";
-    }
-}
-
-class Espresso extends Coffee {
-    public Espresso() {
-        name = "Espresso";
-    }
-}
-
-
-
-  설명 : Latte 와 Espresso 는 Coffee 클래스를 상속받아 구체적인 커피 타입을 구현한 클래스들입니다.
-    
-      각 클래스는 생성자에서 name 필드를 특정 커피 이름으로 초기화합니다.
-    
-  
-  역할 : 특정 커피 타입의 객체를 생성하는 역할을 합니다.
-
-
-4. CoffeeFactory 클래스.
-class CoffeeFactory {
-    public static Coffee createCoffee(CoffeeType type) {
-        switch (type) {
-            case LATTE:
-                return new Latte();
-            case ESPRESSO:
-                return new Espresso();
-            default:
-                throw new IllegalArgumentException("Invalid coffee tyep: " + type);
-        }
-    }
-}
-
-
-
-  설명 : CoffeeFactory 클래스는 팩토리 패턴의 핵심으로, createCoffee() 메서드를 통해 특정 타입의 커피 객체를 생성하여 반환합니다.
-    
-      CoffeeType 열거형에 따라 적절한 커피 객체를 생성합니다.
-    
-  
-  역할 : 객체 생성의 로직을 중앙 집중화하여 클라이언트 코드에서 객체 생성의 책임을 분리합니다.
-    
-      클라이언트는 CoffeeFactory 의 createCoffee() 메서드를 호출하여 원하는 커피 객체를 생성할 수 있습니다.
-    
-  
-
-
-5. Main 클래스.
-public class Main {
-    public static void main(String[] args) {
-        Coffee coffee = CoffeeFactory.createCoffee(CoffeeType.LATTE);
-        System.out.println(coffee.getName()); // latte
-    }
-}
-
-
-
-  설명 : Main 클래스는 클라이언트 코드로, CoffeeFactory 를 사용하여 LATTE 타입의 커피 객체를 생성하고, 그 이름을 출력합니다.
-  역할 : 팩토리 패턴을 사용하는 클라이언트 코드로, 직접적으로 객체를 생성하지 않고 팩토리를 통해 객체를 생성합니다.
-
-
-4️⃣ 팩토리 패턴의 장점.
-
-  1. 코드의 유연성 증가.
-    
-      객체 생성 로직이 중앙화되어 있으므로, 새로운 커피 타입을 추가할 때 클라이언트 코드를 수정할 필요 없이 팩토리 클래스만 수정하면 됩니다.
-    
-  
-  2. 유지보수성 향상.
-    
-      객체 생성 코드가 한 곳에 모여 있어 코드의 유지보수가 쉬워집니다.
-        
-          객체 생성 과정에서의 변경이 필요한 경우에도 팩토리 클래스만 수정하면 됩니다.
-        
-      
-    
-  
-  3. 코드의 결합도 감소.
-    
-      클라이언트 코드는 구체적인 클래스에 의존하지 않고, 인터페이스나 추상 클래스를 통해 객체를 다루기 때문에 결합도가 낮아집니다.
-    
-  
-
-
-5️⃣ 팩토리 패턴의 단점.
-
-  1. 클래스의 복잡성 증가.
-    
-      객체 생성을 위한 팩토리 클래스가 추가됨으로써 클래스의 수가 증가하고, 코드 구조가 다소 복잡해질 수 있습니다.
-    
-  
-  2. 확장 시 주의 필요.
-    
-      새로운 커피 타입을 추가할 때마다 팩토리 클래스의 switch 문이나 if-else 문이 증가할 수 있어, 확장성이 제한될 수 있습니다.
-        
-          이 문제를 해결하기 위해서는 추상 팩토리 패턴이나 다른 디자인 패턴과 결합하는 방법을 고려할 수 있습니다.
-        
-      
-    
-  
-
-
-6️⃣ 결론.
-
-  팩토리 패턴은 객체 생성의 책임을 분리하여 코드의 유연성과 유지보수성을 높이는 강력한 디자인 패턴입니다.
-    
-      위 코드 예시에서는 커피 객체를 생성하는 로직을 CoffeeFactory 클래스에 모아두어, 클라이언트 코드가 특정 커피 클래스에 직접적으로 의존하지 않도록 하였습니다.
-        
-          이를 통해 클라이언트 코드는 커피 객체의 생성 방식에 대해 신경 쓰지 않고도 다양한 타입의 커피를 생성하고 사용할 수 있게 됩니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-31</span>
                             
                         </div>
                     </div>
@@ -2514,6 +2375,263 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-08-31-Factory-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-08-31-Factory-pattern.html"><h1 class="title_post">💾 [CS] 팩토리 패턴(factory pattern)</h1></a>
+                        <a href="/Backend/CS/2024-08-31-Factory-pattern.html" class="txt_post">
+                            💾 [CS] 팩토리 패턴(factory pattern).
+
+1️⃣ 팩토리 패턴(factory pattern).
+
+  
+    팩토리 패턴(factory pattern)은 객체를 사용하는 코드에서 객체 생성 부분을 떼어내 추상화한 패턴이자 상속 관계에 있는 두 클래스에서 상위 클래스가 중요한 뼈대를 결정하고, 하위 클래스에서 객체 생성에 관한 구체적인 내용을 결정하는 패턴입니다.
+  
+  
+    상위 클래스와 하위 클래스가 분리되기 때문에 느슨한 결합을 가지며 상위 클래스에서는 인스턴스 생성 방식에 대해 전혀 알 필요가 없기 때문에 더 많은 유연성을 갖게 됩니다.
+    
+      그리고 객체 생성 로직이 따로 떼어져 있기 때문에 코드를 리팩터링하더라도 한 곳만 고칠 수 있게 되니 유지 보수성이 증가됩니다.
+        
+          예를 들어 라떼 레시피와 아메리카노 레시피, 우유 레시피라는 구체적인 내용이 들어 있는 하위 클래스가 컨베이어 벨트를 통해 전달되고, 상위 클래스인 바리스타 공장에서 이 레시피들을 토대로 우유 등을 생산하는 생산 공정을 생각하면 됩니다.
+        
+      
+    
+  
+
+
+
+
+2️⃣ 자바의 팩토리 패턴
+
+enum CoffeeType {
+    LATTE,
+    ESPRESSO
+}
+
+abstract class Coffee {
+    protected String name;
+    
+    public String getName() {
+        return name;
+    }
+}
+
+class Latte extends Coffee {
+    public Latte() {
+        name = "latte";
+    }
+}
+
+class Espresso extends Coffee {
+    public Espresso() {
+        name = "Espresso";
+    }
+}
+
+class CoffeeFactory {
+    public static Coffee createCoffee(CoffeeType type) {
+        switch (type) {
+            case LATTE:
+                return new Latte();
+            case ESPRESSO:
+                return new Espresso();
+            default:
+                throw new IllegalArgumentException("Invalid coffee type: " + type);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Coffee coffee = CoffeeFactory.createCoffee(CoffeeType.LATTE);
+        System.out.println(coffee.getName()); // latte
+    }
+}
+
+
+3️⃣ 코드 설명.
+
+  팩토리 패턴(Factory Pattern) 은 객체 생성의 로직을 별도의 클래스나 메서드로 분리하여 관리하는 디자인 패턴입니다.
+    
+      이는 객체 생성에 관련된 코드를 클라이언트 코드에서 분리하여, 객체 생성의 변화에 대한 유연성을 높이고 코드의 유지보수성을 개선하는 데 도움이 됩니다.
+    
+  
+  팩토리 패턴 은 크게 팩토리 메서드 패턴 과 추상 팩토리 패턴 으로 구분되며, 위 코드 예시는 팩토리 메스드 패턴 의 전형적인 예입니다.
+
+
+1. CoffeeType 열거형(Enum)
+
+enum CoffeeType {
+    LATTE,
+    ESPRESSO
+}
+
+
+
+  설명 : CoffeeType 은 커피의 종류를 나타내는 열거형(Enum)입니다.
+    
+      이 열거형은 LATTE 와 ESPRESSO 두 가지 타입의 커피를 정의하고 있습니다.
+    
+  
+  역할 : 커피의 종류를 코드 내에서 명확하게 구분하고, CoffeeFactory 에서 커피 객체를 생성할 때 사용됩니다.
+
+
+2. Coffee 추상 클래스.
+
+abstract class Coffee {
+    protected String name;
+    
+    public String getName() {
+        return name;
+    }
+}
+
+
+
+  설명 : Coffee 는 커피 객체의 공통된 속성과 메서드를 정의한 추상 클래스입니다.
+    
+      name 필드는 커피의 이름을 저장하며, getName() 메서드는 커피의 이름을 반환합니다.
+    
+  
+  역할 : 구체적인 커피 클래스들이 상속받아야 하는 공통적인 기능을 정의합니다.
+
+
+3. Latte 와 Espresso 클래스.
+class Latte extends Coffee {
+    public Latte() {
+        name = "latte";
+    }
+}
+
+class Espresso extends Coffee {
+    public Espresso() {
+        name = "Espresso";
+    }
+}
+
+
+
+  설명 : Latte 와 Espresso 는 Coffee 클래스를 상속받아 구체적인 커피 타입을 구현한 클래스들입니다.
+    
+      각 클래스는 생성자에서 name 필드를 특정 커피 이름으로 초기화합니다.
+    
+  
+  역할 : 특정 커피 타입의 객체를 생성하는 역할을 합니다.
+
+
+4. CoffeeFactory 클래스.
+class CoffeeFactory {
+    public static Coffee createCoffee(CoffeeType type) {
+        switch (type) {
+            case LATTE:
+                return new Latte();
+            case ESPRESSO:
+                return new Espresso();
+            default:
+                throw new IllegalArgumentException("Invalid coffee tyep: " + type);
+        }
+    }
+}
+
+
+
+  설명 : CoffeeFactory 클래스는 팩토리 패턴의 핵심으로, createCoffee() 메서드를 통해 특정 타입의 커피 객체를 생성하여 반환합니다.
+    
+      CoffeeType 열거형에 따라 적절한 커피 객체를 생성합니다.
+    
+  
+  역할 : 객체 생성의 로직을 중앙 집중화하여 클라이언트 코드에서 객체 생성의 책임을 분리합니다.
+    
+      클라이언트는 CoffeeFactory 의 createCoffee() 메서드를 호출하여 원하는 커피 객체를 생성할 수 있습니다.
+    
+  
+
+
+5. Main 클래스.
+public class Main {
+    public static void main(String[] args) {
+        Coffee coffee = CoffeeFactory.createCoffee(CoffeeType.LATTE);
+        System.out.println(coffee.getName()); // latte
+    }
+}
+
+
+
+  설명 : Main 클래스는 클라이언트 코드로, CoffeeFactory 를 사용하여 LATTE 타입의 커피 객체를 생성하고, 그 이름을 출력합니다.
+  역할 : 팩토리 패턴을 사용하는 클라이언트 코드로, 직접적으로 객체를 생성하지 않고 팩토리를 통해 객체를 생성합니다.
+
+
+4️⃣ 팩토리 패턴의 장점.
+
+  1. 코드의 유연성 증가.
+    
+      객체 생성 로직이 중앙화되어 있으므로, 새로운 커피 타입을 추가할 때 클라이언트 코드를 수정할 필요 없이 팩토리 클래스만 수정하면 됩니다.
+    
+  
+  2. 유지보수성 향상.
+    
+      객체 생성 코드가 한 곳에 모여 있어 코드의 유지보수가 쉬워집니다.
+        
+          객체 생성 과정에서의 변경이 필요한 경우에도 팩토리 클래스만 수정하면 됩니다.
+        
+      
+    
+  
+  3. 코드의 결합도 감소.
+    
+      클라이언트 코드는 구체적인 클래스에 의존하지 않고, 인터페이스나 추상 클래스를 통해 객체를 다루기 때문에 결합도가 낮아집니다.
+    
+  
+
+
+5️⃣ 팩토리 패턴의 단점.
+
+  1. 클래스의 복잡성 증가.
+    
+      객체 생성을 위한 팩토리 클래스가 추가됨으로써 클래스의 수가 증가하고, 코드 구조가 다소 복잡해질 수 있습니다.
+    
+  
+  2. 확장 시 주의 필요.
+    
+      새로운 커피 타입을 추가할 때마다 팩토리 클래스의 switch 문이나 if-else 문이 증가할 수 있어, 확장성이 제한될 수 있습니다.
+        
+          이 문제를 해결하기 위해서는 추상 팩토리 패턴이나 다른 디자인 패턴과 결합하는 방법을 고려할 수 있습니다.
+        
+      
+    
+  
+
+
+6️⃣ 결론.
+
+  팩토리 패턴은 객체 생성의 책임을 분리하여 코드의 유연성과 유지보수성을 높이는 강력한 디자인 패턴입니다.
+    
+      위 코드 예시에서는 커피 객체를 생성하는 로직을 CoffeeFactory 클래스에 모아두어, 클라이언트 코드가 특정 커피 클래스에 직접적으로 의존하지 않도록 하였습니다.
+        
+          이를 통해 클라이언트 코드는 커피 객체의 생성 방식에 대해 신경 쓰지 않고도 다양한 타입의 커피를 생성하고 사용할 수 있게 됩니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-08-31-Abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2666,406 +2784,6 @@ class Airplane implements Flyable {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-30-test-and-di.html"><h1 class="title_post">☕️[Java] 테스트 코드와 Dependancy Injection</h1></a>
-                        <a href="/Backend/Java/2024-08-30-test-and-di.html" class="txt_post">
-                            ☕️[Java] 테스트 코드와 Dependancy Injection
-
-1️⃣ 전체 코드.
-
-// Member
-public class Member {
-
-	private Long id;
-	private String name;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-}
-
-// MemberRepository - Interface
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-// MemberServiceTest
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-class MemberServiceTest {
-
-	MemberService memberService;
-	MemoryMemberRepository memberRepository;
-
-	@BeforeEach
-	public void beforeEach() {
-		memberRepository = new MemoryMemberRepository();
-		memberService = new MemberService(memberRepository);
-	}
-
-	@AfterEach
-	public void afterEach() {
-		memberRepository.clearStore();
-	}
-
-	@Test
-	void 회원가입() {
-		// given
-		Member member = new Member();
-		member.setName("spring");
-
-		// when
-		Long saveId = memberService.join(member);
-
-		// then
-		Member findMember = memberService.findOne(saveId).get();
-		assertThat(member.getName()).isEqualTo(findMember.getName());
-	}
-
-	@Test
-	void findMembers() {
-		// given
-		Member member1 = new Member();
-		member1.setName("spring");
-
-		Member member2 = new Member();
-		member2.setName("spring");
-
-		// when
-		memberService.join(member1);
-		IllegalStateException e = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
-
-		assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-
-		// then
-	}
-
-	@Test
-	void findOne() {
-	}
-}
-
-
-2️⃣ 의존성 주입(DI, Dependency Injection).
-
-  의존성 주입(DI, Dependency Injection) 는 객체 지향 프로그래밍에서 객체 간의 의존성을 외부에서 주입하는 디자인 패턴입니다.
-
-
-1️⃣ 의존성 주입(DI, Dependency Injection)의 개념.
-
-  의존성(Dependency)
-    
-      클래스가 다른 클래스의 기능을 사용해야 하는 상황을 의미합니다.
-        
-          예를 들어, MemberService 클래스는 회원 데이터를 처리하기 위해 MemberRepository 를 필요로 합니다. 여기서 MemberService 는 MemberRepository 에 의존합니다.
-        
-      
-    
-  
-  주입(Injection)
-    
-      외부에서 객체를 생성하여 주입해주는 것을 의미합니다.
-        
-          이는 보통 생성자 주입, 세터(Setter) 주입, 필드 주입 등의 방식으로 이루어집니다.
-        
-      
-    
-  
-
-
-2️⃣ DI의 주요 목적.
-
-  느슨한 결합(Loose Coupling)
-    
-      DI를 통해 클래스 간의 결합도를 낮출 수 있습니다.
-        
-          클래스는 자신이 사용하는 의존 객체가 무엇인지 알 필요가 없고, 이로 인해 클래스 간의 결합이 느슨해집니다.
-            
-              이는 코드의 유연성을 높여주며, 코드 변셩 시 영향 범위를 줄여줍니다.
-            
-          
-        
-      
-    
-  
-  유연성 및 확장성
-    
-      의존 객체를 외부에서 주입받기 때문에, 애플리케이션이 다른 의존 객체로 쉽게 전환될 수 있습니다.
-        
-          예를 들어, 테스트 환경에서 MemoryMemberRepository 를 사용하고, 실제 운영 환경에서는 데이터베이스 연결을 사용하는 JpaMemberRepository 를 사용할 수 있습니다.
-        
-      
-    
-  
-  테스트 용이성
-    
-      DI를 통해 클래스 간의 의존 관계를 외부에서 주입받으면, 테스트 시에 쉽게 Mock 객체나 Stub 객체를 주입할 수 있어 테스트를 더 용이하게 만듭니다.
-    
-  
-
-
-3️⃣ DI의 사용 방법.
-
-  1. 생성자 주입(Constructor Injection) : 의존성을 클래스의 생성자를 통해 주입하는 방법입니다. 위 코드에서는 생성자 주입이 사용되었습니다.
-
-
-public MemberService(MemberRepository memberRepository) {
-    this.memberRepository = memberRepository;
-}
-
-
-
-  2. 세터 주입(Setter Injection) : 의존성을 세터 메서드를 통해 주입하는 방법입니다.
-    public void setMemberRepository(MemberRepository memberRepository) {
-  this.memberRepository = memberRepository;
-}
-    
-  
-  3. 필드 주입(Field Injection) : 의존성을 필드에 직접 주입하는 방법으로, 보통 @Autowired 와 같은 애노테이션을 사용합니다. 하지만 필드 주입은 테스트하기 어려울 수 있어 일반적으로 권장되지 않습니다.
-
-
-DI는 코드의 재사용성, 유지보수성, 테스트 용이성을 높여주는 중요한 디자인 패턴으로, 스프링 프레임워크와 같은 의존성 주입 컨테이너에서 널리 사용됩니다.
-
-3️⃣ 코드에서 의존성 주입(DI, Dependency Injection)이 사용된 부분과 설명.
-
-  위 코드에서 DI(Dependency Injection)가 사용된 부분은 MemberService 클래스의 인스턴스를 생성하는 부분입니다.
-
-
-@BeforeEach
-public void beforeEach() {
-    memberRepository = new MemoryMemberRepository();
-    memberService = new MemberService(memberRepository);
-}
-
-
-
-  이 부분에서 MemberService 클래스의 생성자에 MemoryMemberRepository 객체를 주입하고 있습니다.
-  MemberService 클래스는 생성자에서 MemberRepository 인터페이스를 받아 사용합니다.
-    
-      아렇게 함으로써, MemberService 는 직접적으로 MemoryMemberRepository 를 생성하지 않고 외부에서 주입받게 됩니다.
-    
-  
-
-
-1️⃣ 설명.
-
-  memberRepository = new MemoryMemberRepository();
-    
-      MemoryMemberRepository 객체를 생성합니다. 이는 MemberRepository 인터페이스의 구현체입니다.
-    
-  
-  memberService = new MemberService(memberRepository);
-    
-      MemberService 객체를 생성 할 때, 생성자에 memberRepository 를 주입합니다.
-    
-  
-
-
-이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
-
-예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
-                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
-                            ☕️[Java] .equalsIgnoreCase()
-
-1️⃣ .equalsIgnoreCase()
-
-  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
-    
-      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
-    
-  
-
-
-2️⃣ 예시.
-public class Main {
-    public static void main(String[] args) {
-        String str1 = "Hello";
-        String str2 = "hello";
-        String str3 = "HELLO";
-        String str4 = "World";
-        
-        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
-        
-        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
-        
-        // str1과 str4는 내용이 다르므로 false 반환
-        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
-    }
-}
-
-
-3️⃣ 주요 포인트.
-
-  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
-    
-      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
-    
-  
-  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
-    
-      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
-    
-  
-  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
-
-
-이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
-예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-30</span>
                             
                         </div>
                     </div>
@@ -3546,6 +3264,406 @@ class MemberServiceTest {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-30-test-and-di.html"><h1 class="title_post">☕️[Java] 테스트 코드와 Dependancy Injection</h1></a>
+                        <a href="/Backend/Java/2024-08-30-test-and-di.html" class="txt_post">
+                            ☕️[Java] 테스트 코드와 Dependancy Injection
+
+1️⃣ 전체 코드.
+
+// Member
+public class Member {
+
+	private Long id;
+	private String name;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+
+// MemberRepository - Interface
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
+
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
+
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class MemoryMemberRepository implements MemberRepository {
+
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
+
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
+
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
+
+	public void clearStore() {
+		store.clear();
+	}
+}
+
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+// MemberServiceTest
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
+class MemberServiceTest {
+
+	MemberService memberService;
+	MemoryMemberRepository memberRepository;
+
+	@BeforeEach
+	public void beforeEach() {
+		memberRepository = new MemoryMemberRepository();
+		memberService = new MemberService(memberRepository);
+	}
+
+	@AfterEach
+	public void afterEach() {
+		memberRepository.clearStore();
+	}
+
+	@Test
+	void 회원가입() {
+		// given
+		Member member = new Member();
+		member.setName("spring");
+
+		// when
+		Long saveId = memberService.join(member);
+
+		// then
+		Member findMember = memberService.findOne(saveId).get();
+		assertThat(member.getName()).isEqualTo(findMember.getName());
+	}
+
+	@Test
+	void findMembers() {
+		// given
+		Member member1 = new Member();
+		member1.setName("spring");
+
+		Member member2 = new Member();
+		member2.setName("spring");
+
+		// when
+		memberService.join(member1);
+		IllegalStateException e = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
+
+		assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+
+		// then
+	}
+
+	@Test
+	void findOne() {
+	}
+}
+
+
+2️⃣ 의존성 주입(DI, Dependency Injection).
+
+  의존성 주입(DI, Dependency Injection) 는 객체 지향 프로그래밍에서 객체 간의 의존성을 외부에서 주입하는 디자인 패턴입니다.
+
+
+1️⃣ 의존성 주입(DI, Dependency Injection)의 개념.
+
+  의존성(Dependency)
+    
+      클래스가 다른 클래스의 기능을 사용해야 하는 상황을 의미합니다.
+        
+          예를 들어, MemberService 클래스는 회원 데이터를 처리하기 위해 MemberRepository 를 필요로 합니다. 여기서 MemberService 는 MemberRepository 에 의존합니다.
+        
+      
+    
+  
+  주입(Injection)
+    
+      외부에서 객체를 생성하여 주입해주는 것을 의미합니다.
+        
+          이는 보통 생성자 주입, 세터(Setter) 주입, 필드 주입 등의 방식으로 이루어집니다.
+        
+      
+    
+  
+
+
+2️⃣ DI의 주요 목적.
+
+  느슨한 결합(Loose Coupling)
+    
+      DI를 통해 클래스 간의 결합도를 낮출 수 있습니다.
+        
+          클래스는 자신이 사용하는 의존 객체가 무엇인지 알 필요가 없고, 이로 인해 클래스 간의 결합이 느슨해집니다.
+            
+              이는 코드의 유연성을 높여주며, 코드 변셩 시 영향 범위를 줄여줍니다.
+            
+          
+        
+      
+    
+  
+  유연성 및 확장성
+    
+      의존 객체를 외부에서 주입받기 때문에, 애플리케이션이 다른 의존 객체로 쉽게 전환될 수 있습니다.
+        
+          예를 들어, 테스트 환경에서 MemoryMemberRepository 를 사용하고, 실제 운영 환경에서는 데이터베이스 연결을 사용하는 JpaMemberRepository 를 사용할 수 있습니다.
+        
+      
+    
+  
+  테스트 용이성
+    
+      DI를 통해 클래스 간의 의존 관계를 외부에서 주입받으면, 테스트 시에 쉽게 Mock 객체나 Stub 객체를 주입할 수 있어 테스트를 더 용이하게 만듭니다.
+    
+  
+
+
+3️⃣ DI의 사용 방법.
+
+  1. 생성자 주입(Constructor Injection) : 의존성을 클래스의 생성자를 통해 주입하는 방법입니다. 위 코드에서는 생성자 주입이 사용되었습니다.
+
+
+public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
+}
+
+
+
+  2. 세터 주입(Setter Injection) : 의존성을 세터 메서드를 통해 주입하는 방법입니다.
+    public void setMemberRepository(MemberRepository memberRepository) {
+  this.memberRepository = memberRepository;
+}
+    
+  
+  3. 필드 주입(Field Injection) : 의존성을 필드에 직접 주입하는 방법으로, 보통 @Autowired 와 같은 애노테이션을 사용합니다. 하지만 필드 주입은 테스트하기 어려울 수 있어 일반적으로 권장되지 않습니다.
+
+
+DI는 코드의 재사용성, 유지보수성, 테스트 용이성을 높여주는 중요한 디자인 패턴으로, 스프링 프레임워크와 같은 의존성 주입 컨테이너에서 널리 사용됩니다.
+
+3️⃣ 코드에서 의존성 주입(DI, Dependency Injection)이 사용된 부분과 설명.
+
+  위 코드에서 DI(Dependency Injection)가 사용된 부분은 MemberService 클래스의 인스턴스를 생성하는 부분입니다.
+
+
+@BeforeEach
+public void beforeEach() {
+    memberRepository = new MemoryMemberRepository();
+    memberService = new MemberService(memberRepository);
+}
+
+
+
+  이 부분에서 MemberService 클래스의 생성자에 MemoryMemberRepository 객체를 주입하고 있습니다.
+  MemberService 클래스는 생성자에서 MemberRepository 인터페이스를 받아 사용합니다.
+    
+      아렇게 함으로써, MemberService 는 직접적으로 MemoryMemberRepository 를 생성하지 않고 외부에서 주입받게 됩니다.
+    
+  
+
+
+1️⃣ 설명.
+
+  memberRepository = new MemoryMemberRepository();
+    
+      MemoryMemberRepository 객체를 생성합니다. 이는 MemberRepository 인터페이스의 구현체입니다.
+    
+  
+  memberService = new MemberService(memberRepository);
+    
+      MemberService 객체를 생성 할 때, 생성자에 memberRepository 를 주입합니다.
+    
+  
+
+
+이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
+
+예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
+                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
+                            ☕️[Java] .equalsIgnoreCase()
+
+1️⃣ .equalsIgnoreCase()
+
+  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
+    
+      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
+    
+  
+
+
+2️⃣ 예시.
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "HELLO";
+        String str4 = "World";
+        
+        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
+        
+        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
+        
+        // str1과 str4는 내용이 다르므로 false 반환
+        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
+    }
+}
+
+
+3️⃣ 주요 포인트.
+
+  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
+    
+      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
+    
+  
+  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
+    
+      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
+    
+  
+  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
+
+
+이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
+예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-08-29-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -3812,6 +3930,257 @@ public class PaymentService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-28-Immutable-Object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-28-Immutable-Object.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/Backend/Java/2024-08-28-Immutable-Object.html" class="txt_post">
+                            ☕️[Java] 불변 객체 - 도입.
+
+1️⃣ 불변 객체 - 도입.
+
+  공유하면 안되는 객체를 여러 변수에서 공유하기 때문에 문제가 발생했었습니다.
+    
+      그렇다고 객체의 공유를 막을 수 있는 방법은 없습니다.
+        
+          그러나 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+          객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+            
+              문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+            
+          
+        
+      
+    
+  
+  "a", "b" 는 처음 시점에는 둘 다 "서울" 이라는 주소를 사용해야 합니다.
+    
+      그리고 이후에 "b" 의 주소를 "부산" 으로 변경해야 합니다.
+        Address a = new Address("서울");
+Address b = a;
+        
+      
+    
+  
+  따라서 처음에는 "b = a" 와 같이 "서울" 이라는 "Address" 인스턴스를 "a", "b" 가 함께 사용하는 것이, 다음 코드와 같이 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+    
+      인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+        Address a = new Address("서울");
+Address b = new Address("서울");
+        
+      
+    
+  
+  여기까지는 "Address b = a" 와 같이 공유 참조를 사용해도 아무런 문제가 없습니다.
+    
+      오히려 더 효율적입니다.
+    
+  
+  진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+    b.setValue("부산"); // b의 값을 부산으로 변경해야함
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+    
+  
+  자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+    
+      기본형과 다르게 참조형인 객체는 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+        
+          따라서 이것은 문제가 아닙니다.
+            
+              문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 어디선가 변경했기 때문입니다.
+                
+                  만약 "Address" 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 불변 객체 도입.
+
+  객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+    
+      "Address" 클래스를 상태가 변하지 않는 불변 클래스로 만들어 보겠습니다.
+    
+  
+
+
+public class ImmutableAddress {
+	private final String value;
+
+	public ImmutableAddress(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"value='" + value + '\'' +
+				'}';
+	}
+}
+
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 "value" 의 필드를 "final" 로 선언했습니다.
+      값을 변경할 수 있는 "setValue()" 를 제거했습니다.
+        
+          이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+        
+      
+    
+  
+  불변 클래스를 만드는 방법은 아주 단순합니다.
+    
+      어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+```java
+public class RefMain2 {
+    
+
+    public static void main(String[] args) {
+      ImmutableAddress a = new ImmutableAddress(“서울”);
+      ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+      System.out.println(“a = “ + a);
+      System.out.println(“b = “ + b);
+
+      // b.setValue("부산"); // 컴파일 오류 발생
+  b = new ImmutableAddress("부산");
+  System.out.println("부산 -&gt; b");
+  System.out.println("a = " + a); // 사이드 이팩트 발생
+  System.out.println("b = " + b);   } } ```
+    
+  
+  "ImmutableAddress" 의 경우 값을 변경할 수 있는 "b.setValue()" 메서드 자체가 제거되었습니다.
+    
+      이제 "ImmutableAddress" 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+        
+          "ImmutableAddress" 를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫게 됩니다.
+            
+              예를 들어 "b.setValue("부산")" 을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지합니다.
+                
+                  따라서 어쩔 수 없이 새로운 "ImmutableAddress("부산")" 인스턴스를 생성해서 "b" 에 대입합니다.
+                    
+                      결과적으로 "a", "b" 는 서로 다른 인스턴스를 참조하고, "a" 가 참조하던 "ImmutableAddress" 는 그대로 유지됩니다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+
+  실행 결과를 보면 "a" 의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+
+  "ImmutableAddress" 는 불변 객체입니다.
+    
+      따라서 값을 변경할 수 없습니다.
+    
+  
+
+
+
+
+
+  "ImmutableAddress" 은 불변 객체이므로 "b" 가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+3️⃣ 정리
+
+  불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+    
+      객체의 공유 참조는 막을 수 없습니다.
+        
+          그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+          사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어서 사용하면 됩니다.
+          불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+        
+      
+      불변 객체는 값을 변경할 수 없습니다.
+        
+          따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+            
+              이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고 - 가변(Mutable) 객체 vs 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.
+가변은 사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.
+불변은 사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.
+
+
+
+  "Address" 는 가변 클래스입니다.
+    
+      이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+    
+  
+  "ImmutableAddress" 는 불변 클래스입니다.
+    
+      이 클래스로 객체를 생성하면 불변 객체가 됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -4050,257 +4419,6 @@ b = Address{value='서울'}
 주소 값을 변경합니다 -&gt; 부산
 a = Address{value='부산'}
 b = Address{value='부산'}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-28-Immutable-Object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-28-Immutable-Object.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/Backend/Java/2024-08-28-Immutable-Object.html" class="txt_post">
-                            ☕️[Java] 불변 객체 - 도입.
-
-1️⃣ 불변 객체 - 도입.
-
-  공유하면 안되는 객체를 여러 변수에서 공유하기 때문에 문제가 발생했었습니다.
-    
-      그렇다고 객체의 공유를 막을 수 있는 방법은 없습니다.
-        
-          그러나 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-          객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-            
-              문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-            
-          
-        
-      
-    
-  
-  "a", "b" 는 처음 시점에는 둘 다 "서울" 이라는 주소를 사용해야 합니다.
-    
-      그리고 이후에 "b" 의 주소를 "부산" 으로 변경해야 합니다.
-        Address a = new Address("서울");
-Address b = a;
-        
-      
-    
-  
-  따라서 처음에는 "b = a" 와 같이 "서울" 이라는 "Address" 인스턴스를 "a", "b" 가 함께 사용하는 것이, 다음 코드와 같이 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-    
-      인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-        Address a = new Address("서울");
-Address b = new Address("서울");
-        
-      
-    
-  
-  여기까지는 "Address b = a" 와 같이 공유 참조를 사용해도 아무런 문제가 없습니다.
-    
-      오히려 더 효율적입니다.
-    
-  
-  진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-    b.setValue("부산"); // b의 값을 부산으로 변경해야함
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-    
-  
-  자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-    
-      기본형과 다르게 참조형인 객체는 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-        
-          따라서 이것은 문제가 아닙니다.
-            
-              문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 어디선가 변경했기 때문입니다.
-                
-                  만약 "Address" 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 불변 객체 도입.
-
-  객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-    
-      "Address" 클래스를 상태가 변하지 않는 불변 클래스로 만들어 보겠습니다.
-    
-  
-
-
-public class ImmutableAddress {
-	private final String value;
-
-	public ImmutableAddress(String value) {
-		this.value = value;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return "Address{" +
-				"value='" + value + '\'' +
-				'}';
-	}
-}
-
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 "value" 의 필드를 "final" 로 선언했습니다.
-      값을 변경할 수 있는 "setValue()" 를 제거했습니다.
-        
-          이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-        
-      
-    
-  
-  불변 클래스를 만드는 방법은 아주 단순합니다.
-    
-      어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-```java
-public class RefMain2 {
-    
-
-    public static void main(String[] args) {
-      ImmutableAddress a = new ImmutableAddress(“서울”);
-      ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-      System.out.println(“a = “ + a);
-      System.out.println(“b = “ + b);
-
-      // b.setValue("부산"); // 컴파일 오류 발생
-  b = new ImmutableAddress("부산");
-  System.out.println("부산 -&gt; b");
-  System.out.println("a = " + a); // 사이드 이팩트 발생
-  System.out.println("b = " + b);   } } ```
-    
-  
-  "ImmutableAddress" 의 경우 값을 변경할 수 있는 "b.setValue()" 메서드 자체가 제거되었습니다.
-    
-      이제 "ImmutableAddress" 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-        
-          "ImmutableAddress" 를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫게 됩니다.
-            
-              예를 들어 "b.setValue("부산")" 을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지합니다.
-                
-                  따라서 어쩔 수 없이 새로운 "ImmutableAddress("부산")" 인스턴스를 생성해서 "b" 에 대입합니다.
-                    
-                      결과적으로 "a", "b" 는 서로 다른 인스턴스를 참조하고, "a" 가 참조하던 "ImmutableAddress" 는 그대로 유지됩니다.
-                    
-                  
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-
-  실행 결과를 보면 "a" 의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-
-  "ImmutableAddress" 는 불변 객체입니다.
-    
-      따라서 값을 변경할 수 없습니다.
-    
-  
-
-
-
-
-
-  "ImmutableAddress" 은 불변 객체이므로 "b" 가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-3️⃣ 정리
-
-  불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-    
-      객체의 공유 참조는 막을 수 없습니다.
-        
-          그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-          사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어서 사용하면 됩니다.
-          불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-        
-      
-      불변 객체는 값을 변경할 수 없습니다.
-        
-          따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-            
-              이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ 참고 - 가변(Mutable) 객체 vs 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.
-가변은 사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.
-불변은 사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.
-
-
-
-  "Address" 는 가변 클래스입니다.
-    
-      이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-    
-  
-  "ImmutableAddress" 는 불변 클래스입니다.
-    
-      이 클래스로 객체를 생성하면 불변 객체가 됩니다.
-    
-  
 
 
                         </a>
@@ -4647,6 +4765,164 @@ equals() 메서드를 구현할 때 지켜야 하는 규칙
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
+                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
+                            ☕️[Java] equals() - 1, 동일성과 동등성.
+
+1️⃣ equals() - 1, 동일성과 동등성.
+
+
+  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
+  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
+    
+      동일성(Identity)
+        
+          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+        
+      
+      동등성(Equality)
+        
+          
+            
+              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 단어 정리
+
+  “동일” 은 “완전히 같음 을 의미합니다.”
+  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
+  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
+    
+      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
+      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+    User a = new User("id-100"); // 참조 x001
+User b = new User("id-100"); // 참조 x002
+    
+  
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
+    
+      (주민등록번호가 같다고 가정해도 됩니다.)
+        
+          따라서 동일성은 다르지만, 동등성은 같습니다.
+        
+      
+    
+  
+  문자의 경우도 마찬가지입니다.
+    String s1 = "hello";
+String s2 = "hello";
+    
+  
+  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
+    
+      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
+    
+  
+
+
+3️⃣ UserV1 예제.
+
+public class UserV1 {
+	private String id;
+
+	public UserV1(String id) {
+		this.id = id;
+	}
+}
+
+
+public class EqualsMainV1 {
+
+	public static void main(String[] args) {
+		UserV1 user1 = new UserV1("id-100");
+		UserV1 user2 = new UserV1("id-100");
+
+		System.out.println("Identity = " + (user1 == user2));
+		System.out.println("Equality = " + (user1.equals(user2)));
+	}
+}
+
+
+실행 결과
+Identity = false
+Equality = false
+
+
+
+
+동일성(Identity) 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성(Equality) 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+
+  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
+
+
+Object.equals
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안  
+return false
+false
+
+
+
+  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
+    
+      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+        
+          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
+            
+              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-25-Object-OCP-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -4817,164 +5093,6 @@ Animal 같은 부모 타입으로 올라갈 수록 개념은 더 추상적이게
 참고로 단순히 의존관계 또는 어디에 의존한다고 하면 주로 정적 의존관계를 뜻합니다.
       
         예) 'ObjectPrinter' 는 'Object' 에 의존합니다.
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
-                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
-                            ☕️[Java] equals() - 1, 동일성과 동등성.
-
-1️⃣ equals() - 1, 동일성과 동등성.
-
-
-  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
-  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
-    
-      동일성(Identity)
-        
-          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
-        
-      
-      동등성(Equality)
-        
-          
-            
-              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 단어 정리
-
-  “동일” 은 “완전히 같음 을 의미합니다.”
-  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
-  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
-    
-      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
-      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-    User a = new User("id-100"); // 참조 x001
-User b = new User("id-100"); // 참조 x002
-    
-  
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
-    
-      (주민등록번호가 같다고 가정해도 됩니다.)
-        
-          따라서 동일성은 다르지만, 동등성은 같습니다.
-        
-      
-    
-  
-  문자의 경우도 마찬가지입니다.
-    String s1 = "hello";
-String s2 = "hello";
-    
-  
-  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
-    
-      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
-    
-  
-
-
-3️⃣ UserV1 예제.
-
-public class UserV1 {
-	private String id;
-
-	public UserV1(String id) {
-		this.id = id;
-	}
-}
-
-
-public class EqualsMainV1 {
-
-	public static void main(String[] args) {
-		UserV1 user1 = new UserV1("id-100");
-		UserV1 user2 = new UserV1("id-100");
-
-		System.out.println("Identity = " + (user1 == user2));
-		System.out.println("Equality = " + (user1.equals(user2)));
-	}
-}
-
-
-실행 결과
-Identity = false
-Equality = false
-
-
-
-
-동일성(Identity) 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성(Equality) 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-
-  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
-
-
-Object.equals
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안  
-return false
-false
-
-
-
-  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
-    
-      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-        
-          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
-            
-              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
-            
-          
-        
       
     
   
@@ -8985,90 +9103,40 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Network/2024-08-16-system-basic-term.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Network/2024-08-16-system-basic-term.html"><h1 class="title_post">🌐[Network] 시스템 기초 용어.</h1></a>
-                        <a href="/Backend/Network/2024-08-16-system-basic-term.html" class="txt_post">
-                            🌐[Network] 시스템 기초 용어.
+                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html"><h1 class="title_post">☁️[AWS] 라우팅 및 라우팅 테이블.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="txt_post">
+                            ☁️[AWS] 라우팅 및 라우팅 테이블.
 
-
-  위 그림과 같이 네트워크는 외형적으로 시스템과 전송 매체의 조합으로 구성됩니다.
-  데이터 통신을 위한 전송 매체는 전송 대역, 전송 속도, 전송 오류율과 같은 물리적인 특성이 주 관심사이므로 논리적인 기능은 비교적 단순합니다.
-  시스템은 전송 매체를 이용해 다양한 연동 형태로 구성할 수 있으므로 개념의 폭이 넓고 복잡합니다.
-
-
-1️⃣ 시스템의 구분.
-
-  네트워크를 구성하는 시스템이 반드시 일반 컴퓨터처럼 복잡한 기능을 수행해야 하는 것은 아니지만, 데이터 전송 기능을 포함하여 일정 정도의 컴퓨팅 기능을 보유합니다.
-  네트워크 시스템은 수행 기능에 따라 다음과 같이 다양한 명칭으로 부를 수 있습니다.
+  실제 세상의 어떤 주소를 찾아가기 위해서는 그 주소까지의 경로를 알아야 합니다.
+  네트워크 세계에서도 이처럼 어떤 IP 주소를 찾아가기 위해서는 해당 주소까지의 경로를 알아야 합니다.
     
-      노드, 라우터, 호스트, 클라이언트, 서버
-    
-  
-
-
-1️⃣ 노드(Node)
-
-  노드(Node)는 컴퓨터 이론 분야에서 특정 시스템을 가리키는 가장 일반적인 용어로 사용됩니다.
-  인터넷에서도 상호 연결된 시스템을 표현할 수 있는 가장 포괄적 의미로 사용되므로 데이터를 주고받을 수 있는 모든 시스템을 통칭합니다.
-  노드는 인터넷 내부를 구성하는 라우터와 인터넷 바깥쪽에 연결되어 데이터를 주고받는 호스트로 구분됩니다.
-
-
-2️⃣ 라우터(Router)
-
-  라우터(Router)는 인터넷 내부를 구성하며, 기본으로 데이터 전송 기능을 포함합니다.
-  라우터의 주요 역할은 데이터 중개 기능이며, 인터넷 바깥쪽에 연결된 호스트들 사이의 데이터 전송이 인터넷 내부에서 최적의 경로를 통하여 이루어지도록 합니다.
-
-
-3️⃣ 호스트(Host)
-
-  호스트(Host)는 인터넷 바깥쪽에 연결되어 일반 사용자들의 네트워크 접속 창구 역할을 합니다.
-  일반적인 컴퓨팅 기능을 갖춘 호스트는 네트워크 응용 프로그램을 실행할 수 있고, 사용자는 이 프로그램을 이용하여 다양한 인터넷 서비스를 제공받습니다.
-  호스트는 로스트 사이에 제공되는 서비스를 기준으로 클라이언트와 서버로 나눌 수 있습니다.
-
-
-4️⃣ 클라이언트(Client)와 서버(Server)
-
-  클라이언트(Client)는 임의의 인터넷 서비스를 이용하는 응용 프로그램이고, 서버(Server)는 서비스를 제공하는 응용 프로그램입니다.
-  클라이언트와 서버의 개념은 서비스 단위로 이루어지므로 임의의 호스트가 클라이언트나 서버로 고정되지 않습니다.
-    
-      이용하는 서비스의 종류에 따라서 클라이언트가 될 수도 있고, 서버가 될 수도 있습니다.
+      하지만 사용자는 이런 경로를 알 필요가 없습니다.
         
-          그러므로 특정 서비스를 기준으로 상대적인 관점에서 클라이언트와 서버라는 용어를 사용합니다.
+          대신 라우터(Router) 가 최적의 경로를 찾아서 경로를 결정하고 연결합니다.
+            
+              라우터가 IP 주소까지의 경로를 결정하는 것을 라우팅(Routing) 이라고 합니다.
+            
+          
         
       
     
   
-  일반적으로 응용 프로그램 혹은 서비스 단위가 아닌 호스트 단위로도 클라이언트와 서버를 사용하기도 합니다.
-    
-      즉, 다양한 서비스를 제공하는 목적으로 특화된 호스트의 경우 호스트 자체를 서버라 부르기도 합니다.
-    
-  
-  서버는 클라이언트보다 먼저 실행 상태가 되어 클라이언트의 요청에 대기해야 합니다.
-    
-      그리고 영원히 종료하지 않으면서 클라이언트의 요청이 있을 때마다 서비스를 반복해서 제공합니다.
-    
-  
+  인터넷을 통해 원하는 사이트까지 가는 경로는 여러 라우터를 거치게 되므로 어떻게 라우팅하는 것이 효율이 좋을지 결정해야 합니다.
 
-
-2️⃣ 클라이언트(Client)와 서버(Server)
-
-
-  위 그림은 임의의 응용 서비스를 기준으로 클라이언트와 서버의 상대적인 관계를 설명합니다.
-  FTP(File Transfer Protocol)는 원격 호스트끼리 파일 송수신 기능을 제공하는 서비스이고, 텔넷(Telnet)은 원격 호스트에 로그인하는 서비스를 제공합니다.
-  호스트 2는 FTP 서비스를 제공하고, 호스트 3은 텔넷 서비스를 제공합니다.
-  먼저, FTP 서비스를 살펴보면 호스트 1은 호스트 2에 FTP 서비스를 요청합니다.
+  각 라우터는 소유한 경로 정보를 기반으로 목적지 IP 주소를 향해 이동해야 하는 네트워크를 결정합니다.
     
-      따라서 FTP 서비스를 기준으로 하면 호스트 1이 클라이언트가 되고, 호스트 2는 서버가 됩니다.
-      반면, 텔넷 서비스는 호스트 2가 호스트 3에 서비스를 요청합니다.
+      이 경로 정보를 라우팅 테이블(Routing Table) 이라고 합니다.
         
-          텔넷 서비스를 기준으로 하면 호스트 2가 클라이언트이고, 호스트 3은 서버입니다.
+          라우팅 테이블은 라우터가 소유한 네트워크의 지도와 같은 것입니다.
             
-              따라서 호스트 2는 사용하는 응용 서비스의 종류에 따라 클라이언트가 되기도 하고 서버가 되기도 합니다.
+              AWS에서는 Amazon VPC의 라우팅 테이블(Routing Table) 이라는 기능이 이에 해당합니다.
                 
-                  결론적으로 클라이언트와 서버라는 용어는 서비스 이용의 상대적 위치에 따라 결정됨을 알 수 있습니다.
+                  라우팅 테이블에는 인터넷이나 각 AWS 서비스에 대해 어떤 엔드포인트를 경유할지와 같은 경로 정보를 관리할 수 있습니다.
+
                 
               
             
@@ -9077,13 +9145,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
       
     
   
-  서버의 명칭을 특정 호스트에 전용으로 부여해서 사용할 수도 있습니다.
-  특히 다양한 서비스 기능을 제공하는 대형 시스템을 서버로 설정해 다수의 클라이언트가 접속해서 서비스를 이용하도록 할 수 있습니다.
-    
-      그러나 기능적인 관점에서는 위 그림에서처럼 호스트에서 실행되는 응용 서비스별로 구분하는 것이 더 정확합니다.
-    
-  
-  인터넷에서 네트워크 서비스의 기능은 대부분 응용 프로그램으로 구현되므로 보통 클라이언트 프로세스, 서버 프로세스라는 호칭이 더 자연스러울 수 있습니다.
 
 
                         </a>
@@ -9373,40 +9434,90 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/Network/2024-08-16-system-basic-term.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html"><h1 class="title_post">☁️[AWS] 라우팅 및 라우팅 테이블.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="txt_post">
-                            ☁️[AWS] 라우팅 및 라우팅 테이블.
+                        <a href="/Backend/Network/2024-08-16-system-basic-term.html"><h1 class="title_post">🌐[Network] 시스템 기초 용어.</h1></a>
+                        <a href="/Backend/Network/2024-08-16-system-basic-term.html" class="txt_post">
+                            🌐[Network] 시스템 기초 용어.
 
-  실제 세상의 어떤 주소를 찾아가기 위해서는 그 주소까지의 경로를 알아야 합니다.
-  네트워크 세계에서도 이처럼 어떤 IP 주소를 찾아가기 위해서는 해당 주소까지의 경로를 알아야 합니다.
+
+  위 그림과 같이 네트워크는 외형적으로 시스템과 전송 매체의 조합으로 구성됩니다.
+  데이터 통신을 위한 전송 매체는 전송 대역, 전송 속도, 전송 오류율과 같은 물리적인 특성이 주 관심사이므로 논리적인 기능은 비교적 단순합니다.
+  시스템은 전송 매체를 이용해 다양한 연동 형태로 구성할 수 있으므로 개념의 폭이 넓고 복잡합니다.
+
+
+1️⃣ 시스템의 구분.
+
+  네트워크를 구성하는 시스템이 반드시 일반 컴퓨터처럼 복잡한 기능을 수행해야 하는 것은 아니지만, 데이터 전송 기능을 포함하여 일정 정도의 컴퓨팅 기능을 보유합니다.
+  네트워크 시스템은 수행 기능에 따라 다음과 같이 다양한 명칭으로 부를 수 있습니다.
     
-      하지만 사용자는 이런 경로를 알 필요가 없습니다.
+      노드, 라우터, 호스트, 클라이언트, 서버
+    
+  
+
+
+1️⃣ 노드(Node)
+
+  노드(Node)는 컴퓨터 이론 분야에서 특정 시스템을 가리키는 가장 일반적인 용어로 사용됩니다.
+  인터넷에서도 상호 연결된 시스템을 표현할 수 있는 가장 포괄적 의미로 사용되므로 데이터를 주고받을 수 있는 모든 시스템을 통칭합니다.
+  노드는 인터넷 내부를 구성하는 라우터와 인터넷 바깥쪽에 연결되어 데이터를 주고받는 호스트로 구분됩니다.
+
+
+2️⃣ 라우터(Router)
+
+  라우터(Router)는 인터넷 내부를 구성하며, 기본으로 데이터 전송 기능을 포함합니다.
+  라우터의 주요 역할은 데이터 중개 기능이며, 인터넷 바깥쪽에 연결된 호스트들 사이의 데이터 전송이 인터넷 내부에서 최적의 경로를 통하여 이루어지도록 합니다.
+
+
+3️⃣ 호스트(Host)
+
+  호스트(Host)는 인터넷 바깥쪽에 연결되어 일반 사용자들의 네트워크 접속 창구 역할을 합니다.
+  일반적인 컴퓨팅 기능을 갖춘 호스트는 네트워크 응용 프로그램을 실행할 수 있고, 사용자는 이 프로그램을 이용하여 다양한 인터넷 서비스를 제공받습니다.
+  호스트는 로스트 사이에 제공되는 서비스를 기준으로 클라이언트와 서버로 나눌 수 있습니다.
+
+
+4️⃣ 클라이언트(Client)와 서버(Server)
+
+  클라이언트(Client)는 임의의 인터넷 서비스를 이용하는 응용 프로그램이고, 서버(Server)는 서비스를 제공하는 응용 프로그램입니다.
+  클라이언트와 서버의 개념은 서비스 단위로 이루어지므로 임의의 호스트가 클라이언트나 서버로 고정되지 않습니다.
+    
+      이용하는 서비스의 종류에 따라서 클라이언트가 될 수도 있고, 서버가 될 수도 있습니다.
         
-          대신 라우터(Router) 가 최적의 경로를 찾아서 경로를 결정하고 연결합니다.
-            
-              라우터가 IP 주소까지의 경로를 결정하는 것을 라우팅(Routing) 이라고 합니다.
-            
-          
+          그러므로 특정 서비스를 기준으로 상대적인 관점에서 클라이언트와 서버라는 용어를 사용합니다.
         
       
     
   
-  인터넷을 통해 원하는 사이트까지 가는 경로는 여러 라우터를 거치게 되므로 어떻게 라우팅하는 것이 효율이 좋을지 결정해야 합니다.
-
-  각 라우터는 소유한 경로 정보를 기반으로 목적지 IP 주소를 향해 이동해야 하는 네트워크를 결정합니다.
+  일반적으로 응용 프로그램 혹은 서비스 단위가 아닌 호스트 단위로도 클라이언트와 서버를 사용하기도 합니다.
     
-      이 경로 정보를 라우팅 테이블(Routing Table) 이라고 합니다.
-        
-          라우팅 테이블은 라우터가 소유한 네트워크의 지도와 같은 것입니다.
-            
-              AWS에서는 Amazon VPC의 라우팅 테이블(Routing Table) 이라는 기능이 이에 해당합니다.
-                
-                  라우팅 테이블에는 인터넷이나 각 AWS 서비스에 대해 어떤 엔드포인트를 경유할지와 같은 경로 정보를 관리할 수 있습니다.
+      즉, 다양한 서비스를 제공하는 목적으로 특화된 호스트의 경우 호스트 자체를 서버라 부르기도 합니다.
+    
+  
+  서버는 클라이언트보다 먼저 실행 상태가 되어 클라이언트의 요청에 대기해야 합니다.
+    
+      그리고 영원히 종료하지 않으면서 클라이언트의 요청이 있을 때마다 서비스를 반복해서 제공합니다.
+    
+  
 
+
+2️⃣ 클라이언트(Client)와 서버(Server)
+
+
+  위 그림은 임의의 응용 서비스를 기준으로 클라이언트와 서버의 상대적인 관계를 설명합니다.
+  FTP(File Transfer Protocol)는 원격 호스트끼리 파일 송수신 기능을 제공하는 서비스이고, 텔넷(Telnet)은 원격 호스트에 로그인하는 서비스를 제공합니다.
+  호스트 2는 FTP 서비스를 제공하고, 호스트 3은 텔넷 서비스를 제공합니다.
+  먼저, FTP 서비스를 살펴보면 호스트 1은 호스트 2에 FTP 서비스를 요청합니다.
+    
+      따라서 FTP 서비스를 기준으로 하면 호스트 1이 클라이언트가 되고, 호스트 2는 서버가 됩니다.
+      반면, 텔넷 서비스는 호스트 2가 호스트 3에 서비스를 요청합니다.
+        
+          텔넷 서비스를 기준으로 하면 호스트 2가 클라이언트이고, 호스트 3은 서버입니다.
+            
+              따라서 호스트 2는 사용하는 응용 서비스의 종류에 따라 클라이언트가 되기도 하고 서버가 되기도 합니다.
+                
+                  결론적으로 클라이언트와 서버라는 용어는 서비스 이용의 상대적 위치에 따라 결정됨을 알 수 있습니다.
                 
               
             
@@ -9415,6 +9526,13 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
       
     
   
+  서버의 명칭을 특정 호스트에 전용으로 부여해서 사용할 수도 있습니다.
+  특히 다양한 서비스 기능을 제공하는 대형 시스템을 서버로 설정해 다수의 클라이언트가 접속해서 서비스를 이용하도록 할 수 있습니다.
+    
+      그러나 기능적인 관점에서는 위 그림에서처럼 호스트에서 실행되는 응용 서비스별로 구분하는 것이 더 정확합니다.
+    
+  
+  인터넷에서 네트워크 서비스의 기능은 대부분 응용 프로그램으로 구현되므로 보통 클라이언트 프로세스, 서버 프로세스라는 호칭이 더 자연스러울 수 있습니다.
 
 
                         </a>
@@ -13788,32 +13906,6 @@ public class CircularQueue {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-10-TIL.html"><h1 class="title_post">📝 [TIL] 240610 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-10-TIL.html" class="txt_post">
-                            
-  deque에서의 front와 rear의 변화
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-10-ChangeBetweenFrontAndRearInDeque.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -13950,6 +14042,32 @@ public class DequeExample {
 
   이 예시 코드는 ‘front’ 와 ‘rear’ 가 데이터의 삽입 및 삭제 연산에 따라 어떻게 변하는지 잘 보여줍니다.
 ‘Deque’ 는 이처럼 양쪽 끝에서의 삽입과 삭제 연산을 지원하므로, ‘front’ 와 ‘rear’ 의 위치는 동적입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-10-TIL.html"><h1 class="title_post">📝 [TIL] 240610 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-10-TIL.html" class="txt_post">
+                            
+  deque에서의 front와 rear의 변화
 
 
                         </a>
@@ -29493,105 +29611,55 @@ OS
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html"><h1 class="title_post">📦[DataStructure] 변수</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="txt_post">
-                            변수.
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
+                            복합 자료 구조.
+다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
 
-개변 데이터 조각을 종종 변수(variable)에 저장하곤 합니다.
+예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
 
-
-  변수(variable) : 컴퓨터 메모리 내 데이터 위치(또는 주소)를 표현하는 이름입니다.
+  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
     
-      프로그램 실행 중 변경되는 정보를 추적할 수 있게 합니다.
-        
-          예를 들어 For 루프를 몇 번지나갔는지 세어야 할 경우, 게임에서 플레이어의 점수를 추적해야하는 경우 등
-        
-      
+      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
     
   
 
 
-변수가 없으면 프로그램의 내부 상태를 추적, 평가(evaluate), 변경(update)할 수 없습니다.
-
-  변수를 생성하면 시스템이 그것을 자동으로 할당하고 위치를 지정합니다.
-    
-      그리고 나서 원하는 변수 이름을 사용해 자유롭게 해당 위치에 데이터를 쓰고, 데이터를 쓸 때 사용한 변수 이름을 사용해 저장된 데이터를 읽을 수 있습니다.
-    
-  
-
-
-변수 이름만 알고 있다면 데이터의 메모리 위치를 알 필요가 없습니다.
-
-컴퓨터 메모리를 여러 상자가 일렬로 늘어선 것처럼 생각할 수도 있습니다.
-
-  각 변수는 저장한 데이터의 크기에 따라 하나 이상의 인접한 상자를 차지합니다.
-
-
-아래 그림은 Level, Score, AveScore라는 세 변수를 보여줍니다.
+CoffeeRecord {
+    String: Name
+    String: Brand
+    Integer: Rating
+    Float: Cost_Per_Pound
+    Boolean: Is_Dark_Roast
+    String: Other_Notes
+}
 
 
 
-
-  여기서 평균 점수(AveScore)는 메모리 상자를 두 개 사용하는 부동 소수점 수(floating point number, 소수점이 있는 숫자)입니다.
-
-
-어떤 측면에서 변수는 종이 문서를 담는 폴더에 붙은 종이 라벨과 비슷합니다.
-
-아래 그림처럼 라벨을 붙인 후에는 폴더의 순서나 정확한 위치를 기억할 필요가 없습니다.
-
-  그 이유는 라벨로 폴더를 찾으면 되기 때문입니다.
-    
-      이때 충분한 정보가 포함된 이름을 사용하는 것이 중요합니다.
-        
-          만약에 파일 캐비닛에 할 일, 중요한 일, 다른 할 일, 그 밖의 일과 같이 이름이 겹치는(이를 오버로드(overload)라고 말합니다) 폴더가 많을 경우 내용을 파악하기 어렵습니다.
-            
-              마찬가지로, 변수의 이름이 모호하면 변수가 어떤 값을 나타내는지 추측하기 어려워집니다.
-            
-          
-        
-      
-    
-  
+  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
 
 
+속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+
+  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
 
 
-많은 프로그래밍 언어에서 변수는 정수(integer), 부동 소수점 값(float), 불린 값(Boolean) 등과 같이 저장된 데이터의 타입과 연관이 있습니다.
+자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
 
-  타입은 변수가 얼마나 많은 메모리를 차지하고 메모리에 저장된 내용을 어떻게 사용해야 하는지를 프로그램에 알려줍니다.
-    
-      예를 들어, 불린 변수는 제한된 범위의 값(즉, 참과 거짓)만 저장하며 적은 양의 메모리만 사용하는 경우가 많습니다.
-      반면, 2배 정밀도(double-precision) 부동 소수점 수는 훨씬 더 크고 정확한 숫자를 저장하므로 여러 상자를 사용합니다.
-    
-  
+객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
 
+객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
 
-타입을 정의하는 문법이나 타입을 명시적으로 정의해야만 하는지 여부는 프로그래밍 언어마다 다릅니다.
+복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
 
-아래 예제를 봐봅시다.
-
-예제에서는 변수를 명시할 때 언어와 무관한 &lt;타입&gt;: &lt;변수이름&gt;이라는 의사 코드(pseudocode) 형식을 사용합니다.
-
-Integer: coffee_count = 5
-Float: percentage_words_spelled_correctly = 21.0
-Boolean: had_enough_coffee = False
+last_record.name = "Sublime Blend"
 
 
-가씀 Type이라는 타입이 지정된 변수도 있습니다.
-
-  이 타입은 어떻게 구현하는지에 따라 다양한 타입이 될 수 있다는 사실을 나타냅니다.
-    
-      대부분의 프로그래밍 언어에서 일반적으로 사용되는 구문을 사용해 변수를 다룰 것입니다.
-    
-  
-
-
-예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
-coffee_count = coffee_count + 1
+  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
 
 
                         </a>
@@ -29782,55 +29850,105 @@ A[j] = Temp
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
-                            복합 자료 구조.
-다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html"><h1 class="title_post">📦[DataStructure] 변수</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="txt_post">
+                            변수.
 
-예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
+개변 데이터 조각을 종종 변수(variable)에 저장하곤 합니다.
 
-  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
+
+  변수(variable) : 컴퓨터 메모리 내 데이터 위치(또는 주소)를 표현하는 이름입니다.
     
-      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
+      프로그램 실행 중 변경되는 정보를 추적할 수 있게 합니다.
+        
+          예를 들어 For 루프를 몇 번지나갔는지 세어야 할 경우, 게임에서 플레이어의 점수를 추적해야하는 경우 등
+        
+      
     
   
 
 
-CoffeeRecord {
-    String: Name
-    String: Brand
-    Integer: Rating
-    Float: Cost_Per_Pound
-    Boolean: Is_Dark_Roast
-    String: Other_Notes
-}
+변수가 없으면 프로그램의 내부 상태를 추적, 평가(evaluate), 변경(update)할 수 없습니다.
+
+  변수를 생성하면 시스템이 그것을 자동으로 할당하고 위치를 지정합니다.
+    
+      그리고 나서 원하는 변수 이름을 사용해 자유롭게 해당 위치에 데이터를 쓰고, 데이터를 쓸 때 사용한 변수 이름을 사용해 저장된 데이터를 읽을 수 있습니다.
+    
+  
+
+
+변수 이름만 알고 있다면 데이터의 메모리 위치를 알 필요가 없습니다.
+
+컴퓨터 메모리를 여러 상자가 일렬로 늘어선 것처럼 생각할 수도 있습니다.
+
+  각 변수는 저장한 데이터의 크기에 따라 하나 이상의 인접한 상자를 차지합니다.
+
+
+아래 그림은 Level, Score, AveScore라는 세 변수를 보여줍니다.
 
 
 
-  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
+
+  여기서 평균 점수(AveScore)는 메모리 상자를 두 개 사용하는 부동 소수점 수(floating point number, 소수점이 있는 숫자)입니다.
 
 
-속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+어떤 측면에서 변수는 종이 문서를 담는 폴더에 붙은 종이 라벨과 비슷합니다.
 
-  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
+아래 그림처럼 라벨을 붙인 후에는 폴더의 순서나 정확한 위치를 기억할 필요가 없습니다.
+
+  그 이유는 라벨로 폴더를 찾으면 되기 때문입니다.
+    
+      이때 충분한 정보가 포함된 이름을 사용하는 것이 중요합니다.
+        
+          만약에 파일 캐비닛에 할 일, 중요한 일, 다른 할 일, 그 밖의 일과 같이 이름이 겹치는(이를 오버로드(overload)라고 말합니다) 폴더가 많을 경우 내용을 파악하기 어렵습니다.
+            
+              마찬가지로, 변수의 이름이 모호하면 변수가 어떤 값을 나타내는지 추측하기 어려워집니다.
+            
+          
+        
+      
+    
+  
 
 
-자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
-
-객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
-
-객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
-
-복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
-
-last_record.name = "Sublime Blend"
 
 
-  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
+많은 프로그래밍 언어에서 변수는 정수(integer), 부동 소수점 값(float), 불린 값(Boolean) 등과 같이 저장된 데이터의 타입과 연관이 있습니다.
+
+  타입은 변수가 얼마나 많은 메모리를 차지하고 메모리에 저장된 내용을 어떻게 사용해야 하는지를 프로그램에 알려줍니다.
+    
+      예를 들어, 불린 변수는 제한된 범위의 값(즉, 참과 거짓)만 저장하며 적은 양의 메모리만 사용하는 경우가 많습니다.
+      반면, 2배 정밀도(double-precision) 부동 소수점 수는 훨씬 더 크고 정확한 숫자를 저장하므로 여러 상자를 사용합니다.
+    
+  
+
+
+타입을 정의하는 문법이나 타입을 명시적으로 정의해야만 하는지 여부는 프로그래밍 언어마다 다릅니다.
+
+아래 예제를 봐봅시다.
+
+예제에서는 변수를 명시할 때 언어와 무관한 &lt;타입&gt;: &lt;변수이름&gt;이라는 의사 코드(pseudocode) 형식을 사용합니다.
+
+Integer: coffee_count = 5
+Float: percentage_words_spelled_correctly = 21.0
+Boolean: had_enough_coffee = False
+
+
+가씀 Type이라는 타입이 지정된 변수도 있습니다.
+
+  이 타입은 어떻게 구현하는지에 따라 다양한 타입이 될 수 있다는 사실을 나타냅니다.
+    
+      대부분의 프로그래밍 언어에서 일반적으로 사용되는 구문을 사용해 변수를 다룰 것입니다.
+    
+  
+
+
+예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
+coffee_count = coffee_count + 1
 
 
                         </a>
@@ -62080,6 +62198,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Spring/2024-09-01-when-use-controller-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-01"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 비즈니스 로직(Business Logic)이란?",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-02-Business-Logic.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-02"
         });
     
 

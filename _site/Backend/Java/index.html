@@ -640,6 +640,7 @@
             
             
             
+            
 
     
     
@@ -1222,6 +1223,72 @@ obj1 = 10
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
+                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="txt_post">
+                            ☕️[Java] 불변 객체 - 정리
+
+1️⃣ 정리.
+
+  자바에서 가장 많이 사용되는 String 클래스는 불변 객체입니다.
+    
+      뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수많은 클래스가 불변으로 설계되어 있습니다.
+        
+          따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
+        
+      
+    
+  
+
+
+모든 클래스를 불변으로 만드는 것은 아닙니다.
+
+  우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
+    
+      예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
+        
+          가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
+            
+              때로는 같은 기능을 하는 클래스를 하나는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+클래스를 불변으로 설계하는 이유는 더 많습니다.
+
+  캐시 안정성.
+  멀티 쓰레드 안정성.
+  엔티티의 값 타입.
+
+
+지금은 이런 부분을 다 이해할 수 없습니다.
+관련 내용을 학습하다보면 자연스럽게 학습한 불변 객체가 생각나면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
+프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 될 것입니다.
+따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-09-01-Immutable-Object-Solve.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -1374,72 +1441,6 @@ immutableDate2 = 2024-9-1
     
   
 
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html"><h1 class="title_post">☕️[Java] 불변 객체 - 정리</h1></a>
-                        <a href="/Backend/Java/2024-09-01-Immutable-object-summary.html" class="txt_post">
-                            ☕️[Java] 불변 객체 - 정리
-
-1️⃣ 정리.
-
-  자바에서 가장 많이 사용되는 String 클래스는 불변 객체입니다.
-    
-      뿐만 아니라 자바가 기본으로 제공하는 Integer, LocalDate 등 수많은 클래스가 불변으로 설계되어 있습니다.
-        
-          따라서 불변 객체가 필요한 이유와 원리를 제대로 이해해야, 이런 기본 클래스들도 제대로 이해할 수 있습니다.
-        
-      
-    
-  
-
-
-모든 클래스를 불변으로 만드는 것은 아닙니다.
-
-  우리가 만드는 대부분의 클래스는 값을 변경할 수 있게 만들어집니다.
-    
-      예를 들어서 회원 클래스의 경우 회원의 여러 속성을 변경할 수 있어야 합니다.
-        
-          가변 클래스가 더 일반적이고, 불변 클래스는 값을 변경하면 안되는 특별한 경우에 만들어서 사용한다고 생각하면 됩니다.
-            
-              때로는 같은 기능을 하는 클래스를 하나는 클래스를 하나는 불변으로 하나는 가변으로 각각 만드는 경우도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-클래스를 불변으로 설계하는 이유는 더 많습니다.
-
-  캐시 안정성.
-  멀티 쓰레드 안정성.
-  엔티티의 값 타입.
-
-
-지금은 이런 부분을 다 이해할 수 없습니다.
-관련 내용을 학습하다보면 자연스럽게 학습한 불변 객체가 생각나면서 관련된 내용을 본질적으로 더 잘 이해할 수 있을 것입니다.
-프로그래밍을 더 깊이있게 학습할 수 록 다양한 불변 클래스 이용 사례를 만나고 이해하게 될 것입니다.
-따라서 지금은 불변 클래스가 어디에 사용되고, 어떻게 활용되는지 보다는 불변 클래스의 원리를 이해하는 정도면 충분합니다.
 
                         </a>
                         <div class="info-post">
@@ -1672,406 +1673,6 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-30-test-and-di.html"><h1 class="title_post">☕️[Java] 테스트 코드와 Dependancy Injection</h1></a>
-                        <a href="/Backend/Java/2024-08-30-test-and-di.html" class="txt_post">
-                            ☕️[Java] 테스트 코드와 Dependancy Injection
-
-1️⃣ 전체 코드.
-
-// Member
-public class Member {
-
-	private Long id;
-	private String name;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-}
-
-// MemberRepository - Interface
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-// MemberServiceTest
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-class MemberServiceTest {
-
-	MemberService memberService;
-	MemoryMemberRepository memberRepository;
-
-	@BeforeEach
-	public void beforeEach() {
-		memberRepository = new MemoryMemberRepository();
-		memberService = new MemberService(memberRepository);
-	}
-
-	@AfterEach
-	public void afterEach() {
-		memberRepository.clearStore();
-	}
-
-	@Test
-	void 회원가입() {
-		// given
-		Member member = new Member();
-		member.setName("spring");
-
-		// when
-		Long saveId = memberService.join(member);
-
-		// then
-		Member findMember = memberService.findOne(saveId).get();
-		assertThat(member.getName()).isEqualTo(findMember.getName());
-	}
-
-	@Test
-	void findMembers() {
-		// given
-		Member member1 = new Member();
-		member1.setName("spring");
-
-		Member member2 = new Member();
-		member2.setName("spring");
-
-		// when
-		memberService.join(member1);
-		IllegalStateException e = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
-
-		assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-
-		// then
-	}
-
-	@Test
-	void findOne() {
-	}
-}
-
-
-2️⃣ 의존성 주입(DI, Dependency Injection).
-
-  의존성 주입(DI, Dependency Injection) 는 객체 지향 프로그래밍에서 객체 간의 의존성을 외부에서 주입하는 디자인 패턴입니다.
-
-
-1️⃣ 의존성 주입(DI, Dependency Injection)의 개념.
-
-  의존성(Dependency)
-    
-      클래스가 다른 클래스의 기능을 사용해야 하는 상황을 의미합니다.
-        
-          예를 들어, MemberService 클래스는 회원 데이터를 처리하기 위해 MemberRepository 를 필요로 합니다. 여기서 MemberService 는 MemberRepository 에 의존합니다.
-        
-      
-    
-  
-  주입(Injection)
-    
-      외부에서 객체를 생성하여 주입해주는 것을 의미합니다.
-        
-          이는 보통 생성자 주입, 세터(Setter) 주입, 필드 주입 등의 방식으로 이루어집니다.
-        
-      
-    
-  
-
-
-2️⃣ DI의 주요 목적.
-
-  느슨한 결합(Loose Coupling)
-    
-      DI를 통해 클래스 간의 결합도를 낮출 수 있습니다.
-        
-          클래스는 자신이 사용하는 의존 객체가 무엇인지 알 필요가 없고, 이로 인해 클래스 간의 결합이 느슨해집니다.
-            
-              이는 코드의 유연성을 높여주며, 코드 변셩 시 영향 범위를 줄여줍니다.
-            
-          
-        
-      
-    
-  
-  유연성 및 확장성
-    
-      의존 객체를 외부에서 주입받기 때문에, 애플리케이션이 다른 의존 객체로 쉽게 전환될 수 있습니다.
-        
-          예를 들어, 테스트 환경에서 MemoryMemberRepository 를 사용하고, 실제 운영 환경에서는 데이터베이스 연결을 사용하는 JpaMemberRepository 를 사용할 수 있습니다.
-        
-      
-    
-  
-  테스트 용이성
-    
-      DI를 통해 클래스 간의 의존 관계를 외부에서 주입받으면, 테스트 시에 쉽게 Mock 객체나 Stub 객체를 주입할 수 있어 테스트를 더 용이하게 만듭니다.
-    
-  
-
-
-3️⃣ DI의 사용 방법.
-
-  1. 생성자 주입(Constructor Injection) : 의존성을 클래스의 생성자를 통해 주입하는 방법입니다. 위 코드에서는 생성자 주입이 사용되었습니다.
-
-
-public MemberService(MemberRepository memberRepository) {
-    this.memberRepository = memberRepository;
-}
-
-
-
-  2. 세터 주입(Setter Injection) : 의존성을 세터 메서드를 통해 주입하는 방법입니다.
-    public void setMemberRepository(MemberRepository memberRepository) {
-  this.memberRepository = memberRepository;
-}
-    
-  
-  3. 필드 주입(Field Injection) : 의존성을 필드에 직접 주입하는 방법으로, 보통 @Autowired 와 같은 애노테이션을 사용합니다. 하지만 필드 주입은 테스트하기 어려울 수 있어 일반적으로 권장되지 않습니다.
-
-
-DI는 코드의 재사용성, 유지보수성, 테스트 용이성을 높여주는 중요한 디자인 패턴으로, 스프링 프레임워크와 같은 의존성 주입 컨테이너에서 널리 사용됩니다.
-
-3️⃣ 코드에서 의존성 주입(DI, Dependency Injection)이 사용된 부분과 설명.
-
-  위 코드에서 DI(Dependency Injection)가 사용된 부분은 MemberService 클래스의 인스턴스를 생성하는 부분입니다.
-
-
-@BeforeEach
-public void beforeEach() {
-    memberRepository = new MemoryMemberRepository();
-    memberService = new MemberService(memberRepository);
-}
-
-
-
-  이 부분에서 MemberService 클래스의 생성자에 MemoryMemberRepository 객체를 주입하고 있습니다.
-  MemberService 클래스는 생성자에서 MemberRepository 인터페이스를 받아 사용합니다.
-    
-      아렇게 함으로써, MemberService 는 직접적으로 MemoryMemberRepository 를 생성하지 않고 외부에서 주입받게 됩니다.
-    
-  
-
-
-1️⃣ 설명.
-
-  memberRepository = new MemoryMemberRepository();
-    
-      MemoryMemberRepository 객체를 생성합니다. 이는 MemberRepository 인터페이스의 구현체입니다.
-    
-  
-  memberService = new MemberService(memberRepository);
-    
-      MemberService 객체를 생성 할 때, 생성자에 memberRepository 를 주입합니다.
-    
-  
-
-
-이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
-
-예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
-                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
-                            ☕️[Java] .equalsIgnoreCase()
-
-1️⃣ .equalsIgnoreCase()
-
-  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
-    
-      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
-    
-  
-
-
-2️⃣ 예시.
-public class Main {
-    public static void main(String[] args) {
-        String str1 = "Hello";
-        String str2 = "hello";
-        String str3 = "HELLO";
-        String str4 = "World";
-        
-        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
-        
-        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
-        
-        // str1과 str4는 내용이 다르므로 false 반환
-        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
-    }
-}
-
-
-3️⃣ 주요 포인트.
-
-  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
-    
-      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
-    
-  
-  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
-    
-      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
-    
-  
-  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
-
-
-이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
-예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-30</span>
                             
                         </div>
                     </div>
@@ -2552,251 +2153,395 @@ class MemberServiceTest {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html"><h1 class="title_post">☕️[Java] 공유 참조와 사이드 이펙트</h1></a>
-                        <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="txt_post">
-                            ☕️[Java] 공유 참조와 사이드 이펙트
+                        <a href="/Backend/Java/2024-08-30-test-and-di.html"><h1 class="title_post">☕️[Java] 테스트 코드와 Dependancy Injection</h1></a>
+                        <a href="/Backend/Java/2024-08-30-test-and-di.html" class="txt_post">
+                            ☕️[Java] 테스트 코드와 Dependancy Injection
 
-1️⃣ 공유 참조와 사이드 이펙트.
+1️⃣ 전체 코드.
 
-  사이드 이펙트(Side Effect)는 프로그래밍에서 어떤 계산이 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 말합니다.
-    
-      앞서 "b" 의 값을 부산으로 변경한 코드를 다시 분석해봅시다.
-    
-  
+// Member
+public class Member {
 
+	private Long id;
+	private String name;
 
-b.setValue("부산"); // b의 값을 부산으로 변경해야함
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+}
 
+// MemberRepository - Interface
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
 
-  개발자는 "b" 의 주소값을 서울에서 부산으로 변경할 의도로 값 변경을 시도했습니다.
-    
-      하지만 "a" , "b" 는 같은 인스턴스를 참조합니다.
-        
-          따라서 "a" 의 값도 함께 부산으로 변경되어 버립니다.
-        
-      
-    
-  
-  이렇게 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 사이드 이펙트(Side Effect)라 합니다.
-  프로그래밍에서 사이드 이펙트는 보통 부정적인 의미로 사용되는데, 사이드 이펙트는 프로그래밍의 특정 부분에서 발생한 변경이 의도치 않게 다른 부분에 영향을 미치는 경우에 발생합니다.
-    
-      이로 인해 디버깅이 어려워지고 코드의 안정성이 저하될 수 있습니다.
-    
-  
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
 
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-2️⃣ 사이드 이펙트 해결 방안
+public class MemoryMemberRepository implements MemberRepository {
 
-  생각해보면 문제의 해결방안은 아주 단순합니다.
-    
-      다음과 같이 "a" 와 "b" 가 처음부터 서로 다른 인스턴스를 참조하면 됩니다.
-    
-  
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
 
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
 
-Address a = new Address("서울");
-Address b = new Address("서울");
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
 
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
 
-public class RefMain1_2 {
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
 
-	public static void main(String[] args) {
-		Address a = new Address("서울"); // x001
-		Address b = new Address("서울"); // x002
-		System.out.println("a = " + a);
-		System.out.println("b = " + b);
+	public void clearStore() {
+		store.clear();
+	}
+}
 
-		b.setValue("부산"); // b의 값을 부산으로 변경해야함
-		System.out.println("부산 -&gt; b");
-		System.out.println("a = " + a); // 사이드 이팩트 발생
-		System.out.println("b = " + b);
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+// MemberServiceTest
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
+class MemberServiceTest {
+
+	MemberService memberService;
+	MemoryMemberRepository memberRepository;
+
+	@BeforeEach
+	public void beforeEach() {
+		memberRepository = new MemoryMemberRepository();
+		memberService = new MemberService(memberRepository);
+	}
+
+	@AfterEach
+	public void afterEach() {
+		memberRepository.clearStore();
+	}
+
+	@Test
+	void 회원가입() {
+		// given
+		Member member = new Member();
+		member.setName("spring");
+
+		// when
+		Long saveId = memberService.join(member);
+
+		// then
+		Member findMember = memberService.findOne(saveId).get();
+		assertThat(member.getName()).isEqualTo(findMember.getName());
+	}
+
+	@Test
+	void findMembers() {
+		// given
+		Member member1 = new Member();
+		member1.setName("spring");
+
+		Member member2 = new Member();
+		member2.setName("spring");
+
+		// when
+		memberService.join(member1);
+		IllegalStateException e = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
+
+		assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+
+		// then
+	}
+
+	@Test
+	void findOne() {
 	}
 }
 
 
-실행 결과
+2️⃣ 의존성 주입(DI, Dependency Injection).
 
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
+  의존성 주입(DI, Dependency Injection) 는 객체 지향 프로그래밍에서 객체 간의 의존성을 외부에서 주입하는 디자인 패턴입니다.
 
 
+1️⃣ 의존성 주입(DI, Dependency Injection)의 개념.
 
-  실행 결과를 보면 "b" 의 주소값만 부산으로 변경된 것을 확인할 수 있습니다.
-
-
-그림 - 생성 코드
-
-
-
-
-  "a" 와 "b" 는 서로 다른 "Address" 인스턴스를 참조합니다.
-
-
-그림 - 변경 코드
-
-
-
-
-  "a" 와 "b" 는 서로 다른 인스턴스를 참조합니다.
+  의존성(Dependency)
     
-      따라서 "b" 가 참조하는 인스턴스의 값을 변경해도 "a" 에는 영향을 주지 않습니다.
+      클래스가 다른 클래스의 기능을 사용해야 하는 상황을 의미합니다.
+        
+          예를 들어, MemberService 클래스는 회원 데이터를 처리하기 위해 MemberRepository 를 필요로 합니다. 여기서 MemberService 는 MemberRepository 에 의존합니다.
+        
+      
+    
+  
+  주입(Injection)
+    
+      외부에서 객체를 생성하여 주입해주는 것을 의미합니다.
+        
+          이는 보통 생성자 주입, 세터(Setter) 주입, 필드 주입 등의 방식으로 이루어집니다.
+        
+      
     
   
 
 
-3️⃣ 여러 변수가 하나의 객체를 공유하는 것을 막을 방법은 없다.
+2️⃣ DI의 주요 목적.
 
-  지금까지 발생한 모든 문제는 같은 객체(인스턴스)를 변수 "a" , "b" 가 함께 공유하기 때문에 발생했습니다.
+  느슨한 결합(Loose Coupling)
     
-      따라서 객체를 공유하지 않으면 문제가 해결됩니다.
+      DI를 통해 클래스 간의 결합도를 낮출 수 있습니다.
         
-          여기서 변수 "a", "b" 가 각각 다른 주소지로 변경할 수 있어야 합니다.
+          클래스는 자신이 사용하는 의존 객체가 무엇인지 알 필요가 없고, 이로 인해 클래스 간의 결합이 느슨해집니다.
             
-              이렇게 하려면 서로 다른 객체를 참조하면 됩니다.
+              이는 코드의 유연성을 높여주며, 코드 변셩 시 영향 범위를 줄여줍니다.
             
           
         
       
     
   
-
-
-객체를 공유.
-Address a = new Address("서울");
-Address b = a;
-
-
-
-  이 경우 "a", "b" 둘 다 같은 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 불가능합니다.
-
-
-객체를 공유하지 않음.
-Address a = new Address("서울");
-Address ㅠ = new Address("서울");
-
-
-
-  
-    이 경우 "a", "b" 는 서로 다른 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 가능합니다.
-  
-  
-    이처럼 단순하게 서로 다른 객체를 참조해서, 같은 객체를 공유하지 않으면 문제가 해결됩니다.
+  유연성 및 확장성
     
-      즉, 여러 변수가 하나의 객체를 공유하지 않으면 지금까지 설명한 문제들이 발생하지 않습니다.
+      의존 객체를 외부에서 주입받기 때문에, 애플리케이션이 다른 의존 객체로 쉽게 전환될 수 있습니다.
         
-          그런데 여기서 문제가 있습니다.
-            
-              하나의 객체를 여러 변수가 공유하지 않도록 강제로 막을 수 있는 방법이 없다는 것입니다.
-                
-                  아래의 예시를 봐봅시다.
-                
-              
-            
-          
+          예를 들어, 테스트 환경에서 MemoryMemberRepository 를 사용하고, 실제 운영 환경에서는 데이터베이스 연결을 사용하는 JpaMemberRepository 를 사용할 수 있습니다.
         
       
     
   
-
-
-참조값의 공유를 막을 수 있는 방법이 없다.
-Address a = new Address("서울");
-Address b = a; // 참조값 대입을 막을 수 있는 방법이 없습니다.
-
-
-
-  "b = a" 와 같은 코드를 작성하지 않도록 해서, 여러 변수가 하나의 참조값을 공유하지 않으면 문제가 해결될 것 같습니다.
+  테스트 용이성
     
-      하지만 "Address" 를 사용하는 개발자 입장에서 실수로 "b = a" 라고 해도 아무런 오류가 발생하지 않습니다.
-        
-          왜냐하면 자바 문법상 "Address b = a" 와 같은 참조형 변수의 대입은 아무런 문제가 없기 때문입니다.
-        
-      
+      DI를 통해 클래스 간의 의존 관계를 외부에서 주입받으면, 테스트 시에 쉽게 Mock 객체나 Stub 객체를 주입할 수 있어 테스트를 더 용이하게 만듭니다.
     
   
-  다음과 같이 새로운 객체를 참조형 변수에 대입하든, 또는 기존 객체를 참조형 변수에 대입하든, 다음 두 코드 모두 자바 문법상 정상인 코드입니다.
-    Address b = new Address("서울"); // 새로운 객체 참조
-Address b = a; // 기존 객체 공유 참조
-    
-  
-  참조값을 다른 변수에 대입하는 순간 여러 변수가 하나의 객체를 공유하게 됩니다.
-    
-      즉, 객체의 공유를 막을 수 있는 방법이 없습니다!
-    
-  
-  기본형은 항상 값을 복사해서 대입하기 때문에 값이 절대로 공유되지 않습니다.
-    
-      하지만 참조형의 경우 참조값을 복사해서 대입하기 때문에 여러 변수에서 얼마든지 같은 객체를 공유할 수 있습니다.
-    
-  
-  객체의 공유가 꼭 필요할 때도 있지만, 때로는 공유하는 것이 지금과 같은 사이드 이펙트를 만드는 경우도 있습니다.
-    
-      물론 개발자가 신경써서 코드를 작성한다면 사이드 이펙트 문제를 일으키지 않을 수 있습니다.
-        
-          하지만 실제로는 훨씬 더 복잡한 상황에서 이런 문제가 발생합니다.
-```java
-public class RefMain1_3 {
-        
-      
-    
 
-    public static void main(String[] args) {
-      Address a = new Address(“서울”);
-      Address b = a;
-      System.out.println(“a = “ + a);
-      System.out.println(“b = “ + b);
 
-      change(b,"부산");
-  System.out.println("a = " + a); // 사이드 이팩트 발생
-  System.out.println("b = " + b);   }
-    
+3️⃣ DI의 사용 방법.
 
-    private static void change(Address address, String changeAddress) {
-      System.out.println(“주소 값을 변경합니다 -&gt; “ + changeAddress);
-      address.setValue(changeAddress);
-  }
+  1. 생성자 주입(Constructor Injection) : 의존성을 클래스의 생성자를 통해 주입하는 방법입니다. 위 코드에서는 생성자 주입이 사용되었습니다.
+
+
+public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
 }
-```
-  
-  앞서 작성한 코드와 같은 코드입니다.
-    
-      단순히 "change()" 메서드만 하나 추가되었습니다.
-      그리고 "change()" 메서드에서 "Address" 인스턴스에 있는 "value" 값을 변경합니다.
-        
-          "main()" 메서드만 보면 "a" 의 값이 함께 부산으로 변경된 이유를 찾기가 더 어렵습니다.
-        
-      
+
+
+
+  2. 세터 주입(Setter Injection) : 의존성을 세터 메서드를 통해 주입하는 방법입니다.
+    public void setMemberRepository(MemberRepository memberRepository) {
+  this.memberRepository = memberRepository;
+}
     
   
+  3. 필드 주입(Field Injection) : 의존성을 필드에 직접 주입하는 방법으로, 보통 @Autowired 와 같은 애노테이션을 사용합니다. 하지만 필드 주입은 테스트하기 어려울 수 있어 일반적으로 권장되지 않습니다.
 
 
-실행 결과
+DI는 코드의 재사용성, 유지보수성, 테스트 용이성을 높여주는 중요한 디자인 패턴으로, 스프링 프레임워크와 같은 의존성 주입 컨테이너에서 널리 사용됩니다.
 
-a = Address{value='서울'}
-b = Address{value='서울'}
-주소 값을 변경합니다 -&gt; 부산
-a = Address{value='부산'}
-b = Address{value='부산'}
+3️⃣ 코드에서 의존성 주입(DI, Dependency Injection)이 사용된 부분과 설명.
 
+  위 코드에서 DI(Dependency Injection)가 사용된 부분은 MemberService 클래스의 인스턴스를 생성하는 부분입니다.
+
+
+@BeforeEach
+public void beforeEach() {
+    memberRepository = new MemoryMemberRepository();
+    memberService = new MemberService(memberRepository);
+}
+
+
+
+  이 부분에서 MemberService 클래스의 생성자에 MemoryMemberRepository 객체를 주입하고 있습니다.
+  MemberService 클래스는 생성자에서 MemberRepository 인터페이스를 받아 사용합니다.
+    
+      아렇게 함으로써, MemberService 는 직접적으로 MemoryMemberRepository 를 생성하지 않고 외부에서 주입받게 됩니다.
+    
+  
+
+
+1️⃣ 설명.
+
+  memberRepository = new MemoryMemberRepository();
+    
+      MemoryMemberRepository 객체를 생성합니다. 이는 MemberRepository 인터페이스의 구현체입니다.
+    
+  
+  memberService = new MemberService(memberRepository);
+    
+      MemberService 객체를 생성 할 때, 생성자에 memberRepository 를 주입합니다.
+    
+  
+
+
+이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
+
+예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-08-28</span>
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
+                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
+                            ☕️[Java] .equalsIgnoreCase()
+
+1️⃣ .equalsIgnoreCase()
+
+  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
+    
+      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
+    
+  
+
+
+2️⃣ 예시.
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "HELLO";
+        String str4 = "World";
+        
+        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
+        
+        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
+        
+        // str1과 str4는 내용이 다르므로 false 반환
+        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
+    }
+}
+
+
+3️⃣ 주요 포인트.
+
+  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
+    
+      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
+    
+  
+  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
+    
+      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
+    
+  
+  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
+
+
+이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
+예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-30</span>
                             
                         </div>
                     </div>
@@ -3041,6 +2786,262 @@ b = Address{value='부산'}
       이 클래스로 객체를 생성하면 불변 객체가 됩니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html"><h1 class="title_post">☕️[Java] 공유 참조와 사이드 이펙트</h1></a>
+                        <a href="/Backend/Java/2024-08-28-shared-reference-and-side-effects.html" class="txt_post">
+                            ☕️[Java] 공유 참조와 사이드 이펙트
+
+1️⃣ 공유 참조와 사이드 이펙트.
+
+  사이드 이펙트(Side Effect)는 프로그래밍에서 어떤 계산이 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 말합니다.
+    
+      앞서 "b" 의 값을 부산으로 변경한 코드를 다시 분석해봅시다.
+    
+  
+
+
+b.setValue("부산"); // b의 값을 부산으로 변경해야함
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+
+
+
+
+
+  개발자는 "b" 의 주소값을 서울에서 부산으로 변경할 의도로 값 변경을 시도했습니다.
+    
+      하지만 "a" , "b" 는 같은 인스턴스를 참조합니다.
+        
+          따라서 "a" 의 값도 함께 부산으로 변경되어 버립니다.
+        
+      
+    
+  
+  이렇게 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 사이드 이펙트(Side Effect)라 합니다.
+  프로그래밍에서 사이드 이펙트는 보통 부정적인 의미로 사용되는데, 사이드 이펙트는 프로그래밍의 특정 부분에서 발생한 변경이 의도치 않게 다른 부분에 영향을 미치는 경우에 발생합니다.
+    
+      이로 인해 디버깅이 어려워지고 코드의 안정성이 저하될 수 있습니다.
+    
+  
+
+
+2️⃣ 사이드 이펙트 해결 방안
+
+  생각해보면 문제의 해결방안은 아주 단순합니다.
+    
+      다음과 같이 "a" 와 "b" 가 처음부터 서로 다른 인스턴스를 참조하면 됩니다.
+    
+  
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+public class RefMain1_2 {
+
+	public static void main(String[] args) {
+		Address a = new Address("서울"); // x001
+		Address b = new Address("서울"); // x002
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+
+		b.setValue("부산"); // b의 값을 부산으로 변경해야함
+		System.out.println("부산 -&gt; b");
+		System.out.println("a = " + a); // 사이드 이팩트 발생
+		System.out.println("b = " + b);
+	}
+}
+
+
+실행 결과
+
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+
+  실행 결과를 보면 "b" 의 주소값만 부산으로 변경된 것을 확인할 수 있습니다.
+
+
+그림 - 생성 코드
+
+
+
+
+  "a" 와 "b" 는 서로 다른 "Address" 인스턴스를 참조합니다.
+
+
+그림 - 변경 코드
+
+
+
+
+  "a" 와 "b" 는 서로 다른 인스턴스를 참조합니다.
+    
+      따라서 "b" 가 참조하는 인스턴스의 값을 변경해도 "a" 에는 영향을 주지 않습니다.
+    
+  
+
+
+3️⃣ 여러 변수가 하나의 객체를 공유하는 것을 막을 방법은 없다.
+
+  지금까지 발생한 모든 문제는 같은 객체(인스턴스)를 변수 "a" , "b" 가 함께 공유하기 때문에 발생했습니다.
+    
+      따라서 객체를 공유하지 않으면 문제가 해결됩니다.
+        
+          여기서 변수 "a", "b" 가 각각 다른 주소지로 변경할 수 있어야 합니다.
+            
+              이렇게 하려면 서로 다른 객체를 참조하면 됩니다.
+            
+          
+        
+      
+    
+  
+
+
+객체를 공유.
+Address a = new Address("서울");
+Address b = a;
+
+
+
+  이 경우 "a", "b" 둘 다 같은 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 불가능합니다.
+
+
+객체를 공유하지 않음.
+Address a = new Address("서울");
+Address ㅠ = new Address("서울");
+
+
+
+  
+    이 경우 "a", "b" 는 서로 다른 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 가능합니다.
+  
+  
+    이처럼 단순하게 서로 다른 객체를 참조해서, 같은 객체를 공유하지 않으면 문제가 해결됩니다.
+    
+      즉, 여러 변수가 하나의 객체를 공유하지 않으면 지금까지 설명한 문제들이 발생하지 않습니다.
+        
+          그런데 여기서 문제가 있습니다.
+            
+              하나의 객체를 여러 변수가 공유하지 않도록 강제로 막을 수 있는 방법이 없다는 것입니다.
+                
+                  아래의 예시를 봐봅시다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+참조값의 공유를 막을 수 있는 방법이 없다.
+Address a = new Address("서울");
+Address b = a; // 참조값 대입을 막을 수 있는 방법이 없습니다.
+
+
+
+  "b = a" 와 같은 코드를 작성하지 않도록 해서, 여러 변수가 하나의 참조값을 공유하지 않으면 문제가 해결될 것 같습니다.
+    
+      하지만 "Address" 를 사용하는 개발자 입장에서 실수로 "b = a" 라고 해도 아무런 오류가 발생하지 않습니다.
+        
+          왜냐하면 자바 문법상 "Address b = a" 와 같은 참조형 변수의 대입은 아무런 문제가 없기 때문입니다.
+        
+      
+    
+  
+  다음과 같이 새로운 객체를 참조형 변수에 대입하든, 또는 기존 객체를 참조형 변수에 대입하든, 다음 두 코드 모두 자바 문법상 정상인 코드입니다.
+    Address b = new Address("서울"); // 새로운 객체 참조
+Address b = a; // 기존 객체 공유 참조
+    
+  
+  참조값을 다른 변수에 대입하는 순간 여러 변수가 하나의 객체를 공유하게 됩니다.
+    
+      즉, 객체의 공유를 막을 수 있는 방법이 없습니다!
+    
+  
+  기본형은 항상 값을 복사해서 대입하기 때문에 값이 절대로 공유되지 않습니다.
+    
+      하지만 참조형의 경우 참조값을 복사해서 대입하기 때문에 여러 변수에서 얼마든지 같은 객체를 공유할 수 있습니다.
+    
+  
+  객체의 공유가 꼭 필요할 때도 있지만, 때로는 공유하는 것이 지금과 같은 사이드 이펙트를 만드는 경우도 있습니다.
+    
+      물론 개발자가 신경써서 코드를 작성한다면 사이드 이펙트 문제를 일으키지 않을 수 있습니다.
+        
+          하지만 실제로는 훨씬 더 복잡한 상황에서 이런 문제가 발생합니다.
+```java
+public class RefMain1_3 {
+        
+      
+    
+
+    public static void main(String[] args) {
+      Address a = new Address(“서울”);
+      Address b = a;
+      System.out.println(“a = “ + a);
+      System.out.println(“b = “ + b);
+
+      change(b,"부산");
+  System.out.println("a = " + a); // 사이드 이팩트 발생
+  System.out.println("b = " + b);   }
+    
+
+    private static void change(Address address, String changeAddress) {
+      System.out.println(“주소 값을 변경합니다 -&gt; “ + changeAddress);
+      address.setValue(changeAddress);
+  }
+}
+```
+  
+  앞서 작성한 코드와 같은 코드입니다.
+    
+      단순히 "change()" 메서드만 하나 추가되었습니다.
+      그리고 "change()" 메서드에서 "Address" 인스턴스에 있는 "value" 값을 변경합니다.
+        
+          "main()" 메서드만 보면 "a" 의 값이 함께 부산으로 변경된 이유를 찾기가 더 어렵습니다.
+        
+      
+    
+  
+
+
+실행 결과
+
+a = Address{value='서울'}
+b = Address{value='서울'}
+주소 값을 변경합니다 -&gt; 부산
+a = Address{value='부산'}
+b = Address{value='부산'}
 
 
                         </a>
@@ -3387,6 +3388,164 @@ equals() 메서드를 구현할 때 지켜야 하는 규칙
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
+                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
+                            ☕️[Java] equals() - 1, 동일성과 동등성.
+
+1️⃣ equals() - 1, 동일성과 동등성.
+
+
+  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
+  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
+    
+      동일성(Identity)
+        
+          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+        
+      
+      동등성(Equality)
+        
+          
+            
+              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 단어 정리
+
+  “동일” 은 “완전히 같음 을 의미합니다.”
+  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
+  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
+    
+      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
+      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
+    
+  
+  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
+    User a = new User("id-100"); // 참조 x001
+User b = new User("id-100"); // 참조 x002
+    
+  
+  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
+    
+      (주민등록번호가 같다고 가정해도 됩니다.)
+        
+          따라서 동일성은 다르지만, 동등성은 같습니다.
+        
+      
+    
+  
+  문자의 경우도 마찬가지입니다.
+    String s1 = "hello";
+String s2 = "hello";
+    
+  
+  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
+    
+      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
+    
+  
+
+
+3️⃣ UserV1 예제.
+
+public class UserV1 {
+	private String id;
+
+	public UserV1(String id) {
+		this.id = id;
+	}
+}
+
+
+public class EqualsMainV1 {
+
+	public static void main(String[] args) {
+		UserV1 user1 = new UserV1("id-100");
+		UserV1 user2 = new UserV1("id-100");
+
+		System.out.println("Identity = " + (user1 == user2));
+		System.out.println("Equality = " + (user1.equals(user2)));
+	}
+}
+
+
+실행 결과
+Identity = false
+Equality = false
+
+
+
+
+동일성(Identity) 비교
+user1 == user2
+x001 == x002
+false // 결과
+
+
+동등성(Equality) 비교
+Object.equals() 메서드
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+
+
+
+  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
+
+
+Object.equals
+
+
+equals 실행 순서 예시
+user1.equals(user2)
+return (user1 == user2) // Object.equals 메서드 안
+return (x001 == x002) // Object.equals 메서드 안  
+return false
+false
+
+
+
+  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
+    
+      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
+        
+          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
+            
+              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-25-Object-OCP-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -3557,164 +3716,6 @@ Animal 같은 부모 타입으로 올라갈 수록 개념은 더 추상적이게
 참고로 단순히 의존관계 또는 어디에 의존한다고 하면 주로 정적 의존관계를 뜻합니다.
       
         예) 'ObjectPrinter' 는 'Object' 에 의존합니다.
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-25-equals-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-25-equals-1.html"><h1 class="title_post">☕️[Java] equals() - 1, 동일성과 동등성</h1></a>
-                        <a href="/Backend/Java/2024-08-25-equals-1.html" class="txt_post">
-                            ☕️[Java] equals() - 1, 동일성과 동등성.
-
-1️⃣ equals() - 1, 동일성과 동등성.
-
-
-  'Object' 는 동등성 비교를 위한 'equals()' 메서드를 제공합니다.
-  자바는 “두 객체가 같다” 라는 표현을 두 가지로 분리해서 제공합니다.
-    
-      동일성(Identity)
-        
-          '==' 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
-        
-      
-      동등성(Equality)
-        
-          
-            
-              'equals()' 메서드를 사용하여 두 객체가 논리적으로 동등한지 확인
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 단어 정리
-
-  “동일” 은 “완전히 같음 을 의미합니다.”
-  “동등” 은 “같은 가치나 수준을 의미하지만 그 형태나 외관 등이 환전히 같지 않을 수 있습니다.”
-  즉, “동일성” 은 물리적으로 같은 메모리에 있는 객체 인스턴스인지 참조값을 확인하는 것이고, “동등성” 은 논리적으로 같은지 확인하는 것입니다.
-    
-      “동일성” 은 자바 머신 기준이고 메모리의 참조가 기준이므로 물리적입니다.
-      “동등성” 은 보통 사람이 생각하는 논리적인 기준에 맞추어 비교합니다.
-    
-  
-  예를 들어 같은 회원 번호를 가진 회원 객체가 2개 있다고 가정해봅시다.
-    User a = new User("id-100"); // 참조 x001
-User b = new User("id-100"); // 참조 x002
-    
-  
-  이 경우 물리적으로 다른 메모리에 있는 다른 객체이지만, 회원 번호를 기준으로 생각해보면 논리적으로는 같은 회원으로 볼 수 있습니다.
-    
-      (주민등록번호가 같다고 가정해도 됩니다.)
-        
-          따라서 동일성은 다르지만, 동등성은 같습니다.
-        
-      
-    
-  
-  문자의 경우도 마찬가지입니다.
-    String s1 = "hello";
-String s2 = "hello";
-    
-  
-  이 경우 물리적으로는 각각의 “hello” 문자열이 다른 메모리에 존재할 수 있지만, 논리적으로는 같은 "hello" 라는 문자열입니다.
-    
-      (사실 이 경우 자바가 같은 메모리를 사용하도록 최적화 합니다.)
-    
-  
-
-
-3️⃣ UserV1 예제.
-
-public class UserV1 {
-	private String id;
-
-	public UserV1(String id) {
-		this.id = id;
-	}
-}
-
-
-public class EqualsMainV1 {
-
-	public static void main(String[] args) {
-		UserV1 user1 = new UserV1("id-100");
-		UserV1 user2 = new UserV1("id-100");
-
-		System.out.println("Identity = " + (user1 == user2));
-		System.out.println("Equality = " + (user1.equals(user2)));
-	}
-}
-
-
-실행 결과
-Identity = false
-Equality = false
-
-
-
-
-동일성(Identity) 비교
-user1 == user2
-x001 == x002
-false // 결과
-
-
-동등성(Equality) 비교
-Object.equals() 메서드
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-
-
-
-  'Object' 가 기본으로 제공하는 'equals()' 는 '==' 으로 동일성 비교를 제공합니다.
-
-
-Object.equals
-
-
-equals 실행 순서 예시
-user1.equals(user2)
-return (user1 == user2) // Object.equals 메서드 안
-return (x001 == x002) // Object.equals 메서드 안  
-return false
-false
-
-
-
-  동등성(Equality)이라는 개념은 각각의 클래스마다 다릅니다.
-    
-      어떤 클래스는 주민등록번호를 기반으로 동등성을 처리할 수 있고, 어떤 클래스는 고객의 연락처를 기반으로 동등성을 처리할 수도 또 어떤 클래스는 회원 번호를 기반으로 동등성을 처리할 수 있습니다.
-        
-          따라서 동등성 비교를 사용하고 싶으면 'equals()' 메서드를 재정의해야 합니다.
-            
-              그렇지 않으면 'Object' 는 동일성(Identity) 비교를 기본으로 제공합니다.
-            
-          
-        
       
     
   
@@ -17750,6 +17751,17 @@ JVM의 구성 요소.
             'url'      : "/Backend/Spring/2024-09-01-when-use-controller-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-01"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 비즈니스 로직(Business Logic)이란?",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-02-Business-Logic.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-02"
         });
     
 

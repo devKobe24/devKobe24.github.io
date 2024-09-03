@@ -646,6 +646,7 @@
             
             
             
+            
 
     
     
@@ -3371,55 +3372,105 @@ OS
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
-                            복합 자료 구조.
-다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html"><h1 class="title_post">📦[DataStructure] 변수</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="txt_post">
+                            변수.
 
-예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
+개변 데이터 조각을 종종 변수(variable)에 저장하곤 합니다.
 
-  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
+
+  변수(variable) : 컴퓨터 메모리 내 데이터 위치(또는 주소)를 표현하는 이름입니다.
     
-      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
+      프로그램 실행 중 변경되는 정보를 추적할 수 있게 합니다.
+        
+          예를 들어 For 루프를 몇 번지나갔는지 세어야 할 경우, 게임에서 플레이어의 점수를 추적해야하는 경우 등
+        
+      
     
   
 
 
-CoffeeRecord {
-    String: Name
-    String: Brand
-    Integer: Rating
-    Float: Cost_Per_Pound
-    Boolean: Is_Dark_Roast
-    String: Other_Notes
-}
+변수가 없으면 프로그램의 내부 상태를 추적, 평가(evaluate), 변경(update)할 수 없습니다.
+
+  변수를 생성하면 시스템이 그것을 자동으로 할당하고 위치를 지정합니다.
+    
+      그리고 나서 원하는 변수 이름을 사용해 자유롭게 해당 위치에 데이터를 쓰고, 데이터를 쓸 때 사용한 변수 이름을 사용해 저장된 데이터를 읽을 수 있습니다.
+    
+  
+
+
+변수 이름만 알고 있다면 데이터의 메모리 위치를 알 필요가 없습니다.
+
+컴퓨터 메모리를 여러 상자가 일렬로 늘어선 것처럼 생각할 수도 있습니다.
+
+  각 변수는 저장한 데이터의 크기에 따라 하나 이상의 인접한 상자를 차지합니다.
+
+
+아래 그림은 Level, Score, AveScore라는 세 변수를 보여줍니다.
 
 
 
-  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
+
+  여기서 평균 점수(AveScore)는 메모리 상자를 두 개 사용하는 부동 소수점 수(floating point number, 소수점이 있는 숫자)입니다.
 
 
-속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+어떤 측면에서 변수는 종이 문서를 담는 폴더에 붙은 종이 라벨과 비슷합니다.
 
-  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
+아래 그림처럼 라벨을 붙인 후에는 폴더의 순서나 정확한 위치를 기억할 필요가 없습니다.
+
+  그 이유는 라벨로 폴더를 찾으면 되기 때문입니다.
+    
+      이때 충분한 정보가 포함된 이름을 사용하는 것이 중요합니다.
+        
+          만약에 파일 캐비닛에 할 일, 중요한 일, 다른 할 일, 그 밖의 일과 같이 이름이 겹치는(이를 오버로드(overload)라고 말합니다) 폴더가 많을 경우 내용을 파악하기 어렵습니다.
+            
+              마찬가지로, 변수의 이름이 모호하면 변수가 어떤 값을 나타내는지 추측하기 어려워집니다.
+            
+          
+        
+      
+    
+  
 
 
-자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
-
-객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
-
-객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
-
-복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
-
-last_record.name = "Sublime Blend"
 
 
-  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
+많은 프로그래밍 언어에서 변수는 정수(integer), 부동 소수점 값(float), 불린 값(Boolean) 등과 같이 저장된 데이터의 타입과 연관이 있습니다.
+
+  타입은 변수가 얼마나 많은 메모리를 차지하고 메모리에 저장된 내용을 어떻게 사용해야 하는지를 프로그램에 알려줍니다.
+    
+      예를 들어, 불린 변수는 제한된 범위의 값(즉, 참과 거짓)만 저장하며 적은 양의 메모리만 사용하는 경우가 많습니다.
+      반면, 2배 정밀도(double-precision) 부동 소수점 수는 훨씬 더 크고 정확한 숫자를 저장하므로 여러 상자를 사용합니다.
+    
+  
+
+
+타입을 정의하는 문법이나 타입을 명시적으로 정의해야만 하는지 여부는 프로그래밍 언어마다 다릅니다.
+
+아래 예제를 봐봅시다.
+
+예제에서는 변수를 명시할 때 언어와 무관한 &lt;타입&gt;: &lt;변수이름&gt;이라는 의사 코드(pseudocode) 형식을 사용합니다.
+
+Integer: coffee_count = 5
+Float: percentage_words_spelled_correctly = 21.0
+Boolean: had_enough_coffee = False
+
+
+가씀 Type이라는 타입이 지정된 변수도 있습니다.
+
+  이 타입은 어떻게 구현하는지에 따라 다양한 타입이 될 수 있다는 사실을 나타냅니다.
+    
+      대부분의 프로그래밍 언어에서 일반적으로 사용되는 구문을 사용해 변수를 다룰 것입니다.
+    
+  
+
+
+예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
+coffee_count = coffee_count + 1
 
 
                         </a>
@@ -3610,105 +3661,55 @@ A[j] = Temp
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html"><h1 class="title_post">📦[DataStructure] 변수</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure.html" class="txt_post">
-                            변수.
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
+                            복합 자료 구조.
+다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
 
-개변 데이터 조각을 종종 변수(variable)에 저장하곤 합니다.
+예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
 
-
-  변수(variable) : 컴퓨터 메모리 내 데이터 위치(또는 주소)를 표현하는 이름입니다.
+  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
     
-      프로그램 실행 중 변경되는 정보를 추적할 수 있게 합니다.
-        
-          예를 들어 For 루프를 몇 번지나갔는지 세어야 할 경우, 게임에서 플레이어의 점수를 추적해야하는 경우 등
-        
-      
+      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
     
   
 
 
-변수가 없으면 프로그램의 내부 상태를 추적, 평가(evaluate), 변경(update)할 수 없습니다.
-
-  변수를 생성하면 시스템이 그것을 자동으로 할당하고 위치를 지정합니다.
-    
-      그리고 나서 원하는 변수 이름을 사용해 자유롭게 해당 위치에 데이터를 쓰고, 데이터를 쓸 때 사용한 변수 이름을 사용해 저장된 데이터를 읽을 수 있습니다.
-    
-  
-
-
-변수 이름만 알고 있다면 데이터의 메모리 위치를 알 필요가 없습니다.
-
-컴퓨터 메모리를 여러 상자가 일렬로 늘어선 것처럼 생각할 수도 있습니다.
-
-  각 변수는 저장한 데이터의 크기에 따라 하나 이상의 인접한 상자를 차지합니다.
-
-
-아래 그림은 Level, Score, AveScore라는 세 변수를 보여줍니다.
+CoffeeRecord {
+    String: Name
+    String: Brand
+    Integer: Rating
+    Float: Cost_Per_Pound
+    Boolean: Is_Dark_Roast
+    String: Other_Notes
+}
 
 
 
-
-  여기서 평균 점수(AveScore)는 메모리 상자를 두 개 사용하는 부동 소수점 수(floating point number, 소수점이 있는 숫자)입니다.
-
-
-어떤 측면에서 변수는 종이 문서를 담는 폴더에 붙은 종이 라벨과 비슷합니다.
-
-아래 그림처럼 라벨을 붙인 후에는 폴더의 순서나 정확한 위치를 기억할 필요가 없습니다.
-
-  그 이유는 라벨로 폴더를 찾으면 되기 때문입니다.
-    
-      이때 충분한 정보가 포함된 이름을 사용하는 것이 중요합니다.
-        
-          만약에 파일 캐비닛에 할 일, 중요한 일, 다른 할 일, 그 밖의 일과 같이 이름이 겹치는(이를 오버로드(overload)라고 말합니다) 폴더가 많을 경우 내용을 파악하기 어렵습니다.
-            
-              마찬가지로, 변수의 이름이 모호하면 변수가 어떤 값을 나타내는지 추측하기 어려워집니다.
-            
-          
-        
-      
-    
-  
+  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
 
 
+속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+
+  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
 
 
-많은 프로그래밍 언어에서 변수는 정수(integer), 부동 소수점 값(float), 불린 값(Boolean) 등과 같이 저장된 데이터의 타입과 연관이 있습니다.
+자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
 
-  타입은 변수가 얼마나 많은 메모리를 차지하고 메모리에 저장된 내용을 어떻게 사용해야 하는지를 프로그램에 알려줍니다.
-    
-      예를 들어, 불린 변수는 제한된 범위의 값(즉, 참과 거짓)만 저장하며 적은 양의 메모리만 사용하는 경우가 많습니다.
-      반면, 2배 정밀도(double-precision) 부동 소수점 수는 훨씬 더 크고 정확한 숫자를 저장하므로 여러 상자를 사용합니다.
-    
-  
+객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
 
+객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
 
-타입을 정의하는 문법이나 타입을 명시적으로 정의해야만 하는지 여부는 프로그래밍 언어마다 다릅니다.
+복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
 
-아래 예제를 봐봅시다.
-
-예제에서는 변수를 명시할 때 언어와 무관한 &lt;타입&gt;: &lt;변수이름&gt;이라는 의사 코드(pseudocode) 형식을 사용합니다.
-
-Integer: coffee_count = 5
-Float: percentage_words_spelled_correctly = 21.0
-Boolean: had_enough_coffee = False
+last_record.name = "Sublime Blend"
 
 
-가씀 Type이라는 타입이 지정된 변수도 있습니다.
-
-  이 타입은 어떻게 구현하는지에 따라 다양한 타입이 될 수 있다는 사실을 나타냅니다.
-    
-      대부분의 프로그래밍 언어에서 일반적으로 사용되는 구문을 사용해 변수를 다룰 것입니다.
-    
-  
-
-
-예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
-coffee_count = coffee_count + 1
+  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
 
 
                         </a>
@@ -36002,6 +36003,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-09-03-string-basic.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-03"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 주소와 이름",
+            'path'     : "Backend > Network",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Backend/Network/2024-09-03-address-and-name.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-09-03"
         });
     

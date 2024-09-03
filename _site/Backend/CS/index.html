@@ -645,6 +645,7 @@
             
             
             
+            
 
     
     
@@ -1019,112 +1020,172 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-02-Business-Logic.html"><h1 class="title_post">💾 [CS] 비즈니스 로직(Business Logic)이란?</h1></a>
-                        <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="txt_post">
-                            💾 [CS] 비즈니스 로직(Business Logic)이란?
+                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html"><h1 class="title_post">💾 [CS] 전략 패턴(Strategy pattern)</h1></a>
+                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="txt_post">
+                            💾 [CS] 전략 패턴(Strategy pattern)
 
-1️⃣ 비즈니스 로직(Business Logic).
+1️⃣ 전략 패턴(Strategy pattern)
 
-  비즈니스 로직(Business Logic) 은 소프트웨어 시스템 내에서 특정 비즈니스 도메인에 대한 규칙, 계산, 절차 등을 구현한 부분을 의미합니다.
-    
-      이 로직은 애플리케이션이 실제 비즈니스 요구 사항을 충족하도록 하는 핵심 기능을 담당합니다.
-    
-  
-  비즈니스 로직(Business Logic) 은 시스템이 처리해야 하는 업무 규칙과 관련된 의사결정을 포함하며, 데이터의 유효성 검사를 하고, 비즈니스 프로세스를 관리하고, 관련된 계산을 수행하는 역할을 합니다.
+  전략 패턴(Strategy pattern) 은 정책 패턴(Policy pattern) 이라고도 하며, 객채의 행위를 바꾸고 싶은 경우 ‘직접’ 수정하지 않고 전략이라고 부르는 ‘캡슐화한 알고리즘’ 을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.
 
 
-2️⃣ 비즈니스 로직의 주요 역할
 
-  1. 도메인 규칙 관리.
+
+
+  아래의 예시 코드는 우리가 어떤 것을 살 때 네이버페이, 카카오페이 등 다양한 방법으로 결제하듯이 어떤 아이템을 살 때 LUNACard로 사는 것과 KAKAOCard로 사는 것을 구현한 예제입니다.
     
-      특정 비즈니스 도메인에서 따라야 하는 규칙을 정의하고 관리합니다.
-        
-          예를 들어, 은행 시스템에서 계좌 이체 시 잔액이 충분해야 한다는 규칙을 비즈니스 로직에서 처리합니다.
-        
-      
-    
-  
-  2. 유효성 검사.
-    
-      입력된 데이터나 시스템 내부에서 사용되는 데이터가 비즈니스 규칙에 맞는지 검증합니다.
-        
-          예를 들어, 사용자가 입력한 주문의 총액이 0보다 큰지, 재고가 충분한지 등을 검사하는 로직이 포함됩니다.
-        
-      
-    
-  
-  3. 비즈니스 프로세스 구현.
-    
-      비즈니스 워크플로우를 구현하여, 각 단계에서 수행해야 하는 작업을 정의하고, 순서대로 실행되도록 관리합니다.
-        
-          예를 들어, 주문 처리 시스템에서 주문 접수, 결제 처리, 배송 준비 등의 단계가 비즈니스 로직에 포함될 수 있습니다.
-        
-      
-    
-  
-  4. 계산과 처리.
-    
-      특정 비즈니스 규칙에 따라 데이터를 계산하거나 처리하는 역할을 합니다.
-        
-          예를 들어, 세금 계산, 할인 적용, 이자 계산 등이 여기에 포함됩니다.
-        
-      
+      결제 방식의 ‘전략’ 만 바꿔서 두 가지 방식으로 결제하는 것을 구현했습니다.
     
   
 
 
-3️⃣ 비즈니스 로직의 위치
+// PaymentStrategy - interface
 
-  비즈니스 로직은 보통 애플리케이션의 Service 계층 에 위치합니다.
-    
-      이 계층은 데이터를 처리하는 로직과 사용자 인터페이스를 담당하는 로직을 분리하여, 코드의 재사용성을 높이고 유지보수를 용이하게 합니다.
-    
-  
-  Service 계층 에서는 비즈니스 로직을 구현하며, 필요한 경우 데이터 접근 계층(Repository) 을 호출하여 데이터를 조회하거나 저장하고, 최종적으로 처리된 결과를 프레젠테이션 계층(Controller) 에 전달합니다.
+public interface PaymentStrategy {
+	void pay(int amount);
+}
+
+// KAKAOCardStrategy
+
+public class KAKAOCardStrategy implements PaymentStrategy{
+	private String name;
+	private String cardNumber;
+	private String cvv;
+	private String dateOfExpiry;
+
+	public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry) {
+		this.name = name;
+		this.cardNumber = cardNumber;
+		this.cvv = cvv;
+		this.dateOfExpiry = dateOfExpiry;
+	}
+
+	@Override
+	public void pay(int amount) {
+		System.out.println(amount + " paid using KAKAOCard.");
+	}
+}
+
+// LUNACardStrategy
+
+public class LUNACardStrategy implements PaymentStrategy {
+	private String emailId;
+	private String password;
+
+	public LUNACardStrategy(String emailId, String password) {
+		this.emailId = emailId;
+		this.password = password;
+	}
+
+	@Override
+	public void pay(int amount) {
+		System.out.println(amount + " paid using LUNACard");
+	}
+}
+
+// Item
+
+public class Item {
+	private String name;
+	private int price;
+	public Item(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+}
+
+// ShoppingCart
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShoppingCart {
+	List&lt;Item&gt; items;
+
+	public ShoppingCart() {
+		this.items = new ArrayList&lt;&gt;();
+	}
+
+	public void addItem(Item item) {
+		this.items.add(item);
+	}
+
+	public void removeItem(Item item) {
+		this.items.remove(item);
+	}
+
+	public int calculateTotal() {
+		int sum = 0;
+		for (Item item : items) {
+			sum += item.getPrice();
+		}
+		return sum;
+	}
+
+	public void pay(PaymentStrategy pamentMethod) {
+		int amount = calculateTotal();
+		pamentMethod.pay(amount);
+	}
+}
+
+// Main
+
+import designPattern.strategy.Item;
+import designPattern.strategy.KAKAOCardStrategy;
+import designPattern.strategy.LUNACardStrategy;
+import designPattern.strategy.ShoppingCart;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ShoppingCart cart = new ShoppingCart();
+
+		Item A = new Item("A", 100);
+		Item B = new Item("B", 300);
+
+		cart.addItem(A);
+		cart.addItem(B);
+
+		// pay by LUNACard
+		cart.pay(new LUNACardStrategy("kobe@google.com", "1234"));
+
+		// pay by KAKAOCard
+		cart.pay(new KAKAOCardStrategy("Minseong Kang", "123456789", "123", "12/01"));
+	}
+}
 
 
-4️⃣ 비즈니스 로직과 다른 로직의 구분
+실행 결과
 
-  비즈니스 로직
-    
-      실제 비즈니스와 관련된 모든 규칙과 프로세스를 정의합니다.
-        
-          이는 특정 도메인 지식에 기반하며, 도메인 전문가가 주로 요구 사항을 정의합니다.
-        
-      
-    
-  
-  프레젠테이션 로직
-    
-      사용자 인터페이스와 관련된 로직으로, 사용자에게 데이터를 표시하거나 입력을 받는 것과 관련됩니다.
-    
-  
-  데이터 접근 로직
-    
-      데이터베이스와 상호작용하며, 데이터를 저장하거나 조회하는 작업을 담당합니다.
-    
-  
+400 paid using LUNACard
+400 paid using KAKAOCard.
 
 
-5️⃣ 비즈니스 로직의 중요성
+  위 코드는 쇼핑 카드에 아이템을 담아 LUNACard 또는 KAKAOCard 라는 두 개의 전략으로 결제하는 코드입니다.
 
-  비즈니스 로직은 애플리케이션의 핵심적인 부분이므로, 이 로직의 정확성은 시스템 전체의 신뢰성과 직결됩니다.
-  잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
-    
-      따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
-    
-  
+
+
+  용어 : 컨텍스트
+프로그래밍에서의 컨텍스트는 상황, 맥락, 문맥을 의미하며 개발자가 어떠한 작업을 완료하는 데 필요한 모든 관련 정보를 말합니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-09-02</span>
+                                <span class="date">· 2024-09-03</span>
                             
                         </div>
                     </div>
@@ -1235,6 +1296,123 @@
 
   도메인은 소프트웨어가 다루는 문제의 범위와 관련된 개념, 규칙, 객체들을 나타내며, 이를 정확히 이해하고 모델링하는 것이 성공적인 소프트웨어 개발의 핵심입니다.
   도메인 이해를 바탕으로 적절한 비즈니스 로직을 구현하는 것이 소프트웨어의 목표를 달성하는 데 매우 중요합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-02-Business-Logic.html"><h1 class="title_post">💾 [CS] 비즈니스 로직(Business Logic)이란?</h1></a>
+                        <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="txt_post">
+                            💾 [CS] 비즈니스 로직(Business Logic)이란?
+
+1️⃣ 비즈니스 로직(Business Logic).
+
+  비즈니스 로직(Business Logic) 은 소프트웨어 시스템 내에서 특정 비즈니스 도메인에 대한 규칙, 계산, 절차 등을 구현한 부분을 의미합니다.
+    
+      이 로직은 애플리케이션이 실제 비즈니스 요구 사항을 충족하도록 하는 핵심 기능을 담당합니다.
+    
+  
+  비즈니스 로직(Business Logic) 은 시스템이 처리해야 하는 업무 규칙과 관련된 의사결정을 포함하며, 데이터의 유효성 검사를 하고, 비즈니스 프로세스를 관리하고, 관련된 계산을 수행하는 역할을 합니다.
+
+
+2️⃣ 비즈니스 로직의 주요 역할
+
+  1. 도메인 규칙 관리.
+    
+      특정 비즈니스 도메인에서 따라야 하는 규칙을 정의하고 관리합니다.
+        
+          예를 들어, 은행 시스템에서 계좌 이체 시 잔액이 충분해야 한다는 규칙을 비즈니스 로직에서 처리합니다.
+        
+      
+    
+  
+  2. 유효성 검사.
+    
+      입력된 데이터나 시스템 내부에서 사용되는 데이터가 비즈니스 규칙에 맞는지 검증합니다.
+        
+          예를 들어, 사용자가 입력한 주문의 총액이 0보다 큰지, 재고가 충분한지 등을 검사하는 로직이 포함됩니다.
+        
+      
+    
+  
+  3. 비즈니스 프로세스 구현.
+    
+      비즈니스 워크플로우를 구현하여, 각 단계에서 수행해야 하는 작업을 정의하고, 순서대로 실행되도록 관리합니다.
+        
+          예를 들어, 주문 처리 시스템에서 주문 접수, 결제 처리, 배송 준비 등의 단계가 비즈니스 로직에 포함될 수 있습니다.
+        
+      
+    
+  
+  4. 계산과 처리.
+    
+      특정 비즈니스 규칙에 따라 데이터를 계산하거나 처리하는 역할을 합니다.
+        
+          예를 들어, 세금 계산, 할인 적용, 이자 계산 등이 여기에 포함됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 비즈니스 로직의 위치
+
+  비즈니스 로직은 보통 애플리케이션의 Service 계층 에 위치합니다.
+    
+      이 계층은 데이터를 처리하는 로직과 사용자 인터페이스를 담당하는 로직을 분리하여, 코드의 재사용성을 높이고 유지보수를 용이하게 합니다.
+    
+  
+  Service 계층 에서는 비즈니스 로직을 구현하며, 필요한 경우 데이터 접근 계층(Repository) 을 호출하여 데이터를 조회하거나 저장하고, 최종적으로 처리된 결과를 프레젠테이션 계층(Controller) 에 전달합니다.
+
+
+4️⃣ 비즈니스 로직과 다른 로직의 구분
+
+  비즈니스 로직
+    
+      실제 비즈니스와 관련된 모든 규칙과 프로세스를 정의합니다.
+        
+          이는 특정 도메인 지식에 기반하며, 도메인 전문가가 주로 요구 사항을 정의합니다.
+        
+      
+    
+  
+  프레젠테이션 로직
+    
+      사용자 인터페이스와 관련된 로직으로, 사용자에게 데이터를 표시하거나 입력을 받는 것과 관련됩니다.
+    
+  
+  데이터 접근 로직
+    
+      데이터베이스와 상호작용하며, 데이터를 저장하거나 조회하는 작업을 담당합니다.
+    
+  
+
+
+5️⃣ 비즈니스 로직의 중요성
+
+  비즈니스 로직은 애플리케이션의 핵심적인 부분이므로, 이 로직의 정확성은 시스템 전체의 신뢰성과 직결됩니다.
+  잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
+    
+      따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
+    
+  
 
 
                         </a>
@@ -7425,6 +7603,17 @@ public class MyService {
             'url'      : "/Backend/Spring/2024-09-02-container.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-02"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 전략 패턴(Strategy pattern)",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-03-stratege-pattern.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-03"
         });
     
 

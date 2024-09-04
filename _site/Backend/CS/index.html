@@ -647,6 +647,7 @@
             
             
             
+            
 
     
     
@@ -1017,6 +1018,149 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-04-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-04-API.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)</h1></a>
+                        <a href="/Backend/CS/2024-09-04-API.html" class="txt_post">
+                            💾 [CS] API(Application Programming Interface)
+
+  API(Application Programming Interface) 는 소프트웨어 간의 상호작용을 가능하게 해주는 인터페이스입니다.
+    
+      쉽게 말해서 , API는 서로 다른 소프트웨어 시스템이나 애플리케이션이 데이터를 주고 받거나 기능을 사용할 수 있도록 도와주는 규칙과 도구들의 집합입니다.
+    
+  
+
+
+1️⃣ API의 주요 개념.
+
+  1. 인터페이스
+    
+      API는 소프트웨어 시스템이 다른 시스템이나 애플리케이션과 어떻게 소통할 수 있는지를 정의하는 인터페이스입니다.
+        
+          이 인터페이스는 어떤 데이터나 기능이 노출되고, 그것들을 어떻게 사용할 수 있는지 규정합니다.
+        
+      
+    
+  
+  2. 추상화
+    
+      API는 복잡한 시스템 내부의 구현 세부 사항을 숨기고, 사용자나 개발자가 이해하기 쉽게 필요한 기능만을 제공합니다.
+        
+          예를 들어, 파일을 열거나, 데이터베이스에 쿼리를 보내거나, 웹 페이지의 데이터를 가져오는 등의 작업을 API를 통해 간단하게 수행할 수 있습니다.
+        
+      
+    
+  
+  3. 모듈화
+    
+      API는 특정 기능이나 서비스에 대한 접근을 모듈화합니다.
+        
+          이렇게 모듈화된 API를 사용하면 개발자가 시스템의 다른 부분에 영향을 주지 않고 독립적으로 기능을 사용하거나 확장할 수 있습니다.
+        
+      
+    
+  
+  4. 표준화
+    
+      API는 표준화된 방법으로 기능에 접근할 수 있게 해주기 때문에, 여러 개발자나 시스템이 일관된 방식으로 상호작용할 수 있습니다.
+        
+          예를 들어, REST API는 웹 기반 애플리케이션에서 데이터를 주고받는 표준 방식입니다.
+        
+      
+    
+  
+
+
+2️⃣ API의 유형.
+
+  1. Web API(웹 API)
+    
+      웹 서비스나 웹 애플리케이션에서 기능을 제공하는 API입니다.
+        
+          주로 HTTP를 통해 요청과 응답을 주고받으며, REST, SOAP, GraphQL 등이 그 예입니다.
+        
+      
+    
+  
+  2. Library API
+    
+      특정 프로그래밍 언어에서 사용할 수 있는 라이브러리나 프레임워크의 함수와 클래스들에 대한 인터페이스입니다.
+        
+          예를 들어, Python의 표준 라이브러리에서 제공하는 os 나 sys 모듈도 API의 일종입니다.
+        
+      
+    
+  
+  3. Operating System API
+    
+      운영 체제가 제공하는 기능에 접근할 수 있게 해주는 API입니다.
+        
+          예를 들어, Windows API는 윈도우 애플리케이션이 운영 체제의 기능(파일 관리, UI 구성 요소, 네트워크 등)에 접근할 수 있도록 합니다.
+        
+      
+    
+  
+  4. Database API
+    
+      데이터베이스와의 상호작용을 위해 제공되는 API입니다.
+        
+          JDBC(Java Database Connectivity)는 자바 애플리케이션이 데이터베이스와 상호작용할 수 있도록 돕는 대표적인 데이터베이스 API입니다.
+        
+      
+    
+  
+
+
+3️⃣ API의 예.
+
+  Google Maps API
+    
+      개발자가 자신의 애플리케이션에 지도 기능을 통합할 수 있도록 Google에서 제공하는 API입니다.
+    
+  
+  Twitter API
+    
+      개발자가 트위터의 기능(예: 트윗 가져오기, 트윗 작성)을 자신의 애플리케이션에 통합할 수 있도록 제공되는 API입니다.
+    
+  
+  Payment Gateway API
+    
+      PayPal이나 Stripe 같은 결제 서비스에서 제공하는 API로, 애플리게이션에 결제 기능을 통합할 수 있습니다.
+    
+  
+
+
+4️⃣ API의 중요성.
+
+  API는 소프트웨어 개발에서 매우 중요한 역할을 합니다.
+    
+      그것은 소프트웨어 간의 상호 운용성을 촉진하며, 새로운 애플리케이션을 개발하거나 기존 애플리케이션에 새로운 기능을 추가하는 것을 더 쉽게 만들어 줍니다.
+        
+          또한, API를 통해 외부 시스템이나 서비스와 통합할 수 있어, 다양한 기능을 제공하는 애플리케이션을 보다 효율적으로 개발할 수 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -7648,6 +7792,17 @@ public class MyService {
             'url'      : "/Backend/Spring/2024-09-03-java-spring.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-03"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] API(Application Programming Interface)",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-04-API.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-04"
         });
     
 

@@ -652,6 +652,7 @@
             
             
             
+            
 
     
     
@@ -1022,6 +1023,120 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-09-05-immutable-object-string.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-09-05-immutable-object-string.html"><h1 class="title_post">☕️[Java] String 클래스 - 불변 객체</h1></a>
+                        <a href="/Backend/Java/2024-09-05-immutable-object-string.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 불변 객체.
+
+  String은 불변 객체입니다.
+    
+      따라서 생성 이후에 절대로 내분의 문자열 값을 변경할 수 없습니다.
+    
+  
+
+
+다음 예시를 봅시다.
+public class StringImmutable1 {
+
+    public static void main(String[] args) {
+        String str = "hello";
+        str.concat(" java");
+        System.out.println("str = " + str);
+    }
+}
+
+
+  `String.concat() 메서드를 사용하면 기존 문자열에 새로운 문자열을 연결해서 합칠 수 있습니다.
+    
+      이 경우 어떤 실행 결과가 나올까요?
+    
+  
+
+
+실행 결과
+str = hello
+
+
+  실행 결과를 보면 문자가 전혀 합쳐지지 않았습니다.
+
+
+다음 코드를 봐봅시다.
+public class StringImmutable2 {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = str1.concat(" java");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+    }
+}
+
+
+  String은 불변 객체입니다.
+    
+      따라서 변경이 필요한 경우 기존 값을 변경하지 않고, 대신에 새로운 결과를 만들어서 반환합니다.
+    
+  
+
+
+실행 결과
+str1 = hello
+str2 = hello java
+
+
+
+
+
+  String.concat()은 내부에서 새로운 String 객체를 만들어서 반환합니다.
+    
+      따라서 불변과 기존 객체의 값을 유지합니다.
+    
+  
+
+
+1️⃣ String이 불변으로 설계된 이유,
+
+  String 이 불변으로 설계된 이유는 앞서 불변 객체에서 배운 내용에 추가로 다음과 같은 이유도 있습니다.
+  문자열 풀에 있는 String 인스턴스의 값이 중간에 변경되면 같은 문자열을 참고하는 다른 변수의 값도 함께 변경됩니다.
+
+
+
+
+
+  String은 자바 내부에서 문자열 풀을 통해 최적화를 합니다.
+  만약 String 내부의 값을 변경할 수 있다면, 기존에 문자열 풀에서 같은 문자를 참조하는 변수의 모든 문자가 함께 변경되어 버리는 문제가 발생합니다.
+    
+      다음의 경우 str3이 참조하는 문자를 변경하면 str4의 문자도 함께 변경되는 사이드 이펙트 문제가 발생합니다.
+        
+          String str3 = "hello"
+          String str4 = "hello"
+        
+      
+    
+  
+
+
+String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문제가 발생하지 않습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2644,6 +2759,77 @@ class MemberServiceTest {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
+                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
+                            ☕️[Java] .equalsIgnoreCase()
+
+1️⃣ .equalsIgnoreCase()
+
+  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
+    
+      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
+    
+  
+
+
+2️⃣ 예시.
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "HELLO";
+        String str4 = "World";
+        
+        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
+        
+        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
+        
+        // str1과 str4는 내용이 다르므로 false 반환
+        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
+    }
+}
+
+
+3️⃣ 주요 포인트.
+
+  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
+    
+      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
+    
+  
+  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
+    
+      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
+    
+  
+  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
+
+
+이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
+예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -2956,77 +3142,6 @@ public void beforeEach() {
 이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
 
 예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
-                        <a href="/Backend/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
-                            ☕️[Java] .equalsIgnoreCase()
-
-1️⃣ .equalsIgnoreCase()
-
-  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
-    
-      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
-    
-  
-
-
-2️⃣ 예시.
-public class Main {
-    public static void main(String[] args) {
-        String str1 = "Hello";
-        String str2 = "hello";
-        String str3 = "HELLO";
-        String str4 = "World";
-        
-        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
-        
-        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
-        
-        // str1과 str4는 내용이 다르므로 false 반환
-        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
-    }
-}
-
-
-3️⃣ 주요 포인트.
-
-  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
-    
-      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
-    
-  
-  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
-    
-      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
-    
-  
-  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
-
-
-이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
-예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -18396,6 +18511,17 @@ JVM의 구성 요소.
             'url'      : "/Backend/Spring/2024-09-04-Transactional-Annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-04"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] String 클래스 - 불변 객체",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-09-05-immutable-object-string.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-05"
         });
     
 

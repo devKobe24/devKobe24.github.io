@@ -651,6 +651,7 @@
             
             
             
+            
 
     
     
@@ -1023,128 +1024,6 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
-                            🍃[Spring] @SpringBootTest 애노테이션.
-
-  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
-    
-      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
-      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
-    
-  
-
-
-1️⃣ 주요 기능 및 사용 방식.
-
-  1. Spring Application Context 로드
-    
-      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
-        
-          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
-        
-      
-    
-  
-  2. 테스트 환경 설정
-    
-      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
-        
-          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
-        
-      
-      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
-    
-  
-  3. 웹 환경 설정
-    
-      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
-        
-          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
-          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
-          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
-          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
-        
-      
-    
-  
-
-
-예시
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
-
-
-
-  4. 통합 테스트
-    
-      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
-        
-          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
-        
-      
-    
-  
-  5. TestConfiguration 클래스 사용 가능
-    
-      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
-    
-  
-
-
-2️⃣ 예시 코드
-
-@SpringBootTest
-public class MyServiceIntegrationTest {
-    
-    @Autowired
-    private MyService myService;
-    
-    @Test
-    public void testServiceMethod() {
-        // Given
-        // Setup initial conditions
-        
-        // When
-        String result = myService.performAction();
-        
-        // Then
-        assertEquals("ExpectedResult", result);
-    }
-}
-
-
-  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
-
-
-3️⃣ 요약
-
-  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-09-04-jdbc.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -1270,6 +1149,150 @@ public class MyServiceIntegrationTest {
 
 
 JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Java 애플리케이션에서 데이터베이스 연동을 위해 널리 사용됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-09-04-String-comparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-09-04-String-comparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
+                        <a href="/Backend/Java/2024-09-04-String-comparison.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 비교.
+
+  String 클래스 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
+    
+      동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+      동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인.
+    
+  
+
+
+public class StringEqualsMain1 {
+
+    public static void main(String[] args) {
+        String str1 = new String("hello");
+        String str2 = new String("hello");
+
+        System.out.println("===============================");
+        System.out.println("new String() == 비교: " + (str1 == str2));
+        System.out.println("new String() equals 비교: " + (str1.equals(str2)));
+        System.out.println("===============================");
+
+        String str3 = "hello";
+        String str4 = "hello";
+        System.out.println("리터럴 == 비교: " + (str3 == str4));
+        System.out.println("리터럴 equals 바교: " + (str3.equals(str4)));
+    }
+}
+
+
+실행 결과
+===============================
+new String() == 비교: false
+new String() equals 비교: true
+===============================
+리터럴 == 비교: true
+리터럴 equals 바교: true
+
+
+
+
+
+  str1 과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
+    
+      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
+    
+  
+  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
+    
+      따라서 동등성(equals()) 비교에 성공합니다.
+    
+  
+  참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
+
+
+
+
+
+  String str3 = "hello" 와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
+  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
+    
+      이때 같은 문자열이 있으면 만들지 않습니다.
+    
+  
+  String str3 = "hello" 와 같이 문자열 리터럴을 사용하면 문자열 풀에서 hello 라는 문자를 가진 String 인스턴스를 찾습니다.
+    
+      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
+    
+  
+  String str4 = "hello" 의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
+  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
+
+
+따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
+
+
+  참고: 풀(Pool)은 자원이 모여있는 곳을 의미합니다.
+프로그래밍에서 풀(Pool)은 공용 자원을 모아둔 곳을 뜻합니다.
+여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
+대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
+참고로 문자열 풀은 힙 영역을 사용합니다.
+그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
+
+
+그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까?
+
+public class StringEqualsMain2 {
+
+    public static void main(String[] args) {
+        String str1 = new String("hello");
+        String str2 = new String("hello");
+        System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
+
+        String str3 = "hello";
+        String str4 = "hello";
+        System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
+    }
+
+    private static boolean isSame(String x, String y) {
+        return x == y;
+        //return x.equals(y);
+    }
+}
+
+
+실행 결과
+
+메서드 호출 비교1: false
+메서드 호출 비교2: true
+
+
+
+  main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
+    
+      isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String() 으로 만들어진 것인지, 문자열 리터럴로 만들어 진 것인지 확인할 수 있는 방법이 없습니다.
+        
+          따라서 문자열 비교는 항상 equals() 를 사용해서 동등성 비교를 해야 합니다.
+        
+      
+    
+  
+
 
                         </a>
                         <div class="info-post">
@@ -1573,6 +1596,128 @@ public class MyService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
+                            🍃[Spring] @SpringBootTest 애노테이션.
+
+  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
+    
+      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
+      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
+    
+  
+
+
+1️⃣ 주요 기능 및 사용 방식.
+
+  1. Spring Application Context 로드
+    
+      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
+        
+          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
+        
+      
+    
+  
+  2. 테스트 환경 설정
+    
+      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
+        
+          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
+        
+      
+      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
+    
+  
+  3. 웹 환경 설정
+    
+      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
+        
+          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
+          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
+          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
+          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
+        
+      
+    
+  
+
+
+예시
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
+
+
+
+  4. 통합 테스트
+    
+      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
+        
+          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
+        
+      
+    
+  
+  5. TestConfiguration 클래스 사용 가능
+    
+      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
+    
+  
+
+
+2️⃣ 예시 코드
+
+@SpringBootTest
+public class MyServiceIntegrationTest {
+    
+    @Autowired
+    private MyService myService;
+    
+    @Test
+    public void testServiceMethod() {
+        // Given
+        // Setup initial conditions
+        
+        // When
+        String result = myService.performAction();
+        
+        // Then
+        assertEquals("ExpectedResult", result);
+    }
+}
+
+
+  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
+
+
+3️⃣ 요약
+
+  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -1732,6 +1877,200 @@ public class Main {
 
   용어 : 컨텍스트
 프로그래밍에서의 컨텍스트는 상황, 맥락, 문맥을 의미하며 개발자가 어떠한 작업을 완료하는 데 필요한 모든 관련 정보를 말합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-09-03-string-basic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-09-03-string-basic.html"><h1 class="title_post">☕️[Java] String 클래스 - 기본</h1></a>
+                        <a href="/Backend/Java/2024-09-03-string-basic.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 기본
+
+1️⃣ String 클래스 - 기본
+
+  자바에서 문자를 다루는 대표적인 타입은 char, String 2가지가 있습니다.
+
+
+public class CharArrayMain {
+
+	public static void main(String[] args) {
+		char[] charArr = new char[]{'h', 'e', 'l', 'l', 'o'};
+		System.out.println(charArr);
+
+		String str = "hello";
+		System.out.println("str = " + str);
+	}
+}
+
+
+실행 결과
+hello
+str = hello
+
+
+
+  기본형은 char 는 문자 하나를 다룰 때 사용합니다.
+  char 를 사용해서 여러 문자를 나열하려면 char[] 을 사용해야합니다.
+    
+      하지만 이렇게 char[] 을 직접 다루는 방법은 매우 불편하기 때문에 자바는 문자열을 매우 편리하게 다룰 수 있는 String 클래스를 제공합니다.
+    
+  
+
+
+String 클래스를 통해 문자열을 생성하는 방법은 2가지가 있습니다.
+
+public class StringBasicMain {
+
+	public static void main(String[] args) {
+		String str1 = "hello";
+		String str2 = new String("hello");
+
+		System.out.println("str1 = " + str1);
+		System.out.println("str2 = " + str2);
+	}
+}
+
+
+  쌍따옴표 사용 : "hello"
+  객체 생성 : new String("hello");
+
+
+String 은 클래스입니다.
+int, boolean 같은 기본형이 아니라 참조형입니다.
+따라서 str1 변수에는 String 인스턴스의 참조값만 들어갈 수 있습니다.
+그러므로 다음 코드는 뭔가 어색합니다.
+
+String str1 = "hello";
+
+
+문자열은 매우 자주 사용됩니다.
+그래서 편의상 쌍따옴표로 문자열을 감싸면 자바언어 에서 new String("hello") 와 같이 변경해줍니다.
+
+  이 경우 실제로는 성능 최적화를 위해 문자열 풀을 사용합니다.
+
+
+String str1 = "hello"; // 기존
+String str1 = new String("hello"); // 변경
+
+
+2️⃣ String 클래스 구조
+String 클래스는 대략 다음과 같이 생겼습니다.
+
+public final class String {
+    // 문자열 보관
+    private final char[] value; // 자바 9 이전
+    private final byte[] value; // 자바 9 이후
+    
+    // 여러 메서드
+    public String concat(String str) {...}
+    public int length() {...}
+}
+
+
+
+  클래스이므로 속성과 기능을 가집니다.
+
+
+속성(필드)
+
+private final char[] value;
+
+
+
+  여기에는 String 의 실제 문자열 값이 보관됩니다.
+  문자 데이터 자체는 char[] 에 보관됩니다.
+  String 클래스는 개발자가 직접 다루기 불편한 char[] 을 내부에 감추고 String 클래스를 사용하는 개발자가 편리하게 문자열을 다룰 수 있도록 다양한 기능을 제공합니다.
+    
+      그리고 메서드 제공을 넘어서 자바 언어 차원에서도 여러 편의 문법을 제공합니다.
+    
+  
+
+
+
+  참고: 자바 9 이후 String 클래스 변경 사항
+자바 9부터 String 클래스에서 char[] 대신에 byte[]을 사용합니다.
+  private final byte[] value;
+  
+  자바에서 문자 하나를 표현하는 char는 2byte를 차지합니다.
+그런데 영어, 숫자는 보통 1byte로 표현이 가능합니다.
+그래서 단순 영어, 숫자로만 표현된 경우 1byte를 사용하고(정확히는 Latin-1 인코딩의 경우 1byte 사용)
+그렇지 않은 나머지의 경우 2byte인 UTF-16 인코딩을 사용합니다.
+따라서 메모리를 더 효율적으로 사용할 수 있게 변경되었습니다.
+
+
+기능(메서드)
+String 클래스는 문자열로 처리할 수 있는 다양한 기능을 제공합니다.
+기능이 방대하므로 필요한 기능이 있으면 검색하거나 API 문서를 찾아보면 됩니다.
+주요 메서드는 다음과 같습니다.
+
+  length() : 문자열의 길이를 반환합니다.
+  charAt(int index) : 특정 인덱스의 문자를 반환합니다.
+  substring(int beginIndex, int endIndex) : 문자열의 부분 문자열을 반환합니다.
+  indexOf(String str) : 특정 문자열이 시작되는 인덱스를 반환합니다.
+  toLowerCase(), toUpperCase() : 문자열을 소문자 또는 대문자로 변환합니다.
+  trim() : 문자열 양 끝의 공백을 제거합니다.
+  concat(String str) : 문자열을 더합니다.
+
+
+3️⃣ String 클래스와 참조형.
+
+  String 은 클래스입니다.
+    
+      따라서 기본형이 아니라 참조형입니다.
+        
+          참조형은 변수에 계산할 수 있는 값이 들어오는 것이 아니라 x001 과 같이 계산할 수 없는 참조값이 들어있습니다.
+            
+              따라서 원칙적으로 + 같은 연산을 사용할 수 없습니다.
+            
+          
+        
+      
+    
+  
+
+
+public class StringConcatMain {
+
+	public static void main(String[] args) {
+		String a = "hello";
+		String b = " java";
+
+		String result1 = a.concat(b);
+		String result2 = a + b;
+
+		System.out.println("result1 = " + result1);
+		System.out.println("result2 = " + result2);
+	}
+}
+
+
+  자바에서 문자열을 더할 때는 String 이 제공하는 concat() 과 같은 메서드를 사용해야 합니다.
+    
+      하지만 문자열은 너무 자주 다루어지기 때문에 자바 언어에서 편의상 특별히 + 연산을 제공합니다.
+    
+  
+
+
+실행 결과
+result1 = hello java
+result2 = hello java
 
 
                         </a>
@@ -2085,200 +2424,6 @@ public MemberService(MemberRepository memberRepository) {
     
   
   마지막으로 는 소속 단체의 네트워크 관리자가 내부 규칙에 따라 개별 호스테에 부여한 이름을 사용합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-09-03-string-basic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-09-03-string-basic.html"><h1 class="title_post">☕️[Java] String 클래스 - 기본</h1></a>
-                        <a href="/Backend/Java/2024-09-03-string-basic.html" class="txt_post">
-                            ☕️[Java] String 클래스 - 기본
-
-1️⃣ String 클래스 - 기본
-
-  자바에서 문자를 다루는 대표적인 타입은 char, String 2가지가 있습니다.
-
-
-public class CharArrayMain {
-
-	public static void main(String[] args) {
-		char[] charArr = new char[]{'h', 'e', 'l', 'l', 'o'};
-		System.out.println(charArr);
-
-		String str = "hello";
-		System.out.println("str = " + str);
-	}
-}
-
-
-실행 결과
-hello
-str = hello
-
-
-
-  기본형은 char 는 문자 하나를 다룰 때 사용합니다.
-  char 를 사용해서 여러 문자를 나열하려면 char[] 을 사용해야합니다.
-    
-      하지만 이렇게 char[] 을 직접 다루는 방법은 매우 불편하기 때문에 자바는 문자열을 매우 편리하게 다룰 수 있는 String 클래스를 제공합니다.
-    
-  
-
-
-String 클래스를 통해 문자열을 생성하는 방법은 2가지가 있습니다.
-
-public class StringBasicMain {
-
-	public static void main(String[] args) {
-		String str1 = "hello";
-		String str2 = new String("hello");
-
-		System.out.println("str1 = " + str1);
-		System.out.println("str2 = " + str2);
-	}
-}
-
-
-  쌍따옴표 사용 : "hello"
-  객체 생성 : new String("hello");
-
-
-String 은 클래스입니다.
-int, boolean 같은 기본형이 아니라 참조형입니다.
-따라서 str1 변수에는 String 인스턴스의 참조값만 들어갈 수 있습니다.
-그러므로 다음 코드는 뭔가 어색합니다.
-
-String str1 = "hello";
-
-
-문자열은 매우 자주 사용됩니다.
-그래서 편의상 쌍따옴표로 문자열을 감싸면 자바언어 에서 new String("hello") 와 같이 변경해줍니다.
-
-  이 경우 실제로는 성능 최적화를 위해 문자열 풀을 사용합니다.
-
-
-String str1 = "hello"; // 기존
-String str1 = new String("hello"); // 변경
-
-
-2️⃣ String 클래스 구조
-String 클래스는 대략 다음과 같이 생겼습니다.
-
-public final class String {
-    // 문자열 보관
-    private final char[] value; // 자바 9 이전
-    private final byte[] value; // 자바 9 이후
-    
-    // 여러 메서드
-    public String concat(String str) {...}
-    public int length() {...}
-}
-
-
-
-  클래스이므로 속성과 기능을 가집니다.
-
-
-속성(필드)
-
-private final char[] value;
-
-
-
-  여기에는 String 의 실제 문자열 값이 보관됩니다.
-  문자 데이터 자체는 char[] 에 보관됩니다.
-  String 클래스는 개발자가 직접 다루기 불편한 char[] 을 내부에 감추고 String 클래스를 사용하는 개발자가 편리하게 문자열을 다룰 수 있도록 다양한 기능을 제공합니다.
-    
-      그리고 메서드 제공을 넘어서 자바 언어 차원에서도 여러 편의 문법을 제공합니다.
-    
-  
-
-
-
-  참고: 자바 9 이후 String 클래스 변경 사항
-자바 9부터 String 클래스에서 char[] 대신에 byte[]을 사용합니다.
-  private final byte[] value;
-  
-  자바에서 문자 하나를 표현하는 char는 2byte를 차지합니다.
-그런데 영어, 숫자는 보통 1byte로 표현이 가능합니다.
-그래서 단순 영어, 숫자로만 표현된 경우 1byte를 사용하고(정확히는 Latin-1 인코딩의 경우 1byte 사용)
-그렇지 않은 나머지의 경우 2byte인 UTF-16 인코딩을 사용합니다.
-따라서 메모리를 더 효율적으로 사용할 수 있게 변경되었습니다.
-
-
-기능(메서드)
-String 클래스는 문자열로 처리할 수 있는 다양한 기능을 제공합니다.
-기능이 방대하므로 필요한 기능이 있으면 검색하거나 API 문서를 찾아보면 됩니다.
-주요 메서드는 다음과 같습니다.
-
-  length() : 문자열의 길이를 반환합니다.
-  charAt(int index) : 특정 인덱스의 문자를 반환합니다.
-  substring(int beginIndex, int endIndex) : 문자열의 부분 문자열을 반환합니다.
-  indexOf(String str) : 특정 문자열이 시작되는 인덱스를 반환합니다.
-  toLowerCase(), toUpperCase() : 문자열을 소문자 또는 대문자로 변환합니다.
-  trim() : 문자열 양 끝의 공백을 제거합니다.
-  concat(String str) : 문자열을 더합니다.
-
-
-3️⃣ String 클래스와 참조형.
-
-  String 은 클래스입니다.
-    
-      따라서 기본형이 아니라 참조형입니다.
-        
-          참조형은 변수에 계산할 수 있는 값이 들어오는 것이 아니라 x001 과 같이 계산할 수 없는 참조값이 들어있습니다.
-            
-              따라서 원칙적으로 + 같은 연산을 사용할 수 없습니다.
-            
-          
-        
-      
-    
-  
-
-
-public class StringConcatMain {
-
-	public static void main(String[] args) {
-		String a = "hello";
-		String b = " java";
-
-		String result1 = a.concat(b);
-		String result2 = a + b;
-
-		System.out.println("result1 = " + result1);
-		System.out.println("result2 = " + result2);
-	}
-}
-
-
-  자바에서 문자열을 더할 때는 String 이 제공하는 concat() 과 같은 메서드를 사용해야 합니다.
-    
-      하지만 문자열은 너무 자주 다루어지기 때문에 자바 언어에서 편의상 특별히 + 연산을 제공합니다.
-    
-  
-
-
-실행 결과
-result1 = hello java
-result2 = hello java
 
 
                         </a>
@@ -9818,125 +9963,6 @@ TTA 정보통신용어사전에서는 다음과 같이 세그먼트를 정의하
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_TENANCY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_TENANCY.html"><h1 class="title_post">☁️[AWS] 테넌시(Tenancy)</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_TENANCY.html" class="txt_post">
-                            ☁️[AWS] 테넌시(Tenancy).
-“테넌시(Tenancy)” 라는 용어는 원래 부동산에서 사용되던 개념으로, 특정 공간을 임차하거나 소유하는 상태를 의미합니다.
-
-“이 개념이 IT와 클라우드 컴퓨팅으로 확장되면서, 테넌시는 리소스나 환경을 특정 사용자나 조직이 사용하거나 소유하는 방식으로 사용됩니다.”
-
-1️⃣ 테넌시의 일반적인 개념.
-
-1️⃣ 부동산에서의 테넌시.
-
-  정의
-    
-      테넌시는 주로 임차인이 집이나 건물을 사용하는 권리를 가지고 있는 상태를 의미합니다.
-      테넌시는 임대 계약을 통해 특정 기간 동안 특정 부동산을 사용하는 권리를 확보하게 됩니다.
-    
-  
-  유형
-    
-      테넌시는 단독 테넌시(한 사람이 독점으로 사용)와 공동 테넌시(여러 사람이 함께 사용) 등으로 구분될 수 있습니다.
-    
-  
-
-
-2️⃣ IT와 클라우드 컴퓨팅에서의 테넌시.
-
-  정의
-    
-      IT 분야에서 테넌시는 특정 사용자나 조직이 IT 자원(서버, 네트워크, 데이터베이스 등)을 사용하는 상태를 의미합니다.
-      이 용어는 특히 클라우드 컴퓨팅에서 자주 사용되며, 리소스가 물리적 또는 논리적으로 어떻게 격리되고 공유되는지를 설명하는 데 사용됩니다.
-    
-  
-  유형
-    
-      클라우드 컴퓨팅에서 테넌시는 주로 다음 두 가지 유형으로 구분됩니다.
-        
-          단일 테넌시(Single-Tenancy)
-            
-              한 명의 사용자나 조직이 독점적으로 자원을 사용하는 환경. 물리적 하드웨어 또는 소프트웨어 환경이 다른 사용자와 공유되지 않습니다.
-                
-                  예를 들어, 전용 서버 또는 전용 호스트 환경이 해당됩니다.
-                
-              
-            
-          
-          다중 테넌시(Multi-Tenancy)
-            
-              여러 사용자나 조직이 동일한 물리적 하드웨어 또는 소프트웨어 환경을 공유하는 환경. 하지만 각 사용자의 데이터와 리소스는 논리적으로 격리되어 있습니다.
-              대부분의 퍼블릭 클라우드 서비스는 다중 테넌시 구조를 채택하고 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-3️⃣ 테넌시의 중요성.
-
-  자원 격리
-    
-      테넌시는 사용자가 특정 IT 자원을 다른 사용자와 공유할지, 아니면 독립적으로 사용할지를 결정하는 중요한 요소입니다.
-        
-          이를 통해 보안 수준을 강화하거나 비용을 절감할 수 있습니다.
-        
-      
-    
-  
-  보안 및 규정 준수
-    
-      일부 조직은 규제 요구 사항을 충족하기 위해 단일 테넌시를 요구할 수 있습니다.
-        
-          이 경우 물리적 자원을 다른 조직과 공유하지 않음으로써 보안성을 높일 수 있습니다.
-        
-      
-    
-  
-  비용 효율성
-    
-      다중 테넌시는 자원을 공유함으로써 비용을 절감할 수 있습니다.
-        
-          클라우드 서비스 제공자는 다중 테넌시를 통해 자원을 최적화하고, 이를 통해 사용자가 더 저렴한 비용으로 서비스를 이용할 수 있도록 합니다.
-        
-      
-    
-  
-
-
-🎯 요약
-
-  “테넌시(Tenancy)” 는 특정 자원을 사용자 또는 조직이 사용하는 방식과 관련된 개념입니다.
-    
-      부동산에서는 임차 관계를 의미합니다.
-      IT와 클라우드 컴퓨팅에서는 리소스가 어떻게 배치되고 격리되는지를 설명하는 용어로 사용됩니다.
-      클라우드 환경에서 테넌시의 선택은 보안, 성능, 비용에 큰 영향을 미칩니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240819_AWS_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -10070,6 +10096,78 @@ TTA 정보통신용어사전에서는 다음과 같이 세그먼트를 정의하
 
 
   🎯 서브넷을 잘 설계하고 구성하는 것은 AWS에서 네트워크 인프라를 최적화하고 보안을 강화하는 데 매우 중요합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html"><h1 class="title_post">☁️[AWS] 라우팅 정보를 설정해 인터넷과 통신.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html" class="txt_post">
+                            ☁️[AWS] 라우팅 정보를 설정해 인터넷과 통신.
+VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니다.
+이 포스트에서는 주요 기능을 통해 VPC의 사용 방법을 설명하겠습니다.
+
+1️⃣ 라우팅 테이블(Routing Table).
+
+  라우팅 테이블 은 네트워크 경로 정보입니다.
+  온프레미스 환경에서는 라우터와 같은 네트워크 기기에 라우팅 테이블을 설정하지만 AWS는 VPC에 라우팅 테이블을 생성하고 각 서브넷에 사용할 라우팅 테이블을 지정합니다.
+  VPC를 통해 흐르는 패킷은 이 라우팅 테이블의 정보를 기반으로 경로(어디로 통신할지)를 결정합니다.
+  VPC를 만들 때 기본적으로 하나의 라우팅 테이블이 만들어 집니다.
+    
+      기본 상태에서는 VPC 내의 라우팅 정보만 있으므로 VPC 외부로는 통신할 수 없습니다.
+    
+  
+  외부와 통신하려는 경우에는 외부 라우팅 정보를 추가해야 합니다.
+    
+      예를 들어 대상 0.0.0.0/0(모든 네트워크)에 대해 인터넷 게이트웨이로 라우팅 테이블에 등록하면 인터넷 게이트웨이를 통해 인터넷과 통신할 수 있습니다.
+
+    
+  
+
+
+2️⃣ 인터넷 게이트웨이(Internet Gateway).
+
+  인터넷 게이트웨이 는 서브넷 안에 있는 EC2와 같은 자원이 인터넷과 통신할 수 있게 하기 위한 기능입니다.
+  인터넷 게이트웨이를 생성하고 서브넷의 라우팅 테이블에 설정하면 인터넷과 VPC가 서로 통신할 수 있게 됩니다.
+  인터넷 게이트웨이로 가는 경로가 설정된 서브넷을 퍼블릭 서브넷 이라고 합니다.
+  반대로 인터넷 게이트웨이를 통해 인터넷과 통신할 수 없는 서브넷을 프라이빗 서브넷 이라고 합니다.
+  EC2의 경우 퍼블릭 IP 또는 Elastic IP(탄력적 IP) 를 부여해 인터넷과 EC2가 통신할 수 있습니다.
+    
+      퍼블릭 IP와 Elastic IP는 모두 “EC2에 설정할 수 있는 퍼블릭 IP(글로벌 IP) 주소” 입니다.
+        
+          퍼블릭 IP는 자동으로 부여되는 IP 주소로 재부팅할 때마다 변경됩니다.
+          Elastic IP(탄력적 IP)는 정적 IP라고도 하며 영구적으로 사용할 수 있는 IP 주소입니다.
+            
+              방화벽 등에서 IP 주소를 고정해 통신을 허가해야 하는 경우 Elastic IP를 사용합니다.
+            
+          
+        
+      
+    
+  
+  퍼블릭 IP는 무료로 사용할 수 있지만 Elastic IP는 사용하지 않을 때 약간의 요금이 부과됩니다.
+    
+      가동 중인 EC2 등에서 사용하는 경우 무료입니다.
+
+    
+  
 
 
                         </a>
@@ -10294,58 +10392,105 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240819_AWS_TENANCY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html"><h1 class="title_post">☁️[AWS] 라우팅 정보를 설정해 인터넷과 통신.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html" class="txt_post">
-                            ☁️[AWS] 라우팅 정보를 설정해 인터넷과 통신.
-VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니다.
-이 포스트에서는 주요 기능을 통해 VPC의 사용 방법을 설명하겠습니다.
+                        <a href="/Backend/AWS/240819_AWS_TENANCY.html"><h1 class="title_post">☁️[AWS] 테넌시(Tenancy)</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_TENANCY.html" class="txt_post">
+                            ☁️[AWS] 테넌시(Tenancy).
+“테넌시(Tenancy)” 라는 용어는 원래 부동산에서 사용되던 개념으로, 특정 공간을 임차하거나 소유하는 상태를 의미합니다.
 
-1️⃣ 라우팅 테이블(Routing Table).
+“이 개념이 IT와 클라우드 컴퓨팅으로 확장되면서, 테넌시는 리소스나 환경을 특정 사용자나 조직이 사용하거나 소유하는 방식으로 사용됩니다.”
 
-  라우팅 테이블 은 네트워크 경로 정보입니다.
-  온프레미스 환경에서는 라우터와 같은 네트워크 기기에 라우팅 테이블을 설정하지만 AWS는 VPC에 라우팅 테이블을 생성하고 각 서브넷에 사용할 라우팅 테이블을 지정합니다.
-  VPC를 통해 흐르는 패킷은 이 라우팅 테이블의 정보를 기반으로 경로(어디로 통신할지)를 결정합니다.
-  VPC를 만들 때 기본적으로 하나의 라우팅 테이블이 만들어 집니다.
-    
-      기본 상태에서는 VPC 내의 라우팅 정보만 있으므로 VPC 외부로는 통신할 수 없습니다.
-    
-  
-  외부와 통신하려는 경우에는 외부 라우팅 정보를 추가해야 합니다.
-    
-      예를 들어 대상 0.0.0.0/0(모든 네트워크)에 대해 인터넷 게이트웨이로 라우팅 테이블에 등록하면 인터넷 게이트웨이를 통해 인터넷과 통신할 수 있습니다.
+1️⃣ 테넌시의 일반적인 개념.
 
+1️⃣ 부동산에서의 테넌시.
+
+  정의
+    
+      테넌시는 주로 임차인이 집이나 건물을 사용하는 권리를 가지고 있는 상태를 의미합니다.
+      테넌시는 임대 계약을 통해 특정 기간 동안 특정 부동산을 사용하는 권리를 확보하게 됩니다.
     
   
-
-
-2️⃣ 인터넷 게이트웨이(Internet Gateway).
-
-  인터넷 게이트웨이 는 서브넷 안에 있는 EC2와 같은 자원이 인터넷과 통신할 수 있게 하기 위한 기능입니다.
-  인터넷 게이트웨이를 생성하고 서브넷의 라우팅 테이블에 설정하면 인터넷과 VPC가 서로 통신할 수 있게 됩니다.
-  인터넷 게이트웨이로 가는 경로가 설정된 서브넷을 퍼블릭 서브넷 이라고 합니다.
-  반대로 인터넷 게이트웨이를 통해 인터넷과 통신할 수 없는 서브넷을 프라이빗 서브넷 이라고 합니다.
-  EC2의 경우 퍼블릭 IP 또는 Elastic IP(탄력적 IP) 를 부여해 인터넷과 EC2가 통신할 수 있습니다.
+  유형
     
-      퍼블릭 IP와 Elastic IP는 모두 “EC2에 설정할 수 있는 퍼블릭 IP(글로벌 IP) 주소” 입니다.
+      테넌시는 단독 테넌시(한 사람이 독점으로 사용)와 공동 테넌시(여러 사람이 함께 사용) 등으로 구분될 수 있습니다.
+    
+  
+
+
+2️⃣ IT와 클라우드 컴퓨팅에서의 테넌시.
+
+  정의
+    
+      IT 분야에서 테넌시는 특정 사용자나 조직이 IT 자원(서버, 네트워크, 데이터베이스 등)을 사용하는 상태를 의미합니다.
+      이 용어는 특히 클라우드 컴퓨팅에서 자주 사용되며, 리소스가 물리적 또는 논리적으로 어떻게 격리되고 공유되는지를 설명하는 데 사용됩니다.
+    
+  
+  유형
+    
+      클라우드 컴퓨팅에서 테넌시는 주로 다음 두 가지 유형으로 구분됩니다.
         
-          퍼블릭 IP는 자동으로 부여되는 IP 주소로 재부팅할 때마다 변경됩니다.
-          Elastic IP(탄력적 IP)는 정적 IP라고도 하며 영구적으로 사용할 수 있는 IP 주소입니다.
+          단일 테넌시(Single-Tenancy)
             
-              방화벽 등에서 IP 주소를 고정해 통신을 허가해야 하는 경우 Elastic IP를 사용합니다.
+              한 명의 사용자나 조직이 독점적으로 자원을 사용하는 환경. 물리적 하드웨어 또는 소프트웨어 환경이 다른 사용자와 공유되지 않습니다.
+                
+                  예를 들어, 전용 서버 또는 전용 호스트 환경이 해당됩니다.
+                
+              
+            
+          
+          다중 테넌시(Multi-Tenancy)
+            
+              여러 사용자나 조직이 동일한 물리적 하드웨어 또는 소프트웨어 환경을 공유하는 환경. 하지만 각 사용자의 데이터와 리소스는 논리적으로 격리되어 있습니다.
+              대부분의 퍼블릭 클라우드 서비스는 다중 테넌시 구조를 채택하고 있습니다.
             
           
         
       
     
   
-  퍼블릭 IP는 무료로 사용할 수 있지만 Elastic IP는 사용하지 않을 때 약간의 요금이 부과됩니다.
-    
-      가동 중인 EC2 등에서 사용하는 경우 무료입니다.
 
+
+3️⃣ 테넌시의 중요성.
+
+  자원 격리
+    
+      테넌시는 사용자가 특정 IT 자원을 다른 사용자와 공유할지, 아니면 독립적으로 사용할지를 결정하는 중요한 요소입니다.
+        
+          이를 통해 보안 수준을 강화하거나 비용을 절감할 수 있습니다.
+        
+      
+    
+  
+  보안 및 규정 준수
+    
+      일부 조직은 규제 요구 사항을 충족하기 위해 단일 테넌시를 요구할 수 있습니다.
+        
+          이 경우 물리적 자원을 다른 조직과 공유하지 않음으로써 보안성을 높일 수 있습니다.
+        
+      
+    
+  
+  비용 효율성
+    
+      다중 테넌시는 자원을 공유함으로써 비용을 절감할 수 있습니다.
+        
+          클라우드 서비스 제공자는 다중 테넌시를 통해 자원을 최적화하고, 이를 통해 사용자가 더 저렴한 비용으로 서비스를 이용할 수 있도록 합니다.
+        
+      
+    
+  
+
+
+🎯 요약
+
+  “테넌시(Tenancy)” 는 특정 자원을 사용자 또는 조직이 사용하는 방식과 관련된 개념입니다.
+    
+      부동산에서는 임차 관계를 의미합니다.
+      IT와 클라우드 컴퓨팅에서는 리소스가 어떻게 배치되고 격리되는지를 설명하는 용어로 사용됩니다.
+      클라우드 환경에서 테넌시의 선택은 보안, 성능, 비용에 큰 영향을 미칩니다.
     
   
 
@@ -14703,6 +14848,41 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Math/2024-06-17-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Math/2024-06-17-Math.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
+                        <a href="/Backend/Math/2024-06-17-Math.html" class="txt_post">
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -14729,30 +14909,23 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Math/2024-06-17-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Math/2024-06-17-Math.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
-                        <a href="/Backend/Math/2024-06-17-Math.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
                             
-
-
-
-
-
-
-
-
-
-
+  Studing English through Newsletters
+  Metacognition JAVA의 정석 - 기본형 크기와 특징
+  [수학] 명제와 증명 학습
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-06-17</span>
+                                <span class="date">· 2024-06-16</span>
                             
                         </div>
                     </div>
@@ -14876,23 +15049,23 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
                             
-  Studing English through Newsletters
-  Metacognition JAVA의 정석 - 기본형 크기와 특징
-  [수학] 명제와 증명 학습
+  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
+  알고리즘
+  피자 나눠 먹기(2)
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-06-16</span>
+                                <span class="date">· 2024-06-13</span>
                             
                         </div>
                     </div>
@@ -15167,34 +15340,6 @@ Middle element: 40
 
   알고리즘을 잘 이해하고 사용하는 것은 프로그래머와 컴퓨터 과학자에게 필수적인 기술입니다.
 이를 통해 다양한 문제를 효율적으로 해결하고, 더 나은 소프트웨어와 시스템을 설계할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-13-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-13-TIL.html"><h1 class="title_post">📝 [TIL] 240613 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-13-TIL.html" class="txt_post">
-                            
-  원형 큐를 구현할 때 rear의 초기값을 -1로 설정하지 않는 이유.
-  알고리즘
-  피자 나눠 먹기(2)
 
 
                         </a>
@@ -15553,6 +15698,34 @@ public class DequeExample {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-06-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-09-TIL.html"><h1 class="title_post">📝 [TIL] 240609 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-09-TIL.html" class="txt_post">
+                            
+  짝수는 싫어요
+  다형성
+  Circular Queue(원형 큐)란?
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-09</span>
                             
                         </div>
                     </div>
@@ -16077,229 +16250,6 @@ public void enqueue(int element) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-09-TIL.html"><h1 class="title_post">📝 [TIL] 240609 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-09-TIL.html" class="txt_post">
-                            
-  짝수는 싫어요
-  다형성
-  Circular Queue(원형 큐)란?
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
-                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
-                            1️⃣ 제네릭(Generic)
-
-Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
-
-제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
-
-2️⃣ 제네릭(Generic)의 주요 개념.
-
-
-  타입 매개변수 :
-    
-      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
-    
-  
-  타입 안정성 :
-    
-      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
-    
-  
-  재사용성 :
-    
-      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
-    
-  
-
-
-3️⃣ 제네릭 클래스.
-
-제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
-
-일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
-
-예제.
-
-// Box 클래스
-public class Box&lt;T&gt; {
-	private T item;
-
-	public void setItem(T item) {
-		this.item = item;
-	}
-
-	public T getItem() {
-		return item;
-	}
-}
-
-// Main 클래스
-public class Main {
-
-	public static void main(String[] args) {
-		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
-		stringBox.setItem("Hello");
-		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
-
-		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
-		integerBox.setItem(123);
-		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
-	}
-}
-
-
-4️⃣ 제네릭 메서드.
-
-제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
-
-예제.
-
-public class GenericMethodExample {
-	public static &lt;T&gt; void printArray(T[] array) {
-		for (T element : array) {
-			System.out.print(element + " ");
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		Integer[] intArray = {1, 2, 3, 4, 5};
-		String[] strArray = {"A", "B", "C", "D"};
-
-		printArray(intArray); // 1 2 3 4 5 
-		printArray(strArray); // A B C D 
-	}
-}
-
-
-5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
-
-제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
-
-상한 제한 (Upper Bound)
-
-public class BoundedTypeExample&lt;T extends Number&gt; {
-	private T number;
-
-	public BoundedTypeExample(T number) {
-		this.number = number;
-	}
-
-	public void printNumber() {
-		System.out.println("Number: " + number);
-	}
-
-	public static void main(String[] args) {
-		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
-		intExample.printNumber(); // Number: 123
-
-		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
-		doubleExample.printNumber(); // Number: 45.67
-	}
-}
-
-
-
-  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
-
-
-하한 제한 (Lower Bound)
-
-하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
-
-예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class LowerBoundWildcardExample {
-	public static void addNumbers(List&lt;? super Integer&gt; list) {
-		for (int i = 0; i &lt; 5; i++) {
-			list.add(i);
-		}
-	}
-
-	public static void main(String[] args) {
-		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
-		addNumbers(numberList);
-		System.out.println(numberList); // [0, 1, 2, 3, 4]
-	}
-}
-
-
-6️⃣ 제네릭의 제한 사항.
-
-
-  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
-
-
-// 올바르지 않음
-Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
-
-
-
-  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
-
-
-public class GenericClass&lt;T&gt; {
-    private static T item; // 컴파일 오류
-}
-
-
-
-  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
-
-
-// 올바르지 않음
-T[] array = new T[10]; // 컴파일 오류
-
-
-
-  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
-이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-06-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -16580,6 +16530,201 @@ public class Main {
 
 
   이 예제에서는 기본 타입과 래퍼 클래스를 사용하여 변수레 값을 저장하고, 컬렉션에 저장된 래퍼 클래스 객체를 사용하려 연산을 수행하는 과정을 보여줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Java/2024-06-08-Generic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-06-08-Generic.html"><h1 class="title_post">☕️[Java] 제네릭(Generic)</h1></a>
+                        <a href="/Backend/Java/2024-06-08-Generic.html" class="txt_post">
+                            1️⃣ 제네릭(Generic)
+
+Java에서의 제네릭(Generic) 은 클래스나 메서드에서 사용할 데이터 타입을 나중에 지정할 수 있도록 하는 기능입니다.
+
+제네릭을 사용하면 코드의 재사용성을 높이고, 컴파일 시 타입 안전성을 제공하며, 명시적 타입 캐스팅을 줄일 수 있습니다.
+
+2️⃣ 제네릭(Generic)의 주요 개념.
+
+
+  타입 매개변수 :
+    
+      제네릭 클래스나 메서드는 타입 매개변수를 사용하여 타입을 정의합니다. 이 타입 매개변수는 클래스나 메서드가 호출될 때 구체적인 타입으로 대체됩니다.
+    
+  
+  타입 안정성 :
+    
+      제네릭을 사용하면 컴파일 시 타입을 검사하므로, 런타입에 발생할 수 있는 타입 오류를 줄일 수 있습니다.
+    
+  
+  재사용성 :
+    
+      제네릭 클래스나 메서드는 다양한 타입에 대해 동작하도록 설계할 수 있어, 코드의 재사용성을 높입니다.
+    
+  
+
+
+3️⃣ 제네릭 클래스.
+
+제네릭 클래스는 클래스 선언에 타입 매개변수를 포함하여 정의합니다.
+
+일반적으로 타입 매개변수는 한 글자로 표현 되며, ‘T(Tyep)‘, ‘E(Element)‘, ‘K(Key)‘, ‘V(Value)‘ 등이 자주 사용됩니다.
+
+예제.
+
+// Box 클래스
+public class Box&lt;T&gt; {
+	private T item;
+
+	public void setItem(T item) {
+		this.item = item;
+	}
+
+	public T getItem() {
+		return item;
+	}
+}
+
+// Main 클래스
+public class Main {
+
+	public static void main(String[] args) {
+		Box&lt;String&gt; stringBox = new Box&lt;&gt;();
+		stringBox.setItem("Hello");
+		System.out.println("String item: " + stringBox.getItem()); // String item: Hello
+
+		Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+		integerBox.setItem(123);
+		System.out.println("Integer item: " + integerBox.getItem()); // Integer item: 123
+	}
+}
+
+
+4️⃣ 제네릭 메서드.
+
+제네릭 메서드는 메서드 선언 타입 매개변수를 포함하여 정의합니다.
+
+예제.
+
+public class GenericMethodExample {
+	public static &lt;T&gt; void printArray(T[] array) {
+		for (T element : array) {
+			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Integer[] intArray = {1, 2, 3, 4, 5};
+		String[] strArray = {"A", "B", "C", "D"};
+
+		printArray(intArray); // 1 2 3 4 5 
+		printArray(strArray); // A B C D 
+	}
+}
+
+
+5️⃣ 제네릭 타입 제한 (Bounded Type Parameters)
+
+제네릭 타입 매개변수에 제한을 걸어 특정 타입의 하위 클래스나 인터페이스만 허용할 수 있습니다.
+
+상한 제한 (Upper Bound)
+
+public class BoundedTypeExample&lt;T extends Number&gt; {
+	private T number;
+
+	public BoundedTypeExample(T number) {
+		this.number = number;
+	}
+
+	public void printNumber() {
+		System.out.println("Number: " + number);
+	}
+
+	public static void main(String[] args) {
+		BoundedTypeExample&lt;Integer&gt; intExample = new BoundedTypeExample&lt;&gt;(123);
+		intExample.printNumber(); // Number: 123
+
+		BoundedTypeExample&lt;Double&gt; doubleExample = new BoundedTypeExample&lt;&gt;(45.67);
+		doubleExample.printNumber(); // Number: 45.67
+	}
+}
+
+
+
+  여기서 ‘T’ 는 ‘Number’ 클래스나 그 하위 클래스만 될 수 있습니다.
+
+
+하한 제한 (Lower Bound)
+
+하한 제한은 와일드카드(’? super T‘)를 사용하여 정의됩니다.
+
+예를 들어 ‘List&lt;? super Integer&gt;‘ 는 ‘Integer‘ 의 상위 타입인 ‘Number‘, ‘Object‘ 등이 될 수 있습니다.
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LowerBoundWildcardExample {
+	public static void addNumbers(List&lt;? super Integer&gt; list) {
+		for (int i = 0; i &lt; 5; i++) {
+			list.add(i);
+		}
+	}
+
+	public static void main(String[] args) {
+		List&lt;Number&gt; numberList = new ArrayList&lt;&gt;();
+		addNumbers(numberList);
+		System.out.println(numberList); // [0, 1, 2, 3, 4]
+	}
+}
+
+
+6️⃣ 제네릭의 제한 사항.
+
+
+  Primitive Type 사용 불가 : 제네릭은 참조 타입만 허용하며, 기본 타입은 사용할 수 없습니다.
+
+
+// 올바르지 않음
+Box&lt;int&gt; intBox = new Box&lt;&gt;(); // 컴파일 오류
+
+
+
+  정적 컨텍스트에서의 타입 매개변수 사용 : 정적 메서드나 정적 변수에서는 타입 매개변수를 사용할 수 없습니다.
+
+
+public class GenericClass&lt;T&gt; {
+    private static T item; // 컴파일 오류
+}
+
+
+
+  제네릭 배열 생성 불가 : 제네릭 배열을 직접 생성할 수 없습니다.
+
+
+// 올바르지 않음
+T[] array = new T[10]; // 컴파일 오류
+
+
+
+  제네릭은 Java의 강력한 기능으로, 타입 안전성을 높이고 코드의 재사용성을 극대화할 수 있게 해줍니다.
+이를 적절히 활용하면 더 안정적이고 유지보수하기 쉬운 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -17741,32 +17886,6 @@ Is deque empty? false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
-                            
-  IntStream
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Java/2024-06-03-IntStream.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -18030,6 +18149,59 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-06-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-03-TIL.html"><h1 class="title_post">📝 [TIL] 240603 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-03-TIL.html" class="txt_post">
+                            
+  IntStream
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-02-TIL.html"><h1 class="title_post">📝 [TIL] 240602 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-02-TIL.html" class="txt_post">
+                            
+  자바의 배열
+  JAVA DOCS 보는 법
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-02</span>
                             
                         </div>
                     </div>
@@ -18405,59 +18577,6 @@ public static void insertion(int[] array, int index, int insertValue) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-02-TIL.html"><h1 class="title_post">📝 [TIL] 240602 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-02-TIL.html" class="txt_post">
-                            
-  자바의 배열
-  JAVA DOCS 보는 법
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-01-TIL.html" class="txt_post">
-                            
-  배열의 특정 인덱스의 요소를 삭제하는 방법.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AnD/2024-06-01-RemoveSpecificIndexFromArray.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -18582,6 +18701,62 @@ public class Main {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-06-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-01-TIL.html" class="txt_post">
+                            
+  배열의 특정 인덱스의 요소를 삭제하는 방법.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-30-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-30-TIL.html"><h1 class="title_post">📝 [TIL] 240530 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-30-TIL.html" class="txt_post">
+                            
+  다양한 입출력 방법
+  큐(Queue)
+  큐 구현(LinkedList)
+  큐 구현(List)
+  큐 구현(Array)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-30</span>
                             
                         </div>
                     </div>
@@ -18963,36 +19138,6 @@ Queue의 크기 : 0
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-30-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-30-TIL.html"><h1 class="title_post">📝 [TIL] 240530 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-30-TIL.html" class="txt_post">
-                            
-  다양한 입출력 방법
-  큐(Queue)
-  큐 구현(LinkedList)
-  큐 구현(List)
-  큐 구현(Array)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-05-29-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -19258,6 +19403,139 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-05-27-Tree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-27-Tree.html"><h1 class="title_post">📦[DS,Algorithm] 트리(Tree)</h1></a>
+                        <a href="/Backend/AnD/2024-05-27-Tree.html" class="txt_post">
+                            1️⃣ 트리(Tree).
+
+트리(Tree) 는 계층적 구조를 나타내는 자료구조로, 노드(Node)와 에지(Edge)로 구성됩니다.
+
+트리는 사이클이 없는 연결 그래프(Connected Graph)이며, 계층적 데이터 표현에 매우 유용합니다.
+
+트리는 부모-자식 관계를 가지며, 데이터의 조직화와 검색, 계층적 데이터 표현에 사용됩니다.
+
+1️⃣ 트리의 구성 요소.
+
+
+  
+    노드(Node) : 트리의 기본 단위로, 데이터를 저장합니다.
+  
+  
+    에지(Edge) : 노드와 노드를 연결하는 선으로, 부모-자식 관계를 나타냅니다.
+  
+  
+    루트(Root) : 트리의 최상위 노드로, 부모 노드가 없습니다.
+  
+  
+    부모(Parent) : 다른 노드를 가리키는 노드입니다.
+  
+  
+    자식(Child) : 부모 노드에 의해 가리켜지는 노드입니다.
+  
+  
+    잎(Leaf) : 자식 노드가 없는 노드입니다.
+  
+  
+    내부 노드(Internal Node) : 자식 노드가 있는 노드입니다.
+  
+  
+    레벨(Level) : 루트 노드에서 특정 노드까지의 에지 수를 나타냅니다.
+  
+  
+    높이(Height) : 트리의 최대 레벨을 의미합니다.
+  
+
+
+2️⃣ 트리의 특성.
+
+
+  계층적 구조 : 트리는 계층적 구조로 데이터를 조직화합니다.
+  사이클 없음 : 트리는 사이클이 없는 그래프입니다.
+  연결성 : 모든 노드는 하나의 연결된 구성 요소로 되어 있습니다.
+  한 개의 루트 노드 : 트리는 하나의 루트 노드를 가지며, 루트 노드는 트리의 시작점입니다.
+
+
+3️⃣ 트리의 종류.
+
+
+  
+    이진 트리(Binary Tree) : 각 노드가 최대 두 개의 자식 노드를 가질 수 있는 트리입니다.
+  
+  
+    이진 탐색 트리(Binary Search Tree, BST) : 이진 트리의 일종으로, 왼쪽 자식 노드의 값이 부모 노드의 값보다 작고, 오른쪽 자식 노드의 값이 부모 노드의 값보다 큰 특성을 가집니다.
+  
+  
+    균형 이진 트리(Balanced Binary Tree) : AVL 트리, 레드-블랙 트리 등과 같이 트리의 높이가 균형을 이루도록 유지하는 트리입니다.
+  
+  
+    B-트리(B-Tree) : 데이터베이스와 파일 시스템에서 사용되는 트리로, 자식 노드의 수가 정해진 다진 트리(Multiway Tree)입니다.
+  
+  
+    힙(Heap) : 완전 이진 트리의 일종으로, 부모 노드의 값이 자식 노드의 값보다 크거나 작은 특성을 가집니다.
+  
+  
+    트라이(Trie) : 문자열 검색을 위한 트리 자료구조로, 접두사 검색에 유용합니다.
+  
+
+
+4️⃣ 트리의 주요 연산.
+
+
+  삽입(Insertion) : 트리에 새로운 노드를 추가합니다.
+  삭제(Deletion) : 트리에서 노드를 제거합니다.
+  탐색(Search) : 트리에서 특정 값을 찾습니다.
+  순회(Traversal) : 트리의 모든 노드를 방문합니다. 전위(Preorder), 중위(Inorder), 후위(Postorder), 레벨 순회(Level Order) 방식이 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-27-TIL.html" class="txt_post">
+                            
+  노드(Node)
+  장치 컨트롤러와 장치 드라이버
+  트리(Tree)
+  이진 트리(Binary Tree)
+  완전 이진 트리(Complete Binary Tree)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AnD/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -19402,6 +19680,174 @@ public class Main {
     singlyLinkedList.printList(); // 1 3
   }
 }
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html"><h1 class="title_post">📦[DS,Algorithm] 완전 이진 트리(Complete Binary Tree)</h1></a>
+                        <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html" class="txt_post">
+                            1️⃣ 완전 이진 트리(Complete Binary Tree).
+
+완전 이진 트리(Complete Binary Tree)는 이진 트리의 한 종류입니다.
+
+1️⃣ 완전 이진 트리(Complete Binary Tree)의 특성.
+
+
+  모든 레벨이 완전히 채워져 있다.
+    
+      마지막 레벨을 제외한 모든 레벨의 노드가 최대 개수로 채워져 있습니다.
+      마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져 있습니다.
+    
+  
+  노드의 배치
+    
+      트리의 높이가 ‘h’ 라면, 마지막 레벨을 제외한 모든 레벨에는 ‘2^k’ 개의 노드가 있습니다. 여기서 ‘k’ 는 해당 레벨의 깊이 입니다.
+      마지막 레벨에는 1개 이상 ‘2^h’ 개 이하의 노드가 있으며, 이 노드들은 왼쪽부터 채워집니다.
+    
+  
+
+
+2️⃣ 완전 이친 트리의 예.
+        1
+      /   \
+     2     3
+    / \   / \
+   4   5 6   7
+  / \
+ 8   9
+
+
+위의 트리는 완전 이진 트리의 예입니다.
+
+모든 레벨이 완전히 채워져 있고, 마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져있습니다.
+
+3️⃣ 완전 이진 트리의 속성.
+
+
+  노드 수
+    
+      높이가 ‘h’ 인 완전 이진 트리는 최대 ‘2^(h+1) - 1’ 개의 노드를 가질 수 있습니다.
+      마지막 레벨을 제외한 모든 노드는 ‘2^h - 1’ 개의 노드를 가집니다.
+    
+  
+  높이
+    
+      노드 수가 ‘n’ 인 완전 이진 트리의 높이는 ‘O(log n)’ 입니다.
+    
+  
+  배열 표현
+    
+      완전 이진 트리는 배열을 사용하여 쉽게 표현할 수 있습니다. 이는 힙 자료구조에서 많이 사용됩니다.
+    
+  
+
+
+4️⃣ 배열을 통한 완전 이진 트리 표현
+
+완전 이진 트리는 배열을 사용하여 효율적으로 표현할 수 있습니다.
+
+노드의 인덱스를 기준으로 부모-자식 관계를 쉽게 파악할 수 있습니다.
+
+노드의 인덱스 규칙
+
+  루트 노드 : 인덱스 0
+  인덱스 ‘i’의 오른쪽 자식 노드 : ‘2*i + 1’
+  인덱스 ‘i’의 부모 노드 : ‘(i - 1) / 2’
+
+
+5️⃣ 예제 코드
+아래는 완전 이진 트리를 배열로 표현하고, 이를 출력하는 간단한 예제 코드입니다.
+public class CompleteBinaryTree {
+
+  public static void main(String[] args) {
+    int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // 트리 출력
+    printTree(tree);
+  }
+
+  // 배열로 표현된 완전 이진 트리 출력
+  public static void printTree(int[] tree) {
+    for (int i = 0; i &lt; tree.length; i++) {
+      int leftChildIndex = 2 * i + 1;
+      int rightChildIndex = 2 * i + 2;
+
+      System.out.print("Node " + tree[i] + ": ");
+
+      if (leftChildIndex &lt; tree.length) {
+        System.out.print("Left Child: " + tree[leftChildIndex] + ", ");
+      } else {
+        System.out.print("Left Child: null, ");
+      }
+
+      if (rightChildIndex &lt; tree.length) {
+        System.out.print("Right Child: " + tree[rightChildIndex]);
+      } else {
+        System.out.print("Right Child: null");
+      }
+      System.out.println();
+    }
+  }
+}
+
+/* 출력
+Node 1: Left Child: 2, Right Child: 3
+Node 2: Left Child: 4, Right Child: 5
+Node 3: Left Child: 6, Right Child: 7
+Node 4: Left Child: 8, Right Child: 9
+Node 5: Left Child: null, Right Child: null
+Node 6: Left Child: null, Right Child: null
+Node 7: Left Child: null, Right Child: null
+Node 8: Left Child: null, Right Child: null
+Node 9: Left Child: null, Right Child: null
+*/
+
+
+설명
+
+
+  트리 배열 초기화 : int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    
+      완전 이진 트리를 배열로 표현합니다.
+    
+  
+  트리 출력 : printTree(tree)
+    
+      배열로 표현된 완전 이진 트리를 출력하는 함수입니다.
+      각 노드에 대해 왼쪽 자식과 오른쪽 자식을 출력합니다.
+    
+  
+
+
+시간 복잡도
+
+
+  삽입(Insertion) : O(log n)
+  삭제(Deletion) : O(log n)
+  탐색(Search) : O(n) (일반적으로 완전 이진 트리는 탐색보다 삽입/삭제가 주된 연산입니다.)
+
+
+
+  완전 이진 트리는 데이터의 구조적 특성 때문에 힙과 같은 자료구조에서 많이 사용됩니다.
+이는 효율적인 삽입 및 삭제 연산을 제공하며, 배열을 통한 표현이 간편하여 다양한 알고리즘에서 유용하게 사용됩니다.
 
 
                         </a>
@@ -19606,296 +20052,22 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html"><h1 class="title_post">📦[DS,Algorithm] 완전 이진 트리(Complete Binary Tree)</h1></a>
-                        <a href="/Backend/AnD/2024-05-27-CompleteBinaryTree.html" class="txt_post">
-                            1️⃣ 완전 이진 트리(Complete Binary Tree).
-
-완전 이진 트리(Complete Binary Tree)는 이진 트리의 한 종류입니다.
-
-1️⃣ 완전 이진 트리(Complete Binary Tree)의 특성.
-
-
-  모든 레벨이 완전히 채워져 있다.
-    
-      마지막 레벨을 제외한 모든 레벨의 노드가 최대 개수로 채워져 있습니다.
-      마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져 있습니다.
-    
-  
-  노드의 배치
-    
-      트리의 높이가 ‘h’ 라면, 마지막 레벨을 제외한 모든 레벨에는 ‘2^k’ 개의 노드가 있습니다. 여기서 ‘k’ 는 해당 레벨의 깊이 입니다.
-      마지막 레벨에는 1개 이상 ‘2^h’ 개 이하의 노드가 있으며, 이 노드들은 왼쪽부터 채워집니다.
-    
-  
-
-
-2️⃣ 완전 이친 트리의 예.
-        1
-      /   \
-     2     3
-    / \   / \
-   4   5 6   7
-  / \
- 8   9
-
-
-위의 트리는 완전 이진 트리의 예입니다.
-
-모든 레벨이 완전히 채워져 있고, 마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져있습니다.
-
-3️⃣ 완전 이진 트리의 속성.
-
-
-  노드 수
-    
-      높이가 ‘h’ 인 완전 이진 트리는 최대 ‘2^(h+1) - 1’ 개의 노드를 가질 수 있습니다.
-      마지막 레벨을 제외한 모든 노드는 ‘2^h - 1’ 개의 노드를 가집니다.
-    
-  
-  높이
-    
-      노드 수가 ‘n’ 인 완전 이진 트리의 높이는 ‘O(log n)’ 입니다.
-    
-  
-  배열 표현
-    
-      완전 이진 트리는 배열을 사용하여 쉽게 표현할 수 있습니다. 이는 힙 자료구조에서 많이 사용됩니다.
-    
-  
-
-
-4️⃣ 배열을 통한 완전 이진 트리 표현
-
-완전 이진 트리는 배열을 사용하여 효율적으로 표현할 수 있습니다.
-
-노드의 인덱스를 기준으로 부모-자식 관계를 쉽게 파악할 수 있습니다.
-
-노드의 인덱스 규칙
-
-  루트 노드 : 인덱스 0
-  인덱스 ‘i’의 오른쪽 자식 노드 : ‘2*i + 1’
-  인덱스 ‘i’의 부모 노드 : ‘(i - 1) / 2’
-
-
-5️⃣ 예제 코드
-아래는 완전 이진 트리를 배열로 표현하고, 이를 출력하는 간단한 예제 코드입니다.
-public class CompleteBinaryTree {
-
-  public static void main(String[] args) {
-    int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    // 트리 출력
-    printTree(tree);
-  }
-
-  // 배열로 표현된 완전 이진 트리 출력
-  public static void printTree(int[] tree) {
-    for (int i = 0; i &lt; tree.length; i++) {
-      int leftChildIndex = 2 * i + 1;
-      int rightChildIndex = 2 * i + 2;
-
-      System.out.print("Node " + tree[i] + ": ");
-
-      if (leftChildIndex &lt; tree.length) {
-        System.out.print("Left Child: " + tree[leftChildIndex] + ", ");
-      } else {
-        System.out.print("Left Child: null, ");
-      }
-
-      if (rightChildIndex &lt; tree.length) {
-        System.out.print("Right Child: " + tree[rightChildIndex]);
-      } else {
-        System.out.print("Right Child: null");
-      }
-      System.out.println();
-    }
-  }
-}
-
-/* 출력
-Node 1: Left Child: 2, Right Child: 3
-Node 2: Left Child: 4, Right Child: 5
-Node 3: Left Child: 6, Right Child: 7
-Node 4: Left Child: 8, Right Child: 9
-Node 5: Left Child: null, Right Child: null
-Node 6: Left Child: null, Right Child: null
-Node 7: Left Child: null, Right Child: null
-Node 8: Left Child: null, Right Child: null
-Node 9: Left Child: null, Right Child: null
-*/
-
-
-설명
-
-
-  트리 배열 초기화 : int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    
-      완전 이진 트리를 배열로 표현합니다.
-    
-  
-  트리 출력 : printTree(tree)
-    
-      배열로 표현된 완전 이진 트리를 출력하는 함수입니다.
-      각 노드에 대해 왼쪽 자식과 오른쪽 자식을 출력합니다.
-    
-  
-
-
-시간 복잡도
-
-
-  삽입(Insertion) : O(log n)
-  삭제(Deletion) : O(log n)
-  탐색(Search) : O(n) (일반적으로 완전 이진 트리는 탐색보다 삽입/삭제가 주된 연산입니다.)
-
-
-
-  완전 이진 트리는 데이터의 구조적 특성 때문에 힙과 같은 자료구조에서 많이 사용됩니다.
-이는 효율적인 삽입 및 삭제 연산을 제공하며, 배열을 통한 표현이 간편하여 다양한 알고리즘에서 유용하게 사용됩니다.
+                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
+                            
+  해시 테이블(Hash Table)
+  해시 맵 정리
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-27-TIL.html" class="txt_post">
-                            
-  노드(Node)
-  장치 컨트롤러와 장치 드라이버
-  트리(Tree)
-  이진 트리(Binary Tree)
-  완전 이진 트리(Complete Binary Tree)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-27-Tree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-27-Tree.html"><h1 class="title_post">📦[DS,Algorithm] 트리(Tree)</h1></a>
-                        <a href="/Backend/AnD/2024-05-27-Tree.html" class="txt_post">
-                            1️⃣ 트리(Tree).
-
-트리(Tree) 는 계층적 구조를 나타내는 자료구조로, 노드(Node)와 에지(Edge)로 구성됩니다.
-
-트리는 사이클이 없는 연결 그래프(Connected Graph)이며, 계층적 데이터 표현에 매우 유용합니다.
-
-트리는 부모-자식 관계를 가지며, 데이터의 조직화와 검색, 계층적 데이터 표현에 사용됩니다.
-
-1️⃣ 트리의 구성 요소.
-
-
-  
-    노드(Node) : 트리의 기본 단위로, 데이터를 저장합니다.
-  
-  
-    에지(Edge) : 노드와 노드를 연결하는 선으로, 부모-자식 관계를 나타냅니다.
-  
-  
-    루트(Root) : 트리의 최상위 노드로, 부모 노드가 없습니다.
-  
-  
-    부모(Parent) : 다른 노드를 가리키는 노드입니다.
-  
-  
-    자식(Child) : 부모 노드에 의해 가리켜지는 노드입니다.
-  
-  
-    잎(Leaf) : 자식 노드가 없는 노드입니다.
-  
-  
-    내부 노드(Internal Node) : 자식 노드가 있는 노드입니다.
-  
-  
-    레벨(Level) : 루트 노드에서 특정 노드까지의 에지 수를 나타냅니다.
-  
-  
-    높이(Height) : 트리의 최대 레벨을 의미합니다.
-  
-
-
-2️⃣ 트리의 특성.
-
-
-  계층적 구조 : 트리는 계층적 구조로 데이터를 조직화합니다.
-  사이클 없음 : 트리는 사이클이 없는 그래프입니다.
-  연결성 : 모든 노드는 하나의 연결된 구성 요소로 되어 있습니다.
-  한 개의 루트 노드 : 트리는 하나의 루트 노드를 가지며, 루트 노드는 트리의 시작점입니다.
-
-
-3️⃣ 트리의 종류.
-
-
-  
-    이진 트리(Binary Tree) : 각 노드가 최대 두 개의 자식 노드를 가질 수 있는 트리입니다.
-  
-  
-    이진 탐색 트리(Binary Search Tree, BST) : 이진 트리의 일종으로, 왼쪽 자식 노드의 값이 부모 노드의 값보다 작고, 오른쪽 자식 노드의 값이 부모 노드의 값보다 큰 특성을 가집니다.
-  
-  
-    균형 이진 트리(Balanced Binary Tree) : AVL 트리, 레드-블랙 트리 등과 같이 트리의 높이가 균형을 이루도록 유지하는 트리입니다.
-  
-  
-    B-트리(B-Tree) : 데이터베이스와 파일 시스템에서 사용되는 트리로, 자식 노드의 수가 정해진 다진 트리(Multiway Tree)입니다.
-  
-  
-    힙(Heap) : 완전 이진 트리의 일종으로, 부모 노드의 값이 자식 노드의 값보다 크거나 작은 특성을 가집니다.
-  
-  
-    트라이(Trie) : 문자열 검색을 위한 트리 자료구조로, 접두사 검색에 유용합니다.
-  
-
-
-4️⃣ 트리의 주요 연산.
-
-
-  삽입(Insertion) : 트리에 새로운 노드를 추가합니다.
-  삭제(Deletion) : 트리에서 노드를 제거합니다.
-  탐색(Search) : 트리에서 특정 값을 찾습니다.
-  순회(Traversal) : 트리의 모든 노드를 방문합니다. 전위(Preorder), 중위(Inorder), 후위(Postorder), 레벨 순회(Level Order) 방식이 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-27</span>
+                                <span class="date">· 2024-05-25</span>
                             
                         </div>
                     </div>
@@ -20122,33 +20294,6 @@ Contains key 'one': false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-25-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-25-TIL.html"><h1 class="title_post">📝 [TIL] 240525 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-25-TIL.html" class="txt_post">
-                            
-  해시 테이블(Hash Table)
-  해시 맵 정리
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-05-24-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -20314,6 +20459,33 @@ public class Main {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-23-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-23-TIL.html"><h1 class="title_post">📝 [TIL] 240523 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-23-TIL.html" class="txt_post">
+                            
+  큐(Queue)
+  원형 큐(Circular Queue)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-23</span>
                             
                         </div>
                     </div>
@@ -20827,33 +20999,6 @@ Dequeued element: 5
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-23-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-23-TIL.html"><h1 class="title_post">📝 [TIL] 240523 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-23-TIL.html" class="txt_post">
-                            
-  큐(Queue)
-  원형 큐(Circular Queue)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-05-22-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -20890,230 +21035,6 @@ Dequeued element: 5
   자료구조 소개
   RAID의 정의와 종류
   선형 자료구조 - 배열
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html"><h1 class="title_post">📦[DS,Algorithm] 선형 자료구조 - 배열</h1></a>
-                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="txt_post">
-                            1️⃣ 선형 자료구조 - 배열.
-
-자료구조 관점에서 배열을 이해하고 여러 방법으로 구현 가능
-
-1️⃣ 배열(Array).
-
-자료구조 관점에서 배열(Array)은 동일한 타입의 데이터를 연속된 메모리 공간에 저장하는 선형 자료구조입니다.
-
-배열은 조정된 크기를 가지며, 인덱스를 사용하여 각 요소에 빠르게 접근할 수 있는 특징이 있습니다.
-
-배열은 가장 기본적이고 널리 사용되는 자료구조 중 하나입니다.
-
-특징.
-
-  고정된 크기(Fixed Size)
-    
-      배열은 선언 시 크기가 결정되며, 배열의 크기는 변경할 수 없습니다. 이 크기는 배열을 사용하는 동안 고정되어 있습니다.
-      예: ‘int[] numbers = new int[10];‘(크기가 10인 정수형 배열)
-    
-  
-  연속된 메모리 공간(Contiguous Memory Allocation)
-    
-      배열의 요소들은 메모리상에 연속적으로 배치됩니다. 이는 인덱스를 통한 빠른 접근을 가능하게 합니다.
-      첫 번째 요소의 메모리 주소를 기준으로 인덱스를 사용하여 다른 요소의 주소를 계산할 수 있습니다.
-    
-  
-  인덱스를 통한 접근(Indexing)
-    
-      배열의 각 요소는 인덱스를 통해 접근할 수 있습니다. 인덱스는 0부터 시작하여 배열의 크기 -1까지의 값을 가집니다.
-      예: ‘numbers[0]’,’numbers[1]‘,…,’numbers[9]‘
-    
-  
-  동일한 데이터 타입(Homogeneous Data Type)
-    
-      배열은 동일한 데이터 타입의 요소들로 구성됩니다. 즉, 배열 내 모든 요소는 같은 데이터 타입이어야 합니다.
-      예: 정수형 배열, 문자열 배열 등.
-    
-  
-
-
-장점.
-
-  빠른 접근 속도(Fast Access) :
-    
-      인덱스를 사용하여 O(1) 시간 복잡도로 배열의 임의의 요소에 접근할 수 있습니다. 이는 배열의 주요 장점 중 하나입니다.
-    
-  
-  간단한 구현(Simple Implementation) :
-    
-      배열은 데이터 구조가 간단하여 구현이 용이합니다. 기본적인 자료구조로, 다른 복잡한 자료구조의 기초가 됩니다.
-    
-  
-
-
-단점.
-
-
-  고정된 크기(Fixed Size) :
-    
-      배열의 크기는 선언 시 결정되며, 크기를 변경할 수 없습니다. 이는 크기를 사전에 정확히 예측하기 어려운 경우 비효율적일 수 있습니다.
-    
-  
-  삽입 및 삭제의 비효율성(Inefficient Insertions and Deletions) :
-    
-      배열의 중간에 요소를 삽입하거나 삭제할 경우, 요소들을 이동시켜야 하기 때문에 O(n) 시간이 소요됩니다. 이는 큰 배열의 경우 성능 저하를 초래할 수 있습니다.
-    
-  
-  메모리 낭비(Memory Waste) :
-    
-      배열의 크기를 너무 크게 설정하면 사용되지 않는 메모리가 낭비될 수 있고, 너무 작게 설정하면 충분한 데이터를 저장할 수 없습니다.
-    
-  
-
-
-배열의 사용 예시.
-
-
-  정수형 배열 선언 및 초기화
-    int[] numbers = new int[5];
-numbers[0] = 10;
-numbers[1] = 20;
-numbers[2] = 30;
-numbers[3] = 40;
-numbers[4] = 50;
-    
-  
-  배열의 요소 접근
-    int firstElement = numbers[0]; // 10
-int lastElement = numbers[4]; // 50
-    
-  
-  배열의 순회
-    for (int i = 0; i &lt; numbers.length; i++) {
-  System.out.println(numbers[i]);
-}
-    
-  
-
-
-마무리.
-
-배열은 다양한 상황에서 기본적인 데이터 저장과 접근 방법을 제공하며, 특정 요구사항에 맞춰 다른 자료구조와 함께 사용되기도 합니다.
-
-배열의 빠른 접근 속도와 간단한 구조 덕분에, 많은 알고리즘과 프로그램에서 핵심적인 역할을 합니다.
-
-
-
-2️⃣ 배열 직접 구현.
-// CustomArray 클래스
-public class CustomArray {
-  private int[] data;
-  private int size;
-
-  // 특정 용량으로 배열을 초기화하는 생성자
-  public CustomArray(int capacity) {
-    data = new int[capacity];
-    size = 0;
-  }
-
-  // 배열의 크기를 가져오는 메서드
-  public int size() {
-    return size;
-  }
-
-  // 배열이 비어 있는지 확인하는 메서드
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-  // 특정 인덱스의 요소를 가져오는 메서드
-  public int get(int index) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-    return data[index];
-  }
-
-  // 특정 인덱스에 요소를 설정하는 메서드
-  public void set(int index, int value) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-    data[index] = value;
-  }
-
-  // 배열에 요소를 추가하는 메서드
-  public void add(int value) {
-    if (size == data.length) {
-      throw new IllegalStateException("Array is full");
-    }
-    data[size] = value;
-    size++;
-  }
-
-  // 특정 인덱스의 요소를 삭제하는 메서드
-  public void remove(int index) {
-    if (index &lt; 0 || index &gt;= size) {
-      throw new IndexOutOfBoundsException("Index out of bounds");
-    }
-
-    for (int i = index; i &lt; size - 1; i++) {
-      data[i] = data[i + 1];
-    }
-    size--;
-  }
-
-  // 모든 요소를 출력하는 메서드
-  public void print() {
-    for (int i = 0; i &lt; size; i++) {
-      System.out.print(data[i] + " ");
-    }
-    System.out.println();
-  }
-}
-
-
-설명.
-
-  필드:
-    
-      ‘data’ : 실제 데이터를 저장하는 배열.
-      ‘size’ : 현재 배열에 저장된 요소의 개수.
-    
-  
-  생성자:
-    
-      ‘CustomArray(int capacity)’ : 초기 용량을 설정하여 배열을 초기화 합니다.
-    
-  
-  메서드:
-    
-      ‘size()’ : 현재 배열에 저장된 요소의 개수를 반환합니다.
-      ‘isEmpty()’ : 배열이 비어있는지 확인합니다.
-      ‘get(int index)’ : 특정 인덱스의 요소를 반환합니다.
-      ‘set(int index, int value)’ : 특정 인덱스의 요소를 설정합니다.
-      ‘add(int value)’ : 배열의 마지막에 요소를 추가합니다.
-      ‘remove(int index)’ : 특정 인덱스의 요소를 제거하고, 이후의 요소들을 앞으로 이동시킵니다.
-      ‘print()’ : 배열의 모든 요소를 출력합니다.
-    
-  
 
 
                         </a>
@@ -21492,6 +21413,230 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html"><h1 class="title_post">📦[DS,Algorithm] 선형 자료구조 - 배열</h1></a>
+                        <a href="/Backend/AnD/2024-05-21-linearDS-Array.html" class="txt_post">
+                            1️⃣ 선형 자료구조 - 배열.
+
+자료구조 관점에서 배열을 이해하고 여러 방법으로 구현 가능
+
+1️⃣ 배열(Array).
+
+자료구조 관점에서 배열(Array)은 동일한 타입의 데이터를 연속된 메모리 공간에 저장하는 선형 자료구조입니다.
+
+배열은 조정된 크기를 가지며, 인덱스를 사용하여 각 요소에 빠르게 접근할 수 있는 특징이 있습니다.
+
+배열은 가장 기본적이고 널리 사용되는 자료구조 중 하나입니다.
+
+특징.
+
+  고정된 크기(Fixed Size)
+    
+      배열은 선언 시 크기가 결정되며, 배열의 크기는 변경할 수 없습니다. 이 크기는 배열을 사용하는 동안 고정되어 있습니다.
+      예: ‘int[] numbers = new int[10];‘(크기가 10인 정수형 배열)
+    
+  
+  연속된 메모리 공간(Contiguous Memory Allocation)
+    
+      배열의 요소들은 메모리상에 연속적으로 배치됩니다. 이는 인덱스를 통한 빠른 접근을 가능하게 합니다.
+      첫 번째 요소의 메모리 주소를 기준으로 인덱스를 사용하여 다른 요소의 주소를 계산할 수 있습니다.
+    
+  
+  인덱스를 통한 접근(Indexing)
+    
+      배열의 각 요소는 인덱스를 통해 접근할 수 있습니다. 인덱스는 0부터 시작하여 배열의 크기 -1까지의 값을 가집니다.
+      예: ‘numbers[0]’,’numbers[1]‘,…,’numbers[9]‘
+    
+  
+  동일한 데이터 타입(Homogeneous Data Type)
+    
+      배열은 동일한 데이터 타입의 요소들로 구성됩니다. 즉, 배열 내 모든 요소는 같은 데이터 타입이어야 합니다.
+      예: 정수형 배열, 문자열 배열 등.
+    
+  
+
+
+장점.
+
+  빠른 접근 속도(Fast Access) :
+    
+      인덱스를 사용하여 O(1) 시간 복잡도로 배열의 임의의 요소에 접근할 수 있습니다. 이는 배열의 주요 장점 중 하나입니다.
+    
+  
+  간단한 구현(Simple Implementation) :
+    
+      배열은 데이터 구조가 간단하여 구현이 용이합니다. 기본적인 자료구조로, 다른 복잡한 자료구조의 기초가 됩니다.
+    
+  
+
+
+단점.
+
+
+  고정된 크기(Fixed Size) :
+    
+      배열의 크기는 선언 시 결정되며, 크기를 변경할 수 없습니다. 이는 크기를 사전에 정확히 예측하기 어려운 경우 비효율적일 수 있습니다.
+    
+  
+  삽입 및 삭제의 비효율성(Inefficient Insertions and Deletions) :
+    
+      배열의 중간에 요소를 삽입하거나 삭제할 경우, 요소들을 이동시켜야 하기 때문에 O(n) 시간이 소요됩니다. 이는 큰 배열의 경우 성능 저하를 초래할 수 있습니다.
+    
+  
+  메모리 낭비(Memory Waste) :
+    
+      배열의 크기를 너무 크게 설정하면 사용되지 않는 메모리가 낭비될 수 있고, 너무 작게 설정하면 충분한 데이터를 저장할 수 없습니다.
+    
+  
+
+
+배열의 사용 예시.
+
+
+  정수형 배열 선언 및 초기화
+    int[] numbers = new int[5];
+numbers[0] = 10;
+numbers[1] = 20;
+numbers[2] = 30;
+numbers[3] = 40;
+numbers[4] = 50;
+    
+  
+  배열의 요소 접근
+    int firstElement = numbers[0]; // 10
+int lastElement = numbers[4]; // 50
+    
+  
+  배열의 순회
+    for (int i = 0; i &lt; numbers.length; i++) {
+  System.out.println(numbers[i]);
+}
+    
+  
+
+
+마무리.
+
+배열은 다양한 상황에서 기본적인 데이터 저장과 접근 방법을 제공하며, 특정 요구사항에 맞춰 다른 자료구조와 함께 사용되기도 합니다.
+
+배열의 빠른 접근 속도와 간단한 구조 덕분에, 많은 알고리즘과 프로그램에서 핵심적인 역할을 합니다.
+
+
+
+2️⃣ 배열 직접 구현.
+// CustomArray 클래스
+public class CustomArray {
+  private int[] data;
+  private int size;
+
+  // 특정 용량으로 배열을 초기화하는 생성자
+  public CustomArray(int capacity) {
+    data = new int[capacity];
+    size = 0;
+  }
+
+  // 배열의 크기를 가져오는 메서드
+  public int size() {
+    return size;
+  }
+
+  // 배열이 비어 있는지 확인하는 메서드
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  // 특정 인덱스의 요소를 가져오는 메서드
+  public int get(int index) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+    return data[index];
+  }
+
+  // 특정 인덱스에 요소를 설정하는 메서드
+  public void set(int index, int value) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+    data[index] = value;
+  }
+
+  // 배열에 요소를 추가하는 메서드
+  public void add(int value) {
+    if (size == data.length) {
+      throw new IllegalStateException("Array is full");
+    }
+    data[size] = value;
+    size++;
+  }
+
+  // 특정 인덱스의 요소를 삭제하는 메서드
+  public void remove(int index) {
+    if (index &lt; 0 || index &gt;= size) {
+      throw new IndexOutOfBoundsException("Index out of bounds");
+    }
+
+    for (int i = index; i &lt; size - 1; i++) {
+      data[i] = data[i + 1];
+    }
+    size--;
+  }
+
+  // 모든 요소를 출력하는 메서드
+  public void print() {
+    for (int i = 0; i &lt; size; i++) {
+      System.out.print(data[i] + " ");
+    }
+    System.out.println();
+  }
+}
+
+
+설명.
+
+  필드:
+    
+      ‘data’ : 실제 데이터를 저장하는 배열.
+      ‘size’ : 현재 배열에 저장된 요소의 개수.
+    
+  
+  생성자:
+    
+      ‘CustomArray(int capacity)’ : 초기 용량을 설정하여 배열을 초기화 합니다.
+    
+  
+  메서드:
+    
+      ‘size()’ : 현재 배열에 저장된 요소의 개수를 반환합니다.
+      ‘isEmpty()’ : 배열이 비어있는지 확인합니다.
+      ‘get(int index)’ : 특정 인덱스의 요소를 반환합니다.
+      ‘set(int index, int value)’ : 특정 인덱스의 요소를 설정합니다.
+      ‘add(int value)’ : 배열의 마지막에 요소를 추가합니다.
+      ‘remove(int index)’ : 특정 인덱스의 요소를 제거하고, 이후의 요소들을 앞으로 이동시킵니다.
+      ‘print()’ : 배열의 모든 요소를 출력합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -21665,6 +21810,155 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html"><h1 class="title_post">☕️[Java] 문자열 비교 - 트러블슈팅</h1></a>
+                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="txt_post">
+                            1️⃣ 문자열 비교.
+  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
+    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
+    String personOfNationalMerit = scanner.next();
+
+    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
+    if (personOfNationalMerit != "y" &amp;&amp; personOfNationalMerit != "n") {
+      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
+    }
+    return personOfNationalMerit;
+  }
+
+
+🤔 문제 상황.
+1. 문자열 비교가 안되는 상황.
+
+  ’==’ 연산자를 사용해서 “y” 또는 “n” 외의 다른 문자열이 들어올 경우 커스텀한 에러 를 발생시키려 했지만 정상적인 값인 “y” 와 n 을 넣어도 에러가 발생 하는 문제가 생겼습니다.
+
+
+💻 트러블슈팅.
+1. equals() 메소드의 사용.
+
+자바에서는 문자열 비교를 할 때 ’==’ 연산자를 사용하는 것이 아니라 ‘equals()’ 메소드를 사용해야 합니다.
+
+  ’==’ 연산자는 객체의 레퍼런스를 비교하기 때문에, 두 문자열이 같은 객체를 참조하는지 여부를 확인합니다.
+  ‘equals()’ 메소드는 문자열의 내용을 비교합니다.
+
+
+따라서, “y” 와 “n” 을 비교할 때 ’==’ 대신 ‘equals()’ 를 사용해야 합니다.
+
+  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
+    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
+    String personOfNationalMerit = scanner.next();
+
+    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
+    if (!personOfNationalMerit.equals("y") &amp;&amp; !personOfNationalMerit.equals("n")) {
+      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
+    }
+    return personOfNationalMerit;
+  }
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Math/2024-05-18-Math.html"><h1 class="title_post">[Math] 수학적 귀납법</h1></a>
+                        <a href="/Backend/Math/2024-05-18-Math.html" class="txt_post">
+                            📝 수학적 귀납법이란?
+수학적 귀납법은 자연수에 대한 명제의 참 여부를 증명하는 데 사용되는 강력한 수학적 증명 기법입니다.
+이를 통해 무한히 많은 경우에 대해 명제가 참임을 보일 수 있습니다.
+
+수학적 귀납법은 주로 ‘기본 단계’ 와 ‘귀납 단계’ 로 이루어집니다.
+
+1️⃣ 기본 단계(Base Case)
+명제가 첫 번째 자연수 n = 1(또는 특정 시작점 n = k)에 대해 참임을 증명합니다.
+
+2️⃣ 귀납 단계(Inductive Step)
+명제가 임의의 자연수 n = k에 대해 참이라고 가정했을 때, n = k + 1에도 참임을 증명합니다.
+
+이를 좀 더 형식적으로 설명하면 다음과 같습니다.
+
+
+  기본 단계:
+    P(1)이 참임을 증명합니다.
+    
+  
+  귀납 단계:
+    P(k)가 참이라고 가정합니다.(귀납 가정)
+P(k+1)이 참임을 증명합니다.
+    
+  
+
+
+기본 단계와 귀납 단계가 모두 성립하면, 수학적 귀납법에 의해 모든 자연수 n에 대해 명제 P(n)이 참임을 증명할 수 있습니다.
+
+3️⃣ 예제
+자연수 n에 대해 다음 명제를 증명해봅시다:
+1+2+3+...+n= n(n+1)/2
+
+
+
+  기본 단계:
+n = 1일때,
+    1 = 1(1+1)/2 = 2/2 = 1
+    
+  
+
+
+따라서 P(1)은 참입니다.
+
+
+  귀납 단계:
+P(k)가 참이라고 가정합니다 즉,
+    1+2+3+...+k = k(k+1)/2
+    
+    이 가정하에 P(k+1)이 참임을 증명합니다.
+  
+
+
+1+2+3+...+k+(k+1) = k(k+1)/2+(k+1)
+
+
+우변을 정리하면,
+k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
+
+
+이는 P(k+1) 입니다.
+
+기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
@@ -21778,155 +22072,6 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Math/2024-05-18-Math.html"><h1 class="title_post">[Math] 수학적 귀납법</h1></a>
-                        <a href="/Backend/Math/2024-05-18-Math.html" class="txt_post">
-                            📝 수학적 귀납법이란?
-수학적 귀납법은 자연수에 대한 명제의 참 여부를 증명하는 데 사용되는 강력한 수학적 증명 기법입니다.
-이를 통해 무한히 많은 경우에 대해 명제가 참임을 보일 수 있습니다.
-
-수학적 귀납법은 주로 ‘기본 단계’ 와 ‘귀납 단계’ 로 이루어집니다.
-
-1️⃣ 기본 단계(Base Case)
-명제가 첫 번째 자연수 n = 1(또는 특정 시작점 n = k)에 대해 참임을 증명합니다.
-
-2️⃣ 귀납 단계(Inductive Step)
-명제가 임의의 자연수 n = k에 대해 참이라고 가정했을 때, n = k + 1에도 참임을 증명합니다.
-
-이를 좀 더 형식적으로 설명하면 다음과 같습니다.
-
-
-  기본 단계:
-    P(1)이 참임을 증명합니다.
-    
-  
-  귀납 단계:
-    P(k)가 참이라고 가정합니다.(귀납 가정)
-P(k+1)이 참임을 증명합니다.
-    
-  
-
-
-기본 단계와 귀납 단계가 모두 성립하면, 수학적 귀납법에 의해 모든 자연수 n에 대해 명제 P(n)이 참임을 증명할 수 있습니다.
-
-3️⃣ 예제
-자연수 n에 대해 다음 명제를 증명해봅시다:
-1+2+3+...+n= n(n+1)/2
-
-
-
-  기본 단계:
-n = 1일때,
-    1 = 1(1+1)/2 = 2/2 = 1
-    
-  
-
-
-따라서 P(1)은 참입니다.
-
-
-  귀납 단계:
-P(k)가 참이라고 가정합니다 즉,
-    1+2+3+...+k = k(k+1)/2
-    
-    이 가정하에 P(k+1)이 참임을 증명합니다.
-  
-
-
-1+2+3+...+k+(k+1) = k(k+1)/2+(k+1)
-
-
-우변을 정리하면,
-k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
-
-
-이는 P(k+1) 입니다.
-
-기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html"><h1 class="title_post">☕️[Java] 문자열 비교 - 트러블슈팅</h1></a>
-                        <a href="/Backend/Java/2024-05-18-Troubleshooting-1.html" class="txt_post">
-                            1️⃣ 문자열 비교.
-  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
-    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
-    String personOfNationalMerit = scanner.next();
-
-    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
-    if (personOfNationalMerit != "y" &amp;&amp; personOfNationalMerit != "n") {
-      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
-    }
-    return personOfNationalMerit;
-  }
-
-
-🤔 문제 상황.
-1. 문자열 비교가 안되는 상황.
-
-  ’==’ 연산자를 사용해서 “y” 또는 “n” 외의 다른 문자열이 들어올 경우 커스텀한 에러 를 발생시키려 했지만 정상적인 값인 “y” 와 n 을 넣어도 에러가 발생 하는 문제가 생겼습니다.
-
-
-💻 트러블슈팅.
-1. equals() 메소드의 사용.
-
-자바에서는 문자열 비교를 할 때 ’==’ 연산자를 사용하는 것이 아니라 ‘equals()’ 메소드를 사용해야 합니다.
-
-  ’==’ 연산자는 객체의 레퍼런스를 비교하기 때문에, 두 문자열이 같은 객체를 참조하는지 여부를 확인합니다.
-  ‘equals()’ 메소드는 문자열의 내용을 비교합니다.
-
-
-따라서, “y” 와 “n” 을 비교할 때 ’==’ 대신 ‘equals()’ 를 사용해야 합니다.
-
-  private static String exceptionHandleForPersonOfNationalMerit(Scanner scanner) throws InvalidCheckException {
-    System.out.print("국가유공자 여부를 입력해 주세요.(y/n) :");
-    String personOfNationalMerit = scanner.next();
-
-    // 들어온 값이 y 또는 n이 아닌 경우 예외를 던집니다.
-    if (!personOfNationalMerit.equals("y") &amp;&amp; !personOfNationalMerit.equals("n")) {
-      throw new InvalidCheckException("유효하지 않은 입력입니다. y 또는 n을 입력해주세요.");
-    }
-    return personOfNationalMerit;
-  }
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -21937,71 +22082,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
   연습 문제 풀이(2)
   예외 처리 - 트러블슈팅
   문자열 처리 - 트러블슈팅
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html"><h1 class="title_post">📝[blog post] 연습 문제 풀이 정리(2)</h1></a>
-                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="txt_post">
-                            1️⃣ 수열과 재귀.
-
-연습 문제를 풀다보니 수열과 재귀에 대해 많은 수학적 사고력이 필요하겠다는 생각이 들었습니다.
-
-
-  수열 : 수학에서 수의 나열을 의미합니다.
-    
-      즉, 어떤 규착에 따라 나열된 수들의 집합을 말합니다.
-      수열은 각 수를 나타내는 일련의 할(terms)으로 구성되며, 각 항은 특정 위치(index)를 가집니다.
-      수열의 예로는 다음과 같은 것들이 있습니다.
-        
-          등차수열: 각 항이 일정한 값만큼 증가하거나 감소하는 수열(예: 2, 5, 8, 11…)(각 항이 3씩 증가)
-          등비수열: 각 항이 일정한 비율로 증가하거나 감소하는 수열(예: 3, 9, 27, 81…)(각 항이 이전 항의 3배)
-          피보나치 수열: 첫 두 항이 0과 1이고, 그 이후의 각 항이 바로 앞 두항의 합인 수열(예: 0, 1, 1, 2, 3, 5, 8….)
-            
-              수열은 다양한 수학적 문제를 해결하는 데 사용되며, 특히 함수, 극한, 미적분 등의 주제와 밀접한 관련이 있습니다.
-            
-          
-        
-      
-    
-  
-  재귀 : 프로그래밍과 수학에서 사용되는 개념으로, 어떤 함수나 알고리즘이 자기 자신을 호출하는 방식울 말합니다.
-    
-      재귀를 통해 복잡한 문제를 더 작은 하위 문제로 나누어 해결할 수 있습니다.
-      재귀 함수는 기본적으로 두 가지 부분으로 구성됩니다.
-        
-          1. 기저 조건(Base Case) : 재귀 호출이 더 이상 필요하지 않은 경우를 정의합니다. 기저 조건이 충족되면 함수는 더 이상 자기 자신을 호출하지 않고 종료됩니다.
-          2. 재귀 호출(Recursive Call) : 함수가 자기 자신을 호출하여 문제를 더 작은 부분으로 나누어 해결하려고 시도합니다.
-            
-              재귀는 문제를 단순하고 직관적으로 표현할 수 있는 강력한 도구이지만, 재귀 호출이 과도하면 스택 오버플로(stack overflow)가 발생할 수 있으므로 주의가 필요합니다.
-                
-                  따라서 재귀를 사용할 때는 기저 조건을 잘 정의하고, 필요할 경우 반복(iteration)으로 문제를 해결하는 방법도 고려해야 합니다.
-                
-              
-            
-          
-        
-      
-    
-  
 
 
                         </a>
@@ -22071,6 +22151,71 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
   
   ‘scanner.next()’ 를 호출하여 잘못된 입력을 버리고, 다음 입력을 기다리도록 합니다.
   사용자가 유효한 숫자를 입력하면 ‘age’ 를 반환하고 메소드를 종료합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html"><h1 class="title_post">📝[blog post] 연습 문제 풀이 정리(2)</h1></a>
+                        <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="txt_post">
+                            1️⃣ 수열과 재귀.
+
+연습 문제를 풀다보니 수열과 재귀에 대해 많은 수학적 사고력이 필요하겠다는 생각이 들었습니다.
+
+
+  수열 : 수학에서 수의 나열을 의미합니다.
+    
+      즉, 어떤 규착에 따라 나열된 수들의 집합을 말합니다.
+      수열은 각 수를 나타내는 일련의 할(terms)으로 구성되며, 각 항은 특정 위치(index)를 가집니다.
+      수열의 예로는 다음과 같은 것들이 있습니다.
+        
+          등차수열: 각 항이 일정한 값만큼 증가하거나 감소하는 수열(예: 2, 5, 8, 11…)(각 항이 3씩 증가)
+          등비수열: 각 항이 일정한 비율로 증가하거나 감소하는 수열(예: 3, 9, 27, 81…)(각 항이 이전 항의 3배)
+          피보나치 수열: 첫 두 항이 0과 1이고, 그 이후의 각 항이 바로 앞 두항의 합인 수열(예: 0, 1, 1, 2, 3, 5, 8….)
+            
+              수열은 다양한 수학적 문제를 해결하는 데 사용되며, 특히 함수, 극한, 미적분 등의 주제와 밀접한 관련이 있습니다.
+            
+          
+        
+      
+    
+  
+  재귀 : 프로그래밍과 수학에서 사용되는 개념으로, 어떤 함수나 알고리즘이 자기 자신을 호출하는 방식울 말합니다.
+    
+      재귀를 통해 복잡한 문제를 더 작은 하위 문제로 나누어 해결할 수 있습니다.
+      재귀 함수는 기본적으로 두 가지 부분으로 구성됩니다.
+        
+          1. 기저 조건(Base Case) : 재귀 호출이 더 이상 필요하지 않은 경우를 정의합니다. 기저 조건이 충족되면 함수는 더 이상 자기 자신을 호출하지 않고 종료됩니다.
+          2. 재귀 호출(Recursive Call) : 함수가 자기 자신을 호출하여 문제를 더 작은 부분으로 나누어 해결하려고 시도합니다.
+            
+              재귀는 문제를 단순하고 직관적으로 표현할 수 있는 강력한 도구이지만, 재귀 호출이 과도하면 스택 오버플로(stack overflow)가 발생할 수 있으므로 주의가 필요합니다.
+                
+                  따라서 재귀를 사용할 때는 기저 조건을 잘 정의하고, 필요할 경우 반복(iteration)으로 문제를 해결하는 방법도 고려해야 합니다.
+                
+              
+            
+          
+        
+      
+    
+  
 
 
                         </a>
@@ -33955,6 +34100,17 @@ public class Main {
             'tags'     : "CS",
             'url'      : "/Backend/CS/2024-09-04-API.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-04"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] String 클래스 - 비교",
+            'path'     : "Backend > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Backend/Java/2024-09-04-String-comparison.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-09-04"
         });
     

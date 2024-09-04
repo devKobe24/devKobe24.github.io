@@ -649,6 +649,7 @@
             
             
             
+            
 
     
     
@@ -1205,6 +1206,122 @@ A의 자료 구조에 대해 아무것도 모르면 프로세스를 최적화할
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/DataStructure/2024-04-22-DataStructure-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/DataStructure/2024-04-22-DataStructure-2.html"><h1 class="title_post">📦[DataStructure] 문자열</h1></a>
+                        <a href="/2024/DataStructure/2024-04-22-DataStructure-2.html" class="txt_post">
+                            문자열(String) 은 종종 특수한 종류의 배열로 생각할 수 있는, 순서가 지정된 문자의 리스트다.
+
+문자열의 각 칸에는 문자, 숫자, 기호, 공뱁 또는 제한된 특수 기호 중 하나가 포함됩니다.
+
+  마지막 칸에 있는 특수 기호 /는 종종 문자열의 끝을 나타냅니다.
+
+
+인덱스를 사용해 문자열의 문자에 직접 접근할 수 있습니다.
+
+
+
+일부 프로그래밍 언어에서는 문자열을 그냥 문자 배열로 직접 구현합니다.
+
+몇몇 다른 언어에서는 문자열이 객체일 수 있으며, 문자열 클래스는 문자를 담고 있는 배열이나 다른 자료 구조를 감싼 래퍼(wrapper) 클래스 역할을 합니다.
+
+  문자열 래퍼 크래스는 문자열의 크기를 동적으로 조정하거나 부분 문자열을 탐색하는 등 추가 기능을 제공합니다.
+    
+      두 경우 모두 일반 배열과 유사한 구조가 문장열에 대한 작업에 어떤 영향을 미칠지 생각해보는 것이 유용합니다.
+    
+  
+
+
+컴퓨터 화면에 문자열을 표시할 때는 문자열의 각 문자를 반복하면서 하나씩 문자를 표시합니다.
+
+동등성(equality) 검사는 더 흥미롭습니다.
+
+  한 번의 연산으로 직접 비교할 수 있는 정수와 달리, 문자열은 각 문자를 반복하면서 비교해야 합니다.
+    
+      두 문자열을 비교할 때는 서로 일치하지 않는 문자를 발견할 때까지 두 문자열에서 같은 위치에 존재하는 문자를 서로 비교합니다.
+    
+  
+
+
+아래의 코드는 두 문자열의 동등성을 확인하는 알고리즘을 보여줍니다.
+StringEqual(String: str1, String: str2):
+    IF length(str1) != length(str2):
+        return False
+    Integer: N = length(str1)
+    Integer: i = 0
+    WHILE i &lt; N AND str1[i] == str2[i]:
+        i = i + 1
+    return i == N
+
+
+
+  알고리즘은 먼저 문자열의 크기를 비교합니다.
+    
+      길이가 다르면 알고리즘은 해당 시점에 중지됩니다.
+      길이가 같으면 알고리즘은 각 위치를 반복하면서 해당 위치에 있는 두 문자를 비교합니다.
+        
+          이때 두 문자가 서로 일치하지 않으면 루프를 중지할 수 있습니다.
+            
+              문자열을 모두 비교했는데 불일치가 일어나지 않았다면 두 문자열을 같다고 선언할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+아래의 그림은 이 알고리즘이 두 문자열에 대해 어떻게 작동하는지 보여줍니다. =는 비교할 때 서로 일치한 문자 쌍을 나타냅니다.
+
+
+
+  X는 최초 불일치로 인해 검사가 종료된 문자쌍을 나타냅니다.
+
+
+문자열 비교에서 최악의 경우 계산 비용은 문자열의 길잉 비례해 증가합니다.
+
+  두 작은 문자열을 비교하는 작업에서는 무시할 수 있지만, 두 긴 문자열을 비교하는 작업에서는 시간이 오래 걸릴 수 있습니다.
+    
+      예를 들어, 어떤 책의 1판과 2판을 처음부터 한 글자씩 비교하면서 두 책의 본문 문자 배열의 차이를 찾는 지겨운 과정을 상상해볼 수 있습니다.
+        
+          가장 좋은 경우에는 초기에 일치하지 않는 부분을 찾을 수 있지만, 최악의 경우에는 책의 대부분을 검사해야 합니다.
+        
+      
+    
+  
+
+
+많은 프로그래밍 언어, 예를 들어 파이썬과 같은 언어는 직접 비교할 수 있는 문자열 클래스를 제공합니다.
+
+  따라서 위 코드와 같은 비교 코드를 직접 구현할 필요가 없습니다.
+    
+      그러나 간단한 비교 함수의 뒤에는 모든 문자를 반복하는 루프가 있습니다.
+        
+          이 중요한 세부 사항을 이해하지 않으면 문자열 비교 비용을 과소평가할 수 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/DataStructure/2024-04-22-DataStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -1335,189 +1452,6 @@ InsertionSort(array: A):
                                 <a href="/2024" class="category">2024</a>
                             
                                 <span class="date">· 2024-04-22</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/DataStructure/2024-04-22-DataStructure-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-22-DataStructure-2.html"><h1 class="title_post">📦[DataStructure] 문자열</h1></a>
-                        <a href="/2024/DataStructure/2024-04-22-DataStructure-2.html" class="txt_post">
-                            문자열(String) 은 종종 특수한 종류의 배열로 생각할 수 있는, 순서가 지정된 문자의 리스트다.
-
-문자열의 각 칸에는 문자, 숫자, 기호, 공뱁 또는 제한된 특수 기호 중 하나가 포함됩니다.
-
-  마지막 칸에 있는 특수 기호 /는 종종 문자열의 끝을 나타냅니다.
-
-
-인덱스를 사용해 문자열의 문자에 직접 접근할 수 있습니다.
-
-
-
-일부 프로그래밍 언어에서는 문자열을 그냥 문자 배열로 직접 구현합니다.
-
-몇몇 다른 언어에서는 문자열이 객체일 수 있으며, 문자열 클래스는 문자를 담고 있는 배열이나 다른 자료 구조를 감싼 래퍼(wrapper) 클래스 역할을 합니다.
-
-  문자열 래퍼 크래스는 문자열의 크기를 동적으로 조정하거나 부분 문자열을 탐색하는 등 추가 기능을 제공합니다.
-    
-      두 경우 모두 일반 배열과 유사한 구조가 문장열에 대한 작업에 어떤 영향을 미칠지 생각해보는 것이 유용합니다.
-    
-  
-
-
-컴퓨터 화면에 문자열을 표시할 때는 문자열의 각 문자를 반복하면서 하나씩 문자를 표시합니다.
-
-동등성(equality) 검사는 더 흥미롭습니다.
-
-  한 번의 연산으로 직접 비교할 수 있는 정수와 달리, 문자열은 각 문자를 반복하면서 비교해야 합니다.
-    
-      두 문자열을 비교할 때는 서로 일치하지 않는 문자를 발견할 때까지 두 문자열에서 같은 위치에 존재하는 문자를 서로 비교합니다.
-    
-  
-
-
-아래의 코드는 두 문자열의 동등성을 확인하는 알고리즘을 보여줍니다.
-StringEqual(String: str1, String: str2):
-    IF length(str1) != length(str2):
-        return False
-    Integer: N = length(str1)
-    Integer: i = 0
-    WHILE i &lt; N AND str1[i] == str2[i]:
-        i = i + 1
-    return i == N
-
-
-
-  알고리즘은 먼저 문자열의 크기를 비교합니다.
-    
-      길이가 다르면 알고리즘은 해당 시점에 중지됩니다.
-      길이가 같으면 알고리즘은 각 위치를 반복하면서 해당 위치에 있는 두 문자를 비교합니다.
-        
-          이때 두 문자가 서로 일치하지 않으면 루프를 중지할 수 있습니다.
-            
-              문자열을 모두 비교했는데 불일치가 일어나지 않았다면 두 문자열을 같다고 선언할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-아래의 그림은 이 알고리즘이 두 문자열에 대해 어떻게 작동하는지 보여줍니다. =는 비교할 때 서로 일치한 문자 쌍을 나타냅니다.
-
-
-
-  X는 최초 불일치로 인해 검사가 종료된 문자쌍을 나타냅니다.
-
-
-문자열 비교에서 최악의 경우 계산 비용은 문자열의 길잉 비례해 증가합니다.
-
-  두 작은 문자열을 비교하는 작업에서는 무시할 수 있지만, 두 긴 문자열을 비교하는 작업에서는 시간이 오래 걸릴 수 있습니다.
-    
-      예를 들어, 어떤 책의 1판과 2판을 처음부터 한 글자씩 비교하면서 두 책의 본문 문자 배열의 차이를 찾는 지겨운 과정을 상상해볼 수 있습니다.
-        
-          가장 좋은 경우에는 초기에 일치하지 않는 부분을 찾을 수 있지만, 최악의 경우에는 책의 대부분을 검사해야 합니다.
-        
-      
-    
-  
-
-
-많은 프로그래밍 언어, 예를 들어 파이썬과 같은 언어는 직접 비교할 수 있는 문자열 클래스를 제공합니다.
-
-  따라서 위 코드와 같은 비교 코드를 직접 구현할 필요가 없습니다.
-    
-      그러나 간단한 비교 함수의 뒤에는 모든 문자를 반복하는 루프가 있습니다.
-        
-          이 중요한 세부 사항을 이해하지 않으면 문자열 비교 비용을 과소평가할 수 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-22</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
-                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
-                            복합 자료 구조.
-다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
-
-예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
-
-  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
-    
-      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
-    
-  
-
-
-CoffeeRecord {
-    String: Name
-    String: Brand
-    Integer: Rating
-    Float: Cost_Per_Pound
-    Boolean: Is_Dark_Roast
-    String: Other_Notes
-}
-
-
-
-  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
-
-
-속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
-
-  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
-
-
-자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
-
-객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
-
-객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
-
-복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
-
-last_record.name = "Sublime Blend"
-
-
-  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-04-21</span>
                             
                         </div>
                     </div>
@@ -1683,6 +1617,73 @@ A[j] = Temp
 마찬가지로 커피숍과 서점의 위치를 바꾸려고 한다면, 먼저 서점의 가구와 물품 등을 비어 있는 세 번째 임시 위치로 커피숍의 것들을 넣을 수 있는 공간을 확보해야 합니다.
 
   그 후 커피숍을 옮길 수 있고, 서점의 가구와 물품 등을 세 번째 임시 위치에서 커피숍의 이전 위치로 옮길 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-04-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html"><h1 class="title_post">📦[DataStructure] 복합 자료 구조</h1></a>
+                        <a href="/2024/DataStructure/2024-04-21-DataStructure2.html" class="txt_post">
+                            복합 자료 구조.
+다양한 프로그래밍 언어가 복합(composite) 자료 구조를 만들 수 있는 기능을 제공합니다.
+
+예를 들어, 여러 개별 변수를 한 그룹으로 엮은 구조체(struct)나 객체(object)가 복합 자료 구조에 속합니다.
+
+  복합 자료 구조는 관련있는 데이터 조각을 한데 모아서 한꺼번에 전달할 수 있는 손쉬운 방법을 제공합니다.
+    
+      예를 들어, 우리가 시음한 커피 종류에 대한 정보를 모은 CoffeeRecord를 정의할 수 있습니다.
+    
+  
+
+
+CoffeeRecord {
+    String: Name
+    String: Brand
+    Integer: Rating
+    Float: Cost_Per_Pound
+    Boolean: Is_Dark_Roast
+    String: Other_Notes
+}
+
+
+
+  커피의 속성을 추적하기 위해 변수 여섯 개를 따로따로 유지하는 대신, 모든 정보를 하나의 복합 자료 구조 CoffeeRecord에 저장합니다.
+
+
+속성이 추가되면 복합 자료 구조를 사용하는 것이 더 중요해집니다.
+
+  복합 자료 구조가 없다면 수백 개의 관련 변수를 전달하는 방식으로 처리해야 하는데, 이는 변수를 잘못된 순서로 함수에 전달하는 등 프로그래머의 실수를 야기할 가능성도 더 높습니다.
+
+
+자바(Java)나 파이썬(Python)을 비롯한 많은 프로그래밍 언어에서, 복합 데이터는 자신의 데이터와 작동에 대한 함수를 모두 포함하는 ‘객체(object)’가 될 수 있습니다.
+
+객체의 함수는 파이썬의 self 참조처럼 특별한 구문을 사용해 해당 객체 자신의 데이터에 접급합니다.
+
+객체는 내부 데이터를 객체 외부에서 공객적으로 접근하도록 허용할지 아니면 비공개적으로 객체 내부 함수에서만 접근하게 할지를 지정하는 가시성(visibility) 규칙을 제공할 수 있습니다.
+
+복합 자료 구조나 객체를 사용하는 코드에서는 다음 예제처럼 ‘변수이름.필드이름’ 이라는 구문을 사용해 복합 자료 구조의 필드에 접근합니다.
+
+last_record.name = "Sublime Blend"
+
+
+  이 코드는 커피 기록에 있는 lastest_record 레코드의 name 필드를 Sublime Blend로 설정합니다.
 
 
                         </a>
@@ -7024,6 +7025,17 @@ coffee_count = coffee_count + 1
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Backend/Java/2024-09-04-jdbc.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-04"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@SpringBootTest` 애노테이션",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-04"
         });
     

@@ -656,6 +656,7 @@
             
             
             
+            
 
     
     
@@ -1026,6 +1027,169 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
+                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
+                            💾 [CS] 프록시 패턴과 프록시 서버
+
+1️⃣ 프록시 패턴
+
+  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
+
+
+
+
+
+  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+    
+      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
+    
+  
+
+
+
+  용어: 프록시 서버에서의 캐싱
+캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
+이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
+
+
+2️⃣ 프록시 서버
+
+  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
+
+
+프록시 서버로 쓰는 nginx
+
+  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
+  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
+    
+      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
+        
+          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
+            
+              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+
+  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
+
+
+
+  용어: 버퍼 오버플로우
+버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
+
+
+
+  용어: gzip 압축
+LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
+gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
+
+
+프록시 서버로 쓰는 CloudFlare
+
+  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
+  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
+    
+      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
+
+
+DDOS 공격 방어
+
+  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
+  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
+  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
+
+
+HTTPS 구축
+
+  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
+    
+      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
+    
+  
+
+
+
+  용어: CDN(Content Delivery Network)
+각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
+이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
+
+
+CORS와 프런트엔트의 프록시 서버
+
+  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
+
+
+
+
+
+  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
+
+
+
+  용어: 오리진
+프로토콜과 호스트 이름, 포트의 조합을 말합니다.
+예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
+
+
+
+  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
+    
+      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
+    
+  
+  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
+    
+      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
+    
+      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1781,169 +1945,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/CS/2024-08-31-Abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-08-31-Abstraction.html"><h1 class="title_post">💾 [CS] 추상화(Abstraction)</h1></a>
-                        <a href="/Backend/CS/2024-08-31-Abstraction.html" class="txt_post">
-                            💾 [CS] 추상화(Abstraction).
-
-1️⃣ 추상화(Abstraction).
-
-  추상화(Abstraction) 는 객체 지향 프로그래밍(Object-Oriented-Programming, OOP)의 중요한 개념 중 하나로, 복잡한 시스템에서 핵심적인 개념이나 기능만을 추려내어 단순화하는 과정입니다.
-    
-      이를 통해 불필요한 세부 사항을 감추고, 중요한 속성이나 행위만을 노출하여 시스템을 보다 간단하게 이해하고 사용할 수 있게 합니다.
-    
-  
-
-
-1️⃣ 추상화의 핵심 개념.
-
-  1. 본질적인 것만 노출.
-    
-      시스템의 복잡한 내부 구현을 숨기고, 외부에서는 중요한 기능이나 속성만을 사용할 수 있도록 설계합니다.
-        
-          예를 들어, 자동차를 운전할 때 운전자는 엔진의 작동 원리나 내부 구조를 몰라도, 운전대, 가속 페달, 브레이크 등의 중요한 인터페이스를 통해 자동차를 조작할 수 있습니다.
-        
-      
-    
-  
-  2. 복잡성 감소.
-    
-      추상화를 통해 사용자에게 복잡한 시스템을 단순하게 보이도록 하여, 사용자가 시스템을 쉽게 이해하고 사용할 수 있게 합니다.
-        
-          이는 특히 큰 시스템이나 라이브러리를 설계할 때 중요합니다.
-        
-      
-    
-  
-  3. 재사용성과 유지보수성 향상.
-    
-      추상화를 사용하면, 코드의 재사용성을 높이고 유지보수성을 향상시킬 수 있습니다.
-        
-          동일한 추상 인터페이스를 구현하는 여러 클래스가 있을 때, 구체적인 클래스 구현을 신경 쓰지 않고 인터페이스를 통해 일관된 방식으로 코드를 사용할 수 있습니다.
-        
-      
-    
-  
-
-
-2️⃣ 추상화의 예
-
-  추상화는 주로 추상 클래스와 인터페이스 를 통해 구현됩니다.
-
-
-추상 클래스.
-
-  추상 클래스는 하나 이상의 추상 메서드를 초함하는 클래스입니다.
-  추상 메서드는 선언만 되어 있고, 구체적인 구현은 해당 클래스를 상속받는 하위 클래스에서 제공해야 합니다.
-
-
-abstract class Animal {
-    abstract void sound(); // 추상 메서드
-    
-    void breathe() { // 구체적인 메서드
-        System.out.println("Breathing");
-    }
-}
-
-class Dog extends Animal {
-    @Override
-    void sound() {
-        System.out.println("Woof");
-    }
-}
-
-class Cat extends Animal {
-    @Override
-    void sound() {
-        System.out.println("Meow");
-    }
-}
-
-
-
-  이 예에서 Animal 클래스는 추상 클래스이고, sound() 메서드는 추상 메서드입니다.
-  Dog 와 Cat 클래스는 sound() 메서드를 구체적으로 구현합니다.
-  Animal 클래스는 동물의 일반적인 특징인 breath() 메서드를 포함하지만, sound() 는 동물마다 다르므로 하위 클래스에서 구체화됩니다.
-
-
-인터페이스
-
-  인터페이스는 추상화의 또 다른 형태로, 클래스가 구현해야 하는 메서드의 선언을 포함합니다.
-  인터페이스 자체는 구현을 가지지 않으며, 구현은 이를 구현하는 클래스에서 제공됩니다.
-
-
-interface Flyable {
-    void fly(); // 추상 메서드
-}
-
-class Bird implements Flyable {
-    @Override
-    public void fly() {
-        System.out.println("Bird is flying");
-    }
-}
-
-class Airplane implements Flyable {
-    @Override
-    public void fly() {
-        System.out.println("Airplane is flying");
-    }
-}
-
-
-
-  여기서 Flyable 인터페이스는 fly() 라는 추상 메서드를 선언하고 있으며, Bird 와 Airplane 클래스는 각각 이 메서드를 구현합니다.
-  Flyable 인터페이스를 통해, 비행할 수 있는 객체들은 동일한 방식으로 취급될 수 있습니다.
-
-
-3️⃣ 추상화의 장점.
-
-  1. 코드의 간결성.
-    
-      중요한 부분만 남기고 복잡한 구현 세부 사항을 숨겨, 코드를 간결하고 이해하기 쉽게 만듭니다.
-    
-  
-  2. 유연한 설계.
-    
-      구체적인 구현에 의존하지 않기 때문에, 다양한 구현체를 쉽게 교체하거나 확장할 수 있습니다.
-    
-  
-  3. 재사용성 증가.
-    
-      추상 클래스나 인터페이스를 통해 여러 클래스에서 공통적으로 사용될 수 있는 구조를 만들 수 있습니다.
-    
-  
-
-
-4️⃣ 요약.
-
-  추상화는 복잡한 시스템에서 불필요한 세부 사항을 감추고 중요한 부분만을 노출하여 시스템을 간단하게 만드는 개념입니다.
-    
-      이를 통해 코드의 복잡성을 줄이고, 유연성과 재사용성을 높이며, 유지보수를 용이하게 할 수 있습니다.
-    
-  
-  추상화는 주로 추상 클래스와 인터페이스를 통해 구현됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-08-31-Factory-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2183,6 +2184,169 @@ public class Main {
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-31</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-08-31-Abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-08-31-Abstraction.html"><h1 class="title_post">💾 [CS] 추상화(Abstraction)</h1></a>
+                        <a href="/Backend/CS/2024-08-31-Abstraction.html" class="txt_post">
+                            💾 [CS] 추상화(Abstraction).
+
+1️⃣ 추상화(Abstraction).
+
+  추상화(Abstraction) 는 객체 지향 프로그래밍(Object-Oriented-Programming, OOP)의 중요한 개념 중 하나로, 복잡한 시스템에서 핵심적인 개념이나 기능만을 추려내어 단순화하는 과정입니다.
+    
+      이를 통해 불필요한 세부 사항을 감추고, 중요한 속성이나 행위만을 노출하여 시스템을 보다 간단하게 이해하고 사용할 수 있게 합니다.
+    
+  
+
+
+1️⃣ 추상화의 핵심 개념.
+
+  1. 본질적인 것만 노출.
+    
+      시스템의 복잡한 내부 구현을 숨기고, 외부에서는 중요한 기능이나 속성만을 사용할 수 있도록 설계합니다.
+        
+          예를 들어, 자동차를 운전할 때 운전자는 엔진의 작동 원리나 내부 구조를 몰라도, 운전대, 가속 페달, 브레이크 등의 중요한 인터페이스를 통해 자동차를 조작할 수 있습니다.
+        
+      
+    
+  
+  2. 복잡성 감소.
+    
+      추상화를 통해 사용자에게 복잡한 시스템을 단순하게 보이도록 하여, 사용자가 시스템을 쉽게 이해하고 사용할 수 있게 합니다.
+        
+          이는 특히 큰 시스템이나 라이브러리를 설계할 때 중요합니다.
+        
+      
+    
+  
+  3. 재사용성과 유지보수성 향상.
+    
+      추상화를 사용하면, 코드의 재사용성을 높이고 유지보수성을 향상시킬 수 있습니다.
+        
+          동일한 추상 인터페이스를 구현하는 여러 클래스가 있을 때, 구체적인 클래스 구현을 신경 쓰지 않고 인터페이스를 통해 일관된 방식으로 코드를 사용할 수 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ 추상화의 예
+
+  추상화는 주로 추상 클래스와 인터페이스 를 통해 구현됩니다.
+
+
+추상 클래스.
+
+  추상 클래스는 하나 이상의 추상 메서드를 초함하는 클래스입니다.
+  추상 메서드는 선언만 되어 있고, 구체적인 구현은 해당 클래스를 상속받는 하위 클래스에서 제공해야 합니다.
+
+
+abstract class Animal {
+    abstract void sound(); // 추상 메서드
+    
+    void breathe() { // 구체적인 메서드
+        System.out.println("Breathing");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+
+
+
+  이 예에서 Animal 클래스는 추상 클래스이고, sound() 메서드는 추상 메서드입니다.
+  Dog 와 Cat 클래스는 sound() 메서드를 구체적으로 구현합니다.
+  Animal 클래스는 동물의 일반적인 특징인 breath() 메서드를 포함하지만, sound() 는 동물마다 다르므로 하위 클래스에서 구체화됩니다.
+
+
+인터페이스
+
+  인터페이스는 추상화의 또 다른 형태로, 클래스가 구현해야 하는 메서드의 선언을 포함합니다.
+  인터페이스 자체는 구현을 가지지 않으며, 구현은 이를 구현하는 클래스에서 제공됩니다.
+
+
+interface Flyable {
+    void fly(); // 추상 메서드
+}
+
+class Bird implements Flyable {
+    @Override
+    public void fly() {
+        System.out.println("Bird is flying");
+    }
+}
+
+class Airplane implements Flyable {
+    @Override
+    public void fly() {
+        System.out.println("Airplane is flying");
+    }
+}
+
+
+
+  여기서 Flyable 인터페이스는 fly() 라는 추상 메서드를 선언하고 있으며, Bird 와 Airplane 클래스는 각각 이 메서드를 구현합니다.
+  Flyable 인터페이스를 통해, 비행할 수 있는 객체들은 동일한 방식으로 취급될 수 있습니다.
+
+
+3️⃣ 추상화의 장점.
+
+  1. 코드의 간결성.
+    
+      중요한 부분만 남기고 복잡한 구현 세부 사항을 숨겨, 코드를 간결하고 이해하기 쉽게 만듭니다.
+    
+  
+  2. 유연한 설계.
+    
+      구체적인 구현에 의존하지 않기 때문에, 다양한 구현체를 쉽게 교체하거나 확장할 수 있습니다.
+    
+  
+  3. 재사용성 증가.
+    
+      추상 클래스나 인터페이스를 통해 여러 클래스에서 공통적으로 사용될 수 있는 구조를 만들 수 있습니다.
+    
+  
+
+
+4️⃣ 요약.
+
+  추상화는 복잡한 시스템에서 불필요한 세부 사항을 감추고 중요한 부분만을 노출하여 시스템을 간단하게 만드는 개념입니다.
+    
+      이를 통해 코드의 복잡성을 줄이고, 유연성과 재사용성을 높이며, 유지보수를 용이하게 할 수 있습니다.
+    
+  
+  추상화는 주로 추상 클래스와 인터페이스를 통해 구현됩니다.
 
 
                         </a>
@@ -8096,6 +8260,17 @@ public class MyService {
             'url'      : "/Backend/Network/2024-09-05-network-basic-summary.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-09-05"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 프록시 패턴과 프록시 서버",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-07-proxy-pattern-and-server.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-07"
         });
     
 

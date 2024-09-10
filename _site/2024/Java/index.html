@@ -207,6 +207,9 @@
 
         
     
+
+        
+    
             
             
             
@@ -800,7 +803,33 @@
                         </a>
 </div>
 </li>
+<li id="nav-second" aria-label="2024">
+                    <div class="nav-item">
+                        <a href="/Algorithm/2024/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>2024</span>
+                        </a>
+</div>
+</li>
 </ul>
+</li>
+<li id="nav-first" aria-label="Algorithm">
+            <div class="nav-item">
+                <a href="/Algorithm/" class="nav-list-link nav-lh">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M181.3 32.4c17.4 2.9 29.2 19.4 26.3 36.8L197.8 128h95.1l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3s29.2 19.4 26.3 36.8L357.8 128H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H347.1L325.8 320H384c17.7 0 32 14.3 32 32s-14.3 32-32 32H315.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8l9.8-58.7H155.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8L90.2 384H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l21.3-128H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3zM187.1 192L165.8 320h95.1l21.3-128H187.1z"></path></svg>
+                    <span>Algorithm</span>
+                </a><button class="nav-list-expander" aria-label="toggle items in Algorithm category" aria-pressed="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                </button>
+</div>
+<ul class="nav-list"><li id="nav-second" aria-label="2024">
+                    <div class="nav-item">
+                        <a href="/Algorithm/2024/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>2024</span>
+                        </a>
+</div>
+</li></ul>
 </li>
 <li id="nav-first" aria-label="Backend">
             <div class="nav-item">
@@ -817,14 +846,6 @@
                         <a href="/Backend/AWS/" class="nav-list-link nav-sh">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
                             <span>AWS</span>
-                        </a>
-</div>
-</li>
-<li id="nav-second" aria-label="AnD">
-                    <div class="nav-item">
-                        <a href="/Backend/AnD/" class="nav-list-link nav-sh">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
-                            <span>AnD</span>
                         </a>
 </div>
 </li>
@@ -14082,6 +14103,281 @@ public class PackageMain1 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/2024/Java/2024-02-25-packageImport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-25-packageImport.html"><h1 class="title_post">☕️[Java] 패키지 - import</h1></a>
+                        <a href="/2024/Java/2024-02-25-packageImport.html" class="txt_post">
+                            패키지 - import
+
+import
+
+package pack;
+
+public class PackageMain1 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   pack.a.User user = new pack.a.User();
+  }
+}
+
+
+  위 코드와 같이 패키지가 다르다고 pack.a.User와 같이 항상 전체 경로를 적어주는 것은 불편합니다.
+    
+      “이때는 import를 사용하면 됩니다.”
+    
+  
+
+
+PackageMain2
+package pack;
+
+import pack.a.User;
+
+public class PackageMain2 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   User user = new User();
+  }
+}
+
+
+실행 결과
+패키지 pack Data 생성
+패키지 pack.a 회원 생성
+
+
+
+  코드에서 첫줄에는 package를 사용하고, 다음 줄에는 import를 사용할 수 있습니다.
+    
+      import를 사용하면 다른 패키지에 있는 클래스를 가져와서 사용할 수 있습니다.
+        
+          import를 사용한 덕분에 코드에서는 패키지 명을 생략하고 클래스 이름만 적을 수 있습니다.
+        
+      
+    
+  
+
+
+
+  참고로 특정 패키지에 포함된 모든 클래스를 포함해서 사용하고 싶으면 import 시점에 *(별)을 사용하면 됩니다.
+
+
+패키지 별(*)사용
+
+tree 구조
+* pack -&gt; [Package]
+├──* Data -&gt; (Class)
+├──* PackageMain1 -&gt; (Class)
+├──* PackageMain1 -&gt; (Class)
+└──* a -&gt; [Package]
+   ├──* User -&gt; (Class)
+   └──* UserManager -&gt; (Class)
+
+
+package pack;
+
+import pack.a.*; // pack.a의 모든 클래스 사용
+
+public class PackageMain2 {
+
+  public static void main(String[] args) {
+   Data data = new Data();
+   User user = new User(); // import 사용으로 패키지 명 생략 가능
+   UserManager manager = new UserManager(); // import 사용으로 패키지 명 생략 가능
+  }
+}
+
+
+  이렇게 하면 pack.a 패키지에 있는 모든 클래스를 패키지 명을 생략하고 사용할 수 있습니다.
+
+
+실행 결과
+패키지 pack Data 생성
+패키지 pack.a 회원 생성
+패키지 pack.a 회원 매니저 생성
+
+
+클래스 이름 중복
+패키지 덕분에 클래스 이름이 같아도 패키지 이름으로 구분해서 같은 이름의 클래스를 사용할 수 있습니다.
+
+pack.a.User
+pack.b.User
+
+
+“이런 경우 클래스 이름이 둘다 User이지만 패키지 이름으로 대상을 구분할 수 있습니다.”
+
+  이렇게 이름이 같은 경우 둘다 사용하고 싶으면 어떻게 해야할까요?
+
+
+pack.b.User
+package pack.b;
+
+public class User {
+  public  User() {
+    System.out.println("패키지 pack.b 회원 생성");
+  }
+}
+
+
+PackageMain3
+package pack;
+
+import pack.a.User;
+
+public class PackageMain3 {
+
+  public static void main(String[] args) {
+    User userA = new User();
+    pack.b.User userB = new pack.b.User();
+  }
+}
+
+
+
+  같은 이름의 클래스가 있다면 import는 둘중 하나만 선택할 수 있습니다.
+    
+      이때는 자주 사용하는 클래스를 import하고 나머지를 패키지를 포함한 전체 경로를 적어주면 됩니다.
+        
+          물론 둘다 전체 경로를 적어준다면 import를 사용하지 않아도 됩니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-25-init(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-25-init(3).html"><h1 class="title_post">☕️[Java] 기본 생성자</h1></a>
+                        <a href="/2024/Java/2024-02-25-init(3).html" class="txt_post">
+                            기본 생성자
+
+아래의 코드를 봐봅시다.
+생각해보면 아래의 코드는 생성자를 만들지 않았는데, 생성자를 호출한 적이 있습니다.
+확인해 봅시다.
+public class MemberInit {
+    String name;
+    int age;
+    int grade;
+}
+
+
+public class MethodInitMain1 {
+    public static void main(String[] args) {
+        MemberInit member1 = new MemberInit();
+        ...
+    }
+}
+
+
+여기서 new MemberInit() 이 부분은 분명히 매개변수가 없는 다음과 같은 생성자가 필요할 것입니다.
+
+public class MemberInit {
+    String name;
+    int age;
+    int grade;
+    
+    MemberInit() { // 생성자 필요
+    }
+}
+
+
+기본 생성자
+
+  매개변수가 없는 생성자를 기본 생성자라 합니다.
+  클래스에 생성자가 하나도 없으면 자바 컴파일러는 매개변수가 없고, 작동하는 코드가 없는 기본 생성자를 자동으로 만들어줍니다.
+  생성자가 하나라도 있으면 자바는 기본 생성자를 만들지 않습니다.
+
+
+MemberInt 클래스의 경우 생성자를 만들지 않았으므로 자바가 자동으로 기본 생성자를 만들어준 것입니다.
+
+예제를 통해 기본 생성자를 확인해봅시다.
+
+MemberDefault
+package construct;
+
+public class MemberDefault {
+  String name;
+
+  public MemberDefault() {
+    System.out.println("생성자 호출");
+  }
+}
+
+
+
+  참고: 자바가 자동으로 생성해주는 기본 생성자는 클래스와 같은 접근 제어자를 같습니다.
+
+
+물론 다음과 같이 기본 생성자를 직접 정의해도 됩니다.
+package construct;
+
+public class MemberDefault {
+  String name;
+
+  MemberDefault() {
+    System.out.println("생성자 호출");
+  }
+}
+
+
+실행 경과
+생성자 호출
+
+
+기본 생성자를 왜 자동으로 만들어줄까?
+
+  만약 가바에서 기본 생성자를 만들어주지 않는다면 생성자 기능이 필요하지 않은 경우에도 모든 클래스에 개발자가 직접 기본 생성자를 정의해야 합니다.
+    
+      생성자 기능을 사용하지 않는 경우도 많기 때문에 이런 편의 기능을 제공합니다.
+    
+  
+
+
+정리
+
+  생성자는 반드시 호출되어야 합니다.
+  생성자가 없으면 기본 생성자가 제공됩니다.
+  생성자가 하나라도 있으면 기본 생성자가 제공되지 않습니다. 이 경우 개발자가 정의한 생성자를 직접 호출해야합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -14232,281 +14528,6 @@ public MemberConstruct(String name, int age) {
 
   this()가 생성자 코드의 첫줄에 사용되지 않았습니다.
 
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-25-init(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-init(3).html"><h1 class="title_post">☕️[Java] 기본 생성자</h1></a>
-                        <a href="/2024/Java/2024-02-25-init(3).html" class="txt_post">
-                            기본 생성자
-
-아래의 코드를 봐봅시다.
-생각해보면 아래의 코드는 생성자를 만들지 않았는데, 생성자를 호출한 적이 있습니다.
-확인해 봅시다.
-public class MemberInit {
-    String name;
-    int age;
-    int grade;
-}
-
-
-public class MethodInitMain1 {
-    public static void main(String[] args) {
-        MemberInit member1 = new MemberInit();
-        ...
-    }
-}
-
-
-여기서 new MemberInit() 이 부분은 분명히 매개변수가 없는 다음과 같은 생성자가 필요할 것입니다.
-
-public class MemberInit {
-    String name;
-    int age;
-    int grade;
-    
-    MemberInit() { // 생성자 필요
-    }
-}
-
-
-기본 생성자
-
-  매개변수가 없는 생성자를 기본 생성자라 합니다.
-  클래스에 생성자가 하나도 없으면 자바 컴파일러는 매개변수가 없고, 작동하는 코드가 없는 기본 생성자를 자동으로 만들어줍니다.
-  생성자가 하나라도 있으면 자바는 기본 생성자를 만들지 않습니다.
-
-
-MemberInt 클래스의 경우 생성자를 만들지 않았으므로 자바가 자동으로 기본 생성자를 만들어준 것입니다.
-
-예제를 통해 기본 생성자를 확인해봅시다.
-
-MemberDefault
-package construct;
-
-public class MemberDefault {
-  String name;
-
-  public MemberDefault() {
-    System.out.println("생성자 호출");
-  }
-}
-
-
-
-  참고: 자바가 자동으로 생성해주는 기본 생성자는 클래스와 같은 접근 제어자를 같습니다.
-
-
-물론 다음과 같이 기본 생성자를 직접 정의해도 됩니다.
-package construct;
-
-public class MemberDefault {
-  String name;
-
-  MemberDefault() {
-    System.out.println("생성자 호출");
-  }
-}
-
-
-실행 경과
-생성자 호출
-
-
-기본 생성자를 왜 자동으로 만들어줄까?
-
-  만약 가바에서 기본 생성자를 만들어주지 않는다면 생성자 기능이 필요하지 않은 경우에도 모든 클래스에 개발자가 직접 기본 생성자를 정의해야 합니다.
-    
-      생성자 기능을 사용하지 않는 경우도 많기 때문에 이런 편의 기능을 제공합니다.
-    
-  
-
-
-정리
-
-  생성자는 반드시 호출되어야 합니다.
-  생성자가 없으면 기본 생성자가 제공됩니다.
-  생성자가 하나라도 있으면 기본 생성자가 제공되지 않습니다. 이 경우 개발자가 정의한 생성자를 직접 호출해야합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/2024/Java/2024-02-25-packageImport.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-packageImport.html"><h1 class="title_post">☕️[Java] 패키지 - import</h1></a>
-                        <a href="/2024/Java/2024-02-25-packageImport.html" class="txt_post">
-                            패키지 - import
-
-import
-
-package pack;
-
-public class PackageMain1 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   pack.a.User user = new pack.a.User();
-  }
-}
-
-
-  위 코드와 같이 패키지가 다르다고 pack.a.User와 같이 항상 전체 경로를 적어주는 것은 불편합니다.
-    
-      “이때는 import를 사용하면 됩니다.”
-    
-  
-
-
-PackageMain2
-package pack;
-
-import pack.a.User;
-
-public class PackageMain2 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   User user = new User();
-  }
-}
-
-
-실행 결과
-패키지 pack Data 생성
-패키지 pack.a 회원 생성
-
-
-
-  코드에서 첫줄에는 package를 사용하고, 다음 줄에는 import를 사용할 수 있습니다.
-    
-      import를 사용하면 다른 패키지에 있는 클래스를 가져와서 사용할 수 있습니다.
-        
-          import를 사용한 덕분에 코드에서는 패키지 명을 생략하고 클래스 이름만 적을 수 있습니다.
-        
-      
-    
-  
-
-
-
-  참고로 특정 패키지에 포함된 모든 클래스를 포함해서 사용하고 싶으면 import 시점에 *(별)을 사용하면 됩니다.
-
-
-패키지 별(*)사용
-
-tree 구조
-* pack -&gt; [Package]
-├──* Data -&gt; (Class)
-├──* PackageMain1 -&gt; (Class)
-├──* PackageMain1 -&gt; (Class)
-└──* a -&gt; [Package]
-   ├──* User -&gt; (Class)
-   └──* UserManager -&gt; (Class)
-
-
-package pack;
-
-import pack.a.*; // pack.a의 모든 클래스 사용
-
-public class PackageMain2 {
-
-  public static void main(String[] args) {
-   Data data = new Data();
-   User user = new User(); // import 사용으로 패키지 명 생략 가능
-   UserManager manager = new UserManager(); // import 사용으로 패키지 명 생략 가능
-  }
-}
-
-
-  이렇게 하면 pack.a 패키지에 있는 모든 클래스를 패키지 명을 생략하고 사용할 수 있습니다.
-
-
-실행 결과
-패키지 pack Data 생성
-패키지 pack.a 회원 생성
-패키지 pack.a 회원 매니저 생성
-
-
-클래스 이름 중복
-패키지 덕분에 클래스 이름이 같아도 패키지 이름으로 구분해서 같은 이름의 클래스를 사용할 수 있습니다.
-
-pack.a.User
-pack.b.User
-
-
-“이런 경우 클래스 이름이 둘다 User이지만 패키지 이름으로 대상을 구분할 수 있습니다.”
-
-  이렇게 이름이 같은 경우 둘다 사용하고 싶으면 어떻게 해야할까요?
-
-
-pack.b.User
-package pack.b;
-
-public class User {
-  public  User() {
-    System.out.println("패키지 pack.b 회원 생성");
-  }
-}
-
-
-PackageMain3
-package pack;
-
-import pack.a.User;
-
-public class PackageMain3 {
-
-  public static void main(String[] args) {
-    User userA = new User();
-    pack.b.User userB = new pack.b.User();
-  }
-}
-
-
-
-  같은 이름의 클래스가 있다면 import는 둘중 하나만 선택할 수 있습니다.
-    
-      이때는 자주 사용하는 클래스를 import하고 나머지를 패키지를 포함한 전체 경로를 적어주면 됩니다.
-        
-          물론 둘다 전체 경로를 적어준다면 import를 사용하지 않아도 됩니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -19477,10 +19498,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "Index",
-            'path'     : "Backend > AWS",
+            'path'     : "Algorithm > 2024",
             'type'     : "category",
             'tags'     : "",
-            'url'      : "/Backend/AWS/index.html",
+            'url'      : "/Algorithm/2024/index.html",
             'image'    : "/assets/img/thumbnail/empty.jpg",
             'date'     : "1900-01-01"
         });
@@ -19488,10 +19509,21 @@ public class Var2 {
 
         posts.push({
             'title'    : "Index",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm",
             'type'     : "category",
             'tags'     : "",
-            'url'      : "/Backend/AnD/index.html",
+            'url'      : "/Algorithm/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "Backend > AWS",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/Backend/AWS/index.html",
             'image'    : "/assets/img/thumbnail/empty.jpg",
             'date'     : "1900-01-01"
         });
@@ -21985,10 +22017,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "[AnD] 두 수의 합.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "Algorithm, DataStructure",
-            'url'      : "/Backend/AnD/2024-05-01-AnD-1.html",
+            'url'      : "/Algorithm/2024/2024-05-01-AnD-1.html",
             'image'    : "/assets/img/thumbnail/AnD.jpeg",
             'date'     : "2024-05-01"
         });
@@ -22612,10 +22644,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 자료구조 소개",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-21-IntroDataStructureAndAlgorithm.html",
+            'url'      : "/Algorithm/2024/2024-05-21-IntroDataStructureAndAlgorithm.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-21"
         });
@@ -22623,10 +22655,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 선형 자료구조 - 배열",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-21-linearDS-Array.html",
+            'url'      : "/Algorithm/2024/2024-05-21-linearDS-Array.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-21"
         });
@@ -22667,10 +22699,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 큐(Queue)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-23-Queue.html",
+            'url'      : "/Algorithm/2024/2024-05-23-Queue.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-23"
         });
@@ -22678,10 +22710,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 원형 큐(Circular Queue)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-23-circularQueue.html",
+            'url'      : "/Algorithm/2024/2024-05-23-circularQueue.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-23"
         });
@@ -22700,10 +22732,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 해시(Hash)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-24-Hash.html",
+            'url'      : "/Algorithm/2024/2024-05-24-Hash.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-24"
         });
@@ -22722,10 +22754,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 해시 테이블(Hash Table)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-25-HashTable.html",
+            'url'      : "/Algorithm/2024/2024-05-25-HashTable.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-25"
         });
@@ -22755,10 +22787,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 이진 트리(Binary Tree)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-27-BinaryTree.html",
+            'url'      : "/Algorithm/2024/2024-05-27-BinaryTree.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-27"
         });
@@ -22766,10 +22798,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 완전 이진 트리(Complete Binary Tree)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-27-CompleteBinaryTree.html",
+            'url'      : "/Algorithm/2024/2024-05-27-CompleteBinaryTree.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-27"
         });
@@ -22777,10 +22809,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 노드(Node)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-27-Node.html",
+            'url'      : "/Algorithm/2024/2024-05-27-Node.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-27"
         });
@@ -22788,10 +22820,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 트리(Tree)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-27-Tree.html",
+            'url'      : "/Algorithm/2024/2024-05-27-Tree.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-27"
         });
@@ -22810,10 +22842,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 스택(Stack)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-28-Stack.html",
+            'url'      : "/Algorithm/2024/2024-05-28-Stack.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-28"
         });
@@ -22854,10 +22886,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 큐(Queue)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-05-30-Queue.html",
+            'url'      : "/Algorithm/2024/2024-05-30-Queue.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-05-30"
         });
@@ -22876,10 +22908,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 배열에서 특정 인덱스의 요소를 삭제하기.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-01-RemoveSpecificIndexFromArray.html",
+            'url'      : "/Algorithm/2024/2024-06-01-RemoveSpecificIndexFromArray.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-01"
         });
@@ -22898,10 +22930,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] Java의 배열.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-02-ArrayOfJava.html",
+            'url'      : "/Algorithm/2024/2024-06-02-ArrayOfJava.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-02"
         });
@@ -22953,10 +22985,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] Deque(데크, 덱)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-05-Deque.html",
+            'url'      : "/Algorithm/2024/2024-06-05-Deque.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-05"
         });
@@ -22975,10 +23007,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] ArrayDeque",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-06-ArrayDeque.html",
+            'url'      : "/Algorithm/2024/2024-06-06-ArrayDeque.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-06"
         });
@@ -22997,10 +23029,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] LinkedList를 사용한 Deque.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-07-LinkedListDeque.html",
+            'url'      : "/Algorithm/2024/2024-06-07-LinkedListDeque.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-07"
         });
@@ -23052,10 +23084,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] Circular Queue(원형 큐)란?",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-09-CircularQueue.html",
+            'url'      : "/Algorithm/2024/2024-06-09-CircularQueue.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-09"
         });
@@ -23085,10 +23117,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] Deque에서의 front와 rear의 변화.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-10-ChangeBetweenFrontAndRearInDeque.html",
+            'url'      : "/Algorithm/2024/2024-06-10-ChangeBetweenFrontAndRearInDeque.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-10"
         });
@@ -23118,10 +23150,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] Circular Queue(원형 큐)의 중간 지점 찾기.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-12-CircularQueueFindMiddleIndex.html",
+            'url'      : "/Algorithm/2024/2024-06-12-CircularQueueFindMiddleIndex.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-12"
         });
@@ -23140,10 +23172,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] 알고리즘(Algorithm)",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-13-AboutAlgorithm.html",
+            'url'      : "/Algorithm/2024/2024-06-13-AboutAlgorithm.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-13"
         });
@@ -23151,10 +23183,10 @@ public class Var2 {
 
         posts.push({
             'title'    : "📦[DS,Algorithm] Circular Queue(원형 큐)를 배열로 구현시 rear를 -1으로 설정하지 않는 이유.",
-            'path'     : "Backend > AnD",
+            'path'     : "Algorithm > 2024",
             'type'     : "post",
             'tags'     : "DataStructure, Algorithm",
-            'url'      : "/Backend/AnD/2024-06-13-ReasonOfRearIsntSetToMinusOneInCircularQueue.html",
+            'url'      : "/Algorithm/2024/2024-06-13-ReasonOfRearIsntSetToMinusOneInCircularQueue.html",
             'image'    : "/assets/img/thumbnail/ds.jpeg",
             'date'     : "2024-06-13"
         });

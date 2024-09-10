@@ -210,6 +210,12 @@
 
         
     
+
+        
+    
+
+        
+    
             
             
             
@@ -811,6 +817,14 @@
                         </a>
 </div>
 </li>
+<li id="nav-second" aria-label="2024">
+                    <div class="nav-item">
+                        <a href="/SQL/2024/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>2024</span>
+                        </a>
+</div>
+</li>
 </ul>
 </li>
 <li id="nav-first" aria-label="Algorithm">
@@ -926,6 +940,34 @@
                         <a href="/Backend/TIL/" class="nav-list-link nav-sh">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
                             <span>TIL</span>
+                        </a>
+</div>
+</li>
+</ul>
+</li>
+<li id="nav-first" aria-label="SQL">
+            <div class="nav-item">
+                <a href="/SQL/" class="nav-list-link nav-lh">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M181.3 32.4c17.4 2.9 29.2 19.4 26.3 36.8L197.8 128h95.1l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3s29.2 19.4 26.3 36.8L357.8 128H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H347.1L325.8 320H384c17.7 0 32 14.3 32 32s-14.3 32-32 32H315.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8l9.8-58.7H155.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8L90.2 384H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l21.3-128H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3zM187.1 192L165.8 320h95.1l21.3-128H187.1z"></path></svg>
+                    <span>SQL</span>
+                </a><button class="nav-list-expander" aria-label="toggle items in SQL category" aria-pressed="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                </button>
+</div>
+<ul class="nav-list">
+<li id="nav-second" aria-label="SQL">
+                    <div class="nav-item">
+                        <a href="/2024/SQL/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>SQL</span>
+                        </a>
+</div>
+</li>
+<li id="nav-second" aria-label="2024">
+                    <div class="nav-item">
+                        <a href="/SQL/2024/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>2024</span>
                         </a>
 </div>
 </li>
@@ -14265,119 +14307,6 @@ public class PackageMain3 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/2024/Java/2024-02-25-init(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/2024/Java/2024-02-25-init(3).html"><h1 class="title_post">☕️[Java] 기본 생성자</h1></a>
-                        <a href="/2024/Java/2024-02-25-init(3).html" class="txt_post">
-                            기본 생성자
-
-아래의 코드를 봐봅시다.
-생각해보면 아래의 코드는 생성자를 만들지 않았는데, 생성자를 호출한 적이 있습니다.
-확인해 봅시다.
-public class MemberInit {
-    String name;
-    int age;
-    int grade;
-}
-
-
-public class MethodInitMain1 {
-    public static void main(String[] args) {
-        MemberInit member1 = new MemberInit();
-        ...
-    }
-}
-
-
-여기서 new MemberInit() 이 부분은 분명히 매개변수가 없는 다음과 같은 생성자가 필요할 것입니다.
-
-public class MemberInit {
-    String name;
-    int age;
-    int grade;
-    
-    MemberInit() { // 생성자 필요
-    }
-}
-
-
-기본 생성자
-
-  매개변수가 없는 생성자를 기본 생성자라 합니다.
-  클래스에 생성자가 하나도 없으면 자바 컴파일러는 매개변수가 없고, 작동하는 코드가 없는 기본 생성자를 자동으로 만들어줍니다.
-  생성자가 하나라도 있으면 자바는 기본 생성자를 만들지 않습니다.
-
-
-MemberInt 클래스의 경우 생성자를 만들지 않았으므로 자바가 자동으로 기본 생성자를 만들어준 것입니다.
-
-예제를 통해 기본 생성자를 확인해봅시다.
-
-MemberDefault
-package construct;
-
-public class MemberDefault {
-  String name;
-
-  public MemberDefault() {
-    System.out.println("생성자 호출");
-  }
-}
-
-
-
-  참고: 자바가 자동으로 생성해주는 기본 생성자는 클래스와 같은 접근 제어자를 같습니다.
-
-
-물론 다음과 같이 기본 생성자를 직접 정의해도 됩니다.
-package construct;
-
-public class MemberDefault {
-  String name;
-
-  MemberDefault() {
-    System.out.println("생성자 호출");
-  }
-}
-
-
-실행 경과
-생성자 호출
-
-
-기본 생성자를 왜 자동으로 만들어줄까?
-
-  만약 가바에서 기본 생성자를 만들어주지 않는다면 생성자 기능이 필요하지 않은 경우에도 모든 클래스에 개발자가 직접 기본 생성자를 정의해야 합니다.
-    
-      생성자 기능을 사용하지 않는 경우도 많기 때문에 이런 편의 기능을 제공합니다.
-    
-  
-
-
-정리
-
-  생성자는 반드시 호출되어야 합니다.
-  생성자가 없으면 기본 생성자가 제공됩니다.
-  생성자가 하나라도 있으면 기본 생성자가 제공되지 않습니다. 이 경우 개발자가 정의한 생성자를 직접 호출해야합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/2024" class="category">2024</a>
-                            
-                                <span class="date">· 2024-02-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/2024/Java/2024-02-25-initOverloadingAndThis.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -14528,6 +14457,119 @@ public MemberConstruct(String name, int age) {
 
   this()가 생성자 코드의 첫줄에 사용되지 않았습니다.
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/2024" class="category">2024</a>
+                            
+                                <span class="date">· 2024-02-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/2024/Java/2024-02-25-init(3).html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/2024/Java/2024-02-25-init(3).html"><h1 class="title_post">☕️[Java] 기본 생성자</h1></a>
+                        <a href="/2024/Java/2024-02-25-init(3).html" class="txt_post">
+                            기본 생성자
+
+아래의 코드를 봐봅시다.
+생각해보면 아래의 코드는 생성자를 만들지 않았는데, 생성자를 호출한 적이 있습니다.
+확인해 봅시다.
+public class MemberInit {
+    String name;
+    int age;
+    int grade;
+}
+
+
+public class MethodInitMain1 {
+    public static void main(String[] args) {
+        MemberInit member1 = new MemberInit();
+        ...
+    }
+}
+
+
+여기서 new MemberInit() 이 부분은 분명히 매개변수가 없는 다음과 같은 생성자가 필요할 것입니다.
+
+public class MemberInit {
+    String name;
+    int age;
+    int grade;
+    
+    MemberInit() { // 생성자 필요
+    }
+}
+
+
+기본 생성자
+
+  매개변수가 없는 생성자를 기본 생성자라 합니다.
+  클래스에 생성자가 하나도 없으면 자바 컴파일러는 매개변수가 없고, 작동하는 코드가 없는 기본 생성자를 자동으로 만들어줍니다.
+  생성자가 하나라도 있으면 자바는 기본 생성자를 만들지 않습니다.
+
+
+MemberInt 클래스의 경우 생성자를 만들지 않았으므로 자바가 자동으로 기본 생성자를 만들어준 것입니다.
+
+예제를 통해 기본 생성자를 확인해봅시다.
+
+MemberDefault
+package construct;
+
+public class MemberDefault {
+  String name;
+
+  public MemberDefault() {
+    System.out.println("생성자 호출");
+  }
+}
+
+
+
+  참고: 자바가 자동으로 생성해주는 기본 생성자는 클래스와 같은 접근 제어자를 같습니다.
+
+
+물론 다음과 같이 기본 생성자를 직접 정의해도 됩니다.
+package construct;
+
+public class MemberDefault {
+  String name;
+
+  MemberDefault() {
+    System.out.println("생성자 호출");
+  }
+}
+
+
+실행 경과
+생성자 호출
+
+
+기본 생성자를 왜 자동으로 만들어줄까?
+
+  만약 가바에서 기본 생성자를 만들어주지 않는다면 생성자 기능이 필요하지 않은 경우에도 모든 클래스에 개발자가 직접 기본 생성자를 정의해야 합니다.
+    
+      생성자 기능을 사용하지 않는 경우도 많기 때문에 이런 편의 기능을 제공합니다.
+    
+  
+
+
+정리
+
+  생성자는 반드시 호출되어야 합니다.
+  생성자가 없으면 기본 생성자가 제공됩니다.
+  생성자가 하나라도 있으면 기본 생성자가 제공되지 않습니다. 이 경우 개발자가 정의한 생성자를 직접 호출해야합니다.
 
 
                         </a>
@@ -19645,6 +19687,28 @@ public class Var2 {
             'type'     : "category",
             'tags'     : "",
             'url'      : "/Backend/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "SQL > 2024",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/SQL/2024/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "SQL",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/SQL/index.html",
             'image'    : "/assets/img/thumbnail/empty.jpg",
             'date'     : "1900-01-01"
         });

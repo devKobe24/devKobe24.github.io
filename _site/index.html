@@ -688,6 +688,7 @@
             
             
             
+            
 
     
     
@@ -1094,6 +1095,103 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/SQL/2024/2024-09-15-development-process-of-dbms.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/SQL/2024/2024-09-15-development-process-of-dbms.html"><h1 class="title_post">💉[SQL] DBMS의 발전 과정.</h1></a>
+                        <a href="/SQL/2024/2024-09-15-development-process-of-dbms.html" class="txt_post">
+                            💉[SQL] DBMS의 발전 과정.
+
+  컴퓨터가 존재하기 전부터 사람들은 데이터(정보)를 관리해 왔습니다.
+  종이에 정보를 기록하고 관리하던 때부터 시작해 지금의 DBMS까지 어떤 과정으로 발전했는지 차례대로 살펴봅시다.
+
+
+1️⃣ 종이에 펜으로 기록.
+
+  아주 오래 전부터 정보는 관리되어 왔습니다.
+  컴퓨터가 없던 시기에도 구멍가게(요즘의 편의점과 비슷)를 운영하면서 판매와 구매가 발생했을 것이고, 그것을 종이에 펜으로 기록했을 것입니다.
+
+
+2️⃣ 컴퓨터에 파일로 저장.
+
+  컴퓨터가 등장하고 일반 사람들도 컴퓨터를 사용하게 되면서 종이에 기록하던 내용을 컴퓨터 파일에 기록, 저장하게 되었습니다.
+  컴퓨터에 판매/구매 이력을 저장하는 방법은 단순하게 메모장을 사용할 수도 있지만, 컴퓨터를 어느 정도 활용하게 되면서 엑셀과 같은 스프레드시트 프로그램을 사용해 표 형태로 내용을 기록하고 자동으로 계산하는 등 한층 더 효율적으로 정보를 관리하게 되었습니다.
+  기록된 내용은 파일(file) 이라는 형태로 저장해 필요할 때마다 열어서 사용할 수 있습니다.
+  엑셀을 사용하면 아주 편리하지만, 저장한 파일은 한 번에 한 명의 사용자만 열어서 작업할 수 있습니다.
+  규모가 작은 구멍가게에서는 한 명의 사용자가 하나의 파일에 작업하는 것이 문제가 되지 않을 수도 있습니다.
+    
+      하지만 규모가 큰 슈퍼마켓이나 마트 등에서는 데이터의 양이 많아 한 명의 사용자가 모두 처리할 수 없기 때문에 여러 명이 각자의 파일을 만들어서 작업할 수밖에 없습니다.
+        예시.
+      
+    
+  
+  예를 들어, 3명의 직원이 엑셀로 판매 내용을 기록한다고 합시다.
+    
+      A 직원은 오전, B 직원은 오후, C 직원은 야간에 판매된 내용을 기록한다고 가정하겠습니다.
+      3명이 정확히 자신의 시간에 판매된 것만 기록하면 좋겠으나, 실수로 A 직원이 판매한 내역을 B 직원 파일에 작성할 수도 있을 것입니다.
+        
+          또, 오전에 판매한 물건을 오후에 반품할 경우에는 오전에 판매한 사람이 기록해야 할지, 오후에 반품받은 사람이 기록해야 할지 그 주체도 모호하기 때문에 기록이 누락되거나 모두 기록하여 중복되는 문제가 발생할 소지도 있습니다.
+            
+              하루, 한 달 더 나아가서는 연간 판매 기록을 합계할 때 금액이 맞지 않는 경우처럼 심각한 일이 발생할 수도 있습니다.
+                
+                  이러한 불일치가 파일의 큰 문제점 중 하나입니다.
+                    
+                      하지만 이런 문제점에도 불구하고 파일은 한 명이 처리하거나 소량의 데이터를 처리할 때는 속도가 빠르고, 사용법이 쉽기 때문에 지금도 많이 사용하고 있습니다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+3️⃣ DBMS의 대두와 보급.
+
+  앞에서 언급한 파일의 단점을 보완하면서 대량의 데이터를 효율적으로 관리하고 운영하기 위해서 등장한 것이 DBMS 입니다.
+  MySQL과 같은 DBMS의 개념은 1973년에 최초로 에드거 프랭크 커드(E.F. Codd)라는 학자가 이론을 정립했습니다.
+    
+      그 이후로 많은 DBMS 제품이 만들어졌고, 지금과 같이 안정적인 소프트웨어로 자리 잡게 되었습니다.
+    
+  
+  DBMS는 데이터의 집합인 데이터베이스 를 잘 관리하고 운영하기 위한 시스템 또는 소프트웨어를 말합니다.
+  DBMS에 데이터를 구축, 관리하고 활용하기 위해서 사용되는 언어가 SQL(Structured Query Language) 입니다.
+    
+      이 SQL을 사용하면 DBMS를 통해 중요한 정보들을 입력, 관리하고 추출할 수 있습니다.
+        
+          즉, SQL 문을 잘 이해하고 사용해야만 DBMS를 원활하게 활용할 수 있습니다.
+            
+              비유하자면 미국 문화(DBMS)를 완전히 이해하고 싶다면 그 나라의 언어인 영어(SQL)를 먼저 배워야 하는 것과 비슷한 개념입니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/SQL" class="category">SQL</a>
+                            
+                                <span class="date">· 2024-09-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1857,176 +1955,161 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
+                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
+                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
+                            ☕️[Java] Optional.
 
-1️⃣ 기본형의 한계.
+1️⃣ Optional.
 
-  자바는 객체 지향 언어입니다.
+  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
+  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
+
+
+2️⃣ 주요 특징
+
+  1. 값의 존재 여부를 명확히 표현.
     
-      그런데 자바 안에 객체가 아닌 것이 있습니다.
-      바로 int, double 같은 기본형(Primitive Type)입니다.
-    
-  
-  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
-    
-      객체가 아님.
+      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
         
-          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
-            
-              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
-            
-          
-        
-      
-      null 값을 가질 수 없습니다.
-        
-          기본형 데이터 타입은 null 값을 가질 수 없습니다.
-            
-              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-            
-          
+          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
         
       
     
   
-
-
-2️⃣ 예시.
-
-  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+  2. 명시적인 null 처리.
     
-      왼쪽의 값이 더 작다: -1
-      두 값이 같다: 0
-      왼쪽의 값이 더 크다: 1
+      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+        
+          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+        
+      
+    
+  
+  3. 함수형 프로그래밍 스타일 지원.
+    
+      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
     
   
 
 
-public class MyIntegerMethodMain0 {
-
-	public static void main(String[] args) {
-		int value = 10;
-		int i1 = compareTo(value, 5);
-		int i2 = compareTo(value, 10);
-		int i3 = compareTo(value, 20);
-		System.out.println("i1 = " + i1);
-		System.out.println("i2 = " + i2);
-		System.out.println("i3 = " + i3);
-	}
-
-	public static int compareTo(int value, int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
+3️⃣ Optional 생성.
+Optional&lt;String&gt; emptyOptional = Optional.empty();
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
 
 
+Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
 
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+
+  null이 아닌 값으로 Optional 생성.
     
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
+      값이 null인 경우 NullPointerException이 발생합니다.
     
   
 
 
-3️⃣ 직접 만든 래퍼 클래스.
+Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
 
-  int를 클래스로 만들어 봅시다.
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+
+  null이 될 수 있는 값으로 Optional 생성.
     
-      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-    
-  
-
-
-public class MyInteger {
-
-	private final int value;
-
-	public MyInteger(int value) {
-		this.value = value;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public int compareTo(int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value); // 숫자를 문자로 변경
-	}
-}
-
-
-  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
+      값이 null이면 빈 Optional이 생성됩니다.
+        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+        
+      
     
   
-  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-  
-    이 클래스는 불변으로 설계했습니다.
-  
-  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-    
-      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+
+
+4️⃣ Optional의 사용 예
+
+  1. 값이 존재하는지 확인(isPresent / ifPresent)
 ```java
-public class MyIntegerMethodMain1 {
-    
+Optional optional = Optional.of("Hello");
 
-    public static void main(String[] args) {
-      MyInteger myInteger = new MyInteger(10);
-      int i1 = myInteger.compareTo(5);
-      int i2 = myInteger.compareTo(10);
-      int i3 = myInteger.compareTo(20);
-      System.out.println(“i1 = “ + i1);
-      System.out.println(“i2 = “ + i2);
-      System.out.println(“i3 = “ + i3);
-  }
+
+if (optional.isPresent()) {
+    System.out.println(optional.get()); // 값이 있으면 출력
 }
-```
+
+optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
+
+- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+```java
+String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
+String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
+
+
+
+  3. 값이 없으면 예외 던지기(orElseThrow)
+    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+    
+  
+  4. 값 변환(map, flatMap)
+```java
+Optional optional = Optional.of("Hello");
+
+
+Optional lengthOptional = optional.map(String::length);
+lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
+
+- **5. 조건에 따른 필터링(`filter`)**
+```java
+Optional&lt;String&gt; optional = Optional.of("Hello");
+
+Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
+filtered.ifPresent(System.out::println); // "Hello" 출력
+
+
+5️⃣ Optional 사용의 이점.
+
+  1. 명시적 코드 작성.
+    
+      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
+    
+  
+  2. NullPointerException 방지.
+    
+      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
+    
+  
+  3. 함수형 스타일.
+    
+      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
+    
   
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+6️⃣ Optional 사용 시 주의점.
+
+  1. 과도한 사용 자제.
+    
+      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+        
+          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+        
+      
+    
+  
+  2. 성능.
+    
+      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
+    
+  
 
 
+7️⃣ 요약.
 
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
+  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
+  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
+  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
 
 
                         </a>
@@ -2216,161 +2299,176 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
-                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
-                            ☕️[Java] Optional.
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
 
-1️⃣ Optional.
+1️⃣ 기본형의 한계.
 
-  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
-  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
-
-
-2️⃣ 주요 특징
-
-  1. 값의 존재 여부를 명확히 표현.
+  자바는 객체 지향 언어입니다.
     
-      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
-        
-          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
-        
-      
+      그런데 자바 안에 객체가 아닌 것이 있습니다.
+      바로 int, double 같은 기본형(Primitive Type)입니다.
     
   
-  2. 명시적인 null 처리.
+  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
     
-      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+      객체가 아님.
         
-          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
+            
+              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
+            
+          
         
       
-    
-  
-  3. 함수형 프로그래밍 스타일 지원.
-    
-      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
-    
-  
-
-
-3️⃣ Optional 생성.
-Optional&lt;String&gt; emptyOptional = Optional.empty();
-
-
-  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
-
-
-Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
-
-
-  null이 아닌 값으로 Optional 생성.
-    
-      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
-      값이 null인 경우 NullPointerException이 발생합니다.
-    
-  
-
-
-Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
-
-
-  null이 될 수 있는 값으로 Optional 생성.
-    
-      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
-      값이 null이면 빈 Optional이 생성됩니다.
-        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+      null 값을 가질 수 없습니다.
+        
+          기본형 데이터 타입은 null 값을 가질 수 없습니다.
+            
+              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+            
+          
         
       
     
   
 
 
-4️⃣ Optional의 사용 예
+2️⃣ 예시.
 
-  1. 값이 존재하는지 확인(isPresent / ifPresent)
-```java
-Optional optional = Optional.of("Hello");
+  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+    
+      왼쪽의 값이 더 작다: -1
+      두 값이 같다: 0
+      왼쪽의 값이 더 크다: 1
+    
+  
 
 
-if (optional.isPresent()) {
-    System.out.println(optional.get()); // 값이 있으면 출력
+public class MyIntegerMethodMain0 {
+
+	public static void main(String[] args) {
+		int value = 10;
+		int i1 = compareTo(value, 5);
+		int i2 = compareTo(value, 10);
+		int i3 = compareTo(value, 20);
+		System.out.println("i1 = " + i1);
+		System.out.println("i2 = " + i2);
+		System.out.println("i3 = " + i3);
+	}
+
+	public static int compareTo(int value, int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
 
-optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
 
-- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+    
+  
+
+
+3️⃣ 직접 만든 래퍼 클래스.
+
+  int를 클래스로 만들어 봅시다.
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+    
+      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+    
+  
+
+
+public class MyInteger {
+
+	private final int value;
+
+	public MyInteger(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int compareTo(int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value); // 숫자를 문자로 변경
+	}
+}
+
+
+  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+    
+  
+  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+  
+    이 클래스는 불변으로 설계했습니다.
+  
+  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+    
+      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
 ```java
-String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
-String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
-
-
-
-  3. 값이 없으면 예외 던지기(orElseThrow)
-    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+public class MyIntegerMethodMain1 {
     
-  
-  4. 값 변환(map, flatMap)
-```java
-Optional optional = Optional.of("Hello");
 
-
-Optional lengthOptional = optional.map(String::length);
-lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
-
-- **5. 조건에 따른 필터링(`filter`)**
-```java
-Optional&lt;String&gt; optional = Optional.of("Hello");
-
-Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
-filtered.ifPresent(System.out::println); // "Hello" 출력
-
-
-5️⃣ Optional 사용의 이점.
-
-  1. 명시적 코드 작성.
-    
-      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
-    
-  
-  2. NullPointerException 방지.
-    
-      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
-    
-  
-  3. 함수형 스타일.
-    
-      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
-    
+    public static void main(String[] args) {
+      MyInteger myInteger = new MyInteger(10);
+      int i1 = myInteger.compareTo(5);
+      int i2 = myInteger.compareTo(10);
+      int i3 = myInteger.compareTo(20);
+      System.out.println(“i1 = “ + i1);
+      System.out.println(“i2 = “ + i2);
+      System.out.println(“i3 = “ + i3);
+  }
+}
+```
   
 
 
-6️⃣ Optional 사용 시 주의점.
-
-  1. 과도한 사용 자제.
-    
-      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
-        
-          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
-        
-      
-    
-  
-  2. 성능.
-    
-      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
-    
-  
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
 
 
-7️⃣ 요약.
 
-  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
-  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
-  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
 
 
                         </a>
@@ -2678,6 +2776,131 @@ model.addAttribute(user);
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Model` 객체.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 Model 객체.
+
+1️⃣ Model 객체.
+
+  Spring MVC에서 Model 객체는 컨트롤러와 뷰 사이에서 데이터를 전달하는 역할을 합니다.
+  컨트롤러에서 생성된 데이터를 Model 객체에 담아두면, 이 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 사용될 수 있습니다.
+  Model 객체는 요청에 대한 응답으로 어떤 데이터를 뷰로 보내야 하는지 결정하는 데 사용됩니다.
+
+
+2️⃣ Model 객체의 주요 기능.
+
+  1. 데이터 저장 및 전달.
+    
+      Model 객체에 데이터를 저장하면, 해당 데이터는 뷰에 전달되어 클라이언트에게 표시됩니다.
+        
+          예를 들어, 사용자의 이름이나 리스트와 같은 데이터를 뷰에 전달할 수 있습니다.
+        
+      
+    
+  
+  2. 키-값 쌍 형태로 데이터 관리.
+    
+      Model 객체는 데이터를 키-값 쌍 형태로 관리합니다.
+        
+          뷰에서 이 데이터를 사용할 때는 키를 통해 접근합니다.
+        
+      
+    
+  
+  3. 뷰 템플릿에서 데이터 사용.
+    
+      Model에 추가된 데이터는 뷰 템플릿에서 변수로 사용됩니다.
+        
+          뷰 템플릿 엔진(예: Thymeleaf, JSP)은 이 데이터를 이용해 동적인 HTML을 생성하고, 이를 클라이언트에게 반환합니다.
+        
+      
+    
+  
+
+
+3️⃣ Model 객체의 사용 예.
+@Controller
+public class GreetingController {
+    
+    @GetMapping("/greeting")
+    public String greeting(Model model) {
+        model.addAttribute("name", "John");
+        model.addAttribute("message", "Hello welcome to our website!");
+        
+        // "greeting"이라는 뷰 이름을 반환
+        return "greeting";
+    }
+}
+
+
+
+  위 예제에서 greeting() 메서드는 Model 객체에 "name" 과 "message" 라는 두 가지 데이터를 추가합니다.
+    
+      이 데이터는 뷰 이름 "greeting"에 전달되며, 해당 뷰 템플릿에서 사용될 수 있습니다.
+    
+  
+
+
+4️⃣ 뷰 템플릿에서의 사용(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Greeting Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Hello, &lt;span th:text="${name}"&gt;User&lt;/span&gt;!&lt;/p&gt;
+&lt;/body&gt;
+
+
+
+  이 Thymeleaf 템플릿에서 ${message} 와 ${name} 은 Model 객체에 담긴 데이터를 사용해 동적으로 콘텐츠를 생성합니다.
+    
+      컨트롤러에서 Model에 추가된 "Hello, welcome to our website!"와 "John"이 뷰에 렌더링됩니다.
+    
+  
+
+
+5️⃣ Model, ModelMap, ModelAndView
+
+  Spring MVC에서 Model 외에도 ModelMap과 ModelAndView라는 유사한 객체들이 있습니다.
+    
+      Model : 간단한 인터페이스로, 데이터 저장 및 전달을 위한 가장 기본적인 방법을 제공합니다.
+      ModelMap : Model의 구현체로, 데이터를 맵 형식으로 관리합니다.
+      ModelAndView : 모델 데이터와 뷰 이름을 함께 반환할 때 사용됩니다. 한 번에 모델과 뷰 정보를 모두 설정할 수 있습니다.
+    
+  
+
+
+6️⃣ 요약.
+
+  Model 객체는 Spring MVC에서 컨트롤러가 뷰에 데이터를 전달하는 데 사용되는 중요한 구성 요소입니다.
+    
+      이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2805,131 +3028,6 @@ public InternalResourceViewResolver viewResolver() {
   View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
   이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
   Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Model` 객체.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 Model 객체.
-
-1️⃣ Model 객체.
-
-  Spring MVC에서 Model 객체는 컨트롤러와 뷰 사이에서 데이터를 전달하는 역할을 합니다.
-  컨트롤러에서 생성된 데이터를 Model 객체에 담아두면, 이 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 사용될 수 있습니다.
-  Model 객체는 요청에 대한 응답으로 어떤 데이터를 뷰로 보내야 하는지 결정하는 데 사용됩니다.
-
-
-2️⃣ Model 객체의 주요 기능.
-
-  1. 데이터 저장 및 전달.
-    
-      Model 객체에 데이터를 저장하면, 해당 데이터는 뷰에 전달되어 클라이언트에게 표시됩니다.
-        
-          예를 들어, 사용자의 이름이나 리스트와 같은 데이터를 뷰에 전달할 수 있습니다.
-        
-      
-    
-  
-  2. 키-값 쌍 형태로 데이터 관리.
-    
-      Model 객체는 데이터를 키-값 쌍 형태로 관리합니다.
-        
-          뷰에서 이 데이터를 사용할 때는 키를 통해 접근합니다.
-        
-      
-    
-  
-  3. 뷰 템플릿에서 데이터 사용.
-    
-      Model에 추가된 데이터는 뷰 템플릿에서 변수로 사용됩니다.
-        
-          뷰 템플릿 엔진(예: Thymeleaf, JSP)은 이 데이터를 이용해 동적인 HTML을 생성하고, 이를 클라이언트에게 반환합니다.
-        
-      
-    
-  
-
-
-3️⃣ Model 객체의 사용 예.
-@Controller
-public class GreetingController {
-    
-    @GetMapping("/greeting")
-    public String greeting(Model model) {
-        model.addAttribute("name", "John");
-        model.addAttribute("message", "Hello welcome to our website!");
-        
-        // "greeting"이라는 뷰 이름을 반환
-        return "greeting";
-    }
-}
-
-
-
-  위 예제에서 greeting() 메서드는 Model 객체에 "name" 과 "message" 라는 두 가지 데이터를 추가합니다.
-    
-      이 데이터는 뷰 이름 "greeting"에 전달되며, 해당 뷰 템플릿에서 사용될 수 있습니다.
-    
-  
-
-
-4️⃣ 뷰 템플릿에서의 사용(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Greeting Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Hello, &lt;span th:text="${name}"&gt;User&lt;/span&gt;!&lt;/p&gt;
-&lt;/body&gt;
-
-
-
-  이 Thymeleaf 템플릿에서 ${message} 와 ${name} 은 Model 객체에 담긴 데이터를 사용해 동적으로 콘텐츠를 생성합니다.
-    
-      컨트롤러에서 Model에 추가된 "Hello, welcome to our website!"와 "John"이 뷰에 렌더링됩니다.
-    
-  
-
-
-5️⃣ Model, ModelMap, ModelAndView
-
-  Spring MVC에서 Model 외에도 ModelMap과 ModelAndView라는 유사한 객체들이 있습니다.
-    
-      Model : 간단한 인터페이스로, 데이터 저장 및 전달을 위한 가장 기본적인 방법을 제공합니다.
-      ModelMap : Model의 구현체로, 데이터를 맵 형식으로 관리합니다.
-      ModelAndView : 모델 데이터와 뷰 이름을 함께 반환할 때 사용됩니다. 한 번에 모델과 뷰 정보를 모두 설정할 수 있습니다.
-    
-  
-
-
-6️⃣ 요약.
-
-  Model 객체는 Spring MVC에서 컨트롤러가 뷰에 데이터를 전달하는 데 사용되는 중요한 구성 요소입니다.
-    
-      이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
-    
-  
 
 
                         </a>
@@ -68934,6 +69032,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Network/2024/2024-09-14-Service-primitive.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-09-14"
+        });
+    
+
+        posts.push({
+            'title'    : "💉[SQL] DBMS의 발전 과정.",
+            'path'     : "SQL > 2024",
+            'type'     : "post",
+            'tags'     : "SQL",
+            'url'      : "/SQL/2024/2024-09-15-development-process-of-dbms.html",
+            'image'    : "/assets/img/thumbnail/sql.jpeg",
+            'date'     : "2024-09-15"
         });
     
 

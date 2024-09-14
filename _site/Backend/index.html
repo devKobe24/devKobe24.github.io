@@ -685,6 +685,7 @@
             
             
             
+            
 
     
     
@@ -1593,181 +1594,6 @@ public class GreetingController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Controller` 객체.</h1></a>
-                        <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 Controller 객체.
-
-1️⃣ Controller 객체.
-
-  Spring MVC에서 Controller 객체는 애플리케이션에서 HTTP 요청을 처리하고, 해당 요청에 대해 적절한 응답을 생성하는 역할을 하는 구성 요소입니다.
-  Controller는 사용자 입력을 처리하고, 비즈니스 로직을 수행한 후, 뷰를 선택하여 결과를 클라이언트에게 반환합니다.
-  Spring MVC에서 Controller는 주로 @Controller 또는 @RestController 애노테이션으로 정의됩니다.
-
-
-1️⃣ 주요 역할.
-
-  1. HTTP 요청 처리
-    
-      Controller 객체는 특정 URL 경로와 매핑된 HTTP 요청(GET, POST, PUT, DELETE 등)을 처리합니다.
-        
-          각 요청은 컨트롤러의 특정 메서드와 연결되며, 메서드는 요청 매개변수를 처리하고, 필요한 작업을 수행합니다.
-        
-      
-    
-  
-  2. 비즈니스 로직 수행
-    
-      요청을 처리하는 동안, Controller는 서비스 계층이나 비즈니스 로직을 호출하여 필요한 처리를 수행합니다.
-        
-          이는 데이터베이스에서 데이터를 가져오거나, 계산을 수행하거나, 다른 복잡한 작업을 포함할 수 있습니다.
-        
-      
-    
-  
-  3. 모델 데이터 준비
-    
-      Controller는 뷰에 전달할 데이터를 준비하고, 이를 Model 객체에 담아 뷰로 전달합니다.
-        
-          이 데이터는 뷰 템플릿에서 사용되어 클라이언트에게 보여질 콘텐츠를 동적으로 생성합니다.
-        
-      
-    
-  
-  4. 뷰 선택 및 응답 생성
-    
-      Controller는 처리 결과에 따라 어떤 뷰를 사용할지 결정합니다.
-        
-          일반적으로 뷰의 이름을 반환하거나, ModelAndView 객체를 통해 뷰와 모델 데이터를 함께 반환합니다.
-          @RestController를 사용하면 JSON, XML 등의 형식으로 직접 데이터를 반환할 수도 있습니다.
-        
-      
-    
-  
-
-
-2️⃣ Controller 객체의 정의.
-
-  Spring MVC에서 Controller는 @Controller 애노테이션으로 정의됩니다.
-    
-      이 애노테이션은 클래스가 컨트롤러 역할을 한다는 것을 Spring에게 알리며, HTTP 요청을 처리할 수 있게 합니다.
-    
-  
-
-
-예제: 기본 컨트롤러
-@Controller
-public class GreetingController {
-    
-    @GetMapping("/greeting")
-    public String greeting(Model model) {
-        model.addAttribute("message", "Hello, welcome to our website!");
-        return "greeting";
-    }
-}
-
-
-
-  위 코드에서 GreetingController 클래스는 @Controller 애노테이션을 통해 컨트롤러로 정의됩니다.
-  /greeting 경로로 GET 요청이 들어오면 greeting() 메서드가 호출되며, "message" 라는 데이터를 모델에 추가하고, "greeting" 이라는 뷰 이름을 반환합니다.
-    
-      Spring MVC는 이 뷰 이름을 기반으로 실제 뷰를 랜더링합니다.
-    
-  
-
-
-3️⃣ @RestController 사용.
-
-  @RestController는 @Controller와 @ResponseBody를 결합한 애노테이션입니다.
-    
-      이 애노테이션이 적용된 클래스는 JSON이나 XML과 같은 데이터 형식으로 직접 응답을 반환하는 RESTful 웹 서비스의 컨트롤러로 동작합니다.
-    
-  
-
-
-예제: REST 컨트롤러
-@RestController
-public class ApiController {
-    
-    @GetMapping("/api/greeting")
-    public Map&lt;String, String&gt; greeting() {
-        Map&lt;String, String&gt; response = new HashMap&lt;&gt;();
-        response.put("message", "Hello, welcome to our API!");
-        return response;
-    }
-}
-
-
-  위 코드에서 ApiController 클래스는 @RestController 애노테이션을 사용하여 정의됩니다.
-    
-      /api/greeting 경로로 GET 요청이 들어오면 greeting() 메서드는 JSON 형식의 응답을 반환합니다.
-    
-  
-
-
-4️⃣ 요청 매핑.
-
-  Controller는 URL 경로 및 HTTP 메서드와 매핑된 메서드를 통해 요청을 처리합니다.
-    
-      Spring MVC는 이를 위해 @RequestMapping, @GetMapping, @PostMapping 등 다양한 매핑 애노테이션을 제공합니다.
-    
-  
-
-
-예제: 요청 매핑.
-@Controller
-@RequestMapping("/users")
-public class UserController {
-    
-    @GetMapping("/{id}")
-    public String getUser(@PathVariable("id") Long id, Model model) {
-        User user = userService.findUserById(id);
-        model.addAttribute("user", user);
-        return "userProfile";
-    }
-    
-    @PostMapping("/create")
-    public String createUser(@ModelAttribute User user) {
-        userService.saveUser(user);
-        return "redirect:/users/" + user.getId();
-    }
-}
-
-
-
-  위 예제에서 UserController는 /users 경로와 관련된 요청을 처리합니다.
-    
-      /users/{id} 경로로 GET 요청이 들어오면, 해당 사용자의 프로필 정보를 조회하여 "userProfile" 뷰에 전달합니다.
-      /users/create 경로로 POST 요청이 들어오면, 새로운 사용자를 생성하고, 해당 사용자의 프로필 페이지로 리다이렉트합니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  Spring MVC에서 Controller 객체는 클라이언트의 HTTP 요청을 처리하고, 비즈니스 로직을 실행한 후, 적절한 응답을 생성하는 핵심 구성 요소입니다.
-  Controller는 요청과 비즈니스 로직, 그리고 뷰 렌더링을 연결하는 역할을 하며, Spring MVC 애플리케이션에서 중요한 역할을 수행합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-09-11-proxy-pattern-and-server-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2157,6 +1983,181 @@ System.setProperty("socksProxyPort", "1080");
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Controller` 객체.</h1></a>
+                        <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 Controller 객체.
+
+1️⃣ Controller 객체.
+
+  Spring MVC에서 Controller 객체는 애플리케이션에서 HTTP 요청을 처리하고, 해당 요청에 대해 적절한 응답을 생성하는 역할을 하는 구성 요소입니다.
+  Controller는 사용자 입력을 처리하고, 비즈니스 로직을 수행한 후, 뷰를 선택하여 결과를 클라이언트에게 반환합니다.
+  Spring MVC에서 Controller는 주로 @Controller 또는 @RestController 애노테이션으로 정의됩니다.
+
+
+1️⃣ 주요 역할.
+
+  1. HTTP 요청 처리
+    
+      Controller 객체는 특정 URL 경로와 매핑된 HTTP 요청(GET, POST, PUT, DELETE 등)을 처리합니다.
+        
+          각 요청은 컨트롤러의 특정 메서드와 연결되며, 메서드는 요청 매개변수를 처리하고, 필요한 작업을 수행합니다.
+        
+      
+    
+  
+  2. 비즈니스 로직 수행
+    
+      요청을 처리하는 동안, Controller는 서비스 계층이나 비즈니스 로직을 호출하여 필요한 처리를 수행합니다.
+        
+          이는 데이터베이스에서 데이터를 가져오거나, 계산을 수행하거나, 다른 복잡한 작업을 포함할 수 있습니다.
+        
+      
+    
+  
+  3. 모델 데이터 준비
+    
+      Controller는 뷰에 전달할 데이터를 준비하고, 이를 Model 객체에 담아 뷰로 전달합니다.
+        
+          이 데이터는 뷰 템플릿에서 사용되어 클라이언트에게 보여질 콘텐츠를 동적으로 생성합니다.
+        
+      
+    
+  
+  4. 뷰 선택 및 응답 생성
+    
+      Controller는 처리 결과에 따라 어떤 뷰를 사용할지 결정합니다.
+        
+          일반적으로 뷰의 이름을 반환하거나, ModelAndView 객체를 통해 뷰와 모델 데이터를 함께 반환합니다.
+          @RestController를 사용하면 JSON, XML 등의 형식으로 직접 데이터를 반환할 수도 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ Controller 객체의 정의.
+
+  Spring MVC에서 Controller는 @Controller 애노테이션으로 정의됩니다.
+    
+      이 애노테이션은 클래스가 컨트롤러 역할을 한다는 것을 Spring에게 알리며, HTTP 요청을 처리할 수 있게 합니다.
+    
+  
+
+
+예제: 기본 컨트롤러
+@Controller
+public class GreetingController {
+    
+    @GetMapping("/greeting")
+    public String greeting(Model model) {
+        model.addAttribute("message", "Hello, welcome to our website!");
+        return "greeting";
+    }
+}
+
+
+
+  위 코드에서 GreetingController 클래스는 @Controller 애노테이션을 통해 컨트롤러로 정의됩니다.
+  /greeting 경로로 GET 요청이 들어오면 greeting() 메서드가 호출되며, "message" 라는 데이터를 모델에 추가하고, "greeting" 이라는 뷰 이름을 반환합니다.
+    
+      Spring MVC는 이 뷰 이름을 기반으로 실제 뷰를 랜더링합니다.
+    
+  
+
+
+3️⃣ @RestController 사용.
+
+  @RestController는 @Controller와 @ResponseBody를 결합한 애노테이션입니다.
+    
+      이 애노테이션이 적용된 클래스는 JSON이나 XML과 같은 데이터 형식으로 직접 응답을 반환하는 RESTful 웹 서비스의 컨트롤러로 동작합니다.
+    
+  
+
+
+예제: REST 컨트롤러
+@RestController
+public class ApiController {
+    
+    @GetMapping("/api/greeting")
+    public Map&lt;String, String&gt; greeting() {
+        Map&lt;String, String&gt; response = new HashMap&lt;&gt;();
+        response.put("message", "Hello, welcome to our API!");
+        return response;
+    }
+}
+
+
+  위 코드에서 ApiController 클래스는 @RestController 애노테이션을 사용하여 정의됩니다.
+    
+      /api/greeting 경로로 GET 요청이 들어오면 greeting() 메서드는 JSON 형식의 응답을 반환합니다.
+    
+  
+
+
+4️⃣ 요청 매핑.
+
+  Controller는 URL 경로 및 HTTP 메서드와 매핑된 메서드를 통해 요청을 처리합니다.
+    
+      Spring MVC는 이를 위해 @RequestMapping, @GetMapping, @PostMapping 등 다양한 매핑 애노테이션을 제공합니다.
+    
+  
+
+
+예제: 요청 매핑.
+@Controller
+@RequestMapping("/users")
+public class UserController {
+    
+    @GetMapping("/{id}")
+    public String getUser(@PathVariable("id") Long id, Model model) {
+        User user = userService.findUserById(id);
+        model.addAttribute("user", user);
+        return "userProfile";
+    }
+    
+    @PostMapping("/create")
+    public String createUser(@ModelAttribute User user) {
+        userService.saveUser(user);
+        return "redirect:/users/" + user.getId();
+    }
+}
+
+
+
+  위 예제에서 UserController는 /users 경로와 관련된 요청을 처리합니다.
+    
+      /users/{id} 경로로 GET 요청이 들어오면, 해당 사용자의 프로필 정보를 조회하여 "userProfile" 뷰에 전달합니다.
+      /users/create 경로로 POST 요청이 들어오면, 새로운 사용자를 생성하고, 해당 사용자의 프로필 페이지로 리다이렉트합니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  Spring MVC에서 Controller 객체는 클라이언트의 HTTP 요청을 처리하고, 비즈니스 로직을 실행한 후, 적절한 응답을 생성하는 핵심 구성 요소입니다.
+  Controller는 요청과 비즈니스 로직, 그리고 뷰 렌더링을 연결하는 역할을 하며, Spring MVC 애플리케이션에서 중요한 역할을 수행합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2517,149 +2518,6 @@ c:: got message &gt;&gt; nice to meet you
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
-                            🍃[Spring] @Transactional 애노테이션.
-
-  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
-    
-      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
-    
-  
-
-
-1️⃣ 주요 기능.
-
-  1. 트랜잭션 관리.
-    
-      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
-        
-          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
-        
-      
-    
-  
-  2. 적용 범위.
-    
-      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
-      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
-      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
-    
-  
-  3. 트랜잭션 전파(Propagation)
-    
-      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
-        
-          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
-          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
-          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
-          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
-          기타 : NOT_SUPPORT, NEVER, NESTED 등.
-        
-      
-    
-  
-  4. 트랜잭션 격리 수준(Isolation Level)
-    
-      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
-        
-          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
-            
-              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
-              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
-              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
-              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
-            
-          
-        
-      
-    
-  
-  5. 롤백 규칙(Rollback Rules)
-    
-      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
-        
-          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
-        
-      
-      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
-    
-  
-  6. 읽기 전용(Read-Only)
-    
-      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
-        
-          주로 SELECT 쿼리에서 사용됩니다.
-            2️⃣ 예시 코드
-          
-        
-      
-    
-  
-
-
-@Service
-public class MyService {
-    
-    @Autowired
-    private MyRepository myRepository;
-    
-    @Transactional
-    public void performTransaction() {
-        // 데이터베이스에 새로운 엔티티 추가
-        myRepository.save(new MyEntity("Data1"));
-        
-        // 다른 데이터베이스 작업 수행
-        myRepository.updateEntity(1L, "UpdatedData");
-        
-        // 예외 발생 시, 위의 모든 작업이 롤백됨
-        if (someConditionFails()) {
-            throw new RuntimeException("Transaction failed, rolling back...");
-        }
-    }
-    
-    @Transactional(readOnly = true)
-    public List&lt;MyEntity&gt; getEntities() {
-        return myRepository.findAll();
-    }
-}
-
-
-3️⃣ 요약.
-
-  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
-        
-          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
-        
-      
-    
-  
-
-
-이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2908,6 +2766,149 @@ public class MyServiceIntegrationTest {
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
+                            🍃[Spring] @Transactional 애노테이션.
+
+  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
+    
+      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
+    
+  
+
+
+1️⃣ 주요 기능.
+
+  1. 트랜잭션 관리.
+    
+      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
+        
+          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
+        
+      
+    
+  
+  2. 적용 범위.
+    
+      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
+      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
+      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
+    
+  
+  3. 트랜잭션 전파(Propagation)
+    
+      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
+        
+          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
+          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
+          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
+          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
+          기타 : NOT_SUPPORT, NEVER, NESTED 등.
+        
+      
+    
+  
+  4. 트랜잭션 격리 수준(Isolation Level)
+    
+      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
+        
+          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
+            
+              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
+              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
+              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
+              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
+            
+          
+        
+      
+    
+  
+  5. 롤백 규칙(Rollback Rules)
+    
+      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
+        
+          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
+        
+      
+      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
+    
+  
+  6. 읽기 전용(Read-Only)
+    
+      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
+        
+          주로 SELECT 쿼리에서 사용됩니다.
+            2️⃣ 예시 코드
+          
+        
+      
+    
+  
+
+
+@Service
+public class MyService {
+    
+    @Autowired
+    private MyRepository myRepository;
+    
+    @Transactional
+    public void performTransaction() {
+        // 데이터베이스에 새로운 엔티티 추가
+        myRepository.save(new MyEntity("Data1"));
+        
+        // 다른 데이터베이스 작업 수행
+        myRepository.updateEntity(1L, "UpdatedData");
+        
+        // 예외 발생 시, 위의 모든 작업이 롤백됨
+        if (someConditionFails()) {
+            throw new RuntimeException("Transaction failed, rolling back...");
+        }
+    }
+    
+    @Transactional(readOnly = true)
+    public List&lt;MyEntity&gt; getEntities() {
+        return myRepository.findAll();
+    }
+}
+
+
+3️⃣ 요약.
+
+  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
+        
+          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
+        
+      
+    
+  
+
+
+이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
 
                         </a>
                         <div class="info-post">
@@ -5057,123 +5058,6 @@ public class HelloController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
-                            🍃[Spring] Welcome Page 구현 및 동작 방법.
-
-1️⃣ Welcom Page 만들기.
-
-  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
-```html
-&lt;!DOCTYPE html&gt;
-
-
-	
-		Hello
-		
-	
-	
-		Hello
-		hello
-	
-
-
-- 스프링 부트가 제공하는 Welcom Page 기능.
-    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
-    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
-
-## 2️⃣ thymeleaf 템플릿 엔진.
-- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
-- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
-- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
-
-```java
-// com/devkobe/hello_spring/controller
-@Controller
-public class HelloController {
-    
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("data", "hello!!");
-        return "hello";
-    }
-}
-
-
-&lt;!-- `resource/static/index.html` --&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-	&lt;head&gt;
-		&lt;title&gt;Hello&lt;/title&gt;
-		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-		Hello
-		&lt;a href="/hello"&gt;hello&lt;/a&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-
-
-&lt;!-- `resource/templates/hello.html` --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-	&lt;title&gt;Hello&lt;/title&gt;
-&lt;/head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;body&gt;
-&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  thymeleaf 템플릿엔진 동작 확인
-    
-      실행 : http://localhost:8080/hello
-    
-  
-  
-    동작 환경 그림.
-
-  
-  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
-    
-      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
-        
-          'resources:template/' + '{ViewName}' + '.html'
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
-IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-08-23-Singleton.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -5623,6 +5507,123 @@ public class MyService {
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
+                            🍃[Spring] Welcome Page 구현 및 동작 방법.
+
+1️⃣ Welcom Page 만들기.
+
+  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
+```html
+&lt;!DOCTYPE html&gt;
+
+
+	
+		Hello
+		
+	
+	
+		Hello
+		hello
+	
+
+
+- 스프링 부트가 제공하는 Welcom Page 기능.
+    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
+    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
+
+## 2️⃣ thymeleaf 템플릿 엔진.
+- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
+- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
+- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
+
+```java
+// com/devkobe/hello_spring/controller
+@Controller
+public class HelloController {
+    
+    @GetMapping("hello")
+    public String hello(Model model) {
+        model.addAttribute("data", "hello!!");
+        return "hello";
+    }
+}
+
+
+&lt;!-- `resource/static/index.html` --&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Hello&lt;/title&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		Hello
+		&lt;a href="/hello"&gt;hello&lt;/a&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;!-- `resource/templates/hello.html` --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+	&lt;title&gt;Hello&lt;/title&gt;
+&lt;/head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  thymeleaf 템플릿엔진 동작 확인
+    
+      실행 : http://localhost:8080/hello
+    
+  
+  
+    동작 환경 그림.
+
+  
+  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
+    
+      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
+        
+          'resources:template/' + '{ViewName}' + '.html'
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
+IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
 
 
                         </a>
@@ -9105,14 +9106,23 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Math/2024-06-17-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-17-TIL.html"><h1 class="title_post">📝 [TIL] 240617 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-17-TIL.html" class="txt_post">
+                        <a href="/Backend/Math/2024-06-17-Math.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
+                        <a href="/Backend/Math/2024-06-17-Math.html" class="txt_post">
                             
-  수학, 필요.충분 조건
+
+
+
+
+
+
+
+
+
+
 
 
                         </a>
@@ -9131,23 +9141,14 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Math/2024-06-17-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Math/2024-06-17-Math.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
-                        <a href="/Backend/Math/2024-06-17-Math.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-06-17-TIL.html"><h1 class="title_post">📝 [TIL] 240617 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-17-TIL.html" class="txt_post">
                             
-
-
-
-
-
-
-
-
-
-
+  수학, 필요.충분 조건
 
 
                         </a>
@@ -10442,34 +10443,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-17-TIL.html" class="txt_post">
-                            
-  연습 문제 풀이(2)
-  예외 처리 - 트러블슈팅
-  문자열 처리 - 트러블슈팅
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -10517,6 +10490,34 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-17-TIL.html" class="txt_post">
+                            
+  연습 문제 풀이(2)
+  예외 처리 - 트러블슈팅
+  문자열 처리 - 트러블슈팅
 
 
                         </a>
@@ -10730,34 +10731,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -10856,6 +10829,34 @@ public class Main {
 그래서 저의 적성과 맞는 것 같아요.
 
 저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
+                            
+  인터페이스
+  내부 클래스
+  입출력(1)
+
 
                         </a>
                         <div class="info-post">
@@ -11087,36 +11088,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-02-TIL.html"><h1 class="title_post">📝 [TIL] 240502 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-02-TIL.html" class="txt_post">
-                            
-  기초수학 - 소개(수학과 자바 프로그래밍, 자료구조, 알고리즘의 관계)
-  코테 맛보기(1) - 코테를 위한 자바 프로그래밍 언어 사용 숙련도
-  코테 맛보기(2) - 코테를 위한 자료구조와 알고리즘 개념 구현 방법 숙지
-  자바 - 소개
-  자바 - 변수와 자료형(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Math/2024-05-02-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
@@ -11281,6 +11252,36 @@ public class Main {
 
 👉 이와 같이, 수학은 알고리즘을 설계하고 분석하는 데 필수적인 도구이며, 효율적이고 신뢰할 수 있는 소프트웨어 시스템을 개발하는 데 중요한 역할을 합니다.
 👉 수학적 사고는 알고리즘의 성능을 최적화하고 문제 해결과정을 체계화 하는 데 큰 도움이 됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-02-TIL.html"><h1 class="title_post">📝 [TIL] 240502 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-02-TIL.html" class="txt_post">
+                            
+  기초수학 - 소개(수학과 자바 프로그래밍, 자료구조, 알고리즘의 관계)
+  코테 맛보기(1) - 코테를 위한 자바 프로그래밍 언어 사용 숙련도
+  코테 맛보기(2) - 코테를 위한 자료구조와 알고리즘 개념 구현 방법 숙지
+  자바 - 소개
+  자바 - 변수와 자료형(1)
+
 
                         </a>
                         <div class="info-post">
@@ -16851,6 +16852,17 @@ public class Main {
             'url'      : "/Java/Java/2024-09-13-null.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-09-13"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 네트워크 개념 - 서비스 프리미티브",
+            'path'     : "Network > 2024",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Network/2024/2024-09-14-Service-primitive.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-09-14"
         });
     
 

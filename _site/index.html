@@ -693,6 +693,7 @@
             
             
             
+            
 
     
     
@@ -1099,6 +1100,94 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/SQL/2024/2024-09-18-DBMS-Classification.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/SQL/2024/2024-09-18-DBMS-Classification.html"><h1 class="title_post">💉[SQL] DBMS의 분류.</h1></a>
+                        <a href="/SQL/2024/2024-09-18-DBMS-Classification.html" class="txt_post">
+                            💉[SQL] DBMS의 분류.
+
+  DBMS의 유형은 계층형(Hierarchical), 망형(Network), 관계형(Relational), 객체지향형(Object-Oriented), 객체관계형(Object-Relational) 등으로 분류됩니다.
+  현재 사용되는 DBMS 중에는 관계형 DBMS(Relational DBMS) 가 가장 많은 부분을 차지하며, MySQL 도 관계형 DBMS(Relational DBMS)에 포함됩니다.
+
+
+1️⃣ 계층형 DBMS.
+
+  계층형 DBMS(Hierarchical DBMS) 는 처음으로 등장한 DBMS 개념으로 1960년대에 시작되었습니다.
+  다음 그림과 같이 각 계층은 트리(tree) 형태를 갖습니다.
+
+
+
+
+
+  계층형 DBMS의 문제는 처음 구성을 완료한 후에 이를 변경하기가 상당히 까다롭다는 것입니다.
+  또한, 다른 구성원을 찾아가는 것이 비효율적입니다.
+    
+      예를 들어 재무 2팀에서 회계팀으로 연결하려면 재무이사 -&gt; 사장 -&gt; 회계이사 -&gt; 회계팀과 같이 여러 단계를 거쳐야 합니다.
+    
+  
+  지금은 사용하지 않는 형태입니다.
+
+
+2️⃣ 망형 DBMS.
+
+  망형 DBMS(Network DBMS) 는 계층형 DBMS의 문제점을 개선하기 위해 1970년대에 등장했습니다.
+  다음 그림을 보면 하위에 있는 구성원끼리도 연결된 유연한 구조입니다.
+
+
+
+
+
+  예를 들어 재무 2팀에서 바로 회계팀으로 연결이 가능합니다.
+  하지만 망형 DBMS를 잘 활용하려면 프로그래머가 모든 구조를 이해해야만 프로그램 작성이 가능하다는 단점이 존재합니다.
+  지금은 거의 사용하지 않는 형태입니다.
+
+
+3️⃣ 관계형 DBMS
+
+  관계형 DBMS(Relational DBMS) 는 줄여서 RDBMS 라고 부릅니다.
+  MySQL 뿐만 아니라, 대부분의 DBMS가 RDBMS 형태로 사용됩니다.
+  RDBMS의 데이터베이스는 테이블(table) 이라는 최소 단위로 구성되며, 이 테이블은 하나 이상의 열(Column) 과 행(Row) 으로 이루어져있습니다.
+  아래의 표 모양이 바로 테이블입니다.
+    
+      친구의 카카오톡 아이디, 이름, 연락처 등 3가지 정보를 표, 즉 테이블로 만들면 다음과 같습니다.
+    
+  
+
+
+
+
+
+  RDBMS 에서는 모든 데이터가 테이블에 저장됩니다.
+  이 구조가 가장 기본적이고 중요한 구성이기 때문에 테이블만 제대로 파악하면 RDBMS를 어느 정도 이해했다고 알 수 있습니다.
+  테이블은 열과 행으로 이루어진 2차원 구조를 갖습니다.
+    
+      세로는 열(Column)이라 하고, 가로는 행(Row)이라고 합니다.
+        
+          열은 아이디, 이름, 연락처로 이름을 가지고 있고, 행은 각각의 정보로 이루어져 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/SQL" class="category">SQL</a>
+                            
+                                <span class="date">· 2024-09-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1881,6 +1970,290 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-14-CORS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-14-CORS.html"><h1 class="title_post">💾 [CS] CORS란?</h1></a>
+                        <a href="/Backend/CS/2024-09-14-CORS.html" class="txt_post">
+                            💾 [CS] CORS란?
+
+1️⃣ CORS.
+
+  CORS(Cross-Origin Resource Sharing)는 웹 브라우저가 서로 다른 출처(도메인, 프로토콜, 또는 포트)를 가진 리소스 간의 요청을 안전하게 수행할 수 있도록 하는 보안 기능입니다.
+  CORS(Cross-Origin Resource Sharing)는 웹 페이지가 다른 출처의 리소스를 요청할 때 발생하는 보안 제약을 해결하기 위해 설계되었습니다.
+
+
+2️⃣ 왜 CORS가 필요한가?
+
+  웹 보안 모델에서 동일 출처 정책(Same-Origin Policy)은 보안상의 이유로, 웹 페이지에서 로드된 자바스크립트가 자신이 로드된 출처 외부의 리소스에 접근하는 것을 제한합니다.
+    
+      즉, 한 웹 페이지에서 로드된 스크립트는 다른 출처의 리소스(예: API 엔드포인트, 이미지 등)에 접근할 수 없습니다.
+      이 보안 정책은 사이트 간 요청 위조(CSRF)와 같은 공격을 방지하는 데 중요한 역할을 합니다.
+    
+  
+  하지만, 많은 경우 애플리케이션은 외부 API나 다른 도메인에 있는 리소스에 접근해야 할 필요가 있습니다.
+    
+      이때, CORS를 사용하여 특정 출처에서 오는 요청을 허용할 수 있습니다.
+    
+  
+
+
+3️⃣ CORS의 동작 방식.
+
+  CORS는 서버가 클라이언트의 요청에 대해 다른 출처에서의 접근을 허용할지 여부를 HTTP 헤더를 통해 명시합니다.
+
+
+CORS를 구현하는 과정.
+
+  1. Preflight Request
+    
+      브라우저는 실제 요청을 보내기 전에 OPTIONS 메서드를 사용해 서버에 “사전 요청(preflight request)”을 보냅니다.
+        
+          이 요청은 클라이언트가 보내려고 하는 실제 요청의 메서드와 헤더가 서버에서 허용되는지 확인합니다.
+        
+      
+    
+  
+  2. 서버 응답
+    
+      서버는 Access-Control-Allow-Origin 등의 CORS 관련 헤더를 포함한 응답을 반환합니다.
+        
+          이 응답을 통해 브라우저는 해당 출처의 요청을 허용할지 결정합니다.
+        
+      
+    
+  
+  3. 실제 요청
+    
+      서버가 허용한 경우, 브라우저는 실제 요청을 보내고 서버에서 데이터를 받아옵니다.
+    
+  
+
+
+4️⃣ 주요 CORS 헤더.
+
+  Access-Control-Allow-Origin
+    
+      클라이언트가 접근을 허용받은 출처를 지정합니다.
+      모든 출처를 허용하려면 *를 사용할 수 있습니다.
+    
+  
+
+
+Access-Control-Allow-Origin: https://example.com
+
+
+
+  Access-Control-Allow-Methods
+    
+      서버가 허용하는 HTTP 메서드(GET, POST, PUT, DELETE 등)를 지정합니다.
+    
+  
+
+
+Access-Control-Allow-Methods: GET, POST
+
+
+
+  Access-Control-Allow-Credentials
+    
+      서버가 클라이언트의 자격 증명(쿠키, 인증 헤더 등)을 포함한 요청을 허용할지 여부를 결정합니다.
+        
+          값으로는 true 또는 false가 올 수 있습니다.
+        
+      
+    
+  
+
+
+Access-Control-Allow-Credentials: true
+
+
+
+  Access-Control-Max-Age
+    
+      브라우저가 사전 요청의 결과를 캐시할 수 있는 시간을 초 단위로 지정합니다.
+    
+  
+
+
+Access-Control-Max-Age: 3600
+
+
+5️⃣ CROS 설정 예시(서버 측)
+
+  서버 측에서 CORS를 설정하는 방법은 사용 중인 웹 서버 또는 프레임워크에 따라 다릅니다.
+    
+      다음은 Java SpringBoot 애플리케이션에서 CORS를 설정하는 예입니다.
+    
+  
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://example.com")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowedCredentials(true)
+                .maxAge(3600);
+            
+    }
+}
+
+
+
+  위 설정은 특정 출처(https://example.com)에서 오는 모든 경로의 요청에 대해 CORS를 허용하고, 특정 HTTP 메서드와 헤더를 사용할 수 있도록 합니다.
+
+
+6️⃣ 요약.
+
+  CORS 는 웹 브라우저가 서로 다른 출처의 리소스에 안전하게 접근할 수 있도록 하기 위한 보안 기능입니다.
+  CORS 는 서버가 응답 헤더를 통해 특정 출처의 요청을 허용할 수 있도록 하며, 이를 통해 웹 애플리케이션은 외부 API나 리소스에 접근할 수 있습니다.
+  CORS 를 적절히 설정하면, 보안성을 유지하면서도 다양한 출처에서의 리소스 접근을 허용할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
+                        <a href="/Backend/CS/2024-09-14-CDN-Service.html" class="txt_post">
+                            💾 [CS] CDN 서비스란?
+
+1️⃣ CDN 서비스.
+
+  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
+  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
+
+
+2️⃣ CDN의 주요 기능.
+
+  1. 콘텐츠 캐싱(Caching).
+    
+      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
+      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
+    
+  
+  2. 분산된 네트워크.
+    
+      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
+      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
+    
+  
+  3. 로드 밸런싱.
+    
+      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
+        
+          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
+        
+      
+    
+  
+  4. 보안 강화.
+    
+      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
+    
+  
+  5. 고가용성 및 장애 복구
+    
+      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
+    
+  
+
+
+3️⃣ CDN 서비스의 장점.
+
+  1. 빠른 콘텐츠 제공.
+    
+      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
+    
+  
+  2. 트래픽 관리.
+    
+      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
+    
+  
+  3. 전 세계적인 도달 범위.
+    
+      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
+        
+          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
+        
+      
+    
+  
+  4. 비용 절감.
+    
+      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
+    
+  
+  5. 보안 강화.
+    
+      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
+    
+  
+
+
+4️⃣ CDN 서비스의 예시.
+
+  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
+  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
+  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
+  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
+  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
+
+
+5️⃣ 요약.
+
+  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
+    
+      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-09-14-Service-primitive.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -2076,290 +2449,6 @@ Confirm
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
-                        <a href="/Backend/CS/2024-09-14-CDN-Service.html" class="txt_post">
-                            💾 [CS] CDN 서비스란?
-
-1️⃣ CDN 서비스.
-
-  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
-  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
-
-
-2️⃣ CDN의 주요 기능.
-
-  1. 콘텐츠 캐싱(Caching).
-    
-      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
-      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
-    
-  
-  2. 분산된 네트워크.
-    
-      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
-      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
-    
-  
-  3. 로드 밸런싱.
-    
-      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
-        
-          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
-        
-      
-    
-  
-  4. 보안 강화.
-    
-      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
-    
-  
-  5. 고가용성 및 장애 복구
-    
-      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
-    
-  
-
-
-3️⃣ CDN 서비스의 장점.
-
-  1. 빠른 콘텐츠 제공.
-    
-      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
-    
-  
-  2. 트래픽 관리.
-    
-      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
-    
-  
-  3. 전 세계적인 도달 범위.
-    
-      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
-        
-          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
-        
-      
-    
-  
-  4. 비용 절감.
-    
-      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
-    
-  
-  5. 보안 강화.
-    
-      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
-    
-  
-
-
-4️⃣ CDN 서비스의 예시.
-
-  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
-  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
-  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
-  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
-  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
-
-
-5️⃣ 요약.
-
-  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
-    
-      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-14-CORS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-14-CORS.html"><h1 class="title_post">💾 [CS] CORS란?</h1></a>
-                        <a href="/Backend/CS/2024-09-14-CORS.html" class="txt_post">
-                            💾 [CS] CORS란?
-
-1️⃣ CORS.
-
-  CORS(Cross-Origin Resource Sharing)는 웹 브라우저가 서로 다른 출처(도메인, 프로토콜, 또는 포트)를 가진 리소스 간의 요청을 안전하게 수행할 수 있도록 하는 보안 기능입니다.
-  CORS(Cross-Origin Resource Sharing)는 웹 페이지가 다른 출처의 리소스를 요청할 때 발생하는 보안 제약을 해결하기 위해 설계되었습니다.
-
-
-2️⃣ 왜 CORS가 필요한가?
-
-  웹 보안 모델에서 동일 출처 정책(Same-Origin Policy)은 보안상의 이유로, 웹 페이지에서 로드된 자바스크립트가 자신이 로드된 출처 외부의 리소스에 접근하는 것을 제한합니다.
-    
-      즉, 한 웹 페이지에서 로드된 스크립트는 다른 출처의 리소스(예: API 엔드포인트, 이미지 등)에 접근할 수 없습니다.
-      이 보안 정책은 사이트 간 요청 위조(CSRF)와 같은 공격을 방지하는 데 중요한 역할을 합니다.
-    
-  
-  하지만, 많은 경우 애플리케이션은 외부 API나 다른 도메인에 있는 리소스에 접근해야 할 필요가 있습니다.
-    
-      이때, CORS를 사용하여 특정 출처에서 오는 요청을 허용할 수 있습니다.
-    
-  
-
-
-3️⃣ CORS의 동작 방식.
-
-  CORS는 서버가 클라이언트의 요청에 대해 다른 출처에서의 접근을 허용할지 여부를 HTTP 헤더를 통해 명시합니다.
-
-
-CORS를 구현하는 과정.
-
-  1. Preflight Request
-    
-      브라우저는 실제 요청을 보내기 전에 OPTIONS 메서드를 사용해 서버에 “사전 요청(preflight request)”을 보냅니다.
-        
-          이 요청은 클라이언트가 보내려고 하는 실제 요청의 메서드와 헤더가 서버에서 허용되는지 확인합니다.
-        
-      
-    
-  
-  2. 서버 응답
-    
-      서버는 Access-Control-Allow-Origin 등의 CORS 관련 헤더를 포함한 응답을 반환합니다.
-        
-          이 응답을 통해 브라우저는 해당 출처의 요청을 허용할지 결정합니다.
-        
-      
-    
-  
-  3. 실제 요청
-    
-      서버가 허용한 경우, 브라우저는 실제 요청을 보내고 서버에서 데이터를 받아옵니다.
-    
-  
-
-
-4️⃣ 주요 CORS 헤더.
-
-  Access-Control-Allow-Origin
-    
-      클라이언트가 접근을 허용받은 출처를 지정합니다.
-      모든 출처를 허용하려면 *를 사용할 수 있습니다.
-    
-  
-
-
-Access-Control-Allow-Origin: https://example.com
-
-
-
-  Access-Control-Allow-Methods
-    
-      서버가 허용하는 HTTP 메서드(GET, POST, PUT, DELETE 등)를 지정합니다.
-    
-  
-
-
-Access-Control-Allow-Methods: GET, POST
-
-
-
-  Access-Control-Allow-Credentials
-    
-      서버가 클라이언트의 자격 증명(쿠키, 인증 헤더 등)을 포함한 요청을 허용할지 여부를 결정합니다.
-        
-          값으로는 true 또는 false가 올 수 있습니다.
-        
-      
-    
-  
-
-
-Access-Control-Allow-Credentials: true
-
-
-
-  Access-Control-Max-Age
-    
-      브라우저가 사전 요청의 결과를 캐시할 수 있는 시간을 초 단위로 지정합니다.
-    
-  
-
-
-Access-Control-Max-Age: 3600
-
-
-5️⃣ CROS 설정 예시(서버 측)
-
-  서버 측에서 CORS를 설정하는 방법은 사용 중인 웹 서버 또는 프레임워크에 따라 다릅니다.
-    
-      다음은 Java SpringBoot 애플리케이션에서 CORS를 설정하는 예입니다.
-    
-  
-
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-@Configuration
-public class WebConfig implements WebMvcConfigurer {
-    
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://example.com")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*")
-                .allowedCredentials(true)
-                .maxAge(3600);
-            
-    }
-}
-
-
-
-  위 설정은 특정 출처(https://example.com)에서 오는 모든 경로의 요청에 대해 CORS를 허용하고, 특정 HTTP 메서드와 헤더를 사용할 수 있도록 합니다.
-
-
-6️⃣ 요약.
-
-  CORS 는 웹 브라우저가 서로 다른 출처의 리소스에 안전하게 접근할 수 있도록 하기 위한 보안 기능입니다.
-  CORS 는 서버가 응답 헤더를 통해 특정 출처의 요청을 허용할 수 있도록 하며, 이를 통해 웹 애플리케이션은 외부 API나 리소스에 접근할 수 있습니다.
-  CORS 를 적절히 설정하면, 보안성을 유지하면서도 다양한 출처에서의 리소스 접근을 허용할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-14</span>
                             
@@ -2640,6 +2729,177 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
+                            ☕️[Java] 람다(Lambda).
+
+1️⃣ 람다 표현식(Lambda Expression)
+
+  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
+  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
+  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
+
+
+2️⃣ 람다 표현식의 기본 구조.
+
+  람다 표현식은 다음과 같은 형태로 작성됩니다.
+
+
+(parameters) -&gt; expression
+
+혹은
+
+(paramters) -&gt; { statements; }
+
+
+
+  매개변수 목록(parameters)
+    
+      메서드처럼 전달받을 인자를 정의합니다.
+      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
+    
+  
+  화살표 연산자 -&gt;
+    
+      람다 표현식의 매개변수와 본문(body)을 구분합니다.
+    
+  
+  본문(body)
+    
+      람다가 실행할 코드를 정의합니다.
+      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
+    
+  
+
+
+3️⃣ 예시
+
+
+  1. 기본적인 람다 표현식
+
+
+// 기존 익명 내부 클래스 방식
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello, Lambda!");
+    }
+};
+
+// 람다 표현식 사용
+Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
+
+
+
+  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  
+    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
+  
+  2. 매개변수와 함께 사용하는 람다 표현식
+
+
+// 기존 방식
+Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1.compareTo(o2);
+    }
+}
+
+// 람다 표현식 사용
+Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
+
+
+
+  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
+
+
+4️⃣ 함수형 인터페이스와 람다.
+
+
+  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
+  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
+
+
+예시: 함수형 인터페이스
+@FunctionalInterface
+interface MyFuncationalInterface {
+    void doSomething();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
+        myFunc.doSomething(); // 출력: Doing something!
+    }
+}
+
+
+
+  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
+
+
+5️⃣ 자주 사용되는 함수형 인터페이스
+
+  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
+    
+      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
+          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
+        
+      
+      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
+          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
+        
+      
+      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
+          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
+        
+      
+      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
+          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
+        
+      
+    
+  
+
+
+6️⃣ 장점.
+
+  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
+  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
+  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
+
+
+7️⃣ 요약.
+
+  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
+    
+      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -2810,177 +3070,6 @@ i3 = -1
   myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
   MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
   참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
-                            ☕️[Java] 람다(Lambda).
-
-1️⃣ 람다 표현식(Lambda Expression)
-
-  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
-  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
-  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
-
-
-2️⃣ 람다 표현식의 기본 구조.
-
-  람다 표현식은 다음과 같은 형태로 작성됩니다.
-
-
-(parameters) -&gt; expression
-
-혹은
-
-(paramters) -&gt; { statements; }
-
-
-
-  매개변수 목록(parameters)
-    
-      메서드처럼 전달받을 인자를 정의합니다.
-      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
-    
-  
-  화살표 연산자 -&gt;
-    
-      람다 표현식의 매개변수와 본문(body)을 구분합니다.
-    
-  
-  본문(body)
-    
-      람다가 실행할 코드를 정의합니다.
-      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
-    
-  
-
-
-3️⃣ 예시
-
-
-  1. 기본적인 람다 표현식
-
-
-// 기존 익명 내부 클래스 방식
-Runnable runnable = new Runnable() {
-    @Override
-    public void run() {
-        System.out.println("Hello, Lambda!");
-    }
-};
-
-// 람다 표현식 사용
-Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
-
-
-
-  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  
-    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
-  
-  2. 매개변수와 함께 사용하는 람다 표현식
-
-
-// 기존 방식
-Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
-    }
-}
-
-// 람다 표현식 사용
-Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
-
-
-
-  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
-
-
-4️⃣ 함수형 인터페이스와 람다.
-
-
-  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
-  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
-
-
-예시: 함수형 인터페이스
-@FunctionalInterface
-interface MyFuncationalInterface {
-    void doSomething();
-}
-
-public class Main {
-    public static void main(String[] args) {
-        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
-        myFunc.doSomething(); // 출력: Doing something!
-    }
-}
-
-
-
-  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
-
-
-5️⃣ 자주 사용되는 함수형 인터페이스
-
-  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
-    
-      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
-          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
-        
-      
-      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
-          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
-        
-      
-      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
-          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
-        
-      
-      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
-          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
-        
-      
-    
-  
-
-
-6️⃣ 장점.
-
-  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
-  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
-  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
-
-
-7️⃣ 요약.
-
-  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
-    
-      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
-    
-  
 
 
                         </a>
@@ -3172,157 +3261,118 @@ filtered.ifPresent(System.out::println); // "Hello" 출력
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-12-Primitive-type.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-12-Primitive-type.html"><h1 class="title_post">☕️[Java] 기본형 타입(Primitive Type).</h1></a>
-                        <a href="/Java/Java/2024-09-12-Primitive-type.html" class="txt_post">
-                            ☕️[Java] 기본형 타입(Primitive Type).
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
+                            🍃[Spring] .addAttribute() 메서드.
 
-1️⃣ 기본형 타입(Primitive Type)란?
+1️⃣ .addAttribute() 메서드.
 
-  기본형 타입(Primitive Type)은 Java에서 가장 단순하고 기본적인 데이터 유형으로, 실제 값을 직접 저장하는 변수 유형입니다.
-  기본형 타입(Primitive Type)은 참조형 타입(Reference Type)과 달리 객체가 아니며, 메모리 상에 직접 데이터를 저장합니다.
-  Java에는 8개의 기본형 타입(Primitive Type)이 있습니다.
-
-
-1️⃣ 정수형.
-
-  byte : 8비트 정수(-128 ~ 127).
-  short : 16비트 정수(-32,768 ~ 32,767).
-  int : 32비트 정수(-2^31 ~ 2^31-1).
-  long : 64비트 정수(-2^63 ~ 2^63-1).
+  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
+  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
 
 
-2️⃣ 실수형.
+2️⃣ 주요 기능.
 
-  float : 32비트 부동소수점.
-  double : 64비트 부동소수점.
-
-
-3️⃣ 문자형.
-
-  char : 16비트 유니코드 문자(0 ~ 65,535)
-
-
-4️⃣ 논리형.
-
-  boolean : 참 또는 거짓(true/false)
-
-
-2️⃣ 기본형 타입의 한계.
-
-  1. 객체로서의 기능 부족.
+  모델에 데이터 추가
     
-      기본형 타입은 객체가 아니기 때문에 메서드나 속성을 가질 수 없습니다.
+      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
         
-          이로 인해 객체지향적인 프로그래밍에서 사용되는 많은 기능을 사용할 수 없습니다.
+          이 데이터는 이후 뷰에서 사용될 수 있습니다.
         
       
     
   
-  2. 컬렉션과의 호환성 부족.
+  뷰 랜더링에 데이터 전달
     
-      기본형 타입은 Java의 컬렉션 프레임워크(List, Set, Map 등)에 직접적으로 사용할 수 없습니다.
-        
-          컬렉션은 객체만을 저장할 수 있기 때문에, 기본형을 사용할 경우 래퍼 클래스(예: Integer, Double, Boolean)로 변환해야 합니다.
-        
-      
-    
-  
-  3. 유연성 부족.
-    
-      기본형 타입은 값이 불변이며, 추가적인 속성이나 동작을 정의할 수 없습니다.
-        
-          이를 보완하기 위해 래퍼 클래스와 같은 객체가 필요합니다.
-        
-      
+      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
     
   
 
 
-3️⃣ 기본형 타입을 사용하는 이유.
-
-  1. 성능.
+3️⃣ 사용 예시.
+@Controller
+public class HomeController {
     
-      기본형 타입은 참조형 타입보다 메모리 사용량이 적고, 처리 속도가 빠릅니다.
-      기본형 타입은 실제 값을 직접 메모리에 저장하기 때문에, 메모리 접근이 빠르고, 가비지 컬렉션과 같은 추가적인 처리 없이 직접적으로 값을 사용할 수 있습니다.
-    
-  
-  2. 메모리 효율성.
-    
-      기본형 타입은 참조형 타입보다 메모리 사용량이 적습니다.
+    @GetMapping("/home")
+    public String home(Model model) {
+        // 모델에 데이터를 추가
+        model.addAttribute("message", "Welcome to the Home Page!");
+        model.addAttribute("date", LocalDate.now());
         
-          예를 들어, int는 32비트를 사용하지만, Integer는 객체를 래핑하기 때문에 추가적인 메모리 오버헤드가 발생합니다.
-        
-      
-    
-  
-  3. 간결함.
-    
-      기본형 타입은 간단하고 사용하기 쉽습니다.
-      복잡한 객체 대신, 단순한 값만 필요할 때 기본형 타입을 사용하는 것이 코드의 가독성을 높이고, 불필요한 복잡성을 줄일 수 있습니다.
-    
-  
-  4. 기본적인 연산 지원.
-    
-      기본형 타입은 Java 언어 내에서 산술 연산, 비교 연산 등 기본적인 연산을 직접적으로 지원합니다.
-        
-          이러한 연산은 참조형 타입보다 훨씬 빠르게 수행됩니다.
-        
-      
-    
-  
-
-
-4️⃣ 기본형 타입의 사용 예.
-
-public class Main {
-    public static void main(String[] args) {
-        int a = 10;
-        int b = 20;
-        int sum = a + b; // 기본형 타입 간의 덧셈 연산
-        System.out.println("Sum: " + sum); // 출력: Sum: 30
-        
-        // 기본형 타입을 사용할 경우 메모리 효율성과 성능이 우수
+        // "home"이라는 뷰 이름을 반환
+        return "home";
     }
 }
 
 
-5️⃣ 기본형 타입과 래퍼 클래스.
 
-  Java는 기본형 타입을 객체로 감쌀 수 있는 래퍼 클래스를 제공합니다.
+  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
+  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
+  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
+
+
+4️⃣ 뷰에서의 사용 예시(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Home Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
+  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
+
+
+5️⃣ .addAttribute()의 다양한 사용 방법.
+
+  1. 키와 값 쌍으로 사용
     
-      예를 들어, int의 래퍼 클래스는 Integer입니다.
+      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
+        model.addAttribute("username", "JohnDoe");
         
-          래퍼 클래스는 기본형 타입을 객체로 변환하여 컬렉션과 같은 객체 기반 API와 호환성을 제공할 수 있습니다.
-```java
-public class Main {
-  public static void main(String[] args) {
-  Integer x = 10; // 오토박싱 (autoboxing)
-  int y = x; // 오토언박싱 (autounboxing)
-        
-
-        // 래퍼 클래스는 메서드를 가질 수 있습니다.
-  int max = Integer.max(10, 20);
-  System.out.println(“Max: “ + max); // 출력: Max: 20
-  }
-}
-```
       
     
   
-  기본형 타입은 성능과 메모리 효율성 면에서 장점이 있지만, 객체의 유연성과 컬렉션 호환성 측면에서 한계가 있습니다.
+  2. 키 없이 값만 전달
     
-      이러한 이유로, Java에서는 상황에 따라 기본형 타입과 래퍼 클래스를 적절히 사용하게 됩니다.
+      키를 생략하고 값만 전달할 수도 있습니다.
+        
+          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
+            User user = new User("John", "Doe");
+model.addAttribute(user);
+// "user"라는 키로 모델에 추가됩니다.
+            
+          
+        
+      
     
   
+  3. 체이닝(Chaining)
+    
+      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
+        model.addAttribute("name", "Jane")
+   .addAttribute("age", 30)
+   .addAttribute("city", "New York");
+        
+      
+    
+  
+  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-12</span>
                             
@@ -3705,118 +3755,157 @@ public class GreetingController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-12-Primitive-type.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
-                            🍃[Spring] .addAttribute() 메서드.
+                        <a href="/Java/Java/2024-09-12-Primitive-type.html"><h1 class="title_post">☕️[Java] 기본형 타입(Primitive Type).</h1></a>
+                        <a href="/Java/Java/2024-09-12-Primitive-type.html" class="txt_post">
+                            ☕️[Java] 기본형 타입(Primitive Type).
 
-1️⃣ .addAttribute() 메서드.
+1️⃣ 기본형 타입(Primitive Type)란?
 
-  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
-  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
+  기본형 타입(Primitive Type)은 Java에서 가장 단순하고 기본적인 데이터 유형으로, 실제 값을 직접 저장하는 변수 유형입니다.
+  기본형 타입(Primitive Type)은 참조형 타입(Reference Type)과 달리 객체가 아니며, 메모리 상에 직접 데이터를 저장합니다.
+  Java에는 8개의 기본형 타입(Primitive Type)이 있습니다.
 
 
-2️⃣ 주요 기능.
+1️⃣ 정수형.
 
-  모델에 데이터 추가
+  byte : 8비트 정수(-128 ~ 127).
+  short : 16비트 정수(-32,768 ~ 32,767).
+  int : 32비트 정수(-2^31 ~ 2^31-1).
+  long : 64비트 정수(-2^63 ~ 2^63-1).
+
+
+2️⃣ 실수형.
+
+  float : 32비트 부동소수점.
+  double : 64비트 부동소수점.
+
+
+3️⃣ 문자형.
+
+  char : 16비트 유니코드 문자(0 ~ 65,535)
+
+
+4️⃣ 논리형.
+
+  boolean : 참 또는 거짓(true/false)
+
+
+2️⃣ 기본형 타입의 한계.
+
+  1. 객체로서의 기능 부족.
     
-      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
+      기본형 타입은 객체가 아니기 때문에 메서드나 속성을 가질 수 없습니다.
         
-          이 데이터는 이후 뷰에서 사용될 수 있습니다.
+          이로 인해 객체지향적인 프로그래밍에서 사용되는 많은 기능을 사용할 수 없습니다.
         
       
     
   
-  뷰 랜더링에 데이터 전달
+  2. 컬렉션과의 호환성 부족.
     
-      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
+      기본형 타입은 Java의 컬렉션 프레임워크(List, Set, Map 등)에 직접적으로 사용할 수 없습니다.
+        
+          컬렉션은 객체만을 저장할 수 있기 때문에, 기본형을 사용할 경우 래퍼 클래스(예: Integer, Double, Boolean)로 변환해야 합니다.
+        
+      
+    
+  
+  3. 유연성 부족.
+    
+      기본형 타입은 값이 불변이며, 추가적인 속성이나 동작을 정의할 수 없습니다.
+        
+          이를 보완하기 위해 래퍼 클래스와 같은 객체가 필요합니다.
+        
+      
     
   
 
 
-3️⃣ 사용 예시.
-@Controller
-public class HomeController {
+3️⃣ 기본형 타입을 사용하는 이유.
+
+  1. 성능.
     
-    @GetMapping("/home")
-    public String home(Model model) {
-        // 모델에 데이터를 추가
-        model.addAttribute("message", "Welcome to the Home Page!");
-        model.addAttribute("date", LocalDate.now());
+      기본형 타입은 참조형 타입보다 메모리 사용량이 적고, 처리 속도가 빠릅니다.
+      기본형 타입은 실제 값을 직접 메모리에 저장하기 때문에, 메모리 접근이 빠르고, 가비지 컬렉션과 같은 추가적인 처리 없이 직접적으로 값을 사용할 수 있습니다.
+    
+  
+  2. 메모리 효율성.
+    
+      기본형 타입은 참조형 타입보다 메모리 사용량이 적습니다.
         
-        // "home"이라는 뷰 이름을 반환
-        return "home";
+          예를 들어, int는 32비트를 사용하지만, Integer는 객체를 래핑하기 때문에 추가적인 메모리 오버헤드가 발생합니다.
+        
+      
+    
+  
+  3. 간결함.
+    
+      기본형 타입은 간단하고 사용하기 쉽습니다.
+      복잡한 객체 대신, 단순한 값만 필요할 때 기본형 타입을 사용하는 것이 코드의 가독성을 높이고, 불필요한 복잡성을 줄일 수 있습니다.
+    
+  
+  4. 기본적인 연산 지원.
+    
+      기본형 타입은 Java 언어 내에서 산술 연산, 비교 연산 등 기본적인 연산을 직접적으로 지원합니다.
+        
+          이러한 연산은 참조형 타입보다 훨씬 빠르게 수행됩니다.
+        
+      
+    
+  
+
+
+4️⃣ 기본형 타입의 사용 예.
+
+public class Main {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+        int sum = a + b; // 기본형 타입 간의 덧셈 연산
+        System.out.println("Sum: " + sum); // 출력: Sum: 30
+        
+        // 기본형 타입을 사용할 경우 메모리 효율성과 성능이 우수
     }
 }
 
 
+5️⃣ 기본형 타입과 래퍼 클래스.
 
-  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
-  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
-  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
-
-
-4️⃣ 뷰에서의 사용 예시(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Home Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
-  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
-
-
-5️⃣ .addAttribute()의 다양한 사용 방법.
-
-  1. 키와 값 쌍으로 사용
+  Java는 기본형 타입을 객체로 감쌀 수 있는 래퍼 클래스를 제공합니다.
     
-      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
-        model.addAttribute("username", "JohnDoe");
+      예를 들어, int의 래퍼 클래스는 Integer입니다.
         
+          래퍼 클래스는 기본형 타입을 객체로 변환하여 컬렉션과 같은 객체 기반 API와 호환성을 제공할 수 있습니다.
+```java
+public class Main {
+  public static void main(String[] args) {
+  Integer x = 10; // 오토박싱 (autoboxing)
+  int y = x; // 오토언박싱 (autounboxing)
+        
+
+        // 래퍼 클래스는 메서드를 가질 수 있습니다.
+  int max = Integer.max(10, 20);
+  System.out.println(“Max: “ + max); // 출력: Max: 20
+  }
+}
+```
       
     
   
-  2. 키 없이 값만 전달
+  기본형 타입은 성능과 메모리 효율성 면에서 장점이 있지만, 객체의 유연성과 컬렉션 호환성 측면에서 한계가 있습니다.
     
-      키를 생략하고 값만 전달할 수도 있습니다.
-        
-          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
-            User user = new User("John", "Doe");
-model.addAttribute(user);
-// "user"라는 키로 모델에 추가됩니다.
-            
-          
-        
-      
+      이러한 이유로, Java에서는 상황에 따라 기본형 타입과 래퍼 클래스를 적절히 사용하게 됩니다.
     
   
-  3. 체이닝(Chaining)
-    
-      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
-        model.addAttribute("name", "Jane")
-   .addAttribute("age", 30)
-   .addAttribute("city", "New York");
-        
-      
-    
-  
-  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-12</span>
                             
@@ -4799,6 +4888,169 @@ Hello, World! This is Java.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
+                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
+                            💾 [CS] 프록시 패턴과 프록시 서버
+
+1️⃣ 프록시 패턴
+
+  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
+
+
+
+
+
+  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+    
+      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
+    
+  
+
+
+
+  용어: 프록시 서버에서의 캐싱
+캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
+이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
+
+
+2️⃣ 프록시 서버
+
+  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
+
+
+프록시 서버로 쓰는 nginx
+
+  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
+  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
+    
+      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
+        
+          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
+            
+              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+
+  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
+
+
+
+  용어: 버퍼 오버플로우
+버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
+
+
+
+  용어: gzip 압축
+LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
+gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
+
+
+프록시 서버로 쓰는 CloudFlare
+
+  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
+  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
+    
+      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
+
+
+DDOS 공격 방어
+
+  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
+  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
+  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
+
+
+HTTPS 구축
+
+  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
+    
+      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
+    
+  
+
+
+
+  용어: CDN(Content Delivery Network)
+각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
+이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
+
+
+CORS와 프런트엔트의 프록시 서버
+
+  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
+
+
+
+
+
+  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
+
+
+
+  용어: 오리진
+프로토콜과 호스트 이름, 포트의 조합을 말합니다.
+예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
+
+
+
+  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
+    
+      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
+    
+  
+  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
+    
+      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
+    
+      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-09-07-understand-of-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -4992,169 +5244,6 @@ Preview
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
-                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
-                            💾 [CS] 프록시 패턴과 프록시 서버
-
-1️⃣ 프록시 패턴
-
-  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
-
-
-
-
-
-  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
-    
-      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
-    
-  
-
-
-
-  용어: 프록시 서버에서의 캐싱
-캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
-이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
-
-
-2️⃣ 프록시 서버
-
-  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
-
-
-프록시 서버로 쓰는 nginx
-
-  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
-  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
-    
-      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
-        
-          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
-            
-              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-
-  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
-
-
-
-  용어: 버퍼 오버플로우
-버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
-
-
-
-  용어: gzip 압축
-LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
-gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
-
-
-프록시 서버로 쓰는 CloudFlare
-
-  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
-  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
-    
-      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
-    
-  
-
-
-
-
-
-  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
-
-
-DDOS 공격 방어
-
-  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
-  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
-  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
-
-
-HTTPS 구축
-
-  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
-    
-      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
-    
-  
-
-
-
-  용어: CDN(Content Delivery Network)
-각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
-이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
-
-
-CORS와 프런트엔트의 프록시 서버
-
-  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
-
-
-
-
-
-  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
-
-
-
-  용어: 오리진
-프로토콜과 호스트 이름, 포트의 조합을 말합니다.
-예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
-
-
-
-  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
-    
-      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
-    
-  
-  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
-    
-      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
-    
-  
-
-
-
-
-
-  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
-    
-      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-07</span>
                             
@@ -10932,74 +11021,120 @@ public class PaymentService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-08-28-Protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-08-28-Protocol.html"><h1 class="title_post">🌐[Network] 프로토콜</h1></a>
-                        <a href="/Network/2024/2024-08-28-Protocol.html" class="txt_post">
-                            🌐[Network] 프로토콜.
+                        <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html"><h1 class="title_post">☕️[Java] 공유 참조와 사이드 이펙트</h1></a>
+                        <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html" class="txt_post">
+                            ☕️[Java] 공유 참조와 사이드 이펙트
 
-1️⃣ 프로토콜.
+1️⃣ 공유 참조와 사이드 이펙트.
 
-  프로토콜(Protocol)은 통신 시스템이 데이터를 교환하기 위해 사용하는 통신 규칙입니다.
+  사이드 이펙트(Side Effect)는 프로그래밍에서 어떤 계산이 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 말합니다.
     
-      OSI 7계층 모델에서는 각 계층에서 수행하는 프로토콜이 서로 역할을 분담하여 독립적으로 동작합니다.
-        
-          따라서 계층 1에는 계층 1끼리 통신할 수 있는 프로토콜이 존재하고, 계층 2에는 계층 2끼리 통신할 수 있는 프로토콜이 존재합니다.
-        
-      
+      앞서 "b" 의 값을 부산으로 변경한 코드를 다시 분석해봅시다.
     
   
 
 
-1️⃣ 프로토콜의 예.
+b.setValue("부산"); // b의 값을 부산으로 변경해야함
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
 
 
 
 
-  위 그림은 일반인이 스마트폰으로 통화하는 규칙을 보여주고 있는데, 이러한 순서와 절차를 프로토콜이라 정의할 수 있습니다.
+
+  개발자는 "b" 의 주소값을 서울에서 부산으로 변경할 의도로 값 변경을 시도했습니다.
     
-      시간은 위에서 아래로 흐르고, 왼쪽의 발신자가 오른쪽의 수신자에게 통화를 시도하고 있습니다.
-      연결을 설정할 때는 항상 발신자의 요청에 의하여 시작되며, 수신자는 미리 연결 대기 상태에 있어야 합니다.
-      연결 설정은 상호 간의 합의 아래 이루어지지만, 종료는 한쪽의 일방적인 종결 선언으로도 가능합니다.
+      하지만 "a" , "b" 는 같은 인스턴스를 참조합니다.
+        
+          따라서 "a" 의 값도 함께 부산으로 변경되어 버립니다.
+        
+      
     
   
-  전화 연결을 위한 규칙(프로토콜 - protocol) 설명.
+  이렇게 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 사이드 이펙트(Side Effect)라 합니다.
+  프로그래밍에서 사이드 이펙트는 보통 부정적인 의미로 사용되는데, 사이드 이펙트는 프로그래밍의 특정 부분에서 발생한 변경이 의도치 않게 다른 부분에 영향을 미치는 경우에 발생합니다.
     
-      
+      이로 인해 디버깅이 어려워지고 코드의 안정성이 저하될 수 있습니다.
+    
+  
+
+
+2️⃣ 사이드 이펙트 해결 방안
+
+  생각해보면 문제의 해결방안은 아주 단순합니다.
+    
+      다음과 같이 "a" 와 "b" 가 처음부터 서로 다른 인스턴스를 참조하면 됩니다.
+    
+  
+
+
+Address a = new Address("서울");
+Address b = new Address("서울");
+
+
+public class RefMain1_2 {
+
+	public static void main(String[] args) {
+		Address a = new Address("서울"); // x001
+		Address b = new Address("서울"); // x002
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+
+		b.setValue("부산"); // b의 값을 부산으로 변경해야함
+		System.out.println("부산 -&gt; b");
+		System.out.println("a = " + a); // 사이드 이팩트 발생
+		System.out.println("b = " + b);
+	}
+}
+
+
+실행 결과
+
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+
+  실행 결과를 보면 "b" 의 주소값만 부산으로 변경된 것을 확인할 수 있습니다.
+
+
+그림 - 생성 코드
+
+
+
+
+  "a" 와 "b" 는 서로 다른 "Address" 인스턴스를 참조합니다.
+
+
+그림 - 변경 코드
+
+
+
+
+  "a" 와 "b" 는 서로 다른 인스턴스를 참조합니다.
+    
+      따라서 "b" 가 참조하는 인스턴스의 값을 변경해도 "a" 에는 영향을 주지 않습니다.
+    
+  
+
+
+3️⃣ 여러 변수가 하나의 객체를 공유하는 것을 막을 방법은 없다.
+
+  지금까지 발생한 모든 문제는 같은 객체(인스턴스)를 변수 "a" , "b" 가 함께 공유하기 때문에 발생했습니다.
+    
+      따라서 객체를 공유하지 않으면 문제가 해결됩니다.
         
-          수신자는 스마트폰 전원을 켜서 발신자의 통화 요청보다 먼저 대기 상태에 있어야 합니다.
-        
-      
-      
-        
-          발신자가 수신자의 전화번호를 누르면(또는 번호를 입력한 후  버튼을 누르면)
-        
-      
-      
-        
-          수신자의 스마트폰의 벨이 울립니다.
-        
-      
-      
-        
-          수신자가  버튼을 눌러 전화를 받으면 연결이 설정됩니다(수신자가 벨 소리를 무시하고 전화를 받지 않으면 열결되지 않으므로 연결 설정은 반드시 양자의 합의가 있어야 합니다).
-        
-      
-      
-        
-          일단 연결이 설정되면 연결이 해제되기 전까지 데이터를 주고받을 수 있습니다.
-        
-      
-      
-        
-          연결 해제는 외형상 한쪽의 일방적인 종료로 이루어지지만
+          여기서 변수 "a", "b" 가 각각 다른 주소지로 변경할 수 있어야 합니다.
             
-              실제로는 대화의 과정에서 쌍방의 합의로 이루어집니다.
-            
-            
-              실제 네트워크 프로토콜에서도 연결 해제를 한쪽의 일방적인 결정과 양자의 합의에 의한 결정으로 구분하여 설계합니다.
+              이렇게 하려면 서로 다른 객체를 참조하면 됩니다.
             
           
         
@@ -11008,39 +11143,127 @@ public class PaymentService {
   
 
 
-2️⃣ 데이터 단위.
+객체를 공유.
+Address a = new Address("서울");
+Address b = a;
 
 
-  네트워크 프로토콜을 사용해 데이터를 교환할 때는 먼저 데이터를 특정 형태로 규격화하는 작업이 필요합니다.
+
+  이 경우 "a", "b" 둘 다 같은 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 불가능합니다.
+
+
+객체를 공유하지 않음.
+Address a = new Address("서울");
+Address ㅠ = new Address("서울");
+
+
+
+  
+    이 경우 "a", "b" 는 서로 다른 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 가능합니다.
+  
+  
+    이처럼 단순하게 서로 다른 객체를 참조해서, 같은 객체를 공유하지 않으면 문제가 해결됩니다.
     
-      예를 들어, 우편물을 보낼 때 정해진 규격 봉투를 사용하는 것과 같은 원리입니다.
+      즉, 여러 변수가 하나의 객체를 공유하지 않으면 지금까지 설명한 문제들이 발생하지 않습니다.
         
-          규격 봉투에 보내는 사람 주소, 받는 사람 주소 등을 규칙에 따라 기입하는 것처럼 네트워크에서도 데이터를 프로토콜에서 정의된 데이터 규격에 맞춰 묶어주어야 합니다.
+          그런데 여기서 문제가 있습니다.
             
-              이와 같은 한 단위의 규격으로 묶인 전송 데이터를 데이터 단위라 합니다.
+              하나의 객체를 여러 변수가 공유하지 않도록 강제로 막을 수 있는 방법이 없다는 것입니다.
+                
+                  아래의 예시를 봐봅시다.
+                
+              
             
           
         
       
     
   
-  OSI 7계층 모델의 각 계층에서 규격화된 데이터에는 아래의 표와 같이 고유 명칭이 있습니다.
+
+
+참조값의 공유를 막을 수 있는 방법이 없다.
+Address a = new Address("서울");
+Address b = a; // 참조값 대입을 막을 수 있는 방법이 없습니다.
+
+
+
+  "b = a" 와 같은 코드를 작성하지 않도록 해서, 여러 변수가 하나의 참조값을 공유하지 않으면 문제가 해결될 것 같습니다.
     
-      계층에 상관없이 사용할 때는 통칭하여 PDU(Protocol Data Unit)라 부릅니다.
+      하지만 "Address" 를 사용하는 개발자 입장에서 실수로 "b = a" 라고 해도 아무런 오류가 발생하지 않습니다.
+        
+          왜냐하면 자바 문법상 "Address b = a" 와 같은 참조형 변수의 대입은 아무런 문제가 없기 때문입니다.
+        
+      
+    
+  
+  다음과 같이 새로운 객체를 참조형 변수에 대입하든, 또는 기존 객체를 참조형 변수에 대입하든, 다음 두 코드 모두 자바 문법상 정상인 코드입니다.
+    Address b = new Address("서울"); // 새로운 객체 참조
+Address b = a; // 기존 객체 공유 참조
+    
+  
+  참조값을 다른 변수에 대입하는 순간 여러 변수가 하나의 객체를 공유하게 됩니다.
+    
+      즉, 객체의 공유를 막을 수 있는 방법이 없습니다!
+    
+  
+  기본형은 항상 값을 복사해서 대입하기 때문에 값이 절대로 공유되지 않습니다.
+    
+      하지만 참조형의 경우 참조값을 복사해서 대입하기 때문에 여러 변수에서 얼마든지 같은 객체를 공유할 수 있습니다.
+    
+  
+  객체의 공유가 꼭 필요할 때도 있지만, 때로는 공유하는 것이 지금과 같은 사이드 이펙트를 만드는 경우도 있습니다.
+    
+      물론 개발자가 신경써서 코드를 작성한다면 사이드 이펙트 문제를 일으키지 않을 수 있습니다.
+        
+          하지만 실제로는 훨씬 더 복잡한 상황에서 이런 문제가 발생합니다.
+```java
+public class RefMain1_3 {
+        
+      
+    
+
+    public static void main(String[] args) {
+      Address a = new Address(“서울”);
+      Address b = a;
+      System.out.println(“a = “ + a);
+      System.out.println(“b = “ + b);
+
+      change(b,"부산");
+  System.out.println("a = " + a); // 사이드 이팩트 발생
+  System.out.println("b = " + b);   }
+    
+
+    private static void change(Address address, String changeAddress) {
+      System.out.println(“주소 값을 변경합니다 -&gt; “ + changeAddress);
+      address.setValue(changeAddress);
+  }
+}
+```
+  
+  앞서 작성한 코드와 같은 코드입니다.
+    
+      단순히 "change()" 메서드만 하나 추가되었습니다.
+      그리고 "change()" 메서드에서 "Address" 인스턴스에 있는 "value" 값을 변경합니다.
+        
+          "main()" 메서드만 보면 "a" 의 값이 함께 부산으로 변경된 이유를 찾기가 더 어렵습니다.
+        
+      
     
   
 
 
+실행 결과
 
-
-
-  데이터 단위의 용어 중에서 네트워크 계층에서 정의된 패킷이 인터넷에서 가장 많이 인용되며, 데이터 링크 계층에서 사용하는 프레임도 중요합니다.
-  전송 계층에서 정의된 데이터그램은 가상 회선이라는 용어와 대비되면서 중요하게 다루어지기 때문에 이들 세 용어에 익숙해질 필요가 있습니다.
+a = Address{value='서울'}
+b = Address{value='서울'}
+주소 값을 변경합니다 -&gt; 부산
+a = Address{value='부산'}
+b = Address{value='부산'}
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-08-28</span>
                             
@@ -11305,120 +11528,74 @@ b = Address{value='부산'}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-08-28-Protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html"><h1 class="title_post">☕️[Java] 공유 참조와 사이드 이펙트</h1></a>
-                        <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html" class="txt_post">
-                            ☕️[Java] 공유 참조와 사이드 이펙트
+                        <a href="/Network/2024/2024-08-28-Protocol.html"><h1 class="title_post">🌐[Network] 프로토콜</h1></a>
+                        <a href="/Network/2024/2024-08-28-Protocol.html" class="txt_post">
+                            🌐[Network] 프로토콜.
 
-1️⃣ 공유 참조와 사이드 이펙트.
+1️⃣ 프로토콜.
 
-  사이드 이펙트(Side Effect)는 프로그래밍에서 어떤 계산이 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 말합니다.
+  프로토콜(Protocol)은 통신 시스템이 데이터를 교환하기 위해 사용하는 통신 규칙입니다.
     
-      앞서 "b" 의 값을 부산으로 변경한 코드를 다시 분석해봅시다.
-    
-  
-
-
-b.setValue("부산"); // b의 값을 부산으로 변경해야함
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-
-
-
-
-
-  개발자는 "b" 의 주소값을 서울에서 부산으로 변경할 의도로 값 변경을 시도했습니다.
-    
-      하지만 "a" , "b" 는 같은 인스턴스를 참조합니다.
+      OSI 7계층 모델에서는 각 계층에서 수행하는 프로토콜이 서로 역할을 분담하여 독립적으로 동작합니다.
         
-          따라서 "a" 의 값도 함께 부산으로 변경되어 버립니다.
+          따라서 계층 1에는 계층 1끼리 통신할 수 있는 프로토콜이 존재하고, 계층 2에는 계층 2끼리 통신할 수 있는 프로토콜이 존재합니다.
         
       
     
   
-  이렇게 주된 작업 외에 추가적인 부수 효과를 일으키는 것을 사이드 이펙트(Side Effect)라 합니다.
-  프로그래밍에서 사이드 이펙트는 보통 부정적인 의미로 사용되는데, 사이드 이펙트는 프로그래밍의 특정 부분에서 발생한 변경이 의도치 않게 다른 부분에 영향을 미치는 경우에 발생합니다.
+
+
+1️⃣ 프로토콜의 예.
+
+
+
+
+  위 그림은 일반인이 스마트폰으로 통화하는 규칙을 보여주고 있는데, 이러한 순서와 절차를 프로토콜이라 정의할 수 있습니다.
     
-      이로 인해 디버깅이 어려워지고 코드의 안정성이 저하될 수 있습니다.
-    
-  
-
-
-2️⃣ 사이드 이펙트 해결 방안
-
-  생각해보면 문제의 해결방안은 아주 단순합니다.
-    
-      다음과 같이 "a" 와 "b" 가 처음부터 서로 다른 인스턴스를 참조하면 됩니다.
-    
-  
-
-
-Address a = new Address("서울");
-Address b = new Address("서울");
-
-
-public class RefMain1_2 {
-
-	public static void main(String[] args) {
-		Address a = new Address("서울"); // x001
-		Address b = new Address("서울"); // x002
-		System.out.println("a = " + a);
-		System.out.println("b = " + b);
-
-		b.setValue("부산"); // b의 값을 부산으로 변경해야함
-		System.out.println("부산 -&gt; b");
-		System.out.println("a = " + a); // 사이드 이팩트 발생
-		System.out.println("b = " + b);
-	}
-}
-
-
-실행 결과
-
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-
-  실행 결과를 보면 "b" 의 주소값만 부산으로 변경된 것을 확인할 수 있습니다.
-
-
-그림 - 생성 코드
-
-
-
-
-  "a" 와 "b" 는 서로 다른 "Address" 인스턴스를 참조합니다.
-
-
-그림 - 변경 코드
-
-
-
-
-  "a" 와 "b" 는 서로 다른 인스턴스를 참조합니다.
-    
-      따라서 "b" 가 참조하는 인스턴스의 값을 변경해도 "a" 에는 영향을 주지 않습니다.
+      시간은 위에서 아래로 흐르고, 왼쪽의 발신자가 오른쪽의 수신자에게 통화를 시도하고 있습니다.
+      연결을 설정할 때는 항상 발신자의 요청에 의하여 시작되며, 수신자는 미리 연결 대기 상태에 있어야 합니다.
+      연결 설정은 상호 간의 합의 아래 이루어지지만, 종료는 한쪽의 일방적인 종결 선언으로도 가능합니다.
     
   
-
-
-3️⃣ 여러 변수가 하나의 객체를 공유하는 것을 막을 방법은 없다.
-
-  지금까지 발생한 모든 문제는 같은 객체(인스턴스)를 변수 "a" , "b" 가 함께 공유하기 때문에 발생했습니다.
+  전화 연결을 위한 규칙(프로토콜 - protocol) 설명.
     
-      따라서 객체를 공유하지 않으면 문제가 해결됩니다.
+      
         
-          여기서 변수 "a", "b" 가 각각 다른 주소지로 변경할 수 있어야 합니다.
+          수신자는 스마트폰 전원을 켜서 발신자의 통화 요청보다 먼저 대기 상태에 있어야 합니다.
+        
+      
+      
+        
+          발신자가 수신자의 전화번호를 누르면(또는 번호를 입력한 후  버튼을 누르면)
+        
+      
+      
+        
+          수신자의 스마트폰의 벨이 울립니다.
+        
+      
+      
+        
+          수신자가  버튼을 눌러 전화를 받으면 연결이 설정됩니다(수신자가 벨 소리를 무시하고 전화를 받지 않으면 열결되지 않으므로 연결 설정은 반드시 양자의 합의가 있어야 합니다).
+        
+      
+      
+        
+          일단 연결이 설정되면 연결이 해제되기 전까지 데이터를 주고받을 수 있습니다.
+        
+      
+      
+        
+          연결 해제는 외형상 한쪽의 일방적인 종료로 이루어지지만
             
-              이렇게 하려면 서로 다른 객체를 참조하면 됩니다.
+              실제로는 대화의 과정에서 쌍방의 합의로 이루어집니다.
+            
+            
+              실제 네트워크 프로토콜에서도 연결 해제를 한쪽의 일방적인 결정과 양자의 합의에 의한 결정으로 구분하여 설계합니다.
             
           
         
@@ -11427,127 +11604,39 @@ b = Address{value='부산'}
   
 
 
-객체를 공유.
-Address a = new Address("서울");
-Address b = a;
+2️⃣ 데이터 단위.
 
 
-
-  이 경우 "a", "b" 둘 다 같은 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 불가능합니다.
-
-
-객체를 공유하지 않음.
-Address a = new Address("서울");
-Address ㅠ = new Address("서울");
-
-
-
-  
-    이 경우 "a", "b" 는 서로 다른 "Address" 인스턴스를 바라보기 때문에 한 쪽의 주소만 부산으로 변경하는 것이 가능합니다.
-  
-  
-    이처럼 단순하게 서로 다른 객체를 참조해서, 같은 객체를 공유하지 않으면 문제가 해결됩니다.
+  네트워크 프로토콜을 사용해 데이터를 교환할 때는 먼저 데이터를 특정 형태로 규격화하는 작업이 필요합니다.
     
-      즉, 여러 변수가 하나의 객체를 공유하지 않으면 지금까지 설명한 문제들이 발생하지 않습니다.
+      예를 들어, 우편물을 보낼 때 정해진 규격 봉투를 사용하는 것과 같은 원리입니다.
         
-          그런데 여기서 문제가 있습니다.
+          규격 봉투에 보내는 사람 주소, 받는 사람 주소 등을 규칙에 따라 기입하는 것처럼 네트워크에서도 데이터를 프로토콜에서 정의된 데이터 규격에 맞춰 묶어주어야 합니다.
             
-              하나의 객체를 여러 변수가 공유하지 않도록 강제로 막을 수 있는 방법이 없다는 것입니다.
-                
-                  아래의 예시를 봐봅시다.
-                
-              
+              이와 같은 한 단위의 규격으로 묶인 전송 데이터를 데이터 단위라 합니다.
             
           
         
       
     
   
-
-
-참조값의 공유를 막을 수 있는 방법이 없다.
-Address a = new Address("서울");
-Address b = a; // 참조값 대입을 막을 수 있는 방법이 없습니다.
-
-
-
-  "b = a" 와 같은 코드를 작성하지 않도록 해서, 여러 변수가 하나의 참조값을 공유하지 않으면 문제가 해결될 것 같습니다.
+  OSI 7계층 모델의 각 계층에서 규격화된 데이터에는 아래의 표와 같이 고유 명칭이 있습니다.
     
-      하지만 "Address" 를 사용하는 개발자 입장에서 실수로 "b = a" 라고 해도 아무런 오류가 발생하지 않습니다.
-        
-          왜냐하면 자바 문법상 "Address b = a" 와 같은 참조형 변수의 대입은 아무런 문제가 없기 때문입니다.
-        
-      
-    
-  
-  다음과 같이 새로운 객체를 참조형 변수에 대입하든, 또는 기존 객체를 참조형 변수에 대입하든, 다음 두 코드 모두 자바 문법상 정상인 코드입니다.
-    Address b = new Address("서울"); // 새로운 객체 참조
-Address b = a; // 기존 객체 공유 참조
-    
-  
-  참조값을 다른 변수에 대입하는 순간 여러 변수가 하나의 객체를 공유하게 됩니다.
-    
-      즉, 객체의 공유를 막을 수 있는 방법이 없습니다!
-    
-  
-  기본형은 항상 값을 복사해서 대입하기 때문에 값이 절대로 공유되지 않습니다.
-    
-      하지만 참조형의 경우 참조값을 복사해서 대입하기 때문에 여러 변수에서 얼마든지 같은 객체를 공유할 수 있습니다.
-    
-  
-  객체의 공유가 꼭 필요할 때도 있지만, 때로는 공유하는 것이 지금과 같은 사이드 이펙트를 만드는 경우도 있습니다.
-    
-      물론 개발자가 신경써서 코드를 작성한다면 사이드 이펙트 문제를 일으키지 않을 수 있습니다.
-        
-          하지만 실제로는 훨씬 더 복잡한 상황에서 이런 문제가 발생합니다.
-```java
-public class RefMain1_3 {
-        
-      
-    
-
-    public static void main(String[] args) {
-      Address a = new Address(“서울”);
-      Address b = a;
-      System.out.println(“a = “ + a);
-      System.out.println(“b = “ + b);
-
-      change(b,"부산");
-  System.out.println("a = " + a); // 사이드 이팩트 발생
-  System.out.println("b = " + b);   }
-    
-
-    private static void change(Address address, String changeAddress) {
-      System.out.println(“주소 값을 변경합니다 -&gt; “ + changeAddress);
-      address.setValue(changeAddress);
-  }
-}
-```
-  
-  앞서 작성한 코드와 같은 코드입니다.
-    
-      단순히 "change()" 메서드만 하나 추가되었습니다.
-      그리고 "change()" 메서드에서 "Address" 인스턴스에 있는 "value" 값을 변경합니다.
-        
-          "main()" 메서드만 보면 "a" 의 값이 함께 부산으로 변경된 이유를 찾기가 더 어렵습니다.
-        
-      
+      계층에 상관없이 사용할 때는 통칭하여 PDU(Protocol Data Unit)라 부릅니다.
     
   
 
 
-실행 결과
 
-a = Address{value='서울'}
-b = Address{value='서울'}
-주소 값을 변경합니다 -&gt; 부산
-a = Address{value='부산'}
-b = Address{value='부산'}
+
+
+  데이터 단위의 용어 중에서 네트워크 계층에서 정의된 패킷이 인터넷에서 가장 많이 인용되며, 데이터 링크 계층에서 사용하는 프레임도 중요합니다.
+  전송 계층에서 정의된 데이터그램은 가상 회선이라는 용어와 대비되면서 중요하게 다루어지기 때문에 이들 세 용어에 익숙해질 필요가 있습니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
+                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-08-28</span>
                             
@@ -17391,6 +17480,111 @@ sudo /usr/local/nginx/sbin/nginx -s reload
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html"><h1 class="title_post">☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.</h1></a>
+                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="txt_post">
+                            ☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.
+“저의 상황을 예로 들어 설명하도록 하겠습니다.”
+
+
+  로컬 macBook에서 Amazon Linux 2023 EC2 서버로 파일을 업로드하는 방법 중 가장 일반적인 방법은 scp(secure copy) 를 사용하는 것 입니다.
+    
+      이 명령을 통해 안전하게 파일을 복사할 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ 아래 설명하는 단계들은 로컬에서 이루어져야 합니다.
+
+
+1️⃣ EC2 인스턴스 연결 정보 확인.
+
+  먼저 EC2 인스턴스의 퍼블릭 IP 주소와 연결에 사용하는 키 페어 파일(.pem)을 확인합니다.
+
+
+2️⃣ 로컬 macBook에서 scp 명령어 사용.
+
+  scp 명령어를 사용하여 로컬 파일을 EC2 인스턴스로 업로드합니다.
+    
+      예를 들어, 로컬 파일 localfile.txt 를 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
+    
+  
+
+
+scp -i /path/to/your-key-pair.pem /path/to/localfile.txt ec2-uesr@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
+
+
+👉 예제.
+
+  키 페어 파일 경로 : /Users/bingGu/.ssh/my-key-pair.pem
+  로컬 파일 경로 : /Users/bingGu/Documents/localfile.txt
+  EC2 퍼블릭 IP : 43.201.230.99
+
+
+/Users/bingGu/Documents/localfile.txt ec2-user@43.201.230.99:/home/ec2-user/
+
+
+3️⃣ 디렉토리 업로드.
+
+  만약 디렉토리를 업로드 하고 싶다면 -r 옵션을 사용하여 디렉토리를 재귀적으로 업로드할 수 있습니다.
+    
+      예를 들어, 로컬 디렉토리 localdir 을 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
+    
+  
+
+
+scp -r -i /path/to/your-key-pair.pem /path/to/localdir ec2-user@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
+
+
+4️⃣ 업로드 확인.
+
+  EC2 인스턴스에 SSH로 접속하여 파일이나 디렉토리가 정상적으로 업로드되었는지 확인합니다.
+
+
+ssh -i /path/to/your-key-pair.pem ec2-user@&lt;EC2-Instance-Public-IP&gt;
+ls /home/ec2-user/
+
+
+🎯 Troubleshooting
+
+  Permission Denied : 키 파일의 권한이 적절하지 않을 때 발생할 수 있습니다.
+    
+      다음 명령어로 권한을 조정합니다.
+        chmod 400 /path/to/your-key-pair.pem
+        
+      
+    
+  
+  Host Key Verification Failed : 로컬 머신의 SSH 설정에서 이전에 연결한 적 없는 서버에 대해 경고가 뜨는 경우, 다음 명령어로 knows_hosts 파일을 업데이트할 수 있습니다.
+    ssh-keygen -R &lt;EC2-Instance-Public-IP&gt;
+    
+  
+
+
+
+  🙋‍♂️ 이 단계를 따르면 로컬 macBook에서 Amazon Linux 2023 EC2 인스턴스로 파일을 성골적으로 업로드할 수 있을 것입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-08-09-network-cidr.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -17497,111 +17691,6 @@ sudo /usr/local/nginx/sbin/nginx -s reload
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-08-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html"><h1 class="title_post">☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.</h1></a>
-                        <a href="/Backend/AWS/240809_AWS_EC2_UPLOAD.html" class="txt_post">
-                            ☁️[AWS] 로컬 파일을 EC2 서버에 올리는 방법.
-“저의 상황을 예로 들어 설명하도록 하겠습니다.”
-
-
-  로컬 macBook에서 Amazon Linux 2023 EC2 서버로 파일을 업로드하는 방법 중 가장 일반적인 방법은 scp(secure copy) 를 사용하는 것 입니다.
-    
-      이 명령을 통해 안전하게 파일을 복사할 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ 아래 설명하는 단계들은 로컬에서 이루어져야 합니다.
-
-
-1️⃣ EC2 인스턴스 연결 정보 확인.
-
-  먼저 EC2 인스턴스의 퍼블릭 IP 주소와 연결에 사용하는 키 페어 파일(.pem)을 확인합니다.
-
-
-2️⃣ 로컬 macBook에서 scp 명령어 사용.
-
-  scp 명령어를 사용하여 로컬 파일을 EC2 인스턴스로 업로드합니다.
-    
-      예를 들어, 로컬 파일 localfile.txt 를 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
-    
-  
-
-
-scp -i /path/to/your-key-pair.pem /path/to/localfile.txt ec2-uesr@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
-
-
-👉 예제.
-
-  키 페어 파일 경로 : /Users/bingGu/.ssh/my-key-pair.pem
-  로컬 파일 경로 : /Users/bingGu/Documents/localfile.txt
-  EC2 퍼블릭 IP : 43.201.230.99
-
-
-/Users/bingGu/Documents/localfile.txt ec2-user@43.201.230.99:/home/ec2-user/
-
-
-3️⃣ 디렉토리 업로드.
-
-  만약 디렉토리를 업로드 하고 싶다면 -r 옵션을 사용하여 디렉토리를 재귀적으로 업로드할 수 있습니다.
-    
-      예를 들어, 로컬 디렉토리 localdir 을 EC2 인스턴스의 /home/ec2-user/ 디렉토리에 업로드하려면 다음과 같이 합니다.
-    
-  
-
-
-scp -r -i /path/to/your-key-pair.pem /path/to/localdir ec2-user@&lt;EC2-Instance-Public-IP&gt;:/home/ec2-user/
-
-
-4️⃣ 업로드 확인.
-
-  EC2 인스턴스에 SSH로 접속하여 파일이나 디렉토리가 정상적으로 업로드되었는지 확인합니다.
-
-
-ssh -i /path/to/your-key-pair.pem ec2-user@&lt;EC2-Instance-Public-IP&gt;
-ls /home/ec2-user/
-
-
-🎯 Troubleshooting
-
-  Permission Denied : 키 파일의 권한이 적절하지 않을 때 발생할 수 있습니다.
-    
-      다음 명령어로 권한을 조정합니다.
-        chmod 400 /path/to/your-key-pair.pem
-        
-      
-    
-  
-  Host Key Verification Failed : 로컬 머신의 SSH 설정에서 이전에 연결한 적 없는 서버에 대해 경고가 뜨는 경우, 다음 명령어로 knows_hosts 파일을 업데이트할 수 있습니다.
-    ssh-keygen -R &lt;EC2-Instance-Public-IP&gt;
-    
-  
-
-
-
-  🙋‍♂️ 이 단계를 따르면 로컬 macBook에서 Amazon Linux 2023 EC2 인스턴스로 파일을 성골적으로 업로드할 수 있을 것입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-09</span>
                             
@@ -18152,6 +18241,91 @@ public class TransactionalService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/DB/2024-08-01-Transaction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/DB/2024-08-01-Transaction.html"><h1 class="title_post">💾[Database] 트랜잭션의 의미와 역할.</h1></a>
+                        <a href="/Backend/DB/2024-08-01-Transaction.html" class="txt_post">
+                            💾[Database] 트랜잭션의 의미와 역할.
+
+  트랜잭션은 데이터베이스 관리 시스템(DBMS)에서 데이터의 일관성과 정확성을 유지하기 위해 사용되는 기본 단위입니다.
+  데이터베이스에서 수행하는 작업들을 안전하게 실행하여, 여러 작업이 모두 성공하거나 모두 실패하도록 보장하는 역할을 합니다.
+
+
+1️⃣ 트랜잭션의 주요 특징(ACID).
+
+
+  1. 원자성(Atomicity)
+    
+      트랜잭션 내의 모든 연산은 원자적으로 처리됩니다. 즉, 연산들은 모두 완벽하게 수행되거나 아예 수행되지 않아야 합니다.
+      트랜잭션 중 하나라도 실패하면 전체 트랜잭션은 롤백(취소)되어 원래 상태로 복구됩니다.
+    
+  
+  2. 일관성(Consistency)
+    
+      트랜잭션이 실행되지 전과 후에 데이터베이스의 상태는 일관된 상태를 유지해야 합니다.
+      트랜잭션은 데이터베이스의 일관된 상태를 받아 변경 후에도 그 일관성을 유지하는 변경만을 수행해야 합니다.
+        
+          이는 데이터의 무결성 제약 조건들을 준수함을 의미합니다.
+        
+      
+    
+  
+  3. 독립성(Isolation)
+    
+      동시에 여러 트랜잭션이 실행될 때, 각 트랜잭션이 다른 트랜잭션의 연산에 영향을 받지 않아야 합니다. 이를 통해 데이터베이스의 안정성을 보장합니다.
+      DBMS는 이러한 독립성을 보장하기 위해 다양한 격리 수준(Isolation Level)을 제공합니다.
+    
+  
+  4. 지속성(Durability)
+    
+      트랜잭션이 성공적으로 완료되면, 그 결과는 영구적으로 데이터베이스에 반영도어야 합니다.
+      시스템 장애가 발생해도 이러한 트랜잭션 결과는 손실되지 않습니다.
+    
+  
+
+
+2️⃣ 트랜잭션의 역할.
+
+
+  데이터 무결성 유지
+    
+      트랜잭션은 데이터의 정확성과 일관성을 유지하며 데이터베이스 시스템의 신뢰성을 보장합니다.
+    
+  
+  시스템 장애 대응
+    
+      시스템 오류나 장애 발생 시, 트랜잭션은 롤백을 통해 데이터베이스를 안정적인 상태로 복구할 수 있게 돕습니다.
+    
+  
+  동시성 제어
+    
+      다수의 사용자가 데이터베이스에 동시에 접근할 때, 트랜잭션은 각각의 사용자가 데이터를 안전하게 읽고, 쓸 수 있도록 관리합니다.
+    
+  
+
+
+
+
+트랜잭션은 데이터베이스 시스템에서 꼭 필요한 기능으로, 데이터의 일관성과 안정성을 보장하는 중요한 메커니즘 입니다. 이를 통해 사용자는 데이터베이스의 신뢰성 있는 동작을 기대할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-08-01-SerializationAndDeserialization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -18310,91 +18484,6 @@ Systeom.out.println(user.name + " is" + user.age + " year old.");
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/DB/2024-08-01-Transaction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/DB/2024-08-01-Transaction.html"><h1 class="title_post">💾[Database] 트랜잭션의 의미와 역할.</h1></a>
-                        <a href="/Backend/DB/2024-08-01-Transaction.html" class="txt_post">
-                            💾[Database] 트랜잭션의 의미와 역할.
-
-  트랜잭션은 데이터베이스 관리 시스템(DBMS)에서 데이터의 일관성과 정확성을 유지하기 위해 사용되는 기본 단위입니다.
-  데이터베이스에서 수행하는 작업들을 안전하게 실행하여, 여러 작업이 모두 성공하거나 모두 실패하도록 보장하는 역할을 합니다.
-
-
-1️⃣ 트랜잭션의 주요 특징(ACID).
-
-
-  1. 원자성(Atomicity)
-    
-      트랜잭션 내의 모든 연산은 원자적으로 처리됩니다. 즉, 연산들은 모두 완벽하게 수행되거나 아예 수행되지 않아야 합니다.
-      트랜잭션 중 하나라도 실패하면 전체 트랜잭션은 롤백(취소)되어 원래 상태로 복구됩니다.
-    
-  
-  2. 일관성(Consistency)
-    
-      트랜잭션이 실행되지 전과 후에 데이터베이스의 상태는 일관된 상태를 유지해야 합니다.
-      트랜잭션은 데이터베이스의 일관된 상태를 받아 변경 후에도 그 일관성을 유지하는 변경만을 수행해야 합니다.
-        
-          이는 데이터의 무결성 제약 조건들을 준수함을 의미합니다.
-        
-      
-    
-  
-  3. 독립성(Isolation)
-    
-      동시에 여러 트랜잭션이 실행될 때, 각 트랜잭션이 다른 트랜잭션의 연산에 영향을 받지 않아야 합니다. 이를 통해 데이터베이스의 안정성을 보장합니다.
-      DBMS는 이러한 독립성을 보장하기 위해 다양한 격리 수준(Isolation Level)을 제공합니다.
-    
-  
-  4. 지속성(Durability)
-    
-      트랜잭션이 성공적으로 완료되면, 그 결과는 영구적으로 데이터베이스에 반영도어야 합니다.
-      시스템 장애가 발생해도 이러한 트랜잭션 결과는 손실되지 않습니다.
-    
-  
-
-
-2️⃣ 트랜잭션의 역할.
-
-
-  데이터 무결성 유지
-    
-      트랜잭션은 데이터의 정확성과 일관성을 유지하며 데이터베이스 시스템의 신뢰성을 보장합니다.
-    
-  
-  시스템 장애 대응
-    
-      시스템 오류나 장애 발생 시, 트랜잭션은 롤백을 통해 데이터베이스를 안정적인 상태로 복구할 수 있게 돕습니다.
-    
-  
-  동시성 제어
-    
-      다수의 사용자가 데이터베이스에 동시에 접근할 때, 트랜잭션은 각각의 사용자가 데이터를 안전하게 읽고, 쓸 수 있도록 관리합니다.
-    
-  
-
-
-
-
-트랜잭션은 데이터베이스 시스템에서 꼭 필요한 기능으로, 데이터의 일관성과 안정성을 보장하는 중요한 메커니즘 입니다. 이를 통해 사용자는 데이터베이스의 신뢰성 있는 동작을 기대할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-01</span>
                             
@@ -34154,6 +34243,34 @@ public class ArrayExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-03-TIL.html"><h1 class="title_post">📝 [TIL] 240503 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-03-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(2)
+  자바 - 타입 비교
+  자바 - 변수와 자료형(3)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-03-TypeComparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -34211,34 +34328,6 @@ if (a.getClass().equals(b.getClass())) {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-03-TIL.html"><h1 class="title_post">📝 [TIL] 240503 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-03-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(2)
-  자바 - 타입 비교
-  자바 - 변수와 자료형(3)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-03</span>
                             
@@ -34635,147 +34724,23 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-05-02-IntroJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-05-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-05-02-IntroJava.html"><h1 class="title_post">☕️[Java] 자바 - 소개</h1></a>
-                        <a href="/Java/Java/2024-05-02-IntroJava.html" class="txt_post">
-                            자바 - 소개
+                        <a href="/Backend/TIL/2024-05-02-TIL.html"><h1 class="title_post">📝 [TIL] 240502 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-02-TIL.html" class="txt_post">
+                            
+  기초수학 - 소개(수학과 자바 프로그래밍, 자료구조, 알고리즘의 관계)
+  코테 맛보기(1) - 코테를 위한 자바 프로그래밍 언어 사용 숙련도
+  코테 맛보기(2) - 코테를 위한 자료구조와 알고리즘 개념 구현 방법 숙지
+  자바 - 소개
+  자바 - 변수와 자료형(1)
 
-🙋‍♂️ 1. 자바의 특징.
-자바는 세계적으로 널리 사용되는 프로그래밍 언어로, 웹 개발, 모바일 애플리케이션, 대규모 시스템 구축 등 다양한 분야에 활용됩니다.
-자바의 주요 특징들은 다음과 같습니다.
-
-1️⃣ 플랫폼 독립성.
-
-  “Write Once, Run Anywhere”(WORA) : 자바 프로그램은 자바 가상 머신(JVM) 위에서 실행되기 때문에, 한 번 작성하면 어떤 플랫폼에서도 실행할 수 있습니다.
-    
-      이는 자바 컴파일러가 소스 코드를 플랫폼 독립적인 바이트코드로 변환하기 때문입니다.
-    
-  
-
-
-2️⃣ 객체 지향 프로그래밍(OOP).
-
-  자바는 객체 지향 프로그래밍 언어로, 캡슐화, 상속, 다형성 등을 완전히 지원합니다.
-    
-      이는 코드 재사용, 유지 관리의 용이성 및 시스템 모듈화를 가능하게 합니다.
-    
-  
-
-
-3️⃣ 강력한 표준 라이브러리.
-
-  자바는 방대한 표준 라이브러리를 제공하여, 네트워킹, 파일 시스템 접근, 그래픽 인터페이스 제작 등 다양한 작업을 쉽게 처리할 수 있도록 돕습니다.
-
-
-4️⃣ 메모리 관리.
-
-  자동 가비지 컬렉션
-    
-      자바는 사용하지 않는 객체를 자동으로 감지하고 메모리에서 제거하는 가비지 컬렉터를 내장하고 있습니다. 이는 개발자가 메모리 누수에 대해 걱정할 필요가 적어지게 해줍니다.
-    
-  
-
-
-5️⃣ 보안.
-
-  자바는 샌드박스 환경에서 애플리케이션을 실행하여 시스템 리소스에 대한 무단 접근을 방지합니다.
-    
-      또한, 클래스 로더, 바이트코드 검증기 등을 통해 애플리케이션이 안전하게 실행될 수 있도록 합니다.
-    
-  
-
-
-6️⃣ 멀티스레딩.
-
-  자바는 내장된 멀티스레딩 기능을 지원하여, 여러 스레드가 동시에 실행되도록 하여 애플리케이션의 효율성을 높입니다.
-    
-      이는 특히 네트워크 서버와 실시간 시스템에서 큰 장점입니다.
-    
-  
-
-
-7️⃣ 로버스트와 포터빌리티.
-
-  자바 프로그램은 다른 플랫폼으로의 이동성이 뛰어나며, 높은 수준의 안정성을 제공합니다.
-    
-      예외 처리 기능을 통해 오류를 쉽게 관리하고, 시스템의 안정성을 높일 수 있습니다.
-    
-  
-
-
-📝 마무리.
-자바의 이러한 특징들은 그것을 매우 유연하고, 다양한 애플리케이션 개발에 적합하게 만듭니다.
-이로 인해 자바는 세계적으로 인기 있는 프로그래밍 언어 중 하나로 자리 잡게 되었습니다.
-
-
-
-🙋‍♂️ 2. 자바 프로그램의 작성과 실행과정.
-
-
-
-1️⃣ 소스 코드 작성.
-
-  개발자는 자바의 문법에 맞추어 .java 확장자 파일에 소스 코드를 작성합니다.
-    
-      이 파일에는 하나 이상의 클래스가 포함되며, 각 클래스는 데이터와 메서드를 정의합니다.
-    
-  
-
-
-2️⃣ 컴파일.
-
-  소스 코드 파일을 자바 컴파일러(javac)를 사용하여 컴파일합니다.
-    
-      컴파일러는 소스 코드를 읽고, 문법 오류를 검사한 후, 바이트코드라는 중간 형태의 코드로 변환합니다.
-        
-          이 바이트 코드는 .class 파일로 저장됩니다.
-        
-      
-    
-  
-  바이트코드는 플랫폼 독립적이기 때문에, 한 번 컴파일된 .class 파일은 다양한 운영 체제에서 실행될 수 있습니다.
-
-
-3️⃣ 로딩.
-
-  자바 가상 머신(JVM)은 .class 파일을 로드합니다.
-    
-      클래스 로더(component of JVM)가 이 작업을 수행하며, 필요한 클래스 파일들을 메모리에 로드합니다.
-    
-  
-
-
-4️⃣ 링킹.
-
-  로드된 클래스 파일들은 링킹 과정을 거칩니다. 링킹은 검증, 준비, 그리고(선택적으로) 해석 단계를 포함합니다.
-    
-      검증 : 로드된 바이트코드가 올바르게 포맷되었는지, 안전한지 검사합니다.
-      준비 : 클래스 변수와 기본값을 위한 메모리를 할당합니다.
-      해석 : 심볼릭 메모리 참조를 직접 참조로 변환합니다(선택적).
-    
-  
-
-
-5️⃣ 초기화.
-
-  클래스 초기화 단계에서 정적 변수들에 대한 초기화가 수행되며, 정적 블록이 실행됩니다.
-
-
-6️⃣ 실행.
-
-  프로그램 실행 동안 JVM 내부에서 가비지 컬렉터가 사용되지 않는 객체를 자동으로 감지하고, 할당된 메모리를 해제하여 메모리를 관리합니다.
-
-
-📝 마무리.
-자바의 이러한 실행 과정은 코드의 플랫폼 독립성을 보장하고, 안정적이며 보안적인 실행 환경을 제공합니다.
-이 모든 과정은 개발자로부터 대부분 숨겨져 있으며, 개발자는 주로 소스 코드 작성과 일부 디버깅에 집중할 수 있습니다.
 
                         </a>
                         <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-02</span>
                             
@@ -34970,23 +34935,147 @@ if (a.getClass().equals(b.getClass())) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-05-02-IntroJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-02-TIL.html"><h1 class="title_post">📝 [TIL] 240502 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-02-TIL.html" class="txt_post">
-                            
-  기초수학 - 소개(수학과 자바 프로그래밍, 자료구조, 알고리즘의 관계)
-  코테 맛보기(1) - 코테를 위한 자바 프로그래밍 언어 사용 숙련도
-  코테 맛보기(2) - 코테를 위한 자료구조와 알고리즘 개념 구현 방법 숙지
-  자바 - 소개
-  자바 - 변수와 자료형(1)
+                        <a href="/Java/Java/2024-05-02-IntroJava.html"><h1 class="title_post">☕️[Java] 자바 - 소개</h1></a>
+                        <a href="/Java/Java/2024-05-02-IntroJava.html" class="txt_post">
+                            자바 - 소개
 
+🙋‍♂️ 1. 자바의 특징.
+자바는 세계적으로 널리 사용되는 프로그래밍 언어로, 웹 개발, 모바일 애플리케이션, 대규모 시스템 구축 등 다양한 분야에 활용됩니다.
+자바의 주요 특징들은 다음과 같습니다.
+
+1️⃣ 플랫폼 독립성.
+
+  “Write Once, Run Anywhere”(WORA) : 자바 프로그램은 자바 가상 머신(JVM) 위에서 실행되기 때문에, 한 번 작성하면 어떤 플랫폼에서도 실행할 수 있습니다.
+    
+      이는 자바 컴파일러가 소스 코드를 플랫폼 독립적인 바이트코드로 변환하기 때문입니다.
+    
+  
+
+
+2️⃣ 객체 지향 프로그래밍(OOP).
+
+  자바는 객체 지향 프로그래밍 언어로, 캡슐화, 상속, 다형성 등을 완전히 지원합니다.
+    
+      이는 코드 재사용, 유지 관리의 용이성 및 시스템 모듈화를 가능하게 합니다.
+    
+  
+
+
+3️⃣ 강력한 표준 라이브러리.
+
+  자바는 방대한 표준 라이브러리를 제공하여, 네트워킹, 파일 시스템 접근, 그래픽 인터페이스 제작 등 다양한 작업을 쉽게 처리할 수 있도록 돕습니다.
+
+
+4️⃣ 메모리 관리.
+
+  자동 가비지 컬렉션
+    
+      자바는 사용하지 않는 객체를 자동으로 감지하고 메모리에서 제거하는 가비지 컬렉터를 내장하고 있습니다. 이는 개발자가 메모리 누수에 대해 걱정할 필요가 적어지게 해줍니다.
+    
+  
+
+
+5️⃣ 보안.
+
+  자바는 샌드박스 환경에서 애플리케이션을 실행하여 시스템 리소스에 대한 무단 접근을 방지합니다.
+    
+      또한, 클래스 로더, 바이트코드 검증기 등을 통해 애플리케이션이 안전하게 실행될 수 있도록 합니다.
+    
+  
+
+
+6️⃣ 멀티스레딩.
+
+  자바는 내장된 멀티스레딩 기능을 지원하여, 여러 스레드가 동시에 실행되도록 하여 애플리케이션의 효율성을 높입니다.
+    
+      이는 특히 네트워크 서버와 실시간 시스템에서 큰 장점입니다.
+    
+  
+
+
+7️⃣ 로버스트와 포터빌리티.
+
+  자바 프로그램은 다른 플랫폼으로의 이동성이 뛰어나며, 높은 수준의 안정성을 제공합니다.
+    
+      예외 처리 기능을 통해 오류를 쉽게 관리하고, 시스템의 안정성을 높일 수 있습니다.
+    
+  
+
+
+📝 마무리.
+자바의 이러한 특징들은 그것을 매우 유연하고, 다양한 애플리케이션 개발에 적합하게 만듭니다.
+이로 인해 자바는 세계적으로 인기 있는 프로그래밍 언어 중 하나로 자리 잡게 되었습니다.
+
+
+
+🙋‍♂️ 2. 자바 프로그램의 작성과 실행과정.
+
+
+
+1️⃣ 소스 코드 작성.
+
+  개발자는 자바의 문법에 맞추어 .java 확장자 파일에 소스 코드를 작성합니다.
+    
+      이 파일에는 하나 이상의 클래스가 포함되며, 각 클래스는 데이터와 메서드를 정의합니다.
+    
+  
+
+
+2️⃣ 컴파일.
+
+  소스 코드 파일을 자바 컴파일러(javac)를 사용하여 컴파일합니다.
+    
+      컴파일러는 소스 코드를 읽고, 문법 오류를 검사한 후, 바이트코드라는 중간 형태의 코드로 변환합니다.
+        
+          이 바이트 코드는 .class 파일로 저장됩니다.
+        
+      
+    
+  
+  바이트코드는 플랫폼 독립적이기 때문에, 한 번 컴파일된 .class 파일은 다양한 운영 체제에서 실행될 수 있습니다.
+
+
+3️⃣ 로딩.
+
+  자바 가상 머신(JVM)은 .class 파일을 로드합니다.
+    
+      클래스 로더(component of JVM)가 이 작업을 수행하며, 필요한 클래스 파일들을 메모리에 로드합니다.
+    
+  
+
+
+4️⃣ 링킹.
+
+  로드된 클래스 파일들은 링킹 과정을 거칩니다. 링킹은 검증, 준비, 그리고(선택적으로) 해석 단계를 포함합니다.
+    
+      검증 : 로드된 바이트코드가 올바르게 포맷되었는지, 안전한지 검사합니다.
+      준비 : 클래스 변수와 기본값을 위한 메모리를 할당합니다.
+      해석 : 심볼릭 메모리 참조를 직접 참조로 변환합니다(선택적).
+    
+  
+
+
+5️⃣ 초기화.
+
+  클래스 초기화 단계에서 정적 변수들에 대한 초기화가 수행되며, 정적 블록이 실행됩니다.
+
+
+6️⃣ 실행.
+
+  프로그램 실행 동안 JVM 내부에서 가비지 컬렉터가 사용되지 않는 객체를 자동으로 감지하고, 할당된 메모리를 해제하여 메모리를 관리합니다.
+
+
+📝 마무리.
+자바의 이러한 실행 과정은 코드의 플랫폼 독립성을 보장하고, 안정적이며 보안적인 실행 환경을 제공합니다.
+이 모든 과정은 개발자로부터 대부분 숨겨져 있으며, 개발자는 주로 소스 코드 작성과 일부 디버깅에 집중할 수 있습니다.
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-05-02</span>
                             
@@ -69772,6 +69861,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Network/2024/2024-09-17-OSI-7-Layer.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-09-17"
+        });
+    
+
+        posts.push({
+            'title'    : "💉[SQL] DBMS의 분류.",
+            'path'     : "SQL > 2024",
+            'type'     : "post",
+            'tags'     : "SQL",
+            'url'      : "/SQL/2024/2024-09-18-DBMS-Classification.html",
+            'image'    : "/assets/img/thumbnail/sql.jpeg",
+            'date'     : "2024-09-18"
         });
     
 

@@ -694,6 +694,7 @@
             
             
             
+            
 
     
     
@@ -1100,6 +1101,236 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/SQL/2024/2024-09-18-intro-dbms.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/SQL/2024/2024-09-18-intro-dbms.html"><h1 class="title_post">💾[Database] DBMS의 개요.</h1></a>
+                        <a href="/SQL/2024/2024-09-18-intro-dbms.html" class="txt_post">
+                            💾[Database] DBMS의 개요.
+
+1️⃣ 데이터베이스의 정의와 특징.
+
+  데이터베이스는 여러 사용자나 응용 프로그램이 공유하고 동시에 접근 가능한 ‘데이터의 집합’이라고 정의할 수 있습니다.
+  그리고 DBMS(DataBase Management System)는 이러한 데이터베이스를 관리.운영하는 소프트웨어입니다.
+  일반적으로 사용하는 MS의 엑셀 같은 프로그램은 데이터의 집합을 다루기 때문에 DBMS와 비슷해 보이지만, 대용량 데이터를 관리하거나 여러 명의 사용자가 공유하는 것은 아니므로 DBMS라고 부르지 않습니다.
+  데이터베이스는 ‘데이터의 저장 공간’ 자체를 의미하기도 합니다.
+  MySQL에서는 데이터베이스를 자료가 저장되는 디스크 공간(주로 파일로 구성됨)으로 취급합니다.
+  DBMS는 데이터베이스를 관리하는 역할을 하는 소프트웨어입니다.
+  여러 사용자나 응용 프로그램은 DBMS가 관리하는 데이터에 동시에 접속하여 데이터를 공유합니다.
+    
+      즉, DBMS에서는 데이터베이스에서 사용되는 데이터가 집중 관리됩니다.
+    
+  
+
+
+DBMS 또는 데이터베이스의 중요한 특징.
+
+  데이터 무결성.
+    
+      데이터베이스 안의 데이터는 어떤 경로를 통해 들어왔든 오류가 있어서는 안 되는데 이를 무결성(Integrity)이라고 합니다.
+      무결성을 지키기 위해 데이터베이스는 제약 조건(constraint)을 따릅니다.
+        
+          예를 들어 학생 데이터에서 모든 학생은 학번이 반드시 있어야 하고 학번이 중복되면 안 된다는 제약 조건을 생각해봅시다.
+          이 제약 조건을 충실히 지킨다면 학번으로도 학생 데이터에서 학생을 정확히 찾을 수 있습니다.
+            
+              즉, 학번은 무결한 데이터를 보장하는 요소이며, 자동 발급기로 성적 증명서나 재학 증명서를 뗄 떼 학번만 조회해도 정확한 자료를 출력할 수 있습니다.
+            
+          
+        
+      
+    
+  
+  데이터의 독립성.
+    
+      데이터베이스의 크기를 변경하거나 데이터 파일의 저장소를 변경하더라도 기존에 작성된 응용 프로그램은 전혀 영향을 받지 않습니다.
+        
+          즉 데이터베이스와 응용 프로그램은 서로 의존적인 관계가 아니라 독립적인 관계입니다.
+            
+              예를 들어 데이터베이스가 저장된 디스크가 새것으로 변경되어도 기존에 사용하던 응용 프로그램은 아무런 변경 없이 계속 사용할 수 있습니다.
+            
+          
+        
+      
+    
+  
+  보안.
+    
+      데이터베이스 안의 데이터는 아무나 접근할 수 있는 것이 아니라 데이터를 소유한 사람이나 데이터에 접근이 허가된 사람만 접근할 수 있습니다.
+      또한 같은 데이터에 접근할 때도 사용자의 계정에 따라서 각각 다른 권한을 갖습니다.
+      최근 들어 고객 정보 유출 사고가 빈번하여 보안(Security)은 데이터베이스에서 더욱 중요한 이슈가 되고 있습니다.
+    
+  
+  데이터 중복 최소화.
+    
+      데이터베이스에서는 동일한 데이터가 여러 군데 중복 저장되는 것을 방지합니다.
+        
+          학교를 예로 들면, 학생 정보를 이용하는 교직원들(학생처, 교무처, 과사무실 등)이 각 직원마다 별도의 엑셀 파일로 학생 정보를 관리하면 한 명의 학생 정보가 각각의 엑셀 파일에 중복 저장됩니다.
+          그러나 데이터베이스에 통합하여 관리하면 하나의 테이블에 데이터를 저장한 후 응용 프로그램마다 이를 공유하여 사용할 수 있어 데이터의 중복을 최소화할 수 있습니다.
+        
+      
+    
+  
+  응용 프로그램 제장 및 수정 용이.
+    
+      기존 파일 시스템에서는 각각의 파일 포맷에 맞춰 응용 프로그램을 개발했습니다.
+      그러나 데이터베이스를 이용하면 통일된 방식으로 응용 프로그램을 작성할 수 있고 유지.보수 또한 쉽습니다.
+    
+  
+  데이터의 안전성 향상.
+    
+      대부분의 DBMS는 데이터 백업/복원 기능을 제공합니다.
+        
+          따라서 데이터가 손상되는 문제가 발생하더라도 원래의 상태로 복원 또는 복구할 수 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ DBMS의 분류.
+
+  DBMS는 크게 계층형(Hierarchical), 망형(network), 관계형(relational), 객체지향형(object-oriented), 객체관계형(object-relational)으로 분류됩니다.
+  현재는 관계형 DBMS(Relational DBMS)가 가장 많이 사용되며, 일부 멅티미디어 분야에서는 객체지향형(object-oriented)나 객체관계형(object-relational) DBMS가 활용되기도 합니다.
+  MySQL을 비롯해 Oracle, DB2, SQL Server, Access 등은 모두 관계형 DBMS입니다.
+
+
+계층형 DBMS(Hierarchical DBMS)
+
+  1960년대에 처음 등장한 DBMS 개념입니다.
+
+
+
+
+
+  위 그림에서 보듯이 각 계층이 트리 형태를 띠고 1:N 관계를 갖습니다.
+    
+      예를 들어 사장 1명에 부서 3개가 연결되어 있는 구조가 계층형 구조입니다.
+    
+  
+  계층형 DBMS는 구축한 후 구조를 변경하기가 상당히 까다롭고, 주어진 상태에서 검색은 빠르지만 접근의 유연성이 부족하여 임의 검색 시 어려움이 있는 것이 단점입니다.
+
+
+망형 DBMS(Network DBMS)
+
+  망형 DBMS는 계층형 DBMS의 문제점을 개선하기 위해 1970년대에 시작되었습니다.
+  망형 DBMS에서는 1:1, 1:N, N:M(다대다) 관계가 지원되어 효과적이고 빠른 데이터 추출이 가능합니다.
+  그러나 계층형 DBMS와 마찬가지로 매우 복잡한 내부 포인터를 사용하고 프로그래머가 모든 구조를 이해해야만 프로그램을 작성할 수 있다는 단점이 여전히 존재합니다.
+
+
+
+
+관계형 DBMS
+
+  관계형 DBMS(Relational DBMS)는 1969년 에드거 F.코드(Edgar F.Codd)가 수학 모델에 근거하여 고안했습니다.
+  관계형 DBMS의 핵심개념은 ‘데이터베이스는 테이블(table)이라는 최소 단위로 구성되어 있으며, 이 테이블은 하나 이상의 열(Column)로 구성되어 있다’는 것입니다.
+
+
+
+
+
+  관계형 DBMS에서는 모든 데이터가 테이블에 저장됩니다.
+  테이블이라는 구조는 관계형 DBMS의 가장 기본적이고 중요한 구성으로, 테이블을 잘 이해하면 관계형 DBMS의 기본적인 것을 이해했다고 말할 수 있습니다.
+  테이블은 데이터를 효율적으로 저장하기 위한 구조입니다.
+  관계형 DBMS에서는 데이터를 하나가 아닌 여러 개의 테이블에 나누어 저장하므로 불필요한 공간의 낭비를 줄이고 데이터 저장의 효율성을 보장합니다.
+    
+      이렇게 나뉜 테이블의 관계를 기본키(Primary Key, PK)와 외래키(Foreign Key, FK)를 사용하여 맺음으로써 두 테이블을 부모와 자식 관계로 묶습니다.
+      그리고 부모와 자식 관계로 연결된 테이블을 서로 조합하여 원하는 결과를 얻을 수 있는데, 이때 SQL(Structured Query Language, 구조화된 질의 언어)의 조인(join) 기능을 이용합니다.
+    
+  
+
+
+
+  TIP: 테이블은 릴레이션(Relation), 엔티티(Entity) 등으로 불립니다.
+
+
+
+  관계형 DBMS는 다른 DBMS에 비해 업무 변화에 따라 바로 순응할 수 있고 유지.보수 측면에서도 편리하다는 특징이 있습니다.
+  또한 대용량 데이터를 체계적으로 관리할 수 있고 데이터의 무결성도 잘 보장됩니다.
+    
+      따라서 동시에 접근하는 여러 응용 프로그램을 사용할 때 관계형 DBMS는 적절한 선택이 될 수 있습니다.
+    
+  
+  관계형 DBMS의 단점으로는 시스템 자원을 많이 차지하여 시스템이 전반적으로 느려진다는 것을 꼽을 수 있습니다.
+    
+      그러나 최근에는 하드웨어의 급속한 발전으로 이러한 단점이 많이 보완되고 있습니다.
+    
+  
+
+
+3️⃣ SQL의 개요
+
+  SQL은 관계형 데이터베이스에서 사용되는 언어로 ‘에스큐엘’ 또는 ‘시퀄’이라고 읽습니다.
+  관계형 DBMS(그중에서도 MySQL)를 배우려면 SQL을 익히는 것이 필수입니다.
+  SQL은 데이터베이스를 조작하는 ‘언어’로, 일반적인 프로그래밍 언어(C, C++, Java, C# 등)와 다른 특성을 가지고 있다.
+
+
+SQL의 특징.
+
+  DBMS 제작 회사와 독립적입니다.
+    
+      모든 DBMS 제작 회사에 표준 SQL이 공개되어 각 회사는 이 표준 SQL에 맞춰 DBMS를 개발합니다.
+      따라서 SQL은 대부분의 DBMS 제품에서 공통적으로 호환됩니다.
+    
+  
+  다른 시스템으로의 이식성이 좋습니다.
+    
+      SQL은 서버용, 개인용, 휴대용 장비 등 운영되는 DBMS마다 상호 호환성이 뛰어납니다.
+      한 시스템에서 사용하던 SQL을 다른 시스템으로 이식하는 데 큰 문제가 없습니다.
+    
+  
+  표준이 계속 발전합니다.
+    
+      SQL은 SQL-86, SQL-89, SQL-92, SQL:1999, SQL:2003, SQL:2008, SQL:2011 등으로 개선된 표준안이 계속 발표되었으며, 지금도 개선된 안이 꾸준히 연구되고 있습니다.
+    
+  
+  대화식 언어입니다.
+    
+      기존 프로그래밍 언어는 프로그램 작성, 컴파일 및 디버깅, 실행 과정을 거쳐야만 그 결과를 확인할 수 있지만 SQL은 바로 질의하고 결과를 얻는 대화식 언어입니다.
+    
+  
+  클라이언트/서버 구조를 지원합니다.
+    
+      SQL은 분산형 구조인 클라이언트/서버 구조를 지원합니다.
+      클라이언트에서 질의를 하면 서버에서 그 질의를 받아 처리하여 클라이언트에 전달하는 구조입니다.
+    
+  
+
+
+
+
+
+  SQL을 사용할 때 주의할 점은, 모든 DBMS 제품의 SQL 문이 완벽하게 동일하지는 않다는 것입니다.
+  많은 회사가 되도록 표준 SQL을 준수하려고 노력하지만 각 회사의 DBMS마다 특징이 있기 때문에 현실적으로 완전히 통일되기는 어렵습니다.
+  각 회사는 가급적 표준 SQL을 지키면서도 자신의 제춤에 특화된 SQL을 사용합니다.
+    
+      이를 오라큰에서는 PL/SQL, SQL Server에서는 T-SQL이라 부르고 MySQL에서는 그냥 SQL이라 일컫습니다.
+    
+  
+
+
+
+
+
+  위 그림과 같이 각 회사의 제품은 모두 표준 SQL을 공통으로 사용하면서 자기 제품의 특성에 맞춘 호환되지 않는 SQL 문도 사용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/SQL" class="category">SQL</a>
+                            
+                                <span class="date">· 2024-09-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1970,6 +2201,214 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Network/2024/2024-09-14-Service-primitive.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-14-Service-primitive.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 서비스 프리미티브</h1></a>
+                        <a href="/Network/2024/2024-09-14-Service-primitive.html" class="txt_post">
+                            🌐[Network] 네트워크 개념 - 서비스 프리미티브.
+
+1️⃣ 서비스 프리미티브.
+
+  프로토콜은 계층 구조로 이루어져 있고, 하위 계층이 상위 계층에 서비스를 제공하는 방식으로 동작합니다.
+    
+      이러한 서비스는 다음에 살펴볼 프리미티브(Primitive) 형태로 구현됩니다.
+    
+  
+  계층 구조 프로토콜에서 하위 계층이 상위 계층에 제공하는 서비스의 종류에는 연결형과 비연결형이 있습니다.
+
+
+연결형 서비스.
+
+  연결형(Connection-oriented) 서비스를 이용하는 절차는 크게 3단계 입니다.
+    
+      먼저 데이터 전달 경로를 설정하는 연결 설정 단계가 필요합니다.
+        
+          이 단계가 성공적으로 수행되어 연결이 설정되어야 다음 단계인 데이터 전송이 가능합니다.
+            
+              모든 데이터의 전송이 완료되어 데이터 전송 단계를 끝내려면 연결을 끊는 연결 해제 단계가 필요합니다.
+            
+          
+        
+      
+    
+  
+  연결형 서비스의 동작 원리는 전화 시스템을 이용한 통화 절차와 매우 유사합니다.
+
+
+비연결형 서비스.
+
+  비연결형(Connectionless) 서비스는 우편 시스템의 동작 원리와 비슷합니다.
+    
+      연결을 설정하고 해제하는 단계가 필요 없습니다.
+        
+          즉, 전송할 데이터가 있으면 각 데이터를 독립적으로 목적지 호스트로 전송하면 됩니다.
+        
+      
+    
+  
+  데이터는 독립적인 경로 선택 과정에 의해 전달되므로 도착하는 순서가 보낸 순서와 일치하지 않을 수 있습니다.
+  하위 계층이 상위 계층에 제공하는 서비스는 프리미티브(Primitive) 형태로 구현됩니다.
+    
+      따라서 프리미티브는 하위 계층을 사용하는 방법을 정형화한 것입니다.
+    
+  
+  연결형 서비스에서 추상화될 수 있는 기본 서비스 프리미티브의 종류에는 아래의 표처럼 CONNECT, DATA, DISCONNECT가 있습니다.
+
+
+
+  
+    
+      프리미티브
+      용도
+    
+  
+  
+    
+      CONNECT
+      연결 설정
+    
+    
+      DATA
+      데이터 전송
+    
+    
+      DISCONNECT
+      연결 해제
+    
+  
+
+
+
+  통신 프로토콜에서 프리미티브를 올바르게 수행하려면 각 프리미티브가 아래의 표의 네 가지 기능을 포함하도록 설계해야 합니다.
+  표에서는 설명의 편리함을 위하여 클라이언트와 서버라는 용어를 사용했으며, 아래 그림에서는 왼쪽 호스트를 클라이언트, 오른쪽 호스트를 서버로 가정했습니다.
+  클라이언트에서 서버로 전달되는 요청은 Request와 Indication으로 구현되고, 서버의 응답은 Response와 Confirm으로 구현됩니다.
+
+
+
+  
+    
+      기능
+      설명
+    
+  
+  
+    
+      Request
+      클라이언트가 서버에 서비스를 요청함
+    
+    
+      Indication
+      서버에 서비스 요청이 도착했음을 통지함
+    
+    
+      Response
+      서버가 클라이언트에 서비스 응답을 회신함
+    
+    
+      Confirm
+      클라이언트에 응답이 도착했음을 통지함
+    
+  
+
+
+
+  아래 그림은 클라이언트와 서버 사이에서 서비스 프리미티브가 처리되는 원리를 설명하고 있습니다.
+    
+      클라이언트의 상위 계층이 하위 계층에 Request를 요청하면 이 요청은 하위 계층 아래에 있는 차하위 계층의 도움을 받아 서버의 하위 계층에 전달됩니다.
+        
+          그러면 이 요청은 서버의 상위 계층에 Indication 형태로 전달되어 서버가 클라이언트 요청을 인지합니다.
+            
+              서버에서는 해당 프리미티브를 올바르게 수신하였음을 클라이언트에 통보하기 위하여 Response를 응답으로 보내고, 반대의 과정을 거쳐서 클라이언트에 Confirm 형태로 도착합니다.
+                
+                  이와 같은 4단계 절차를 통해 하나의 서비스 프리미티브가 처리됩니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+
+
+
+  위의 그림의 4단계 절차를 전화 시스템의 연결 설정인 CONNECT에 적용하여 설명하면 다음과 같습니다.
+    
+      전화 거는 사람을 클라이언트, 전화 받는 사람을 서버로 가정하면, 통신 회사의 전화망은 클라이언트와 서버 기능을 모두 수행하는 하위 계층이 됩니다.
+        
+          발신자가 전화번호를 누르면(Request) 전화망은 이 전화번호에 해당하는 전화기의 위치를 찾아 수신자의 전화벨(Indication)이 울리게 합니다.
+            
+              수신자가 전화를 받기 위해 통화 버튼을 누르면(Request) 전화망은 이 사실을 바로 인지할 수 있습니다.
+                
+                  수신자가 통화 버튼을 누름과 동시에 발신자 전화기의 발신음이 끊기면서(Confirm) 통화 연결 상태가 되었음을 확인할 수 있습니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 네 가지 서비스 프리미티비의 기능.
+
+  네 가지 서비스 프리미티브의 기능을 요약하여 설명하면 다음과 같습니다.
+    
+      여기서 상위 계층과 사위 계층을 프로토콜이라는 용어로 설명합니다.
+    
+  
+
+
+Request
+
+  Request는 클라이언트가 서버에 프리미티브의 기능을 수행하도록 요청하는 것입니다.
+  클라이언트에서는 상위 프로토콜이 하위 프로토콜에 요청을 전달하고, 이 요청이 가장 아래의 물리 계층을 통하여 서버에 전달됩니다.
+  연결 설정 요청(CONNECT.Request), 데이터 전송 요청(DATA.Request), 연결 해제 요청(DISCONNECT.Request) 등이 있습니다.
+
+
+Indication
+
+  물리 계층을 통하여 Request 요청을 수신한 서버는 이 요청을 물리 계층 위에 있는 하위 프로토콜에 전달합니다.
+    
+      이후, Indication을 사용해서 상위 프로토콜에 프리미티브 요청이 발생했음을 알립니다.
+    
+  
+  연결 설정, 데이터 전송, 연결 해제에 대해 CONNECT.Indication, DATA.Indication, DISCONNECT.Indication 순으로 사용합니다.
+
+
+Response
+
+  클라이언트로부터 프리미티브를 받은 서버에서는 Response를 이용해 클라이언트에 응답합니다.
+  응답의 전달 과정은 Request, indication과 반대의 순서로 진행되며, 연결 설정 요청에 대해서는 CONNECT.Reponse를 사용해 연결 허용이나 거부로 응답하고, 데이터는 DATA.Response, 연결 해제는 DISCONNECT.Response로 전달합니다.
+
+
+Confirm
+
+  서버에서 보낸 응답은 Confirm 형태로 클라이언트에 회신됩니다.
+  연결 설정은 CONNECT.Confirm, 데이터는 DATA.Confirm, 연결 해제는 DISCONNECT.Confirm로 전달됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-09-14-CORS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2254,214 +2693,6 @@ public class WebConfig implements WebMvcConfigurer {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-09-14-Service-primitive.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-09-14-Service-primitive.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 서비스 프리미티브</h1></a>
-                        <a href="/Network/2024/2024-09-14-Service-primitive.html" class="txt_post">
-                            🌐[Network] 네트워크 개념 - 서비스 프리미티브.
-
-1️⃣ 서비스 프리미티브.
-
-  프로토콜은 계층 구조로 이루어져 있고, 하위 계층이 상위 계층에 서비스를 제공하는 방식으로 동작합니다.
-    
-      이러한 서비스는 다음에 살펴볼 프리미티브(Primitive) 형태로 구현됩니다.
-    
-  
-  계층 구조 프로토콜에서 하위 계층이 상위 계층에 제공하는 서비스의 종류에는 연결형과 비연결형이 있습니다.
-
-
-연결형 서비스.
-
-  연결형(Connection-oriented) 서비스를 이용하는 절차는 크게 3단계 입니다.
-    
-      먼저 데이터 전달 경로를 설정하는 연결 설정 단계가 필요합니다.
-        
-          이 단계가 성공적으로 수행되어 연결이 설정되어야 다음 단계인 데이터 전송이 가능합니다.
-            
-              모든 데이터의 전송이 완료되어 데이터 전송 단계를 끝내려면 연결을 끊는 연결 해제 단계가 필요합니다.
-            
-          
-        
-      
-    
-  
-  연결형 서비스의 동작 원리는 전화 시스템을 이용한 통화 절차와 매우 유사합니다.
-
-
-비연결형 서비스.
-
-  비연결형(Connectionless) 서비스는 우편 시스템의 동작 원리와 비슷합니다.
-    
-      연결을 설정하고 해제하는 단계가 필요 없습니다.
-        
-          즉, 전송할 데이터가 있으면 각 데이터를 독립적으로 목적지 호스트로 전송하면 됩니다.
-        
-      
-    
-  
-  데이터는 독립적인 경로 선택 과정에 의해 전달되므로 도착하는 순서가 보낸 순서와 일치하지 않을 수 있습니다.
-  하위 계층이 상위 계층에 제공하는 서비스는 프리미티브(Primitive) 형태로 구현됩니다.
-    
-      따라서 프리미티브는 하위 계층을 사용하는 방법을 정형화한 것입니다.
-    
-  
-  연결형 서비스에서 추상화될 수 있는 기본 서비스 프리미티브의 종류에는 아래의 표처럼 CONNECT, DATA, DISCONNECT가 있습니다.
-
-
-
-  
-    
-      프리미티브
-      용도
-    
-  
-  
-    
-      CONNECT
-      연결 설정
-    
-    
-      DATA
-      데이터 전송
-    
-    
-      DISCONNECT
-      연결 해제
-    
-  
-
-
-
-  통신 프로토콜에서 프리미티브를 올바르게 수행하려면 각 프리미티브가 아래의 표의 네 가지 기능을 포함하도록 설계해야 합니다.
-  표에서는 설명의 편리함을 위하여 클라이언트와 서버라는 용어를 사용했으며, 아래 그림에서는 왼쪽 호스트를 클라이언트, 오른쪽 호스트를 서버로 가정했습니다.
-  클라이언트에서 서버로 전달되는 요청은 Request와 Indication으로 구현되고, 서버의 응답은 Response와 Confirm으로 구현됩니다.
-
-
-
-  
-    
-      기능
-      설명
-    
-  
-  
-    
-      Request
-      클라이언트가 서버에 서비스를 요청함
-    
-    
-      Indication
-      서버에 서비스 요청이 도착했음을 통지함
-    
-    
-      Response
-      서버가 클라이언트에 서비스 응답을 회신함
-    
-    
-      Confirm
-      클라이언트에 응답이 도착했음을 통지함
-    
-  
-
-
-
-  아래 그림은 클라이언트와 서버 사이에서 서비스 프리미티브가 처리되는 원리를 설명하고 있습니다.
-    
-      클라이언트의 상위 계층이 하위 계층에 Request를 요청하면 이 요청은 하위 계층 아래에 있는 차하위 계층의 도움을 받아 서버의 하위 계층에 전달됩니다.
-        
-          그러면 이 요청은 서버의 상위 계층에 Indication 형태로 전달되어 서버가 클라이언트 요청을 인지합니다.
-            
-              서버에서는 해당 프리미티브를 올바르게 수신하였음을 클라이언트에 통보하기 위하여 Response를 응답으로 보내고, 반대의 과정을 거쳐서 클라이언트에 Confirm 형태로 도착합니다.
-                
-                  이와 같은 4단계 절차를 통해 하나의 서비스 프리미티브가 처리됩니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-
-
-
-  위의 그림의 4단계 절차를 전화 시스템의 연결 설정인 CONNECT에 적용하여 설명하면 다음과 같습니다.
-    
-      전화 거는 사람을 클라이언트, 전화 받는 사람을 서버로 가정하면, 통신 회사의 전화망은 클라이언트와 서버 기능을 모두 수행하는 하위 계층이 됩니다.
-        
-          발신자가 전화번호를 누르면(Request) 전화망은 이 전화번호에 해당하는 전화기의 위치를 찾아 수신자의 전화벨(Indication)이 울리게 합니다.
-            
-              수신자가 전화를 받기 위해 통화 버튼을 누르면(Request) 전화망은 이 사실을 바로 인지할 수 있습니다.
-                
-                  수신자가 통화 버튼을 누름과 동시에 발신자 전화기의 발신음이 끊기면서(Confirm) 통화 연결 상태가 되었음을 확인할 수 있습니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 네 가지 서비스 프리미티비의 기능.
-
-  네 가지 서비스 프리미티브의 기능을 요약하여 설명하면 다음과 같습니다.
-    
-      여기서 상위 계층과 사위 계층을 프로토콜이라는 용어로 설명합니다.
-    
-  
-
-
-Request
-
-  Request는 클라이언트가 서버에 프리미티브의 기능을 수행하도록 요청하는 것입니다.
-  클라이언트에서는 상위 프로토콜이 하위 프로토콜에 요청을 전달하고, 이 요청이 가장 아래의 물리 계층을 통하여 서버에 전달됩니다.
-  연결 설정 요청(CONNECT.Request), 데이터 전송 요청(DATA.Request), 연결 해제 요청(DISCONNECT.Request) 등이 있습니다.
-
-
-Indication
-
-  물리 계층을 통하여 Request 요청을 수신한 서버는 이 요청을 물리 계층 위에 있는 하위 프로토콜에 전달합니다.
-    
-      이후, Indication을 사용해서 상위 프로토콜에 프리미티브 요청이 발생했음을 알립니다.
-    
-  
-  연결 설정, 데이터 전송, 연결 해제에 대해 CONNECT.Indication, DATA.Indication, DISCONNECT.Indication 순으로 사용합니다.
-
-
-Response
-
-  클라이언트로부터 프리미티브를 받은 서버에서는 Response를 이용해 클라이언트에 응답합니다.
-  응답의 전달 과정은 Request, indication과 반대의 순서로 진행되며, 연결 설정 요청에 대해서는 CONNECT.Reponse를 사용해 연결 허용이나 거부로 응답하고, 데이터는 DATA.Response, 연결 해제는 DISCONNECT.Response로 전달합니다.
-
-
-Confirm
-
-  서버에서 보낸 응답은 Confirm 형태로 클라이언트에 회신됩니다.
-  연결 설정은 CONNECT.Confirm, 데이터는 DATA.Confirm, 연결 해제는 DISCONNECT.Confirm로 전달됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-13-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -2711,6 +2942,179 @@ null
       null 값을 반환하는 경우 잘못하면 NullPointException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
+                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
+                            ☕️[Java] Optional.
+
+1️⃣ Optional.
+
+  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
+  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
+
+
+2️⃣ 주요 특징
+
+  1. 값의 존재 여부를 명확히 표현.
+    
+      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
+        
+          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
+        
+      
+    
+  
+  2. 명시적인 null 처리.
+    
+      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+        
+          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+        
+      
+    
+  
+  3. 함수형 프로그래밍 스타일 지원.
+    
+      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
+    
+  
+
+
+3️⃣ Optional 생성.
+Optional&lt;String&gt; emptyOptional = Optional.empty();
+
+
+  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
+
+
+Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
+
+
+  null이 아닌 값으로 Optional 생성.
+    
+      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
+      값이 null인 경우 NullPointerException이 발생합니다.
+    
+  
+
+
+Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+
+
+  null이 될 수 있는 값으로 Optional 생성.
+    
+      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
+      값이 null이면 빈 Optional이 생성됩니다.
+        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+        
+      
+    
+  
+
+
+4️⃣ Optional의 사용 예
+
+  1. 값이 존재하는지 확인(isPresent / ifPresent)
+```java
+Optional optional = Optional.of("Hello");
+
+
+if (optional.isPresent()) {
+    System.out.println(optional.get()); // 값이 있으면 출력
+}
+
+optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
+
+- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+```java
+String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
+String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
+
+
+
+  3. 값이 없으면 예외 던지기(orElseThrow)
+    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+    
+  
+  4. 값 변환(map, flatMap)
+```java
+Optional optional = Optional.of("Hello");
+
+
+Optional lengthOptional = optional.map(String::length);
+lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
+
+- **5. 조건에 따른 필터링(`filter`)**
+```java
+Optional&lt;String&gt; optional = Optional.of("Hello");
+
+Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
+filtered.ifPresent(System.out::println); // "Hello" 출력
+
+
+5️⃣ Optional 사용의 이점.
+
+  1. 명시적 코드 작성.
+    
+      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
+    
+  
+  2. NullPointerException 방지.
+    
+      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
+    
+  
+  3. 함수형 스타일.
+    
+      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
+    
+  
+
+
+6️⃣ Optional 사용 시 주의점.
+
+  1. 과도한 사용 자제.
+    
+      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+        
+          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+        
+      
+    
+  
+  2. 성능.
+    
+      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
+    
+  
+
+
+7️⃣ 요약.
+
+  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
+  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
+  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
 
 
                         </a>
@@ -3088,168 +3492,159 @@ i3 = -1
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-12-Primitive-type.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
-                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
-                            ☕️[Java] Optional.
+                        <a href="/Java/Java/2024-09-12-Primitive-type.html"><h1 class="title_post">☕️[Java] 기본형 타입(Primitive Type).</h1></a>
+                        <a href="/Java/Java/2024-09-12-Primitive-type.html" class="txt_post">
+                            ☕️[Java] 기본형 타입(Primitive Type).
 
-1️⃣ Optional.
+1️⃣ 기본형 타입(Primitive Type)란?
 
-  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
-  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
+  기본형 타입(Primitive Type)은 Java에서 가장 단순하고 기본적인 데이터 유형으로, 실제 값을 직접 저장하는 변수 유형입니다.
+  기본형 타입(Primitive Type)은 참조형 타입(Reference Type)과 달리 객체가 아니며, 메모리 상에 직접 데이터를 저장합니다.
+  Java에는 8개의 기본형 타입(Primitive Type)이 있습니다.
 
 
-2️⃣ 주요 특징
+1️⃣ 정수형.
 
-  1. 값의 존재 여부를 명확히 표현.
+  byte : 8비트 정수(-128 ~ 127).
+  short : 16비트 정수(-32,768 ~ 32,767).
+  int : 32비트 정수(-2^31 ~ 2^31-1).
+  long : 64비트 정수(-2^63 ~ 2^63-1).
+
+
+2️⃣ 실수형.
+
+  float : 32비트 부동소수점.
+  double : 64비트 부동소수점.
+
+
+3️⃣ 문자형.
+
+  char : 16비트 유니코드 문자(0 ~ 65,535)
+
+
+4️⃣ 논리형.
+
+  boolean : 참 또는 거짓(true/false)
+
+
+2️⃣ 기본형 타입의 한계.
+
+  1. 객체로서의 기능 부족.
     
-      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
+      기본형 타입은 객체가 아니기 때문에 메서드나 속성을 가질 수 없습니다.
         
-          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
-        
-      
-    
-  
-  2. 명시적인 null 처리.
-    
-      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
-        
-          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
-        
-      
-    
-  
-  3. 함수형 프로그래밍 스타일 지원.
-    
-      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
-    
-  
-
-
-3️⃣ Optional 생성.
-Optional&lt;String&gt; emptyOptional = Optional.empty();
-
-
-  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
-
-
-Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
-
-
-  null이 아닌 값으로 Optional 생성.
-    
-      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
-      값이 null인 경우 NullPointerException이 발생합니다.
-    
-  
-
-
-Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
-
-
-  null이 될 수 있는 값으로 Optional 생성.
-    
-      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
-      값이 null이면 빈 Optional이 생성됩니다.
-        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+          이로 인해 객체지향적인 프로그래밍에서 사용되는 많은 기능을 사용할 수 없습니다.
         
       
     
   
+  2. 컬렉션과의 호환성 부족.
+    
+      기본형 타입은 Java의 컬렉션 프레임워크(List, Set, Map 등)에 직접적으로 사용할 수 없습니다.
+        
+          컬렉션은 객체만을 저장할 수 있기 때문에, 기본형을 사용할 경우 래퍼 클래스(예: Integer, Double, Boolean)로 변환해야 합니다.
+        
+      
+    
+  
+  3. 유연성 부족.
+    
+      기본형 타입은 값이 불변이며, 추가적인 속성이나 동작을 정의할 수 없습니다.
+        
+          이를 보완하기 위해 래퍼 클래스와 같은 객체가 필요합니다.
+        
+      
+    
+  
 
 
-4️⃣ Optional의 사용 예
+3️⃣ 기본형 타입을 사용하는 이유.
 
-  1. 값이 존재하는지 확인(isPresent / ifPresent)
-```java
-Optional optional = Optional.of("Hello");
+  1. 성능.
+    
+      기본형 타입은 참조형 타입보다 메모리 사용량이 적고, 처리 속도가 빠릅니다.
+      기본형 타입은 실제 값을 직접 메모리에 저장하기 때문에, 메모리 접근이 빠르고, 가비지 컬렉션과 같은 추가적인 처리 없이 직접적으로 값을 사용할 수 있습니다.
+    
+  
+  2. 메모리 효율성.
+    
+      기본형 타입은 참조형 타입보다 메모리 사용량이 적습니다.
+        
+          예를 들어, int는 32비트를 사용하지만, Integer는 객체를 래핑하기 때문에 추가적인 메모리 오버헤드가 발생합니다.
+        
+      
+    
+  
+  3. 간결함.
+    
+      기본형 타입은 간단하고 사용하기 쉽습니다.
+      복잡한 객체 대신, 단순한 값만 필요할 때 기본형 타입을 사용하는 것이 코드의 가독성을 높이고, 불필요한 복잡성을 줄일 수 있습니다.
+    
+  
+  4. 기본적인 연산 지원.
+    
+      기본형 타입은 Java 언어 내에서 산술 연산, 비교 연산 등 기본적인 연산을 직접적으로 지원합니다.
+        
+          이러한 연산은 참조형 타입보다 훨씬 빠르게 수행됩니다.
+        
+      
+    
+  
 
 
-if (optional.isPresent()) {
-    System.out.println(optional.get()); // 값이 있으면 출력
+4️⃣ 기본형 타입의 사용 예.
+
+public class Main {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+        int sum = a + b; // 기본형 타입 간의 덧셈 연산
+        System.out.println("Sum: " + sum); // 출력: Sum: 30
+        
+        // 기본형 타입을 사용할 경우 메모리 효율성과 성능이 우수
+    }
 }
 
-optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
 
-- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
-```java
-String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
-String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
+5️⃣ 기본형 타입과 래퍼 클래스.
 
-
-
-  3. 값이 없으면 예외 던지기(orElseThrow)
-    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+  Java는 기본형 타입을 객체로 감쌀 수 있는 래퍼 클래스를 제공합니다.
     
-  
-  4. 값 변환(map, flatMap)
-```java
-Optional optional = Optional.of("Hello");
-
-
-Optional lengthOptional = optional.map(String::length);
-lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
-
-- **5. 조건에 따른 필터링(`filter`)**
-```java
-Optional&lt;String&gt; optional = Optional.of("Hello");
-
-Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
-filtered.ifPresent(System.out::println); // "Hello" 출력
-
-
-5️⃣ Optional 사용의 이점.
-
-  1. 명시적 코드 작성.
-    
-      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
-    
-  
-  2. NullPointerException 방지.
-    
-      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
-    
-  
-  3. 함수형 스타일.
-    
-      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
-    
-  
-
-
-6️⃣ Optional 사용 시 주의점.
-
-  1. 과도한 사용 자제.
-    
-      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+      예를 들어, int의 래퍼 클래스는 Integer입니다.
         
-          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+          래퍼 클래스는 기본형 타입을 객체로 변환하여 컬렉션과 같은 객체 기반 API와 호환성을 제공할 수 있습니다.
+```java
+public class Main {
+  public static void main(String[] args) {
+  Integer x = 10; // 오토박싱 (autoboxing)
+  int y = x; // 오토언박싱 (autounboxing)
         
+
+        // 래퍼 클래스는 메서드를 가질 수 있습니다.
+  int max = Integer.max(10, 20);
+  System.out.println(“Max: “ + max); // 출력: Max: 20
+  }
+}
+```
       
     
   
-  2. 성능.
+  기본형 타입은 성능과 메모리 효율성 면에서 장점이 있지만, 객체의 유연성과 컬렉션 호환성 측면에서 한계가 있습니다.
     
-      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
+      이러한 이유로, Java에서는 상황에 따라 기본형 타입과 래퍼 클래스를 적절히 사용하게 됩니다.
     
   
-
-
-7️⃣ 요약.
-
-  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
-  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
-  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
                             
-                                <span class="date">· 2024-09-13</span>
+                                <span class="date">· 2024-09-12</span>
                             
                         </div>
                     </div>
@@ -3744,364 +4139,6 @@ public class GreetingController {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-12-Primitive-type.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-12-Primitive-type.html"><h1 class="title_post">☕️[Java] 기본형 타입(Primitive Type).</h1></a>
-                        <a href="/Java/Java/2024-09-12-Primitive-type.html" class="txt_post">
-                            ☕️[Java] 기본형 타입(Primitive Type).
-
-1️⃣ 기본형 타입(Primitive Type)란?
-
-  기본형 타입(Primitive Type)은 Java에서 가장 단순하고 기본적인 데이터 유형으로, 실제 값을 직접 저장하는 변수 유형입니다.
-  기본형 타입(Primitive Type)은 참조형 타입(Reference Type)과 달리 객체가 아니며, 메모리 상에 직접 데이터를 저장합니다.
-  Java에는 8개의 기본형 타입(Primitive Type)이 있습니다.
-
-
-1️⃣ 정수형.
-
-  byte : 8비트 정수(-128 ~ 127).
-  short : 16비트 정수(-32,768 ~ 32,767).
-  int : 32비트 정수(-2^31 ~ 2^31-1).
-  long : 64비트 정수(-2^63 ~ 2^63-1).
-
-
-2️⃣ 실수형.
-
-  float : 32비트 부동소수점.
-  double : 64비트 부동소수점.
-
-
-3️⃣ 문자형.
-
-  char : 16비트 유니코드 문자(0 ~ 65,535)
-
-
-4️⃣ 논리형.
-
-  boolean : 참 또는 거짓(true/false)
-
-
-2️⃣ 기본형 타입의 한계.
-
-  1. 객체로서의 기능 부족.
-    
-      기본형 타입은 객체가 아니기 때문에 메서드나 속성을 가질 수 없습니다.
-        
-          이로 인해 객체지향적인 프로그래밍에서 사용되는 많은 기능을 사용할 수 없습니다.
-        
-      
-    
-  
-  2. 컬렉션과의 호환성 부족.
-    
-      기본형 타입은 Java의 컬렉션 프레임워크(List, Set, Map 등)에 직접적으로 사용할 수 없습니다.
-        
-          컬렉션은 객체만을 저장할 수 있기 때문에, 기본형을 사용할 경우 래퍼 클래스(예: Integer, Double, Boolean)로 변환해야 합니다.
-        
-      
-    
-  
-  3. 유연성 부족.
-    
-      기본형 타입은 값이 불변이며, 추가적인 속성이나 동작을 정의할 수 없습니다.
-        
-          이를 보완하기 위해 래퍼 클래스와 같은 객체가 필요합니다.
-        
-      
-    
-  
-
-
-3️⃣ 기본형 타입을 사용하는 이유.
-
-  1. 성능.
-    
-      기본형 타입은 참조형 타입보다 메모리 사용량이 적고, 처리 속도가 빠릅니다.
-      기본형 타입은 실제 값을 직접 메모리에 저장하기 때문에, 메모리 접근이 빠르고, 가비지 컬렉션과 같은 추가적인 처리 없이 직접적으로 값을 사용할 수 있습니다.
-    
-  
-  2. 메모리 효율성.
-    
-      기본형 타입은 참조형 타입보다 메모리 사용량이 적습니다.
-        
-          예를 들어, int는 32비트를 사용하지만, Integer는 객체를 래핑하기 때문에 추가적인 메모리 오버헤드가 발생합니다.
-        
-      
-    
-  
-  3. 간결함.
-    
-      기본형 타입은 간단하고 사용하기 쉽습니다.
-      복잡한 객체 대신, 단순한 값만 필요할 때 기본형 타입을 사용하는 것이 코드의 가독성을 높이고, 불필요한 복잡성을 줄일 수 있습니다.
-    
-  
-  4. 기본적인 연산 지원.
-    
-      기본형 타입은 Java 언어 내에서 산술 연산, 비교 연산 등 기본적인 연산을 직접적으로 지원합니다.
-        
-          이러한 연산은 참조형 타입보다 훨씬 빠르게 수행됩니다.
-        
-      
-    
-  
-
-
-4️⃣ 기본형 타입의 사용 예.
-
-public class Main {
-    public static void main(String[] args) {
-        int a = 10;
-        int b = 20;
-        int sum = a + b; // 기본형 타입 간의 덧셈 연산
-        System.out.println("Sum: " + sum); // 출력: Sum: 30
-        
-        // 기본형 타입을 사용할 경우 메모리 효율성과 성능이 우수
-    }
-}
-
-
-5️⃣ 기본형 타입과 래퍼 클래스.
-
-  Java는 기본형 타입을 객체로 감쌀 수 있는 래퍼 클래스를 제공합니다.
-    
-      예를 들어, int의 래퍼 클래스는 Integer입니다.
-        
-          래퍼 클래스는 기본형 타입을 객체로 변환하여 컬렉션과 같은 객체 기반 API와 호환성을 제공할 수 있습니다.
-```java
-public class Main {
-  public static void main(String[] args) {
-  Integer x = 10; // 오토박싱 (autoboxing)
-  int y = x; // 오토언박싱 (autounboxing)
-        
-
-        // 래퍼 클래스는 메서드를 가질 수 있습니다.
-  int max = Integer.max(10, 20);
-  System.out.println(“Max: “ + max); // 출력: Max: 20
-  }
-}
-```
-      
-    
-  
-  기본형 타입은 성능과 메모리 효율성 면에서 장점이 있지만, 객체의 유연성과 컬렉션 호환성 측면에서 한계가 있습니다.
-    
-      이러한 이유로, Java에서는 상황에 따라 기본형 타입과 래퍼 클래스를 적절히 사용하게 됩니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항</h1></a>
-                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="txt_post">
-                            🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항.
-
-1️⃣ 프로토콜 설계 시 고려 사항.
-
-  계층 구조의 통신 프로토콜을 설계할 때는 고려할 요소가 많습니다.
-    
-      대표적인 것이 네트워크 호스트의 주소 표현 방법, 데이터 전송 과정의 오류 제어, 통신 양단 사이의 전송 속도를 제어하는 흐름 제어입니다.
-        
-          주소 표현은 스마트폰 번호나 IP 주소와 같이 호스트를 유일하게 구분하는 용도로 사용합니다.
-          오류 제어는 전송 과정에서 데이터 분실, 데이터 변형 등의 오류가 발생했을 때 데이터를 복구하는 데 사용합니다.
-          흐름 제어는 송신자가 데이터를 너무 빨리 보내어 수신자가 미처 처리하지 못하는 문제를 해결하기 위한 목적으로 사용합니다.
-        
-      
-    
-  
-
-
-1️⃣ 주소 표현.
-
-  여러 호스트가 연결된 환경에서 특정 호스트끼리 통신하려면 상대방을 구분할 수 있는 방법이 필요합니다.
-    
-      시스템을 구분하여 지칭하기 위해서 이름을 부여하는 것을 주소(Address) 체계라 합니다.
-        
-          주소 체계는 시스템의 설계 과정에서 맨 먼저 고려해야 하는 중요한 개념입니다.
-            
-              예를 들어, 유선 전화 시스템의 주소 표기 방법을 살펴보면 전화번호 체계는 ‘국가 코드 - 지역 코드 -번호’ 형식으로 부여됩니다.
-                
-                  번호 체계가 국가라는 최상위 광역 코드에서 시작해 영역을 점점 축소하는 방식으로 계층 구조에 따라 관리됩니다.
-                    
-                      따라서 국가 코드와 지역 코드로 해당 전화기의 지리적 위치를 판단할 수 있습니다.
-                    
-                  
-                
-              
-              또 다른 주소 표현의 예로는 주민등록번호가 있습니다.
-                
-                  주민등록번호에는 다양한 정보가 포함되는데, yymmdd-abcdefg 형식에서 앞쪽의 yymmdd는 태어난 해의 연도, 월, 일을 의미합니다
-                  뒤쪽의 a는 성별을 구분하는 용도로 사용되는데, 1이면 남자 2이면 여자를 의미합니다.
-                  Y2K 문제로 인해 2000년 이후 출생자는 3이 남자, 4는 여자를 의미하도록 확장되었습니다.
-                    
-                      즉, 1901년과 2001년에 태어난 사람은 yy로 구분하지 못하므로 a 값으로 구분해야 합니다.
-                    
-                  
-                  주소 체계를 결정할 때는 이와 같은 확장성을 반드시 고려해야 합니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  보통 호스트마다 주소를 하나씩 부여하지만, 다수의 호스트를 묶어 하나의 그룹 주소로 표기하기도 합니다.
-    
-      이는 전통적인 통신 환경이면서 현재도 가장 많이 사용하는 일대일(1:1) 통신과 더불어, 화상 회의 등을 지원하기 위한 일대다(1:n) 통신 환경도 필요하기 때문입니다.
-        
-          일대다 통신의 대표적인 유형으로는 네트워크에 연결된 모든 호스트에 데이터를 전송할 수 있는 브로드캐스팅(Broadcasting) 표기 방법과 특정 사용자를 그룹으로 묶어서 지칭하는 멀티캐스팅(Multicasting) 표기 방법이 있습니다.
-            
-              예를 들어 카카오톡 앱에서 단체 전송을 하는 기능이나 줌에서 온라인 회의를 진행하는 기능이 멀티 캐스팅 표기 방법에 해당합니다.
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 오류 제어.
-
-  네트워크에서는 데이터 송수신 과정에서 오류가 발생할 수 있습니다.
-  전송 오류에는 데이터가 깨져서 도착하는 데이터 변형 오류와 데이터가 도착하지 못하는 데이터 분실 오류가 있습니다.
-  전송 오류 문제를 해결하는 오류 제어(Error Control) 기능은 통신 프로토콜의 가장 기본적인 기능에 속합니다.
-  데이터 변형 오류는 물리 계층의 전송 매체에 의한 물리적인 오류이므로 전송 과정에서 데이터의 내용이 바뀌는 경우입니다.
-    
-      이를 해결하기 위해서 데이터 링크 계층이 물리적인 정송 오류를 해결합니다.
-    
-  
-  물리적인 오류가 발생하지 않아도 프로토콜의 수행 과정에서 데이터를 분실하는 논리적인 전송 오류가 발생할 수 있습니다.
-  네트워크의 오류 제어 기능은 오류의 발생 사실을 인지하는 것이 먼저이고, 이후에 재전송 기능을 이용한 오류 복구 절차가 이어집니다.
-
-
-
-
-
-  위 그림은 송신호스트에서 보낸 데이터가 수신 호스트에 도착했을 때 발생할 수 있는 현상을 세 가지 유형으로 설명합니다.
-    
-      (a)는 데이터가 오류 없이 도착하는 정상적인 경우이고, (b)는 데이터가 수신 호스트에 도착하지 못하는 데이터 분실 오류이며, (c)는 데이터 내용이 변경되어 도착하는 데이터 변형 오류입니다.
-    
-  
-  (b)처럼 데이터가 분실되는 원인은 매우 다양합니다.
-    
-      전송 경로가 잘못되어 데이터가 엉뚱한 방향으로 전달되거나, 상위 계층의 논리적 처리 과정에서 데이터를 분실할 수도 있습니다.
-        
-          데이터가 변형되거나 분실되는 오류가 발생되어 이를 해결하려면 먼저 오류가 발생한 사실을 인지해야 합니다.
-        
-      
-    
-  
-  (b)의 경우는 수신 호스트가 자신에게 데이터가 보내졌다는 사실을 인지하는 것이 쉽지 않습니다.
-    
-      그래서 보통은 송신 호스트에서 타임아웃 등의 기능으로 오류를 감지하는 방법을 사용합니다.
-    
-  
-  (c)의 데이터 변형 오류는 수신 호스트가 CRC 방식 등의 오류 검출 기법을 이용해 오류를 검출할 수 있습니다.
-    
-      즉, 데이터 분실 오류는 송신 호스트 주도로 이루어지고, 데이터 변형 오류는 수신 호스트 주도로 이루어집니다.
-    
-  
-  네트워크에서 전송 오류를 해결하는 일반적인 방법은 송신 호스트가 원래 데이터를 재전송(Retransmission)하는 것입니다.
-  물리적인 오류 외에도 통신 프로토콜에서 사용하는 알고리즘의 성격에 의해 오류가 발생하기도 합니다.
-    
-      예를 들어, 송신 호스트가 순차적으로 전송한 데이터의 순서가 뒤바뀌어 도착하는 경우입니다.
-        
-          수신 호스트에서 도착 순서를 바로잡으려면 데이터의 논리적인 순서를 의미하는 순서 번호 기능이 필요합니다.
-        
-      
-    
-  
-
-
-3️⃣ 흐름 제어.
-
-  전송 매체에서 물리적인 오류가 없었는데도 데이터를 분실하는 경우가 있는데, 이는 송수신 호스트 사이의 데이터 전송/처리 속도 차이 때문에 발생합니다.
-  수신 호스트에 데이터가 도착하면 일단 내부 버퍼에 보관했다가 처리합니다.
-    
-      그런데 내부 버퍼에 보관할 공간을 확보하지 못하면 데이터를 논리적으로 분실하는 결과가 초래됩니다.
-    
-  
-  일반적으로 수신 호스트의 버퍼 처리 속도보다 송신 호스트가 데이터를 전송하는 속도가 빠르면 논리적인 데이터 분실 오류가 발생합니다.
-    
-      수신 호스트가 버퍼에 저장된 데이터를 미처 처리하지 못한 상태에서 새로운 데이터가 수신되어 일시적으로 저장할 공간이 없기 때문입니다.
-        
-          이 문제를 해결하려면 송신 호스트의 전송 속도를 조절하는 흐름 제어(Flow Control) 기능이 필요합니다.
-        
-      
-    
-  
-
-
-
-
-
-  위 그림은 가장 단순한 형태의 흐름 제어 기법을 보여줍니다.
-  송신 호스트가 데이터를 전송하려면 반드시 수신 호스트로부터 명시적인 전송 허가를 받아야 합니다.
-  그림을 보면(a)에서 송신 호스트가 i번째 데이터를 보내고 수신 호스트가 이를 제대로 받습니다.
-    
-      이후에 송신 호스트가 i+1번째 데이터를 보내려면 수신 호스트의 전송 허가가 필요합니다.
-      수신 호스트는 데이터를 수신할 여력이 있을 경우에만 (b)와 같이 전송 허가를 보냅니다.
-      (c)에서 전송 허가를 수신한 후에 송신 호스트가 다음 데이터인 i+1을 전송하고 있습니다.
-    
-  
-  보통 수신 호스트의 흐름 제어에 의해 데이터 전송이 이루어집니다.
-  위 그림은 흐름 제어의 이해를 돕기 위한 설명이며, 실제 통신 환경에서는 전송 속도가 너무 느리므로 이 방식이 사용되지 않습니다.
-  일반적으로 송신 호스트는 속도를 높이기 위하여 동시에 여러 개의 전송 데이터를 송신할 수 있으며, 수신 호스트가 데이터 개수를 통제합니다.
-
-
-4️⃣ 데이터 전달 방식.
-
-  프로토콜 설계 시 고려할 마지막 사항은 데이터 전달 방식입니다.
-
-
-
-
-
-  위 그림의 (c)에서 데이터를 오른쪽이나 왼쪽의 한 방향으로만 전송하는 것을 단방향(Simplex) 방식이라 하고, (a)처럼 양쪽에서 데이터를 동시에 전송하는 것을 전이중(Full Duplex) 방식이라고 합니다.
-  일반 도로 환경에 비유하자면 일방통행 도로가 단방향 방식이고, 중앙에 노란 실선이 그려진 도로는 전이중 방식입니다.
-  일반적인 통신 프로토콜들은 모두 전이중 방식을 지원합니다.
-  이외에도 데이터가 양방향으로 전송되지만, 특정 시점에는 한 방향으로만 전송할 수 있는 반이중(Half Duplex) 방식이 있습니다.
-  위 그림에서 (b)의 반이중 방식은 양쪽에서 데이터를 동시에 전송할 수 없으므로, 데이터 전송 시점을 제어할 수 있어야 합니다.
-  데이터 전달 방식에서는 데이터 사이의 전송 우선순위를 설정하는 방법이나 긴급 데이터를 처리하는 방법 등도 고려해야 합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-11</span>
                             
                         </div>
                     </div>
@@ -4677,6 +4714,200 @@ System.setProperty("socksProxyPort", "1080");
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항</h1></a>
+                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="txt_post">
+                            🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항.
+
+1️⃣ 프로토콜 설계 시 고려 사항.
+
+  계층 구조의 통신 프로토콜을 설계할 때는 고려할 요소가 많습니다.
+    
+      대표적인 것이 네트워크 호스트의 주소 표현 방법, 데이터 전송 과정의 오류 제어, 통신 양단 사이의 전송 속도를 제어하는 흐름 제어입니다.
+        
+          주소 표현은 스마트폰 번호나 IP 주소와 같이 호스트를 유일하게 구분하는 용도로 사용합니다.
+          오류 제어는 전송 과정에서 데이터 분실, 데이터 변형 등의 오류가 발생했을 때 데이터를 복구하는 데 사용합니다.
+          흐름 제어는 송신자가 데이터를 너무 빨리 보내어 수신자가 미처 처리하지 못하는 문제를 해결하기 위한 목적으로 사용합니다.
+        
+      
+    
+  
+
+
+1️⃣ 주소 표현.
+
+  여러 호스트가 연결된 환경에서 특정 호스트끼리 통신하려면 상대방을 구분할 수 있는 방법이 필요합니다.
+    
+      시스템을 구분하여 지칭하기 위해서 이름을 부여하는 것을 주소(Address) 체계라 합니다.
+        
+          주소 체계는 시스템의 설계 과정에서 맨 먼저 고려해야 하는 중요한 개념입니다.
+            
+              예를 들어, 유선 전화 시스템의 주소 표기 방법을 살펴보면 전화번호 체계는 ‘국가 코드 - 지역 코드 -번호’ 형식으로 부여됩니다.
+                
+                  번호 체계가 국가라는 최상위 광역 코드에서 시작해 영역을 점점 축소하는 방식으로 계층 구조에 따라 관리됩니다.
+                    
+                      따라서 국가 코드와 지역 코드로 해당 전화기의 지리적 위치를 판단할 수 있습니다.
+                    
+                  
+                
+              
+              또 다른 주소 표현의 예로는 주민등록번호가 있습니다.
+                
+                  주민등록번호에는 다양한 정보가 포함되는데, yymmdd-abcdefg 형식에서 앞쪽의 yymmdd는 태어난 해의 연도, 월, 일을 의미합니다
+                  뒤쪽의 a는 성별을 구분하는 용도로 사용되는데, 1이면 남자 2이면 여자를 의미합니다.
+                  Y2K 문제로 인해 2000년 이후 출생자는 3이 남자, 4는 여자를 의미하도록 확장되었습니다.
+                    
+                      즉, 1901년과 2001년에 태어난 사람은 yy로 구분하지 못하므로 a 값으로 구분해야 합니다.
+                    
+                  
+                  주소 체계를 결정할 때는 이와 같은 확장성을 반드시 고려해야 합니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  보통 호스트마다 주소를 하나씩 부여하지만, 다수의 호스트를 묶어 하나의 그룹 주소로 표기하기도 합니다.
+    
+      이는 전통적인 통신 환경이면서 현재도 가장 많이 사용하는 일대일(1:1) 통신과 더불어, 화상 회의 등을 지원하기 위한 일대다(1:n) 통신 환경도 필요하기 때문입니다.
+        
+          일대다 통신의 대표적인 유형으로는 네트워크에 연결된 모든 호스트에 데이터를 전송할 수 있는 브로드캐스팅(Broadcasting) 표기 방법과 특정 사용자를 그룹으로 묶어서 지칭하는 멀티캐스팅(Multicasting) 표기 방법이 있습니다.
+            
+              예를 들어 카카오톡 앱에서 단체 전송을 하는 기능이나 줌에서 온라인 회의를 진행하는 기능이 멀티 캐스팅 표기 방법에 해당합니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 오류 제어.
+
+  네트워크에서는 데이터 송수신 과정에서 오류가 발생할 수 있습니다.
+  전송 오류에는 데이터가 깨져서 도착하는 데이터 변형 오류와 데이터가 도착하지 못하는 데이터 분실 오류가 있습니다.
+  전송 오류 문제를 해결하는 오류 제어(Error Control) 기능은 통신 프로토콜의 가장 기본적인 기능에 속합니다.
+  데이터 변형 오류는 물리 계층의 전송 매체에 의한 물리적인 오류이므로 전송 과정에서 데이터의 내용이 바뀌는 경우입니다.
+    
+      이를 해결하기 위해서 데이터 링크 계층이 물리적인 정송 오류를 해결합니다.
+    
+  
+  물리적인 오류가 발생하지 않아도 프로토콜의 수행 과정에서 데이터를 분실하는 논리적인 전송 오류가 발생할 수 있습니다.
+  네트워크의 오류 제어 기능은 오류의 발생 사실을 인지하는 것이 먼저이고, 이후에 재전송 기능을 이용한 오류 복구 절차가 이어집니다.
+
+
+
+
+
+  위 그림은 송신호스트에서 보낸 데이터가 수신 호스트에 도착했을 때 발생할 수 있는 현상을 세 가지 유형으로 설명합니다.
+    
+      (a)는 데이터가 오류 없이 도착하는 정상적인 경우이고, (b)는 데이터가 수신 호스트에 도착하지 못하는 데이터 분실 오류이며, (c)는 데이터 내용이 변경되어 도착하는 데이터 변형 오류입니다.
+    
+  
+  (b)처럼 데이터가 분실되는 원인은 매우 다양합니다.
+    
+      전송 경로가 잘못되어 데이터가 엉뚱한 방향으로 전달되거나, 상위 계층의 논리적 처리 과정에서 데이터를 분실할 수도 있습니다.
+        
+          데이터가 변형되거나 분실되는 오류가 발생되어 이를 해결하려면 먼저 오류가 발생한 사실을 인지해야 합니다.
+        
+      
+    
+  
+  (b)의 경우는 수신 호스트가 자신에게 데이터가 보내졌다는 사실을 인지하는 것이 쉽지 않습니다.
+    
+      그래서 보통은 송신 호스트에서 타임아웃 등의 기능으로 오류를 감지하는 방법을 사용합니다.
+    
+  
+  (c)의 데이터 변형 오류는 수신 호스트가 CRC 방식 등의 오류 검출 기법을 이용해 오류를 검출할 수 있습니다.
+    
+      즉, 데이터 분실 오류는 송신 호스트 주도로 이루어지고, 데이터 변형 오류는 수신 호스트 주도로 이루어집니다.
+    
+  
+  네트워크에서 전송 오류를 해결하는 일반적인 방법은 송신 호스트가 원래 데이터를 재전송(Retransmission)하는 것입니다.
+  물리적인 오류 외에도 통신 프로토콜에서 사용하는 알고리즘의 성격에 의해 오류가 발생하기도 합니다.
+    
+      예를 들어, 송신 호스트가 순차적으로 전송한 데이터의 순서가 뒤바뀌어 도착하는 경우입니다.
+        
+          수신 호스트에서 도착 순서를 바로잡으려면 데이터의 논리적인 순서를 의미하는 순서 번호 기능이 필요합니다.
+        
+      
+    
+  
+
+
+3️⃣ 흐름 제어.
+
+  전송 매체에서 물리적인 오류가 없었는데도 데이터를 분실하는 경우가 있는데, 이는 송수신 호스트 사이의 데이터 전송/처리 속도 차이 때문에 발생합니다.
+  수신 호스트에 데이터가 도착하면 일단 내부 버퍼에 보관했다가 처리합니다.
+    
+      그런데 내부 버퍼에 보관할 공간을 확보하지 못하면 데이터를 논리적으로 분실하는 결과가 초래됩니다.
+    
+  
+  일반적으로 수신 호스트의 버퍼 처리 속도보다 송신 호스트가 데이터를 전송하는 속도가 빠르면 논리적인 데이터 분실 오류가 발생합니다.
+    
+      수신 호스트가 버퍼에 저장된 데이터를 미처 처리하지 못한 상태에서 새로운 데이터가 수신되어 일시적으로 저장할 공간이 없기 때문입니다.
+        
+          이 문제를 해결하려면 송신 호스트의 전송 속도를 조절하는 흐름 제어(Flow Control) 기능이 필요합니다.
+        
+      
+    
+  
+
+
+
+
+
+  위 그림은 가장 단순한 형태의 흐름 제어 기법을 보여줍니다.
+  송신 호스트가 데이터를 전송하려면 반드시 수신 호스트로부터 명시적인 전송 허가를 받아야 합니다.
+  그림을 보면(a)에서 송신 호스트가 i번째 데이터를 보내고 수신 호스트가 이를 제대로 받습니다.
+    
+      이후에 송신 호스트가 i+1번째 데이터를 보내려면 수신 호스트의 전송 허가가 필요합니다.
+      수신 호스트는 데이터를 수신할 여력이 있을 경우에만 (b)와 같이 전송 허가를 보냅니다.
+      (c)에서 전송 허가를 수신한 후에 송신 호스트가 다음 데이터인 i+1을 전송하고 있습니다.
+    
+  
+  보통 수신 호스트의 흐름 제어에 의해 데이터 전송이 이루어집니다.
+  위 그림은 흐름 제어의 이해를 돕기 위한 설명이며, 실제 통신 환경에서는 전송 속도가 너무 느리므로 이 방식이 사용되지 않습니다.
+  일반적으로 송신 호스트는 속도를 높이기 위하여 동시에 여러 개의 전송 데이터를 송신할 수 있으며, 수신 호스트가 데이터 개수를 통제합니다.
+
+
+4️⃣ 데이터 전달 방식.
+
+  프로토콜 설계 시 고려할 마지막 사항은 데이터 전달 방식입니다.
+
+
+
+
+
+  위 그림의 (c)에서 데이터를 오른쪽이나 왼쪽의 한 방향으로만 전송하는 것을 단방향(Simplex) 방식이라 하고, (a)처럼 양쪽에서 데이터를 동시에 전송하는 것을 전이중(Full Duplex) 방식이라고 합니다.
+  일반 도로 환경에 비유하자면 일방통행 도로가 단방향 방식이고, 중앙에 노란 실선이 그려진 도로는 전이중 방식입니다.
+  일반적인 통신 프로토콜들은 모두 전이중 방식을 지원합니다.
+  이외에도 데이터가 양방향으로 전송되지만, 특정 시점에는 한 방향으로만 전송할 수 있는 반이중(Half Duplex) 방식이 있습니다.
+  위 그림에서 (b)의 반이중 방식은 양쪽에서 데이터를 동시에 전송할 수 없으므로, 데이터 전송 시점을 제어할 수 있어야 합니다.
+  데이터 전달 방식에서는 데이터 사이의 전송 우선순위를 설정하는 방법이나 긴급 데이터를 처리하는 방법 등도 고려해야 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/SQL/2024/2024-09-10-database-and-dbms.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -4877,169 +5108,6 @@ Hello, World! This is Java.
                                 <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
-                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
-                            💾 [CS] 프록시 패턴과 프록시 서버
-
-1️⃣ 프록시 패턴
-
-  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
-
-
-
-
-
-  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
-    
-      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
-    
-  
-
-
-
-  용어: 프록시 서버에서의 캐싱
-캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
-이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
-
-
-2️⃣ 프록시 서버
-
-  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
-
-
-프록시 서버로 쓰는 nginx
-
-  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
-  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
-    
-      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
-        
-          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
-            
-              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-
-  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
-
-
-
-  용어: 버퍼 오버플로우
-버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
-
-
-
-  용어: gzip 압축
-LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
-gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
-
-
-프록시 서버로 쓰는 CloudFlare
-
-  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
-  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
-    
-      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
-    
-  
-
-
-
-
-
-  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
-
-
-DDOS 공격 방어
-
-  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
-  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
-  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
-
-
-HTTPS 구축
-
-  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
-    
-      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
-    
-  
-
-
-
-  용어: CDN(Content Delivery Network)
-각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
-이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
-
-
-CORS와 프런트엔트의 프록시 서버
-
-  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
-
-
-
-
-
-  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
-
-
-
-  용어: 오리진
-프로토콜과 호스트 이름, 포트의 조합을 말합니다.
-예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
-
-
-
-  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
-    
-      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
-    
-  
-  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
-    
-      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
-    
-  
-
-
-
-
-
-  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
-    
-      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-07</span>
                             
                         </div>
                     </div>
@@ -5903,6 +5971,340 @@ StringBuilder는 멀티 쓰레드 상황에 안전하지 않지만 동기화 오
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
+                        <a href="/Backend/CS/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
+                            💾 [CS] 프록시 패턴과 프록시 서버
+
+1️⃣ 프록시 패턴
+
+  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
+
+
+
+
+
+  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+    
+      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
+    
+  
+
+
+
+  용어: 프록시 서버에서의 캐싱
+캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
+이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
+
+
+2️⃣ 프록시 서버
+
+  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
+
+
+프록시 서버로 쓰는 nginx
+
+  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
+  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
+    
+      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
+        
+          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
+            
+              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+
+  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
+
+
+
+  용어: 버퍼 오버플로우
+버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
+
+
+
+  용어: gzip 압축
+LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
+gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
+
+
+프록시 서버로 쓰는 CloudFlare
+
+  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
+  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
+    
+      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
+
+
+DDOS 공격 방어
+
+  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
+  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
+  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
+
+
+HTTPS 구축
+
+  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
+    
+      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
+    
+  
+
+
+
+  용어: CDN(Content Delivery Network)
+각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
+이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
+
+
+CORS와 프런트엔트의 프록시 서버
+
+  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
+
+
+
+
+
+  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
+
+
+
+  용어: 오리진
+프로토콜과 호스트 이름, 포트의 조합을 말합니다.
+예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
+
+
+
+  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
+    
+      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
+    
+  
+  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
+    
+      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
+    
+      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-09-05-network-basic-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-05-network-basic-summary.html"><h1 class="title_post">🌐[Network] 네트워크 기초 - Summary</h1></a>
+                        <a href="/Network/2024/2024-09-05-network-basic-summary.html" class="txt_post">
+                            🌐[Network] 네트워크 기초 - Summary.
+
+1️⃣ 네트워크 기초 용어.
+
+  “네트워크” 는 전송 매체를 매개로 데이터를 교환하는 시스템의 모음입니다.
+  시스템과 전송 매체의 연결 지점에 대한 규격이 “인터페이스” 입니다.
+  시스템이 데이터를 교환할 때는 통신 규칙인 “프로토콜” 이 필요합니다.
+  “인터페이스” 와 “프로토콜” 은 서로 다른 시스템을 상호 연동해 동작시키기 위함이므로 반드시 “연동 형식의 통일” 이 필요하고, 이를 “표준화” 라 합니다.
+  “인터넷” 은 “IP” 라는 네트워크 프로토콜이 핵심적인 역할을 하는 “네트워크 집합체” 입니다.
+
+
+2️⃣ 프로토콜.
+
+  상호 연동되는 시스템이 데이터를 교환할 때 사용하는 표준화된 규칙을 “프로토콜” 이라 합니다.
+  일반적으로 “프로토콜” 은 “동등한 위치에 있는 시스템 사이의 규칙이라는 측면이 강조” 되어 인터페이스와 구분 됩니다.
+    
+      즉, 7계층 모델에서 프로토콜은 같은 계층 사이의 관계를 다루기 때문에 각각의 계층마다 서로 다른 프로토콜이 존재합니다.
+    
+  
+  일반적으로 프로토콜은 주고받은 데이터의 형식과 그 과정에서 발생하는 일련의 절차적 순서를 규정하고 있습니다.
+
+
+3️⃣ 클라이언트와 서버.
+
+  “클라이언트와 서버” 의 개념은 “인터넷 서비스를 기준” 으로 “구분” 됩니다.
+    
+      그 차이가 “서비스 단위” 로 이루어지므로 “임의의 호스트가 클라이언트나 서버로 고정”되지는 않습니다.
+        
+          서비스를 제공하면 서버가 되고 이 서비스를 이용하면 클라이언트가 되므로 특정 서비스를 기준으로 상대적인 관점에서 클라이언트와 서버를 사용합니다.
+            
+              다양한 서비스 제공을 목적으로 하는 특화된 호스트인 경우는 호스트 자체를 서버라 부르기도 합니다.
+            
+          
+        
+      
+    
+  
+  서버는 클라이언트보다 먼저 실행 상태가 되어 클라이언트의 요청에 대기해야 합니다.
+
+
+4️⃣ OSI 7계층 모델.
+
+  다수의 시스템을 서로 연결해서 통신하려면 선행적으로 전체 시스템 구조를 표준화해야 합니다.
+  국제 표준화 단체인 ISO에서는 OSI 7계층 모델을 제안하여, 네트워크에 연결된 시스템이 갖추어야 할 기본 구조와 기능을 정의하고 있습니다.
+    
+      응용 계층
+      표현 계층
+      세션 계층
+      전송 계층
+      네트워크 계층
+      데이터 링크 계층
+      물리 계층
+        
+          이런 계층적인 구조로 기능을 세분화하였습니다.
+        
+      
+    
+  
+  일반 사용자는 응용 계층을 통해 데이터 전송을 요청하며, 이 요청은 물리 계층까지 순차적으로 전달되어 상대 호스트에 전송됩니다.
+    
+      전송된 데이터는 물리 계층에서 순차적으로 응용 계층까지 전달됩니다.
+    
+  
+
+
+5️⃣ 인터네트워킹.
+
+  네트워크와 네트워크의 연결을 인터네트워킹이라고 합니다.
+  인터네트워킹 기능을 수행하는 시스템을 일반적으로 게이트웨이 라 부릅니다.
+  게이트웨이 는 기능에 따라 종류가 다양하지만
+    
+      리피터
+      브리지
+      라우터
+      등등..
+        
+          가장 일반적인 구분 방식입니다.
+        
+      
+    
+  
+  리피터는 물리 계층의 기능을 지원하며, 브리지는 리피터 기능에 데이터 링크 계층의 기능이 추가된 것으로 물리 계층에서 발생한 오류를 해결해줍니다.
+  라우터는 물리 계층, 데이터 링크 계층, 네트워크 계층의 기능을 지원하므로 경로 선택 기능이 존재합니다.
+
+
+6️⃣ 데이터 단위.
+
+  네트워크 프로토콜을 사용해 데이터를 교환할 때는 먼저 데이터를 특정 형태로 규격화하는 작업이 필요합니다.
+    
+      이와 같은 한 단위의 규격으로 묶인 전송 데이터를 데이터 단위라 하며, 계층에 상관없이 호칭할 때는 통칭하여 PDU라 부릅니다.
+      특별히 네트워크 계층에서는 패킷, 데이터 링크 계층에서는 프레임이라는 용어가 중요하게 사용됩니다.
+    
+  
+
+
+7️⃣ 주소의 표현.
+
+  주소의 개념은 단순히 서로를 구분한다는 고유의 목적을 넘어 주소가 가리키는 대상의 특징을 표현할 수 있습니다.
+  사람들은 문자로 된 이름에 익숙하지만, 0과 1로 디지털화된 환경에서는 구분자를 숫자로 된 주소로 표현할 수밖에 없습니다.
+  숫자로 된 주소 표현 방식은 일반 사용자에게 불편하므로 외우기 쉬운 문자 형식의 이름을 추가로 사용합니다.
+  인터넷에서 일반 사용자는 문자로 된 이름을 사용하고, 인터넷 내부는 숫자로 된 주소를 사용하므로 둘 사이의 변환 기능이 필요합니다.
+  주소에서 구분자는 유일성, 확장성, 편리성, 정보의 함축이라는 네 가지 특징을 갖습니다.
+
+
+8️⃣ IP 주소.
+
+  IP 주소는 네트워크 계층의 기능을 수행하는 IP 프로토콜이 호스트를 구분하기 위하여 사용하는 주소 체계입니다.
+  임의의 호스트를 인터넷에 연결하려면 반드시 IP 주소를 할당받아야 합니다.
+  IP 주소는 32비트의 이진 숫자로 구성되는데, 보통 8비트씩 네 부분으로 나누어 십진수로 표현합니다.
+  IP 주소는 유일성을 보장하기 위해서 국제 표준화 기구가 전체 주소를 관리하고 할당하기 때문에 중복 주소의 사용을 원천적으로 차단합니다.
+  IP 주소는 임의로 할당되는 것이 아니라, 특정 규칙에 따라 인접한 주소들을 그룹으로 묶어 관리합니다.
+    
+      따라서 IP 주소는 네트워크 계층에서 경로를 선택할 때 중요한 기준이 됩니다.
+    
+  
+
+
+9️⃣ DNS 서비스
+
+  인터넷에서 호스트와 연결하려면 해당 호스트의 IP 주소를 알아야합니다.
+    
+      그런데 숫자로 된 IP 주소는 기억하기 힘들어서 의미 파악이 쉬운 문자로 된 호스트 이름을 사용하는 것이 일반적입니다.
+        
+          따라서 가장 먼저 수행할 작업은 DNS라는 이름과 주소 변환 기능을 이용해서 IP 주소를 얻는 것입니다.
+        
+      
+    
+  
+  DNS는 주소와 이름 정보를 자동으로 유지하고 관리하는 분산 데이터베이스 시스템입니다.
+    
+      호스트 주소와 이름 정보는 네임 서버라는 특정한 관리 호스트가 유지하고, 주소 변환 작업이 필요한 클라이언트는 네임 서버에 요청해서 IP 주소를 얻습니다.
+    
+  
+
+
+1️⃣0️⃣ 다양한 주소의 종류
+
+  네트워크에서 사용하는 주소는 이를 사용하는 환경에 따라 다양합니다.
+  OSI 7계층 모델의 각 계층에서도 목적에 따라 여러 형탱의 주소가 사용됩니다.
+  MAC 주소는 계층 2의 MAC 계층에서 사용하며, 일반적으로 LAN 카드에 내장되어 있습니다.
+    
+      물리 계층을 통해 데이터를 전송할 때는 MAC 주소를 이용해서 호스트를 구분합니다.
+    
+  
+  IP 주소는 네트워크 계층의 기능을 수행하는 IP 프로토콜에서 사용되며, IP 패킷이 지나가는 경로를 결정하는 라우팅의 기준이 됩니다.
+  포트 주소는 전송 계층에서 사용하며, 호스트에서 실행되는 프로세스를 구분해줍니다.
+  메일 주소는 응용 계층의 메일 시스템에서 사용자를 구분하려고 사용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-09-05-address-info-management.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -6348,307 +6750,137 @@ c:: got message &gt;&gt; nice to meet you
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-09-05-network-basic-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-04-String-comparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-09-05-network-basic-summary.html"><h1 class="title_post">🌐[Network] 네트워크 기초 - Summary</h1></a>
-                        <a href="/Network/2024/2024-09-05-network-basic-summary.html" class="txt_post">
-                            🌐[Network] 네트워크 기초 - Summary.
+                        <a href="/Java/Java/2024-09-04-String-comparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
+                        <a href="/Java/Java/2024-09-04-String-comparison.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 비교.
 
-1️⃣ 네트워크 기초 용어.
-
-  “네트워크” 는 전송 매체를 매개로 데이터를 교환하는 시스템의 모음입니다.
-  시스템과 전송 매체의 연결 지점에 대한 규격이 “인터페이스” 입니다.
-  시스템이 데이터를 교환할 때는 통신 규칙인 “프로토콜” 이 필요합니다.
-  “인터페이스” 와 “프로토콜” 은 서로 다른 시스템을 상호 연동해 동작시키기 위함이므로 반드시 “연동 형식의 통일” 이 필요하고, 이를 “표준화” 라 합니다.
-  “인터넷” 은 “IP” 라는 네트워크 프로토콜이 핵심적인 역할을 하는 “네트워크 집합체” 입니다.
-
-
-2️⃣ 프로토콜.
-
-  상호 연동되는 시스템이 데이터를 교환할 때 사용하는 표준화된 규칙을 “프로토콜” 이라 합니다.
-  일반적으로 “프로토콜” 은 “동등한 위치에 있는 시스템 사이의 규칙이라는 측면이 강조” 되어 인터페이스와 구분 됩니다.
+  String 클래스 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
     
-      즉, 7계층 모델에서 프로토콜은 같은 계층 사이의 관계를 다루기 때문에 각각의 계층마다 서로 다른 프로토콜이 존재합니다.
-    
-  
-  일반적으로 프로토콜은 주고받은 데이터의 형식과 그 과정에서 발생하는 일련의 절차적 순서를 규정하고 있습니다.
-
-
-3️⃣ 클라이언트와 서버.
-
-  “클라이언트와 서버” 의 개념은 “인터넷 서비스를 기준” 으로 “구분” 됩니다.
-    
-      그 차이가 “서비스 단위” 로 이루어지므로 “임의의 호스트가 클라이언트나 서버로 고정”되지는 않습니다.
-        
-          서비스를 제공하면 서버가 되고 이 서비스를 이용하면 클라이언트가 되므로 특정 서비스를 기준으로 상대적인 관점에서 클라이언트와 서버를 사용합니다.
-            
-              다양한 서비스 제공을 목적으로 하는 특화된 호스트인 경우는 호스트 자체를 서버라 부르기도 합니다.
-            
-          
-        
-      
-    
-  
-  서버는 클라이언트보다 먼저 실행 상태가 되어 클라이언트의 요청에 대기해야 합니다.
-
-
-4️⃣ OSI 7계층 모델.
-
-  다수의 시스템을 서로 연결해서 통신하려면 선행적으로 전체 시스템 구조를 표준화해야 합니다.
-  국제 표준화 단체인 ISO에서는 OSI 7계층 모델을 제안하여, 네트워크에 연결된 시스템이 갖추어야 할 기본 구조와 기능을 정의하고 있습니다.
-    
-      응용 계층
-      표현 계층
-      세션 계층
-      전송 계층
-      네트워크 계층
-      데이터 링크 계층
-      물리 계층
-        
-          이런 계층적인 구조로 기능을 세분화하였습니다.
-        
-      
-    
-  
-  일반 사용자는 응용 계층을 통해 데이터 전송을 요청하며, 이 요청은 물리 계층까지 순차적으로 전달되어 상대 호스트에 전송됩니다.
-    
-      전송된 데이터는 물리 계층에서 순차적으로 응용 계층까지 전달됩니다.
+      동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+      동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인.
     
   
 
 
-5️⃣ 인터네트워킹.
+public class StringEqualsMain1 {
 
-  네트워크와 네트워크의 연결을 인터네트워킹이라고 합니다.
-  인터네트워킹 기능을 수행하는 시스템을 일반적으로 게이트웨이 라 부릅니다.
-  게이트웨이 는 기능에 따라 종류가 다양하지만
-    
-      리피터
-      브리지
-      라우터
-      등등..
-        
-          가장 일반적인 구분 방식입니다.
-        
-      
-    
-  
-  리피터는 물리 계층의 기능을 지원하며, 브리지는 리피터 기능에 데이터 링크 계층의 기능이 추가된 것으로 물리 계층에서 발생한 오류를 해결해줍니다.
-  라우터는 물리 계층, 데이터 링크 계층, 네트워크 계층의 기능을 지원하므로 경로 선택 기능이 존재합니다.
+    public static void main(String[] args) {
+        String str1 = new String("hello");
+        String str2 = new String("hello");
 
+        System.out.println("===============================");
+        System.out.println("new String() == 비교: " + (str1 == str2));
+        System.out.println("new String() equals 비교: " + (str1.equals(str2)));
+        System.out.println("===============================");
 
-6️⃣ 데이터 단위.
-
-  네트워크 프로토콜을 사용해 데이터를 교환할 때는 먼저 데이터를 특정 형태로 규격화하는 작업이 필요합니다.
-    
-      이와 같은 한 단위의 규격으로 묶인 전송 데이터를 데이터 단위라 하며, 계층에 상관없이 호칭할 때는 통칭하여 PDU라 부릅니다.
-      특별히 네트워크 계층에서는 패킷, 데이터 링크 계층에서는 프레임이라는 용어가 중요하게 사용됩니다.
-    
-  
-
-
-7️⃣ 주소의 표현.
-
-  주소의 개념은 단순히 서로를 구분한다는 고유의 목적을 넘어 주소가 가리키는 대상의 특징을 표현할 수 있습니다.
-  사람들은 문자로 된 이름에 익숙하지만, 0과 1로 디지털화된 환경에서는 구분자를 숫자로 된 주소로 표현할 수밖에 없습니다.
-  숫자로 된 주소 표현 방식은 일반 사용자에게 불편하므로 외우기 쉬운 문자 형식의 이름을 추가로 사용합니다.
-  인터넷에서 일반 사용자는 문자로 된 이름을 사용하고, 인터넷 내부는 숫자로 된 주소를 사용하므로 둘 사이의 변환 기능이 필요합니다.
-  주소에서 구분자는 유일성, 확장성, 편리성, 정보의 함축이라는 네 가지 특징을 갖습니다.
-
-
-8️⃣ IP 주소.
-
-  IP 주소는 네트워크 계층의 기능을 수행하는 IP 프로토콜이 호스트를 구분하기 위하여 사용하는 주소 체계입니다.
-  임의의 호스트를 인터넷에 연결하려면 반드시 IP 주소를 할당받아야 합니다.
-  IP 주소는 32비트의 이진 숫자로 구성되는데, 보통 8비트씩 네 부분으로 나누어 십진수로 표현합니다.
-  IP 주소는 유일성을 보장하기 위해서 국제 표준화 기구가 전체 주소를 관리하고 할당하기 때문에 중복 주소의 사용을 원천적으로 차단합니다.
-  IP 주소는 임의로 할당되는 것이 아니라, 특정 규칙에 따라 인접한 주소들을 그룹으로 묶어 관리합니다.
-    
-      따라서 IP 주소는 네트워크 계층에서 경로를 선택할 때 중요한 기준이 됩니다.
-    
-  
-
-
-9️⃣ DNS 서비스
-
-  인터넷에서 호스트와 연결하려면 해당 호스트의 IP 주소를 알아야합니다.
-    
-      그런데 숫자로 된 IP 주소는 기억하기 힘들어서 의미 파악이 쉬운 문자로 된 호스트 이름을 사용하는 것이 일반적입니다.
-        
-          따라서 가장 먼저 수행할 작업은 DNS라는 이름과 주소 변환 기능을 이용해서 IP 주소를 얻는 것입니다.
-        
-      
-    
-  
-  DNS는 주소와 이름 정보를 자동으로 유지하고 관리하는 분산 데이터베이스 시스템입니다.
-    
-      호스트 주소와 이름 정보는 네임 서버라는 특정한 관리 호스트가 유지하고, 주소 변환 작업이 필요한 클라이언트는 네임 서버에 요청해서 IP 주소를 얻습니다.
-    
-  
-
-
-1️⃣0️⃣ 다양한 주소의 종류
-
-  네트워크에서 사용하는 주소는 이를 사용하는 환경에 따라 다양합니다.
-  OSI 7계층 모델의 각 계층에서도 목적에 따라 여러 형탱의 주소가 사용됩니다.
-  MAC 주소는 계층 2의 MAC 계층에서 사용하며, 일반적으로 LAN 카드에 내장되어 있습니다.
-    
-      물리 계층을 통해 데이터를 전송할 때는 MAC 주소를 이용해서 호스트를 구분합니다.
-    
-  
-  IP 주소는 네트워크 계층의 기능을 수행하는 IP 프로토콜에서 사용되며, IP 패킷이 지나가는 경로를 결정하는 라우팅의 기준이 됩니다.
-  포트 주소는 전송 계층에서 사용하며, 호스트에서 실행되는 프로세스를 구분해줍니다.
-  메일 주소는 응용 계층의 메일 시스템에서 사용자를 구분하려고 사용합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
-                            🍃[Spring] @Transactional 애노테이션.
-
-  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
-    
-      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
-    
-  
-
-
-1️⃣ 주요 기능.
-
-  1. 트랜잭션 관리.
-    
-      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
-        
-          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
-        
-      
-    
-  
-  2. 적용 범위.
-    
-      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
-      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
-      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
-    
-  
-  3. 트랜잭션 전파(Propagation)
-    
-      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
-        
-          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
-          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
-          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
-          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
-          기타 : NOT_SUPPORT, NEVER, NESTED 등.
-        
-      
-    
-  
-  4. 트랜잭션 격리 수준(Isolation Level)
-    
-      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
-        
-          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
-            
-              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
-              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
-              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
-              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
-            
-          
-        
-      
-    
-  
-  5. 롤백 규칙(Rollback Rules)
-    
-      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
-        
-          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
-        
-      
-      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
-    
-  
-  6. 읽기 전용(Read-Only)
-    
-      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
-        
-          주로 SELECT 쿼리에서 사용됩니다.
-            2️⃣ 예시 코드
-          
-        
-      
-    
-  
-
-
-@Service
-public class MyService {
-    
-    @Autowired
-    private MyRepository myRepository;
-    
-    @Transactional
-    public void performTransaction() {
-        // 데이터베이스에 새로운 엔티티 추가
-        myRepository.save(new MyEntity("Data1"));
-        
-        // 다른 데이터베이스 작업 수행
-        myRepository.updateEntity(1L, "UpdatedData");
-        
-        // 예외 발생 시, 위의 모든 작업이 롤백됨
-        if (someConditionFails()) {
-            throw new RuntimeException("Transaction failed, rolling back...");
-        }
-    }
-    
-    @Transactional(readOnly = true)
-    public List&lt;MyEntity&gt; getEntities() {
-        return myRepository.findAll();
+        String str3 = "hello";
+        String str4 = "hello";
+        System.out.println("리터럴 == 비교: " + (str3 == str4));
+        System.out.println("리터럴 equals 바교: " + (str3.equals(str4)));
     }
 }
 
 
-3️⃣ 요약.
+실행 결과
+===============================
+new String() == 비교: false
+new String() equals 비교: true
+===============================
+리터럴 == 비교: true
+리터럴 equals 바교: true
 
-  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
+
+
+
+
+  str1 과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
     
-      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
+      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
+    
+  
+  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
+    
+      따라서 동등성(equals()) 비교에 성공합니다.
+    
+  
+  참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
+
+
+
+
+
+  String str3 = "hello" 와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
+  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
+    
+      이때 같은 문자열이 있으면 만들지 않습니다.
+    
+  
+  String str3 = "hello" 와 같이 문자열 리터럴을 사용하면 문자열 풀에서 hello 라는 문자를 가진 String 인스턴스를 찾습니다.
+    
+      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
+    
+  
+  String str4 = "hello" 의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
+  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
+
+
+따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
+
+
+  참고: 풀(Pool)은 자원이 모여있는 곳을 의미합니다.
+프로그래밍에서 풀(Pool)은 공용 자원을 모아둔 곳을 뜻합니다.
+여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
+대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
+참고로 문자열 풀은 힙 영역을 사용합니다.
+그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
+
+
+그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까?
+
+public class StringEqualsMain2 {
+
+    public static void main(String[] args) {
+        String str1 = new String("hello");
+        String str2 = new String("hello");
+        System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
+
+        String str3 = "hello";
+        String str4 = "hello";
+        System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
+    }
+
+    private static boolean isSame(String x, String y) {
+        return x == y;
+        //return x.equals(y);
+    }
+}
+
+
+실행 결과
+
+메서드 호출 비교1: false
+메서드 호출 비교2: true
+
+
+
+  main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
+    
+      isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String() 으로 만들어진 것인지, 문자열 리터럴로 만들어 진 것인지 확인할 수 있는 방법이 없습니다.
         
-          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
+          따라서 문자열 비교는 항상 equals() 를 사용해서 동등성 비교를 해야 합니다.
         
       
     
   
 
 
-이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
-
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-04</span>
                             
@@ -6927,6 +7159,149 @@ public class MyServiceIntegrationTest {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
+                            🍃[Spring] @Transactional 애노테이션.
+
+  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
+    
+      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
+    
+  
+
+
+1️⃣ 주요 기능.
+
+  1. 트랜잭션 관리.
+    
+      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
+        
+          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
+        
+      
+    
+  
+  2. 적용 범위.
+    
+      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
+      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
+      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
+    
+  
+  3. 트랜잭션 전파(Propagation)
+    
+      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
+        
+          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
+          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
+          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
+          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
+          기타 : NOT_SUPPORT, NEVER, NESTED 등.
+        
+      
+    
+  
+  4. 트랜잭션 격리 수준(Isolation Level)
+    
+      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
+        
+          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
+            
+              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
+              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
+              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
+              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
+            
+          
+        
+      
+    
+  
+  5. 롤백 규칙(Rollback Rules)
+    
+      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
+        
+          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
+        
+      
+      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
+    
+  
+  6. 읽기 전용(Read-Only)
+    
+      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
+        
+          주로 SELECT 쿼리에서 사용됩니다.
+            2️⃣ 예시 코드
+          
+        
+      
+    
+  
+
+
+@Service
+public class MyService {
+    
+    @Autowired
+    private MyRepository myRepository;
+    
+    @Transactional
+    public void performTransaction() {
+        // 데이터베이스에 새로운 엔티티 추가
+        myRepository.save(new MyEntity("Data1"));
+        
+        // 다른 데이터베이스 작업 수행
+        myRepository.updateEntity(1L, "UpdatedData");
+        
+        // 예외 발생 시, 위의 모든 작업이 롤백됨
+        if (someConditionFails()) {
+            throw new RuntimeException("Transaction failed, rolling back...");
+        }
+    }
+    
+    @Transactional(readOnly = true)
+    public List&lt;MyEntity&gt; getEntities() {
+        return myRepository.findAll();
+    }
+}
+
+
+3️⃣ 요약.
+
+  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
+        
+          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
+        
+      
+    
+  
+
+
+이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-04-jdbc.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -7058,327 +7433,6 @@ JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Jav
                                 <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-04-String-comparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-04-String-comparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
-                        <a href="/Java/Java/2024-09-04-String-comparison.html" class="txt_post">
-                            ☕️[Java] String 클래스 - 비교.
-
-  String 클래스 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
-    
-      동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
-      동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인.
-    
-  
-
-
-public class StringEqualsMain1 {
-
-    public static void main(String[] args) {
-        String str1 = new String("hello");
-        String str2 = new String("hello");
-
-        System.out.println("===============================");
-        System.out.println("new String() == 비교: " + (str1 == str2));
-        System.out.println("new String() equals 비교: " + (str1.equals(str2)));
-        System.out.println("===============================");
-
-        String str3 = "hello";
-        String str4 = "hello";
-        System.out.println("리터럴 == 비교: " + (str3 == str4));
-        System.out.println("리터럴 equals 바교: " + (str3.equals(str4)));
-    }
-}
-
-
-실행 결과
-===============================
-new String() == 비교: false
-new String() equals 비교: true
-===============================
-리터럴 == 비교: true
-리터럴 equals 바교: true
-
-
-
-
-
-  str1 과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
-    
-      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
-    
-  
-  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
-    
-      따라서 동등성(equals()) 비교에 성공합니다.
-    
-  
-  참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
-
-
-
-
-
-  String str3 = "hello" 와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
-  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
-    
-      이때 같은 문자열이 있으면 만들지 않습니다.
-    
-  
-  String str3 = "hello" 와 같이 문자열 리터럴을 사용하면 문자열 풀에서 hello 라는 문자를 가진 String 인스턴스를 찾습니다.
-    
-      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
-    
-  
-  String str4 = "hello" 의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
-  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
-
-
-따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
-
-
-  참고: 풀(Pool)은 자원이 모여있는 곳을 의미합니다.
-프로그래밍에서 풀(Pool)은 공용 자원을 모아둔 곳을 뜻합니다.
-여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
-대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
-참고로 문자열 풀은 힙 영역을 사용합니다.
-그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
-
-
-그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까?
-
-public class StringEqualsMain2 {
-
-    public static void main(String[] args) {
-        String str1 = new String("hello");
-        String str2 = new String("hello");
-        System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
-
-        String str3 = "hello";
-        String str4 = "hello";
-        System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
-    }
-
-    private static boolean isSame(String x, String y) {
-        return x == y;
-        //return x.equals(y);
-    }
-}
-
-
-실행 결과
-
-메서드 호출 비교1: false
-메서드 호출 비교2: true
-
-
-
-  main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
-    
-      isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String() 으로 만들어진 것인지, 문자열 리터럴로 만들어 진 것인지 확인할 수 있는 방법이 없습니다.
-        
-          따라서 문자열 비교는 항상 equals() 를 사용해서 동등성 비교를 해야 합니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html"><h1 class="title_post">💾 [CS] 전략 패턴(Strategy pattern)</h1></a>
-                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="txt_post">
-                            💾 [CS] 전략 패턴(Strategy pattern)
-
-1️⃣ 전략 패턴(Strategy pattern)
-
-  전략 패턴(Strategy pattern) 은 정책 패턴(Policy pattern) 이라고도 하며, 객채의 행위를 바꾸고 싶은 경우 ‘직접’ 수정하지 않고 전략이라고 부르는 ‘캡슐화한 알고리즘’ 을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.
-
-
-
-
-
-  아래의 예시 코드는 우리가 어떤 것을 살 때 네이버페이, 카카오페이 등 다양한 방법으로 결제하듯이 어떤 아이템을 살 때 LUNACard로 사는 것과 KAKAOCard로 사는 것을 구현한 예제입니다.
-    
-      결제 방식의 ‘전략’ 만 바꿔서 두 가지 방식으로 결제하는 것을 구현했습니다.
-    
-  
-
-
-// PaymentStrategy - interface
-
-public interface PaymentStrategy {
-	void pay(int amount);
-}
-
-// KAKAOCardStrategy
-
-public class KAKAOCardStrategy implements PaymentStrategy{
-	private String name;
-	private String cardNumber;
-	private String cvv;
-	private String dateOfExpiry;
-
-	public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry) {
-		this.name = name;
-		this.cardNumber = cardNumber;
-		this.cvv = cvv;
-		this.dateOfExpiry = dateOfExpiry;
-	}
-
-	@Override
-	public void pay(int amount) {
-		System.out.println(amount + " paid using KAKAOCard.");
-	}
-}
-
-// LUNACardStrategy
-
-public class LUNACardStrategy implements PaymentStrategy {
-	private String emailId;
-	private String password;
-
-	public LUNACardStrategy(String emailId, String password) {
-		this.emailId = emailId;
-		this.password = password;
-	}
-
-	@Override
-	public void pay(int amount) {
-		System.out.println(amount + " paid using LUNACard");
-	}
-}
-
-// Item
-
-public class Item {
-	private String name;
-	private int price;
-	public Item(String name, int price) {
-		this.name = name;
-		this.price = price;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-}
-
-// ShoppingCart
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class ShoppingCart {
-	List&lt;Item&gt; items;
-
-	public ShoppingCart() {
-		this.items = new ArrayList&lt;&gt;();
-	}
-
-	public void addItem(Item item) {
-		this.items.add(item);
-	}
-
-	public void removeItem(Item item) {
-		this.items.remove(item);
-	}
-
-	public int calculateTotal() {
-		int sum = 0;
-		for (Item item : items) {
-			sum += item.getPrice();
-		}
-		return sum;
-	}
-
-	public void pay(PaymentStrategy pamentMethod) {
-		int amount = calculateTotal();
-		pamentMethod.pay(amount);
-	}
-}
-
-// Main
-
-import designPattern.strategy.Item;
-import designPattern.strategy.KAKAOCardStrategy;
-import designPattern.strategy.LUNACardStrategy;
-import designPattern.strategy.ShoppingCart;
-
-public class Main {
-
-	public static void main(String[] args) {
-		ShoppingCart cart = new ShoppingCart();
-
-		Item A = new Item("A", 100);
-		Item B = new Item("B", 300);
-
-		cart.addItem(A);
-		cart.addItem(B);
-
-		// pay by LUNACard
-		cart.pay(new LUNACardStrategy("kobe@google.com", "1234"));
-
-		// pay by KAKAOCard
-		cart.pay(new KAKAOCardStrategy("Minseong Kang", "123456789", "123", "12/01"));
-	}
-}
-
-
-실행 결과
-
-400 paid using LUNACard
-400 paid using KAKAOCard.
-
-
-  위 코드는 쇼핑 카드에 아이템을 담아 LUNACard 또는 KAKAOCard 라는 두 개의 전략으로 결제하는 코드입니다.
-
-
-
-  용어 : 컨텍스트
-프로그래밍에서의 컨텍스트는 상황, 맥락, 문맥을 의미하며 개발자가 어떠한 작업을 완료하는 데 필요한 모든 관련 정보를 말합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-03</span>
                             
                         </div>
                     </div>
@@ -7730,6 +7784,183 @@ public MemberService(MemberRepository memberRepository) {
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html"><h1 class="title_post">💾 [CS] 전략 패턴(Strategy pattern)</h1></a>
+                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="txt_post">
+                            💾 [CS] 전략 패턴(Strategy pattern)
+
+1️⃣ 전략 패턴(Strategy pattern)
+
+  전략 패턴(Strategy pattern) 은 정책 패턴(Policy pattern) 이라고도 하며, 객채의 행위를 바꾸고 싶은 경우 ‘직접’ 수정하지 않고 전략이라고 부르는 ‘캡슐화한 알고리즘’ 을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.
+
+
+
+
+
+  아래의 예시 코드는 우리가 어떤 것을 살 때 네이버페이, 카카오페이 등 다양한 방법으로 결제하듯이 어떤 아이템을 살 때 LUNACard로 사는 것과 KAKAOCard로 사는 것을 구현한 예제입니다.
+    
+      결제 방식의 ‘전략’ 만 바꿔서 두 가지 방식으로 결제하는 것을 구현했습니다.
+    
+  
+
+
+// PaymentStrategy - interface
+
+public interface PaymentStrategy {
+	void pay(int amount);
+}
+
+// KAKAOCardStrategy
+
+public class KAKAOCardStrategy implements PaymentStrategy{
+	private String name;
+	private String cardNumber;
+	private String cvv;
+	private String dateOfExpiry;
+
+	public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry) {
+		this.name = name;
+		this.cardNumber = cardNumber;
+		this.cvv = cvv;
+		this.dateOfExpiry = dateOfExpiry;
+	}
+
+	@Override
+	public void pay(int amount) {
+		System.out.println(amount + " paid using KAKAOCard.");
+	}
+}
+
+// LUNACardStrategy
+
+public class LUNACardStrategy implements PaymentStrategy {
+	private String emailId;
+	private String password;
+
+	public LUNACardStrategy(String emailId, String password) {
+		this.emailId = emailId;
+		this.password = password;
+	}
+
+	@Override
+	public void pay(int amount) {
+		System.out.println(amount + " paid using LUNACard");
+	}
+}
+
+// Item
+
+public class Item {
+	private String name;
+	private int price;
+	public Item(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+}
+
+// ShoppingCart
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShoppingCart {
+	List&lt;Item&gt; items;
+
+	public ShoppingCart() {
+		this.items = new ArrayList&lt;&gt;();
+	}
+
+	public void addItem(Item item) {
+		this.items.add(item);
+	}
+
+	public void removeItem(Item item) {
+		this.items.remove(item);
+	}
+
+	public int calculateTotal() {
+		int sum = 0;
+		for (Item item : items) {
+			sum += item.getPrice();
+		}
+		return sum;
+	}
+
+	public void pay(PaymentStrategy pamentMethod) {
+		int amount = calculateTotal();
+		pamentMethod.pay(amount);
+	}
+}
+
+// Main
+
+import designPattern.strategy.Item;
+import designPattern.strategy.KAKAOCardStrategy;
+import designPattern.strategy.LUNACardStrategy;
+import designPattern.strategy.ShoppingCart;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ShoppingCart cart = new ShoppingCart();
+
+		Item A = new Item("A", 100);
+		Item B = new Item("B", 300);
+
+		cart.addItem(A);
+		cart.addItem(B);
+
+		// pay by LUNACard
+		cart.pay(new LUNACardStrategy("kobe@google.com", "1234"));
+
+		// pay by KAKAOCard
+		cart.pay(new KAKAOCardStrategy("Minseong Kang", "123456789", "123", "12/01"));
+	}
+}
+
+
+실행 결과
+
+400 paid using LUNACard
+400 paid using KAKAOCard.
+
+
+  위 코드는 쇼핑 카드에 아이템을 담아 LUNACard 또는 KAKAOCard 라는 두 개의 전략으로 결제하는 코드입니다.
+
+
+
+  용어 : 컨텍스트
+프로그래밍에서의 컨텍스트는 상황, 맥락, 문맥을 의미하며 개발자가 어떠한 작업을 완료하는 데 필요한 모든 관련 정보를 말합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-03</span>
                             
@@ -8163,206 +8394,6 @@ result2 = hello java
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
-                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
-
-  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
-    
-      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
-    
-  
-
-
-1️⃣ 전체 코드.
-
-// MemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	@Autowired
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-
-2️⃣ 구체적인 이유.
-
-  1. 인터페이스를 통한 유연성 확보.
-    
-      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
-        
-          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
-            
-              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
-                
-                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  2. 느슨한 결합.
-    
-      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
-        
-          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
-        
-      
-      이 방식은 유지보수성을 크게 향상시킵니다.
-        
-          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
-        
-      
-    
-  
-  3. 스프링의 의존성 주입 메커니즘 활용.
-    
-      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
-        
-          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
-        
-      
-      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
-        
-          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 결론.
-
-  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
-    
-      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
-        
-          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -8577,6 +8608,206 @@ public class MemberService {
   잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
     
       따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
+                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
+
+  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
+    
+      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
+    
+  
+
+
+1️⃣ 전체 코드.
+
+// MemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
+
+
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
+
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MemoryMemberRepository implements MemberRepository {
+
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
+
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
+
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
+
+	public void clearStore() {
+		store.clear();
+	}
+}
+
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	@Autowired
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+
+2️⃣ 구체적인 이유.
+
+  1. 인터페이스를 통한 유연성 확보.
+    
+      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
+        
+          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
+            
+              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
+                
+                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  2. 느슨한 결합.
+    
+      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
+        
+          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
+        
+      
+      이 방식은 유지보수성을 크게 향상시킵니다.
+        
+          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
+        
+      
+    
+  
+  3. 스프링의 의존성 주입 메커니즘 활용.
+    
+      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
+        
+          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
+        
+      
+      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
+        
+          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 결론.
+
+  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
+    
+      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
+        
+          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
+        
+      
     
   
 
@@ -10008,77 +10239,6 @@ memberB = MemberV1{name='회원B', address=Address{value='부산'}}
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
-                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
-                            ☕️[Java] .equalsIgnoreCase()
-
-1️⃣ .equalsIgnoreCase()
-
-  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
-    
-      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
-    
-  
-
-
-2️⃣ 예시.
-public class Main {
-    public static void main(String[] args) {
-        String str1 = "Hello";
-        String str2 = "hello";
-        String str3 = "HELLO";
-        String str4 = "World";
-        
-        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
-        
-        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
-        
-        // str1과 str4는 내용이 다르므로 false 반환
-        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
-    }
-}
-
-
-3️⃣ 주요 포인트.
-
-  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
-    
-      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
-    
-  
-  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
-    
-      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
-    
-  
-  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
-
-
-이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
-예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-08-30-test-and-reflection.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -10531,6 +10691,77 @@ class MemberServiceTest {
 
 이 방법을 통해 MemberService 를 수정하지 않고도 해당 클래스의 동작을 테스트할 수 있습니다.
 다만, 실제 코드에서는 생성자를 통한 주입이나 다른 테스트 가능한 구조로 변경하는 것이 더 바람직합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
+                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
+                            ☕️[Java] .equalsIgnoreCase()
+
+1️⃣ .equalsIgnoreCase()
+
+  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
+    
+      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
+    
+  
+
+
+2️⃣ 예시.
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "HELLO";
+        String str4 = "World";
+        
+        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
+        
+        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
+        
+        // str1과 str4는 내용이 다르므로 false 반환
+        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
+    }
+}
+
+
+3️⃣ 주요 포인트.
+
+  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
+    
+      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
+    
+  
+  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
+    
+      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
+    
+  
+  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
+
+
+이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
+예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -69871,6 +70102,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "SQL",
             'url'      : "/SQL/2024/2024-09-18-DBMS-Classification.html",
             'image'    : "/assets/img/thumbnail/sql.jpeg",
+            'date'     : "2024-09-18"
+        });
+    
+
+        posts.push({
+            'title'    : "💾[Database] DBMS의 개요.",
+            'path'     : "SQL > 2024",
+            'type'     : "post",
+            'tags'     : "Database",
+            'url'      : "/SQL/2024/2024-09-18-intro-dbms.html",
+            'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-09-18"
         });
     

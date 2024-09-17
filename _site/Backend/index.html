@@ -694,6 +694,7 @@
             
             
             
+            
 
     
     
@@ -3038,149 +3039,6 @@ c:: got message &gt;&gt; nice to meet you
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
-                            🍃[Spring] @Transactional 애노테이션.
-
-  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
-    
-      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
-    
-  
-
-
-1️⃣ 주요 기능.
-
-  1. 트랜잭션 관리.
-    
-      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
-        
-          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
-        
-      
-    
-  
-  2. 적용 범위.
-    
-      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
-      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
-      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
-    
-  
-  3. 트랜잭션 전파(Propagation)
-    
-      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
-        
-          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
-          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
-          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
-          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
-          기타 : NOT_SUPPORT, NEVER, NESTED 등.
-        
-      
-    
-  
-  4. 트랜잭션 격리 수준(Isolation Level)
-    
-      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
-        
-          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
-            
-              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
-              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
-              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
-              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
-            
-          
-        
-      
-    
-  
-  5. 롤백 규칙(Rollback Rules)
-    
-      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
-        
-          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
-        
-      
-      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
-    
-  
-  6. 읽기 전용(Read-Only)
-    
-      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
-        
-          주로 SELECT 쿼리에서 사용됩니다.
-            2️⃣ 예시 코드
-          
-        
-      
-    
-  
-
-
-@Service
-public class MyService {
-    
-    @Autowired
-    private MyRepository myRepository;
-    
-    @Transactional
-    public void performTransaction() {
-        // 데이터베이스에 새로운 엔티티 추가
-        myRepository.save(new MyEntity("Data1"));
-        
-        // 다른 데이터베이스 작업 수행
-        myRepository.updateEntity(1L, "UpdatedData");
-        
-        // 예외 발생 시, 위의 모든 작업이 롤백됨
-        if (someConditionFails()) {
-            throw new RuntimeException("Transaction failed, rolling back...");
-        }
-    }
-    
-    @Transactional(readOnly = true)
-    public List&lt;MyEntity&gt; getEntities() {
-        return myRepository.findAll();
-    }
-}
-
-
-3️⃣ 요약.
-
-  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
-        
-          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
-        
-      
-    
-  
-
-
-이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -3446,172 +3304,138 @@ public class MyServiceIntegrationTest {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html"><h1 class="title_post">💾 [CS] 전략 패턴(Strategy pattern)</h1></a>
-                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="txt_post">
-                            💾 [CS] 전략 패턴(Strategy pattern)
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
+                            🍃[Spring] @Transactional 애노테이션.
 
-1️⃣ 전략 패턴(Strategy pattern)
-
-  전략 패턴(Strategy pattern) 은 정책 패턴(Policy pattern) 이라고도 하며, 객채의 행위를 바꾸고 싶은 경우 ‘직접’ 수정하지 않고 전략이라고 부르는 ‘캡슐화한 알고리즘’ 을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.
-
-
-
-
-
-  아래의 예시 코드는 우리가 어떤 것을 살 때 네이버페이, 카카오페이 등 다양한 방법으로 결제하듯이 어떤 아이템을 살 때 LUNACard로 사는 것과 KAKAOCard로 사는 것을 구현한 예제입니다.
+  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
     
-      결제 방식의 ‘전략’ 만 바꿔서 두 가지 방식으로 결제하는 것을 구현했습니다.
+      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
     
   
 
 
-// PaymentStrategy - interface
+1️⃣ 주요 기능.
 
-public interface PaymentStrategy {
-	void pay(int amount);
-}
+  1. 트랜잭션 관리.
+    
+      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
+        
+          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
+        
+      
+    
+  
+  2. 적용 범위.
+    
+      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
+      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
+      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
+    
+  
+  3. 트랜잭션 전파(Propagation)
+    
+      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
+        
+          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
+          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
+          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
+          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
+          기타 : NOT_SUPPORT, NEVER, NESTED 등.
+        
+      
+    
+  
+  4. 트랜잭션 격리 수준(Isolation Level)
+    
+      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
+        
+          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
+            
+              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
+              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
+              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
+              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
+            
+          
+        
+      
+    
+  
+  5. 롤백 규칙(Rollback Rules)
+    
+      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
+        
+          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
+        
+      
+      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
+    
+  
+  6. 읽기 전용(Read-Only)
+    
+      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
+        
+          주로 SELECT 쿼리에서 사용됩니다.
+            2️⃣ 예시 코드
+          
+        
+      
+    
+  
 
-// KAKAOCardStrategy
 
-public class KAKAOCardStrategy implements PaymentStrategy{
-	private String name;
-	private String cardNumber;
-	private String cvv;
-	private String dateOfExpiry;
-
-	public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry) {
-		this.name = name;
-		this.cardNumber = cardNumber;
-		this.cvv = cvv;
-		this.dateOfExpiry = dateOfExpiry;
-	}
-
-	@Override
-	public void pay(int amount) {
-		System.out.println(amount + " paid using KAKAOCard.");
-	}
-}
-
-// LUNACardStrategy
-
-public class LUNACardStrategy implements PaymentStrategy {
-	private String emailId;
-	private String password;
-
-	public LUNACardStrategy(String emailId, String password) {
-		this.emailId = emailId;
-		this.password = password;
-	}
-
-	@Override
-	public void pay(int amount) {
-		System.out.println(amount + " paid using LUNACard");
-	}
-}
-
-// Item
-
-public class Item {
-	private String name;
-	private int price;
-	public Item(String name, int price) {
-		this.name = name;
-		this.price = price;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-}
-
-// ShoppingCart
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class ShoppingCart {
-	List&lt;Item&gt; items;
-
-	public ShoppingCart() {
-		this.items = new ArrayList&lt;&gt;();
-	}
-
-	public void addItem(Item item) {
-		this.items.add(item);
-	}
-
-	public void removeItem(Item item) {
-		this.items.remove(item);
-	}
-
-	public int calculateTotal() {
-		int sum = 0;
-		for (Item item : items) {
-			sum += item.getPrice();
-		}
-		return sum;
-	}
-
-	public void pay(PaymentStrategy pamentMethod) {
-		int amount = calculateTotal();
-		pamentMethod.pay(amount);
-	}
-}
-
-// Main
-
-import designPattern.strategy.Item;
-import designPattern.strategy.KAKAOCardStrategy;
-import designPattern.strategy.LUNACardStrategy;
-import designPattern.strategy.ShoppingCart;
-
-public class Main {
-
-	public static void main(String[] args) {
-		ShoppingCart cart = new ShoppingCart();
-
-		Item A = new Item("A", 100);
-		Item B = new Item("B", 300);
-
-		cart.addItem(A);
-		cart.addItem(B);
-
-		// pay by LUNACard
-		cart.pay(new LUNACardStrategy("kobe@google.com", "1234"));
-
-		// pay by KAKAOCard
-		cart.pay(new KAKAOCardStrategy("Minseong Kang", "123456789", "123", "12/01"));
-	}
+@Service
+public class MyService {
+    
+    @Autowired
+    private MyRepository myRepository;
+    
+    @Transactional
+    public void performTransaction() {
+        // 데이터베이스에 새로운 엔티티 추가
+        myRepository.save(new MyEntity("Data1"));
+        
+        // 다른 데이터베이스 작업 수행
+        myRepository.updateEntity(1L, "UpdatedData");
+        
+        // 예외 발생 시, 위의 모든 작업이 롤백됨
+        if (someConditionFails()) {
+            throw new RuntimeException("Transaction failed, rolling back...");
+        }
+    }
+    
+    @Transactional(readOnly = true)
+    public List&lt;MyEntity&gt; getEntities() {
+        return myRepository.findAll();
+    }
 }
 
 
-실행 결과
+3️⃣ 요약.
 
-400 paid using LUNACard
-400 paid using KAKAOCard.
+  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
+        
+          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
+        
+      
+    
+  
 
 
-  위 코드는 쇼핑 카드에 아이템을 담아 LUNACard 또는 KAKAOCard 라는 두 개의 전략으로 결제하는 코드입니다.
-
-
-
-  용어 : 컨텍스트
-프로그래밍에서의 컨텍스트는 상황, 맥락, 문맥을 의미하며 개발자가 어떠한 작업을 완료하는 데 필요한 모든 관련 정보를 말합니다.
-
+이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-09-03</span>
+                                <span class="date">· 2024-09-04</span>
                             
                         </div>
                     </div>
@@ -3791,6 +3615,183 @@ public MemberService(MemberRepository memberRepository) {
       이 방식은 XML 기반 설정보다 더 타입 안전하고, 유지보수하기 쉬우며, 현대적인 스프링 애플리케이션에서 자주 사용됩니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html"><h1 class="title_post">💾 [CS] 전략 패턴(Strategy pattern)</h1></a>
+                        <a href="/Backend/CS/2024-09-03-stratege-pattern.html" class="txt_post">
+                            💾 [CS] 전략 패턴(Strategy pattern)
+
+1️⃣ 전략 패턴(Strategy pattern)
+
+  전략 패턴(Strategy pattern) 은 정책 패턴(Policy pattern) 이라고도 하며, 객채의 행위를 바꾸고 싶은 경우 ‘직접’ 수정하지 않고 전략이라고 부르는 ‘캡슐화한 알고리즘’ 을 컨텍스트 안에서 바꿔주면서 상호 교체가 가능하게 만드는 패턴입니다.
+
+
+
+
+
+  아래의 예시 코드는 우리가 어떤 것을 살 때 네이버페이, 카카오페이 등 다양한 방법으로 결제하듯이 어떤 아이템을 살 때 LUNACard로 사는 것과 KAKAOCard로 사는 것을 구현한 예제입니다.
+    
+      결제 방식의 ‘전략’ 만 바꿔서 두 가지 방식으로 결제하는 것을 구현했습니다.
+    
+  
+
+
+// PaymentStrategy - interface
+
+public interface PaymentStrategy {
+	void pay(int amount);
+}
+
+// KAKAOCardStrategy
+
+public class KAKAOCardStrategy implements PaymentStrategy{
+	private String name;
+	private String cardNumber;
+	private String cvv;
+	private String dateOfExpiry;
+
+	public KAKAOCardStrategy(String name, String cardNumber, String cvv, String dateOfExpiry) {
+		this.name = name;
+		this.cardNumber = cardNumber;
+		this.cvv = cvv;
+		this.dateOfExpiry = dateOfExpiry;
+	}
+
+	@Override
+	public void pay(int amount) {
+		System.out.println(amount + " paid using KAKAOCard.");
+	}
+}
+
+// LUNACardStrategy
+
+public class LUNACardStrategy implements PaymentStrategy {
+	private String emailId;
+	private String password;
+
+	public LUNACardStrategy(String emailId, String password) {
+		this.emailId = emailId;
+		this.password = password;
+	}
+
+	@Override
+	public void pay(int amount) {
+		System.out.println(amount + " paid using LUNACard");
+	}
+}
+
+// Item
+
+public class Item {
+	private String name;
+	private int price;
+	public Item(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+}
+
+// ShoppingCart
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShoppingCart {
+	List&lt;Item&gt; items;
+
+	public ShoppingCart() {
+		this.items = new ArrayList&lt;&gt;();
+	}
+
+	public void addItem(Item item) {
+		this.items.add(item);
+	}
+
+	public void removeItem(Item item) {
+		this.items.remove(item);
+	}
+
+	public int calculateTotal() {
+		int sum = 0;
+		for (Item item : items) {
+			sum += item.getPrice();
+		}
+		return sum;
+	}
+
+	public void pay(PaymentStrategy pamentMethod) {
+		int amount = calculateTotal();
+		pamentMethod.pay(amount);
+	}
+}
+
+// Main
+
+import designPattern.strategy.Item;
+import designPattern.strategy.KAKAOCardStrategy;
+import designPattern.strategy.LUNACardStrategy;
+import designPattern.strategy.ShoppingCart;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ShoppingCart cart = new ShoppingCart();
+
+		Item A = new Item("A", 100);
+		Item B = new Item("B", 300);
+
+		cart.addItem(A);
+		cart.addItem(B);
+
+		// pay by LUNACard
+		cart.pay(new LUNACardStrategy("kobe@google.com", "1234"));
+
+		// pay by KAKAOCard
+		cart.pay(new KAKAOCardStrategy("Minseong Kang", "123456789", "123", "12/01"));
+	}
+}
+
+
+실행 결과
+
+400 paid using LUNACard
+400 paid using KAKAOCard.
+
+
+  위 코드는 쇼핑 카드에 아이템을 담아 LUNACard 또는 KAKAOCard 라는 두 개의 전략으로 결제하는 코드입니다.
+
+
+
+  용어 : 컨텍스트
+프로그래밍에서의 컨텍스트는 상황, 맥락, 문맥을 의미하며 개발자가 어떠한 작업을 완료하는 데 필요한 모든 관련 정보를 말합니다.
 
 
                         </a>
@@ -4035,206 +4036,6 @@ public MemberService(MemberRepository memberRepository) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
-                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
-
-  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
-    
-      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
-    
-  
-
-
-1️⃣ 전체 코드.
-
-// MemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	@Autowired
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-
-2️⃣ 구체적인 이유.
-
-  1. 인터페이스를 통한 유연성 확보.
-    
-      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
-        
-          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
-            
-              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
-                
-                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  2. 느슨한 결합.
-    
-      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
-        
-          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
-        
-      
-      이 방식은 유지보수성을 크게 향상시킵니다.
-        
-          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
-        
-      
-    
-  
-  3. 스프링의 의존성 주입 메커니즘 활용.
-    
-      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
-        
-          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
-        
-      
-      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
-        
-          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 결론.
-
-  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
-    
-      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
-        
-          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -4449,6 +4250,206 @@ public class MemberService {
   잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
     
       따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
+                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
+
+  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
+    
+      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
+    
+  
+
+
+1️⃣ 전체 코드.
+
+// MemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
+
+
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
+
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MemoryMemberRepository implements MemberRepository {
+
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
+
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
+
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
+
+	public void clearStore() {
+		store.clear();
+	}
+}
+
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	@Autowired
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+
+2️⃣ 구체적인 이유.
+
+  1. 인터페이스를 통한 유연성 확보.
+    
+      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
+        
+          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
+            
+              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
+                
+                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  2. 느슨한 결합.
+    
+      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
+        
+          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
+        
+      
+      이 방식은 유지보수성을 크게 향상시킵니다.
+        
+          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
+        
+      
+    
+  
+  3. 스프링의 의존성 주입 메커니즘 활용.
+    
+      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
+        
+          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
+        
+      
+      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
+        
+          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 결론.
+
+  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
+    
+      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
+        
+          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
+        
+      
     
   
 
@@ -17470,6 +17471,17 @@ public class Main {
             'tags'     : "SQL",
             'url'      : "/SQL/2024/2024-09-18-DBMS-Classification.html",
             'image'    : "/assets/img/thumbnail/sql.jpeg",
+            'date'     : "2024-09-18"
+        });
+    
+
+        posts.push({
+            'title'    : "💾[Database] DBMS의 개요.",
+            'path'     : "SQL > 2024",
+            'type'     : "post",
+            'tags'     : "Database",
+            'url'      : "/SQL/2024/2024-09-18-intro-dbms.html",
+            'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-09-18"
         });
     

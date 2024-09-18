@@ -695,6 +695,7 @@
             
             
             
+            
 
     
     
@@ -1105,6 +1106,114 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
+                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="txt_post">
+                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
+
+1️⃣ 노출 모듈 패턴(revealing module pattern).
+
+  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
+    
+      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
+    
+  
+
+
+2️⃣ 핵심 개념.
+
+  정보 은닉.
+    
+      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
+    
+  
+  외부 노출 제어.
+    
+      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
+    
+  
+
+
+3️⃣ 자바에서의 구현 예시.
+public RevealingModule {
+    
+    // private 필드
+    private String hiddenData = "This is hidden";
+    
+    // 외부에서 접근할 수 없는 메서드
+    private void hiddenMethod() {
+        System.out.println("This method is hidden");
+    }
+    
+    // 외부에 노출할 메서드
+    public void showData() {
+        System.out.println("Exposed Data: " + hiddenData);
+    }
+    
+    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
+    public void callHiddenMethod() {
+        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
+    }
+}
+
+
+설명.
+
+  
+    
+      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
+        
+          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
+        
+      
+    
+  
+  
+    
+      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
+    
+  
+
+
+장점.
+
+  캡슐화 강화.
+    
+      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
+    
+  
+  코드 유지보수성.
+    
+      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
+    
+  
+
+
+
+
+
+  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -3039,6 +3148,149 @@ c:: got message &gt;&gt; nice to meet you
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
+                            🍃[Spring] @Transactional 애노테이션.
+
+  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
+    
+      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
+    
+  
+
+
+1️⃣ 주요 기능.
+
+  1. 트랜잭션 관리.
+    
+      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
+        
+          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
+        
+      
+    
+  
+  2. 적용 범위.
+    
+      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
+      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
+      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
+    
+  
+  3. 트랜잭션 전파(Propagation)
+    
+      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
+        
+          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
+          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
+          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
+          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
+          기타 : NOT_SUPPORT, NEVER, NESTED 등.
+        
+      
+    
+  
+  4. 트랜잭션 격리 수준(Isolation Level)
+    
+      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
+        
+          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
+            
+              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
+              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
+              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
+              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
+            
+          
+        
+      
+    
+  
+  5. 롤백 규칙(Rollback Rules)
+    
+      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
+        
+          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
+        
+      
+      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
+    
+  
+  6. 읽기 전용(Read-Only)
+    
+      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
+        
+          주로 SELECT 쿼리에서 사용됩니다.
+            2️⃣ 예시 코드
+          
+        
+      
+    
+  
+
+
+@Service
+public class MyService {
+    
+    @Autowired
+    private MyRepository myRepository;
+    
+    @Transactional
+    public void performTransaction() {
+        // 데이터베이스에 새로운 엔티티 추가
+        myRepository.save(new MyEntity("Data1"));
+        
+        // 다른 데이터베이스 작업 수행
+        myRepository.updateEntity(1L, "UpdatedData");
+        
+        // 예외 발생 시, 위의 모든 작업이 롤백됨
+        if (someConditionFails()) {
+            throw new RuntimeException("Transaction failed, rolling back...");
+        }
+    }
+    
+    @Transactional(readOnly = true)
+    public List&lt;MyEntity&gt; getEntities() {
+        return myRepository.findAll();
+    }
+}
+
+
+3️⃣ 요약.
+
+  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
+        
+          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
+        
+      
+    
+  
+
+
+이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -3287,149 +3539,6 @@ public class MyServiceIntegrationTest {
     
   
 
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html"><h1 class="title_post">🍃[Spring] `@Transactional` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="txt_post">
-                            🍃[Spring] @Transactional 애노테이션.
-
-  @Transactional 애노테이션은 Spring Framework에서 제공하는 애노테이션으로, 메서드나 클래스에 적용하여 해당 범위 내의 데이터베이스 작업을 하나의 트랜잭션으로 관리할 수 있도록 해줍니다.
-    
-      즉, @Transactional을 사용하면 지정된 메서드 또는 클래스 내의 데이터베이스 작업이 모두 성공해야만 커밋(commit)되고, 그렇지 않으면 롤백(rollback)됩니다.
-    
-  
-
-
-1️⃣ 주요 기능.
-
-  1. 트랜잭션 관리.
-    
-      @Transactional 애노테이션이 적용된 메서드 내에서 수행되는 모든 데이터베이스 작업(예: INSERT, UPDATE, DELETE)은 하나의 트랜잭션으로 관리됩니다.
-        
-          만약 메서드 실행 중 예외가 발생하면, 해당 트랜잭션 내의 모든 변경 사항이 롤백됩니다.
-        
-      
-    
-  
-  2. 적용 범위.
-    
-      @Transactional은 클래스나 메서드에 적용할 수 있습니다.
-      클래스에 적용하면 해당 클래스의 모든 메서드가 트랜잭션 내에서 실행됩니다.
-      메스트에 적용되면 해당 메서드만 트랜잭션으로 관리됩니다.
-    
-  
-  3. 트랜잭션 전파(Propagation)
-    
-      @Transactional은 여러 전파(Propagation) 옵션을 제공하여 트랜잭션이 다른 트랜잭션과 어떻게 상호작용할지를 정의할 수 있습니다.
-        
-          REQUIRED : 기본값으로, 현재 트랜잭션이 존재하면 이를 사용하고, 없으면 새로운 트랜잭션을 생성합니다.
-          REQUIRES_NEW : 항상 새로운 트랜잭션을 생성하고, 기존 트랜잭션을 일시 정지합니다.
-          MANDATORY : 현재 트랜잭션이 반드시 존재해야 하며, 없으면 예외가 발생합니다.
-          SUPPORT : 현재 트랜잭션이 있으면 이를 사용하고, 없으면 트랜잭션 없이 실행합니다.
-          기타 : NOT_SUPPORT, NEVER, NESTED 등.
-        
-      
-    
-  
-  4. 트랜잭션 격리 수준(Isolation Level)
-    
-      데이터베이스 트랜잭션의 격리 수준을 설정할 수 있습니다.
-        
-          이는 동시에 실행되는 여러 트랜잭션 간의 상호작용 방식을 정의합니다.
-            
-              READ_UNCOMMITTED : 다른 트랜잭션의 미완료 변경 사항을 읽을 수 있습니다.
-              READ_COMMITED : 다른 트랜잭션의 커밋된 변경 사항만 읽을 수 있습니다.
-              REPEATABLE_READ : 트랜잭션 동안 동일한 데이터를 반복적으로 읽어도 동일한 결과를 보장합니다.
-              SERIALIZABLE : 가장 엄격한 격리 수준으로, 트랜잭션이 완전히 순차적으로 실행되도록 보장합니다.
-            
-          
-        
-      
-    
-  
-  5. 롤백 규칙(Rollback Rules)
-    
-      기본적으로 @Transactional 은 RuntimeException 또는 Error 가 발생하면 트랜잭션을 롤백합니다.
-        
-          특정 예외에 대해 롤백을 강제하거나, 롤백을 방지하도록 설정할 수 있습니다.
-        
-      
-      rollbackFor 또는 noRollbackFor 속성을 사용하여 이 동작을 커스터마이징할 수 있습니다.
-    
-  
-  6. 읽기 전용(Read-Only)
-    
-      @Transactional(readOnly = true)로 설정하면 트랜잭션이 데이터 읽기 전용으로 동작하며, 이 경우 데이터 수정 작업이 최적화될 수 있습니다.
-        
-          주로 SELECT 쿼리에서 사용됩니다.
-            2️⃣ 예시 코드
-          
-        
-      
-    
-  
-
-
-@Service
-public class MyService {
-    
-    @Autowired
-    private MyRepository myRepository;
-    
-    @Transactional
-    public void performTransaction() {
-        // 데이터베이스에 새로운 엔티티 추가
-        myRepository.save(new MyEntity("Data1"));
-        
-        // 다른 데이터베이스 작업 수행
-        myRepository.updateEntity(1L, "UpdatedData");
-        
-        // 예외 발생 시, 위의 모든 작업이 롤백됨
-        if (someConditionFails()) {
-            throw new RuntimeException("Transaction failed, rolling back...");
-        }
-    }
-    
-    @Transactional(readOnly = true)
-    public List&lt;MyEntity&gt; getEntities() {
-        return myRepository.findAll();
-    }
-}
-
-
-3️⃣ 요약.
-
-  @Transactional 은 데이터베이스 트랜잭션을 쉽게 관리할 수 있도록 해주는 Spring의 핵심 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 메서드나 클래스의 데이터베이스 작업을 하나의 트랜잭션으로 처리하며, 실패 시 자동으로 롤백됩니다.
-        
-          또한, 트랜잭션 전파, 격리 수준, 롤백 규칙 등을 통해 세부적으로 트랜잭션의 동작을 제어할 수 있습니다.
-        
-      
-    
-  
-
-
-이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
 
                         </a>
                         <div class="info-post">
@@ -4036,6 +4145,206 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
+                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
+
+  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
+    
+      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
+    
+  
+
+
+1️⃣ 전체 코드.
+
+// MemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
+
+
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
+
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MemoryMemberRepository implements MemberRepository {
+
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
+
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
+
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
+
+	public void clearStore() {
+		store.clear();
+	}
+}
+
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	@Autowired
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+
+2️⃣ 구체적인 이유.
+
+  1. 인터페이스를 통한 유연성 확보.
+    
+      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
+        
+          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
+            
+              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
+                
+                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  2. 느슨한 결합.
+    
+      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
+        
+          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
+        
+      
+      이 방식은 유지보수성을 크게 향상시킵니다.
+        
+          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
+        
+      
+    
+  
+  3. 스프링의 의존성 주입 메커니즘 활용.
+    
+      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
+        
+          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
+        
+      
+      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
+        
+          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 결론.
+
+  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
+    
+      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
+        
+          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -4250,206 +4559,6 @@ public class Main {
   잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
     
       따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
-                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
-
-  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
-    
-      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
-    
-  
-
-
-1️⃣ 전체 코드.
-
-// MemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	@Autowired
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-
-2️⃣ 구체적인 이유.
-
-  1. 인터페이스를 통한 유연성 확보.
-    
-      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
-        
-          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
-            
-              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
-                
-                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  2. 느슨한 결합.
-    
-      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
-        
-          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
-        
-      
-      이 방식은 유지보수성을 크게 향상시킵니다.
-        
-          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
-        
-      
-    
-  
-  3. 스프링의 의존성 주입 메커니즘 활용.
-    
-      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
-        
-          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
-        
-      
-      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
-        
-          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 결론.
-
-  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
-    
-      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
-        
-          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
-        
-      
     
   
 
@@ -7658,6 +7767,54 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
+
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+    
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
+    
+  
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
+
+
+
+
+
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
+    
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
+    
+  
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -7945,54 +8102,6 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
-                            ☁️[AWS] 가상화.
-
-  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
-  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
-  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
-    
-      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
-여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
-    
-  
-  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
-
-
-
-
-
-  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
-    
-      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
-    
-  
-  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
-
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-08-11-Nginx.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -8249,109 +8358,6 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
-                            ☁️[AWS] 클라우드(Cloud)란?
-
-
-  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
-  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
-  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
-  클라우드의 어원은 단어 뜻 그대로 구름입니다.
-    
-      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
-        
-          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
-        
-      
-    
-  
-
-
-
-
-
-  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
-    
-      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
-      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
-        
-          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-08-07-webpage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -8503,6 +8509,109 @@ ls /home/ec2-user/
   이러한 예시들을 통해 정적 웹사이트가 주로 고정된 내용을 제공하는 반면, 동적 웹사이트는 사용자의 입력과 상호작용에 따라 콘텐츠가 변경되는 복잡한 기능을 필요로 함을 알 수 있습니다.
     
       각각의 사례에서 요구하는 기능과 특성에 맞춰 웹사이트의 형태를 결정합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
+                            ☁️[AWS] 클라우드(Cloud)란?
+
+
+  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
+  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
+  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
+  클라우드의 어원은 단어 뜻 그대로 구름입니다.
+    
+      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
+        
+          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
+        
+      
+    
+  
+
+
+
+
+
+  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
+    
+      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
+      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
+        
+          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
     
   
 
@@ -10593,6 +10702,33 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-18-TIL.html"><h1 class="title_post">📝 [TIL] 240518 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-18-TIL.html" class="txt_post">
+                            
+  수학적 귀납법
+  명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-05-18-WhatKindOfBackendDevDoIWantToBe.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -10920,33 +11056,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
 그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
 
 이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-18-TIL.html"><h1 class="title_post">📝 [TIL] 240518 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-18-TIL.html" class="txt_post">
-                            
-  수학적 귀납법
-  명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.
-
 
                         </a>
                         <div class="info-post">
@@ -17483,6 +17592,17 @@ public class Main {
             'url'      : "/SQL/2024/2024-09-18-intro-dbms.html",
             'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-09-18"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 노출 모듈 패턴(revealing module pattern)",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-19-Revealing-module-pattern.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-19"
         });
     
 

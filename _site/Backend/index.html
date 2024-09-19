@@ -701,6 +701,7 @@
             
             
             
+            
 
     
     
@@ -5832,55 +5833,6 @@ public class PaymentService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-08-24-static-content.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-24-static-content.html"><h1 class="title_post">🍃[Spring] 정적 컨텐츠.</h1></a>
-                        <a href="/Backend/Spring/2024-08-24-static-content.html" class="txt_post">
-                            🍃[Spring] 정적 컨텐츠.
-
-  스프링 부트 정적 컨텐츠 기능
-  스프링 부트 공식 문서
-
-
-'resources/static/hello-static.html'
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;static content&lt;/title&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-&lt;/head&gt;
-&lt;body&gt;
-정적 컨텐츠 입니다.
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-실행
-
-  http://localhost:8080/hello-static.html
-
-
-정적 컨텐츠 이미지
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -6153,6 +6105,55 @@ public class HelloController {
 
   🙋‍♂️ 참고: ** 클라이언트의 HTTP Accept 헤더와 서버의 컨트롤러 반환 타입 정보 둘을 조합해서
 **'HttpMessageConverter' 가 선택된다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-24-static-content.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-static-content.html"><h1 class="title_post">🍃[Spring] 정적 컨텐츠.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-static-content.html" class="txt_post">
+                            🍃[Spring] 정적 컨텐츠.
+
+  스프링 부트 정적 컨텐츠 기능
+  스프링 부트 공식 문서
+
+
+'resources/static/hello-static.html'
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;static content&lt;/title&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+정적 컨텐츠 입니다.
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+실행
+
+  http://localhost:8080/hello-static.html
+
+
+정적 컨텐츠 이미지
 
 
                         </a>
@@ -7716,48 +7717,6 @@ sudo firewall-cmd --permanent --add-service=https
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -7798,6 +7757,48 @@ nvm use 16
 ✏️ 요약
 
   'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
 
 
                         </a>
@@ -8168,49 +8169,6 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_DNS.html"><h1 class="title_post">☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_DNS.html" class="txt_post">
-                            ☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.
-
-  일반적으로 어떤 웹 사이트에 접속하기 위해서는 'https://OO.com/'과 같은 URL(Uniform Resource Locator)을 사용합니다.
-    
-      이러한 'https://OO.com/'을 도메인(Domain) 이라고 합니다.
-        
-          도메인은 점으로 연결된 문자열로 구성돼 있으며 기업 이름과 단체 이름을 표현하는 경우가 많습니다.
-          도메인은 해당 문자열에 표시되는 기업, 단체 등이 제공하는 사이트의 주소를 정의합니다.
-        
-      
-    
-  
-  도메인 이름에는 IP 주소가 연결돼 있어 사용자는 도메인 이름만으로 사이트에 접속할 수 있습니다.
-  DNS(Domain Name System) 가 우리 대신 도메인 이름에 연결된 IP 주소를 찾아주기 때문입니다.
-    
-      이러한 DNS 기능을 이름 해석 이라고 합니다.
-
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -8250,113 +8208,38 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
-                            ☁️[AWS] 가상화.
+                        <a href="/Backend/AWS/240816_AWS_DNS.html"><h1 class="title_post">☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_DNS.html" class="txt_post">
+                            ☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.
 
-  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
-  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
-  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+  일반적으로 어떤 웹 사이트에 접속하기 위해서는 'https://OO.com/'과 같은 URL(Uniform Resource Locator)을 사용합니다.
     
-      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
-여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
-    
-  
-  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
-
-
-
-
-
-  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
-    
-      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
-    
-  
-  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
-
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
+      이러한 'https://OO.com/'을 도메인(Domain) 이라고 합니다.
         
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
-                            ☁️[AWS] 서버리스.
-
-  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
-    
-      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
-    
-  
-  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
-
-
-
-
-☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
-
-  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
-    
-      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
-    
-  
-  폐쇄형 클라우드
-    
-      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
-    
-  
-  개방형 클라우드
-    
-      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
-    
-  
-  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
-    
-      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
-        
-          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+          도메인은 점으로 연결된 문자열로 구성돼 있으며 기업 이름과 단체 이름을 표현하는 경우가 많습니다.
+          도메인은 해당 문자열에 표시되는 기업, 단체 등이 제공하는 사이트의 주소를 정의합니다.
         
       
     
   
-  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+  도메인 이름에는 IP 주소가 연결돼 있어 사용자는 도메인 이름만으로 사이트에 접속할 수 있습니다.
+  DNS(Domain Name System) 가 우리 대신 도메인 이름에 연결된 IP 주소를 찾아주기 때문입니다.
     
-      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+      이러한 DNS 기능을 이름 해석 이라고 합니다.
+
     
   
-  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
-
-
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-08-15</span>
+                                <span class="date">· 2024-08-16</span>
                             
                         </div>
                     </div>
@@ -8567,6 +8450,124 @@ nvm use 16
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
+
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+    
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
+    
+  
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
+
+
+
+
+
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
+    
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
+    
+  
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
+                            ☁️[AWS] 서버리스.
+
+  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
+    
+      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
+    
+  
+  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
+
+
+
+
+☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
+
+  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
+    
+      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
+    
+  
+  폐쇄형 클라우드
+    
+      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
+    
+  
+  개방형 클라우드
+    
+      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
+    
+  
+  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
+    
+      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
+        
+          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+        
+      
+    
+  
+  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+    
+      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+    
+  
+  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
+
+
 
 
                         </a>
@@ -8841,6 +8842,109 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
+                            ☁️[AWS] 클라우드(Cloud)란?
+
+
+  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
+  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
+  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
+  클라우드의 어원은 단어 뜻 그대로 구름입니다.
+    
+      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
+        
+          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
+        
+      
+    
+  
+
+
+
+
+
+  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
+    
+      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
+      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
+        
+          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-08-07-webpage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -8992,109 +9096,6 @@ ls /home/ec2-user/
   이러한 예시들을 통해 정적 웹사이트가 주로 고정된 내용을 제공하는 반면, 동적 웹사이트는 사용자의 입력과 상호작용에 따라 콘텐츠가 변경되는 복잡한 기능을 필요로 함을 알 수 있습니다.
     
       각각의 사례에서 요구하는 기능과 특성에 맞춰 웹사이트의 형태를 결정합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
-                            ☁️[AWS] 클라우드(Cloud)란?
-
-
-  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
-  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
-  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
-  클라우드의 어원은 단어 뜻 그대로 구름입니다.
-    
-      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
-        
-          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
-        
-      
-    
-  
-
-
-
-
-
-  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
-    
-      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
-      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
-        
-          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
-        
-      
     
   
 
@@ -11844,34 +11845,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -11970,6 +11943,34 @@ public class Main {
 그래서 저의 적성과 맞는 것 같아요.
 
 저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
+                            
+  인터페이스
+  내부 클래스
+  입출력(1)
+
 
                         </a>
                         <div class="info-post">
@@ -18140,6 +18141,17 @@ public class Main {
             'tags'     : "CS",
             'url'      : "/Backend/CS/2024-09-20-MVC-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-20"
+        });
+    
+
+        posts.push({
+            'title'    : "💾[Database] SQL 쿼리.",
+            'path'     : "SQL > 2024",
+            'type'     : "post",
+            'tags'     : "Database",
+            'url'      : "/SQL/2024/2024-09-20-sql-query.html",
+            'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-09-20"
         });
     

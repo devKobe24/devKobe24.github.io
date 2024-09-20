@@ -703,6 +703,7 @@
             
             
             
+            
 
     
     
@@ -1117,6 +1118,198 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-21-MVP-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-21-MVP-pattern.html"><h1 class="title_post">💾 [CS] MVP 패턴.</h1></a>
+                        <a href="/Backend/CS/2024-09-21-MVP-pattern.html" class="txt_post">
+                            💾 [CS] MVP 패턴.
+
+1️⃣ MVP 패턴.
+
+  MVP 패턴은 MVC 패턴으로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터(Presenter)로 교체된 패턴입니다.
+
+
+
+
+
+  뷰와 프레젠터는 일대일 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴이라고 볼 수 있습니다.
+
+
+2️⃣ 자바에서의 MVP 패턴.
+
+  자바에서의 MVP 패턴은 주로, 데스크탑 애플리케이션(JavaFX, Swing) 또는 안드로이드 애플리케이션을 개발할 때 많이 사용됩니다.
+  자바에서는 주로 MVC 패턴이 많이 사용되지만, MVP 패턴은 UI와 비즈니스 로직을 더욱 명확하게 분리할 수 있기 때문에 상황에 따라 더 적합할 수 있습니다.
+
+
+3️⃣ MVP 패턴의 구조.
+
+  MVP는 Model-View-Presenter의 약자로, 아래와 같은 세 가지 주요 구성 요소로 나뉩니다.
+  1. Model(모델)
+    
+      애플리케이션의 데이터와 비즈니스 로직을 처리합니다.
+      데이터베이스와 상호작용하고 데이터를 가공하는 역할을 담당합니다.
+      예: 데이터베이스 접근, API 호출, 데이터 가공.
+    
+  
+  2. View(뷰)
+    
+      사용자 인터페이스(UI)를 담당하며, 사용자가 보는 화면을 표시하고 입력을 받습니다.
+      View는 Presenter에 의존하여 데이터를 요청하고, 그 데이터를 표시하는 역할을 합니다.
+      예: 자바의 JPanel, JFrame(Swing) 또는 Activity, Fragment(안드로이드)
+    
+  
+  3. Presenter(프레젠터)
+    
+      View와 Model간의 중재자 역할을 하며, 뷰에서 발생한 사용자 상호작용을 처리하고, 필요한 데이터를 모델에서 가져와 뷰에 전달합니다.
+      비즈니스 로직을 처리하며, View와 Model을 직접 연결하지 않고 독립적으로 관리합니다.
+      Presenter는 View 인터페이스를 통해 View와 통신하고, 테스트 가능한 구조를 만듭니다.
+    
+  
+
+
+4️⃣ 백엔드를 Java로 구현시 MVP 패턴이 사용되나요?
+
+  일반적으로 MVP패턴(Model-View-Presenter) 은 주로 프론트엔드 또는 UI 중심 애플리케이션에서 사용됩니다.
+  MVP 패턴은 사용자 인터페이스와 비즈니스 로직을 분리하는 데 중점을 두기 때문에, 데스크탑 애플리케이션(JavaFX, Swing)이나 모바일 애플리케이션(안드로이드)에서 많이 사용됩니다.
+  따라서 백엔드 애픝리케이션을 Java로 구현할 때는 MVP 패턴이 거의 사용되지 않으며, 그 대신 다른 디자인 패턴이 주로 사용됩니다.
+
+
+1. MVP 패턴의 목적.
+
+  MVP 패턴은 기본적으로 사용자 인터페이스(UI)를 중심으로 View와 비즈니스 로직(Presenter) 을 분리하는 데 목적이 있습니다.
+  하지만 백엔드 애플리케이션은 사용자 인터페이스가 아닌 서버 측 비즈니스 로직, 데이터 처리, API 제공 등을 다루기 때문에, UI 요소가 존재하지 않습니다.
+  따라서 View 라는 개념이 백엔드에 적합하지 않습니다.
+
+
+2. 백엔드에서는 MVC 패턴이 더 적합.
+
+  Java 기반 백엔트 개발에서는 MVC(Model-View-Controller) 패턴 이나 서비스 계층 패턴 과 같은 구조가 더 일반적입니다.
+  특히, Spring Framework 같은 인기 있는 백엔드 프레임워크에서는 MVC 패턴이 기본적으로 사용됩니다.
+  백엔드에서 컨트롤러(Controller) 가 클라이언트의 요청을 처리하고, 모델(Model) 이 데이터 처리와 비즈니스 로직을 담당하며, 뷰(View) 는 API 응답(JSON, XML 등)을 생성하는 역할을 합니다.
+
+
+백엔드에서 자주 사용되는 디자인 패턴.
+
+  1. MVC 패턴(Model-View-Controller)
+    
+      서버 요청을 처리하고, 데이터베이스와 상호작용하며, API 응답을 생성하는 데 사용됩니다.
+    
+  
+  2. 서비스 계층 패턴
+    
+      비즈니스 로직을 서비스 계층으로 분리하여 재사용성과 유지보수성을 높이는 패턴입니다.
+    
+  
+  3. Repository 패턴
+    
+      데이터베이스 액세스 로직을 추상화하여, 비즈니스 로직과 데이터 액세스를 분리합니다.
+    
+  
+  4. Command 패턴
+    
+      사용자의 요청이나 명령을 객체로 변환하여 처리하는 방식으로, 여러 요청을 관리하는데 유리합니다.
+    
+  
+  5. Observer 패턴
+    
+      상태 변화를 여러 객체가 구독하고 반응하는 패턴으로, 이벤트 기반 시스템에 자주 사용됩니다.
+    
+  
+
+
+3. 백엔드에서 사용하는 디자인 패턴의 예시.
+
+  1. Spring MVC 패턴
+    
+      Spring에서는 Controller가 HTTP 요청을 받고, Service에서 비즈니스 로직을 처리한 뒤, Model을 사용하여 데이터를 전달하고 View를 반환하는 전형적인 MVC 패턴을 사용합니다.
+      여기서 View는 HTML 또는 JSON, XML과 같은 응답 포맷을 의미합니다.
+    
+  
+
+
+@Controller
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping("/users/{id}")
+    public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
+        User user = userService.findUserById(id);
+        return new ResponseEntity&lt;&gt;(user, HttpStatus.OK);
+    }
+}
+
+
+  Controller 는 클라이언트 요청을 처리하고, 데이터를 가공한 후 응답합니다.
+  Service 는 비즈니스 로직을 처리하는 중간 계층 역할을 합니다.
+  
+    Repository 는 데이터베이스와 상호작용하는 부분입니다.
+  
+  2. 서비스 계층 패턴
+    
+      서비스 계층을 사용하면 컨트롤러가 직접 비즈니스 로직을 다루지 않고, 서비스 클래스가 이를 처리합니다.
+      이로 인해 코드가 더 구조적으로 관리되고 테스트 가능성이 높아집니다.
+```java
+@Service
+public class UserService {
+  @Autowired
+  private UserRepository userRepository;
+    
+
+    public User findUserById(Long id) {
+      return userRepository.findById(id).orElseThrow(() -&gt; new UserNotFoundException(id));
+  }
+}
+```
+  
+  3. Repository 패턴
+    
+      데이터베이스 관련 로직을 별도의 Repository 인터페이스로 분리하여 데이터 엑세스를 쉽게 관리하고 추상화할 수 있습니다.
+    
+  
+
+
+@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    // 데이터베이스 접근 로직을 추상화
+}
+
+
+4. MVP 패턴이 백엔드에서 적합하지 않은 이유.
+
+  View에 대한 의존성.
+    
+      MVP 패턴의 핵심 요소는 View 이며, 백엔드에는 UI를 다루지 않기 때문에 View의 역할이 존재하지 않습니다.
+      백엔드는 사용자 인터페이스를 렌더링하거나 다루지 않고, 데이터를 처리하고 클라이언트는 응답을 반환하는 역할을 합니다.
+    
+  
+  분리된 로직.
+    
+      백엔드는 클라이언트와 데이터를 주고받으며, 이 과정에서 비즈니스 로직, 데이터 엑세스, API 응답 생성 등과 같은 복잡한 처리가 이루어 집니다.
+      이러한 작업을 관리하는 데는 MVC 패턴 이나 레이어드 아키텍처 가 더 적합합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-09-20-MVC-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -1418,6 +1611,114 @@ MVC 패턴의 장점.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
+                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="txt_post">
+                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
+
+1️⃣ 노출 모듈 패턴(revealing module pattern).
+
+  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
+    
+      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
+    
+  
+
+
+2️⃣ 핵심 개념.
+
+  정보 은닉.
+    
+      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
+    
+  
+  외부 노출 제어.
+    
+      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
+    
+  
+
+
+3️⃣ 자바에서의 구현 예시.
+public RevealingModule {
+    
+    // private 필드
+    private String hiddenData = "This is hidden";
+    
+    // 외부에서 접근할 수 없는 메서드
+    private void hiddenMethod() {
+        System.out.println("This method is hidden");
+    }
+    
+    // 외부에 노출할 메서드
+    public void showData() {
+        System.out.println("Exposed Data: " + hiddenData);
+    }
+    
+    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
+    public void callHiddenMethod() {
+        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
+    }
+}
+
+
+설명.
+
+  
+    
+      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
+        
+          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
+        
+      
+    
+  
+  
+    
+      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
+    
+  
+
+
+장점.
+
+  캡슐화 강화.
+    
+      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
+    
+  
+  코드 유지보수성.
+    
+      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
+    
+  
+
+
+
+
+
+  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/DB/2024-09-19-db-modeling.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
@@ -1577,114 +1878,6 @@ MVC 패턴의 장점.
       SQL은 사람과 DBMS가 소통하기 위한 말(언어)입니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
-                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="txt_post">
-                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
-
-1️⃣ 노출 모듈 패턴(revealing module pattern).
-
-  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
-    
-      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
-    
-  
-
-
-2️⃣ 핵심 개념.
-
-  정보 은닉.
-    
-      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
-    
-  
-  외부 노출 제어.
-    
-      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
-    
-  
-
-
-3️⃣ 자바에서의 구현 예시.
-public RevealingModule {
-    
-    // private 필드
-    private String hiddenData = "This is hidden";
-    
-    // 외부에서 접근할 수 없는 메서드
-    private void hiddenMethod() {
-        System.out.println("This method is hidden");
-    }
-    
-    // 외부에 노출할 메서드
-    public void showData() {
-        System.out.println("Exposed Data: " + hiddenData);
-    }
-    
-    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
-    public void callHiddenMethod() {
-        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
-    }
-}
-
-
-설명.
-
-  
-    
-      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
-        
-          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
-        
-      
-    
-  
-  
-    
-      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
-    
-  
-
-
-장점.
-
-  캡슐화 강화.
-    
-      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
-    
-  
-  코드 유지보수성.
-    
-      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
-    
-  
-
-
-
-
-
-  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -3776,6 +3969,128 @@ public class MyService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
+                            🍃[Spring] @SpringBootTest 애노테이션.
+
+  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
+    
+      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
+      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
+    
+  
+
+
+1️⃣ 주요 기능 및 사용 방식.
+
+  1. Spring Application Context 로드
+    
+      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
+        
+          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
+        
+      
+    
+  
+  2. 테스트 환경 설정
+    
+      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
+        
+          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
+        
+      
+      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
+    
+  
+  3. 웹 환경 설정
+    
+      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
+        
+          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
+          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
+          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
+          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
+        
+      
+    
+  
+
+
+예시
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
+
+
+
+  4. 통합 테스트
+    
+      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
+        
+          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
+        
+      
+    
+  
+  5. TestConfiguration 클래스 사용 가능
+    
+      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
+    
+  
+
+
+2️⃣ 예시 코드
+
+@SpringBootTest
+public class MyServiceIntegrationTest {
+    
+    @Autowired
+    private MyService myService;
+    
+    @Test
+    public void testServiceMethod() {
+        // Given
+        // Setup initial conditions
+        
+        // When
+        String result = myService.performAction();
+        
+        // Then
+        assertEquals("ExpectedResult", result);
+    }
+}
+
+
+  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
+
+
+3️⃣ 요약
+
+  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/CS/2024-09-04-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -3899,128 +4214,6 @@ public class MyService {
           또한, API를 통해 외부 시스템이나 서비스와 통합할 수 있어, 다양한 기능을 제공하는 애플리케이션을 보다 효율적으로 개발할 수 있습니다.
         
       
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
-                            🍃[Spring] @SpringBootTest 애노테이션.
-
-  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
-    
-      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
-      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
-    
-  
-
-
-1️⃣ 주요 기능 및 사용 방식.
-
-  1. Spring Application Context 로드
-    
-      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
-        
-          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
-        
-      
-    
-  
-  2. 테스트 환경 설정
-    
-      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
-        
-          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
-        
-      
-      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
-    
-  
-  3. 웹 환경 설정
-    
-      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
-        
-          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
-          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
-          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
-          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
-        
-      
-    
-  
-
-
-예시
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
-
-
-
-  4. 통합 테스트
-    
-      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
-        
-          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
-        
-      
-    
-  
-  5. TestConfiguration 클래스 사용 가능
-    
-      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
-    
-  
-
-
-2️⃣ 예시 코드
-
-@SpringBootTest
-public class MyServiceIntegrationTest {
-    
-    @Autowired
-    private MyService myService;
-    
-    @Test
-    public void testServiceMethod() {
-        // Given
-        // Setup initial conditions
-        
-        // When
-        String result = myService.performAction();
-        
-        // Then
-        assertEquals("ExpectedResult", result);
-    }
-}
-
-
-  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
-
-
-3️⃣ 요약
-
-  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
     
   
 
@@ -4630,123 +4823,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/CS/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-02-domain.html"><h1 class="title_post">💾 [CS] 도메인(Domain)의 의미.</h1></a>
-                        <a href="/Backend/CS/2024-09-02-domain.html" class="txt_post">
-                            💾 [CS] 도메인(Domain)의 의미.
-
-  도메인(Domain) 은 소프트웨어 개발에서 특정 문제 영역 또는 비즈니스 영역을 지칭하는 용어입니다.
-  도메인은 소프트웨어 시스템이 해결하고자 하는 문제나 제공하는 서비스와 관련된 특정한 지식, 규칙, 절차 등을 포함한 모든 것을 의미합니다.
-
-
-1️⃣ 도메인(Domain)의 의미.
-
-  1. 문제 영역
-    
-      도메인은 특정 비즈니스나 문제 영역을 나타내며, 이 영역은 소프트웨어가 해결하려고 하는 실제 세계의 문제와 직접적으로 관련됩니다.
-        
-          예를 들어, 은행 업무, 전자상거래, 병원 관리, 교육 관리 시스템 등 각각의 도메인은 서로 다른 문제와 규칙을 가지고 있습니다.
-        
-      
-    
-  
-  2. 도메인 지식
-    
-      도메인에는 해당 문제 영역에 대한 전문 지식이나 규칙이 포함됩니다.
-        
-          예를 들어, 금융 도메인에서는 이자 계산, 대출 규정, 계좌 관리와 같은 특정 지식이 중요합니다.
-            
-              이와 같은 도메인 지식을 바탕으로 소프트웨어의 비즈니스 로직이 정의됩니다.
-            
-          
-        
-      
-    
-  
-  3. 도메인 모델
-    
-      도메인은 일반적으로 “도메인 모델(Domain Model)”로 표현됩니다.
-        
-          도메인 모델은 도메인의 개념, 객체, 엔티티, 관계, 규칙 등을 추상화하여 표현한 것입니다.
-            
-              예를 들어, 은행 도메인 모델에는 고객(Customer), 계좌(Account), 거래(Transaction) 같은 객체가 포함될 수 있습니다.
-            
-          
-        
-      
-      도메인 모델은 시스템이 해당 도메인의 문제를 어떻게 해결할지를 정의하는데 중요한 역할을 합니다.
-    
-  
-  4. 도메인 전문가
-    
-      도메인 전문가(Domain Expert)는 특정 도메인에 대한 깊은 지식을 가진 사람을 의미합니다.
-        
-          이들은 비즈니스 핵심 요구 사항과 규칙을 정의하며, 개발자와 협력하여 도메인 모델을 설계하는데 중요한 역할을 합니다.
-        
-      
-    
-  
-
-
-2️⃣ 도메인의 중요성
-
-  도메인은 소프트웨어 개발의 초기 단계에서 매우 중요합니다.
-    
-      시스템이 해결해야 하는 문제를 명확히 정의하고, 비즈니스 요구 사항을 반영한 도메인 모델을 설계하는 것이 시스템의 성공적인 구현에 필수적입니다.
-    
-  
-  도메인 지식을 제대로 반영하지 못하면, 시스템이 실제 비즈니스 문제를 해결하는 데 실패할 수 있으며, 이는 프로젝트 실패로 이어질 수 있습니다.
-    
-      따라서 개발자는 도메인 전문가와 긴밀하게 협력하여 도메인을 정확히 이해하고, 이를 코드로 표현하는 것이 중요합니다.
-    
-  
-
-
-3️⃣ 도메인 주도 설계(Domain-Driven Design, DDD)
-
-  도메인과 관련된 중요한 소프트웨어 설계 접근법 중 하나는 도메인 주도 설계(Domain-Driven Design, DDD) 입니다.
-  DDD는 도메인 모델을 중심으로 소프트웨어를 설계하는 방법론으로, 도메인의 개념과 규칙을 코드에 직접 반영하여 소프트웨어의 복잡성을 관리하고, 도메인의 변화에 쉽게 적응할 수 있도록 돕습니다.
-
-
-예시
-
-  예를 들어, 전자상거래 도메인 을 생각해보면, 이 도메인에는 다음과 같은 요소들이 포함될 수 있습니다.
-    
-      고객(Customer) : 상품을 구매하는 사람.
-      상품(Product) : 고객이 구매할 수 있는 아이템.
-      주문(Order) : 고객이 상품을 구매할 때 생성되는 거래 기록.
-      결제(Payment) : 주문에 대한 대금 지불.
-    
-  
-
-
-이러한 요소들과 그들 간의 관계가 도메인을 구성하며, 소프트웨어 시스템은 이러한 도메인의 개념을 바탕으로 비즈니스 로직을 구현하게 됩니다.
-
-4️⃣ 결론
-
-  도메인은 소프트웨어가 다루는 문제의 범위와 관련된 개념, 규칙, 객체들을 나타내며, 이를 정확히 이해하고 모델링하는 것이 성공적인 소프트웨어 개발의 핵심입니다.
-  도메인 이해를 바탕으로 적절한 비즈니스 로직을 구현하는 것이 소프트웨어의 목표를 달성하는 데 매우 중요합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-09-02-Business-Logic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -5046,6 +5122,123 @@ public class MemberService {
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/CS/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-02-domain.html"><h1 class="title_post">💾 [CS] 도메인(Domain)의 의미.</h1></a>
+                        <a href="/Backend/CS/2024-09-02-domain.html" class="txt_post">
+                            💾 [CS] 도메인(Domain)의 의미.
+
+  도메인(Domain) 은 소프트웨어 개발에서 특정 문제 영역 또는 비즈니스 영역을 지칭하는 용어입니다.
+  도메인은 소프트웨어 시스템이 해결하고자 하는 문제나 제공하는 서비스와 관련된 특정한 지식, 규칙, 절차 등을 포함한 모든 것을 의미합니다.
+
+
+1️⃣ 도메인(Domain)의 의미.
+
+  1. 문제 영역
+    
+      도메인은 특정 비즈니스나 문제 영역을 나타내며, 이 영역은 소프트웨어가 해결하려고 하는 실제 세계의 문제와 직접적으로 관련됩니다.
+        
+          예를 들어, 은행 업무, 전자상거래, 병원 관리, 교육 관리 시스템 등 각각의 도메인은 서로 다른 문제와 규칙을 가지고 있습니다.
+        
+      
+    
+  
+  2. 도메인 지식
+    
+      도메인에는 해당 문제 영역에 대한 전문 지식이나 규칙이 포함됩니다.
+        
+          예를 들어, 금융 도메인에서는 이자 계산, 대출 규정, 계좌 관리와 같은 특정 지식이 중요합니다.
+            
+              이와 같은 도메인 지식을 바탕으로 소프트웨어의 비즈니스 로직이 정의됩니다.
+            
+          
+        
+      
+    
+  
+  3. 도메인 모델
+    
+      도메인은 일반적으로 “도메인 모델(Domain Model)”로 표현됩니다.
+        
+          도메인 모델은 도메인의 개념, 객체, 엔티티, 관계, 규칙 등을 추상화하여 표현한 것입니다.
+            
+              예를 들어, 은행 도메인 모델에는 고객(Customer), 계좌(Account), 거래(Transaction) 같은 객체가 포함될 수 있습니다.
+            
+          
+        
+      
+      도메인 모델은 시스템이 해당 도메인의 문제를 어떻게 해결할지를 정의하는데 중요한 역할을 합니다.
+    
+  
+  4. 도메인 전문가
+    
+      도메인 전문가(Domain Expert)는 특정 도메인에 대한 깊은 지식을 가진 사람을 의미합니다.
+        
+          이들은 비즈니스 핵심 요구 사항과 규칙을 정의하며, 개발자와 협력하여 도메인 모델을 설계하는데 중요한 역할을 합니다.
+        
+      
+    
+  
+
+
+2️⃣ 도메인의 중요성
+
+  도메인은 소프트웨어 개발의 초기 단계에서 매우 중요합니다.
+    
+      시스템이 해결해야 하는 문제를 명확히 정의하고, 비즈니스 요구 사항을 반영한 도메인 모델을 설계하는 것이 시스템의 성공적인 구현에 필수적입니다.
+    
+  
+  도메인 지식을 제대로 반영하지 못하면, 시스템이 실제 비즈니스 문제를 해결하는 데 실패할 수 있으며, 이는 프로젝트 실패로 이어질 수 있습니다.
+    
+      따라서 개발자는 도메인 전문가와 긴밀하게 협력하여 도메인을 정확히 이해하고, 이를 코드로 표현하는 것이 중요합니다.
+    
+  
+
+
+3️⃣ 도메인 주도 설계(Domain-Driven Design, DDD)
+
+  도메인과 관련된 중요한 소프트웨어 설계 접근법 중 하나는 도메인 주도 설계(Domain-Driven Design, DDD) 입니다.
+  DDD는 도메인 모델을 중심으로 소프트웨어를 설계하는 방법론으로, 도메인의 개념과 규칙을 코드에 직접 반영하여 소프트웨어의 복잡성을 관리하고, 도메인의 변화에 쉽게 적응할 수 있도록 돕습니다.
+
+
+예시
+
+  예를 들어, 전자상거래 도메인 을 생각해보면, 이 도메인에는 다음과 같은 요소들이 포함될 수 있습니다.
+    
+      고객(Customer) : 상품을 구매하는 사람.
+      상품(Product) : 고객이 구매할 수 있는 아이템.
+      주문(Order) : 고객이 상품을 구매할 때 생성되는 거래 기록.
+      결제(Payment) : 주문에 대한 대금 지불.
+    
+  
+
+
+이러한 요소들과 그들 간의 관계가 도메인을 구성하며, 소프트웨어 시스템은 이러한 도메인의 개념을 바탕으로 비즈니스 로직을 구현하게 됩니다.
+
+4️⃣ 결론
+
+  도메인은 소프트웨어가 다루는 문제의 범위와 관련된 개념, 규칙, 객체들을 나타내며, 이를 정확히 이해하고 모델링하는 것이 성공적인 소프트웨어 개발의 핵심입니다.
+  도메인 이해를 바탕으로 적절한 비즈니스 로직을 구현하는 것이 소프트웨어의 목표를 달성하는 데 매우 중요합니다.
 
 
                         </a>
@@ -5834,6 +6027,55 @@ public class PaymentService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-08-24-static-content.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-static-content.html"><h1 class="title_post">🍃[Spring] 정적 컨텐츠.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-static-content.html" class="txt_post">
+                            🍃[Spring] 정적 컨텐츠.
+
+  스프링 부트 정적 컨텐츠 기능
+  스프링 부트 공식 문서
+
+
+'resources/static/hello-static.html'
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;static content&lt;/title&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+정적 컨텐츠 입니다.
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+실행
+
+  http://localhost:8080/hello-static.html
+
+
+정적 컨텐츠 이미지
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -6106,55 +6348,6 @@ public class HelloController {
 
   🙋‍♂️ 참고: ** 클라이언트의 HTTP Accept 헤더와 서버의 컨트롤러 반환 타입 정보 둘을 조합해서
 **'HttpMessageConverter' 가 선택된다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-08-24-static-content.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-24-static-content.html"><h1 class="title_post">🍃[Spring] 정적 컨텐츠.</h1></a>
-                        <a href="/Backend/Spring/2024-08-24-static-content.html" class="txt_post">
-                            🍃[Spring] 정적 컨텐츠.
-
-  스프링 부트 정적 컨텐츠 기능
-  스프링 부트 공식 문서
-
-
-'resources/static/hello-static.html'
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;static content&lt;/title&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-&lt;/head&gt;
-&lt;body&gt;
-정적 컨텐츠 입니다.
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-실행
-
-  http://localhost:8080/hello-static.html
-
-
-정적 컨텐츠 이미지
 
 
                         </a>
@@ -7069,6 +7262,212 @@ source ~/.bash_profile
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
+
+1️⃣ 패키지 목록 업데이트
+
+  먼저, 서버의 패키지 목록을 업데이트 합니다.
+    sudo dnf update -y
+    
+  
+
+
+
+  🎯 참고 dnf search {검색어}
+예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
+
+
+2️⃣ Nginx 설치
+
+  다음 명령어로 Nginx를 설치합니다.
+    sudo dnf install nginx -y
+    
+  
+  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
+
+
+3️⃣ Nginx 서비스 시작 및 활성화
+
+  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
+    sudo systemctl start nginx
+sudo systemctl enable nginx
+    
+  
+
+
+4️⃣ 방화벽 설정(선택 사항)
+
+  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
+    
+      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
+    
+  
+
+
+1️⃣ firewalld 설치.
+
+  먼저 'firewalld' 를 설치해야 합니다.
+    sudo dnf install firewalld -y
+    
+  
+
+
+2️⃣ firewalld 서비스 시작 및 활성화
+
+  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
+    sudo systemctl start firewalld
+sudo systemctl enable firewalld
+    
+  
+
+
+3️⃣ HTTP 및 HTTPS 서비스 허용
+
+  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
+    sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+    
+  
+
+
+4️⃣ 방화벽 재시작
+
+  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
+    sudo firewall-cmd --reload
+    
+  
+
+
+5️⃣ 방화벽 상태 확인(선택 사항)
+
+  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
+    sudo firewall-cmd --list-all
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
+
+1️⃣ nvm 설치.
+
+  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
+    
+      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+        
+      
+    
+  
+  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
+
+
+2️⃣ nvm 환경 설정 적용.
+'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+3️⃣ Node.js 16.x 설치 및 사용.
+
+  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
+    nvm install 16
+nvm use 16
+    
+  
+  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
+
+
+✏️ 요약
+
+  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -7612,201 +8011,49 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
+                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html"><h1 class="title_post">📝[Post] OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="txt_post">
+                            🙋‍♂️ OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.
 
-1️⃣ 패키지 목록 업데이트
-
-  먼저, 서버의 패키지 목록을 업데이트 합니다.
-    sudo dnf update -y
-    
   
-
-
-
-  🎯 참고 dnf search {검색어}
-예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
-
-
-2️⃣ Nginx 설치
-
-  다음 명령어로 Nginx를 설치합니다.
-    sudo dnf install nginx -y
     
-  
-  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
-
-
-3️⃣ Nginx 서비스 시작 및 활성화
-
-  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
-    sudo systemctl start nginx
-sudo systemctl enable nginx
-    
-  
-
-
-4️⃣ 방화벽 설정(선택 사항)
-
-  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
-    
-      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
-    
-  
-
-
-1️⃣ firewalld 설치.
-
-  먼저 'firewalld' 를 설치해야 합니다.
-    sudo dnf install firewalld -y
-    
-  
-
-
-2️⃣ firewalld 서비스 시작 및 활성화
-
-  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
-    sudo systemctl start firewalld
-sudo systemctl enable firewalld
-    
-  
-
-
-3️⃣ HTTP 및 HTTPS 서비스 허용
-
-  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
-    sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-    
-  
-
-
-4️⃣ 방화벽 재시작
-
-  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
-    sudo firewall-cmd --reload
-    
-  
-
-
-5️⃣ 방화벽 상태 확인(선택 사항)
-
-  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
-    sudo firewall-cmd --list-all
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
+      먼저 OpenVPN Access Server에 접속합니다.
         
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
-
-1️⃣ nvm 설치.
-
-  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
-    
-      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+          🎯 OpenVPN 클라이언트는 꺼진 상태여야 합니다.
+만약 OpenVPN 클라이언트가 연결되어 있다면 연결을 끊어주세요.
         
       
     
   
-  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
-
-
-2️⃣ nvm 환경 설정 적용.
-'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-3️⃣ Node.js 16.x 설치 및 사용.
-
-  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
-    nvm install 16
-nvm use 16
-    
   
-  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
-
-
-✏️ 요약
-
-  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
     
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+      로그 파일을 살펴봅니다.
+        sudo tail -f /var/log/openvpnas.log
         
       
     
   
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+  
+    
+      'SENT CONTROL [client_name]' 또는 'PUSH_REPLY...' 와 같은 메시지를 찾아봅니다.
+        
+          로그에서 위와 같은 메시지에는 클라이언트가 할당받은 IP 주소 및 서브넷 정보가 포함 되어 있을 수 있습니다.
 
+        
+      
+    
+  
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-08-19</span>
+                                <span class="date">· 2024-08-18</span>
                             
                         </div>
                     </div>
@@ -7847,60 +8094,6 @@ nvm use 16
     
     
       🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html"><h1 class="title_post">📝[Post] OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="txt_post">
-                            🙋‍♂️ OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.
-
-  
-    
-      먼저 OpenVPN Access Server에 접속합니다.
-        
-          🎯 OpenVPN 클라이언트는 꺼진 상태여야 합니다.
-만약 OpenVPN 클라이언트가 연결되어 있다면 연결을 끊어주세요.
-        
-      
-    
-  
-  
-    
-      로그 파일을 살펴봅니다.
-        sudo tail -f /var/log/openvpnas.log
-        
-      
-    
-  
-  
-    
-      'SENT CONTROL [client_name]' 또는 'PUSH_REPLY...' 와 같은 메시지를 찾아봅니다.
-        
-          로그에서 위와 같은 메시지에는 클라이언트가 할당받은 IP 주소 및 서브넷 정보가 포함 되어 있을 수 있습니다.
-
-        
-      
     
   
 
@@ -8170,45 +8363,6 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html"><h1 class="title_post">☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="txt_post">
-                            ☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.
-
-
-  위 그림과 같이 IP 주소를 이용해 네트워크 범위를 정의하는 것을 CIDR(Classless Inter-Domain Routing) 블록 이라고 합니다.
-  IP 주소를 나타내는 숫자열은 크게 네트워크 부분과 호스트 부분으로 나눌 수 있습니다.
-    
-      네트워크 부분은 문자 그대로 네트워크를 정의합니다.
-      호스트 부분은 그 네트워크 내의 호스트를 정의합니다.
-        
-          즉, 네트워크 안에서 접속할 수 있는 서버 등을 나타내는 부분입니다.
-        
-      
-    
-  
-  위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -8252,155 +8406,34 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
-                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
-
-  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
-  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
+                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html"><h1 class="title_post">☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="txt_post">
+                            ☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.
 
 
-1️⃣ 인바운드 규칙(Inbound Rules)
-인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
-이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
-
-  예시
+  위 그림과 같이 IP 주소를 이용해 네트워크 범위를 정의하는 것을 CIDR(Classless Inter-Domain Routing) 블록 이라고 합니다.
+  IP 주소를 나타내는 숫자열은 크게 네트워크 부분과 호스트 부분으로 나눌 수 있습니다.
     
-      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
+      네트워크 부분은 문자 그대로 네트워크를 정의합니다.
+      호스트 부분은 그 네트워크 내의 호스트를 정의합니다.
         
-          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
-        
-      
-      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
-    
-  
-  중요한 점
-    
-      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
-      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
-    
-  
-
-
-2️⃣ 아웃바운드 규칙(Outbound Rules)
-아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
-기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
-
-  예시
-    
-      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
-      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
-    
-  
-  중요한 점
-    
-      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
-    
-  
-
-
-3️⃣ 보안 그룹 작동 방식
-
-  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
-  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
-  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
-
-
-🙋‍♂️ 마무리
-보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
-인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html"><h1 class="title_post">☁️[AWS] Bastion Host란?</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="txt_post">
-                            ☁️[AWS] Bastion Host란?
-
-  Bastion Host는 AWS와 같은 클라우드 환경에서 VPC(Virtual Private Clould) 내부의 다른 인스턴스나 리소스에 접근하기 위한 보안 게이트웨이 역할을 하는 EC2 인스턴스를 의미합니다.
-  일반적으로 Bastion Host는 보안과 접근 제어를 강화하기 위해 사용됩니다.
-
-
-1️⃣ Bastion Host의 주요 개념과 기능.
-
-  1. 보안적인 역할
-    
-      Bastion Host는 VPC 내에서 퍼블릭 서브넷에 위치하며, 외부 인터넷에 직접적으로 노출되는 유일한 인스턴스입니다.
-        
-          이 인스턴스에 SSH 또는 RDP(Windows의 경우)를 통해 접근한 다음, VPC 내의 다른 프라이빗 서브넷에 있는 인스턴스들을 접근할 수 있습니다.
-        
-      
-      VPC의 다른 인스턴스들은 프라이빗 서브넷에 위치하며, 직접 외부 인터넷에 노출되지 않도록 설정되어 있습니다.
-        
-          이로 인해 프라이빗 서브넷의 인스턴스들은 직접 외부에서 접근할 수 없고, Bastion Host를 통해서만 접근이 가능합니다.
+          즉, 네트워크 안에서 접속할 수 있는 서버 등을 나타내는 부분입니다.
         
       
     
   
-  2. 접근 제어
-    
-      Bastion Host는 일반적으로 매우 엄격한 보안 정책을 적용하여 접근을 제어합니다.
-        
-          예를 들어, 특정 IP 주소에서만 SSH 접근을 허용하거나, 다단계 인증(MFA)을 요구할 수 있습니다.
-        
-      
-      또한, Bastion Host에서 다른 인스턴스에 접근할 때는 추가적인 인증 절차나 SSH 키를 사용하여 안전하게 접근할 수 있습니다.
-    
-  
-  3. 로그 및 모니터링
-    
-      Bastion Host를 통해 이루어진 모든 접근 기록을 로깅하여 누가 언제 어떤 리소스에 접근했는지 추적할 수 있습니다. 이를 통해 보안 사고 발생 시 신속하게 대응할 수 있습니다.
-      이러한 접근 로그는 AWS CloudWatch, S3 버킷 등을 통해 저장 및 분석할 수 있습니다.
-    
-  
-
-
-2️⃣ 사용 예시.
-
-  개발팀이 운영 중인 여러 서버에 접근해야 할 때, Bastion Host를 통해 접근하면 직접적으로 서버들이 인터넷에 노출되지 않으면서도 필요한 작업을 수행할 수 있습니다.
-  데이터베이스 서버와 같은 중요한 리소스가 있는 프라이빗 서브넷에 대한 접근을 Bastion Host를 통해서만 허용함으로써 보안을 강화할 수 있습니다.
-  
-    
-      외부의 사용자는 Bastion Host에 SSH 접속.
-    
-  
-  
-    
-      Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
-        
-          이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
-        
-      
-    
-  
+  위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-08-15</span>
+                                <span class="date">· 2024-08-16</span>
                             
                         </div>
                     </div>
@@ -8569,6 +8602,166 @@ nvm use 16
   하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
 
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
+                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
+
+  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
+  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
+
+
+1️⃣ 인바운드 규칙(Inbound Rules)
+인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
+이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
+
+  예시
+    
+      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
+        
+          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
+        
+      
+      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
+    
+  
+  중요한 점
+    
+      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
+      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
+    
+  
+
+
+2️⃣ 아웃바운드 규칙(Outbound Rules)
+아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
+기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
+
+  예시
+    
+      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
+      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
+    
+  
+  중요한 점
+    
+      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
+    
+  
+
+
+3️⃣ 보안 그룹 작동 방식
+
+  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
+  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
+  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
+
+
+🙋‍♂️ 마무리
+보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
+인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html"><h1 class="title_post">☁️[AWS] Bastion Host란?</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="txt_post">
+                            ☁️[AWS] Bastion Host란?
+
+  Bastion Host는 AWS와 같은 클라우드 환경에서 VPC(Virtual Private Clould) 내부의 다른 인스턴스나 리소스에 접근하기 위한 보안 게이트웨이 역할을 하는 EC2 인스턴스를 의미합니다.
+  일반적으로 Bastion Host는 보안과 접근 제어를 강화하기 위해 사용됩니다.
+
+
+1️⃣ Bastion Host의 주요 개념과 기능.
+
+  1. 보안적인 역할
+    
+      Bastion Host는 VPC 내에서 퍼블릭 서브넷에 위치하며, 외부 인터넷에 직접적으로 노출되는 유일한 인스턴스입니다.
+        
+          이 인스턴스에 SSH 또는 RDP(Windows의 경우)를 통해 접근한 다음, VPC 내의 다른 프라이빗 서브넷에 있는 인스턴스들을 접근할 수 있습니다.
+        
+      
+      VPC의 다른 인스턴스들은 프라이빗 서브넷에 위치하며, 직접 외부 인터넷에 노출되지 않도록 설정되어 있습니다.
+        
+          이로 인해 프라이빗 서브넷의 인스턴스들은 직접 외부에서 접근할 수 없고, Bastion Host를 통해서만 접근이 가능합니다.
+        
+      
+    
+  
+  2. 접근 제어
+    
+      Bastion Host는 일반적으로 매우 엄격한 보안 정책을 적용하여 접근을 제어합니다.
+        
+          예를 들어, 특정 IP 주소에서만 SSH 접근을 허용하거나, 다단계 인증(MFA)을 요구할 수 있습니다.
+        
+      
+      또한, Bastion Host에서 다른 인스턴스에 접근할 때는 추가적인 인증 절차나 SSH 키를 사용하여 안전하게 접근할 수 있습니다.
+    
+  
+  3. 로그 및 모니터링
+    
+      Bastion Host를 통해 이루어진 모든 접근 기록을 로깅하여 누가 언제 어떤 리소스에 접근했는지 추적할 수 있습니다. 이를 통해 보안 사고 발생 시 신속하게 대응할 수 있습니다.
+      이러한 접근 로그는 AWS CloudWatch, S3 버킷 등을 통해 저장 및 분석할 수 있습니다.
+    
+  
+
+
+2️⃣ 사용 예시.
+
+  개발팀이 운영 중인 여러 서버에 접근해야 할 때, Bastion Host를 통해 접근하면 직접적으로 서버들이 인터넷에 노출되지 않으면서도 필요한 작업을 수행할 수 있습니다.
+  데이터베이스 서버와 같은 중요한 리소스가 있는 프라이빗 서브넷에 대한 접근을 Bastion Host를 통해서만 허용함으로써 보안을 강화할 수 있습니다.
+  
+    
+      외부의 사용자는 Bastion Host에 SSH 접속.
+    
+  
+  
+    
+      Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
+        
+          이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -8843,109 +9036,6 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
-                            ☁️[AWS] 클라우드(Cloud)란?
-
-
-  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
-  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
-  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
-  클라우드의 어원은 단어 뜻 그대로 구름입니다.
-    
-      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
-        
-          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
-        
-      
-    
-  
-
-
-
-
-
-  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
-    
-      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
-      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
-        
-          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-08-07-webpage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -9097,6 +9187,109 @@ ls /home/ec2-user/
   이러한 예시들을 통해 정적 웹사이트가 주로 고정된 내용을 제공하는 반면, 동적 웹사이트는 사용자의 입력과 상호작용에 따라 콘텐츠가 변경되는 복잡한 기능을 필요로 함을 알 수 있습니다.
     
       각각의 사례에서 요구하는 기능과 특성에 맞춰 웹사이트의 형태를 결정합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
+                            ☁️[AWS] 클라우드(Cloud)란?
+
+
+  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
+  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
+  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
+  클라우드의 어원은 단어 뜻 그대로 구름입니다.
+    
+      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
+        
+          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
+        
+      
+    
+  
+
+
+
+
+
+  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
+    
+      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
+      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
+        
+          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
     
   
 
@@ -9318,6 +9511,74 @@ ssh "config에 등록한 서비스명"
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
+                            1️⃣ 시스템 패키지 업데이트
+
+  먼저 시스템 패키지를 업데이트 합니다.
+
+
+sudo dnf update -y
+
+
+2️⃣ Amazon Corretto 8 저장소 추가.
+
+  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
+    
+      Correttio 8은 Java 8과 호환됩니다.
+    
+  
+
+
+sudo dnf install -y java-1.8.0-amazon-corretto
+
+
+3️⃣ Java 8 설치 확인
+
+  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
+
+
+java -version
+
+
+
+  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
+
+
+4️⃣ 기본 Java 버전 설정
+
+
+  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
+    
+      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
+    
+  
+  먼저 현재 사용 가능한 Java 버전을 확인합니다.
+
+
+sudo alternatives --config java
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-07-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/DB/2024-07-26-korean-mysql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
@@ -9399,74 +9660,6 @@ sudo systemctl restart mysqld
     
   
   이 방법으로 UTF-8 설정을 적용하면 한글 데이터를 MySQL 데이터베이스에 문제 없이 저장할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-07-26</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Java8 설치하는 방법.</h1></a>
-                        <a href="/Backend/AWS/240726_AWS_JAVA_INSTALL.html" class="txt_post">
-                            1️⃣ 시스템 패키지 업데이트
-
-  먼저 시스템 패키지를 업데이트 합니다.
-
-
-sudo dnf update -y
-
-
-2️⃣ Amazon Corretto 8 저장소 추가.
-
-  Amazon Corretto는 Amazon에서 제공하는 무료, 멀티플랫폼, 생산성 사용 준비가 된 OpenJDK 배포판입니다.
-    
-      Correttio 8은 Java 8과 호환됩니다.
-    
-  
-
-
-sudo dnf install -y java-1.8.0-amazon-corretto
-
-
-3️⃣ Java 8 설치 확인
-
-  Java 8이 설치되었는지 확인하려면 다음 명령어를 사용합니다.
-
-
-java -version
-
-
-
-  이 명령어를 실행하면 Java 버전 정보가 출력됩니다. openjdk version "1.8.0_xxx" 와 같이 Java 8이 설치된 것을 확인할 수 있습니다.
-
-
-4️⃣ 기본 Java 버전 설정
-
-
-  시스템에 여러 버전의 Java가 설치되어 있을 수 있습니다.
-    
-      기본으로 사용할 Java 버전을 설정하려면 alternatives 명령어를 사용합니다.
-    
-  
-  먼저 현재 사용 가능한 Java 버전을 확인합니다.
-
-
-sudo alternatives --config java
 
 
                         </a>
@@ -10221,14 +10414,23 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Math/2024-06-17-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-17-TIL.html"><h1 class="title_post">📝 [TIL] 240617 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-17-TIL.html" class="txt_post">
+                        <a href="/Backend/Math/2024-06-17-Math.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
+                        <a href="/Backend/Math/2024-06-17-Math.html" class="txt_post">
                             
-  수학, 필요.충분 조건
+
+
+
+
+
+
+
+
+
+
 
 
                         </a>
@@ -10247,23 +10449,14 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Math/2024-06-17-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                            <a href="/Backend/TIL/2024-06-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Math/2024-06-17-Math.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
-                        <a href="/Backend/Math/2024-06-17-Math.html" class="txt_post">
+                        <a href="/Backend/TIL/2024-06-17-TIL.html"><h1 class="title_post">📝 [TIL] 240617 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-17-TIL.html" class="txt_post">
                             
-
-
-
-
-
-
-
-
-
-
+  수학, 필요.충분 조건
 
 
                         </a>
@@ -18165,6 +18358,17 @@ public class Main {
             'url'      : "/SQL/2024/2024-09-20-sql-query.html",
             'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-09-20"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] MVP 패턴.",
+            'path'     : "Backend > CS",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/Backend/CS/2024-09-21-MVP-pattern.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-21"
         });
     
 

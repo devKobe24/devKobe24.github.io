@@ -702,6 +702,7 @@
             
             
             
+            
 
     
     
@@ -3775,128 +3776,6 @@ public class MyService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
-                            🍃[Spring] @SpringBootTest 애노테이션.
-
-  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
-    
-      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
-      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
-    
-  
-
-
-1️⃣ 주요 기능 및 사용 방식.
-
-  1. Spring Application Context 로드
-    
-      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
-        
-          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
-        
-      
-    
-  
-  2. 테스트 환경 설정
-    
-      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
-        
-          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
-        
-      
-      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
-    
-  
-  3. 웹 환경 설정
-    
-      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
-        
-          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
-          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
-          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
-          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
-        
-      
-    
-  
-
-
-예시
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
-
-
-
-  4. 통합 테스트
-    
-      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
-        
-          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
-        
-      
-    
-  
-  5. TestConfiguration 클래스 사용 가능
-    
-      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
-    
-  
-
-
-2️⃣ 예시 코드
-
-@SpringBootTest
-public class MyServiceIntegrationTest {
-    
-    @Autowired
-    private MyService myService;
-    
-    @Test
-    public void testServiceMethod() {
-        // Given
-        // Setup initial conditions
-        
-        // When
-        String result = myService.performAction();
-        
-        // Then
-        assertEquals("ExpectedResult", result);
-    }
-}
-
-
-  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
-
-
-3️⃣ 요약
-
-  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-09-04-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -4020,6 +3899,128 @@ public class MyServiceIntegrationTest {
           또한, API를 통해 외부 시스템이나 서비스와 통합할 수 있어, 다양한 기능을 제공하는 애플리케이션을 보다 효율적으로 개발할 수 있습니다.
         
       
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
+                            🍃[Spring] @SpringBootTest 애노테이션.
+
+  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
+    
+      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
+      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
+    
+  
+
+
+1️⃣ 주요 기능 및 사용 방식.
+
+  1. Spring Application Context 로드
+    
+      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
+        
+          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
+        
+      
+    
+  
+  2. 테스트 환경 설정
+    
+      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
+        
+          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
+        
+      
+      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
+    
+  
+  3. 웹 환경 설정
+    
+      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
+        
+          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
+          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
+          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
+          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
+        
+      
+    
+  
+
+
+예시
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
+
+
+
+  4. 통합 테스트
+    
+      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
+        
+          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
+        
+      
+    
+  
+  5. TestConfiguration 클래스 사용 가능
+    
+      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
+    
+  
+
+
+2️⃣ 예시 코드
+
+@SpringBootTest
+public class MyServiceIntegrationTest {
+    
+    @Autowired
+    private MyService myService;
+    
+    @Test
+    public void testServiceMethod() {
+        // Given
+        // Setup initial conditions
+        
+        // When
+        String result = myService.performAction();
+        
+        // Then
+        assertEquals("ExpectedResult", result);
+    }
+}
+
+
+  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
+
+
+3️⃣ 요약
+
+  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
     
   
 
@@ -4629,206 +4630,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
-                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
-
-  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
-    
-      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
-    
-  
-
-
-1️⃣ 전체 코드.
-
-// MemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	@Autowired
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-
-2️⃣ 구체적인 이유.
-
-  1. 인터페이스를 통한 유연성 확보.
-    
-      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
-        
-          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
-            
-              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
-                
-                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  2. 느슨한 결합.
-    
-      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
-        
-          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
-        
-      
-      이 방식은 유지보수성을 크게 향상시킵니다.
-        
-          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
-        
-      
-    
-  
-  3. 스프링의 의존성 주입 메커니즘 활용.
-    
-      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
-        
-          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
-        
-      
-      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
-        
-          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 결론.
-
-  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
-    
-      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
-        
-          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/CS/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -5043,6 +4844,206 @@ public class MemberService {
   잘 설계된 비즈니스 로직은 애플리케이션이 요구된 비즈니스 목표를 정확히 달성할 수 있도록 돕고, 변경이 필요할 때도 쉽게 확장하거나 수정할 수 있도록합니다.
     
       따라서 비즈니스 로직을 구현할 때는 도메인 전문가와 긴밀하게 협력하여 요구사항을 명확히 이해하고, 이를 코드로 정확히 표현하는 것이 매우 중요합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html"><h1 class="title_post">🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="txt_post">
+                            🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.
+
+  아래의 코드에서 @Autowired 로 MemberService 클래스의 생성자에 MemberRepository 인터페이스를 주입받는 이유는 의존성 주입(Dependency Injection) 을 통해 느슨한 결합(Loose Coupling) 을 유지하기 위합입니다.
+    
+      이는 객체지향 설계에서 매우 중요한 원칙 중 하나로, 클래스 간의 결합도를 낮춰 코드의 유연성과 확장성을 높이는 데 기여합니다.
+    
+  
+
+
+1️⃣ 전체 코드.
+
+// MemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
+
+
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
+
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MemoryMemberRepository implements MemberRepository {
+
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
+
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
+
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
+
+	public void clearStore() {
+		store.clear();
+	}
+}
+
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	@Autowired
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+
+2️⃣ 구체적인 이유.
+
+  1. 인터페이스를 통한 유연성 확보.
+    
+      MemberRepository 는 인터페이스로, MemoryMemberRepository 와 같은 구현체들이 이 인터페이스를 구현합니다.
+        
+          인터페이스를 통해 MemberService 는 특정 구현체에 의존하지 않으며, MemberRepository 인터페이스에 의존하게 됩니다.
+            
+              이는 MemberService 가 MemoryMemberRepository 나 다른 MemberRepository 구현체(JdbcMemberRepository, JpaMemberRepository 등)에 쉽게 교체될 수 있음을 의미합니다.
+                
+                  예를 들어, 나중에 메모리가 아닌 데이터베이스에 회원 정보를 저장하는 방식으로 전환하고 싶다면, MemoryMemberRepository 대신 새로운 구현체를 주입하면 됩니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  2. 느슨한 결합.
+    
+      MemberService 는 MemberRepository 인터페이스에만 의존하기 때문에, 어떤 구현체가 실제로 사용될지는 스프링 컨테이너가 결정합니다.
+        
+          이렇게 하면 MemberService 는 구현체가 무엇인지 알 필요가 없으므로, 구현체가 변경되더라도 MemberService 를 수정할 필요가 없습니다.
+        
+      
+      이 방식은 유지보수성을 크게 향상시킵니다.
+        
+          새로운 저장소 방식이 도입되더라도, 기존 비즈니스 로직에 영향을 주지 않고 새로운 기능을 추가할 수 있습니다.
+        
+      
+    
+  
+  3. 스프링의 의존성 주입 메커니즘 활용.
+    
+      스프링은 자동으로 @Autowired 를 사용하여 적절한 MemberRepository 구현체를 찾아 주입합니다.
+        
+          MemoryMemberRepository 클래스에 @Repository 애노테이션이 붙어 있기 때문에, 스프링 컨테이너는 이 클래스를 MemberRepository 타입의 빈으로 인식하고 관리하게 됩니다.
+        
+      
+      스프링은 MemberRepository 인터페이스 타입의 빈을 주입해야 하는 경우, 해당 인터페이스를 구현한 클래스 중 하나를 선택해 주입합니다.
+        
+          이 예제에서는 MemoryMemberRepository 가 주입됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 결론.
+
+  이러한 설계는 코드의 유연성과 테스트 용이성을 크게 향상시킵니다.
+    
+      인터페이스를 사용함으로써, MemberService 는 특정 구현체에 구애받지 않고 다양한 환경에서 재사용될 수 있습니다.
+        
+          또한, 이는 스프링의 DI 원칙에 따라, 컴포넌트 간의 결합도를 낮추고, 애플리케이션이 변화에 잘 대응할 수 있도록 설계하는 방법입니다.
+        
+      
     
   
 
@@ -18141,6 +18142,17 @@ public class Main {
             'tags'     : "CS",
             'url'      : "/Backend/CS/2024-09-20-MVC-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-20"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] Class 클래스",
+            'path'     : "Java > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Java/Java/2024-09-20-Class-class.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-09-20"
         });
     

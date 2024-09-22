@@ -706,6 +706,7 @@
             
             
             
+            
 
     
     
@@ -1116,6 +1117,158 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html"><h1 class="title_post">🍃[Spring] `@SpringBootApplication` 애너테이션과 서버(Server)</h1></a>
+                        <a href="/Backend/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html" class="txt_post">
+                            🍃[Spring] @SpringBootApplication 애너테이션과 서버(Server).
+
+1️⃣ @SpringBootApplication 애너테이션.
+
+  @SpringBootApplication 애너테이션은 Spring Boot 애플리케이션에서 자주 사용되는 핵심 애너테이션으로, 여러 가지 기능을 결합한 복합 애너테이션입니다.
+  이를 통해 Spring Boot 애플리케이션이 자동으로 설정되고 실행됩니다.
+
+
+1. @SpringBootApplication 세 가지 중요한 애너테이션 결합.
+
+  1. @SpringBootConfiguration
+    
+      Spring의 @Configuration 과 동일한 기능을 제공하며, 이를 통해 Spring 컨텍스트에서 설정 클래스로 인식됩니다.
+    
+  
+  2. @EnableAutoConfiguration
+    
+      Spring Boot의 자동 설정 기능을 활성화합니다.
+      이 기능은 Spring Boot가 클래스패스에 있는 라이브러리들을 바탕으로 자동으로 설정을 적용하여 개발자가 일일이 설정하지 않아도 되도록 도와줍니다.
+    
+  
+  3. @ComponentScan
+    
+      현재 패키지와 그 하위 패키지에서 Spring의 컴포넌트들을 자동으로 스캔하고 등록합니다.
+      즉, @Controller, @Service, @Repository 등의 빈들이 자동으로 Spring 컨텍스트에 등록됩니다.
+    
+  
+
+
+
+
+
+  이 애너테이션은 Spring Boot 애플리케이션의 진입점을 설정하는 메인 클래스에 주로 붙습니다.
+  이로 인해 애플리케이션이 자동으로 설정되고, 실행될 수 있는 환경이 갖춰집니다.
+
+
+
+
+
+  간단히 말해, @SpringBootApplication 을 통해 개발자는 최소한의 설정으로도 Spring Boot 애플리케이션을 시작하고 구동할 수 있습니다.
+
+
+2️⃣ 서버(Server)란 무엇인가요?
+
+  서버(Server)는 네트워크 상에서 다른 컴퓨터(클라이언트)에게 데이터를 제공하거나, 요청된 서비스를 처리하는 컴퓨터 시스템 또는 소프트웨어를 말합니다.
+  서버는 클라이언트의 요청을 수신하고, 그 요청에 맞는 데이터를 처리하거나 반환하는 역할을 합니다.
+  서버는 여러 가지 유형이 있으며, 그 역할에 따라 다양한 기능을 수행합니다.
+
+
+1. 서버의 기본 기능.
+
+  요청 수신.
+    
+      서버는 클라이언트(웹 브라우저, 모바일 앱 등)로부터 요청을 받습니다.
+      이 요청은 HTTP, FTP, 또는 다른 프로토콜을 통해 이루어질 수 있습니다.
+    
+  
+  데이터 처리.
+    
+      서버는 클라이언트의 요청에 따라 데이터를 검색, 처리 또는 계산합니다.
+      예를 들어, 데이터베이스에 저장된 정보를 조회하거나, 파일을 업로드하거나 다운로드하는 기능을 수행합니다.
+    
+  
+  응답 전송.
+    
+      요청 처리 후, 서버는 클라이언트에게 그 결과를 응답으로 전송합니다.
+      예를 들어 웹 서버는 HTML 페이지를 반환하거나, API 서버는 JSON 형식의 데이터를 반환할 수 있습니다.
+    
+  
+
+
+2. 서버의 유형.
+
+  웹 서버.
+    
+      웹 페이지(HTML, CSS, JavaScript)를 클라이언트에 제공하는 서버입니다.
+      대표적인 예로 Apache HTTP Server, Nginx 등이 있습니다.
+    
+  
+  데이터베이스 서버.
+    
+      데이터를 저장하고 관리하며, 클라이언트의 데이터 요청을 처리하는 서버입니다.
+      MySQL, PostgreSQL, Oracle 등이 이에 해당합니다.
+    
+  
+  파일 서버.
+    
+      파일을 저장하고 이를 클라이언트에 제공하는 서버입니다.
+      주로 FTP(File Transfer Protocol) 서버가 이 역할을 합니다.
+    
+  
+  애플리케이션 서버.
+    
+      클라이언트가 요청한 비즈니스 로직을 처리하는 서버입니다.
+      Spring Boot나 Django 같은 프레임워크를 사용하여 웹 애플리케이션을 구동하는 서버가 이에 해당합니다.
+    
+  
+  메일 서버.
+    
+      이메일을 송수신하는 서버로, SMTP, POP3, IMAP 등의 프로토콜을 사용합니다.
+    
+  
+
+
+3. 서버의 특징.
+
+  항상 켜져 있음.
+    
+      서버는 보통 24시간 내내 작동하여 클라이언트 요청에 신속하게 응답할 수 있어야 합니다.
+    
+  
+  멀티태스킹.
+    
+      서버는 동시에 여러 클라이언트의 요청을 처리할 수 있어야 하며, 이를 위해 멀티스레드나 비동기 처리 기술을 사용합니다.
+    
+  
+  보안.
+    
+      서버는 민감한 데이터를 처리할 수 있기 때문에 보안이 중요합니다.
+      SSL/TLS를 통한 암호화, 인증 및 권한 관리 등이 필요합니다.
+    
+  
+
+
+
+
+
+  서버는 인터넷 서비스(웹 사이트, 클라우드 저장소, 이메일 등)를 제공하는 핵심적인 시스템이며, 클라이언트-서버 구조는 오늘날 대부분의 네트워크 기반 애플리케이션에서 사용되는 기본적인 구조입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1613,6 +1766,114 @@ MVC 패턴의 장점.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
+                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="txt_post">
+                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
+
+1️⃣ 노출 모듈 패턴(revealing module pattern).
+
+  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
+    
+      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
+    
+  
+
+
+2️⃣ 핵심 개념.
+
+  정보 은닉.
+    
+      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
+    
+  
+  외부 노출 제어.
+    
+      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
+    
+  
+
+
+3️⃣ 자바에서의 구현 예시.
+public RevealingModule {
+    
+    // private 필드
+    private String hiddenData = "This is hidden";
+    
+    // 외부에서 접근할 수 없는 메서드
+    private void hiddenMethod() {
+        System.out.println("This method is hidden");
+    }
+    
+    // 외부에 노출할 메서드
+    public void showData() {
+        System.out.println("Exposed Data: " + hiddenData);
+    }
+    
+    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
+    public void callHiddenMethod() {
+        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
+    }
+}
+
+
+설명.
+
+  
+    
+      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
+        
+          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
+        
+      
+    
+  
+  
+    
+      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
+    
+  
+
+
+장점.
+
+  캡슐화 강화.
+    
+      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
+    
+  
+  코드 유지보수성.
+    
+      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
+    
+  
+
+
+
+
+
+  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/DB/2024-09-19-db-modeling.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
@@ -1772,114 +2033,6 @@ MVC 패턴의 장점.
       SQL은 사람과 DBMS가 소통하기 위한 말(언어)입니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
-                        <a href="/Backend/CS/2024-09-19-Revealing-module-pattern.html" class="txt_post">
-                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
-
-1️⃣ 노출 모듈 패턴(revealing module pattern).
-
-  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
-    
-      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
-    
-  
-
-
-2️⃣ 핵심 개념.
-
-  정보 은닉.
-    
-      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
-    
-  
-  외부 노출 제어.
-    
-      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
-    
-  
-
-
-3️⃣ 자바에서의 구현 예시.
-public RevealingModule {
-    
-    // private 필드
-    private String hiddenData = "This is hidden";
-    
-    // 외부에서 접근할 수 없는 메서드
-    private void hiddenMethod() {
-        System.out.println("This method is hidden");
-    }
-    
-    // 외부에 노출할 메서드
-    public void showData() {
-        System.out.println("Exposed Data: " + hiddenData);
-    }
-    
-    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
-    public void callHiddenMethod() {
-        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
-    }
-}
-
-
-설명.
-
-  
-    
-      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
-        
-          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
-        
-      
-    
-  
-  
-    
-      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
-    
-  
-
-
-장점.
-
-  캡슐화 강화.
-    
-      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
-    
-  
-  코드 유지보수성.
-    
-      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
-    
-  
-
-
-
-
-
-  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
 
 
                         </a>
@@ -18382,6 +18535,17 @@ public class Main {
             'url'      : "/Network/2024/2024-09-21-internet-model-and-summary.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-09-21"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@SpringBootApplication` 애너테이션과 서버(Server)",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-22"
         });
     
 

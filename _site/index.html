@@ -715,6 +715,7 @@
             
             
             
+            
 
     
     
@@ -1141,6 +1142,212 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-09-26-Library-and-Framework.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-26-Library-and-Framework.html"><h1 class="title_post">💾 [CS] 라이브러리(Library)와 프레임워크(Framework)의 차이점.</h1></a>
+                        <a href="/CS/2024/2024-09-26-Library-and-Framework.html" class="txt_post">
+                            💾 [CS] 라이브러리(Library)와 프레임워크(Framework)의 차이점.
+
+라이브러리(Library) 와 프레임워크(Framework) 는 소프트웨어 개발에서 코드를 재사용하기 위한 도구이지만, 둘 사이에는 중요한 차이점이 있습니다.
+
+이 차이점은 제어 흐름과 사용 방식에서 주로 나타납니다.
+
+1️⃣ 라이브러리(Library)
+라이브러리(Library) 는 특정 기능을 수행하는 모듈 또는 함수들의 모음으로, 개발자가 필요할 때 선택적으로 호출하여 사용하는 도구입니다.
+
+라이브러리는 개발자가 작성하는 코드에서 필요한 부분만 가져다 사용할 수 있으며, 제어권은 개발자에게 있습니다.
+
+
+  제어 흐름
+    
+      라이브러리를 사용할 때는 개발자가 원하는 방식으로 라이브러리의 함수를 호출합니다.
+      즉, 개발자가 주도적으로 코드를 작성하며 필요한 기능만 가져다 씁니다.
+    
+  
+  유연성
+    
+      라이브러리는 단순한 도구로 특정 기능을 제공하며, 개발자는 자유롭게 설계와 구조를 결정할 수 있습니다.
+    
+  
+
+
+예시: Java의 Controller 라이브러리
+import java.util.Collections;
+import java.util.List;
+
+public class Example {
+    public static void main(String[] args) {
+        List&lt;String&gt; list = List.of("Apple", "Banana", "Orange");
+        Collections.sort(list);
+    }
+}
+
+
+
+  위 코드에서 Collections.sort()는 라이브러리 함수로, 개발자가 필요할 때 호출하여 정렬 기능을 사용합니다.
+
+
+주요 특징.
+
+  개발자가 라이브러리의 특정 기능을 선택해서 호출.
+  코드의 제어 흐름은 개발자가 관리.
+  유연하고 제한이 적음.
+  특정 기능을 구현하는 작은 단위의 코드 집합.
+
+
+2️⃣ 프레임워크(Framework)
+
+프레임워크는 애플리케이션의 구조와 제어 흐름을 미리 정해 놓은 일종의 뼈대 또는 틀입니다.
+
+개발자는 프레임워크에서 제공하는 구조에 맞춰 코드를 작성하며, 제어 흐름은 프레임워크에 의해 관리됩니다.
+
+즉, 프레임워크가 개발자의 코드를 호출하는 방식으로 동작합니다.
+
+
+  제어 역전(Inversion of Control, IoC)
+    
+      프레임워크는 코드의 흐름을 스스로 제어하며, 개발자가 작성한 코드는 필요한 시점에 프레임워크에 의해 호출됩니다.
+        
+          이를 제어의 역전이라고 부릅니다.
+        
+      
+    
+  
+  설계 패턴 제공
+    
+      프레임워크는 애플리케이션 개발을 위한 구조와 설계 패턴을 제공합니다.
+        
+          개발자는 그 구조에 맞춰 코드를 작성하면 됩니다.
+        
+      
+    
+  
+
+
+예시: Spring 프레임워크.
+
+@RestController
+public class HelloController {
+    
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hello, World!";
+    }
+}
+
+
+
+  위 코드는 Spring 프레임워크를 사용한 예시입니다.
+    
+      여기서 @RestController 와 @GetMapping 같은 에너테이션을 통해 HTTP 요청이 프레임워크에 의해 자동으로 처리되며, 제어 흐름은 Spring 프레임워크가 담당합니다.
+    
+  
+
+
+주요 특징.
+
+  프레임워크가 제어 흐름을 관리하고, 개발자의 코드를 호출.
+  일정한 구조와 설계 패턴을 제공하여 통일된 방식으로 개발을 진행.
+  제어 역전(Inversion of Control, IoC)을 통해 프레임워크가 애플리케이션의 실행을 주도.
+  더 큰 구조와 틀을 제공하며, 라이브러리보다 더 강력한 제약과 규칙이 적용됨.
+
+
+3️⃣ 라이브러리와 프레임워크의 차이점 요약.
+
+
+  
+    
+      구분
+      라이브러리(Library)
+      프레임워크(Framework)
+    
+  
+  
+    
+      제어 흐름
+      개발자가 코드의 흐름을 제어
+      프레임워크가 코드의 흐름을 제어(제어 역전, IoC)
+    
+    
+      사용 방식
+      필요에 따라 선택적으로 호출
+      프레임워크가 제공하는 구조에 따라 개발
+    
+    
+      유연성
+      개발자가 설계와 구조를 자유롭게 선택
+      프레임워크가 설계와 구조를 미리 정의
+    
+    
+      책임 분배
+      특정 기능만 제공
+      전체 애플리케이션 구조를 정의
+    
+    
+      규모
+      작은 모듈이나 함수들의 집합
+      애플리케이션 개발을 위한 큰 틀을 제공
+    
+    
+      예시
+      Java의 Collection
+      Spring
+    
+  
+
+
+4️⃣ 제어의 역전(Inversion of Control, IoC).
+
+제어의 역전은 프레임워크의 중요한 특징 중 하나입니다.
+제어의 역전이란, 프로그램의 흐름을 개발자가 직접 제어하는 것이 아니라, 프레임워크가 제어를 담당한다는 개념입니다.
+개발자는 프레임워크가 요청할 때 실행될 코드를 작성할 뿐, 전체적인 프로그램의 흐름은 프레임워크가 담당합니다.
+
+제어 역전의 예시
+
+  라이브러리(Library)
+    
+      개발자가 직접 라이브러리의 함수를 호출하고, 그 결과를 처리합니다.
+    
+  
+  프레임워크(Framework)
+    
+      프레임워크가 애플리케이션의 흐름을 제어하고, 필요한 시점에 개발자가 작성한 코드를 호출합니다.
+        
+          예를 들어, 사용자의 요청이 들어오면 프레임워크가 해당 요청을 적절한 컨트롤러에 전달합니다.
+        
+      
+    
+  
+
+
+5️⃣ 결론.
+
+  
+    라이브러리는 특정 기능을 제공하는 도구로서, 개발자가 필요할 때 호출하여 사용하는 반면, 프레임워크는 애플리케이션의 구조와 제어 흐름을 관리하며, 개발자가 작성한 코드를 프레임워크가 적절한 시점에 호출합니다.
+  
+  
+    라이브러리는는 더 유연하고, 특정 기능에 집중된 도구인 반면, 프레임워크는 제어의 역전을 통해 애플리케이션 전반의 구조를 제시하며, 더 큰 틀에서 애플리케이션을 관리하고 개발하는 데 도움을 줍니다.
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-09-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -7766,55 +7973,104 @@ getDeclaredConstructor().newInstance()
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-09-19-features-by-layer.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html"><h1 class="title_post">💉[SQL] DBMS에서 사용되는 언어와 마무리</h1></a>
-                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="txt_post">
-                            💉[SQL] DBMS에서 사용되는 언어: SQL.
+                        <a href="/Network/2024/2024-09-19-features-by-layer.html"><h1 class="title_post">🌐[Network] OSI 7계층 모델 - 계층별 기능</h1></a>
+                        <a href="/Network/2024/2024-09-19-features-by-layer.html" class="txt_post">
+                            🌐[Network] OSI 7계층 모델 - 계층별 기능.
 
-1️⃣ SQL.
+1️⃣ 계층별 기능.
 
-  SQL(Structured Query Language) 은 관계형 데이터베이스에서 사용되는 언어입니다.
-  관계형 DBMS(그중 MySQL)를 배우려면 SQL을 필수로 익혀야 합니다.
-  
-    SQL이 데이터베이스를 조작하는 ‘언어’이긴 하지만 일반적인 프로그래밍 언어(C, Java Python 등)와는 조금 다른 특성을 갖습니다.
-  
-  SQL은 특정 회사에서 만드는 것이 아니라 국제표준화기구에서 SQL에 대한 표준을 정해서 발표하고 있습니다.
+  OSI 7계층 모델의 모든 계층이 중요하지만, 특히 전송 계층이 중요합니다.
+  전송 계층은 통신 양단에 있는 전송 연결의 주체(프로세스) 사이에 종단 연결을 제공합니다.
+  호스트에서 실행되는 프로세스와 프로세스 사이에 연결을 설정하여 데이터를 주고받을 수 있게 해주는 것이 전송 계층입니다.
+  전화 시스템을 예로 들면, 통화자 사이에 통화 연결을 설정하는 것이 바로 전송 계층입니다.
+  전송 계층의 하위에 있는 물리 계층, 데이터 링크 계층, 네트워크 계층은 전송 계층의 연결을 설정하고 지원하는 역할을 수행합니다.
+  상위에 있는 세션 계층, 표현 계층 응용 계층은 전송 계층의 연결을 어떻게 활용할지에 대하여 다룹니다.
     
-      이를 표준 SQL 이라고 합니다.
+      따라서 OSI 7계층 모델은 전송 계층을 기준으로 두 부분으로 나뉜다고 볼 수 있습니다.
     
   
-  그런데 문제는 SQL을 사용하는 DBMS를 만드는 회사가 여러 곳이기 때문에 표준 SQL이 각 회사 제품의 특성을 모두 포용하지 못한다는 점입니다.
+  실제로 인터넷 모델인 TCP/IP 프로토콜은 운영체제 내부에 계층 4까지의 기능을 구현하고, 상위 계층의 기능은 사용자 프로그램으로 구현합니다.
+
+
+1️⃣ 물리 계층.
+
+  OSI 7계층 모델의 맨 밑에 위치하는 물리 계층(Physical Layer)은 전송 매체의 물리적 인터페이스에 관한 사항을 기술합니다.
+    
+      즉, 전송 매체에서는 개별 정보의 비트(Bit) 교환 문제를 다룹니다.
+    
   
-    그래서 DBMS를 만드는 회사에서는 되도록 표준 SQL을 준수하되, 각 제품의 특성을 반영한 SQL을 사용합니다.
+  물리 계층은 하드웨어 시스템으로 구현되고, 계층 2이상의 프로토콜들은 소프트웨어적으로 구현됩니다.
+  물리 계층에서 다루는 전송 매체의 특성에는 데이터의 전송 속도, 송수신 호스트 사이의 클록 동기화 방법, 물리적 연결 형태 등이 있습니다.
+
+
+2️⃣ 데이터 링크 계층.
+
+  데이터 링크 계층(Data Link Layer)은 물리 계층을 통해 전송되는 데이터의 물리적 전송 오류를 해결합니다.
+  결과적으로 상위의 네트워크 계층에 신뢰성 있는 패킷 전송을 보장해주어 물리적 전송 오류에 대한 부담을 없애줍니다.
+  데이터 링크 계층은 갈림길에서 전송 경로를 선택할 수 없으므로 두 호스트가 일대일로 직접 연결된 환경에서만 데이터 전송을 지원합니다.
+  데이터 링크 계층을 이용해 전송되는 데이터를 프레임(Frame)이라 부릅니다.
+  프레임 헤더에 표시되는 송수신 호스 정보에는 LAN 카드에 내장된 송수신 호스트의 MAC 주소가 기록됩니다.
+  데이터 링크 계층은 다른 상위 계층처럼 송신 호스트와 수신 호스트 사이의 전송 속도 차이를 고려한 흐름 제어 기능도 지원할 수 있습니다.
+
+
+3️⃣ 네트워크 계층.
+
+  네트워크 계층(Network Layer)은 송신 호스트가 전송한 데이터가 어떤 경로를 통해 수신 호스트에 전달되는지를 결정하는 라우팅 문제를 처리합니다.
+  전달 경로 선택은 미리 정해지는 정적인(static) 방식과 네트워크의 현재 부하 상태에 따라 결정되는 동적인(Dynamic) 방식으로 구분합니다.
+  네트워크 계층에서는 전송 데이터 패킷(Packet)이라 부르며, 중개 과정에서 경로 선택의 기준이 되는 호스트 주소가 필요합니다.
+  인터넷에서는 IP 프로토콜이 네트워크 계층의 기능을 수행하므로 호스트의 IP 주소가 경로 선택에 중요한 기준이 됩니다.
+  인터넷에 연결된 호스트는 네트워크 계층의 주소와 데이터 링크 계층의 주소를 모두 가집니다.
+  컴퓨터 네트워크를 이용해 전송되는 패킷이 지나치게 많으면 네트워크의 전송 속도가 떨어집니다.
+  네트워크의 전송 속도가 감소하면 프로토콜 동작에 많은 영향을 미칠 수 있는데, 네트워크 트래픽이 과도하게 증가하는 문제를 조절하는 혼잡 제어(Congestion Control) 기능도 네트워크 계층에서 담당합니다.
+
+
+4️⃣ 전송 계층.
+
+  전송 계층(Transport Layer)은 송신 프로세스와 수신 프로세스를 직접 연결하는 단대단(End-to-End) 통신 기능을 제공합니다.
+  전송 계층 아래에 있는 하위 계층은 호스트와 호스트 사이의 데이터 전송 과정에서 발생하는 문제들만 반영합니다.
+  반면 전송 계층은 호스트 내부에서 논리적으로 구축되는 연결 주체인 프로세스 사이의 통신 문제를 다룹니다.
+  전송 계층에서는 전송 오류율, 전송 속도 등과 같은 일반 사용자의 서비스 요구 유형에 대한 고려와 흐름 제어 기능도 제공합니다.
+
+
+5️⃣ 세션 계층.
+
+  세션 계층(Session Layer)의 기능은 전송 계층과 거의 유사합니다.
+  그러나 사용자에게 원격 파일 전송이나 원격 로그인 등과 같은 상위적 연결 개념인 세션 기능을 제공한다는 점이 다릅니다.
+  특히 전송 계층의 연결이 일시적으로 끊어 졌을 때 이를 복구하여 세션이 유지될 수 있도록 합니다.
+  세션 계층에서는 송수신 호스트 사이의 대화 제어를 비롯해 상호 배타적인 동작을 제어하기 위한 토큰 제어, 일시적인 전송 장애를 해결하기 위한 동기(Synchronization) 기능 등을 제공합니다.
+
+
+6️⃣ 표현 계층.
+
+  계층 5까지는 주로 데이터의 전송에 관한 내용을 다루지만 표현 계층(Presentation Layer)은 데이터의 의미(Sementic)와 표현 방법(Syntax)을 처리합니다.
+    
+      즉, 통신 양단에서 서로 이해할 수 있는 표준 방식으로 데이터를 코딩(Coding)하는 문제를 다룹니다.
+    
   
-  다음 그림을 보면 3가지 DBMS 제품(오라클, SQL 서버, MySQL)이 모두 표준 SQL을 포함하고 있지만, 추가로 자신만의 기능도 가지고 있습니다.
+  호스트의 데이터 표현 방법이 서로 다르면 상대방의 데이터를 이해할 수 있도록 적절하게 변환하는 과정이 필요합니다.
+  인터넷상에서 개인 정보의 유통과 상거래가 활발해지면서 보안의 중요성이 강조되고 있는데, 데이터를 암호화하는 기술도 표현 계층에서 다룹니다.
+  또한 영상 정보 같은 대용량 데이터의 크기를 줄여주는 압축도 표현 계층의 주요 기능입니다.
 
 
+7️⃣ 응용 계층.
 
-
-
-  이렇게 변경된 SQL을 오라클은 PL/SQL, SQL 서버는 T-SQL, MySQL은 SQL로 부릅니다.
-  결론은 표준 SQL을 익히면 여러 DBMS의 공통적인 부분을 배우는 것입니다.
-
-
-
-
-2️⃣ 마무리.
-
-4가지 키워드로 끝내는 핵심 포인트.
-
-  데이터베이스 는 데이터의 집합입니다..
-  DBMS 는 데이터베이스를 운영/관리하는 프로그램입니다.
-  테이블 은 데이터베이스의 최소 단위로, 하나 이상의 열(Column)과 행(Row)으로 구성되어 있습니다.
-  SQL 은 데이터베이스를 구축, 관리하고 활용하기 위해서 사용되는 언어입니다.
+  최상위의 응용 계층(Application Layer)에서는 다양하게 존재하는 응용 환경에서 필요한 기능을 다룹니다.
+  응용 환경은 매우 다양해 범위가 방대하지만, 초기 인터넷에서는 FTP, 텔넷, 전자 메일 서비스가 보급되었습니다.
+  FTP(File Transfer Protocol)는 파일 공유 서비스이며, 이 기능이 발전되어 지금은 클라우드 서비스가 보편적으로 사용되고 있습니다.
+  네트워크 파일을 이용할 때는 파일을 공유할 뿐 아니라 허가된 사용자가 적절한 접근 권한에 따라 사용할 수 있게 해야 합니다.
+  텔넷(Telnet)이 제공하는 가상 터미널, 전자 메일 등도 대표적인 초기 인터넷 서비스였습니다.
+  FTP와 Telnet은 최근 일반 사용자들 사이에서는 많이 사용되지 않고 있습니다.
+  그에 비하여 메일 서비스는 현재까지도 가장 많이 사용되는 인터넷 서비스 중 하나입니다.
+  현재의 인터넷 환경을 보면 스마트폰의 보급과 인공지능 기술의 발
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/SQL" class="category">SQL</a>
+                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-09-19</span>
                             
@@ -8285,104 +8541,55 @@ public RevealingModule {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-09-19-features-by-layer.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-09-19-features-by-layer.html"><h1 class="title_post">🌐[Network] OSI 7계층 모델 - 계층별 기능</h1></a>
-                        <a href="/Network/2024/2024-09-19-features-by-layer.html" class="txt_post">
-                            🌐[Network] OSI 7계층 모델 - 계층별 기능.
+                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html"><h1 class="title_post">💉[SQL] DBMS에서 사용되는 언어와 마무리</h1></a>
+                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="txt_post">
+                            💉[SQL] DBMS에서 사용되는 언어: SQL.
 
-1️⃣ 계층별 기능.
+1️⃣ SQL.
 
-  OSI 7계층 모델의 모든 계층이 중요하지만, 특히 전송 계층이 중요합니다.
-  전송 계층은 통신 양단에 있는 전송 연결의 주체(프로세스) 사이에 종단 연결을 제공합니다.
-  호스트에서 실행되는 프로세스와 프로세스 사이에 연결을 설정하여 데이터를 주고받을 수 있게 해주는 것이 전송 계층입니다.
-  전화 시스템을 예로 들면, 통화자 사이에 통화 연결을 설정하는 것이 바로 전송 계층입니다.
-  전송 계층의 하위에 있는 물리 계층, 데이터 링크 계층, 네트워크 계층은 전송 계층의 연결을 설정하고 지원하는 역할을 수행합니다.
-  상위에 있는 세션 계층, 표현 계층 응용 계층은 전송 계층의 연결을 어떻게 활용할지에 대하여 다룹니다.
+  SQL(Structured Query Language) 은 관계형 데이터베이스에서 사용되는 언어입니다.
+  관계형 DBMS(그중 MySQL)를 배우려면 SQL을 필수로 익혀야 합니다.
+  
+    SQL이 데이터베이스를 조작하는 ‘언어’이긴 하지만 일반적인 프로그래밍 언어(C, Java Python 등)와는 조금 다른 특성을 갖습니다.
+  
+  SQL은 특정 회사에서 만드는 것이 아니라 국제표준화기구에서 SQL에 대한 표준을 정해서 발표하고 있습니다.
     
-      따라서 OSI 7계층 모델은 전송 계층을 기준으로 두 부분으로 나뉜다고 볼 수 있습니다.
+      이를 표준 SQL 이라고 합니다.
     
   
-  실제로 인터넷 모델인 TCP/IP 프로토콜은 운영체제 내부에 계층 4까지의 기능을 구현하고, 상위 계층의 기능은 사용자 프로그램으로 구현합니다.
-
-
-1️⃣ 물리 계층.
-
-  OSI 7계층 모델의 맨 밑에 위치하는 물리 계층(Physical Layer)은 전송 매체의 물리적 인터페이스에 관한 사항을 기술합니다.
-    
-      즉, 전송 매체에서는 개별 정보의 비트(Bit) 교환 문제를 다룹니다.
-    
+  그런데 문제는 SQL을 사용하는 DBMS를 만드는 회사가 여러 곳이기 때문에 표준 SQL이 각 회사 제품의 특성을 모두 포용하지 못한다는 점입니다.
   
-  물리 계층은 하드웨어 시스템으로 구현되고, 계층 2이상의 프로토콜들은 소프트웨어적으로 구현됩니다.
-  물리 계층에서 다루는 전송 매체의 특성에는 데이터의 전송 속도, 송수신 호스트 사이의 클록 동기화 방법, 물리적 연결 형태 등이 있습니다.
-
-
-2️⃣ 데이터 링크 계층.
-
-  데이터 링크 계층(Data Link Layer)은 물리 계층을 통해 전송되는 데이터의 물리적 전송 오류를 해결합니다.
-  결과적으로 상위의 네트워크 계층에 신뢰성 있는 패킷 전송을 보장해주어 물리적 전송 오류에 대한 부담을 없애줍니다.
-  데이터 링크 계층은 갈림길에서 전송 경로를 선택할 수 없으므로 두 호스트가 일대일로 직접 연결된 환경에서만 데이터 전송을 지원합니다.
-  데이터 링크 계층을 이용해 전송되는 데이터를 프레임(Frame)이라 부릅니다.
-  프레임 헤더에 표시되는 송수신 호스 정보에는 LAN 카드에 내장된 송수신 호스트의 MAC 주소가 기록됩니다.
-  데이터 링크 계층은 다른 상위 계층처럼 송신 호스트와 수신 호스트 사이의 전송 속도 차이를 고려한 흐름 제어 기능도 지원할 수 있습니다.
-
-
-3️⃣ 네트워크 계층.
-
-  네트워크 계층(Network Layer)은 송신 호스트가 전송한 데이터가 어떤 경로를 통해 수신 호스트에 전달되는지를 결정하는 라우팅 문제를 처리합니다.
-  전달 경로 선택은 미리 정해지는 정적인(static) 방식과 네트워크의 현재 부하 상태에 따라 결정되는 동적인(Dynamic) 방식으로 구분합니다.
-  네트워크 계층에서는 전송 데이터 패킷(Packet)이라 부르며, 중개 과정에서 경로 선택의 기준이 되는 호스트 주소가 필요합니다.
-  인터넷에서는 IP 프로토콜이 네트워크 계층의 기능을 수행하므로 호스트의 IP 주소가 경로 선택에 중요한 기준이 됩니다.
-  인터넷에 연결된 호스트는 네트워크 계층의 주소와 데이터 링크 계층의 주소를 모두 가집니다.
-  컴퓨터 네트워크를 이용해 전송되는 패킷이 지나치게 많으면 네트워크의 전송 속도가 떨어집니다.
-  네트워크의 전송 속도가 감소하면 프로토콜 동작에 많은 영향을 미칠 수 있는데, 네트워크 트래픽이 과도하게 증가하는 문제를 조절하는 혼잡 제어(Congestion Control) 기능도 네트워크 계층에서 담당합니다.
-
-
-4️⃣ 전송 계층.
-
-  전송 계층(Transport Layer)은 송신 프로세스와 수신 프로세스를 직접 연결하는 단대단(End-to-End) 통신 기능을 제공합니다.
-  전송 계층 아래에 있는 하위 계층은 호스트와 호스트 사이의 데이터 전송 과정에서 발생하는 문제들만 반영합니다.
-  반면 전송 계층은 호스트 내부에서 논리적으로 구축되는 연결 주체인 프로세스 사이의 통신 문제를 다룹니다.
-  전송 계층에서는 전송 오류율, 전송 속도 등과 같은 일반 사용자의 서비스 요구 유형에 대한 고려와 흐름 제어 기능도 제공합니다.
-
-
-5️⃣ 세션 계층.
-
-  세션 계층(Session Layer)의 기능은 전송 계층과 거의 유사합니다.
-  그러나 사용자에게 원격 파일 전송이나 원격 로그인 등과 같은 상위적 연결 개념인 세션 기능을 제공한다는 점이 다릅니다.
-  특히 전송 계층의 연결이 일시적으로 끊어 졌을 때 이를 복구하여 세션이 유지될 수 있도록 합니다.
-  세션 계층에서는 송수신 호스트 사이의 대화 제어를 비롯해 상호 배타적인 동작을 제어하기 위한 토큰 제어, 일시적인 전송 장애를 해결하기 위한 동기(Synchronization) 기능 등을 제공합니다.
-
-
-6️⃣ 표현 계층.
-
-  계층 5까지는 주로 데이터의 전송에 관한 내용을 다루지만 표현 계층(Presentation Layer)은 데이터의 의미(Sementic)와 표현 방법(Syntax)을 처리합니다.
-    
-      즉, 통신 양단에서 서로 이해할 수 있는 표준 방식으로 데이터를 코딩(Coding)하는 문제를 다룹니다.
-    
+    그래서 DBMS를 만드는 회사에서는 되도록 표준 SQL을 준수하되, 각 제품의 특성을 반영한 SQL을 사용합니다.
   
-  호스트의 데이터 표현 방법이 서로 다르면 상대방의 데이터를 이해할 수 있도록 적절하게 변환하는 과정이 필요합니다.
-  인터넷상에서 개인 정보의 유통과 상거래가 활발해지면서 보안의 중요성이 강조되고 있는데, 데이터를 암호화하는 기술도 표현 계층에서 다룹니다.
-  또한 영상 정보 같은 대용량 데이터의 크기를 줄여주는 압축도 표현 계층의 주요 기능입니다.
+  다음 그림을 보면 3가지 DBMS 제품(오라클, SQL 서버, MySQL)이 모두 표준 SQL을 포함하고 있지만, 추가로 자신만의 기능도 가지고 있습니다.
 
 
-7️⃣ 응용 계층.
 
-  최상위의 응용 계층(Application Layer)에서는 다양하게 존재하는 응용 환경에서 필요한 기능을 다룹니다.
-  응용 환경은 매우 다양해 범위가 방대하지만, 초기 인터넷에서는 FTP, 텔넷, 전자 메일 서비스가 보급되었습니다.
-  FTP(File Transfer Protocol)는 파일 공유 서비스이며, 이 기능이 발전되어 지금은 클라우드 서비스가 보편적으로 사용되고 있습니다.
-  네트워크 파일을 이용할 때는 파일을 공유할 뿐 아니라 허가된 사용자가 적절한 접근 권한에 따라 사용할 수 있게 해야 합니다.
-  텔넷(Telnet)이 제공하는 가상 터미널, 전자 메일 등도 대표적인 초기 인터넷 서비스였습니다.
-  FTP와 Telnet은 최근 일반 사용자들 사이에서는 많이 사용되지 않고 있습니다.
-  그에 비하여 메일 서비스는 현재까지도 가장 많이 사용되는 인터넷 서비스 중 하나입니다.
-  현재의 인터넷 환경을 보면 스마트폰의 보급과 인공지능 기술의 발
+
+
+  이렇게 변경된 SQL을 오라클은 PL/SQL, SQL 서버는 T-SQL, MySQL은 SQL로 부릅니다.
+  결론은 표준 SQL을 익히면 여러 DBMS의 공통적인 부분을 배우는 것입니다.
+
+
+
+
+2️⃣ 마무리.
+
+4가지 키워드로 끝내는 핵심 포인트.
+
+  데이터베이스 는 데이터의 집합입니다..
+  DBMS 는 데이터베이스를 운영/관리하는 프로그램입니다.
+  테이블 은 데이터베이스의 최소 단위로, 하나 이상의 열(Column)과 행(Row)으로 구성되어 있습니다.
+  SQL 은 데이터베이스를 구축, 관리하고 활용하기 위해서 사용되는 언어입니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
+                                <a href="/SQL" class="category">SQL</a>
                             
                                 <span class="date">· 2024-09-19</span>
                             
@@ -10251,176 +10458,161 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
+                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
+                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
+                            ☕️[Java] Optional.
 
-1️⃣ 기본형의 한계.
+1️⃣ Optional.
 
-  자바는 객체 지향 언어입니다.
+  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
+  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
+
+
+2️⃣ 주요 특징
+
+  1. 값의 존재 여부를 명확히 표현.
     
-      그런데 자바 안에 객체가 아닌 것이 있습니다.
-      바로 int, double 같은 기본형(Primitive Type)입니다.
-    
-  
-  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
-    
-      객체가 아님.
+      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
         
-          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
-            
-              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
-            
-          
-        
-      
-      null 값을 가질 수 없습니다.
-        
-          기본형 데이터 타입은 null 값을 가질 수 없습니다.
-            
-              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-            
-          
+          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
         
       
     
   
-
-
-2️⃣ 예시.
-
-  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+  2. 명시적인 null 처리.
     
-      왼쪽의 값이 더 작다: -1
-      두 값이 같다: 0
-      왼쪽의 값이 더 크다: 1
+      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+        
+          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+        
+      
+    
+  
+  3. 함수형 프로그래밍 스타일 지원.
+    
+      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
     
   
 
 
-public class MyIntegerMethodMain0 {
-
-	public static void main(String[] args) {
-		int value = 10;
-		int i1 = compareTo(value, 5);
-		int i2 = compareTo(value, 10);
-		int i3 = compareTo(value, 20);
-		System.out.println("i1 = " + i1);
-		System.out.println("i2 = " + i2);
-		System.out.println("i3 = " + i3);
-	}
-
-	public static int compareTo(int value, int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
+3️⃣ Optional 생성.
+Optional&lt;String&gt; emptyOptional = Optional.empty();
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
 
 
+Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
 
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+
+  null이 아닌 값으로 Optional 생성.
     
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
+      값이 null인 경우 NullPointerException이 발생합니다.
     
   
 
 
-3️⃣ 직접 만든 래퍼 클래스.
+Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
 
-  int를 클래스로 만들어 봅시다.
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+
+  null이 될 수 있는 값으로 Optional 생성.
     
-      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-    
-  
-
-
-public class MyInteger {
-
-	private final int value;
-
-	public MyInteger(int value) {
-		this.value = value;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public int compareTo(int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value); // 숫자를 문자로 변경
-	}
-}
-
-
-  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
+      값이 null이면 빈 Optional이 생성됩니다.
+        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+        
+      
     
   
-  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-  
-    이 클래스는 불변으로 설계했습니다.
-  
-  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-    
-      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+
+
+4️⃣ Optional의 사용 예
+
+  1. 값이 존재하는지 확인(isPresent / ifPresent)
 ```java
-public class MyIntegerMethodMain1 {
-    
+Optional optional = Optional.of("Hello");
 
-    public static void main(String[] args) {
-      MyInteger myInteger = new MyInteger(10);
-      int i1 = myInteger.compareTo(5);
-      int i2 = myInteger.compareTo(10);
-      int i3 = myInteger.compareTo(20);
-      System.out.println(“i1 = “ + i1);
-      System.out.println(“i2 = “ + i2);
-      System.out.println(“i3 = “ + i3);
-  }
+
+if (optional.isPresent()) {
+    System.out.println(optional.get()); // 값이 있으면 출력
 }
-```
+
+optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
+
+- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+```java
+String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
+String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
+
+
+
+  3. 값이 없으면 예외 던지기(orElseThrow)
+    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+    
+  
+  4. 값 변환(map, flatMap)
+```java
+Optional optional = Optional.of("Hello");
+
+
+Optional lengthOptional = optional.map(String::length);
+lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
+
+- **5. 조건에 따른 필터링(`filter`)**
+```java
+Optional&lt;String&gt; optional = Optional.of("Hello");
+
+Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
+filtered.ifPresent(System.out::println); // "Hello" 출력
+
+
+5️⃣ Optional 사용의 이점.
+
+  1. 명시적 코드 작성.
+    
+      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
+    
+  
+  2. NullPointerException 방지.
+    
+      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
+    
+  
+  3. 함수형 스타일.
+    
+      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
+    
   
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+6️⃣ Optional 사용 시 주의점.
+
+  1. 과도한 사용 자제.
+    
+      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+        
+          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+        
+      
+    
+  
+  2. 성능.
+    
+      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
+    
+  
 
 
+7️⃣ 요약.
 
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
+  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
+  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
+  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
 
 
                         </a>
@@ -10610,161 +10802,176 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
-                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
-                            ☕️[Java] Optional.
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
 
-1️⃣ Optional.
+1️⃣ 기본형의 한계.
 
-  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
-  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
-
-
-2️⃣ 주요 특징
-
-  1. 값의 존재 여부를 명확히 표현.
+  자바는 객체 지향 언어입니다.
     
-      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
-        
-          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
-        
-      
+      그런데 자바 안에 객체가 아닌 것이 있습니다.
+      바로 int, double 같은 기본형(Primitive Type)입니다.
     
   
-  2. 명시적인 null 처리.
+  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
     
-      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+      객체가 아님.
         
-          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
+            
+              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
+            
+          
         
       
-    
-  
-  3. 함수형 프로그래밍 스타일 지원.
-    
-      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
-    
-  
-
-
-3️⃣ Optional 생성.
-Optional&lt;String&gt; emptyOptional = Optional.empty();
-
-
-  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
-
-
-Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
-
-
-  null이 아닌 값으로 Optional 생성.
-    
-      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
-      값이 null인 경우 NullPointerException이 발생합니다.
-    
-  
-
-
-Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
-
-
-  null이 될 수 있는 값으로 Optional 생성.
-    
-      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
-      값이 null이면 빈 Optional이 생성됩니다.
-        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+      null 값을 가질 수 없습니다.
+        
+          기본형 데이터 타입은 null 값을 가질 수 없습니다.
+            
+              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+            
+          
         
       
     
   
 
 
-4️⃣ Optional의 사용 예
+2️⃣ 예시.
 
-  1. 값이 존재하는지 확인(isPresent / ifPresent)
-```java
-Optional optional = Optional.of("Hello");
+  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+    
+      왼쪽의 값이 더 작다: -1
+      두 값이 같다: 0
+      왼쪽의 값이 더 크다: 1
+    
+  
 
 
-if (optional.isPresent()) {
-    System.out.println(optional.get()); // 값이 있으면 출력
+public class MyIntegerMethodMain0 {
+
+	public static void main(String[] args) {
+		int value = 10;
+		int i1 = compareTo(value, 5);
+		int i2 = compareTo(value, 10);
+		int i3 = compareTo(value, 20);
+		System.out.println("i1 = " + i1);
+		System.out.println("i2 = " + i2);
+		System.out.println("i3 = " + i3);
+	}
+
+	public static int compareTo(int value, int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
 
-optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
 
-- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+    
+  
+
+
+3️⃣ 직접 만든 래퍼 클래스.
+
+  int를 클래스로 만들어 봅시다.
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+    
+      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+    
+  
+
+
+public class MyInteger {
+
+	private final int value;
+
+	public MyInteger(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int compareTo(int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value); // 숫자를 문자로 변경
+	}
+}
+
+
+  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+    
+  
+  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+  
+    이 클래스는 불변으로 설계했습니다.
+  
+  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+    
+      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
 ```java
-String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
-String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
-
-
-
-  3. 값이 없으면 예외 던지기(orElseThrow)
-    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+public class MyIntegerMethodMain1 {
     
-  
-  4. 값 변환(map, flatMap)
-```java
-Optional optional = Optional.of("Hello");
 
-
-Optional lengthOptional = optional.map(String::length);
-lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
-
-- **5. 조건에 따른 필터링(`filter`)**
-```java
-Optional&lt;String&gt; optional = Optional.of("Hello");
-
-Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
-filtered.ifPresent(System.out::println); // "Hello" 출력
-
-
-5️⃣ Optional 사용의 이점.
-
-  1. 명시적 코드 작성.
-    
-      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
-    
-  
-  2. NullPointerException 방지.
-    
-      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
-    
-  
-  3. 함수형 스타일.
-    
-      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
-    
+    public static void main(String[] args) {
+      MyInteger myInteger = new MyInteger(10);
+      int i1 = myInteger.compareTo(5);
+      int i2 = myInteger.compareTo(10);
+      int i3 = myInteger.compareTo(20);
+      System.out.println(“i1 = “ + i1);
+      System.out.println(“i2 = “ + i2);
+      System.out.println(“i3 = “ + i3);
+  }
+}
+```
   
 
 
-6️⃣ Optional 사용 시 주의점.
-
-  1. 과도한 사용 자제.
-    
-      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
-        
-          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
-        
-      
-    
-  
-  2. 성능.
-    
-      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
-    
-  
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
 
 
-7️⃣ 요약.
 
-  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
-  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
-  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
 
 
                         </a>
@@ -15079,192 +15286,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-03-java-spring.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-03-java-spring.html"><h1 class="title_post">🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.</h1></a>
-                        <a href="/Backend/Spring/2024-09-03-java-spring.html" class="txt_post">
-                            🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.
-
-  스프링에서 자바 코드로 스프링 빈을 직접 등록하는 방법은 주로 @Configuration 애노테이션과 @Bean 애노테이션을 사용하여 이루어 집니다.
-    
-      이 방식은 XML 설정 파일 대신 자바 클래스를 사용하여 스프링 빈을 정의하고 관리하는 방법입니다.
-    
-  
-
-
-1️⃣ @Configuration 과 @Bean 을 사용한 빈 등록
-
-  @Configuration
-    
-      이 애노테이션은 해당 클래스가 하나 이상의 @Bean 메서드를 포함하고 있으며, 스프링 컨테이너에서 빈 정의를 생성하고 처리할 수 있는 설정 클래스임을 나타냅니다.
-    
-  
-  @Bean
-    
-      이 애노테이션은 메서드 레벨에서 사용되며, 메서드의 리턴값이 스프링 컨테이너에 의해 관리되는 빈(Bean)이 됨을 나타냅니다.
-    
-  
-
-
-2️⃣ 예시.
-아래는 MemoryMemberRepository 클래스를 자바 코드로 스프링 빈으로 등록하는 방법을 보여주는 예시입니다.
-
-  1. 빈으로 등록할 클래스 정의
-```java
-package com.devkobe.hello_spring.repository;
-
-
-import com.devkobe.hello_spring.domain.Member;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
-public class MemoryMemberRepository implements MemberRepository {
-
-private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-private static long sequence = 0L;
-
-@Override
-public Member save(Member member) {
-    member.setId(++sequence);
-    store.put(member.getId(), member);
-    return member;
-}
-
-@Override
-public Optional&lt;Member&gt; findById(Long id) {
-    return Optional.ofNullable(store.get(id));
-}
-
-@Override
-public Optional&lt;Member&gt; findByName(String name) {
-    return store.values().stream()
-            .filter(member -&gt; member.getName().equals(name))
-            .findAny();
-}
-
-@Override
-public List&lt;Member&gt; findAll() {
-    return new ArrayList&lt;&gt;(store.values());
-}
-
-public void clearStore() {
-    store.clear();
-} } ```
-
-
-
-  2. 자바 설정 파일에서 빈 등록
-```java
-package com.devkobe.hello_spring.config;
-
-
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class AppConfig {
-
-@Bean
-public MemberRepository memberRepository() {
-    return new MemoryMemberRepository();
-} } ```
-
-
-
-  3. 스프링 컨테이너에서 빈 사용
-```java
-package com.devkobe.hello_spring.service;
-
-
-import com.devkobe.hello_spring.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MemberService {
-
-private final MemberRepository memberRepository;
-
-@Autowired
-public MemberService(MemberRepository memberRepository) {
-    this.memberRepository = memberRepository;
-}
-
-// 비즈니스 로직 메서드들... } ```
-
-
-3️⃣ 설명.
-
-  AppConfig 클래스
-    
-      @Configuration 애노테이션을 사용하여 이 클래스가 스프링 설정 클래스로 사용될 것임을 명시합니다.
-      memberRepository() 메서드는 @Bean 애노테이션으로 정의되어 있으며, 이 메서드의 리턴값이 스프링 컨테이너에 의해 관리되는 빈이 됩니다.
-        
-          이 경우, MemoryMemberRepository 객체가 빈으로 등록됩니다.
-        
-      
-    
-  
-  빈 사용
-    
-      MemberService 클래스에서 MemberRepository 타입의 빈이 생성자 주입 방식으로 주입됩니다.
-        
-          이때, AppConfig 클래스에서 등록된 MemoryMemberRepository 빈이 주입됩니다.
-        
-      
-    
-  
-
-
-4️⃣ 왜 자바 설정을 사용할까?
-
-  1. 타입 안정성
-    
-      자바 코드는 컴파일 시점에 타입을 체크할 수 있으므로, XML보다 타입 안정성이 높습니다.
-    
-  
-  2. IDE 지원
-    
-      자바 기반 설정은 IDE의 자동 완성 기능과 리팩토링 도구를 잘 지원받을 수 있습니다.
-    
-  
-  3. 코드 재사용성
-    
-      자바 설정 클래스는 일반 자바 코드처럼 재사용 사능하며, 상속과 조합 등을 활용할 수 있습니다.
-    
-  
-
-
-5️⃣ 결론
-
-  스프링에서 자바 코드로 빈을 등록하는 방법은 @Configuration 과 @Bean 애노테이션을 사용한 방법입니다.
-    
-      이 방식은 XML 기반 설정보다 더 타입 안전하고, 유지보수하기 쉬우며, 현대적인 스프링 애플리케이션에서 자주 사용됩니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-03-string-basic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -15446,6 +15467,192 @@ result2 = hello java
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-03-java-spring.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-03-java-spring.html"><h1 class="title_post">🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.</h1></a>
+                        <a href="/Backend/Spring/2024-09-03-java-spring.html" class="txt_post">
+                            🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.
+
+  스프링에서 자바 코드로 스프링 빈을 직접 등록하는 방법은 주로 @Configuration 애노테이션과 @Bean 애노테이션을 사용하여 이루어 집니다.
+    
+      이 방식은 XML 설정 파일 대신 자바 클래스를 사용하여 스프링 빈을 정의하고 관리하는 방법입니다.
+    
+  
+
+
+1️⃣ @Configuration 과 @Bean 을 사용한 빈 등록
+
+  @Configuration
+    
+      이 애노테이션은 해당 클래스가 하나 이상의 @Bean 메서드를 포함하고 있으며, 스프링 컨테이너에서 빈 정의를 생성하고 처리할 수 있는 설정 클래스임을 나타냅니다.
+    
+  
+  @Bean
+    
+      이 애노테이션은 메서드 레벨에서 사용되며, 메서드의 리턴값이 스프링 컨테이너에 의해 관리되는 빈(Bean)이 됨을 나타냅니다.
+    
+  
+
+
+2️⃣ 예시.
+아래는 MemoryMemberRepository 클래스를 자바 코드로 스프링 빈으로 등록하는 방법을 보여주는 예시입니다.
+
+  1. 빈으로 등록할 클래스 정의
+```java
+package com.devkobe.hello_spring.repository;
+
+
+import com.devkobe.hello_spring.domain.Member;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+public class MemoryMemberRepository implements MemberRepository {
+
+private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+private static long sequence = 0L;
+
+@Override
+public Member save(Member member) {
+    member.setId(++sequence);
+    store.put(member.getId(), member);
+    return member;
+}
+
+@Override
+public Optional&lt;Member&gt; findById(Long id) {
+    return Optional.ofNullable(store.get(id));
+}
+
+@Override
+public Optional&lt;Member&gt; findByName(String name) {
+    return store.values().stream()
+            .filter(member -&gt; member.getName().equals(name))
+            .findAny();
+}
+
+@Override
+public List&lt;Member&gt; findAll() {
+    return new ArrayList&lt;&gt;(store.values());
+}
+
+public void clearStore() {
+    store.clear();
+} } ```
+
+
+
+  2. 자바 설정 파일에서 빈 등록
+```java
+package com.devkobe.hello_spring.config;
+
+
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+@Bean
+public MemberRepository memberRepository() {
+    return new MemoryMemberRepository();
+} } ```
+
+
+
+  3. 스프링 컨테이너에서 빈 사용
+```java
+package com.devkobe.hello_spring.service;
+
+
+import com.devkobe.hello_spring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberService {
+
+private final MemberRepository memberRepository;
+
+@Autowired
+public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
+}
+
+// 비즈니스 로직 메서드들... } ```
+
+
+3️⃣ 설명.
+
+  AppConfig 클래스
+    
+      @Configuration 애노테이션을 사용하여 이 클래스가 스프링 설정 클래스로 사용될 것임을 명시합니다.
+      memberRepository() 메서드는 @Bean 애노테이션으로 정의되어 있으며, 이 메서드의 리턴값이 스프링 컨테이너에 의해 관리되는 빈이 됩니다.
+        
+          이 경우, MemoryMemberRepository 객체가 빈으로 등록됩니다.
+        
+      
+    
+  
+  빈 사용
+    
+      MemberService 클래스에서 MemberRepository 타입의 빈이 생성자 주입 방식으로 주입됩니다.
+        
+          이때, AppConfig 클래스에서 등록된 MemoryMemberRepository 빈이 주입됩니다.
+        
+      
+    
+  
+
+
+4️⃣ 왜 자바 설정을 사용할까?
+
+  1. 타입 안정성
+    
+      자바 코드는 컴파일 시점에 타입을 체크할 수 있으므로, XML보다 타입 안정성이 높습니다.
+    
+  
+  2. IDE 지원
+    
+      자바 기반 설정은 IDE의 자동 완성 기능과 리팩토링 도구를 잘 지원받을 수 있습니다.
+    
+  
+  3. 코드 재사용성
+    
+      자바 설정 클래스는 일반 자바 코드처럼 재사용 사능하며, 상속과 조합 등을 활용할 수 있습니다.
+    
+  
+
+
+5️⃣ 결론
+
+  스프링에서 자바 코드로 빈을 등록하는 방법은 @Configuration 과 @Bean 애노테이션을 사용한 방법입니다.
+    
+      이 방식은 XML 기반 설정보다 더 타입 안전하고, 유지보수하기 쉬우며, 현대적인 스프링 애플리케이션에서 자주 사용됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-03</span>
                             
@@ -41363,6 +41570,32 @@ public class TernaryExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(4)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-04-VariablesAndDataTypes-4.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -41565,32 +41798,6 @@ public class Box&lt;T extends Number&gt; {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-04-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(4)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-04</span>
                             
@@ -77603,6 +77810,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-09-26-APIdesign-LayeredArchitecture-Transaction-Entity-BusinessLogicAndRules.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-26"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 라이브러리(Library)와 프레임워크(Framework)의 차이점.",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-26-Library-and-Framework.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-26"
         });

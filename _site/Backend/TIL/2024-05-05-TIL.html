@@ -238,6 +238,9 @@
 
         
     
+
+        
+    
             
             
             
@@ -910,14 +913,6 @@
                         </a>
 </div>
 </li>
-<li id="nav-second" aria-label="CS">
-                    <div class="nav-item">
-                        <a href="/Backend/CS/" class="nav-list-link nav-sh">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
-                            <span>CS</span>
-                        </a>
-</div>
-</li>
 <li id="nav-second" aria-label="DB">
                     <div class="nav-item">
                         <a href="/Backend/DB/" class="nav-list-link nav-sh">
@@ -963,6 +958,34 @@
                         <a href="/Backend/TIL/" class="nav-list-link nav-sh">
                             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
                             <span>TIL</span>
+                        </a>
+</div>
+</li>
+</ul>
+</li>
+<li id="nav-first" aria-label="CS">
+            <div class="nav-item">
+                <a href="/CS/" class="nav-list-link nav-lh">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M181.3 32.4c17.4 2.9 29.2 19.4 26.3 36.8L197.8 128h95.1l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3s29.2 19.4 26.3 36.8L357.8 128H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H347.1L325.8 320H384c17.7 0 32 14.3 32 32s-14.3 32-32 32H315.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8l9.8-58.7H155.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8L90.2 384H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l21.3-128H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3zM187.1 192L165.8 320h95.1l21.3-128H187.1z"></path></svg>
+                    <span>CS</span>
+                </a><button class="nav-list-expander" aria-label="toggle items in CS category" aria-pressed="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                </button>
+</div>
+<ul class="nav-list">
+<li id="nav-second" aria-label="CS">
+                    <div class="nav-item">
+                        <a href="/Archive/CS/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>CS</span>
+                        </a>
+</div>
+</li>
+<li id="nav-second" aria-label="2024">
+                    <div class="nav-item">
+                        <a href="/CS/2024/" class="nav-list-link nav-sh">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
+                            <span>2024</span>
                         </a>
 </div>
 </li>
@@ -1451,17 +1474,6 @@
 
         posts.push({
             'title'    : "Index",
-            'path'     : "Backend > CS",
-            'type'     : "category",
-            'tags'     : "",
-            'url'      : "/Backend/CS/index.html",
-            'image'    : "/assets/img/thumbnail/empty.jpg",
-            'date'     : "1900-01-01"
-        });
-    
-
-        posts.push({
-            'title'    : "Index",
             'path'     : "Backend > DB",
             'type'     : "category",
             'tags'     : "",
@@ -1532,6 +1544,28 @@
             'type'     : "category",
             'tags'     : "",
             'url'      : "/Backend/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "CS > 2024",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/CS/2024/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "CS",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/CS/index.html",
             'image'    : "/assets/img/thumbnail/empty.jpg",
             'date'     : "1900-01-01"
         });
@@ -5960,23 +5994,23 @@
     
 
         posts.push({
-            'title'    : "💾 [CS] 싱글톤 패턴",
-            'path'     : "Backend > CS",
-            'type'     : "post",
-            'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-08-23-Singleton.html",
-            'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-08-23"
-        });
-    
-
-        posts.push({
             'title'    : "🍃[Spring] Welcome Page 구현 및 동작 방법.",
             'path'     : "Backend > Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-08-23-Thymeleaf.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-08-23"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 싱글톤 패턴",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-08-23-Singleton.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-08-23"
         });
     
@@ -6148,10 +6182,10 @@
 
         posts.push({
             'title'    : "💾 [CS] 의존성 주입(DI, Dependency Injection)",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-08-29-di.html",
+            'url'      : "/CS/2024/2024-08-29-di.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-08-29"
         });
@@ -6192,10 +6226,10 @@
 
         posts.push({
             'title'    : "💾 [CS] 추상화(Abstraction)",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-08-31-Abstraction.html",
+            'url'      : "/CS/2024/2024-08-31-Abstraction.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-08-31"
         });
@@ -6203,10 +6237,10 @@
 
         posts.push({
             'title'    : "💾 [CS] 팩토리 패턴(factory pattern)",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-08-31-Factory-pattern.html",
+            'url'      : "/CS/2024/2024-08-31-Factory-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-08-31"
         });
@@ -6290,28 +6324,6 @@
     
 
         posts.push({
-            'title'    : "💾 [CS] 비즈니스 로직(Business Logic)이란?",
-            'path'     : "Backend > CS",
-            'type'     : "post",
-            'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-02-Business-Logic.html",
-            'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-09-02"
-        });
-    
-
-        posts.push({
-            'title'    : "💾 [CS] 도메인(Domain)의 의미.",
-            'path'     : "Backend > CS",
-            'type'     : "post",
-            'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-02-domain.html",
-            'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-09-02"
-        });
-    
-
-        posts.push({
             'title'    : "🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.",
             'path'     : "Backend > Spring",
             'type'     : "post",
@@ -6345,13 +6357,24 @@
     
 
         posts.push({
-            'title'    : "💾 [CS] 전략 패턴(Strategy pattern)",
-            'path'     : "Backend > CS",
+            'title'    : "💾 [CS] 비즈니스 로직(Business Logic)이란?",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-03-stratege-pattern.html",
+            'url'      : "/CS/2024/2024-09-02-Business-Logic.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-09-03"
+            'date'     : "2024-09-02"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 도메인(Domain)의 의미.",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-02-domain.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-02"
         });
     
 
@@ -6362,6 +6385,17 @@
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-09-03-java-spring.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-03"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 전략 패턴(Strategy pattern)",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-03-stratege-pattern.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-03"
         });
     
@@ -6389,17 +6423,6 @@
     
 
         posts.push({
-            'title'    : "💾 [CS] API(Application Programming Interface)",
-            'path'     : "Backend > CS",
-            'type'     : "post",
-            'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-04-API.html",
-            'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-09-04"
-        });
-    
-
-        posts.push({
             'title'    : "🍃[Spring] `@SpringBootTest` 애노테이션",
             'path'     : "Backend > Spring",
             'type'     : "post",
@@ -6417,6 +6440,17 @@
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-09-04-Transactional-Annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-04"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] API(Application Programming Interface)",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-04-API.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-04"
         });
     
@@ -6445,10 +6479,10 @@
 
         posts.push({
             'title'    : "💾 [CS] 옵저버 패턴(Observer pattern)",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-05-observer-pattern.html",
+            'url'      : "/CS/2024/2024-09-05-observer-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-05"
         });
@@ -6489,10 +6523,10 @@
 
         posts.push({
             'title'    : "💾 [CS] 프록시 패턴과 프록시 서버",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-07-proxy-pattern-and-server.html",
+            'url'      : "/CS/2024/2024-09-07-proxy-pattern-and-server.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-07"
         });
@@ -6576,23 +6610,23 @@
     
 
         posts.push({
-            'title'    : "💾 [CS] 프록시 패턴과 프록시 서버 - 2",
-            'path'     : "Backend > CS",
-            'type'     : "post",
-            'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-11-proxy-pattern-and-server-2.html",
-            'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-09-11"
-        });
-    
-
-        posts.push({
             'title'    : "🍃[Spring] Spring MVC에서 `Controller` 객체.",
             'path'     : "Backend > Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-11"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 프록시 패턴과 프록시 서버 - 2",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-11-proxy-pattern-and-server-2.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-11"
         });
     
@@ -6720,10 +6754,10 @@
 
         posts.push({
             'title'    : "💾 [CS] CDN 서비스란?",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-14-CDN-Service.html",
+            'url'      : "/CS/2024/2024-09-14-CDN-Service.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-14"
         });
@@ -6731,10 +6765,10 @@
 
         posts.push({
             'title'    : "💾 [CS] CORS란?",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-14-CORS.html",
+            'url'      : "/CS/2024/2024-09-14-CORS.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-14"
         });
@@ -6764,10 +6798,10 @@
 
         posts.push({
             'title'    : "💾 [CS] 이터레이터 패턴(Iterator pattern)",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-16-Iterator-Pattern.html",
+            'url'      : "/CS/2024/2024-09-16-Iterator-Pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-16"
         });
@@ -6829,23 +6863,23 @@
     
 
         posts.push({
-            'title'    : "💾 [CS] 노출 모듈 패턴(revealing module pattern)",
-            'path'     : "Backend > CS",
-            'type'     : "post",
-            'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-19-Revealing-module-pattern.html",
-            'image'    : "/assets/img/thumbnail/cs.jpeg",
-            'date'     : "2024-09-19"
-        });
-    
-
-        posts.push({
             'title'    : "💾[Database] 데이터베이스 모델링.",
             'path'     : "Backend > DB",
             'type'     : "post",
             'tags'     : "Database",
             'url'      : "/Backend/DB/2024-09-19-db-modeling.html",
             'image'    : "/assets/img/thumbnail/database.jpeg",
+            'date'     : "2024-09-19"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 노출 모듈 패턴(revealing module pattern)",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-19-Revealing-module-pattern.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-19"
         });
     
@@ -6885,10 +6919,10 @@
 
         posts.push({
             'title'    : "💾 [CS] MVC 패턴.",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-20-MVC-pattern.html",
+            'url'      : "/CS/2024/2024-09-20-MVC-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-20"
         });
@@ -6918,10 +6952,10 @@
 
         posts.push({
             'title'    : "💾 [CS] MVP 패턴.",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-21-MVP-pattern.html",
+            'url'      : "/CS/2024/2024-09-21-MVP-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-21"
         });
@@ -7006,10 +7040,10 @@
 
         posts.push({
             'title'    : "💾 [CS] API 설계, 계층형 아키텍처, 트랜잭션, 엔티티(Entity), 비즈니스 로직과 비즈니스 규칙의 차이점.",
-            'path'     : "Backend > CS",
+            'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
-            'url'      : "/Backend/CS/2024-09-26-APIdesign-LayeredArchitecture-Transaction-Entity-BusinessLogicAndRules.html",
+            'url'      : "/CS/2024/2024-09-26-APIdesign-LayeredArchitecture-Transaction-Entity-BusinessLogicAndRules.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-26"
         });

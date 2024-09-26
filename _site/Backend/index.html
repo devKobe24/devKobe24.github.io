@@ -717,6 +717,7 @@
             
             
             
+            
 
     
     
@@ -1147,6 +1148,196 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-26-Primary-Key.html"><h1 class="title_post">🍃[Spring] 유일한 식별자(Primary Key)</h1></a>
+                        <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="txt_post">
+                            🍃[Spring] 유일한 식별자(Primary Key).
+
+Java 백엔드 애플리케이션에서 user의 id 정보는 보통 유일한 식별저(Primary Key) 로 사용되며, 각 유저별로 겹치지 않는 고유한 값입니다.
+
+이는 데이터베이스 설계에서 매우 중요한 개념으로, 사용자와 같은 엔티티(Entity)를 고유하게 식별하기 위해 Primary Key를 사용합니다.
+
+1️⃣ Primary Key란?
+
+
+  Primary Key는 데이터베이스 테이블에서 각 행을 고유하게 식별하는 열(Column)입니다.
+  Primary Key는 테이블 내에서 중복될 수 없으며, null 값을 가질 수 없습니다.
+  즉, 각 레코드는 Primary Key를 통해 식별되므로, user 테이블에서 각 사용자는 유일한 id를 가져야 하며, 이를 통해 사용자를 구분할 수 있습니다.
+
+
+2️⃣ 일반적인 예: User 엔티티
+
+user 엔티티에서 id 필드는 주로 Primary Key로 설정되며, 데이터베이스에서 자동으로 생성되거나 애플리케이션에서 생성할 수도 있습니다.
+
+User 엔티티 예시 (JPA를 사용한 경우)
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Primary Key, 유일한 식별자.
+    
+    private String name;
+    private String email;
+    
+    // Getter, Setter, 기본 생성자
+    public User() {}
+    
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+
+  @Id
+    
+      id 필드는 Primary Key임을 나타냅니다.
+    
+  
+  @GeneratedValue
+    
+      id 값이 자동으로 생성됨을 의미합니다.
+      GenerationType.IDENTITY는 데이터베이스에서 자동으로 Primary Key 값을 생성하도록 지정하는 방식입니다.
+    
+  
+
+
+3️⃣ Primary Key의 역할.
+
+  1. 고유성 보장
+    
+      Primary Key는 각 레코드를 고유하게 식별하므로, 사용자 정보에서 id는 각 유저별로 유일하게 존재하며 절대 중복되지 않습니다.
+    
+  
+  2. 빠른 조회
+    
+      Primary Key는 인덱스가 자동으로 생성되기 때문에 데이터베이스에서 해당 레코드를 빠르게 조회할 수 있습니다.
+    
+  
+  3. 관계 설정
+    
+      Primary Key는 다른 테이블에서 Foreign Key로 사용되어 테이블 간의 관계를 설정할 수 있습니다.
+      예를 들어, Order 테이블에서 user_id는 User 테이블의 Primary Key를 참조하여 주문과 사용자를 연결할 수 있습니다.
+    
+  
+
+
+4️⃣ ID 생성 방식.
+ID는 여러 방식으로 생성될 수 있으며, 가장 많이 사용하는 두 가지 방식은 다음과 같습니다.
+
+
+  1. 자동 증가(Auto Increment)
+    
+      데이터베이스에서 AUTO_INCREMENT 속성을 설정하여 ID가 자동으로 증가합니다.
+      주로 MySQL, PostgreSQL 같은 데이터베이스에서 사용됩니다.
+    
+  
+  2. UUID(Universally Unique Identifier)
+    
+      UUID는 전 세계적으로 고유한 식별자를 생성하는 방식으로, 중복될 가능성이 거의 없습니다.
+      JPA에서는 UUID를 Primary Key로 사용할 수도 있습니다.
+        
+          예시
+              @Id
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+  private String id;
+            
+          
+        
+      
+    
+  
+
+
+5️⃣ 데이터베이스에서 User 테이블 예시
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
+
+
+
+  여기서 id는 Primary Key로, 데이터베이스에서 자동으로 증가하며 각 사용자는 고유한 id 값을 가집니다.
+
+
+6️⃣ 예시: Primary Key를 통한 사용자 조회
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;User&gt; getUserById(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -&gt; new UserNotFoundException("User not found with id " + id));
+        return ResponseEntity.ok(user);
+    }
+}
+
+
+
+  위 코드는 id가 Primary Key인 User 엔티티를 데이터베이스에서 조회하는 예시입니다.
+  id는 고유하기 때문에 이 값을 통해 특정 사용자를 정확하게 조회할 수 있습니다.
+
+
+7️⃣ 요약.
+
+  Java 백엔드 애플리케이션에서 user의 id는 보통 Primary Key로 사용되며, 각 사용자는 고유한 id 값을 가집니다.
+  Primary Key는 데이터베이스에서 각 레코드를 고유하게 식별하는 필드로, 절대 중복되지 않으며 null 값을 가질 수 없습니다.
+  Primary Key를 통해 사용자를 빠르고 정확하게 조회할 수 있으며, 테이블 간의 관계를 설정하는 데 중요한 역할을 합니다.
+  id는 자동 증가 방식이나 UUID 방식으로 생성될 수 있으며, 사용자의 고유성을 보장합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -7644,54 +7835,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
-                            ☁️[AWS] 가상화.
-
-  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
-  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
-  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
-    
-      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
-여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
-    
-  
-  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
-
-
-
-
-
-  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
-    
-      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
-    
-  
-  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
-
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -7745,6 +7888,84 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
 
 
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
+                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
+
+  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
+  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
+
+
+1️⃣ 인바운드 규칙(Inbound Rules)
+인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
+이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
+
+  예시
+    
+      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
+        
+          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
+        
+      
+      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
+    
+  
+  중요한 점
+    
+      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
+      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
+    
+  
+
+
+2️⃣ 아웃바운드 규칙(Outbound Rules)
+아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
+기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
+
+  예시
+    
+      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
+      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
+    
+  
+  중요한 점
+    
+      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
+    
+  
+
+
+3️⃣ 보안 그룹 작동 방식
+
+  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
+  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
+  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
+
+
+🙋‍♂️ 마무리
+보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
+인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -7901,67 +8122,37 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
-                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
 
-  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
-  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
-
-
-1️⃣ 인바운드 규칙(Inbound Rules)
-인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
-이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
-
-  예시
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
     
-      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
-        
-          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
-        
-      
-      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
     
   
-  중요한 점
-    
-      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
-      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
-    
-  
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
 
 
-2️⃣ 아웃바운드 규칙(Outbound Rules)
-아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
-기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
 
-  예시
+
+
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
     
-      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
-      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
     
   
-  중요한 점
-    
-      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
-    
-  
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
 
 
-3️⃣ 보안 그룹 작동 방식
 
-  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
-  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
-  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
-
-
-🙋‍♂️ 마무리
-보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
-인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -9514,6 +9705,32 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
+                            
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/ENG/240618_ENG_STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -9569,32 +9786,6 @@ sudo reboot
 
   🙋‍♂️ 해석: “왜 나의 자바 가상 스레드는 플랫폼 스레드보다 느릴까?”
   📝Reference
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
-                            
-
 
 
                         </a>
@@ -10579,6 +10770,33 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-18-TIL.html"><h1 class="title_post">📝 [TIL] 240518 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-18-TIL.html" class="txt_post">
+                            
+  수학적 귀납법
+  명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
@@ -10647,146 +10865,6 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
 이는 P(k+1) 입니다.
 
 기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Math/2024-05-18-Math-1.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
-                        <a href="/Backend/Math/2024-05-18-Math-1.html" class="txt_post">
-                            1️⃣ 기하학 - 설득술로서 발전해 온 수학
-
-1️⃣ 명제와 증명.
-“필요조건” 과 “충분조건” 에 대한 이해는 모든 논리의 기초가 되는 가장 중요한 사항이라 해도 과언이 아닙니다.
-
-수학은 논리와 떼려야 뗄 수 없는 관계라는 것은 모두가 아는 사실이지만 ‘필요’ 와 ‘충분’ 은 수학의 논리 중에서도 가장 중요한 역할을 하는 기본적인 사고방식입니다.
-
-‘이것 없이는 어떠한 수학적 논리도 전개할 수 없다’라고 단언할 수 있을 정도입니다.
-
-또한, ‘부정’을 이용해서 증명하는 방법인 “대우” 와 “귀류법” 의 이해도 매우 중요합니다.
-
-대우는 얼핏 보기에도 복잡해 보이는 명제를 단순화하고, 귀류법은 정면 돌파로는 증명할 수 없는(하기 어려운) 명제를 증명할 때 큰 힘을 발휘합니다.
-
-명제란 무엇인지 먼저 확인해 봅시다.
-
-명제: 참과 거짓을 객관적으로 판정할 수 있는 문장이나 식
-
-
-예를 들어 ‘백두산은 한국에서 가장 높은 산이다’는 명제지만 ‘백두산은 멋있다’는 명제가 아닙니다.
-
-백두산의 높이가 한국에서 가장 높은지는 객관적으로 판정할 수 있지만, 백두산이 멋지다고 느끼는 데는 개인차가 있으며(심지어 대부분이 ‘멋지다’고 생각할지라도) 참과 거짓을 객관적으로 판단할 수 없기 때문입니다.
-
-💡 논리적 사고의 기초: 필요조건과 충분 조건.
-우선 필요조건과 충분조건의 정의를 살펴보겠습니다.
-
-
-  필요조건과 충분조건의 정의
-
-  명제 ‘P이면 Q이다’ 가 참일 때,
-
-  P를(Q이기 위한) “충분조건”
-
-  Q를(P이기 위한) “필요조건”
-
-  이라고 합니다.
-
-
-‘P이면 Q이다’ 에서 P를 ‘재즈’라 하고 Q를 ‘음악’이라 하면 ‘재즈는 음악이다’가 됩니다.
-이는 당연히 참이므로(올바르므로) 정의에 따라
-
-  재즈: 충분조건
-  음악: 필요조건
-
-
-이 됩니다.
-
-확실히 재즈가 되기 위해서는 (적어도) 음악일 필요가 있습니다.
-
-또한, 음악이 되기 위해서 재즈면 (넉넉하게) 충분하다고 할 수 있습니다.
-
-재즈는 음악의 한 장르이므로 이 둘의 관계를 그림으로 표현하면 다음과 같은 모습이 됩니다.
-
-
-
-이처럼 한쪽이 다른 한쪽을 완전히 포함하는 경우를 다음과 같이 집합으로 이해해 보는 것도 매우 중요합니다.
-
-
-  영역이 더 작은 쪽(재즈): 충분조건
-영역이 더 큰 쪽(음악): 필요조건
-
-
-특히 두 개의 명제 ‘P이면 Q다’ 와 ‘Q이면 P다’가 모두 참일 경우에는 ‘P와 Q가 서로의 필요충분조건이다’라고 합니다. 또는 ‘P와 Q는 서로 동치다’ 라고도 합니다.
-
-
-  NOTE : 실수란
-
-  수학에서는 일반적으로 부등식의 범위를 수직선에 나타낼 때,
-
-  등호 없는 부등호(&lt;)는 ○와 대각선
-
-  등호 있는 부등호(≤)는 ●와 (직선에) 수직으로 뻗은 선
-
-  으로 표기합니다.
-
-  예를 들어 1 ≤ x &lt; 4는 다음과 같이 표기합니다.
-
-  
-
-
-우리는 보통 무언가를 고를 때, 자연스레 “필요저건에 따라 후보를 줄여 나갑니다. 그리고 충분조건을 만족하는 후보를 탐색합니다.”
-
-예를 들어 점심 메뉴를 고를 때, ‘8,000원 안팍의 메뉴’처럼 예산이 필요조건이 사람이 적지 않을 것입니다.
-
-거기에 ‘30분 안에 먹을 수 있는 메뉴’ 혹은 ‘깔끔한 맛’ 등의 필요조건을 더 해, 그 모든 필요조건을 만족하는 메뉴로 후보를 줄여 나갑니다.
-
-그리고 남은 메뉴(후보)가 오늘 점심으로 괜찮은지(충분한지) 고민합니다.
-
-그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
-
-이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-18-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-18-TIL.html"><h1 class="title_post">📝 [TIL] 240518 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-18-TIL.html" class="txt_post">
-                            
-  수학적 귀납법
-  명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.
-
 
                         </a>
                         <div class="info-post">
@@ -10950,23 +11028,108 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-17-TIL.html" class="txt_post">
-                            
-  연습 문제 풀이(2)
-  예외 처리 - 트러블슈팅
-  문자열 처리 - 트러블슈팅
+                        <a href="/Backend/Math/2024-05-18-Math-1.html"><h1 class="title_post">[Math] 명제와 증명 - 논리적 사고의 기초: 필요조건과 충분 조건.</h1></a>
+                        <a href="/Backend/Math/2024-05-18-Math-1.html" class="txt_post">
+                            1️⃣ 기하학 - 설득술로서 발전해 온 수학
 
+1️⃣ 명제와 증명.
+“필요조건” 과 “충분조건” 에 대한 이해는 모든 논리의 기초가 되는 가장 중요한 사항이라 해도 과언이 아닙니다.
+
+수학은 논리와 떼려야 뗄 수 없는 관계라는 것은 모두가 아는 사실이지만 ‘필요’ 와 ‘충분’ 은 수학의 논리 중에서도 가장 중요한 역할을 하는 기본적인 사고방식입니다.
+
+‘이것 없이는 어떠한 수학적 논리도 전개할 수 없다’라고 단언할 수 있을 정도입니다.
+
+또한, ‘부정’을 이용해서 증명하는 방법인 “대우” 와 “귀류법” 의 이해도 매우 중요합니다.
+
+대우는 얼핏 보기에도 복잡해 보이는 명제를 단순화하고, 귀류법은 정면 돌파로는 증명할 수 없는(하기 어려운) 명제를 증명할 때 큰 힘을 발휘합니다.
+
+명제란 무엇인지 먼저 확인해 봅시다.
+
+명제: 참과 거짓을 객관적으로 판정할 수 있는 문장이나 식
+
+
+예를 들어 ‘백두산은 한국에서 가장 높은 산이다’는 명제지만 ‘백두산은 멋있다’는 명제가 아닙니다.
+
+백두산의 높이가 한국에서 가장 높은지는 객관적으로 판정할 수 있지만, 백두산이 멋지다고 느끼는 데는 개인차가 있으며(심지어 대부분이 ‘멋지다’고 생각할지라도) 참과 거짓을 객관적으로 판단할 수 없기 때문입니다.
+
+💡 논리적 사고의 기초: 필요조건과 충분 조건.
+우선 필요조건과 충분조건의 정의를 살펴보겠습니다.
+
+
+  필요조건과 충분조건의 정의
+
+  명제 ‘P이면 Q이다’ 가 참일 때,
+
+  P를(Q이기 위한) “충분조건”
+
+  Q를(P이기 위한) “필요조건”
+
+  이라고 합니다.
+
+
+‘P이면 Q이다’ 에서 P를 ‘재즈’라 하고 Q를 ‘음악’이라 하면 ‘재즈는 음악이다’가 됩니다.
+이는 당연히 참이므로(올바르므로) 정의에 따라
+
+  재즈: 충분조건
+  음악: 필요조건
+
+
+이 됩니다.
+
+확실히 재즈가 되기 위해서는 (적어도) 음악일 필요가 있습니다.
+
+또한, 음악이 되기 위해서 재즈면 (넉넉하게) 충분하다고 할 수 있습니다.
+
+재즈는 음악의 한 장르이므로 이 둘의 관계를 그림으로 표현하면 다음과 같은 모습이 됩니다.
+
+
+
+이처럼 한쪽이 다른 한쪽을 완전히 포함하는 경우를 다음과 같이 집합으로 이해해 보는 것도 매우 중요합니다.
+
+
+  영역이 더 작은 쪽(재즈): 충분조건
+영역이 더 큰 쪽(음악): 필요조건
+
+
+특히 두 개의 명제 ‘P이면 Q다’ 와 ‘Q이면 P다’가 모두 참일 경우에는 ‘P와 Q가 서로의 필요충분조건이다’라고 합니다. 또는 ‘P와 Q는 서로 동치다’ 라고도 합니다.
+
+
+  NOTE : 실수란
+
+  수학에서는 일반적으로 부등식의 범위를 수직선에 나타낼 때,
+
+  등호 없는 부등호(&lt;)는 ○와 대각선
+
+  등호 있는 부등호(≤)는 ●와 (직선에) 수직으로 뻗은 선
+
+  으로 표기합니다.
+
+  예를 들어 1 ≤ x &lt; 4는 다음과 같이 표기합니다.
+
+  
+
+
+우리는 보통 무언가를 고를 때, 자연스레 “필요저건에 따라 후보를 줄여 나갑니다. 그리고 충분조건을 만족하는 후보를 탐색합니다.”
+
+예를 들어 점심 메뉴를 고를 때, ‘8,000원 안팍의 메뉴’처럼 예산이 필요조건이 사람이 적지 않을 것입니다.
+
+거기에 ‘30분 안에 먹을 수 있는 메뉴’ 혹은 ‘깔끔한 맛’ 등의 필요조건을 더 해, 그 모든 필요조건을 만족하는 메뉴로 후보를 줄여 나갑니다.
+
+그리고 남은 메뉴(후보)가 오늘 점심으로 괜찮은지(충분한지) 고민합니다.
+
+그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
+
+이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-05-17</span>
+                                <span class="date">· 2024-05-18</span>
                             
                         </div>
                     </div>
@@ -11025,6 +11188,34 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-17-TIL.html" class="txt_post">
+                            
+  연습 문제 풀이(2)
+  예외 처리 - 트러블슈팅
+  문자열 처리 - 트러블슈팅
 
 
                         </a>
@@ -11238,6 +11429,34 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
+                            
+  인터페이스
+  내부 클래스
+  입출력(1)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -11336,34 +11555,6 @@ public class Main {
 그래서 저의 적성과 맞는 것 같아요.
 
 저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
-
 
                         </a>
                         <div class="info-post">
@@ -17663,6 +17854,17 @@ public class Main {
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-09-26-Controller-Getter-Json.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-26"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 유일한 식별자(Primary Key)",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-09-26-Primary-Key.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-26"
         });

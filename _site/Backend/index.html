@@ -718,6 +718,7 @@
             
             
             
+            
 
     
     
@@ -4132,131 +4133,6 @@ public class UserController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
-                            🍃[Spring] .addAttribute() 메서드.
-
-1️⃣ .addAttribute() 메서드.
-
-  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
-  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
-
-
-2️⃣ 주요 기능.
-
-  모델에 데이터 추가
-    
-      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
-        
-          이 데이터는 이후 뷰에서 사용될 수 있습니다.
-        
-      
-    
-  
-  뷰 랜더링에 데이터 전달
-    
-      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
-    
-  
-
-
-3️⃣ 사용 예시.
-@Controller
-public class HomeController {
-    
-    @GetMapping("/home")
-    public String home(Model model) {
-        // 모델에 데이터를 추가
-        model.addAttribute("message", "Welcome to the Home Page!");
-        model.addAttribute("date", LocalDate.now());
-        
-        // "home"이라는 뷰 이름을 반환
-        return "home";
-    }
-}
-
-
-
-  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
-  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
-  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
-
-
-4️⃣ 뷰에서의 사용 예시(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Home Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
-  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
-
-
-5️⃣ .addAttribute()의 다양한 사용 방법.
-
-  1. 키와 값 쌍으로 사용
-    
-      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
-        model.addAttribute("username", "JohnDoe");
-        
-      
-    
-  
-  2. 키 없이 값만 전달
-    
-      키를 생략하고 값만 전달할 수도 있습니다.
-        
-          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
-            User user = new User("John", "Doe");
-model.addAttribute(user);
-// "user"라는 키로 모델에 추가됩니다.
-            
-          
-        
-      
-    
-  
-  3. 체이닝(Chaining)
-    
-      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
-        model.addAttribute("name", "Jane")
-   .addAttribute("age", 30)
-   .addAttribute("city", "New York");
-        
-      
-    
-  
-  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -4608,6 +4484,131 @@ public class GreetingController {
       이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
+                            🍃[Spring] .addAttribute() 메서드.
+
+1️⃣ .addAttribute() 메서드.
+
+  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
+  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
+
+
+2️⃣ 주요 기능.
+
+  모델에 데이터 추가
+    
+      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
+        
+          이 데이터는 이후 뷰에서 사용될 수 있습니다.
+        
+      
+    
+  
+  뷰 랜더링에 데이터 전달
+    
+      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
+    
+  
+
+
+3️⃣ 사용 예시.
+@Controller
+public class HomeController {
+    
+    @GetMapping("/home")
+    public String home(Model model) {
+        // 모델에 데이터를 추가
+        model.addAttribute("message", "Welcome to the Home Page!");
+        model.addAttribute("date", LocalDate.now());
+        
+        // "home"이라는 뷰 이름을 반환
+        return "home";
+    }
+}
+
+
+
+  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
+  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
+  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
+
+
+4️⃣ 뷰에서의 사용 예시(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Home Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
+  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
+
+
+5️⃣ .addAttribute()의 다양한 사용 방법.
+
+  1. 키와 값 쌍으로 사용
+    
+      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
+        model.addAttribute("username", "JohnDoe");
+        
+      
+    
+  
+  2. 키 없이 값만 전달
+    
+      키를 생략하고 값만 전달할 수도 있습니다.
+        
+          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
+            User user = new User("John", "Doe");
+model.addAttribute(user);
+// "user"라는 키로 모델에 추가됩니다.
+            
+          
+        
+      
+    
+  
+  3. 체이닝(Chaining)
+    
+      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
+        model.addAttribute("name", "Jane")
+   .addAttribute("age", 30)
+   .addAttribute("city", "New York");
+        
+      
+    
+  
+  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
 
 
                         </a>
@@ -5933,6 +5934,78 @@ public void useService() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html"><h1 class="title_post">🍃[Spring] MVC와 템플릿 엔진.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="txt_post">
+                            🍃[Spring] MVC와 템플릿 엔진.
+
+  MVC
+    
+      Model
+      View
+      Controller
+    
+  
+  Controller
+
+
+@Controller
+public class HelloController {
+    
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam("name") String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello-template";
+    }
+}
+
+
+
+  View
+
+
+&lt;html xmlns:th="htt[://www.thymeleaf.org"&gt;
+&lt;body&gt;
+&lt;p th:text="'hello ' + ${name}"&gt;hello! empty&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  실행
+    
+      http://localhost:8080/hello-mvc?name=spring
+    
+  
+
+
+
+
+
+  MVC 템플릿 엔진 이미지
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -6025,78 +6098,6 @@ public void useService() {
   아직 데이터 저장소가 선정되지 않아서, 우선 인터페이스로 구현 클래스를 변경할 수 있도록 설계
   데이터 저장소는 RDB, NoSQL 등등 다양한 저장소를 고민중인 상황으로 가정
   개발을 진행하기 위해서 초기 개발 단계에서는 구현체로 가벼운 메모리 기반의 데이터 저장소 사용
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html"><h1 class="title_post">🍃[Spring] MVC와 템플릿 엔진.</h1></a>
-                        <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="txt_post">
-                            🍃[Spring] MVC와 템플릿 엔진.
-
-  MVC
-    
-      Model
-      View
-      Controller
-    
-  
-  Controller
-
-
-@Controller
-public class HelloController {
-    
-    @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam("name") String name, Model model) {
-        model.addAttribute("name", name);
-        return "hello-template";
-    }
-}
-
-
-
-  View
-
-
-&lt;html xmlns:th="htt[://www.thymeleaf.org"&gt;
-&lt;body&gt;
-&lt;p th:text="'hello ' + ${name}"&gt;hello! empty&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  실행
-    
-      http://localhost:8080/hello-mvc?name=spring
-    
-  
-
-
-
-
-
-  MVC 템플릿 엔진 이미지
-
-
 
 
                         </a>
@@ -7614,27 +7615,30 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html"><h1 class="title_post">☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="txt_post">
-                            ☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.
+                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html"><h1 class="title_post">☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="txt_post">
+                            ☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배.
 
 
-  위 그림과 같이 IP 주소를 이용해 네트워크 범위를 정의하는 것을 CIDR(Classless Inter-Domain Routing) 블록 이라고 합니다.
-  IP 주소를 나타내는 숫자열은 크게 네트워크 부분과 호스트 부분으로 나눌 수 있습니다.
+  많은 사용자가 사용하는 시스템을 구축한다면 부하 분산 을 고려해야 합니다.
+  시스템을 사용하는 사용자가 많아질수록 서버의 부담은 커집니다.
+  서버 1대당 한 번에 처리할 수 있는 접속자 수는 정해져 있기 때문에 한 번에 많은 사람이 몰리면 CPU나 메모리의 사용량이 증가해 서버가 느려지고 최악의 경우 서버가 멈출 수도 있습니다.
     
-      네트워크 부분은 문자 그대로 네트워크를 정의합니다.
-      호스트 부분은 그 네트워크 내의 호스트를 정의합니다.
+      이는 서비스 사용자에게 큰 영향을 줍니다.
         
-          즉, 네트워크 안에서 접속할 수 있는 서버 등을 나타내는 부분입니다.
+          이런 상황을 막기 위해 서버를 여러 대 구성해 각 서버가 처리를 나눠서 할 수 있게 구축해야 합니다.
+            
+              이렇게 부하를 분산시키기 위해서 일반적으로 로드 밸런서(Load Balancer) 라는 장치를 사용합니다.
+            
+          
         
       
     
   
-  위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
 
 
                         </a>
@@ -7676,48 +7680,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
     
       이러한 DNS 기능을 이름 해석 이라고 합니다.
 
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html"><h1 class="title_post">☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="txt_post">
-                            ☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배.
-
-
-  많은 사용자가 사용하는 시스템을 구축한다면 부하 분산 을 고려해야 합니다.
-  시스템을 사용하는 사용자가 많아질수록 서버의 부담은 커집니다.
-  서버 1대당 한 번에 처리할 수 있는 접속자 수는 정해져 있기 때문에 한 번에 많은 사람이 몰리면 CPU나 메모리의 사용량이 증가해 서버가 느려지고 최악의 경우 서버가 멈출 수도 있습니다.
-    
-      이는 서비스 사용자에게 큰 영향을 줍니다.
-        
-          이런 상황을 막기 위해 서버를 여러 대 구성해 각 서버가 처리를 나눠서 할 수 있게 구축해야 합니다.
-            
-              이렇게 부하를 분산시키기 위해서 일반적으로 로드 밸런서(Load Balancer) 라는 장치를 사용합니다.
-            
-          
-        
-      
     
   
 
@@ -7796,6 +7758,45 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html"><h1 class="title_post">☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="txt_post">
+                            ☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.
+
+
+  위 그림과 같이 IP 주소를 이용해 네트워크 범위를 정의하는 것을 CIDR(Classless Inter-Domain Routing) 블록 이라고 합니다.
+  IP 주소를 나타내는 숫자열은 크게 네트워크 부분과 호스트 부분으로 나눌 수 있습니다.
+    
+      네트워크 부분은 문자 그대로 네트워크를 정의합니다.
+      호스트 부분은 그 네트워크 내의 호스트를 정의합니다.
+        
+          즉, 네트워크 안에서 접속할 수 있는 서버 등을 나타내는 부분입니다.
+        
+      
+    
+  
+  위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -7824,6 +7825,54 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
+                            ☁️[AWS] 가상화.
+
+  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
+  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
+  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
+    
+      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
+여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
+    
+  
+  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
+
+
+
+
+
+  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
+    
+      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
+    
+  
+  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
+
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
                             
                         </div>
                     </div>
@@ -8104,54 +8153,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html"><h1 class="title_post">☁️[AWS] 가상화</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_Virtualization.html" class="txt_post">
-                            ☁️[AWS] 가상화.
-
-  클라우드 서비스에서도 사용자는 서버를 임대해 사용합니다.
-  사용자가 사용하고 싶은 사양으로 서버를 선택하면 가상화 기술을 이용해 해당 사양의 서버를 가상으로 생성해 사용합니다.
-  가상 서버 는 하나 또는 클러스터링 된 물리 서버 내에 만들어집니다.
-    
-      🙋‍♂️ 클러스터링(Clustering, Computer Cluster)
-여러 대의 컴퓨터가 연결돼 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말합니다.
-    
-  
-  가상 서버는 물리 서버의 CPU나 메모리 같은 컴퓨터 자원을 일부 독점해 물리적으로 독립된 서버와 같이 동작합니다.
-
-
-
-
-
-  서버만 가상화 기술을 사용할 수 있는 것이 아닙니다.
-    
-      스토리지나 네트워크 장비 등도 1대의 기기를 가상화 기술로 여러 기기처럼 취급할 수 있습니다.
-    
-  
-  기본적으로 가상화 기술을 통해 생성된 기기들을 ‘가상 OO’ 라고 합니다.
-
-
 
 
                         </a>
@@ -17889,6 +17890,17 @@ public class Main {
             'url'      : "/CS/2024/2024-09-26-Library-and-Framework.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-26"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] CPU, RAM, DISK",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-27-CPU-RAM-DISK.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-27"
         });
     
 

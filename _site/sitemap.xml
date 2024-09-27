@@ -17,7 +17,7 @@
 <lastmod>1900-01-01T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/</loc>
+<loc>/Archive/CS_archive/</loc>
 <lastmod>1900-01-01T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -537,7 +537,7 @@
 <lastmod>2024-02-28T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-02-29-cs.html</loc>
+<loc>/Archive/CS_archive/2024-02-29-cs.html</loc>
 <lastmod>2024-02-29T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -645,11 +645,11 @@
 <lastmod>2024-03-13T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html</loc>
+<loc>/Archive/CS_archive/2024-03-14-WhyYouNeedToKnowComputerArchitecture.html</loc>
 <lastmod>2024-03-14T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-03-14-patternMatchingAndExpressionMatching.html</loc>
+<loc>/Archive/CS_archive/2024-03-14-patternMatchingAndExpressionMatching.html</loc>
 <lastmod>2024-03-14T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -677,7 +677,7 @@
 <lastmod>2024-03-17T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-03-18-TheBigPictureOfComputerArchitecture.html</loc>
+<loc>/Archive/CS_archive/2024-03-18-TheBigPictureOfComputerArchitecture.html</loc>
 <lastmod>2024-03-18T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -701,11 +701,11 @@
 <lastmod>2024-03-20T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-03-21-HowToRepresentNumbersWithZeroAndOne.html</loc>
+<loc>/Archive/CS_archive/2024-03-21-HowToRepresentNumbersWithZeroAndOne.html</loc>
 <lastmod>2024-03-21T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-03-21-whyIsComputerMemoryExpressedInhex.html</loc>
+<loc>/Archive/CS_archive/2024-03-21-whyIsComputerMemoryExpressedInhex.html</loc>
 <lastmod>2024-03-21T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -733,7 +733,7 @@
 <lastmod>2024-03-24T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-03-25-HowToRepresentCharactersWithZeroAndOne.html</loc>
+<loc>/Archive/CS_archive/2024-03-25-HowToRepresentCharactersWithZeroAndOne.html</loc>
 <lastmod>2024-03-25T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -801,7 +801,7 @@
 <lastmod>2024-03-31T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-01-SourceCodeAndCommands.html</loc>
+<loc>/Archive/CS_archive/2024-04-01-SourceCodeAndCommands.html</loc>
 <lastmod>2024-04-01T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -837,7 +837,7 @@
 <lastmod>2024-04-03T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-04-commandStructure.html</loc>
+<loc>/Archive/CS_archive/2024-04-04-commandStructure.html</loc>
 <lastmod>2024-04-04T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -861,7 +861,7 @@
 <lastmod>2024-04-06T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-08-ALUandControlUnit.html</loc>
+<loc>/Archive/CS_archive/2024-04-08-ALUandControlUnit.html</loc>
 <lastmod>2024-04-08T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -885,7 +885,7 @@
 <lastmod>2024-04-10T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-11-register.html</loc>
+<loc>/Archive/CS_archive/2024-04-11-register.html</loc>
 <lastmod>2024-04-11T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -901,7 +901,7 @@
 <lastmod>2024-04-14T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-15-InstructionCycleAndIntrrupts.html</loc>
+<loc>/Archive/CS_archive/2024-04-15-InstructionCycleAndIntrrupts.html</loc>
 <lastmod>2024-04-15T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -937,11 +937,11 @@
 <lastmod>2024-04-18T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-19-DesignTechniquesForFastCPUs.html</loc>
+<loc>/Archive/CS_archive/2024-04-19-DesignTechniquesForFastCPUs.html</loc>
 <lastmod>2024-04-19T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-19-InstructionParallelProcessingTechnique.html</loc>
+<loc>/Archive/CS_archive/2024-04-19-InstructionParallelProcessingTechnique.html</loc>
 <lastmod>2024-04-19T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -997,7 +997,7 @@
 <lastmod>2024-04-23T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-04-25-CISCandRISC.html</loc>
+<loc>/Archive/CS_archive/2024-04-25-CISCandRISC.html</loc>
 <lastmod>2024-04-25T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1077,7 +1077,7 @@
 <lastmod>2024-05-05T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-05-06-addressSpaceInMemory.html</loc>
+<loc>/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html</loc>
 <lastmod>2024-05-06T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1237,7 +1237,7 @@
 <lastmod>2024-05-21T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-05-21-RAID.html</loc>
+<loc>/Archive/CS_archive/2024-05-21-RAID.html</loc>
 <lastmod>2024-05-21T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1245,7 +1245,7 @@
 <lastmod>2024-05-21T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-05-22-VariousAuxiliaryMemoryDevices.html</loc>
+<loc>/Archive/CS_archive/2024-05-22-VariousAuxiliaryMemoryDevices.html</loc>
 <lastmod>2024-05-22T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1297,7 +1297,7 @@
 <lastmod>2024-05-27T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-05-27-dviceControllerAndDeviceDriver.html</loc>
+<loc>/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html</loc>
 <lastmod>2024-05-27T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1313,7 +1313,7 @@
 <lastmod>2024-05-28T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Archive/CS/2024-05-30-VariousInputOutputMethods.html</loc>
+<loc>/Archive/CS_archive/2024-05-30-VariousInputOutputMethods.html</loc>
 <lastmod>2024-05-29T00:00:00+09:00</lastmod>
 </url>
 <url>

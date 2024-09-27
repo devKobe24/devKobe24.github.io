@@ -720,6 +720,7 @@
             
             
             
+            
 
     
     
@@ -1236,6 +1237,212 @@ source ~/.bash_profile
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
+
+1️⃣ 패키지 목록 업데이트
+
+  먼저, 서버의 패키지 목록을 업데이트 합니다.
+    sudo dnf update -y
+    
+  
+
+
+
+  🎯 참고 dnf search {검색어}
+예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
+
+
+2️⃣ Nginx 설치
+
+  다음 명령어로 Nginx를 설치합니다.
+    sudo dnf install nginx -y
+    
+  
+  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
+
+
+3️⃣ Nginx 서비스 시작 및 활성화
+
+  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
+    sudo systemctl start nginx
+sudo systemctl enable nginx
+    
+  
+
+
+4️⃣ 방화벽 설정(선택 사항)
+
+  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
+    
+      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
+    
+  
+
+
+1️⃣ firewalld 설치.
+
+  먼저 'firewalld' 를 설치해야 합니다.
+    sudo dnf install firewalld -y
+    
+  
+
+
+2️⃣ firewalld 서비스 시작 및 활성화
+
+  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
+    sudo systemctl start firewalld
+sudo systemctl enable firewalld
+    
+  
+
+
+3️⃣ HTTP 및 HTTPS 서비스 허용
+
+  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
+    sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+    
+  
+
+
+4️⃣ 방화벽 재시작
+
+  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
+    sudo firewall-cmd --reload
+    
+  
+
+
+5️⃣ 방화벽 상태 확인(선택 사항)
+
+  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
+    sudo firewall-cmd --list-all
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
+
+1️⃣ nvm 설치.
+
+  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
+    
+      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+        
+      
+    
+  
+  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
+
+
+2️⃣ nvm 환경 설정 적용.
+'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+3️⃣ Node.js 16.x 설치 및 사용.
+
+  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
+    nvm install 16
+nvm use 16
+    
+  
+  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
+
+
+✏️ 요약
+
+  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -1707,212 +1914,6 @@ source ~/.bash_profile
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
-
-1️⃣ 패키지 목록 업데이트
-
-  먼저, 서버의 패키지 목록을 업데이트 합니다.
-    sudo dnf update -y
-    
-  
-
-
-
-  🎯 참고 dnf search {검색어}
-예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
-
-
-2️⃣ Nginx 설치
-
-  다음 명령어로 Nginx를 설치합니다.
-    sudo dnf install nginx -y
-    
-  
-  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
-
-
-3️⃣ Nginx 서비스 시작 및 활성화
-
-  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
-    sudo systemctl start nginx
-sudo systemctl enable nginx
-    
-  
-
-
-4️⃣ 방화벽 설정(선택 사항)
-
-  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
-    
-      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
-    
-  
-
-
-1️⃣ firewalld 설치.
-
-  먼저 'firewalld' 를 설치해야 합니다.
-    sudo dnf install firewalld -y
-    
-  
-
-
-2️⃣ firewalld 서비스 시작 및 활성화
-
-  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
-    sudo systemctl start firewalld
-sudo systemctl enable firewalld
-    
-  
-
-
-3️⃣ HTTP 및 HTTPS 서비스 허용
-
-  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
-    sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-    
-  
-
-
-4️⃣ 방화벽 재시작
-
-  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
-    sudo firewall-cmd --reload
-    
-  
-
-
-5️⃣ 방화벽 상태 확인(선택 사항)
-
-  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
-    sudo firewall-cmd --list-all
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
-
-1️⃣ nvm 설치.
-
-  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
-    
-      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
-        
-      
-    
-  
-  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
-
-
-2️⃣ nvm 환경 설정 적용.
-'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-3️⃣ Node.js 16.x 설치 및 사용.
-
-  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
-    nvm install 16
-nvm use 16
-    
-  
-  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
-
-
-✏️ 요약
-
-  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240819_AWS_ROUTING_INFO.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -2137,49 +2138,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_DNS.html"><h1 class="title_post">☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_DNS.html" class="txt_post">
-                            ☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.
-
-  일반적으로 어떤 웹 사이트에 접속하기 위해서는 'https://OO.com/'과 같은 URL(Uniform Resource Locator)을 사용합니다.
-    
-      이러한 'https://OO.com/'을 도메인(Domain) 이라고 합니다.
-        
-          도메인은 점으로 연결된 문자열로 구성돼 있으며 기업 이름과 단체 이름을 표현하는 경우가 많습니다.
-          도메인은 해당 문자열에 표시되는 기업, 단체 등이 제공하는 사이트의 주소를 정의합니다.
-        
-      
-    
-  
-  도메인 이름에는 IP 주소가 연결돼 있어 사용자는 도메인 이름만으로 사이트에 접속할 수 있습니다.
-  DNS(Domain Name System) 가 우리 대신 도메인 이름에 연결된 IP 주소를 찾아주기 때문입니다.
-    
-      이러한 DNS 기능을 이름 해석 이라고 합니다.
-
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_IP_ADDRESS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -2238,45 +2196,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html"><h1 class="title_post">☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="txt_post">
-                            ☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.
-
-
-  위 그림과 같이 IP 주소를 이용해 네트워크 범위를 정의하는 것을 CIDR(Classless Inter-Domain Routing) 블록 이라고 합니다.
-  IP 주소를 나타내는 숫자열은 크게 네트워크 부분과 호스트 부분으로 나눌 수 있습니다.
-    
-      네트워크 부분은 문자 그대로 네트워크를 정의합니다.
-      호스트 부분은 그 네트워크 내의 호스트를 정의합니다.
-        
-          즉, 네트워크 안에서 접속할 수 있는 서버 등을 나타내는 부분입니다.
-        
-      
-    
-  
-  위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240816_AWS_FIREWALL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -2298,6 +2217,88 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
       AWS에서는 보안 그룹이나 네트워크 ACL 같은 방화벽 기능을 가진 서비스가 있습니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_DNS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_DNS.html"><h1 class="title_post">☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_DNS.html" class="txt_post">
+                            ☁️[AWS] 도메인 이름과 IP 주소를 연결하는 DNS.
+
+  일반적으로 어떤 웹 사이트에 접속하기 위해서는 'https://OO.com/'과 같은 URL(Uniform Resource Locator)을 사용합니다.
+    
+      이러한 'https://OO.com/'을 도메인(Domain) 이라고 합니다.
+        
+          도메인은 점으로 연결된 문자열로 구성돼 있으며 기업 이름과 단체 이름을 표현하는 경우가 많습니다.
+          도메인은 해당 문자열에 표시되는 기업, 단체 등이 제공하는 사이트의 주소를 정의합니다.
+        
+      
+    
+  
+  도메인 이름에는 IP 주소가 연결돼 있어 사용자는 도메인 이름만으로 사이트에 접속할 수 있습니다.
+  DNS(Domain Name System) 가 우리 대신 도메인 이름에 연결된 IP 주소를 찾아주기 때문입니다.
+    
+      이러한 DNS 기능을 이름 해석 이라고 합니다.
+
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html"><h1 class="title_post">☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_CIDR_BLOCK.html" class="txt_post">
+                            ☁️[AWS] CIDR(Classless Inter-Domain Routing) 블록으로 IP 주소 범위 결정.
+
+
+  위 그림과 같이 IP 주소를 이용해 네트워크 범위를 정의하는 것을 CIDR(Classless Inter-Domain Routing) 블록 이라고 합니다.
+  IP 주소를 나타내는 숫자열은 크게 네트워크 부분과 호스트 부분으로 나눌 수 있습니다.
+    
+      네트워크 부분은 문자 그대로 네트워크를 정의합니다.
+      호스트 부분은 그 네트워크 내의 호스트를 정의합니다.
+        
+          즉, 네트워크 안에서 접속할 수 있는 서버 등을 나타내는 부분입니다.
+        
+      
+    
+  
+  위 그림에서 ‘/16’을 서브넷 마스크라고 하며 IP 주소를 사용해 네트워크 범위를 정의하다면 보통 위 표기를 사용합니다.
 
 
                         </a>
@@ -2756,6 +2757,55 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -2788,55 +2838,6 @@ ls /home/ec2-user/
       그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
         
           하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
         
       
     
@@ -9138,6 +9139,17 @@ sudo reboot
             'type'     : "post",
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-09-27-CPU-RAM-DISK.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-27"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지 하드웨어적으로 일어나는 일",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-27"
         });

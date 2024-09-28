@@ -721,6 +721,7 @@
             
             
             
+            
 
     
     
@@ -1141,6 +1142,412 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-28-how-servers-store-data-to-disk.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-28-how-servers-store-data-to-disk.html"><h1 class="title_post">🍃[Spring] 서버에서 데이터를 디스크(Disk)에 저장하는 방법.</h1></a>
+                        <a href="/Backend/Spring/2024-09-28-how-servers-store-data-to-disk.html" class="txt_post">
+                            🍃[Spring] 서버에서 데이터를 디스크(Disk)에 저장하는 방법.
+
+서버에서 데이터를 디스크(Disk) 에 저장하는 과정은 소프트웨어와 하드웨어가 협력하여 이루어집니다.
+일반적으로 Java 백엔드 애플리케이션에서는 파일 시스템에 파일을 저장하거나, 데이터베이스에 데이터를 영구적으로 저장하는 두 가지 주요 방법을 사용하여 디스크에 데이터를 기록할 수 있습니다.
+
+1️⃣ 파일 시스템에 데이터를 저장하는 방법.
+
+  파일 시스템을 통해 디스크에 데이터를 저장하는 방식은 파일을 직접 생성하고, 그 안에 데이터를 기록하는 방식입니다.
+    
+      이를 통해 로그, 이미지 파일, 텍스트 파일 등을 디스크에 저장할 수 있습니다.
+    
+  
+
+
+파일 저장 예시(Java)
+Java에서는 FileOutputStream이나 BuffereWriter 등을 사용하여 파일을 디스크에 저장할 수 있습니다.
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileStorageExample {
+    
+    public static void main(String[] args) {
+        String filePath = "/path/to/file.txt"; // 저장할 파일 경로
+        String data = "This is the content to save in the file";
+        
+        try (BufferWriter writer = BufferedWriter(new FileWriter(filePath))) {
+            writer.write(data); // 파일에 데이터를 기록
+            System.out.println("File saved successfully")
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+실행 과정
+
+1. FileWriter
+
+  Java의 FileWriter는 지정된 경로에 새 파일을 생성하고 데이터를 기록하는 클래스입니다.
+  만약 파일이 이미 존재한다면, 해당 파일에 덮어쓰기 또는 추가할 수 있습니다.
+
+
+2. BufferedWriter
+
+  데이터의 효율적인 기록을 위해 BufferedWriter를 사용하여, 메모리에서 디스크로 데이터가 효과적으로 전달되도록 합니다.
+
+
+3. 디스크에 기록
+
+  이 코드가 실행되면, 파일은 지정된 디렉토리에 생성되고, 디스크에 데이터를 기록합니다.
+
+
+2️⃣ 데이터베이스에 데이터를 저장하는 방법.
+
+
+  데이터베이스는 서버 애플리케이션에서 디스크에 데이터를 저장하는 또 다른 주요 방식입니다.
+  서버에서는 데이터베이스 관리 시스템(DBMS, Database Management System) 을 통해 데이터를 관리하며, DBMS는 데이터를 디스크에 영구적으로 저장합니다.
+  일반적으로 Java 애플리케이션은 JDBC(Java Database Connectivity) 또는 JPA(Java Persistence API) 같은 ORM(Object Relational Mapping) 프레임워크를 사용해 데이터베이스와 상호작용합니다.
+
+
+데이터베이스에 데이터 저장 예시(JPA)
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(staratege = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+    
+    // Getters and Setters
+    // ...
+}
+
+public class DatabaseStorageExample {
+    
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        
+        User user = new User();
+        user.setName("Kobe");
+        user.setEmail("kobe@example.com");
+        
+        em.persist(user); // 데이터베이스에 저장 (디스크로 저장됨)
+        
+        em.getTransaction().commit();
+        
+        em.close;
+        emf.close();
+        
+        System.out.printlsn("Data saved to database");
+    }
+}
+
+
+실행 과정.
+
+1. Entity 정의.
+
+  User 클래스는 데이터베이스의 테이블에 매핑된 엔티티(Entity) 입니다.
+  @Entity 애너테이션을 통해 JPA는 이 객체를 테이블과 연결합니다.
+
+
+
+  🙋‍♂️ 엔티티(Entity)
+
+
+2. EntityManage.
+
+  JPA의 EntityManager는 데이터베이스와 상호작용하는 인터페이스로, 데이터를 삽입, 수정, 삭제할 수 있습니다.
+
+
+3. 데이터 저장.
+
+  em.persist(user) 메서드를 통해 User 객체를 데이터베이스에 저장하고, 이 데이터는 결국 디스크에 기록됩니다.
+
+
+4. 트랜잭션 관리.
+
+  데이터베이스에 데이터를 저장할 때는 트랜잭션이 필요합니다.
+  트랜잭션이 완료되면(commit()), 데이터는 영구적으로 디스크에 저장됩니다.
+
+
+
+  🙋‍♂️ 트랜잭션(Transaction)
+
+
+3️⃣ 디스크에 저장되는 방식.
+
+  서버에서는 데이터를 저장하는 것은 여러 하드웨어와 소프트웨어 구성 요소가 협력하여 이루어집니다.
+    
+      아래는 디스크 데이터를 저장하는 기본적인 과정을 설명합니다.
+    
+  
+
+
+3.1 애플리케이션에서 데이터 생성.
+
+  애플리케이션이 파일 시스템 또는 데이터베이스를 통해 데이터를 저장하려고 하면, 해당 데이터를 메모리(RAM)에 생성합니다.
+
+
+3.2 데이터 저장 요청.
+
+  애플리케이션은 운영 체제(OS)를 통해 디스크로 데이터를 저장하라는 요청을 보냅니다.
+    
+      이 요청은 시스템 콜(System Call)을 통해 파일 시스템이나 데이터베이스 시스템에 전달됩니다.
+    
+  
+
+
+3.3 디스크에 기록 (I/O 작업).
+
+  운영 체제는 디스크 컨트롤러에게 데이터 쓰기 작업을 요청합니다.
+  디스크(HDD/SSD) 컨트롤러는 디스크의 특정 블록 또는 섹터에 데이터를 기록합니다.
+    
+      이 과정에서 버스를 통해 데이터가 CPU, RAM, 디스크 간에 전송됩니다.
+    
+  
+  SSD의 경우, 플래시 메모리 셀에 데이터를 기록하고, HDD의 경우 자기 디스크 플래터에 자성 변화로 데이터를 기록합니다.
+
+
+3.4 데이터 캐시 처리.
+
+  디스크 쓰기 작업은 느리기 때문에, 운영 체제는 캐시를 사용하여 데이터를 먼저 메모리에 기록한 후, 일정 주기로 디스크에 쓰는 작업을 처리합니다.
+    
+      이를 버퍼링이라고 합니다.
+    
+  
+
+
+3.5 디스크 완료 및 확인.
+
+  데이터가 디스크에 성공적으로 기록되면, 디스크 컨트롤러는 운영 체제에 성공적으로 데이터를 저장했다는 신호를 보냅니다.
+    
+      이 신호가 애플리케이션까지 전달되면, 데이터 저장이 완료되었음을 확인할 수 있습니다.
+    
+  
+
+
+4️⃣ 하드웨어적으로 일어나는 일.
+
+  서버에서 데이터를 디스크에 저장하는 하드웨어적인 과정은 다음과 같습니다.
+
+
+1. CPU와 메모리 상호작용.
+
+  애플리케이션이 데이터를 생성하면, CPU는 데이터를 메모리(RAM)에 저장합니다.
+  메모리에서 디스크로 데이터를 전송하기 위해 운영 체제는 시스템 콜을 통해 I/O 작업을 요청합니다.
+
+
+2. I/O 버스 통신.
+
+  CPU는 I/O 버스를 통해 디스크 컨트롤러에 데이터를 전송합니다.
+    
+      이때, 디스크가 데이터 쓰기 요청을 받게 됩니다.
+    
+  
+
+
+3. 디스크에 데이터 기록.
+
+  HDD의 경우, 플래터 위의 특정 색터에 읽기/쓰기 헤드를 사용해 자성을 변화시켜 데이터를 기록합니다.
+  SSD의 경우, 전기적 회로를 이용해 플래시 셀에 데이터를 저장합니다.
+    
+      이 과정은 매우 빠르게 이루어집니다.
+    
+  
+
+
+4. 디스크 캐시.
+
+  디스크에 쓰기 작업을 요청할 때, 디스크 내부에도 캐시 메모리가 존재해 요청된 데이터를 잠시 보관하고, 실제로 디스크에 기록합니다.
+  SSD는 이 캐시가 HDD보다 훨씬 빠릅니다.
+
+
+5. 데이터 검증.
+
+  데이터가 디스크에 기록되면 디스크 컨트롤러는 저장이 완료되었음을 CPU에 알립니다.
+    
+      CPU는 이 정보를 운영 체제에 전달하고, 애플리케이션은 성공적으로 데이터가 저장되었음을 알게 됩니다.
+    
+  
+
+
+5️⃣ 디스크에 저장할 때 고려사항.
+
+1. 동시성.
+
+  여러 요청이 동시에 발생할 때 파일 잠금(Locking) 이나 트랜잭션 처리를 통해 데이터의 일관성과 무결설을 보장해야 합니다.
+
+
+2. 안정성.
+
+  디스크에 저장된 데이터가 손실되지 않도록 데이터 무결성을 보장해야 하며, 장애나 전원 문제에 대비해 백업 및 복구 매커니즘을 준비해야 합니다.
+
+
+3. 속도.
+
+  HDD는 기계적 특성 때문에 쓰기 속도가 느리지만, SSD는 전기적 메모리 셀을 사용하여 훨씬 빠른 쓰기 속도를 제공합니다.
+  성능이 중요한 시스템에서는 SSD를 사용하는 것이 일반적입니다.
+
+
+6️⃣ 데이터베이스를 활용한 서버의 데이터를 디스크에 저장하는 방식.
+
+  서버에서 데이터베이스를 사용해 데이터를 디스크에 저장하는 과정은 여러 소프트웨어 및 하드웨어 구성 요소가 협력하여 이루어집니다.
+  데이터베이스는 데이터를 효율적으로 관리하고, 안정적으로 디스크에 저장할 수 있는 시스템을 제공합니다.
+  아래는 데이터베이스를 사용해 데이터를 디스크에 저장하는 기본적인 과정을 설명합니다.
+
+
+6.1 애플리케이션에서 데이터 생성.
+
+  애플리케이션이 데이터를 데이터베이스에 저장하려고 하면, 해당 데이터를 메모리(RAM)에 생성하고 데이터베이스 쿼리(SQL 명령)를 생성합니다.
+    
+      이 쿼리는 데이터를 삽입, 수정, 삭제하는 명령일 수 있습니다.
+    
+  
+
+
+6.2 데이터베이스 저장 요청.
+
+  애플리케이션은 데이터베이스 드라이버(JDBC 등)를 통해 데이터베이스 서버에 SQL 쿼리를 전달합니다.
+    
+      이 요청은 운영 체제를 거쳐 데이터베이스 시스템에 전달됩니다.
+    
+  
+
+
+6.3 데이터베이스 엔진 처리.
+
+  데이터베이스 엔진(DBMS)은 전달된 쿼리를 해석하고, 데이터를 어떻게 디스크에 저장할지 계획을 세웁니다.
+  DBMS는 먼저 트랜잭션 관리(ACID)를 통해 데이터를 안전하게 저장할 수 있도록 처리합니다.
+  InnoDB와 같은 스토리지 엔진은 데이터를 영구적으로 디스크에 기록하기 전에 메모리 버퍼에 데이터를 저장해 작업을 준비합니다.
+
+
+6.4 트랜잭션과 데이터 캐시 처리.
+
+  데이터베이스는 데이터가 올바르게 저장되기 전까지 데이터를 메모리 버퍼에 보관하고 트랜잭션을 관리합니다.
+    
+      트랜잭션이 커밋되면 데이터는 디스크로 기록됩니다.
+    
+  
+  만약 트랜잭션이 실패하거나 취소될 경루, 데이터는 롤백(rollback) 되어 변경 사항이 반영되지 않도록 합니다.
+
+
+6.5 데이터 저장 및 완료 확인.
+
+  트랜잭션이 성공적으로 완료되면, 데이터베이스는 디스크에 데이터를 기록합니다.
+  디스크에 데이터가 성공적으로 기록되면, 데이터베이스는 애플리케이션에 성공적으로 저장되었음을 알립니다.
+    
+      이는 SQL 쿼리에 대한 성공 응답으로 확인됩니다.
+    
+  
+
+
+7️⃣ 데이터베이스를 활용한 데이터 저장 시 하드웨어적으로 일어나는 일.
+
+  서버에서 데이터베이스를 사용해 데이터를 디스크에 저장하는 과정은 하드웨어적인 측면에서 CPU, 메모리, 디스크, 네트워크 카드가 모두 상호작용하며 이루어집니다.
+  아래는 데이터베이스 저장 시 하드웨어적으로 일어나는 과정입니다.
+
+
+1. CPU와 메모리 상호작용.
+
+  애플리케이션이 데이터베이스에 쿼리를 전달하면, CPU는 이를 처리하고 SQL 명령을 데이터베이스 서버로 전달합니다.
+  데이터베이스 서버에서 CPU는 쿼리를 해석하고, 메모리(RAM)에서 데이터를 읽어 트랜잭션 버퍼와 메모리 캐시로 관리합니다.
+
+
+2. I/O 버스 통신.
+
+  데이터베이스 서버에서 데이터를 디스크로 기록하기 위해 CPU는 I/O 버스를 통해 디스크 컨트롤러로 데이터를 전송합니다.
+    
+      이때 메모리 버퍼에 저장된 데이터가 디스크에 기록될 준비를 마칩니다.
+    
+  
+
+
+3. 디스크에 데이터 기록.
+
+  HDD의 경우, 데이터베이스 서버의 스토리지 엔진은 플래터에 데이터를 기록하기 위해 디스크 컨트롤러가 쓰기 작업을 지시합니다.
+  SSD의 경우, 플래시 메모리 셀에 데이터를 기록하며, 이 과정은 매우 빠르게 이루어집니다.
+
+
+4. 데이터베이스 캐시.
+
+  데이터베이스는 캐시 메모리를 활용하여 자주 접근하는 데이터를 빠르게 처리할 수 있도록 합니다.
+  디스크에 기록된 데이터는 캐시에 보관되어 빠른 읽기 작업을 지원하며, 쓰기 작업은 일괄적으로 처리될 수 있습니다.
+
+
+5. 데이터 검증.
+
+  데이터가 디스크에 기록된 후, 데이터베이스는 트랜잭션이 성공적으로 완료되었음을 CPU에 알립니다.
+    
+      CPU는 이를 운영 체제에 전달하고, 애플리케이션은 성공적으로 데이터가 저장되었음을 응답받습니다.
+    
+  
+
+
+8️⃣ 데이터베이스에 데이터를 저장할 때 고려사항.
+
+1. 동시성 제어.
+
+  여러 사용자가 동시에 데이터베이스에 접근할 때 데이터베이스는 락킹(Locking) 또는 트랜잭션(Transaction) 격리 수준을 통해 데이터의 일관성을 보장합니다.
+  동시성 제어는 데이터가 손상되거나 충돌하지 않도록 하는 중요한 메커니즘입니다.
+
+
+2. 트랜잭션 관리.
+
+  데이터베이스는 ACID(원자성, 일관성, 고립성, 지속성) 속성을 통해 데이터가 안전하게 처리되도록 보장합니다.
+  트랜잭션은 데이터의 무결성을 보장하기 위해 일련의 작업이 모두 성공하거나, 실패하면 모두 롤백되도록 처리됩니다.
+
+
+3. 성능 최적화.
+
+  데이터베이스의 성능은 인덱스, 쿼리 최적화, 캐시 활용 등을 통해 최적화됩니다.
+    
+      또한, 디스크 성능(예: SSD)이 중요한 역할을 하며, 읽기/쓰기 작업이 많은 시스템에서는 SSD를 사용하는 것이 성능상 유리합니다.
+    
+  
+
+
+4. 백업 및 복구.
+
+  데이터베이스에 저장된 데이터는 중요한 자산이므로, 정기적인 백업이 필요합니다.
+  장애가 발생할 경우 데이터베이스는 백업을 통해 데이터를 복구할 수 있어야 하며, 이를 위해 로그 파일 및 스냅샷 등의 기능이 지원됩니다.
+
+
+5. 보안 및 접근 제어.
+
+  데이터베이스는 권한 관리와 접근 제어를 통해 데이터를 보호합니다.
+  민감한 데이터는 암호화되어 저장될 수 있으며, 허가되지 않은 사용자는 데이터에 접근할 수 없도록 보안이 강화됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -18116,6 +18523,17 @@ public class Main {
             'url'      : "/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-09-27"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 서버에서 데이터를 디스크(Disk)에 저장하는 방법.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-09-28-how-servers-store-data-to-disk.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-28"
         });
     
 

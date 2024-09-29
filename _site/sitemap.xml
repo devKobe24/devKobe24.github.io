@@ -81,10 +81,6 @@
 <lastmod>1900-01-01T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Backend/DB/</loc>
-<lastmod>1900-01-01T00:00:00+09:00</lastmod>
-</url>
-<url>
 <loc>/Backend/ENG/</loc>
 <lastmod>1900-01-01T00:00:00+09:00</lastmod>
 </url>
@@ -114,6 +110,10 @@
 </url>
 <url>
 <loc>/CS/</loc>
+<lastmod>1900-01-01T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/DB/</loc>
 <lastmod>1900-01-01T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1493,7 +1493,7 @@
 <lastmod>2024-07-14T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Backend/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html</loc>
+<loc>/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html</loc>
 <lastmod>2024-07-15T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1513,7 +1513,7 @@
 <lastmod>2024-07-26T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Backend/DB/2024-07-26-korean-mysql.html</loc>
+<loc>/DB/2024-07-26-korean-mysql.html</loc>
 <lastmod>2024-07-26T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1533,7 +1533,7 @@
 <lastmod>2024-07-31T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Backend/DB/2024-08-01-Transaction.html</loc>
+<loc>/DB/2024-08-01-Transaction.html</loc>
 <lastmod>2024-08-01T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -2041,11 +2041,11 @@
 <lastmod>2024-09-18T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/Backend/DB/2024-09-19-db-modeling.html</loc>
+<loc>/CS/2024/2024-09-19-Revealing-module-pattern.html</loc>
 <lastmod>2024-09-19T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/CS/2024/2024-09-19-Revealing-module-pattern.html</loc>
+<loc>/DB/2024-09-19-db-modeling.html</loc>
 <lastmod>2024-09-19T00:00:00+09:00</lastmod>
 </url>
 <url>

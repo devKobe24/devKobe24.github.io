@@ -907,14 +907,6 @@
                         </a>
 </div>
 </li>
-<li id="nav-second" aria-label="DB">
-                    <div class="nav-item">
-                        <a href="/Backend/DB/" class="nav-list-link nav-sh">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
-                            <span>DB</span>
-                        </a>
-</div>
-</li>
 <li id="nav-second" aria-label="ENG">
                     <div class="nav-item">
                         <a href="/Backend/ENG/" class="nav-list-link nav-sh">
@@ -974,6 +966,14 @@
                         </a>
 </div>
 </li></ul>
+</li>
+<li id="nav-first" aria-label="DB">
+            <div class="nav-item">
+                <a href="/DB/" class="nav-list-link nav-lh">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M181.3 32.4c17.4 2.9 29.2 19.4 26.3 36.8L197.8 128h95.1l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3s29.2 19.4 26.3 36.8L357.8 128H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H347.1L325.8 320H384c17.7 0 32 14.3 32 32s-14.3 32-32 32H315.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8l9.8-58.7H155.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8L90.2 384H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l21.3-128H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3zM187.1 192L165.8 320h95.1l21.3-128H187.1z"></path></svg>
+                    <span>DB</span>
+                </a>
+</div>
 </li>
 <li id="nav-first" aria-label="Java">
             <div class="nav-item">
@@ -10831,120 +10831,12 @@ sumWrapper = 499999999500000000
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/DB/2024-09-19-db-modeling.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/CS/2024/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
-                        <a href="/CS/2024/2024-09-19-Revealing-module-pattern.html" class="txt_post">
-                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
-
-1️⃣ 노출 모듈 패턴(revealing module pattern).
-
-  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
-    
-      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
-    
-  
-
-
-2️⃣ 핵심 개념.
-
-  정보 은닉.
-    
-      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
-    
-  
-  외부 노출 제어.
-    
-      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
-    
-  
-
-
-3️⃣ 자바에서의 구현 예시.
-public RevealingModule {
-    
-    // private 필드
-    private String hiddenData = "This is hidden";
-    
-    // 외부에서 접근할 수 없는 메서드
-    private void hiddenMethod() {
-        System.out.println("This method is hidden");
-    }
-    
-    // 외부에 노출할 메서드
-    public void showData() {
-        System.out.println("Exposed Data: " + hiddenData);
-    }
-    
-    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
-    public void callHiddenMethod() {
-        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
-    }
-}
-
-
-설명.
-
-  
-    
-      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
-        
-          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
-        
-      
-    
-  
-  
-    
-      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
-    
-  
-
-
-장점.
-
-  캡슐화 강화.
-    
-      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
-    
-  
-  코드 유지보수성.
-    
-      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
-    
-  
-
-
-
-
-
-  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/DB/2024-09-19-db-modeling.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/DB/2024-09-19-db-modeling.html"><h1 class="title_post">💾[Database] 데이터베이스 모델링.</h1></a>
-                        <a href="/Backend/DB/2024-09-19-db-modeling.html" class="txt_post">
+                        <a href="/DB/2024-09-19-db-modeling.html"><h1 class="title_post">💾[Database] 데이터베이스 모델링.</h1></a>
+                        <a href="/DB/2024-09-19-db-modeling.html" class="txt_post">
                             💾[Database] 데이터베이스 모델링.
 
 1️⃣ 정보 시스템 구축의 개요.
@@ -11102,7 +10994,115 @@ public RevealingModule {
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/DB" class="category">DB</a>
+                            
+                                <span class="date">· 2024-09-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-09-19-Revealing-module-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-19-Revealing-module-pattern.html"><h1 class="title_post">💾 [CS] 노출 모듈 패턴(revealing module pattern)</h1></a>
+                        <a href="/CS/2024/2024-09-19-Revealing-module-pattern.html" class="txt_post">
+                            💾 [CS] 노출 모듈 패턴(revealing module pattern).
+
+1️⃣ 노출 모듈 패턴(revealing module pattern).
+
+  자바에서 노출 모듈 패턴(revealing module patter)은 객체지향 프로그래밍의 모듈화 개념을 사용하여 내부 구현 세부사항을 숨기고, 외부에 필요한 부분만 노출하는 디자인 패턴입니다.
+    
+      이 패턴은 주로 자바스크립트에서 많이 사용되지만, 자바에서도 유사한 방식으로 구현할 수 있습니다.
+    
+  
+
+
+2️⃣ 핵심 개념.
+
+  정보 은닉.
+    
+      내부 데이터나 메서드를 외부에 노출하지 않고, 꼭 필요한 부분만 노출하여 객체의 캡슐화를 유지합니다.
+    
+  
+  외부 노출 제어.
+    
+      외부에서 접근할 수 있는 메서드와 내부적으로만 사용되는 메서드를 구분하여, 내부 구현의 변경이 외부 코드에 영향을 미치지 않도록 합니다.
+    
+  
+
+
+3️⃣ 자바에서의 구현 예시.
+public RevealingModule {
+    
+    // private 필드
+    private String hiddenData = "This is hidden";
+    
+    // 외부에서 접근할 수 없는 메서드
+    private void hiddenMethod() {
+        System.out.println("This method is hidden");
+    }
+    
+    // 외부에 노출할 메서드
+    public void showData() {
+        System.out.println("Exposed Data: " + hiddenData);
+    }
+    
+    // 외부에서 사용할 수 있도록 숨겨진 메서드를 호출하는 메서드
+    public void callHiddenMethod() {
+        hiddenMethod(); // 외부에서 접근 불가능한 메서드를 내부적으로 호출
+    }
+}
+
+
+설명.
+
+  
+    
+      hiddenData 와 hiddenMethod 는 외부에 노출되지 않는 필드와 메서드입니다.
+        
+          이는 클래스 내부에서만 사용되며 외부 객체는 접근할 수 없습니다.
+        
+      
+    
+  
+  
+    
+      showData 와 callHiddenMethod 는 외부에 노출되는 메서드로, 이 메서드를 통해 외부에서 내부의 일부 데이터나 메서드에 접근할 수 있습니다.
+    
+  
+
+
+장점.
+
+  캡슐화 강화.
+    
+      외부에서 불필요한 내부 구조에 접근할 수 없도록 하여 보안성은 높입니다.
+    
+  
+  코드 유지보수성.
+    
+      내부 구현을 변경하더라도 외부 인터페이스가 일정하면, 외부 코드에 영향을 미치지 않고 유연하게 수정 가능합니다.
+    
+  
+
+
+
+
+
+  이 패턴을 통해 자바에서도 모듈간의 명확한 경계를 설정하고, 유지보수성을 높이는 코드를 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-19</span>
                             
@@ -28654,12 +28654,12 @@ Systeom.out.println(user.name + " is" + user.age + " year old.");
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/DB/2024-08-01-Transaction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                            <a href="/DB/2024-08-01-Transaction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/DB/2024-08-01-Transaction.html"><h1 class="title_post">💾[Database] 트랜잭션의 의미와 역할.</h1></a>
-                        <a href="/Backend/DB/2024-08-01-Transaction.html" class="txt_post">
+                        <a href="/DB/2024-08-01-Transaction.html"><h1 class="title_post">💾[Database] 트랜잭션의 의미와 역할.</h1></a>
+                        <a href="/DB/2024-08-01-Transaction.html" class="txt_post">
                             💾[Database] 트랜잭션의 의미와 역할.
 
   트랜잭션은 데이터베이스 관리 시스템(DBMS)에서 데이터의 일관성과 정확성을 유지하기 위해 사용되는 기본 단위입니다.
@@ -28725,7 +28725,7 @@ Systeom.out.println(user.name + " is" + user.age + " year old.");
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/DB" class="category">DB</a>
                             
                                 <span class="date">· 2024-08-01</span>
                             
@@ -29027,12 +29027,12 @@ public class MyEntityListner {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/DB/2024-07-26-korean-mysql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                            <a href="/DB/2024-07-26-korean-mysql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/DB/2024-07-26-korean-mysql.html"><h1 class="title_post">💾[Database] MySQL DB에 한글 삽입.</h1></a>
-                        <a href="/Backend/DB/2024-07-26-korean-mysql.html" class="txt_post">
+                        <a href="/DB/2024-07-26-korean-mysql.html"><h1 class="title_post">💾[Database] MySQL DB에 한글 삽입.</h1></a>
+                        <a href="/DB/2024-07-26-korean-mysql.html" class="txt_post">
                             💾[Database] MySQL DB에 한글 삽입.
 
 
@@ -29112,7 +29112,7 @@ sudo systemctl restart mysqld
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/DB" class="category">DB</a>
                             
                                 <span class="date">· 2024-07-26</span>
                             
@@ -29791,12 +29791,12 @@ public class VariableExchangeExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                            <a href="/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html"><h1 class="title_post">💾[Database] 데이터베이스의 정의와 특징.</h1></a>
-                        <a href="/Backend/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html" class="txt_post">
+                        <a href="/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html"><h1 class="title_post">💾[Database] 데이터베이스의 정의와 특징.</h1></a>
+                        <a href="/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html" class="txt_post">
                             💾[Database] 데이터베이스의 정의와 특징.
 
 1️⃣ 데이터베이스 : 여러 사용자나 응용 프로그램이 공유하고 동시에 접근 가능한 ‘데이터의 집합’ 이라고 정의할 수 있습니다.
@@ -29913,7 +29913,7 @@ DBMS에는 MySQL 외에도 많은 종류의 프로그램이 있습니다.
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/DB" class="category">DB</a>
                             
                                 <span class="date">· 2024-07-15</span>
                             
@@ -74753,17 +74753,6 @@ greeting = "Hello, Min Seong"
 
         posts.push({
             'title'    : "Index",
-            'path'     : "Backend > DB",
-            'type'     : "category",
-            'tags'     : "",
-            'url'      : "/Backend/DB/index.html",
-            'image'    : "/assets/img/thumbnail/empty.jpg",
-            'date'     : "1900-01-01"
-        });
-    
-
-        posts.push({
-            'title'    : "Index",
             'path'     : "Backend > ENG",
             'type'     : "category",
             'tags'     : "",
@@ -74845,6 +74834,17 @@ greeting = "Hello, Min Seong"
             'type'     : "category",
             'tags'     : "",
             'url'      : "/CS/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "DB",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/DB/index.html",
             'image'    : "/assets/img/thumbnail/empty.jpg",
             'date'     : "1900-01-01"
         });
@@ -78636,10 +78636,10 @@ greeting = "Hello, Min Seong"
 
         posts.push({
             'title'    : "💾[Database] 데이터베이스의 정의와 특징.",
-            'path'     : "Backend > DB",
+            'path'     : "DB",
             'type'     : "post",
             'tags'     : "Database",
-            'url'      : "/Backend/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html",
+            'url'      : "/DB/2024-07-15-definitionAndCharacteristicsOfDatabase.html",
             'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-07-15"
         });
@@ -78691,10 +78691,10 @@ greeting = "Hello, Min Seong"
 
         posts.push({
             'title'    : "💾[Database] MySQL DB에 한글 삽입.",
-            'path'     : "Backend > DB",
+            'path'     : "DB",
             'type'     : "post",
             'tags'     : "Database, MySQL",
-            'url'      : "/Backend/DB/2024-07-26-korean-mysql.html",
+            'url'      : "/DB/2024-07-26-korean-mysql.html",
             'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-07-26"
         });
@@ -78746,10 +78746,10 @@ greeting = "Hello, Min Seong"
 
         posts.push({
             'title'    : "💾[Database] 트랜잭션의 의미와 역할.",
-            'path'     : "Backend > DB",
+            'path'     : "DB",
             'type'     : "post",
             'tags'     : "Database",
-            'url'      : "/Backend/DB/2024-08-01-Transaction.html",
+            'url'      : "/DB/2024-08-01-Transaction.html",
             'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-08-01"
         });
@@ -80142,23 +80142,23 @@ greeting = "Hello, Min Seong"
     
 
         posts.push({
-            'title'    : "💾[Database] 데이터베이스 모델링.",
-            'path'     : "Backend > DB",
-            'type'     : "post",
-            'tags'     : "Database",
-            'url'      : "/Backend/DB/2024-09-19-db-modeling.html",
-            'image'    : "/assets/img/thumbnail/database.jpeg",
-            'date'     : "2024-09-19"
-        });
-    
-
-        posts.push({
             'title'    : "💾 [CS] 노출 모듈 패턴(revealing module pattern)",
             'path'     : "CS > 2024",
             'type'     : "post",
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-09-19-Revealing-module-pattern.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-09-19"
+        });
+    
+
+        posts.push({
+            'title'    : "💾[Database] 데이터베이스 모델링.",
+            'path'     : "DB",
+            'type'     : "post",
+            'tags'     : "Database",
+            'url'      : "/DB/2024-09-19-db-modeling.html",
+            'image'    : "/assets/img/thumbnail/database.jpeg",
             'date'     : "2024-09-19"
         });
     

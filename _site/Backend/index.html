@@ -728,6 +728,7 @@
             
             
             
+            
 
     
     
@@ -5672,91 +5673,6 @@ public MemberService(MemberRepository memberRepository) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)
-
-  Controller를 통해 외부의 요청을 받고, Service에서 비즈니스 로직을 처리하며, Repository에서 데이터를 저장하고 관리하는 패턴은 “계층형 아키텍처(Layered Architecture)” 또는 “3계층 아키텍처(Three-Tier Architecture)” 라고 부릅니다.
-
-
-1️⃣ 계층형 아키텍처(Layered Architecture)
-
-  이 아키텍처 패턴은 애플리케이션을 여러 계층으로 나누어 각 계층이 특정한 역할을 담당하도록 구조와합니다.
-  이 방식은 소프트웨어의 복잡성을 줄이고, 코드의 유지보수성을 높이며, 테스트하기 쉽게 만들어줍니다.
-  스프링 프레임워크에서 이 패턴은 자주 사용됩니다.
-
-
-2️⃣ 각 계층별 역할.
-
-  1. Presentation Layer(프레젠테이션 계층) - Controller
-    
-      사용자 인터페이스와 상호작용하는 계층입니다.
-      외부의 요청을 받아서 처리하고, 응답을 반환합니다.
-      스프링에서는 주로 @Controller 또는 @RestController 를 사용하여 이 계층을 구현합니다.
-    
-  
-  2. Business Logic Layer(비즈니스 로직 계층) - Service
-    
-      비즈니스 로직을 처리하는 계층입니다.
-      데이터의 처리, 계산, 검증 등 핵심적인 애플리케이션 로직이 구현됩니다.
-      스프링에서는 주로 @Service 애노테이션을 사용하여 이 계층을 구현합니다.
-    
-  
-  3. Data Access Layer(데이터 접근 계층) - Repository
-    
-      데이터베이스나 외부 데이터 소스와 상호작용하는 계층입니다.
-      데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리합니다.
-      스프링에서는 주로 @Repository 애노테이션을 사용하여 이 계층을 구현하며 JPA, MyBatis, Hibernate 등의 ORM(Object-Relational Mapping) 도구와 함께 사용됩니다.
-    
-  
-
-
-3️⃣ 이 패턴의 주요 장점.
-
-  모듈화
-    
-      각 계층이 독립적으로 관리되므로, 각 계층의 코드가 명확히 분리됩니다.
-    
-  
-  유지보수성
-    
-      비즈니스 로직, 데이터 접근, 그리고 프레젠테이션 로직이 분리되어 있어, 각 부분을 독립적으로 수정하거나 확장하기 쉽습니다.
-    
-  
-  테스트 용이성
-    
-      각 계층을 독립적으로 테스트할 수 있어, 단위 테스트와 통합 테스트가 용이합니다.
-    
-  
-  유연성
-    
-      특정 계층을 변경하거나 대체할 때, 다른 계층에 미치는 영향을 최소화할 수 있습니다.
-    
-  
-
-
-이 계층형 아키텍처는 스프링 프레임워크를 사용하는 대부분의 애플리케이션에서 채택하는 일반적인 구조이며, 소프트웨어 설계의 베스트 프랙티스 중 하나로 널리 인정받고 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -6098,6 +6014,176 @@ public class MemberService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)
+
+  Controller를 통해 외부의 요청을 받고, Service에서 비즈니스 로직을 처리하며, Repository에서 데이터를 저장하고 관리하는 패턴은 “계층형 아키텍처(Layered Architecture)” 또는 “3계층 아키텍처(Three-Tier Architecture)” 라고 부릅니다.
+
+
+1️⃣ 계층형 아키텍처(Layered Architecture)
+
+  이 아키텍처 패턴은 애플리케이션을 여러 계층으로 나누어 각 계층이 특정한 역할을 담당하도록 구조와합니다.
+  이 방식은 소프트웨어의 복잡성을 줄이고, 코드의 유지보수성을 높이며, 테스트하기 쉽게 만들어줍니다.
+  스프링 프레임워크에서 이 패턴은 자주 사용됩니다.
+
+
+2️⃣ 각 계층별 역할.
+
+  1. Presentation Layer(프레젠테이션 계층) - Controller
+    
+      사용자 인터페이스와 상호작용하는 계층입니다.
+      외부의 요청을 받아서 처리하고, 응답을 반환합니다.
+      스프링에서는 주로 @Controller 또는 @RestController 를 사용하여 이 계층을 구현합니다.
+    
+  
+  2. Business Logic Layer(비즈니스 로직 계층) - Service
+    
+      비즈니스 로직을 처리하는 계층입니다.
+      데이터의 처리, 계산, 검증 등 핵심적인 애플리케이션 로직이 구현됩니다.
+      스프링에서는 주로 @Service 애노테이션을 사용하여 이 계층을 구현합니다.
+    
+  
+  3. Data Access Layer(데이터 접근 계층) - Repository
+    
+      데이터베이스나 외부 데이터 소스와 상호작용하는 계층입니다.
+      데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리합니다.
+      스프링에서는 주로 @Repository 애노테이션을 사용하여 이 계층을 구현하며 JPA, MyBatis, Hibernate 등의 ORM(Object-Relational Mapping) 도구와 함께 사용됩니다.
+    
+  
+
+
+3️⃣ 이 패턴의 주요 장점.
+
+  모듈화
+    
+      각 계층이 독립적으로 관리되므로, 각 계층의 코드가 명확히 분리됩니다.
+    
+  
+  유지보수성
+    
+      비즈니스 로직, 데이터 접근, 그리고 프레젠테이션 로직이 분리되어 있어, 각 부분을 독립적으로 수정하거나 확장하기 쉽습니다.
+    
+  
+  테스트 용이성
+    
+      각 계층을 독립적으로 테스트할 수 있어, 단위 테스트와 통합 테스트가 용이합니다.
+    
+  
+  유연성
+    
+      특정 계층을 변경하거나 대체할 때, 다른 계층에 미치는 영향을 최소화할 수 있습니다.
+    
+  
+
+
+이 계층형 아키텍처는 스프링 프레임워크를 사용하는 대부분의 애플리케이션에서 채택하는 일반적인 구조이며, 소프트웨어 설계의 베스트 프랙티스 중 하나로 널리 인정받고 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html"><h1 class="title_post">🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.</h1></a>
+                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="txt_post">
+                            🍃[Spring] @Controller 애너테이션 사용시 일어나는 일.
+
+1️⃣ 스프링 프레임워크에서 @Controller 애노테이션 사용시 어떤 일이 일어날까요?
+
+  스프링 프레임워크에서 @Controller 애노테이션을 사용하면, 해당 클래스가 스프링 MVC의 웹 컨트롤러로 동작하도록 설정됩니다.
+  @Controller 는 기본적으로 웹 요청을 처리하고, 적절한 응답을 생성하는 역할을 담당하는 클래스를 정의할 때 사용됩니다.
+
+
+@Controller 애노테이션을 사용하면 다음과 같은 일들이 벌어집니다.
+
+  1. 스프링 빈으로 등록.
+    
+      @Controller 애노테이션이 적용된 클래스는 스프링의 컴포넌트 스캔 메커니즘에 의해 자동으로 스프링 컨텍스트에 빈으로 등록됩니다.
+        
+          이는 @Component 와 유사하게 동작하며, 스프링이 이 클래스를 관리하도록 만듭니다.
+        
+      
+    
+  
+  2. 요청 처리 메서드 매핑.
+    
+      @Controller 가 달린 클래스 내의 메서드들은 @RequestMapping, @GetMapping, @PostMapping 등과 같은 요청 매핑 애노테이션을 통해 특정 HTTP 요청을 처리하는 메서드로 매핑될 수 있습니다.
+        
+          이러한 매핑을 통해 특정 URL로 들어오는 요청이 어떤 메서드에 의해 처리될지 결정됩니다.
+        
+      
+    
+  
+  3. 모델과 뷰.
+    
+      @Controller 는 주로 모델과 뷰를 처리합니다.
+        
+          요청이 컨트롤러에 도달하면, 컨트롤러는 필요한 데이터를 모델에 담고, 적절한 뷰(예: JSP, Thymeleaf 템플릿)를 반환하여 사용자에게 응답을 보냅니다.
+            
+              스프링은 이 작업을 쉽게 할 수 있도록 다양한 기능을 제공합니다.
+            
+          
+        
+      
+    
+  
+  4. 비즈니스 로직과 서비스 계층.
+    
+      컨트롤러는 보통 직접 비즈니스 로직을 처리하지 않고, 서비스 계층을 호출하여 필요한 처리를 위임합니다.
+        
+          컨트롤러는 사용자 입력을 받아 서비스로 전달하고, 서비스의 결과를 받아 사용자에게 반환하는 역할을 합니다.
+        
+      
+    
+  
+  5. 예외 처리.
+    
+      @Controller 애노테이션을 사용하는 클래스는 또한 @ExceptionHandler 를 사용하여 특정 예외를 처리할 수 있습니다.
+        
+          이를 통해 컨트롤러 내에서 발생하는 예외를 잡아 특정 응답을 반환하거나 에러 페이지를 보여줄 수 있습니다.
+        
+      
+    
+  
+
+
+요약하면, @Controller 애노테이션은 해당 클래스를 스프링 MVC에서 요청을 처리하는 컨트롤러로 정의하며, HTTP 요청을 처리하고 적절한 응답을 생성하는데 중요한 역할을 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-01-bean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -6202,91 +6288,6 @@ public void useService() {
 
 
 결론적으로, 스프링 빈은 스프링 애플리케이션에서 핵심적인 역할을 하는 객체로, 스프링 컨테이너가 관리하는 인스턴스이며, 이를 통해 애플리케이션의 구성 요소들이 유연하고 효율적으로 동작하도록 돕습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html"><h1 class="title_post">🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.</h1></a>
-                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="txt_post">
-                            🍃[Spring] @Controller 애너테이션 사용시 일어나는 일.
-
-1️⃣ 스프링 프레임워크에서 @Controller 애노테이션 사용시 어떤 일이 일어날까요?
-
-  스프링 프레임워크에서 @Controller 애노테이션을 사용하면, 해당 클래스가 스프링 MVC의 웹 컨트롤러로 동작하도록 설정됩니다.
-  @Controller 는 기본적으로 웹 요청을 처리하고, 적절한 응답을 생성하는 역할을 담당하는 클래스를 정의할 때 사용됩니다.
-
-
-@Controller 애노테이션을 사용하면 다음과 같은 일들이 벌어집니다.
-
-  1. 스프링 빈으로 등록.
-    
-      @Controller 애노테이션이 적용된 클래스는 스프링의 컴포넌트 스캔 메커니즘에 의해 자동으로 스프링 컨텍스트에 빈으로 등록됩니다.
-        
-          이는 @Component 와 유사하게 동작하며, 스프링이 이 클래스를 관리하도록 만듭니다.
-        
-      
-    
-  
-  2. 요청 처리 메서드 매핑.
-    
-      @Controller 가 달린 클래스 내의 메서드들은 @RequestMapping, @GetMapping, @PostMapping 등과 같은 요청 매핑 애노테이션을 통해 특정 HTTP 요청을 처리하는 메서드로 매핑될 수 있습니다.
-        
-          이러한 매핑을 통해 특정 URL로 들어오는 요청이 어떤 메서드에 의해 처리될지 결정됩니다.
-        
-      
-    
-  
-  3. 모델과 뷰.
-    
-      @Controller 는 주로 모델과 뷰를 처리합니다.
-        
-          요청이 컨트롤러에 도달하면, 컨트롤러는 필요한 데이터를 모델에 담고, 적절한 뷰(예: JSP, Thymeleaf 템플릿)를 반환하여 사용자에게 응답을 보냅니다.
-            
-              스프링은 이 작업을 쉽게 할 수 있도록 다양한 기능을 제공합니다.
-            
-          
-        
-      
-    
-  
-  4. 비즈니스 로직과 서비스 계층.
-    
-      컨트롤러는 보통 직접 비즈니스 로직을 처리하지 않고, 서비스 계층을 호출하여 필요한 처리를 위임합니다.
-        
-          컨트롤러는 사용자 입력을 받아 서비스로 전달하고, 서비스의 결과를 받아 사용자에게 반환하는 역할을 합니다.
-        
-      
-    
-  
-  5. 예외 처리.
-    
-      @Controller 애노테이션을 사용하는 클래스는 또한 @ExceptionHandler 를 사용하여 특정 예외를 처리할 수 있습니다.
-        
-          이를 통해 컨트롤러 내에서 발생하는 예외를 잡아 특정 응답을 반환하거나 에러 페이지를 보여줄 수 있습니다.
-        
-      
-    
-  
-
-
-요약하면, @Controller 애노테이션은 해당 클래스를 스프링 MVC에서 요청을 처리하는 컨트롤러로 정의하며, HTTP 요청을 처리하고 적절한 응답을 생성하는데 중요한 역할을 합니다.
 
                         </a>
                         <div class="info-post">
@@ -18097,6 +18098,17 @@ public class Main {
             'url'      : "/SQL/2024/2024-09-30-DML.html",
             'image'    : "/assets/img/thumbnail/sql.jpeg",
             'date'     : "2024-09-30"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] yml이란?",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-10-01-YAML.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-01"
         });
     
 

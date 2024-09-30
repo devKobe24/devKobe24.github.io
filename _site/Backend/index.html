@@ -727,6 +727,7 @@
             
             
             
+            
 
     
     
@@ -7983,34 +7984,26 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html"><h1 class="title_post">☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="txt_post">
-                            ☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소.
+                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html"><h1 class="title_post">☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="txt_post">
+                            ☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배.
 
-  IP 주소는 두 가지로 구분할 수 있습니다.
 
-  하나는 한국 또는 전 세계에서 ‘이 주소는 인터넷에서 이 곳’이라고 특정할 수 있는 주소입니다.
+  많은 사용자가 사용하는 시스템을 구축한다면 부하 분산 을 고려해야 합니다.
+  시스템을 사용하는 사용자가 많아질수록 서버의 부담은 커집니다.
+  서버 1대당 한 번에 처리할 수 있는 접속자 수는 정해져 있기 때문에 한 번에 많은 사람이 몰리면 CPU나 메모리의 사용량이 증가해 서버가 느려지고 최악의 경우 서버가 멈출 수도 있습니다.
     
-      이를 퍼블릭 IP 주소 또는 글로벌 IP 주소(공인 IP) 라고 합니다.
-
-    
-  
-  다른 하나는 프라이빗 IP 주소(사설 IP) 입니다.
-    
-      퍼블릭 IP 주소는 전 세계에서 식별할 수 있는 주소지만, 프라이빗 주소는 닫힌 네트워크(폐쇄망, 내부 네트워크, 근거리 통신-LAN) 내에서만 식별할 수 있는 IP 주소입니다.
-    
-  
-  프라이빗 IP 주소로 사용할 수 있는 범위는 다음과 같습니다.
-    
-      10.0.0.0 ~ 10.255.255.255(10.0.0.0/8)
-      176.16.0.0 ~ 172.31.255.255(176.16.0.0/12)
-      192.168.0.0 ~ 192.168.255.255(192.168.0.0/16)
+      이는 서비스 사용자에게 큰 영향을 줍니다.
         
-          퍼블릭 IP 주소는 이 주소를 제외한 나머지 주소입니다.
+          이런 상황을 막기 위해 서버를 여러 대 구성해 각 서버가 처리를 나눠서 할 수 있게 구축해야 합니다.
+            
+              이렇게 부하를 분산시키기 위해서 일반적으로 로드 밸런서(Load Balancer) 라는 장치를 사용합니다.
+            
+          
         
       
     
@@ -8212,26 +8205,34 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html"><h1 class="title_post">☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_LOAD_BALANCER.html" class="txt_post">
-                            ☁️[AWS] 부하 분산을 위해 여러 서버에 접속을 분배.
+                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html"><h1 class="title_post">☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="txt_post">
+                            ☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소.
 
+  IP 주소는 두 가지로 구분할 수 있습니다.
 
-  많은 사용자가 사용하는 시스템을 구축한다면 부하 분산 을 고려해야 합니다.
-  시스템을 사용하는 사용자가 많아질수록 서버의 부담은 커집니다.
-  서버 1대당 한 번에 처리할 수 있는 접속자 수는 정해져 있기 때문에 한 번에 많은 사람이 몰리면 CPU나 메모리의 사용량이 증가해 서버가 느려지고 최악의 경우 서버가 멈출 수도 있습니다.
+  하나는 한국 또는 전 세계에서 ‘이 주소는 인터넷에서 이 곳’이라고 특정할 수 있는 주소입니다.
     
-      이는 서비스 사용자에게 큰 영향을 줍니다.
+      이를 퍼블릭 IP 주소 또는 글로벌 IP 주소(공인 IP) 라고 합니다.
+
+    
+  
+  다른 하나는 프라이빗 IP 주소(사설 IP) 입니다.
+    
+      퍼블릭 IP 주소는 전 세계에서 식별할 수 있는 주소지만, 프라이빗 주소는 닫힌 네트워크(폐쇄망, 내부 네트워크, 근거리 통신-LAN) 내에서만 식별할 수 있는 IP 주소입니다.
+    
+  
+  프라이빗 IP 주소로 사용할 수 있는 범위는 다음과 같습니다.
+    
+      10.0.0.0 ~ 10.255.255.255(10.0.0.0/8)
+      176.16.0.0 ~ 172.31.255.255(176.16.0.0/12)
+      192.168.0.0 ~ 192.168.255.255(192.168.0.0/16)
         
-          이런 상황을 막기 위해 서버를 여러 대 구성해 각 서버가 처리를 나눠서 할 수 있게 구축해야 합니다.
-            
-              이렇게 부하를 분산시키기 위해서 일반적으로 로드 밸런서(Load Balancer) 라는 장치를 사용합니다.
-            
-          
+          퍼블릭 IP 주소는 이 주소를 제외한 나머지 주소입니다.
         
       
     
@@ -18083,6 +18084,17 @@ public class Main {
             'type'     : "post",
             'tags'     : "SQL",
             'url'      : "/SQL/2024/2024-09-30-DDL.html",
+            'image'    : "/assets/img/thumbnail/sql.jpeg",
+            'date'     : "2024-09-30"
+        });
+    
+
+        posts.push({
+            'title'    : "💉[SQL] DML이란?",
+            'path'     : "SQL > 2024",
+            'type'     : "post",
+            'tags'     : "SQL",
+            'url'      : "/SQL/2024/2024-09-30-DML.html",
             'image'    : "/assets/img/thumbnail/sql.jpeg",
             'date'     : "2024-09-30"
         });

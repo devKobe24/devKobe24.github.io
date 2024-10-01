@@ -733,6 +733,7 @@
             
             
             
+            
 
     
     
@@ -1139,6 +1140,118 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-10-02-introduce-java.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-10-02-introduce-java.html"><h1 class="title_post">☕️[Java] java에 대하여 간단하게 알아보기</h1></a>
+                        <a href="/Java/Java/2024-10-02-introduce-java.html" class="txt_post">
+                            ☕️[Java] java에 대하여 간단하게 알아보기.
+
+1️⃣ 각 코드 행의 의미.
+
+int size = 27;
+String name = "Fido";
+Dog myDog = new Dog(name, size);
+int x = size - 5;
+if (x &lt; 15) myDog.bark(8);
+
+while (x &gt; 3) {
+    myDog.play();
+}
+
+int[] numList = {2, 4, 6, 8};
+System.out.println("Hello");
+System.out.pring("Dog: " + name);
+String num = "8";
+int z = Integer.parseInt(num);
+
+try {
+    readTheFile("myFile.txt");
+}
+catch (FileNoFoundException ex) {
+    System.out.print("File not found.")
+}
+
+
+
+  ‘size’라는 정수 변수를 선언하고 27이라는 값을 대입합니다.
+  ‘name’라는 문자열 변수를 선언하고 Fido라는 값을 대입합니다.
+  ‘myDog’라는 Dog 변수를 선언하고 ‘name’과 ‘size’를 사용해 새 Dog 객체를 만듭니다.
+  27(‘size’의 값)에서 5를 뺀 값을 ‘x’라는 변수에 대입합니다.
+  만약 x(값이 22)가 15보다 작으면 개가 여덟 번 짖도록 합니다.
+  x가 3보다 크면 반복문을 사용합니다.
+  개가 놀도록 지시합니다(play() 메서드를 실행시킴)
+  반복문이 끝나는 부분입니다. {} 안에 있는 것들이 조건에 따라 반복됩니다.
+  ‘numList’라는 정수 배열을 선언하고 2,4,6,8을 집어넣습니다.
+  “Hello”를 출력합니다. (아마 명령행으로 출력될것입니다.)
+  명령행에 “Dog: Fido”를 출력합니다.
+  ‘num’라는 문자열 변수를 선언하고 “8”이라는 값을 대입합니다.
+  “8”이라는 문자열을 8이라는 숫자값으로 변환합니다.
+  무언가를 시도해 봅니다. 잘 안 될 수도 있습니다.
+  “myFile.txe”를 읽습니다
+  “시도하는 부분”이 끝이므로 여러 가지를 함께 시도할 수도 있습니다.
+  시도했던 것이 실패하면 실행됩니다.
+  실패했을 경우에 명령행에 “File not found”라고 출력합니다.
+  중괄호({}) 안의 모든것은 ‘try’ 부분이 실패한 경우에 수행할 작업입니다.
+
+
+2️⃣ 자바 코드의 구조
+
+
+
+  소스 파일 안에는 “클래스”가 들어갑니다.
+  클래스 안에는 “메서드”가 들어갑니다.
+  메서드 안에는 “명령문”이 들어갑니다.
+
+
+소스 파일 안에는 무엇이 들어갈까요?
+
+
+
+  소스 코드 파일(.java라는 확장자가 붙은 파일)은 일반적으로 클래스(class) 를 한 개씩 정의합니다.
+  클래스는 보통 프로그램의 한 부분을 나타내지만, 아주 작은 애플리케이션 중에는 단 한 개의 클래스만으로 이뤄진 것도 있습니다.
+  클래스는 한 쌍의 중괄호({})로 둘러싸인 형태여야 합니다.
+
+
+클래스 안에는 무엇이 들어갈까요?
+
+
+
+  하나의 클래스 안에는 하나 이상의 메서드(method) 가 들어갑니다.
+  예를 들어서,(개를 나타내는) Dog 클래스에는 (짖는 것을 의미하는) bark 라는 메서드가 들어갈 수 있으며, 이 메서드에는 개가 짖는 방법을 지시하는 내용이 들어갑니다.
+  메서드는 반드시 클래스 안에서 선언되어야 합니다.
+  즉, 클래스의 중괄호 안에 위치해야 합니다.
+
+
+메서드 안에는 무엇이 들어갈까요?
+
+
+
+  메서드를 감싸는 중괄호 안에는 메서드에서 처리할 일을 지시하는 내용이 들어갑니다.
+  메서드 코드는 기본적으로 일련의 명령문을 모아 놓은 것이므로 지금은 메서드를 일종의 함수나 프로시저와 비슷한 것으로 생각하면 됩니다.
+
+
+
+  🙋‍♂️ 프로시저(Procedure)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-10-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -3727,231 +3840,6 @@ public class DatabaseStorageExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html"><h1 class="title_post">💾 [CS] Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지 하드웨어적으로 일어나는 일</h1></a>
-                        <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html" class="txt_post">
-                            💾 [CS] Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지 하드웨어적으로 일어나는 일.
-
-Java 백엔드 애플리케이션에서 서버를 실행시키고 API가 동작하기까지는 소프트웨어와 하드웨어가 긴밀하게 상호작용합니다.
-하드웨어 측면에서는 CPU, 메모리(RAM), 디스크, 네트워크 카드(NIC)와 같은 컴퓨터 부품들이 중요한 역할을 하며, 이러한 부품들이 어떻게 작동하는지에 대해 설명하겠습니다.
-
-
-  🙋‍♂️ 서버를 실행시켜 API를 동작시키기까지 일어나는 일 - Spring
-
-
-1️⃣ 애플리케이션 실행 및 서버 시작.
-
-1.1 애플리케이션 바이너리 로딩.
-
-  디스크(HDD/SDD)
-    
-      먼저, Java 애플리케이션을 실행하면 디스크(HDD나 SDD)에 저장된 애플리케이션 코드와 라이브러리(JAR 파일 등)가 디스크에서 RAM으로 로드됩니다.
-        
-          디스크 컨트롤러가 디스크의 특정 섹터에 저장된 프로그램 파일을 찾아서 읽어옵니다.
-          메모리 컨트롤러를 통해 데이터를 RAM으로 복사합니다.
-        
-      
-    
-  
-
-
-1.2 JVM 시작.
-
-  Java 애플리케이션은 Java Virtual Machine(JVM) 에서 실행되므로, JVM 바이너리도 디스크에서 RAM으로 로드되고, JVM이 시작됩니다.
-    
-      JVM은 애플리케이션의 바이트코드(.class 파일) 를 읽어들여 실행할 준비를 합니다.
-    
-  
-
-
-1.3 CPU와 메모리의 역할.
-
-  CPU는 이제 메모리에 적재된 JVM과 애플리케이션 코드를 처리하기 시작합니다.
-    
-      JVM이 바이트코드를 기계어로 변환(JIT 컴파일링) 하여 CPU가 이해할 수 있는 명령으로 전환됩니다.
-      프로세스와 스레드가 생성되고, CPU는 스레드를 통해 애플리케이션 코드를 순차적으로 실행합니다.
-      이때, CPU의 레지스터와 캐시 메모리가 자주 사용되는 데이터를 보관하고, RAM에서 직접 가져오는 데이터는 버스를 통해 전달됩니다.
-    
-  
-
-
-2️⃣ 임베디드 웹 서버 실행 (예: Tomcat)
-
-2.1 네트워크 초기화.
-
-  서버 애플리케이션이 시작되면, 네트워크 인터페이스 카드(NIC) 가 네트워크 연결을 설정하고 지정된 포트(예: 8080)를 통해 외부에서 들어오는 HTTP 요청을 받을 수 있도록 준비합니다.
-    
-      서버는 IP 주소와 포트 번호를 바인딩하고, 네트워크 통신을 위해 소켓(Socket) 을 엽니다.
-        
-          이는 네트워크 인터페이스 카드와 관련된 하드웨어 레벨에서 이루어집니다.
-        
-      
-    
-  
-
-
-2.2 멀티스레드 처리.
-
-  서버 애플리케이션은 멀티스레딩을 통해 동시 요청을 처리할 수 있도록 합니다.
-    
-      CPU의 코어와 스레드가 생성되어 여러 사용자의 요청을 동시에 처리합니다.
-        
-          멀티코어 CPU는 여러 요청을 병렬로 처리하여 성능을 향상시킵니다.
-        
-      
-      CPU는 컨텍스트 스위칭을 통해 스레드간의 작업 전환을 관리하며, 각 요청에 대해 메모리와 CPU 시간을 할당합니다.
-    
-  
-
-
-3️⃣ 클라이언트 요청 처리.
-
-3.1 네트워크 인터페이스 카드(NIC)
-
-  클라이언트가 API 호출을 통해 서버에 HTTP 요청을 보내면, 이 데이터는 TCP/IP 패킷으로 전송됩니다.
-    
-      네트워크 인터페이스 카드(NIC) 는 네트워크를 통해 들어오는 요청을 수신하고 이를 처리합니다.
-      네트워크 카드가 수신한 데이터 패킷을 네트워크 스택을 통해 처리한 후, 애플리케이션 레이어에서 이해할 수 있는 HTTP 요청으로 변환됩니다.
-    
-  
-
-
-3.2 데이터 패킷 처리
-
-  수신된 데이터 패킷은 CPU가 처리하게 됩니다.
-    
-      여기서 CPU는 네트워크 카드에서 받은 패킷을 메모리(RAM) 에 적재하여 DispatcherServlet으로 전달합니다.
-        
-          CPU는 요청 처리에 필요한 데이터를 캐시 메모리나 RAM에서 불러와 작업을 시작합니다.
-        
-      
-    
-  
-
-
-4️⃣ 비즈니스 로직 처리 및 데이터베이스 연동.
-
-4.1 CPU와 RAM 간 데이터 이동
-
-  요청이 들어오면 CPU는 메모리(RAM)에서 비즈니스 로직 과 API 엔드포인트에 필요한 정보를 가져와 처리합니다.
-    
-      비즈니스 로직 실행에 필요한 데이터는 RAM에 저장되며, 데이터베이스와의 상호작용이 필요한 경우 디스크에서 데이터베이스가 동작합니다.
-    
-  
-
-
-
-  🙋‍♂️ 비즈니스 로직 vs 비즈니스 규칙
-
-
-4.2 데이터베이스 접근
-
-  데이터베이스는 일반적으로 디스크(HDD/SDD) 에 데이터를 저장합니다.
-    
-      API가 데이터베이스에 접근하여 데이터를 읽거나 쓰기 위한 작업이 필요할 때, 데이터는 디스크에서 읽어와 RAM으로 로드됩니다.
-        
-          디스크 컨트롤러는 데이터를 디스크에서 찾아 RAM으로 전송하고, CPU는 이 데이터를 처리한 후 적절한 결과를 반환합니다.
-        
-      
-    
-  
-
-
-5️⃣ API 응답 및 네트워크 전송.
-
-5.1 CPU와 네트워크 카드 간의 데이터 처리.
-
-  비즈니스 로직이 완료되면, CPU는 결과 데이터를 메모리(RAM)에 저장하고, 이 데이터를 다시 TCP/IP 패킷으로 변환합니다.
-    
-      CPU는 패킷을 생성한 후, 패킷은 다시 네트워크 인터페이스 카드(NIC) 로 전달되어 네트워크를 통해 클라이언트에게 전송됩니다.
-      NIC는 패킷을 인터넷으로 보내는 작업을 처리하며, 클라이언트가 요청한 데이터를 다시 전달합니다.
-    
-  
-
-
-5.2 클라이언트 응답 전송.
-
-  클라이언트는 서버에서 전송된 HTTP 응답을 받게 되고, 서버는 해당 요청 처리에 대한 상태 코드와 데이터를 전달합니다.
-    
-      이 과정에서 네트워크 카드와 메모리, CPU가 지속적으로 데이터를 주고받습니다.
-    
-  
-
-
-6️⃣ 하드웨어 관련 핵심 역할 요약.
-
-1. CPU
-
-  프로그램의 명령을 처리하고 계산을 수행하는 가장 중요한 장치입니다.
-  요청을 처리하는 스레드 생성, 데이터 처리, 메모리 관리 등을 담당합니다.
-
-
-2. RAM
-
-  데이터를 일시적으로 저장하고, CPU가 빠르게 접근할 수 있도록 도와줍니다.
-  요청 처리 중 필요한 데이터는 RAM에 저장되며, CPU가 이 데이터를 불러와 처리합니다.
-
-
-3. 디스크(HDD/SSD)
-
-  애플리케이션 코드와 데이터베이스를 저장하는 영구적인 저장소입니다.
-  필요한 데이터는 디스크에서 RAM으로 불러와 사용됩니다.
-
-
-4. 네트워크 인터페이스 카드(NIC)
-
-  클라이언트의 요청을 받아들이고, 서버의 응답을 클라이언트에게 보내는 역할을 담당합니다.
-  네트워크 패킷을 주고받으며 인터넷 상에서 데이터가 흐르게 합니다.
-
-
-7️⃣ 전체 과정 요약.
-
-1. 애플리케이션 시작.
-
-  디스크에서 애플리케이션이 로드되고, JVM이 메모리에서 실행됩니다.
-
-
-2. 네트워크 설정.
-
-  서버는 포트와 IP 주소를 바인딩하고 외부 요청을 대기합니다.
-
-
-3. 클라이언트 요청.
-
-  클라이언트의 요청이 네트워크를 통해 서버로 전달되고, 네트워크 카드와 CPU가 이를 처리합니다.
-
-
-4. 비즈니스 로직 실행.
-
-  CPU는 요청에 맞는 비즈니스 로직을 실행하고, 데이터베이스나 캐시에서 데이터를 불러와 처리합니다.
-
-
-5. 응답 생성.
-
-  처리된 데이터는 다시 클라이언트로 전송되며, 네트워크 카드와 CPU가 이 과정을 수행합니다.
-
-
-하드웨어적 측면에서는 디스크, RAM, CPU, 네트워크 인터페이스 카드가 상호작용하며, 각 장치는 자신의 역할을 수행하여 API가 원활히 동작할 수 있도록 지원합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/CS/2024/2024-09-27-CPU-RAM-DISK.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -4607,6 +4495,231 @@ public interface UserRepository extend JpaRepository&lt;User, Long&gt; {
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html"><h1 class="title_post">💾 [CS] Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지 하드웨어적으로 일어나는 일</h1></a>
+                        <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html" class="txt_post">
+                            💾 [CS] Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지 하드웨어적으로 일어나는 일.
+
+Java 백엔드 애플리케이션에서 서버를 실행시키고 API가 동작하기까지는 소프트웨어와 하드웨어가 긴밀하게 상호작용합니다.
+하드웨어 측면에서는 CPU, 메모리(RAM), 디스크, 네트워크 카드(NIC)와 같은 컴퓨터 부품들이 중요한 역할을 하며, 이러한 부품들이 어떻게 작동하는지에 대해 설명하겠습니다.
+
+
+  🙋‍♂️ 서버를 실행시켜 API를 동작시키기까지 일어나는 일 - Spring
+
+
+1️⃣ 애플리케이션 실행 및 서버 시작.
+
+1.1 애플리케이션 바이너리 로딩.
+
+  디스크(HDD/SDD)
+    
+      먼저, Java 애플리케이션을 실행하면 디스크(HDD나 SDD)에 저장된 애플리케이션 코드와 라이브러리(JAR 파일 등)가 디스크에서 RAM으로 로드됩니다.
+        
+          디스크 컨트롤러가 디스크의 특정 섹터에 저장된 프로그램 파일을 찾아서 읽어옵니다.
+          메모리 컨트롤러를 통해 데이터를 RAM으로 복사합니다.
+        
+      
+    
+  
+
+
+1.2 JVM 시작.
+
+  Java 애플리케이션은 Java Virtual Machine(JVM) 에서 실행되므로, JVM 바이너리도 디스크에서 RAM으로 로드되고, JVM이 시작됩니다.
+    
+      JVM은 애플리케이션의 바이트코드(.class 파일) 를 읽어들여 실행할 준비를 합니다.
+    
+  
+
+
+1.3 CPU와 메모리의 역할.
+
+  CPU는 이제 메모리에 적재된 JVM과 애플리케이션 코드를 처리하기 시작합니다.
+    
+      JVM이 바이트코드를 기계어로 변환(JIT 컴파일링) 하여 CPU가 이해할 수 있는 명령으로 전환됩니다.
+      프로세스와 스레드가 생성되고, CPU는 스레드를 통해 애플리케이션 코드를 순차적으로 실행합니다.
+      이때, CPU의 레지스터와 캐시 메모리가 자주 사용되는 데이터를 보관하고, RAM에서 직접 가져오는 데이터는 버스를 통해 전달됩니다.
+    
+  
+
+
+2️⃣ 임베디드 웹 서버 실행 (예: Tomcat)
+
+2.1 네트워크 초기화.
+
+  서버 애플리케이션이 시작되면, 네트워크 인터페이스 카드(NIC) 가 네트워크 연결을 설정하고 지정된 포트(예: 8080)를 통해 외부에서 들어오는 HTTP 요청을 받을 수 있도록 준비합니다.
+    
+      서버는 IP 주소와 포트 번호를 바인딩하고, 네트워크 통신을 위해 소켓(Socket) 을 엽니다.
+        
+          이는 네트워크 인터페이스 카드와 관련된 하드웨어 레벨에서 이루어집니다.
+        
+      
+    
+  
+
+
+2.2 멀티스레드 처리.
+
+  서버 애플리케이션은 멀티스레딩을 통해 동시 요청을 처리할 수 있도록 합니다.
+    
+      CPU의 코어와 스레드가 생성되어 여러 사용자의 요청을 동시에 처리합니다.
+        
+          멀티코어 CPU는 여러 요청을 병렬로 처리하여 성능을 향상시킵니다.
+        
+      
+      CPU는 컨텍스트 스위칭을 통해 스레드간의 작업 전환을 관리하며, 각 요청에 대해 메모리와 CPU 시간을 할당합니다.
+    
+  
+
+
+3️⃣ 클라이언트 요청 처리.
+
+3.1 네트워크 인터페이스 카드(NIC)
+
+  클라이언트가 API 호출을 통해 서버에 HTTP 요청을 보내면, 이 데이터는 TCP/IP 패킷으로 전송됩니다.
+    
+      네트워크 인터페이스 카드(NIC) 는 네트워크를 통해 들어오는 요청을 수신하고 이를 처리합니다.
+      네트워크 카드가 수신한 데이터 패킷을 네트워크 스택을 통해 처리한 후, 애플리케이션 레이어에서 이해할 수 있는 HTTP 요청으로 변환됩니다.
+    
+  
+
+
+3.2 데이터 패킷 처리
+
+  수신된 데이터 패킷은 CPU가 처리하게 됩니다.
+    
+      여기서 CPU는 네트워크 카드에서 받은 패킷을 메모리(RAM) 에 적재하여 DispatcherServlet으로 전달합니다.
+        
+          CPU는 요청 처리에 필요한 데이터를 캐시 메모리나 RAM에서 불러와 작업을 시작합니다.
+        
+      
+    
+  
+
+
+4️⃣ 비즈니스 로직 처리 및 데이터베이스 연동.
+
+4.1 CPU와 RAM 간 데이터 이동
+
+  요청이 들어오면 CPU는 메모리(RAM)에서 비즈니스 로직 과 API 엔드포인트에 필요한 정보를 가져와 처리합니다.
+    
+      비즈니스 로직 실행에 필요한 데이터는 RAM에 저장되며, 데이터베이스와의 상호작용이 필요한 경우 디스크에서 데이터베이스가 동작합니다.
+    
+  
+
+
+
+  🙋‍♂️ 비즈니스 로직 vs 비즈니스 규칙
+
+
+4.2 데이터베이스 접근
+
+  데이터베이스는 일반적으로 디스크(HDD/SDD) 에 데이터를 저장합니다.
+    
+      API가 데이터베이스에 접근하여 데이터를 읽거나 쓰기 위한 작업이 필요할 때, 데이터는 디스크에서 읽어와 RAM으로 로드됩니다.
+        
+          디스크 컨트롤러는 데이터를 디스크에서 찾아 RAM으로 전송하고, CPU는 이 데이터를 처리한 후 적절한 결과를 반환합니다.
+        
+      
+    
+  
+
+
+5️⃣ API 응답 및 네트워크 전송.
+
+5.1 CPU와 네트워크 카드 간의 데이터 처리.
+
+  비즈니스 로직이 완료되면, CPU는 결과 데이터를 메모리(RAM)에 저장하고, 이 데이터를 다시 TCP/IP 패킷으로 변환합니다.
+    
+      CPU는 패킷을 생성한 후, 패킷은 다시 네트워크 인터페이스 카드(NIC) 로 전달되어 네트워크를 통해 클라이언트에게 전송됩니다.
+      NIC는 패킷을 인터넷으로 보내는 작업을 처리하며, 클라이언트가 요청한 데이터를 다시 전달합니다.
+    
+  
+
+
+5.2 클라이언트 응답 전송.
+
+  클라이언트는 서버에서 전송된 HTTP 응답을 받게 되고, 서버는 해당 요청 처리에 대한 상태 코드와 데이터를 전달합니다.
+    
+      이 과정에서 네트워크 카드와 메모리, CPU가 지속적으로 데이터를 주고받습니다.
+    
+  
+
+
+6️⃣ 하드웨어 관련 핵심 역할 요약.
+
+1. CPU
+
+  프로그램의 명령을 처리하고 계산을 수행하는 가장 중요한 장치입니다.
+  요청을 처리하는 스레드 생성, 데이터 처리, 메모리 관리 등을 담당합니다.
+
+
+2. RAM
+
+  데이터를 일시적으로 저장하고, CPU가 빠르게 접근할 수 있도록 도와줍니다.
+  요청 처리 중 필요한 데이터는 RAM에 저장되며, CPU가 이 데이터를 불러와 처리합니다.
+
+
+3. 디스크(HDD/SSD)
+
+  애플리케이션 코드와 데이터베이스를 저장하는 영구적인 저장소입니다.
+  필요한 데이터는 디스크에서 RAM으로 불러와 사용됩니다.
+
+
+4. 네트워크 인터페이스 카드(NIC)
+
+  클라이언트의 요청을 받아들이고, 서버의 응답을 클라이언트에게 보내는 역할을 담당합니다.
+  네트워크 패킷을 주고받으며 인터넷 상에서 데이터가 흐르게 합니다.
+
+
+7️⃣ 전체 과정 요약.
+
+1. 애플리케이션 시작.
+
+  디스크에서 애플리케이션이 로드되고, JVM이 메모리에서 실행됩니다.
+
+
+2. 네트워크 설정.
+
+  서버는 포트와 IP 주소를 바인딩하고 외부 요청을 대기합니다.
+
+
+3. 클라이언트 요청.
+
+  클라이언트의 요청이 네트워크를 통해 서버로 전달되고, 네트워크 카드와 CPU가 이를 처리합니다.
+
+
+4. 비즈니스 로직 실행.
+
+  CPU는 요청에 맞는 비즈니스 로직을 실행하고, 데이터베이스나 캐시에서 데이터를 불러와 처리합니다.
+
+
+5. 응답 생성.
+
+  처리된 데이터는 다시 클라이언트로 전송되며, 네트워크 카드와 CPU가 이 과정을 수행합니다.
+
+
+하드웨어적 측면에서는 디스크, RAM, CPU, 네트워크 인터페이스 카드가 상호작용하며, 각 장치는 자신의 역할을 수행하여 API가 원활히 동작할 수 있도록 지원합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-27</span>
                             
@@ -10419,6 +10532,198 @@ https://www.example.com/products?category=shoes&amp;brand=nike&amp;size=9&amp;pa
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-21-MVP-pattern.html"><h1 class="title_post">💾 [CS] MVP 패턴.</h1></a>
+                        <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="txt_post">
+                            💾 [CS] MVP 패턴.
+
+1️⃣ MVP 패턴.
+
+  MVP 패턴은 MVC 패턴으로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터(Presenter)로 교체된 패턴입니다.
+
+
+
+
+
+  뷰와 프레젠터는 일대일 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴이라고 볼 수 있습니다.
+
+
+2️⃣ 자바에서의 MVP 패턴.
+
+  자바에서의 MVP 패턴은 주로, 데스크탑 애플리케이션(JavaFX, Swing) 또는 안드로이드 애플리케이션을 개발할 때 많이 사용됩니다.
+  자바에서는 주로 MVC 패턴이 많이 사용되지만, MVP 패턴은 UI와 비즈니스 로직을 더욱 명확하게 분리할 수 있기 때문에 상황에 따라 더 적합할 수 있습니다.
+
+
+3️⃣ MVP 패턴의 구조.
+
+  MVP는 Model-View-Presenter의 약자로, 아래와 같은 세 가지 주요 구성 요소로 나뉩니다.
+  1. Model(모델)
+    
+      애플리케이션의 데이터와 비즈니스 로직을 처리합니다.
+      데이터베이스와 상호작용하고 데이터를 가공하는 역할을 담당합니다.
+      예: 데이터베이스 접근, API 호출, 데이터 가공.
+    
+  
+  2. View(뷰)
+    
+      사용자 인터페이스(UI)를 담당하며, 사용자가 보는 화면을 표시하고 입력을 받습니다.
+      View는 Presenter에 의존하여 데이터를 요청하고, 그 데이터를 표시하는 역할을 합니다.
+      예: 자바의 JPanel, JFrame(Swing) 또는 Activity, Fragment(안드로이드)
+    
+  
+  3. Presenter(프레젠터)
+    
+      View와 Model간의 중재자 역할을 하며, 뷰에서 발생한 사용자 상호작용을 처리하고, 필요한 데이터를 모델에서 가져와 뷰에 전달합니다.
+      비즈니스 로직을 처리하며, View와 Model을 직접 연결하지 않고 독립적으로 관리합니다.
+      Presenter는 View 인터페이스를 통해 View와 통신하고, 테스트 가능한 구조를 만듭니다.
+    
+  
+
+
+4️⃣ 백엔드를 Java로 구현시 MVP 패턴이 사용되나요?
+
+  일반적으로 MVP패턴(Model-View-Presenter) 은 주로 프론트엔드 또는 UI 중심 애플리케이션에서 사용됩니다.
+  MVP 패턴은 사용자 인터페이스와 비즈니스 로직을 분리하는 데 중점을 두기 때문에, 데스크탑 애플리케이션(JavaFX, Swing)이나 모바일 애플리케이션(안드로이드)에서 많이 사용됩니다.
+  따라서 백엔드 애픝리케이션을 Java로 구현할 때는 MVP 패턴이 거의 사용되지 않으며, 그 대신 다른 디자인 패턴이 주로 사용됩니다.
+
+
+1. MVP 패턴의 목적.
+
+  MVP 패턴은 기본적으로 사용자 인터페이스(UI)를 중심으로 View와 비즈니스 로직(Presenter) 을 분리하는 데 목적이 있습니다.
+  하지만 백엔드 애플리케이션은 사용자 인터페이스가 아닌 서버 측 비즈니스 로직, 데이터 처리, API 제공 등을 다루기 때문에, UI 요소가 존재하지 않습니다.
+  따라서 View 라는 개념이 백엔드에 적합하지 않습니다.
+
+
+2. 백엔드에서는 MVC 패턴이 더 적합.
+
+  Java 기반 백엔트 개발에서는 MVC(Model-View-Controller) 패턴 이나 서비스 계층 패턴 과 같은 구조가 더 일반적입니다.
+  특히, Spring Framework 같은 인기 있는 백엔드 프레임워크에서는 MVC 패턴이 기본적으로 사용됩니다.
+  백엔드에서 컨트롤러(Controller) 가 클라이언트의 요청을 처리하고, 모델(Model) 이 데이터 처리와 비즈니스 로직을 담당하며, 뷰(View) 는 API 응답(JSON, XML 등)을 생성하는 역할을 합니다.
+
+
+백엔드에서 자주 사용되는 디자인 패턴.
+
+  1. MVC 패턴(Model-View-Controller)
+    
+      서버 요청을 처리하고, 데이터베이스와 상호작용하며, API 응답을 생성하는 데 사용됩니다.
+    
+  
+  2. 서비스 계층 패턴
+    
+      비즈니스 로직을 서비스 계층으로 분리하여 재사용성과 유지보수성을 높이는 패턴입니다.
+    
+  
+  3. Repository 패턴
+    
+      데이터베이스 액세스 로직을 추상화하여, 비즈니스 로직과 데이터 액세스를 분리합니다.
+    
+  
+  4. Command 패턴
+    
+      사용자의 요청이나 명령을 객체로 변환하여 처리하는 방식으로, 여러 요청을 관리하는데 유리합니다.
+    
+  
+  5. Observer 패턴
+    
+      상태 변화를 여러 객체가 구독하고 반응하는 패턴으로, 이벤트 기반 시스템에 자주 사용됩니다.
+    
+  
+
+
+3. 백엔드에서 사용하는 디자인 패턴의 예시.
+
+  1. Spring MVC 패턴
+    
+      Spring에서는 Controller가 HTTP 요청을 받고, Service에서 비즈니스 로직을 처리한 뒤, Model을 사용하여 데이터를 전달하고 View를 반환하는 전형적인 MVC 패턴을 사용합니다.
+      여기서 View는 HTML 또는 JSON, XML과 같은 응답 포맷을 의미합니다.
+    
+  
+
+
+@Controller
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping("/users/{id}")
+    public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
+        User user = userService.findUserById(id);
+        return new ResponseEntity&lt;&gt;(user, HttpStatus.OK);
+    }
+}
+
+
+  Controller 는 클라이언트 요청을 처리하고, 데이터를 가공한 후 응답합니다.
+  Service 는 비즈니스 로직을 처리하는 중간 계층 역할을 합니다.
+  
+    Repository 는 데이터베이스와 상호작용하는 부분입니다.
+  
+  2. 서비스 계층 패턴
+    
+      서비스 계층을 사용하면 컨트롤러가 직접 비즈니스 로직을 다루지 않고, 서비스 클래스가 이를 처리합니다.
+      이로 인해 코드가 더 구조적으로 관리되고 테스트 가능성이 높아집니다.
+```java
+@Service
+public class UserService {
+  @Autowired
+  private UserRepository userRepository;
+    
+
+    public User findUserById(Long id) {
+      return userRepository.findById(id).orElseThrow(() -&gt; new UserNotFoundException(id));
+  }
+}
+```
+  
+  3. Repository 패턴
+    
+      데이터베이스 관련 로직을 별도의 Repository 인터페이스로 분리하여 데이터 엑세스를 쉽게 관리하고 추상화할 수 있습니다.
+    
+  
+
+
+@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    // 데이터베이스 접근 로직을 추상화
+}
+
+
+4. MVP 패턴이 백엔드에서 적합하지 않은 이유.
+
+  View에 대한 의존성.
+    
+      MVP 패턴의 핵심 요소는 View 이며, 백엔드에는 UI를 다루지 않기 때문에 View의 역할이 존재하지 않습니다.
+      백엔드는 사용자 인터페이스를 렌더링하거나 다루지 않고, 데이터를 처리하고 클라이언트는 응답을 반환하는 역할을 합니다.
+    
+  
+  분리된 로직.
+    
+      백엔드는 클라이언트와 데이터를 주고받으며, 이 과정에서 비즈니스 로직, 데이터 엑세스, API 응답 생성 등과 같은 복잡한 처리가 이루어 집니다.
+      이러한 작업을 관리하는 데는 MVC 패턴 이나 레이어드 아키텍처 가 더 적합합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-09-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-09-21-internet-model-and-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -10634,198 +10939,6 @@ https://www.example.com/products?category=shoes&amp;brand=nike&amp;size=9&amp;pa
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-21-MVP-pattern.html"><h1 class="title_post">💾 [CS] MVP 패턴.</h1></a>
-                        <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="txt_post">
-                            💾 [CS] MVP 패턴.
-
-1️⃣ MVP 패턴.
-
-  MVP 패턴은 MVC 패턴으로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터(Presenter)로 교체된 패턴입니다.
-
-
-
-
-
-  뷰와 프레젠터는 일대일 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴이라고 볼 수 있습니다.
-
-
-2️⃣ 자바에서의 MVP 패턴.
-
-  자바에서의 MVP 패턴은 주로, 데스크탑 애플리케이션(JavaFX, Swing) 또는 안드로이드 애플리케이션을 개발할 때 많이 사용됩니다.
-  자바에서는 주로 MVC 패턴이 많이 사용되지만, MVP 패턴은 UI와 비즈니스 로직을 더욱 명확하게 분리할 수 있기 때문에 상황에 따라 더 적합할 수 있습니다.
-
-
-3️⃣ MVP 패턴의 구조.
-
-  MVP는 Model-View-Presenter의 약자로, 아래와 같은 세 가지 주요 구성 요소로 나뉩니다.
-  1. Model(모델)
-    
-      애플리케이션의 데이터와 비즈니스 로직을 처리합니다.
-      데이터베이스와 상호작용하고 데이터를 가공하는 역할을 담당합니다.
-      예: 데이터베이스 접근, API 호출, 데이터 가공.
-    
-  
-  2. View(뷰)
-    
-      사용자 인터페이스(UI)를 담당하며, 사용자가 보는 화면을 표시하고 입력을 받습니다.
-      View는 Presenter에 의존하여 데이터를 요청하고, 그 데이터를 표시하는 역할을 합니다.
-      예: 자바의 JPanel, JFrame(Swing) 또는 Activity, Fragment(안드로이드)
-    
-  
-  3. Presenter(프레젠터)
-    
-      View와 Model간의 중재자 역할을 하며, 뷰에서 발생한 사용자 상호작용을 처리하고, 필요한 데이터를 모델에서 가져와 뷰에 전달합니다.
-      비즈니스 로직을 처리하며, View와 Model을 직접 연결하지 않고 독립적으로 관리합니다.
-      Presenter는 View 인터페이스를 통해 View와 통신하고, 테스트 가능한 구조를 만듭니다.
-    
-  
-
-
-4️⃣ 백엔드를 Java로 구현시 MVP 패턴이 사용되나요?
-
-  일반적으로 MVP패턴(Model-View-Presenter) 은 주로 프론트엔드 또는 UI 중심 애플리케이션에서 사용됩니다.
-  MVP 패턴은 사용자 인터페이스와 비즈니스 로직을 분리하는 데 중점을 두기 때문에, 데스크탑 애플리케이션(JavaFX, Swing)이나 모바일 애플리케이션(안드로이드)에서 많이 사용됩니다.
-  따라서 백엔드 애픝리케이션을 Java로 구현할 때는 MVP 패턴이 거의 사용되지 않으며, 그 대신 다른 디자인 패턴이 주로 사용됩니다.
-
-
-1. MVP 패턴의 목적.
-
-  MVP 패턴은 기본적으로 사용자 인터페이스(UI)를 중심으로 View와 비즈니스 로직(Presenter) 을 분리하는 데 목적이 있습니다.
-  하지만 백엔드 애플리케이션은 사용자 인터페이스가 아닌 서버 측 비즈니스 로직, 데이터 처리, API 제공 등을 다루기 때문에, UI 요소가 존재하지 않습니다.
-  따라서 View 라는 개념이 백엔드에 적합하지 않습니다.
-
-
-2. 백엔드에서는 MVC 패턴이 더 적합.
-
-  Java 기반 백엔트 개발에서는 MVC(Model-View-Controller) 패턴 이나 서비스 계층 패턴 과 같은 구조가 더 일반적입니다.
-  특히, Spring Framework 같은 인기 있는 백엔드 프레임워크에서는 MVC 패턴이 기본적으로 사용됩니다.
-  백엔드에서 컨트롤러(Controller) 가 클라이언트의 요청을 처리하고, 모델(Model) 이 데이터 처리와 비즈니스 로직을 담당하며, 뷰(View) 는 API 응답(JSON, XML 등)을 생성하는 역할을 합니다.
-
-
-백엔드에서 자주 사용되는 디자인 패턴.
-
-  1. MVC 패턴(Model-View-Controller)
-    
-      서버 요청을 처리하고, 데이터베이스와 상호작용하며, API 응답을 생성하는 데 사용됩니다.
-    
-  
-  2. 서비스 계층 패턴
-    
-      비즈니스 로직을 서비스 계층으로 분리하여 재사용성과 유지보수성을 높이는 패턴입니다.
-    
-  
-  3. Repository 패턴
-    
-      데이터베이스 액세스 로직을 추상화하여, 비즈니스 로직과 데이터 액세스를 분리합니다.
-    
-  
-  4. Command 패턴
-    
-      사용자의 요청이나 명령을 객체로 변환하여 처리하는 방식으로, 여러 요청을 관리하는데 유리합니다.
-    
-  
-  5. Observer 패턴
-    
-      상태 변화를 여러 객체가 구독하고 반응하는 패턴으로, 이벤트 기반 시스템에 자주 사용됩니다.
-    
-  
-
-
-3. 백엔드에서 사용하는 디자인 패턴의 예시.
-
-  1. Spring MVC 패턴
-    
-      Spring에서는 Controller가 HTTP 요청을 받고, Service에서 비즈니스 로직을 처리한 뒤, Model을 사용하여 데이터를 전달하고 View를 반환하는 전형적인 MVC 패턴을 사용합니다.
-      여기서 View는 HTML 또는 JSON, XML과 같은 응답 포맷을 의미합니다.
-    
-  
-
-
-@Controller
-public class UserController {
-    
-    @Autowired
-    private UserService userService;
-    
-    @GetMapping("/users/{id}")
-    public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
-        User user = userService.findUserById(id);
-        return new ResponseEntity&lt;&gt;(user, HttpStatus.OK);
-    }
-}
-
-
-  Controller 는 클라이언트 요청을 처리하고, 데이터를 가공한 후 응답합니다.
-  Service 는 비즈니스 로직을 처리하는 중간 계층 역할을 합니다.
-  
-    Repository 는 데이터베이스와 상호작용하는 부분입니다.
-  
-  2. 서비스 계층 패턴
-    
-      서비스 계층을 사용하면 컨트롤러가 직접 비즈니스 로직을 다루지 않고, 서비스 클래스가 이를 처리합니다.
-      이로 인해 코드가 더 구조적으로 관리되고 테스트 가능성이 높아집니다.
-```java
-@Service
-public class UserService {
-  @Autowired
-  private UserRepository userRepository;
-    
-
-    public User findUserById(Long id) {
-      return userRepository.findById(id).orElseThrow(() -&gt; new UserNotFoundException(id));
-  }
-}
-```
-  
-  3. Repository 패턴
-    
-      데이터베이스 관련 로직을 별도의 Repository 인터페이스로 분리하여 데이터 엑세스를 쉽게 관리하고 추상화할 수 있습니다.
-    
-  
-
-
-@Repository
-public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
-    // 데이터베이스 접근 로직을 추상화
-}
-
-
-4. MVP 패턴이 백엔드에서 적합하지 않은 이유.
-
-  View에 대한 의존성.
-    
-      MVP 패턴의 핵심 요소는 View 이며, 백엔드에는 UI를 다루지 않기 때문에 View의 역할이 존재하지 않습니다.
-      백엔드는 사용자 인터페이스를 렌더링하거나 다루지 않고, 데이터를 처리하고 클라이언트는 응답을 반환하는 역할을 합니다.
-    
-  
-  분리된 로직.
-    
-      백엔드는 클라이언트와 데이터를 주고받으며, 이 과정에서 비즈니스 로직, 데이터 엑세스, API 응답 생성 등과 같은 복잡한 처리가 이루어 집니다.
-      이러한 작업을 관리하는 데는 MVC 패턴 이나 레이어드 아키텍처 가 더 적합합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-21</span>
                             
@@ -11808,6 +11921,68 @@ MVC 패턴의 장점.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html"><h1 class="title_post">💉[SQL] DBMS에서 사용되는 언어와 마무리</h1></a>
+                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="txt_post">
+                            💉[SQL] DBMS에서 사용되는 언어: SQL.
+
+1️⃣ SQL.
+
+  SQL(Structured Query Language) 은 관계형 데이터베이스에서 사용되는 언어입니다.
+  관계형 DBMS(그중 MySQL)를 배우려면 SQL을 필수로 익혀야 합니다.
+  
+    SQL이 데이터베이스를 조작하는 ‘언어’이긴 하지만 일반적인 프로그래밍 언어(C, Java Python 등)와는 조금 다른 특성을 갖습니다.
+  
+  SQL은 특정 회사에서 만드는 것이 아니라 국제표준화기구에서 SQL에 대한 표준을 정해서 발표하고 있습니다.
+    
+      이를 표준 SQL 이라고 합니다.
+    
+  
+  그런데 문제는 SQL을 사용하는 DBMS를 만드는 회사가 여러 곳이기 때문에 표준 SQL이 각 회사 제품의 특성을 모두 포용하지 못한다는 점입니다.
+  
+    그래서 DBMS를 만드는 회사에서는 되도록 표준 SQL을 준수하되, 각 제품의 특성을 반영한 SQL을 사용합니다.
+  
+  다음 그림을 보면 3가지 DBMS 제품(오라클, SQL 서버, MySQL)이 모두 표준 SQL을 포함하고 있지만, 추가로 자신만의 기능도 가지고 있습니다.
+
+
+
+
+
+  이렇게 변경된 SQL을 오라클은 PL/SQL, SQL 서버는 T-SQL, MySQL은 SQL로 부릅니다.
+  결론은 표준 SQL을 익히면 여러 DBMS의 공통적인 부분을 배우는 것입니다.
+
+
+
+
+2️⃣ 마무리.
+
+4가지 키워드로 끝내는 핵심 포인트.
+
+  데이터베이스 는 데이터의 집합입니다..
+  DBMS 는 데이터베이스를 운영/관리하는 프로그램입니다.
+  테이블 은 데이터베이스의 최소 단위로, 하나 이상의 열(Column)과 행(Row)으로 구성되어 있습니다.
+  SQL 은 데이터베이스를 구축, 관리하고 활용하기 위해서 사용되는 언어입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/SQL" class="category">SQL</a>
+                            
+                                <span class="date">· 2024-09-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-09-19-features-by-layer.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -12376,68 +12551,6 @@ public RevealingModule {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html"><h1 class="title_post">💉[SQL] DBMS에서 사용되는 언어와 마무리</h1></a>
-                        <a href="/SQL/2024/2024-09-19-SQL-and-Summary.html" class="txt_post">
-                            💉[SQL] DBMS에서 사용되는 언어: SQL.
-
-1️⃣ SQL.
-
-  SQL(Structured Query Language) 은 관계형 데이터베이스에서 사용되는 언어입니다.
-  관계형 DBMS(그중 MySQL)를 배우려면 SQL을 필수로 익혀야 합니다.
-  
-    SQL이 데이터베이스를 조작하는 ‘언어’이긴 하지만 일반적인 프로그래밍 언어(C, Java Python 등)와는 조금 다른 특성을 갖습니다.
-  
-  SQL은 특정 회사에서 만드는 것이 아니라 국제표준화기구에서 SQL에 대한 표준을 정해서 발표하고 있습니다.
-    
-      이를 표준 SQL 이라고 합니다.
-    
-  
-  그런데 문제는 SQL을 사용하는 DBMS를 만드는 회사가 여러 곳이기 때문에 표준 SQL이 각 회사 제품의 특성을 모두 포용하지 못한다는 점입니다.
-  
-    그래서 DBMS를 만드는 회사에서는 되도록 표준 SQL을 준수하되, 각 제품의 특성을 반영한 SQL을 사용합니다.
-  
-  다음 그림을 보면 3가지 DBMS 제품(오라클, SQL 서버, MySQL)이 모두 표준 SQL을 포함하고 있지만, 추가로 자신만의 기능도 가지고 있습니다.
-
-
-
-
-
-  이렇게 변경된 SQL을 오라클은 PL/SQL, SQL 서버는 T-SQL, MySQL은 SQL로 부릅니다.
-  결론은 표준 SQL을 익히면 여러 DBMS의 공통적인 부분을 배우는 것입니다.
-
-
-
-
-2️⃣ 마무리.
-
-4가지 키워드로 끝내는 핵심 포인트.
-
-  데이터베이스 는 데이터의 집합입니다..
-  DBMS 는 데이터베이스를 운영/관리하는 프로그램입니다.
-  테이블 은 데이터베이스의 최소 단위로, 하나 이상의 열(Column)과 행(Row)으로 구성되어 있습니다.
-  SQL 은 데이터베이스를 구축, 관리하고 활용하기 위해서 사용되는 언어입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/SQL" class="category">SQL</a>
-                            
-                                <span class="date">· 2024-09-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/SQL/2024/2024-09-18-intro-dbms.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
                         
                     </div>
@@ -12745,117 +12858,6 @@ SQL의 특징.
                                 <a href="/SQL" class="category">SQL</a>
                             
                                 <span class="date">· 2024-09-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-09-17-OSI-7-Layer.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-09-17-OSI-7-Layer.html"><h1 class="title_post">🌐[Network] OSI 7계층 모델 - OSI 7계층 모델</h1></a>
-                        <a href="/Network/2024/2024-09-17-OSI-7-Layer.html" class="txt_post">
-                            🌐[Network] OSI 7계층 모델 - OSI 7계층 모델.
-
-  네트워크에 연결된 컴퓨터들이 데이터를 주고받으려면 서로 연동할 수 있게 표준화된 인터페이스를 지원해야 합니다.
-  일반적으로 컴퓨터 네트워크에서는 계층 구조로 모듈화된 프로토콜 스택(Protocol Stack)을 사용합니다.
-  국제 표준화 기구인 ISO가 확립한 OSI(Open System Interconnection) 7계층 모델은 개방화된 Open 데이터 통신 환경에 적합한 계층적 구현 모델의 표준입니다.
-
-
-1️⃣ OSI 7계층 모델.
-
-
-
-
-  위 그림은 ISO(International Standard Organization)에서 제시한 OSI 7계층 모델(OSI 7 Layer Model)입니다.
-  연결된 두 호스트가 각각 7개 계층으로 구성된 모듈을 수행함으로써 데이터 송수신이 가능합니다.
-  전송 데이터는 송신 호스트의 응용 계층에서 시작해 하위 계층으로 순차적으로 전달되어, 최종적으로 물리 계층에서 수신 호스트에 전달됩니다.
-  수신 호스트에서는 데이터를 상위 계층으로 순차적으로 이동시켜 응용 계층까지 보내줍니다.
-  데이터가 하위 계층으로 내려갈 때는 각 계층의 프로토콜에서 정의한 헤더 정보가 추가됩니다.
-  물리 계층을 제외한 모든 계층에서 헤더 정보가 추가되고, 물리 계층은 단순히 데이터 링크 계층에서 수신한 데이터를 수신 호스트의 물리 계층에 전달합니다.
-  데이터를 수신하는 호스트에서는 반대로 상위 계층으로 올라가며 순차적으로 헤더 정보를 제거하고 해석하면서 프로토콜 기능을 수행합니다.
-  위 그림에 표시하지는 않았지만, 송신 호스트와 수신 호스트 사이에는 다수의 라우터 등이 존재하여 중개 기능을 합니다.
-
-
-용어 정의.
-
-  임의의 호스트에서 실행되는 계층 n 모듈은 상태 호스트의 n 모듈과 논리적으로 통신하는데, 이들이 사용하는 규칙을 계층 n 프로토콜(Protocol)이라고 합니다.
-  프로토콜의 역할은 프로토콜에서 정의된 기능을 수행하면서 필요한 정보를 서로 교환하는 것입니다.
-  프로토콜 기능을 원활하게 수행하려면 주소 표현 방법, 오류 제어, 흐름 제어 등의 기능이 설계와 구현 과정에서 반영되어야 합니다.
-  동일 계층에 위치한 통신 양단은 같은 프로토콜을 사용하여 통신하기 때문에 동료 프로세스(Peer Process)라 합니다.
-  한 호스트에서 상하로 이웃하는 계층에 위치한 모듈 사이에는 인터페이스(Interface)가 정의되어 둘 사이의 접근 방법을 제한합니다.
-  상위 계층에서는 하위 계층의 인터페이스를 통해 하위 계층의 서비스(Service)를 이용할 수 있습니다.
-  송신 호스트에서 데이터를 전달할 때는 동료 프로세스에 직접 전달하는 것이 아니라, 하위 계층을 통하여 간접적으로 서비스를 요청합니다.
-    
-      이 요청은 최하위에 있는 물리 계층까지 반복됩니다.
-    
-  
-  수신 호스트에서는 반대로 상위 계층으로 데이터가 전달되면서 프로토콜 기능이 동작합니다.
-  각 계층의 동료 프로세스가 직접 통신하는 형태를 보이지만, 실제로는 항상 물리 계층을 통해 데이터가 전송되는 것입니다.
-
-
-헤더 정보.
-
-  프로토콜 스택의 맨 위에 위치한 일반 사용자는 전송 데이터가 있으면 이를 응용 계층에 보내 전송을 요청합니다.
-  응용 계층에서는 데이터에 자신의 프로토콜에서 정의한 헤더 정보를 추가해 표현 계층에 보냅니다.
-  표현 계층도 표현 계층에서 사용하는 프로토콜의 헤더 정보를 추가해 하위 계층으로 보냅니다.
-    
-      이러한 일련의 과정은 물리 계층에서 데이터가 물리적으로 전송될 때까지 반복됩니다.
-    
-  
-  물리 계층에서는 수신 호스트에 데이터를 물리적으로 전송하고, 이를 수신한 호스트에서는 송신 절차와 반대 방향으로 헤더를 제거하는 과정이 반복됩니다.
-    
-      즉, 계층별로 해당 계층의 헤더 정보를 해석하여 적절히 처리한 후에 상위 계층으로 올려줍니다.
-        
-          따라서 송신 호스트에서 계층별로 추가된 헤더 정보가 수신 호스트에서 해석 및 삭제되어 최상위 수신사는 원래의 전송 데이터만 받습니다.
-            
-              이때 각 계층의 프로토콜은 정해진 기능을 수행하여 데이터 송신 과정에서 발생하는 문제점을 해결해줍니다.
-            
-          
-        
-      
-    
-  
-  헤더 정보는 프로토콜마다 다르게 정의되며, 앞에서 설명한 주소, 오류 제어, 흐름 제어를 위한 정보들을 포함합니다.
-  프로토콜을 이해한다는 말은 프로토콜의 헤더 정보를 이해한다는 의미로 읽을 수 있을 정도로 헤더는 중요한 정보를 담고 있습니다.
-  특히, 인터넷의 기본 프로토콜인 TCP, UDP, IP의 헤더는 인터넷을 이해하는 데 많은 도움을 줍니다.
-
-
-중개 기능.
-
-  위 그림에서 헤더 설명을 제외하고 중개 기능 설명을 추가하면 아래 그림이 됩니다.
-
-
-
-
-
-  그림과 같이 송신 호스트에서 수신 호스트로 데이터를 전달하려면 중개 역할을 수행하는 중개 노드를 거쳐야합니다.
-  중개 시스템은 데이터가 목적지까지 올바르게 전달되도록 경로 배정 기능을 수행합니다.
-  중개 시스템에서는 경로 배정 기능을 수행하는 네트워크 계층의 프로토콜이 동작하는데, 이와 같은 배정 기능을 라우팅(Routing)이라 합니다.
-  중개 노드인 라우터(Router)는 자신에게 도착한 데이터의 헤더 정보를 해석해서 적절한 경로를 선택해야 하며, 다음 라우터로 보내기 전에 헤더 정보를 수정하는 작업도 진행합니다.
-  라우터 좌우에 위치한 네트워크는 종류가 다를 수도 있습니다.
-    
-      네트워크가 다르면 물리적인 특성뿐 아니라, 하위 계층의 헤더 정보도 다를 수 있습니다.
-        
-          따라서 헤더 정보의 값을 해석하여 변환하는 작업은 라우터의 주요 기능에 해당합니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-17</span>
                             
                         </div>
                     </div>
@@ -13209,6 +13211,117 @@ int num = nullInteger; // NullPointerException 발생
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Network/2024/2024-09-17-OSI-7-Layer.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-17-OSI-7-Layer.html"><h1 class="title_post">🌐[Network] OSI 7계층 모델 - OSI 7계층 모델</h1></a>
+                        <a href="/Network/2024/2024-09-17-OSI-7-Layer.html" class="txt_post">
+                            🌐[Network] OSI 7계층 모델 - OSI 7계층 모델.
+
+  네트워크에 연결된 컴퓨터들이 데이터를 주고받으려면 서로 연동할 수 있게 표준화된 인터페이스를 지원해야 합니다.
+  일반적으로 컴퓨터 네트워크에서는 계층 구조로 모듈화된 프로토콜 스택(Protocol Stack)을 사용합니다.
+  국제 표준화 기구인 ISO가 확립한 OSI(Open System Interconnection) 7계층 모델은 개방화된 Open 데이터 통신 환경에 적합한 계층적 구현 모델의 표준입니다.
+
+
+1️⃣ OSI 7계층 모델.
+
+
+
+
+  위 그림은 ISO(International Standard Organization)에서 제시한 OSI 7계층 모델(OSI 7 Layer Model)입니다.
+  연결된 두 호스트가 각각 7개 계층으로 구성된 모듈을 수행함으로써 데이터 송수신이 가능합니다.
+  전송 데이터는 송신 호스트의 응용 계층에서 시작해 하위 계층으로 순차적으로 전달되어, 최종적으로 물리 계층에서 수신 호스트에 전달됩니다.
+  수신 호스트에서는 데이터를 상위 계층으로 순차적으로 이동시켜 응용 계층까지 보내줍니다.
+  데이터가 하위 계층으로 내려갈 때는 각 계층의 프로토콜에서 정의한 헤더 정보가 추가됩니다.
+  물리 계층을 제외한 모든 계층에서 헤더 정보가 추가되고, 물리 계층은 단순히 데이터 링크 계층에서 수신한 데이터를 수신 호스트의 물리 계층에 전달합니다.
+  데이터를 수신하는 호스트에서는 반대로 상위 계층으로 올라가며 순차적으로 헤더 정보를 제거하고 해석하면서 프로토콜 기능을 수행합니다.
+  위 그림에 표시하지는 않았지만, 송신 호스트와 수신 호스트 사이에는 다수의 라우터 등이 존재하여 중개 기능을 합니다.
+
+
+용어 정의.
+
+  임의의 호스트에서 실행되는 계층 n 모듈은 상태 호스트의 n 모듈과 논리적으로 통신하는데, 이들이 사용하는 규칙을 계층 n 프로토콜(Protocol)이라고 합니다.
+  프로토콜의 역할은 프로토콜에서 정의된 기능을 수행하면서 필요한 정보를 서로 교환하는 것입니다.
+  프로토콜 기능을 원활하게 수행하려면 주소 표현 방법, 오류 제어, 흐름 제어 등의 기능이 설계와 구현 과정에서 반영되어야 합니다.
+  동일 계층에 위치한 통신 양단은 같은 프로토콜을 사용하여 통신하기 때문에 동료 프로세스(Peer Process)라 합니다.
+  한 호스트에서 상하로 이웃하는 계층에 위치한 모듈 사이에는 인터페이스(Interface)가 정의되어 둘 사이의 접근 방법을 제한합니다.
+  상위 계층에서는 하위 계층의 인터페이스를 통해 하위 계층의 서비스(Service)를 이용할 수 있습니다.
+  송신 호스트에서 데이터를 전달할 때는 동료 프로세스에 직접 전달하는 것이 아니라, 하위 계층을 통하여 간접적으로 서비스를 요청합니다.
+    
+      이 요청은 최하위에 있는 물리 계층까지 반복됩니다.
+    
+  
+  수신 호스트에서는 반대로 상위 계층으로 데이터가 전달되면서 프로토콜 기능이 동작합니다.
+  각 계층의 동료 프로세스가 직접 통신하는 형태를 보이지만, 실제로는 항상 물리 계층을 통해 데이터가 전송되는 것입니다.
+
+
+헤더 정보.
+
+  프로토콜 스택의 맨 위에 위치한 일반 사용자는 전송 데이터가 있으면 이를 응용 계층에 보내 전송을 요청합니다.
+  응용 계층에서는 데이터에 자신의 프로토콜에서 정의한 헤더 정보를 추가해 표현 계층에 보냅니다.
+  표현 계층도 표현 계층에서 사용하는 프로토콜의 헤더 정보를 추가해 하위 계층으로 보냅니다.
+    
+      이러한 일련의 과정은 물리 계층에서 데이터가 물리적으로 전송될 때까지 반복됩니다.
+    
+  
+  물리 계층에서는 수신 호스트에 데이터를 물리적으로 전송하고, 이를 수신한 호스트에서는 송신 절차와 반대 방향으로 헤더를 제거하는 과정이 반복됩니다.
+    
+      즉, 계층별로 해당 계층의 헤더 정보를 해석하여 적절히 처리한 후에 상위 계층으로 올려줍니다.
+        
+          따라서 송신 호스트에서 계층별로 추가된 헤더 정보가 수신 호스트에서 해석 및 삭제되어 최상위 수신사는 원래의 전송 데이터만 받습니다.
+            
+              이때 각 계층의 프로토콜은 정해진 기능을 수행하여 데이터 송신 과정에서 발생하는 문제점을 해결해줍니다.
+            
+          
+        
+      
+    
+  
+  헤더 정보는 프로토콜마다 다르게 정의되며, 앞에서 설명한 주소, 오류 제어, 흐름 제어를 위한 정보들을 포함합니다.
+  프로토콜을 이해한다는 말은 프로토콜의 헤더 정보를 이해한다는 의미로 읽을 수 있을 정도로 헤더는 중요한 정보를 담고 있습니다.
+  특히, 인터넷의 기본 프로토콜인 TCP, UDP, IP의 헤더는 인터넷을 이해하는 데 많은 도움을 줍니다.
+
+
+중개 기능.
+
+  위 그림에서 헤더 설명을 제외하고 중개 기능 설명을 추가하면 아래 그림이 됩니다.
+
+
+
+
+
+  그림과 같이 송신 호스트에서 수신 호스트로 데이터를 전달하려면 중개 역할을 수행하는 중개 노드를 거쳐야합니다.
+  중개 시스템은 데이터가 목적지까지 올바르게 전달되도록 경로 배정 기능을 수행합니다.
+  중개 시스템에서는 경로 배정 기능을 수행하는 네트워크 계층의 프로토콜이 동작하는데, 이와 같은 배정 기능을 라우팅(Routing)이라 합니다.
+  중개 노드인 라우터(Router)는 자신에게 도착한 데이터의 헤더 정보를 해석해서 적절한 경로를 선택해야 하며, 다음 라우터로 보내기 전에 헤더 정보를 수정하는 작업도 진행합니다.
+  라우터 좌우에 위치한 네트워크는 종류가 다를 수도 있습니다.
+    
+      네트워크가 다르면 물리적인 특성뿐 아니라, 하위 계층의 헤더 정보도 다를 수 있습니다.
+        
+          따라서 헤더 정보의 값을 해석하여 변환하는 작업은 라우터의 주요 기능에 해당합니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-09-16-Iterator-Pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -13523,6 +13636,122 @@ public class Main {
                                 <a href="/SQL" class="category">SQL</a>
                             
                                 <span class="date">· 2024-09-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
+                        <a href="/CS/2024/2024-09-14-CDN-Service.html" class="txt_post">
+                            💾 [CS] CDN 서비스란?
+
+1️⃣ CDN 서비스.
+
+  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
+  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
+
+
+2️⃣ CDN의 주요 기능.
+
+  1. 콘텐츠 캐싱(Caching).
+    
+      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
+      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
+    
+  
+  2. 분산된 네트워크.
+    
+      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
+      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
+    
+  
+  3. 로드 밸런싱.
+    
+      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
+        
+          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
+        
+      
+    
+  
+  4. 보안 강화.
+    
+      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
+    
+  
+  5. 고가용성 및 장애 복구
+    
+      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
+    
+  
+
+
+3️⃣ CDN 서비스의 장점.
+
+  1. 빠른 콘텐츠 제공.
+    
+      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
+    
+  
+  2. 트래픽 관리.
+    
+      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
+    
+  
+  3. 전 세계적인 도달 범위.
+    
+      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
+        
+          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
+        
+      
+    
+  
+  4. 비용 절감.
+    
+      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
+    
+  
+  5. 보안 강화.
+    
+      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
+    
+  
+
+
+4️⃣ CDN 서비스의 예시.
+
+  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
+  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
+  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
+  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
+  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
+
+
+5️⃣ 요약.
+
+  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
+    
+      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-09-14</span>
                             
                         </div>
                     </div>
@@ -13910,257 +14139,6 @@ public class WebConfig implements WebMvcConfigurer {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
-                        <a href="/CS/2024/2024-09-14-CDN-Service.html" class="txt_post">
-                            💾 [CS] CDN 서비스란?
-
-1️⃣ CDN 서비스.
-
-  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
-  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
-
-
-2️⃣ CDN의 주요 기능.
-
-  1. 콘텐츠 캐싱(Caching).
-    
-      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
-      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
-    
-  
-  2. 분산된 네트워크.
-    
-      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
-      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
-    
-  
-  3. 로드 밸런싱.
-    
-      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
-        
-          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
-        
-      
-    
-  
-  4. 보안 강화.
-    
-      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
-    
-  
-  5. 고가용성 및 장애 복구
-    
-      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
-    
-  
-
-
-3️⃣ CDN 서비스의 장점.
-
-  1. 빠른 콘텐츠 제공.
-    
-      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
-    
-  
-  2. 트래픽 관리.
-    
-      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
-    
-  
-  3. 전 세계적인 도달 범위.
-    
-      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
-        
-          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
-        
-      
-    
-  
-  4. 비용 절감.
-    
-      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
-    
-  
-  5. 보안 강화.
-    
-      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
-    
-  
-
-
-4️⃣ CDN 서비스의 예시.
-
-  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
-  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
-  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
-  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
-  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
-
-
-5️⃣ 요약.
-
-  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
-    
-      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-13-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-null.html"><h1 class="title_post">☕️[Java] null이란?</h1></a>
-                        <a href="/Java/Java/2024-09-13-null.html" class="txt_post">
-                            ☕️[Java] null이란?
-
-1️⃣ null.
-
-  Java에서 null은 참조형 타입(Reference Type) 변수에 사용되는 특별한 값으로, 해당 변수가 어떤 객체도 가리키지 않고 있음을 나타냅니다.
-    
-      즉, null은 변수에 객체의 참조가 없음을 의미합니다.
-    
-  
-
-
-2️⃣ 주요 특징.
-
-  1. 참조형 타입에만 적용.
-    
-      null은 기본형 타입(Primitive Type)에는 사용할 수 없으며, 오직 참조형 타입(예: String, Integer, List 등) 변수에만 사용할 수 있습니다.
-      기본형 타입의 변수는 null이 아닌, 각 타입의 기본값(예: int는 0, boolean은 false)을 가집니다.
-    
-  
-  2. 객체의 부재.
-    
-      null은 변수에 객체가 할당되지 않았거나, 명시적으로 “객체가 없음”을 나타내고자 할 때 사용됩니다.
-        
-          예를 들어, 객체가 생성되지 않거나 초기화되지 않은 상태에서 참조형 변수를 선언하면, 해당 변수는 기본적으로 null 값을 가집니다.
-        
-      
-    
-  
-  3. NullPointerException.
-    
-      null 참조를 사용하려고 할 때(예: null 객체의 메서드를 호출하거나 필드에 접근할 때), Java는 NullPointerException을 발생시킵니다.
-        
-          이는 매우 일반적인 런타임 오류 중 하나입니다.
-        
-      
-    
-  
-
-
-3️⃣ null의 사용 예.
-public class Main {
-    public static void main(String[] args) {
-        String str = null; // str은 어떤 객체도 가리키지 않음
-        
-        if (str == null) {
-            System.out.println("str은 null입니다.");
-        }
-        
-        // NullPointerException을 피하기 위해 null 검사를 수행해야 합니다.
-        if (str != null) {
-            System.out.println(str.length()); // str이 null이 아닌 경우에만 실행
-        }
-        
-        // 만약 null 검사를 하지 않고 null 참조를 사용하면 NullPointerException 발생
-        try {
-            System.out.println(str.length());
-        } catch (NullPointerException e) {
-            System.out.println("NullPointerException 발생: " + e.getMessage());
-        }
-    }
-}
-
-
-
-  위 코드에서 str 변수는 null로 초기화되었습니다.
-  str.length()를 호출하려고 하면, NullPointerException이 발생합니다.
-    
-      이 오류를 피라기 위해서는 항상 null 검사를 수행해야 합니다.
-    
-  
-
-
-4️⃣ null 사용의 주의점.
-
-  1. NullPointerException 방지.
-    
-      코드를 작성할 때, null일 가능성을 항상 염두에 두어야 합니다.
-      null 검사를 적절히 수행하지 않으면 NullPointerException이 발생할 수 있습니다.
-    
-  
-  2. Optional 사용.
-    
-      Java 8 이후에는 Optional 클래스를 사용하여 null을 안전하게 처리할 수 있습니다.
-      Optional은 값이 있거나 없음을 명시적으로 나타내어 null 참조를 피할 수 있게 해줍니다.
-```java
-import java.util.Optional;
-    
-  
-
-
-public class Main {
-    public static void main(String[] args) {
-        Optional optionalStr = Optional.ofNullable(null);
-
-    if (optionalStr.isPresent()) {
-        System.out.println(optionalStr.get());
-    } else {
-        System.out.println("값이 존재하지 않습니다.");
-    }
-} } ```
-
-
-
-  위 코드에서 Optional.ofNullable(null)을 사용하여 null을 안전하게 처리할 수 있습니다.
-
-
-5️⃣ 요약.
-
-  null은 참조형 타입 변수가 어떤 객체도 참조하지 않고 있음을 나타냅니다.
-  null을 잘못 사용하면 NullPointerException이 발생할 수 있으며, 이를 방지하기 위해서는 null 검사를 철저히 수행해야 합니다.
-  Java 8 이후에는 Optional 클래스를 사용하여 null 참조를 보다 안전하게 관리할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -14275,6 +14253,194 @@ null
       null 값을 반환하는 경우 잘못하면 NullPointException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
+
+1️⃣ 기본형의 한계.
+
+  자바는 객체 지향 언어입니다.
+    
+      그런데 자바 안에 객체가 아닌 것이 있습니다.
+      바로 int, double 같은 기본형(Primitive Type)입니다.
+    
+  
+  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
+    
+      객체가 아님.
+        
+          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
+            
+              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
+            
+          
+        
+      
+      null 값을 가질 수 없습니다.
+        
+          기본형 데이터 타입은 null 값을 가질 수 없습니다.
+            
+              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 예시.
+
+  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+    
+      왼쪽의 값이 더 작다: -1
+      두 값이 같다: 0
+      왼쪽의 값이 더 크다: 1
+    
+  
+
+
+public class MyIntegerMethodMain0 {
+
+	public static void main(String[] args) {
+		int value = 10;
+		int i1 = compareTo(value, 5);
+		int i2 = compareTo(value, 10);
+		int i3 = compareTo(value, 20);
+		System.out.println("i1 = " + i1);
+		System.out.println("i2 = " + i2);
+		System.out.println("i3 = " + i3);
+	}
+
+	public static int compareTo(int value, int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+}
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+    
+  
+
+
+3️⃣ 직접 만든 래퍼 클래스.
+
+  int를 클래스로 만들어 봅시다.
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+    
+      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+    
+  
+
+
+public class MyInteger {
+
+	private final int value;
+
+	public MyInteger(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int compareTo(int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value); // 숫자를 문자로 변경
+	}
+}
+
+
+  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+    
+  
+  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+  
+    이 클래스는 불변으로 설계했습니다.
+  
+  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+    
+      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+```java
+public class MyIntegerMethodMain1 {
+    
+
+    public static void main(String[] args) {
+      MyInteger myInteger = new MyInteger(10);
+      int i1 = myInteger.compareTo(5);
+      int i2 = myInteger.compareTo(10);
+      int i3 = myInteger.compareTo(20);
+      System.out.println(“i1 = “ + i1);
+      System.out.println(“i2 = “ + i2);
+      System.out.println(“i3 = “ + i3);
+  }
+}
+```
+  
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
 
 
                         </a>
@@ -14637,176 +14803,123 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-null.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
+                        <a href="/Java/Java/2024-09-13-null.html"><h1 class="title_post">☕️[Java] null이란?</h1></a>
+                        <a href="/Java/Java/2024-09-13-null.html" class="txt_post">
+                            ☕️[Java] null이란?
 
-1️⃣ 기본형의 한계.
+1️⃣ null.
 
-  자바는 객체 지향 언어입니다.
+  Java에서 null은 참조형 타입(Reference Type) 변수에 사용되는 특별한 값으로, 해당 변수가 어떤 객체도 가리키지 않고 있음을 나타냅니다.
     
-      그런데 자바 안에 객체가 아닌 것이 있습니다.
-      바로 int, double 같은 기본형(Primitive Type)입니다.
+      즉, null은 변수에 객체의 참조가 없음을 의미합니다.
     
   
-  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
+
+
+2️⃣ 주요 특징.
+
+  1. 참조형 타입에만 적용.
     
-      객체가 아님.
+      null은 기본형 타입(Primitive Type)에는 사용할 수 없으며, 오직 참조형 타입(예: String, Integer, List 등) 변수에만 사용할 수 있습니다.
+      기본형 타입의 변수는 null이 아닌, 각 타입의 기본값(예: int는 0, boolean은 false)을 가집니다.
+    
+  
+  2. 객체의 부재.
+    
+      null은 변수에 객체가 할당되지 않았거나, 명시적으로 “객체가 없음”을 나타내고자 할 때 사용됩니다.
         
-          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
-            
-              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
-            
-          
-        
-      
-      null 값을 가질 수 없습니다.
-        
-          기본형 데이터 타입은 null 값을 가질 수 없습니다.
-            
-              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-            
-          
+          예를 들어, 객체가 생성되지 않거나 초기화되지 않은 상태에서 참조형 변수를 선언하면, 해당 변수는 기본적으로 null 값을 가집니다.
         
       
     
   
-
-
-2️⃣ 예시.
-
-  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+  3. NullPointerException.
     
-      왼쪽의 값이 더 작다: -1
-      두 값이 같다: 0
-      왼쪽의 값이 더 크다: 1
+      null 참조를 사용하려고 할 때(예: null 객체의 메서드를 호출하거나 필드에 접근할 때), Java는 NullPointerException을 발생시킵니다.
+        
+          이는 매우 일반적인 런타임 오류 중 하나입니다.
+        
+      
     
   
 
 
-public class MyIntegerMethodMain0 {
-
-	public static void main(String[] args) {
-		int value = 10;
-		int i1 = compareTo(value, 5);
-		int i2 = compareTo(value, 10);
-		int i3 = compareTo(value, 20);
-		System.out.println("i1 = " + i1);
-		System.out.println("i2 = " + i2);
-		System.out.println("i3 = " + i3);
-	}
-
-	public static int compareTo(int value, int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
-    
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
-    
-  
-
-
-3️⃣ 직접 만든 래퍼 클래스.
-
-  int를 클래스로 만들어 봅시다.
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
-    
-      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-    
-  
-
-
-public class MyInteger {
-
-	private final int value;
-
-	public MyInteger(int value) {
-		this.value = value;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public int compareTo(int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value); // 숫자를 문자로 변경
-	}
-}
-
-
-  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
-    
-  
-  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-  
-    이 클래스는 불변으로 설계했습니다.
-  
-  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-    
-      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
-```java
-public class MyIntegerMethodMain1 {
-    
-
+3️⃣ null의 사용 예.
+public class Main {
     public static void main(String[] args) {
-      MyInteger myInteger = new MyInteger(10);
-      int i1 = myInteger.compareTo(5);
-      int i2 = myInteger.compareTo(10);
-      int i3 = myInteger.compareTo(20);
-      System.out.println(“i1 = “ + i1);
-      System.out.println(“i2 = “ + i2);
-      System.out.println(“i3 = “ + i3);
-  }
+        String str = null; // str은 어떤 객체도 가리키지 않음
+        
+        if (str == null) {
+            System.out.println("str은 null입니다.");
+        }
+        
+        // NullPointerException을 피하기 위해 null 검사를 수행해야 합니다.
+        if (str != null) {
+            System.out.println(str.length()); // str이 null이 아닌 경우에만 실행
+        }
+        
+        // 만약 null 검사를 하지 않고 null 참조를 사용하면 NullPointerException 발생
+        try {
+            System.out.println(str.length());
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException 발생: " + e.getMessage());
+        }
+    }
 }
-```
+
+
+
+  위 코드에서 str 변수는 null로 초기화되었습니다.
+  str.length()를 호출하려고 하면, NullPointerException이 발생합니다.
+    
+      이 오류를 피라기 위해서는 항상 null 검사를 수행해야 합니다.
+    
   
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+4️⃣ null 사용의 주의점.
+
+  1. NullPointerException 방지.
+    
+      코드를 작성할 때, null일 가능성을 항상 염두에 두어야 합니다.
+      null 검사를 적절히 수행하지 않으면 NullPointerException이 발생할 수 있습니다.
+    
+  
+  2. Optional 사용.
+    
+      Java 8 이후에는 Optional 클래스를 사용하여 null을 안전하게 처리할 수 있습니다.
+      Optional은 값이 있거나 없음을 명시적으로 나타내어 null 참조를 피할 수 있게 해줍니다.
+```java
+import java.util.Optional;
+    
+  
+
+
+public class Main {
+    public static void main(String[] args) {
+        Optional optionalStr = Optional.ofNullable(null);
+
+    if (optionalStr.isPresent()) {
+        System.out.println(optionalStr.get());
+    } else {
+        System.out.println("값이 존재하지 않습니다.");
+    }
+} } ```
 
 
 
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
+  위 코드에서 Optional.ofNullable(null)을 사용하여 null을 안전하게 처리할 수 있습니다.
+
+
+5️⃣ 요약.
+
+  null은 참조형 타입 변수가 어떤 객체도 참조하지 않고 있음을 나타냅니다.
+  null을 잘못 사용하면 NullPointerException이 발생할 수 있으며, 이를 방지하기 위해서는 null 검사를 철저히 수행해야 합니다.
+  Java 8 이후에는 Optional 클래스를 사용하여 null 참조를 보다 안전하게 관리할 수 있습니다.
 
 
                         </a>
@@ -16326,66 +16439,6 @@ public class UserController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-08-String-and-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-08-String-and-StringBuilder.html"><h1 class="title_post">☕️[Java] Strig 클래스를 StringBuilder 클래스로 변환하는 방법.</h1></a>
-                        <a href="/Java/Java/2024-09-08-String-and-StringBuilder.html" class="txt_post">
-                            ☕️[Java] Strig 클래스를 StringBuilder 클래스로 변환하는 방법.
-
-  Java에서 String 객체를 StringBuilder 객체로 변환하는 방법은 매우 간단합니다.
-  StringBuilder 클래스는 String 과 달리, 문자열을 수정할 수 있으며, 주로 문자열을 빈번하게 조작해야 할 때 사용됩니다.
-
-
-1️⃣ 변환 방법.
-String str = "Hello World!";
-StringBuilder sb = new StringBuilder(str);
-
-
-
-  여기서 StringBuilder 생성자는 String 객체를 매개변수로 받아 해당 문자열을 포함하는 StringBuilder 객체를 생성합니다.
-
-
-예시
-String str = "Hello, World!";
-StringBuilder sb = new StringBuilder(str);
-
-// StringBuilder로 추가적인 작업 수행
-sb.append(" This is Java.");
-System.out.println(sb.toString());
-
-
-출력 결과
-Hello, World! This is Java.
-
-
-
-  이 예제에서는 String 객체 str을 StringBuilder 객체로 변환한 후, append() 메서드를 사용하여 문자열을 추가했습니다.
-    
-      최종적으로 StringBuilder 객체를 문자열로 변환하여 출력할 때는 toString() 메서드를 사용합니다.
-    
-  
-
-
-이렇게 StringBuilder를 사용하면 문자열을 수정하는 작업이 보다 효율적으로 수행됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-08-String-trim-strip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -16435,6 +16488,66 @@ System.out.println("Stripped: '" + strippedString + "'");
 
   strip() 도 앞뒤의 공백을 제거하지만, 보다 광범위한 공백 문자를 처리합니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-08-String-and-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-08-String-and-StringBuilder.html"><h1 class="title_post">☕️[Java] Strig 클래스를 StringBuilder 클래스로 변환하는 방법.</h1></a>
+                        <a href="/Java/Java/2024-09-08-String-and-StringBuilder.html" class="txt_post">
+                            ☕️[Java] Strig 클래스를 StringBuilder 클래스로 변환하는 방법.
+
+  Java에서 String 객체를 StringBuilder 객체로 변환하는 방법은 매우 간단합니다.
+  StringBuilder 클래스는 String 과 달리, 문자열을 수정할 수 있으며, 주로 문자열을 빈번하게 조작해야 할 때 사용됩니다.
+
+
+1️⃣ 변환 방법.
+String str = "Hello World!";
+StringBuilder sb = new StringBuilder(str);
+
+
+
+  여기서 StringBuilder 생성자는 String 객체를 매개변수로 받아 해당 문자열을 포함하는 StringBuilder 객체를 생성합니다.
+
+
+예시
+String str = "Hello, World!";
+StringBuilder sb = new StringBuilder(str);
+
+// StringBuilder로 추가적인 작업 수행
+sb.append(" This is Java.");
+System.out.println(sb.toString());
+
+
+출력 결과
+Hello, World! This is Java.
+
+
+
+  이 예제에서는 String 객체 str을 StringBuilder 객체로 변환한 후, append() 메서드를 사용하여 문자열을 추가했습니다.
+    
+      최종적으로 StringBuilder 객체를 문자열로 변환하여 출력할 때는 toString() 메서드를 사용합니다.
+    
+  
+
+
+이렇게 StringBuilder를 사용하면 문자열을 수정하는 작업이 보다 효율적으로 수행됩니다.
 
                         </a>
                         <div class="info-post">
@@ -43536,6 +43649,33 @@ for (int i = 0; i &lt; array.length; i++) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-07-TIL.html"><h1 class="title_post">📝 [TIL] 240507 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-07-TIL.html" class="txt_post">
+                            
+  다차원 배열
+  클래스와 객체(1)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-07-ClassesAndObjects-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -44035,33 +44175,6 @@ public class Test {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-07-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-07-TIL.html"><h1 class="title_post">📝 [TIL] 240507 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-07-TIL.html" class="txt_post">
-                            
-  다차원 배열
-  클래스와 객체(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-07</span>
                             
@@ -81844,6 +81957,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-10-02-Procedure.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-02"
+        });
+    
+
+        posts.push({
+            'title'    : "☕️[Java] java에 대하여 간단하게 알아보기",
+            'path'     : "Java > Java",
+            'type'     : "post",
+            'tags'     : "Java, Programming Language, Backend",
+            'url'      : "/Java/Java/2024-10-02-introduce-java.html",
+            'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-10-02"
         });
     

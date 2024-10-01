@@ -729,6 +729,7 @@
             
             
             
+            
 
     
     
@@ -1974,44 +1975,34 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html"><h1 class="title_post">☁️[AWS] 라우팅 및 라우팅 테이블.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="txt_post">
-                            ☁️[AWS] 라우팅 및 라우팅 테이블.
+                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html"><h1 class="title_post">☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="txt_post">
+                            ☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소.
 
-  실제 세상의 어떤 주소를 찾아가기 위해서는 그 주소까지의 경로를 알아야 합니다.
-  네트워크 세계에서도 이처럼 어떤 IP 주소를 찾아가기 위해서는 해당 주소까지의 경로를 알아야 합니다.
+  IP 주소는 두 가지로 구분할 수 있습니다.
+
+  하나는 한국 또는 전 세계에서 ‘이 주소는 인터넷에서 이 곳’이라고 특정할 수 있는 주소입니다.
     
-      하지만 사용자는 이런 경로를 알 필요가 없습니다.
-        
-          대신 라우터(Router) 가 최적의 경로를 찾아서 경로를 결정하고 연결합니다.
-            
-              라우터가 IP 주소까지의 경로를 결정하는 것을 라우팅(Routing) 이라고 합니다.
-            
-          
-        
-      
+      이를 퍼블릭 IP 주소 또는 글로벌 IP 주소(공인 IP) 라고 합니다.
+
     
   
-  인터넷을 통해 원하는 사이트까지 가는 경로는 여러 라우터를 거치게 되므로 어떻게 라우팅하는 것이 효율이 좋을지 결정해야 합니다.
-
-  각 라우터는 소유한 경로 정보를 기반으로 목적지 IP 주소를 향해 이동해야 하는 네트워크를 결정합니다.
+  다른 하나는 프라이빗 IP 주소(사설 IP) 입니다.
     
-      이 경로 정보를 라우팅 테이블(Routing Table) 이라고 합니다.
+      퍼블릭 IP 주소는 전 세계에서 식별할 수 있는 주소지만, 프라이빗 주소는 닫힌 네트워크(폐쇄망, 내부 네트워크, 근거리 통신-LAN) 내에서만 식별할 수 있는 IP 주소입니다.
+    
+  
+  프라이빗 IP 주소로 사용할 수 있는 범위는 다음과 같습니다.
+    
+      10.0.0.0 ~ 10.255.255.255(10.0.0.0/8)
+      176.16.0.0 ~ 172.31.255.255(176.16.0.0/12)
+      192.168.0.0 ~ 192.168.255.255(192.168.0.0/16)
         
-          라우팅 테이블은 라우터가 소유한 네트워크의 지도와 같은 것입니다.
-            
-              AWS에서는 Amazon VPC의 라우팅 테이블(Routing Table) 이라는 기능이 이에 해당합니다.
-                
-                  라우팅 테이블에는 인터넷이나 각 AWS 서비스에 대해 어떤 엔드포인트를 경유할지와 같은 경로 정보를 관리할 수 있습니다.
-
-                
-              
-            
-          
+          퍼블릭 IP 주소는 이 주소를 제외한 나머지 주소입니다.
         
       
     
@@ -2255,34 +2246,44 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html"><h1 class="title_post">☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_PUBLIC_IP_AND_PRIVATE_IP.html" class="txt_post">
-                            ☁️[AWS] 퍼블릭 IP 주소와 프라이빗 IP 주소.
+                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html"><h1 class="title_post">☁️[AWS] 라우팅 및 라우팅 테이블.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="txt_post">
+                            ☁️[AWS] 라우팅 및 라우팅 테이블.
 
-  IP 주소는 두 가지로 구분할 수 있습니다.
-
-  하나는 한국 또는 전 세계에서 ‘이 주소는 인터넷에서 이 곳’이라고 특정할 수 있는 주소입니다.
+  실제 세상의 어떤 주소를 찾아가기 위해서는 그 주소까지의 경로를 알아야 합니다.
+  네트워크 세계에서도 이처럼 어떤 IP 주소를 찾아가기 위해서는 해당 주소까지의 경로를 알아야 합니다.
     
-      이를 퍼블릭 IP 주소 또는 글로벌 IP 주소(공인 IP) 라고 합니다.
-
-    
-  
-  다른 하나는 프라이빗 IP 주소(사설 IP) 입니다.
-    
-      퍼블릭 IP 주소는 전 세계에서 식별할 수 있는 주소지만, 프라이빗 주소는 닫힌 네트워크(폐쇄망, 내부 네트워크, 근거리 통신-LAN) 내에서만 식별할 수 있는 IP 주소입니다.
-    
-  
-  프라이빗 IP 주소로 사용할 수 있는 범위는 다음과 같습니다.
-    
-      10.0.0.0 ~ 10.255.255.255(10.0.0.0/8)
-      176.16.0.0 ~ 172.31.255.255(176.16.0.0/12)
-      192.168.0.0 ~ 192.168.255.255(192.168.0.0/16)
+      하지만 사용자는 이런 경로를 알 필요가 없습니다.
         
-          퍼블릭 IP 주소는 이 주소를 제외한 나머지 주소입니다.
+          대신 라우터(Router) 가 최적의 경로를 찾아서 경로를 결정하고 연결합니다.
+            
+              라우터가 IP 주소까지의 경로를 결정하는 것을 라우팅(Routing) 이라고 합니다.
+            
+          
+        
+      
+    
+  
+  인터넷을 통해 원하는 사이트까지 가는 경로는 여러 라우터를 거치게 되므로 어떻게 라우팅하는 것이 효율이 좋을지 결정해야 합니다.
+
+  각 라우터는 소유한 경로 정보를 기반으로 목적지 IP 주소를 향해 이동해야 하는 네트워크를 결정합니다.
+    
+      이 경로 정보를 라우팅 테이블(Routing Table) 이라고 합니다.
+        
+          라우팅 테이블은 라우터가 소유한 네트워크의 지도와 같은 것입니다.
+            
+              AWS에서는 Amazon VPC의 라우팅 테이블(Routing Table) 이라는 기능이 이에 해당합니다.
+                
+                  라우팅 테이블에는 인터넷이나 각 AWS 서비스에 대해 어떤 엔드포인트를 경유할지와 같은 경로 정보를 관리할 수 있습니다.
+
+                
+              
+            
+          
         
       
     
@@ -9217,6 +9218,17 @@ sudo reboot
             'url'      : "/SQL/2024/2024-09-30-DML.html",
             'image'    : "/assets/img/thumbnail/sql.jpeg",
             'date'     : "2024-09-30"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `application.yml`과 `application.properties`의 차이점.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-01-yml-vs-properties.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-01"
         });
     
 

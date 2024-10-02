@@ -736,6 +736,7 @@
             
             
             
+            
 
     
     
@@ -1142,6 +1143,168 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-03-clean-code.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-03-clean-code.html"><h1 class="title_post">💾 [CS] 좋은 코드(Clean Code)의 중요성.</h1></a>
+                        <a href="/CS/2024/2024-10-03-clean-code.html" class="txt_post">
+                            💾 [CS] 좋은 코드(Clean Code)의 중요성.
+
+클린 코드(Clean Code)는 읽기 쉽고 이해하기 쉬우며 유지 보수하기 쉬운 코드를 의미합니다.
+소프트웨어 개발에서 클린 코드는 단순히 기능하는 코드를 넘어서, 일관성, 가독성, 명확성, 그리고 간결성을 갖춘 코드를 작성하는 것을 목표로 합니다.
+클린 코드는 그 자체로 직관적이어야 하며, 개발자가 코드의 동작을 쉽게 파악할 수 있게 도와줍니다.
+
+1️⃣ 클린 코드의 특징.
+
+1. 명확한 목적과 이름.
+
+  클래스, 메서드, 변수 이름이 그 목적을 명확하게 드러내야 합니다.
+  이름만 보고도 해당 코드가 무엇을 하는지 쉽게 파악할 수 있어야 합니다.
+
+
+2. 단순함(Simplicity)
+
+  코드가 불필요하게 복잡하지 않아야 하며, 가장 단순한 방법으로 문제를 해결하려고 해야 합니다.
+  단순한 코드는 이해하기 쉽고, 오류가 발생할 가능성이 줄어듭니다.
+
+
+3. 일관성(Consistency)
+
+  코드 스타일과 구조는 일관성이 있어야 합니다.
+  이로 인해 코드를 읽는 사람이 새로운 규칙을 학습할 필요 없이 일관된 형식을 따라갈 수 있습니다.
+
+
+4. 작은 함수(Small Function)
+
+  함수나 메서드는 하나의 작업만을 수행하고, 그 작업을 명확하게 나타내야 합니다.
+  함수는 작고 간결해야 하며, 너무 많은 일을 하거나 너무 많은 책임을 가져서는 안됩니다.
+
+
+5. 의존성 최소화(Low Coupling)
+
+  모듈 간의 의존성을 최소화하여, 한 부분이 변경되더라도 다른 부분에 미치는 영향을 최소화해야 합니다.
+  이로 인해 유지 보수와 확장이 쉬워집니다.
+
+
+6. 중복 코드 제거(DRY: Don’t Repeat Yourself)
+
+  동일한 코드가 여러 곳에서 반복되지 않도록 해야 합니다.
+  중복 코드는 버그 발생 가능성을 높이고 유지 보수를 어렵게 만듭니다.
+
+
+7. 에러 처리 및 예외 처리 명확성.
+
+  클린 코드는 예상치 못한 상황에 대한 처리가 명확하게 이루어져야 합니다.
+  에러나 예외가 발생했을 때 그 흐름이 한 눈에 이해될 수 있도록 작성되어야 합니다.
+
+
+8. 주석은 최소화하되, 필요한 경우에는 설명적으로
+
+  클린 코드는 그 자체로 충분히 설명적이기 때문에 주석이 많이 필요하지 않습니다.
+  대신, 주석은 코드가 아닌 복잡한 비즈니스 로직이나 의도에 대한 설명으로 사용되어야 합니다.
+
+
+2️⃣ 클린 코드를 지향하는 원칙.
+
+1. SOLID 원칙.
+
+  객체지향 설계의 5원칙(단일 책임 원칙, 개방-폐쇠 원칙, 리스코프 치환 원칙, 인터페이스 분리 원칙, 의존성 역전 원칙)을 지쳐, 더 나은 구조와 확장성을 갖춘 코드를 작성합니다.
+
+
+
+  🙋‍♂️ SOLID 원칙
+
+
+2. KISS 원칙(Keep It Simple, Stupid)
+
+  코드는 가능한 한 간단하고 복잡하지 않기 유지되어야 한다는 원칙입니다.
+
+
+3. YAGNI 원칙(You Ain’t Gonna Need It)
+
+  필요하지 않은 기능을 미리 구현하지 않고, 필요할 때만 추가하는 원칙입니다.
+  코드가 지나치게 복잡해지는 것을 방지합니다.
+
+
+4. DRY 원칙(Don’t Repeat Yourself)
+
+  중복을 피하고, 같은 로직을 반복하지 않도록 코드를 설계하는 원칙입니다.
+
+
+3️⃣ 클린 코드의 중요성
+
+
+  유지 보수성 : 시간이 지나도 이해하기 쉽고 수정하기 쉬운 코드는 애플리케이션의 수명을 연장합니다.
+  버그 감소 : 명확하고 간결한 코드는 버그가 발생할 가능성을 줄입니다.
+  협업 : 여러 개발자가 협업할 때, 클린 코드는 의사소통을 원활하게 하며 코드 리뷰 과정도 쉽게 만듭니다.
+  확장성 : 클린 코드는 확장과 변화에 유연하게 대처할 수 있어 새로운 기능을 추가하는 데 용이합니다.
+
+
+클린 코드는 단순히 코드 스타일이 아니라, 소프트웨어의 품질을 높이는 데 필수적인 철학과 원칙입니다.
+
+4️⃣ Java 백엔드 애플리케이션에서 클린 코드가 중요한 이유.
+Java 백엔드 애플리케이션에서 클린 코드가 중요한 이유는 여러 가지가 있습니다.
+이를 통해 개발자의 생산성과 유지 보수성이 크게 향상되며, 시스템의 안정성과 확장성도 개선됩니다.
+
+1. 이해와 가독성 향상.
+
+  클린 코드는 코드를 읽는 사람이 쉽게 이해할 수 있도록 작성됩니다.
+  Java와 같은 객체지향 언어에서는 클래스, 메서드, 변수 이름이 직관적이고 목적에 맞게 명명되어야 합니다.
+  이를 통해 다른 개발자가 코드를 분석하고 변경 사항을 반영하는 데 드는 시간이 줄어듭니다.
+
+
+2. 유지 보수 용이.
+
+  클린 코드는 명확하고 일관성 있게 작성되어, 유지 보수 시 복잡한 로직을 쉽게 파악할 수 있습니다.
+  불필요한 코드나 중복 코드를 제거하고, 모듈화된 구조를 유지하면 변경 사항이 발생하더라도 특정 부분만 수정하면 되기 때문에 유지 보수가 수월해 집니다.
+
+
+3. 버그 발생 확률 감소.
+
+  가독성이 떨어지는 복잡한 코드는 종종 버그를 숨깁니다.
+  클린 코드는 명확하고 일관성이 있어, 개발자들이 실수를 줄일 수 있습니다.
+  또한, 잘 작성된 테스트 코드와 결합하면 버그가 발생할 확률이 더욱 낮아집니다.
+
+
+4. 확장성과 재사용성 증가.
+
+  클린 코드는 원칙에 맞게 모듈화되고, 단일 책임 원칙(Single Responsibility Principle), 개방-폐쇄 원칙(Open/Closed Principle) 등과 같은 객체지향 설계 원칙들을 따릅니다.
+  이를 통해 코드의 확장성과 재사용성이 높아져, 새로운 기능을 추가할 때 기존 코드를 변경하지 않고 쉽게 확장할 수 있습니다.
+
+
+5. 협업 개선.
+
+  여러 명의 개발자가 참여하는 백엔드 프로젝트에서는 코딩 스카일의 일관성이 매우 중요합니다.
+  클린 코드 원칙을 따르면, 팀원 간에 코드를 공유하고 협업할 때 더 원활한 의사소통이 가능해집니다.
+  코드 리뷰도 보다 쉽게 진행할 수 있습니다.
+
+
+6. 테스트 용이성.
+
+  클린 코드는 테스트를 작성하기 쉽게 만듭니다.
+  메서드가 간결하고 명확하면 단위 테스트(Unit Test)를 작성하는 것이 더 쉬워지고, 이를 통해 애플리케이션의 안정성을 높일 수 있습니다.
+  테스트 가능성이 높은 코드는 품질 관리에 매우 유리합니다.
+
+
+결론적으로, 클린 코드는 장기적으로 백엔드 애플리케이션의 안정성, 확장성, 유지 보수성을 높이며, 팀원들 간의 협업을 촉진하고 버그 발생 가능성을 줄여 개발 효율성을 크게 향상시킵니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -17459,61 +17622,41 @@ string = DCBA
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-07-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-07-String-Optimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-07-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
-                        <a href="/Java/Java/2024-09-07-StringBuilder.html" class="txt_post">
-                            ☕️[Java] StringBuilder - 가변 String
+                        <a href="/Java/Java/2024-09-07-String-Optimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/Java/Java/2024-09-07-String-Optimization.html" class="txt_post">
+                            ☕️[Java] String 최적화
 
-1️⃣ 불변인 String 클래스의 단점.
+1️⃣ 자바의 String 최적화.
 
-  불변인 String 클래스에도 단점이 있습니다.
-    
-      다음 예시를 봅시다. (참고로 실제로 작동하는 코드는 아닙니다.)
+  자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동을 합쳐줍니다.
+
+
+문자열 리터럴 최적화.
+컴파일 전
+String helloWorld = "Hello, " + "World!";
+
+
+컴파일 후
+String helloWorld = "Hello, World!";
+
+
+  따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
+
+
+String 변수 최적화
+
+  문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+    String result = str1 + str2;
     
   
-
-
-"A" + "B"
-String("A") + String("B") // 문자는 String 타입입니다.
-String("A").concat(String("B")) // 문자의 더하기는 concat을 사용합니다.
-new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
-
-
-
-  불변인 String의 내부 값은 변경할 수 없습니다.
+  이런 경우 예를 들면 다음과 같이 최적화를 수행합니다
     
-      따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
-    
-  
-  더 많은 문자를 더하는 경우를 살펴봅시다.
-    String str = "A" + "B" + "C" + "D";
-String str = String("A") + String("B") + String("C") + String("D");
-String str = new String("AB") + String("C") + String("D");
-String str = new String("ABC") + String("D");
-String str = new String("ABCD");
-    
-  
-  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
-    
-      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC") 는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD") 만 사용됩니다.
-        
-          결과적으로 중간에 만들어진 new String("AB"), new String("ABC)" 는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
-        
-      
-    
-  
-  불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점 입니다.
-    
-      문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
-        
-          결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
-            
-              그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
-            
-          
+      (최적화 방식은 자바 버전에 따라 달라집니다.)
+        String result = new StringBuilder().append(str1).append(str2).toString();
         
       
     
@@ -17521,118 +17664,118 @@ String str = new String("ABCD");
 
 
 
-  참고: 실제로 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
 
 
-2️⃣ StringBuilder
 
-  이 문제를 해결하는 방법은 단순합니다.
+  이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
     
-      바로 불변이 아닌 가변 String이 존재하면 됩니다.
-        
-          가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
-            
-              따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
-            
-          
-        
-      
+      대신에 문자열 더하기 연산(+)을 사용하면 충분합니다.
     
   
-  이런 문제를 해결하기 위해 자바는 StringBuilder 라는 가변 String을 제공합니다.
-    
-      물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
-    
-  
-  StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
-    public final class StringBuilder {
-  char[] value; // 자바 9 이전
-  byte[] value; // 자바 9 이후
-    
-  // 여러 메서드
-  public StringBuilder append(String str) {...}
-  public int length() {...}
-  ...
+
+
+2️⃣ String 최적화가 어려운 경우.
+
+  다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
+    public class LoopStringMain {
+
+  public static void main(String[] args) {
+      long startTime = System.currentTimeMillis();
+      String result = "";
+      for (int i = 0; i &lt; 100000; i++) {
+          result += "Hello Java ";
+      }
+      long endTime = System.currentTimeMillis();
+
+      System.out.println("result = " + result);
+      System.out.println("time = " + (endTime - startTime) + "ms");
+  }
 }
     
-    (실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
   
-
-
-3️⃣ StringBuilder 사용 예시
-public class StringBuilderMain1_1 {
-
-	public static void main(String[] args) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("A");
-		sb.append("B");
-		sb.append("C");
-		sb.append("D");
-		System.out.println("sb = " + sb);
-
-		sb.insert(4, "Java");
-		System.out.println("sb = " + sb);
-
-		sb.delete(4, 8);
-		System.out.println("delete = " + sb);
-
-		sb.reverse();
-		System.out.println("reverse = " + sb);
-
-		// StringBuild -&gt; String
-		String string = sb.toString();
-		System.out.println("string = " + string);
-	}
+  왜냐하면 대략 다음과 같이 최적화가 되기 때문이다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+    String result = "";
+for (int i = 0; i &lt; 1000000; i++) {
+  result = new StringBuilder().append(result).append("Hello Java ").toString();
 }
-
-
-  StringBuilder 객체를 생성합니다.
-  append() 메서드를 사용해 여러 문자열을 추가합니다.
-  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
-  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
-  reverse() 메서드로 문자열을 뒤집습니다.
-  마지막으로 toString 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
+    
+  
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+  반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+    
+      이런 결우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+        
+          따라서, 이런 상황에서는 최적화가 어렵습니다.
+        
+      
+    
+  
+  StringBuilder 는 물론이고, 아마도 대략 반복 횟수인 100,000의 String 객체를 생성했을 것입니다.
 
 
 실행 결과
-sb = ABCD
-sb = ABCDJava
-delete = ABCD
-reverse = DCBA
-string = DCBA
+result = Hello Java Hello Java Hello Java...
+time = 2564ms
 
 
-가변(Mutable) vs 불변(Immutable)
 
-  String은 불변합니다.
-    
-      즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
-        
-          따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
-            
-              이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
-            
-          
-        
-      
-    
+  1000ms = 1초
   
-  반면에, StringBuilder는 가변적입니다.
-    
-      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이 때마다 새로운 객체를 생성하지 않습니다.
-        
-          이로 인해 메모리 사용을 줄이고 성능을 향상시킬 수 있습니다.
-            
-              단 사이드 이펙트를 주의해야합니다.
-            
-          
-        
-      
+    M1 맥북을 기준으로 100000회 더했을 때 약 2.6초가 걸렸습니다.
+  
+  이럴때는 직접 StringBuilder를 사용하면 됩니다.
+    public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+      long startTime = System.currentTimeMillis();
+
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i &lt; 100000; i++) {
+          sb.append("Hello Java ");
+      }
+      long endTime = System.currentTimeMillis();
+
+      String result = sb.toString();
+      System.out.println("result = " + result);
+      System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
     
   
 
 
-StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
+실행 결과
+result = Hello Java Hello Java Hello Java...
+time = 3ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.003초가 걸렸습니다.
+
+
+3️⃣ 정리
+
+  
+    문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+  
+  
+    StringBuilder를 직접 사용하는 것이 더 좋은 경우
+    
+      반복문에서 반복해서 문자를 연결할 때
+      조건문을 통해 동적으로 문자열을 조합할 때
+      복잡한 문자열의 특정 부분을 변경해야 할 때
+      매우 긴 대용량 문자열을 다룰 때
+    
+  
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
+
 
                         </a>
                         <div class="info-post">
@@ -17813,41 +17956,61 @@ CORS와 프런트엔트의 프록시 서버
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-07-String-Optimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-07-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-07-String-Optimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/Java/Java/2024-09-07-String-Optimization.html" class="txt_post">
-                            ☕️[Java] String 최적화
+                        <a href="/Java/Java/2024-09-07-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
+                        <a href="/Java/Java/2024-09-07-StringBuilder.html" class="txt_post">
+                            ☕️[Java] StringBuilder - 가변 String
 
-1️⃣ 자바의 String 최적화.
+1️⃣ 불변인 String 클래스의 단점.
 
-  자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동을 합쳐줍니다.
-
-
-문자열 리터럴 최적화.
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-
-  따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-
-String 변수 최적화
-
-  문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-    String result = str1 + str2;
+  불변인 String 클래스에도 단점이 있습니다.
+    
+      다음 예시를 봅시다. (참고로 실제로 작동하는 코드는 아닙니다.)
     
   
-  이런 경우 예를 들면 다음과 같이 최적화를 수행합니다
+
+
+"A" + "B"
+String("A") + String("B") // 문자는 String 타입입니다.
+String("A").concat(String("B")) // 문자의 더하기는 concat을 사용합니다.
+new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
+
+
+
+  불변인 String의 내부 값은 변경할 수 없습니다.
     
-      (최적화 방식은 자바 버전에 따라 달라집니다.)
-        String result = new StringBuilder().append(str1).append(str2).toString();
+      따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
+    
+  
+  더 많은 문자를 더하는 경우를 살펴봅시다.
+    String str = "A" + "B" + "C" + "D";
+String str = String("A") + String("B") + String("C") + String("D");
+String str = new String("AB") + String("C") + String("D");
+String str = new String("ABC") + String("D");
+String str = new String("ABCD");
+    
+  
+  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
+    
+      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC") 는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD") 만 사용됩니다.
+        
+          결과적으로 중간에 만들어진 new String("AB"), new String("ABC)" 는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
+        
+      
+    
+  
+  불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점 입니다.
+    
+      문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
+        
+          결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
+            
+              그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
+            
+          
         
       
     
@@ -17855,118 +18018,118 @@ String 변수 최적화
 
 
 
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
+  참고: 실제로 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
 
 
+2️⃣ StringBuilder
 
-  이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+  이 문제를 해결하는 방법은 단순합니다.
     
-      대신에 문자열 더하기 연산(+)을 사용하면 충분합니다.
-    
-  
-
-
-2️⃣ String 최적화가 어려운 경우.
-
-  다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-    public class LoopStringMain {
-
-  public static void main(String[] args) {
-      long startTime = System.currentTimeMillis();
-      String result = "";
-      for (int i = 0; i &lt; 100000; i++) {
-          result += "Hello Java ";
-      }
-      long endTime = System.currentTimeMillis();
-
-      System.out.println("result = " + result);
-      System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-    
-  
-  왜냐하면 대략 다음과 같이 최적화가 되기 때문이다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-    String result = "";
-for (int i = 0; i &lt; 1000000; i++) {
-  result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-    
-  
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-  반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-    
-      이런 결우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+      바로 불변이 아닌 가변 String이 존재하면 됩니다.
         
-          따라서, 이런 상황에서는 최적화가 어렵습니다.
+          가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
+            
+              따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
+            
+          
         
       
     
   
-  StringBuilder 는 물론이고, 아마도 대략 반복 횟수인 100,000의 String 객체를 생성했을 것입니다.
-
-
-실행 결과
-result = Hello Java Hello Java Hello Java...
-time = 2564ms
-
-
-
-  1000ms = 1초
+  이런 문제를 해결하기 위해 자바는 StringBuilder 라는 가변 String을 제공합니다.
+    
+      물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
+    
   
-    M1 맥북을 기준으로 100000회 더했을 때 약 2.6초가 걸렸습니다.
-  
-  이럴때는 직접 StringBuilder를 사용하면 됩니다.
-    public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-      long startTime = System.currentTimeMillis();
-
-      StringBuilder sb = new StringBuilder();
-      for (int i = 0; i &lt; 100000; i++) {
-          sb.append("Hello Java ");
-      }
-      long endTime = System.currentTimeMillis();
-
-      String result = sb.toString();
-      System.out.println("result = " + result);
-      System.out.println("time = " + (endTime - startTime) + "ms");
-  }
+  StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
+    public final class StringBuilder {
+  char[] value; // 자바 9 이전
+  byte[] value; // 자바 9 이후
+    
+  // 여러 메서드
+  public StringBuilder append(String str) {...}
+  public int length() {...}
+  ...
 }
     
+    (실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
   
+
+
+3️⃣ StringBuilder 사용 예시
+public class StringBuilderMain1_1 {
+
+	public static void main(String[] args) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("A");
+		sb.append("B");
+		sb.append("C");
+		sb.append("D");
+		System.out.println("sb = " + sb);
+
+		sb.insert(4, "Java");
+		System.out.println("sb = " + sb);
+
+		sb.delete(4, 8);
+		System.out.println("delete = " + sb);
+
+		sb.reverse();
+		System.out.println("reverse = " + sb);
+
+		// StringBuild -&gt; String
+		String string = sb.toString();
+		System.out.println("string = " + string);
+	}
+}
+
+
+  StringBuilder 객체를 생성합니다.
+  append() 메서드를 사용해 여러 문자열을 추가합니다.
+  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
+  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
+  reverse() 메서드로 문자열을 뒤집습니다.
+  마지막으로 toString 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
 
 
 실행 결과
-result = Hello Java Hello Java Hello Java...
-time = 3ms
+sb = ABCD
+sb = ABCDJava
+delete = ABCD
+reverse = DCBA
+string = DCBA
 
 
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.003초가 걸렸습니다.
+가변(Mutable) vs 불변(Immutable)
 
-
-3️⃣ 정리
-
-  
-    문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-  
-  
-    StringBuilder를 직접 사용하는 것이 더 좋은 경우
+  String은 불변합니다.
     
-      반복문에서 반복해서 문자를 연결할 때
-      조건문을 통해 동적으로 문자열을 조합할 때
-      복잡한 문자열의 특정 부분을 변경해야 할 때
-      매우 긴 대용량 문자열을 다룰 때
+      즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
+        
+          따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
+            
+              이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
+            
+          
+        
+      
+    
+  
+  반면에, StringBuilder는 가변적입니다.
+    
+      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이 때마다 새로운 객체를 생성하지 않습니다.
+        
+          이로 인해 메모리 사용을 줄이고 성능을 향상시킬 수 있습니다.
+            
+              단 사이드 이펙트를 주의해야합니다.
+            
+          
+        
+      
     
   
 
 
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
-
+StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
 
                         </a>
                         <div class="info-post">
@@ -27881,6 +28044,106 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
+
+1️⃣ nvm 설치.
+
+  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
+    
+      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+        
+      
+    
+  
+  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
+
+
+2️⃣ nvm 환경 설정 적용.
+'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+3️⃣ Node.js 16.x 설치 및 사용.
+
+  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
+    nvm install 16
+nvm use 16
+    
+  
+  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
+
+
+✏️ 요약
+
+  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -27976,249 +28239,6 @@ sudo firewall-cmd --permanent --add-service=https
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
-
-1️⃣ nvm 설치.
-
-  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
-    
-      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
-        
-      
-    
-  
-  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
-
-
-2️⃣ nvm 환경 설정 적용.
-'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-3️⃣ Node.js 16.x 설치 및 사용.
-
-  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
-    nvm install 16
-nvm use 16
-    
-  
-  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
-
-
-✏️ 요약
-
-  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-08-18-structural-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-08-18-structural-model.html"><h1 class="title_post">🌐[Network] 구조적 모델</h1></a>
-                        <a href="/Network/2024/2024-08-18-structural-model.html" class="txt_post">
-                            🌐[Network] 구조적 모델.
-
-  네트워크는 다수의 시스템을 전송 매체로 연결해 구성한 시스템들의 집합체입니다.
-    
-      소규모의 네트워크들은 전송 매체로 연결되어 더 큰 네트워크로 반복적으로 확장될 수 있습니다.
-    
-  
-  컴퓨터 네트워크는 외형상 호스트 시스템과 전송 매체로 구분합니다.
-    
-      하지만 이런 물리적인 형태와는 별도로, 그들이 수행하는 내부 기능을 기초로 하여 다양한 구조로 세분할 수 있습니다.
-        
-          특히, 호스트가 제공하는 복잡한 네트워크 기능을 연관된 그룹으로 묶어 계틍 모델로 설명할 수 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-08-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
-                            🙋‍♂️ OpenVPN Password 변경방법.
-
-  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
-  ✏️ 사용자 비밀번호 변경.
-    
-      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
-        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
-        
-        
-          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
-        
-      
-    
-  
-
-
-✏️ 참고.
-
-  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
-    sudo /usr/local/openvpn_as/scripts/sacli --help
-    
-    
-      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html"><h1 class="title_post">📝[Post] OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="txt_post">
-                            🙋‍♂️ OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.
-
-  
-    
-      먼저 OpenVPN Access Server에 접속합니다.
-        
-          🎯 OpenVPN 클라이언트는 꺼진 상태여야 합니다.
-만약 OpenVPN 클라이언트가 연결되어 있다면 연결을 끊어주세요.
-        
-      
-    
-  
-  
-    
-      로그 파일을 살펴봅니다.
-        sudo tail -f /var/log/openvpnas.log
-        
-      
-    
-  
-  
-    
-      'SENT CONTROL [client_name]' 또는 'PUSH_REPLY...' 와 같은 메시지를 찾아봅니다.
-        
-          로그에서 위와 같은 메시지에는 클라이언트가 할당받은 IP 주소 및 서브넷 정보가 포함 되어 있을 수 있습니다.
-
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-18</span>
                             
                         </div>
                     </div>
@@ -28375,6 +28395,149 @@ nvm use 16
       단순히 정보 검색을 지원하던 시대를 지나서 오늘날 인터넷 환경은 인공지능과 결합하는 추세로 발전되고 있습니다.
         
           그에 따라 특정 분야에 한정되지 않고, 사회 전반의 모든 영역으로 네트워크 서비스는 발전하고 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
+                            🙋‍♂️ OpenVPN Password 변경방법.
+
+  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
+  ✏️ 사용자 비밀번호 변경.
+    
+      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
+        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
+        
+        
+          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
+        
+      
+    
+  
+
+
+✏️ 참고.
+
+  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
+    sudo /usr/local/openvpn_as/scripts/sacli --help
+    
+    
+      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html"><h1 class="title_post">📝[Post] OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="txt_post">
+                            🙋‍♂️ OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.
+
+  
+    
+      먼저 OpenVPN Access Server에 접속합니다.
+        
+          🎯 OpenVPN 클라이언트는 꺼진 상태여야 합니다.
+만약 OpenVPN 클라이언트가 연결되어 있다면 연결을 끊어주세요.
+        
+      
+    
+  
+  
+    
+      로그 파일을 살펴봅니다.
+        sudo tail -f /var/log/openvpnas.log
+        
+      
+    
+  
+  
+    
+      'SENT CONTROL [client_name]' 또는 'PUSH_REPLY...' 와 같은 메시지를 찾아봅니다.
+        
+          로그에서 위와 같은 메시지에는 클라이언트가 할당받은 IP 주소 및 서브넷 정보가 포함 되어 있을 수 있습니다.
+
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-08-18-structural-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-08-18-structural-model.html"><h1 class="title_post">🌐[Network] 구조적 모델</h1></a>
+                        <a href="/Network/2024/2024-08-18-structural-model.html" class="txt_post">
+                            🌐[Network] 구조적 모델.
+
+  네트워크는 다수의 시스템을 전송 매체로 연결해 구성한 시스템들의 집합체입니다.
+    
+      소규모의 네트워크들은 전송 매체로 연결되어 더 큰 네트워크로 반복적으로 확장될 수 있습니다.
+    
+  
+  컴퓨터 네트워크는 외형상 호스트 시스템과 전송 매체로 구분합니다.
+    
+      하지만 이런 물리적인 형태와는 별도로, 그들이 수행하는 내부 기능을 기초로 하여 다양한 구조로 세분할 수 있습니다.
+        
+          특히, 호스트가 제공하는 복잡한 네트워크 기능을 연관된 그룹으로 묶어 계틍 모델로 설명할 수 있습니다.
         
       
     
@@ -82393,6 +82556,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-10-03-SOLID.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-03"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 좋은 코드(Clean Code)의 중요성.",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-10-03-clean-code.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-10-03"
         });

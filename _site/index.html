@@ -734,6 +734,7 @@
             
             
             
+            
 
     
     
@@ -1292,6 +1293,247 @@ catch (FileNoFoundException ex) {
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-02-API-Exception.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-02-API-Exception.html"><h1 class="title_post">🍃[Spring] API에서 예외 던지기.</h1></a>
+                        <a href="/Backend/Spring/2024-10-02-API-Exception.html" class="txt_post">
+                            🍃[Spring] API에서 예외 던지기.
+
+Java 백엔드 애플리케이션에서 API 호출 중 예외를 던지면, 예외가 적절하게 처리되지 않는 한 클라이언트에 오류 응답이 반환됩니다.
+
+기본적으로 예외가 발생하면 애플리케이션은 예외가 발생한 시점에서 실행을 중단하고, 예외에 대한 처리를 하지 않으면 내부 서버 오류(HTTP 500)를 클라이언트에 반환하게 됩니다.
+
+1️⃣ 예외 처리 흐름.
+
+1. 예외 발생.
+
+  API의 컨트롤러나 서비스 레이어에서 특정 로직을 수행하는 도중 예외가 발생할 수 있습니다.
+  예외가 발생하면 실행 흐름이 예외 처리 블록으로 넘어가거나, 예외가 호출된 메서드를 통해 상위로 전파됩니다.
+
+
+2. 예외 전파.
+
+  만약 해당 예외를 try-catch 블록 내에서 처리하지 않으면 예외는 호출된 메서드를 따라 상위로 전파됩니다.
+  이 과정에서 최종적으로 컨트롤러 레벨이나 그 이상에서 예외를 잡지 않으면, Spring Framework와 같은 백엔드 프레임워크가 예외를 받아 처리하게 됩니다.
+
+
+3. Spring의 기본 동작.
+
+  Spring MVC에서는 예외가 전파되어 컨트롤러까지 도달하고도 처리되지 않으면, Spring이 DefaultHandlerExceptionResolver를 통해 기본적인 예외 처리를 수행합니다.
+  처리되지 않은 예외는 기본적으로 HTTP 상태 코드 500(내부 서버 오류)로 매핑되어 클라이언트에 반환됩니다.
+  클라이언트는 이 상태 코드를 통해 서버에서 오류가 발생했음을 인식하게 됩니다.
+
+
+2️⃣ 예외 처리를 위한 방법.
+
+1. @ExceptionHandler 사용.
+
+  Spring MVC에서는 컨트롤러 레벨에서 예외를 처리하기 위해 @ExceptionHandler 어노테이션을 사용할 수 있습니다.
+  특정 예외가 발생했을 때 해당 메서드가 호출되어 예외를 처리하고, 적절한 응답을 클라이언트에게 반환할 수 있습니다.
+
+
+@RestController
+public class MyController {
+    @GetMapping("/example")
+    public String example() {
+        if (someConditionFails()) {
+            throw new MyCustomException("Something went wrong!");
+        }
+        return "success";
+    }
+    
+    @ExceptionHandler(MyCustomException.class)
+    public ResponseEntity&lt;String&gt; handleMyCustomException(MyCustomException ex) {
+        return new ResponseEntity&lt;&gt;(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+}
+
+
+이 경우 MyCustomException이 발생하면 HTTP 상태 코드 400과 함께 예외 메시지가 반환됩니다.
+
+2. @ControllerAdvice 사용.
+
+  @ControllerAdvice는 전역 예외 처리기를 정의하는 데 사용됩니다.
+  이를 통해 애플리케이션 전반에 발생하는 예외를 중앙에서 처리할 수 있습니다.
+
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(MyCustomException.class)
+    public ResponseEntity&lt;String&gt; handleMyCustomException(MyCustomException ex) {
+        return new ResponseEntity&lt;&gt;(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;String&gt; handleGeneralException(Exception ex) {
+        return new ResponseEntity&lt;&gt;("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
+이 경우 특정 예외뿐만 아니라 모든 일반적인 예외도 처리할 수 있습니다.
+
+3. ResponseEntity와 함께 예외를 반환.
+
+  ResponseEntity를 사용하여 직접 예외 발생 시 HTTP 응답과 상태 코드를 반환할 수도 있습니다.
+
+
+@GetMapping("/example")
+public ResponseEntity&lt;String&gt; example() {
+    if (someConditionFails()) {
+        return new ResponseEntity&lt;&gt;("Custom error message", HttpStatus.BAD_REQUEST);
+    }
+    return new ResponseEntiry&lt;&gt;("success", HttpStatus.OK);
+}
+
+
+3️⃣ 실제 코드 사례.
+// UserUpdateRequest - DTO
+public class UserUpdateRequest {
+    private long id;
+    private String name;
+    
+    public long getId() {
+        return id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+}
+
+// UserController - Controller
+@PutMapping("/user")
+public void updateUser(@RequestBody UserUpdateRequest request) {
+    String sql = "UPDATE user SET name = ? WHERE id = ?";
+    jdbcTemplate.update(sql, request.getName(), request.getId());
+}
+
+@DeleteMapping("/user")
+public void deleteUser(@RequestParam String name) {
+    String sql = "DELETE FROM user WHERE name = ?";
+    jdbcTemplate.update(sql, name);
+}
+
+
+1. 문제 상황.
+
+  위 코드에서의 문제 상황은 없는 유저를 업데이트 하거나 삭제하려 해도 200 OK가 나온다는 점입니다.
+
+
+2. 해결 방안.
+
+  API에서 예외를 던저 500 Internal Server Error이 나오게 하면됩니다.
+
+
+@GetMapping("/user/error-test")
+public void errorTest() {
+    throw new IllegalArgumentException();
+}
+
+
+
+
+
+  POSTMAN을 활용하여 http://localhost:8080/user/error-test로 GET 호출을 보내면 500 Internal Server Error이 발생합니다.
+
+
+4️⃣ 활용 예시.
+// UserUpdateRequest - DTO
+public class UserUpdateRequest {
+    private long id;
+    private String name;
+    
+    public long getId() {
+        return id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+}
+
+// UserController - Controller
+@PutMapping("/user")
+public void updateUser(@RequestBody UserUpdateRequest request) {
+    String readSql = "SELECT * FROM user WHERE id = ?";
+    boolean isUserExist = jdbcTemplate.query(readSql, (rs, rowNum) -&gt; 0 request.getId()).isEmpty();
+    
+    if (isUserNotExist) {
+        throw new IllegalArgumentException();
+    }
+    
+    String sql = "UPDATE user SET name = ? WHERE id = ?";
+    jdbcTemplate.update(sql, request.getName(), request.getId());
+}
+
+@DeleteMapping("/user")
+public void deleteUser(@RequestParam String name) {
+    String readSql = "SELECT * FROM user WHERE name = ?";
+    boolean isUserExist = jdbcTemplate.query(readSql (rs, rowNum) -&gt; 0, name).isEmpty();
+    
+    if (isUserNotExist) {
+        throw new IllegalArgumentException();
+    }
+    
+    String sql = "DELETE FROM user WHERE name = ?";
+    jdbcTemplate.update(sql, name);
+}
+
+
+
+  위와 같이 API에서 데이터 존재 여부를 확인해 예외를 던지면 됩니다.
+
+
+String readSql = "SELECT * FROM user WHERE id = ?";
+
+
+  id를 기준으로 유저가 존재하는지 확인하기 위해 SELECT 쿼리를 작성했습니다.
+
+
+boolean isUserExist = jdbcTemplate.query(readSql, (rs, rowNum) -&gt; 0 request.getId()).isEmpty();
+
+
+  SQL을 날려 DB에 데이터가 있는지 확인합니다.
+    
+      SELECT SQL의 결과가 있으면 0으로 변환됩니다.
+      최종적으로 List로 반환됩니다.
+        
+          즉, 해당 id를 가진 유저가 있으면 0이 담긴 List가 나오고, 없다면 빈 List가 나오게 됩니다.
+          jdbcTemplate.query()의 결과인 List가 비어있다면, 유저가 없다는 뜻입니다.
+        
+      
+    
+  
+
+
+if (isUserNotExist) {
+    throw new IllegalArgumentException();
+}
+
+
+  만약 유저가 존재하지 않는다면 IllegalArgumentException을 던집니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-10-02</span>
                             
@@ -2161,311 +2403,6 @@ mylist:
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-09-30-RDB.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-30-RDB.html"><h1 class="title_post">💾 [CS] RDB란?</h1></a>
-                        <a href="/CS/2024/2024-09-30-RDB.html" class="txt_post">
-                            💾 [CS] RDB란?
-RDB는 Relational Databas(관계형 데이터베이스) 를 줄인 용어로, 관계형 모델을 기반으로 데이터를 저장하고 관리하는 데이터베이스 시스템입니다.
-
-RDB에서는 데이터를 테이블 형태로 저장하며, 각 테이블은 행(row) 과 열(column) 로 구성됩니다.
-
-테이블 간의 관계를 키(Key) 를 사용하여 정의하고, 이를 통해 데이터를 효율적으로 관리하고 검색할 수 있습니다.
-
-1️⃣ RDB의 주요 특징.
-
-1. 테이블 형식의 데이터 저장.
-
-  관계형 데이터베이스는 데이터를 테이블(Table) 로 저장합니다.
-  테이블은 데이터의 한 유형을 나타내며, 테이블 안에 여러 레코드(행, row)가 저장됩니다.
-  각 행(row)은 테이블의 데이터 항목을 나타내고, 열(column)은 데이터의 속성을 나타냅니다.
-
-
-2. 관계(Relation)
-
-  RDB에서 테이블 간의 관계는 Primary Key(기본 키) 와 Foreign Key(외래 키) 를 사용하여 정의됩니다.
-  기본 키(Primary Key)는 각 테이블에서 각 행(row)을 고유하게 식별하는 값이며, 외래 키(Foreign Key)는 다른 테이블의 기본 키(Primary Key)를 참조하는 값입니다.
-  이 키를 통해 테이블 간의 관계를 설정하고, 데이터의 일관성과 무결성을 보장합니다.
-
-
-3. SQL(Structured Query Language) 사용.
-
-  관계형 데이터베이스는 SQL을 사용하여 데이터를 조작하고 관리합니다.
-  SQL은 데이터를 삽입, 조회, 수정, 삭제하는 명령어를 제공하며, 데이터베이스의 구조(테이블 생성, 수정, 삭제 등)를 정의하는 언어입니다.
-
-
-
-  🙋‍♂️ SQL이란?
-
-
-4. 데이터 무결성.
-
-  RDB는 데이터 무결성(Integrity) 을 보장하기 위한 다양한 제약 조건을 지원합니다.
-  무결성 제약 조건으로는 Primary Key, Foreign Key, Unique 제약 조건 등이 있습니다.
-  이러한 제약 조건을 통해 데이터의 정확성과 일관성을 유지할 수 있습니다.
-
-
-5. ACID 속성.
-
-  관계형 데이터베이스는 트랜잭션 처리에서 ACID 속성을 준수합니다.
-    
-      원자성(Atomicity) : 트랜잭션 내의 모든 작업이 성공적으로 완료되거나, 그렇지 않으면 아무 것도 완료되지 않아야 합니다.
-      일관성(Consistency) : 트랜잭션이 완료된 후 데이터베이스는 항상 일관된 상태를 유지해야 합니다.
-      고립성(Isolation) : 동시에 실행되는 트랜잭션들은 서로의 작업에 영향을 주지 않아야 합니다.
-      지속성(Durability) : 트랜잭션이 성공적으로 완료되면, 그 결과는 영구적으로 데이터베이스에 반영됩니다.
-    
-  
-
-
-
-  🙋‍♂️ 트랜잭션
-
-
-2️⃣ RDB의 주요 개념.
-
-1. 테이블(Table)
-
-  테이블은 RDB의 가장 기본적인 저장 단위입니다.
-  테이블은 행(row)과 열(colum)로 구성되며, 각 행(row)은 하나의 레코드(데이터 항목)를, 각 열(column)은 데이터 속성을 나타냅니다.
-    
-      예를 들어, Users라는 테이블에는 사용자 정보가 저장됩니다.
-    
-  
-
-
-예시 Users 테이블
-
-
-  
-    
-      id
-      name
-      email
-    
-  
-  
-    
-      1
-      Kobe
-      kobe@example.com
-    
-    
-      2
-      MinSeond
-      minseong@example.com
-    
-  
-
-
-2. 기본 키(Primary Key)
-
-  테이블에서 각 레코드를 고유하게 식별할 수 있는 열입니다.
-  기본 키는 중복될 수 없으며, null 값을 가질 수 없습니다.
-    
-      예를 들어, Users 테이블에서 id 열이 기본 키가 될 수 있습니다.
-    
-  
-
-
-3. 외래 키(Foreign Key)
-
-  한 테이블의 열이 다른 테이블의 기본 키를 참조할 때, 이를 외래 키라고 합니다.
-  외래 키를 통해 두 테이블 간의 관계가 설정됩니다.
-    
-      예를 들어, Orders 테이블의 user_id 열은 Users 테이블의 id 열을 참조하는 외래 키가 될 수 있습니다.
-    
-  
-
-
-예시 Orders 테이블 (외래 키를 사용)
-
-
-  
-    
-      order_id
-      user_id
-      product
-    
-  
-  
-    
-      1001
-      1
-      Laptop
-    
-    
-      1002
-      2
-      Smartphone
-    
-  
-
-
-
-  여기서 user_id는 Users 테이블의 id를 참조하는 외래 키(Foreign Key)입니다.
-
-
-4. 관계(Relation)
-
-  테이블 간의 관계는 1:1, 1(일대다), N(다대다) 관계로 정의될 수 있습니다.
-    
-      1:1 관계 : 한 테이블의 하나의 레코드가 다른 테이블의 하나의 레코드와만 연관됩니다.
-      1 관계 : 한 테이블의 하나의 레코드가 다른 테이블의 여러 레코드와 연관됩니다.
-      N 관계 : 두 테이블 간의 여러 레코드가 서로 여러 레코드와 연관됩니다. 이를 처리하기 위해 연결 테이블이 사용됩니다.
-    
-  
-
-
-3️⃣ RDB의 예시
-
-1. 테이블 생성
-CREATE TABLE Users (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
-);
-
-
-2. 데이터 삽입
-INSERT INTO Users (id, name, email) VALUES (1, 'Kobe', 'kobe@email.com');
-
-
-3. 데이터 조회
-SELECT * FROM Users WHERE id = 1;
-
-
-4. 테이블 간의 관계 설정
-CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
-    user_id INT,
-    product VARCHAR(100),
-    FOREIGN KEY (user_id) REFERENCE Users(id)
-);
-
-
-
-  이 예시에서는 Orders 테이블의 user_id가 Users 테이블의 id를 참조하는 외래 키로 설정됩니다.
-
-
-4️⃣ RDB의 장점.
-
-1. 데이터 일관성.
-
-  관계형 데이터베이스는 SQL을 통해 데이터의 무결성과 일관성을 유지할 수 있습니다.
-  기본 키(Primary Key)와 외래 키(Foreign Key)를 통해 데이터 간의 관계를 관리하고, 중복 데이터를 방지합니다.
-
-
-2. 데이터 무결성 보장.
-
-  데이터 무결성 제약 조건(Primary Key, Foreign Key, Unique 등)을 통해 데이터베이스는 데이터의 정확성과 일관성을 보장합니다.
-
-
-3. 표준화된 쿼리 언어.
-
-  SQL이라는 표준화된 언어를 사용하여 데이터를 조작하고 관리할 수 있습니다.
-  다양한 RDBMS에서 SQL을 사용하기 때문에 범용성이 높습니다.
-
-
-4. 복잡한 쿼리 처리.
-
-  관계형 데이터베이스 조인(Join) 연산을 통해 여러 테이블의 데이터를 결합하여 복잡한 쿼리를 처리할 수 있습니다.
-
-
-5. ACID 트랜잭션 지원.
-
-  관계형 데이터베이스는 ACID 속성을 준수하여 트랜잭션의 일관성을 보장합니다.
-    
-      이는 금융시스템이나 중요한 데이터 처리에 매우 적합합니다.
-    
-  
-
-
-5️⃣ RDB의 단점.
-
-1. 확장성의 한계.
-
-  관계형 데이터베이스는 스케일 아웃(서버를 수평적으로 확장하는 방식)에 제약이 있을 수 있습니다.
-    
-      대규모 데이터 처리나 복잡한 분산 환경에서는 NoSQL 데이터베이스가 더 적합할 수 있습니다.
-    
-  
-
-
-2. 복잡한 구조.
-
-  테이블 간의 관계를 설정하고 관리하는 것은 강력하지만, 복잡한 스키마 설계가 필요한 경우 유지 관리가 어려워질 수 있습니다.
-
-
-3. 비정형 데이터 처리의 한계.
-
-  관계형 데이터베이스는 고정된 스키마 구조를 가지므로, 비정형 데이터(예: JSON, XML, 미디어 파일 등)를 처리하는 데는 적합하지 않을 수 있습니다.
-
-
-6️⃣ RDB의 예시 시스템.
-
-1. MySQL
-
-  오픈 소스 관계형 데이터베이스로, 웹 애플리케이션에서 가장 많이 사용됩니다.
-
-
-2. PostgreSQL
-
-  고급 기능을 제공하는 오픈 소스 관계형 데이터베이스로, 복잡한 쿼리와 트랜잭션을 지원합니다.
-
-
-3. Oracle Database
-
-  엔터프라이즈급 데이터베이스로, 성능과 안정성이 매우 뛰어나고, 많은 기능을 제공합니다.
-
-
-4. Microsoft SQL Server
-
-  Microsoft에서 개발한 관계형 데이터베이스로, 주로 Windows 환경에서 사용됩니다.
-
-
-7️⃣ RDB의 활용 사례.
-
-1. 전자상거래 시스템
-
-  사용자 정보, 주문 정보, 제품 정보 등을 테이블로 관리하고, 이러한 테이블 간의 관계를 설정하여 데이터를 일관성 있게 관리합니다.
-
-
-2. 은행 시스템
-
-  계좌 정보, 거래 기록, 고객 정보 등을 테이블에 저장하고, 각 테이블 간의 관계를 통해 테이터를 안전하게 관리합니다.
-  트랜잭션 처리가 중요합니다.
-
-
-3. ERP 시스템
-
-  기업 자원 관리 시스템에서 생산, 재고, 구매, 판매, 인사 등의 데이터를 테이블로 관리하고, 서로 관계를 맺어 데이터를 효율적으로 처리합니다.
-
-
-8️⃣ 요약.
-
-  RDB(Relational Database) 는 데이터를 테이블 형태로 저장하고, 관계(Relation) 를 통해 테이블 간의 연결을 관리하는 데이터베이스 시스템입니다.
-  RDB는 SQL을 사용하여 데이터를 조회, 삽입, 수정, 삭제하며, ACID 속성을 통해 트랜잭션의 일관성을 보장합니다.
-  데이터베이스의 무결성을 유지하고 복잡한 쿼리를 처리하는데 강력한 기능을 제공하지만, 확장성이나 비정형 데이터 처리에는 한계가 있을 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/SQL/2024/2024-09-30-DML.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -3121,6 +3058,311 @@ DELETE FROM Users WHERE id = 3;
   SQL(Structured Query Language) 은 관계형 데이터베이스에서 데이터를 관리하고 조작하기 위한 표준 언어입니다.
   SQL은 데이터를 조회(SELECT), 삽입(INSERT), 수정(UPDATE), 삭제(DELETE)할 수 있으며, 데이터베이스의 구조를 정의하고 사용자 권한을 관리하는 등 데이터베이스 운영에 필요한 다양한 기능을 제공합니다.
   SQL은 관계형 데이터베이스 시스템에서 가장 널리 사용되며, 데이터 관리를 위한 핵심 기술 중 하나입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-09-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-09-30-RDB.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-30-RDB.html"><h1 class="title_post">💾 [CS] RDB란?</h1></a>
+                        <a href="/CS/2024/2024-09-30-RDB.html" class="txt_post">
+                            💾 [CS] RDB란?
+RDB는 Relational Databas(관계형 데이터베이스) 를 줄인 용어로, 관계형 모델을 기반으로 데이터를 저장하고 관리하는 데이터베이스 시스템입니다.
+
+RDB에서는 데이터를 테이블 형태로 저장하며, 각 테이블은 행(row) 과 열(column) 로 구성됩니다.
+
+테이블 간의 관계를 키(Key) 를 사용하여 정의하고, 이를 통해 데이터를 효율적으로 관리하고 검색할 수 있습니다.
+
+1️⃣ RDB의 주요 특징.
+
+1. 테이블 형식의 데이터 저장.
+
+  관계형 데이터베이스는 데이터를 테이블(Table) 로 저장합니다.
+  테이블은 데이터의 한 유형을 나타내며, 테이블 안에 여러 레코드(행, row)가 저장됩니다.
+  각 행(row)은 테이블의 데이터 항목을 나타내고, 열(column)은 데이터의 속성을 나타냅니다.
+
+
+2. 관계(Relation)
+
+  RDB에서 테이블 간의 관계는 Primary Key(기본 키) 와 Foreign Key(외래 키) 를 사용하여 정의됩니다.
+  기본 키(Primary Key)는 각 테이블에서 각 행(row)을 고유하게 식별하는 값이며, 외래 키(Foreign Key)는 다른 테이블의 기본 키(Primary Key)를 참조하는 값입니다.
+  이 키를 통해 테이블 간의 관계를 설정하고, 데이터의 일관성과 무결성을 보장합니다.
+
+
+3. SQL(Structured Query Language) 사용.
+
+  관계형 데이터베이스는 SQL을 사용하여 데이터를 조작하고 관리합니다.
+  SQL은 데이터를 삽입, 조회, 수정, 삭제하는 명령어를 제공하며, 데이터베이스의 구조(테이블 생성, 수정, 삭제 등)를 정의하는 언어입니다.
+
+
+
+  🙋‍♂️ SQL이란?
+
+
+4. 데이터 무결성.
+
+  RDB는 데이터 무결성(Integrity) 을 보장하기 위한 다양한 제약 조건을 지원합니다.
+  무결성 제약 조건으로는 Primary Key, Foreign Key, Unique 제약 조건 등이 있습니다.
+  이러한 제약 조건을 통해 데이터의 정확성과 일관성을 유지할 수 있습니다.
+
+
+5. ACID 속성.
+
+  관계형 데이터베이스는 트랜잭션 처리에서 ACID 속성을 준수합니다.
+    
+      원자성(Atomicity) : 트랜잭션 내의 모든 작업이 성공적으로 완료되거나, 그렇지 않으면 아무 것도 완료되지 않아야 합니다.
+      일관성(Consistency) : 트랜잭션이 완료된 후 데이터베이스는 항상 일관된 상태를 유지해야 합니다.
+      고립성(Isolation) : 동시에 실행되는 트랜잭션들은 서로의 작업에 영향을 주지 않아야 합니다.
+      지속성(Durability) : 트랜잭션이 성공적으로 완료되면, 그 결과는 영구적으로 데이터베이스에 반영됩니다.
+    
+  
+
+
+
+  🙋‍♂️ 트랜잭션
+
+
+2️⃣ RDB의 주요 개념.
+
+1. 테이블(Table)
+
+  테이블은 RDB의 가장 기본적인 저장 단위입니다.
+  테이블은 행(row)과 열(colum)로 구성되며, 각 행(row)은 하나의 레코드(데이터 항목)를, 각 열(column)은 데이터 속성을 나타냅니다.
+    
+      예를 들어, Users라는 테이블에는 사용자 정보가 저장됩니다.
+    
+  
+
+
+예시 Users 테이블
+
+
+  
+    
+      id
+      name
+      email
+    
+  
+  
+    
+      1
+      Kobe
+      kobe@example.com
+    
+    
+      2
+      MinSeond
+      minseong@example.com
+    
+  
+
+
+2. 기본 키(Primary Key)
+
+  테이블에서 각 레코드를 고유하게 식별할 수 있는 열입니다.
+  기본 키는 중복될 수 없으며, null 값을 가질 수 없습니다.
+    
+      예를 들어, Users 테이블에서 id 열이 기본 키가 될 수 있습니다.
+    
+  
+
+
+3. 외래 키(Foreign Key)
+
+  한 테이블의 열이 다른 테이블의 기본 키를 참조할 때, 이를 외래 키라고 합니다.
+  외래 키를 통해 두 테이블 간의 관계가 설정됩니다.
+    
+      예를 들어, Orders 테이블의 user_id 열은 Users 테이블의 id 열을 참조하는 외래 키가 될 수 있습니다.
+    
+  
+
+
+예시 Orders 테이블 (외래 키를 사용)
+
+
+  
+    
+      order_id
+      user_id
+      product
+    
+  
+  
+    
+      1001
+      1
+      Laptop
+    
+    
+      1002
+      2
+      Smartphone
+    
+  
+
+
+
+  여기서 user_id는 Users 테이블의 id를 참조하는 외래 키(Foreign Key)입니다.
+
+
+4. 관계(Relation)
+
+  테이블 간의 관계는 1:1, 1(일대다), N(다대다) 관계로 정의될 수 있습니다.
+    
+      1:1 관계 : 한 테이블의 하나의 레코드가 다른 테이블의 하나의 레코드와만 연관됩니다.
+      1 관계 : 한 테이블의 하나의 레코드가 다른 테이블의 여러 레코드와 연관됩니다.
+      N 관계 : 두 테이블 간의 여러 레코드가 서로 여러 레코드와 연관됩니다. 이를 처리하기 위해 연결 테이블이 사용됩니다.
+    
+  
+
+
+3️⃣ RDB의 예시
+
+1. 테이블 생성
+CREATE TABLE Users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+
+2. 데이터 삽입
+INSERT INTO Users (id, name, email) VALUES (1, 'Kobe', 'kobe@email.com');
+
+
+3. 데이터 조회
+SELECT * FROM Users WHERE id = 1;
+
+
+4. 테이블 간의 관계 설정
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    user_id INT,
+    product VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCE Users(id)
+);
+
+
+
+  이 예시에서는 Orders 테이블의 user_id가 Users 테이블의 id를 참조하는 외래 키로 설정됩니다.
+
+
+4️⃣ RDB의 장점.
+
+1. 데이터 일관성.
+
+  관계형 데이터베이스는 SQL을 통해 데이터의 무결성과 일관성을 유지할 수 있습니다.
+  기본 키(Primary Key)와 외래 키(Foreign Key)를 통해 데이터 간의 관계를 관리하고, 중복 데이터를 방지합니다.
+
+
+2. 데이터 무결성 보장.
+
+  데이터 무결성 제약 조건(Primary Key, Foreign Key, Unique 등)을 통해 데이터베이스는 데이터의 정확성과 일관성을 보장합니다.
+
+
+3. 표준화된 쿼리 언어.
+
+  SQL이라는 표준화된 언어를 사용하여 데이터를 조작하고 관리할 수 있습니다.
+  다양한 RDBMS에서 SQL을 사용하기 때문에 범용성이 높습니다.
+
+
+4. 복잡한 쿼리 처리.
+
+  관계형 데이터베이스 조인(Join) 연산을 통해 여러 테이블의 데이터를 결합하여 복잡한 쿼리를 처리할 수 있습니다.
+
+
+5. ACID 트랜잭션 지원.
+
+  관계형 데이터베이스는 ACID 속성을 준수하여 트랜잭션의 일관성을 보장합니다.
+    
+      이는 금융시스템이나 중요한 데이터 처리에 매우 적합합니다.
+    
+  
+
+
+5️⃣ RDB의 단점.
+
+1. 확장성의 한계.
+
+  관계형 데이터베이스는 스케일 아웃(서버를 수평적으로 확장하는 방식)에 제약이 있을 수 있습니다.
+    
+      대규모 데이터 처리나 복잡한 분산 환경에서는 NoSQL 데이터베이스가 더 적합할 수 있습니다.
+    
+  
+
+
+2. 복잡한 구조.
+
+  테이블 간의 관계를 설정하고 관리하는 것은 강력하지만, 복잡한 스키마 설계가 필요한 경우 유지 관리가 어려워질 수 있습니다.
+
+
+3. 비정형 데이터 처리의 한계.
+
+  관계형 데이터베이스는 고정된 스키마 구조를 가지므로, 비정형 데이터(예: JSON, XML, 미디어 파일 등)를 처리하는 데는 적합하지 않을 수 있습니다.
+
+
+6️⃣ RDB의 예시 시스템.
+
+1. MySQL
+
+  오픈 소스 관계형 데이터베이스로, 웹 애플리케이션에서 가장 많이 사용됩니다.
+
+
+2. PostgreSQL
+
+  고급 기능을 제공하는 오픈 소스 관계형 데이터베이스로, 복잡한 쿼리와 트랜잭션을 지원합니다.
+
+
+3. Oracle Database
+
+  엔터프라이즈급 데이터베이스로, 성능과 안정성이 매우 뛰어나고, 많은 기능을 제공합니다.
+
+
+4. Microsoft SQL Server
+
+  Microsoft에서 개발한 관계형 데이터베이스로, 주로 Windows 환경에서 사용됩니다.
+
+
+7️⃣ RDB의 활용 사례.
+
+1. 전자상거래 시스템
+
+  사용자 정보, 주문 정보, 제품 정보 등을 테이블로 관리하고, 이러한 테이블 간의 관계를 설정하여 데이터를 일관성 있게 관리합니다.
+
+
+2. 은행 시스템
+
+  계좌 정보, 거래 기록, 고객 정보 등을 테이블에 저장하고, 각 테이블 간의 관계를 통해 테이터를 안전하게 관리합니다.
+  트랜잭션 처리가 중요합니다.
+
+
+3. ERP 시스템
+
+  기업 자원 관리 시스템에서 생산, 재고, 구매, 판매, 인사 등의 데이터를 테이블로 관리하고, 서로 관계를 맺어 데이터를 효율적으로 처리합니다.
+
+
+8️⃣ 요약.
+
+  RDB(Relational Database) 는 데이터를 테이블 형태로 저장하고, 관계(Relation) 를 통해 테이블 간의 연결을 관리하는 데이터베이스 시스템입니다.
+  RDB는 SQL을 사용하여 데이터를 조회, 삽입, 수정, 삭제하며, ACID 속성을 통해 트랜잭션의 일관성을 보장합니다.
+  데이터베이스의 무결성을 유지하고 복잡한 쿼리를 처리하는데 강력한 기능을 제공하지만, 확장성이나 비정형 데이터 처리에는 한계가 있을 수 있습니다.
 
 
                         </a>
@@ -17246,6 +17488,169 @@ StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
+                        <a href="/CS/2024/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
+                            💾 [CS] 프록시 패턴과 프록시 서버
+
+1️⃣ 프록시 패턴
+
+  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
+
+
+
+
+
+  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
+    
+      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
+    
+  
+
+
+
+  용어: 프록시 서버에서의 캐싱
+캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
+이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
+
+
+2️⃣ 프록시 서버
+
+  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
+
+
+프록시 서버로 쓰는 nginx
+
+  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
+  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
+    
+      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
+        
+          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
+            
+              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+
+  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
+
+
+
+  용어: 버퍼 오버플로우
+버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
+
+
+
+  용어: gzip 압축
+LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
+gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
+
+
+프록시 서버로 쓰는 CloudFlare
+
+  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
+  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
+    
+      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
+
+
+DDOS 공격 방어
+
+  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
+  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
+  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
+
+
+HTTPS 구축
+
+  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
+    
+      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
+    
+  
+
+
+
+  용어: CDN(Content Delivery Network)
+각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
+이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
+
+
+CORS와 프런트엔트의 프록시 서버
+
+  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
+
+
+
+
+
+  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
+
+
+
+  용어: 오리진
+프로토콜과 호스트 이름, 포트의 조합을 말합니다.
+예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
+
+
+
+  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
+    
+      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
+    
+  
+  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
+    
+      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
+    
+  
+
+
+
+
+
+  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
+    
+      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-09-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-07-String-Optimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -17404,169 +17809,6 @@ StringBuilder는 멀티 쓰레드 상황에 안전하지 않지만 동기화 오
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-09-07-proxy-pattern-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-07-proxy-pattern-and-server.html"><h1 class="title_post">💾 [CS] 프록시 패턴과 프록시 서버</h1></a>
-                        <a href="/CS/2024/2024-09-07-proxy-pattern-and-server.html" class="txt_post">
-                            💾 [CS] 프록시 패턴과 프록시 서버
-
-1️⃣ 프록시 패턴
-
-  프록시 패턴(proxy pattern)은 대상 객체(subject)에 접근하기 전 그 접근에 대한 흐름을 가로채 해당 접근을 필터링하거나 수정하는 등의 역할을 하는 계층에 있는 디자인 패턴입니다.
-
-
-
-
-
-  이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용합니다.
-    
-      이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용됩니다.
-    
-  
-
-
-
-  용어: 프록시 서버에서의 캐싱
-캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말합니다.
-이를 통해 불필요하게 외부와 연결하지 않기 때문에 트래픽을 줄일 수 있다는 장점이 있습니다.
-
-
-2️⃣ 프록시 서버
-
-  프록시 서버(proxy server)는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용 프로그램을 가리킵니다.
-
-
-프록시 서버로 쓰는 nginx
-
-  nginx는 비동기 이벤트 기반의 구조와 다수의 연결을 효과적으로 처리 가능한 웹 서버이며, 주로 Node.js 서버 앞단의 프록시 서버로 활용됩니다.
-  Node.js의 창시자 라인언 달은 다음과 같이 말했습니다 “Node.js의 버퍼 오버플로우 취약점을 예방하기 위해서는 nginx를 프록시 서버로 앞단에 놓고 Node.js를 뒤쪽에 놓는 것이 좋다.”라고 한 것입니다.
-    
-      이러한 말은 Node.js 서버를 운영할 때 교과서처럼 참고되어 많은 사람이 이렇게 구축하고 있습니다.
-        
-          Node.js 서버를 구축할 때 앞단에 nginx를 두는 것이죠.
-            
-              이를 통해 익명 사용자가 직접적으로 서버에 접근하는 것을 차단하고, 간접적으로 한 단계를 더 거치게 만들어서 보안을 강화할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-
-  위의 그림처럼 nginx를 프록시 서버로 뒤서 실제 포트를 숨길 수 있고 정적 자원을 gzip 압축하거나, 메인 서버 앞단에서의 로깅을 할 수도 있습니다.
-
-
-
-  용어: 버퍼 오버플로우
-버퍼는 보통 데이터가 저장되는 메모리 공간으로, 메모리 공간을 벗어나는 경우를 말합니다. 이때 사용되지 않아야 할 영역에 데이터가 덮어씌어져 주소, 값을 바꾸는 공격이 발생하기도 합니다.
-
-
-
-  용어: gzip 압축
-LZ77과 Huffman 코딩의 조합인 DEFLATE 알고리즘을 기반으로 한 압축 기술입니다.
-gzip 압축을 하면 데이터 전송량을 줄일 수 있지만, 압축을 해제했을 때 서버에서의 CPU 오버 헤드도 생각해서 gzip 압축 사용 유무를 결정해야 합니다.
-
-
-프록시 서버로 쓰는 CloudFlare
-
-  CloudFlare는 전 세계적으로 분산된 서버가 있고 이를 통해 어떠한 시스템의 콘텐츠 전달을 빠르게 할 수 있는 CDN 서비스입니다.
-  CloudFlare는 웹 서버 앞단에 프록시 서버로 두어 DDOS 공격 방어나 HTTPS 구축에 쓰입니다.
-    
-      또한, 서비스를 배포한 이후에 해외에서 무안가 의심스러운 트래픽이 많이 발생하면 이 떄문에 많은 클라우드 서비스 비용이 발생할 수도 있는데, 이때 CloudFlare가 의심스러운 트래픽인지를 먼저 판단해 CAPTCHA 등을 기반으로 이를 일정부분 막아주는 역할도 수행합니다.
-    
-  
-
-
-
-
-
-  위의 그림처럼 사용자, 크롤러, 공격자가 자신의 웹 사이트에 접속하게 될 텐데, 이때 CloudFlare를 통해 공격자로부터 보호할 수 있습니다.
-
-
-DDOS 공격 방어
-
-  DDOS는 짧은 기간 동안 네트워크에 많은 요청을 보내 네트워크를 마비시켜 웹 사이트의 가용성을 방해하는 사이버 공격 유형입니다.
-  CloudFlare는 의심스러운 트래픽, 특히 사용자가 접속하는 것이 하닌 시스템을 통해 오는 트래픽을 자동으로 차단해서 DDOS 공격으로부터 보호합니다.
-  CloudFlare의 거대한 네트워크 용량과 캐싱 전략으로 소규모 DDOS 공격은 쉽게 막아낼 수 있으며 이러한 공격에 대한 방화벽 대시보드도 제공합니다.
-
-
-HTTPS 구축
-
-  서버에서 HTTPS를 구축할 때 인증서를 기반으로 구축할 수도 있습니다.
-    
-      하지만 CloudFlare를 사용하면 별도의 인증서 설치 없이 좀 더 손쉽게 HTTPS를 구축할 수 있습니다.
-    
-  
-
-
-
-  용어: CDN(Content Delivery Network)
-각 사용자가 인터넷에서 접속하는 곳과 가까운 곳에서 콘텐츠를 캐싱 또는 배포하는 서버 네트워크를 말합니다.
-이를 통해 사용자가 웹 서버로부터 콘텐츠를 다운로드하는 시간을 줄일 수 있습니다.
-
-
-CORS와 프런트엔트의 프록시 서버
-
-  CORS(Cross-Origin Resource Sharing)는 서버가 웹 브라우저에서 리소스를 로드할 때 다른 오리진을 통해 로드하지 못하게 하는 HTTP 헤더 기반 메커니즘입니다.
-
-
-
-
-
-  프런트엔드 개발 시 프런트엔드 서버를 만들어서 백엔드 서버와 통신할 때 주로 CROS 에러를 마주치는데, 이를 해결하기 위해 프런트엔트에서 프록시 서버를 만들기도 합니다.
-
-
-
-  용어: 오리진
-프로토콜과 호스트 이름, 포트의 조합을 말합니다.
-예를 들어 https://devkobe24.com:12010/test라는 주소에서 오리진은 https://devkobe24.com:12010을 뜻합니다.
-
-
-
-  예를 들어 프런트엔드에서는 127.0.0.1:3000으로 테스팅을 하는데 백엔드 서버는 127.0.0.1:12010이라면 포트 번호가 다르기 때문에 CROS 에러가 나타납니다.
-    
-      이때 프록시 서버를 둬서 프런트엔드 서버에서 요청되는 오리진을 127.0.0.1:12010으로 바꾸는 것입니다.
-    
-  
-  참고로 127.0.0.1이란 루프백(loopback) IP로, 본인 IP 서버의 IP를 뜻합니다.
-    
-      localhost나 127.0.0.1을 주소창에 입력하면 DNS를 거치지 않고 바로 본인 PC 서버로 연결됩니다.
-    
-  
-
-
-
-
-
-  위의 그림처럼 프런트엔드 서버 앞단에 프록시 서버를 놓아 /api 요청은 user API, /api2 요청은 user API2에 요청할 수 있습니다.
-    
-      자연스레 CORS 에러 해결은 물론이며 다양한 API 서버와의 통신도 매끄럽게 할 수 있는 것입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-07</span>
                             
@@ -27583,6 +27825,48 @@ sudo firewall-cmd --permanent --add-service=https
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -27641,48 +27925,6 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-08-18-structural-model.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -27710,6 +27952,109 @@ nvm use 16
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
+                            🙋‍♂️ OpenVPN Password 변경방법.
+
+  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
+  ✏️ 사용자 비밀번호 변경.
+    
+      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
+        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
+        
+        
+          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
+        
+      
+    
+  
+
+
+✏️ 참고.
+
+  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
+    sudo /usr/local/openvpn_as/scripts/sacli --help
+    
+    
+      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html"><h1 class="title_post">📝[Post] OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="txt_post">
+                            🙋‍♂️ OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.
+
+  
+    
+      먼저 OpenVPN Access Server에 접속합니다.
+        
+          🎯 OpenVPN 클라이언트는 꺼진 상태여야 합니다.
+만약 OpenVPN 클라이언트가 연결되어 있다면 연결을 끊어주세요.
+        
+      
+    
+  
+  
+    
+      로그 파일을 살펴봅니다.
+        sudo tail -f /var/log/openvpnas.log
+        
+      
+    
+  
+  
+    
+      'SENT CONTROL [client_name]' 또는 'PUSH_REPLY...' 와 같은 메시지를 찾아봅니다.
+        
+          로그에서 위와 같은 메시지에는 클라이언트가 할당받은 IP 주소 및 서브넷 정보가 포함 되어 있을 수 있습니다.
+
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-18</span>
                             
@@ -27877,109 +28222,6 @@ nvm use 16
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-08-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html"><h1 class="title_post">📝[Post] OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="txt_post">
-                            🙋‍♂️ OpenVPN 클라이언트의 IP 주소와 OpenVPN 서버에서 할당된 서브넷 정보 가져오는 방법.
-
-  
-    
-      먼저 OpenVPN Access Server에 접속합니다.
-        
-          🎯 OpenVPN 클라이언트는 꺼진 상태여야 합니다.
-만약 OpenVPN 클라이언트가 연결되어 있다면 연결을 끊어주세요.
-        
-      
-    
-  
-  
-    
-      로그 파일을 살펴봅니다.
-        sudo tail -f /var/log/openvpnas.log
-        
-      
-    
-  
-  
-    
-      'SENT CONTROL [client_name]' 또는 'PUSH_REPLY...' 와 같은 메시지를 찾아봅니다.
-        
-          로그에서 위와 같은 메시지에는 클라이언트가 할당받은 IP 주소 및 서브넷 정보가 포함 되어 있을 수 있습니다.
-
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
-                            🙋‍♂️ OpenVPN Password 변경방법.
-
-  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
-  ✏️ 사용자 비밀번호 변경.
-    
-      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
-        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
-        
-        
-          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
-        
-      
-    
-  
-
-
-✏️ 참고.
-
-  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
-    sudo /usr/local/openvpn_as/scripts/sacli --help
-    
-    
-      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-18</span>
                             
@@ -43167,6 +43409,32 @@ public class Dog extends Animal {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-08-TIL.html"><h1 class="title_post">📝 [TIL] 240508 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-08-TIL.html" class="txt_post">
+                            
+  클래스와 객체(2)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-08-ClassesAndObjects-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -43457,32 +43725,6 @@ public class Test {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-08-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-08-TIL.html"><h1 class="title_post">📝 [TIL] 240508 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-08-TIL.html" class="txt_post">
-                            
-  클래스와 객체(2)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-08</span>
                             
@@ -81947,6 +82189,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Java/Java/2024-10-01-jdbc.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-10-01"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] API에서 예외 던지기.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-02-API-Exception.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-02"
         });
     
 

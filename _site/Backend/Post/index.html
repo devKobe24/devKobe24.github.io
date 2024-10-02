@@ -734,6 +734,7 @@
             
             
             
+            
 
     
     
@@ -1150,6 +1151,55 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
+                            🙋‍♂️ OpenVPN Password 변경방법.
+
+  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
+  ✏️ 사용자 비밀번호 변경.
+    
+      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
+        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
+        
+        
+          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
+        
+      
+    
+  
+
+
+✏️ 참고.
+
+  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
+    sudo /usr/local/openvpn_as/scripts/sacli --help
+    
+    
+      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -1184,55 +1234,6 @@
 
         
       
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
-                            🙋‍♂️ OpenVPN Password 변경방법.
-
-  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
-  ✏️ 사용자 비밀번호 변경.
-    
-      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
-        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
-        
-        
-          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
-        
-      
-    
-  
-
-
-✏️ 참고.
-
-  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
-    sudo /usr/local/openvpn_as/scripts/sacli --help
-    
-    
-      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
     
   
 
@@ -8422,6 +8423,17 @@ public class Main {
             'url'      : "/Java/Java/2024-10-01-jdbc.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-10-01"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] API에서 예외 던지기.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-02-API-Exception.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-02"
         });
     
 

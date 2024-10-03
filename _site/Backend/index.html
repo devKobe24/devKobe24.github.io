@@ -739,6 +739,7 @@
             
             
             
+            
 
     
     
@@ -1279,6 +1280,157 @@ public class UserService {
 4️⃣ 결론.
 Service 계층은 애플리케이션의 핵심 비즈니스 로직을 캡슐화하고 관리하는 역할을 합니다.
 이를 통해 비즈니스 로직을 쉽게 유지하고 재사용할 수 있으며, Controller와 데이터 접근 계층(Repository) 간의 명확한 분리를 유지하여 시스템의 유연성과 유지보수성을 높입니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-04-Repository.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-04-Repository.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Repository의 역할.</h1></a>
+                        <a href="/Backend/Spring/2024-10-04-Repository.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Repository의 역할.
+
+
+
+Java 백엔드 애플리케이션의 계층형 아키텍처에서 Repository 계층은 데이터베이스와의 상호작용을 관리하는 역할을 합니다.
+
+Repository는 데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리하며, 데이터를 저장소(일반적으로 데이터베이스)에서 가져오고, 수정하며, 삭제하는 기능을 캡슐화합니다.
+
+이를 통해 애플리케이션의 비즈니스 로직에서 데이터 접근을 분리하고, 유지보수성과 테스트 가능성을 높입니다.
+
+1️⃣ Repository 계층의 주요 역할.
+
+1. 데이터베이스 접근 관리.
+
+  Repository는 애플리케이션과 데이터베이스 간의 중개자 역할을 하며, 데이터베이스로부터 데이터를 조회하거나, 데이터를 저장, 수정, 삭제하는 기능을 제공합니다.
+  모든 데이터 접근 로직은 Repository 계층에서 처리됩니다.
+
+
+2. CRUD 작업 처리.
+
+  Repository는 엔티티의 생명주기 전반에 걸친 CRUD 작업을 처리합니다.
+  Java의 JPA나 Hibernate 같은 ORM(Object-Relational Mapping) 프레임워크를 사용해 객체와 데이터베이스 간의 매핑을 자동으로 관리합니다.
+  예를 들어, save, findById, deleteById 등의 메서드를 통해 객체를 데이터베이스에 저장하거나 조회하는 작업을 수행합니다.
+
+
+3. 데이터 쿼리 처리.
+
+  Repository 계층은 데이터를 조회하기 위해 데이터베이스에서 쿼리를 생성하고 실행합니다.
+  Spring Data JPA와 같은 프레임워크를 사용하면 쿼리 메서드를 간편하게 정의할 수 있으며, 복잡한 조건 검색을 위한 JPQL(Java Persistence Query Language) 또는 네이티브 SQL 쿼리를 사용할 수 있습니다.
+  기본적인 쿼리 메서드 외에도 복잡한 쿼리를 작성하여 특정 조건에 맞는 데이터를 필터링할 수 있습니다.
+
+
+4. 데이터베이스와의 추상화.
+
+  Repository는 데이터베이스 접근 로직을 캡슐화하여 상위 계층(Service 등)에서 데이터베이스의 구체적인 동작 방식을 알 필요가 없도록 합니다.
+  이렇게 하면 데이터베이스가 변경되더라도 상위 계층에는 영향을 미치지 않도록 구조를 유지할 수 있습니다.
+
+
+5. 데이터베이스 독립성.
+
+  Repository를 사용함으로써 데이터베이스와의 구체적인 종속성을 줄일 수 있습니다.
+  애플리케이션이 사용하는 데이터베이스가 변경되더라도, Repository 계층만 적절히 수정하면 상위 계층에는 영향을 주지 않기 때문에, 데이터베이스 독립성을 유지할 수 있습니다.
+
+
+6. 객체와 데이블 매핑 관리
+
+  ORM을 사용해 데이터베이스 테이블과 객체를 매핑하는 역할을 담당합니다.
+  객체와 테이블 간의 관계(1, N)를 정의하고, 이러한 관계를 기반으로 데이터베이스 연산을 수행합니다.
+
+
+2️⃣ 예시 코드
+Spring Data JPA를 사용한 Repository 계층의 예시를 살펴보겠습니다.
+
+@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    
+    // 기본적으로 JpaRepository에서 제공하는 CRUD 메서드들
+    // save, fundById, findAll, deleteById 등이 제공됩니다.
+    
+    // 커스텀 쿼리 메서드 정의
+    Optional&lt;User&gt; findByEmail(String email);
+    
+    // 복잡한 JPQL 쿼리 메서드 정의 가능
+    @Query("SELECT u FROM User u WHERE u.name = :name AND u.status = :status")
+    List&lt;User&gt; findByNameAndStatus(@Param("name") String name, @Param("status") String status);
+}
+
+
+3️⃣ 설명
+
+  @Repository
+    
+      Spring에서 이 인터페이스가 데이터 엑세스 계층을 나타낸다는 것을 명시하는 어노테이션입니다.
+      @Repository 어노테이션은 데이터베이스 예외를 Spring의 데이터 엑세스 예외로 변환하는 역할도 합니다.
+    
+  
+  JpaRepository&lt;User, Long&gt;
+    
+      Spring Data JPA에서 제공하는 기본 인터페이스로, User 엔티티와 Long 타입의 ID를 사용해 CRUD 작업을 처리합니다.
+    
+  
+  기본 CRUD 메서드
+    
+      save, findById, deleteById 등의 메서드가 기본적으로 제공됩니다.
+    
+  
+  커스텀 쿼리 메서드
+    
+      매서드 명명 규칙을 통해 자동으로 SQL 쿼리를 생성하는 방식으로 특정 필드로 검색하는 메서드를 정의할 수 있습니다.
+      예를 들어, findByEmail은 이메일을 기준으로 사용자를 조회합니다.
+    
+  
+  JPQL 사용
+    
+      복잡한 조건이 필요한 경우, @Query 어노테이션을 사용해 JPQL을 작성할 수 있습니다.
+      이 예시에서는 이름과 상태를 기반으로 사용자를 조회하는 쿼리를 정의했습니다.
+    
+  
+
+
+4️⃣ Repository 계층의 이점.
+
+1. 비즈니스 로직과 데이터 접근 로직의 분리.
+
+  Repository 계층은 비즈니스 로직과 데이터베이스 접근을 명확히 분리하여 각 계층이 자신의 역활에만 집중할 수 있게 합니다.
+  이렇게 하면 코드가 더 모듈화되고 유지보수하기 쉬워집니다.
+
+
+2. 코드의 재사용성.
+
+  Repository 계층은 데이터베이스 접근 로직을 재사용할 수 있도록 만들어집니다.
+  여러 서비스에서 동일한 데이터베이스 쿼리나 데이터를 필요로 할 때, 이를 중앙에서 관리함으로써 코드 중복을 줄일 수 있습니다.
+
+
+3. 테스트 가능성 향상.
+
+  Repository 계층을 인터페이스로 정의함으로써 테스트 시 Mock 객체로 쉽게 대체할 수 있어, 데이터베이스에 접근하지 않고도 단위 테스트를 작성할 수 있습니다.
+
+
+4. 데이터베이스 변경의 유연성.
+
+  데이터베이스가 변경되더라도 Repository 계층만 수정하면 상위 계층(Service나 Controller)은 전혀 변경하지 않고도 애플리케이션을 유지할 수 있습니다.
+  데이터베이스 독립성을 높이는 데 중요한 역할을 합니다.
+
+
+5️⃣ 결론
+Repository 계층은 데이터베이스와 상호작용하는 모든 작업을 담당하며, 데이터를 저장, 조회, 업데이트, 삭제하는 기능을 캡슐화합니다.
+이를 통해 데이터 접근 로직이 비즈니스 로직과 분리되므로 애플리케이션의 유지보수성, 확장성, 재사용성이 크게 향상됩니다.
 
                         </a>
                         <div class="info-post">
@@ -5417,111 +5569,85 @@ model.addAttribute(user);
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Model` 객체.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 Model 객체.
+                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html"><h1 class="title_post">🍃[Spring] `@ModelAttribute` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="txt_post">
+                            🍃[Spring] @ModelAttribute 애노테이션.
 
-1️⃣ Model 객체.
+1️⃣ @ModelAttribute
 
-  Spring MVC에서 Model 객체는 컨트롤러와 뷰 사이에서 데이터를 전달하는 역할을 합니다.
-  컨트롤러에서 생성된 데이터를 Model 객체에 담아두면, 이 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 사용될 수 있습니다.
-  Model 객체는 요청에 대한 응답으로 어떤 데이터를 뷰로 보내야 하는지 결정하는 데 사용됩니다.
+  @ModelAttribute는 Spring Framework에서 주로 사용되는 애노테이션으로, Spring MVC에서 모델 데이터와 요청 데이터를 바인딩하거나, 컨트롤러에서 반환된 데이터를 뷰에 전당하는 데 사용됩니다.
+  @ModelAttribute는 두 가지 주요 용도로 사용됩니다.
 
 
-2️⃣ Model 객체의 주요 기능.
+1️⃣ 메서드 파라미터에서 사용(@ModelAttribute 파라미터 바인딩)
 
-  1. 데이터 저장 및 전달.
+  @ModelAttribute를 메서드 파라미터에 적용하면, Spring은 요청 파라미터 또는 폼 데이터로부터 객체를 자동으로 생성하고, 그 객체의 필드를 요청 파라미터 값으로 바인딩합니다.
     
-      Model 객체에 데이터를 저장하면, 해당 데이터는 뷰에 전달되어 클라이언트에게 표시됩니다.
-        
-          예를 들어, 사용자의 이름이나 리스트와 같은 데이터를 뷰에 전달할 수 있습니다.
-        
-      
-    
-  
-  2. 키-값 쌍 형태로 데이터 관리.
-    
-      Model 객체는 데이터를 키-값 쌍 형태로 관리합니다.
-        
-          뷰에서 이 데이터를 사용할 때는 키를 통해 접근합니다.
-        
-      
-    
-  
-  3. 뷰 템플릿에서 데이터 사용.
-    
-      Model에 추가된 데이터는 뷰 템플릿에서 변수로 사용됩니다.
-        
-          뷰 템플릿 엔진(예: Thymeleaf, JSP)은 이 데이터를 이용해 동적인 HTML을 생성하고, 이를 클라이언트에게 반환합니다.
-        
-      
+      이렇게 생성된 객체는 컨트롤러 메서드 내부에서 사용할 수 있습니다.
     
   
 
 
-3️⃣ Model 객체의 사용 예.
+예시.
 @Controller
-public class GreetingController {
+public class UserController {
     
-    @GetMapping("/greeting")
-    public String greeting(Model model) {
-        model.addAttribute("name", "John");
-        model.addAttribute("message", "Hello welcome to our website!");
-        
-        // "greeting"이라는 뷰 이름을 반환
-        return "greeting";
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        // User 객체는 폼 데이터로부터 자동으로 생성되고 바인딩됩니다.
+        // 이제 user 객체를 사용할 수 있습니다.
+        System.out.println("User Name: " + user.getName());
+        return "registrationSuccess";
     }
 }
 
 
 
-  위 예제에서 greeting() 메서드는 Model 객체에 "name" 과 "message" 라는 두 가지 데이터를 추가합니다.
+  위 예시에서 @ModelAttribute는 User 객체를 폼 데이터로부터 생성하고, name, email 등의 필드 요청 파라미터 값으로 바인딩합니다.
+
+
+2️⃣ 메서드에 사용(@ModelAttribute 메서드)
+
+  @ModelAttribute를 메서드 레벨에 적용하면, 해당 메서드는 컨트롤러의 모든 요청 전에 실행되어, 반환된 객체를 모델에 추가합니다.
     
-      이 데이터는 뷰 이름 "greeting"에 전달되며, 해당 뷰 템플릿에서 사용될 수 있습니다.
+      이 객체는 이후 뷰에서 사용될 수 있습니다.
+```java
+@Controller
+public class UserController {
+    
+
+    @ModelAttribute(“userTypes”)
+  public List populateUserTypes() {
+      // 이 메서드는 컨트롤러의 모든 요청 전에 실행됩니다.
+      // 이 리스트는 모델에 추가되어 뷰에서 사용될 수 있습니다.
+      return Arrays.asList("Admin", "User", "Guest");
+  }
+
+    @GetMapping(“/register”)
+  public String showRegistrationForm(Model model) {
+      model.addAttribute(“user”, new User());
+      return “register”;
+  }
+}
+```
+  
+  위 예시에서 populateUserTypes() 메서드는 @ModelAttribute("userTypes")로 선언되어, 이 메서드가 반환하는 리스트는 userTypes라는 이름으로 모델에 추가됩니다.
+    
+      이 값은 뷰(예: JSP, Thymeleaf 템플릿 등)에서 접근할 수 있습니다.
     
   
 
 
-4️⃣ 뷰 템플릿에서의 사용(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Greeting Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Hello, &lt;span th:text="${name}"&gt;User&lt;/span&gt;!&lt;/p&gt;
-&lt;/body&gt;
+3️⃣ @ModelAttribute 의 주요 기능 요약.
 
-
-
-  이 Thymeleaf 템플릿에서 ${message} 와 ${name} 은 Model 객체에 담긴 데이터를 사용해 동적으로 콘텐츠를 생성합니다.
+  1. 파라미터 바인딩 : 클라이언트의 요청 데이터를 객체로 변환하고, 이 객체를 컨트롤러 메서드에서 사용하도록 해줍니다.
+  2. 모델 추가 : 메서드의 반환 값을 모델에 추가하여, 해당 데이터가 모든 뷰에서 사용될 수 있도록 합니다.
     
-      컨트롤러에서 Model에 추가된 "Hello, welcome to our website!"와 "John"이 뷰에 렌더링됩니다.
-    
-  
-
-
-5️⃣ Model, ModelMap, ModelAndView
-
-  Spring MVC에서 Model 외에도 ModelMap과 ModelAndView라는 유사한 객체들이 있습니다.
-    
-      Model : 간단한 인터페이스로, 데이터 저장 및 전달을 위한 가장 기본적인 방법을 제공합니다.
-      ModelMap : Model의 구현체로, 데이터를 맵 형식으로 관리합니다.
-      ModelAndView : 모델 데이터와 뷰 이름을 함께 반환할 때 사용됩니다. 한 번에 모델과 뷰 정보를 모두 설정할 수 있습니다.
-    
-  
-
-
-6️⃣ 요약.
-
-  Model 객체는 Spring MVC에서 컨트롤러가 뷰에 데이터를 전달하는 데 사용되는 중요한 구성 요소입니다.
-    
-      이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
+      이 두가지 기능을 통해 @ModelAttribute는 Spring MVC에서 데이터 바인딩과 뷰에 전당되는 데이터의 관리를 간소화하는 데 중요한 역할을 합니다.
     
   
 
@@ -5687,85 +5813,111 @@ public InternalResourceViewResolver viewResolver() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html"><h1 class="title_post">🍃[Spring] `@ModelAttribute` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="txt_post">
-                            🍃[Spring] @ModelAttribute 애노테이션.
+                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Model` 객체.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 Model 객체.
 
-1️⃣ @ModelAttribute
+1️⃣ Model 객체.
 
-  @ModelAttribute는 Spring Framework에서 주로 사용되는 애노테이션으로, Spring MVC에서 모델 데이터와 요청 데이터를 바인딩하거나, 컨트롤러에서 반환된 데이터를 뷰에 전당하는 데 사용됩니다.
-  @ModelAttribute는 두 가지 주요 용도로 사용됩니다.
+  Spring MVC에서 Model 객체는 컨트롤러와 뷰 사이에서 데이터를 전달하는 역할을 합니다.
+  컨트롤러에서 생성된 데이터를 Model 객체에 담아두면, 이 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 사용될 수 있습니다.
+  Model 객체는 요청에 대한 응답으로 어떤 데이터를 뷰로 보내야 하는지 결정하는 데 사용됩니다.
 
 
-1️⃣ 메서드 파라미터에서 사용(@ModelAttribute 파라미터 바인딩)
+2️⃣ Model 객체의 주요 기능.
 
-  @ModelAttribute를 메서드 파라미터에 적용하면, Spring은 요청 파라미터 또는 폼 데이터로부터 객체를 자동으로 생성하고, 그 객체의 필드를 요청 파라미터 값으로 바인딩합니다.
+  1. 데이터 저장 및 전달.
     
-      이렇게 생성된 객체는 컨트롤러 메서드 내부에서 사용할 수 있습니다.
+      Model 객체에 데이터를 저장하면, 해당 데이터는 뷰에 전달되어 클라이언트에게 표시됩니다.
+        
+          예를 들어, 사용자의 이름이나 리스트와 같은 데이터를 뷰에 전달할 수 있습니다.
+        
+      
+    
+  
+  2. 키-값 쌍 형태로 데이터 관리.
+    
+      Model 객체는 데이터를 키-값 쌍 형태로 관리합니다.
+        
+          뷰에서 이 데이터를 사용할 때는 키를 통해 접근합니다.
+        
+      
+    
+  
+  3. 뷰 템플릿에서 데이터 사용.
+    
+      Model에 추가된 데이터는 뷰 템플릿에서 변수로 사용됩니다.
+        
+          뷰 템플릿 엔진(예: Thymeleaf, JSP)은 이 데이터를 이용해 동적인 HTML을 생성하고, 이를 클라이언트에게 반환합니다.
+        
+      
     
   
 
 
-예시.
+3️⃣ Model 객체의 사용 예.
 @Controller
-public class UserController {
+public class GreetingController {
     
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
-        // User 객체는 폼 데이터로부터 자동으로 생성되고 바인딩됩니다.
-        // 이제 user 객체를 사용할 수 있습니다.
-        System.out.println("User Name: " + user.getName());
-        return "registrationSuccess";
+    @GetMapping("/greeting")
+    public String greeting(Model model) {
+        model.addAttribute("name", "John");
+        model.addAttribute("message", "Hello welcome to our website!");
+        
+        // "greeting"이라는 뷰 이름을 반환
+        return "greeting";
     }
 }
 
 
 
-  위 예시에서 @ModelAttribute는 User 객체를 폼 데이터로부터 생성하고, name, email 등의 필드 요청 파라미터 값으로 바인딩합니다.
-
-
-2️⃣ 메서드에 사용(@ModelAttribute 메서드)
-
-  @ModelAttribute를 메서드 레벨에 적용하면, 해당 메서드는 컨트롤러의 모든 요청 전에 실행되어, 반환된 객체를 모델에 추가합니다.
+  위 예제에서 greeting() 메서드는 Model 객체에 "name" 과 "message" 라는 두 가지 데이터를 추가합니다.
     
-      이 객체는 이후 뷰에서 사용될 수 있습니다.
-```java
-@Controller
-public class UserController {
-    
-
-    @ModelAttribute(“userTypes”)
-  public List populateUserTypes() {
-      // 이 메서드는 컨트롤러의 모든 요청 전에 실행됩니다.
-      // 이 리스트는 모델에 추가되어 뷰에서 사용될 수 있습니다.
-      return Arrays.asList("Admin", "User", "Guest");
-  }
-
-    @GetMapping(“/register”)
-  public String showRegistrationForm(Model model) {
-      model.addAttribute(“user”, new User());
-      return “register”;
-  }
-}
-```
-  
-  위 예시에서 populateUserTypes() 메서드는 @ModelAttribute("userTypes")로 선언되어, 이 메서드가 반환하는 리스트는 userTypes라는 이름으로 모델에 추가됩니다.
-    
-      이 값은 뷰(예: JSP, Thymeleaf 템플릿 등)에서 접근할 수 있습니다.
+      이 데이터는 뷰 이름 "greeting"에 전달되며, 해당 뷰 템플릿에서 사용될 수 있습니다.
     
   
 
 
-3️⃣ @ModelAttribute 의 주요 기능 요약.
+4️⃣ 뷰 템플릿에서의 사용(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Greeting Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Hello, &lt;span th:text="${name}"&gt;User&lt;/span&gt;!&lt;/p&gt;
+&lt;/body&gt;
 
-  1. 파라미터 바인딩 : 클라이언트의 요청 데이터를 객체로 변환하고, 이 객체를 컨트롤러 메서드에서 사용하도록 해줍니다.
-  2. 모델 추가 : 메서드의 반환 값을 모델에 추가하여, 해당 데이터가 모든 뷰에서 사용될 수 있도록 합니다.
+
+
+  이 Thymeleaf 템플릿에서 ${message} 와 ${name} 은 Model 객체에 담긴 데이터를 사용해 동적으로 콘텐츠를 생성합니다.
     
-      이 두가지 기능을 통해 @ModelAttribute는 Spring MVC에서 데이터 바인딩과 뷰에 전당되는 데이터의 관리를 간소화하는 데 중요한 역할을 합니다.
+      컨트롤러에서 Model에 추가된 "Hello, welcome to our website!"와 "John"이 뷰에 렌더링됩니다.
+    
+  
+
+
+5️⃣ Model, ModelMap, ModelAndView
+
+  Spring MVC에서 Model 외에도 ModelMap과 ModelAndView라는 유사한 객체들이 있습니다.
+    
+      Model : 간단한 인터페이스로, 데이터 저장 및 전달을 위한 가장 기본적인 방법을 제공합니다.
+      ModelMap : Model의 구현체로, 데이터를 맵 형식으로 관리합니다.
+      ModelAndView : 모델 데이터와 뷰 이름을 함께 반환할 때 사용됩니다. 한 번에 모델과 뷰 정보를 모두 설정할 수 있습니다.
+    
+  
+
+
+6️⃣ 요약.
+
+  Model 객체는 Spring MVC에서 컨트롤러가 뷰에 데이터를 전달하는 데 사용되는 중요한 구성 요소입니다.
+    
+      이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
     
   
 
@@ -18947,6 +19099,17 @@ public class Main {
             'url'      : "/CS/2024/2024-10-03-clean-code.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-10-03"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 계층형 아키텍처에서 Repository의 역할.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-04-Repository.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-04"
         });
     
 

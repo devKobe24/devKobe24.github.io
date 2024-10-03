@@ -737,6 +737,7 @@
             
             
             
+            
 
     
     
@@ -1147,6 +1148,144 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
+                        <a href="/Backend/Spring/2024-10-03-Controller.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
+
+Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
+
+Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
+
+1️⃣ Controller의 주요 역할.
+
+1. 요청 수신 및 응답 반환.
+
+  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
+  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
+  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
+
+
+2. 요청 검증.
+
+  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
+  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
+  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
+
+
+3. 비즈니스 로직 호출.
+
+  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
+  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
+  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
+
+
+4. 뷰와의 통신(View와 연동)
+
+  Controller는 View와 통신하여 적절한 응답을 생성합니다.
+  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
+  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
+
+
+5. HTTP 상태 코드 관리.
+
+  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
+  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
+
+
+6. 예외 처리
+
+  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
+  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
+
+
+2️⃣ 예시 코드
+
+Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    private final UserService userService;
+    
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
+        UserDTO user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+    
+    @PostMapping
+    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
+        UserDTO createdUser = userService.createUser(userDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+}
+
+
+3️⃣ 설명.
+
+  @RestController
+    
+      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
+      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
+    
+  
+  @RequestMapping
+    
+      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
+    
+  
+  @GetMapping
+    
+      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
+    
+  
+  @PostMapping
+    
+      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
+    
+  
+  @RequestBody, @Valid
+    
+      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
+    
+  
+  ResponseEntity
+    
+      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
+    
+  
+
+
+4️⃣ 결론
+Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
+이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -5134,6 +5273,131 @@ model.addAttribute(user);
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Model` 객체.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 Model 객체.
+
+1️⃣ Model 객체.
+
+  Spring MVC에서 Model 객체는 컨트롤러와 뷰 사이에서 데이터를 전달하는 역할을 합니다.
+  컨트롤러에서 생성된 데이터를 Model 객체에 담아두면, 이 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 사용될 수 있습니다.
+  Model 객체는 요청에 대한 응답으로 어떤 데이터를 뷰로 보내야 하는지 결정하는 데 사용됩니다.
+
+
+2️⃣ Model 객체의 주요 기능.
+
+  1. 데이터 저장 및 전달.
+    
+      Model 객체에 데이터를 저장하면, 해당 데이터는 뷰에 전달되어 클라이언트에게 표시됩니다.
+        
+          예를 들어, 사용자의 이름이나 리스트와 같은 데이터를 뷰에 전달할 수 있습니다.
+        
+      
+    
+  
+  2. 키-값 쌍 형태로 데이터 관리.
+    
+      Model 객체는 데이터를 키-값 쌍 형태로 관리합니다.
+        
+          뷰에서 이 데이터를 사용할 때는 키를 통해 접근합니다.
+        
+      
+    
+  
+  3. 뷰 템플릿에서 데이터 사용.
+    
+      Model에 추가된 데이터는 뷰 템플릿에서 변수로 사용됩니다.
+        
+          뷰 템플릿 엔진(예: Thymeleaf, JSP)은 이 데이터를 이용해 동적인 HTML을 생성하고, 이를 클라이언트에게 반환합니다.
+        
+      
+    
+  
+
+
+3️⃣ Model 객체의 사용 예.
+@Controller
+public class GreetingController {
+    
+    @GetMapping("/greeting")
+    public String greeting(Model model) {
+        model.addAttribute("name", "John");
+        model.addAttribute("message", "Hello welcome to our website!");
+        
+        // "greeting"이라는 뷰 이름을 반환
+        return "greeting";
+    }
+}
+
+
+
+  위 예제에서 greeting() 메서드는 Model 객체에 "name" 과 "message" 라는 두 가지 데이터를 추가합니다.
+    
+      이 데이터는 뷰 이름 "greeting"에 전달되며, 해당 뷰 템플릿에서 사용될 수 있습니다.
+    
+  
+
+
+4️⃣ 뷰 템플릿에서의 사용(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Greeting Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Hello, &lt;span th:text="${name}"&gt;User&lt;/span&gt;!&lt;/p&gt;
+&lt;/body&gt;
+
+
+
+  이 Thymeleaf 템플릿에서 ${message} 와 ${name} 은 Model 객체에 담긴 데이터를 사용해 동적으로 콘텐츠를 생성합니다.
+    
+      컨트롤러에서 Model에 추가된 "Hello, welcome to our website!"와 "John"이 뷰에 렌더링됩니다.
+    
+  
+
+
+5️⃣ Model, ModelMap, ModelAndView
+
+  Spring MVC에서 Model 외에도 ModelMap과 ModelAndView라는 유사한 객체들이 있습니다.
+    
+      Model : 간단한 인터페이스로, 데이터 저장 및 전달을 위한 가장 기본적인 방법을 제공합니다.
+      ModelMap : Model의 구현체로, 데이터를 맵 형식으로 관리합니다.
+      ModelAndView : 모델 데이터와 뷰 이름을 함께 반환할 때 사용됩니다. 한 번에 모델과 뷰 정보를 모두 설정할 수 있습니다.
+    
+  
+
+
+6️⃣ 요약.
+
+  Model 객체는 Spring MVC에서 컨트롤러가 뷰에 데이터를 전달하는 데 사용되는 중요한 구성 요소입니다.
+    
+      이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -5378,131 +5642,6 @@ public class UserController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `Model` 객체.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 Model 객체.
-
-1️⃣ Model 객체.
-
-  Spring MVC에서 Model 객체는 컨트롤러와 뷰 사이에서 데이터를 전달하는 역할을 합니다.
-  컨트롤러에서 생성된 데이터를 Model 객체에 담아두면, 이 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 사용될 수 있습니다.
-  Model 객체는 요청에 대한 응답으로 어떤 데이터를 뷰로 보내야 하는지 결정하는 데 사용됩니다.
-
-
-2️⃣ Model 객체의 주요 기능.
-
-  1. 데이터 저장 및 전달.
-    
-      Model 객체에 데이터를 저장하면, 해당 데이터는 뷰에 전달되어 클라이언트에게 표시됩니다.
-        
-          예를 들어, 사용자의 이름이나 리스트와 같은 데이터를 뷰에 전달할 수 있습니다.
-        
-      
-    
-  
-  2. 키-값 쌍 형태로 데이터 관리.
-    
-      Model 객체는 데이터를 키-값 쌍 형태로 관리합니다.
-        
-          뷰에서 이 데이터를 사용할 때는 키를 통해 접근합니다.
-        
-      
-    
-  
-  3. 뷰 템플릿에서 데이터 사용.
-    
-      Model에 추가된 데이터는 뷰 템플릿에서 변수로 사용됩니다.
-        
-          뷰 템플릿 엔진(예: Thymeleaf, JSP)은 이 데이터를 이용해 동적인 HTML을 생성하고, 이를 클라이언트에게 반환합니다.
-        
-      
-    
-  
-
-
-3️⃣ Model 객체의 사용 예.
-@Controller
-public class GreetingController {
-    
-    @GetMapping("/greeting")
-    public String greeting(Model model) {
-        model.addAttribute("name", "John");
-        model.addAttribute("message", "Hello welcome to our website!");
-        
-        // "greeting"이라는 뷰 이름을 반환
-        return "greeting";
-    }
-}
-
-
-
-  위 예제에서 greeting() 메서드는 Model 객체에 "name" 과 "message" 라는 두 가지 데이터를 추가합니다.
-    
-      이 데이터는 뷰 이름 "greeting"에 전달되며, 해당 뷰 템플릿에서 사용될 수 있습니다.
-    
-  
-
-
-4️⃣ 뷰 템플릿에서의 사용(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Greeting Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Hello, &lt;span th:text="${name}"&gt;User&lt;/span&gt;!&lt;/p&gt;
-&lt;/body&gt;
-
-
-
-  이 Thymeleaf 템플릿에서 ${message} 와 ${name} 은 Model 객체에 담긴 데이터를 사용해 동적으로 콘텐츠를 생성합니다.
-    
-      컨트롤러에서 Model에 추가된 "Hello, welcome to our website!"와 "John"이 뷰에 렌더링됩니다.
-    
-  
-
-
-5️⃣ Model, ModelMap, ModelAndView
-
-  Spring MVC에서 Model 외에도 ModelMap과 ModelAndView라는 유사한 객체들이 있습니다.
-    
-      Model : 간단한 인터페이스로, 데이터 저장 및 전달을 위한 가장 기본적인 방법을 제공합니다.
-      ModelMap : Model의 구현체로, 데이터를 맵 형식으로 관리합니다.
-      ModelAndView : 모델 데이터와 뷰 이름을 함께 반환할 때 사용됩니다. 한 번에 모델과 뷰 정보를 모두 설정할 수 있습니다.
-    
-  
-
-
-6️⃣ 요약.
-
-  Model 객체는 Spring MVC에서 컨트롤러가 뷰에 데이터를 전달하는 데 사용되는 중요한 구성 요소입니다.
-    
-      이를 통해 동적인 웹 페이지를 쉽게 생성할 수 있으며, 애플리케이션의 응답 결과를 클라이언트에게 효과적으로 전달할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -5678,6 +5817,128 @@ public class UserController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
+                            🍃[Spring] @SpringBootTest 애노테이션.
+
+  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
+    
+      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
+      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
+    
+  
+
+
+1️⃣ 주요 기능 및 사용 방식.
+
+  1. Spring Application Context 로드
+    
+      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
+        
+          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
+        
+      
+    
+  
+  2. 테스트 환경 설정
+    
+      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
+        
+          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
+        
+      
+      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
+    
+  
+  3. 웹 환경 설정
+    
+      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
+        
+          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
+          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
+          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
+          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
+        
+      
+    
+  
+
+
+예시
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
+
+
+
+  4. 통합 테스트
+    
+      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
+        
+          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
+        
+      
+    
+  
+  5. TestConfiguration 클래스 사용 가능
+    
+      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
+    
+  
+
+
+2️⃣ 예시 코드
+
+@SpringBootTest
+public class MyServiceIntegrationTest {
+    
+    @Autowired
+    private MyService myService;
+    
+    @Test
+    public void testServiceMethod() {
+        // Given
+        // Setup initial conditions
+        
+        // When
+        String result = myService.performAction();
+        
+        // Then
+        assertEquals("ExpectedResult", result);
+    }
+}
+
+
+  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
+
+
+3️⃣ 요약
+
+  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -5804,128 +6065,6 @@ public class MyService {
 
 
 이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
-                            🍃[Spring] @SpringBootTest 애노테이션.
-
-  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
-    
-      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
-      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
-    
-  
-
-
-1️⃣ 주요 기능 및 사용 방식.
-
-  1. Spring Application Context 로드
-    
-      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
-        
-          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
-        
-      
-    
-  
-  2. 테스트 환경 설정
-    
-      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
-        
-          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
-        
-      
-      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
-    
-  
-  3. 웹 환경 설정
-    
-      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
-        
-          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
-          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
-          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
-          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
-        
-      
-    
-  
-
-
-예시
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
-
-
-
-  4. 통합 테스트
-    
-      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
-        
-          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
-        
-      
-    
-  
-  5. TestConfiguration 클래스 사용 가능
-    
-      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
-    
-  
-
-
-2️⃣ 예시 코드
-
-@SpringBootTest
-public class MyServiceIntegrationTest {
-    
-    @Autowired
-    private MyService myService;
-    
-    @Test
-    public void testServiceMethod() {
-        // Given
-        // Setup initial conditions
-        
-        // When
-        String result = myService.performAction();
-        
-        // Then
-        assertEquals("ExpectedResult", result);
-    }
-}
-
-
-  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
-
-
-3️⃣ 요약
-
-  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
-    
-  
-
 
                         </a>
                         <div class="info-post">
@@ -8072,106 +8211,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
-
-1️⃣ nvm 설치.
-
-  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
-    
-      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
-        
-      
-    
-  
-  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
-
-
-2️⃣ nvm 환경 설정 적용.
-'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-3️⃣ Node.js 16.x 설치 및 사용.
-
-  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
-    nvm install 16
-nvm use 16
-    
-  
-  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
-
-
-✏️ 요약
-
-  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -8260,6 +8299,106 @@ sudo firewall-cmd --permanent --add-service=https
     sudo firewall-cmd --list-all
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
+
+1️⃣ nvm 설치.
+
+  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
+    
+      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+        
+      
+    
+  
+  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
+
+
+2️⃣ nvm 환경 설정 적용.
+'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+3️⃣ Node.js 16.x 설치 및 사용.
+
+  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
+    nvm install 16
+nvm use 16
+    
+  
+  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
+
+
+✏️ 요약
+
+  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
 
 
                         </a>
@@ -8760,76 +8899,6 @@ sudo firewall-cmd --permanent --add-service=https
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
-                            ☁️[AWS] 서버리스.
-
-  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
-    
-      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
-    
-  
-  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
-
-
-
-
-☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
-
-  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
-    
-      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
-    
-  
-  폐쇄형 클라우드
-    
-      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
-    
-  
-  개방형 클라우드
-    
-      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
-    
-  
-  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
-    
-      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
-        
-          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
-        
-      
-    
-  
-  폐쇄형 클라우드는 온프레미스에 가깝습니다.
-    
-      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
-    
-  
-  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
-
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -9029,6 +9098,76 @@ sudo firewall-cmd --permanent --add-service=https
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html"><h1 class="title_post">☁️[AWS] 서버리스, 개방형 클라우드와 폐쇄형 클라우드</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_ServerlessAndOpenAndClosedClould.html" class="txt_post">
+                            ☁️[AWS] 서버리스.
+
+  클라우드 서비스에서는 서버리스(Serverless) 라는 단어를 자주 사용합니다.
+    
+      직역하면 ‘서버가 없다’는 의미로 서비스가 이용될 때만 서버를 가동하는 방식을 가리켜 ‘서버리스 서비스’라고 합니다.
+    
+  
+  클라우드 서비스는 보통 서버를 사용하는 시간만큼 요금이 발생하므로 요금이 부과되는 시간을 줄여 비용을 낮출 수 있다는 장점이 있습니다.
+
+
+
+
+☁️[AWS] 개방형 클라우드와 폐쇄형 클라우드.
+
+  클라우드 서비스는 사용 형태에 따라 ‘개방형 클라우드’ 와 ‘폐쇄형 클라우드’ 로 나눌 수 있습니다.
+    
+      이 둘을 섞은 혼합형 클라우드(Hybrid Clould)도 존재합니다.
+    
+  
+  폐쇄형 클라우드
+    
+      기업 내부의 비밀을 유지하기 위해 외부에 공개하지 않도록 기업 내부에 구축하는 형태입니다.
+    
+  
+  개방형 클라우드
+    
+      모든 사람이 쓸 수 있게끔 공개된 형태입니다.
+    
+  
+  AWS는 모든 사람이 사용할 수 있는 개방형 클라우드 서비스입니다.
+    
+      좀 더 자세히 말하자면 AWS에는 전용 기기를 사용자에게 할당하는 베어메탈(Bare Metal) 서비스, 가상으로 사용자의 점유 공간을 제공하는 VPN(Virtual Private Clould) 서비스가 있습니다.
+        
+          이용이 끝나면 대여한 서버를 다른 사용자에게 다시 대여할 수 있으므로 개방형 클라우드입니다.
+        
+      
+    
+  
+  폐쇄형 클라우드는 온프레미스에 가깝습니다.
+    
+      사용자는 시설 내부에 클라우드 컨테이너를 두고 전용 클라우드 환경을 구축해서 사용합니다.
+    
+  
+  하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
+
+
 
 
                         </a>
@@ -9474,55 +9613,6 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -9555,6 +9645,55 @@ ls /home/ec2-user/
       그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
         
           하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
         
       
     
@@ -10262,6 +10401,32 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
+                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
+                            
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/ENG/240618_ENG_STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -10317,32 +10482,6 @@ sudo reboot
 
   🙋‍♂️ 해석: “왜 나의 자바 가상 스레드는 플랫폼 스레드보다 느릴까?”
   📝Reference
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html"><h1 class="title_post">☁️[AWS] 클라우드 컴퓨팅의 유형</h1></a>
-                        <a href="/Backend/AWS/240615_Types_of_Clould_Computing.html" class="txt_post">
-                            
-
 
 
                         </a>
@@ -11500,91 +11639,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Math/2024-05-18-Math.html"><h1 class="title_post">[Math] 수학적 귀납법</h1></a>
-                        <a href="/Backend/Math/2024-05-18-Math.html" class="txt_post">
-                            📝 수학적 귀납법이란?
-수학적 귀납법은 자연수에 대한 명제의 참 여부를 증명하는 데 사용되는 강력한 수학적 증명 기법입니다.
-이를 통해 무한히 많은 경우에 대해 명제가 참임을 보일 수 있습니다.
-
-수학적 귀납법은 주로 ‘기본 단계’ 와 ‘귀납 단계’ 로 이루어집니다.
-
-1️⃣ 기본 단계(Base Case)
-명제가 첫 번째 자연수 n = 1(또는 특정 시작점 n = k)에 대해 참임을 증명합니다.
-
-2️⃣ 귀납 단계(Inductive Step)
-명제가 임의의 자연수 n = k에 대해 참이라고 가정했을 때, n = k + 1에도 참임을 증명합니다.
-
-이를 좀 더 형식적으로 설명하면 다음과 같습니다.
-
-
-  기본 단계:
-    P(1)이 참임을 증명합니다.
-    
-  
-  귀납 단계:
-    P(k)가 참이라고 가정합니다.(귀납 가정)
-P(k+1)이 참임을 증명합니다.
-    
-  
-
-
-기본 단계와 귀납 단계가 모두 성립하면, 수학적 귀납법에 의해 모든 자연수 n에 대해 명제 P(n)이 참임을 증명할 수 있습니다.
-
-3️⃣ 예제
-자연수 n에 대해 다음 명제를 증명해봅시다:
-1+2+3+...+n= n(n+1)/2
-
-
-
-  기본 단계:
-n = 1일때,
-    1 = 1(1+1)/2 = 2/2 = 1
-    
-  
-
-
-따라서 P(1)은 참입니다.
-
-
-  귀납 단계:
-P(k)가 참이라고 가정합니다 즉,
-    1+2+3+...+k = k(k+1)/2
-    
-    이 가정하에 P(k+1)이 참임을 증명합니다.
-  
-
-
-1+2+3+...+k+(k+1) = k(k+1)/2+(k+1)
-
-
-우변을 정리하면,
-k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
-
-
-이는 P(k+1) 입니다.
-
-기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Math/2024-05-18-Math-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
                         
                     </div>
@@ -11681,6 +11735,91 @@ k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
 그 결과(예를 들어) ‘그럼 오늘 점심은 경양식 돈까스로 하자’고 결정하는 사고방식은 매우 당연하다고 생각할 것입니다.
 
 이처럼 필요조건과 충분조건을 구분하는 능력은 문제를 해결할 때 대단한 위력을 발휘합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Math/2024-05-18-Math.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/Math.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Math/2024-05-18-Math.html"><h1 class="title_post">[Math] 수학적 귀납법</h1></a>
+                        <a href="/Backend/Math/2024-05-18-Math.html" class="txt_post">
+                            📝 수학적 귀납법이란?
+수학적 귀납법은 자연수에 대한 명제의 참 여부를 증명하는 데 사용되는 강력한 수학적 증명 기법입니다.
+이를 통해 무한히 많은 경우에 대해 명제가 참임을 보일 수 있습니다.
+
+수학적 귀납법은 주로 ‘기본 단계’ 와 ‘귀납 단계’ 로 이루어집니다.
+
+1️⃣ 기본 단계(Base Case)
+명제가 첫 번째 자연수 n = 1(또는 특정 시작점 n = k)에 대해 참임을 증명합니다.
+
+2️⃣ 귀납 단계(Inductive Step)
+명제가 임의의 자연수 n = k에 대해 참이라고 가정했을 때, n = k + 1에도 참임을 증명합니다.
+
+이를 좀 더 형식적으로 설명하면 다음과 같습니다.
+
+
+  기본 단계:
+    P(1)이 참임을 증명합니다.
+    
+  
+  귀납 단계:
+    P(k)가 참이라고 가정합니다.(귀납 가정)
+P(k+1)이 참임을 증명합니다.
+    
+  
+
+
+기본 단계와 귀납 단계가 모두 성립하면, 수학적 귀납법에 의해 모든 자연수 n에 대해 명제 P(n)이 참임을 증명할 수 있습니다.
+
+3️⃣ 예제
+자연수 n에 대해 다음 명제를 증명해봅시다:
+1+2+3+...+n= n(n+1)/2
+
+
+
+  기본 단계:
+n = 1일때,
+    1 = 1(1+1)/2 = 2/2 = 1
+    
+  
+
+
+따라서 P(1)은 참입니다.
+
+
+  귀납 단계:
+P(k)가 참이라고 가정합니다 즉,
+    1+2+3+...+k = k(k+1)/2
+    
+    이 가정하에 P(k+1)이 참임을 증명합니다.
+  
+
+
+1+2+3+...+k+(k+1) = k(k+1)/2+(k+1)
+
+
+우변을 정리하면,
+k(k+1)/2 + (k+1) = (k(k+1)+2(k+1))/2 = ((k+1)(k+2))/2
+
+
+이는 P(k+1) 입니다.
+
+기본 단계와 귀납단계가 모두 성립했으므로, 수학적 귀납법에 의해 모든 자연수 n에 대해 1+2+3+...+n = n(n+1)/2임을 증명할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -11986,34 +12125,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -12112,6 +12223,34 @@ public class Main {
 그래서 저의 적성과 맞는 것 같아요.
 
 저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-11-TIL.html" class="txt_post">
+                            
+  인터페이스
+  내부 클래스
+  입출력(1)
+
 
                         </a>
                         <div class="info-post">
@@ -18631,6 +18770,17 @@ public class Main {
             'url'      : "/Java/Java/2024-10-02-introduce-java.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
             'date'     : "2024-10-02"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 계층형 아키텍처에서 Controller의 역할.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-03-Controller.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-03"
         });
     
 

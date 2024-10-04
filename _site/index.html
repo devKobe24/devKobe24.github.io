@@ -743,6 +743,7 @@
             
             
             
+            
 
     
     
@@ -1149,6 +1150,104 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-05-why-use-spring-containers.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-05-why-use-spring-containers.html"><h1 class="title_post">🍃[Spring] Spring 컨테이너를 사용하는 이유.</h1></a>
+                        <a href="/Backend/Spring/2024-10-05-why-use-spring-containers.html" class="txt_post">
+                            🍃[Spring] Spring 컨테이너를 사용하는 이유.
+
+Spring 컨테이너를 사용하는 이유는 여러 가지가 있으며, 그 주요 목적은 객체의 생명주기와 의존성을 효율적으로 관리하고, 코드의 모듈화와 유연성을 높이는 데 있습니다.
+
+Spring 컨테이너는 이를 통해 애플리케이션 개발을 단순화하고 유지보수성을 향상시키며, 코드의 재사용성과 테스트 가능성을 높입니다.
+
+1️⃣ Spring 컨테이너를 사용하는 이유.
+
+1. 의존성 주입(DI, Dependency Injection) 관리.
+
+  Spring 컨테이너는 객체 간의 의존선을 자동으로 주입해줍니다.
+  개발자는 객체를 직접 생성하고 연결할 필요 없이, 필요한 의존성을 외부에서 주입받도록 설정할 수 있습니다.
+  이로 인해 객체 간의 결합도가 낮아지고, 시스템이 더 유연해집니다.
+  예를 들어, 애플리케이션에서 사용하는 서비스나 리포지토리 간의 관계를 컨테이너가 자동으로 설정해 주기 때문에 객체 생성과 의존성 관리의 복잡성이 크게 줄어듭니다.
+
+
+2. 객체의 생명주기 관리.
+
+  Spring 컨테이너는 객체(Bean, 빈)의 생성, 초기화, 사용, 소멸 등의 생명 주기를 관리합니다.
+  객체가 언제 생성되고, 언제 파괴되는지를 컨테이너가 자동으로 처리하므로 개발자가 객체의 상태를 일일이 관리할 필요가 없습니다.
+  이는 특히 싱글톤 빈을 사용하는 경우에 유용하며, 애플리게이션의 메모리 관리와 성능 최적화에도 기여합니다.
+
+
+3. 모듈화와 재사용성.
+
+  Spring 컨테이너는 각 빈(Bean)을 독립적으로 관리하므로 모듈화된 코드를 쉽게 만들 수 있습니다.
+  객체의 생성과 초기화 로직이 분리되어 있으므로, 동일한 빈을 여러 곳에서 재사용할 수 있습니다.
+  또한, 의존성을 주입받아 사용하기 때문에 코드를 더 쉽게 재사용할 수 있습니다.
+
+
+4. 테스트 용이성.
+
+  의존성 주입을 통해 객체 간의 결합도가 낮아지면, 단위 테스트가 훨씬 쉬워집니다.
+  Spring 컨테이너는 테스트 환경에서도 쉽게 사용할 수 있으며, Mock 객체를 주입해 실제 데이터베이스나 외부 시스템에 의존하지 않고도 각 객체의 동작을 검증할 수 있습니다.
+  이는 특히 자동화 테스트와 TDD(Test-Driven Development) 에서 큰 장점으로 작용합니다.
+
+
+5. 애플리케이션 설정의 일관성.
+
+  Spring 컨테이너는 애플리케이션의 구성 요소를 일관되게 설정할 수 있는 환경을 제공합니다.
+  빈 설정을 XML, 자바 설정 클래스, 또는 어노테이션 기반으로 일관되게 관리할 수 있어, 애플리케이션의 구성 방식이 표준화됩니다.
+  이는 복잡한 애플리케이션에서도 설정 관리의 복잡성을 줄이는 데 큰 도움을 줍니다.
+
+
+6. 애플리케이션 유연성 향상.
+
+  Spring 컨테이너는 의존성을 인터페이스로 추상화하고 구현체를 주입하기 때문에, 구현체의 변경이 매우 유연합니다.
+  예를 들어, 데이터베이스 저장소를 변경하거나 외부 서비스와 통신하는 방식이 바뀌더라도, 해당 구현제만 변경하면 다른 코드는 수정하지 않아도 되도록 설계할 수 있습니다.
+
+
+7. AOP(Aspect-Oriented Programming, 관점 지향 프로그래밍) 지원.
+
+  Spring 컨테이너는 AOP를 지원하므로, 비즈니스 로직과 관련 없는 횡단 관심사(로깅, 트랜잭션 관리, 보안 등)를 별도의 모듈로 분리할 수 있습니다.
+  이를 통해 코드를 더 모듈화할 수 있으며, 비즈니스 로직이 횡단 관심사로 인해 복잡해지는 것을 방지할 수 있습니다.
+
+
+8. 트랜잭션 관리.
+
+  Spring 컨테이너는 트랜잭션 관리를 쉽게 설정할 수 있는 기능을 제공합니다.
+  트랜잭션 처리를 여러 곳에서 수동으로 관리할 필요 없이, 어노테이션을 통해 트랜잭션 경계를 정의하고 자동으로 관리되도록 설정할 수 있습니다.
+  이는 특히 데이터베이스와 관련된 작업에서 일관된 데이터 처리를 보장합니다.
+
+
+9. 국제화 지원.
+
+  Spring 컨테이너는 애플리케이션의 국제화(i18n) 를 지원합니다.
+  이를 통해 다국어 지원이 필요한 애플리케이션에서 메시지 번역 및 포맷팅을 쉽게 처리할 수 있습니다.
+
+
+2️⃣ 결론.
+
+  Spring 컨테이너를 사용하는 이유는 객체의 생명주기 관리와 의존성 주입을 자동화하여, 더 모듈화되고 유연한 코드를 작성할 수 있게 하기 위함입니다.
+  이를 통해 개발자는 객체 관리와 의존성 주입에 대한 복잡성을 줄이고, 비즈니스 로직 주현에 집중할 수 있습니다.
+  또한, Spring 컨테이너는 테스트 용이성, 유연성, 재사용성, 유지보수성 등을 크게 향상시켜 애플리케이션 개발의 효율성을 높이는 데 중요한 역할을 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -3658,6 +3757,177 @@ mylist:
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/SQL/2024/2024-09-30-DML.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/SQL/2024/2024-09-30-DML.html"><h1 class="title_post">💉[SQL] DML이란?</h1></a>
+                        <a href="/SQL/2024/2024-09-30-DML.html" class="txt_post">
+                            💉[SQL] DML이란?
+
+DML(Data Manipulation Language) 은 데이터베이스에서 데이터를 조작하는데 사용되는 SQL의 하위 언어입니다.
+
+DML 명령어는 데이터베이스 테이블에 데이터를 삽입, 수정, 삭제, 조회하는 작업을 수행합니다.
+
+DML은 주로 테이블 내의 데이터를 다루는 데 사용되며, 데이터베이스의 구조(예: 테이블 생성 또는 삭제)를 변경하지 않습니다.
+
+1️⃣ DML의 주요 명령어
+
+1. SELECT
+
+  데이터베이스에서 데이터를 조회하는 명령어입니다.
+  테이블에 저장된 데이터를 선택적으로 가져오거나 특정 조건에 맞는 데이터를 검색할 수 있습니다.
+
+
+예시: 데이터 조회
+SELECT * FROM User WHERE age &gt; 25;
+
+
+
+  Users 테이블에서 age가 25보다 큰 모든 행을 조회합니다.
+
+
+2. INSERT
+
+  테이블에 데이터를 삽입하는 명령어입니다.
+  테이블의 각 열(Column)에 맞는 데이터를 새 행(Row)으로 추가합니다.
+
+
+예시: 데이터 삽입
+INSERT INTO Users (name, email, age) VALUES ('Kobe', 'kobe@example.com', 30);
+
+
+
+  Users 테이블에 새로운 사용자의 데이터를 삽입합니다.
+
+
+3. UPDATE
+
+  테이블의 기존 데이터를 수정하는 명령어입니다.
+  특정 조건을 만족하는 데이터를 찾아 수정할 수 있습니다.
+
+
+예시: 데이터 수정
+UPDATE Users SET age = 31 WHRER name = 'Kobe';
+
+
+
+  Users 테이블에서 이름이 'Kobe'인 사용자의 나이를 31로 수정합니다.
+
+
+4. DELETE
+
+  테이블에서 데이터를 삭제하는 명령어입니다.
+  특정 조건을 만족하는 데이터를 삭제하거나, 모든 데이터를 삭제할 수 있습니다.
+
+
+예시: 데이터 삭제
+DELETE FROM Users WHERE age &lt; 18;
+
+
+
+  Users 테이블에서 나이가 18 미만인 모든 행(Row)을 삭제합니다.
+
+
+2️⃣ DML의 특징.
+
+1. 데이터 조작.
+
+  DML은 데이터베이스 내에서 데이터를 직접적으로 조작하는 데 사용됩니다.
+  데이터를 추가하거나 삭제하고, 기존 데이터를 조회하거나 수정하는 등의 작업을 수행합니다.
+
+
+2. 트랜잭션과 연관.
+
+  DML 명령어는 트랜잭션 관리와 밀접한 관련이 있습니다.
+  DML 명령어로 데이터를 변경하는 작업은 트랜잭션 내에서 수행될 수 있으며, 트랜잭션의 커밋(COMMIT) 또는 롤백(ROLLBACK) 을 통해 데이터의 일관성과 무결성을 보장할 수 있습니다.
+
+
+3. 트랜잭션 필요.
+
+  DML 작업은 데이터베이스에서 실제 데이터를 변경하는 작업이므로 트랜잭션이 필요합니다.
+  데이터 변경 작업이 완료되면 COMMIT을 통해 저장하고, 오류가 발생하면 ROLLBACK을 통해 변경 작업을 취소할 수 있습니다.
+
+
+4. 데이터 구조 변경 없음
+
+  DML은 데이터를 다루는 데 초점을 맞추며, 테이블이나 데이터베이스 구조 자체를 변경하지는 않습니다.
+  구조 변경은 DDL(Data Definition Language)의 역할입니다.
+
+
+3️⃣ DML 사용 예시
+
+1. 데이터 조회(SELECT)
+SELECT name, email FROM Users WHERE age &gt; 25;
+
+
+
+  Users 테이블에서 나이가 25 이상인 사용자들의 이름과 이메일을 조회합니다.
+
+
+2. 데이터 삽입(INSERT)
+INSERT INTO Users (name, email, age) VALUES ('Kobe', 'kobe@example.com', 28);
+
+
+
+  Users 테이블에 새로운 사용자인 Kobe를 추가합니다.
+
+
+3. 데이터 수정(UPDATE)
+UPDATE Users SET email = 'dev.kobe@example.com' WHERE name = 'Kobe';
+
+
+
+  Users 테이블에서 이름이 Kobe인 사용자의 이메일을 수정합니다.
+
+
+4. 데이터 삭제(DELETE)
+DELETE FROM Users WHERE id = 3;
+
+
+
+  Users 테이블에서 id가 3인 사용자의 데이터를 삭제합니다.
+
+
+4️⃣ DML과 DDL의 차이점.
+
+  DML(Data Manipulation Language)
+    
+      DML은 데이터 자체를 조작하는 데 사용됩니다.
+      SELECT, INSERT, UPDATE, DELETE와 같은 명령어를 통해 데이터를 삽입, 조회, 수정, 삭제할 수 있습니다.
+      트랜잭션 처리(커밋, 롤백)가 필요하며, 데이터베이스 내에서 데이터 조작이 중심입니다.
+    
+  
+  DDL(Data Definition Language)
+    
+      DDL은 데이터베이스의 구조를 정의하는 데 사용됩니다.
+      CREATE, ALTER, DROP 등의 명령어를 통해 테이블과 같은 데이터베이스 객체를 생성, 수정, 삭제할 수 있습니다.
+      DDL은 일반적으로 트랜잭션 관리 없이 자동 커밋되며, 데이터베이스의 구조 관리가 중심입니다.
+    
+  
+
+
+5️⃣ 요약.
+DML(Data Manipulation Language)은 데이터베이스에서 데이터를 삽입, 조회, 수정, 삭제하는 작업을 수행하는 SQL 언어입니다.
+DML은 데이터 자체를 직접적으로 조작하는 데 사용되며, 트랜잭션과 연관이 깊어 작업의 무결성을 보장하기 위해 COMMIT이나 ROLLBACK을 통해 작업의 완료 여부를 확인할 수 있습니다.
+DML은 데이터를 효율적으로 다루고 관리하는 데 필수적인 역할을 하며, 실제 데이터 조작에 집중하는 언어입니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/SQL" class="category">SQL</a>
+                            
+                                <span class="date">· 2024-09-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/SQL/2024/2024-09-30-DDL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -4452,177 +4722,6 @@ CREATE TABLE Orders (
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/SQL/2024/2024-09-30-DML.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/SQL/2024/2024-09-30-DML.html"><h1 class="title_post">💉[SQL] DML이란?</h1></a>
-                        <a href="/SQL/2024/2024-09-30-DML.html" class="txt_post">
-                            💉[SQL] DML이란?
-
-DML(Data Manipulation Language) 은 데이터베이스에서 데이터를 조작하는데 사용되는 SQL의 하위 언어입니다.
-
-DML 명령어는 데이터베이스 테이블에 데이터를 삽입, 수정, 삭제, 조회하는 작업을 수행합니다.
-
-DML은 주로 테이블 내의 데이터를 다루는 데 사용되며, 데이터베이스의 구조(예: 테이블 생성 또는 삭제)를 변경하지 않습니다.
-
-1️⃣ DML의 주요 명령어
-
-1. SELECT
-
-  데이터베이스에서 데이터를 조회하는 명령어입니다.
-  테이블에 저장된 데이터를 선택적으로 가져오거나 특정 조건에 맞는 데이터를 검색할 수 있습니다.
-
-
-예시: 데이터 조회
-SELECT * FROM User WHERE age &gt; 25;
-
-
-
-  Users 테이블에서 age가 25보다 큰 모든 행을 조회합니다.
-
-
-2. INSERT
-
-  테이블에 데이터를 삽입하는 명령어입니다.
-  테이블의 각 열(Column)에 맞는 데이터를 새 행(Row)으로 추가합니다.
-
-
-예시: 데이터 삽입
-INSERT INTO Users (name, email, age) VALUES ('Kobe', 'kobe@example.com', 30);
-
-
-
-  Users 테이블에 새로운 사용자의 데이터를 삽입합니다.
-
-
-3. UPDATE
-
-  테이블의 기존 데이터를 수정하는 명령어입니다.
-  특정 조건을 만족하는 데이터를 찾아 수정할 수 있습니다.
-
-
-예시: 데이터 수정
-UPDATE Users SET age = 31 WHRER name = 'Kobe';
-
-
-
-  Users 테이블에서 이름이 'Kobe'인 사용자의 나이를 31로 수정합니다.
-
-
-4. DELETE
-
-  테이블에서 데이터를 삭제하는 명령어입니다.
-  특정 조건을 만족하는 데이터를 삭제하거나, 모든 데이터를 삭제할 수 있습니다.
-
-
-예시: 데이터 삭제
-DELETE FROM Users WHERE age &lt; 18;
-
-
-
-  Users 테이블에서 나이가 18 미만인 모든 행(Row)을 삭제합니다.
-
-
-2️⃣ DML의 특징.
-
-1. 데이터 조작.
-
-  DML은 데이터베이스 내에서 데이터를 직접적으로 조작하는 데 사용됩니다.
-  데이터를 추가하거나 삭제하고, 기존 데이터를 조회하거나 수정하는 등의 작업을 수행합니다.
-
-
-2. 트랜잭션과 연관.
-
-  DML 명령어는 트랜잭션 관리와 밀접한 관련이 있습니다.
-  DML 명령어로 데이터를 변경하는 작업은 트랜잭션 내에서 수행될 수 있으며, 트랜잭션의 커밋(COMMIT) 또는 롤백(ROLLBACK) 을 통해 데이터의 일관성과 무결성을 보장할 수 있습니다.
-
-
-3. 트랜잭션 필요.
-
-  DML 작업은 데이터베이스에서 실제 데이터를 변경하는 작업이므로 트랜잭션이 필요합니다.
-  데이터 변경 작업이 완료되면 COMMIT을 통해 저장하고, 오류가 발생하면 ROLLBACK을 통해 변경 작업을 취소할 수 있습니다.
-
-
-4. 데이터 구조 변경 없음
-
-  DML은 데이터를 다루는 데 초점을 맞추며, 테이블이나 데이터베이스 구조 자체를 변경하지는 않습니다.
-  구조 변경은 DDL(Data Definition Language)의 역할입니다.
-
-
-3️⃣ DML 사용 예시
-
-1. 데이터 조회(SELECT)
-SELECT name, email FROM Users WHERE age &gt; 25;
-
-
-
-  Users 테이블에서 나이가 25 이상인 사용자들의 이름과 이메일을 조회합니다.
-
-
-2. 데이터 삽입(INSERT)
-INSERT INTO Users (name, email, age) VALUES ('Kobe', 'kobe@example.com', 28);
-
-
-
-  Users 테이블에 새로운 사용자인 Kobe를 추가합니다.
-
-
-3. 데이터 수정(UPDATE)
-UPDATE Users SET email = 'dev.kobe@example.com' WHERE name = 'Kobe';
-
-
-
-  Users 테이블에서 이름이 Kobe인 사용자의 이메일을 수정합니다.
-
-
-4. 데이터 삭제(DELETE)
-DELETE FROM Users WHERE id = 3;
-
-
-
-  Users 테이블에서 id가 3인 사용자의 데이터를 삭제합니다.
-
-
-4️⃣ DML과 DDL의 차이점.
-
-  DML(Data Manipulation Language)
-    
-      DML은 데이터 자체를 조작하는 데 사용됩니다.
-      SELECT, INSERT, UPDATE, DELETE와 같은 명령어를 통해 데이터를 삽입, 조회, 수정, 삭제할 수 있습니다.
-      트랜잭션 처리(커밋, 롤백)가 필요하며, 데이터베이스 내에서 데이터 조작이 중심입니다.
-    
-  
-  DDL(Data Definition Language)
-    
-      DDL은 데이터베이스의 구조를 정의하는 데 사용됩니다.
-      CREATE, ALTER, DROP 등의 명령어를 통해 테이블과 같은 데이터베이스 객체를 생성, 수정, 삭제할 수 있습니다.
-      DDL은 일반적으로 트랜잭션 관리 없이 자동 커밋되며, 데이터베이스의 구조 관리가 중심입니다.
-    
-  
-
-
-5️⃣ 요약.
-DML(Data Manipulation Language)은 데이터베이스에서 데이터를 삽입, 조회, 수정, 삭제하는 작업을 수행하는 SQL 언어입니다.
-DML은 데이터 자체를 직접적으로 조작하는 데 사용되며, 트랜잭션과 연관이 깊어 작업의 무결성을 보장하기 위해 COMMIT이나 ROLLBACK을 통해 작업의 완료 여부를 확인할 수 있습니다.
-DML은 데이터를 효율적으로 다루고 관리하는 데 필수적인 역할을 하며, 실제 데이터 조작에 집중하는 언어입니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/SQL" class="category">SQL</a>
                             
                                 <span class="date">· 2024-09-30</span>
                             
@@ -6230,177 +6329,6 @@ public interface UserRepository extend JpaRepository&lt;User, Long&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html"><h1 class="title_post">🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!</h1></a>
-                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="txt_post">
-                            🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!
-
-
-  Controller에서 getter가 있는 객체를 반환하면 기본적으로 JSON으로 변환되어 클라이언트에 전달됩니다.
-    
-      이 동작은 Spring Framework에서 자동으로 처리해줍니다.
-    
-  
-
-
-1️⃣ Spring에서 객체가 JSON으로 변환되는 과정.
-
-1. 객체 반환 및 @RestController
-
-  Spring에서는 @RestController 또는 @ResponseBody 애너테이션이 붙은 메서드가 객체를 반환하면, 해당 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 전달됩니다.
-  Spring은 내부적으로 Jackson이라는 라이브러리를 사용하여 Java 객체를 JSON으로 직렬화합니다.
-    
-      이 과정에서 객체의 getter 메서드를 통해 데이터를 추출하려 JSON을 생성합니다.
-    
-  
-
-
-2. Jackson에 의한 직렬화.
-
-  Spring Boot는 Jackson을 기본으로 포함하고 있어, 추가적인 설정 없이 Java 객체를 JSON으로 변환할 수 있습니다.
-  객체의 getter 메서드를 통해 객체 내부의 데이터를 추출하고, 이를 JSON으로 변환합니다.
-  예를 들어, getName() 이라는 getter가 있으면, 이는 name이라는 필드로 JSON에 포함됩니다.
-
-
-2️⃣ 예시.
-
-1. 객체 클래스.
-
-public class User {
-    private Long id;
-    private String name;
-    private String email;
-    
-    // 기본 생성자
-    public User() {}
-    
-    // Getter와 Setter
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-
-
-2. Controller 클래스.
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        // User 객체를 생성하고 반환 (일반적으로는 데이터베이스에서 가져옴)
-        User user = new User();
-        user.setId(id);
-        user.setName("Kobe");
-        user.setEmail("kobe@example.com");
-        
-        // 이 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 반환됨.
-        return user;
-    }
-}
-
-
-3️⃣ 동작 원리.
-
-1. 클라이언트 요청.
-
-  클라이언트 /users/1 과 같이 요청을 보내면, Spring은 해당 경로에 매핑된 getUserById 메서드를 호출합니다.
-
-
-2. Java 객체 반환.
-
-  이 메서드는 User 객체를 반환합니다.
-
-
-3. 객체를 JSON으로 변환.
-
-  Spring은 @RestController 또는 @ResponseBody를 보고, User 객체를 JSON 형식으로 변환합니다.
-  이때 Jackson 라이브러리가 getter 메서드들을 사용하여 객체 내부의 값을 추출하고, 이를 JSON으로 직렬화합니다.
-
-
-
-  🙋‍♂️ 라이브러리와 프레임워크의 차이점
-
-
-4. 클라이언트에 JSON 응답.
-
-  직렬화된 JSON 데이터가 클라이언트에 응답으로 전송됩니다.
-
-
-결과로 클라이언트가 받는 JSON
-{
-    "id": 1,
-    "name": "Kobe",
-    "email": "kobe@example.com"
-}
-
-
-4️⃣ 주의 사항.
-
-  객체에 getter가 있어야 함.
-    
-      Jackson은 객체의 필드를 직접 접근하는 것이 아니라, 기본적으로 getter 메서드를 사용하여 데이터를 추출합니다.
-      따라서 getter 메서드가 존재해야 합니다.
-    
-  
-  객체가 null인 경우.
-    
-      객체가 null이거나, 특정 필드가 null인 경우 그 필드는 JSON에 포함되지 않거나 null로 표현됩니다.
-    
-  
-  추가 설정.
-    
-      필요에 따라 Jackson의 직렬화/역직렬화 방식을 커스터마이징할 수 있습니다.
-      예를 들어, 필드 이름을 변경하거나 특정 필드를 제외하고 싶을 때는 @JsonProperty, @JsonIgnore 같은 Jackson 애너테이션을 사용할 수 있습니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  Java 백엔드 애플리케이션에서 계층형 아키텍처로 구현한 후 Controller에서 getter가 있는 객체를 반환하면, Spring은 해당 객체를 자동으로 JSON 형식으로 변환하여 클라이언트에 응답합니다.
-  이는 기본적으로 Spring의 Jackson 라이브러리를 통해 이루어지며, 추가적인 설정 없이도 객체의 getter를 통해 JSON으로 직렬화됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-26</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/CS/2024/2024-09-26-Library-and-Framework.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -7860,6 +7788,177 @@ public class UserController {
   Primary Key는 데이터베이스에서 각 레코드를 고유하게 식별하는 필드로, 절대 중복되지 않으며 null 값을 가질 수 없습니다.
   Primary Key를 통해 사용자를 빠르고 정확하게 조회할 수 있으며, 테이블 간의 관계를 설정하는 데 중요한 역할을 합니다.
   id는 자동 증가 방식이나 UUID 방식으로 생성될 수 있으며, 사용자의 고유성을 보장합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html"><h1 class="title_post">🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!</h1></a>
+                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="txt_post">
+                            🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!
+
+
+  Controller에서 getter가 있는 객체를 반환하면 기본적으로 JSON으로 변환되어 클라이언트에 전달됩니다.
+    
+      이 동작은 Spring Framework에서 자동으로 처리해줍니다.
+    
+  
+
+
+1️⃣ Spring에서 객체가 JSON으로 변환되는 과정.
+
+1. 객체 반환 및 @RestController
+
+  Spring에서는 @RestController 또는 @ResponseBody 애너테이션이 붙은 메서드가 객체를 반환하면, 해당 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 전달됩니다.
+  Spring은 내부적으로 Jackson이라는 라이브러리를 사용하여 Java 객체를 JSON으로 직렬화합니다.
+    
+      이 과정에서 객체의 getter 메서드를 통해 데이터를 추출하려 JSON을 생성합니다.
+    
+  
+
+
+2. Jackson에 의한 직렬화.
+
+  Spring Boot는 Jackson을 기본으로 포함하고 있어, 추가적인 설정 없이 Java 객체를 JSON으로 변환할 수 있습니다.
+  객체의 getter 메서드를 통해 객체 내부의 데이터를 추출하고, 이를 JSON으로 변환합니다.
+  예를 들어, getName() 이라는 getter가 있으면, 이는 name이라는 필드로 JSON에 포함됩니다.
+
+
+2️⃣ 예시.
+
+1. 객체 클래스.
+
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+    
+    // 기본 생성자
+    public User() {}
+    
+    // Getter와 Setter
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+2. Controller 클래스.
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        // User 객체를 생성하고 반환 (일반적으로는 데이터베이스에서 가져옴)
+        User user = new User();
+        user.setId(id);
+        user.setName("Kobe");
+        user.setEmail("kobe@example.com");
+        
+        // 이 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 반환됨.
+        return user;
+    }
+}
+
+
+3️⃣ 동작 원리.
+
+1. 클라이언트 요청.
+
+  클라이언트 /users/1 과 같이 요청을 보내면, Spring은 해당 경로에 매핑된 getUserById 메서드를 호출합니다.
+
+
+2. Java 객체 반환.
+
+  이 메서드는 User 객체를 반환합니다.
+
+
+3. 객체를 JSON으로 변환.
+
+  Spring은 @RestController 또는 @ResponseBody를 보고, User 객체를 JSON 형식으로 변환합니다.
+  이때 Jackson 라이브러리가 getter 메서드들을 사용하여 객체 내부의 값을 추출하고, 이를 JSON으로 직렬화합니다.
+
+
+
+  🙋‍♂️ 라이브러리와 프레임워크의 차이점
+
+
+4. 클라이언트에 JSON 응답.
+
+  직렬화된 JSON 데이터가 클라이언트에 응답으로 전송됩니다.
+
+
+결과로 클라이언트가 받는 JSON
+{
+    "id": 1,
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+4️⃣ 주의 사항.
+
+  객체에 getter가 있어야 함.
+    
+      Jackson은 객체의 필드를 직접 접근하는 것이 아니라, 기본적으로 getter 메서드를 사용하여 데이터를 추출합니다.
+      따라서 getter 메서드가 존재해야 합니다.
+    
+  
+  객체가 null인 경우.
+    
+      객체가 null이거나, 특정 필드가 null인 경우 그 필드는 JSON에 포함되지 않거나 null로 표현됩니다.
+    
+  
+  추가 설정.
+    
+      필요에 따라 Jackson의 직렬화/역직렬화 방식을 커스터마이징할 수 있습니다.
+      예를 들어, 필드 이름을 변경하거나 특정 필드를 제외하고 싶을 때는 @JsonProperty, @JsonIgnore 같은 Jackson 애너테이션을 사용할 수 있습니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  Java 백엔드 애플리케이션에서 계층형 아키텍처로 구현한 후 Controller에서 getter가 있는 객체를 반환하면, Spring은 해당 객체를 자동으로 JSON 형식으로 변환하여 클라이언트에 응답합니다.
+  이는 기본적으로 Spring의 Jackson 라이브러리를 통해 이루어지며, 추가적인 설정 없이도 객체의 getter를 통해 JSON으로 직렬화됩니다.
 
 
                         </a>
@@ -14477,140 +14576,6 @@ SQL의 특징.
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-17-WrapperClass-Auto-Boxing-Auto-Unboxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-17-WrapperClass-Auto-Boxing-Auto-Unboxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱과 언박싱</h1></a>
-                        <a href="/Java/Java/2024-09-17-WrapperClass-Auto-Boxing-Auto-Unboxing.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스 - 오토 박싱과 언박싱
-
-  자바에서 오토 박싱(Auto-Boxing) 과 오토 언박싱(Auto-unboxing) 은 기본 데이터 타입(Primitive type)과 래퍼 클래스(Wrapper Class) 간의 자동 변환을 의미합니다.
-  자바 5에서 도입된 이 기능은 코드의 가독성과 편리성을 높여줍니다.
-
-
-1️⃣ 오토 박싱(Auto-boxing)
-
-  오토 박싱(Auto-boxing)은 기본 데이터 타입(Primitive type)이 자동으로 해당하는 래퍼 클래스(Wrapper Class)의 객체로 변환되는 과정을 말합니다.
-    
-      예를 들어, int 타입이 Integer 객체로 자동 변환되는 상황을 생각해볼 수 있습니다.
-    
-  
-
-
-예시.
-int num = 10;
-Integer boxedNum = num; // 오토 박싱(Auto-boxing)
-
-
-
-  위의 코드에서 int 타입 변수 num이 자동으로 Integer 객체로 변환됩니다.
-  개발자는 명시적으로 Integer.valueOf(num) 같은 메서드를 호출할 필요 없이, 기본 타입을 직접 객체로 사용할 수 있습니다.
-
-
-2️⃣ 오토 언박싱(Auto-Unboxing)
-
-  오토 언박싱(Auto-Unboxing)은 래퍼 클래스(Wrapper Class)의 객체가 자동으로 해당하는 기본 데이터 타입(Primitive type)으로 변환되는 과정을 말합니다.
-    
-      예를 들어, Integer 객체가 int 타입으로 변환되는 상황을 생각해볼 수 있습니다.
-    
-  
-
-
-예시.
-Integer boxedNum = 20;
-int num = boxedNum; // 오토 언박싱(Auto-Unboxing)
-
-
-
-  위의 코드에서 Integer 객체 boxedNum이 자동으로 int 타입으로 변환됩니다.
-  개발자는 명시적으로 boxedNum.intValue() 같은 메서드를 호출할 필요 없이, 객체를 직접 기본 타입으로 사용할 수 있습니다.
-
-
-3️⃣ 오토 박싱과 오토 언박싱의 활용 예.
-
-  오토 박싱과 오토 언방식은 주로 컬렉션 프레임워크와 함께 사용됩니다.
-    
-      예를 들어, List&lt;Integer&gt;에 값을 추가하거나 꺼낼 때 이러한 기능이 매우 유용합니다.
-    
-  
-
-
-예시
-import java.util.ArrayList;
-import java.util.List;
-
-public class AutoBoxingUnboxingExample {
-    public static void main(String[] args) {
-        List&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
-        
-        // 오토 박싱: int 타입이 Integer 객체로 변환되어 리스트에 추가됩니다.
-        numbers.add(10);
-        numbers.add(20);
-        
-        // 오토 언박싱: Integer 객체가 int 타입으로 변환되어 사용됩니다.
-        int firstNum = numbers.get(0);
-        int secondNum = numbers.get(1);
-        
-        System.out.println("First number: " + firstNum);
-        System.out.println("Second number: " + sceondNum);
-    }
-}
-
-
-
-  이 예제에서 numbers.add(10);는 10이라는 int 값을 Integer 객체로 자동으로 박싱한 뒤 리스트에 추가합니다.
-    
-      또한, numbers.get(0)은 Integer 객체를 int로 자동 언박싱하여 변수 firstNum에 할당합니다.
-    
-  
-
-
-4️⃣ 주의 사항.
-
-  성능 이슈.
-    
-      오토 박싱과 오토 언박싱은 성능에 영향을 줄 수 있습니다.
-        
-          많은 오토 박싱/언박싱이 발생하면 메모리 사용량이 증가하거나 성능이 저하될 수 있습니다.
-        
-      
-    
-  
-  NullPointerException
-    
-      오토 언박싱 과정에서 래퍼 클래스 객체가 null이면 nullPointerException이 발생합니다.
-    
-  
-
-
-예시.
-Integer nullInteger = null;
-int num = nullInteger; // NullPointerException 발생
-
-
-5️⃣ 결론.
-
-  오토 박싱과 오토 언박싱은 기본 데이터 타입과 객체 타입 간의 변환을 자동으로 처리하여 개발자가 코드를 간결하고 명확하게 작성할 수 있도록 도와줍니다.
-  하지만 이러한 자동 변환히 발생하는 곳에서는 성능과 null 처리에 대한 주의를 기울여랴 합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-17-WrapperClass-Java-WrapperClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -14801,6 +14766,140 @@ public class WrapperClassExample {
 
   이 코드는 기본 데이터 타입과 래퍼 클래스 간의 변환을 보여주며, 박싱과 언박싱이 어떻게 동작하는지를 설명합니다.
   이러한 기능들은 자바에서 기본 타입을 객체로 다루어야 하는 상황에서 매우 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-17-WrapperClass-Auto-Boxing-Auto-Unboxing.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-17-WrapperClass-Auto-Boxing-Auto-Unboxing.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 오토 박싱과 언박싱</h1></a>
+                        <a href="/Java/Java/2024-09-17-WrapperClass-Auto-Boxing-Auto-Unboxing.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스 - 오토 박싱과 언박싱
+
+  자바에서 오토 박싱(Auto-Boxing) 과 오토 언박싱(Auto-unboxing) 은 기본 데이터 타입(Primitive type)과 래퍼 클래스(Wrapper Class) 간의 자동 변환을 의미합니다.
+  자바 5에서 도입된 이 기능은 코드의 가독성과 편리성을 높여줍니다.
+
+
+1️⃣ 오토 박싱(Auto-boxing)
+
+  오토 박싱(Auto-boxing)은 기본 데이터 타입(Primitive type)이 자동으로 해당하는 래퍼 클래스(Wrapper Class)의 객체로 변환되는 과정을 말합니다.
+    
+      예를 들어, int 타입이 Integer 객체로 자동 변환되는 상황을 생각해볼 수 있습니다.
+    
+  
+
+
+예시.
+int num = 10;
+Integer boxedNum = num; // 오토 박싱(Auto-boxing)
+
+
+
+  위의 코드에서 int 타입 변수 num이 자동으로 Integer 객체로 변환됩니다.
+  개발자는 명시적으로 Integer.valueOf(num) 같은 메서드를 호출할 필요 없이, 기본 타입을 직접 객체로 사용할 수 있습니다.
+
+
+2️⃣ 오토 언박싱(Auto-Unboxing)
+
+  오토 언박싱(Auto-Unboxing)은 래퍼 클래스(Wrapper Class)의 객체가 자동으로 해당하는 기본 데이터 타입(Primitive type)으로 변환되는 과정을 말합니다.
+    
+      예를 들어, Integer 객체가 int 타입으로 변환되는 상황을 생각해볼 수 있습니다.
+    
+  
+
+
+예시.
+Integer boxedNum = 20;
+int num = boxedNum; // 오토 언박싱(Auto-Unboxing)
+
+
+
+  위의 코드에서 Integer 객체 boxedNum이 자동으로 int 타입으로 변환됩니다.
+  개발자는 명시적으로 boxedNum.intValue() 같은 메서드를 호출할 필요 없이, 객체를 직접 기본 타입으로 사용할 수 있습니다.
+
+
+3️⃣ 오토 박싱과 오토 언박싱의 활용 예.
+
+  오토 박싱과 오토 언방식은 주로 컬렉션 프레임워크와 함께 사용됩니다.
+    
+      예를 들어, List&lt;Integer&gt;에 값을 추가하거나 꺼낼 때 이러한 기능이 매우 유용합니다.
+    
+  
+
+
+예시
+import java.util.ArrayList;
+import java.util.List;
+
+public class AutoBoxingUnboxingExample {
+    public static void main(String[] args) {
+        List&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
+        
+        // 오토 박싱: int 타입이 Integer 객체로 변환되어 리스트에 추가됩니다.
+        numbers.add(10);
+        numbers.add(20);
+        
+        // 오토 언박싱: Integer 객체가 int 타입으로 변환되어 사용됩니다.
+        int firstNum = numbers.get(0);
+        int secondNum = numbers.get(1);
+        
+        System.out.println("First number: " + firstNum);
+        System.out.println("Second number: " + sceondNum);
+    }
+}
+
+
+
+  이 예제에서 numbers.add(10);는 10이라는 int 값을 Integer 객체로 자동으로 박싱한 뒤 리스트에 추가합니다.
+    
+      또한, numbers.get(0)은 Integer 객체를 int로 자동 언박싱하여 변수 firstNum에 할당합니다.
+    
+  
+
+
+4️⃣ 주의 사항.
+
+  성능 이슈.
+    
+      오토 박싱과 오토 언박싱은 성능에 영향을 줄 수 있습니다.
+        
+          많은 오토 박싱/언박싱이 발생하면 메모리 사용량이 증가하거나 성능이 저하될 수 있습니다.
+        
+      
+    
+  
+  NullPointerException
+    
+      오토 언박싱 과정에서 래퍼 클래스 객체가 null이면 nullPointerException이 발생합니다.
+    
+  
+
+
+예시.
+Integer nullInteger = null;
+int num = nullInteger; // NullPointerException 발생
+
+
+5️⃣ 결론.
+
+  오토 박싱과 오토 언박싱은 기본 데이터 타입과 객체 타입 간의 변환을 자동으로 처리하여 개발자가 코드를 간결하고 명확하게 작성할 수 있도록 도와줍니다.
+  하지만 이러한 자동 변환히 발생하는 곳에서는 성능과 null 처리에 대한 주의를 기울여랴 합니다.
 
 
                         </a>
@@ -15903,6 +16002,194 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
+
+1️⃣ 기본형의 한계.
+
+  자바는 객체 지향 언어입니다.
+    
+      그런데 자바 안에 객체가 아닌 것이 있습니다.
+      바로 int, double 같은 기본형(Primitive Type)입니다.
+    
+  
+  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
+    
+      객체가 아님.
+        
+          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
+            
+              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
+            
+          
+        
+      
+      null 값을 가질 수 없습니다.
+        
+          기본형 데이터 타입은 null 값을 가질 수 없습니다.
+            
+              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 예시.
+
+  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+    
+      왼쪽의 값이 더 작다: -1
+      두 값이 같다: 0
+      왼쪽의 값이 더 크다: 1
+    
+  
+
+
+public class MyIntegerMethodMain0 {
+
+	public static void main(String[] args) {
+		int value = 10;
+		int i1 = compareTo(value, 5);
+		int i2 = compareTo(value, 10);
+		int i3 = compareTo(value, 20);
+		System.out.println("i1 = " + i1);
+		System.out.println("i2 = " + i2);
+		System.out.println("i3 = " + i3);
+	}
+
+	public static int compareTo(int value, int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+}
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+    
+  
+
+
+3️⃣ 직접 만든 래퍼 클래스.
+
+  int를 클래스로 만들어 봅시다.
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+    
+      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+    
+  
+
+
+public class MyInteger {
+
+	private final int value;
+
+	public MyInteger(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int compareTo(int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value); // 숫자를 문자로 변경
+	}
+}
+
+
+  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+    
+  
+  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+  
+    이 클래스는 불변으로 설계했습니다.
+  
+  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+    
+      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+```java
+public class MyIntegerMethodMain1 {
+    
+
+    public static void main(String[] args) {
+      MyInteger myInteger = new MyInteger(10);
+      int i1 = myInteger.compareTo(5);
+      int i2 = myInteger.compareTo(10);
+      int i3 = myInteger.compareTo(20);
+      System.out.println(“i1 = “ + i1);
+      System.out.println(“i2 = “ + i2);
+      System.out.println(“i3 = “ + i3);
+  }
+}
+```
+  
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -16247,194 +16534,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
-
-1️⃣ 기본형의 한계.
-
-  자바는 객체 지향 언어입니다.
-    
-      그런데 자바 안에 객체가 아닌 것이 있습니다.
-      바로 int, double 같은 기본형(Primitive Type)입니다.
-    
-  
-  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
-    
-      객체가 아님.
-        
-          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
-            
-              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
-            
-          
-        
-      
-      null 값을 가질 수 없습니다.
-        
-          기본형 데이터 타입은 null 값을 가질 수 없습니다.
-            
-              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 예시.
-
-  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
-    
-      왼쪽의 값이 더 작다: -1
-      두 값이 같다: 0
-      왼쪽의 값이 더 크다: 1
-    
-  
-
-
-public class MyIntegerMethodMain0 {
-
-	public static void main(String[] args) {
-		int value = 10;
-		int i1 = compareTo(value, 5);
-		int i2 = compareTo(value, 10);
-		int i3 = compareTo(value, 20);
-		System.out.println("i1 = " + i1);
-		System.out.println("i2 = " + i2);
-		System.out.println("i3 = " + i3);
-	}
-
-	public static int compareTo(int value, int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
-    
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
-    
-  
-
-
-3️⃣ 직접 만든 래퍼 클래스.
-
-  int를 클래스로 만들어 봅시다.
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
-    
-      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-    
-  
-
-
-public class MyInteger {
-
-	private final int value;
-
-	public MyInteger(int value) {
-		this.value = value;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public int compareTo(int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value); // 숫자를 문자로 변경
-	}
-}
-
-
-  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
-    
-  
-  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-  
-    이 클래스는 불변으로 설계했습니다.
-  
-  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-    
-      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
-```java
-public class MyIntegerMethodMain1 {
-    
-
-    public static void main(String[] args) {
-      MyInteger myInteger = new MyInteger(10);
-      int i1 = myInteger.compareTo(5);
-      int i2 = myInteger.compareTo(10);
-      int i3 = myInteger.compareTo(20);
-      System.out.println(“i1 = “ + i1);
-      System.out.println(“i2 = “ + i2);
-      System.out.println(“i3 = “ + i3);
-  }
-}
-```
-  
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-12-Primitive-type.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -16724,105 +16823,6 @@ model.addAttribute(user);
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html"><h1 class="title_post">🍃[Spring] `@ModelAttribute` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="txt_post">
-                            🍃[Spring] @ModelAttribute 애노테이션.
-
-1️⃣ @ModelAttribute
-
-  @ModelAttribute는 Spring Framework에서 주로 사용되는 애노테이션으로, Spring MVC에서 모델 데이터와 요청 데이터를 바인딩하거나, 컨트롤러에서 반환된 데이터를 뷰에 전당하는 데 사용됩니다.
-  @ModelAttribute는 두 가지 주요 용도로 사용됩니다.
-
-
-1️⃣ 메서드 파라미터에서 사용(@ModelAttribute 파라미터 바인딩)
-
-  @ModelAttribute를 메서드 파라미터에 적용하면, Spring은 요청 파라미터 또는 폼 데이터로부터 객체를 자동으로 생성하고, 그 객체의 필드를 요청 파라미터 값으로 바인딩합니다.
-    
-      이렇게 생성된 객체는 컨트롤러 메서드 내부에서 사용할 수 있습니다.
-    
-  
-
-
-예시.
-@Controller
-public class UserController {
-    
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
-        // User 객체는 폼 데이터로부터 자동으로 생성되고 바인딩됩니다.
-        // 이제 user 객체를 사용할 수 있습니다.
-        System.out.println("User Name: " + user.getName());
-        return "registrationSuccess";
-    }
-}
-
-
-
-  위 예시에서 @ModelAttribute는 User 객체를 폼 데이터로부터 생성하고, name, email 등의 필드 요청 파라미터 값으로 바인딩합니다.
-
-
-2️⃣ 메서드에 사용(@ModelAttribute 메서드)
-
-  @ModelAttribute를 메서드 레벨에 적용하면, 해당 메서드는 컨트롤러의 모든 요청 전에 실행되어, 반환된 객체를 모델에 추가합니다.
-    
-      이 객체는 이후 뷰에서 사용될 수 있습니다.
-```java
-@Controller
-public class UserController {
-    
-
-    @ModelAttribute(“userTypes”)
-  public List populateUserTypes() {
-      // 이 메서드는 컨트롤러의 모든 요청 전에 실행됩니다.
-      // 이 리스트는 모델에 추가되어 뷰에서 사용될 수 있습니다.
-      return Arrays.asList("Admin", "User", "Guest");
-  }
-
-    @GetMapping(“/register”)
-  public String showRegistrationForm(Model model) {
-      model.addAttribute(“user”, new User());
-      return “register”;
-  }
-}
-```
-  
-  위 예시에서 populateUserTypes() 메서드는 @ModelAttribute("userTypes")로 선언되어, 이 메서드가 반환하는 리스트는 userTypes라는 이름으로 모델에 추가됩니다.
-    
-      이 값은 뷰(예: JSP, Thymeleaf 템플릿 등)에서 접근할 수 있습니다.
-    
-  
-
-
-3️⃣ @ModelAttribute 의 주요 기능 요약.
-
-  1. 파라미터 바인딩 : 클라이언트의 요청 데이터를 객체로 변환하고, 이 객체를 컨트롤러 메서드에서 사용하도록 해줍니다.
-  2. 모델 추가 : 메서드의 반환 값을 모델에 추가하여, 해당 데이터가 모든 뷰에서 사용될 수 있도록 합니다.
-    
-      이 두가지 기능을 통해 @ModelAttribute는 Spring MVC에서 데이터 바인딩과 뷰에 전당되는 데이터의 관리를 간소화하는 데 중요한 역할을 합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -16968,6 +16968,105 @@ public InternalResourceViewResolver viewResolver() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html"><h1 class="title_post">🍃[Spring] `@ModelAttribute` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-ModelAttribute-annotation.html" class="txt_post">
+                            🍃[Spring] @ModelAttribute 애노테이션.
+
+1️⃣ @ModelAttribute
+
+  @ModelAttribute는 Spring Framework에서 주로 사용되는 애노테이션으로, Spring MVC에서 모델 데이터와 요청 데이터를 바인딩하거나, 컨트롤러에서 반환된 데이터를 뷰에 전당하는 데 사용됩니다.
+  @ModelAttribute는 두 가지 주요 용도로 사용됩니다.
+
+
+1️⃣ 메서드 파라미터에서 사용(@ModelAttribute 파라미터 바인딩)
+
+  @ModelAttribute를 메서드 파라미터에 적용하면, Spring은 요청 파라미터 또는 폼 데이터로부터 객체를 자동으로 생성하고, 그 객체의 필드를 요청 파라미터 값으로 바인딩합니다.
+    
+      이렇게 생성된 객체는 컨트롤러 메서드 내부에서 사용할 수 있습니다.
+    
+  
+
+
+예시.
+@Controller
+public class UserController {
+    
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        // User 객체는 폼 데이터로부터 자동으로 생성되고 바인딩됩니다.
+        // 이제 user 객체를 사용할 수 있습니다.
+        System.out.println("User Name: " + user.getName());
+        return "registrationSuccess";
+    }
+}
+
+
+
+  위 예시에서 @ModelAttribute는 User 객체를 폼 데이터로부터 생성하고, name, email 등의 필드 요청 파라미터 값으로 바인딩합니다.
+
+
+2️⃣ 메서드에 사용(@ModelAttribute 메서드)
+
+  @ModelAttribute를 메서드 레벨에 적용하면, 해당 메서드는 컨트롤러의 모든 요청 전에 실행되어, 반환된 객체를 모델에 추가합니다.
+    
+      이 객체는 이후 뷰에서 사용될 수 있습니다.
+```java
+@Controller
+public class UserController {
+    
+
+    @ModelAttribute(“userTypes”)
+  public List populateUserTypes() {
+      // 이 메서드는 컨트롤러의 모든 요청 전에 실행됩니다.
+      // 이 리스트는 모델에 추가되어 뷰에서 사용될 수 있습니다.
+      return Arrays.asList("Admin", "User", "Guest");
+  }
+
+    @GetMapping(“/register”)
+  public String showRegistrationForm(Model model) {
+      model.addAttribute(“user”, new User());
+      return “register”;
+  }
+}
+```
+  
+  위 예시에서 populateUserTypes() 메서드는 @ModelAttribute("userTypes")로 선언되어, 이 메서드가 반환하는 리스트는 userTypes라는 이름으로 모델에 추가됩니다.
+    
+      이 값은 뷰(예: JSP, Thymeleaf 템플릿 등)에서 접근할 수 있습니다.
+    
+  
+
+
+3️⃣ @ModelAttribute 의 주요 기능 요약.
+
+  1. 파라미터 바인딩 : 클라이언트의 요청 데이터를 객체로 변환하고, 이 객체를 컨트롤러 메서드에서 사용하도록 해줍니다.
+  2. 모델 추가 : 메서드의 반환 값을 모델에 추가하여, 해당 데이터가 모든 뷰에서 사용될 수 있도록 합니다.
+    
+      이 두가지 기능을 통해 @ModelAttribute는 Spring MVC에서 데이터 바인딩과 뷰에 전당되는 데이터의 관리를 간소화하는 데 중요한 역할을 합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -17082,6 +17181,200 @@ public class GreetingController {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항</h1></a>
+                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="txt_post">
+                            🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항.
+
+1️⃣ 프로토콜 설계 시 고려 사항.
+
+  계층 구조의 통신 프로토콜을 설계할 때는 고려할 요소가 많습니다.
+    
+      대표적인 것이 네트워크 호스트의 주소 표현 방법, 데이터 전송 과정의 오류 제어, 통신 양단 사이의 전송 속도를 제어하는 흐름 제어입니다.
+        
+          주소 표현은 스마트폰 번호나 IP 주소와 같이 호스트를 유일하게 구분하는 용도로 사용합니다.
+          오류 제어는 전송 과정에서 데이터 분실, 데이터 변형 등의 오류가 발생했을 때 데이터를 복구하는 데 사용합니다.
+          흐름 제어는 송신자가 데이터를 너무 빨리 보내어 수신자가 미처 처리하지 못하는 문제를 해결하기 위한 목적으로 사용합니다.
+        
+      
+    
+  
+
+
+1️⃣ 주소 표현.
+
+  여러 호스트가 연결된 환경에서 특정 호스트끼리 통신하려면 상대방을 구분할 수 있는 방법이 필요합니다.
+    
+      시스템을 구분하여 지칭하기 위해서 이름을 부여하는 것을 주소(Address) 체계라 합니다.
+        
+          주소 체계는 시스템의 설계 과정에서 맨 먼저 고려해야 하는 중요한 개념입니다.
+            
+              예를 들어, 유선 전화 시스템의 주소 표기 방법을 살펴보면 전화번호 체계는 ‘국가 코드 - 지역 코드 -번호’ 형식으로 부여됩니다.
+                
+                  번호 체계가 국가라는 최상위 광역 코드에서 시작해 영역을 점점 축소하는 방식으로 계층 구조에 따라 관리됩니다.
+                    
+                      따라서 국가 코드와 지역 코드로 해당 전화기의 지리적 위치를 판단할 수 있습니다.
+                    
+                  
+                
+              
+              또 다른 주소 표현의 예로는 주민등록번호가 있습니다.
+                
+                  주민등록번호에는 다양한 정보가 포함되는데, yymmdd-abcdefg 형식에서 앞쪽의 yymmdd는 태어난 해의 연도, 월, 일을 의미합니다
+                  뒤쪽의 a는 성별을 구분하는 용도로 사용되는데, 1이면 남자 2이면 여자를 의미합니다.
+                  Y2K 문제로 인해 2000년 이후 출생자는 3이 남자, 4는 여자를 의미하도록 확장되었습니다.
+                    
+                      즉, 1901년과 2001년에 태어난 사람은 yy로 구분하지 못하므로 a 값으로 구분해야 합니다.
+                    
+                  
+                  주소 체계를 결정할 때는 이와 같은 확장성을 반드시 고려해야 합니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  보통 호스트마다 주소를 하나씩 부여하지만, 다수의 호스트를 묶어 하나의 그룹 주소로 표기하기도 합니다.
+    
+      이는 전통적인 통신 환경이면서 현재도 가장 많이 사용하는 일대일(1:1) 통신과 더불어, 화상 회의 등을 지원하기 위한 일대다(1:n) 통신 환경도 필요하기 때문입니다.
+        
+          일대다 통신의 대표적인 유형으로는 네트워크에 연결된 모든 호스트에 데이터를 전송할 수 있는 브로드캐스팅(Broadcasting) 표기 방법과 특정 사용자를 그룹으로 묶어서 지칭하는 멀티캐스팅(Multicasting) 표기 방법이 있습니다.
+            
+              예를 들어 카카오톡 앱에서 단체 전송을 하는 기능이나 줌에서 온라인 회의를 진행하는 기능이 멀티 캐스팅 표기 방법에 해당합니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 오류 제어.
+
+  네트워크에서는 데이터 송수신 과정에서 오류가 발생할 수 있습니다.
+  전송 오류에는 데이터가 깨져서 도착하는 데이터 변형 오류와 데이터가 도착하지 못하는 데이터 분실 오류가 있습니다.
+  전송 오류 문제를 해결하는 오류 제어(Error Control) 기능은 통신 프로토콜의 가장 기본적인 기능에 속합니다.
+  데이터 변형 오류는 물리 계층의 전송 매체에 의한 물리적인 오류이므로 전송 과정에서 데이터의 내용이 바뀌는 경우입니다.
+    
+      이를 해결하기 위해서 데이터 링크 계층이 물리적인 정송 오류를 해결합니다.
+    
+  
+  물리적인 오류가 발생하지 않아도 프로토콜의 수행 과정에서 데이터를 분실하는 논리적인 전송 오류가 발생할 수 있습니다.
+  네트워크의 오류 제어 기능은 오류의 발생 사실을 인지하는 것이 먼저이고, 이후에 재전송 기능을 이용한 오류 복구 절차가 이어집니다.
+
+
+
+
+
+  위 그림은 송신호스트에서 보낸 데이터가 수신 호스트에 도착했을 때 발생할 수 있는 현상을 세 가지 유형으로 설명합니다.
+    
+      (a)는 데이터가 오류 없이 도착하는 정상적인 경우이고, (b)는 데이터가 수신 호스트에 도착하지 못하는 데이터 분실 오류이며, (c)는 데이터 내용이 변경되어 도착하는 데이터 변형 오류입니다.
+    
+  
+  (b)처럼 데이터가 분실되는 원인은 매우 다양합니다.
+    
+      전송 경로가 잘못되어 데이터가 엉뚱한 방향으로 전달되거나, 상위 계층의 논리적 처리 과정에서 데이터를 분실할 수도 있습니다.
+        
+          데이터가 변형되거나 분실되는 오류가 발생되어 이를 해결하려면 먼저 오류가 발생한 사실을 인지해야 합니다.
+        
+      
+    
+  
+  (b)의 경우는 수신 호스트가 자신에게 데이터가 보내졌다는 사실을 인지하는 것이 쉽지 않습니다.
+    
+      그래서 보통은 송신 호스트에서 타임아웃 등의 기능으로 오류를 감지하는 방법을 사용합니다.
+    
+  
+  (c)의 데이터 변형 오류는 수신 호스트가 CRC 방식 등의 오류 검출 기법을 이용해 오류를 검출할 수 있습니다.
+    
+      즉, 데이터 분실 오류는 송신 호스트 주도로 이루어지고, 데이터 변형 오류는 수신 호스트 주도로 이루어집니다.
+    
+  
+  네트워크에서 전송 오류를 해결하는 일반적인 방법은 송신 호스트가 원래 데이터를 재전송(Retransmission)하는 것입니다.
+  물리적인 오류 외에도 통신 프로토콜에서 사용하는 알고리즘의 성격에 의해 오류가 발생하기도 합니다.
+    
+      예를 들어, 송신 호스트가 순차적으로 전송한 데이터의 순서가 뒤바뀌어 도착하는 경우입니다.
+        
+          수신 호스트에서 도착 순서를 바로잡으려면 데이터의 논리적인 순서를 의미하는 순서 번호 기능이 필요합니다.
+        
+      
+    
+  
+
+
+3️⃣ 흐름 제어.
+
+  전송 매체에서 물리적인 오류가 없었는데도 데이터를 분실하는 경우가 있는데, 이는 송수신 호스트 사이의 데이터 전송/처리 속도 차이 때문에 발생합니다.
+  수신 호스트에 데이터가 도착하면 일단 내부 버퍼에 보관했다가 처리합니다.
+    
+      그런데 내부 버퍼에 보관할 공간을 확보하지 못하면 데이터를 논리적으로 분실하는 결과가 초래됩니다.
+    
+  
+  일반적으로 수신 호스트의 버퍼 처리 속도보다 송신 호스트가 데이터를 전송하는 속도가 빠르면 논리적인 데이터 분실 오류가 발생합니다.
+    
+      수신 호스트가 버퍼에 저장된 데이터를 미처 처리하지 못한 상태에서 새로운 데이터가 수신되어 일시적으로 저장할 공간이 없기 때문입니다.
+        
+          이 문제를 해결하려면 송신 호스트의 전송 속도를 조절하는 흐름 제어(Flow Control) 기능이 필요합니다.
+        
+      
+    
+  
+
+
+
+
+
+  위 그림은 가장 단순한 형태의 흐름 제어 기법을 보여줍니다.
+  송신 호스트가 데이터를 전송하려면 반드시 수신 호스트로부터 명시적인 전송 허가를 받아야 합니다.
+  그림을 보면(a)에서 송신 호스트가 i번째 데이터를 보내고 수신 호스트가 이를 제대로 받습니다.
+    
+      이후에 송신 호스트가 i+1번째 데이터를 보내려면 수신 호스트의 전송 허가가 필요합니다.
+      수신 호스트는 데이터를 수신할 여력이 있을 경우에만 (b)와 같이 전송 허가를 보냅니다.
+      (c)에서 전송 허가를 수신한 후에 송신 호스트가 다음 데이터인 i+1을 전송하고 있습니다.
+    
+  
+  보통 수신 호스트의 흐름 제어에 의해 데이터 전송이 이루어집니다.
+  위 그림은 흐름 제어의 이해를 돕기 위한 설명이며, 실제 통신 환경에서는 전송 속도가 너무 느리므로 이 방식이 사용되지 않습니다.
+  일반적으로 송신 호스트는 속도를 높이기 위하여 동시에 여러 개의 전송 데이터를 송신할 수 있으며, 수신 호스트가 데이터 개수를 통제합니다.
+
+
+4️⃣ 데이터 전달 방식.
+
+  프로토콜 설계 시 고려할 마지막 사항은 데이터 전달 방식입니다.
+
+
+
+
+
+  위 그림의 (c)에서 데이터를 오른쪽이나 왼쪽의 한 방향으로만 전송하는 것을 단방향(Simplex) 방식이라 하고, (a)처럼 양쪽에서 데이터를 동시에 전송하는 것을 전이중(Full Duplex) 방식이라고 합니다.
+  일반 도로 환경에 비유하자면 일방통행 도로가 단방향 방식이고, 중앙에 노란 실선이 그려진 도로는 전이중 방식입니다.
+  일반적인 통신 프로토콜들은 모두 전이중 방식을 지원합니다.
+  이외에도 데이터가 양방향으로 전송되지만, 특정 시점에는 한 방향으로만 전송할 수 있는 반이중(Half Duplex) 방식이 있습니다.
+  위 그림에서 (b)의 반이중 방식은 양쪽에서 데이터를 동시에 전송할 수 없으므로, 데이터 전송 시점을 제어할 수 있어야 합니다.
+  데이터 전달 방식에서는 데이터 사이의 전송 우선순위를 설정하는 방법이나 긴급 데이터를 처리하는 방법 등도 고려해야 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-11</span>
                             
                         </div>
                     </div>
@@ -17657,200 +17950,6 @@ public class UserController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항</h1></a>
-                        <a href="/Network/2024/2024-09-11-Protocol-design-considerations.html" class="txt_post">
-                            🌐[Network] 네트워크 개념 - 프로토콜 설계 시 고려 사항.
-
-1️⃣ 프로토콜 설계 시 고려 사항.
-
-  계층 구조의 통신 프로토콜을 설계할 때는 고려할 요소가 많습니다.
-    
-      대표적인 것이 네트워크 호스트의 주소 표현 방법, 데이터 전송 과정의 오류 제어, 통신 양단 사이의 전송 속도를 제어하는 흐름 제어입니다.
-        
-          주소 표현은 스마트폰 번호나 IP 주소와 같이 호스트를 유일하게 구분하는 용도로 사용합니다.
-          오류 제어는 전송 과정에서 데이터 분실, 데이터 변형 등의 오류가 발생했을 때 데이터를 복구하는 데 사용합니다.
-          흐름 제어는 송신자가 데이터를 너무 빨리 보내어 수신자가 미처 처리하지 못하는 문제를 해결하기 위한 목적으로 사용합니다.
-        
-      
-    
-  
-
-
-1️⃣ 주소 표현.
-
-  여러 호스트가 연결된 환경에서 특정 호스트끼리 통신하려면 상대방을 구분할 수 있는 방법이 필요합니다.
-    
-      시스템을 구분하여 지칭하기 위해서 이름을 부여하는 것을 주소(Address) 체계라 합니다.
-        
-          주소 체계는 시스템의 설계 과정에서 맨 먼저 고려해야 하는 중요한 개념입니다.
-            
-              예를 들어, 유선 전화 시스템의 주소 표기 방법을 살펴보면 전화번호 체계는 ‘국가 코드 - 지역 코드 -번호’ 형식으로 부여됩니다.
-                
-                  번호 체계가 국가라는 최상위 광역 코드에서 시작해 영역을 점점 축소하는 방식으로 계층 구조에 따라 관리됩니다.
-                    
-                      따라서 국가 코드와 지역 코드로 해당 전화기의 지리적 위치를 판단할 수 있습니다.
-                    
-                  
-                
-              
-              또 다른 주소 표현의 예로는 주민등록번호가 있습니다.
-                
-                  주민등록번호에는 다양한 정보가 포함되는데, yymmdd-abcdefg 형식에서 앞쪽의 yymmdd는 태어난 해의 연도, 월, 일을 의미합니다
-                  뒤쪽의 a는 성별을 구분하는 용도로 사용되는데, 1이면 남자 2이면 여자를 의미합니다.
-                  Y2K 문제로 인해 2000년 이후 출생자는 3이 남자, 4는 여자를 의미하도록 확장되었습니다.
-                    
-                      즉, 1901년과 2001년에 태어난 사람은 yy로 구분하지 못하므로 a 값으로 구분해야 합니다.
-                    
-                  
-                  주소 체계를 결정할 때는 이와 같은 확장성을 반드시 고려해야 합니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  보통 호스트마다 주소를 하나씩 부여하지만, 다수의 호스트를 묶어 하나의 그룹 주소로 표기하기도 합니다.
-    
-      이는 전통적인 통신 환경이면서 현재도 가장 많이 사용하는 일대일(1:1) 통신과 더불어, 화상 회의 등을 지원하기 위한 일대다(1:n) 통신 환경도 필요하기 때문입니다.
-        
-          일대다 통신의 대표적인 유형으로는 네트워크에 연결된 모든 호스트에 데이터를 전송할 수 있는 브로드캐스팅(Broadcasting) 표기 방법과 특정 사용자를 그룹으로 묶어서 지칭하는 멀티캐스팅(Multicasting) 표기 방법이 있습니다.
-            
-              예를 들어 카카오톡 앱에서 단체 전송을 하는 기능이나 줌에서 온라인 회의를 진행하는 기능이 멀티 캐스팅 표기 방법에 해당합니다.
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 오류 제어.
-
-  네트워크에서는 데이터 송수신 과정에서 오류가 발생할 수 있습니다.
-  전송 오류에는 데이터가 깨져서 도착하는 데이터 변형 오류와 데이터가 도착하지 못하는 데이터 분실 오류가 있습니다.
-  전송 오류 문제를 해결하는 오류 제어(Error Control) 기능은 통신 프로토콜의 가장 기본적인 기능에 속합니다.
-  데이터 변형 오류는 물리 계층의 전송 매체에 의한 물리적인 오류이므로 전송 과정에서 데이터의 내용이 바뀌는 경우입니다.
-    
-      이를 해결하기 위해서 데이터 링크 계층이 물리적인 정송 오류를 해결합니다.
-    
-  
-  물리적인 오류가 발생하지 않아도 프로토콜의 수행 과정에서 데이터를 분실하는 논리적인 전송 오류가 발생할 수 있습니다.
-  네트워크의 오류 제어 기능은 오류의 발생 사실을 인지하는 것이 먼저이고, 이후에 재전송 기능을 이용한 오류 복구 절차가 이어집니다.
-
-
-
-
-
-  위 그림은 송신호스트에서 보낸 데이터가 수신 호스트에 도착했을 때 발생할 수 있는 현상을 세 가지 유형으로 설명합니다.
-    
-      (a)는 데이터가 오류 없이 도착하는 정상적인 경우이고, (b)는 데이터가 수신 호스트에 도착하지 못하는 데이터 분실 오류이며, (c)는 데이터 내용이 변경되어 도착하는 데이터 변형 오류입니다.
-    
-  
-  (b)처럼 데이터가 분실되는 원인은 매우 다양합니다.
-    
-      전송 경로가 잘못되어 데이터가 엉뚱한 방향으로 전달되거나, 상위 계층의 논리적 처리 과정에서 데이터를 분실할 수도 있습니다.
-        
-          데이터가 변형되거나 분실되는 오류가 발생되어 이를 해결하려면 먼저 오류가 발생한 사실을 인지해야 합니다.
-        
-      
-    
-  
-  (b)의 경우는 수신 호스트가 자신에게 데이터가 보내졌다는 사실을 인지하는 것이 쉽지 않습니다.
-    
-      그래서 보통은 송신 호스트에서 타임아웃 등의 기능으로 오류를 감지하는 방법을 사용합니다.
-    
-  
-  (c)의 데이터 변형 오류는 수신 호스트가 CRC 방식 등의 오류 검출 기법을 이용해 오류를 검출할 수 있습니다.
-    
-      즉, 데이터 분실 오류는 송신 호스트 주도로 이루어지고, 데이터 변형 오류는 수신 호스트 주도로 이루어집니다.
-    
-  
-  네트워크에서 전송 오류를 해결하는 일반적인 방법은 송신 호스트가 원래 데이터를 재전송(Retransmission)하는 것입니다.
-  물리적인 오류 외에도 통신 프로토콜에서 사용하는 알고리즘의 성격에 의해 오류가 발생하기도 합니다.
-    
-      예를 들어, 송신 호스트가 순차적으로 전송한 데이터의 순서가 뒤바뀌어 도착하는 경우입니다.
-        
-          수신 호스트에서 도착 순서를 바로잡으려면 데이터의 논리적인 순서를 의미하는 순서 번호 기능이 필요합니다.
-        
-      
-    
-  
-
-
-3️⃣ 흐름 제어.
-
-  전송 매체에서 물리적인 오류가 없었는데도 데이터를 분실하는 경우가 있는데, 이는 송수신 호스트 사이의 데이터 전송/처리 속도 차이 때문에 발생합니다.
-  수신 호스트에 데이터가 도착하면 일단 내부 버퍼에 보관했다가 처리합니다.
-    
-      그런데 내부 버퍼에 보관할 공간을 확보하지 못하면 데이터를 논리적으로 분실하는 결과가 초래됩니다.
-    
-  
-  일반적으로 수신 호스트의 버퍼 처리 속도보다 송신 호스트가 데이터를 전송하는 속도가 빠르면 논리적인 데이터 분실 오류가 발생합니다.
-    
-      수신 호스트가 버퍼에 저장된 데이터를 미처 처리하지 못한 상태에서 새로운 데이터가 수신되어 일시적으로 저장할 공간이 없기 때문입니다.
-        
-          이 문제를 해결하려면 송신 호스트의 전송 속도를 조절하는 흐름 제어(Flow Control) 기능이 필요합니다.
-        
-      
-    
-  
-
-
-
-
-
-  위 그림은 가장 단순한 형태의 흐름 제어 기법을 보여줍니다.
-  송신 호스트가 데이터를 전송하려면 반드시 수신 호스트로부터 명시적인 전송 허가를 받아야 합니다.
-  그림을 보면(a)에서 송신 호스트가 i번째 데이터를 보내고 수신 호스트가 이를 제대로 받습니다.
-    
-      이후에 송신 호스트가 i+1번째 데이터를 보내려면 수신 호스트의 전송 허가가 필요합니다.
-      수신 호스트는 데이터를 수신할 여력이 있을 경우에만 (b)와 같이 전송 허가를 보냅니다.
-      (c)에서 전송 허가를 수신한 후에 송신 호스트가 다음 데이터인 i+1을 전송하고 있습니다.
-    
-  
-  보통 수신 호스트의 흐름 제어에 의해 데이터 전송이 이루어집니다.
-  위 그림은 흐름 제어의 이해를 돕기 위한 설명이며, 실제 통신 환경에서는 전송 속도가 너무 느리므로 이 방식이 사용되지 않습니다.
-  일반적으로 송신 호스트는 속도를 높이기 위하여 동시에 여러 개의 전송 데이터를 송신할 수 있으며, 수신 호스트가 데이터 개수를 통제합니다.
-
-
-4️⃣ 데이터 전달 방식.
-
-  프로토콜 설계 시 고려할 마지막 사항은 데이터 전달 방식입니다.
-
-
-
-
-
-  위 그림의 (c)에서 데이터를 오른쪽이나 왼쪽의 한 방향으로만 전송하는 것을 단방향(Simplex) 방식이라 하고, (a)처럼 양쪽에서 데이터를 동시에 전송하는 것을 전이중(Full Duplex) 방식이라고 합니다.
-  일반 도로 환경에 비유하자면 일방통행 도로가 단방향 방식이고, 중앙에 노란 실선이 그려진 도로는 전이중 방식입니다.
-  일반적인 통신 프로토콜들은 모두 전이중 방식을 지원합니다.
-  이외에도 데이터가 양방향으로 전송되지만, 특정 시점에는 한 방향으로만 전송할 수 있는 반이중(Half Duplex) 방식이 있습니다.
-  위 그림에서 (b)의 반이중 방식은 양쪽에서 데이터를 동시에 전송할 수 없으므로, 데이터 전송 시점을 제어할 수 있어야 합니다.
-  데이터 전달 방식에서는 데이터 사이의 전송 우선순위를 설정하는 방법이나 긴급 데이터를 처리하는 방법 등도 고려해야 합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/SQL/2024/2024-09-10-database-and-dbms.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -18051,6 +18150,212 @@ Hello, World! This is Java.
                                 <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-09-07-understand-of-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-07-understand-of-protocol.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 프로토콜의 이해</h1></a>
+                        <a href="/Network/2024/2024-09-07-understand-of-protocol.html" class="txt_post">
+                            🌐[Network] 네트워크 개념 - 프로토콜의 이해
+
+Preview
+
+  데이터 통신의 개념과 프로토콜의 동작 원리를 이해하는 데 스마트폰은 많은 도움을 줍니다.
+    
+      스마트폰으로 전화를 거는 사람(송신자)과 받는 사람(수신자)은 서로 합의하여 통화 연결을 설정합니다
+      데이터 전송 단계인 통화 과정에서는 묵시적인 규칙에 따라 대화를 주고받는 일련의 절차가 진행됩니다.
+      스마트폰은 양쪽이 동시에 말할 수 있는 양방향 통신기능을 지원하지만, 실제로 두 사람이 동시에 말하는 경우는 거의 없고, 느낌이나 말의 내용 등에 따라 번갈아가며 대화합니다.
+      상대방이 한 말을 이해하지 못했거나 제대로 듣지 못한 경우에는 다시 묻는 방식을 통하여 오류를 바로 잡기도 합니다.
+      이와 같은 대화 과정의 절차나 대화 내용을 올바르게 이해하는 과정이 모두 프로토콜의 기능에 포함됩니다.
+    
+  
+  네트워크에서 데이터 전송 원리도 이와 비슷합니다.
+    
+      통신 프로토콜에서 중심적으로 다루는 내용은 주소 개념을 포함하여 데이터 전송 오류에 관한 오류 복구 기능, 전송 속도 조절에 관한 흐름 제어 기능, 데이터의 전달 경로에 관한 라우팅 기능입니다.
+      스마트폰을 사용한 대화 과정에서 사람들이 무의식적으로 행하는 통화 기법이 통신 프로토콜의 설계 과정에 그대로 반영되어 있습니다.
+        
+          그러나 통화 과정은 간단해 보여도 이를 통신 프로토콜로 작성하는 일은 생각보다 쉽지 않습니다.
+        
+      
+    
+  
+  인터넷의 동작 원리를 이해하려면 계층 구조로 설계된 OSI 7계층 모델에 대한 할습이 선행되어야 합니다.
+    
+      특히, 모듈화 설계 개념의 원리와 상하 계층의 역할 분담에 대한 학습을 통하여 계층별 프로토콜의 역할을 이해해야 합니다.
+      인터넷에서 사용되는 데이터 전송 프로토콜인 TCP, UDP, IP 프로토콜은 계층 구조 모델의 원리에 따라 설계되었으며, 기타 제어 프로토콜의 동작도 계층 구조의 원리에 따라 이루어집니다.
+    
+  
+
+
+1️⃣ 프로토콜의 이해
+
+  네트워크에 연결된 시스템이 통신하려면 정해진 규칙에 따라 순차적으로 데이터를 주고 받아야 하는데, 이러한 일련의 규칙을 “프로토콜(Protocol)” 이라 합니다.
+  프로토콜의 동작 과정은 전송 오류 여부, 데이터 전달 경로, 전송 속도 등 다양한 외부 요인의 영향을 받습니다.
+    
+      따라서 적절한 대응 방안을 마련해 효율적으로 관리해야 하는데, 프로토콜의 설계 과정은 모듈(Module)화를 통하여 이루어집니다.
+        
+          이렇게 함으로써 시스템의 복잡성을 단순화하고, 사용자에게 더 편리하고 간편한 통신 기능을 제공할 수 있습니다.
+        
+      
+    
+  
+
+
+1️⃣ 계층적 모듈 구조
+
+  일반적으로 복잡하고 큰 시스템의 기능은 특정 단위의 모듈로 나누어 설계합니다.
+    
+      각각의 모듈은 독립적으로 동작하면서도 상호 유기적으로 통합될 수 있어야 합니다.
+        
+          그러므로 모듈과 모듈을 서로 연동해 동작시키는 적절한 인터페이스가 필요합니다.
+        
+      
+    
+  
+
+
+모듈화
+
+  컴퓨터를 하드웨어 측면에서 보면 CPU, 메모리, 하드디스크, LAN 카드 등과 같은 작은 부품들이 모여 하나의 시스템을 구성합니다.
+    
+      복잡한 시스템을 기능별로 모듈화하면 시스템 구조가 단순해져서 전체 시스템을 이해하기 쉽습니다.
+        
+          또한 각 단위 모듈이 독립적인 기능을 수행하기 때문에 고장이나 업그레이드 등의 상황에 손쉽게 대처할 수 있습니다.
+        
+      
+    
+  
+  소프트웨어 측명에서 보면, 일반 프로그래밍 언어에서는 함수의 개념을 사용해 전체 프로그램을 모듈화할 수 있습니다.
+    
+      함수별로 특정 기능을 독립적으로 수행하도록 함으로써, 각 함수가 개별적으로 설계되고 구현된다는 장점이 있습니다.
+        
+          함수 사이의 인터페이스는 함수의 매개변수에 의해서만 이루어지므로 전체 시스템을 이해하기가 훨씬 쉽습니다.
+            
+              즉, 함수의 역할이 매개변수로 추상화되므로 내부 구조를 이해하지 않고도 함수들을 이해할 수 있고, 이들의 모임인 전체 시스템도 쉽게 이해할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+
+
+  위 그림은 시스템 모듈화의 장점을 보여줍니다.
+    
+      (a)처럼 전체 시스템을 기능에 따라 세 부분으로 나누어 설계할 수 있는데, 이때 각 모듈은 정해진 인터페이스에 맞게 유기적으로 연결되어야 합니다.
+      B 모듈은 A 모듈과 곡선 모양의 인터페이스로 연결되고, C 모듈과는 톱니 모양의 인터페이스로 연결됩니다.
+      A와 C 모듈은 직접 연결되는 인터페이스가 없으며, B 모듈을 통해 간접적인 관계를 유지합니다.
+    
+  
+  위 그림의 시스템을 모듈화하지 않았다면 한 부분만 고장나도 전체 시스템을 교체해야 합니다.
+    
+      반면 모듈화하여 설계하면 B 모듈에 대하여 (a)의 버전 1을 (b)의 버전 2로 교체하면 됩니다.
+      그림에서 설명한 것과 같이 B 모듈의 동작에 오류가 확인되었거나 기능이 개선된 경우 A 모듈이나 B 모듈과 관계없이 B 모듈만 수정하는 방식입니다.
+        
+          이때 모듈 내부의 처리 과정은 임의로 개선할 수 있으나, A와 C 모듈 간 인터페이스는 동일하게 유지해야 전체 시스템 동작에 영향을 주지 않습니다.
+        
+      
+    
+  
+
+
+계층 구조
+
+  분할된 모듈들은 협력 관계를 유지하면서 유기적으로 동작합니다.
+  모듈 구조는 서로 동등한 위치에서 서비스를 주고받을 수도 있고 특정 모듈이 다른 모듈에 서비스를 제공하는 형식의 계층 구조를 이루기도 합니다.
+  네트워크에서는 독립적인 고유 기능을 수행하는 모듈들이 상하 계층 구조로 연결되어 동작합니다.
+
+
+
+
+
+  계층 구조에서는 위 그림에서처럼 상위 계층이 하위 계층에 특정 서비스를 요청하는 방식으로 동작합니다(1).
+  요청을 받은 하위 계층은 해당 서비스를 실행하여 그 결과를 상위 계층에 돌려줍니다(2).
+  하위 계층의 실행 결과는 상위 계층에 결과 값을 직접 전달하는 방식이 될 수도 있고, 주변 환경 값을 변경하는 부수 효과(Side Effect) 방식일 수도 있습니다.
+  자동차의 경우를 예로 들어봅시다.
+    
+      운전자가 자동차의 속도를 줄이려면 브레이크를 밟아야 하고 브레이크를 누르는 정도에 따라 속도가 줄어듭니다.
+        
+          이 구조에서 운전자는 상위 계층에 해당되며, 자동차 내부에서 속도를 줄이는 기능은 하위 계층의 모듈이 됩니다.
+            
+              운전자와 감속 모듈 사이에는 브레이크라는 인터페이스가 존재합니다.
+                
+                  브레이크 인터페이스가 정의되면 상위 계층의 운전자가 바뀌거나 하위 계층의 자동차가 바뀌어도 둘 사이의 서비스 개념을 유지할 수 있습니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  네트워크에서 통신하는 시스템들은 계층 구조로 모듈화된 기능이 각각 동작하며, 둘 사이의 같은 계층끼리 데이터를 전달합니다.
+    
+      이때 데이터를 전달하는 규칙을 프로토콜이라 합니다.
+    
+  
+  모듈화된 계층 구조 프로토콜에는 다양한 장점이 있지만, 대표적인 장점 몇 가지를 정리하면 다음과 같습니다.
+    
+      
+        
+          복잡하고 큰 시스템을 기능별로 작게 분류해서 간단하고 작은 시스템으로 재구성할 수 있습니다.
+            
+              따라서 전체 시스템을 이해하기 쉽고, 시스템을 설계하고 구현하기도 편리합니다.
+            
+          
+        
+      
+      
+        
+          상하 계층에 인접한 모듈 사이의 인터페이스를 포함하여 분할된 모듈이 연동할 수 있는 표준 인터페이스를 제공합니다.
+            
+              모듈 인터페이스는 가능하면 단순하게 구현하여 모듈들이 최대한 독립적으로 동작하도록 해야합니다.
+              모듈의 독립성은 전체 시스템의 구조를 단순하게 만들어줍니다.
+            
+          
+        
+      
+      
+        
+          전송 매체 양단에 있는 호스트가 수행하는 프로토콜들은 좌우 대칭 구조입니다.
+            
+              대칭 구조에서는 통신 양단에 위치하는 동일 계층 사이의 프로토콜을 단순화할 수 있습니다.
+            
+          
+        
+      
+      
+        
+          각 계층의 기능 오류를 수정하거나 향상시켜야 하는 경우에 전체 시스템을 재작성하지 않고 해당 계층의 모듈만 교체하면 됩니다.
+            
+              즉, 상하 혹은 좌우 계층 간의 인터페이스를 유지하면 특정 계층의 내부 변경이 다른 모듈의 동작에 영향을 미치지 않습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-07</span>
                             
                         </div>
                     </div>
@@ -18329,6 +18634,197 @@ string = DCBA
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-07-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-07-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
+                        <a href="/Java/Java/2024-09-07-StringBuilder.html" class="txt_post">
+                            ☕️[Java] StringBuilder - 가변 String
+
+1️⃣ 불변인 String 클래스의 단점.
+
+  불변인 String 클래스에도 단점이 있습니다.
+    
+      다음 예시를 봅시다. (참고로 실제로 작동하는 코드는 아닙니다.)
+    
+  
+
+
+"A" + "B"
+String("A") + String("B") // 문자는 String 타입입니다.
+String("A").concat(String("B")) // 문자의 더하기는 concat을 사용합니다.
+new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
+
+
+
+  불변인 String의 내부 값은 변경할 수 없습니다.
+    
+      따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
+    
+  
+  더 많은 문자를 더하는 경우를 살펴봅시다.
+    String str = "A" + "B" + "C" + "D";
+String str = String("A") + String("B") + String("C") + String("D");
+String str = new String("AB") + String("C") + String("D");
+String str = new String("ABC") + String("D");
+String str = new String("ABCD");
+    
+  
+  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
+    
+      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC") 는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD") 만 사용됩니다.
+        
+          결과적으로 중간에 만들어진 new String("AB"), new String("ABC)" 는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
+        
+      
+    
+  
+  불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점 입니다.
+    
+      문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
+        
+          결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
+            
+              그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  참고: 실제로 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
+
+
+2️⃣ StringBuilder
+
+  이 문제를 해결하는 방법은 단순합니다.
+    
+      바로 불변이 아닌 가변 String이 존재하면 됩니다.
+        
+          가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
+            
+              따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
+            
+          
+        
+      
+    
+  
+  이런 문제를 해결하기 위해 자바는 StringBuilder 라는 가변 String을 제공합니다.
+    
+      물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
+    
+  
+  StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
+    public final class StringBuilder {
+  char[] value; // 자바 9 이전
+  byte[] value; // 자바 9 이후
+    
+  // 여러 메서드
+  public StringBuilder append(String str) {...}
+  public int length() {...}
+  ...
+}
+    
+    (실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
+  
+
+
+3️⃣ StringBuilder 사용 예시
+public class StringBuilderMain1_1 {
+
+	public static void main(String[] args) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("A");
+		sb.append("B");
+		sb.append("C");
+		sb.append("D");
+		System.out.println("sb = " + sb);
+
+		sb.insert(4, "Java");
+		System.out.println("sb = " + sb);
+
+		sb.delete(4, 8);
+		System.out.println("delete = " + sb);
+
+		sb.reverse();
+		System.out.println("reverse = " + sb);
+
+		// StringBuild -&gt; String
+		String string = sb.toString();
+		System.out.println("string = " + string);
+	}
+}
+
+
+  StringBuilder 객체를 생성합니다.
+  append() 메서드를 사용해 여러 문자열을 추가합니다.
+  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
+  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
+  reverse() 메서드로 문자열을 뒤집습니다.
+  마지막으로 toString 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
+
+
+실행 결과
+sb = ABCD
+sb = ABCDJava
+delete = ABCD
+reverse = DCBA
+string = DCBA
+
+
+가변(Mutable) vs 불변(Immutable)
+
+  String은 불변합니다.
+    
+      즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
+        
+          따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
+            
+              이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
+            
+          
+        
+      
+    
+  
+  반면에, StringBuilder는 가변적입니다.
+    
+      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이 때마다 새로운 객체를 생성하지 않습니다.
+        
+          이로 인해 메모리 사용을 줄이고 성능을 향상시킬 수 있습니다.
+            
+              단 사이드 이펙트를 주의해야합니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
 
                         </a>
                         <div class="info-post">
@@ -18680,517 +19176,6 @@ CORS와 프런트엔트의 프록시 서버
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-07-StringBuilder.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-07-StringBuilder.html"><h1 class="title_post">☕️[Java] StringBuilder - 가변 String</h1></a>
-                        <a href="/Java/Java/2024-09-07-StringBuilder.html" class="txt_post">
-                            ☕️[Java] StringBuilder - 가변 String
-
-1️⃣ 불변인 String 클래스의 단점.
-
-  불변인 String 클래스에도 단점이 있습니다.
-    
-      다음 예시를 봅시다. (참고로 실제로 작동하는 코드는 아닙니다.)
-    
-  
-
-
-"A" + "B"
-String("A") + String("B") // 문자는 String 타입입니다.
-String("A").concat(String("B")) // 문자의 더하기는 concat을 사용합니다.
-new String("AB") // String은 불변입니다. 따라서 새로운 객체가 생성됩니다.
-
-
-
-  불변인 String의 내부 값은 변경할 수 없습니다.
-    
-      따라서 변경된 값을 기반으로 새로운 String 객체를 생성합니다.
-    
-  
-  더 많은 문자를 더하는 경우를 살펴봅시다.
-    String str = "A" + "B" + "C" + "D";
-String str = String("A") + String("B") + String("C") + String("D");
-String str = new String("AB") + String("C") + String("D");
-String str = new String("ABC") + String("D");
-String str = new String("ABCD");
-    
-  
-  이 경우 총 3개의 String 클래스가 추가로 생성됩니다.
-    
-      그런데 문제는 중간에 만들어진 new String("AB"), new String("ABC") 는 사용되지 않습니다. 최종적으로 만들어진 new String("ABCD") 만 사용됩니다.
-        
-          결과적으로 중간에 만들어진 new String("AB"), new String("ABC)" 는 제대로 사용되지도 않고, 이후 GC의 대상이 됩니다.
-        
-      
-    
-  
-  불변인 String 클래스의 단점은 문자를 더하거나 변경할 때 마다 계속해서 새로운 객체를 생성해야 한다는 점 입니다.
-    
-      문자를 자주 더하거나 변경해야 하는 상황이라면 더 많은 String 객체를 만들고, GC해야 합니다.
-        
-          결과적으로 컴퓨터의 CPU, 메모리 자원을 더 많이 사용하게 됩니다.
-            
-              그리고 문자열의 크기가 클수록, 문자열을 더 자주 변경할수록 시스템의 자원을 더 많이 소모합니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  참고: 실제로 문자열을 다룰 때 자바가 내부에서 최적화를 적용합니다.
-
-
-2️⃣ StringBuilder
-
-  이 문제를 해결하는 방법은 단순합니다.
-    
-      바로 불변이 아닌 가변 String이 존재하면 됩니다.
-        
-          가변은 내부의 값을 바로 변경하면 되기 때문에 새로운 객체를 생성할 필요가 없습니다.
-            
-              따라서 성능과 메모리 사용면에서 불변보다 더 효율적입니다.
-            
-          
-        
-      
-    
-  
-  이런 문제를 해결하기 위해 자바는 StringBuilder 라는 가변 String을 제공합니다.
-    
-      물론 가변의 경우 사이드 이펙트에 주의해서 사용해야 합니다.
-    
-  
-  StringBuilder는 내부에 final이 아닌 변경할 수 있는 byte[]을 가지고 있습니다.
-    public final class StringBuilder {
-  char[] value; // 자바 9 이전
-  byte[] value; // 자바 9 이후
-    
-  // 여러 메서드
-  public StringBuilder append(String str) {...}
-  public int length() {...}
-  ...
-}
-    
-    (실제로는 상속 관계에 있고 부모 클래스인 AbstractStringBuilder에 value 속성과 length() 메서드가 있습니다.)
-  
-
-
-3️⃣ StringBuilder 사용 예시
-public class StringBuilderMain1_1 {
-
-	public static void main(String[] args) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("A");
-		sb.append("B");
-		sb.append("C");
-		sb.append("D");
-		System.out.println("sb = " + sb);
-
-		sb.insert(4, "Java");
-		System.out.println("sb = " + sb);
-
-		sb.delete(4, 8);
-		System.out.println("delete = " + sb);
-
-		sb.reverse();
-		System.out.println("reverse = " + sb);
-
-		// StringBuild -&gt; String
-		String string = sb.toString();
-		System.out.println("string = " + string);
-	}
-}
-
-
-  StringBuilder 객체를 생성합니다.
-  append() 메서드를 사용해 여러 문자열을 추가합니다.
-  insert() 메서드로 특정 위치에 문자열을 삽입합니다.
-  delete() 메서드로 특정 범위의 문자열을 삭제합니다.
-  reverse() 메서드로 문자열을 뒤집습니다.
-  마지막으로 toString 메소드를 사용해 StringBuilder의 결과를 기반으로 String을 생성해서 반환합니다.
-
-
-실행 결과
-sb = ABCD
-sb = ABCDJava
-delete = ABCD
-reverse = DCBA
-string = DCBA
-
-
-가변(Mutable) vs 불변(Immutable)
-
-  String은 불변합니다.
-    
-      즉, 한 번 생성되면 그 내용을 변경할 수 없습니다.
-        
-          따라서 문자열에 변화를 주려고 할 때마다 새로운 String 객체가 생성되고, 기존 객체는 버려집니다.
-            
-              이 과정에서 메모리와 처리 시간을 더 많이 소모합니다.
-            
-          
-        
-      
-    
-  
-  반면에, StringBuilder는 가변적입니다.
-    
-      하나의 StringBuilder 객체 안에서 문자열을 추가, 삭제, 수정할 수 있으며, 이 때마다 새로운 객체를 생성하지 않습니다.
-        
-          이로 인해 메모리 사용을 줄이고 성능을 향상시킬 수 있습니다.
-            
-              단 사이드 이펙트를 주의해야합니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 보통 문자열을 변경하는 동안만 사용하다가 문자열 변경이 끝나면 안전한(불변) String으로 변환하는 것이 좋습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-09-07-understand-of-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-09-07-understand-of-protocol.html"><h1 class="title_post">🌐[Network] 네트워크 개념 - 프로토콜의 이해</h1></a>
-                        <a href="/Network/2024/2024-09-07-understand-of-protocol.html" class="txt_post">
-                            🌐[Network] 네트워크 개념 - 프로토콜의 이해
-
-Preview
-
-  데이터 통신의 개념과 프로토콜의 동작 원리를 이해하는 데 스마트폰은 많은 도움을 줍니다.
-    
-      스마트폰으로 전화를 거는 사람(송신자)과 받는 사람(수신자)은 서로 합의하여 통화 연결을 설정합니다
-      데이터 전송 단계인 통화 과정에서는 묵시적인 규칙에 따라 대화를 주고받는 일련의 절차가 진행됩니다.
-      스마트폰은 양쪽이 동시에 말할 수 있는 양방향 통신기능을 지원하지만, 실제로 두 사람이 동시에 말하는 경우는 거의 없고, 느낌이나 말의 내용 등에 따라 번갈아가며 대화합니다.
-      상대방이 한 말을 이해하지 못했거나 제대로 듣지 못한 경우에는 다시 묻는 방식을 통하여 오류를 바로 잡기도 합니다.
-      이와 같은 대화 과정의 절차나 대화 내용을 올바르게 이해하는 과정이 모두 프로토콜의 기능에 포함됩니다.
-    
-  
-  네트워크에서 데이터 전송 원리도 이와 비슷합니다.
-    
-      통신 프로토콜에서 중심적으로 다루는 내용은 주소 개념을 포함하여 데이터 전송 오류에 관한 오류 복구 기능, 전송 속도 조절에 관한 흐름 제어 기능, 데이터의 전달 경로에 관한 라우팅 기능입니다.
-      스마트폰을 사용한 대화 과정에서 사람들이 무의식적으로 행하는 통화 기법이 통신 프로토콜의 설계 과정에 그대로 반영되어 있습니다.
-        
-          그러나 통화 과정은 간단해 보여도 이를 통신 프로토콜로 작성하는 일은 생각보다 쉽지 않습니다.
-        
-      
-    
-  
-  인터넷의 동작 원리를 이해하려면 계층 구조로 설계된 OSI 7계층 모델에 대한 할습이 선행되어야 합니다.
-    
-      특히, 모듈화 설계 개념의 원리와 상하 계층의 역할 분담에 대한 학습을 통하여 계층별 프로토콜의 역할을 이해해야 합니다.
-      인터넷에서 사용되는 데이터 전송 프로토콜인 TCP, UDP, IP 프로토콜은 계층 구조 모델의 원리에 따라 설계되었으며, 기타 제어 프로토콜의 동작도 계층 구조의 원리에 따라 이루어집니다.
-    
-  
-
-
-1️⃣ 프로토콜의 이해
-
-  네트워크에 연결된 시스템이 통신하려면 정해진 규칙에 따라 순차적으로 데이터를 주고 받아야 하는데, 이러한 일련의 규칙을 “프로토콜(Protocol)” 이라 합니다.
-  프로토콜의 동작 과정은 전송 오류 여부, 데이터 전달 경로, 전송 속도 등 다양한 외부 요인의 영향을 받습니다.
-    
-      따라서 적절한 대응 방안을 마련해 효율적으로 관리해야 하는데, 프로토콜의 설계 과정은 모듈(Module)화를 통하여 이루어집니다.
-        
-          이렇게 함으로써 시스템의 복잡성을 단순화하고, 사용자에게 더 편리하고 간편한 통신 기능을 제공할 수 있습니다.
-        
-      
-    
-  
-
-
-1️⃣ 계층적 모듈 구조
-
-  일반적으로 복잡하고 큰 시스템의 기능은 특정 단위의 모듈로 나누어 설계합니다.
-    
-      각각의 모듈은 독립적으로 동작하면서도 상호 유기적으로 통합될 수 있어야 합니다.
-        
-          그러므로 모듈과 모듈을 서로 연동해 동작시키는 적절한 인터페이스가 필요합니다.
-        
-      
-    
-  
-
-
-모듈화
-
-  컴퓨터를 하드웨어 측면에서 보면 CPU, 메모리, 하드디스크, LAN 카드 등과 같은 작은 부품들이 모여 하나의 시스템을 구성합니다.
-    
-      복잡한 시스템을 기능별로 모듈화하면 시스템 구조가 단순해져서 전체 시스템을 이해하기 쉽습니다.
-        
-          또한 각 단위 모듈이 독립적인 기능을 수행하기 때문에 고장이나 업그레이드 등의 상황에 손쉽게 대처할 수 있습니다.
-        
-      
-    
-  
-  소프트웨어 측명에서 보면, 일반 프로그래밍 언어에서는 함수의 개념을 사용해 전체 프로그램을 모듈화할 수 있습니다.
-    
-      함수별로 특정 기능을 독립적으로 수행하도록 함으로써, 각 함수가 개별적으로 설계되고 구현된다는 장점이 있습니다.
-        
-          함수 사이의 인터페이스는 함수의 매개변수에 의해서만 이루어지므로 전체 시스템을 이해하기가 훨씬 쉽습니다.
-            
-              즉, 함수의 역할이 매개변수로 추상화되므로 내부 구조를 이해하지 않고도 함수들을 이해할 수 있고, 이들의 모임인 전체 시스템도 쉽게 이해할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-
-
-  위 그림은 시스템 모듈화의 장점을 보여줍니다.
-    
-      (a)처럼 전체 시스템을 기능에 따라 세 부분으로 나누어 설계할 수 있는데, 이때 각 모듈은 정해진 인터페이스에 맞게 유기적으로 연결되어야 합니다.
-      B 모듈은 A 모듈과 곡선 모양의 인터페이스로 연결되고, C 모듈과는 톱니 모양의 인터페이스로 연결됩니다.
-      A와 C 모듈은 직접 연결되는 인터페이스가 없으며, B 모듈을 통해 간접적인 관계를 유지합니다.
-    
-  
-  위 그림의 시스템을 모듈화하지 않았다면 한 부분만 고장나도 전체 시스템을 교체해야 합니다.
-    
-      반면 모듈화하여 설계하면 B 모듈에 대하여 (a)의 버전 1을 (b)의 버전 2로 교체하면 됩니다.
-      그림에서 설명한 것과 같이 B 모듈의 동작에 오류가 확인되었거나 기능이 개선된 경우 A 모듈이나 B 모듈과 관계없이 B 모듈만 수정하는 방식입니다.
-        
-          이때 모듈 내부의 처리 과정은 임의로 개선할 수 있으나, A와 C 모듈 간 인터페이스는 동일하게 유지해야 전체 시스템 동작에 영향을 주지 않습니다.
-        
-      
-    
-  
-
-
-계층 구조
-
-  분할된 모듈들은 협력 관계를 유지하면서 유기적으로 동작합니다.
-  모듈 구조는 서로 동등한 위치에서 서비스를 주고받을 수도 있고 특정 모듈이 다른 모듈에 서비스를 제공하는 형식의 계층 구조를 이루기도 합니다.
-  네트워크에서는 독립적인 고유 기능을 수행하는 모듈들이 상하 계층 구조로 연결되어 동작합니다.
-
-
-
-
-
-  계층 구조에서는 위 그림에서처럼 상위 계층이 하위 계층에 특정 서비스를 요청하는 방식으로 동작합니다(1).
-  요청을 받은 하위 계층은 해당 서비스를 실행하여 그 결과를 상위 계층에 돌려줍니다(2).
-  하위 계층의 실행 결과는 상위 계층에 결과 값을 직접 전달하는 방식이 될 수도 있고, 주변 환경 값을 변경하는 부수 효과(Side Effect) 방식일 수도 있습니다.
-  자동차의 경우를 예로 들어봅시다.
-    
-      운전자가 자동차의 속도를 줄이려면 브레이크를 밟아야 하고 브레이크를 누르는 정도에 따라 속도가 줄어듭니다.
-        
-          이 구조에서 운전자는 상위 계층에 해당되며, 자동차 내부에서 속도를 줄이는 기능은 하위 계층의 모듈이 됩니다.
-            
-              운전자와 감속 모듈 사이에는 브레이크라는 인터페이스가 존재합니다.
-                
-                  브레이크 인터페이스가 정의되면 상위 계층의 운전자가 바뀌거나 하위 계층의 자동차가 바뀌어도 둘 사이의 서비스 개념을 유지할 수 있습니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  네트워크에서 통신하는 시스템들은 계층 구조로 모듈화된 기능이 각각 동작하며, 둘 사이의 같은 계층끼리 데이터를 전달합니다.
-    
-      이때 데이터를 전달하는 규칙을 프로토콜이라 합니다.
-    
-  
-  모듈화된 계층 구조 프로토콜에는 다양한 장점이 있지만, 대표적인 장점 몇 가지를 정리하면 다음과 같습니다.
-    
-      
-        
-          복잡하고 큰 시스템을 기능별로 작게 분류해서 간단하고 작은 시스템으로 재구성할 수 있습니다.
-            
-              따라서 전체 시스템을 이해하기 쉽고, 시스템을 설계하고 구현하기도 편리합니다.
-            
-          
-        
-      
-      
-        
-          상하 계층에 인접한 모듈 사이의 인터페이스를 포함하여 분할된 모듈이 연동할 수 있는 표준 인터페이스를 제공합니다.
-            
-              모듈 인터페이스는 가능하면 단순하게 구현하여 모듈들이 최대한 독립적으로 동작하도록 해야합니다.
-              모듈의 독립성은 전체 시스템의 구조를 단순하게 만들어줍니다.
-            
-          
-        
-      
-      
-        
-          전송 매체 양단에 있는 호스트가 수행하는 프로토콜들은 좌우 대칭 구조입니다.
-            
-              대칭 구조에서는 통신 양단에 위치하는 동일 계층 사이의 프로토콜을 단순화할 수 있습니다.
-            
-          
-        
-      
-      
-        
-          각 계층의 기능 오류를 수정하거나 향상시켜야 하는 경우에 전체 시스템을 재작성하지 않고 해당 계층의 모듈만 교체하면 됩니다.
-            
-              즉, 상하 혹은 좌우 계층 간의 인터페이스를 유지하면 특정 계층의 내부 변경이 다른 모듈의 동작에 영향을 미치지 않습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-05-immutable-object-string.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-05-immutable-object-string.html"><h1 class="title_post">☕️[Java] String 클래스 - 불변 객체</h1></a>
-                        <a href="/Java/Java/2024-09-05-immutable-object-string.html" class="txt_post">
-                            ☕️[Java] String 클래스 - 불변 객체.
-
-  String은 불변 객체입니다.
-    
-      따라서 생성 이후에 절대로 내분의 문자열 값을 변경할 수 없습니다.
-    
-  
-
-
-다음 예시를 봅시다.
-public class StringImmutable1 {
-
-    public static void main(String[] args) {
-        String str = "hello";
-        str.concat(" java");
-        System.out.println("str = " + str);
-    }
-}
-
-
-  `String.concat() 메서드를 사용하면 기존 문자열에 새로운 문자열을 연결해서 합칠 수 있습니다.
-    
-      이 경우 어떤 실행 결과가 나올까요?
-    
-  
-
-
-실행 결과
-str = hello
-
-
-  실행 결과를 보면 문자가 전혀 합쳐지지 않았습니다.
-
-
-다음 코드를 봐봅시다.
-public class StringImmutable2 {
-
-    public static void main(String[] args) {
-        String str1 = "hello";
-        String str2 = str1.concat(" java");
-        System.out.println("str1 = " + str1);
-        System.out.println("str2 = " + str2);
-    }
-}
-
-
-  String은 불변 객체입니다.
-    
-      따라서 변경이 필요한 경우 기존 값을 변경하지 않고, 대신에 새로운 결과를 만들어서 반환합니다.
-    
-  
-
-
-실행 결과
-str1 = hello
-str2 = hello java
-
-
-
-
-
-  String.concat()은 내부에서 새로운 String 객체를 만들어서 반환합니다.
-    
-      따라서 불변과 기존 객체의 값을 유지합니다.
-    
-  
-
-
-1️⃣ String이 불변으로 설계된 이유,
-
-  String 이 불변으로 설계된 이유는 앞서 불변 객체에서 배운 내용에 추가로 다음과 같은 이유도 있습니다.
-  문자열 풀에 있는 String 인스턴스의 값이 중간에 변경되면 같은 문자열을 참고하는 다른 변수의 값도 함께 변경됩니다.
-
-
-
-
-
-  String은 자바 내부에서 문자열 풀을 통해 최적화를 합니다.
-  만약 String 내부의 값을 변경할 수 있다면, 기존에 문자열 풀에서 같은 문자를 참조하는 변수의 모든 문자가 함께 변경되어 버리는 문제가 발생합니다.
-    
-      다음의 경우 str3이 참조하는 문자를 변경하면 str4의 문자도 함께 변경되는 사이드 이펙트 문제가 발생합니다.
-        
-          String str3 = "hello"
-          String str4 = "hello"
-        
-      
-    
-  
-
-
-String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문제가 발생하지 않습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-09-05-network-basic-summary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -19349,6 +19334,254 @@ String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문�
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-09-05-address-info-management.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-09-05-address-info-management.html"><h1 class="title_post">🌐[Network] 주소 정보의 관리</h1></a>
+                        <a href="/Network/2024/2024-09-05-address-info-management.html" class="txt_post">
+                            🌐[Network] 주소 정보의 관리.
+
+  일반 사용자가 호스트를 지칭할 때 사용하는 호스트 이름을 도메인 이름(Domain Name)이라 하며, 인터넷에서는 www.korea.co.kr과 같은 도메인 이름을 IP 주소로 변환하는 작업이 필요합니다.
+  초기 인터넷에서는 아주 간단한 방법으로 호스트 이름과 IP 주소를 변환하였으나, 지금은 DNS라는 분산 데이터베이스 시스템을 사용해서 보다 체계적인 방법으로 관리하고 있습니다.
+
+
+1️⃣ 호스트 파일.
+
+  호스트 이름과 IP 주소를 변환하는 간단한 방법은 특정 파일(예: UNIX 시스템의 /etc/hosts)에 호스트 이름과 IP 주소의 조합을 기록하여 관리하는 것입니다.
+  네트워크 응용 프로그램에서는 사용자가 입력한 호스트 이름을 이 파일에서 검색하여 일대일로 대응된 IP 주소 정보를 쉽게 얻을 수 있습니다.
+  호스트 파일은 한 줄에 하나의 호스트 정보가 기록되며, 일반 텍스트 문서 형식으로 보관됩니다.
+    
+      즉, 아래의 그림을 예로 들면 호스트 이름이 white.korea.co.kr인 시스템의 IP 주소는 211.223.201.27입니다.
+    
+  
+
+
+
+
+
+  네트워크 관리자는 관리 대상이 되는 모든 호스트의 이름, 주소 정보를 주기적으로 갱신하고, 이 정보를 네트워크에 연결된 모든 호스트가 복사하도록 함으로써 정보의 일관성을 유지해야 합니다.
+  위 그림은 네트워크 관리자가 white.korea.co.kr 에서 호스트 정보를 갱신할 때 갱신된 정보를 다른 4개의 호스트가 복사하여 저장하는 모습을 보여줍니다.
+  소스트 파일을 갱신하고 복사하는 작업은 보통 시스템 관리자가 수작업으로 했었습니다.
+  호스트가 추가되거나 삭제되면 먼저 네트워크 관리자의 호스트에서 갱신 작업이 이루어집니다
+    
+      그런데 인터넷이 처음 보급되던 시기에는 호스트 파일 갱신이 생각보다 자주 발생하지 않았기 때문에 호스트 파일을 복사하는 작업도 흔하지 않았습니다.
+        
+          또한 시스템 관리자가 잦은 변경을 원하지 않아서 급하지 않은 갱신은 부분적으로 늦추기도 했습니다.
+            
+              하지만 지금은 DNS 서비스가 보편적으로 사용되고 있어 이처럼 호스트 파일로 관리하는 방식은 보조적으로만 사용되고 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ DNS
+
+  호스트 파일로 주소와 이름 정보를 관리하는 것은 간단하지만 대부분 수동으로 작업해야 한다는 단점이 있습니다.
+  인터넷이 확산되면서 호스트 수가 증가할수록 네트워크 관리자가 호스트 파일을 갱신하고 복사하는 작업에 많은 시간과 노력을 들여야 합니다.
+  특히 지금과 같이 전 세계 컴퓨터가 연결된 네트워크 환경에서는 호스트 파일로 주소와 이름을 변환하는 작업이 사실상 불가능하다고 볼 수 있습니다.
+  DNS(Domain Name System)는 이러한 문제점을 해결하기 위하여 고안된 것으로, 주소와 이름 정보를 자동으로 유지하고 관리하는 분산 데이터베이스 시스템입니다.
+    
+      호스트 주소와 이름 정보는 네임 서버(Name Server)라는 특정한 관리 호스트가 유지하고, 주소 변환 작업이 필요한 클라이언트 네입 서버에서 요청해서 IP 주소를 얻습니다.
+    
+  
+  네트워크가 커지면 네임 서버에 보관되는 정보의 양도 자연스럽게 많아집니다.
+  DNS는 하나의 집중화된 네임 서버가 전체 호스트의 정보를 관리하지 않고, 여러 네임 서버에 분산하여 관리하도록 설계되었습니다.
+    
+      계층 구조로 연결된 네임 서버는 자신이 관리하는 영역에 위치한 호스트 정보만 관리하며, 정보를 상호 교환하는 협력 관계를 통해서 전체 호스트 정보를 일관성 있게 유지합니다.
+    
+  
+
+
+3️⃣ 기타 주소
+
+  네트워크에서 사용하는 주소는 이를 사용하는 환경에 따라 다양합니다.
+  OSI 7계층 모델의 각 계층에서도 목적에 따라 여러 형태의 주소가 사용됩니다.
+
+
+인터넷에서 일반 사용자가 접할 수 있는 대표적인 주소들.
+
+  MAC 주소
+    
+      MAC 주소는 계층 2의 MAC(Medium Access Protocol) 계층에서 사용하며, 일반적으로 LAN 카드에 내장되어 있습니다.
+      물리 계층을 통해 데이터를 전송할 때는 MAC 주소를 이용해서 호스트를 구분합니다.
+        
+          따라서 네트워크 계층이 하위의 데이터 링크 계층에 데이터 전송을 요청하면 먼저 IP 주소를 MAC 주소로 변환하는 작업이 이루어지고, 이후 MAC 계층이 상대방 MAC 계층에 데이터를 전송할 수 있습니다.
+        
+      
+    
+  
+  IP 주소
+    
+      IP 주소는 인터넷에서 네트워크 계층의 기능을 수행하는 IP 프로토콜에서 사용되며, 송신자 IP 주소와 수신자 IP 주소로 구분됩니다.
+        
+          수신자 IP 주소는 IP 패킷이 지나가는 경로를 결정하는 라우팅의 기준이 됩니다.
+        
+      
+    
+  
+  포트 주소
+    
+      포트 주소(Port Address)는 전송 계층에서 사용하며, 호스트에서 실행되는 프로세스를 구분해줍니다.
+      인터넷에서 연결의 완성은 호스트와 호스트 사이가 아닌, 네트워크 응용 프로세스와 네트워크 응용 프로세스 사이입니다.
+        
+          예를 들어, 내 스마트폰의 메신저 앱과 상대방 스마트폰의 메신저 앱 사이의 연결이 필요하다.
+            
+              이때, 하나의 IP 주소를 갖는 스마트폰에서 실행되는 여러 네트워크 응용 앱들을 구분하는 주소가 포트 주소입니다.
+                
+                  인터넷의 전송 계층 프로토콜인 TCP와 UDP가 독립적으로 포트 주소를 관리하며, 포트 번호 또는 소켓 주소라는 용어를 사용하기도 합니다.
+                
+              
+            
+          
+        
+      
+    
+  
+  메일 주소
+    
+      메일 주소는 응용 계층의 메일 시스템에서 사용자를 구분하려고 사용합니다.
+        
+          kobe@korea.co.kr 처럼 사용자 이름과 호스트 이름을 @ 문자로 구분해 표기합니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-05-immutable-object-string.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-05-immutable-object-string.html"><h1 class="title_post">☕️[Java] String 클래스 - 불변 객체</h1></a>
+                        <a href="/Java/Java/2024-09-05-immutable-object-string.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 불변 객체.
+
+  String은 불변 객체입니다.
+    
+      따라서 생성 이후에 절대로 내분의 문자열 값을 변경할 수 없습니다.
+    
+  
+
+
+다음 예시를 봅시다.
+public class StringImmutable1 {
+
+    public static void main(String[] args) {
+        String str = "hello";
+        str.concat(" java");
+        System.out.println("str = " + str);
+    }
+}
+
+
+  `String.concat() 메서드를 사용하면 기존 문자열에 새로운 문자열을 연결해서 합칠 수 있습니다.
+    
+      이 경우 어떤 실행 결과가 나올까요?
+    
+  
+
+
+실행 결과
+str = hello
+
+
+  실행 결과를 보면 문자가 전혀 합쳐지지 않았습니다.
+
+
+다음 코드를 봐봅시다.
+public class StringImmutable2 {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = str1.concat(" java");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+    }
+}
+
+
+  String은 불변 객체입니다.
+    
+      따라서 변경이 필요한 경우 기존 값을 변경하지 않고, 대신에 새로운 결과를 만들어서 반환합니다.
+    
+  
+
+
+실행 결과
+str1 = hello
+str2 = hello java
+
+
+
+
+
+  String.concat()은 내부에서 새로운 String 객체를 만들어서 반환합니다.
+    
+      따라서 불변과 기존 객체의 값을 유지합니다.
+    
+  
+
+
+1️⃣ String이 불변으로 설계된 이유,
+
+  String 이 불변으로 설계된 이유는 앞서 불변 객체에서 배운 내용에 추가로 다음과 같은 이유도 있습니다.
+  문자열 풀에 있는 String 인스턴스의 값이 중간에 변경되면 같은 문자열을 참고하는 다른 변수의 값도 함께 변경됩니다.
+
+
+
+
+
+  String은 자바 내부에서 문자열 풀을 통해 최적화를 합니다.
+  만약 String 내부의 값을 변경할 수 있다면, 기존에 문자열 풀에서 같은 문자를 참조하는 변수의 모든 문자가 함께 변경되어 버리는 문제가 발생합니다.
+    
+      다음의 경우 str3이 참조하는 문자를 변경하면 str4의 문자도 함께 변경되는 사이드 이펙트 문제가 발생합니다.
+        
+          String str3 = "hello"
+          String str4 = "hello"
+        
+      
+    
+  
+
+
+String 클래스는 불변으로 설계되어서 이런 사이드 이펙트 문제가 발생하지 않습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-05</span>
                             
@@ -19546,140 +19779,6 @@ c:: got message &gt;&gt; nice to meet you
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-09-05-address-info-management.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-09-05-address-info-management.html"><h1 class="title_post">🌐[Network] 주소 정보의 관리</h1></a>
-                        <a href="/Network/2024/2024-09-05-address-info-management.html" class="txt_post">
-                            🌐[Network] 주소 정보의 관리.
-
-  일반 사용자가 호스트를 지칭할 때 사용하는 호스트 이름을 도메인 이름(Domain Name)이라 하며, 인터넷에서는 www.korea.co.kr과 같은 도메인 이름을 IP 주소로 변환하는 작업이 필요합니다.
-  초기 인터넷에서는 아주 간단한 방법으로 호스트 이름과 IP 주소를 변환하였으나, 지금은 DNS라는 분산 데이터베이스 시스템을 사용해서 보다 체계적인 방법으로 관리하고 있습니다.
-
-
-1️⃣ 호스트 파일.
-
-  호스트 이름과 IP 주소를 변환하는 간단한 방법은 특정 파일(예: UNIX 시스템의 /etc/hosts)에 호스트 이름과 IP 주소의 조합을 기록하여 관리하는 것입니다.
-  네트워크 응용 프로그램에서는 사용자가 입력한 호스트 이름을 이 파일에서 검색하여 일대일로 대응된 IP 주소 정보를 쉽게 얻을 수 있습니다.
-  호스트 파일은 한 줄에 하나의 호스트 정보가 기록되며, 일반 텍스트 문서 형식으로 보관됩니다.
-    
-      즉, 아래의 그림을 예로 들면 호스트 이름이 white.korea.co.kr인 시스템의 IP 주소는 211.223.201.27입니다.
-    
-  
-
-
-
-
-
-  네트워크 관리자는 관리 대상이 되는 모든 호스트의 이름, 주소 정보를 주기적으로 갱신하고, 이 정보를 네트워크에 연결된 모든 호스트가 복사하도록 함으로써 정보의 일관성을 유지해야 합니다.
-  위 그림은 네트워크 관리자가 white.korea.co.kr 에서 호스트 정보를 갱신할 때 갱신된 정보를 다른 4개의 호스트가 복사하여 저장하는 모습을 보여줍니다.
-  소스트 파일을 갱신하고 복사하는 작업은 보통 시스템 관리자가 수작업으로 했었습니다.
-  호스트가 추가되거나 삭제되면 먼저 네트워크 관리자의 호스트에서 갱신 작업이 이루어집니다
-    
-      그런데 인터넷이 처음 보급되던 시기에는 호스트 파일 갱신이 생각보다 자주 발생하지 않았기 때문에 호스트 파일을 복사하는 작업도 흔하지 않았습니다.
-        
-          또한 시스템 관리자가 잦은 변경을 원하지 않아서 급하지 않은 갱신은 부분적으로 늦추기도 했습니다.
-            
-              하지만 지금은 DNS 서비스가 보편적으로 사용되고 있어 이처럼 호스트 파일로 관리하는 방식은 보조적으로만 사용되고 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ DNS
-
-  호스트 파일로 주소와 이름 정보를 관리하는 것은 간단하지만 대부분 수동으로 작업해야 한다는 단점이 있습니다.
-  인터넷이 확산되면서 호스트 수가 증가할수록 네트워크 관리자가 호스트 파일을 갱신하고 복사하는 작업에 많은 시간과 노력을 들여야 합니다.
-  특히 지금과 같이 전 세계 컴퓨터가 연결된 네트워크 환경에서는 호스트 파일로 주소와 이름을 변환하는 작업이 사실상 불가능하다고 볼 수 있습니다.
-  DNS(Domain Name System)는 이러한 문제점을 해결하기 위하여 고안된 것으로, 주소와 이름 정보를 자동으로 유지하고 관리하는 분산 데이터베이스 시스템입니다.
-    
-      호스트 주소와 이름 정보는 네임 서버(Name Server)라는 특정한 관리 호스트가 유지하고, 주소 변환 작업이 필요한 클라이언트 네입 서버에서 요청해서 IP 주소를 얻습니다.
-    
-  
-  네트워크가 커지면 네임 서버에 보관되는 정보의 양도 자연스럽게 많아집니다.
-  DNS는 하나의 집중화된 네임 서버가 전체 호스트의 정보를 관리하지 않고, 여러 네임 서버에 분산하여 관리하도록 설계되었습니다.
-    
-      계층 구조로 연결된 네임 서버는 자신이 관리하는 영역에 위치한 호스트 정보만 관리하며, 정보를 상호 교환하는 협력 관계를 통해서 전체 호스트 정보를 일관성 있게 유지합니다.
-    
-  
-
-
-3️⃣ 기타 주소
-
-  네트워크에서 사용하는 주소는 이를 사용하는 환경에 따라 다양합니다.
-  OSI 7계층 모델의 각 계층에서도 목적에 따라 여러 형태의 주소가 사용됩니다.
-
-
-인터넷에서 일반 사용자가 접할 수 있는 대표적인 주소들.
-
-  MAC 주소
-    
-      MAC 주소는 계층 2의 MAC(Medium Access Protocol) 계층에서 사용하며, 일반적으로 LAN 카드에 내장되어 있습니다.
-      물리 계층을 통해 데이터를 전송할 때는 MAC 주소를 이용해서 호스트를 구분합니다.
-        
-          따라서 네트워크 계층이 하위의 데이터 링크 계층에 데이터 전송을 요청하면 먼저 IP 주소를 MAC 주소로 변환하는 작업이 이루어지고, 이후 MAC 계층이 상대방 MAC 계층에 데이터를 전송할 수 있습니다.
-        
-      
-    
-  
-  IP 주소
-    
-      IP 주소는 인터넷에서 네트워크 계층의 기능을 수행하는 IP 프로토콜에서 사용되며, 송신자 IP 주소와 수신자 IP 주소로 구분됩니다.
-        
-          수신자 IP 주소는 IP 패킷이 지나가는 경로를 결정하는 라우팅의 기준이 됩니다.
-        
-      
-    
-  
-  포트 주소
-    
-      포트 주소(Port Address)는 전송 계층에서 사용하며, 호스트에서 실행되는 프로세스를 구분해줍니다.
-      인터넷에서 연결의 완성은 호스트와 호스트 사이가 아닌, 네트워크 응용 프로세스와 네트워크 응용 프로세스 사이입니다.
-        
-          예를 들어, 내 스마트폰의 메신저 앱과 상대방 스마트폰의 메신저 앱 사이의 연결이 필요하다.
-            
-              이때, 하나의 IP 주소를 갖는 스마트폰에서 실행되는 여러 네트워크 응용 앱들을 구분하는 주소가 포트 주소입니다.
-                
-                  인터넷의 전송 계층 프로토콜인 TCP와 UDP가 독립적으로 포트 주소를 관리하며, 포트 번호 또는 소켓 주소라는 용어를 사용하기도 합니다.
-                
-              
-            
-          
-        
-      
-    
-  
-  메일 주소
-    
-      메일 주소는 응용 계층의 메일 시스템에서 사용자를 구분하려고 사용합니다.
-        
-          kobe@korea.co.kr 처럼 사용자 이름과 호스트 이름을 @ 문자로 구분해 표기합니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-09-05</span>
                             
@@ -20122,128 +20221,6 @@ public class StringEqualsMain2 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
-                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
-                            🍃[Spring] @SpringBootTest 애노테이션.
-
-  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
-    
-      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
-      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
-    
-  
-
-
-1️⃣ 주요 기능 및 사용 방식.
-
-  1. Spring Application Context 로드
-    
-      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
-        
-          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
-        
-      
-    
-  
-  2. 테스트 환경 설정
-    
-      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
-        
-          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
-        
-      
-      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
-    
-  
-  3. 웹 환경 설정
-    
-      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
-        
-          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
-          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
-          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
-          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
-        
-      
-    
-  
-
-
-예시
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
-
-
-
-  4. 통합 테스트
-    
-      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
-        
-          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
-        
-      
-    
-  
-  5. TestConfiguration 클래스 사용 가능
-    
-      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
-    
-  
-
-
-2️⃣ 예시 코드
-
-@SpringBootTest
-public class MyServiceIntegrationTest {
-    
-    @Autowired
-    private MyService myService;
-    
-    @Test
-    public void testServiceMethod() {
-        // Given
-        // Setup initial conditions
-        
-        // When
-        String result = myService.performAction();
-        
-        // Then
-        assertEquals("ExpectedResult", result);
-    }
-}
-
-
-  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
-
-
-3️⃣ 요약
-
-  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
-    
-      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-04-Transactional-Annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -20370,6 +20347,128 @@ public class MyService {
 
 
 이러한 기능 덕분에 @Transactional은 Spring 애플리케이션에서 데이터 일관성과 무결성을 유지하는 데 중요한 역할을 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html"><h1 class="title_post">🍃[Spring] `@SpringBootTest` 애노테이션</h1></a>
+                        <a href="/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html" class="txt_post">
+                            🍃[Spring] @SpringBootTest 애노테이션.
+
+  @SpringBootTest 애노테이션은 Spring Boot 애플리케이션에서 통합 테스트를 수행하기 위해 사용하는 애너테이션입니다.
+    
+      이 애노테이션은 테스트 클래스에서 Spring Application Context를 로드하고, 실제 애플리케이션의 전체 또는 부분적인 환경을 시뮬레이션하여 테스트할 수 있게 합니다.
+      주로 애플리케이션의 전반적인 기능을 테스트하거나 여러 레이어(예: 서비스, 레포지토리 등) 간의 상호작용을 검증할 때 사용됩니다.
+    
+  
+
+
+1️⃣ 주요 기능 및 사용 방식.
+
+  1. Spring Application Context 로드
+    
+      @SpringBootTest 는 기본적으로 애플리케이션의 전체 컨텍스트를 로드합니다.
+        
+          이 컨텍스트는 실제 애플리케이션을 구동할 때와 동일하게 설정되어, 테스트 환경에서 애플리케이션이 어떻게 동작하는지 검증할 수 있습니다.
+        
+      
+    
+  
+  2. 테스트 환경 설정
+    
+      @SpringBootTest 애노테이션은 다양한 속성을 통해 테스트 환경을 설정할 수 있습니다.
+        
+          예를 들어, 특정 프로파일을 활성화하거나, 테스트용 설정 파일을 사용할 수 있습니다.
+        
+      
+      @SpringBootTest(properties = "spring.config.name=test-application")와 같이 속성을 지정할 수 있습니다.
+    
+  
+  3. 웹 환경 설정
+    
+      @SpringBootTest는 다양한 웹 환경 모드를 지원합니다.
+        
+          WebEnviroment.MOCK : 기본값으로, 웹 환경 없이 MockMvc를 사용해 서블릿 환경을 모킹합니다.
+          WebEnviroment.RANDOM_PORT : 테스트에 임의의 포트를 사용하여 내장 서버를 시작합니다.
+          WebEnviroment.DEFINED_PORT : 애플리케이션이 구성된 기본 포트를 사용합니다.
+          WebEnviroment.NONE : 웹 환경 없이 애플리케이션 컨텍스트만 로드합니다.
+        
+      
+    
+  
+
+
+예시
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnviroment.RANDOM_PORT)
+
+
+
+  4. 통합 테스트
+    
+      이 애노테이션은 단위 테스트와 달리, 애플리케이션의 여러 계층이 통합된 상태에서 테스트를 수행합니다.
+        
+          이는 데이터베이스, 웹 서버, 서비스 레이어 등이 실제로 어떻게 상호작용하는지를 확인할 수 있게 해줍니다.
+        
+      
+    
+  
+  5. TestConfiguration 클래스 사용 가능
+    
+      @SpringBootTest 와 함께 @TestConfiguration 을 사용하여 테스트를 위해 특별히 구성된 빈(Bean)이나 설정을 정의할 수 있습니다.
+    
+  
+
+
+2️⃣ 예시 코드
+
+@SpringBootTest
+public class MyServiceIntegrationTest {
+    
+    @Autowired
+    private MyService myService;
+    
+    @Test
+    public void testServiceMethod() {
+        // Given
+        // Setup initial conditions
+        
+        // When
+        String result = myService.performAction();
+        
+        // Then
+        assertEquals("ExpectedResult", result);
+    }
+}
+
+
+  위의 예시에서 @SpringBootTest 는 MyServiceIntegrationTest 클래스가 Spring Application Context에서 실행될 수 있도록 하고, MyService 빈이 실제로 주입되어 테스트가 실행됩니다.
+
+
+3️⃣ 요약
+
+  @SpringBootTest는 Spring Boot 애플리케이션에서 통합 테스트를 쉽게 수행할 수 있도록 돕는 강력한 애노테이션입니다.
+    
+      이 애노테이션을 사용하면 애플리케이션의 전체 컨텍스트를 로드한 상태에서 테스트할 수 있으며, 복잡한 애플리케이션 시나리오를 검증하는 데 유용합니다.
+    
+  
+
 
                         </a>
                         <div class="info-post">
@@ -20541,200 +20640,6 @@ public class MyService {
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-03-string-basic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-03-string-basic.html"><h1 class="title_post">☕️[Java] String 클래스 - 기본</h1></a>
-                        <a href="/Java/Java/2024-09-03-string-basic.html" class="txt_post">
-                            ☕️[Java] String 클래스 - 기본
-
-1️⃣ String 클래스 - 기본
-
-  자바에서 문자를 다루는 대표적인 타입은 char, String 2가지가 있습니다.
-
-
-public class CharArrayMain {
-
-	public static void main(String[] args) {
-		char[] charArr = new char[]{'h', 'e', 'l', 'l', 'o'};
-		System.out.println(charArr);
-
-		String str = "hello";
-		System.out.println("str = " + str);
-	}
-}
-
-
-실행 결과
-hello
-str = hello
-
-
-
-  기본형은 char 는 문자 하나를 다룰 때 사용합니다.
-  char 를 사용해서 여러 문자를 나열하려면 char[] 을 사용해야합니다.
-    
-      하지만 이렇게 char[] 을 직접 다루는 방법은 매우 불편하기 때문에 자바는 문자열을 매우 편리하게 다룰 수 있는 String 클래스를 제공합니다.
-    
-  
-
-
-String 클래스를 통해 문자열을 생성하는 방법은 2가지가 있습니다.
-
-public class StringBasicMain {
-
-	public static void main(String[] args) {
-		String str1 = "hello";
-		String str2 = new String("hello");
-
-		System.out.println("str1 = " + str1);
-		System.out.println("str2 = " + str2);
-	}
-}
-
-
-  쌍따옴표 사용 : "hello"
-  객체 생성 : new String("hello");
-
-
-String 은 클래스입니다.
-int, boolean 같은 기본형이 아니라 참조형입니다.
-따라서 str1 변수에는 String 인스턴스의 참조값만 들어갈 수 있습니다.
-그러므로 다음 코드는 뭔가 어색합니다.
-
-String str1 = "hello";
-
-
-문자열은 매우 자주 사용됩니다.
-그래서 편의상 쌍따옴표로 문자열을 감싸면 자바언어 에서 new String("hello") 와 같이 변경해줍니다.
-
-  이 경우 실제로는 성능 최적화를 위해 문자열 풀을 사용합니다.
-
-
-String str1 = "hello"; // 기존
-String str1 = new String("hello"); // 변경
-
-
-2️⃣ String 클래스 구조
-String 클래스는 대략 다음과 같이 생겼습니다.
-
-public final class String {
-    // 문자열 보관
-    private final char[] value; // 자바 9 이전
-    private final byte[] value; // 자바 9 이후
-    
-    // 여러 메서드
-    public String concat(String str) {...}
-    public int length() {...}
-}
-
-
-
-  클래스이므로 속성과 기능을 가집니다.
-
-
-속성(필드)
-
-private final char[] value;
-
-
-
-  여기에는 String 의 실제 문자열 값이 보관됩니다.
-  문자 데이터 자체는 char[] 에 보관됩니다.
-  String 클래스는 개발자가 직접 다루기 불편한 char[] 을 내부에 감추고 String 클래스를 사용하는 개발자가 편리하게 문자열을 다룰 수 있도록 다양한 기능을 제공합니다.
-    
-      그리고 메서드 제공을 넘어서 자바 언어 차원에서도 여러 편의 문법을 제공합니다.
-    
-  
-
-
-
-  참고: 자바 9 이후 String 클래스 변경 사항
-자바 9부터 String 클래스에서 char[] 대신에 byte[]을 사용합니다.
-  private final byte[] value;
-  
-  자바에서 문자 하나를 표현하는 char는 2byte를 차지합니다.
-그런데 영어, 숫자는 보통 1byte로 표현이 가능합니다.
-그래서 단순 영어, 숫자로만 표현된 경우 1byte를 사용하고(정확히는 Latin-1 인코딩의 경우 1byte 사용)
-그렇지 않은 나머지의 경우 2byte인 UTF-16 인코딩을 사용합니다.
-따라서 메모리를 더 효율적으로 사용할 수 있게 변경되었습니다.
-
-
-기능(메서드)
-String 클래스는 문자열로 처리할 수 있는 다양한 기능을 제공합니다.
-기능이 방대하므로 필요한 기능이 있으면 검색하거나 API 문서를 찾아보면 됩니다.
-주요 메서드는 다음과 같습니다.
-
-  length() : 문자열의 길이를 반환합니다.
-  charAt(int index) : 특정 인덱스의 문자를 반환합니다.
-  substring(int beginIndex, int endIndex) : 문자열의 부분 문자열을 반환합니다.
-  indexOf(String str) : 특정 문자열이 시작되는 인덱스를 반환합니다.
-  toLowerCase(), toUpperCase() : 문자열을 소문자 또는 대문자로 변환합니다.
-  trim() : 문자열 양 끝의 공백을 제거합니다.
-  concat(String str) : 문자열을 더합니다.
-
-
-3️⃣ String 클래스와 참조형.
-
-  String 은 클래스입니다.
-    
-      따라서 기본형이 아니라 참조형입니다.
-        
-          참조형은 변수에 계산할 수 있는 값이 들어오는 것이 아니라 x001 과 같이 계산할 수 없는 참조값이 들어있습니다.
-            
-              따라서 원칙적으로 + 같은 연산을 사용할 수 없습니다.
-            
-          
-        
-      
-    
-  
-
-
-public class StringConcatMain {
-
-	public static void main(String[] args) {
-		String a = "hello";
-		String b = " java";
-
-		String result1 = a.concat(b);
-		String result2 = a + b;
-
-		System.out.println("result1 = " + result1);
-		System.out.println("result2 = " + result2);
-	}
-}
-
-
-  자바에서 문자열을 더할 때는 String 이 제공하는 concat() 과 같은 메서드를 사용해야 합니다.
-    
-      하지만 문자열은 너무 자주 다루어지기 때문에 자바 언어에서 편의상 특별히 + 연산을 제공합니다.
-    
-  
-
-
-실행 결과
-result1 = hello java
-result2 = hello java
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-03</span>
                             
@@ -21111,6 +21016,200 @@ public MemberService(MemberRepository memberRepository) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-09-03-string-basic.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-03-string-basic.html"><h1 class="title_post">☕️[Java] String 클래스 - 기본</h1></a>
+                        <a href="/Java/Java/2024-09-03-string-basic.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 기본
+
+1️⃣ String 클래스 - 기본
+
+  자바에서 문자를 다루는 대표적인 타입은 char, String 2가지가 있습니다.
+
+
+public class CharArrayMain {
+
+	public static void main(String[] args) {
+		char[] charArr = new char[]{'h', 'e', 'l', 'l', 'o'};
+		System.out.println(charArr);
+
+		String str = "hello";
+		System.out.println("str = " + str);
+	}
+}
+
+
+실행 결과
+hello
+str = hello
+
+
+
+  기본형은 char 는 문자 하나를 다룰 때 사용합니다.
+  char 를 사용해서 여러 문자를 나열하려면 char[] 을 사용해야합니다.
+    
+      하지만 이렇게 char[] 을 직접 다루는 방법은 매우 불편하기 때문에 자바는 문자열을 매우 편리하게 다룰 수 있는 String 클래스를 제공합니다.
+    
+  
+
+
+String 클래스를 통해 문자열을 생성하는 방법은 2가지가 있습니다.
+
+public class StringBasicMain {
+
+	public static void main(String[] args) {
+		String str1 = "hello";
+		String str2 = new String("hello");
+
+		System.out.println("str1 = " + str1);
+		System.out.println("str2 = " + str2);
+	}
+}
+
+
+  쌍따옴표 사용 : "hello"
+  객체 생성 : new String("hello");
+
+
+String 은 클래스입니다.
+int, boolean 같은 기본형이 아니라 참조형입니다.
+따라서 str1 변수에는 String 인스턴스의 참조값만 들어갈 수 있습니다.
+그러므로 다음 코드는 뭔가 어색합니다.
+
+String str1 = "hello";
+
+
+문자열은 매우 자주 사용됩니다.
+그래서 편의상 쌍따옴표로 문자열을 감싸면 자바언어 에서 new String("hello") 와 같이 변경해줍니다.
+
+  이 경우 실제로는 성능 최적화를 위해 문자열 풀을 사용합니다.
+
+
+String str1 = "hello"; // 기존
+String str1 = new String("hello"); // 변경
+
+
+2️⃣ String 클래스 구조
+String 클래스는 대략 다음과 같이 생겼습니다.
+
+public final class String {
+    // 문자열 보관
+    private final char[] value; // 자바 9 이전
+    private final byte[] value; // 자바 9 이후
+    
+    // 여러 메서드
+    public String concat(String str) {...}
+    public int length() {...}
+}
+
+
+
+  클래스이므로 속성과 기능을 가집니다.
+
+
+속성(필드)
+
+private final char[] value;
+
+
+
+  여기에는 String 의 실제 문자열 값이 보관됩니다.
+  문자 데이터 자체는 char[] 에 보관됩니다.
+  String 클래스는 개발자가 직접 다루기 불편한 char[] 을 내부에 감추고 String 클래스를 사용하는 개발자가 편리하게 문자열을 다룰 수 있도록 다양한 기능을 제공합니다.
+    
+      그리고 메서드 제공을 넘어서 자바 언어 차원에서도 여러 편의 문법을 제공합니다.
+    
+  
+
+
+
+  참고: 자바 9 이후 String 클래스 변경 사항
+자바 9부터 String 클래스에서 char[] 대신에 byte[]을 사용합니다.
+  private final byte[] value;
+  
+  자바에서 문자 하나를 표현하는 char는 2byte를 차지합니다.
+그런데 영어, 숫자는 보통 1byte로 표현이 가능합니다.
+그래서 단순 영어, 숫자로만 표현된 경우 1byte를 사용하고(정확히는 Latin-1 인코딩의 경우 1byte 사용)
+그렇지 않은 나머지의 경우 2byte인 UTF-16 인코딩을 사용합니다.
+따라서 메모리를 더 효율적으로 사용할 수 있게 변경되었습니다.
+
+
+기능(메서드)
+String 클래스는 문자열로 처리할 수 있는 다양한 기능을 제공합니다.
+기능이 방대하므로 필요한 기능이 있으면 검색하거나 API 문서를 찾아보면 됩니다.
+주요 메서드는 다음과 같습니다.
+
+  length() : 문자열의 길이를 반환합니다.
+  charAt(int index) : 특정 인덱스의 문자를 반환합니다.
+  substring(int beginIndex, int endIndex) : 문자열의 부분 문자열을 반환합니다.
+  indexOf(String str) : 특정 문자열이 시작되는 인덱스를 반환합니다.
+  toLowerCase(), toUpperCase() : 문자열을 소문자 또는 대문자로 변환합니다.
+  trim() : 문자열 양 끝의 공백을 제거합니다.
+  concat(String str) : 문자열을 더합니다.
+
+
+3️⃣ String 클래스와 참조형.
+
+  String 은 클래스입니다.
+    
+      따라서 기본형이 아니라 참조형입니다.
+        
+          참조형은 변수에 계산할 수 있는 값이 들어오는 것이 아니라 x001 과 같이 계산할 수 없는 참조값이 들어있습니다.
+            
+              따라서 원칙적으로 + 같은 연산을 사용할 수 없습니다.
+            
+          
+        
+      
+    
+  
+
+
+public class StringConcatMain {
+
+	public static void main(String[] args) {
+		String a = "hello";
+		String b = " java";
+
+		String result1 = a.concat(b);
+		String result2 = a + b;
+
+		System.out.println("result1 = " + result1);
+		System.out.println("result2 = " + result2);
+	}
+}
+
+
+  자바에서 문자열을 더할 때는 String 이 제공하는 concat() 과 같은 메서드를 사용해야 합니다.
+    
+      하지만 문자열은 너무 자주 다루어지기 때문에 자바 언어에서 편의상 특별히 + 연산을 제공합니다.
+    
+  
+
+
+실행 결과
+result1 = hello java
+result2 = hello java
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-09-02-domain.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -21332,91 +21431,6 @@ public MemberService(MemberRepository memberRepository) {
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)
-
-  Controller를 통해 외부의 요청을 받고, Service에서 비즈니스 로직을 처리하며, Repository에서 데이터를 저장하고 관리하는 패턴은 “계층형 아키텍처(Layered Architecture)” 또는 “3계층 아키텍처(Three-Tier Architecture)” 라고 부릅니다.
-
-
-1️⃣ 계층형 아키텍처(Layered Architecture)
-
-  이 아키텍처 패턴은 애플리케이션을 여러 계층으로 나누어 각 계층이 특정한 역할을 담당하도록 구조와합니다.
-  이 방식은 소프트웨어의 복잡성을 줄이고, 코드의 유지보수성을 높이며, 테스트하기 쉽게 만들어줍니다.
-  스프링 프레임워크에서 이 패턴은 자주 사용됩니다.
-
-
-2️⃣ 각 계층별 역할.
-
-  1. Presentation Layer(프레젠테이션 계층) - Controller
-    
-      사용자 인터페이스와 상호작용하는 계층입니다.
-      외부의 요청을 받아서 처리하고, 응답을 반환합니다.
-      스프링에서는 주로 @Controller 또는 @RestController 를 사용하여 이 계층을 구현합니다.
-    
-  
-  2. Business Logic Layer(비즈니스 로직 계층) - Service
-    
-      비즈니스 로직을 처리하는 계층입니다.
-      데이터의 처리, 계산, 검증 등 핵심적인 애플리케이션 로직이 구현됩니다.
-      스프링에서는 주로 @Service 애노테이션을 사용하여 이 계층을 구현합니다.
-    
-  
-  3. Data Access Layer(데이터 접근 계층) - Repository
-    
-      데이터베이스나 외부 데이터 소스와 상호작용하는 계층입니다.
-      데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리합니다.
-      스프링에서는 주로 @Repository 애노테이션을 사용하여 이 계층을 구현하며 JPA, MyBatis, Hibernate 등의 ORM(Object-Relational Mapping) 도구와 함께 사용됩니다.
-    
-  
-
-
-3️⃣ 이 패턴의 주요 장점.
-
-  모듈화
-    
-      각 계층이 독립적으로 관리되므로, 각 계층의 코드가 명확히 분리됩니다.
-    
-  
-  유지보수성
-    
-      비즈니스 로직, 데이터 접근, 그리고 프레젠테이션 로직이 분리되어 있어, 각 부분을 독립적으로 수정하거나 확장하기 쉽습니다.
-    
-  
-  테스트 용이성
-    
-      각 계층을 독립적으로 테스트할 수 있어, 단위 테스트와 통합 테스트가 용이합니다.
-    
-  
-  유연성
-    
-      특정 계층을 변경하거나 대체할 때, 다른 계층에 미치는 영향을 최소화할 수 있습니다.
-    
-  
-
-
-이 계층형 아키텍처는 스프링 프레임워크를 사용하는 대부분의 애플리케이션에서 채택하는 일반적인 구조이며, 소프트웨어 설계의 베스트 프랙티스 중 하나로 널리 인정받고 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-02</span>
                             
@@ -21771,6 +21785,91 @@ public class MemberService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-Layered-Architecture.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)
+
+  Controller를 통해 외부의 요청을 받고, Service에서 비즈니스 로직을 처리하며, Repository에서 데이터를 저장하고 관리하는 패턴은 “계층형 아키텍처(Layered Architecture)” 또는 “3계층 아키텍처(Three-Tier Architecture)” 라고 부릅니다.
+
+
+1️⃣ 계층형 아키텍처(Layered Architecture)
+
+  이 아키텍처 패턴은 애플리케이션을 여러 계층으로 나누어 각 계층이 특정한 역할을 담당하도록 구조와합니다.
+  이 방식은 소프트웨어의 복잡성을 줄이고, 코드의 유지보수성을 높이며, 테스트하기 쉽게 만들어줍니다.
+  스프링 프레임워크에서 이 패턴은 자주 사용됩니다.
+
+
+2️⃣ 각 계층별 역할.
+
+  1. Presentation Layer(프레젠테이션 계층) - Controller
+    
+      사용자 인터페이스와 상호작용하는 계층입니다.
+      외부의 요청을 받아서 처리하고, 응답을 반환합니다.
+      스프링에서는 주로 @Controller 또는 @RestController 를 사용하여 이 계층을 구현합니다.
+    
+  
+  2. Business Logic Layer(비즈니스 로직 계층) - Service
+    
+      비즈니스 로직을 처리하는 계층입니다.
+      데이터의 처리, 계산, 검증 등 핵심적인 애플리케이션 로직이 구현됩니다.
+      스프링에서는 주로 @Service 애노테이션을 사용하여 이 계층을 구현합니다.
+    
+  
+  3. Data Access Layer(데이터 접근 계층) - Repository
+    
+      데이터베이스나 외부 데이터 소스와 상호작용하는 계층입니다.
+      데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리합니다.
+      스프링에서는 주로 @Repository 애노테이션을 사용하여 이 계층을 구현하며 JPA, MyBatis, Hibernate 등의 ORM(Object-Relational Mapping) 도구와 함께 사용됩니다.
+    
+  
+
+
+3️⃣ 이 패턴의 주요 장점.
+
+  모듈화
+    
+      각 계층이 독립적으로 관리되므로, 각 계층의 코드가 명확히 분리됩니다.
+    
+  
+  유지보수성
+    
+      비즈니스 로직, 데이터 접근, 그리고 프레젠테이션 로직이 분리되어 있어, 각 부분을 독립적으로 수정하거나 확장하기 쉽습니다.
+    
+  
+  테스트 용이성
+    
+      각 계층을 독립적으로 테스트할 수 있어, 단위 테스트와 통합 테스트가 용이합니다.
+    
+  
+  유연성
+    
+      특정 계층을 변경하거나 대체할 때, 다른 계층에 미치는 영향을 최소화할 수 있습니다.
+    
+  
+
+
+이 계층형 아키텍처는 스프링 프레임워크를 사용하는 대부분의 애플리케이션에서 채택하는 일반적인 구조이며, 소프트웨어 설계의 베스트 프랙티스 중 하나로 널리 인정받고 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-01-ImmutableObject-Value-Change.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -22032,91 +22131,6 @@ obj1 = 10
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-01</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html"><h1 class="title_post">🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.</h1></a>
-                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="txt_post">
-                            🍃[Spring] @Controller 애너테이션 사용시 일어나는 일.
-
-1️⃣ 스프링 프레임워크에서 @Controller 애노테이션 사용시 어떤 일이 일어날까요?
-
-  스프링 프레임워크에서 @Controller 애노테이션을 사용하면, 해당 클래스가 스프링 MVC의 웹 컨트롤러로 동작하도록 설정됩니다.
-  @Controller 는 기본적으로 웹 요청을 처리하고, 적절한 응답을 생성하는 역할을 담당하는 클래스를 정의할 때 사용됩니다.
-
-
-@Controller 애노테이션을 사용하면 다음과 같은 일들이 벌어집니다.
-
-  1. 스프링 빈으로 등록.
-    
-      @Controller 애노테이션이 적용된 클래스는 스프링의 컴포넌트 스캔 메커니즘에 의해 자동으로 스프링 컨텍스트에 빈으로 등록됩니다.
-        
-          이는 @Component 와 유사하게 동작하며, 스프링이 이 클래스를 관리하도록 만듭니다.
-        
-      
-    
-  
-  2. 요청 처리 메서드 매핑.
-    
-      @Controller 가 달린 클래스 내의 메서드들은 @RequestMapping, @GetMapping, @PostMapping 등과 같은 요청 매핑 애노테이션을 통해 특정 HTTP 요청을 처리하는 메서드로 매핑될 수 있습니다.
-        
-          이러한 매핑을 통해 특정 URL로 들어오는 요청이 어떤 메서드에 의해 처리될지 결정됩니다.
-        
-      
-    
-  
-  3. 모델과 뷰.
-    
-      @Controller 는 주로 모델과 뷰를 처리합니다.
-        
-          요청이 컨트롤러에 도달하면, 컨트롤러는 필요한 데이터를 모델에 담고, 적절한 뷰(예: JSP, Thymeleaf 템플릿)를 반환하여 사용자에게 응답을 보냅니다.
-            
-              스프링은 이 작업을 쉽게 할 수 있도록 다양한 기능을 제공합니다.
-            
-          
-        
-      
-    
-  
-  4. 비즈니스 로직과 서비스 계층.
-    
-      컨트롤러는 보통 직접 비즈니스 로직을 처리하지 않고, 서비스 계층을 호출하여 필요한 처리를 위임합니다.
-        
-          컨트롤러는 사용자 입력을 받아 서비스로 전달하고, 서비스의 결과를 받아 사용자에게 반환하는 역할을 합니다.
-        
-      
-    
-  
-  5. 예외 처리.
-    
-      @Controller 애노테이션을 사용하는 클래스는 또한 @ExceptionHandler 를 사용하여 특정 예외를 처리할 수 있습니다.
-        
-          이를 통해 컨트롤러 내에서 발생하는 예외를 잡아 특정 응답을 반환하거나 에러 페이지를 보여줄 수 있습니다.
-        
-      
-    
-  
-
-
-요약하면, @Controller 애노테이션은 해당 클래스를 스프링 MVC에서 요청을 처리하는 컨트롤러로 정의하며, HTTP 요청을 처리하고 적절한 응답을 생성하는데 중요한 역할을 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-01</span>
                             
@@ -22409,6 +22423,207 @@ public void useService() {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html"><h1 class="title_post">🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.</h1></a>
+                        <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="txt_post">
+                            🍃[Spring] @Controller 애너테이션 사용시 일어나는 일.
+
+1️⃣ 스프링 프레임워크에서 @Controller 애노테이션 사용시 어떤 일이 일어날까요?
+
+  스프링 프레임워크에서 @Controller 애노테이션을 사용하면, 해당 클래스가 스프링 MVC의 웹 컨트롤러로 동작하도록 설정됩니다.
+  @Controller 는 기본적으로 웹 요청을 처리하고, 적절한 응답을 생성하는 역할을 담당하는 클래스를 정의할 때 사용됩니다.
+
+
+@Controller 애노테이션을 사용하면 다음과 같은 일들이 벌어집니다.
+
+  1. 스프링 빈으로 등록.
+    
+      @Controller 애노테이션이 적용된 클래스는 스프링의 컴포넌트 스캔 메커니즘에 의해 자동으로 스프링 컨텍스트에 빈으로 등록됩니다.
+        
+          이는 @Component 와 유사하게 동작하며, 스프링이 이 클래스를 관리하도록 만듭니다.
+        
+      
+    
+  
+  2. 요청 처리 메서드 매핑.
+    
+      @Controller 가 달린 클래스 내의 메서드들은 @RequestMapping, @GetMapping, @PostMapping 등과 같은 요청 매핑 애노테이션을 통해 특정 HTTP 요청을 처리하는 메서드로 매핑될 수 있습니다.
+        
+          이러한 매핑을 통해 특정 URL로 들어오는 요청이 어떤 메서드에 의해 처리될지 결정됩니다.
+        
+      
+    
+  
+  3. 모델과 뷰.
+    
+      @Controller 는 주로 모델과 뷰를 처리합니다.
+        
+          요청이 컨트롤러에 도달하면, 컨트롤러는 필요한 데이터를 모델에 담고, 적절한 뷰(예: JSP, Thymeleaf 템플릿)를 반환하여 사용자에게 응답을 보냅니다.
+            
+              스프링은 이 작업을 쉽게 할 수 있도록 다양한 기능을 제공합니다.
+            
+          
+        
+      
+    
+  
+  4. 비즈니스 로직과 서비스 계층.
+    
+      컨트롤러는 보통 직접 비즈니스 로직을 처리하지 않고, 서비스 계층을 호출하여 필요한 처리를 위임합니다.
+        
+          컨트롤러는 사용자 입력을 받아 서비스로 전달하고, 서비스의 결과를 받아 사용자에게 반환하는 역할을 합니다.
+        
+      
+    
+  
+  5. 예외 처리.
+    
+      @Controller 애노테이션을 사용하는 클래스는 또한 @ExceptionHandler 를 사용하여 특정 예외를 처리할 수 있습니다.
+        
+          이를 통해 컨트롤러 내에서 발생하는 예외를 잡아 특정 응답을 반환하거나 에러 페이지를 보여줄 수 있습니다.
+        
+      
+    
+  
+
+
+요약하면, @Controller 애노테이션은 해당 클래스를 스프링 MVC에서 요청을 처리하는 컨트롤러로 정의하며, HTTP 요청을 처리하고 적절한 응답을 생성하는데 중요한 역할을 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-08-31-address-presentaion.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-08-31-address-presentaion.html"><h1 class="title_post">🌐[Network] 주소의 표현</h1></a>
+                        <a href="/Network/2024/2024-08-31-address-presentaion.html" class="txt_post">
+                            🌐[Network] 주소의 표현.
+
+
+  시스템을 설계할 때는 기능이나 목적과 함께 고유의 구분자(Identifier)를 부여하는 방법에 대해서도 우선하여 고려해야 합니다.
+  일반적으로 주소의 개념은 단순히 서로를 구분한다는 고유 목적을 넘어서 주소가 가리키는 대상의 특징을 표현할 수 있습니다.
+  사람들은 문자로 된 이름에 익숙하지만, 0과 1로 디지털화된 환경에서는 구분자를 숫자로 된 주소로 표현할 수밖에 없습니다.
+  디지털 환경에서 숫자로 된 주소 표현 방식은 일반 사용자에게 불편하므로 보통은 외우기 쉬운 문자 형식의 이름을 추가로 사용합니다.
+  주소와 이름은 일대일(1:1) 관계가 이루어지며, 이들은 연결하는 기능이 필요합니다.
+  인터넷에서 일반 사용자는 문자로 된 이름을 사용하고, 인터넷 내부는 숫자로 된 주소를 사용하므로 둘 사이의 변환 기능이 필요합니다.
+  대상을 유일하게 구별하는 구분자는 일반적으로 다음의 네 가지 특징이 있습니다.
+
+
+1️⃣ 유일성
+
+
+  구분자의 가장 중요한 역할은 대상을 서로 구분하여 지칭하는 것입니다.
+    
+      따라서 서로 다른 대상이 같은 구분자를 갖지 않는 유일성을 보장해야 합니다.
+        
+          그러나 이론적으로 완전한 확장성을 전제로 하는 유일성을 보장하기는 불가능합니다.
+            
+              예를 들어, 주민 번호에서 앞쪽 여섯 글자인 생년월일은 100년 이내에 출생한 사람들만 구분할 수 있습니다.
+                
+                  현재는 방편적으로 바로 뒤의 남녀 구분 자리(1900년대 출생자는 1,2를 사용하고, 2000년대 출생자는 3,4를 사용함)를 활용하여 제한적인 확장성을 확보하고 있을 뿐 입니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 확장성
+
+
+  시스템은 시간이 흐르면서 이용자가 증가하는 보편화 과정이 진행되므로 자연스럽게 규모가 확장됩니다.
+    
+      따라서 사용하는 구분자의 양도 증가합니다.
+    
+  
+  시스템의 최대 수용 규모를 예측하여 구분자의 최대 한계를 올바르게 설정하지 않으면, 표현할 수 있는 공간의 크기가 제한되어 시스템의 확장성도 제한받게 됩니다.
+    
+      합리적인 기준을 설정하여 확장의 정도를 예측하고, 또한 그 이후에 대한 고려도 함께 이루어져야 합니다.
+    
+  
+  처음 인터넷을 설계했을 때 지금과 같은 규모로 인터넷을 이용하리라고는 예측하지 못했습니다.
+    
+      그 결과 인터넷 구분자인 IP 주소의 고갈 문제에 직면해 있습니다.
+    
+  
+
+
+3️⃣ 편리성
+
+
+  시스템 설계 과정에서 부여되는 구분자는 시스템의 내부 처리 구조를 효율적으로 운용할 수 있도록 해주어야 합니다.
+    
+      컴퓨터 시스템은 내부적으로 숫자에 기반해 처리되기 때문에 구분자의 체계도 숫자 위주입니다.
+        
+          또한 배치, 검색 등을 원활하게 수행하기 위해 보통 일반인이 의미를 이해할 수 없는 형식을 갖습니다.
+            
+              이처럼 시스템 내부 동작에 종속된 구분자의 주소 체계는 사용자가 쉽게 이해하기 어려우므로 문자로 된 이름을 추가로 부여합니다.
+                
+                  따라서 숫자로 된 주소와 문자로 된 이름을 모두 가지므로 이를 매핑(Mapping)하는 기능이 필요합니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+4️⃣ 정보의 함축
+
+
+  구분자는 응용 환경에 필요한 다양한 정보를 포함하는 경우가 많습니다.
+    
+      예를 들어, 주민 번호는 생년월일, 성별 등을 알 수 있는 숫자로 구성되어 있습니다.
+        
+          집 주소도 광역시부터 시작해 지역을 소규모로 분할하는 구조로 되어 있어 집의 지리적인 위치를 쉽게 가늠할 수 있습니다.
+            
+              이처럼 분자는 응용 환경에 적절히 대응할 수 있는 부가 정보를 포함해야 합니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-08-31</span>
                             
                         </div>
                     </div>
@@ -23053,122 +23268,6 @@ class Airplane implements Flyable {
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-08-31</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-08-31-address-presentaion.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-08-31-address-presentaion.html"><h1 class="title_post">🌐[Network] 주소의 표현</h1></a>
-                        <a href="/Network/2024/2024-08-31-address-presentaion.html" class="txt_post">
-                            🌐[Network] 주소의 표현.
-
-
-  시스템을 설계할 때는 기능이나 목적과 함께 고유의 구분자(Identifier)를 부여하는 방법에 대해서도 우선하여 고려해야 합니다.
-  일반적으로 주소의 개념은 단순히 서로를 구분한다는 고유 목적을 넘어서 주소가 가리키는 대상의 특징을 표현할 수 있습니다.
-  사람들은 문자로 된 이름에 익숙하지만, 0과 1로 디지털화된 환경에서는 구분자를 숫자로 된 주소로 표현할 수밖에 없습니다.
-  디지털 환경에서 숫자로 된 주소 표현 방식은 일반 사용자에게 불편하므로 보통은 외우기 쉬운 문자 형식의 이름을 추가로 사용합니다.
-  주소와 이름은 일대일(1:1) 관계가 이루어지며, 이들은 연결하는 기능이 필요합니다.
-  인터넷에서 일반 사용자는 문자로 된 이름을 사용하고, 인터넷 내부는 숫자로 된 주소를 사용하므로 둘 사이의 변환 기능이 필요합니다.
-  대상을 유일하게 구별하는 구분자는 일반적으로 다음의 네 가지 특징이 있습니다.
-
-
-1️⃣ 유일성
-
-
-  구분자의 가장 중요한 역할은 대상을 서로 구분하여 지칭하는 것입니다.
-    
-      따라서 서로 다른 대상이 같은 구분자를 갖지 않는 유일성을 보장해야 합니다.
-        
-          그러나 이론적으로 완전한 확장성을 전제로 하는 유일성을 보장하기는 불가능합니다.
-            
-              예를 들어, 주민 번호에서 앞쪽 여섯 글자인 생년월일은 100년 이내에 출생한 사람들만 구분할 수 있습니다.
-                
-                  현재는 방편적으로 바로 뒤의 남녀 구분 자리(1900년대 출생자는 1,2를 사용하고, 2000년대 출생자는 3,4를 사용함)를 활용하여 제한적인 확장성을 확보하고 있을 뿐 입니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 확장성
-
-
-  시스템은 시간이 흐르면서 이용자가 증가하는 보편화 과정이 진행되므로 자연스럽게 규모가 확장됩니다.
-    
-      따라서 사용하는 구분자의 양도 증가합니다.
-    
-  
-  시스템의 최대 수용 규모를 예측하여 구분자의 최대 한계를 올바르게 설정하지 않으면, 표현할 수 있는 공간의 크기가 제한되어 시스템의 확장성도 제한받게 됩니다.
-    
-      합리적인 기준을 설정하여 확장의 정도를 예측하고, 또한 그 이후에 대한 고려도 함께 이루어져야 합니다.
-    
-  
-  처음 인터넷을 설계했을 때 지금과 같은 규모로 인터넷을 이용하리라고는 예측하지 못했습니다.
-    
-      그 결과 인터넷 구분자인 IP 주소의 고갈 문제에 직면해 있습니다.
-    
-  
-
-
-3️⃣ 편리성
-
-
-  시스템 설계 과정에서 부여되는 구분자는 시스템의 내부 처리 구조를 효율적으로 운용할 수 있도록 해주어야 합니다.
-    
-      컴퓨터 시스템은 내부적으로 숫자에 기반해 처리되기 때문에 구분자의 체계도 숫자 위주입니다.
-        
-          또한 배치, 검색 등을 원활하게 수행하기 위해 보통 일반인이 의미를 이해할 수 없는 형식을 갖습니다.
-            
-              이처럼 시스템 내부 동작에 종속된 구분자의 주소 체계는 사용자가 쉽게 이해하기 어려우므로 문자로 된 이름을 추가로 부여합니다.
-                
-                  따라서 숫자로 된 주소와 문자로 된 이름을 모두 가지므로 이를 매핑(Mapping)하는 기능이 필요합니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-4️⃣ 정보의 함축
-
-
-  구분자는 응용 환경에 필요한 다양한 정보를 포함하는 경우가 많습니다.
-    
-      예를 들어, 주민 번호는 생년월일, 성별 등을 알 수 있는 숫자로 구성되어 있습니다.
-        
-          집 주소도 광역시부터 시작해 지역을 소규모로 분할하는 구조로 되어 있어 집의 지리적인 위치를 쉽게 가늠할 수 있습니다.
-            
-              이처럼 분자는 응용 환경에 적절히 대응할 수 있는 부가 정보를 포함해야 합니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-08-31</span>
                             
@@ -24317,257 +24416,6 @@ public class PaymentService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-08-28-Immutable-Object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-08-28-Immutable-Object.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
-                        <a href="/Java/Java/2024-08-28-Immutable-Object.html" class="txt_post">
-                            ☕️[Java] 불변 객체 - 도입.
-
-1️⃣ 불변 객체 - 도입.
-
-  공유하면 안되는 객체를 여러 변수에서 공유하기 때문에 문제가 발생했었습니다.
-    
-      그렇다고 객체의 공유를 막을 수 있는 방법은 없습니다.
-        
-          그러나 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
-          객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
-            
-              문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
-            
-          
-        
-      
-    
-  
-  "a", "b" 는 처음 시점에는 둘 다 "서울" 이라는 주소를 사용해야 합니다.
-    
-      그리고 이후에 "b" 의 주소를 "부산" 으로 변경해야 합니다.
-        Address a = new Address("서울");
-Address b = a;
-        
-      
-    
-  
-  따라서 처음에는 "b = a" 와 같이 "서울" 이라는 "Address" 인스턴스를 "a", "b" 가 함께 사용하는 것이, 다음 코드와 같이 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
-    
-      인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
-        Address a = new Address("서울");
-Address b = new Address("서울");
-        
-      
-    
-  
-  여기까지는 "Address b = a" 와 같이 공유 참조를 사용해도 아무런 문제가 없습니다.
-    
-      오히려 더 효율적입니다.
-    
-  
-  진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
-    b.setValue("부산"); // b의 값을 부산으로 변경해야함
-System.out.println("부산 -&gt; b");
-System.out.println("a = " + a); // 사이드 이펙트 발생
-System.out.println("b = " + b);
-    
-  
-  자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
-    
-      기본형과 다르게 참조형인 객체는 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
-        
-          따라서 이것은 문제가 아닙니다.
-            
-              문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 어디선가 변경했기 때문입니다.
-                
-                  만약 "Address" 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 불변 객체 도입.
-
-  객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
-    
-      "Address" 클래스를 상태가 변하지 않는 불변 클래스로 만들어 보겠습니다.
-    
-  
-
-
-public class ImmutableAddress {
-	private final String value;
-
-	public ImmutableAddress(String value) {
-		this.value = value;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return "Address{" +
-				"value='" + value + '\'' +
-				'}';
-	}
-}
-
-
-
-  내부 값이 변경되면 안됩니다.
-    
-      따라서 "value" 의 필드를 "final" 로 선언했습니다.
-      값을 변경할 수 있는 "setValue()" 를 제거했습니다.
-        
-          이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
-        
-      
-    
-  
-  불변 클래스를 만드는 방법은 아주 단순합니다.
-    
-      어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
-```java
-public class RefMain2 {
-    
-
-    public static void main(String[] args) {
-      ImmutableAddress a = new ImmutableAddress(“서울”);
-      ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
-      System.out.println(“a = “ + a);
-      System.out.println(“b = “ + b);
-
-      // b.setValue("부산"); // 컴파일 오류 발생
-  b = new ImmutableAddress("부산");
-  System.out.println("부산 -&gt; b");
-  System.out.println("a = " + a); // 사이드 이팩트 발생
-  System.out.println("b = " + b);   } } ```
-    
-  
-  "ImmutableAddress" 의 경우 값을 변경할 수 있는 "b.setValue()" 메서드 자체가 제거되었습니다.
-    
-      이제 "ImmutableAddress" 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
-        
-          "ImmutableAddress" 를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫게 됩니다.
-            
-              예를 들어 "b.setValue("부산")" 을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지합니다.
-                
-                  따라서 어쩔 수 없이 새로운 "ImmutableAddress("부산")" 인스턴스를 생성해서 "b" 에 대입합니다.
-                    
-                      결과적으로 "a", "b" 는 서로 다른 인스턴스를 참조하고, "a" 가 참조하던 "ImmutableAddress" 는 그대로 유지됩니다.
-                    
-                  
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-실행 결과
-a = Address{value='서울'}
-b = Address{value='서울'}
-부산 -&gt; b
-a = Address{value='서울'}
-b = Address{value='부산'}
-
-
-
-  실행 결과를 보면 "a" 의 값은 그대로 유지되는 것을 확인할 수 있습니다.
-
-
-
-
-
-  자바에서 객체의 공유 참조는 막을 수 없습니다.
-
-
-
-
-
-  "ImmutableAddress" 는 불변 객체입니다.
-    
-      따라서 값을 변경할 수 없습니다.
-    
-  
-
-
-
-
-
-  "ImmutableAddress" 은 불변 객체이므로 "b" 가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
-
-
-3️⃣ 정리
-
-  불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
-    
-      객체의 공유 참조는 막을 수 없습니다.
-        
-          그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
-          사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어서 사용하면 됩니다.
-          불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
-        
-      
-      불변 객체는 값을 변경할 수 없습니다.
-        
-          따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
-            
-              이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ 참고 - 가변(Mutable) 객체 vs 불변(Immutable) 객체
-가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.
-가변은 사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.
-불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.
-불변은 사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.
-
-
-
-  "Address" 는 가변 클래스입니다.
-    
-      이 클래스로 객체를 생성하면 가변 객체가 됩니다.
-    
-  
-  "ImmutableAddress" 는 불변 클래스입니다.
-    
-      이 클래스로 객체를 생성하면 불변 객체가 됩니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -24806,6 +24654,257 @@ b = Address{value='서울'}
 주소 값을 변경합니다 -&gt; 부산
 a = Address{value='부산'}
 b = Address{value='부산'}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-08-28-Immutable-Object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-08-28-Immutable-Object.html"><h1 class="title_post">☕️[Java] 불변 객체 - 도입</h1></a>
+                        <a href="/Java/Java/2024-08-28-Immutable-Object.html" class="txt_post">
+                            ☕️[Java] 불변 객체 - 도입.
+
+1️⃣ 불변 객체 - 도입.
+
+  공유하면 안되는 객체를 여러 변수에서 공유하기 때문에 문제가 발생했었습니다.
+    
+      그렇다고 객체의 공유를 막을 수 있는 방법은 없습니다.
+        
+          그러나 사이드 이펙트의 더 근본적인 원인을 고려해보면, 객체를 공유하는 것 자체는 문제가 아닙니다.
+          객체를 공유한다고 바로 사이드 이펙트가 발생하지 않습니다.
+            
+              문제의 직접적인 원인은 공유된 객체의 값을 변경한 것에 있습니다.
+            
+          
+        
+      
+    
+  
+  "a", "b" 는 처음 시점에는 둘 다 "서울" 이라는 주소를 사용해야 합니다.
+    
+      그리고 이후에 "b" 의 주소를 "부산" 으로 변경해야 합니다.
+        Address a = new Address("서울");
+Address b = a;
+        
+      
+    
+  
+  따라서 처음에는 "b = a" 와 같이 "서울" 이라는 "Address" 인스턴스를 "a", "b" 가 함께 사용하는 것이, 다음 코드와 같이 서로 다른 인스턴스를 사용하는 것 보다 메모리와 성능상 더 효율적입니다.
+    
+      인스턴스가 하나이니 메모리가 절약되고, 인스턴스를 하나 생성하지 않아도 되니 생성 시간이 줄어서 성능상 효율적입니다.
+        Address a = new Address("서울");
+Address b = new Address("서울");
+        
+      
+    
+  
+  여기까지는 "Address b = a" 와 같이 공유 참조를 사용해도 아무런 문제가 없습니다.
+    
+      오히려 더 효율적입니다.
+    
+  
+  진짜 문제는 이후에 b가 공유 참조하는 인스턴스의 값을 변경하기 때문에 발생합니다.
+    b.setValue("부산"); // b의 값을 부산으로 변경해야함
+System.out.println("부산 -&gt; b");
+System.out.println("a = " + a); // 사이드 이펙트 발생
+System.out.println("b = " + b);
+    
+  
+  자바에서 여러 참조형 변수가 하나의 객체(인스턴스)를 참조하는 공유 참조 문제는 피할 수 없습니다.
+    
+      기본형과 다르게 참조형인 객체는 처음부터 여러 참조형 변수에서 공유될 수 있도록 설계되었습니다.
+        
+          따라서 이것은 문제가 아닙니다.
+            
+              문제의 직접적인 원인은 공유될 수 있는 Address 객체의 값을 어디선가 변경했기 때문입니다.
+                
+                  만약 "Address" 객체의 값을 변경하지 못하게 설계했다면 이런 사이드 이펙트 자체가 발생하지 않을 것입니다.
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 불변 객체 도입.
+
+  객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 합니다.
+    
+      "Address" 클래스를 상태가 변하지 않는 불변 클래스로 만들어 보겠습니다.
+    
+  
+
+
+public class ImmutableAddress {
+	private final String value;
+
+	public ImmutableAddress(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"value='" + value + '\'' +
+				'}';
+	}
+}
+
+
+
+  내부 값이 변경되면 안됩니다.
+    
+      따라서 "value" 의 필드를 "final" 로 선언했습니다.
+      값을 변경할 수 있는 "setValue()" 를 제거했습니다.
+        
+          이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능합니다.
+        
+      
+    
+  
+  불변 클래스를 만드는 방법은 아주 단순합니다.
+    
+      어떻게든 필드 값을 변경할 수 없게 클래스를 설계하면 됩니다.
+```java
+public class RefMain2 {
+    
+
+    public static void main(String[] args) {
+      ImmutableAddress a = new ImmutableAddress(“서울”);
+      ImmutableAddress b = a; // 참조값 대입을 막을 수 있는 방법이 없다.
+      System.out.println(“a = “ + a);
+      System.out.println(“b = “ + b);
+
+      // b.setValue("부산"); // 컴파일 오류 발생
+  b = new ImmutableAddress("부산");
+  System.out.println("부산 -&gt; b");
+  System.out.println("a = " + a); // 사이드 이팩트 발생
+  System.out.println("b = " + b);   } } ```
+    
+  
+  "ImmutableAddress" 의 경우 값을 변경할 수 있는 "b.setValue()" 메서드 자체가 제거되었습니다.
+    
+      이제 "ImmutableAddress" 인스턴스의 값을 변경할 수 있는 방법은 없습니다.
+        
+          "ImmutableAddress" 를 사용하는 개발자는 값을 변경하려고 시도하다가, 값을 변경하는 것이 불가능하다는 사실을 알고, 이 객체가 불변 객체인 사실을 깨닫게 됩니다.
+            
+              예를 들어 "b.setValue("부산")" 을 호출하려고 했는데, 해당 메서드가 없다는 사실을 컴파일 오류를 통해 인지합니다.
+                
+                  따라서 어쩔 수 없이 새로운 "ImmutableAddress("부산")" 인스턴스를 생성해서 "b" 에 대입합니다.
+                    
+                      결과적으로 "a", "b" 는 서로 다른 인스턴스를 참조하고, "a" 가 참조하던 "ImmutableAddress" 는 그대로 유지됩니다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+
+실행 결과
+a = Address{value='서울'}
+b = Address{value='서울'}
+부산 -&gt; b
+a = Address{value='서울'}
+b = Address{value='부산'}
+
+
+
+  실행 결과를 보면 "a" 의 값은 그대로 유지되는 것을 확인할 수 있습니다.
+
+
+
+
+
+  자바에서 객체의 공유 참조는 막을 수 없습니다.
+
+
+
+
+
+  "ImmutableAddress" 는 불변 객체입니다.
+    
+      따라서 값을 변경할 수 없습니다.
+    
+  
+
+
+
+
+
+  "ImmutableAddress" 은 불변 객체이므로 "b" 가 참조하는 인스턴스의 값을 서울에서 부산으로 변경하려면 새로운 인스턴스를 생성해서 할당해야 합니다.
+
+
+3️⃣ 정리
+
+  불변이라는 단순한 제약을 사용해서 사이드 이펙트라는 큰 문제를 막을 수 있습니다.
+    
+      객체의 공유 참조는 막을 수 없습니다.
+        
+          그래서 객체의 값을 변경하면 다른 곳에서 참조하는 변수의 값도 함께 변경되는 사이드 이펙트가 발생합니다.
+          사이드 이펙트가 발생하면 안되는 상황이라면 불변 객체를 만들어서 사용하면 됩니다.
+          불변 객체는 값을 변경할 수 없기 때문에 사이드 이펙트가 원천 차단됩니다.
+        
+      
+      불변 객체는 값을 변경할 수 없습니다.
+        
+          따라서 불변 객체의 값을 변경하고 싶다면 변경하고 싶은 값으로 새로운 불변 객체를 생성해야 합니다.
+            
+              이렇게 하면 기존 변수들이 참조하는 값에는 영향을 주지 않습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고 - 가변(Mutable) 객체 vs 불변(Immutable) 객체
+가변은 이름 그대로 처음 만든 이후 상태가 변할 수 있다는 뜻입니다.
+가변은 사전적으로 사물의 모양이나 성질이 달라질 수 있다는 뜻입니다.
+불변은 이름 그대로 처음 만든 이후 상태가 변하지 않는다는 뜻입니다.
+불변은 사전적으로 사물의 모양이나 성질이 달라질 수 없다는 뜻입니다.
+
+
+
+  "Address" 는 가변 클래스입니다.
+    
+      이 클래스로 객체를 생성하면 가변 객체가 됩니다.
+    
+  
+  "ImmutableAddress" 는 불변 클래스입니다.
+    
+      이 클래스로 객체를 생성하면 불변 객체가 됩니다.
+    
+  
 
 
                         </a>
@@ -25310,197 +25409,6 @@ false
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-08-25-Object-OCP-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-08-25-Object-OCP-1.html"><h1 class="title_post">☕️[Java] Object와 OCP - 1</h1></a>
-                        <a href="/Java/Java/2024-08-25-Object-OCP-1.html" class="txt_post">
-                            ☕️[Java] Object와 OCP - 1.
-
-1️⃣ Object와 OCP.
-
-
-  만약 'Object' 가 없고, 또 'Object' 가 제공하는 'toString()' 이 없다면 서로 아무 관계가 없는 객체의 정보를 출력하기 어려울 것입니다.
-    
-      여기서 아무 관계가 없다는 것은 공통의 부모가 없다는 뜻입니다.
-        
-          아마도 다음의 'BadObjectPrinter' 클래스와 같이 각각의 클래스마다 별도의 메서드를 작성해야 할 것입니다.
-        
-      
-    
-  
-
-
-'BadObjectPrinter'
-public class BadObjectPrinter {
-    public static void print(Car car) { // Car 전용 메서드
-        String string = "객체 정보 출력: " + car.carInfo(); // carInfo() 메서드 만듬
-        System.out.println(string);
-    }
-    
-    public static void print(Dog dog) { // Dog 전용 메서드
-        String string = "객체 정보 출력: " + dog.dogInfo(); //dogInfo() 메서드 만듬
-        System.out.println(string);
-    }
-}
-
-
-1️⃣ 구체적인 것에 의존.
-
-  'BadObjectPrinter' 는 구체적인 타입인 'Car' , 'Dog' 를 사용합니다.
-    
-      따라서 이후에 출력해야 할 구체적인 클래스가 10개로 늘어나면 구체적인 클래스에 맞추어 메서드도 10개로 계속 늘어나게 됩니다.
-        
-          이렇게 'BadObjectPrinter' 클래스가 구체적인 특정 클래스인 'Car' , 'Dog' 를 사용하는 것을 'BadObjectPrinter' 는 'Car' , 'Dog' 에 의존한다고 표현합니다.
-        
-      
-    
-  
-  자바에는 객체의 정보를 사용할 때, 다형적 참조 문제를 해결해줄 'Object' 클래스와 메서드 오버라이딩 문제를 해결해줄 'Object.toString()' 메서드가 있습니다.
-    
-      (물론 직접 'Object' 와 비슷한 공통의 부모 클래스를 만들어서 해결할 수도 있습니다.)
-    
-  
-
-
-2️⃣ 추상적인 것에 의존.
-
-public class ObjectPrinter {
-	public static void print(Object obj) {
-		String string = "객체 정보 출력: " + obj.toString();
-		System.out.println(string);
-	}
-}
-
-
-  위의 'ObjectPrinter' 클래스는 'Car' , 'Dog' 같은 구체적인 클래스를 사용하는 것이 아니라, 추상적인 'Object' 클래스를 사용합니다.
-    
-      이렇게 'ObjectPrinter' 클래스가 'Object' 클래스를 사용하는 것을 'Object' 클래스에 의존한다고 표현합니다.
-    
-  
-  'ObjectPrinter' 는 구체적인 것에 의존하는 것이 아니라 추상적인 것에 의존합니다.
-
-
-
-  추상적 : 여기서 말하는 추상적이라는 뜻은 단순히 추상 클래스나 인터페이스만 뜻하는 것은 아닙니다.
-Animal 과 Dog , Cat 의 관계를 떠올려봅시다.
-Animal 같은 부모 타입으로 올라갈 수록 개념은 더 추상적이게 되고, Dog , Cat 과 같이 하위 타입으로 내려갈 수록 개념은 더 구체적이게 됩니다.
-
-
-
-
-
-  'ObjectPrinter' 와 'Object' 를 사용하는 구조는 다형성을 매우 잘 활용하고 있습니다.
-    
-      다형성을 잘 활용한다는 것은 다형적 참조와 메서드 오버라이딩을 적절하게 사용한다는 뜻입니다.
-    
-  
-
-
-🤔 ObjectPrinter 의 print() 메서드와 전체 구조 분석.
-
-  다형적 참조
-    
-      'print(Object obj)' , 'Object' 타입을 매개변수로 사용해서 다형적 참조를 사용합니다.
-        
-          'Car' , 'Dog' 인스턴스를 포함한 세상의 모든 객체 인스턴스를 인수로 받을 수 있습니다.
-        
-      
-    
-  
-  메서드 오버라이딩
-    
-      'Object' 는 모든 클래스의 부모입니다.
-        
-          따라서 'Dog' , 'Car' 와 같은 구체적인 클래스는 'Object' 가 가지고 있는 'toString()' 메서드를 오버라이딩 할 수 있습니다.
-            
-              따라서 print(Object obj) 메서드는 Dog , Car 와 같은 구체적인 타입에 의존(사용)하지 않고, 추상적인 Object 타입에 의존하면서 런타임에 각 인스턴스의 'toString()' 을 호출할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-3️⃣ OCP 원칙.
-
-  Open : 새로운 클래스를 추가하고, 'toString()' 을 오버라이딩해서 기능을 확장할 수 있습니다.
-  Closed : 새로운 클래스를 추가해도 'Object' 와 'toString()' 을 사용하는 클라이언트 코드인 'ObjectPrinter' 는 변경하지 않아도 됩니다.
-  다형적 참조, 메서드 오버라이딩, 그리고 클라이언트 코드가 구체적인 'Car', 'Dog' 에 의존하는 것이 아니라 추상적인 'Object' 에 의존하면서 OCP 원칙을 지킬 수 있었습니다.
-    
-      덕분에 새로운 클래스를 추가하고 toString() 메서드를 새롭게 오버라이딩해서 기능을 확장할 수 있습니다.
-        
-          그리고 이러한 변화에도 불구하고 클라이언트 코드인 ObjectPrinter 는 변경할 필요가 없습니다.
-        
-      
-    
-  
-  'ObjectPrinter' 는 모든 타입의 부모인 'Object' 를 사용하고, 'Object' 가 제공하는 'toString()' 메서드만 사용합니다.
-    
-      따라서 'ObjectPrinter' 를 사용하면 세상의 모든 객체의 정보('toString()') 를 편리하게 출력할 수 있습니다.
-    
-  
-
-
-2️⃣ System.out.println()
-
-  지금까지 설명한 'ObjectPrinter.print()' 는 사실 'System.out.println()' 의 작동 방식을 설명하기 위해 만든 것입니다.
-  'System.out.println()' 메서드도 'Object' 매개변수를 사용하고 내부에서 'toString()' 을 호출합니다.
-    
-      따라서 'System.out.println()' 를 사용하면 세성의 모든 객체의 정보('toString()')를 편리하게 출력할 수 있습니다.
-    
-  
-
-
-
-
-
-  자바 언어는 객체지향 언어 답게 언어 스스로도 객체지향의 특징을 매우 잘 활용합니다.
-    
-      우리가 지금까지 배운 'toString()' 메서드와 같이, 자바 언어가 기본으로 제공하는 다양한 메서드들은 개발자가 필요에 따라 오버라이딩해서 사용할 수 있도록 설계되어 있습니다.
-    
-  
-
-
-
-  참고 - 정적 의존관계 vs 동적 의존관계
-  
-    
-      정적 의존관계 는 컴파일 시간에 결정되며, 주로 클래스 간의 관계를 의미합니다.
-앞서 보여준 클래스 의존 관계 그림이 바로 정적 의존관계입니다.
-쉽게 이야기해서 프로그램을 실행하지 않고, 클래스 내에서 사용하는 타입들만 보면 쉽게 의존관계를 파악할 수 있습니다.
-    
-    
-      동적 의존관계 는 프로그램을 실행하는 런타임에 확인할 수 있는 의존관계입니다.
-앞서 'ObjectPrinter.print(Object obj)' 에 인자로 어떤 객체가 전달 될 지는 프로그램을 실행해봐야 알 수 있습니다.
-어떤 경우에는 'Car' 인스턴스가 넘어오고, 어떤 경우에는 'Dog' 인스턴스가 넘어옵니다.
-이렇게 런타임에 어떤 인스턴스를 사용하는지를 나타내는 것이 동적 의존관계입니다.
-참고로 단순히 의존관계 또는 어디에 의존한다고 하면 주로 정적 의존관계를 뜻합니다.
-      
-        예) 'ObjectPrinter' 는 'Object' 에 의존합니다.
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-25</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-08-25-Object-OCP-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -25839,6 +25747,197 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-08-25-Object-OCP-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-08-25-Object-OCP-1.html"><h1 class="title_post">☕️[Java] Object와 OCP - 1</h1></a>
+                        <a href="/Java/Java/2024-08-25-Object-OCP-1.html" class="txt_post">
+                            ☕️[Java] Object와 OCP - 1.
+
+1️⃣ Object와 OCP.
+
+
+  만약 'Object' 가 없고, 또 'Object' 가 제공하는 'toString()' 이 없다면 서로 아무 관계가 없는 객체의 정보를 출력하기 어려울 것입니다.
+    
+      여기서 아무 관계가 없다는 것은 공통의 부모가 없다는 뜻입니다.
+        
+          아마도 다음의 'BadObjectPrinter' 클래스와 같이 각각의 클래스마다 별도의 메서드를 작성해야 할 것입니다.
+        
+      
+    
+  
+
+
+'BadObjectPrinter'
+public class BadObjectPrinter {
+    public static void print(Car car) { // Car 전용 메서드
+        String string = "객체 정보 출력: " + car.carInfo(); // carInfo() 메서드 만듬
+        System.out.println(string);
+    }
+    
+    public static void print(Dog dog) { // Dog 전용 메서드
+        String string = "객체 정보 출력: " + dog.dogInfo(); //dogInfo() 메서드 만듬
+        System.out.println(string);
+    }
+}
+
+
+1️⃣ 구체적인 것에 의존.
+
+  'BadObjectPrinter' 는 구체적인 타입인 'Car' , 'Dog' 를 사용합니다.
+    
+      따라서 이후에 출력해야 할 구체적인 클래스가 10개로 늘어나면 구체적인 클래스에 맞추어 메서드도 10개로 계속 늘어나게 됩니다.
+        
+          이렇게 'BadObjectPrinter' 클래스가 구체적인 특정 클래스인 'Car' , 'Dog' 를 사용하는 것을 'BadObjectPrinter' 는 'Car' , 'Dog' 에 의존한다고 표현합니다.
+        
+      
+    
+  
+  자바에는 객체의 정보를 사용할 때, 다형적 참조 문제를 해결해줄 'Object' 클래스와 메서드 오버라이딩 문제를 해결해줄 'Object.toString()' 메서드가 있습니다.
+    
+      (물론 직접 'Object' 와 비슷한 공통의 부모 클래스를 만들어서 해결할 수도 있습니다.)
+    
+  
+
+
+2️⃣ 추상적인 것에 의존.
+
+public class ObjectPrinter {
+	public static void print(Object obj) {
+		String string = "객체 정보 출력: " + obj.toString();
+		System.out.println(string);
+	}
+}
+
+
+  위의 'ObjectPrinter' 클래스는 'Car' , 'Dog' 같은 구체적인 클래스를 사용하는 것이 아니라, 추상적인 'Object' 클래스를 사용합니다.
+    
+      이렇게 'ObjectPrinter' 클래스가 'Object' 클래스를 사용하는 것을 'Object' 클래스에 의존한다고 표현합니다.
+    
+  
+  'ObjectPrinter' 는 구체적인 것에 의존하는 것이 아니라 추상적인 것에 의존합니다.
+
+
+
+  추상적 : 여기서 말하는 추상적이라는 뜻은 단순히 추상 클래스나 인터페이스만 뜻하는 것은 아닙니다.
+Animal 과 Dog , Cat 의 관계를 떠올려봅시다.
+Animal 같은 부모 타입으로 올라갈 수록 개념은 더 추상적이게 되고, Dog , Cat 과 같이 하위 타입으로 내려갈 수록 개념은 더 구체적이게 됩니다.
+
+
+
+
+
+  'ObjectPrinter' 와 'Object' 를 사용하는 구조는 다형성을 매우 잘 활용하고 있습니다.
+    
+      다형성을 잘 활용한다는 것은 다형적 참조와 메서드 오버라이딩을 적절하게 사용한다는 뜻입니다.
+    
+  
+
+
+🤔 ObjectPrinter 의 print() 메서드와 전체 구조 분석.
+
+  다형적 참조
+    
+      'print(Object obj)' , 'Object' 타입을 매개변수로 사용해서 다형적 참조를 사용합니다.
+        
+          'Car' , 'Dog' 인스턴스를 포함한 세상의 모든 객체 인스턴스를 인수로 받을 수 있습니다.
+        
+      
+    
+  
+  메서드 오버라이딩
+    
+      'Object' 는 모든 클래스의 부모입니다.
+        
+          따라서 'Dog' , 'Car' 와 같은 구체적인 클래스는 'Object' 가 가지고 있는 'toString()' 메서드를 오버라이딩 할 수 있습니다.
+            
+              따라서 print(Object obj) 메서드는 Dog , Car 와 같은 구체적인 타입에 의존(사용)하지 않고, 추상적인 Object 타입에 의존하면서 런타임에 각 인스턴스의 'toString()' 을 호출할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+3️⃣ OCP 원칙.
+
+  Open : 새로운 클래스를 추가하고, 'toString()' 을 오버라이딩해서 기능을 확장할 수 있습니다.
+  Closed : 새로운 클래스를 추가해도 'Object' 와 'toString()' 을 사용하는 클라이언트 코드인 'ObjectPrinter' 는 변경하지 않아도 됩니다.
+  다형적 참조, 메서드 오버라이딩, 그리고 클라이언트 코드가 구체적인 'Car', 'Dog' 에 의존하는 것이 아니라 추상적인 'Object' 에 의존하면서 OCP 원칙을 지킬 수 있었습니다.
+    
+      덕분에 새로운 클래스를 추가하고 toString() 메서드를 새롭게 오버라이딩해서 기능을 확장할 수 있습니다.
+        
+          그리고 이러한 변화에도 불구하고 클라이언트 코드인 ObjectPrinter 는 변경할 필요가 없습니다.
+        
+      
+    
+  
+  'ObjectPrinter' 는 모든 타입의 부모인 'Object' 를 사용하고, 'Object' 가 제공하는 'toString()' 메서드만 사용합니다.
+    
+      따라서 'ObjectPrinter' 를 사용하면 세상의 모든 객체의 정보('toString()') 를 편리하게 출력할 수 있습니다.
+    
+  
+
+
+2️⃣ System.out.println()
+
+  지금까지 설명한 'ObjectPrinter.print()' 는 사실 'System.out.println()' 의 작동 방식을 설명하기 위해 만든 것입니다.
+  'System.out.println()' 메서드도 'Object' 매개변수를 사용하고 내부에서 'toString()' 을 호출합니다.
+    
+      따라서 'System.out.println()' 를 사용하면 세성의 모든 객체의 정보('toString()')를 편리하게 출력할 수 있습니다.
+    
+  
+
+
+
+
+
+  자바 언어는 객체지향 언어 답게 언어 스스로도 객체지향의 특징을 매우 잘 활용합니다.
+    
+      우리가 지금까지 배운 'toString()' 메서드와 같이, 자바 언어가 기본으로 제공하는 다양한 메서드들은 개발자가 필요에 따라 오버라이딩해서 사용할 수 있도록 설계되어 있습니다.
+    
+  
+
+
+
+  참고 - 정적 의존관계 vs 동적 의존관계
+  
+    
+      정적 의존관계 는 컴파일 시간에 결정되며, 주로 클래스 간의 관계를 의미합니다.
+앞서 보여준 클래스 의존 관계 그림이 바로 정적 의존관계입니다.
+쉽게 이야기해서 프로그램을 실행하지 않고, 클래스 내에서 사용하는 타입들만 보면 쉽게 의존관계를 파악할 수 있습니다.
+    
+    
+      동적 의존관계 는 프로그램을 실행하는 런타임에 확인할 수 있는 의존관계입니다.
+앞서 'ObjectPrinter.print(Object obj)' 에 인자로 어떤 객체가 전달 될 지는 프로그램을 실행해봐야 알 수 있습니다.
+어떤 경우에는 'Car' 인스턴스가 넘어오고, 어떤 경우에는 'Dog' 인스턴스가 넘어옵니다.
+이렇게 런타임에 어떤 인스턴스를 사용하는지를 나타내는 것이 동적 의존관계입니다.
+참고로 단순히 의존관계 또는 어디에 의존한다고 하면 주로 정적 의존관계를 뜻합니다.
+      
+        예) 'ObjectPrinter' 는 'Object' 에 의존합니다.
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-25</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-08-24-Internetworking.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -25943,6 +26042,55 @@ public class Main {
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-24-static-content.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-static-content.html"><h1 class="title_post">🍃[Spring] 정적 컨텐츠.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-static-content.html" class="txt_post">
+                            🍃[Spring] 정적 컨텐츠.
+
+  스프링 부트 정적 컨텐츠 기능
+  스프링 부트 공식 문서
+
+
+'resources/static/hello-static.html'
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;static content&lt;/title&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+정적 컨텐츠 입니다.
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+실행
+
+  http://localhost:8080/hello-static.html
+
+
+정적 컨텐츠 이미지
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-24</span>
                             
@@ -26228,55 +26376,6 @@ public class HelloController {
 
   🙋‍♂️ 참고: ** 클라이언트의 HTTP Accept 헤더와 서버의 컨트롤러 반환 타입 정보 둘을 조합해서
 **'HttpMessageConverter' 가 선택된다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-08-24-static-content.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-24-static-content.html"><h1 class="title_post">🍃[Spring] 정적 컨텐츠.</h1></a>
-                        <a href="/Backend/Spring/2024-08-24-static-content.html" class="txt_post">
-                            🍃[Spring] 정적 컨텐츠.
-
-  스프링 부트 정적 컨텐츠 기능
-  스프링 부트 공식 문서
-
-
-'resources/static/hello-static.html'
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;static content&lt;/title&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-&lt;/head&gt;
-&lt;body&gt;
-정적 컨텐츠 입니다.
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-실행
-
-  http://localhost:8080/hello-static.html
-
-
-정적 컨텐츠 이미지
 
 
                         </a>
@@ -26627,6 +26726,123 @@ public class ObjectPrinter {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
+                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
+                            🍃[Spring] Welcome Page 구현 및 동작 방법.
+
+1️⃣ Welcom Page 만들기.
+
+  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
+```html
+&lt;!DOCTYPE html&gt;
+
+
+	
+		Hello
+		
+	
+	
+		Hello
+		hello
+	
+
+
+- 스프링 부트가 제공하는 Welcom Page 기능.
+    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
+    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
+
+## 2️⃣ thymeleaf 템플릿 엔진.
+- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
+- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
+- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
+
+```java
+// com/devkobe/hello_spring/controller
+@Controller
+public class HelloController {
+    
+    @GetMapping("hello")
+    public String hello(Model model) {
+        model.addAttribute("data", "hello!!");
+        return "hello";
+    }
+}
+
+
+&lt;!-- `resource/static/index.html` --&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Hello&lt;/title&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		Hello
+		&lt;a href="/hello"&gt;hello&lt;/a&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;!-- `resource/templates/hello.html` --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+	&lt;title&gt;Hello&lt;/title&gt;
+&lt;/head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+  thymeleaf 템플릿엔진 동작 확인
+    
+      실행 : http://localhost:8080/hello
+    
+  
+  
+    동작 환경 그림.
+
+  
+  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
+    
+      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
+        
+          'resources:template/' + '{ViewName}' + '.html'
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
+IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-23</span>
                             
@@ -27094,123 +27310,6 @@ public class MyService {
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-08-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html"><h1 class="title_post">🍃[Spring] Welcome Page 구현 및 동작 방법.</h1></a>
-                        <a href="/Backend/Spring/2024-08-23-Thymeleaf.html" class="txt_post">
-                            🍃[Spring] Welcome Page 구현 및 동작 방법.
-
-1️⃣ Welcom Page 만들기.
-
-  Welcom Page는 'resource/static' 내부에 'index.html' 이라는 파일로 만들면 됩니다.
-```html
-&lt;!DOCTYPE html&gt;
-
-
-	
-		Hello
-		
-	
-	
-		Hello
-		hello
-	
-
-
-- 스프링 부트가 제공하는 Welcom Page 기능.
-    - **`'static/index.html'`** 을 올려두면 Welcom page 기능을 제공합니다.
-    - [Spring.io 공식 도큐먼트](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/reactive.html#web.reactive.webflux.welcome-page)
-
-## 2️⃣ thymeleaf 템플릿 엔진.
-- [thymeleaf 공식 사이트](https://www.thymeleaf.org/)
-- [스프링 공식 튜토리얼](https://spring.io/guides/gs/serving-web-content)
-- [스프링부트 메뉴얼](https://docs.spring.io/spring-boot/3.3-SNAPSHOT/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
-
-```java
-// com/devkobe/hello_spring/controller
-@Controller
-public class HelloController {
-    
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("data", "hello!!");
-        return "hello";
-    }
-}
-
-
-&lt;!-- `resource/static/index.html` --&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-	&lt;head&gt;
-		&lt;title&gt;Hello&lt;/title&gt;
-		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-		Hello
-		&lt;a href="/hello"&gt;hello&lt;/a&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-
-
-&lt;!-- `resource/templates/hello.html` --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-	&lt;title&gt;Hello&lt;/title&gt;
-&lt;/head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;body&gt;
-&lt;p th:text="'안녕하세요. ' + ${data}" &gt;안녕하세요. 손님&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-  thymeleaf 템플릿엔진 동작 확인
-    
-      실행 : http://localhost:8080/hello
-    
-  
-  
-    동작 환경 그림.
-
-  
-  컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버('viewResolver') 가 화면을 찾아서 처리합니다.
-    
-      스프링 부트 템플릿엔진 기본 'viewName' 매핑.
-        
-          'resources:template/' + '{ViewName}' + '.html'
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ 참고: 'spring-boot-devtools' 라이브러리를 추가하면 'html' 파일을 컴파일만 해주면 서버 재시작 없이 View 파일 변경이 가능합니다.
-IntelliJ 컴파일 방법 : 메뉴 build ➔ Recompile
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-23</span>
                             
@@ -27776,87 +27875,6 @@ if (obj instanceof Dog dog) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
-                        <a href="/Java/Java/2024-08-21-Java-lang.html" class="txt_post">
-                            ☕️[Java] java.lang 패키지.
-자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
-여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
-즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
-
-1️⃣ java.lang 패키지의 대표적인 클래스들.
-
-  'Object'
-    
-      모든 자바 객체의 부모 클래스.
-    
-  
-  'String'
-    
-      문자열.
-    
-  
-  'Integer, Long, Double'
-    
-      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
-    
-  
-  'Class'
-    
-      클래스 메타 정보.
-    
-  
-  'System'
-    
-      시스템과 관련된 기본 기능들을 제공
-        
-          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
-        
-      
-    
-  
-
-
-2️⃣ import 생략 가능.
-
-  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
-    
-      따라서 'import' 구문을 사용하지 않아도 됩니다.
-    
-  
-
-
-package langReview;
-
-public class LangMain {
-    public static void main(String[] args) {
-        System.out.println("hello java");
-    }
-}
-
-
-  'import java.lang.System' 코드가 없어도 정상 동작합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-08-21-Object-Class.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -28058,6 +28076,87 @@ langReview.object.Child@452b3a41
       
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-08-21-Java-lang.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-08-21-Java-lang.html"><h1 class="title_post">☕️[Java] java.lang 패키지</h1></a>
+                        <a href="/Java/Java/2024-08-21-Java-lang.html" class="txt_post">
+                            ☕️[Java] java.lang 패키지.
+자바가 기본으로 제공하는 라이브러리(클래스 모음) 중에 가장 기본이 되는 것이 바로 'java.lang' 패키지 입니다.
+여기서 'lang' 은 'Language(언어)' 의 줄임말 입니다.
+즉, 자바 언어를 이루는 가장 기본이 되는 클래스들을 보관하는 패키지를 뜻합니다.
+
+1️⃣ java.lang 패키지의 대표적인 클래스들.
+
+  'Object'
+    
+      모든 자바 객체의 부모 클래스.
+    
+  
+  'String'
+    
+      문자열.
+    
+  
+  'Integer, Long, Double'
+    
+      래퍼 타입, 기본형 데이터 타입을 객체로 만든 것.
+    
+  
+  'Class'
+    
+      클래스 메타 정보.
+    
+  
+  'System'
+    
+      시스템과 관련된 기본 기능들을 제공
+        
+          🙋‍♂️ 여기서 나열한 클래스들은 자바 언어의 기본을 이루기 때문에 반드시 잘 알아두어야 합니다.
+        
+      
+    
+  
+
+
+2️⃣ import 생략 가능.
+
+  'java.lang' 패키지는 모든 자바 애플리케이션에 자동으로 'import' 됩니다.
+    
+      따라서 'import' 구문을 사용하지 않아도 됩니다.
+    
+  
+
+
+package langReview;
+
+public class LangMain {
+    public static void main(String[] args) {
+        System.out.println("hello java");
+    }
+}
+
+
+  'import java.lang.System' 코드가 없어도 정상 동작합니다.
 
 
                         </a>
@@ -44430,6 +44529,32 @@ button.addActionListener(new ActionListener() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
+                            
+  상속
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-09-Inheritance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -44625,32 +44750,6 @@ public class Dog extends Animal {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-09-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-09-TIL.html"><h1 class="title_post">📝 [TIL] 240509 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-09-TIL.html" class="txt_post">
-                            
-  상속
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-09</span>
                             
@@ -83563,6 +83662,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-10-05-Spring-container.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-05"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Spring 컨테이너를 사용하는 이유.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-05-why-use-spring-containers.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-05"
         });

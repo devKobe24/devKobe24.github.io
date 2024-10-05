@@ -746,6 +746,7 @@
             
             
             
+            
 
     
     
@@ -1152,6 +1153,193 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-06-when-to-ues-these-annotations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-06-when-to-ues-these-annotations.html"><h1 class="title_post">🍃[Spring] 언제 `@Service`,`@Repository`,`@Controller`와 같은 어노테이션을 사용할까?</h1></a>
+                        <a href="/Backend/Spring/2024-10-06-when-to-ues-these-annotations.html" class="txt_post">
+                            🍃[Spring] 언제 @Service,@Repository,@Controller와 같은 어노테이션을 사용할까?
+
+@Service,@Repository,@Controller와 같은 어노테이션은 Spring Framework에서 특정 레이어의 역할을 명확히 하고, 자동으로 빈을 등록할 때 사용됩니다.
+
+이 어노테이션들은 @Component 어노테이션의 특수화된 버전으로, 각각의 레이어를 구분하여 Spring 애플리케이션을 더 구조화하고, 책임을 명확하게 하기 위해 사용됩니다.
+
+1️⃣ @Service
+
+  사용 시점
+    
+      비즈니스 로직을 처리하는 서비스 계층에서 사용됩니다.
+    
+  
+  설명
+    
+      @Service는 애플리케이션 내에서 핵심 비즈니스 로직을 구현하는 클래스에 붙입니다.
+      이 계층은 컨트롤러에서 전달된 요청을 처리하고, 데이터를 조작하거나 다른 비즈니스 규칙을 적용합니다.
+      또한, 이 계층은 트랜잭션 관리나 예외 처리와 같은 중요한 작업도 수행할 수 있습니다.
+    
+  
+  사용 예시
+    @Service
+public class UserService {
+  public User findUserById(Long id) {
+      // 비즈니스 로직 처리
+      return userRepository.findById(id).orElseThrow();
+  }
+}
+    
+  
+  사용 목적
+    
+      @Service를 사용함으로써 해당 클래스가 비즈니스 로직을 담당하는 서비스 계층의 역할을 한다는 점을 명확히 하고, Spring 컨테이너에 의해 자동으로 빈으로 등록되게 합니다.
+      또한, @Service 어노테이션을 통해 Spring이 해당 클래스에 대해 추가적인 처리를 적용할 수 있습니다(예: 트랜잭션 관리).
+    
+  
+
+
+2️⃣ @Repository
+
+  사용 시점
+    
+      데이터 접근 계층(DAO, Data Access Object) 에서 사용됩니다.
+    
+  
+  설명
+    
+      @Repository는 데이터베이스와 상호작용하는 영속성 계층에서 사용됩니다.
+      보통 데이터베이스 CRUD 작업을 수행하며, 데이터베이스와의 직접적인 연결, 쿼리 실행, 결과 처리 등을 담당합니다.
+      Spring에서는 @Repository를 사용하여 데이터베이스 예외를 Spring 예외로 변환하는 등의 추가적인 기능도 제공합니다.
+    
+  
+  사용 예시
+    @Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+  // 데이터베이스 작업을 위한 메서드 정의
+}
+    
+  
+  사용 목적
+    
+      @Repository는 해당 클래스가 데이터베이스와 상호작용하는 DAO 역할을 한다는 점을 명확히하고, 자동으로 빈으로 등록되게 합니다.
+      또한, @Repository는 데이터베이스와 관련된 예외를 표준화된 Spring 예외로 변환하는 기능을 제공합니다.
+    
+  
+
+
+3️⃣ @Controller
+
+  사용 시점
+    
+      웹 계층(프레젠테이션 계층) 에서 사용됩니다.
+    
+  
+  설명
+    
+      @Controller는 사용자 요청을 처리하고, 적절한 응답을 반환하는 역할을 하는 웹 컨트롤러 클래스에 사용됩니다.
+      주로, Spring MVC 애플리케이션에서 사용되며, 클라이언트 요청을 받아 비즈니스 로직을 처리하고, 결과를 HTML 페이지나 JSON 형식으로 반환합니다.
+    
+  
+  사용 예시
+    @Controller
+public class UserController {
+  @GetMapping("/user/{id}")
+  public String getUser(@PathVariable Long id, Model model) {
+      User user = userServie.findUserById(id);
+      model.addAttribute("user", user);
+      return "userDetail";
+  }
+}
+    
+  
+  사용 목적
+    
+      @Controller는 해당 클래스가 웹 요청을 처리하는 컨트롤러임을 명확히 하며, Spring 컨테이너에 의해 자동으로 빈으로 등록됩니다.
+      웹 요청을 받아서 처리하고, 응답을 생성하는 역할을 하기 때문에 사용자와 애플리케이션 간의 인테페이스 역할을 합니다.
+    
+  
+
+
+4️⃣ @RestController
+
+  사용 시점
+    
+      RESTful 웹 서비스 계층에서 사용됩니다.
+    
+  
+  설명
+    
+      @RestController는 @Controller와 @ResponseBody가 결합된 어노테이션으로, 주로 JSON 또는 XML 형식의 데이터를 반환하는 RESTful API를 만들 때 사용됩니다.
+      Spring MVC에서 데이터를 직렬화하여 클라이언트에게 전송할 때 사용됩니다.
+    
+  
+  사용 예시
+    @RestController
+public class UserRestController {
+  @GetMapping("/api/users/{id}")
+  public User getUser(@PathVariable Long id) {
+      return userService.findUserById(id);
+  }
+}
+    
+  
+  사용 목적
+    
+      @RestController는 주로 REST API 를 개발할 때 사용되며, 컨트롤러에서 반환하는 데이터를 HTML 페이지가 아닌 JSON이나 XML과 같은 형식으로 반환합니다.
+      REST API 설계를 할 때 이 어노테이션을 사용하면 개발자의 의도를 명확히 전달할 수 있습니다.
+    
+  
+
+
+5️⃣ 언제 사용해야 하는가?
+
+  @Service
+    
+      비즈니스 로직을 담당하는 클래스에 사용합니다.
+      데이터 접근 계층에서 가져온 데이터를 가공하거나 규칙을 적용하는 등의 작업을 수행하는 곳입니다.
+    
+  
+  @Repository
+    
+      데이터베이스와의 상호작용을 처리하는 클래스에 사용합니다.
+      주로 데이터 저장, 수정, 조회, 삭제와 같은 영속성 로직이 포함된 DAO 또는 리포지토리에 붙입니다.
+    
+  
+  @Controller
+    
+      사용자로부터 HTTP 요청을 받아 응답을 생성하는 웹 컨트롤러에 사용합니다.
+      주로 Spring MVC에서 동적인 웹 페이즈를 랜더링할 때 사용됩니다.
+    
+  
+  @RestController
+    
+      RESTful 웹 서비스를 제공하는 컨트롤러에 사용합니다.
+      이 어노테이션을 사용하면 웹 요청을 처리한 후 JSON 또는 XML 형식의 데이터를 반환할 수 있습니다.
+    
+  
+
+
+6️⃣ 결론
+
+  이 어노테이션들은 각각의 클래스가 어떤 역할을 담당하는지 명확히 구분해 줌으로써, Spring 애플리케이션의 구조화와 관리에 도움을 줍니다.
+  Spring 컨테이너는 이 어노테이션이 붙은 클래스들을 자동으로 감지하여 빈으로 등록하고, 필요한 곳에 의존성을 주입해줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2099,149 +2287,6 @@ Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-10-04-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-10-04-Service.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Service의 역할.</h1></a>
-                        <a href="/Backend/Spring/2024-10-04-Service.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처에서 Service의 역할.
-
-
-Java 백엔드 애플리케이션의 계층형 아키텍처에서 Service 계층은 비즈니스 로직 을 처리하는 중간 계층입니다.
-
-Service 계층은 Controller와 Repository 계층 사이에 위치하며, 비즈니스 규칙을 관리하고 데이터를 조작하는 역할을 수행합니다.
-
-1️⃣ Service 계층의 주요 역할.
-
-1. 비즈니스 로직 처리.
-
-  Service 계층은 애플리케이션의 핵심 비즈니스 로직을 처리합니다.
-  데이터를 단순히 전달하는 역할을 하는 Controller와 달리, Service는 복잡한 연산, 규칙 적용, 조건 판단 등의 작업을 수행합니다.
-  이를 통해 비즈니스 요구 사항을 충족하는 결과를 도출합니다.
-
-
-2. 트랜잭션 관리.
-
-  Service 계층은 여러 데이터베이스 연산을 트랜잭션 단위로 묶어 관리할 수 있습니다.
-  예를 들어, 여러 데이터베이스 테이블에서 데이터를 읽거나 쓸 때 트랜잭션을 적용하여 모든 작업이 성공적으로 완료되거나, 문제가 생기면 롤백하는 등의 작업을 수행합니다.
-  Spring에서는 @Transactional 어노테이션을 통해 트랜잭션을 관리할 수 있습니다.
-
-
-3. Repository 계층과 통신.
-
-  Service 계층은 Repository 계층을 사용해 데이터베이스와 상호작용합니다.
-  Service 계층은 비즈니스 로직에 필요한 데이터를 Repository에서 가져오거나 저장하는 작업을 수행합니다.
-  이렇게 함으로써, 비즈니스 로직과 데이터베이스 접근 로직을 분리해 코드를 더 깔끔하게 유지할 수 있습니다.
-
-
-4. 다중 데이터 소스 처리.
-
-  Service 계층은 단일 데이터 소스가 아닌 여러 데이터 소스에 대한 조작을 중앙에서 관리할 수 있습니다.
-  예를 들어, 여러 데이터베이스에서 데이터를 조회하고 이를 결합하여 처리하는 등의 복잡한 작업을 수행할 수 있습니다.
-
-
-5. 비즈니스 로직 재사용.
-
-  여러 Controller에서 동일한 비즈니스 로직이 필요할 경우, Service 계층에서 해당 로직을 구현하고 이를 여러 컨트롤러에서 재사용할 수 있습니다.
-  이를 통해 코드 중복을 방지하고, 로직을 단일화하여 유지보수성을 높일 수 있습니다.
-
-
-6. 보안 및 검증 처리.
-
-  Service 계층은 추가적인 검증이나 보안 처리를 수행할 수 있습니다.
-  예를 들어, 사용자가 특정 데이터를 조회할 권한이 있는지 검증하거나, 입력된 데이터를 추가적으로 확인하는 작업을 포함할 수 있습니다.
-
-
-7. 외부 시스템과의 통신.
-
-  Service 계층은 외부 API와의 통신, 메일 발송, 메시지 큐 처리 등 비즈니스 로직을 수행하기 위해 다른 시스템이나 서비스와 상호작용하는 역할도 담당합니다.
-
-
-2️⃣ 예시 코드
-
-Spring Boot 애플리케이션에서의 Service 계층 예시를 통해 그 역할을 구체적으로 살펴볼 수 있습니다.
-
-@Service
-public class UserService {
-    
-    private final UserRepository userRepository;
-    
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository
-    }
-    
-    @Transactional
-    public UserDTO getUserById(Long id) {
-        User user = userRepository.findById(id)
-            .orElseThrow(() -&gt; new UserNotFoundException("User not found with id " + id));
-        return new UserDTO(user);
-    }
-    
-    @Transactional
-    public UserDTO createUser(UserDTO userDTO) {
-        User user = new User(userDTO.getName(), userDTO.getEmail());
-        User savedUser = userRepository.save(user);
-        return new UserDTO(savedUser);
-    }
-    
-    @Transactional
-    public void deleteUser(Long id) {
-        if (!userRepository.existsById(id)) {
-            thorw new UserNotFoundException("User not found with id " + id);
-        }
-        userRepository.deleteById(id);
-    }
-}
-
-
-3️⃣ 설명.
-
-  @Service
-    
-      Spring에서 서비스 클래스임을 나타내는 어노테이션입니다.
-      이 클래스는 비즈니스 로직을 처리하는 곳 입니다
-    
-  
-  @Transactional
-    
-      메서드가 트랜잭션 안에서 실행되도록 보장합니다.
-      여러 데이터베이스 연산이 트랜잭션 단위로 처리되며, 오류 발생 시 롤백됩니다.
-    
-  
-  비즈니스 로직
-    
-      getUserById 메서드는 사용자가 존재하지 않으면 예외를 던지를 로직을 포함하고 있으며, createUser는 사용자 객체를 생성하고 이를 저장한 후 다시 반환하는 로직을 처리합니다.
-    
-  
-  Repository와 통신
-    
-      Service는 Repository 계층을 사용해 데이터베이스에 접근하여 사용자 데이터를 가져오거나 저장합니다.
-    
-  
-
-
-4️⃣ 결론.
-Service 계층은 애플리케이션의 핵심 비즈니스 로직을 캡슐화하고 관리하는 역할을 합니다.
-이를 통해 비즈니스 로직을 쉽게 유지하고 재사용할 수 있으며, Controller와 데이터 접근 계층(Repository) 간의 명확한 분리를 유지하여 시스템의 유연성과 유지보수성을 높입니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-10-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-10-04-bean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2416,6 +2461,287 @@ public class UserService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-10-04-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-04-Service.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Service의 역할.</h1></a>
+                        <a href="/Backend/Spring/2024-10-04-Service.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Service의 역할.
+
+
+Java 백엔드 애플리케이션의 계층형 아키텍처에서 Service 계층은 비즈니스 로직 을 처리하는 중간 계층입니다.
+
+Service 계층은 Controller와 Repository 계층 사이에 위치하며, 비즈니스 규칙을 관리하고 데이터를 조작하는 역할을 수행합니다.
+
+1️⃣ Service 계층의 주요 역할.
+
+1. 비즈니스 로직 처리.
+
+  Service 계층은 애플리케이션의 핵심 비즈니스 로직을 처리합니다.
+  데이터를 단순히 전달하는 역할을 하는 Controller와 달리, Service는 복잡한 연산, 규칙 적용, 조건 판단 등의 작업을 수행합니다.
+  이를 통해 비즈니스 요구 사항을 충족하는 결과를 도출합니다.
+
+
+2. 트랜잭션 관리.
+
+  Service 계층은 여러 데이터베이스 연산을 트랜잭션 단위로 묶어 관리할 수 있습니다.
+  예를 들어, 여러 데이터베이스 테이블에서 데이터를 읽거나 쓸 때 트랜잭션을 적용하여 모든 작업이 성공적으로 완료되거나, 문제가 생기면 롤백하는 등의 작업을 수행합니다.
+  Spring에서는 @Transactional 어노테이션을 통해 트랜잭션을 관리할 수 있습니다.
+
+
+3. Repository 계층과 통신.
+
+  Service 계층은 Repository 계층을 사용해 데이터베이스와 상호작용합니다.
+  Service 계층은 비즈니스 로직에 필요한 데이터를 Repository에서 가져오거나 저장하는 작업을 수행합니다.
+  이렇게 함으로써, 비즈니스 로직과 데이터베이스 접근 로직을 분리해 코드를 더 깔끔하게 유지할 수 있습니다.
+
+
+4. 다중 데이터 소스 처리.
+
+  Service 계층은 단일 데이터 소스가 아닌 여러 데이터 소스에 대한 조작을 중앙에서 관리할 수 있습니다.
+  예를 들어, 여러 데이터베이스에서 데이터를 조회하고 이를 결합하여 처리하는 등의 복잡한 작업을 수행할 수 있습니다.
+
+
+5. 비즈니스 로직 재사용.
+
+  여러 Controller에서 동일한 비즈니스 로직이 필요할 경우, Service 계층에서 해당 로직을 구현하고 이를 여러 컨트롤러에서 재사용할 수 있습니다.
+  이를 통해 코드 중복을 방지하고, 로직을 단일화하여 유지보수성을 높일 수 있습니다.
+
+
+6. 보안 및 검증 처리.
+
+  Service 계층은 추가적인 검증이나 보안 처리를 수행할 수 있습니다.
+  예를 들어, 사용자가 특정 데이터를 조회할 권한이 있는지 검증하거나, 입력된 데이터를 추가적으로 확인하는 작업을 포함할 수 있습니다.
+
+
+7. 외부 시스템과의 통신.
+
+  Service 계층은 외부 API와의 통신, 메일 발송, 메시지 큐 처리 등 비즈니스 로직을 수행하기 위해 다른 시스템이나 서비스와 상호작용하는 역할도 담당합니다.
+
+
+2️⃣ 예시 코드
+
+Spring Boot 애플리케이션에서의 Service 계층 예시를 통해 그 역할을 구체적으로 살펴볼 수 있습니다.
+
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository
+    }
+    
+    @Transactional
+    public UserDTO getUserById(Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -&gt; new UserNotFoundException("User not found with id " + id));
+        return new UserDTO(user);
+    }
+    
+    @Transactional
+    public UserDTO createUser(UserDTO userDTO) {
+        User user = new User(userDTO.getName(), userDTO.getEmail());
+        User savedUser = userRepository.save(user);
+        return new UserDTO(savedUser);
+    }
+    
+    @Transactional
+    public void deleteUser(Long id) {
+        if (!userRepository.existsById(id)) {
+            thorw new UserNotFoundException("User not found with id " + id);
+        }
+        userRepository.deleteById(id);
+    }
+}
+
+
+3️⃣ 설명.
+
+  @Service
+    
+      Spring에서 서비스 클래스임을 나타내는 어노테이션입니다.
+      이 클래스는 비즈니스 로직을 처리하는 곳 입니다
+    
+  
+  @Transactional
+    
+      메서드가 트랜잭션 안에서 실행되도록 보장합니다.
+      여러 데이터베이스 연산이 트랜잭션 단위로 처리되며, 오류 발생 시 롤백됩니다.
+    
+  
+  비즈니스 로직
+    
+      getUserById 메서드는 사용자가 존재하지 않으면 예외를 던지를 로직을 포함하고 있으며, createUser는 사용자 객체를 생성하고 이를 저장한 후 다시 반환하는 로직을 처리합니다.
+    
+  
+  Repository와 통신
+    
+      Service는 Repository 계층을 사용해 데이터베이스에 접근하여 사용자 데이터를 가져오거나 저장합니다.
+    
+  
+
+
+4️⃣ 결론.
+Service 계층은 애플리케이션의 핵심 비즈니스 로직을 캡슐화하고 관리하는 역할을 합니다.
+이를 통해 비즈니스 로직을 쉽게 유지하고 재사용할 수 있으며, Controller와 데이터 접근 계층(Repository) 간의 명확한 분리를 유지하여 시스템의 유연성과 유지보수성을 높입니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
+                        <a href="/Backend/Spring/2024-10-03-Controller.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
+
+Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
+
+Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
+
+1️⃣ Controller의 주요 역할.
+
+1. 요청 수신 및 응답 반환.
+
+  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
+  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
+  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
+
+
+2. 요청 검증.
+
+  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
+  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
+  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
+
+
+3. 비즈니스 로직 호출.
+
+  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
+  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
+  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
+
+
+4. 뷰와의 통신(View와 연동)
+
+  Controller는 View와 통신하여 적절한 응답을 생성합니다.
+  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
+  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
+
+
+5. HTTP 상태 코드 관리.
+
+  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
+  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
+
+
+6. 예외 처리
+
+  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
+  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
+
+
+2️⃣ 예시 코드
+
+Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    private final UserService userService;
+    
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
+        UserDTO user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+    
+    @PostMapping
+    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
+        UserDTO createdUser = userService.createUser(userDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+}
+
+
+3️⃣ 설명.
+
+  @RestController
+    
+      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
+      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
+    
+  
+  @RequestMapping
+    
+      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
+    
+  
+  @GetMapping
+    
+      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
+    
+  
+  @PostMapping
+    
+      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
+    
+  
+  @RequestBody, @Valid
+    
+      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
+    
+  
+  ResponseEntity
+    
+      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
+    
+  
+
+
+4️⃣ 결론
+Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
+이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-10-03-SOLID.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -2564,144 +2890,6 @@ SOLID 원칙은 유연하고 유지보수하기 쉬운 시스템을 만들기 �
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
-                        <a href="/Backend/Spring/2024-10-03-Controller.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
-
-Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
-
-Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
-
-1️⃣ Controller의 주요 역할.
-
-1. 요청 수신 및 응답 반환.
-
-  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
-  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
-  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
-
-
-2. 요청 검증.
-
-  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
-  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
-  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
-
-
-3. 비즈니스 로직 호출.
-
-  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
-  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
-  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
-
-
-4. 뷰와의 통신(View와 연동)
-
-  Controller는 View와 통신하여 적절한 응답을 생성합니다.
-  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
-  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
-
-
-5. HTTP 상태 코드 관리.
-
-  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
-  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
-
-
-6. 예외 처리
-
-  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
-  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
-
-
-2️⃣ 예시 코드
-
-Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
-
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    
-    private final UserService userService;
-    
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
-        UserDTO user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
-    }
-    
-    @PostMapping
-    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
-        UserDTO createdUser = userService.createUser(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-    }
-}
-
-
-3️⃣ 설명.
-
-  @RestController
-    
-      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
-      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
-    
-  
-  @RequestMapping
-    
-      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
-    
-  
-  @GetMapping
-    
-      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
-    
-  
-  @PostMapping
-    
-      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
-    
-  
-  @RequestBody, @Valid
-    
-      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
-    
-  
-  ResponseEntity
-    
-      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
-    
-  
-
-
-4️⃣ 결론
-Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
-이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-10-03</span>
                             
@@ -7994,6 +8182,177 @@ public class Account {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html"><h1 class="title_post">🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!</h1></a>
+                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="txt_post">
+                            🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!
+
+
+  Controller에서 getter가 있는 객체를 반환하면 기본적으로 JSON으로 변환되어 클라이언트에 전달됩니다.
+    
+      이 동작은 Spring Framework에서 자동으로 처리해줍니다.
+    
+  
+
+
+1️⃣ Spring에서 객체가 JSON으로 변환되는 과정.
+
+1. 객체 반환 및 @RestController
+
+  Spring에서는 @RestController 또는 @ResponseBody 애너테이션이 붙은 메서드가 객체를 반환하면, 해당 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 전달됩니다.
+  Spring은 내부적으로 Jackson이라는 라이브러리를 사용하여 Java 객체를 JSON으로 직렬화합니다.
+    
+      이 과정에서 객체의 getter 메서드를 통해 데이터를 추출하려 JSON을 생성합니다.
+    
+  
+
+
+2. Jackson에 의한 직렬화.
+
+  Spring Boot는 Jackson을 기본으로 포함하고 있어, 추가적인 설정 없이 Java 객체를 JSON으로 변환할 수 있습니다.
+  객체의 getter 메서드를 통해 객체 내부의 데이터를 추출하고, 이를 JSON으로 변환합니다.
+  예를 들어, getName() 이라는 getter가 있으면, 이는 name이라는 필드로 JSON에 포함됩니다.
+
+
+2️⃣ 예시.
+
+1. 객체 클래스.
+
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+    
+    // 기본 생성자
+    public User() {}
+    
+    // Getter와 Setter
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+2. Controller 클래스.
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        // User 객체를 생성하고 반환 (일반적으로는 데이터베이스에서 가져옴)
+        User user = new User();
+        user.setId(id);
+        user.setName("Kobe");
+        user.setEmail("kobe@example.com");
+        
+        // 이 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 반환됨.
+        return user;
+    }
+}
+
+
+3️⃣ 동작 원리.
+
+1. 클라이언트 요청.
+
+  클라이언트 /users/1 과 같이 요청을 보내면, Spring은 해당 경로에 매핑된 getUserById 메서드를 호출합니다.
+
+
+2. Java 객체 반환.
+
+  이 메서드는 User 객체를 반환합니다.
+
+
+3. 객체를 JSON으로 변환.
+
+  Spring은 @RestController 또는 @ResponseBody를 보고, User 객체를 JSON 형식으로 변환합니다.
+  이때 Jackson 라이브러리가 getter 메서드들을 사용하여 객체 내부의 값을 추출하고, 이를 JSON으로 직렬화합니다.
+
+
+
+  🙋‍♂️ 라이브러리와 프레임워크의 차이점
+
+
+4. 클라이언트에 JSON 응답.
+
+  직렬화된 JSON 데이터가 클라이언트에 응답으로 전송됩니다.
+
+
+결과로 클라이언트가 받는 JSON
+{
+    "id": 1,
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+4️⃣ 주의 사항.
+
+  객체에 getter가 있어야 함.
+    
+      Jackson은 객체의 필드를 직접 접근하는 것이 아니라, 기본적으로 getter 메서드를 사용하여 데이터를 추출합니다.
+      따라서 getter 메서드가 존재해야 합니다.
+    
+  
+  객체가 null인 경우.
+    
+      객체가 null이거나, 특정 필드가 null인 경우 그 필드는 JSON에 포함되지 않거나 null로 표현됩니다.
+    
+  
+  추가 설정.
+    
+      필요에 따라 Jackson의 직렬화/역직렬화 방식을 커스터마이징할 수 있습니다.
+      예를 들어, 필드 이름을 변경하거나 특정 필드를 제외하고 싶을 때는 @JsonProperty, @JsonIgnore 같은 Jackson 애너테이션을 사용할 수 있습니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  Java 백엔드 애플리케이션에서 계층형 아키텍처로 구현한 후 Controller에서 getter가 있는 객체를 반환하면, Spring은 해당 객체를 자동으로 JSON 형식으로 변환하여 클라이언트에 응답합니다.
+  이는 기본적으로 Spring의 Jackson 라이브러리를 통해 이루어지며, 추가적인 설정 없이도 객체의 getter를 통해 JSON으로 직렬화됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -8166,177 +8525,6 @@ public class UserController {
   Primary Key는 데이터베이스에서 각 레코드를 고유하게 식별하는 필드로, 절대 중복되지 않으며 null 값을 가질 수 없습니다.
   Primary Key를 통해 사용자를 빠르고 정확하게 조회할 수 있으며, 테이블 간의 관계를 설정하는 데 중요한 역할을 합니다.
   id는 자동 증가 방식이나 UUID 방식으로 생성될 수 있으며, 사용자의 고유성을 보장합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-26</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html"><h1 class="title_post">🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!</h1></a>
-                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="txt_post">
-                            🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!
-
-
-  Controller에서 getter가 있는 객체를 반환하면 기본적으로 JSON으로 변환되어 클라이언트에 전달됩니다.
-    
-      이 동작은 Spring Framework에서 자동으로 처리해줍니다.
-    
-  
-
-
-1️⃣ Spring에서 객체가 JSON으로 변환되는 과정.
-
-1. 객체 반환 및 @RestController
-
-  Spring에서는 @RestController 또는 @ResponseBody 애너테이션이 붙은 메서드가 객체를 반환하면, 해당 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 전달됩니다.
-  Spring은 내부적으로 Jackson이라는 라이브러리를 사용하여 Java 객체를 JSON으로 직렬화합니다.
-    
-      이 과정에서 객체의 getter 메서드를 통해 데이터를 추출하려 JSON을 생성합니다.
-    
-  
-
-
-2. Jackson에 의한 직렬화.
-
-  Spring Boot는 Jackson을 기본으로 포함하고 있어, 추가적인 설정 없이 Java 객체를 JSON으로 변환할 수 있습니다.
-  객체의 getter 메서드를 통해 객체 내부의 데이터를 추출하고, 이를 JSON으로 변환합니다.
-  예를 들어, getName() 이라는 getter가 있으면, 이는 name이라는 필드로 JSON에 포함됩니다.
-
-
-2️⃣ 예시.
-
-1. 객체 클래스.
-
-public class User {
-    private Long id;
-    private String name;
-    private String email;
-    
-    // 기본 생성자
-    public User() {}
-    
-    // Getter와 Setter
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-
-
-2. Controller 클래스.
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        // User 객체를 생성하고 반환 (일반적으로는 데이터베이스에서 가져옴)
-        User user = new User();
-        user.setId(id);
-        user.setName("Kobe");
-        user.setEmail("kobe@example.com");
-        
-        // 이 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 반환됨.
-        return user;
-    }
-}
-
-
-3️⃣ 동작 원리.
-
-1. 클라이언트 요청.
-
-  클라이언트 /users/1 과 같이 요청을 보내면, Spring은 해당 경로에 매핑된 getUserById 메서드를 호출합니다.
-
-
-2. Java 객체 반환.
-
-  이 메서드는 User 객체를 반환합니다.
-
-
-3. 객체를 JSON으로 변환.
-
-  Spring은 @RestController 또는 @ResponseBody를 보고, User 객체를 JSON 형식으로 변환합니다.
-  이때 Jackson 라이브러리가 getter 메서드들을 사용하여 객체 내부의 값을 추출하고, 이를 JSON으로 직렬화합니다.
-
-
-
-  🙋‍♂️ 라이브러리와 프레임워크의 차이점
-
-
-4. 클라이언트에 JSON 응답.
-
-  직렬화된 JSON 데이터가 클라이언트에 응답으로 전송됩니다.
-
-
-결과로 클라이언트가 받는 JSON
-{
-    "id": 1,
-    "name": "Kobe",
-    "email": "kobe@example.com"
-}
-
-
-4️⃣ 주의 사항.
-
-  객체에 getter가 있어야 함.
-    
-      Jackson은 객체의 필드를 직접 접근하는 것이 아니라, 기본적으로 getter 메서드를 사용하여 데이터를 추출합니다.
-      따라서 getter 메서드가 존재해야 합니다.
-    
-  
-  객체가 null인 경우.
-    
-      객체가 null이거나, 특정 필드가 null인 경우 그 필드는 JSON에 포함되지 않거나 null로 표현됩니다.
-    
-  
-  추가 설정.
-    
-      필요에 따라 Jackson의 직렬화/역직렬화 방식을 커스터마이징할 수 있습니다.
-      예를 들어, 필드 이름을 변경하거나 특정 필드를 제외하고 싶을 때는 @JsonProperty, @JsonIgnore 같은 Jackson 애너테이션을 사용할 수 있습니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  Java 백엔드 애플리케이션에서 계층형 아키텍처로 구현한 후 Controller에서 getter가 있는 객체를 반환하면, Spring은 해당 객체를 자동으로 JSON 형식으로 변환하여 클라이언트에 응답합니다.
-  이는 기본적으로 Spring의 Jackson 라이브러리를 통해 이루어지며, 추가적인 설정 없이도 객체의 getter를 통해 JSON으로 직렬화됩니다.
 
 
                         </a>
@@ -16380,159 +16568,161 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
-                            ☕️[Java] 람다(Lambda).
+                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
+                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
+                            ☕️[Java] Optional.
 
-1️⃣ 람다 표현식(Lambda Expression)
+1️⃣ Optional.
 
-  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
-  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
-  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
-
-
-2️⃣ 람다 표현식의 기본 구조.
-
-  람다 표현식은 다음과 같은 형태로 작성됩니다.
+  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
+  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
 
 
-(parameters) -&gt; expression
+2️⃣ 주요 특징
 
-혹은
-
-(paramters) -&gt; { statements; }
-
-
-
-  매개변수 목록(parameters)
+  1. 값의 존재 여부를 명확히 표현.
     
-      메서드처럼 전달받을 인자를 정의합니다.
-      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
+      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
+        
+          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
+        
+      
     
   
-  화살표 연산자 -&gt;
+  2. 명시적인 null 처리.
     
-      람다 표현식의 매개변수와 본문(body)을 구분합니다.
+      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+        
+          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+        
+      
     
   
-  본문(body)
+  3. 함수형 프로그래밍 스타일 지원.
     
-      람다가 실행할 코드를 정의합니다.
-      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
+      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
     
   
 
 
-3️⃣ 예시
+3️⃣ Optional 생성.
+Optional&lt;String&gt; emptyOptional = Optional.empty();
 
 
-  1. 기본적인 람다 표현식
+  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
 
 
-// 기존 익명 내부 클래스 방식
-Runnable runnable = new Runnable() {
-    @Override
-    public void run() {
-        System.out.println("Hello, Lambda!");
-    }
-};
-
-// 람다 표현식 사용
-Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
+Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
 
 
-
-  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  null이 아닌 값으로 Optional 생성.
+    
+      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
+      값이 null인 경우 NullPointerException이 발생합니다.
+    
   
-    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
+
+
+Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+
+
+  null이 될 수 있는 값으로 Optional 생성.
+    
+      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
+      값이 null이면 빈 Optional이 생성됩니다.
+        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+        
+      
+    
   
-  2. 매개변수와 함께 사용하는 람다 표현식
 
 
-// 기존 방식
-Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
-    }
+4️⃣ Optional의 사용 예
+
+  1. 값이 존재하는지 확인(isPresent / ifPresent)
+```java
+Optional optional = Optional.of("Hello");
+
+
+if (optional.isPresent()) {
+    System.out.println(optional.get()); // 값이 있으면 출력
 }
 
-// 람다 표현식 사용
-Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
+optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
+
+- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+```java
+String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
+String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
 
 
 
-  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
-
-
-4️⃣ 함수형 인터페이스와 람다.
-
-
-  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
-  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
-
-
-예시: 함수형 인터페이스
-@FunctionalInterface
-interface MyFuncationalInterface {
-    void doSomething();
-}
-
-public class Main {
-    public static void main(String[] args) {
-        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
-        myFunc.doSomething(); // 출력: Doing something!
-    }
-}
-
-
-
-  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
-
-
-5️⃣ 자주 사용되는 함수형 인터페이스
-
-  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
+  3. 값이 없으면 예외 던지기(orElseThrow)
+    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
     
-      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
-          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
-        
-      
-      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
-          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
-        
-      
-      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
-          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
-        
-      
-      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
-          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
-        
-      
+  
+  4. 값 변환(map, flatMap)
+```java
+Optional optional = Optional.of("Hello");
+
+
+Optional lengthOptional = optional.map(String::length);
+lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
+
+- **5. 조건에 따른 필터링(`filter`)**
+```java
+Optional&lt;String&gt; optional = Optional.of("Hello");
+
+Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
+filtered.ifPresent(System.out::println); // "Hello" 출력
+
+
+5️⃣ Optional 사용의 이점.
+
+  1. 명시적 코드 작성.
+    
+      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
+    
+  
+  2. NullPointerException 방지.
+    
+      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
+    
+  
+  3. 함수형 스타일.
+    
+      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
     
   
 
 
-6️⃣ 장점.
+6️⃣ Optional 사용 시 주의점.
 
-  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
-  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
-  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
+  1. 과도한 사용 자제.
+    
+      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+        
+          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+        
+      
+    
+  
+  2. 성능.
+    
+      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
+    
+  
 
 
 7️⃣ 요약.
 
-  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
-    
-      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
-    
-  
+  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
+  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
+  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
 
 
                         </a>
@@ -16739,161 +16929,159 @@ i3 = -1
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
-                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
-                            ☕️[Java] Optional.
+                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
+                            ☕️[Java] 람다(Lambda).
 
-1️⃣ Optional.
+1️⃣ 람다 표현식(Lambda Expression)
 
-  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
-  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
+  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
+  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
+  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
 
 
-2️⃣ 주요 특징
+2️⃣ 람다 표현식의 기본 구조.
 
-  1. 값의 존재 여부를 명확히 표현.
+  람다 표현식은 다음과 같은 형태로 작성됩니다.
+
+
+(parameters) -&gt; expression
+
+혹은
+
+(paramters) -&gt; { statements; }
+
+
+
+  매개변수 목록(parameters)
     
-      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
-        
-          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
-        
-      
-    
-  
-  2. 명시적인 null 처리.
-    
-      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
-        
-          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
-        
-      
-    
-  
-  3. 함수형 프로그래밍 스타일 지원.
-    
-      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
+      메서드처럼 전달받을 인자를 정의합니다.
+      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
     
   
-
-
-3️⃣ Optional 생성.
-Optional&lt;String&gt; emptyOptional = Optional.empty();
-
-
-  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
-
-
-Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
-
-
-  null이 아닌 값으로 Optional 생성.
+  화살표 연산자 -&gt;
     
-      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
-      값이 null인 경우 NullPointerException이 발생합니다.
+      람다 표현식의 매개변수와 본문(body)을 구분합니다.
+    
+  
+  본문(body)
+    
+      람다가 실행할 코드를 정의합니다.
+      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
     
   
 
 
-Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+3️⃣ 예시
 
 
-  null이 될 수 있는 값으로 Optional 생성.
-    
-      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
-      값이 null이면 빈 Optional이 생성됩니다.
-        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
-        
-      
-    
+  1. 기본적인 람다 표현식
+
+
+// 기존 익명 내부 클래스 방식
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello, Lambda!");
+    }
+};
+
+// 람다 표현식 사용
+Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
+
+
+
+  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
   
+    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
+  
+  2. 매개변수와 함께 사용하는 람다 표현식
 
 
-4️⃣ Optional의 사용 예
-
-  1. 값이 존재하는지 확인(isPresent / ifPresent)
-```java
-Optional optional = Optional.of("Hello");
-
-
-if (optional.isPresent()) {
-    System.out.println(optional.get()); // 값이 있으면 출력
+// 기존 방식
+Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1.compareTo(o2);
+    }
 }
 
-optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
-
-- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
-```java
-String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
-String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
+// 람다 표현식 사용
+Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
 
 
 
-  3. 값이 없으면 예외 던지기(orElseThrow)
-    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
+
+
+4️⃣ 함수형 인터페이스와 람다.
+
+
+  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
+  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
+
+
+예시: 함수형 인터페이스
+@FunctionalInterface
+interface MyFuncationalInterface {
+    void doSomething();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
+        myFunc.doSomething(); // 출력: Doing something!
+    }
+}
+
+
+
+  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
+
+
+5️⃣ 자주 사용되는 함수형 인터페이스
+
+  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
     
-  
-  4. 값 변환(map, flatMap)
-```java
-Optional optional = Optional.of("Hello");
-
-
-Optional lengthOptional = optional.map(String::length);
-lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
-
-- **5. 조건에 따른 필터링(`filter`)**
-```java
-Optional&lt;String&gt; optional = Optional.of("Hello");
-
-Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
-filtered.ifPresent(System.out::println); // "Hello" 출력
-
-
-5️⃣ Optional 사용의 이점.
-
-  1. 명시적 코드 작성.
-    
-      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
-    
-  
-  2. NullPointerException 방지.
-    
-      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
-    
-  
-  3. 함수형 스타일.
-    
-      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
-    
-  
-
-
-6️⃣ Optional 사용 시 주의점.
-
-  1. 과도한 사용 자제.
-    
-      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
+          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
         
-          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+      
+      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
+          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
+        
+      
+      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
+          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
+        
+      
+      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
+          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
         
       
     
   
-  2. 성능.
-    
-      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
-    
-  
+
+
+6️⃣ 장점.
+
+  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
+  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
+  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
 
 
 7️⃣ 요약.
 
-  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
-  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
-  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
+  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
+    
+      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
+    
+  
 
 
                         </a>
@@ -84073,6 +84261,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-10-06-how-to-register-bean.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-06"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 언제 `@Service`,`@Repository`,`@Controller`와 같은 어노테이션을 사용할까?",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-06-when-to-ues-these-annotations.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });

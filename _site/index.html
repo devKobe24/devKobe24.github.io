@@ -748,6 +748,7 @@
             
             
             
+            
 
     
     
@@ -1789,6 +1790,210 @@ public UserService userService() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-10-06-Component-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-06-Component-annotation.html"><h1 class="title_post">🍃[Spring] `@Component` 어노테이션.</h1></a>
+                        <a href="/Backend/Spring/2024-10-06-Component-annotation.html" class="txt_post">
+                            🍃[Spring] @Component 어노테이션.
+
+
+  @Component 어노테이션은 Spring Framework에서 빈(Bean) 으로 등록할 클래스를 지정하기 위해 사용하는 클래스 레벨 어노테이션입니다.
+  이 어노테이션을 사용하면 해당 클래스가 Spring IoC 컨테이너에 의해 자동으로 관리되는 빈으로 등록됩니다.
+  주로 애플리케이션에서 자동으로 빈을 등록하고 싶을 때 사용 됩니다.
+
+
+
+  🙋‍♂️ Spring 컨테이너
+🙋‍♂️ Spring 컨테이너를 사용하는 이유
+
+
+
+  📝 Spring IoC 컨테이너와 Spring 컨테이너는 다른 개념인가요?
+
+  Spring IoC 컨테이너와 Spring 컨테이너는 같은 개념을 의미하는 용어입니다.
+이 두 용어는 모두 Spring Framework에서 객체(Bean, 빈)의 생성, 관리, 의존성 주입, 생명주기 관리 등을 담당하는 컨테이너를 가리킵니다.
+
+  📝 같은 개념에 대한 다양한 표현
+  
+    Spring IoC 컨테이너는 더 구체적인 용어로, Spring에서 Inversion Of Control(제어의 역적) 원칙을 구현하는 빈 관리 시스템을 가리킵니다.
+      
+        
+          이 용어는 주로 제어의 역전(Inversion of Control) 이라는 프로그래밍 원칙을 강조하기 위해 사용됩니다.
+          IoC는 개발자가 직접 객체를 생성하고 관리하지 않고, 컨테이너가 객체의 생성과 의존성을 관리하는 방식입니다.
+        
+      
+    
+    Spring 컨테이너는 더 일반적인 용어로, Spring Framework가 제공하는 객체 관리 시스템을 가리키는 표현입니다.
+      
+        
+          이 용어는 Spring이 제공하는 컨테이너의 기능을 포괄적으로 표현하며, 그 핵심 기능은 IoC 컨테이너 입니다.
+        
+      
+    
+  
+
+  📝 결론
+  
+    Spring IoC 컨테이너와 Spring 컨테이너는 같은 개념으로 볼 수 있으며, 두 용어 모두 Spring의 핵심 기능인 객체 관리와 의존성 주입을 담당하는 시스템을 가리킵니다.
+    IoC는 이 컨테이너의 작동 원리를 설명하는 용어이고, Spring 컨테이너는 이를 일반적으로 부를 때 사용하는 표현힙니다.
+  
+
+
+1️⃣ 주요 기능 및 특징.
+
+1. 자동 빈 등록.
+
+  @Component 어노테이션이 붙은 클래스는 Spring의 컴포넌트 스캔 가능에 의해 자동으로 감지되고, Spring IoC 컨테이너에 빈으로 등록됩니다.
+  개발자가 직접 빈을 등록하는 대신, Spring이 클래스 경로에서 이를 탐색하고 관리하게 됩니다.
+
+
+2. 다른 특화된 어노테이션의 기반
+
+  @Component는 Spring에서 일반적인 빈을 등록하는 용도로 사용되며, 이를 기반으로 한 더 구체적인 어노테이션이 있습니다.
+  예를 들어, @Service, @Repository, @Controller 등이 @Component의 특수화된 형태로, 각각의 역할에 맞는 빈을 구체적으로 정의합니다.
+    
+      @Service: 서비스 레이어를 정의하는 클래스에 사용.
+      @Repository: 데이터 엑세스 레이어(DAO)에 사용.
+      @Controller: 웹 컨트롤러(프레젠테이션 레이어)에 사용.
+    
+  
+
+
+3. 간편한 빈 관리
+
+  @Component는 특별한 설정 없이 클래스에 간단히 어노테이션만 붙여서 Spring IoC 컨테이너에서 관리되는 빈으로 만들 수 있습니다.
+    
+      Spring이 제공하는 기본적인 빈 등록 방식 중 하나입니다.
+    
+  
+
+
+2️⃣ 예시
+@Component
+public class MyComponent {
+    public void doSomething() {
+        System.out.println("Hello from MyComponent!");
+    }
+}
+
+
+
+  위 코드에서 MyComponent 클래스는 @Component 어노테이션 덕분에 Spring IoC 컨테이너에 자동으로 빈으로 등록됩니다.
+    
+      이제 Spring이 이 빈을 관리하며, 다른 곳에서 의존성 주입을 통해 사용할 수 있습니다.
+    
+  
+
+
+@Service
+public class MyService {
+    
+    private final MyComponent myComponent;
+    
+    @Autowired
+    public MyService(MyComponent myComponent) {
+        this.myComponent = myComponent;
+    }
+    
+    public void performAction() {
+        myComponent.doSomthing();
+    }
+}
+
+
+
+  이 예에서는 MyService 클래스가 MyComponent 빈을 주입받아 사용합니다.
+    
+      MyComponent 가 자동으로 빈으로 등록되었기 때문에, @Autowired를 통해 MyService에 주입될 수 있습니다.
+    
+  
+
+
+3️⃣ @Component와 컴포넌트 스캔
+
+  @Component 어노테이션이 사용되려면 Spring이 컴포넌트 스캔을 통해 해당 클래스를 찾아야 합니다.
+  일반적으로 @ComponentScan 어노테이션이나 Spring Boot에서는 @SpringBootApplication 어노테이션을 통해 자동으로 컴포넌트 스캔이 활성화됩니다.
+
+
+@SpringBootApplication
+public class MySpringBootApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringBootApplication.class, args);
+    }
+}
+
+
+
+  이 코드에서 @SpringBootApplication은 @ComponentScan을 포함하고 있어, @Component가 붙은 모든 클래스를 자동으로 검색하고 빈으로 등록합니다.
+
+
+4️⃣ @Component와 다른 빈 등록 방식 비교.
+
+  @Component vs @Bean
+    
+      @Component는 클래스 레벨에서 자동으로 빈을 등록하며, 컴포넌트 스캔을 통해 Spring이 클래스를 감지합니다.
+      @Bean은 메서드 레벨에서 수동으로 빈을 등록하는 방식으로, 자바 설정 클래스(@Configuration)내에서 사용됩니다.
+        
+          개발자가 직접 메서드를 통해 빈을 생성하고 초기화할 수 있습니다.
+        
+      
+    
+  
+  @Component vs @Service, @Repository, @Controller
+    
+      이들 어노테이션은 모두 @Component를 기반으로 하며, 특정 레이어의 역할을 나타내기 위해 사용됩니다.
+        
+          예를 들어, @Service는 서비스 계층을 나타내고, @Repository는 데이터 엑세스 계층을 @Controller는 프레젠테이션 계층을 나타냅니다.
+        
+      
+      기능적으로는 동일하지만, 역할에 따라 어노테이션을 사용함으로써 코드의 가독성과 의미를 더 명확하게 할 수 있습니다.
+    
+  
+
+
+5️⃣ 언제 사용해야 하는가?
+
+  일반적인 빈 등록이 필요할 때
+    
+      비즈니스 로직, 유틸리티 클래스, 도메인 객체 등 Spring IoC 컨테이너에 의해 관리되어야 하는 일반적인 클래스를 빈으로 등록할 때 사용합니다.
+    
+  
+  특정 역할이 없는 클래스
+    
+      @Service, @Repository, @Contoroller와 같은 명시적인 역할이 없는 경우, @Component를 사용하여 클래스를 빈으로 등록할 수 있습니다.
+    
+  
+
+
+6️⃣ 결론.
+
+  @Component는 Spring 애플리케이션에서 자동으로 빈을 등록하는 데 사용되는 기본적인 어노테이션입니다.
+    
+      이를 사용하면 Spring IoC 컨테이너가 클래스 경로에서 자동으로 해당 클래스를 찾아 빈으로 관리하게 됩니다.
+    
+  
+  일반적인 빈 등록을 위한 용도로 사용되며, 더 구체적인 역할을 나태내기 위해 @Service, @Repository, @Controller와 같은 특화된 어노테이션이 존재합니다.
+  @Component는 간단하게 빈을 관리하고자 할 때 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-10-05-why-use-spring-containers.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2173,303 +2378,6 @@ Spring 컨테이너는 Spring 애플리케이션에서 객체(빈)의 생성, �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-10-04-Repository.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-10-04-Repository.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Repository의 역할.</h1></a>
-                        <a href="/Backend/Spring/2024-10-04-Repository.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처에서 Repository의 역할.
-
-
-
-Java 백엔드 애플리케이션의 계층형 아키텍처에서 Repository 계층은 데이터베이스와의 상호작용을 관리하는 역할을 합니다.
-
-Repository는 데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리하며, 데이터를 저장소(일반적으로 데이터베이스)에서 가져오고, 수정하며, 삭제하는 기능을 캡슐화합니다.
-
-이를 통해 애플리케이션의 비즈니스 로직에서 데이터 접근을 분리하고, 유지보수성과 테스트 가능성을 높입니다.
-
-1️⃣ Repository 계층의 주요 역할.
-
-1. 데이터베이스 접근 관리.
-
-  Repository는 애플리케이션과 데이터베이스 간의 중개자 역할을 하며, 데이터베이스로부터 데이터를 조회하거나, 데이터를 저장, 수정, 삭제하는 기능을 제공합니다.
-  모든 데이터 접근 로직은 Repository 계층에서 처리됩니다.
-
-
-2. CRUD 작업 처리.
-
-  Repository는 엔티티의 생명주기 전반에 걸친 CRUD 작업을 처리합니다.
-  Java의 JPA나 Hibernate 같은 ORM(Object-Relational Mapping) 프레임워크를 사용해 객체와 데이터베이스 간의 매핑을 자동으로 관리합니다.
-  예를 들어, save, findById, deleteById 등의 메서드를 통해 객체를 데이터베이스에 저장하거나 조회하는 작업을 수행합니다.
-
-
-3. 데이터 쿼리 처리.
-
-  Repository 계층은 데이터를 조회하기 위해 데이터베이스에서 쿼리를 생성하고 실행합니다.
-  Spring Data JPA와 같은 프레임워크를 사용하면 쿼리 메서드를 간편하게 정의할 수 있으며, 복잡한 조건 검색을 위한 JPQL(Java Persistence Query Language) 또는 네이티브 SQL 쿼리를 사용할 수 있습니다.
-  기본적인 쿼리 메서드 외에도 복잡한 쿼리를 작성하여 특정 조건에 맞는 데이터를 필터링할 수 있습니다.
-
-
-4. 데이터베이스와의 추상화.
-
-  Repository는 데이터베이스 접근 로직을 캡슐화하여 상위 계층(Service 등)에서 데이터베이스의 구체적인 동작 방식을 알 필요가 없도록 합니다.
-  이렇게 하면 데이터베이스가 변경되더라도 상위 계층에는 영향을 미치지 않도록 구조를 유지할 수 있습니다.
-
-
-5. 데이터베이스 독립성.
-
-  Repository를 사용함으로써 데이터베이스와의 구체적인 종속성을 줄일 수 있습니다.
-  애플리케이션이 사용하는 데이터베이스가 변경되더라도, Repository 계층만 적절히 수정하면 상위 계층에는 영향을 주지 않기 때문에, 데이터베이스 독립성을 유지할 수 있습니다.
-
-
-6. 객체와 데이블 매핑 관리
-
-  ORM을 사용해 데이터베이스 테이블과 객체를 매핑하는 역할을 담당합니다.
-  객체와 테이블 간의 관계(1, N)를 정의하고, 이러한 관계를 기반으로 데이터베이스 연산을 수행합니다.
-
-
-2️⃣ 예시 코드
-Spring Data JPA를 사용한 Repository 계층의 예시를 살펴보겠습니다.
-
-@Repository
-public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
-    
-    // 기본적으로 JpaRepository에서 제공하는 CRUD 메서드들
-    // save, fundById, findAll, deleteById 등이 제공됩니다.
-    
-    // 커스텀 쿼리 메서드 정의
-    Optional&lt;User&gt; findByEmail(String email);
-    
-    // 복잡한 JPQL 쿼리 메서드 정의 가능
-    @Query("SELECT u FROM User u WHERE u.name = :name AND u.status = :status")
-    List&lt;User&gt; findByNameAndStatus(@Param("name") String name, @Param("status") String status);
-}
-
-
-3️⃣ 설명
-
-  @Repository
-    
-      Spring에서 이 인터페이스가 데이터 엑세스 계층을 나타낸다는 것을 명시하는 어노테이션입니다.
-      @Repository 어노테이션은 데이터베이스 예외를 Spring의 데이터 엑세스 예외로 변환하는 역할도 합니다.
-    
-  
-  JpaRepository&lt;User, Long&gt;
-    
-      Spring Data JPA에서 제공하는 기본 인터페이스로, User 엔티티와 Long 타입의 ID를 사용해 CRUD 작업을 처리합니다.
-    
-  
-  기본 CRUD 메서드
-    
-      save, findById, deleteById 등의 메서드가 기본적으로 제공됩니다.
-    
-  
-  커스텀 쿼리 메서드
-    
-      매서드 명명 규칙을 통해 자동으로 SQL 쿼리를 생성하는 방식으로 특정 필드로 검색하는 메서드를 정의할 수 있습니다.
-      예를 들어, findByEmail은 이메일을 기준으로 사용자를 조회합니다.
-    
-  
-  JPQL 사용
-    
-      복잡한 조건이 필요한 경우, @Query 어노테이션을 사용해 JPQL을 작성할 수 있습니다.
-      이 예시에서는 이름과 상태를 기반으로 사용자를 조회하는 쿼리를 정의했습니다.
-    
-  
-
-
-4️⃣ Repository 계층의 이점.
-
-1. 비즈니스 로직과 데이터 접근 로직의 분리.
-
-  Repository 계층은 비즈니스 로직과 데이터베이스 접근을 명확히 분리하여 각 계층이 자신의 역활에만 집중할 수 있게 합니다.
-  이렇게 하면 코드가 더 모듈화되고 유지보수하기 쉬워집니다.
-
-
-2. 코드의 재사용성.
-
-  Repository 계층은 데이터베이스 접근 로직을 재사용할 수 있도록 만들어집니다.
-  여러 서비스에서 동일한 데이터베이스 쿼리나 데이터를 필요로 할 때, 이를 중앙에서 관리함으로써 코드 중복을 줄일 수 있습니다.
-
-
-3. 테스트 가능성 향상.
-
-  Repository 계층을 인터페이스로 정의함으로써 테스트 시 Mock 객체로 쉽게 대체할 수 있어, 데이터베이스에 접근하지 않고도 단위 테스트를 작성할 수 있습니다.
-
-
-4. 데이터베이스 변경의 유연성.
-
-  데이터베이스가 변경되더라도 Repository 계층만 수정하면 상위 계층(Service나 Controller)은 전혀 변경하지 않고도 애플리케이션을 유지할 수 있습니다.
-  데이터베이스 독립성을 높이는 데 중요한 역할을 합니다.
-
-
-5️⃣ 결론
-Repository 계층은 데이터베이스와 상호작용하는 모든 작업을 담당하며, 데이터를 저장, 조회, 업데이트, 삭제하는 기능을 캡슐화합니다.
-이를 통해 데이터 접근 로직이 비즈니스 로직과 분리되므로 애플리케이션의 유지보수성, 확장성, 재사용성이 크게 향상됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-10-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-10-04-Dependency.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-10-04-Dependency.html"><h1 class="title_post">🍃[Spring] 의존성(Dependency).</h1></a>
-                        <a href="/Backend/Spring/2024-10-04-Dependency.html" class="txt_post">
-                            🍃[Spring] 의존성(Dependency).
-
-Java 백엔드 애플리케이션에서 의존성(Dependency) 이란 한 클래스 또는 모듈이 다른 클래스 또는 모듈의 기능을 필요로 하거나, 그 존재에 따라 동작하는 관계를 의미합니다.
-
-간단히 말해, 의존성은 어떤 클래스가 다른 클래스에 의존하여 해당 클래스의 메서드나 기능을 호출하고 사용하는 것을 말합니다.
-
-의존성은 객체 지향 프로그래밍에서 자연스럽게 발생하는 관계로, 특정 객체를 필요로 할 때 발생합니다.
-
-예를 들어, 서비스 클래스가 데이터베이스와 상호작용하기 위해 리포지토리 클래스에 의존하거나, 컨트롤러가 비즈니스 로직을 수행하기 위해 서비스 클래스에 의존하는 경우가 해당됩니다.
-
-1️⃣ 의존성의 예시
-
-간단한 의존성 예
-
-
-
-public class UserService {
-    
-    private UserRepository userRepository;
-    
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-}
-
-
-
-  UserService 클래스는 UserRepository 클래스에 의존합니다.
-  UserService는 비즈니스 로직을 처리하기 위해 UserRepository의 메서드를 호출합니다.
-  만약 UserRepository가 없으면 UserService는 정상적으로 작동할 수 없습니다.
-  따라서, 이 두 클래스 간에는 의존성이 존재합니다.
-
-
-2️⃣ 의존성 관리의 중요성.
-
-의존성(Dependency)은 자연스럽게 발생하지만, 의존성을 관리하지 않으면 애플리케이션이 결합도가 높아지고, 변경에 취약해지며, 유지보수가 어려워질 수 있습니다.
-
-따라서 의존성을 적절히 관리하는 것이 중요합니다.
-
-의존성 관리의 좋은 방법으로는 의존성 주입(Dependency Injection, DI) 이 있습니다.
-
-3️⃣ 의존성 주입(Dependency Injection, DI)
-
-
-  의존성 주입(Dependency Injection, DI)은 객체 간의 의존성을 외부에서 주입해주는 디자인 패턴으로, 의존성 주입을 통해 클래스는 자신이 사용할 객체를 직접 생성하지 않고, 외부에서 생성된 객체를 주입받아 사용하게 됩니다.
-  이를 통해 클래스 간의 결합도를 낮추고, 유연성과 테스트 가능성을 높일 수 있습니다.
-
-
-의존성 주입 예시(Spring Framework)
-
-  Spring Framework에서 의존성 주입은 매우 흔하게 사용됩니다.
-  Spring은 객체 간의 의존성을 관리하고, 필요한 객체를 자동으로 주입해 줍니다.
-
-
-@Service
-public class UserService {
-    
-    private final UserRepository userRepository;
-    
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-}
-
-
-
-  @Autowired
-    
-      Spring이 UserRepository의 구현체를 자동으로 주입해줍니다.
-      개발자는 UserService가 UserRepository에 의존한다는 사실만 명시하면 되고, UserRepository 객체의 생성을 직접적으로 관리할 필요가 없습니다.
-    
-  
-
-
-4️⃣ 의존성의 종류.
-
-1. 강한 의존성 (Tight Coupling)
-
-  클래스 A가 클래스 B의 구체적인 구현에 의존할 때 발생합니다.
-  이 경우 클래스 B가 변경되면 클래스 A도 수정이 필요할 수 있습니다.
-  예를 들어, new 키워드를 사용해 직접 객체를 생성하면 강한 의존성이 발생합니다.
-
-
-2. 약한 의존성(Loose Coupling)
-
-  클래스 A가 클래스 B의 구체적인 구현이 아닌, 인터페이스나 추상 클래스에 의존할 때 발생합니다.
-  이는 결합도를 낮추어 클래스 간의 변경에 더 유연하게 대처할 수 있게 합니다.
-  의존성 주입을 통해 약한 의존성을 실현할 수 있습니다.
-
-
-5️⃣ 의존성 관리의 이점.
-
-1. 유지보수성 향상.
-
-  의존성이 적절히 관리되면, 코드가 더 모듈화되고 변경 사항이 발생할 때 수정해야 할 부분이 줄어듭니다.
-  예를 들어, 특정 클래스의 구현을 변경하더라도 의존성 주입을 통해 인터페이스만 유지하면 다른 클래스에는 영향을 주지 않습니다.
-
-
-2. 테스트 가능성.
-
-  의존성을 외부에서 주입받으면, 테스트 시에 Mock 객체를 주입하여 쉽게 단위 테스트를 수행할 수 있습니다.
-  이를 통해 더 작은 단위 테스트가 가능해지고, 테스트가 독립적으로 수행될 수 있습니다.
-
-
-3. 재사용성 향상.
-
-  클래스가 다른 클래스에 강하게 의존하지 않으면, 해당 클래스를 다른 곳에서도 재사용하기 쉽습니다.
-  인터페이스를 사용하고, 의존성 주입을 통해 다양한 구현체를 주입받아 사용할 수 있기 때문입니다.
-
-
-6️⃣ 결론.
-Java 백엔드 애플리케이션에서 의존성은 클래스 간의 관계를 의미하며, 이를 잘 관리하는 것이 중요합니다.
-의존성 주입을 사용하면 결합도를 낮추고 유연성을 높일 수 있으며, 코드의 유지보수성과 테스트 가능성을 크게 향상 시킬 수 있습니다.
-Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입을 매우 쉽게 처리할 수 있도록 지원하고 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-10-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-10-04-bean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2787,131 +2695,452 @@ Service 계층은 애플리케이션의 핵심 비즈니스 로직을 캡슐화�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-10-04-Repository.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
-                        <a href="/Backend/Spring/2024-10-03-Controller.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
-
-Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
-
-Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
-
-1️⃣ Controller의 주요 역할.
-
-1. 요청 수신 및 응답 반환.
-
-  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
-  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
-  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
+                        <a href="/Backend/Spring/2024-10-04-Repository.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Repository의 역할.</h1></a>
+                        <a href="/Backend/Spring/2024-10-04-Repository.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Repository의 역할.
 
 
-2. 요청 검증.
 
-  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
-  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
-  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
+Java 백엔드 애플리케이션의 계층형 아키텍처에서 Repository 계층은 데이터베이스와의 상호작용을 관리하는 역할을 합니다.
 
+Repository는 데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리하며, 데이터를 저장소(일반적으로 데이터베이스)에서 가져오고, 수정하며, 삭제하는 기능을 캡슐화합니다.
 
-3. 비즈니스 로직 호출.
+이를 통해 애플리케이션의 비즈니스 로직에서 데이터 접근을 분리하고, 유지보수성과 테스트 가능성을 높입니다.
 
-  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
-  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
-  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
+1️⃣ Repository 계층의 주요 역할.
 
+1. 데이터베이스 접근 관리.
 
-4. 뷰와의 통신(View와 연동)
-
-  Controller는 View와 통신하여 적절한 응답을 생성합니다.
-  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
-  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
+  Repository는 애플리케이션과 데이터베이스 간의 중개자 역할을 하며, 데이터베이스로부터 데이터를 조회하거나, 데이터를 저장, 수정, 삭제하는 기능을 제공합니다.
+  모든 데이터 접근 로직은 Repository 계층에서 처리됩니다.
 
 
-5. HTTP 상태 코드 관리.
+2. CRUD 작업 처리.
 
-  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
-  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
+  Repository는 엔티티의 생명주기 전반에 걸친 CRUD 작업을 처리합니다.
+  Java의 JPA나 Hibernate 같은 ORM(Object-Relational Mapping) 프레임워크를 사용해 객체와 데이터베이스 간의 매핑을 자동으로 관리합니다.
+  예를 들어, save, findById, deleteById 등의 메서드를 통해 객체를 데이터베이스에 저장하거나 조회하는 작업을 수행합니다.
 
 
-6. 예외 처리
+3. 데이터 쿼리 처리.
 
-  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
-  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
+  Repository 계층은 데이터를 조회하기 위해 데이터베이스에서 쿼리를 생성하고 실행합니다.
+  Spring Data JPA와 같은 프레임워크를 사용하면 쿼리 메서드를 간편하게 정의할 수 있으며, 복잡한 조건 검색을 위한 JPQL(Java Persistence Query Language) 또는 네이티브 SQL 쿼리를 사용할 수 있습니다.
+  기본적인 쿼리 메서드 외에도 복잡한 쿼리를 작성하여 특정 조건에 맞는 데이터를 필터링할 수 있습니다.
+
+
+4. 데이터베이스와의 추상화.
+
+  Repository는 데이터베이스 접근 로직을 캡슐화하여 상위 계층(Service 등)에서 데이터베이스의 구체적인 동작 방식을 알 필요가 없도록 합니다.
+  이렇게 하면 데이터베이스가 변경되더라도 상위 계층에는 영향을 미치지 않도록 구조를 유지할 수 있습니다.
+
+
+5. 데이터베이스 독립성.
+
+  Repository를 사용함으로써 데이터베이스와의 구체적인 종속성을 줄일 수 있습니다.
+  애플리케이션이 사용하는 데이터베이스가 변경되더라도, Repository 계층만 적절히 수정하면 상위 계층에는 영향을 주지 않기 때문에, 데이터베이스 독립성을 유지할 수 있습니다.
+
+
+6. 객체와 데이블 매핑 관리
+
+  ORM을 사용해 데이터베이스 테이블과 객체를 매핑하는 역할을 담당합니다.
+  객체와 테이블 간의 관계(1, N)를 정의하고, 이러한 관계를 기반으로 데이터베이스 연산을 수행합니다.
 
 
 2️⃣ 예시 코드
+Spring Data JPA를 사용한 Repository 계층의 예시를 살펴보겠습니다.
 
-Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
-
-@RestController
-@RequestMapping("/users")
-public class UserController {
+@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
     
-    private final UserService userService;
+    // 기본적으로 JpaRepository에서 제공하는 CRUD 메서드들
+    // save, fundById, findAll, deleteById 등이 제공됩니다.
     
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    // 커스텀 쿼리 메서드 정의
+    Optional&lt;User&gt; findByEmail(String email);
     
-    @GetMapping("/{id}")
-    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
-        UserDTO user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
-    }
-    
-    @PostMapping
-    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
-        UserDTO createdUser = userService.createUser(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-    }
+    // 복잡한 JPQL 쿼리 메서드 정의 가능
+    @Query("SELECT u FROM User u WHERE u.name = :name AND u.status = :status")
+    List&lt;User&gt; findByNameAndStatus(@Param("name") String name, @Param("status") String status);
 }
 
 
-3️⃣ 설명.
+3️⃣ 설명
 
-  @RestController
+  @Repository
     
-      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
-      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
-    
-  
-  @RequestMapping
-    
-      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
+      Spring에서 이 인터페이스가 데이터 엑세스 계층을 나타낸다는 것을 명시하는 어노테이션입니다.
+      @Repository 어노테이션은 데이터베이스 예외를 Spring의 데이터 엑세스 예외로 변환하는 역할도 합니다.
     
   
-  @GetMapping
+  JpaRepository&lt;User, Long&gt;
     
-      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
-    
-  
-  @PostMapping
-    
-      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
+      Spring Data JPA에서 제공하는 기본 인터페이스로, User 엔티티와 Long 타입의 ID를 사용해 CRUD 작업을 처리합니다.
     
   
-  @RequestBody, @Valid
+  기본 CRUD 메서드
     
-      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
+      save, findById, deleteById 등의 메서드가 기본적으로 제공됩니다.
     
   
-  ResponseEntity
+  커스텀 쿼리 메서드
     
-      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
+      매서드 명명 규칙을 통해 자동으로 SQL 쿼리를 생성하는 방식으로 특정 필드로 검색하는 메서드를 정의할 수 있습니다.
+      예를 들어, findByEmail은 이메일을 기준으로 사용자를 조회합니다.
+    
+  
+  JPQL 사용
+    
+      복잡한 조건이 필요한 경우, @Query 어노테이션을 사용해 JPQL을 작성할 수 있습니다.
+      이 예시에서는 이름과 상태를 기반으로 사용자를 조회하는 쿼리를 정의했습니다.
     
   
 
 
-4️⃣ 결론
-Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
-이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
+4️⃣ Repository 계층의 이점.
+
+1. 비즈니스 로직과 데이터 접근 로직의 분리.
+
+  Repository 계층은 비즈니스 로직과 데이터베이스 접근을 명확히 분리하여 각 계층이 자신의 역활에만 집중할 수 있게 합니다.
+  이렇게 하면 코드가 더 모듈화되고 유지보수하기 쉬워집니다.
+
+
+2. 코드의 재사용성.
+
+  Repository 계층은 데이터베이스 접근 로직을 재사용할 수 있도록 만들어집니다.
+  여러 서비스에서 동일한 데이터베이스 쿼리나 데이터를 필요로 할 때, 이를 중앙에서 관리함으로써 코드 중복을 줄일 수 있습니다.
+
+
+3. 테스트 가능성 향상.
+
+  Repository 계층을 인터페이스로 정의함으로써 테스트 시 Mock 객체로 쉽게 대체할 수 있어, 데이터베이스에 접근하지 않고도 단위 테스트를 작성할 수 있습니다.
+
+
+4. 데이터베이스 변경의 유연성.
+
+  데이터베이스가 변경되더라도 Repository 계층만 수정하면 상위 계층(Service나 Controller)은 전혀 변경하지 않고도 애플리케이션을 유지할 수 있습니다.
+  데이터베이스 독립성을 높이는 데 중요한 역할을 합니다.
+
+
+5️⃣ 결론
+Repository 계층은 데이터베이스와 상호작용하는 모든 작업을 담당하며, 데이터를 저장, 조회, 업데이트, 삭제하는 기능을 캡슐화합니다.
+이를 통해 데이터 접근 로직이 비즈니스 로직과 분리되므로 애플리케이션의 유지보수성, 확장성, 재사용성이 크게 향상됩니다.
 
                         </a>
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-04-Dependency.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-04-Dependency.html"><h1 class="title_post">🍃[Spring] 의존성(Dependency).</h1></a>
+                        <a href="/Backend/Spring/2024-10-04-Dependency.html" class="txt_post">
+                            🍃[Spring] 의존성(Dependency).
+
+Java 백엔드 애플리케이션에서 의존성(Dependency) 이란 한 클래스 또는 모듈이 다른 클래스 또는 모듈의 기능을 필요로 하거나, 그 존재에 따라 동작하는 관계를 의미합니다.
+
+간단히 말해, 의존성은 어떤 클래스가 다른 클래스에 의존하여 해당 클래스의 메서드나 기능을 호출하고 사용하는 것을 말합니다.
+
+의존성은 객체 지향 프로그래밍에서 자연스럽게 발생하는 관계로, 특정 객체를 필요로 할 때 발생합니다.
+
+예를 들어, 서비스 클래스가 데이터베이스와 상호작용하기 위해 리포지토리 클래스에 의존하거나, 컨트롤러가 비즈니스 로직을 수행하기 위해 서비스 클래스에 의존하는 경우가 해당됩니다.
+
+1️⃣ 의존성의 예시
+
+간단한 의존성 예
+
+
+
+public class UserService {
+    
+    private UserRepository userRepository;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+}
+
+
+
+  UserService 클래스는 UserRepository 클래스에 의존합니다.
+  UserService는 비즈니스 로직을 처리하기 위해 UserRepository의 메서드를 호출합니다.
+  만약 UserRepository가 없으면 UserService는 정상적으로 작동할 수 없습니다.
+  따라서, 이 두 클래스 간에는 의존성이 존재합니다.
+
+
+2️⃣ 의존성 관리의 중요성.
+
+의존성(Dependency)은 자연스럽게 발생하지만, 의존성을 관리하지 않으면 애플리케이션이 결합도가 높아지고, 변경에 취약해지며, 유지보수가 어려워질 수 있습니다.
+
+따라서 의존성을 적절히 관리하는 것이 중요합니다.
+
+의존성 관리의 좋은 방법으로는 의존성 주입(Dependency Injection, DI) 이 있습니다.
+
+3️⃣ 의존성 주입(Dependency Injection, DI)
+
+
+  의존성 주입(Dependency Injection, DI)은 객체 간의 의존성을 외부에서 주입해주는 디자인 패턴으로, 의존성 주입을 통해 클래스는 자신이 사용할 객체를 직접 생성하지 않고, 외부에서 생성된 객체를 주입받아 사용하게 됩니다.
+  이를 통해 클래스 간의 결합도를 낮추고, 유연성과 테스트 가능성을 높일 수 있습니다.
+
+
+의존성 주입 예시(Spring Framework)
+
+  Spring Framework에서 의존성 주입은 매우 흔하게 사용됩니다.
+  Spring은 객체 간의 의존성을 관리하고, 필요한 객체를 자동으로 주입해 줍니다.
+
+
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+}
+
+
+
+  @Autowired
+    
+      Spring이 UserRepository의 구현체를 자동으로 주입해줍니다.
+      개발자는 UserService가 UserRepository에 의존한다는 사실만 명시하면 되고, UserRepository 객체의 생성을 직접적으로 관리할 필요가 없습니다.
+    
+  
+
+
+4️⃣ 의존성의 종류.
+
+1. 강한 의존성 (Tight Coupling)
+
+  클래스 A가 클래스 B의 구체적인 구현에 의존할 때 발생합니다.
+  이 경우 클래스 B가 변경되면 클래스 A도 수정이 필요할 수 있습니다.
+  예를 들어, new 키워드를 사용해 직접 객체를 생성하면 강한 의존성이 발생합니다.
+
+
+2. 약한 의존성(Loose Coupling)
+
+  클래스 A가 클래스 B의 구체적인 구현이 아닌, 인터페이스나 추상 클래스에 의존할 때 발생합니다.
+  이는 결합도를 낮추어 클래스 간의 변경에 더 유연하게 대처할 수 있게 합니다.
+  의존성 주입을 통해 약한 의존성을 실현할 수 있습니다.
+
+
+5️⃣ 의존성 관리의 이점.
+
+1. 유지보수성 향상.
+
+  의존성이 적절히 관리되면, 코드가 더 모듈화되고 변경 사항이 발생할 때 수정해야 할 부분이 줄어듭니다.
+  예를 들어, 특정 클래스의 구현을 변경하더라도 의존성 주입을 통해 인터페이스만 유지하면 다른 클래스에는 영향을 주지 않습니다.
+
+
+2. 테스트 가능성.
+
+  의존성을 외부에서 주입받으면, 테스트 시에 Mock 객체를 주입하여 쉽게 단위 테스트를 수행할 수 있습니다.
+  이를 통해 더 작은 단위 테스트가 가능해지고, 테스트가 독립적으로 수행될 수 있습니다.
+
+
+3. 재사용성 향상.
+
+  클래스가 다른 클래스에 강하게 의존하지 않으면, 해당 클래스를 다른 곳에서도 재사용하기 쉽습니다.
+  인터페이스를 사용하고, 의존성 주입을 통해 다양한 구현체를 주입받아 사용할 수 있기 때문입니다.
+
+
+6️⃣ 결론.
+Java 백엔드 애플리케이션에서 의존성은 클래스 간의 관계를 의미하며, 이를 잘 관리하는 것이 중요합니다.
+의존성 주입을 사용하면 결합도를 낮추고 유연성을 높일 수 있으며, 코드의 유지보수성과 테스트 가능성을 크게 향상 시킬 수 있습니다.
+Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입을 매우 쉽게 처리할 수 있도록 지원하고 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-03-clean-code.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-03-clean-code.html"><h1 class="title_post">💾 [CS] 좋은 코드(Clean Code)의 중요성.</h1></a>
+                        <a href="/CS/2024/2024-10-03-clean-code.html" class="txt_post">
+                            💾 [CS] 좋은 코드(Clean Code)의 중요성.
+
+클린 코드(Clean Code)는 읽기 쉽고 이해하기 쉬우며 유지 보수하기 쉬운 코드를 의미합니다.
+소프트웨어 개발에서 클린 코드는 단순히 기능하는 코드를 넘어서, 일관성, 가독성, 명확성, 그리고 간결성을 갖춘 코드를 작성하는 것을 목표로 합니다.
+클린 코드는 그 자체로 직관적이어야 하며, 개발자가 코드의 동작을 쉽게 파악할 수 있게 도와줍니다.
+
+1️⃣ 클린 코드의 특징.
+
+1. 명확한 목적과 이름.
+
+  클래스, 메서드, 변수 이름이 그 목적을 명확하게 드러내야 합니다.
+  이름만 보고도 해당 코드가 무엇을 하는지 쉽게 파악할 수 있어야 합니다.
+
+
+2. 단순함(Simplicity)
+
+  코드가 불필요하게 복잡하지 않아야 하며, 가장 단순한 방법으로 문제를 해결하려고 해야 합니다.
+  단순한 코드는 이해하기 쉽고, 오류가 발생할 가능성이 줄어듭니다.
+
+
+3. 일관성(Consistency)
+
+  코드 스타일과 구조는 일관성이 있어야 합니다.
+  이로 인해 코드를 읽는 사람이 새로운 규칙을 학습할 필요 없이 일관된 형식을 따라갈 수 있습니다.
+
+
+4. 작은 함수(Small Function)
+
+  함수나 메서드는 하나의 작업만을 수행하고, 그 작업을 명확하게 나타내야 합니다.
+  함수는 작고 간결해야 하며, 너무 많은 일을 하거나 너무 많은 책임을 가져서는 안됩니다.
+
+
+5. 의존성 최소화(Low Coupling)
+
+  모듈 간의 의존성을 최소화하여, 한 부분이 변경되더라도 다른 부분에 미치는 영향을 최소화해야 합니다.
+  이로 인해 유지 보수와 확장이 쉬워집니다.
+
+
+6. 중복 코드 제거(DRY: Don’t Repeat Yourself)
+
+  동일한 코드가 여러 곳에서 반복되지 않도록 해야 합니다.
+  중복 코드는 버그 발생 가능성을 높이고 유지 보수를 어렵게 만듭니다.
+
+
+7. 에러 처리 및 예외 처리 명확성.
+
+  클린 코드는 예상치 못한 상황에 대한 처리가 명확하게 이루어져야 합니다.
+  에러나 예외가 발생했을 때 그 흐름이 한 눈에 이해될 수 있도록 작성되어야 합니다.
+
+
+8. 주석은 최소화하되, 필요한 경우에는 설명적으로
+
+  클린 코드는 그 자체로 충분히 설명적이기 때문에 주석이 많이 필요하지 않습니다.
+  대신, 주석은 코드가 아닌 복잡한 비즈니스 로직이나 의도에 대한 설명으로 사용되어야 합니다.
+
+
+2️⃣ 클린 코드를 지향하는 원칙.
+
+1. SOLID 원칙.
+
+  객체지향 설계의 5원칙(단일 책임 원칙, 개방-폐쇠 원칙, 리스코프 치환 원칙, 인터페이스 분리 원칙, 의존성 역전 원칙)을 지쳐, 더 나은 구조와 확장성을 갖춘 코드를 작성합니다.
+
+
+
+  🙋‍♂️ SOLID 원칙
+
+
+2. KISS 원칙(Keep It Simple, Stupid)
+
+  코드는 가능한 한 간단하고 복잡하지 않기 유지되어야 한다는 원칙입니다.
+
+
+3. YAGNI 원칙(You Ain’t Gonna Need It)
+
+  필요하지 않은 기능을 미리 구현하지 않고, 필요할 때만 추가하는 원칙입니다.
+  코드가 지나치게 복잡해지는 것을 방지합니다.
+
+
+4. DRY 원칙(Don’t Repeat Yourself)
+
+  중복을 피하고, 같은 로직을 반복하지 않도록 코드를 설계하는 원칙입니다.
+
+
+3️⃣ 클린 코드의 중요성
+
+
+  유지 보수성 : 시간이 지나도 이해하기 쉽고 수정하기 쉬운 코드는 애플리케이션의 수명을 연장합니다.
+  버그 감소 : 명확하고 간결한 코드는 버그가 발생할 가능성을 줄입니다.
+  협업 : 여러 개발자가 협업할 때, 클린 코드는 의사소통을 원활하게 하며 코드 리뷰 과정도 쉽게 만듭니다.
+  확장성 : 클린 코드는 확장과 변화에 유연하게 대처할 수 있어 새로운 기능을 추가하는 데 용이합니다.
+
+
+클린 코드는 단순히 코드 스타일이 아니라, 소프트웨어의 품질을 높이는 데 필수적인 철학과 원칙입니다.
+
+4️⃣ Java 백엔드 애플리케이션에서 클린 코드가 중요한 이유.
+Java 백엔드 애플리케이션에서 클린 코드가 중요한 이유는 여러 가지가 있습니다.
+이를 통해 개발자의 생산성과 유지 보수성이 크게 향상되며, 시스템의 안정성과 확장성도 개선됩니다.
+
+1. 이해와 가독성 향상.
+
+  클린 코드는 코드를 읽는 사람이 쉽게 이해할 수 있도록 작성됩니다.
+  Java와 같은 객체지향 언어에서는 클래스, 메서드, 변수 이름이 직관적이고 목적에 맞게 명명되어야 합니다.
+  이를 통해 다른 개발자가 코드를 분석하고 변경 사항을 반영하는 데 드는 시간이 줄어듭니다.
+
+
+2. 유지 보수 용이.
+
+  클린 코드는 명확하고 일관성 있게 작성되어, 유지 보수 시 복잡한 로직을 쉽게 파악할 수 있습니다.
+  불필요한 코드나 중복 코드를 제거하고, 모듈화된 구조를 유지하면 변경 사항이 발생하더라도 특정 부분만 수정하면 되기 때문에 유지 보수가 수월해 집니다.
+
+
+3. 버그 발생 확률 감소.
+
+  가독성이 떨어지는 복잡한 코드는 종종 버그를 숨깁니다.
+  클린 코드는 명확하고 일관성이 있어, 개발자들이 실수를 줄일 수 있습니다.
+  또한, 잘 작성된 테스트 코드와 결합하면 버그가 발생할 확률이 더욱 낮아집니다.
+
+
+4. 확장성과 재사용성 증가.
+
+  클린 코드는 원칙에 맞게 모듈화되고, 단일 책임 원칙(Single Responsibility Principle), 개방-폐쇄 원칙(Open/Closed Principle) 등과 같은 객체지향 설계 원칙들을 따릅니다.
+  이를 통해 코드의 확장성과 재사용성이 높아져, 새로운 기능을 추가할 때 기존 코드를 변경하지 않고 쉽게 확장할 수 있습니다.
+
+
+5. 협업 개선.
+
+  여러 명의 개발자가 참여하는 백엔드 프로젝트에서는 코딩 스카일의 일관성이 매우 중요합니다.
+  클린 코드 원칙을 따르면, 팀원 간에 코드를 공유하고 협업할 때 더 원활한 의사소통이 가능해집니다.
+  코드 리뷰도 보다 쉽게 진행할 수 있습니다.
+
+
+6. 테스트 용이성.
+
+  클린 코드는 테스트를 작성하기 쉽게 만듭니다.
+  메서드가 간결하고 명확하면 단위 테스트(Unit Test)를 작성하는 것이 더 쉬워지고, 이를 통해 애플리케이션의 안정성을 높일 수 있습니다.
+  테스트 가능성이 높은 코드는 품질 관리에 매우 유리합니다.
+
+
+결론적으로, 클린 코드는 장기적으로 백엔드 애플리케이션의 안정성, 확장성, 유지 보수성을 높이며, 팀원들 간의 협업을 촉진하고 버그 발생 가능성을 줄여 개발 효율성을 크게 향상시킵니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-03</span>
                             
@@ -3086,155 +3315,131 @@ SOLID 원칙은 유연하고 유지보수하기 쉬운 시스템을 만들기 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-03-clean-code.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/CS/2024/2024-10-03-clean-code.html"><h1 class="title_post">💾 [CS] 좋은 코드(Clean Code)의 중요성.</h1></a>
-                        <a href="/CS/2024/2024-10-03-clean-code.html" class="txt_post">
-                            💾 [CS] 좋은 코드(Clean Code)의 중요성.
+                        <a href="/Backend/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
+                        <a href="/Backend/Spring/2024-10-03-Controller.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
 
-클린 코드(Clean Code)는 읽기 쉽고 이해하기 쉬우며 유지 보수하기 쉬운 코드를 의미합니다.
-소프트웨어 개발에서 클린 코드는 단순히 기능하는 코드를 넘어서, 일관성, 가독성, 명확성, 그리고 간결성을 갖춘 코드를 작성하는 것을 목표로 합니다.
-클린 코드는 그 자체로 직관적이어야 하며, 개발자가 코드의 동작을 쉽게 파악할 수 있게 도와줍니다.
+Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
 
-1️⃣ 클린 코드의 특징.
+Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
 
-1. 명확한 목적과 이름.
+1️⃣ Controller의 주요 역할.
+
+1. 요청 수신 및 응답 반환.
+
+  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
+  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
+  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
 
-  클래스, 메서드, 변수 이름이 그 목적을 명확하게 드러내야 합니다.
-  이름만 보고도 해당 코드가 무엇을 하는지 쉽게 파악할 수 있어야 합니다.
 
-
-2. 단순함(Simplicity)
-
-  코드가 불필요하게 복잡하지 않아야 하며, 가장 단순한 방법으로 문제를 해결하려고 해야 합니다.
-  단순한 코드는 이해하기 쉽고, 오류가 발생할 가능성이 줄어듭니다.
-
-
-3. 일관성(Consistency)
-
-  코드 스타일과 구조는 일관성이 있어야 합니다.
-  이로 인해 코드를 읽는 사람이 새로운 규칙을 학습할 필요 없이 일관된 형식을 따라갈 수 있습니다.
-
-
-4. 작은 함수(Small Function)
-
-  함수나 메서드는 하나의 작업만을 수행하고, 그 작업을 명확하게 나타내야 합니다.
-  함수는 작고 간결해야 하며, 너무 많은 일을 하거나 너무 많은 책임을 가져서는 안됩니다.
-
-
-5. 의존성 최소화(Low Coupling)
-
-  모듈 간의 의존성을 최소화하여, 한 부분이 변경되더라도 다른 부분에 미치는 영향을 최소화해야 합니다.
-  이로 인해 유지 보수와 확장이 쉬워집니다.
-
-
-6. 중복 코드 제거(DRY: Don’t Repeat Yourself)
-
-  동일한 코드가 여러 곳에서 반복되지 않도록 해야 합니다.
-  중복 코드는 버그 발생 가능성을 높이고 유지 보수를 어렵게 만듭니다.
-
-
-7. 에러 처리 및 예외 처리 명확성.
-
-  클린 코드는 예상치 못한 상황에 대한 처리가 명확하게 이루어져야 합니다.
-  에러나 예외가 발생했을 때 그 흐름이 한 눈에 이해될 수 있도록 작성되어야 합니다.
-
-
-8. 주석은 최소화하되, 필요한 경우에는 설명적으로
-
-  클린 코드는 그 자체로 충분히 설명적이기 때문에 주석이 많이 필요하지 않습니다.
-  대신, 주석은 코드가 아닌 복잡한 비즈니스 로직이나 의도에 대한 설명으로 사용되어야 합니다.
-
-
-2️⃣ 클린 코드를 지향하는 원칙.
-
-1. SOLID 원칙.
-
-  객체지향 설계의 5원칙(단일 책임 원칙, 개방-폐쇠 원칙, 리스코프 치환 원칙, 인터페이스 분리 원칙, 의존성 역전 원칙)을 지쳐, 더 나은 구조와 확장성을 갖춘 코드를 작성합니다.
-
-
-
-  🙋‍♂️ SOLID 원칙
-
-
-2. KISS 원칙(Keep It Simple, Stupid)
-
-  코드는 가능한 한 간단하고 복잡하지 않기 유지되어야 한다는 원칙입니다.
-
-
-3. YAGNI 원칙(You Ain’t Gonna Need It)
-
-  필요하지 않은 기능을 미리 구현하지 않고, 필요할 때만 추가하는 원칙입니다.
-  코드가 지나치게 복잡해지는 것을 방지합니다.
-
-
-4. DRY 원칙(Don’t Repeat Yourself)
-
-  중복을 피하고, 같은 로직을 반복하지 않도록 코드를 설계하는 원칙입니다.
-
-
-3️⃣ 클린 코드의 중요성
-
-
-  유지 보수성 : 시간이 지나도 이해하기 쉽고 수정하기 쉬운 코드는 애플리케이션의 수명을 연장합니다.
-  버그 감소 : 명확하고 간결한 코드는 버그가 발생할 가능성을 줄입니다.
-  협업 : 여러 개발자가 협업할 때, 클린 코드는 의사소통을 원활하게 하며 코드 리뷰 과정도 쉽게 만듭니다.
-  확장성 : 클린 코드는 확장과 변화에 유연하게 대처할 수 있어 새로운 기능을 추가하는 데 용이합니다.
-
-
-클린 코드는 단순히 코드 스타일이 아니라, 소프트웨어의 품질을 높이는 데 필수적인 철학과 원칙입니다.
-
-4️⃣ Java 백엔드 애플리케이션에서 클린 코드가 중요한 이유.
-Java 백엔드 애플리케이션에서 클린 코드가 중요한 이유는 여러 가지가 있습니다.
-이를 통해 개발자의 생산성과 유지 보수성이 크게 향상되며, 시스템의 안정성과 확장성도 개선됩니다.
-
-1. 이해와 가독성 향상.
-
-  클린 코드는 코드를 읽는 사람이 쉽게 이해할 수 있도록 작성됩니다.
-  Java와 같은 객체지향 언어에서는 클래스, 메서드, 변수 이름이 직관적이고 목적에 맞게 명명되어야 합니다.
-  이를 통해 다른 개발자가 코드를 분석하고 변경 사항을 반영하는 데 드는 시간이 줄어듭니다.
-
-
-2. 유지 보수 용이.
-
-  클린 코드는 명확하고 일관성 있게 작성되어, 유지 보수 시 복잡한 로직을 쉽게 파악할 수 있습니다.
-  불필요한 코드나 중복 코드를 제거하고, 모듈화된 구조를 유지하면 변경 사항이 발생하더라도 특정 부분만 수정하면 되기 때문에 유지 보수가 수월해 집니다.
-
-
-3. 버그 발생 확률 감소.
-
-  가독성이 떨어지는 복잡한 코드는 종종 버그를 숨깁니다.
-  클린 코드는 명확하고 일관성이 있어, 개발자들이 실수를 줄일 수 있습니다.
-  또한, 잘 작성된 테스트 코드와 결합하면 버그가 발생할 확률이 더욱 낮아집니다.
-
-
-4. 확장성과 재사용성 증가.
-
-  클린 코드는 원칙에 맞게 모듈화되고, 단일 책임 원칙(Single Responsibility Principle), 개방-폐쇄 원칙(Open/Closed Principle) 등과 같은 객체지향 설계 원칙들을 따릅니다.
-  이를 통해 코드의 확장성과 재사용성이 높아져, 새로운 기능을 추가할 때 기존 코드를 변경하지 않고 쉽게 확장할 수 있습니다.
-
-
-5. 협업 개선.
-
-  여러 명의 개발자가 참여하는 백엔드 프로젝트에서는 코딩 스카일의 일관성이 매우 중요합니다.
-  클린 코드 원칙을 따르면, 팀원 간에 코드를 공유하고 협업할 때 더 원활한 의사소통이 가능해집니다.
-  코드 리뷰도 보다 쉽게 진행할 수 있습니다.
-
-
-6. 테스트 용이성.
-
-  클린 코드는 테스트를 작성하기 쉽게 만듭니다.
-  메서드가 간결하고 명확하면 단위 테스트(Unit Test)를 작성하는 것이 더 쉬워지고, 이를 통해 애플리케이션의 안정성을 높일 수 있습니다.
-  테스트 가능성이 높은 코드는 품질 관리에 매우 유리합니다.
-
-
-결론적으로, 클린 코드는 장기적으로 백엔드 애플리케이션의 안정성, 확장성, 유지 보수성을 높이며, 팀원들 간의 협업을 촉진하고 버그 발생 가능성을 줄여 개발 효율성을 크게 향상시킵니다.
+2. 요청 검증.
+
+  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
+  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
+  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
+
+
+3. 비즈니스 로직 호출.
+
+  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
+  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
+  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
+
+
+4. 뷰와의 통신(View와 연동)
+
+  Controller는 View와 통신하여 적절한 응답을 생성합니다.
+  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
+  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
+
+
+5. HTTP 상태 코드 관리.
+
+  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
+  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
+
+
+6. 예외 처리
+
+  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
+  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
+
+
+2️⃣ 예시 코드
+
+Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    private final UserService userService;
+    
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
+        UserDTO user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+    
+    @PostMapping
+    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
+        UserDTO createdUser = userService.createUser(userDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+}
+
+
+3️⃣ 설명.
+
+  @RestController
+    
+      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
+      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
+    
+  
+  @RequestMapping
+    
+      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
+    
+  
+  @GetMapping
+    
+      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
+    
+  
+  @PostMapping
+    
+      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
+    
+  
+  @RequestBody, @Valid
+    
+      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
+    
+  
+  ResponseEntity
+    
+      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
+    
+  
+
+
+4️⃣ 결론
+Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
+이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
 
                         </a>
                         <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-10-03</span>
                             
@@ -7284,6 +7489,367 @@ public class HelloController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-26-Primary-Key.html"><h1 class="title_post">🍃[Spring] 유일한 식별자(Primary Key)</h1></a>
+                        <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="txt_post">
+                            🍃[Spring] 유일한 식별자(Primary Key).
+
+Java 백엔드 애플리케이션에서 user의 id 정보는 보통 유일한 식별저(Primary Key) 로 사용되며, 각 유저별로 겹치지 않는 고유한 값입니다.
+
+이는 데이터베이스 설계에서 매우 중요한 개념으로, 사용자와 같은 엔티티(Entity)를 고유하게 식별하기 위해 Primary Key를 사용합니다.
+
+1️⃣ Primary Key란?
+
+
+  Primary Key는 데이터베이스 테이블에서 각 행을 고유하게 식별하는 열(Column)입니다.
+  Primary Key는 테이블 내에서 중복될 수 없으며, null 값을 가질 수 없습니다.
+  즉, 각 레코드는 Primary Key를 통해 식별되므로, user 테이블에서 각 사용자는 유일한 id를 가져야 하며, 이를 통해 사용자를 구분할 수 있습니다.
+
+
+2️⃣ 일반적인 예: User 엔티티
+
+user 엔티티에서 id 필드는 주로 Primary Key로 설정되며, 데이터베이스에서 자동으로 생성되거나 애플리케이션에서 생성할 수도 있습니다.
+
+User 엔티티 예시 (JPA를 사용한 경우)
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Primary Key, 유일한 식별자.
+    
+    private String name;
+    private String email;
+    
+    // Getter, Setter, 기본 생성자
+    public User() {}
+    
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+
+  @Id
+    
+      id 필드는 Primary Key임을 나타냅니다.
+    
+  
+  @GeneratedValue
+    
+      id 값이 자동으로 생성됨을 의미합니다.
+      GenerationType.IDENTITY는 데이터베이스에서 자동으로 Primary Key 값을 생성하도록 지정하는 방식입니다.
+    
+  
+
+
+3️⃣ Primary Key의 역할.
+
+  1. 고유성 보장
+    
+      Primary Key는 각 레코드를 고유하게 식별하므로, 사용자 정보에서 id는 각 유저별로 유일하게 존재하며 절대 중복되지 않습니다.
+    
+  
+  2. 빠른 조회
+    
+      Primary Key는 인덱스가 자동으로 생성되기 때문에 데이터베이스에서 해당 레코드를 빠르게 조회할 수 있습니다.
+    
+  
+  3. 관계 설정
+    
+      Primary Key는 다른 테이블에서 Foreign Key로 사용되어 테이블 간의 관계를 설정할 수 있습니다.
+      예를 들어, Order 테이블에서 user_id는 User 테이블의 Primary Key를 참조하여 주문과 사용자를 연결할 수 있습니다.
+    
+  
+
+
+4️⃣ ID 생성 방식.
+ID는 여러 방식으로 생성될 수 있으며, 가장 많이 사용하는 두 가지 방식은 다음과 같습니다.
+
+
+  1. 자동 증가(Auto Increment)
+    
+      데이터베이스에서 AUTO_INCREMENT 속성을 설정하여 ID가 자동으로 증가합니다.
+      주로 MySQL, PostgreSQL 같은 데이터베이스에서 사용됩니다.
+    
+  
+  2. UUID(Universally Unique Identifier)
+    
+      UUID는 전 세계적으로 고유한 식별자를 생성하는 방식으로, 중복될 가능성이 거의 없습니다.
+      JPA에서는 UUID를 Primary Key로 사용할 수도 있습니다.
+        
+          예시
+              @Id
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+  private String id;
+            
+          
+        
+      
+    
+  
+
+
+5️⃣ 데이터베이스에서 User 테이블 예시
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
+
+
+
+  여기서 id는 Primary Key로, 데이터베이스에서 자동으로 증가하며 각 사용자는 고유한 id 값을 가집니다.
+
+
+6️⃣ 예시: Primary Key를 통한 사용자 조회
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;User&gt; getUserById(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -&gt; new UserNotFoundException("User not found with id " + id));
+        return ResponseEntity.ok(user);
+    }
+}
+
+
+
+  위 코드는 id가 Primary Key인 User 엔티티를 데이터베이스에서 조회하는 예시입니다.
+  id는 고유하기 때문에 이 값을 통해 특정 사용자를 정확하게 조회할 수 있습니다.
+
+
+7️⃣ 요약.
+
+  Java 백엔드 애플리케이션에서 user의 id는 보통 Primary Key로 사용되며, 각 사용자는 고유한 id 값을 가집니다.
+  Primary Key는 데이터베이스에서 각 레코드를 고유하게 식별하는 필드로, 절대 중복되지 않으며 null 값을 가질 수 없습니다.
+  Primary Key를 통해 사용자를 빠르고 정확하게 조회할 수 있으며, 테이블 간의 관계를 설정하는 데 중요한 역할을 합니다.
+  id는 자동 증가 방식이나 UUID 방식으로 생성될 수 있으며, 사용자의 고유성을 보장합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html"><h1 class="title_post">🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!</h1></a>
+                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="txt_post">
+                            🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!
+
+
+  Controller에서 getter가 있는 객체를 반환하면 기본적으로 JSON으로 변환되어 클라이언트에 전달됩니다.
+    
+      이 동작은 Spring Framework에서 자동으로 처리해줍니다.
+    
+  
+
+
+1️⃣ Spring에서 객체가 JSON으로 변환되는 과정.
+
+1. 객체 반환 및 @RestController
+
+  Spring에서는 @RestController 또는 @ResponseBody 애너테이션이 붙은 메서드가 객체를 반환하면, 해당 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 전달됩니다.
+  Spring은 내부적으로 Jackson이라는 라이브러리를 사용하여 Java 객체를 JSON으로 직렬화합니다.
+    
+      이 과정에서 객체의 getter 메서드를 통해 데이터를 추출하려 JSON을 생성합니다.
+    
+  
+
+
+2. Jackson에 의한 직렬화.
+
+  Spring Boot는 Jackson을 기본으로 포함하고 있어, 추가적인 설정 없이 Java 객체를 JSON으로 변환할 수 있습니다.
+  객체의 getter 메서드를 통해 객체 내부의 데이터를 추출하고, 이를 JSON으로 변환합니다.
+  예를 들어, getName() 이라는 getter가 있으면, 이는 name이라는 필드로 JSON에 포함됩니다.
+
+
+2️⃣ 예시.
+
+1. 객체 클래스.
+
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+    
+    // 기본 생성자
+    public User() {}
+    
+    // Getter와 Setter
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+2. Controller 클래스.
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        // User 객체를 생성하고 반환 (일반적으로는 데이터베이스에서 가져옴)
+        User user = new User();
+        user.setId(id);
+        user.setName("Kobe");
+        user.setEmail("kobe@example.com");
+        
+        // 이 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 반환됨.
+        return user;
+    }
+}
+
+
+3️⃣ 동작 원리.
+
+1. 클라이언트 요청.
+
+  클라이언트 /users/1 과 같이 요청을 보내면, Spring은 해당 경로에 매핑된 getUserById 메서드를 호출합니다.
+
+
+2. Java 객체 반환.
+
+  이 메서드는 User 객체를 반환합니다.
+
+
+3. 객체를 JSON으로 변환.
+
+  Spring은 @RestController 또는 @ResponseBody를 보고, User 객체를 JSON 형식으로 변환합니다.
+  이때 Jackson 라이브러리가 getter 메서드들을 사용하여 객체 내부의 값을 추출하고, 이를 JSON으로 직렬화합니다.
+
+
+
+  🙋‍♂️ 라이브러리와 프레임워크의 차이점
+
+
+4. 클라이언트에 JSON 응답.
+
+  직렬화된 JSON 데이터가 클라이언트에 응답으로 전송됩니다.
+
+
+결과로 클라이언트가 받는 JSON
+{
+    "id": 1,
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+4️⃣ 주의 사항.
+
+  객체에 getter가 있어야 함.
+    
+      Jackson은 객체의 필드를 직접 접근하는 것이 아니라, 기본적으로 getter 메서드를 사용하여 데이터를 추출합니다.
+      따라서 getter 메서드가 존재해야 합니다.
+    
+  
+  객체가 null인 경우.
+    
+      객체가 null이거나, 특정 필드가 null인 경우 그 필드는 JSON에 포함되지 않거나 null로 표현됩니다.
+    
+  
+  추가 설정.
+    
+      필요에 따라 Jackson의 직렬화/역직렬화 방식을 커스터마이징할 수 있습니다.
+      예를 들어, 필드 이름을 변경하거나 특정 필드를 제외하고 싶을 때는 @JsonProperty, @JsonIgnore 같은 Jackson 애너테이션을 사용할 수 있습니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  Java 백엔드 애플리케이션에서 계층형 아키텍처로 구현한 후 Controller에서 getter가 있는 객체를 반환하면, Spring은 해당 객체를 자동으로 JSON 형식으로 변환하여 클라이언트에 응답합니다.
+  이는 기본적으로 Spring의 Jackson 라이브러리를 통해 이루어지며, 추가적인 설정 없이도 객체의 getter를 통해 JSON으로 직렬화됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-26</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-09-26-APIdesign-LayeredArchitecture-Transaction-Entity-BusinessLogicAndRules.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -8352,367 +8918,6 @@ public class Account {
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-26</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html"><h1 class="title_post">🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!</h1></a>
-                        <a href="/Backend/Spring/2024-09-26-Controller-Getter-Json.html" class="txt_post">
-                            🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!
-
-
-  Controller에서 getter가 있는 객체를 반환하면 기본적으로 JSON으로 변환되어 클라이언트에 전달됩니다.
-    
-      이 동작은 Spring Framework에서 자동으로 처리해줍니다.
-    
-  
-
-
-1️⃣ Spring에서 객체가 JSON으로 변환되는 과정.
-
-1. 객체 반환 및 @RestController
-
-  Spring에서는 @RestController 또는 @ResponseBody 애너테이션이 붙은 메서드가 객체를 반환하면, 해당 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 전달됩니다.
-  Spring은 내부적으로 Jackson이라는 라이브러리를 사용하여 Java 객체를 JSON으로 직렬화합니다.
-    
-      이 과정에서 객체의 getter 메서드를 통해 데이터를 추출하려 JSON을 생성합니다.
-    
-  
-
-
-2. Jackson에 의한 직렬화.
-
-  Spring Boot는 Jackson을 기본으로 포함하고 있어, 추가적인 설정 없이 Java 객체를 JSON으로 변환할 수 있습니다.
-  객체의 getter 메서드를 통해 객체 내부의 데이터를 추출하고, 이를 JSON으로 변환합니다.
-  예를 들어, getName() 이라는 getter가 있으면, 이는 name이라는 필드로 JSON에 포함됩니다.
-
-
-2️⃣ 예시.
-
-1. 객체 클래스.
-
-public class User {
-    private Long id;
-    private String name;
-    private String email;
-    
-    // 기본 생성자
-    public User() {}
-    
-    // Getter와 Setter
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-
-
-2. Controller 클래스.
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        // User 객체를 생성하고 반환 (일반적으로는 데이터베이스에서 가져옴)
-        User user = new User();
-        user.setId(id);
-        user.setName("Kobe");
-        user.setEmail("kobe@example.com");
-        
-        // 이 객체는 자동으로 JSON 형식으로 변환되어 클라이언트에 반환됨.
-        return user;
-    }
-}
-
-
-3️⃣ 동작 원리.
-
-1. 클라이언트 요청.
-
-  클라이언트 /users/1 과 같이 요청을 보내면, Spring은 해당 경로에 매핑된 getUserById 메서드를 호출합니다.
-
-
-2. Java 객체 반환.
-
-  이 메서드는 User 객체를 반환합니다.
-
-
-3. 객체를 JSON으로 변환.
-
-  Spring은 @RestController 또는 @ResponseBody를 보고, User 객체를 JSON 형식으로 변환합니다.
-  이때 Jackson 라이브러리가 getter 메서드들을 사용하여 객체 내부의 값을 추출하고, 이를 JSON으로 직렬화합니다.
-
-
-
-  🙋‍♂️ 라이브러리와 프레임워크의 차이점
-
-
-4. 클라이언트에 JSON 응답.
-
-  직렬화된 JSON 데이터가 클라이언트에 응답으로 전송됩니다.
-
-
-결과로 클라이언트가 받는 JSON
-{
-    "id": 1,
-    "name": "Kobe",
-    "email": "kobe@example.com"
-}
-
-
-4️⃣ 주의 사항.
-
-  객체에 getter가 있어야 함.
-    
-      Jackson은 객체의 필드를 직접 접근하는 것이 아니라, 기본적으로 getter 메서드를 사용하여 데이터를 추출합니다.
-      따라서 getter 메서드가 존재해야 합니다.
-    
-  
-  객체가 null인 경우.
-    
-      객체가 null이거나, 특정 필드가 null인 경우 그 필드는 JSON에 포함되지 않거나 null로 표현됩니다.
-    
-  
-  추가 설정.
-    
-      필요에 따라 Jackson의 직렬화/역직렬화 방식을 커스터마이징할 수 있습니다.
-      예를 들어, 필드 이름을 변경하거나 특정 필드를 제외하고 싶을 때는 @JsonProperty, @JsonIgnore 같은 Jackson 애너테이션을 사용할 수 있습니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  Java 백엔드 애플리케이션에서 계층형 아키텍처로 구현한 후 Controller에서 getter가 있는 객체를 반환하면, Spring은 해당 객체를 자동으로 JSON 형식으로 변환하여 클라이언트에 응답합니다.
-  이는 기본적으로 Spring의 Jackson 라이브러리를 통해 이루어지며, 추가적인 설정 없이도 객체의 getter를 통해 JSON으로 직렬화됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-26</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-26-Primary-Key.html"><h1 class="title_post">🍃[Spring] 유일한 식별자(Primary Key)</h1></a>
-                        <a href="/Backend/Spring/2024-09-26-Primary-Key.html" class="txt_post">
-                            🍃[Spring] 유일한 식별자(Primary Key).
-
-Java 백엔드 애플리케이션에서 user의 id 정보는 보통 유일한 식별저(Primary Key) 로 사용되며, 각 유저별로 겹치지 않는 고유한 값입니다.
-
-이는 데이터베이스 설계에서 매우 중요한 개념으로, 사용자와 같은 엔티티(Entity)를 고유하게 식별하기 위해 Primary Key를 사용합니다.
-
-1️⃣ Primary Key란?
-
-
-  Primary Key는 데이터베이스 테이블에서 각 행을 고유하게 식별하는 열(Column)입니다.
-  Primary Key는 테이블 내에서 중복될 수 없으며, null 값을 가질 수 없습니다.
-  즉, 각 레코드는 Primary Key를 통해 식별되므로, user 테이블에서 각 사용자는 유일한 id를 가져야 하며, 이를 통해 사용자를 구분할 수 있습니다.
-
-
-2️⃣ 일반적인 예: User 엔티티
-
-user 엔티티에서 id 필드는 주로 Primary Key로 설정되며, 데이터베이스에서 자동으로 생성되거나 애플리케이션에서 생성할 수도 있습니다.
-
-User 엔티티 예시 (JPA를 사용한 경우)
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class User {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Primary Key, 유일한 식별자.
-    
-    private String name;
-    private String email;
-    
-    // Getter, Setter, 기본 생성자
-    public User() {}
-    
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-
-
-
-  @Id
-    
-      id 필드는 Primary Key임을 나타냅니다.
-    
-  
-  @GeneratedValue
-    
-      id 값이 자동으로 생성됨을 의미합니다.
-      GenerationType.IDENTITY는 데이터베이스에서 자동으로 Primary Key 값을 생성하도록 지정하는 방식입니다.
-    
-  
-
-
-3️⃣ Primary Key의 역할.
-
-  1. 고유성 보장
-    
-      Primary Key는 각 레코드를 고유하게 식별하므로, 사용자 정보에서 id는 각 유저별로 유일하게 존재하며 절대 중복되지 않습니다.
-    
-  
-  2. 빠른 조회
-    
-      Primary Key는 인덱스가 자동으로 생성되기 때문에 데이터베이스에서 해당 레코드를 빠르게 조회할 수 있습니다.
-    
-  
-  3. 관계 설정
-    
-      Primary Key는 다른 테이블에서 Foreign Key로 사용되어 테이블 간의 관계를 설정할 수 있습니다.
-      예를 들어, Order 테이블에서 user_id는 User 테이블의 Primary Key를 참조하여 주문과 사용자를 연결할 수 있습니다.
-    
-  
-
-
-4️⃣ ID 생성 방식.
-ID는 여러 방식으로 생성될 수 있으며, 가장 많이 사용하는 두 가지 방식은 다음과 같습니다.
-
-
-  1. 자동 증가(Auto Increment)
-    
-      데이터베이스에서 AUTO_INCREMENT 속성을 설정하여 ID가 자동으로 증가합니다.
-      주로 MySQL, PostgreSQL 같은 데이터베이스에서 사용됩니다.
-    
-  
-  2. UUID(Universally Unique Identifier)
-    
-      UUID는 전 세계적으로 고유한 식별자를 생성하는 방식으로, 중복될 가능성이 거의 없습니다.
-      JPA에서는 UUID를 Primary Key로 사용할 수도 있습니다.
-        
-          예시
-              @Id
-  @GeneratedValue(generator = "UUID")
-  @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-  private String id;
-            
-          
-        
-      
-    
-  
-
-
-5️⃣ 데이터베이스에서 User 테이블 예시
-CREATE TABLE users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    email VARCHAR(255)
-);
-
-
-
-  여기서 id는 Primary Key로, 데이터베이스에서 자동으로 증가하며 각 사용자는 고유한 id 값을 가집니다.
-
-
-6️⃣ 예시: Primary Key를 통한 사용자 조회
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    
-    @Autowired
-    private UserRepository userRepository;
-    
-    @GetMapping("/{id}")
-    public ResponseEntity&lt;User&gt; getUserById(@PathVariable Long id) {
-        User user = userRepository.findById(id)
-            .orElseThrow(() -&gt; new UserNotFoundException("User not found with id " + id));
-        return ResponseEntity.ok(user);
-    }
-}
-
-
-
-  위 코드는 id가 Primary Key인 User 엔티티를 데이터베이스에서 조회하는 예시입니다.
-  id는 고유하기 때문에 이 값을 통해 특정 사용자를 정확하게 조회할 수 있습니다.
-
-
-7️⃣ 요약.
-
-  Java 백엔드 애플리케이션에서 user의 id는 보통 Primary Key로 사용되며, 각 사용자는 고유한 id 값을 가집니다.
-  Primary Key는 데이터베이스에서 각 레코드를 고유하게 식별하는 필드로, 절대 중복되지 않으며 null 값을 가질 수 없습니다.
-  Primary Key를 통해 사용자를 빠르고 정확하게 조회할 수 있으며, 테이블 간의 관계를 설정하는 데 중요한 역할을 합니다.
-  id는 자동 증가 방식이나 UUID 방식으로 생성될 수 있으며, 사용자의 고유성을 보장합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-26</span>
                             
@@ -16924,6 +17129,177 @@ filtered.ifPresent(System.out::println); // "Hello" 출력
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
+                            ☕️[Java] 람다(Lambda).
+
+1️⃣ 람다 표현식(Lambda Expression)
+
+  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
+  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
+  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
+
+
+2️⃣ 람다 표현식의 기본 구조.
+
+  람다 표현식은 다음과 같은 형태로 작성됩니다.
+
+
+(parameters) -&gt; expression
+
+혹은
+
+(paramters) -&gt; { statements; }
+
+
+
+  매개변수 목록(parameters)
+    
+      메서드처럼 전달받을 인자를 정의합니다.
+      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
+    
+  
+  화살표 연산자 -&gt;
+    
+      람다 표현식의 매개변수와 본문(body)을 구분합니다.
+    
+  
+  본문(body)
+    
+      람다가 실행할 코드를 정의합니다.
+      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
+    
+  
+
+
+3️⃣ 예시
+
+
+  1. 기본적인 람다 표현식
+
+
+// 기존 익명 내부 클래스 방식
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello, Lambda!");
+    }
+};
+
+// 람다 표현식 사용
+Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
+
+
+
+  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  
+    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
+  
+  2. 매개변수와 함께 사용하는 람다 표현식
+
+
+// 기존 방식
+Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1.compareTo(o2);
+    }
+}
+
+// 람다 표현식 사용
+Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
+
+
+
+  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
+
+
+4️⃣ 함수형 인터페이스와 람다.
+
+
+  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
+  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
+
+
+예시: 함수형 인터페이스
+@FunctionalInterface
+interface MyFuncationalInterface {
+    void doSomething();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
+        myFunc.doSomething(); // 출력: Doing something!
+    }
+}
+
+
+
+  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
+
+
+5️⃣ 자주 사용되는 함수형 인터페이스
+
+  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
+    
+      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
+          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
+        
+      
+      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
+          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
+        
+      
+      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
+          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
+        
+      
+      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
+          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
+        
+      
+    
+  
+
+
+6️⃣ 장점.
+
+  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
+  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
+  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
+
+
+7️⃣ 요약.
+
+  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
+    
+      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -17094,177 +17470,6 @@ i3 = -1
   myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
   MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
   참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
-                            ☕️[Java] 람다(Lambda).
-
-1️⃣ 람다 표현식(Lambda Expression)
-
-  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
-  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
-  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
-
-
-2️⃣ 람다 표현식의 기본 구조.
-
-  람다 표현식은 다음과 같은 형태로 작성됩니다.
-
-
-(parameters) -&gt; expression
-
-혹은
-
-(paramters) -&gt; { statements; }
-
-
-
-  매개변수 목록(parameters)
-    
-      메서드처럼 전달받을 인자를 정의합니다.
-      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
-    
-  
-  화살표 연산자 -&gt;
-    
-      람다 표현식의 매개변수와 본문(body)을 구분합니다.
-    
-  
-  본문(body)
-    
-      람다가 실행할 코드를 정의합니다.
-      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
-    
-  
-
-
-3️⃣ 예시
-
-
-  1. 기본적인 람다 표현식
-
-
-// 기존 익명 내부 클래스 방식
-Runnable runnable = new Runnable() {
-    @Override
-    public void run() {
-        System.out.println("Hello, Lambda!");
-    }
-};
-
-// 람다 표현식 사용
-Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
-
-
-
-  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  
-    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
-  
-  2. 매개변수와 함께 사용하는 람다 표현식
-
-
-// 기존 방식
-Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
-    }
-}
-
-// 람다 표현식 사용
-Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
-
-
-
-  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
-
-
-4️⃣ 함수형 인터페이스와 람다.
-
-
-  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
-  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
-
-
-예시: 함수형 인터페이스
-@FunctionalInterface
-interface MyFuncationalInterface {
-    void doSomething();
-}
-
-public class Main {
-    public static void main(String[] args) {
-        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
-        myFunc.doSomething(); // 출력: Doing something!
-    }
-}
-
-
-
-  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
-
-
-5️⃣ 자주 사용되는 함수형 인터페이스
-
-  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
-    
-      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
-          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
-        
-      
-      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
-          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
-        
-      
-      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
-          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
-        
-      
-      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
-          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
-        
-      
-    
-  
-
-
-6️⃣ 장점.
-
-  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
-  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
-  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
-
-
-7️⃣ 요약.
-
-  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
-    
-      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
-    
-  
 
 
                         </a>
@@ -84435,6 +84640,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Backend/Spring/2024-10-05-why-use-spring-containers.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-05"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@Component` 어노테이션.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-06-Component-annotation.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-06"
         });
     
 

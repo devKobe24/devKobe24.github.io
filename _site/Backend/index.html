@@ -749,6 +749,7 @@
             
             
             
+            
 
     
     
@@ -1514,6 +1515,189 @@ public class UserRestController {
 
   이 어노테이션들은 각각의 클래스가 어떤 역할을 담당하는지 명확히 구분해 줌으로써, Spring 애플리케이션의 구조화와 관리에 도움을 줍니다.
   Spring 컨테이너는 이 어노테이션이 붙은 클래스들을 자동으로 감지하여 빈으로 등록하고, 필요한 곳에 의존성을 주입해줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html"><h1 class="title_post">🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.</h1></a>
+                        <a href="/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html" class="txt_post">
+                            🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.
+
+
+  Spring에서 빈(Bean) 을 주입받는 방법에는 여러 가지가 있으며, 주로 의존성 주입(Dependency Injection, DI) 이라는 개념을 통해 이루어집니다.
+  Spring IoC 컨테이너는 객체 간의 의존성을 관리하고, 필요한 곳에 자동으로 빈을 주입합니다.
+  빈을 주입받는 방법에는 생성자 주입, 세터 주입, 필드 주입이 있습니다.
+
+
+
+  🙋‍♂️ 의존성(Dependency)
+🙋‍♂️ Spring 컨테이너를 사용하는 이유
+🙋‍♂️ Spring 컨테이너
+🙋‍♂️ Spring 빈(Bean)
+
+
+1️⃣ 생성자 주입(Constructor Injection)
+
+  생성자 주입은 의존성을 주입할 때 생성자를 통해 빈을 주입하는 방식입니다.
+  가장 권장되는 방식 중 하나로, 의존성을 강제하고 불변성을 보장할 수 있습니다.
+  또한, 테스트하기 용이한 방식입니다.
+
+
+예시
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired // Spring 4.3+ 에서는 생략 가능
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public void process() {
+        userRepository.save();
+    }
+}
+
+
+설명.
+
+  UserService는 UserRepository 빈을 생성자를 통해 주입받습니다.
+  @Autowired를 통해 스프링이 UserRepository 빈을 자동으로 주입하게 됩니다.
+  @Autowired는 Spring 4.3 이후 생성자 주입에서는 생략 가능하지만, 명시적으로 적는 경우도 있습니다.
+
+
+2️⃣ 세터 주입(Setter Injection)
+
+  세터 주입은 세터 메서드를 통해 빈을 주입하는 방식입니다.
+  선택적인 의존성을 주입할 때 유용하며, 주입받은 빈을 변경할 수 있는 유연성을 제공합니다.
+
+
+예시
+@Service
+public class UserService {
+    
+    private UserRepository userRepository;
+    
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRespository = userRepository;
+    }
+    
+    public void process() {
+        userRepository.sava();
+    }
+}
+
+
+설명.
+
+  UserSevice는 setUserRepository라는 세터 메서드를 통해 UserRepository 빈을 주입받습니다.
+    
+      @Autowired 어노테이션을 통해 스프링이 적절한 빈을 주입하게 됩니다.
+    
+  
+
+
+3️⃣ 필드 주입(Field Injection)
+
+  필드 주입은 직접 필드에 @Autowired 어노테이션을 붙여서 빈을 주입하는 방식입니다.
+  가장 간단한 방식이지만, 테스트하기 어려운 구조를 만들 수 있고, 주입된 필드가 ‘final’로 설정되지 않기 때문에 ‘불변성’이 보장되지 않습니다.
+  일반적으로는 지양하는 방식입니다.
+
+
+예시
+@Servicee
+public class UserService {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    public void process() {
+        userRepository.save();
+    }
+}
+
+
+설명.
+
+  UserService는 UserRepository 빈을 필드에 직접 주입받습니다.
+  필드 주입 방식은 코드가 간결하지만, 테스트나 유지보수 측면에서 불리할 수 있습니다.
+
+
+4️⃣ 각 주입 방식의 비교.
+
+1. 생성자 주입(Constructor Injection)
+
+  장점
+    
+      의존성이 필수적임을 강제할 수 있고, 불변성을 보장하며, 테스트하기 용이합니다.
+      의존성이 주입되지 않으면 컴파일 타임에 오류를 발견할 수 있습니다.
+    
+  
+  단점
+    
+      클래스가 많은 의존성을 가질 경우, 생성 인자가 많아질 수 있습니다.
+    
+  
+
+
+2. 세터 주입(Setter Injection)
+
+  장점
+    
+      선택적인 의존성 주입이 가능하며, 객체 생성 후에 주입할 수 있어 유연성을 제공합니다.
+    
+  
+  단점
+    
+      의존성이 주입되지 않은 상태로 사용될 위험이 존재하며, 객체의 상태가 변경될 수 있습니다.
+    
+  
+
+
+3. 필드 주입(Field Injection)
+
+  장점
+    
+      코드가 간결하고 가장 쉽습니다.
+    
+  
+  단점
+    
+      테스트하기 어렵고, 의존성을 강제하지 않으며, 리플렉션을 사용하기 때문에 불변성이 보장되지 않습니다.
+      또한, 필드에 접근하는 방식이기 때문에 SRP(Single Responsibility Principle)를 위반할 가능성이 높습니다.
+    
+  
+
+
+
+  🙋‍♂️ SOLID 원칙
+
+
+5️⃣ 결론
+
+  생성자 주입(Constructor Injection) : 생성자 주입(Constructor Injection) 은 의존성 강제, 불변성 보장, 테스트 용이성 측면에서 가장 권장되는 방식입니다.
+  세터 주입(Setter Injection) : 선택적 의존성을 주입할 때 유용하지만, 세터 메서드가 공용으로 노출된다는 단점이 있습니다.
+  필드 주입(Field Injection) : 가장 간단한 방식이지만, 테스트가 어렵고 불변성을 보장하지 않기 때문에 지양하는 방식입니다.
 
 
                         </a>
@@ -6992,113 +7176,133 @@ public class UserController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
-                            🍃[Spring] .addAttribute() 메서드.
+                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `View` 객체.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 View 객체.
 
-1️⃣ .addAttribute() 메서드.
+1️⃣ View 객체.
 
-  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
-  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
+  Spring MVC에서 View 객체는 클라이언트에게 응답을 생성하는 데 사용되는 최종 출력을 담당하는 구성 요소입니다.
+  View 객체는 주어진 모델 데이터를 사용하여 HTML, JSON, XML, PDF 등 다양한 형태로 응답을 렌더링 합니다.
+  Spring MVC의 View 객체는 추상화된 인터페이스를 통해 다양한 템플릿 엔진이나 출력 형식을 지원합니다.
 
 
-2️⃣ 주요 기능.
+2️⃣ View 객체의 주요 역할.
 
-  모델에 데이터 추가
+  1. 모델 데이터 렌더링
     
-      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
+      View 객체는 컨트롤러에서 전달된 Model 데이터를 이용해 클라이언트가 볼 수 있는 형식으로 변환합니다.
         
-          이 데이터는 이후 뷰에서 사용될 수 있습니다.
+          예를 들어, HTML 템플릿 엔진을 사용하여 웹 페이지를 생성하거나, JSON으로 데이터를 변환해 API 응답으로 보낼 수 있습니다.
         
       
     
   
-  뷰 랜더링에 데이터 전달
+  2. 응답 생성
     
-      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
+      클라이언트에게 전송될 최종 응답을 생성합니다.
+        
+          이는 브라우저에 표시될 HTML 페이지일 수도 있고, RESTful API의 JSON 응답일 수도 있습니다.
+        
+      
+    
+  
+  3. 컨텐츠 타입 설정
+    
+      View 객체는 생성된 응답 컨텐츠 타입(예: text/html, application/json, application/pdf 등)을 설정하여 클라이언트가 올바르게 해석할 수 있도록 합니다.
     
   
 
 
-3️⃣ 사용 예시.
-@Controller
-public class HomeController {
+3️⃣ View 객체의 종류.
+
+  Spring MVC에서는 여러 가지 유형의 View 객체를 지원합니다.
     
-    @GetMapping("/home")
-    public String home(Model model) {
-        // 모델에 데이터를 추가
-        model.addAttribute("message", "Welcome to the Home Page!");
-        model.addAttribute("date", LocalDate.now());
-        
-        // "home"이라는 뷰 이름을 반환
-        return "home";
+      이들은 다양한 응답 형식을 처리할 수 있도록 설계되었습니다.
+        1. JSP(JavaServer Page)
+      
+    
+  
+  Spring MVC에서 가장 전통적으로 사용되는 뷰 기술입니다.
+  JSP는 HTML과 Java 코드를 혼합하여 동적인 웹 페이지를 생성합니다.
+
+
+2. Thymeleaf
+
+  최근 많이 사용되는 템플릿 엔진으로, HTML 파일을 템플릿으로 사용하여, HTML 태그에 특수한 속성을 추가하여 동적인 콘텐츠를 생성할 수 있습니다.
+
+
+3. FreeMarker
+
+  HTML뿐만 아니라 텍스트 기반의 다양한 문서를 생성할 수 있는 템플릿 엔진입니다.
+
+
+4. Velocity
+
+  Apache 프로젝트에서 제공하는 템플릿 엔진으로, FreeMarker와 유사하게 다양한 텍스트 기반 응담을 생성할 수 있습니다.
+
+
+5. JSON/XML View
+
+  MappingJackson2JsonView 와 같은 JSON 또는 XML 뷰를 사용하여 데이터를 JSON 또는 XML 형식으로 변환하여 RESTful API 응답을 생성할 수 있습니다.
+
+
+6. PDF/Excel View
+
+  AbstractPdfView, AbstractXlsView 와 같은 뷰를 사용하여 PDF나 Excel 파일을 생성하여 응답으로 반환할 수 있습니다.
+
+
+4️⃣ View 객체 사용 예시
+
+  컨트롤러에서 View 객체를 명시적으로 사용할 수도 있고, 뷰 리졸버(View Resolver)가 자동으로 처리할 수도 있습니다.
+
+
+@Controller
+public class GreetingController {
+    
+    @GetMapping("/greeting")
+    public ModelAndView greeting() {
+        ModelAndView mav = new ModelAndView("greeting");
+        mav.addObject("message", "Hello welcome to our website!");
+        return mav;
     }
 }
 
 
 
-  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
-  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
-  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
+  위의 예제에서 ModelAndView 객체를 사용하여 View를 명시적으로 지정했습니다.
+  greeting이라는 뷰 이름은 보통 JSP나 Thymeleaf 템플릿 파일과 매핑되며, 이 템플릿 파일이 렌더링 됩니다.
 
 
-4️⃣ 뷰에서의 사용 예시(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Home Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+5️⃣ 뷰 리졸버(View Resolver)
 
-
-
-  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
-  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
-
-
-5️⃣ .addAttribute()의 다양한 사용 방법.
-
-  1. 키와 값 쌍으로 사용
+  Spring MVC에서 뷰 리졸버(View Resolver)는 컨트롤러가 반환한 뷰 이름을 실제 View 객체로 변환해주는 역할을 합니다.
+  일반적으로 뷰 리졸버는 템플릿 엔진이나 뷰 파일의 경로를 관리하고, 클라이언트에게 응답할 적절한 View 객체를 결정합니다.
     
-      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
-        model.addAttribute("username", "JohnDoe");
+      예를 들어, 다음과 같은 뷰 리졸버 설정이 있을 수 있습니다.
+        @Bean
+public InternalResourceViewResolver viewResolver() {
+  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+  resolver.setPrefix("/WEB-INF/views/");
+  resolver.setSuffix(".jsp");
+  return resolver;
+}
         
       
     
   
-  2. 키 없이 값만 전달
-    
-      키를 생략하고 값만 전달할 수도 있습니다.
-        
-          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
-            User user = new User("John", "Doe");
-model.addAttribute(user);
-// "user"라는 키로 모델에 추가됩니다.
-            
-          
-        
-      
-    
-  
-  3. 체이닝(Chaining)
-    
-      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
-        model.addAttribute("name", "Jane")
-   .addAttribute("age", 30)
-   .addAttribute("city", "New York");
-        
-      
-    
-  
-  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
+  위 설정에서는 컨트롤러가 greeting이라는 뷰 이름을 반환하면, InternalResourceViewResolver는 /WEB-INF/views/greeting.jsp 라는 JSP 파일을 찾아서 렌더링합니다.
+
+
+6️⃣ 요약.
+
+  View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
+  이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
+  Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
 
 
                         </a>
@@ -7341,133 +7545,113 @@ public class GreetingController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `View` 객체.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 View 객체.
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
+                            🍃[Spring] .addAttribute() 메서드.
 
-1️⃣ View 객체.
+1️⃣ .addAttribute() 메서드.
 
-  Spring MVC에서 View 객체는 클라이언트에게 응답을 생성하는 데 사용되는 최종 출력을 담당하는 구성 요소입니다.
-  View 객체는 주어진 모델 데이터를 사용하여 HTML, JSON, XML, PDF 등 다양한 형태로 응답을 렌더링 합니다.
-  Spring MVC의 View 객체는 추상화된 인터페이스를 통해 다양한 템플릿 엔진이나 출력 형식을 지원합니다.
+  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
+  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
 
 
-2️⃣ View 객체의 주요 역할.
+2️⃣ 주요 기능.
 
-  1. 모델 데이터 렌더링
+  모델에 데이터 추가
     
-      View 객체는 컨트롤러에서 전달된 Model 데이터를 이용해 클라이언트가 볼 수 있는 형식으로 변환합니다.
+      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
         
-          예를 들어, HTML 템플릿 엔진을 사용하여 웹 페이지를 생성하거나, JSON으로 데이터를 변환해 API 응답으로 보낼 수 있습니다.
-        
-      
-    
-  
-  2. 응답 생성
-    
-      클라이언트에게 전송될 최종 응답을 생성합니다.
-        
-          이는 브라우저에 표시될 HTML 페이지일 수도 있고, RESTful API의 JSON 응답일 수도 있습니다.
+          이 데이터는 이후 뷰에서 사용될 수 있습니다.
         
       
     
   
-  3. 컨텐츠 타입 설정
+  뷰 랜더링에 데이터 전달
     
-      View 객체는 생성된 응답 컨텐츠 타입(예: text/html, application/json, application/pdf 등)을 설정하여 클라이언트가 올바르게 해석할 수 있도록 합니다.
-    
-  
-
-
-3️⃣ View 객체의 종류.
-
-  Spring MVC에서는 여러 가지 유형의 View 객체를 지원합니다.
-    
-      이들은 다양한 응답 형식을 처리할 수 있도록 설계되었습니다.
-        1. JSP(JavaServer Page)
-      
+      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
     
   
-  Spring MVC에서 가장 전통적으로 사용되는 뷰 기술입니다.
-  JSP는 HTML과 Java 코드를 혼합하여 동적인 웹 페이지를 생성합니다.
 
 
-2. Thymeleaf
-
-  최근 많이 사용되는 템플릿 엔진으로, HTML 파일을 템플릿으로 사용하여, HTML 태그에 특수한 속성을 추가하여 동적인 콘텐츠를 생성할 수 있습니다.
-
-
-3. FreeMarker
-
-  HTML뿐만 아니라 텍스트 기반의 다양한 문서를 생성할 수 있는 템플릿 엔진입니다.
-
-
-4. Velocity
-
-  Apache 프로젝트에서 제공하는 템플릿 엔진으로, FreeMarker와 유사하게 다양한 텍스트 기반 응담을 생성할 수 있습니다.
-
-
-5. JSON/XML View
-
-  MappingJackson2JsonView 와 같은 JSON 또는 XML 뷰를 사용하여 데이터를 JSON 또는 XML 형식으로 변환하여 RESTful API 응답을 생성할 수 있습니다.
-
-
-6. PDF/Excel View
-
-  AbstractPdfView, AbstractXlsView 와 같은 뷰를 사용하여 PDF나 Excel 파일을 생성하여 응답으로 반환할 수 있습니다.
-
-
-4️⃣ View 객체 사용 예시
-
-  컨트롤러에서 View 객체를 명시적으로 사용할 수도 있고, 뷰 리졸버(View Resolver)가 자동으로 처리할 수도 있습니다.
-
-
+3️⃣ 사용 예시.
 @Controller
-public class GreetingController {
+public class HomeController {
     
-    @GetMapping("/greeting")
-    public ModelAndView greeting() {
-        ModelAndView mav = new ModelAndView("greeting");
-        mav.addObject("message", "Hello welcome to our website!");
-        return mav;
+    @GetMapping("/home")
+    public String home(Model model) {
+        // 모델에 데이터를 추가
+        model.addAttribute("message", "Welcome to the Home Page!");
+        model.addAttribute("date", LocalDate.now());
+        
+        // "home"이라는 뷰 이름을 반환
+        return "home";
     }
 }
 
 
 
-  위의 예제에서 ModelAndView 객체를 사용하여 View를 명시적으로 지정했습니다.
-  greeting이라는 뷰 이름은 보통 JSP나 Thymeleaf 템플릿 파일과 매핑되며, 이 템플릿 파일이 렌더링 됩니다.
+  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
+  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
+  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
 
 
-5️⃣ 뷰 리졸버(View Resolver)
+4️⃣ 뷰에서의 사용 예시(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Home Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-  Spring MVC에서 뷰 리졸버(View Resolver)는 컨트롤러가 반환한 뷰 이름을 실제 View 객체로 변환해주는 역할을 합니다.
-  일반적으로 뷰 리졸버는 템플릿 엔진이나 뷰 파일의 경로를 관리하고, 클라이언트에게 응답할 적절한 View 객체를 결정합니다.
+
+
+  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
+  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
+
+
+5️⃣ .addAttribute()의 다양한 사용 방법.
+
+  1. 키와 값 쌍으로 사용
     
-      예를 들어, 다음과 같은 뷰 리졸버 설정이 있을 수 있습니다.
-        @Bean
-public InternalResourceViewResolver viewResolver() {
-  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-  resolver.setPrefix("/WEB-INF/views/");
-  resolver.setSuffix(".jsp");
-  return resolver;
-}
+      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
+        model.addAttribute("username", "JohnDoe");
         
       
     
   
-  위 설정에서는 컨트롤러가 greeting이라는 뷰 이름을 반환하면, InternalResourceViewResolver는 /WEB-INF/views/greeting.jsp 라는 JSP 파일을 찾아서 렌더링합니다.
-
-
-6️⃣ 요약.
-
-  View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
-  이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
-  Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
+  2. 키 없이 값만 전달
+    
+      키를 생략하고 값만 전달할 수도 있습니다.
+        
+          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
+            User user = new User("John", "Doe");
+model.addAttribute(user);
+// "user"라는 키로 모델에 추가됩니다.
+            
+          
+        
+      
+    
+  
+  3. 체이닝(Chaining)
+    
+      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
+        model.addAttribute("name", "Jane")
+   .addAttribute("age", 30)
+   .addAttribute("city", "New York");
+        
+      
+    
+  
+  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
 
 
                         </a>
@@ -9512,6 +9696,67 @@ source ~/.bash_profile
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html"><h1 class="title_post">☁️[AWS] VPC 및 서브넷 생성.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="txt_post">
+                            ☁️[AWS] VPC 및 서브넷 생성.
+
+  VPC는 EC2 및 기타 AWS 서비스와 마찬가지로 AWS Management Console(GUI) 또는 API를 사용해 생성할 수 있습니다.
+    
+      관리 콘솔에서 생성하는 경우 화면에서 다음 항목을 설정해야 합니다.
+        
+          VPC 이름(Name 태그)
+          CIDR 블록
+          IPv6 설정
+          테넌시(전용 하드웨어 사용 여부)
+        
+      
+    
+  
+  EC2보다 적은 설정 항목으로 즉시 가상 네트워크를 만들 수 있습니다.
+    
+      IPv6 설정은 기본적으로 비활성화돼 있으며 필요에 따라 설정할 수 있습니다.
+      테넌시는 라이선스 및 보안 요구 사항으로 하드웨어를 독점하려는 경우에만 독점 옵션을 지정합니다.
+
+    
+  
+  VPC만으로는 EC2와 같은 자원을 네트워크에 만들 수 없습니다.
+    
+      VPC 안에 더 작은 네트워크 단위인 서브넷을 만들어야 합니다.
+    
+  
+  서브넷은 하나의 AZ(Availablity Zone, 가용 영역)에 걸쳐 있을 수 없습니다.
+    
+      즉, 여러 AZ에 자원을 배치해 가용성을 높이려면 서브넷도 여러 개 만들어야 합니다.
+    
+  
+  서브넷에는 생성할 VPC의 CIDR 블록 범위 내에서 CIDR 블록을 지정해야 합니다.
+    
+      예를 들어 VPC의 CIDR 블록이 10.0.0.0/16인 경우 10.0.0.0/24와 같이 CIDR 블록을 지정합니다.
+
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/AWS/240819_AWS_VPC_ACCESS_CONTROL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -10182,67 +10427,6 @@ nvm use 16
 ✏️ 요약
 
   'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html"><h1 class="title_post">☁️[AWS] VPC 및 서브넷 생성.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="txt_post">
-                            ☁️[AWS] VPC 및 서브넷 생성.
-
-  VPC는 EC2 및 기타 AWS 서비스와 마찬가지로 AWS Management Console(GUI) 또는 API를 사용해 생성할 수 있습니다.
-    
-      관리 콘솔에서 생성하는 경우 화면에서 다음 항목을 설정해야 합니다.
-        
-          VPC 이름(Name 태그)
-          CIDR 블록
-          IPv6 설정
-          테넌시(전용 하드웨어 사용 여부)
-        
-      
-    
-  
-  EC2보다 적은 설정 항목으로 즉시 가상 네트워크를 만들 수 있습니다.
-    
-      IPv6 설정은 기본적으로 비활성화돼 있으며 필요에 따라 설정할 수 있습니다.
-      테넌시는 라이선스 및 보안 요구 사항으로 하드웨어를 독점하려는 경우에만 독점 옵션을 지정합니다.
-
-    
-  
-  VPC만으로는 EC2와 같은 자원을 네트워크에 만들 수 없습니다.
-    
-      VPC 안에 더 작은 네트워크 단위인 서브넷을 만들어야 합니다.
-    
-  
-  서브넷은 하나의 AZ(Availablity Zone, 가용 영역)에 걸쳐 있을 수 없습니다.
-    
-      즉, 여러 AZ에 자원을 배치해 가용성을 높이려면 서브넷도 여러 개 만들어야 합니다.
-    
-  
-  서브넷에는 생성할 VPC의 CIDR 블록 범위 내에서 CIDR 블록을 지정해야 합니다.
-    
-      예를 들어 VPC의 CIDR 블록이 10.0.0.0/16인 경우 10.0.0.0/24와 같이 CIDR 블록을 지정합니다.
-
-    
-  
 
 
                         </a>
@@ -20744,6 +20928,17 @@ public class Main {
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-10-06-how-to-register-bean.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-06"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });

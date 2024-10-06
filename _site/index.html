@@ -749,6 +749,7 @@
             
             
             
+            
 
     
     
@@ -1510,6 +1511,189 @@ public class UserRestController {
 
   이 어노테이션들은 각각의 클래스가 어떤 역할을 담당하는지 명확히 구분해 줌으로써, Spring 애플리케이션의 구조화와 관리에 도움을 줍니다.
   Spring 컨테이너는 이 어노테이션이 붙은 클래스들을 자동으로 감지하여 빈으로 등록하고, 필요한 곳에 의존성을 주입해줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-10-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html"><h1 class="title_post">🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.</h1></a>
+                        <a href="/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html" class="txt_post">
+                            🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.
+
+
+  Spring에서 빈(Bean) 을 주입받는 방법에는 여러 가지가 있으며, 주로 의존성 주입(Dependency Injection, DI) 이라는 개념을 통해 이루어집니다.
+  Spring IoC 컨테이너는 객체 간의 의존성을 관리하고, 필요한 곳에 자동으로 빈을 주입합니다.
+  빈을 주입받는 방법에는 생성자 주입, 세터 주입, 필드 주입이 있습니다.
+
+
+
+  🙋‍♂️ 의존성(Dependency)
+🙋‍♂️ Spring 컨테이너를 사용하는 이유
+🙋‍♂️ Spring 컨테이너
+🙋‍♂️ Spring 빈(Bean)
+
+
+1️⃣ 생성자 주입(Constructor Injection)
+
+  생성자 주입은 의존성을 주입할 때 생성자를 통해 빈을 주입하는 방식입니다.
+  가장 권장되는 방식 중 하나로, 의존성을 강제하고 불변성을 보장할 수 있습니다.
+  또한, 테스트하기 용이한 방식입니다.
+
+
+예시
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired // Spring 4.3+ 에서는 생략 가능
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public void process() {
+        userRepository.save();
+    }
+}
+
+
+설명.
+
+  UserService는 UserRepository 빈을 생성자를 통해 주입받습니다.
+  @Autowired를 통해 스프링이 UserRepository 빈을 자동으로 주입하게 됩니다.
+  @Autowired는 Spring 4.3 이후 생성자 주입에서는 생략 가능하지만, 명시적으로 적는 경우도 있습니다.
+
+
+2️⃣ 세터 주입(Setter Injection)
+
+  세터 주입은 세터 메서드를 통해 빈을 주입하는 방식입니다.
+  선택적인 의존성을 주입할 때 유용하며, 주입받은 빈을 변경할 수 있는 유연성을 제공합니다.
+
+
+예시
+@Service
+public class UserService {
+    
+    private UserRepository userRepository;
+    
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRespository = userRepository;
+    }
+    
+    public void process() {
+        userRepository.sava();
+    }
+}
+
+
+설명.
+
+  UserSevice는 setUserRepository라는 세터 메서드를 통해 UserRepository 빈을 주입받습니다.
+    
+      @Autowired 어노테이션을 통해 스프링이 적절한 빈을 주입하게 됩니다.
+    
+  
+
+
+3️⃣ 필드 주입(Field Injection)
+
+  필드 주입은 직접 필드에 @Autowired 어노테이션을 붙여서 빈을 주입하는 방식입니다.
+  가장 간단한 방식이지만, 테스트하기 어려운 구조를 만들 수 있고, 주입된 필드가 ‘final’로 설정되지 않기 때문에 ‘불변성’이 보장되지 않습니다.
+  일반적으로는 지양하는 방식입니다.
+
+
+예시
+@Servicee
+public class UserService {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    public void process() {
+        userRepository.save();
+    }
+}
+
+
+설명.
+
+  UserService는 UserRepository 빈을 필드에 직접 주입받습니다.
+  필드 주입 방식은 코드가 간결하지만, 테스트나 유지보수 측면에서 불리할 수 있습니다.
+
+
+4️⃣ 각 주입 방식의 비교.
+
+1. 생성자 주입(Constructor Injection)
+
+  장점
+    
+      의존성이 필수적임을 강제할 수 있고, 불변성을 보장하며, 테스트하기 용이합니다.
+      의존성이 주입되지 않으면 컴파일 타임에 오류를 발견할 수 있습니다.
+    
+  
+  단점
+    
+      클래스가 많은 의존성을 가질 경우, 생성 인자가 많아질 수 있습니다.
+    
+  
+
+
+2. 세터 주입(Setter Injection)
+
+  장점
+    
+      선택적인 의존성 주입이 가능하며, 객체 생성 후에 주입할 수 있어 유연성을 제공합니다.
+    
+  
+  단점
+    
+      의존성이 주입되지 않은 상태로 사용될 위험이 존재하며, 객체의 상태가 변경될 수 있습니다.
+    
+  
+
+
+3. 필드 주입(Field Injection)
+
+  장점
+    
+      코드가 간결하고 가장 쉽습니다.
+    
+  
+  단점
+    
+      테스트하기 어렵고, 의존성을 강제하지 않으며, 리플렉션을 사용하기 때문에 불변성이 보장되지 않습니다.
+      또한, 필드에 접근하는 방식이기 때문에 SRP(Single Responsibility Principle)를 위반할 가능성이 높습니다.
+    
+  
+
+
+
+  🙋‍♂️ SOLID 원칙
+
+
+5️⃣ 결론
+
+  생성자 주입(Constructor Injection) : 생성자 주입(Constructor Injection) 은 의존성 강제, 불변성 보장, 테스트 용이성 측면에서 가장 권장되는 방식입니다.
+  세터 주입(Setter Injection) : 선택적 의존성을 주입할 때 유용하지만, 세터 메서드가 공용으로 노출된다는 단점이 있습니다.
+  필드 주입(Field Injection) : 가장 간단한 방식이지만, 테스트가 어렵고 불변성을 보장하지 않기 때문에 지양하는 방식입니다.
 
 
                         </a>
@@ -3453,105 +3637,42 @@ Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-10-02-introduce-java.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/CS/2024/2024-10-02-Procedure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-10-02-introduce-java.html"><h1 class="title_post">☕️[Java] java에 대하여 간단하게 알아보기</h1></a>
-                        <a href="/Java/Java/2024-10-02-introduce-java.html" class="txt_post">
-                            ☕️[Java] java에 대하여 간단하게 알아보기.
+                        <a href="/CS/2024/2024-10-02-Procedure.html"><h1 class="title_post">💾 [CS] 프로시저(Procedure)란?</h1></a>
+                        <a href="/CS/2024/2024-10-02-Procedure.html" class="txt_post">
+                            💾 [CS] 프로시저(Procedure)란?
+프로시저(Procedure)란 일련의 명령어를 그룹화한 것으로, 특정 작업을 수행하기 위해 재사용 가능한 코드 블록을 의미합니다.
+주로 데이터베이스 시스템이나 프로그래밍 언어에서 사용됩니다.
 
-1️⃣ 각 코드 행의 의미.
+1️⃣ 데이터베이스에서의 프로시저
 
-int size = 27;
-String name = "Fido";
-Dog myDog = new Dog(name, size);
-int x = size - 5;
-if (x &lt; 15) myDog.bark(8);
-
-while (x &gt; 3) {
-    myDog.play();
-}
-
-int[] numList = {2, 4, 6, 8};
-System.out.println("Hello");
-System.out.pring("Dog: " + name);
-String num = "8";
-int z = Integer.parseInt(num);
-
-try {
-    readTheFile("myFile.txt");
-}
-catch (FileNoFoundException ex) {
-    System.out.print("File not found.")
-}
+  프로시저는 SQL 등의 데이터베이스에서 사용되는 일종의 함수로, 복잡한 쿼리나 연산을 미리 정의한 후, 필요한 시점에 호출하여 실행할 수 있습니다.
+  이를 통해 반복적인 작업을 자동화하고 성능을 최적화할 수 있습니다.
+  예를 들어, 특정 데이터셋을 조회하거나 갱신하는 작업을 프로시저로 정의해놓고 필요할 때마다 호출하여 실행할 수 있습니다.
+    
+      저장 프로시저(Stored Procedure)
+        
+          미리 데이터베이스에 저장된 프로시저로, 여러 쿼리들을 묶어서 하나의 단위로 실행되게 합니다.
+        
+      
+    
+  
 
 
+2️⃣ 프로그래밍에서의 프로시저
 
-  ‘size’라는 정수 변수를 선언하고 27이라는 값을 대입합니다.
-  ‘name’라는 문자열 변수를 선언하고 Fido라는 값을 대입합니다.
-  ‘myDog’라는 Dog 변수를 선언하고 ‘name’과 ‘size’를 사용해 새 Dog 객체를 만듭니다.
-  27(‘size’의 값)에서 5를 뺀 값을 ‘x’라는 변수에 대입합니다.
-  만약 x(값이 22)가 15보다 작으면 개가 여덟 번 짖도록 합니다.
-  x가 3보다 크면 반복문을 사용합니다.
-  개가 놀도록 지시합니다(play() 메서드를 실행시킴)
-  반복문이 끝나는 부분입니다. {} 안에 있는 것들이 조건에 따라 반복됩니다.
-  ‘numList’라는 정수 배열을 선언하고 2,4,6,8을 집어넣습니다.
-  “Hello”를 출력합니다. (아마 명령행으로 출력될것입니다.)
-  명령행에 “Dog: Fido”를 출력합니다.
-  ‘num’라는 문자열 변수를 선언하고 “8”이라는 값을 대입합니다.
-  “8”이라는 문자열을 8이라는 숫자값으로 변환합니다.
-  무언가를 시도해 봅니다. 잘 안 될 수도 있습니다.
-  “myFile.txe”를 읽습니다
-  “시도하는 부분”이 끝이므로 여러 가지를 함께 시도할 수도 있습니다.
-  시도했던 것이 실패하면 실행됩니다.
-  실패했을 경우에 명령행에 “File not found”라고 출력합니다.
-  중괄호({}) 안의 모든것은 ‘try’ 부분이 실패한 경우에 수행할 작업입니다.
+  프로시저는 특정 작업을 수행하는 함수와 유사한 개념으로, 코드 내에서 반복적으로 사용되는 작업을 모듈화하여 작성하는 방법입니다.
+  일반적으로 입력 값을 받아서, 그에 맞는 작업을 수행하고, 필요에 따라 출력 값을 반환할 수도 있습니다.
 
 
-2️⃣ 자바 코드의 구조
-
-
-
-  소스 파일 안에는 “클래스”가 들어갑니다.
-  클래스 안에는 “메서드”가 들어갑니다.
-  메서드 안에는 “명령문”이 들어갑니다.
-
-
-소스 파일 안에는 무엇이 들어갈까요?
-
-
-
-  소스 코드 파일(.java라는 확장자가 붙은 파일)은 일반적으로 클래스(class) 를 한 개씩 정의합니다.
-  클래스는 보통 프로그램의 한 부분을 나타내지만, 아주 작은 애플리케이션 중에는 단 한 개의 클래스만으로 이뤄진 것도 있습니다.
-  클래스는 한 쌍의 중괄호({})로 둘러싸인 형태여야 합니다.
-
-
-클래스 안에는 무엇이 들어갈까요?
-
-
-
-  하나의 클래스 안에는 하나 이상의 메서드(method) 가 들어갑니다.
-  예를 들어서,(개를 나타내는) Dog 클래스에는 (짖는 것을 의미하는) bark 라는 메서드가 들어갈 수 있으며, 이 메서드에는 개가 짖는 방법을 지시하는 내용이 들어갑니다.
-  메서드는 반드시 클래스 안에서 선언되어야 합니다.
-  즉, 클래스의 중괄호 안에 위치해야 합니다.
-
-
-메서드 안에는 무엇이 들어갈까요?
-
-
-
-  메서드를 감싸는 중괄호 안에는 메서드에서 처리할 일을 지시하는 내용이 들어갑니다.
-  메서드 코드는 기본적으로 일련의 명령문을 모아 놓은 것이므로 지금은 메서드를 일종의 함수나 프로시저와 비슷한 것으로 생각하면 됩니다.
-
-
-
-  🙋‍♂️ 프로시저(Procedure)
-
+프로시저는 재사용성과 코드의 가독성을 높여주며, 작업의 효율성을 크게 향상시킵니다.
 
                         </a>
                         <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-02</span>
                             
@@ -3806,42 +3927,105 @@ if (isUserNotExist) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-02-Procedure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-10-02-introduce-java.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/CS/2024/2024-10-02-Procedure.html"><h1 class="title_post">💾 [CS] 프로시저(Procedure)란?</h1></a>
-                        <a href="/CS/2024/2024-10-02-Procedure.html" class="txt_post">
-                            💾 [CS] 프로시저(Procedure)란?
-프로시저(Procedure)란 일련의 명령어를 그룹화한 것으로, 특정 작업을 수행하기 위해 재사용 가능한 코드 블록을 의미합니다.
-주로 데이터베이스 시스템이나 프로그래밍 언어에서 사용됩니다.
+                        <a href="/Java/Java/2024-10-02-introduce-java.html"><h1 class="title_post">☕️[Java] java에 대하여 간단하게 알아보기</h1></a>
+                        <a href="/Java/Java/2024-10-02-introduce-java.html" class="txt_post">
+                            ☕️[Java] java에 대하여 간단하게 알아보기.
 
-1️⃣ 데이터베이스에서의 프로시저
+1️⃣ 각 코드 행의 의미.
 
-  프로시저는 SQL 등의 데이터베이스에서 사용되는 일종의 함수로, 복잡한 쿼리나 연산을 미리 정의한 후, 필요한 시점에 호출하여 실행할 수 있습니다.
-  이를 통해 반복적인 작업을 자동화하고 성능을 최적화할 수 있습니다.
-  예를 들어, 특정 데이터셋을 조회하거나 갱신하는 작업을 프로시저로 정의해놓고 필요할 때마다 호출하여 실행할 수 있습니다.
-    
-      저장 프로시저(Stored Procedure)
-        
-          미리 데이터베이스에 저장된 프로시저로, 여러 쿼리들을 묶어서 하나의 단위로 실행되게 합니다.
-        
-      
-    
-  
+int size = 27;
+String name = "Fido";
+Dog myDog = new Dog(name, size);
+int x = size - 5;
+if (x &lt; 15) myDog.bark(8);
+
+while (x &gt; 3) {
+    myDog.play();
+}
+
+int[] numList = {2, 4, 6, 8};
+System.out.println("Hello");
+System.out.pring("Dog: " + name);
+String num = "8";
+int z = Integer.parseInt(num);
+
+try {
+    readTheFile("myFile.txt");
+}
+catch (FileNoFoundException ex) {
+    System.out.print("File not found.")
+}
 
 
-2️⃣ 프로그래밍에서의 프로시저
 
-  프로시저는 특정 작업을 수행하는 함수와 유사한 개념으로, 코드 내에서 반복적으로 사용되는 작업을 모듈화하여 작성하는 방법입니다.
-  일반적으로 입력 값을 받아서, 그에 맞는 작업을 수행하고, 필요에 따라 출력 값을 반환할 수도 있습니다.
+  ‘size’라는 정수 변수를 선언하고 27이라는 값을 대입합니다.
+  ‘name’라는 문자열 변수를 선언하고 Fido라는 값을 대입합니다.
+  ‘myDog’라는 Dog 변수를 선언하고 ‘name’과 ‘size’를 사용해 새 Dog 객체를 만듭니다.
+  27(‘size’의 값)에서 5를 뺀 값을 ‘x’라는 변수에 대입합니다.
+  만약 x(값이 22)가 15보다 작으면 개가 여덟 번 짖도록 합니다.
+  x가 3보다 크면 반복문을 사용합니다.
+  개가 놀도록 지시합니다(play() 메서드를 실행시킴)
+  반복문이 끝나는 부분입니다. {} 안에 있는 것들이 조건에 따라 반복됩니다.
+  ‘numList’라는 정수 배열을 선언하고 2,4,6,8을 집어넣습니다.
+  “Hello”를 출력합니다. (아마 명령행으로 출력될것입니다.)
+  명령행에 “Dog: Fido”를 출력합니다.
+  ‘num’라는 문자열 변수를 선언하고 “8”이라는 값을 대입합니다.
+  “8”이라는 문자열을 8이라는 숫자값으로 변환합니다.
+  무언가를 시도해 봅니다. 잘 안 될 수도 있습니다.
+  “myFile.txe”를 읽습니다
+  “시도하는 부분”이 끝이므로 여러 가지를 함께 시도할 수도 있습니다.
+  시도했던 것이 실패하면 실행됩니다.
+  실패했을 경우에 명령행에 “File not found”라고 출력합니다.
+  중괄호({}) 안의 모든것은 ‘try’ 부분이 실패한 경우에 수행할 작업입니다.
 
 
-프로시저는 재사용성과 코드의 가독성을 높여주며, 작업의 효율성을 크게 향상시킵니다.
+2️⃣ 자바 코드의 구조
+
+
+
+  소스 파일 안에는 “클래스”가 들어갑니다.
+  클래스 안에는 “메서드”가 들어갑니다.
+  메서드 안에는 “명령문”이 들어갑니다.
+
+
+소스 파일 안에는 무엇이 들어갈까요?
+
+
+
+  소스 코드 파일(.java라는 확장자가 붙은 파일)은 일반적으로 클래스(class) 를 한 개씩 정의합니다.
+  클래스는 보통 프로그램의 한 부분을 나타내지만, 아주 작은 애플리케이션 중에는 단 한 개의 클래스만으로 이뤄진 것도 있습니다.
+  클래스는 한 쌍의 중괄호({})로 둘러싸인 형태여야 합니다.
+
+
+클래스 안에는 무엇이 들어갈까요?
+
+
+
+  하나의 클래스 안에는 하나 이상의 메서드(method) 가 들어갑니다.
+  예를 들어서,(개를 나타내는) Dog 클래스에는 (짖는 것을 의미하는) bark 라는 메서드가 들어갈 수 있으며, 이 메서드에는 개가 짖는 방법을 지시하는 내용이 들어갑니다.
+  메서드는 반드시 클래스 안에서 선언되어야 합니다.
+  즉, 클래스의 중괄호 안에 위치해야 합니다.
+
+
+메서드 안에는 무엇이 들어갈까요?
+
+
+
+  메서드를 감싸는 중괄호 안에는 메서드에서 처리할 일을 지시하는 내용이 들어갑니다.
+  메서드 코드는 기본적으로 일련의 명령문을 모아 놓은 것이므로 지금은 메서드를 일종의 함수나 프로시저와 비슷한 것으로 생각하면 됩니다.
+
+
+
+  🙋‍♂️ 프로시저(Procedure)
+
 
                         </a>
                         <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-10-02</span>
                             
@@ -6857,6 +7041,207 @@ SSD의 단점
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html"><h1 class="title_post">🍃[Spring] 서버를 실행시켜 API를 동작시키기까지 일어나는 일</h1></a>
+                        <a href="/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html" class="txt_post">
+                            🍃[Spring] 서버를 실행시켜 API를 동작시키기까지 일어나는 일
+
+Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지는 여러 단계의 과정이 순차적으로 진행됩니다.
+이 과정은 주로 Spring Boot와 같은 프레임워크를 사용한 애플리케이션을 기준으로 설명됩니다.
+전체 흐름은 서버 시작에서 API 요청 처리까지의 과정으로 나눌 수 있습니다.
+
+
+  🙋‍♂️ 프레임워크와 라이브러리의 차이점
+
+
+1️⃣ 서버 시작.
+
+  Java 애플리케이션에서 서버를 시작하려면 먼저 서버 애플리케이션이 실행되어야 합니다.
+  Spring Boot에서는 SpringApplication.run() 메서드를 호출하여 서버 애플리케이션을 시작합니다.
+
+
+Spring Boot 애플리케이션 시작 예시
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+
+
+
+  @SpringBootApplication 애너테이션이 붙은 클래스는 Spring Boot 애플리케이션의 진입점(Entry Point) 역할을 하며, SpringApplication.run() 메서드가 실행되면 내부적으로 톰켓(Tomcat) 과 같은 임베디드 웹 서버가 시작됩니다.
+
+
+2️⃣ 임베디드 웹 서버 실행.
+
+  임베디드 톰켓 서버는 Spring Boot에 포함된 기본 웹 서버로, 개발자가 별도로 서버를 설정하지 않아도 됩니다.
+  서버가 실행되면 지정된 포트(기본적으로 8080)에서 클라이언트 HTTP 요청을 수신할 준비를 합니다.
+    
+      이 과정에서 다음과 같은 일이 일어납니다.
+        
+          서버가 포트를 열고, 클라이언트로부터 들어오는 HTTP 요청을 수신할 수 있게 준비합니다.
+          Spring Boot 애플리케이션 내에 정의된 컨트롤러와 매핑된 URL을 등록하여 어떤 요청이 들어올 때 어떤 메서드가 처리해야 하는지 설정합니다.
+        
+      
+    
+  
+
+
+3️⃣ 의존성 주입 및 컴포넌트 스캔.
+
+  Spring Boot는 애플리케이션을 시작하면서 의존성 주입(Dependency Injection) 과 컴포넌트 스캔(Component Scan) 을 통해 애플리케이션 내에서 정의된 Bean(객체) 들을 찾아 애플리케이션 컨텍스트(Application Context) 에 등록합니다.
+    
+      의존성 주입
+        
+          객체 간의 의존성을 자동으로 주입하여 애플리케이션 내에서 사용하는 객체 간의 상호작용을 설정합니다.
+          예를 들어, 서비스(Service)가 컨트롤러(Controller)에 자동으로 주입됩니다.
+        
+      
+      컴포넌트 스캔
+        
+          @Controller, @Service, @Repository 같은 애너테이션을 통해 정의된 Bean을 찾아서 애플리케이션 컨텍스트에 등록합니다.
+        
+      
+    
+  
+
+
+4️⃣ URL 매핑 및 라우팅 설정.
+
+  Spring Boot는 @RestController와 같은 애너테이션을 사용하여 API 앤드포인트와 HTTP 메서드(GET, POST, PUT, DELETE) 를 매핑합니다.
+  서버가 시작되면, URL 요청이 들어올 때 어떤 메서드가 호출될지 라우팅 정보가 설정됩니다.
+
+
+예시: 컨트롤러 설정.
+@RestController
+@RequestMapping("/api")
+public class UserController {
+    
+    @GetMapping("/users")
+    public List&lt;User&gt; getAllUsers() {
+        // 비즈니스 로직을 호출하여 사용자 목록을 반환
+        return userService.getAllUsers();
+    }
+}
+
+
+
+  /api/users로 들어오는 GET 요청은 getAllUsers() 메서드로 라우팅됩니다.
+  Spring은 DispatcherServlet이라는 중앙 제어 역할을 하는 서블릿을 통해 클라이언트로부터 들어오는 HTTP 요청을 적절한 컨트롤러로 전달하고 처리합니다.
+
+
+5️⃣ 클라이언트 요청 처리.
+
+  서버가 실행된 후, 클라이언트(예: 웹 브라우저, Postman) 가 HTTP 요청을 보냅니다.
+  클라이언트가 API 엔드포인트(예: /api/users)로 GET 요청을 보냈을 때, 다음과 같은 일이 발생합니다.
+    
+      1. HTTP 요청 수신
+        
+          톰켓 서버는 지정된 포트(예: 8080)에서 HTTP 요청을 수신합니다.
+        
+      
+      2. DispatcherServlet으로 전달
+        
+          요청은 Spring의 DispatcherServlet으로 전달됩니다.
+          DispatcherServlet은 중앙 제어 역할을 하며, 요청을 적절한 컨트롤러로 라우팅하는 역할을 합니다.
+        
+      
+      3. 컨트롤러 메서드 실행
+        
+          요청된 URL과 HTTP 메서드(GET, POST 등)에 맞는 컨트롤러 메서드가 호출됩니다.
+          예를 들어, /api/users로 들어온 GET 요청은 getAllUsers() 메서드를 호출합니다.
+        
+      
+      4. 비즈니스 로직 실행
+        
+          컨트롤러는 비즈니스 로직을 처리하기 위해 서비스 계층을 호출합니다.
+          서비스 계층에서 데이터베이스 접근을 필요로 하는 경우, 서비스는 Repository를 호출하여 데이터를 가져옵니다.
+        
+      
+      5. 응답 생성
+        
+          컨트롤러는 처리된 결과를 JSON 형식으로 변환하여 클라이언트에 응답을 반환합니다.
+          Spring Boot는 자동으로 Java 객체를 JSON으로 직렬화(Serialization)하여 클라이언트에 반환합니다.
+        
+      
+    
+  
+
+
+예시: 요청 및 응답.
+
+  클라이언트 요청.
+    GET http://localhost:8080/api/users
+    
+  
+  서버 응답
+    [
+  {
+      "id": 1,
+      "name": "Kobe",
+      "email": "kobe@example.com"
+  },
+  {
+      "id": 2,
+      "name": "MinSeong",
+      "email": "minseong@example.com"
+  }
+]
+    
+  
+
+
+6️⃣ 데이터베이스 연동(Optional_
+
+  요청에 따라 비즈니스 로직에서 데이터베이스에 접근해야 하는 경우, JPA나 Hibernate와 같은 ORM(Object-Relational Mapping) 프레임워크를 통해 데이터베이스에서 데이터를 읽거나 저장할 수 있습니다.
+
+
+데이터베이스 연동 예시(Repository 사용)
+@Repository
+public interface UserRepository extend JpaRepository&lt;User, Long&gt; {
+}
+
+
+
+  서비스 계층에서 UserRepository를 호출하여 데이터베이스에서 데이터를 조회하거나 저장하는 작업을 처리합니다.
+
+
+7️⃣ 응답 전송 및 종료
+
+  컨트롤러에서 반환된 데이터를 DispatcherServlet이 받아서 적절한 HTTP 응답(Response) 으로 변환합니다.
+  응답 데이터는 JSON으로 변환된 후, HTTP 상태 코드와 함께 클라이언트로 전송됩니다.
+    
+      예를 들어, 요청이 성공적으로 200 OK 상태 코드와 함께 JSON 데이터가 전송됩니다.
+    
+  
+
+
+8️⃣ 요약
+
+  Java 백엔드 애플리케이션에서 API가 동작하는 과정은 크게 서버 실행, 의존성 주입 및 컴포넌트 스캔, URL 매핑, 클라이언트 요청 처리, 그리고 응답 전송의 단계로 이루어집니다.
+  클라이언트가 요청을 보내면 서버는 해당 요청을 적절한 컨트롤러 메서드로 라우팅하여 데이터를 처리하고, 그 결과를 응답으로 반환하는 일련의 과정이 수행됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-09-27-what-happens-in-hw-from-java-backend-app-to-running-server-to-operation-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -7069,207 +7454,6 @@ Java 백엔드 애플리케이션에서 서버를 실행시키고 API가 동작�
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html"><h1 class="title_post">🍃[Spring] 서버를 실행시켜 API를 동작시키기까지 일어나는 일</h1></a>
-                        <a href="/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html" class="txt_post">
-                            🍃[Spring] 서버를 실행시켜 API를 동작시키기까지 일어나는 일
-
-Java 백엔드 애플리케이션에서 서버를 실행시켜 API를 동작시키기까지는 여러 단계의 과정이 순차적으로 진행됩니다.
-이 과정은 주로 Spring Boot와 같은 프레임워크를 사용한 애플리케이션을 기준으로 설명됩니다.
-전체 흐름은 서버 시작에서 API 요청 처리까지의 과정으로 나눌 수 있습니다.
-
-
-  🙋‍♂️ 프레임워크와 라이브러리의 차이점
-
-
-1️⃣ 서버 시작.
-
-  Java 애플리케이션에서 서버를 시작하려면 먼저 서버 애플리케이션이 실행되어야 합니다.
-  Spring Boot에서는 SpringApplication.run() 메서드를 호출하여 서버 애플리케이션을 시작합니다.
-
-
-Spring Boot 애플리케이션 시작 예시
-@SpringBootApplication
-public class MyApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MyApplication.class, args);
-    }
-}
-
-
-
-  @SpringBootApplication 애너테이션이 붙은 클래스는 Spring Boot 애플리케이션의 진입점(Entry Point) 역할을 하며, SpringApplication.run() 메서드가 실행되면 내부적으로 톰켓(Tomcat) 과 같은 임베디드 웹 서버가 시작됩니다.
-
-
-2️⃣ 임베디드 웹 서버 실행.
-
-  임베디드 톰켓 서버는 Spring Boot에 포함된 기본 웹 서버로, 개발자가 별도로 서버를 설정하지 않아도 됩니다.
-  서버가 실행되면 지정된 포트(기본적으로 8080)에서 클라이언트 HTTP 요청을 수신할 준비를 합니다.
-    
-      이 과정에서 다음과 같은 일이 일어납니다.
-        
-          서버가 포트를 열고, 클라이언트로부터 들어오는 HTTP 요청을 수신할 수 있게 준비합니다.
-          Spring Boot 애플리케이션 내에 정의된 컨트롤러와 매핑된 URL을 등록하여 어떤 요청이 들어올 때 어떤 메서드가 처리해야 하는지 설정합니다.
-        
-      
-    
-  
-
-
-3️⃣ 의존성 주입 및 컴포넌트 스캔.
-
-  Spring Boot는 애플리케이션을 시작하면서 의존성 주입(Dependency Injection) 과 컴포넌트 스캔(Component Scan) 을 통해 애플리케이션 내에서 정의된 Bean(객체) 들을 찾아 애플리케이션 컨텍스트(Application Context) 에 등록합니다.
-    
-      의존성 주입
-        
-          객체 간의 의존성을 자동으로 주입하여 애플리케이션 내에서 사용하는 객체 간의 상호작용을 설정합니다.
-          예를 들어, 서비스(Service)가 컨트롤러(Controller)에 자동으로 주입됩니다.
-        
-      
-      컴포넌트 스캔
-        
-          @Controller, @Service, @Repository 같은 애너테이션을 통해 정의된 Bean을 찾아서 애플리케이션 컨텍스트에 등록합니다.
-        
-      
-    
-  
-
-
-4️⃣ URL 매핑 및 라우팅 설정.
-
-  Spring Boot는 @RestController와 같은 애너테이션을 사용하여 API 앤드포인트와 HTTP 메서드(GET, POST, PUT, DELETE) 를 매핑합니다.
-  서버가 시작되면, URL 요청이 들어올 때 어떤 메서드가 호출될지 라우팅 정보가 설정됩니다.
-
-
-예시: 컨트롤러 설정.
-@RestController
-@RequestMapping("/api")
-public class UserController {
-    
-    @GetMapping("/users")
-    public List&lt;User&gt; getAllUsers() {
-        // 비즈니스 로직을 호출하여 사용자 목록을 반환
-        return userService.getAllUsers();
-    }
-}
-
-
-
-  /api/users로 들어오는 GET 요청은 getAllUsers() 메서드로 라우팅됩니다.
-  Spring은 DispatcherServlet이라는 중앙 제어 역할을 하는 서블릿을 통해 클라이언트로부터 들어오는 HTTP 요청을 적절한 컨트롤러로 전달하고 처리합니다.
-
-
-5️⃣ 클라이언트 요청 처리.
-
-  서버가 실행된 후, 클라이언트(예: 웹 브라우저, Postman) 가 HTTP 요청을 보냅니다.
-  클라이언트가 API 엔드포인트(예: /api/users)로 GET 요청을 보냈을 때, 다음과 같은 일이 발생합니다.
-    
-      1. HTTP 요청 수신
-        
-          톰켓 서버는 지정된 포트(예: 8080)에서 HTTP 요청을 수신합니다.
-        
-      
-      2. DispatcherServlet으로 전달
-        
-          요청은 Spring의 DispatcherServlet으로 전달됩니다.
-          DispatcherServlet은 중앙 제어 역할을 하며, 요청을 적절한 컨트롤러로 라우팅하는 역할을 합니다.
-        
-      
-      3. 컨트롤러 메서드 실행
-        
-          요청된 URL과 HTTP 메서드(GET, POST 등)에 맞는 컨트롤러 메서드가 호출됩니다.
-          예를 들어, /api/users로 들어온 GET 요청은 getAllUsers() 메서드를 호출합니다.
-        
-      
-      4. 비즈니스 로직 실행
-        
-          컨트롤러는 비즈니스 로직을 처리하기 위해 서비스 계층을 호출합니다.
-          서비스 계층에서 데이터베이스 접근을 필요로 하는 경우, 서비스는 Repository를 호출하여 데이터를 가져옵니다.
-        
-      
-      5. 응답 생성
-        
-          컨트롤러는 처리된 결과를 JSON 형식으로 변환하여 클라이언트에 응답을 반환합니다.
-          Spring Boot는 자동으로 Java 객체를 JSON으로 직렬화(Serialization)하여 클라이언트에 반환합니다.
-        
-      
-    
-  
-
-
-예시: 요청 및 응답.
-
-  클라이언트 요청.
-    GET http://localhost:8080/api/users
-    
-  
-  서버 응답
-    [
-  {
-      "id": 1,
-      "name": "Kobe",
-      "email": "kobe@example.com"
-  },
-  {
-      "id": 2,
-      "name": "MinSeong",
-      "email": "minseong@example.com"
-  }
-]
-    
-  
-
-
-6️⃣ 데이터베이스 연동(Optional_
-
-  요청에 따라 비즈니스 로직에서 데이터베이스에 접근해야 하는 경우, JPA나 Hibernate와 같은 ORM(Object-Relational Mapping) 프레임워크를 통해 데이터베이스에서 데이터를 읽거나 저장할 수 있습니다.
-
-
-데이터베이스 연동 예시(Repository 사용)
-@Repository
-public interface UserRepository extend JpaRepository&lt;User, Long&gt; {
-}
-
-
-
-  서비스 계층에서 UserRepository를 호출하여 데이터베이스에서 데이터를 조회하거나 저장하는 작업을 처리합니다.
-
-
-7️⃣ 응답 전송 및 종료
-
-  컨트롤러에서 반환된 데이터를 DispatcherServlet이 받아서 적절한 HTTP 응답(Response) 으로 변환합니다.
-  응답 데이터는 JSON으로 변환된 후, HTTP 상태 코드와 함께 클라이언트로 전송됩니다.
-    
-      예를 들어, 요청이 성공적으로 200 OK 상태 코드와 함께 JSON 데이터가 전송됩니다.
-    
-  
-
-
-8️⃣ 요약
-
-  Java 백엔드 애플리케이션에서 API가 동작하는 과정은 크게 서버 실행, 의존성 주입 및 컴포넌트 스캔, URL 매핑, 클라이언트 요청 처리, 그리고 응답 전송의 단계로 이루어집니다.
-  클라이언트가 요청을 보내면 서버는 해당 요청을 적절한 컨트롤러 메서드로 라우팅하여 데이터를 처리하고, 그 결과를 응답으로 반환하는 일련의 과정이 수행됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-09-27</span>
                             
@@ -17652,113 +17836,133 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
-                            🍃[Spring] .addAttribute() 메서드.
+                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `View` 객체.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 View 객체.
 
-1️⃣ .addAttribute() 메서드.
+1️⃣ View 객체.
 
-  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
-  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
+  Spring MVC에서 View 객체는 클라이언트에게 응답을 생성하는 데 사용되는 최종 출력을 담당하는 구성 요소입니다.
+  View 객체는 주어진 모델 데이터를 사용하여 HTML, JSON, XML, PDF 등 다양한 형태로 응답을 렌더링 합니다.
+  Spring MVC의 View 객체는 추상화된 인터페이스를 통해 다양한 템플릿 엔진이나 출력 형식을 지원합니다.
 
 
-2️⃣ 주요 기능.
+2️⃣ View 객체의 주요 역할.
 
-  모델에 데이터 추가
+  1. 모델 데이터 렌더링
     
-      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
+      View 객체는 컨트롤러에서 전달된 Model 데이터를 이용해 클라이언트가 볼 수 있는 형식으로 변환합니다.
         
-          이 데이터는 이후 뷰에서 사용될 수 있습니다.
+          예를 들어, HTML 템플릿 엔진을 사용하여 웹 페이지를 생성하거나, JSON으로 데이터를 변환해 API 응답으로 보낼 수 있습니다.
         
       
     
   
-  뷰 랜더링에 데이터 전달
+  2. 응답 생성
     
-      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
+      클라이언트에게 전송될 최종 응답을 생성합니다.
+        
+          이는 브라우저에 표시될 HTML 페이지일 수도 있고, RESTful API의 JSON 응답일 수도 있습니다.
+        
+      
+    
+  
+  3. 컨텐츠 타입 설정
+    
+      View 객체는 생성된 응답 컨텐츠 타입(예: text/html, application/json, application/pdf 등)을 설정하여 클라이언트가 올바르게 해석할 수 있도록 합니다.
     
   
 
 
-3️⃣ 사용 예시.
-@Controller
-public class HomeController {
+3️⃣ View 객체의 종류.
+
+  Spring MVC에서는 여러 가지 유형의 View 객체를 지원합니다.
     
-    @GetMapping("/home")
-    public String home(Model model) {
-        // 모델에 데이터를 추가
-        model.addAttribute("message", "Welcome to the Home Page!");
-        model.addAttribute("date", LocalDate.now());
-        
-        // "home"이라는 뷰 이름을 반환
-        return "home";
+      이들은 다양한 응답 형식을 처리할 수 있도록 설계되었습니다.
+        1. JSP(JavaServer Page)
+      
+    
+  
+  Spring MVC에서 가장 전통적으로 사용되는 뷰 기술입니다.
+  JSP는 HTML과 Java 코드를 혼합하여 동적인 웹 페이지를 생성합니다.
+
+
+2. Thymeleaf
+
+  최근 많이 사용되는 템플릿 엔진으로, HTML 파일을 템플릿으로 사용하여, HTML 태그에 특수한 속성을 추가하여 동적인 콘텐츠를 생성할 수 있습니다.
+
+
+3. FreeMarker
+
+  HTML뿐만 아니라 텍스트 기반의 다양한 문서를 생성할 수 있는 템플릿 엔진입니다.
+
+
+4. Velocity
+
+  Apache 프로젝트에서 제공하는 템플릿 엔진으로, FreeMarker와 유사하게 다양한 텍스트 기반 응담을 생성할 수 있습니다.
+
+
+5. JSON/XML View
+
+  MappingJackson2JsonView 와 같은 JSON 또는 XML 뷰를 사용하여 데이터를 JSON 또는 XML 형식으로 변환하여 RESTful API 응답을 생성할 수 있습니다.
+
+
+6. PDF/Excel View
+
+  AbstractPdfView, AbstractXlsView 와 같은 뷰를 사용하여 PDF나 Excel 파일을 생성하여 응답으로 반환할 수 있습니다.
+
+
+4️⃣ View 객체 사용 예시
+
+  컨트롤러에서 View 객체를 명시적으로 사용할 수도 있고, 뷰 리졸버(View Resolver)가 자동으로 처리할 수도 있습니다.
+
+
+@Controller
+public class GreetingController {
+    
+    @GetMapping("/greeting")
+    public ModelAndView greeting() {
+        ModelAndView mav = new ModelAndView("greeting");
+        mav.addObject("message", "Hello welcome to our website!");
+        return mav;
     }
 }
 
 
 
-  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
-  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
-  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
+  위의 예제에서 ModelAndView 객체를 사용하여 View를 명시적으로 지정했습니다.
+  greeting이라는 뷰 이름은 보통 JSP나 Thymeleaf 템플릿 파일과 매핑되며, 이 템플릿 파일이 렌더링 됩니다.
 
 
-4️⃣ 뷰에서의 사용 예시(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Home Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+5️⃣ 뷰 리졸버(View Resolver)
 
-
-
-  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
-  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
-
-
-5️⃣ .addAttribute()의 다양한 사용 방법.
-
-  1. 키와 값 쌍으로 사용
+  Spring MVC에서 뷰 리졸버(View Resolver)는 컨트롤러가 반환한 뷰 이름을 실제 View 객체로 변환해주는 역할을 합니다.
+  일반적으로 뷰 리졸버는 템플릿 엔진이나 뷰 파일의 경로를 관리하고, 클라이언트에게 응답할 적절한 View 객체를 결정합니다.
     
-      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
-        model.addAttribute("username", "JohnDoe");
+      예를 들어, 다음과 같은 뷰 리졸버 설정이 있을 수 있습니다.
+        @Bean
+public InternalResourceViewResolver viewResolver() {
+  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+  resolver.setPrefix("/WEB-INF/views/");
+  resolver.setSuffix(".jsp");
+  return resolver;
+}
         
       
     
   
-  2. 키 없이 값만 전달
-    
-      키를 생략하고 값만 전달할 수도 있습니다.
-        
-          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
-            User user = new User("John", "Doe");
-model.addAttribute(user);
-// "user"라는 키로 모델에 추가됩니다.
-            
-          
-        
-      
-    
-  
-  3. 체이닝(Chaining)
-    
-      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
-        model.addAttribute("name", "Jane")
-   .addAttribute("age", 30)
-   .addAttribute("city", "New York");
-        
-      
-    
-  
-  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
+  위 설정에서는 컨트롤러가 greeting이라는 뷰 이름을 반환하면, InternalResourceViewResolver는 /WEB-INF/views/greeting.jsp 라는 JSP 파일을 찾아서 렌더링합니다.
+
+
+6️⃣ 요약.
+
+  View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
+  이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
+  Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
 
 
                         </a>
@@ -18001,133 +18205,113 @@ public class GreetingController {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `View` 객체.</h1></a>
-                        <a href="/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 View 객체.
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
+                        <a href="/Backend/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
+                            🍃[Spring] .addAttribute() 메서드.
 
-1️⃣ View 객체.
+1️⃣ .addAttribute() 메서드.
 
-  Spring MVC에서 View 객체는 클라이언트에게 응답을 생성하는 데 사용되는 최종 출력을 담당하는 구성 요소입니다.
-  View 객체는 주어진 모델 데이터를 사용하여 HTML, JSON, XML, PDF 등 다양한 형태로 응답을 렌더링 합니다.
-  Spring MVC의 View 객체는 추상화된 인터페이스를 통해 다양한 템플릿 엔진이나 출력 형식을 지원합니다.
+  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
+  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
 
 
-2️⃣ View 객체의 주요 역할.
+2️⃣ 주요 기능.
 
-  1. 모델 데이터 렌더링
+  모델에 데이터 추가
     
-      View 객체는 컨트롤러에서 전달된 Model 데이터를 이용해 클라이언트가 볼 수 있는 형식으로 변환합니다.
+      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
         
-          예를 들어, HTML 템플릿 엔진을 사용하여 웹 페이지를 생성하거나, JSON으로 데이터를 변환해 API 응답으로 보낼 수 있습니다.
-        
-      
-    
-  
-  2. 응답 생성
-    
-      클라이언트에게 전송될 최종 응답을 생성합니다.
-        
-          이는 브라우저에 표시될 HTML 페이지일 수도 있고, RESTful API의 JSON 응답일 수도 있습니다.
+          이 데이터는 이후 뷰에서 사용될 수 있습니다.
         
       
     
   
-  3. 컨텐츠 타입 설정
+  뷰 랜더링에 데이터 전달
     
-      View 객체는 생성된 응답 컨텐츠 타입(예: text/html, application/json, application/pdf 등)을 설정하여 클라이언트가 올바르게 해석할 수 있도록 합니다.
-    
-  
-
-
-3️⃣ View 객체의 종류.
-
-  Spring MVC에서는 여러 가지 유형의 View 객체를 지원합니다.
-    
-      이들은 다양한 응답 형식을 처리할 수 있도록 설계되었습니다.
-        1. JSP(JavaServer Page)
-      
+      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
     
   
-  Spring MVC에서 가장 전통적으로 사용되는 뷰 기술입니다.
-  JSP는 HTML과 Java 코드를 혼합하여 동적인 웹 페이지를 생성합니다.
 
 
-2. Thymeleaf
-
-  최근 많이 사용되는 템플릿 엔진으로, HTML 파일을 템플릿으로 사용하여, HTML 태그에 특수한 속성을 추가하여 동적인 콘텐츠를 생성할 수 있습니다.
-
-
-3. FreeMarker
-
-  HTML뿐만 아니라 텍스트 기반의 다양한 문서를 생성할 수 있는 템플릿 엔진입니다.
-
-
-4. Velocity
-
-  Apache 프로젝트에서 제공하는 템플릿 엔진으로, FreeMarker와 유사하게 다양한 텍스트 기반 응담을 생성할 수 있습니다.
-
-
-5. JSON/XML View
-
-  MappingJackson2JsonView 와 같은 JSON 또는 XML 뷰를 사용하여 데이터를 JSON 또는 XML 형식으로 변환하여 RESTful API 응답을 생성할 수 있습니다.
-
-
-6. PDF/Excel View
-
-  AbstractPdfView, AbstractXlsView 와 같은 뷰를 사용하여 PDF나 Excel 파일을 생성하여 응답으로 반환할 수 있습니다.
-
-
-4️⃣ View 객체 사용 예시
-
-  컨트롤러에서 View 객체를 명시적으로 사용할 수도 있고, 뷰 리졸버(View Resolver)가 자동으로 처리할 수도 있습니다.
-
-
+3️⃣ 사용 예시.
 @Controller
-public class GreetingController {
+public class HomeController {
     
-    @GetMapping("/greeting")
-    public ModelAndView greeting() {
-        ModelAndView mav = new ModelAndView("greeting");
-        mav.addObject("message", "Hello welcome to our website!");
-        return mav;
+    @GetMapping("/home")
+    public String home(Model model) {
+        // 모델에 데이터를 추가
+        model.addAttribute("message", "Welcome to the Home Page!");
+        model.addAttribute("date", LocalDate.now());
+        
+        // "home"이라는 뷰 이름을 반환
+        return "home";
     }
 }
 
 
 
-  위의 예제에서 ModelAndView 객체를 사용하여 View를 명시적으로 지정했습니다.
-  greeting이라는 뷰 이름은 보통 JSP나 Thymeleaf 템플릿 파일과 매핑되며, 이 템플릿 파일이 렌더링 됩니다.
+  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
+  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
+  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
 
 
-5️⃣ 뷰 리졸버(View Resolver)
+4️⃣ 뷰에서의 사용 예시(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Home Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-  Spring MVC에서 뷰 리졸버(View Resolver)는 컨트롤러가 반환한 뷰 이름을 실제 View 객체로 변환해주는 역할을 합니다.
-  일반적으로 뷰 리졸버는 템플릿 엔진이나 뷰 파일의 경로를 관리하고, 클라이언트에게 응답할 적절한 View 객체를 결정합니다.
+
+
+  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
+  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
+
+
+5️⃣ .addAttribute()의 다양한 사용 방법.
+
+  1. 키와 값 쌍으로 사용
     
-      예를 들어, 다음과 같은 뷰 리졸버 설정이 있을 수 있습니다.
-        @Bean
-public InternalResourceViewResolver viewResolver() {
-  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-  resolver.setPrefix("/WEB-INF/views/");
-  resolver.setSuffix(".jsp");
-  return resolver;
-}
+      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
+        model.addAttribute("username", "JohnDoe");
         
       
     
   
-  위 설정에서는 컨트롤러가 greeting이라는 뷰 이름을 반환하면, InternalResourceViewResolver는 /WEB-INF/views/greeting.jsp 라는 JSP 파일을 찾아서 렌더링합니다.
-
-
-6️⃣ 요약.
-
-  View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
-  이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
-  Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
+  2. 키 없이 값만 전달
+    
+      키를 생략하고 값만 전달할 수도 있습니다.
+        
+          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
+            User user = new User("John", "Doe");
+model.addAttribute(user);
+// "user"라는 키로 모델에 추가됩니다.
+            
+          
+        
+      
+    
+  
+  3. 체이닝(Chaining)
+    
+      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
+        model.addAttribute("name", "Jane")
+   .addAttribute("age", 30)
+   .addAttribute("city", "New York");
+        
+      
+    
+  
+  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
 
 
                         </a>
@@ -29338,139 +29522,54 @@ source ~/.bash_profile
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-08-19-Network-Segment.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-08-19-Network-Segment.html"><h1 class="title_post">🌐[Network] 네트워크 세그먼트(Network Segment).</h1></a>
-                        <a href="/Network/2024/2024-08-19-Network-Segment.html" class="txt_post">
-                            🌐 네트워크 세그먼트(Network Segment).
+                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html"><h1 class="title_post">☁️[AWS] VPC 및 서브넷 생성.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="txt_post">
+                            ☁️[AWS] VPC 및 서브넷 생성.
 
-1️⃣ 세그먼트(Segment).
-네트워크 세그먼트(Network Segment)를 알아보기 전에 세그먼트(Segment)가 어떤 뜻을 가지고 있는지 궁금했습니다.
-TTA 정보통신용어사전에서는 다음과 같이 세그먼트를 정의하고 있었습니다.
-
-  
+  VPC는 EC2 및 기타 AWS 서비스와 마찬가지로 AWS Management Console(GUI) 또는 API를 사용해 생성할 수 있습니다.
     
-      서로 구분되는 기억 장치 의 연속된 한 영역.
-    
-  
-  
-    
-      어떤 프로그램이 너무 커서 한 번에 주기억 장치 에 올라올 수 없이 갈아넣기 기법을 사용하여 쪼개었을 때, 나뉜 각 부분을 가리키는 말.
-    
-  
-  
-    
-      세그먼테이션 방식의 가상 기억 장치 에서 사용되는 것으로, 페이징에서 페이지와 비슷하나 길이가 가변이고 기억 장치 의 어느 곳에서도 자리할 수 있는 기억 장소 영역을 가리키는 말.
+      관리 콘솔에서 생성하는 경우 화면에서 다음 항목을 설정해야 합니다.
         
-          한 세그먼트는 프로그램의 논리적인 한 구성 단위를 저장한다.
+          VPC 이름(Name 태그)
+          CIDR 블록
+          IPv6 설정
+          테넌시(전용 하드웨어 사용 여부)
         
       
     
   
-  
+  EC2보다 적은 설정 항목으로 즉시 가상 네트워크를 만들 수 있습니다.
     
-      계층 모형의 데이터베이스 에서 여러 항목이 모여 레코드에 해당하는 단위.
+      IPv6 설정은 기본적으로 비활성화돼 있으며 필요에 따라 설정할 수 있습니다.
+      테넌시는 라이선스 및 보안 요구 사항으로 하드웨어를 독점하려는 경우에만 독점 옵션을 지정합니다.
 
     
   
-
-
-2️⃣ 네트워크 세그먼트(Network Segment).
-
-  네트워크 세그먼트(Network Segment)는 네트워크 내에서 논리적 또는 물리적으로 분리된 하나의 부분 또는 구역을 의미합니다.
-  네트워크를 여러 세그먼트로 나누는 것은 네트워크의 성능을 최적화하고, 보안을 강화하며, 트래픽 관리를 효율적으로 ㅎ기 위한 일반적인 방법입니다.
-
-
-1️⃣ 네트워크 세그먼트의 주요 개념.
-
-  1. 물리적 세그먼트
+  VPC만으로는 EC2와 같은 자원을 네트워크에 만들 수 없습니다.
     
-      물리적 네트워크 세그먼트는 실제 네트워크 장비(스위치, 라우터 등)와 물리적 케이블을 통해 분리된 네트워크 구역입니다.
-        
-          예를 들어, 한 사무실 내에서 여러 층에 있는 네트워크가 각기 다른 물리적 스위치에 연결되어 있다면, 이들 층은 물리적으로 서로 다른 네트워크 세그먼트로 간주될 수 있습니다.
-        
-      
+      VPC 안에 더 작은 네트워크 단위인 서브넷을 만들어야 합니다.
     
   
-  2. 논리적 세그먼트
+  서브넷은 하나의 AZ(Availablity Zone, 가용 영역)에 걸쳐 있을 수 없습니다.
     
-      논리적 네트워크 세그먼트는 물리적 인프라와 무관하게 네트워크를 논리적으로 나누는 것을 의미합니다.
-        
-          이는 주로 VLAN(가상 로컬 영역 네트워크) 이나 서브넷(Subnet) 을 사용하여 이루어집니다.
-            
-              예를 들어, 동일한 물리적 네트워크 내에서 서로 다른 부서의 컴퓨터를 논리적으로 분리하여 독립된 네트워크 세그먼트로 만들 수 있습니다.
-            
-          
-        
-      
+      즉, 여러 AZ에 자원을 배치해 가용성을 높이려면 서브넷도 여러 개 만들어야 합니다.
     
   
-
-
-2️⃣ 네트워크 세그먼트의 주요 목적.
-
-  1. 보안 강화
+  서브넷에는 생성할 VPC의 CIDR 블록 범위 내에서 CIDR 블록을 지정해야 합니다.
     
-      네트워크 세그먼트는 네트워크를 여러 개의 작은 구역으로 나누어, 각 구역의 트래픽을 독립적으로 관리하고 보호할 수 있습니다.
-        
-          이를 통해 민감한 데이터를 처리하는 부서나 서버를 외부와 분리하여 보안을 강화할 수 있습니다.
-        
-      
+      예를 들어 VPC의 CIDR 블록이 10.0.0.0/16인 경우 10.0.0.0/24와 같이 CIDR 블록을 지정합니다.
+
     
   
-  2. 성능 최적화
-    
-      네트워크를 세그먼트로 나누면 네트워크의 트래픽이 특정 구역 내에서만 흐르게 하여, 트래픽 혼잡을 줄이고 전체 네트워크의 성능을 향상시킬 수 있습니다.
-        
-          예를 들어, 대용량 파일 전송이 필요한 부서의 네트워크 세그먼트를 다른 부서와 분리함으로써, 다른 부서의 네트워크 성능에 영향을 주지 않도록 할 수 있습니다.
-        
-      
-    
-  
-  3. 트래픽 관리
-    
-      네트워크 세그먼트를 통해 트래픽을 효과적으로 관리하고, 특정 세그먼트의 트래픽을 제거할 수 있습니다.
-        
-          네트워크 관리자는 각 세그먼트에 대해 별도의 라우팅 규칙, 방화벽 규칙 등을 적용할 수 있습니다.
-        
-      
-    
-  
-  4. 내결함성 향상
-    
-      네트워크가 세그먼트로 분리되어 있으면, 한 세그먼트에서 발생한 문제가 다른 세그먼트로 확산되지 않도록 방지할 수 있습니다.
-        
-          예를 들어, 한 세그먼트에서 발생한 네트워크 장애가 전체 네트워크에 영향을 미치지 않게 할 수 있습니다.
-        
-      
-    
-  
-
-
-3️⃣ 예시: 서브넷을 이용한 네트워크 세그먼트.
-
-  서브넷은 네트워크 세그먼트의 한 유형입니다.
-    
-      예를 들어, ‘10.0.0.0/16’ IP 주소 블록을 가진 VPC에서 ‘10.0.1.0/24’ 와 ‘10.0.2.0/24’ 라는 두 개의 서브넷을 생성할 수 있습니다.
-      이 두 서브넷은 동일한 VPC 내에서 서로 독립된 네트워크 세그먼트를 구성합니다.
-        
-          이로 인해 한 서브넷에서 발생한 네트워크 트래픽은 기본적으로 다른 서브넷에 영향을 미치지 않습니다.
-        
-      
-    
-  
-
-
-✏️ 요약
-
-  요약하자면, 네트워크 세그먼트는 네트워크를 보다 안전하고 효율적으로 운영하기 위해 분리된 네트워크 구역을 의미하며, 물리적 또는 논리적으로 구성될 수 있습니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
+                                <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-19</span>
                             
@@ -30172,54 +30271,139 @@ nvm use 16
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-08-19-Network-Segment.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html"><h1 class="title_post">☁️[AWS] VPC 및 서브넷 생성.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_VPC_AND_SUBNET.html" class="txt_post">
-                            ☁️[AWS] VPC 및 서브넷 생성.
+                        <a href="/Network/2024/2024-08-19-Network-Segment.html"><h1 class="title_post">🌐[Network] 네트워크 세그먼트(Network Segment).</h1></a>
+                        <a href="/Network/2024/2024-08-19-Network-Segment.html" class="txt_post">
+                            🌐 네트워크 세그먼트(Network Segment).
 
-  VPC는 EC2 및 기타 AWS 서비스와 마찬가지로 AWS Management Console(GUI) 또는 API를 사용해 생성할 수 있습니다.
+1️⃣ 세그먼트(Segment).
+네트워크 세그먼트(Network Segment)를 알아보기 전에 세그먼트(Segment)가 어떤 뜻을 가지고 있는지 궁금했습니다.
+TTA 정보통신용어사전에서는 다음과 같이 세그먼트를 정의하고 있었습니다.
+
+  
     
-      관리 콘솔에서 생성하는 경우 화면에서 다음 항목을 설정해야 합니다.
+      서로 구분되는 기억 장치 의 연속된 한 영역.
+    
+  
+  
+    
+      어떤 프로그램이 너무 커서 한 번에 주기억 장치 에 올라올 수 없이 갈아넣기 기법을 사용하여 쪼개었을 때, 나뉜 각 부분을 가리키는 말.
+    
+  
+  
+    
+      세그먼테이션 방식의 가상 기억 장치 에서 사용되는 것으로, 페이징에서 페이지와 비슷하나 길이가 가변이고 기억 장치 의 어느 곳에서도 자리할 수 있는 기억 장소 영역을 가리키는 말.
         
-          VPC 이름(Name 태그)
-          CIDR 블록
-          IPv6 설정
-          테넌시(전용 하드웨어 사용 여부)
+          한 세그먼트는 프로그램의 논리적인 한 구성 단위를 저장한다.
         
       
     
   
-  EC2보다 적은 설정 항목으로 즉시 가상 네트워크를 만들 수 있습니다.
+  
     
-      IPv6 설정은 기본적으로 비활성화돼 있으며 필요에 따라 설정할 수 있습니다.
-      테넌시는 라이선스 및 보안 요구 사항으로 하드웨어를 독점하려는 경우에만 독점 옵션을 지정합니다.
+      계층 모형의 데이터베이스 에서 여러 항목이 모여 레코드에 해당하는 단위.
 
     
   
-  VPC만으로는 EC2와 같은 자원을 네트워크에 만들 수 없습니다.
-    
-      VPC 안에 더 작은 네트워크 단위인 서브넷을 만들어야 합니다.
-    
-  
-  서브넷은 하나의 AZ(Availablity Zone, 가용 영역)에 걸쳐 있을 수 없습니다.
-    
-      즉, 여러 AZ에 자원을 배치해 가용성을 높이려면 서브넷도 여러 개 만들어야 합니다.
-    
-  
-  서브넷에는 생성할 VPC의 CIDR 블록 범위 내에서 CIDR 블록을 지정해야 합니다.
-    
-      예를 들어 VPC의 CIDR 블록이 10.0.0.0/16인 경우 10.0.0.0/24와 같이 CIDR 블록을 지정합니다.
 
+
+2️⃣ 네트워크 세그먼트(Network Segment).
+
+  네트워크 세그먼트(Network Segment)는 네트워크 내에서 논리적 또는 물리적으로 분리된 하나의 부분 또는 구역을 의미합니다.
+  네트워크를 여러 세그먼트로 나누는 것은 네트워크의 성능을 최적화하고, 보안을 강화하며, 트래픽 관리를 효율적으로 ㅎ기 위한 일반적인 방법입니다.
+
+
+1️⃣ 네트워크 세그먼트의 주요 개념.
+
+  1. 물리적 세그먼트
+    
+      물리적 네트워크 세그먼트는 실제 네트워크 장비(스위치, 라우터 등)와 물리적 케이블을 통해 분리된 네트워크 구역입니다.
+        
+          예를 들어, 한 사무실 내에서 여러 층에 있는 네트워크가 각기 다른 물리적 스위치에 연결되어 있다면, 이들 층은 물리적으로 서로 다른 네트워크 세그먼트로 간주될 수 있습니다.
+        
+      
     
   
+  2. 논리적 세그먼트
+    
+      논리적 네트워크 세그먼트는 물리적 인프라와 무관하게 네트워크를 논리적으로 나누는 것을 의미합니다.
+        
+          이는 주로 VLAN(가상 로컬 영역 네트워크) 이나 서브넷(Subnet) 을 사용하여 이루어집니다.
+            
+              예를 들어, 동일한 물리적 네트워크 내에서 서로 다른 부서의 컴퓨터를 논리적으로 분리하여 독립된 네트워크 세그먼트로 만들 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 네트워크 세그먼트의 주요 목적.
+
+  1. 보안 강화
+    
+      네트워크 세그먼트는 네트워크를 여러 개의 작은 구역으로 나누어, 각 구역의 트래픽을 독립적으로 관리하고 보호할 수 있습니다.
+        
+          이를 통해 민감한 데이터를 처리하는 부서나 서버를 외부와 분리하여 보안을 강화할 수 있습니다.
+        
+      
+    
+  
+  2. 성능 최적화
+    
+      네트워크를 세그먼트로 나누면 네트워크의 트래픽이 특정 구역 내에서만 흐르게 하여, 트래픽 혼잡을 줄이고 전체 네트워크의 성능을 향상시킬 수 있습니다.
+        
+          예를 들어, 대용량 파일 전송이 필요한 부서의 네트워크 세그먼트를 다른 부서와 분리함으로써, 다른 부서의 네트워크 성능에 영향을 주지 않도록 할 수 있습니다.
+        
+      
+    
+  
+  3. 트래픽 관리
+    
+      네트워크 세그먼트를 통해 트래픽을 효과적으로 관리하고, 특정 세그먼트의 트래픽을 제거할 수 있습니다.
+        
+          네트워크 관리자는 각 세그먼트에 대해 별도의 라우팅 규칙, 방화벽 규칙 등을 적용할 수 있습니다.
+        
+      
+    
+  
+  4. 내결함성 향상
+    
+      네트워크가 세그먼트로 분리되어 있으면, 한 세그먼트에서 발생한 문제가 다른 세그먼트로 확산되지 않도록 방지할 수 있습니다.
+        
+          예를 들어, 한 세그먼트에서 발생한 네트워크 장애가 전체 네트워크에 영향을 미치지 않게 할 수 있습니다.
+        
+      
+    
+  
+
+
+3️⃣ 예시: 서브넷을 이용한 네트워크 세그먼트.
+
+  서브넷은 네트워크 세그먼트의 한 유형입니다.
+    
+      예를 들어, ‘10.0.0.0/16’ IP 주소 블록을 가진 VPC에서 ‘10.0.1.0/24’ 와 ‘10.0.2.0/24’ 라는 두 개의 서브넷을 생성할 수 있습니다.
+      이 두 서브넷은 동일한 VPC 내에서 서로 독립된 네트워크 세그먼트를 구성합니다.
+        
+          이로 인해 한 서브넷에서 발생한 네트워크 트래픽은 기본적으로 다른 서브넷에 영향을 미치지 않습니다.
+        
+      
+    
+  
+
+
+✏️ 요약
+
+  요약하자면, 네트워크 세그먼트는 네트워크를 보다 안전하고 효율적으로 운영하기 위해 분리된 네트워크 구역을 의미하며, 물리적 또는 논리적으로 구성될 수 있습니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
+                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-08-19</span>
                             
@@ -44788,105 +44972,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-05-11-Input-Output-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-05-11-Input-Output-1.html"><h1 class="title_post">☕️[Java] 입출력(1)</h1></a>
-                        <a href="/Java/Java/2024-05-11-Input-Output-1.html" class="txt_post">
-                            1️⃣ 입출력(1)
-
-콘솔 입출력 방법에 대해 직접 구현
-
-1. 콘솔 입력
-자바에서 콘솔 입력을 받는 방법은 여러 가지가 있습니다.
-
-주로 사용되는 몇 가지 방법들을 소개하겠습니다.
-
-
-  1. Scanner 클래스 사용
-    
-      ‘Scanner’ 클래스는 자바의 ‘java.util’ 패키지에 포함되어 있으며, 다양한 타입의 입력을 콘솔에서 받기 위해 널리 사용됩니다.
-      ‘System.in’ 을 ‘Scanner’ 객체에 연결하여 사용자로부터 입력을 받을 수 있습니다.
-```java
-import java.util.Scanner;
-    
-  
-
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(“Enter your name: “);
-        String name = scanner.nextLine();
-        System.out.println(“Hello, “ + name);
-        scanner.close();
-    }
-}
-
-- **2. BufferedReader** 와 **InputStreamReader 사용**
-    - 이 방법은 **'java.io'** 패키지를 사용합니다.
-    - **'InputStreamReader'** 는 바이트 스트림을 문자 스트림으로 변환하는데 사용되고, **'BufferedReader'** 는 텍스트 읽기를 효율적으로 할 수 있게 해 줍니다.
-        - 이 방법은 예외 처리를 필요로하며, 라인 단위로 입력을 받습니다.
-```java
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class Main {
-    public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println("Enter your name: ");
-            String name = reader.readLine();
-            System.out.println("Hello, " + name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. Console 클래스 사용
-    
-      ‘Console’ 클래스는 자바 6 이상에서 사용할 수 있으며, 콘솔에서 비밀번호와 같은 민감한 데이터를 읽을 때 유용합니다.
-      ‘System.console()’ 메소드를 통해 ‘Console’ 객체를 얻을 수 있으나, 이 방법은 IDE에서는 작동하지 않을 수 있습니다.(콘솔 환경에서만 사용 가능.)
-```java
-import java.io.Console;
-    
-  
-
-
-public class Main {
-    public static void main(String[] args) {
-        Console console = System.console();
-        if (console != null) {
-            String name = console.readLine(“Enter your name: “);
-            char[] password = console.readPassword(“Enter your password: “);
-            console.printf(“Hello, %s\n”, name);
-        } else {
-            System.out.println(“No console available”);
-        }
-    }
-}
-```
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -44991,6 +45076,302 @@ public class Main {
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-05-11-Input-Output-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-05-11-Input-Output-1.html"><h1 class="title_post">☕️[Java] 입출력(1)</h1></a>
+                        <a href="/Java/Java/2024-05-11-Input-Output-1.html" class="txt_post">
+                            1️⃣ 입출력(1)
+
+콘솔 입출력 방법에 대해 직접 구현
+
+1. 콘솔 입력
+자바에서 콘솔 입력을 받는 방법은 여러 가지가 있습니다.
+
+주로 사용되는 몇 가지 방법들을 소개하겠습니다.
+
+
+  1. Scanner 클래스 사용
+    
+      ‘Scanner’ 클래스는 자바의 ‘java.util’ 패키지에 포함되어 있으며, 다양한 타입의 입력을 콘솔에서 받기 위해 널리 사용됩니다.
+      ‘System.in’ 을 ‘Scanner’ 객체에 연결하여 사용자로부터 입력을 받을 수 있습니다.
+```java
+import java.util.Scanner;
+    
+  
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(“Enter your name: “);
+        String name = scanner.nextLine();
+        System.out.println(“Hello, “ + name);
+        scanner.close();
+    }
+}
+
+- **2. BufferedReader** 와 **InputStreamReader 사용**
+    - 이 방법은 **'java.io'** 패키지를 사용합니다.
+    - **'InputStreamReader'** 는 바이트 스트림을 문자 스트림으로 변환하는데 사용되고, **'BufferedReader'** 는 텍스트 읽기를 효율적으로 할 수 있게 해 줍니다.
+        - 이 방법은 예외 처리를 필요로하며, 라인 단위로 입력을 받습니다.
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Enter your name: ");
+            String name = reader.readLine();
+            System.out.println("Hello, " + name);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. Console 클래스 사용
+    
+      ‘Console’ 클래스는 자바 6 이상에서 사용할 수 있으며, 콘솔에서 비밀번호와 같은 민감한 데이터를 읽을 때 유용합니다.
+      ‘System.console()’ 메소드를 통해 ‘Console’ 객체를 얻을 수 있으나, 이 방법은 IDE에서는 작동하지 않을 수 있습니다.(콘솔 환경에서만 사용 가능.)
+```java
+import java.io.Console;
+    
+  
+
+
+public class Main {
+    public static void main(String[] args) {
+        Console console = System.console();
+        if (console != null) {
+            String name = console.readLine(“Enter your name: “);
+            char[] password = console.readPassword(“Enter your password: “);
+            console.printf(“Hello, %s\n”, name);
+        } else {
+            System.out.println(“No console available”);
+        }
+    }
+}
+```
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-05-10-abstractClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-05-10-abstractClass.html"><h1 class="title_post">☕️[Java] 추상클래스</h1></a>
+                        <a href="/Java/Java/2024-05-10-abstractClass.html" class="txt_post">
+                            1️⃣ 추상클래스.
+추상 클래스가 무엇인지 설명할 수 있음
+abstract를 이용하여 추상 클래스 구현
+
+1. 추상 메소드(Abstract Method)
+자바 프로그래밍에서 추상 메소드(abstract method)는 선언만 있고 구현은 없는 메소드입니다.
+이러한 메소드는 추상 클래스(abstract class)나 인터페이스(interface) 내부에서 선언될 수 있으며, 구체적인 행동은 하위 클래스에서 구현됩니다.
+
+추상 메소드를 사용하는 주된 목적은 하위 클래스가 특정 메소드를 반드시 구현하도록 강제하는 것입니다.
+이는 코드의 일관성을 유지하고, 다형성을 통한 유연한 프로그래밍 설계를 가능하게 합니다.
+
+1.2 추상 메소드의 특징.
+
+  선언만 있고 구현이 없음 : 메소드 본체가 없으며, 메소드 선언은 세미콜론(’;’) 으로 끝납니다.
+  하위 클래스에서의 구현 필수 : 추상 메소드를 포함하는 클래스를 상속받는 모든 하위 클래스는 해당 메소드를 구현해야만 인스턴스 생성이 가능합니다.
+  ‘abstract’ 키워드 사용 : 메소드 앞에 ‘abstract’ 키워드를 명시하여 추상 메소드임을 표시합니다.
+
+
+1.3 추상 메소드 예시
+다음은 추상 클래스와 추상 메소드의 간단한 예시입니다.
+abstract class Animal {
+    // 추상 메소드
+    abstract void makeSound();
+    
+    void breathe() {
+        System.out.println("Btrathing...");
+    }
+}
+
+class Dog extends Animal {
+    // 추상 메소드 구현
+    void makeSound() {
+        System.out.println("Bark!");
+    }
+}
+
+class Cat extends Animal {
+    // 추상 메소드 구현
+    void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+
+
+  위 예에서 ‘Animal’ 클래스는 ‘makeSound’ 라는 추상 메소드를 포함하고 있습니다.
+  ‘Dog’ 와 ‘Cat’ 클래스는 ‘Animal’ 클래스를 상속받고 ‘makeSound’ 메소드를 각각 다르게 구현하고 있습니다.
+    
+      이는 다형성의 좋은 예로, ‘Animal’ 타입의 참조를 사용하여 각각의 하위 클래스 객체를 다룰 때 동일한 메소드(‘makeSound’)를 호출하더라도 서로 다른 행동(개는 짖고, 고양이는 울음)을 보여줍니다.
+    
+  
+
+
+1.4 결론.
+추상 메소드는 프로그램의 확장성과 유지보수성을 향상시키는 객체 지향 설계의 핵심 요소입니다.
+다양한 상황에 맞춰 동일한 인터페이스에 여러 구현을 제공할 수 있어 유연한 코드 작성이 가능합니다.
+
+
+
+2. 추상 클래스(abstract class)
+자바에서 추상 클래스(abstract class)는 완전하지 않은 클래스로, 추상 클래스 자체로는 인스턴스를 생성할 수 없습니다.
+추상 클래스의 주요 목적은 다른 클래스들의 기본이 되는 클래스를 제공하여 코드의 재사용성을 높이고, 일관된 설계를 유도하는 것입니다.
+추상 클래스는 하나 이상의 추상 메소드를 포함할 수 있으며, 또한 구현된 메소드도 포함할 수 있습니다.
+
+2.1 추상 클래스의 특징.
+
+  1. 인스턴스 생성 불가 : 추상 클래스는 직접적으로 인스턴스를 생성할 수 없습니다. 반드시 상속을 통해 그 기능을 확장하고 구체적인 클래스에서 인스턴스를 생성해야 합니다.
+  2. 추상 메소드 포함 가능 : 추상 클래스는 하나 이상의 메소드를 포함할 수 있습니다. 추상 메소드는 선언만 있고 구현은 없으며, 이를 상속받은 구체적인 클래스에서 구현해야 합니다.
+  3. 구현된 메소드 포함 가능 : 추상 클래스는 구현된 메소드도 포함할 수 있어, 자식 클래스들이 이 메소드를 재사용하거나 오버라이드 할 수 있습니다.
+  4. 생성자 및 필드 포함 가능 : 추상 클래스는 자신의 생성자와 필드(변수)를 가질 수 있으며, 이는 상속받은 클래스에서 사용할 수 있습니다.
+
+
+2.2 추상 클래스의 사용 예시.
+abstract class Animal {
+    abstract void makeSound();
+    
+    void eat() {
+        System.out.println("This animal is eating.");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Bark!");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+
+
+  이 예에서 ‘Animal’ 은 추상 클래스로, ‘makeSound()’ 메소드를 추상 메소드로 포함하고 있습니다.
+    
+      ‘Dog’ 와 ‘Cat’ 은 ‘Animal’ 클래스를 상속받아 ‘makeSound()’ 메소드를 각각 구현합니다.
+      추상 클래스 ‘Animal’ 의 ‘eat()’ 메소드는 모든 동물이 공통적으로 사용할 수 있는 구현된 메소드입니다.
+    
+  
+
+
+2.3 결론.
+추상 클래스는 공통적인 특징을 가진 클래스들 사이의 일반적인 행동을 정의하고, 이를 상속받는 구체적인 클래스들이 이를 구현하도록 하는 데에 주로 사용됩니다.
+
+이를 통해 코드의 재사용성과 유지보수성을 향상시키며, 객체 지향 설계의 일관성과 안정성을 보장할 수 있습니다.
+
+
+
+3. 익명 클래스(anonymous class).
+자바에서 익명 클래스(anonymous class)는 이름이 없는 클래스입니다.
+
+이들은 주로 일회성 사용 목적으로 설계되며, 인터페이스나 추상 클래스를 간편하게 구현하거나, 기존 클래스를 임시로 확장하기 위해 사용됩니다.
+
+익명 클래스는 일반적으로 이벤트 리스너나 작은 콜백 객체 같이 간단한 기능을 수행하는 데에 활용됩니다.
+
+3.1 익명 클래스의 특징.
+
+  1. 이름이 없음 : 익명 클래스는 이름을 가지지 않습니다. 인스턴스 생성 시점에 정의됩니다.
+  2. 즉석에서 정의 및 사용 : 익명 클래스는 즉석에서 정의되어 바로 인스턴스가 생성됩니다. 보통 이들은 한 번만 사용되고 재사용되지 않습니다.
+  3. 상속 및 구현 : 익명 클래스는 상쉬 클래스를 상속하거나 인터페이스를 구현할 수 있습니다. 그러나 다중 상속은 지원하지 않습니다.
+  4. 오직 하나의 인스턴스만 생성 가능 : 익명 클래스로부터 직접적으로 두 개 이상의 객체를 생성할 수는 없습니다. 다시 사용하려면 클래스 정의를 반복해야 합니다.
+  5. 지역 클래스 비슷 : 지역 변수처럼 동작하여 주변 스코프의 변수를 참조할 수 있습니다. 자바 8 이전에는 final 변수만 참조 가능했으나, 자바 8부터는 effectively final(명시적으로 final로 선언되지 않았어도 값이 변경되지 않는 변수) 변수도 참조할 수 있습니다.
+
+
+3.2 익명 클래스의 사용 예.
+button.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("버튼이 클릭되었습니다!");
+    }
+});
+
+
+  위 예제에서 ‘ActionListener’ 인터페이스는 익명 클래스를 통해 구현되었습니다.
+    
+      ‘button.addActionListener’ 메소드에 직접 전달되면서 버튼 클릭 시 “버튼이 클릭되었습니다!”를 출력하는 ‘actionPerformed’ 메소드를 포함하고 있습니다.
+    
+  
+
+
+3.3 결론.
+익명 클래스는 특정 인터페이스나 상위 클래스의 메소드를 구현하거나 오버라이드할 때 사용됩니다.
+짧고 간단한 기능을 구현하는 데 유용하며, 코드의 간결성을 유지할 수 있게 도와줍니다.
+하지만 복잡한 로직이나 반복적으로 사용될 기능에 대해서는 일반 클래스나 지역 클래스를 사용하는 것이 더 적합할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-05-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-05-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-05-10-TIL.html"><h1 class="title_post">📝 [TIL] 240510 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-05-10-TIL.html" class="txt_post">
+                            
+  다형성
+  추상클래스
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-05-10</span>
                             
                         </div>
                     </div>
@@ -45269,203 +45650,6 @@ public class Main {
 
 📝 정리.
 다운캐스팅은 특정 상황에서 필수적이며, 객체의 모든 기능을 활용하기 위해 사용되지만, 항상 타입 검사를 수행하고 신중하게 사용해야 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/TIL/2024-05-10-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-05-10-TIL.html"><h1 class="title_post">📝 [TIL] 240510 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-05-10-TIL.html" class="txt_post">
-                            
-  다형성
-  추상클래스
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-05-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-05-10-abstractClass.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-05-10-abstractClass.html"><h1 class="title_post">☕️[Java] 추상클래스</h1></a>
-                        <a href="/Java/Java/2024-05-10-abstractClass.html" class="txt_post">
-                            1️⃣ 추상클래스.
-추상 클래스가 무엇인지 설명할 수 있음
-abstract를 이용하여 추상 클래스 구현
-
-1. 추상 메소드(Abstract Method)
-자바 프로그래밍에서 추상 메소드(abstract method)는 선언만 있고 구현은 없는 메소드입니다.
-이러한 메소드는 추상 클래스(abstract class)나 인터페이스(interface) 내부에서 선언될 수 있으며, 구체적인 행동은 하위 클래스에서 구현됩니다.
-
-추상 메소드를 사용하는 주된 목적은 하위 클래스가 특정 메소드를 반드시 구현하도록 강제하는 것입니다.
-이는 코드의 일관성을 유지하고, 다형성을 통한 유연한 프로그래밍 설계를 가능하게 합니다.
-
-1.2 추상 메소드의 특징.
-
-  선언만 있고 구현이 없음 : 메소드 본체가 없으며, 메소드 선언은 세미콜론(’;’) 으로 끝납니다.
-  하위 클래스에서의 구현 필수 : 추상 메소드를 포함하는 클래스를 상속받는 모든 하위 클래스는 해당 메소드를 구현해야만 인스턴스 생성이 가능합니다.
-  ‘abstract’ 키워드 사용 : 메소드 앞에 ‘abstract’ 키워드를 명시하여 추상 메소드임을 표시합니다.
-
-
-1.3 추상 메소드 예시
-다음은 추상 클래스와 추상 메소드의 간단한 예시입니다.
-abstract class Animal {
-    // 추상 메소드
-    abstract void makeSound();
-    
-    void breathe() {
-        System.out.println("Btrathing...");
-    }
-}
-
-class Dog extends Animal {
-    // 추상 메소드 구현
-    void makeSound() {
-        System.out.println("Bark!");
-    }
-}
-
-class Cat extends Animal {
-    // 추상 메소드 구현
-    void makeSound() {
-        System.out.println("Meow!");
-    }
-}
-
-
-
-  위 예에서 ‘Animal’ 클래스는 ‘makeSound’ 라는 추상 메소드를 포함하고 있습니다.
-  ‘Dog’ 와 ‘Cat’ 클래스는 ‘Animal’ 클래스를 상속받고 ‘makeSound’ 메소드를 각각 다르게 구현하고 있습니다.
-    
-      이는 다형성의 좋은 예로, ‘Animal’ 타입의 참조를 사용하여 각각의 하위 클래스 객체를 다룰 때 동일한 메소드(‘makeSound’)를 호출하더라도 서로 다른 행동(개는 짖고, 고양이는 울음)을 보여줍니다.
-    
-  
-
-
-1.4 결론.
-추상 메소드는 프로그램의 확장성과 유지보수성을 향상시키는 객체 지향 설계의 핵심 요소입니다.
-다양한 상황에 맞춰 동일한 인터페이스에 여러 구현을 제공할 수 있어 유연한 코드 작성이 가능합니다.
-
-
-
-2. 추상 클래스(abstract class)
-자바에서 추상 클래스(abstract class)는 완전하지 않은 클래스로, 추상 클래스 자체로는 인스턴스를 생성할 수 없습니다.
-추상 클래스의 주요 목적은 다른 클래스들의 기본이 되는 클래스를 제공하여 코드의 재사용성을 높이고, 일관된 설계를 유도하는 것입니다.
-추상 클래스는 하나 이상의 추상 메소드를 포함할 수 있으며, 또한 구현된 메소드도 포함할 수 있습니다.
-
-2.1 추상 클래스의 특징.
-
-  1. 인스턴스 생성 불가 : 추상 클래스는 직접적으로 인스턴스를 생성할 수 없습니다. 반드시 상속을 통해 그 기능을 확장하고 구체적인 클래스에서 인스턴스를 생성해야 합니다.
-  2. 추상 메소드 포함 가능 : 추상 클래스는 하나 이상의 메소드를 포함할 수 있습니다. 추상 메소드는 선언만 있고 구현은 없으며, 이를 상속받은 구체적인 클래스에서 구현해야 합니다.
-  3. 구현된 메소드 포함 가능 : 추상 클래스는 구현된 메소드도 포함할 수 있어, 자식 클래스들이 이 메소드를 재사용하거나 오버라이드 할 수 있습니다.
-  4. 생성자 및 필드 포함 가능 : 추상 클래스는 자신의 생성자와 필드(변수)를 가질 수 있으며, 이는 상속받은 클래스에서 사용할 수 있습니다.
-
-
-2.2 추상 클래스의 사용 예시.
-abstract class Animal {
-    abstract void makeSound();
-    
-    void eat() {
-        System.out.println("This animal is eating.");
-    }
-}
-
-class Dog extends Animal {
-    @Override
-    void makeSound() {
-        System.out.println("Bark!");
-    }
-}
-
-class Cat extends Animal {
-    @Override
-    void makeSound() {
-        System.out.println("Meow!");
-    }
-}
-
-
-
-  이 예에서 ‘Animal’ 은 추상 클래스로, ‘makeSound()’ 메소드를 추상 메소드로 포함하고 있습니다.
-    
-      ‘Dog’ 와 ‘Cat’ 은 ‘Animal’ 클래스를 상속받아 ‘makeSound()’ 메소드를 각각 구현합니다.
-      추상 클래스 ‘Animal’ 의 ‘eat()’ 메소드는 모든 동물이 공통적으로 사용할 수 있는 구현된 메소드입니다.
-    
-  
-
-
-2.3 결론.
-추상 클래스는 공통적인 특징을 가진 클래스들 사이의 일반적인 행동을 정의하고, 이를 상속받는 구체적인 클래스들이 이를 구현하도록 하는 데에 주로 사용됩니다.
-
-이를 통해 코드의 재사용성과 유지보수성을 향상시키며, 객체 지향 설계의 일관성과 안정성을 보장할 수 있습니다.
-
-
-
-3. 익명 클래스(anonymous class).
-자바에서 익명 클래스(anonymous class)는 이름이 없는 클래스입니다.
-
-이들은 주로 일회성 사용 목적으로 설계되며, 인터페이스나 추상 클래스를 간편하게 구현하거나, 기존 클래스를 임시로 확장하기 위해 사용됩니다.
-
-익명 클래스는 일반적으로 이벤트 리스너나 작은 콜백 객체 같이 간단한 기능을 수행하는 데에 활용됩니다.
-
-3.1 익명 클래스의 특징.
-
-  1. 이름이 없음 : 익명 클래스는 이름을 가지지 않습니다. 인스턴스 생성 시점에 정의됩니다.
-  2. 즉석에서 정의 및 사용 : 익명 클래스는 즉석에서 정의되어 바로 인스턴스가 생성됩니다. 보통 이들은 한 번만 사용되고 재사용되지 않습니다.
-  3. 상속 및 구현 : 익명 클래스는 상쉬 클래스를 상속하거나 인터페이스를 구현할 수 있습니다. 그러나 다중 상속은 지원하지 않습니다.
-  4. 오직 하나의 인스턴스만 생성 가능 : 익명 클래스로부터 직접적으로 두 개 이상의 객체를 생성할 수는 없습니다. 다시 사용하려면 클래스 정의를 반복해야 합니다.
-  5. 지역 클래스 비슷 : 지역 변수처럼 동작하여 주변 스코프의 변수를 참조할 수 있습니다. 자바 8 이전에는 final 변수만 참조 가능했으나, 자바 8부터는 effectively final(명시적으로 final로 선언되지 않았어도 값이 변경되지 않는 변수) 변수도 참조할 수 있습니다.
-
-
-3.2 익명 클래스의 사용 예.
-button.addActionListener(new ActionListener() {
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("버튼이 클릭되었습니다!");
-    }
-});
-
-
-  위 예제에서 ‘ActionListener’ 인터페이스는 익명 클래스를 통해 구현되었습니다.
-    
-      ‘button.addActionListener’ 메소드에 직접 전달되면서 버튼 클릭 시 “버튼이 클릭되었습니다!”를 출력하는 ‘actionPerformed’ 메소드를 포함하고 있습니다.
-    
-  
-
-
-3.3 결론.
-익명 클래스는 특정 인터페이스나 상위 클래스의 메소드를 구현하거나 오버라이드할 때 사용됩니다.
-짧고 간단한 기능을 구현하는 데 유용하며, 코드의 간결성을 유지할 수 있게 도와줍니다.
-하지만 복잡한 로직이나 반복적으로 사용될 기능에 대해서는 일반 클래스나 지역 클래스를 사용하는 것이 더 적합할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -84660,6 +84844,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Backend/Spring/2024-10-06-how-to-register-bean.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-06"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.",
+            'path'     : "Backend > Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });

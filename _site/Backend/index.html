@@ -752,6 +752,7 @@
             
             
             
+            
 
     
     
@@ -8483,6 +8484,147 @@ public MemberService(MemberRepository memberRepository) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/Spring/2024-09-02-container.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-09-02-container.html"><h1 class="title_post">🍃[Spring] 스프링 컨테이너(Spring Container)란?</h1></a>
+                        <a href="/Backend/Spring/2024-09-02-container.html" class="txt_post">
+                            🍃[Spring] 스프링 컨테이너(Spring Container)란?
+
+1️⃣ 스프링 컨테이너(Spring Container)란?
+
+  스프링 컨테이너(Spring Container)는 스프일 프레임워크의 핵심 구성 요소로, 애플리케이션에서 사용되는 객체들은 관리하고 조정하는 역할을 합니다.
+    
+      이 컨테이너는 객체의 생성, 초기화, 의존성 주입, 설정 및 라이프사이클을 관리하여 애플리케이션의 주요 컴포넌트들이 잘 협력할 수 있도록 돕습니다.
+    
+  
+  스프링 컨테이너는 종종 IoC(Inversion of Control) 컨테이너 또는 DI(Dependency Injection) 컨테이너 라고도 불립니다.
+
+
+2️⃣ 스프링 컨테이너의 주요 기능.
+
+  1. 빈(Bean) 관리
+    
+      스프링 컨테이너는 애플리케이션에 필요한 모든 빈(Bean)을 정의하고 생성합니다.
+        
+          이 빈들은 XML 설정 파일, 자바 설정 클래스, 또는 애노테이션을 통해 정의될 수 있습니다.
+        
+      
+      빈의 라이프사이클(생성, 초기화, 소멸)을 관리하고, 의존성을 자동으로 주입하여 빈 간의 결합도를 낮추어 줍니다.
+    
+  
+  2. 의존성 주입(Dependency Injection)
+    
+      스프링 컨테이너는 객체 간의 의존성을 자동으로 주입하여, 객체들이 직접 다른 객체를 생성하거나 관리하지 않도록 합니다.
+        
+          이를 통해 코드의 유연성과 재사용성을 높입니다.
+        
+      
+      의존성 주입은 생성자 주입, 세터 주입, 필드 주입 등 다양한 방법으로 이루어질 수 있습니다.
+    
+  
+  3. 설정 관리
+    
+      컨테이너는 애플리케이션의 설정 정보를 관리합니다.
+        
+          이는 빈의 정의뿐만 아니라, 데이터베이스 연결 설정, 메시지 소스, 트랜잭션 관리 등의 다양한 설정을 포함합니다.
+        
+      
+    
+  
+  4. 라이프사이클 인터페이스 지원
+    
+      컨테이너는 빈의 라이프사이클 인터페이스(InitializingBean, DisposableBean)을 통해 빈의 초기화 및 소명 작업을 쉽게 구현할 수 있도록 지원합니다.
+      또한 @PostConstruct, @PreDestroy 애노테이션을 통해 라이프사이클 콜백을 간단하게 구현할 수 있습니다.
+    
+  
+  5. AOP(Aspect-Oriented Programming) 지원
+    
+      스프링 컨테이너는 AOP 기능을 지원하여, 애플리케이션 전반에 걸쳐 공통적으로 사용되는 로직(예: 로깅, 트랜잭션 관리)을 비즈니스 로직과 분리하여 모듈화할 수 있게 합니다.
+    
+  
+
+
+3️⃣ 스프링 컨테이너의 종류.
+
+  스프링에는 다양한 컨테이너 구현체가 있으며, 대표적으로 다음과 같은 종류가 있습니다.
+    
+      1. BeanFactory
+        
+          스프링의 가장 기본적인 컨테이너로, 빈의 기본적인 생성과 의존성 주입을 제공합니다.
+            
+              하지만 BeanFactory는 지연 로딩(lazy loading) 방식으로 동작하므로, 빈이 실제로 요청될 때 생성됩니다.
+            
+          
+        
+      
+      2. ApplicationContext
+        
+          BeanFactory의 확장판으로, 대부분의 스프링 애플리케이션에서 사용되는 컨테이너입니다.
+          ApplicationContext 는 BeanFactory의 기능을 포함하면서도, 다양한 기능(예: 이벤트 발행, 국제화 메시지 처리, 환경 정보 관리)을 추가로 제공합니다.
+          ApplicationContext 의 구현체에는 ClassPathXmlApplicationContext, FileSystemXmlApplicationContext, AnnotationConfigApplicationContext 등이 있습니다.
+        
+      
+    
+  
+
+
+4️⃣ 스프링 컨테이너의 동작 과정.
+
+  1. 빈 정의 로드
+    
+      컨테이너가 시작되면, XML 파일, 자바 설정 파일, 애노테이션 등을 통해 빈의 정의를 읽어들입니다.
+    
+  
+  2. 빈 생성 및 초기화
+    
+      컨테이너는 필요한 빈들을 생성하고 초기화 작업을 수행합니다.
+        
+          이때 의존성이 있는 경우, 필요한 빈들을 먼저 생성하여 주입합니다.
+        
+      
+    
+  
+  3. 의존성 주입
+    
+      빈의 생성 과정에서 필요한 의존성들이 주입됩니다.
+        
+          이 과정에서 생성자 주입, 세터 주입 등이 사용됩니다.
+        
+      
+    
+  
+  4. 빈 제공
+    
+      컨테이너는 요청 시 빈을 제공하며, 애플리케이션은 이 빈을 통해 다양한 작업을 수행할 수 있습니다.
+    
+  
+  5. 빈 소멸
+    
+      애플리케이션이 종료되거나 컨테이너가 종료될 때, 컨테이너는 빈의 소멸 작업을 처리합니다.
+    
+  
+
+
+스프링 컨테이너는 이 모든 과정을 자동으로 처리하며, 이를 통해 개발자는 비즈니스 로직에 집중할 수 있게됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-09-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Spring/2024-09-02-DI-LC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -8768,147 +8910,6 @@ public class MemberService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-09-02-container.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-09-02-container.html"><h1 class="title_post">🍃[Spring] 스프링 컨테이너(Spring Container)란?</h1></a>
-                        <a href="/Backend/Spring/2024-09-02-container.html" class="txt_post">
-                            🍃[Spring] 스프링 컨테이너(Spring Container)란?
-
-1️⃣ 스프링 컨테이너(Spring Container)란?
-
-  스프링 컨테이너(Spring Container)는 스프일 프레임워크의 핵심 구성 요소로, 애플리케이션에서 사용되는 객체들은 관리하고 조정하는 역할을 합니다.
-    
-      이 컨테이너는 객체의 생성, 초기화, 의존성 주입, 설정 및 라이프사이클을 관리하여 애플리케이션의 주요 컴포넌트들이 잘 협력할 수 있도록 돕습니다.
-    
-  
-  스프링 컨테이너는 종종 IoC(Inversion of Control) 컨테이너 또는 DI(Dependency Injection) 컨테이너 라고도 불립니다.
-
-
-2️⃣ 스프링 컨테이너의 주요 기능.
-
-  1. 빈(Bean) 관리
-    
-      스프링 컨테이너는 애플리케이션에 필요한 모든 빈(Bean)을 정의하고 생성합니다.
-        
-          이 빈들은 XML 설정 파일, 자바 설정 클래스, 또는 애노테이션을 통해 정의될 수 있습니다.
-        
-      
-      빈의 라이프사이클(생성, 초기화, 소멸)을 관리하고, 의존성을 자동으로 주입하여 빈 간의 결합도를 낮추어 줍니다.
-    
-  
-  2. 의존성 주입(Dependency Injection)
-    
-      스프링 컨테이너는 객체 간의 의존성을 자동으로 주입하여, 객체들이 직접 다른 객체를 생성하거나 관리하지 않도록 합니다.
-        
-          이를 통해 코드의 유연성과 재사용성을 높입니다.
-        
-      
-      의존성 주입은 생성자 주입, 세터 주입, 필드 주입 등 다양한 방법으로 이루어질 수 있습니다.
-    
-  
-  3. 설정 관리
-    
-      컨테이너는 애플리케이션의 설정 정보를 관리합니다.
-        
-          이는 빈의 정의뿐만 아니라, 데이터베이스 연결 설정, 메시지 소스, 트랜잭션 관리 등의 다양한 설정을 포함합니다.
-        
-      
-    
-  
-  4. 라이프사이클 인터페이스 지원
-    
-      컨테이너는 빈의 라이프사이클 인터페이스(InitializingBean, DisposableBean)을 통해 빈의 초기화 및 소명 작업을 쉽게 구현할 수 있도록 지원합니다.
-      또한 @PostConstruct, @PreDestroy 애노테이션을 통해 라이프사이클 콜백을 간단하게 구현할 수 있습니다.
-    
-  
-  5. AOP(Aspect-Oriented Programming) 지원
-    
-      스프링 컨테이너는 AOP 기능을 지원하여, 애플리케이션 전반에 걸쳐 공통적으로 사용되는 로직(예: 로깅, 트랜잭션 관리)을 비즈니스 로직과 분리하여 모듈화할 수 있게 합니다.
-    
-  
-
-
-3️⃣ 스프링 컨테이너의 종류.
-
-  스프링에는 다양한 컨테이너 구현체가 있으며, 대표적으로 다음과 같은 종류가 있습니다.
-    
-      1. BeanFactory
-        
-          스프링의 가장 기본적인 컨테이너로, 빈의 기본적인 생성과 의존성 주입을 제공합니다.
-            
-              하지만 BeanFactory는 지연 로딩(lazy loading) 방식으로 동작하므로, 빈이 실제로 요청될 때 생성됩니다.
-            
-          
-        
-      
-      2. ApplicationContext
-        
-          BeanFactory의 확장판으로, 대부분의 스프링 애플리케이션에서 사용되는 컨테이너입니다.
-          ApplicationContext 는 BeanFactory의 기능을 포함하면서도, 다양한 기능(예: 이벤트 발행, 국제화 메시지 처리, 환경 정보 관리)을 추가로 제공합니다.
-          ApplicationContext 의 구현체에는 ClassPathXmlApplicationContext, FileSystemXmlApplicationContext, AnnotationConfigApplicationContext 등이 있습니다.
-        
-      
-    
-  
-
-
-4️⃣ 스프링 컨테이너의 동작 과정.
-
-  1. 빈 정의 로드
-    
-      컨테이너가 시작되면, XML 파일, 자바 설정 파일, 애노테이션 등을 통해 빈의 정의를 읽어들입니다.
-    
-  
-  2. 빈 생성 및 초기화
-    
-      컨테이너는 필요한 빈들을 생성하고 초기화 작업을 수행합니다.
-        
-          이때 의존성이 있는 경우, 필요한 빈들을 먼저 생성하여 주입합니다.
-        
-      
-    
-  
-  3. 의존성 주입
-    
-      빈의 생성 과정에서 필요한 의존성들이 주입됩니다.
-        
-          이 과정에서 생성자 주입, 세터 주입 등이 사용됩니다.
-        
-      
-    
-  
-  4. 빈 제공
-    
-      컨테이너는 요청 시 빈을 제공하며, 애플리케이션은 이 빈을 통해 다양한 작업을 수행할 수 있습니다.
-    
-  
-  5. 빈 소멸
-    
-      애플리케이션이 종료되거나 컨테이너가 종료될 때, 컨테이너는 빈의 소멸 작업을 처리합니다.
-    
-  
-
-
-스프링 컨테이너는 이 모든 과정을 자동으로 처리하며, 이를 통해 개발자는 비즈니스 로직에 집중할 수 있게됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-09-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-09-01-when-use-controller-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -9164,116 +9165,6 @@ public void useService() {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html"><h1 class="title_post">🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.</h1></a>
-                        <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="txt_post">
-                            🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.
-
-1️⃣ 일반적인 웹 애플리케이션 계층 구조.
-
-
-
-
-  Controller : 웹 MVC의 Controller 역할.
-    
-      사용자의 요청을 받아 이를 처리할 비즈니스 로직(서비스 레이어)에 전달하고, 그 결과를 다시 사용자에게 응답하는 역할을 합니다.
-        
-          주로 HTTP 요청을 처리하고, 올바른 응답을 생성합니다.
-        
-      
-      컨트롤러는 사용자로부터 입력을 받아 해당 입력을 서비스 레이어로 전달하고, 서비스 레이어에서 처리된 결과를 사용자에게 반환합니다.
-        
-          이는 주로 웹 애플리케이션의 엔트포인트(예: '/login', '/signup' 와 같은 URL)에 대응됩니다.
-        
-      
-    
-  
-  Service : 핵심 비즈니스 로직 구현.
-    
-      비즈니스 로직을 처리하는 계층입니다.
-      컨트롤러와 리포지토리 사이에서 중간 역할을 하며, 여러 리포지토리로부터 데이터를 가져오거나 가공하고, 이를 다시 컨트롤러에 전달합니다.
-      서비스 계층은 애플리케이션의 핵심 비즈니스 로직이 위치하는 곳입니다.
-        
-          예를 들어, 사용자 인증, 결제 처리, 이메일 전송 등의 주요 기능이 이 계층에서 처리됩니다.
-        
-      
-    
-  
-  Repository: 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리.
-    
-      데이터베이스와 상호작용하는 계층입니다.
-      데이터의 저장, 검색, 갱신, 삭제 등의 작업을 처리하며, 데이터베이스와의 직접적인 통신을 담당합니다.
-      리포지토리는 데이터를 처리하기 위한 SQL 쿼리나 ORM(Object-Relational Mapping) 작업을 담당합니다.
-      이 계층은 서비스 계층에서 필요한 데이터를 가져오거나, 새 데이터를 저장하는 역할을 합니다.
-    
-  
-  Domain: 비즈니스 도메인 객체.
-    
-      예를 들어 회원, 주문 쿠폰 등등 주로 데이터베이스에 저장하고 관리됨.
-      애플리케이션의 핵심 엔티티(Entity)와 비즈니스 규칙을 정의하는 계층입니다.
-        
-          보통 객체로 표현되며, 비즈니스 로직의 일부를 캡슐화합니다.
-        
-      
-      도메인 계층은 애플리케이션에서 중요한 객체들(예: 'User', 'Product', 'Order' 등)을 정의하고, 이 객체들이 어떤 방식으로 상호작용하는지를 나타냅니다.
-        
-          이는 애플리케이션이 어떤 비즈니스 문제를 해결하는지에 대한 모델을 나타냅니다.
-        
-      
-    
-  
-
-
-2️⃣ 클래스 의존관계.
-
-
-
-  회원 비즈니스 로직에는 회원 서비스가 있다.
-    
-      회원을 저장하는 것은 인터페이스로 설계 되어있다.
-        
-          그 이유는 아직 데이터 저장소가 선정되지 않았음을 가정하고 설계했기 때문이다.
-          그리고 구현체를 우선은 메모리 구현체로 만들것이다.
-            
-              그 이유는 일단 개발은 해야하므로 굉장히 단순한 메모리 기반의 데이터 저장소를 사용하여 메모리 구현체로 만든다.
-                
-                  향후에 메모리 구현체를 구체적인 기술이 선정이 되면(RDB, NoSQL 등) 교체할 것이다.
-                    
-                      교체하려면 Interface가 필요하므로 Interface를 정의한 것이다.
-                    
-                  
-                
-              
-            
-          
-        
-      
-    
-  
-  아직 데이터 저장소가 선정되지 않아서, 우선 인터페이스로 구현 클래스를 변경할 수 있도록 설계
-  데이터 저장소는 RDB, NoSQL 등등 다양한 저장소를 고민중인 상황으로 가정
-  개발을 진행하기 위해서 초기 개발 단계에서는 구현체로 가벼운 메모리 기반의 데이터 저장소 사용
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Spring/2024-08-24-MVC-Template-engine.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -9436,6 +9327,116 @@ public class HelloController {
 
   🙋‍♂️ 참고: ** 클라이언트의 HTTP Accept 헤더와 서버의 컨트롤러 반환 타입 정보 둘을 조합해서
 **'HttpMessageConverter' 가 선택된다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html"><h1 class="title_post">🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.</h1></a>
+                        <a href="/Backend/Spring/2024-08-24-Summary-of-business-requirements.html" class="txt_post">
+                            🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.
+
+1️⃣ 일반적인 웹 애플리케이션 계층 구조.
+
+
+
+
+  Controller : 웹 MVC의 Controller 역할.
+    
+      사용자의 요청을 받아 이를 처리할 비즈니스 로직(서비스 레이어)에 전달하고, 그 결과를 다시 사용자에게 응답하는 역할을 합니다.
+        
+          주로 HTTP 요청을 처리하고, 올바른 응답을 생성합니다.
+        
+      
+      컨트롤러는 사용자로부터 입력을 받아 해당 입력을 서비스 레이어로 전달하고, 서비스 레이어에서 처리된 결과를 사용자에게 반환합니다.
+        
+          이는 주로 웹 애플리케이션의 엔트포인트(예: '/login', '/signup' 와 같은 URL)에 대응됩니다.
+        
+      
+    
+  
+  Service : 핵심 비즈니스 로직 구현.
+    
+      비즈니스 로직을 처리하는 계층입니다.
+      컨트롤러와 리포지토리 사이에서 중간 역할을 하며, 여러 리포지토리로부터 데이터를 가져오거나 가공하고, 이를 다시 컨트롤러에 전달합니다.
+      서비스 계층은 애플리케이션의 핵심 비즈니스 로직이 위치하는 곳입니다.
+        
+          예를 들어, 사용자 인증, 결제 처리, 이메일 전송 등의 주요 기능이 이 계층에서 처리됩니다.
+        
+      
+    
+  
+  Repository: 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리.
+    
+      데이터베이스와 상호작용하는 계층입니다.
+      데이터의 저장, 검색, 갱신, 삭제 등의 작업을 처리하며, 데이터베이스와의 직접적인 통신을 담당합니다.
+      리포지토리는 데이터를 처리하기 위한 SQL 쿼리나 ORM(Object-Relational Mapping) 작업을 담당합니다.
+      이 계층은 서비스 계층에서 필요한 데이터를 가져오거나, 새 데이터를 저장하는 역할을 합니다.
+    
+  
+  Domain: 비즈니스 도메인 객체.
+    
+      예를 들어 회원, 주문 쿠폰 등등 주로 데이터베이스에 저장하고 관리됨.
+      애플리케이션의 핵심 엔티티(Entity)와 비즈니스 규칙을 정의하는 계층입니다.
+        
+          보통 객체로 표현되며, 비즈니스 로직의 일부를 캡슐화합니다.
+        
+      
+      도메인 계층은 애플리케이션에서 중요한 객체들(예: 'User', 'Product', 'Order' 등)을 정의하고, 이 객체들이 어떤 방식으로 상호작용하는지를 나타냅니다.
+        
+          이는 애플리케이션이 어떤 비즈니스 문제를 해결하는지에 대한 모델을 나타냅니다.
+        
+      
+    
+  
+
+
+2️⃣ 클래스 의존관계.
+
+
+
+  회원 비즈니스 로직에는 회원 서비스가 있다.
+    
+      회원을 저장하는 것은 인터페이스로 설계 되어있다.
+        
+          그 이유는 아직 데이터 저장소가 선정되지 않았음을 가정하고 설계했기 때문이다.
+          그리고 구현체를 우선은 메모리 구현체로 만들것이다.
+            
+              그 이유는 일단 개발은 해야하므로 굉장히 단순한 메모리 기반의 데이터 저장소를 사용하여 메모리 구현체로 만든다.
+                
+                  향후에 메모리 구현체를 구체적인 기술이 선정이 되면(RDB, NoSQL 등) 교체할 것이다.
+                    
+                      교체하려면 Interface가 필요하므로 Interface를 정의한 것이다.
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+  아직 데이터 저장소가 선정되지 않아서, 우선 인터페이스로 구현 클래스를 변경할 수 있도록 설계
+  데이터 저장소는 RDB, NoSQL 등등 다양한 저장소를 고민중인 상황으로 가정
+  개발을 진행하기 위해서 초기 개발 단계에서는 구현체로 가벼운 메모리 기반의 데이터 저장소 사용
 
 
                         </a>
@@ -9872,212 +9873,6 @@ source ~/.bash_profile
                                 <a href="/Backend" class="category">Backend</a>
                             
                                 <span class="date">· 2024-08-20</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
-
-1️⃣ 패키지 목록 업데이트
-
-  먼저, 서버의 패키지 목록을 업데이트 합니다.
-    sudo dnf update -y
-    
-  
-
-
-
-  🎯 참고 dnf search {검색어}
-예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
-
-
-2️⃣ Nginx 설치
-
-  다음 명령어로 Nginx를 설치합니다.
-    sudo dnf install nginx -y
-    
-  
-  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
-
-
-3️⃣ Nginx 서비스 시작 및 활성화
-
-  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
-    sudo systemctl start nginx
-sudo systemctl enable nginx
-    
-  
-
-
-4️⃣ 방화벽 설정(선택 사항)
-
-  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
-    
-      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
-    
-  
-
-
-1️⃣ firewalld 설치.
-
-  먼저 'firewalld' 를 설치해야 합니다.
-    sudo dnf install firewalld -y
-    
-  
-
-
-2️⃣ firewalld 서비스 시작 및 활성화
-
-  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
-    sudo systemctl start firewalld
-sudo systemctl enable firewalld
-    
-  
-
-
-3️⃣ HTTP 및 HTTPS 서비스 허용
-
-  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
-    sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-    
-  
-
-
-4️⃣ 방화벽 재시작
-
-  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
-    sudo firewall-cmd --reload
-    
-  
-
-
-5️⃣ 방화벽 상태 확인(선택 사항)
-
-  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
-    sudo firewall-cmd --list-all
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
-                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
-                            ☁️[AWS] NAT 게이트웨이.
-
-1️⃣ NAT 게이트웨이.
-
-  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
-    
-      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
-        
-          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
-        
-      
-    
-  
-  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
-  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
-  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
-  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
-
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
-                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
-
-1️⃣ nvm 설치.
-
-  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
-    
-      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
-        
-      
-    
-  
-  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
-
-
-2️⃣ nvm 환경 설정 적용.
-'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-3️⃣ Node.js 16.x 설치 및 사용.
-
-  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
-    nvm install 16
-nvm use 16
-    
-  
-  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
-
-
-✏️ 요약
-
-  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-19</span>
                             
                         </div>
                     </div>
@@ -10632,6 +10427,261 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_Nginx_FireWalld.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 Nginx 설치하는 방법.
+
+1️⃣ 패키지 목록 업데이트
+
+  먼저, 서버의 패키지 목록을 업데이트 합니다.
+    sudo dnf update -y
+    
+  
+
+
+
+  🎯 참고 dnf search {검색어}
+예를 들어 dnf search java 라고 명령어를 실행하면 java라는 단어가 들어간 목록을 모두 보여줍니다.
+
+
+2️⃣ Nginx 설치
+
+  다음 명령어로 Nginx를 설치합니다.
+    sudo dnf install nginx -y
+    
+  
+  위 명령어는 Amazon Linux 2023의 기본 패키지 저장소에서 Nginx를 다운로드하고 설치합니다.
+
+
+3️⃣ Nginx 서비스 시작 및 활성화
+
+  Nginx 설치가 완료되면, 다음 명령어를 사용하여 Nginx 서비스를 시작하고, 서버가 부팅될 때 자동으로 시작되도록 설정할 수 있습니다.
+    sudo systemctl start nginx
+sudo systemctl enable nginx
+    
+  
+
+
+4️⃣ 방화벽 설정(선택 사항)
+
+  기본적으로 Amazon Linux 2023에는 firewalld가 설치되어 있지 않습니다.
+    
+      하지만 방화벽을 사용하는 경우 HTTP와 HTTPS 트래픽을 허용하도록 설정해야 합니다.
+    
+  
+
+
+1️⃣ firewalld 설치.
+
+  먼저 'firewalld' 를 설치해야 합니다.
+    sudo dnf install firewalld -y
+    
+  
+
+
+2️⃣ firewalld 서비스 시작 및 활성화
+
+  설치가 완료되면, 'firewalld' 서비스를 시작하고 부팅 시 자동으로 시작되도록 설정합니다.
+    sudo systemctl start firewalld
+sudo systemctl enable firewalld
+    
+  
+
+
+3️⃣ HTTP 및 HTTPS 서비스 허용
+
+  이제 HTTP와 HTTPS 트래픽을 허용하도록 방화벽 규칙을 추가합니다.
+    sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+    
+  
+
+
+4️⃣ 방화벽 재시작
+
+  새로운 규칙이 적용되도록 방화벽을 재시작합니다.
+    sudo firewall-cmd --reload
+    
+  
+
+
+5️⃣ 방화벽 상태 확인(선택 사항)
+
+  방화벽의 상태를 확인하려면 다음 명령어를 사용할 수 있습니다.
+    sudo firewall-cmd --list-all
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html"><h1 class="title_post">☁️[AWS] NAT 게이트웨이.</h1></a>
+                        <a href="/Backend/AWS/240819_AWS_NAT_GATEWAY.html" class="txt_post">
+                            ☁️[AWS] NAT 게이트웨이.
+
+1️⃣ NAT 게이트웨이.
+
+  “프라이빗 서브넷에 있는 EC2와 같은 자원은 일반적으로 인터넷과 통신할 수 없습니다.”
+    
+      하지만 인터넷에 있는 소프트웨어 패키지의 다운로드와 같이 VPC 내에서 인터넷과 통신해야 하는 경우가 있습니다.
+        
+          이때 사용할 수 있는 것이 NAT 게이트웨이 입니다.
+        
+      
+    
+  
+  인터넷 게이트웨이와 달리 인터넷에서 VPC로 통신할 수 없는 단방향 통신이므로 AWS 외부와 더 안전하게 통신할 수 있습니다.
+  NAT는 Network Address Translation 의 약자로 프라이빗 IP 주소를 퍼블릭 IP 주소로 변환 하는 것을 의미합니다.
+  “NAT 게이트웨이는 프라이빗 서브넷의 IP 주소를 NAT 게이트웨이의 퍼블릭 IP로 변환해 인터넷과 통신할 수 있게 해줍니다.”
+  NAT 게이트웨이를 이용해 통신하기 위해서는 외부 통신을 수행하는 서브넷의 라우팅 테이블에 경로 정보(라우팅 정보)를 등록해야 합니다.
+
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240816_AWS_NVM.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240816_AWS_NVM.html"><h1 class="title_post">☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_NVM.html" class="txt_post">
+                            ☁️[AWS] Amazon Linux 2023에 nvm 설치와 node.js 버전 바꾸는 방법.
+
+1️⃣ nvm 설치.
+
+  'nvm(Node Version Manager)' 은 Node.js 버전을 관리하는 도구입니다.
+    
+      다음 명령어를 사용하여 'nvm' 을 설치할 수 있습니다.
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+        
+      
+    
+  
+  위 명령어는 'nvm' 설치 스크립트를 다운로드하여 실행합니다.
+
+
+2️⃣ nvm 환경 설정 적용.
+'nvm' 설치가 완료되면, 터미널에서 새로운 셀을 열거나 다음 명령어를 실행하여 환경 변수를 적용합니다.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+3️⃣ Node.js 16.x 설치 및 사용.
+
+  이제 'nvm' 을 사용하여 Node.js 16.x 버전을 설치하고 사용할 수 있습니다.
+    nvm install 16
+nvm use 16
+    
+  
+  이 명령어는 Node.js 16.x 버전을 설치하고, 기본 Node.js 버전으로 설정합니다.
+
+
+✏️ 요약
+
+  'nvm' 을 사용하여 Node.js 버전을 관리하는 것이 가장 간단하고 강력한 방법입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
+                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
+                            🙋‍♂️ OpenVPN Password 변경방법.
+
+  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
+  ✏️ 사용자 비밀번호 변경.
+    
+      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
+        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
+        
+        
+          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
+        
+      
+    
+  
+
+
+✏️ 참고.
+
+  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
+    sudo /usr/local/openvpn_as/scripts/sacli --help
+    
+    
+      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Backend/Post/2024-08-16-openvpn-client-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -10686,35 +10736,46 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
+                            <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html"><h1 class="title_post">📝[Post] OpenVPN Password 변경방법.</h1></a>
-                        <a href="/Backend/Post/2024-08-18-openvpn-change-passwd.html" class="txt_post">
-                            🙋‍♂️ OpenVPN Password 변경방법.
+                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html"><h1 class="title_post">☁️[AWS] 라우팅 및 라우팅 테이블.</h1></a>
+                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="txt_post">
+                            ☁️[AWS] 라우팅 및 라우팅 테이블.
 
-  OpenVPN Access Server에서 사용자의 비빌번호를 변경하는 방법은 다음과 같습니다.
-  ✏️ 사용자 비밀번호 변경.
+  실제 세상의 어떤 주소를 찾아가기 위해서는 그 주소까지의 경로를 알아야 합니다.
+  네트워크 세계에서도 이처럼 어떤 IP 주소를 찾아가기 위해서는 해당 주소까지의 경로를 알아야 합니다.
     
-      다음 명령어를 사용하여 'openvpn' 사용자의 비밀번호를 변경할 수 있습니다.
-        sudo /usr/local/openvpn_as/scripts/sacli --user openvpn --new_pass "your-new-password" SetLocalPassword
+      하지만 사용자는 이런 경로를 알 필요가 없습니다.
         
-        
-          🎯 'your-new-password' 를 원하는 새 비밀번호로 바꿔서 입력하세요.
+          대신 라우터(Router) 가 최적의 경로를 찾아서 경로를 결정하고 연결합니다.
+            
+              라우터가 IP 주소까지의 경로를 결정하는 것을 라우팅(Routing) 이라고 합니다.
+            
+          
         
       
     
   
+  인터넷을 통해 원하는 사이트까지 가는 경로는 여러 라우터를 거치게 되므로 어떻게 라우팅하는 것이 효율이 좋을지 결정해야 합니다.
 
-
-✏️ 참고.
-
-  'sacil' 명령어를 사용할 때, 정확한 옵션과 명령어 구문을 확인하기 위해 다음과 같은 명령어로 도움말을 볼 수 있습니다. 🤩
-    sudo /usr/local/openvpn_as/scripts/sacli --help
+  각 라우터는 소유한 경로 정보를 기반으로 목적지 IP 주소를 향해 이동해야 하는 네트워크를 결정합니다.
     
-    
-      🎯 이 명령어를 통해 'sacil' 에서 사용 가능한 모든 옵션과 명령을 확인할 수 있습니다. :)
+      이 경로 정보를 라우팅 테이블(Routing Table) 이라고 합니다.
+        
+          라우팅 테이블은 라우터가 소유한 네트워크의 지도와 같은 것입니다.
+            
+              AWS에서는 Amazon VPC의 라우팅 테이블(Routing Table) 이라는 기능이 이에 해당합니다.
+                
+                  라우팅 테이블에는 인터넷이나 각 AWS 서비스에 대해 어떤 엔드포인트를 경유할지와 같은 경로 정보를 관리할 수 있습니다.
+
+                
+              
+            
+          
+        
+      
     
   
 
@@ -10723,7 +10784,7 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                         <div class="info-post">
                                 <a href="/Backend" class="category">Backend</a>
                             
-                                <span class="date">· 2024-08-18</span>
+                                <span class="date">· 2024-08-16</span>
                             
                         </div>
                     </div>
@@ -11006,226 +11067,6 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html"><h1 class="title_post">☁️[AWS] 라우팅 및 라우팅 테이블.</h1></a>
-                        <a href="/Backend/AWS/240816_AWS_Routing_And_Routing_Table.html" class="txt_post">
-                            ☁️[AWS] 라우팅 및 라우팅 테이블.
-
-  실제 세상의 어떤 주소를 찾아가기 위해서는 그 주소까지의 경로를 알아야 합니다.
-  네트워크 세계에서도 이처럼 어떤 IP 주소를 찾아가기 위해서는 해당 주소까지의 경로를 알아야 합니다.
-    
-      하지만 사용자는 이런 경로를 알 필요가 없습니다.
-        
-          대신 라우터(Router) 가 최적의 경로를 찾아서 경로를 결정하고 연결합니다.
-            
-              라우터가 IP 주소까지의 경로를 결정하는 것을 라우팅(Routing) 이라고 합니다.
-            
-          
-        
-      
-    
-  
-  인터넷을 통해 원하는 사이트까지 가는 경로는 여러 라우터를 거치게 되므로 어떻게 라우팅하는 것이 효율이 좋을지 결정해야 합니다.
-
-  각 라우터는 소유한 경로 정보를 기반으로 목적지 IP 주소를 향해 이동해야 하는 네트워크를 결정합니다.
-    
-      이 경로 정보를 라우팅 테이블(Routing Table) 이라고 합니다.
-        
-          라우팅 테이블은 라우터가 소유한 네트워크의 지도와 같은 것입니다.
-            
-              AWS에서는 Amazon VPC의 라우팅 테이블(Routing Table) 이라는 기능이 이에 해당합니다.
-                
-                  라우팅 테이블에는 인터넷이나 각 AWS 서비스에 대해 어떤 엔드포인트를 경유할지와 같은 경로 정보를 관리할 수 있습니다.
-
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
-                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
-
-  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
-  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
-
-
-1️⃣ 인바운드 규칙(Inbound Rules)
-인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
-이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
-
-  예시
-    
-      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
-        
-          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
-        
-      
-      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
-    
-  
-  중요한 점
-    
-      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
-      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
-    
-  
-
-
-2️⃣ 아웃바운드 규칙(Outbound Rules)
-아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
-기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
-
-  예시
-    
-      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
-      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
-    
-  
-  중요한 점
-    
-      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
-    
-  
-
-
-3️⃣ 보안 그룹 작동 방식
-
-  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
-  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
-  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
-
-
-🙋‍♂️ 마무리
-보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
-인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html"><h1 class="title_post">☁️[AWS] Bastion Host란?</h1></a>
-                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="txt_post">
-                            ☁️[AWS] Bastion Host란?
-
-  Bastion Host는 AWS와 같은 클라우드 환경에서 VPC(Virtual Private Clould) 내부의 다른 인스턴스나 리소스에 접근하기 위한 보안 게이트웨이 역할을 하는 EC2 인스턴스를 의미합니다.
-  일반적으로 Bastion Host는 보안과 접근 제어를 강화하기 위해 사용됩니다.
-
-
-1️⃣ Bastion Host의 주요 개념과 기능.
-
-  1. 보안적인 역할
-    
-      Bastion Host는 VPC 내에서 퍼블릭 서브넷에 위치하며, 외부 인터넷에 직접적으로 노출되는 유일한 인스턴스입니다.
-        
-          이 인스턴스에 SSH 또는 RDP(Windows의 경우)를 통해 접근한 다음, VPC 내의 다른 프라이빗 서브넷에 있는 인스턴스들을 접근할 수 있습니다.
-        
-      
-      VPC의 다른 인스턴스들은 프라이빗 서브넷에 위치하며, 직접 외부 인터넷에 노출되지 않도록 설정되어 있습니다.
-        
-          이로 인해 프라이빗 서브넷의 인스턴스들은 직접 외부에서 접근할 수 없고, Bastion Host를 통해서만 접근이 가능합니다.
-        
-      
-    
-  
-  2. 접근 제어
-    
-      Bastion Host는 일반적으로 매우 엄격한 보안 정책을 적용하여 접근을 제어합니다.
-        
-          예를 들어, 특정 IP 주소에서만 SSH 접근을 허용하거나, 다단계 인증(MFA)을 요구할 수 있습니다.
-        
-      
-      또한, Bastion Host에서 다른 인스턴스에 접근할 때는 추가적인 인증 절차나 SSH 키를 사용하여 안전하게 접근할 수 있습니다.
-    
-  
-  3. 로그 및 모니터링
-    
-      Bastion Host를 통해 이루어진 모든 접근 기록을 로깅하여 누가 언제 어떤 리소스에 접근했는지 추적할 수 있습니다. 이를 통해 보안 사고 발생 시 신속하게 대응할 수 있습니다.
-      이러한 접근 로그는 AWS CloudWatch, S3 버킷 등을 통해 저장 및 분석할 수 있습니다.
-    
-  
-
-
-2️⃣ 사용 예시.
-
-  개발팀이 운영 중인 여러 서버에 접근해야 할 때, Bastion Host를 통해 접근하면 직접적으로 서버들이 인터넷에 노출되지 않으면서도 필요한 작업을 수행할 수 있습니다.
-  데이터베이스 서버와 같은 중요한 리소스가 있는 프라이빗 서브넷에 대한 접근을 Bastion Host를 통해서만 허용함으로써 보안을 강화할 수 있습니다.
-  
-    
-      외부의 사용자는 Bastion Host에 SSH 접속.
-    
-  
-  
-    
-      Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
-        
-          이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/AWS/2024_08_15_AWS_CLOULD_CLASSIFICATION.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
                         
                     </div>
@@ -11383,6 +11224,166 @@ VPC에는 서브넷, 라우팅과 같은 다양한 설정을 할 수 있습니�
   하지만 VPC와 같은 가상 독점 공간에서도 보안을 충분히 확보할 수 있고 온프레미스에 가까운 형태인 폐쇄형 클라우드는 초기 투자 비용이 크기 때문에 현재는 개방형 클라우드를 선택하는 경우가 많습니다.
 
 
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_RULES.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_RULES.html"><h1 class="title_post">☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules)</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_RULES.html" class="txt_post">
+                            ☁️[AWS] 인바운드 규칙(Inbounds Rules)와 아웃바운드 규칙(Outbound Rules).
+
+  AWS EC2 인스턴스의 보안 그룹은 인스턴스에 대한 네트워크 트래픽을 제어하는 가상 방화벽 역할을 합니다.
+  보안 그룹에는 인바운드(들어오는 트래픽) 및 아웃바운드(나가는 트래픽) 규칙이 있으며, 각 규칙은 특정 유형의 트래픽을 허용하거나 차단할 수 있습니다.
+
+
+1️⃣ 인바운드 규칙(Inbound Rules)
+인바운드 규칙은 외부에서 인스턴스로 들어오는 트래픽을 제어합니다.
+이 규칙에 따라 특정 IP 주소나 IP 범위에서 오는 트래픽만 허용됩니다.
+
+  예시
+    
+      SSH 접속을 허용하기 위해 포트 22번에서 들어오는 트래픽을 허용할 수 있습니다.
+        
+          이 경우, 특정 IP 주소(예: 203.0.113.0/24)에서 SSH 접속이 가능하도록 설정할 수 있습니다.
+        
+      
+      웹 서버를 운영 중이라면 HHTP(포트 80) 또는 HTTPS(포트 443) 트래픽을 허용할 수 있습니다.
+    
+  
+  중요한 점
+    
+      보안 그룹은 허용 규칙만 존재하며, 명시적으로 허용된 트래픽만 인스턴스로 들어올 수 있습니다.
+      기본적으로, 보안 그룹에 명시되지 않은 모든 인바운드 트래픽은 차단됩니다.
+    
+  
+
+
+2️⃣ 아웃바운드 규칙(Outbound Rules)
+아웃바운드 규칙은 인스턴스에서 외부로 나가는 트래픽을 제어합니다.
+기본적으로 모든 아웃바운드 트래픽이 허용되지만, 필요에 따라 이를 제한할 수 있습니다.
+
+  예시
+    
+      인스턴스가 특정 외부 서비스로의 연결을 허용하도록, 해당 서비스의 IP 주소나 포트로 나가는 트래픽을 허용할 수 있습니다.
+      만약 인스턴스가 외부로 데이터를 보내는 것을 제한하고자 한다면, 특정 포트나 IP 주소로의 나가는 트래픽을 차단할 수 있습니다.
+    
+  
+  중요한 점
+    
+      기본적으로 아웃바운드 트래픽은 모두 허용되지만, 아웃바운드 규칙을 설정하여 특정 트래픽만 허용하도록 제한할 수 있습니다.
+    
+  
+
+
+3️⃣ 보안 그룹 작동 방식
+
+  보안 그룹은 상태 정보를 가지고 있습니다. 즉, 인스턴스로 들어오는 요청이 허용되었다면, 그 요청에 대한 응답은 아웃바운드 규칙과 관계없이 허용됩니다.
+  보안 그룹은 AWS 계정 수준에서 관리되며, 여러 인스턴스에 동일한 보안 그룹을 적용할 수 있습니다.
+  보안 그룹의 변경 사항은 즉시 적용되므로, 보안 그룹을 수정하면 해당 인스턴스에 바로 반영됩니다.
+
+
+🙋‍♂️ 마무리
+보안 그룹을 올바르게 설정하는 것은 EC2 인스턴스를 안전하게 운영하기 위해 매우 중요합니다.
+인바운드 규칙을 통해 접근을 제한하고, 필요에 따라 아웃바운드 규칙을 설정하여 인스턴스의 네트워크 트래픽을 제어할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html"><h1 class="title_post">☁️[AWS] Bastion Host란?</h1></a>
+                        <a href="/Backend/AWS/240815_AWS_BASTION_HOST.html" class="txt_post">
+                            ☁️[AWS] Bastion Host란?
+
+  Bastion Host는 AWS와 같은 클라우드 환경에서 VPC(Virtual Private Clould) 내부의 다른 인스턴스나 리소스에 접근하기 위한 보안 게이트웨이 역할을 하는 EC2 인스턴스를 의미합니다.
+  일반적으로 Bastion Host는 보안과 접근 제어를 강화하기 위해 사용됩니다.
+
+
+1️⃣ Bastion Host의 주요 개념과 기능.
+
+  1. 보안적인 역할
+    
+      Bastion Host는 VPC 내에서 퍼블릭 서브넷에 위치하며, 외부 인터넷에 직접적으로 노출되는 유일한 인스턴스입니다.
+        
+          이 인스턴스에 SSH 또는 RDP(Windows의 경우)를 통해 접근한 다음, VPC 내의 다른 프라이빗 서브넷에 있는 인스턴스들을 접근할 수 있습니다.
+        
+      
+      VPC의 다른 인스턴스들은 프라이빗 서브넷에 위치하며, 직접 외부 인터넷에 노출되지 않도록 설정되어 있습니다.
+        
+          이로 인해 프라이빗 서브넷의 인스턴스들은 직접 외부에서 접근할 수 없고, Bastion Host를 통해서만 접근이 가능합니다.
+        
+      
+    
+  
+  2. 접근 제어
+    
+      Bastion Host는 일반적으로 매우 엄격한 보안 정책을 적용하여 접근을 제어합니다.
+        
+          예를 들어, 특정 IP 주소에서만 SSH 접근을 허용하거나, 다단계 인증(MFA)을 요구할 수 있습니다.
+        
+      
+      또한, Bastion Host에서 다른 인스턴스에 접근할 때는 추가적인 인증 절차나 SSH 키를 사용하여 안전하게 접근할 수 있습니다.
+    
+  
+  3. 로그 및 모니터링
+    
+      Bastion Host를 통해 이루어진 모든 접근 기록을 로깅하여 누가 언제 어떤 리소스에 접근했는지 추적할 수 있습니다. 이를 통해 보안 사고 발생 시 신속하게 대응할 수 있습니다.
+      이러한 접근 로그는 AWS CloudWatch, S3 버킷 등을 통해 저장 및 분석할 수 있습니다.
+    
+  
+
+
+2️⃣ 사용 예시.
+
+  개발팀이 운영 중인 여러 서버에 접근해야 할 때, Bastion Host를 통해 접근하면 직접적으로 서버들이 인터넷에 노출되지 않으면서도 필요한 작업을 수행할 수 있습니다.
+  데이터베이스 서버와 같은 중요한 리소스가 있는 프라이빗 서브넷에 대한 접근을 Bastion Host를 통해서만 허용함으로써 보안을 강화할 수 있습니다.
+  
+    
+      외부의 사용자는 Bastion Host에 SSH 접속.
+    
+  
+  
+    
+      Bastion Host에서 VPC 내부의 프라이빗 서브넷에 있는 서버들에 SSH 접속.
+        
+          이러한 구조를 통해 VPC 내부의 인스턴스들이 외부로부터 보호되면서도 관리자는 필요한 작업을 수행할 수 있게 됩니다.
+        
+      
+    
+  
 
 
                         </a>
@@ -11657,109 +11658,6 @@ ls /home/ec2-user/
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
-                            ☁️[AWS] 온프레미스(on-premise)란?
-
-
-  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
-  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
-  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
-
-
-
-
-
-  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
-    
-      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
-        
-          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
-          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
-            
-              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
-                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
-                            ☁️[AWS] 클라우드(Cloud)란?
-
-
-  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
-  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
-  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
-  클라우드의 어원은 단어 뜻 그대로 구름입니다.
-    
-      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
-        
-          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
-        
-      
-    
-  
-
-
-
-
-
-  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
-    
-      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
-      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
-        
-          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-08-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/Post/2024-08-07-webpage.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -11911,6 +11809,109 @@ ls /home/ec2-user/
   이러한 예시들을 통해 정적 웹사이트가 주로 고정된 내용을 제공하는 반면, 동적 웹사이트는 사용자의 입력과 상호작용에 따라 콘텐츠가 변경되는 복잡한 기능을 필요로 함을 알 수 있습니다.
     
       각각의 사례에서 요구하는 기능과 특성에 맞춰 웹사이트의 형태를 결정합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html"><h1 class="title_post">☁️[AWS] 온프레미스(on-premise)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_ON-PREMISE.html" class="txt_post">
+                            ☁️[AWS] 온프레미스(on-premise)란?
+
+
+  온프레미스(on-premise)란 사용자가 관리하는 시설 내에 서버 등의 기기를 설치해 운용하는 환경입니다.
+  AWS와 같은 클라우드 서비스가 등장하기 전까지는 정보 시스템을 구축하기 위해 다음 그림과 같이 자체적으로 관련 기기를 준비하고 설정해야 했습니다.
+  이런 기기를 설치하고 운용하는 시설을 일반적으로 데이터 센터(Data Center) 라고 합니다.
+
+
+
+
+
+  구매, 물리적 설치, 케이블 배선, 네트워크의 설정이 필요하지만 이러한 작업은 전문 업체에 위탁할 수 있습니다.
+    
+      결과적으로 기기 구매비, 작업에 필요한 인건비 같은 초기 투자 비용이 커지고 설치나 설정에도 시간이 걸리므로 정보 시스템을 구축하기 위한 준비 기간이 길어집니다.
+        
+          그 대신 기기는 사용자가 자유롭게 이용할 수 있고 이용 형태에 맞게 자유롭게 구성할 수 있습니다.
+          초기 투자 비용은 많이 들지만, 이후에 들어가는 비용은 전기 요금과 인터넷 회선 이용 요금 정도이므로 전체 비용에서 운용 비용의 비율이 비교적 낮습니다.
+            
+              그러나 기기 고장 등 예측하지 못한 상황이 발생해 추가 비용이 발생하는 때도 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-08-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/aws.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html"><h1 class="title_post">☁️[AWS] 클라우드(Cloud)란?</h1></a>
+                        <a href="/Backend/AWS/240807_AWS_CLOUD.html" class="txt_post">
+                            ☁️[AWS] 클라우드(Cloud)란?
+
+
+  클라우드(Cloud) 는 클라우드 서비스 제공자가 서버 등의 기기를 준비하고 거기에 구축된 가상 서버나 응용 프로그램 등을 사용자에게 제공하여 이용료를 받는 형태입니다.
+  물리적인 기기나 네트워크는 서비스 제공자가 준비해 놨으므로 사용자는 바로 정보 시스템을 구축할 수 있습니다.
+  클라우드의 정식 명칭은 클라우드 컴퓨팅(cloud computing) 입니다.
+  클라우드의 어원은 단어 뜻 그대로 구름입니다.
+    
+      보이지 않는 컴퓨팅 자원을 활용한다는 것에서 유래했습니다.
+        
+          이 말을 풀어 써보면 ‘사용자에게는 보이지 않지만 중앙의 서버 컴퓨팅 자원을 활용해 서비스를 받을 수 있게 하는 플랫폼’ 입니다.
+        
+      
+    
+  
+
+
+
+
+
+  서비스 제공자는 서버나 응용 프로그램을 제공할 뿐만 아니라 내부의 모든 하드웨어를 관리하므로 사용자는 하드웨어 장애에 대해 신경 쓰지 않아도 됩니다.
+    
+      하지만 사용자는 제공되는 서비스 범위 내에서만 시스템을 이용할 수 있으므로 시스템 구성 자유도는 낮습니다.
+      그리고 매원 각종 서비스 사용료를 지불해야 하므로 전체 비용이 커질 수 있습니다.
+        
+          하지만 기기 노후화나 고장 걱정 없이 안정적으로 컴퓨팅 자원을 사용할 수 있다는 장점이 있습니다.
+        
+      
     
   
 
@@ -12776,34 +12777,6 @@ sudo reboot
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
-                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
-                            
-  Studing English through Newsletters
-  Metacognition JAVA의 정석 - 기본형 크기와 특징
-  [수학] 명제와 증명 학습
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Backend" class="category">Backend</a>
-                            
-                                <span class="date">· 2024-06-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Backend/ENG/240616-ENG-STUDY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ENG.jpg') !important"></a>
                         
                     </div>
@@ -12898,6 +12871,34 @@ sudo reboot
 
   “Rust에서 RESTful API를 구축해 봅시다”
   📝Reference
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Backend" class="category">Backend</a>
+                            
+                                <span class="date">· 2024-06-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Backend/TIL/2024-06-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Backend/TIL/2024-06-16-TIL.html"><h1 class="title_post">📝 [TIL] 240616 Today I Learned.</h1></a>
+                        <a href="/Backend/TIL/2024-06-16-TIL.html" class="txt_post">
+                            
+  Studing English through Newsletters
+  Metacognition JAVA의 정석 - 기본형 크기와 특징
+  [수학] 명제와 증명 학습
 
 
                         </a>
@@ -21170,6 +21171,17 @@ public class Main {
             'type'     : "post",
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-10-07-components-in-software-engineering.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-07"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 소프트웨어 공학에서의 모듈.",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-10-07-modules-in-software-engineering.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-10-07"
         });

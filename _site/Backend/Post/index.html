@@ -961,14 +961,6 @@
                         </a>
 </div>
 </li>
-<li id="nav-second" aria-label="Spring">
-                    <div class="nav-item">
-                        <a href="/Backend/Spring/" class="nav-list-link nav-sh">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"></path></svg>
-                            <span>Spring</span>
-                        </a>
-</div>
-</li>
 <li id="nav-second" aria-label="TIL">
                     <div class="nav-item">
                         <a href="/Backend/TIL/" class="nav-list-link nav-sh">
@@ -1068,6 +1060,14 @@
                         </a>
 </div>
 </li></ul>
+</li>
+<li id="nav-first" aria-label="Spring">
+            <div class="nav-item">
+                <a href="/Spring/" class="nav-list-link nav-lh">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M181.3 32.4c17.4 2.9 29.2 19.4 26.3 36.8L197.8 128h95.1l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3s29.2 19.4 26.3 36.8L357.8 128H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H347.1L325.8 320H384c17.7 0 32 14.3 32 32s-14.3 32-32 32H315.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8l9.8-58.7H155.1l-11.5 69.3c-2.9 17.4-19.4 29.2-36.8 26.3s-29.2-19.4-26.3-36.8L90.2 384H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l21.3-128H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h68.9l11.5-69.3c2.9-17.4 19.4-29.2 36.8-26.3zM187.1 192L165.8 320h95.1l21.3-128H187.1z"></path></svg>
+                    <span>Spring</span>
+                </a>
+</div>
 </li>
 <li id="nav-first" aria-label="Home">
             <div class="nav-item">
@@ -2717,17 +2717,6 @@ public class Main {
 
         posts.push({
             'title'    : "Index",
-            'path'     : "Backend > Spring",
-            'type'     : "category",
-            'tags'     : "",
-            'url'      : "/Backend/Spring/index.html",
-            'image'    : "/assets/img/thumbnail/empty.jpg",
-            'date'     : "1900-01-01"
-        });
-    
-
-        posts.push({
-            'title'    : "Index",
             'path'     : "Backend > TIL",
             'type'     : "category",
             'tags'     : "",
@@ -2853,6 +2842,17 @@ public class Main {
             'type'     : "category",
             'tags'     : "",
             'url'      : "/SQL/index.html",
+            'image'    : "/assets/img/thumbnail/empty.jpg",
+            'date'     : "1900-01-01"
+        });
+    
+
+        posts.push({
+            'title'    : "Index",
+            'path'     : "Spring",
+            'type'     : "category",
+            'tags'     : "",
+            'url'      : "/Spring/index.html",
             'image'    : "/assets/img/thumbnail/empty.jpg",
             'date'     : "1900-01-01"
         });
@@ -7182,17 +7182,6 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] slf4j와 logback.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-08-22-logging-framework.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-08-22"
-        });
-    
-
-        posts.push({
             'title'    : "☕️[Java] Object 배열",
             'path'     : "Java > Java",
             'type'     : "post",
@@ -7204,13 +7193,13 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] Welcome Page 구현 및 동작 방법.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] slf4j와 logback.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-08-23-Thymeleaf.html",
+            'url'      : "/Spring/2024-08-22-logging-framework.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-08-23"
+            'date'     : "2024-08-22"
         });
     
 
@@ -7248,46 +7237,13 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] API.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] Welcome Page 구현 및 동작 방법.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-08-24-API.html",
+            'url'      : "/Spring/2024-08-23-Thymeleaf.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-08-24"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] MVC와 템플릿 엔진.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-08-24-MVC-Template-engine.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-08-24"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-08-24-Summary-of-business-requirements.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-08-24"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] 정적 컨텐츠.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-08-24-static-content.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-08-24"
+            'date'     : "2024-08-23"
         });
     
 
@@ -7298,6 +7254,50 @@ public class Main {
             'tags'     : "Network",
             'url'      : "/Network/2024/2024-08-24-Internetworking.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] API.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-08-24-API.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] MVC와 템플릿 엔진.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-08-24-MVC-Template-engine.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 일반적인 웹 애플리케이션 계층 구조와 클래스 의존관계.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-08-24-Summary-of-business-requirements.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-08-24"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 정적 컨텐츠.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-08-24-static-content.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-08-24"
         });
     
@@ -7479,28 +7479,6 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 빈(Bean)이란?",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-01-bean.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-01"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-01-when-use-controller-annotation.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-01"
-        });
-    
-
-        posts.push({
             'title'    : "☕️[Java] 불변 객체 - 문제와 풀이",
             'path'     : "Java > Java",
             'type'     : "post",
@@ -7534,35 +7512,24 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] 빈(Bean)이란?",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-02-DI-LC.html",
+            'url'      : "/Spring/2024-09-01-bean.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-02"
+            'date'     : "2024-09-01"
         });
     
 
         posts.push({
-            'title'    : "🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] `@Controller` 애너테이션 사용시 일어나는 일.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-02-Layered-Architecture.html",
+            'url'      : "/Spring/2024-09-01-when-use-controller-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-02"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] 스프링 컨테이너(Spring Container)란?",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-02-container.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-02"
+            'date'     : "2024-09-01"
         });
     
 
@@ -7589,13 +7556,35 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] 의존성 주입(Dependency Injection)을 통한 느슨한 결합(Loose Coupling) 유지.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-03-java-spring.html",
+            'url'      : "/Spring/2024-09-02-DI-LC.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-03"
+            'date'     : "2024-09-02"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 계층형 아키텍처(Layered Architecture), 3계층 아키텍처(Three-Tier Architecture)",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-02-Layered-Architecture.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-02"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 스프링 컨테이너(Spring Container)란?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-02-container.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-02"
         });
     
 
@@ -7633,24 +7622,13 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] `@SpringBootTest` 애노테이션",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] 자바 코드로 직접 스프링 빈 등록하기.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-04-SpringBootTest-Annotation,md.html",
+            'url'      : "/Spring/2024-09-03-java-spring.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-04"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] `@Transactional` 애노테이션",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-04-Transactional-Annotation.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-04"
+            'date'     : "2024-09-03"
         });
     
 
@@ -7683,6 +7661,28 @@ public class Main {
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Java/Java/2024-09-04-jdbc.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-04"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@SpringBootTest` 애노테이션",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-04-SpringBootTest-Annotation,md.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-04"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@Transactional` 애노테이션",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-04-Transactional-Annotation.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-04"
         });
     
@@ -7820,17 +7820,6 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] Spring MVC에서 `Controller` 객체.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-11"
-        });
-    
-
-        posts.push({
             'title'    : "💾 [CS] 프록시 패턴과 프록시 서버 - 2",
             'path'     : "CS > 2024",
             'type'     : "post",
@@ -7853,46 +7842,13 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] Spring MVC에서 `Model` 객체.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] Spring MVC에서 `Controller` 객체.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html",
+            'url'      : "/Spring/2024-09-11-Controller-object-at-the-Spring-MVC.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-12"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] `@ModelAttribute` 애노테이션",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-12-ModelAttribute-annotation.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-12"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] Spring MVC에서 `View` 객체.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-12"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] `.addAttribute()` 메서드.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-12-addAttribute-method.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-12"
+            'date'     : "2024-09-11"
         });
     
 
@@ -7903,6 +7859,50 @@ public class Main {
             'tags'     : "Java, Programming Language, Backend",
             'url'      : "/Java/Java/2024-09-12-Primitive-type.html",
             'image'    : "/assets/img/thumbnail/JV.jpeg",
+            'date'     : "2024-09-12"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Spring MVC에서 `Model` 객체.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-12-Model-Object-at-the-Spring-MVC.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-12"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@ModelAttribute` 애노테이션",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-12-ModelAttribute-annotation.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-12"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Spring MVC에서 `View` 객체.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-12"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `.addAttribute()` 메서드.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-12-addAttribute-method.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-12"
         });
     
@@ -8183,23 +8183,23 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] `@SpringBootApplication` 애너테이션과 서버(Server)",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-22"
-        });
-    
-
-        posts.push({
             'title'    : "🌐[Network] 라우팅 기능 - 라우팅 시스템",
             'path'     : "Network > 2024",
             'type'     : "post",
             'tags'     : "Network",
             'url'      : "/Network/2024/2024-09-22-routin-function-rounting-system.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-09-22"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] `@SpringBootApplication` 애너테이션과 서버(Server)",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-22"
         });
     
@@ -8228,10 +8228,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] Controller, DTO, API 명세, `@GetMapping`, MIME, `@RequestParam`, 폼 데이터, `@RestController`",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-24-Controller-DTO-APIspec-GetMapping-MIME-RequestParam-Formdata-RestController.html",
+            'url'      : "/Spring/2024-09-24-Controller-DTO-APIspec-GetMapping-MIME-RequestParam-Formdata-RestController.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-24"
         });
@@ -8239,34 +8239,12 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring]  HTTP Body, 메타데이터(Metadata), 바이너리 데이터(Binary Data), JSON(JavaScript Object Notation), `@PostMapping` 애너테이션, `@RequestBody` 애너테이션.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-25-HTTPBody-Metadata-BinadyData-JSON-PostMapping-RequestBody.html",
+            'url'      : "/Spring/2024-09-25-HTTPBody-Metadata-BinadyData-JSON-PostMapping-RequestBody.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-25"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-26-Controller-Getter-Json.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-26"
-        });
-    
-
-        posts.push({
-            'title'    : "🍃[Spring] 유일한 식별자(Primary Key)",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-26-Primary-Key.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-26"
         });
     
 
@@ -8293,13 +8271,24 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 서버를 실행시켜 API를 동작시키기까지 일어나는 일",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] Controller에서 getter가 있는 객체를 반환하면 JSON이 된다?!",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html",
+            'url'      : "/Spring/2024-09-26-Controller-Getter-Json.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-09-27"
+            'date'     : "2024-09-26"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 유일한 식별자(Primary Key)",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-26-Primary-Key.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-26"
         });
     
 
@@ -8326,11 +8315,22 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 서버에서 데이터를 디스크(Disk)에 저장하는 방법.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] 서버를 실행시켜 API를 동작시키기까지 일어나는 일",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-09-28-how-servers-store-data-to-disk.html",
+            'url'      : "/Spring/2024-09-27-what-happens-from-running-the-server-to-operating-the-API.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-09-27"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 서버에서 데이터를 디스크(Disk)에 저장하는 방법.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-09-28-how-servers-store-data-to-disk.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-09-28"
         });
@@ -8403,17 +8403,6 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] `application.yml`과 `application.properties`의 차이점.",
-            'path'     : "Backend > Spring",
-            'type'     : "post",
-            'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-01-yml-vs-properties.html",
-            'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-10-01"
-        });
-    
-
-        posts.push({
             'title'    : "💾 [CS] 드라이버(Driver)란?",
             'path'     : "CS > 2024",
             'type'     : "post",
@@ -8447,13 +8436,13 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] API에서 예외 던지기.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] `application.yml`과 `application.properties`의 차이점.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-02-API-Exception.html",
+            'url'      : "/Spring/2024-10-01-yml-vs-properties.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-10-02"
+            'date'     : "2024-10-01"
         });
     
 
@@ -8480,13 +8469,13 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 계층형 아키텍처에서 Controller의 역할.",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] API에서 예외 던지기.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-03-Controller.html",
+            'url'      : "/Spring/2024-10-02-API-Exception.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
-            'date'     : "2024-10-03"
+            'date'     : "2024-10-02"
         });
     
 
@@ -8513,11 +8502,22 @@ public class Main {
     
 
         posts.push({
-            'title'    : "🍃[Spring] 의존성(Dependency).",
-            'path'     : "Backend > Spring",
+            'title'    : "🍃[Spring] 계층형 아키텍처에서 Controller의 역할.",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-04-Dependency.html",
+            'url'      : "/Spring/2024-10-03-Controller.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-03"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 의존성(Dependency).",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-10-04-Dependency.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-04"
         });
@@ -8525,10 +8525,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] 계층형 아키텍처에서 Repository의 역할.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-04-Repository.html",
+            'url'      : "/Spring/2024-10-04-Repository.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-04"
         });
@@ -8536,10 +8536,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] 계층형 아키텍처에서 Service의 역할.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-04-Service.html",
+            'url'      : "/Spring/2024-10-04-Service.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-04"
         });
@@ -8547,10 +8547,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] Spring 빈(Bean).",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-04-bean.html",
+            'url'      : "/Spring/2024-10-04-bean.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-04"
         });
@@ -8558,10 +8558,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] Spring 컨테이너.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-05-Spring-container.html",
+            'url'      : "/Spring/2024-10-05-Spring-container.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-05"
         });
@@ -8569,10 +8569,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] `@Primary` 어노테이션",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-05-primary-annotation.html",
+            'url'      : "/Spring/2024-10-05-primary-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-05"
         });
@@ -8580,10 +8580,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] Spring 컨테이너를 사용하는 이유.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-05-why-use-spring-containers.html",
+            'url'      : "/Spring/2024-10-05-why-use-spring-containers.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-05"
         });
@@ -8591,10 +8591,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] `@Component` 어노테이션.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-06-Component-annotation.html",
+            'url'      : "/Spring/2024-10-06-Component-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });
@@ -8602,10 +8602,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] `@Qualifier` 어노테이션.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-06-Quilifier-annotation.html",
+            'url'      : "/Spring/2024-10-06-Quilifier-annotation.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });
@@ -8613,10 +8613,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] 빈(Bean)을 등록하는 방법.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-06-how-to-register-bean.html",
+            'url'      : "/Spring/2024-10-06-how-to-register-bean.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });
@@ -8624,10 +8624,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] Spring에서 빈(Bean)을 주입받는 방법들.",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html",
+            'url'      : "/Spring/2024-10-06-methods-for-injecting-beans-in-spring.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });
@@ -8635,10 +8635,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] 언제 `@Service`,`@Repository`,`@Controller`와 같은 어노테이션을 사용할까?",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-06-when-to-ues-these-annotations.html",
+            'url'      : "/Spring/2024-10-06-when-to-ues-these-annotations.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });
@@ -8646,10 +8646,10 @@ public class Main {
 
         posts.push({
             'title'    : "🍃[Spring] 언제 `@Configuration`와 `@Bean`을 함께 사용할까?",
-            'path'     : "Backend > Spring",
+            'path'     : "Spring",
             'type'     : "post",
             'tags'     : "Spring, Framework",
-            'url'      : "/Backend/Spring/2024-10-06-when-to-use-these-annotations-2.html",
+            'url'      : "/Spring/2024-10-06-when-to-use-these-annotations-2.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-06"
         });

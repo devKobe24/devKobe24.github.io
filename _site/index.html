@@ -745,6 +745,7 @@
             
             
             
+            
 
     
     
@@ -1115,6 +1116,185 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-10-interface-of-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-10-interface-of-api.html"><h1 class="title_post">💾 [CS] API에서의 인터페이스(Interface)란 무엇일까?</h1></a>
+                        <a href="/CS/2024/2024-10-10-interface-of-api.html" class="txt_post">
+                            💾 [CS] API에서의 인터페이스(Interface)란 무엇일까?
+
+  API에서의 인터페이스(Interface)는 프로그램 간 상호작용을 위한 규칙이나 방법을 정의한 것을 의미합니다.
+  여기서 인터페이스(Interface)는 API(응용 프로그래밍 인터페이스, Application Programming Interface)가 제공하는 기능을 다른 소프트웨어나 시스템이 어떻게 이용할 수 있는지를 규정한 명세라고 할 수 있습니다.
+
+
+1️⃣ API에서의 인터페이스 정의
+
+  인터페이스는 시스템이 제공하는 기능을 외부에서 어떻게 사용할 수 있는지에 대한 규칙과 구조를 설명합니다.
+    
+      이는 함수, 메소드, 데이터 형식, 호출 방법 등 다양한 요소로 구성될 수 있으며, API를 통해 소프트웨어 컴포넌트 간의 상호작용을 가능하게 합니다.
+    
+  
+
+
+1️⃣ 주요 특징.
+
+1️⃣ 함수나 메소드 호출 규칙.
+
+  API는 외부 프로그램이 호출할 수 있는 함수나 메소드를 정의합니다.
+    
+      인터페이스는 이 함수나 메소드가 어떻게 호출되고, 어떤 인수가 필요한지, 그리고 반환 값이 무엇인지를 명시합니다.
+        
+          예를 들어, 특정 API에서 데이터를 가져오는 함수가 있다면, 그 함수가 어떤 입력 값을 필요로 하고, 어떤 형식의 데이터를 반환하는지 정의 된 것이 인터페이스 입니다.
+        
+      
+    
+  
+
+
+2️⃣ 명세화된 입력과 출력.
+
+  API 인터페이스는 데이터 형식과 구조를 명확히 정의합니다.
+    
+      이는 개발자가 API와 상호작용할 때 어떤 형식의 입력과 출력을 처리해야 하는지 이해하는 데 필수적입니다.
+        
+          예를 들어, API의 한 함수가 JSON 형식의 입력 데이터를 받고 XML 형식으로 출력을 반환한다면, 이 모든 사항은 인터페이스에 명시되어 있어야 합니다.
+        
+      
+    
+  
+
+
+3️⃣ 추상화.
+
+  인터페이스는 API의 내부 구현을 추상화하고, 외부 사용자에게는 필요한 기능만을 제공하는 구조입니다.
+    
+      API를 사용하는 개발자는 그 내부가 어떻게 동작하는지 알 필요가 없으며, 정해진 규격대로 호출하면 원하는 결과를 얻을 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
+🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
+
+
+4️⃣ 계약(Contract)
+
+  API에서의 인터페이스는 일종의 계약으로 간주될 수 있습니다.
+    
+      API는 사용자에게 특정 기능을 제공하기 위한 약속을 하며, 사용자는 그 약속된 대로 인터페이스를 사용합니다.
+        
+          이를 통해 서로 다른 시스템 간의 원활한 통신이 가능해집니다.
+        
+      
+    
+  
+
+
+2️⃣ API에서의 인터페이스의 역할.
+
+1️⃣ 서비스 제공.
+
+  API는 시스템이 제공하는 기능을 외부에 공개하여, 다른 시스템이나 프로그램이 그 기능을 활용할 수 있게 합니다.
+    
+      이 과정에서 인터페이스는 어떤 기능이 제공되는지, 어떻게 사용해야 하는지를 설명하는 설계도 역할을 합니다.
+    
+  
+
+
+2️⃣ 호환성 보장.
+
+  API 인터페이스는 시스템 간의 상호작용에서 호환성을 보장하는 역할을 합니다.
+    
+      한 시스템이 제공하는 API를 외부 시스템이 이용할 때, 인터페이스를 준수함으로써 서로 다른 시스템 간에도 일관된 상호작용이 가능해집니다.
+    
+  
+
+
+3️⃣ 사용자와 시스템 간의 경계 설정.
+
+  API 인터페이스는 외부 사용자가 접근할 수 있는 기능과, 내부 시스템에서만 사용되는 기능을 구분하는 경계선 역할을 합니다.
+    
+      이는 보안 측면에서도 중요하며, 사용자는 인터페이스를 통해 제공된 기능만을 사용할 수 있습니다.
+    
+  
+
+
+4️⃣ 재사용성.
+
+  인터페이스는 동일한 규격을 따르므로, 한 번 정의된 API는 다양한 프로그램이나 시스템에서 재사용될 수 있습니다.
+    
+      이를 통해 개발 시간과 비용을 절감할 수 있습니다.
+    
+  
+
+
+3️⃣ 예시: RESTful API의 인터페이스.
+
+
+  RESTful API를 예로 들면, 인터페이스는 주로 HTTP 메소드(GET, POST, PUT, DELETE 등)를 사용하여 리소스에 접근하는 방법을 규정합니다.
+    
+      GET 요청 : 특정 데이터를 가져오기 위한 규칙을 정의
+      POST 요청 : 데이터를 생성하는 방법.
+      PUT 요청 : 데이터를 업데이트하는 방법.
+      DELETE 요청 : 데이터를 삭제하는 방법.
+    
+  
+  RESTful API의 인터페이스는 요청에 따라 어떤 경로(URL)를 사용할지, 어떤 매개변수와 헤더가 필요한지, 그리고 응답이 어떤 형태로 돌아올지를 규정합니다.
+
+
+4️⃣ 인터페이스와 프로토콜의 차이점.
+
+  인터페이스
+    
+      기능을 제공하는 방식과 규칙을 설명합니다.
+        
+          어떨게 데이터를 입력하고, 결과를 출력받는지에 대한 약속입니다.
+        
+      
+    
+  
+  프로토콜
+    
+      데이터가 어떻게 전송되는지에 대한 규칙을 설명합니다.
+        
+          통신 규칙을 다루며, 전송 방식에 중점을 둡니다.
+            
+              예를 들어, HTTP나 TCP/IP는 프로토콜입니다.
+            
+          
+        
+      
+    
+  
+
+
+5️⃣ 결론.
+
+  API에서 인터페이스는 프로그램 간 상호작용을 위한 명세로, 외부 시스템이나 소프트웨어가 어떻게 기능을 호출하고 사용할 수 있는지를 규정합니다.
+    
+      이는 소프트웨어 구성 요소 간의 계약처럼 동작하며, 사용자와 시스템 간의 경계를 설정하고 호환성을 보장하여 원활한 통신을 가능하게 합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2181,311 +2361,6 @@ JPA는 추상화 계층을 제공하여 객체 지향 설계와 데이터베이�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-08-what-is-the-jpa.html"><h1 class="title_post">🍃[Spring] JPA란 무엇인가요?</h1></a>
-                        <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="txt_post">
-                            🍃[Spring] JPA란 무엇인가요?
-
-  JPA(Java Persistence API) 는 자바 애플리케이션에서 관계형 데이터베이스와 상호작용하기 위한 ORM(Objcet-Relational Mapping) 표준 입니다.
-  JPA는 자바 객체와 데이터베이스 테이블 간의 매핑을 자동으로 처리하여, 개발자가 SQL 쿼리를 직접 작성하지 않고도 데이터베이스 작업을 수행할 수 있도록 도와줍니다.
-  JPA는 자바 EE(Enterprise Edition) 의 공식 스팩 중 하나이며, 여러 구현체(Hibernate, EclipseLink, OpenJPA 등)들이 JPA 표준을 따릅니다.
-
-
-1️⃣ JPA의 주요 개념.
-
-1. 객체-관계 매핑(ORM, Object-Relational Mapping).
-
-  JPA는 ORM(Object-Relational Mapping) 을 통해 자바 객체를 데이터베이스 테이블에 자동으로 매핑합니다.
-  이를 통해 자바 객체와 데이터베이스 간의 변환을 수동으로 처리할 필요 없이, 객체 지향적으로 데이터베이스 작업을 수행할 수 있습니다.
-  ORM은 개발자가 직접 SQL을 작성하지 않고도 자바 객체를 조작함으로써 데이터를 처리할 수 있도록 도와줍니다.
-
-
-2. 영속성(Persistence).
-
-  JPA에서 영속성은 자바 객체를 데이터베이스에 저장하고 관리하는 과정을 의미합니다.
-  JPA는 엔티티(Entity)라는 객체를 사용하여 데이터를 관리하며, 엔티티 객체는 특정 데이터베이스 테이블의 행(row)에 매핑됩니다.
-  영속성 컨텍스트(Persistence Context) 는 엔티티 객체를 관리하는 공간으로, 객체의 상태를 관리하고 변경 사항을 데이터베이스에 반영합니다.
-
-
-3. 엔티티(Entity).
-
-  JPA에서 엔티티는 데이터베이스의 테이블에 대응하는 자바 클래스입니다.
-  엔티티 클래스는 데이터베이스의 테이블을 모델링하며, 각 인스턴스는 데이터베이스 테이블의 한 행(row)에 대응됩니다.
-  엔티티 클래스는 @Entity 어노테이션으로 선언되며, 테이블의 열(column)은 클래스의 필드로 매핑됩니다.
-
-
-예시
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    private String email;
-    
-    // Getters, Setters, Constructors
-}
-
-
-4. JPQL(Java Persistence Query Language).
-
-  JPA는 JPQL이라는 쿼리 언어를 제공하며, 이를 통해 데이터베이스에 질의를 수행할 수 있습니다.
-  JPQL은 SQL과 유사하지만, SQL이 데이터베이스 테이블을 대상으로 하는 반면, JPQL은 객체를 대상으로 궈리를 수행합니다.
-  이를 통해 데이터베이스에 종속되지 않고 객체 중심으로 데이터 조작이 가능합니다.
-
-
-예시
-SELECT u FROM User u WHERE u.name = 'Kobe'
-
-
-
-  위 JPQL 쿼리는 User 엔티티 객체를 대상으로 데이터를 조회하는 쿼리입니다.
-
-
-5. 트랜잭션 관리.
-
-  JPA는 트랜잭션을 관리하여 데이터베이스 작업의 일관성과 안전성을 보장합니다.
-  트랜잭션은 데이터베이스에서 일련의 작업이 모두 성공하거나 모두 실해하는 것을 보장하는 메커니즘으로, JPA는 이를 자동으로 관리해줍니다.
-  트랜잭션이 완료되면 JPA는 데이터베이스에 모든 변경 사항을 반영하며, 문제가 발생하면 롤백합니다.
-
-
-
-  🙋‍♂️ 트랜잭션의 의미와 역할
-
-
-6. 영속성 유닛(Persistence Unit).
-
-  영속성 유닛은 JPA가 데이터베이스와 상호작용하기 위해 필요한 설정 정보(데이터베이스 URL, 사용자 정보, 드라이버 등)를 담고 있는 논리적 단위입니다.
-  JPA는 이 영속성 유닛을 통해 데이터베이스와 연결을 맺고, 필요한 작업을 수행합니다.
-  영속성 유닛은 persistence.xml 파일을 통해 설정되며, 데이터베이스와의 연결 정보가 포함됩니다.
-
-
-7. 캐싱.
-
-  JPA는 성능 최적화를 위해 1차 캐싱(영속성 컨텍스트에서 관리)와 2차 캐시를 제공합니다.
-  1차 캐시는 트랜잭션 범위 내에서 동일한 엔티티를 조회할 때 다시 데이터베이스에 접근하지 않고 캐시된 값을 사용합니다.
-
-
-2️⃣ JPA의 장점.
-
-1. 데이터베이스 독립성.
-
-  JPA는 데이터베이스에 종속되지 않는 추상화 계층을 제공하여, 특정 데이터베이스 벤더에 의존하지 않고 코드를 작성할 수 있습니다.
-    
-      이를 통해 애플리케이션 코드의 이식성과 유지보수성이 높아집니다.
-    
-  
-
-
-2. SQL 작성의 부담 감소.
-
-  JPA는 데이터를 조작하는 데 필요한 SQL 쿼리를 자동으로 생성합니다.
-  개발자는 객체 지향적인 방식으로 데이터를 처리하며, 직접 SQL을 작성하는 부담이 줄어듭니다.
-
-
-3. 객체 지향 프로그래밍과 데이터베이스의 간극 해소.
-
-  JPA는 자바의 객체 지향 모델과 관계형 데이터베이스 간의 불일치를 해결합니다.
-  자바 객체의 필드를 데이터베이스의 열(Column)과 매핑하고, 자바 객체의 상태 변화를 데이터베이스에 자동으로 반영합니다.
-
-
-4. 트랜잭션 관리 자동화.
-
-  JPA는 트랜잭션 관리를 자동화하여 개발자가 트랜잭션 범위를 명시하지 않아도, 데이터베이스 작업의 일관성을 유지할 수 있도록 도와줍니다.
-
-
-5. JPQL을 통한 객체 중심의 쿼리.
-
-  JPQL은 SQL 대신 객체 모델을 기반으로 하는 쿼리 언어로, SQL에 종속되지 않고 객체 지향적으로 데이터를 조회할 수 있게 해줍니다.
-
-
-6. 캐싱을 통한 성능 향상.
-
-  JPA는 1차 캐시와 2차 캐시를 통해 데이터베이스 접근 횟수를 줄이고, 성능을 향상시킬 수 있습니다.
-
-
-3️⃣ JPA 구현체.
-
-  JPA는 인터페이스와 규약만을 정의하는 표준이기 때문에, 실제로 동작하기 위해서는 구현체가 필요합니다.
-  대표적인 JPA 구현체로는 다음과 같은 ORM(Object-Relational Mapping) 프레임워크들이 있습니다.
-    
-      Hibernate : 가장 널리 사용되는 JPA 구현체로, JPA의 기능을 포함하면서도 JPA 이상의 기능들을 제공합니다.
-      EclipseLink : JPA의 레퍼런스 구현체로, 자바 EE 환경에서 많이 사용됩니다.
-      OpenJPA : Apache에서 제공하는 JPA 구현체입니다.
-    
-  
-
-
-4️⃣ 결론.
-
-  JPA는 자바 애플리케이션에서 데이터베이스와의 상호작용을 더 쉽게 만들기 위한 ORM(Object-Relational Mapping) 표준입니다.
-  JPA를 사용하면 객체 지향적인 방식으로 데이터베이스 작업을 수행할 수 있으며, 데이터베이스 독립적인 코드를 작성할 수 있습니다.
-  또한, JPA는 트랜잭션 관리, 캐싱, 데이터베이스 스키마 자동 생성 등의 기능을 통해 개발자에게 많은 편의성을 제공합니다.
-  JPA는 개발자가 객체 모델에 집중할 수 있게 하면서도 데이터베이스와의 상호작용을 효율적으로 처리할 수 있도록 도와줍니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-08-Persistence.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-08-Persistence.html"><h1 class="title_post">💾 [CS] 영속성(Persistence)란 무엇일까?</h1></a>
-                        <a href="/CS/2024/2024-10-08-Persistence.html" class="txt_post">
-                            “💾 [CS] 영속성(Persistence)란 무엇일까?”
-
-
-  영속성(Persistence) 이란 데이터나 객체의 상태를 지속적으로 저장하여 프로그램이 종료되거나 시스템이 재부팅되더라도 그 상태가 유지되는 것을 의미합니다.
-  간단히 말하면, 영속성은 데이터를 영구적으로 저장하는 능력을 가리킵니다.
-  소프트웨어 시스템에서는 주로 데이터베이스, 파일 시스템, 영속 저장소와 같은 외부 저장소에 데이터를 저장하는 것을 영속성이라고 합니다.
-
-
-1️⃣ 영속성의 예.
-
-  데이터베이스에 저장된 데이터
-    
-      데이터베이스에 저장된 데이터는 시스템이 종료되거나 전원이 꺼져도 영구적으로 저장됩니다.
-      프로그램이 다시 실행될 때 이 데이터를 불러와서 사용할 수 있습니다.
-    
-  
-  파일 시스템에 저장된 데이터
-    
-      파일 시스템에 저장된 파일도 시스템 재부팅 후에도 유지되며, 나중에 다시 사용할 수 있습니다.
-    
-  
-
-
-2️⃣ 영속성의 중요성.
-
-  소프트웨어 시스템에서는 대부분의 데이터가 메모리(휘발성)에만 존재하면 프로그램이 종료되거나 장애가 발생할 때 데이터를 잃게 됩니다.
-  영속성을 사용하면 프로그램이 종료되더라도 중요한 데이터는 데이터베이스나 파일 시스템에 저장되므로 시스템이 다시 시작되었을 때 데이터를 복구하거나 이어서 사용할 수 있습니다.
-
-
-
-
-3️⃣ Java 및 Spring에서의 영속성.
-
-  Java 환경, 특히 JPA(Java Persistence API) 를 사용하는 애플리케이션에서 영속성은 주로 데이터베이스와 자바 객체 간의 상태 유지를 의미합니다.
-  JPA는 자바 객체를 데이터베이스에 영속적으로 저장하고, 필요할 때 데이터를 조회하여 다시 객체로 변환하는 과정을 자동으로 처리합니다.
-
-
-JAP에서의 주요 개념.
-
-1. 영속성 컨텍스트(Persistence Context)
-
-  영속성 컨텍스트는 JPA에서 자바 객체(Entity)를 관리하는 일종의 캐시 메모리입니다.
-  엔티티가 영속성 컨텍스트에 포함되면, 해당 엔티티는 데이터베이스에 영속됩니다.
-  영속성 컨텍스트는 엔티티의 상태 변화를 감지하고, 그 변화가 트랜잭션이 끝날 때 데이터베이스에 반영되도록 관리합니다.
-
-
-2. 엔티티(Entity)
-
-  JPA에서 엔티티는 데이터베이스의 테이블과 매핑되는 자바 객체입니다.
-  엔티티는 데이터를 영속적으로 유지하기 위한 수단으로, JPA는 이를 데이터베이스에 저장하고 다시 불러옵니다.
-
-
-3. EntityManager
-
-  EntityManager는 JPA의 핵심 인테페이스로, 엔티티의 CRUD(생성, 조회, 수정, 삭제) 작업을 담당합니다.
-  EntityManager는 영속성 컨텍스트를 관리하며, 데이터베이스와의 상호작용을 처리합니다.
-  persist() 메서드를 통해 엔티티를 영속성 컨텍스트에 저장하고, 이를 데이터베이스에 반영할 수 있습니다.
-
-
-4. 영속 상태(Persistent State)
-
-  JPA에서 엔티티 객체는 다음 세 가지 상태를 가집니다.
-    
-      비영속(Transient) : 데이터베이스와 전혀 연결되지 않은 상태입니다.
-      영속(Persistent) : 엔티티가 영속성 컨텍스트에 포함되어 관리되고 있는 상태로, 데이터베이스에 기록되거나 기록될 준비가 되어 있는 상태입니다.
-      준영속(Detached) : 영속성 컨텍스트에 의해 관리되지 않지만 데이터베이스에는 여전히 존재하는 상태입니다.
-    
-  
-
-
-영속 상태 전이 예시
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    // Getters, Setters, Constructors
-}
-
-
-// 영속성 컨텍스트와 EntityManager를 사용한 영속성 예시
-EntityManager entityManager = entityManagerFactory.createEntityManager();
-entityManager.getTransaction().begin();
-
-// 1. 비영속 상태: User 객체는 아직 데이터베이스와 연결되지 않음
-User user = new User();
-user.setName("Kobe");
-
-// 2. 영속 상태: persist()로 영속성 컨텍스트에 저장됨
-entityManager.persist(user);
-
-// 3. 트랜잭션이 완료되면, 데이터베이스에 저장됨
-entityManager.getTransaction().commit();
-entityManager.close();
-
-
-설명.
-
-
-  비영속 상태 : new User()로 생성된 객체는 메모리에서만 존재하고, 아직 데이터베이스와 연결되지 않았습니다.
-  영속 상태 : entityManager.persist(user)를 호출하면 객체는 영속성 컨텍스트에 저장되고, 데이터베이스에 반영될 준비가 됩니다.
-  트랜잭션이 커밋되면, 영속성 컨텍스트에 있는 객체의 상태가 데이터베이스에 영구적으로 저장됩니다.
-
-
-
-
-4️⃣ 정리.
-
-  영속성은 데이터를 영구적으로 저장하는 기능입니다.
-    
-      주로 데이터베이스나 파일 시스템에 데이터를 저장하여 프로그램이 종료되더라도 데이터가 유지될 수 있게 합니다.
-    
-  
-  JPA에서 영속성은 객체(Entity)의 상태를 영속성 컨텍스트에서 관리하고, 이 상태가 데이터베이스와 연동되어 지속될 수 있게 하는 것을 의미합니다.
-  영속성 컨텍스트는 JPA에서 엔티티 객체의 상태를 관리하고, 데이터베이스와의 동기화를 처리하는 중요한 메커니즘입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-10-08-what-is-the-local-area-network.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -2688,6 +2563,311 @@ entityManager.close();
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-08-Persistence.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-08-Persistence.html"><h1 class="title_post">💾 [CS] 영속성(Persistence)란 무엇일까?</h1></a>
+                        <a href="/CS/2024/2024-10-08-Persistence.html" class="txt_post">
+                            “💾 [CS] 영속성(Persistence)란 무엇일까?”
+
+
+  영속성(Persistence) 이란 데이터나 객체의 상태를 지속적으로 저장하여 프로그램이 종료되거나 시스템이 재부팅되더라도 그 상태가 유지되는 것을 의미합니다.
+  간단히 말하면, 영속성은 데이터를 영구적으로 저장하는 능력을 가리킵니다.
+  소프트웨어 시스템에서는 주로 데이터베이스, 파일 시스템, 영속 저장소와 같은 외부 저장소에 데이터를 저장하는 것을 영속성이라고 합니다.
+
+
+1️⃣ 영속성의 예.
+
+  데이터베이스에 저장된 데이터
+    
+      데이터베이스에 저장된 데이터는 시스템이 종료되거나 전원이 꺼져도 영구적으로 저장됩니다.
+      프로그램이 다시 실행될 때 이 데이터를 불러와서 사용할 수 있습니다.
+    
+  
+  파일 시스템에 저장된 데이터
+    
+      파일 시스템에 저장된 파일도 시스템 재부팅 후에도 유지되며, 나중에 다시 사용할 수 있습니다.
+    
+  
+
+
+2️⃣ 영속성의 중요성.
+
+  소프트웨어 시스템에서는 대부분의 데이터가 메모리(휘발성)에만 존재하면 프로그램이 종료되거나 장애가 발생할 때 데이터를 잃게 됩니다.
+  영속성을 사용하면 프로그램이 종료되더라도 중요한 데이터는 데이터베이스나 파일 시스템에 저장되므로 시스템이 다시 시작되었을 때 데이터를 복구하거나 이어서 사용할 수 있습니다.
+
+
+
+
+3️⃣ Java 및 Spring에서의 영속성.
+
+  Java 환경, 특히 JPA(Java Persistence API) 를 사용하는 애플리케이션에서 영속성은 주로 데이터베이스와 자바 객체 간의 상태 유지를 의미합니다.
+  JPA는 자바 객체를 데이터베이스에 영속적으로 저장하고, 필요할 때 데이터를 조회하여 다시 객체로 변환하는 과정을 자동으로 처리합니다.
+
+
+JAP에서의 주요 개념.
+
+1. 영속성 컨텍스트(Persistence Context)
+
+  영속성 컨텍스트는 JPA에서 자바 객체(Entity)를 관리하는 일종의 캐시 메모리입니다.
+  엔티티가 영속성 컨텍스트에 포함되면, 해당 엔티티는 데이터베이스에 영속됩니다.
+  영속성 컨텍스트는 엔티티의 상태 변화를 감지하고, 그 변화가 트랜잭션이 끝날 때 데이터베이스에 반영되도록 관리합니다.
+
+
+2. 엔티티(Entity)
+
+  JPA에서 엔티티는 데이터베이스의 테이블과 매핑되는 자바 객체입니다.
+  엔티티는 데이터를 영속적으로 유지하기 위한 수단으로, JPA는 이를 데이터베이스에 저장하고 다시 불러옵니다.
+
+
+3. EntityManager
+
+  EntityManager는 JPA의 핵심 인테페이스로, 엔티티의 CRUD(생성, 조회, 수정, 삭제) 작업을 담당합니다.
+  EntityManager는 영속성 컨텍스트를 관리하며, 데이터베이스와의 상호작용을 처리합니다.
+  persist() 메서드를 통해 엔티티를 영속성 컨텍스트에 저장하고, 이를 데이터베이스에 반영할 수 있습니다.
+
+
+4. 영속 상태(Persistent State)
+
+  JPA에서 엔티티 객체는 다음 세 가지 상태를 가집니다.
+    
+      비영속(Transient) : 데이터베이스와 전혀 연결되지 않은 상태입니다.
+      영속(Persistent) : 엔티티가 영속성 컨텍스트에 포함되어 관리되고 있는 상태로, 데이터베이스에 기록되거나 기록될 준비가 되어 있는 상태입니다.
+      준영속(Detached) : 영속성 컨텍스트에 의해 관리되지 않지만 데이터베이스에는 여전히 존재하는 상태입니다.
+    
+  
+
+
+영속 상태 전이 예시
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    // Getters, Setters, Constructors
+}
+
+
+// 영속성 컨텍스트와 EntityManager를 사용한 영속성 예시
+EntityManager entityManager = entityManagerFactory.createEntityManager();
+entityManager.getTransaction().begin();
+
+// 1. 비영속 상태: User 객체는 아직 데이터베이스와 연결되지 않음
+User user = new User();
+user.setName("Kobe");
+
+// 2. 영속 상태: persist()로 영속성 컨텍스트에 저장됨
+entityManager.persist(user);
+
+// 3. 트랜잭션이 완료되면, 데이터베이스에 저장됨
+entityManager.getTransaction().commit();
+entityManager.close();
+
+
+설명.
+
+
+  비영속 상태 : new User()로 생성된 객체는 메모리에서만 존재하고, 아직 데이터베이스와 연결되지 않았습니다.
+  영속 상태 : entityManager.persist(user)를 호출하면 객체는 영속성 컨텍스트에 저장되고, 데이터베이스에 반영될 준비가 됩니다.
+  트랜잭션이 커밋되면, 영속성 컨텍스트에 있는 객체의 상태가 데이터베이스에 영구적으로 저장됩니다.
+
+
+
+
+4️⃣ 정리.
+
+  영속성은 데이터를 영구적으로 저장하는 기능입니다.
+    
+      주로 데이터베이스나 파일 시스템에 데이터를 저장하여 프로그램이 종료되더라도 데이터가 유지될 수 있게 합니다.
+    
+  
+  JPA에서 영속성은 객체(Entity)의 상태를 영속성 컨텍스트에서 관리하고, 이 상태가 데이터베이스와 연동되어 지속될 수 있게 하는 것을 의미합니다.
+  영속성 컨텍스트는 JPA에서 엔티티 객체의 상태를 관리하고, 데이터베이스와의 동기화를 처리하는 중요한 메커니즘입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-08-what-is-the-jpa.html"><h1 class="title_post">🍃[Spring] JPA란 무엇인가요?</h1></a>
+                        <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="txt_post">
+                            🍃[Spring] JPA란 무엇인가요?
+
+  JPA(Java Persistence API) 는 자바 애플리케이션에서 관계형 데이터베이스와 상호작용하기 위한 ORM(Objcet-Relational Mapping) 표준 입니다.
+  JPA는 자바 객체와 데이터베이스 테이블 간의 매핑을 자동으로 처리하여, 개발자가 SQL 쿼리를 직접 작성하지 않고도 데이터베이스 작업을 수행할 수 있도록 도와줍니다.
+  JPA는 자바 EE(Enterprise Edition) 의 공식 스팩 중 하나이며, 여러 구현체(Hibernate, EclipseLink, OpenJPA 등)들이 JPA 표준을 따릅니다.
+
+
+1️⃣ JPA의 주요 개념.
+
+1. 객체-관계 매핑(ORM, Object-Relational Mapping).
+
+  JPA는 ORM(Object-Relational Mapping) 을 통해 자바 객체를 데이터베이스 테이블에 자동으로 매핑합니다.
+  이를 통해 자바 객체와 데이터베이스 간의 변환을 수동으로 처리할 필요 없이, 객체 지향적으로 데이터베이스 작업을 수행할 수 있습니다.
+  ORM은 개발자가 직접 SQL을 작성하지 않고도 자바 객체를 조작함으로써 데이터를 처리할 수 있도록 도와줍니다.
+
+
+2. 영속성(Persistence).
+
+  JPA에서 영속성은 자바 객체를 데이터베이스에 저장하고 관리하는 과정을 의미합니다.
+  JPA는 엔티티(Entity)라는 객체를 사용하여 데이터를 관리하며, 엔티티 객체는 특정 데이터베이스 테이블의 행(row)에 매핑됩니다.
+  영속성 컨텍스트(Persistence Context) 는 엔티티 객체를 관리하는 공간으로, 객체의 상태를 관리하고 변경 사항을 데이터베이스에 반영합니다.
+
+
+3. 엔티티(Entity).
+
+  JPA에서 엔티티는 데이터베이스의 테이블에 대응하는 자바 클래스입니다.
+  엔티티 클래스는 데이터베이스의 테이블을 모델링하며, 각 인스턴스는 데이터베이스 테이블의 한 행(row)에 대응됩니다.
+  엔티티 클래스는 @Entity 어노테이션으로 선언되며, 테이블의 열(column)은 클래스의 필드로 매핑됩니다.
+
+
+예시
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    private String email;
+    
+    // Getters, Setters, Constructors
+}
+
+
+4. JPQL(Java Persistence Query Language).
+
+  JPA는 JPQL이라는 쿼리 언어를 제공하며, 이를 통해 데이터베이스에 질의를 수행할 수 있습니다.
+  JPQL은 SQL과 유사하지만, SQL이 데이터베이스 테이블을 대상으로 하는 반면, JPQL은 객체를 대상으로 궈리를 수행합니다.
+  이를 통해 데이터베이스에 종속되지 않고 객체 중심으로 데이터 조작이 가능합니다.
+
+
+예시
+SELECT u FROM User u WHERE u.name = 'Kobe'
+
+
+
+  위 JPQL 쿼리는 User 엔티티 객체를 대상으로 데이터를 조회하는 쿼리입니다.
+
+
+5. 트랜잭션 관리.
+
+  JPA는 트랜잭션을 관리하여 데이터베이스 작업의 일관성과 안전성을 보장합니다.
+  트랜잭션은 데이터베이스에서 일련의 작업이 모두 성공하거나 모두 실해하는 것을 보장하는 메커니즘으로, JPA는 이를 자동으로 관리해줍니다.
+  트랜잭션이 완료되면 JPA는 데이터베이스에 모든 변경 사항을 반영하며, 문제가 발생하면 롤백합니다.
+
+
+
+  🙋‍♂️ 트랜잭션의 의미와 역할
+
+
+6. 영속성 유닛(Persistence Unit).
+
+  영속성 유닛은 JPA가 데이터베이스와 상호작용하기 위해 필요한 설정 정보(데이터베이스 URL, 사용자 정보, 드라이버 등)를 담고 있는 논리적 단위입니다.
+  JPA는 이 영속성 유닛을 통해 데이터베이스와 연결을 맺고, 필요한 작업을 수행합니다.
+  영속성 유닛은 persistence.xml 파일을 통해 설정되며, 데이터베이스와의 연결 정보가 포함됩니다.
+
+
+7. 캐싱.
+
+  JPA는 성능 최적화를 위해 1차 캐싱(영속성 컨텍스트에서 관리)와 2차 캐시를 제공합니다.
+  1차 캐시는 트랜잭션 범위 내에서 동일한 엔티티를 조회할 때 다시 데이터베이스에 접근하지 않고 캐시된 값을 사용합니다.
+
+
+2️⃣ JPA의 장점.
+
+1. 데이터베이스 독립성.
+
+  JPA는 데이터베이스에 종속되지 않는 추상화 계층을 제공하여, 특정 데이터베이스 벤더에 의존하지 않고 코드를 작성할 수 있습니다.
+    
+      이를 통해 애플리케이션 코드의 이식성과 유지보수성이 높아집니다.
+    
+  
+
+
+2. SQL 작성의 부담 감소.
+
+  JPA는 데이터를 조작하는 데 필요한 SQL 쿼리를 자동으로 생성합니다.
+  개발자는 객체 지향적인 방식으로 데이터를 처리하며, 직접 SQL을 작성하는 부담이 줄어듭니다.
+
+
+3. 객체 지향 프로그래밍과 데이터베이스의 간극 해소.
+
+  JPA는 자바의 객체 지향 모델과 관계형 데이터베이스 간의 불일치를 해결합니다.
+  자바 객체의 필드를 데이터베이스의 열(Column)과 매핑하고, 자바 객체의 상태 변화를 데이터베이스에 자동으로 반영합니다.
+
+
+4. 트랜잭션 관리 자동화.
+
+  JPA는 트랜잭션 관리를 자동화하여 개발자가 트랜잭션 범위를 명시하지 않아도, 데이터베이스 작업의 일관성을 유지할 수 있도록 도와줍니다.
+
+
+5. JPQL을 통한 객체 중심의 쿼리.
+
+  JPQL은 SQL 대신 객체 모델을 기반으로 하는 쿼리 언어로, SQL에 종속되지 않고 객체 지향적으로 데이터를 조회할 수 있게 해줍니다.
+
+
+6. 캐싱을 통한 성능 향상.
+
+  JPA는 1차 캐시와 2차 캐시를 통해 데이터베이스 접근 횟수를 줄이고, 성능을 향상시킬 수 있습니다.
+
+
+3️⃣ JPA 구현체.
+
+  JPA는 인터페이스와 규약만을 정의하는 표준이기 때문에, 실제로 동작하기 위해서는 구현체가 필요합니다.
+  대표적인 JPA 구현체로는 다음과 같은 ORM(Object-Relational Mapping) 프레임워크들이 있습니다.
+    
+      Hibernate : 가장 널리 사용되는 JPA 구현체로, JPA의 기능을 포함하면서도 JPA 이상의 기능들을 제공합니다.
+      EclipseLink : JPA의 레퍼런스 구현체로, 자바 EE 환경에서 많이 사용됩니다.
+      OpenJPA : Apache에서 제공하는 JPA 구현체입니다.
+    
+  
+
+
+4️⃣ 결론.
+
+  JPA는 자바 애플리케이션에서 데이터베이스와의 상호작용을 더 쉽게 만들기 위한 ORM(Object-Relational Mapping) 표준입니다.
+  JPA를 사용하면 객체 지향적인 방식으로 데이터베이스 작업을 수행할 수 있으며, 데이터베이스 독립적인 코드를 작성할 수 있습니다.
+  또한, JPA는 트랜잭션 관리, 캐싱, 데이터베이스 스키마 자동 생성 등의 기능을 통해 개발자에게 많은 편의성을 제공합니다.
+  JPA는 개발자가 객체 모델에 집중할 수 있게 하면서도 데이터베이스와의 상호작용을 효율적으로 처리할 수 있도록 도와줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-08</span>
                             
@@ -3117,123 +3297,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html"><h1 class="title_post">💾 [CS] DIP의 정의에서 말하는 '추상화된 것'과 '추상화'의 개념의 차이점.</h1></a>
-                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="txt_post">
-                            “💾 [CS] DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.”
-
-  DIP(Dependency Inversion Principle) 에서 말하는 “추상화된 것”과 소프트웨어 공학에서 사용하는 일반적인 “추상화” 개념은 서로 밀접하게 관련된 개념이지만, 문맥에 따라 강조점이 다를 수 있습니다.
-
-
-1️⃣ DIP에서 말하는 “추상화된 것”
-
-  DIP에서 말하는 “추상화된 것” 은 구체적인 구현체가 아닌 인터페이스나 추상 클래스를 지칭합니다.
-  이 원칙에 따르면, 고수준 모듈(비즈니스 로직)은 저수준(세부적인 구현)에 의존해서 안 되며, 대신 두 모듈 모두 인터페이스나 추상 클래스 같은 추상화된 것에 의존해야 합니다.
-  이는 DIP에서 핵심적인 개념으로, 구현체 대신 계약(인터페이스)와 상호작용하도록 유도합니다.
-
-
-
-  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
-🙋‍♂️ 소프트웨어 공학에서의 모듈
-🙋‍♂️ 모듈과 컴포넌트를 레고 블록에 비유해보면?!
-🙋‍♂️ 비즈니스 로직(Business Logic)이란?
-
-
-예시
-// "추상화된 것"인 인터페이스
-interface NotificationService {
-    void sendNotification(String message);
-}
-
-
-
-  위의 NotificationService 인터페이스는 DIP의 문맥에서 말하는 “추상화된 것”입니다.
-  고수준 모듈과 저수준 모듈은 이 추상화된 인터페이스를 통해서만 서로 상호작용합니다.
-
-
-2️⃣ 일반적인 “추상화” 개념.
-
-  소프트웨어 공학에서의 “추상화” 는 더 일반적인 개념으로, 세부사항을 숨기고 중요한 정보만을 드러내는 설계 기법을 의미합니다.
-  이를 통해 시스템의 복잡성을 줄이고, 설계나 구현에서 핵심적인 부분에 집중할 수 있게 해줍니다.
-  “추상화” 는 클래스, 인터페이스, 함수 등 다양한 수준에서 사용될 수 있으며, 주로 복잡한 시스템을 이해하기 쉽게 만들기 위해 사용됩니다.
-  “추상화” 는 구현 세부 사항을 감추고, 객체나 모듈 간의 상호작용을 간단하고 일관되게 만들어 줍니다.
-
-
-예시.
-abstract class Shape {
-    abstract void draw();
-}
-
-
-
-  위의 Shape 클래스는 일반적인 추상화의 예로, 다양한 구체적인 도형(원, 사각형 등)의 세부 구현을 감추고 draw()라는 공통된 동작을 정의한 것입니다.
-
-
-3️⃣ 차이점.
-
-  DIP에서의 “추상화된 것”
-    
-      DIP에서 말하는 “추상화된 것”은 구현이 아닌 계약을 제공하는 인터페이스나 추상 클래스를 가리킵니다.
-        
-          이 계약에 의존함으로써 고수준 모듈과 저수준 모듈의 결합도를 낮춥니다.
-        
-      
-      즉, 구현이 아닌, 추상적인 계약에 의존함으로써 유연성을 확보하고 의존성의 방향을 역전시킵니다.
-    
-  
-  일반적인 “추상화”
-    
-      일반적인 “추상화” 는 더 광범위한 개념으로, 시스템 내에서 세부사항을 감추고 본질적인 개념만 드러내는 설계 기법입니다.
-        
-          추상 클래스, 인터페이스뿐만 아니라, 복잡한 로직을 간단하게 만들기 위한 여러 기법이 포함됩니다.
-        
-      
-    
-  
-
-
-4️⃣ 공통점
-
-  둘 다 세부 사항을 숨긴다.
-    
-      DIP에서의 “추상화된 것”과 일반적인 “추상화” 모두 구체적인 구현 세부 사항을 감추고, 더 중요한 부분(주로 인터페이스나 상호작용)에 집중하도록 설계합니다.
-    
-  
-  유연성 제공
-    
-      두 개념 모두 코드의 유연성을 증가시키고, 변경에 쉽게 대응할 수 있는 구조를 만드는데 기여합니다.
-    
-  
-
-
-5️⃣ 결론
-
-  DIP에서의 “추상화된 것” 은 DIP 원칙을 적용할 때 구체적인 구현 대신 인터페이스나 추상 클래스와 같은 추상적 계층에 의존하도록 하는 구체적인 의미를 가집니다.
-  일반적인 “추상화” 는 소프트웨어 설계에서 복잡성을 관리하기 위해 사용하는 넓은 범위의 설계 개념으로, 객체 지향 프로그래밍의 기본 원칙 중 하나입니다.
-
-
-결국, DIP에서 말하는 “추상화된 것”은 일반적인 “추상화”의 측정한 적용 사례라고 볼수 있습니다.
-DIP는 추상화를 통해 시스템 간의 결합도를 낮추고 유연성을 높이는 것을 목표로 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -3364,6 +3427,123 @@ DIP는 추상화를 통해 시스템 간의 결합도를 낮추고 유연성을 
   소프트웨어 공학에서의 모듈
   소프트웨어 공학에서의 컴포넌트
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html"><h1 class="title_post">💾 [CS] DIP의 정의에서 말하는 '추상화된 것'과 '추상화'의 개념의 차이점.</h1></a>
+                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="txt_post">
+                            “💾 [CS] DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.”
+
+  DIP(Dependency Inversion Principle) 에서 말하는 “추상화된 것”과 소프트웨어 공학에서 사용하는 일반적인 “추상화” 개념은 서로 밀접하게 관련된 개념이지만, 문맥에 따라 강조점이 다를 수 있습니다.
+
+
+1️⃣ DIP에서 말하는 “추상화된 것”
+
+  DIP에서 말하는 “추상화된 것” 은 구체적인 구현체가 아닌 인터페이스나 추상 클래스를 지칭합니다.
+  이 원칙에 따르면, 고수준 모듈(비즈니스 로직)은 저수준(세부적인 구현)에 의존해서 안 되며, 대신 두 모듈 모두 인터페이스나 추상 클래스 같은 추상화된 것에 의존해야 합니다.
+  이는 DIP에서 핵심적인 개념으로, 구현체 대신 계약(인터페이스)와 상호작용하도록 유도합니다.
+
+
+
+  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
+🙋‍♂️ 소프트웨어 공학에서의 모듈
+🙋‍♂️ 모듈과 컴포넌트를 레고 블록에 비유해보면?!
+🙋‍♂️ 비즈니스 로직(Business Logic)이란?
+
+
+예시
+// "추상화된 것"인 인터페이스
+interface NotificationService {
+    void sendNotification(String message);
+}
+
+
+
+  위의 NotificationService 인터페이스는 DIP의 문맥에서 말하는 “추상화된 것”입니다.
+  고수준 모듈과 저수준 모듈은 이 추상화된 인터페이스를 통해서만 서로 상호작용합니다.
+
+
+2️⃣ 일반적인 “추상화” 개념.
+
+  소프트웨어 공학에서의 “추상화” 는 더 일반적인 개념으로, 세부사항을 숨기고 중요한 정보만을 드러내는 설계 기법을 의미합니다.
+  이를 통해 시스템의 복잡성을 줄이고, 설계나 구현에서 핵심적인 부분에 집중할 수 있게 해줍니다.
+  “추상화” 는 클래스, 인터페이스, 함수 등 다양한 수준에서 사용될 수 있으며, 주로 복잡한 시스템을 이해하기 쉽게 만들기 위해 사용됩니다.
+  “추상화” 는 구현 세부 사항을 감추고, 객체나 모듈 간의 상호작용을 간단하고 일관되게 만들어 줍니다.
+
+
+예시.
+abstract class Shape {
+    abstract void draw();
+}
+
+
+
+  위의 Shape 클래스는 일반적인 추상화의 예로, 다양한 구체적인 도형(원, 사각형 등)의 세부 구현을 감추고 draw()라는 공통된 동작을 정의한 것입니다.
+
+
+3️⃣ 차이점.
+
+  DIP에서의 “추상화된 것”
+    
+      DIP에서 말하는 “추상화된 것”은 구현이 아닌 계약을 제공하는 인터페이스나 추상 클래스를 가리킵니다.
+        
+          이 계약에 의존함으로써 고수준 모듈과 저수준 모듈의 결합도를 낮춥니다.
+        
+      
+      즉, 구현이 아닌, 추상적인 계약에 의존함으로써 유연성을 확보하고 의존성의 방향을 역전시킵니다.
+    
+  
+  일반적인 “추상화”
+    
+      일반적인 “추상화” 는 더 광범위한 개념으로, 시스템 내에서 세부사항을 감추고 본질적인 개념만 드러내는 설계 기법입니다.
+        
+          추상 클래스, 인터페이스뿐만 아니라, 복잡한 로직을 간단하게 만들기 위한 여러 기법이 포함됩니다.
+        
+      
+    
+  
+
+
+4️⃣ 공통점
+
+  둘 다 세부 사항을 숨긴다.
+    
+      DIP에서의 “추상화된 것”과 일반적인 “추상화” 모두 구체적인 구현 세부 사항을 감추고, 더 중요한 부분(주로 인터페이스나 상호작용)에 집중하도록 설계합니다.
+    
+  
+  유연성 제공
+    
+      두 개념 모두 코드의 유연성을 증가시키고, 변경에 쉽게 대응할 수 있는 구조를 만드는데 기여합니다.
+    
+  
+
+
+5️⃣ 결론
+
+  DIP에서의 “추상화된 것” 은 DIP 원칙을 적용할 때 구체적인 구현 대신 인터페이스나 추상 클래스와 같은 추상적 계층에 의존하도록 하는 구체적인 의미를 가집니다.
+  일반적인 “추상화” 는 소프트웨어 설계에서 복잡성을 관리하기 위해 사용하는 넓은 범위의 설계 개념으로, 객체 지향 프로그래밍의 기본 원칙 중 하나입니다.
+
+
+결국, DIP에서 말하는 “추상화된 것”은 일반적인 “추상화”의 측정한 적용 사례라고 볼수 있습니다.
+DIP는 추상화를 통해 시스템 간의 결합도를 낮추고 유연성을 높이는 것을 목표로 합니다.
 
                         </a>
                         <div class="info-post">
@@ -46430,6 +46610,33 @@ public class ScannerExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-12-TIL.html" class="txt_post">
+                            
+  입출력(2)
+  예외 처리
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-12-ExceptionHandling.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -46645,33 +46852,6 @@ public class Main {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-12-TIL.html" class="txt_post">
-                            
-  입출력(2)
-  예외 처리
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-12</span>
                             
@@ -86751,6 +86931,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Network/2024/2024-10-09-what-is-the-network-interface-card.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-10-09"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] API에서의 인터페이스(Interface)란 무엇일까?",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-10-10-interface-of-api.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-10"
         });
     
 

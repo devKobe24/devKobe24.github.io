@@ -747,6 +747,7 @@
             
             
             
+            
 
     
     
@@ -1117,6 +1118,261 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html"><h1 class="title_post">🌐[Network] RESTful API란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="txt_post">
+                            🌐[Network] RESTful API란 무엇일까요?
+
+  RESTful API는 REST(Representational State Transfer) 아키텍처 스타일을 기반으로 한 웹 API를 의미합니다.
+  RESTful API는 클라이언트와 서버 간의 통신을 효율적이고 일관성 있게 설계하기 위해 HTTP 프로토콜을 활용하여 데이터를 주고 받는 방식입니다.
+  RESTful은 특정 기술이나 프로토콜을 지칭하는 것은 아니지만, REST 아키텍처의 원칙을 준수하는 API를 설명할 때 사용하는 용어입니다.
+
+
+1️⃣ REST(Representational State Transfer)의 기본 개념.
+
+  REST는 Roy Fielding이 2000년 박사 논문에서 소개한 분산 시스템을 설계하기 위한 아키텍처 스타일입니다.
+    
+      RESTful API는 이 원칙을 따르는 API로, 클라이언트-서버 구조, 무상태성, 캐싱 가능성, 계층화된 시스템과 같은 REST의 주요 제약을 따릅니다.
+    
+  
+
+
+2️⃣ REST의 주요 원칙 및 RESTful API의 특징.
+
+1️⃣ 자원(Resource) 기반.
+
+  REST에서는 모든 것을 자원으로 간주합니다.
+    
+      예를 들어, 사용자는 하나의 자원, 게시물은 또 다른 하나의 자원으로 취급됩니다.
+    
+  
+  각 자원은 고유한 URI(Uniform Resource Identifer)를 통해 식별됩니다.
+    
+      예를 들어, https://api.example.com/user/1는 id=1인 사용자 자원을 나타냅니다.
+    
+  
+
+
+👉 URI 설계 예시
+
+  GET /users -&gt; 모든 사용자 목록 가져오기
+  GET /users/1 -&gt; 특정 사용자(id=1) 가져오기
+  POST /users/1 -&gt; 새 사용자 생성
+  PUT /users/1 -&gt; 사용자 정보 업데이트
+  DELETE /users/1 -&gt; 사용자 삭제
+
+
+2️⃣ HTTP 메서드 사용.
+
+  RESTful API는 HTTP 메서드를 자원의 작업과 연관시키기 위해 사용합니다.
+    
+      주요 메서드로는 GET, POST, PUT, DELETE가 있습니다.
+        
+          GET : 자원을 조회할 때 사용합니다.
+          POST : 자원을 생성할 때 사용합니다.
+          PUT : 자원을 업데이트할 때 사용합니다.
+          DELETE : 자원을 삭제할 때 사용합니다.
+        
+      
+    
+  
+  이러한 HTTP 메서드의 사용은 요청의 목적을 명확히 하고, 클라이언트와 서버 간의 상호작용을 일관성 있게 만듭니다.
+
+
+3️⃣ 무상태성(Stateless)
+
+  RESTful API는 무상태(Stateless)해야 합니다.
+    
+      즉, 서버는 클라이언트의 상태를 저장하지 않습니다.
+        
+          클라이언트가 보낸 각각의 요청은 독립적이어야 하며, 요청에 의존해서는 안 됩니다.
+        
+      
+    
+  
+  클라이언트는 매 요청마다 필요한 모든 정보를 서버에 보내야 하며, 서버는 해당 요청만을 처리하고 응답을 반환합니다.
+
+
+4️⃣ 캐시 가능(Cacheable)
+
+  RESTful API에서 응답은 캐시 될 수 있어야 합니다.
+    
+      서버는 응답에 대한 캐싱 가능 여부를 클라이언트에게 명확히 전달합니다.
+    
+  
+  클라이언트가 자원의 불필요한 요청을 반복하지 않도록 하기 위해, 서버는 HTTP 헤더에 Cache-Control이나 Expires와 같은 캐시 관련 정보를 포함하여 응답을 보낼 수 있습니다.
+
+
+5️⃣ 계층화된 구조.
+
+  RESTful 아키텍처는 계층화된 시스템을 지원합니다.
+    
+      클라이언트는 중간 서버(프록시, 게이트웨이 등)를 통과하더라도, 요청과 응답이 처리되는 방식에 대해 신경 쓸 필요가 없습니다.
+      서버는 여러 계층을 통해 보안, 로드 밸런싱 등을 처리할 수 있습니다.
+    
+  
+
+
+6️⃣ 일관된 인터페이스.
+
+  RESTful API는 일관된 인터페이스를 제공해야 합니다.
+    
+      이는 자원에 접근하고 조작하는 방식이 명확하고 일관적이어야 하며, 클라이언트가 각 자원에 대해 동일한 방식으로 작업을 수행할 수 있어야 한다는 의미입니다.
+    
+  
+
+
+7️⃣ 표현(Representation) 전송.
+
+  자원 자체는 서버에 저장되며, 클라이언트는 서버에서 자원의 표현(Representation) 을 전송받습니다.
+    
+      일반적으로 RESTful API는 JSON이나 XML 형식으로 자원의 상태를 표현하며, 이를 클라이언트에 전달합니다.
+    
+  
+
+
+👉 예시: 서버가 사용자 자원을 클라이언트에게 JSON 형식으로 응답할 때.
+{
+    "id": 1,
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+3️⃣ RESTful API의 HTTP 메서드와 자원의 관계.
+
+1️⃣ GET
+
+  자원을 조회하는 데 사용됩니다.
+  예: GET /users/1은 id=1인 사용자를 조회하는 요청입니다.
+
+
+2️⃣ POST
+
+  새로운 자원을 생성하는 데 사용됩니다.
+  예: POST /users는 새로운 사용자를 생성하는 요청입니다.
+  요청 본문에는 생성할 자원의 정보가 포함됩니다.
+
+
+3️⃣ PUT
+
+  기존 자원을 업데이트하는 데 사용됩니다.
+  예: PUT /users/1은 id=1인 사용자 정보를 업데이트하는 요청입니다.
+
+
+4️⃣ DELETE
+
+  자원을 삭제하는 데 사용됩니다.
+  예: DELETE /users/1은 id=1인 사용자를 삭제하는 요청입니다.
+
+
+4️⃣ RESTful API의 예
+
+👉 사용자 자원을 관리하는 RESTful API 예시.
+
+1️⃣ GET 요청 (모든 사용자 조회)
+GET /users
+
+
+응답
+[
+    {"id": 1, "name": "Kobe", "email": "kobe@example.com"},
+    {"id": 2, "name": "Eric", "email": "eric@example.com"}
+]
+
+
+2️⃣ POST 요청 (새 사용자 생성)
+POST /users
+
+
+요청 본문.
+{
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+응답.
+PUT /users/3
+
+
+3️⃣ PUT 요청 (사용자 정보 업데이트)
+PUT /users/3
+
+
+요청 본문
+{
+    "name": "Kobe updated",
+    "email": "kobe.updated@example.com"
+}
+
+
+응답
+{
+    "id": 3,
+    "name": "Kobe updated",
+    "email": "kobe.updated@example.com"
+}
+
+
+4️⃣ DELETE 요청 (사용자 삭제)
+DELETE /users/3
+
+
+응답.
+{
+    "message": "User deleted successfully"
+}
+
+
+5️⃣ RESTful API의 장점.
+
+1️⃣ 확장성.
+
+  RESTful API는 서버와 클라이언트 간의 결합도를 낮춰, 확장 가능하고 유연한 시스템을 설계할 수 있습니다.
+
+
+2️⃣ 표준화.
+
+  HTTP 프로토콜의 표준을 기반으로 하여, 다양한 클라이언트와 쉽게 연동이 가능합니다.
+
+
+3️⃣ 경량성.
+
+  JSON 같은 경량 포맷을 사용해 데이터 전송을 최적화할 수 있습니다.
+
+
+4️⃣ 캐싱 가능.
+
+  HTTP 캐싱 메커니즘을 통해 성능을 향상시키고 네트워크 부하를 줄일 수 있습니다.
+
+
+6️⃣ 결론.
+
+  RESTful API는 웹 애플리케이션에서 서버와 클라이언트 간의 상호작용을 일관성 있고 효율적으로 처리하기 위한 API 설계 방식입니다.
+  HTTP 프로토콜을 기반으로 자원을 CRUD 방식으로 관리하며, 무상태성, 자원 기반 접근, 일관된 인터페이스 등의 REST 원칙을 따릅니다.
+  RESTful API는 다양한 클라이언트(모바일, 웹 등)와 통신할 수 있는 확장 가능하고 유연한 시스템을 구축하는 데 매우 유용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1903,6 +2159,215 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-09-what-is-the-api.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)란 무엇일까?</h1></a>
+                        <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="txt_post">
+                            “💾 [CS] API(Application Programming Interface)란 무엇일까?”
+
+  API(Application Programming Interface) 는 애플리케이션이 다른 소프트웨어나 서비스와 상호작용할 수 있도록 하는 인터페이스를 의미합니다.
+  쉽게 말하면, API는 프로그램 간의 통신을 가능하게 해주는 일종의 계약 또는 약속입니다.
+  API는 개발자가 특정 기능을 사용할 수 있게 미리 정의된 메서드와 규칙의 집합을 제공합니다.
+
+
+1️⃣ API의 기본 개념.
+
+  인터페이스
+    
+      API는 두 시스템 간의 상호작용을 정의하는 경계 역할을 합니다.
+      이를 통해 두 시스템이 서로 데이터를 주고받거나 기능을 요청할 수 있습니다.
+    
+  
+  통신
+    
+      API는 소프트웨어 애플리케이션이 다른 소프트웨어 서비스나 라이브러리와 통신하는 방법을 제공합니다.
+      예를 들어, API를 통해 애플리케이션은 외부 서비스에서 데이터를 가져오거나, 데이터베이스에 저장하는 등의 작업을 할 수 있습니다.
+    
+  
+  추상화
+    
+      API는 내부적인 구현을 숨기고, 외부 개발자가 필요한 기능만 사용할 수 있게 추상화된 기능을 제공합니다.
+      내부의 복잡한 로직을 신경 쓰지 않고, 정의된 명령만 호출하면 해당 기능을 사용할 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
+
+
+2️⃣ API의 유형.
+
+1️⃣ 웹 API
+
+  웹에서 동작하는 API로, HTTP 프로토콜을 통해 애플리케이션 간 통신을 처리합니다.
+    
+      예를 들어, RESTful API나 SOAP API는 웹을 통해 데이터를 주고받는 데 사용됩니다.
+    
+  
+  웹 API는 클라이언트와 서버 간의 통신을 쉽게 해주며, 웹 서비스 또는 클라우드 서비스에서 주로 사용됩니다.
+    
+      예: GET, POST, PUT, DELETE 메서드를 사용하여 서버와 데이터를 주고받는 API.
+    
+  
+
+
+2️⃣ 라이브러리 API
+
+  프로그래밍 언어에서 제공하는 라이브러리의 기능을 사용할 수 있게 해주는 API입니다.
+    
+      특정 기능이나 데이터 구조를 제공하여 개발자가 해당 기능을 구현할 수 있도록 도와줍니다.
+        
+          예: Java의 java.util.List API는 목록 데이터를 쉽게 다룰 수 있는 메서드와 클래스를 제공합니다.
+        
+      
+    
+  
+
+
+3️⃣ 운영체제 API
+
+  운영체제가 제공하는 시스템 자원을 애플리케이션이 사용할 수 있도록 해주는 API입니다.
+    
+      파일 시스템, 네트워크, 하드웨어 장치와의 상호작용을 처리할 수 있게 합니다.
+        
+          예: Windows API는 파일 읽기/쓰기, 네트워크 통신 등을 위한 다양한 기능을 제공합니다.
+        
+      
+    
+  
+
+
+4️⃣ 프레임워크 API
+
+  특정 프레임워크에서 제공하는 API는 해당 프레임워크의 기능을 쉽게 사용할 수 있도록 도와줍니다.
+    
+      예를 들어, Spring 프레임워크에서 제공하는 API는 웹 애플리케이션 개발에 필요한 다양한 기능을 제공합니다.
+    
+  
+
+
+
+  🙋‍♂️ 라이브러리(Library)와 프레임워크(Framework)의 차이점.
+
+
+3️⃣ API의 동작 원리.
+
+  API는 주로 요청(Request)과 응답(Response)으로 작동합니다.
+    
+      클라이언트가 특정 작업을 요청하면, 서버가 해당 작업을 처리한 후 결과를 반환하는 방식입니다.
+        
+          1. 클라이언트가 요청 : 클라이언트 애플리케이션은 API를 사용해 특정 작업을 서버에 요청합니다.
+          2. 서버가 처리 : API 서버는 요청을 처리하고, 필요한 데이터를 조회하거나 작업을 수행합니다.
+          3. 서버가 응답 : 서버는 요청에 대한 결과(데이터나 작업 성공 여부)를 클라이언트에게 응답으로 반환합니다.
+        
+      
+    
+  
+
+
+4️⃣ API의 예시.
+
+1️⃣ Google Maps API.
+
+  개발자는 Google Maps API를 사용해 자신의 애플리케이션에 지도 기능을 추가할 수 있습니다.
+    
+      이를 통해 사용자는 실시간 지도 정보를 보고, 길 안내를 받을 수 있습니다.
+        
+          예: https://maps.googleapis.com/maps/api/geocode/json?address=New+York
+        
+      
+    
+  
+
+
+2️⃣ (현)X (구)Twitter API.
+
+  (현)X (구)Twitter는 API를 통해 외부 애플리케이션이 트윗을 읽거나 작성할 수 있는 기능을 제공합니다.
+    
+      예: 특정 해시태그로 트윗 검색, 사용자 프로필 정보 조회 등.
+    
+  
+
+
+3️⃣ JPA API
+
+  JAP(Java Persistence API)는 자바 애플리케이션에서 데이터베이스와 상호작용할 수 있는 API로, 객체지향적으로 데이터베이스 작업을 할 수 있게 합니다.
+    
+      개발자는 SQL을 직접 작성하지 않고, JPA가 제공하는 메서드를 통해 데이터베이스 작업을 처리할 수 있습니다.
+    
+  
+
+
+EntityManager em = entityManagerFactory.createEntityManager();
+User user = em.find(User.class, 1L) // User 객체 조회
+
+
+
+  🙋‍♂️ 영속성(Persistence)란 무엇일까?
+
+
+4️⃣ API의 단점.
+
+1️⃣ 의존성.
+
+  외부 API를 사용할 경우, 해당 API에 의존하게 됩니다.
+    
+      만약 API가 변경되거나 중단되면 애플리케이션이 영향을 받을 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ 의존성(Dependency)
+
+
+2️⃣ 성능.
+
+  API를 사용한 통신이 느릴 수 있습니다.
+    
+      특히 원격 서버와의 API 호출은 네트워크 지연에 영향을 받을 수 있습니다.
+    
+  
+
+
+3️⃣ 제한 사항.
+
+  API 제공자는 사용량을 제한할 수 있습니다.
+    
+      예를 들어, 하루에 호출할 수 있는 API 요청 수에 제한이 있을 수 있습니다.
+    
+  
+
+
+5️⃣ 결론.
+
+  API는 소프트웨어 애플리케이션이 서로 상호작용할 수 있도록하는 중간 다리 역할을 합니다.
+    
+      이를 통해 개발자는 다른 소프트웨어의 기능을 재사용하거나, 외부 서비스와의 통신을 통해 더 풍부한 애플리케이션을 만들 수 있습니다.
+    
+  
+  API는 현대 소프트웨어 개발에서 필수적인 구성 요소로 자리 잡고 있으며, 이를 통해 애플리케이션 간 통합과 협업이 더 쉽게 이루어집니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-10-09-what-is-the-ethernet.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -2165,215 +2630,6 @@
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-09-what-is-the-api.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)란 무엇일까?</h1></a>
-                        <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="txt_post">
-                            “💾 [CS] API(Application Programming Interface)란 무엇일까?”
-
-  API(Application Programming Interface) 는 애플리케이션이 다른 소프트웨어나 서비스와 상호작용할 수 있도록 하는 인터페이스를 의미합니다.
-  쉽게 말하면, API는 프로그램 간의 통신을 가능하게 해주는 일종의 계약 또는 약속입니다.
-  API는 개발자가 특정 기능을 사용할 수 있게 미리 정의된 메서드와 규칙의 집합을 제공합니다.
-
-
-1️⃣ API의 기본 개념.
-
-  인터페이스
-    
-      API는 두 시스템 간의 상호작용을 정의하는 경계 역할을 합니다.
-      이를 통해 두 시스템이 서로 데이터를 주고받거나 기능을 요청할 수 있습니다.
-    
-  
-  통신
-    
-      API는 소프트웨어 애플리케이션이 다른 소프트웨어 서비스나 라이브러리와 통신하는 방법을 제공합니다.
-      예를 들어, API를 통해 애플리케이션은 외부 서비스에서 데이터를 가져오거나, 데이터베이스에 저장하는 등의 작업을 할 수 있습니다.
-    
-  
-  추상화
-    
-      API는 내부적인 구현을 숨기고, 외부 개발자가 필요한 기능만 사용할 수 있게 추상화된 기능을 제공합니다.
-      내부의 복잡한 로직을 신경 쓰지 않고, 정의된 명령만 호출하면 해당 기능을 사용할 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
-
-
-2️⃣ API의 유형.
-
-1️⃣ 웹 API
-
-  웹에서 동작하는 API로, HTTP 프로토콜을 통해 애플리케이션 간 통신을 처리합니다.
-    
-      예를 들어, RESTful API나 SOAP API는 웹을 통해 데이터를 주고받는 데 사용됩니다.
-    
-  
-  웹 API는 클라이언트와 서버 간의 통신을 쉽게 해주며, 웹 서비스 또는 클라우드 서비스에서 주로 사용됩니다.
-    
-      예: GET, POST, PUT, DELETE 메서드를 사용하여 서버와 데이터를 주고받는 API.
-    
-  
-
-
-2️⃣ 라이브러리 API
-
-  프로그래밍 언어에서 제공하는 라이브러리의 기능을 사용할 수 있게 해주는 API입니다.
-    
-      특정 기능이나 데이터 구조를 제공하여 개발자가 해당 기능을 구현할 수 있도록 도와줍니다.
-        
-          예: Java의 java.util.List API는 목록 데이터를 쉽게 다룰 수 있는 메서드와 클래스를 제공합니다.
-        
-      
-    
-  
-
-
-3️⃣ 운영체제 API
-
-  운영체제가 제공하는 시스템 자원을 애플리케이션이 사용할 수 있도록 해주는 API입니다.
-    
-      파일 시스템, 네트워크, 하드웨어 장치와의 상호작용을 처리할 수 있게 합니다.
-        
-          예: Windows API는 파일 읽기/쓰기, 네트워크 통신 등을 위한 다양한 기능을 제공합니다.
-        
-      
-    
-  
-
-
-4️⃣ 프레임워크 API
-
-  특정 프레임워크에서 제공하는 API는 해당 프레임워크의 기능을 쉽게 사용할 수 있도록 도와줍니다.
-    
-      예를 들어, Spring 프레임워크에서 제공하는 API는 웹 애플리케이션 개발에 필요한 다양한 기능을 제공합니다.
-    
-  
-
-
-
-  🙋‍♂️ 라이브러리(Library)와 프레임워크(Framework)의 차이점.
-
-
-3️⃣ API의 동작 원리.
-
-  API는 주로 요청(Request)과 응답(Response)으로 작동합니다.
-    
-      클라이언트가 특정 작업을 요청하면, 서버가 해당 작업을 처리한 후 결과를 반환하는 방식입니다.
-        
-          1. 클라이언트가 요청 : 클라이언트 애플리케이션은 API를 사용해 특정 작업을 서버에 요청합니다.
-          2. 서버가 처리 : API 서버는 요청을 처리하고, 필요한 데이터를 조회하거나 작업을 수행합니다.
-          3. 서버가 응답 : 서버는 요청에 대한 결과(데이터나 작업 성공 여부)를 클라이언트에게 응답으로 반환합니다.
-        
-      
-    
-  
-
-
-4️⃣ API의 예시.
-
-1️⃣ Google Maps API.
-
-  개발자는 Google Maps API를 사용해 자신의 애플리케이션에 지도 기능을 추가할 수 있습니다.
-    
-      이를 통해 사용자는 실시간 지도 정보를 보고, 길 안내를 받을 수 있습니다.
-        
-          예: https://maps.googleapis.com/maps/api/geocode/json?address=New+York
-        
-      
-    
-  
-
-
-2️⃣ (현)X (구)Twitter API.
-
-  (현)X (구)Twitter는 API를 통해 외부 애플리케이션이 트윗을 읽거나 작성할 수 있는 기능을 제공합니다.
-    
-      예: 특정 해시태그로 트윗 검색, 사용자 프로필 정보 조회 등.
-    
-  
-
-
-3️⃣ JPA API
-
-  JAP(Java Persistence API)는 자바 애플리케이션에서 데이터베이스와 상호작용할 수 있는 API로, 객체지향적으로 데이터베이스 작업을 할 수 있게 합니다.
-    
-      개발자는 SQL을 직접 작성하지 않고, JPA가 제공하는 메서드를 통해 데이터베이스 작업을 처리할 수 있습니다.
-    
-  
-
-
-EntityManager em = entityManagerFactory.createEntityManager();
-User user = em.find(User.class, 1L) // User 객체 조회
-
-
-
-  🙋‍♂️ 영속성(Persistence)란 무엇일까?
-
-
-4️⃣ API의 단점.
-
-1️⃣ 의존성.
-
-  외부 API를 사용할 경우, 해당 API에 의존하게 됩니다.
-    
-      만약 API가 변경되거나 중단되면 애플리케이션이 영향을 받을 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ 의존성(Dependency)
-
-
-2️⃣ 성능.
-
-  API를 사용한 통신이 느릴 수 있습니다.
-    
-      특히 원격 서버와의 API 호출은 네트워크 지연에 영향을 받을 수 있습니다.
-    
-  
-
-
-3️⃣ 제한 사항.
-
-  API 제공자는 사용량을 제한할 수 있습니다.
-    
-      예를 들어, 하루에 호출할 수 있는 API 요청 수에 제한이 있을 수 있습니다.
-    
-  
-
-
-5️⃣ 결론.
-
-  API는 소프트웨어 애플리케이션이 서로 상호작용할 수 있도록하는 중간 다리 역할을 합니다.
-    
-      이를 통해 개발자는 다른 소프트웨어의 기능을 재사용하거나, 외부 서비스와의 통신을 통해 더 풍부한 애플리케이션을 만들 수 있습니다.
-    
-  
-  API는 현대 소프트웨어 개발에서 필수적인 구성 요소로 자리 잡고 있으며, 이를 통해 애플리케이션 간 통합과 협업이 더 쉽게 이루어집니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-10-08-why-use-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2486,6 +2742,311 @@ JPA는 추상화 계층을 제공하여 객체 지향 설계와 데이터베이�
                         </a>
                         <div class="info-post">
                                 <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-08-what-is-the-jpa.html"><h1 class="title_post">🍃[Spring] JPA란 무엇인가요?</h1></a>
+                        <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="txt_post">
+                            🍃[Spring] JPA란 무엇인가요?
+
+  JPA(Java Persistence API) 는 자바 애플리케이션에서 관계형 데이터베이스와 상호작용하기 위한 ORM(Objcet-Relational Mapping) 표준 입니다.
+  JPA는 자바 객체와 데이터베이스 테이블 간의 매핑을 자동으로 처리하여, 개발자가 SQL 쿼리를 직접 작성하지 않고도 데이터베이스 작업을 수행할 수 있도록 도와줍니다.
+  JPA는 자바 EE(Enterprise Edition) 의 공식 스팩 중 하나이며, 여러 구현체(Hibernate, EclipseLink, OpenJPA 등)들이 JPA 표준을 따릅니다.
+
+
+1️⃣ JPA의 주요 개념.
+
+1. 객체-관계 매핑(ORM, Object-Relational Mapping).
+
+  JPA는 ORM(Object-Relational Mapping) 을 통해 자바 객체를 데이터베이스 테이블에 자동으로 매핑합니다.
+  이를 통해 자바 객체와 데이터베이스 간의 변환을 수동으로 처리할 필요 없이, 객체 지향적으로 데이터베이스 작업을 수행할 수 있습니다.
+  ORM은 개발자가 직접 SQL을 작성하지 않고도 자바 객체를 조작함으로써 데이터를 처리할 수 있도록 도와줍니다.
+
+
+2. 영속성(Persistence).
+
+  JPA에서 영속성은 자바 객체를 데이터베이스에 저장하고 관리하는 과정을 의미합니다.
+  JPA는 엔티티(Entity)라는 객체를 사용하여 데이터를 관리하며, 엔티티 객체는 특정 데이터베이스 테이블의 행(row)에 매핑됩니다.
+  영속성 컨텍스트(Persistence Context) 는 엔티티 객체를 관리하는 공간으로, 객체의 상태를 관리하고 변경 사항을 데이터베이스에 반영합니다.
+
+
+3. 엔티티(Entity).
+
+  JPA에서 엔티티는 데이터베이스의 테이블에 대응하는 자바 클래스입니다.
+  엔티티 클래스는 데이터베이스의 테이블을 모델링하며, 각 인스턴스는 데이터베이스 테이블의 한 행(row)에 대응됩니다.
+  엔티티 클래스는 @Entity 어노테이션으로 선언되며, 테이블의 열(column)은 클래스의 필드로 매핑됩니다.
+
+
+예시
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    private String email;
+    
+    // Getters, Setters, Constructors
+}
+
+
+4. JPQL(Java Persistence Query Language).
+
+  JPA는 JPQL이라는 쿼리 언어를 제공하며, 이를 통해 데이터베이스에 질의를 수행할 수 있습니다.
+  JPQL은 SQL과 유사하지만, SQL이 데이터베이스 테이블을 대상으로 하는 반면, JPQL은 객체를 대상으로 궈리를 수행합니다.
+  이를 통해 데이터베이스에 종속되지 않고 객체 중심으로 데이터 조작이 가능합니다.
+
+
+예시
+SELECT u FROM User u WHERE u.name = 'Kobe'
+
+
+
+  위 JPQL 쿼리는 User 엔티티 객체를 대상으로 데이터를 조회하는 쿼리입니다.
+
+
+5. 트랜잭션 관리.
+
+  JPA는 트랜잭션을 관리하여 데이터베이스 작업의 일관성과 안전성을 보장합니다.
+  트랜잭션은 데이터베이스에서 일련의 작업이 모두 성공하거나 모두 실해하는 것을 보장하는 메커니즘으로, JPA는 이를 자동으로 관리해줍니다.
+  트랜잭션이 완료되면 JPA는 데이터베이스에 모든 변경 사항을 반영하며, 문제가 발생하면 롤백합니다.
+
+
+
+  🙋‍♂️ 트랜잭션의 의미와 역할
+
+
+6. 영속성 유닛(Persistence Unit).
+
+  영속성 유닛은 JPA가 데이터베이스와 상호작용하기 위해 필요한 설정 정보(데이터베이스 URL, 사용자 정보, 드라이버 등)를 담고 있는 논리적 단위입니다.
+  JPA는 이 영속성 유닛을 통해 데이터베이스와 연결을 맺고, 필요한 작업을 수행합니다.
+  영속성 유닛은 persistence.xml 파일을 통해 설정되며, 데이터베이스와의 연결 정보가 포함됩니다.
+
+
+7. 캐싱.
+
+  JPA는 성능 최적화를 위해 1차 캐싱(영속성 컨텍스트에서 관리)와 2차 캐시를 제공합니다.
+  1차 캐시는 트랜잭션 범위 내에서 동일한 엔티티를 조회할 때 다시 데이터베이스에 접근하지 않고 캐시된 값을 사용합니다.
+
+
+2️⃣ JPA의 장점.
+
+1. 데이터베이스 독립성.
+
+  JPA는 데이터베이스에 종속되지 않는 추상화 계층을 제공하여, 특정 데이터베이스 벤더에 의존하지 않고 코드를 작성할 수 있습니다.
+    
+      이를 통해 애플리케이션 코드의 이식성과 유지보수성이 높아집니다.
+    
+  
+
+
+2. SQL 작성의 부담 감소.
+
+  JPA는 데이터를 조작하는 데 필요한 SQL 쿼리를 자동으로 생성합니다.
+  개발자는 객체 지향적인 방식으로 데이터를 처리하며, 직접 SQL을 작성하는 부담이 줄어듭니다.
+
+
+3. 객체 지향 프로그래밍과 데이터베이스의 간극 해소.
+
+  JPA는 자바의 객체 지향 모델과 관계형 데이터베이스 간의 불일치를 해결합니다.
+  자바 객체의 필드를 데이터베이스의 열(Column)과 매핑하고, 자바 객체의 상태 변화를 데이터베이스에 자동으로 반영합니다.
+
+
+4. 트랜잭션 관리 자동화.
+
+  JPA는 트랜잭션 관리를 자동화하여 개발자가 트랜잭션 범위를 명시하지 않아도, 데이터베이스 작업의 일관성을 유지할 수 있도록 도와줍니다.
+
+
+5. JPQL을 통한 객체 중심의 쿼리.
+
+  JPQL은 SQL 대신 객체 모델을 기반으로 하는 쿼리 언어로, SQL에 종속되지 않고 객체 지향적으로 데이터를 조회할 수 있게 해줍니다.
+
+
+6. 캐싱을 통한 성능 향상.
+
+  JPA는 1차 캐시와 2차 캐시를 통해 데이터베이스 접근 횟수를 줄이고, 성능을 향상시킬 수 있습니다.
+
+
+3️⃣ JPA 구현체.
+
+  JPA는 인터페이스와 규약만을 정의하는 표준이기 때문에, 실제로 동작하기 위해서는 구현체가 필요합니다.
+  대표적인 JPA 구현체로는 다음과 같은 ORM(Object-Relational Mapping) 프레임워크들이 있습니다.
+    
+      Hibernate : 가장 널리 사용되는 JPA 구현체로, JPA의 기능을 포함하면서도 JPA 이상의 기능들을 제공합니다.
+      EclipseLink : JPA의 레퍼런스 구현체로, 자바 EE 환경에서 많이 사용됩니다.
+      OpenJPA : Apache에서 제공하는 JPA 구현체입니다.
+    
+  
+
+
+4️⃣ 결론.
+
+  JPA는 자바 애플리케이션에서 데이터베이스와의 상호작용을 더 쉽게 만들기 위한 ORM(Object-Relational Mapping) 표준입니다.
+  JPA를 사용하면 객체 지향적인 방식으로 데이터베이스 작업을 수행할 수 있으며, 데이터베이스 독립적인 코드를 작성할 수 있습니다.
+  또한, JPA는 트랜잭션 관리, 캐싱, 데이터베이스 스키마 자동 생성 등의 기능을 통해 개발자에게 많은 편의성을 제공합니다.
+  JPA는 개발자가 객체 모델에 집중할 수 있게 하면서도 데이터베이스와의 상호작용을 효율적으로 처리할 수 있도록 도와줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-08-Persistence.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-08-Persistence.html"><h1 class="title_post">💾 [CS] 영속성(Persistence)란 무엇일까?</h1></a>
+                        <a href="/CS/2024/2024-10-08-Persistence.html" class="txt_post">
+                            “💾 [CS] 영속성(Persistence)란 무엇일까?”
+
+
+  영속성(Persistence) 이란 데이터나 객체의 상태를 지속적으로 저장하여 프로그램이 종료되거나 시스템이 재부팅되더라도 그 상태가 유지되는 것을 의미합니다.
+  간단히 말하면, 영속성은 데이터를 영구적으로 저장하는 능력을 가리킵니다.
+  소프트웨어 시스템에서는 주로 데이터베이스, 파일 시스템, 영속 저장소와 같은 외부 저장소에 데이터를 저장하는 것을 영속성이라고 합니다.
+
+
+1️⃣ 영속성의 예.
+
+  데이터베이스에 저장된 데이터
+    
+      데이터베이스에 저장된 데이터는 시스템이 종료되거나 전원이 꺼져도 영구적으로 저장됩니다.
+      프로그램이 다시 실행될 때 이 데이터를 불러와서 사용할 수 있습니다.
+    
+  
+  파일 시스템에 저장된 데이터
+    
+      파일 시스템에 저장된 파일도 시스템 재부팅 후에도 유지되며, 나중에 다시 사용할 수 있습니다.
+    
+  
+
+
+2️⃣ 영속성의 중요성.
+
+  소프트웨어 시스템에서는 대부분의 데이터가 메모리(휘발성)에만 존재하면 프로그램이 종료되거나 장애가 발생할 때 데이터를 잃게 됩니다.
+  영속성을 사용하면 프로그램이 종료되더라도 중요한 데이터는 데이터베이스나 파일 시스템에 저장되므로 시스템이 다시 시작되었을 때 데이터를 복구하거나 이어서 사용할 수 있습니다.
+
+
+
+
+3️⃣ Java 및 Spring에서의 영속성.
+
+  Java 환경, 특히 JPA(Java Persistence API) 를 사용하는 애플리케이션에서 영속성은 주로 데이터베이스와 자바 객체 간의 상태 유지를 의미합니다.
+  JPA는 자바 객체를 데이터베이스에 영속적으로 저장하고, 필요할 때 데이터를 조회하여 다시 객체로 변환하는 과정을 자동으로 처리합니다.
+
+
+JAP에서의 주요 개념.
+
+1. 영속성 컨텍스트(Persistence Context)
+
+  영속성 컨텍스트는 JPA에서 자바 객체(Entity)를 관리하는 일종의 캐시 메모리입니다.
+  엔티티가 영속성 컨텍스트에 포함되면, 해당 엔티티는 데이터베이스에 영속됩니다.
+  영속성 컨텍스트는 엔티티의 상태 변화를 감지하고, 그 변화가 트랜잭션이 끝날 때 데이터베이스에 반영되도록 관리합니다.
+
+
+2. 엔티티(Entity)
+
+  JPA에서 엔티티는 데이터베이스의 테이블과 매핑되는 자바 객체입니다.
+  엔티티는 데이터를 영속적으로 유지하기 위한 수단으로, JPA는 이를 데이터베이스에 저장하고 다시 불러옵니다.
+
+
+3. EntityManager
+
+  EntityManager는 JPA의 핵심 인테페이스로, 엔티티의 CRUD(생성, 조회, 수정, 삭제) 작업을 담당합니다.
+  EntityManager는 영속성 컨텍스트를 관리하며, 데이터베이스와의 상호작용을 처리합니다.
+  persist() 메서드를 통해 엔티티를 영속성 컨텍스트에 저장하고, 이를 데이터베이스에 반영할 수 있습니다.
+
+
+4. 영속 상태(Persistent State)
+
+  JPA에서 엔티티 객체는 다음 세 가지 상태를 가집니다.
+    
+      비영속(Transient) : 데이터베이스와 전혀 연결되지 않은 상태입니다.
+      영속(Persistent) : 엔티티가 영속성 컨텍스트에 포함되어 관리되고 있는 상태로, 데이터베이스에 기록되거나 기록될 준비가 되어 있는 상태입니다.
+      준영속(Detached) : 영속성 컨텍스트에 의해 관리되지 않지만 데이터베이스에는 여전히 존재하는 상태입니다.
+    
+  
+
+
+영속 상태 전이 예시
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    // Getters, Setters, Constructors
+}
+
+
+// 영속성 컨텍스트와 EntityManager를 사용한 영속성 예시
+EntityManager entityManager = entityManagerFactory.createEntityManager();
+entityManager.getTransaction().begin();
+
+// 1. 비영속 상태: User 객체는 아직 데이터베이스와 연결되지 않음
+User user = new User();
+user.setName("Kobe");
+
+// 2. 영속 상태: persist()로 영속성 컨텍스트에 저장됨
+entityManager.persist(user);
+
+// 3. 트랜잭션이 완료되면, 데이터베이스에 저장됨
+entityManager.getTransaction().commit();
+entityManager.close();
+
+
+설명.
+
+
+  비영속 상태 : new User()로 생성된 객체는 메모리에서만 존재하고, 아직 데이터베이스와 연결되지 않았습니다.
+  영속 상태 : entityManager.persist(user)를 호출하면 객체는 영속성 컨텍스트에 저장되고, 데이터베이스에 반영될 준비가 됩니다.
+  트랜잭션이 커밋되면, 영속성 컨텍스트에 있는 객체의 상태가 데이터베이스에 영구적으로 저장됩니다.
+
+
+
+
+4️⃣ 정리.
+
+  영속성은 데이터를 영구적으로 저장하는 기능입니다.
+    
+      주로 데이터베이스나 파일 시스템에 데이터를 저장하여 프로그램이 종료되더라도 데이터가 유지될 수 있게 합니다.
+    
+  
+  JPA에서 영속성은 객체(Entity)의 상태를 영속성 컨텍스트에서 관리하고, 이 상태가 데이터베이스와 연동되어 지속될 수 있게 하는 것을 의미합니다.
+  영속성 컨텍스트는 JPA에서 엔티티 객체의 상태를 관리하고, 데이터베이스와의 동기화를 처리하는 중요한 메커니즘입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-08</span>
                             
@@ -2701,311 +3262,6 @@ JPA는 추상화 계층을 제공하여 객체 지향 설계와 데이터베이�
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-08-Persistence.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-08-Persistence.html"><h1 class="title_post">💾 [CS] 영속성(Persistence)란 무엇일까?</h1></a>
-                        <a href="/CS/2024/2024-10-08-Persistence.html" class="txt_post">
-                            “💾 [CS] 영속성(Persistence)란 무엇일까?”
-
-
-  영속성(Persistence) 이란 데이터나 객체의 상태를 지속적으로 저장하여 프로그램이 종료되거나 시스템이 재부팅되더라도 그 상태가 유지되는 것을 의미합니다.
-  간단히 말하면, 영속성은 데이터를 영구적으로 저장하는 능력을 가리킵니다.
-  소프트웨어 시스템에서는 주로 데이터베이스, 파일 시스템, 영속 저장소와 같은 외부 저장소에 데이터를 저장하는 것을 영속성이라고 합니다.
-
-
-1️⃣ 영속성의 예.
-
-  데이터베이스에 저장된 데이터
-    
-      데이터베이스에 저장된 데이터는 시스템이 종료되거나 전원이 꺼져도 영구적으로 저장됩니다.
-      프로그램이 다시 실행될 때 이 데이터를 불러와서 사용할 수 있습니다.
-    
-  
-  파일 시스템에 저장된 데이터
-    
-      파일 시스템에 저장된 파일도 시스템 재부팅 후에도 유지되며, 나중에 다시 사용할 수 있습니다.
-    
-  
-
-
-2️⃣ 영속성의 중요성.
-
-  소프트웨어 시스템에서는 대부분의 데이터가 메모리(휘발성)에만 존재하면 프로그램이 종료되거나 장애가 발생할 때 데이터를 잃게 됩니다.
-  영속성을 사용하면 프로그램이 종료되더라도 중요한 데이터는 데이터베이스나 파일 시스템에 저장되므로 시스템이 다시 시작되었을 때 데이터를 복구하거나 이어서 사용할 수 있습니다.
-
-
-
-
-3️⃣ Java 및 Spring에서의 영속성.
-
-  Java 환경, 특히 JPA(Java Persistence API) 를 사용하는 애플리케이션에서 영속성은 주로 데이터베이스와 자바 객체 간의 상태 유지를 의미합니다.
-  JPA는 자바 객체를 데이터베이스에 영속적으로 저장하고, 필요할 때 데이터를 조회하여 다시 객체로 변환하는 과정을 자동으로 처리합니다.
-
-
-JAP에서의 주요 개념.
-
-1. 영속성 컨텍스트(Persistence Context)
-
-  영속성 컨텍스트는 JPA에서 자바 객체(Entity)를 관리하는 일종의 캐시 메모리입니다.
-  엔티티가 영속성 컨텍스트에 포함되면, 해당 엔티티는 데이터베이스에 영속됩니다.
-  영속성 컨텍스트는 엔티티의 상태 변화를 감지하고, 그 변화가 트랜잭션이 끝날 때 데이터베이스에 반영되도록 관리합니다.
-
-
-2. 엔티티(Entity)
-
-  JPA에서 엔티티는 데이터베이스의 테이블과 매핑되는 자바 객체입니다.
-  엔티티는 데이터를 영속적으로 유지하기 위한 수단으로, JPA는 이를 데이터베이스에 저장하고 다시 불러옵니다.
-
-
-3. EntityManager
-
-  EntityManager는 JPA의 핵심 인테페이스로, 엔티티의 CRUD(생성, 조회, 수정, 삭제) 작업을 담당합니다.
-  EntityManager는 영속성 컨텍스트를 관리하며, 데이터베이스와의 상호작용을 처리합니다.
-  persist() 메서드를 통해 엔티티를 영속성 컨텍스트에 저장하고, 이를 데이터베이스에 반영할 수 있습니다.
-
-
-4. 영속 상태(Persistent State)
-
-  JPA에서 엔티티 객체는 다음 세 가지 상태를 가집니다.
-    
-      비영속(Transient) : 데이터베이스와 전혀 연결되지 않은 상태입니다.
-      영속(Persistent) : 엔티티가 영속성 컨텍스트에 포함되어 관리되고 있는 상태로, 데이터베이스에 기록되거나 기록될 준비가 되어 있는 상태입니다.
-      준영속(Detached) : 영속성 컨텍스트에 의해 관리되지 않지만 데이터베이스에는 여전히 존재하는 상태입니다.
-    
-  
-
-
-영속 상태 전이 예시
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    // Getters, Setters, Constructors
-}
-
-
-// 영속성 컨텍스트와 EntityManager를 사용한 영속성 예시
-EntityManager entityManager = entityManagerFactory.createEntityManager();
-entityManager.getTransaction().begin();
-
-// 1. 비영속 상태: User 객체는 아직 데이터베이스와 연결되지 않음
-User user = new User();
-user.setName("Kobe");
-
-// 2. 영속 상태: persist()로 영속성 컨텍스트에 저장됨
-entityManager.persist(user);
-
-// 3. 트랜잭션이 완료되면, 데이터베이스에 저장됨
-entityManager.getTransaction().commit();
-entityManager.close();
-
-
-설명.
-
-
-  비영속 상태 : new User()로 생성된 객체는 메모리에서만 존재하고, 아직 데이터베이스와 연결되지 않았습니다.
-  영속 상태 : entityManager.persist(user)를 호출하면 객체는 영속성 컨텍스트에 저장되고, 데이터베이스에 반영될 준비가 됩니다.
-  트랜잭션이 커밋되면, 영속성 컨텍스트에 있는 객체의 상태가 데이터베이스에 영구적으로 저장됩니다.
-
-
-
-
-4️⃣ 정리.
-
-  영속성은 데이터를 영구적으로 저장하는 기능입니다.
-    
-      주로 데이터베이스나 파일 시스템에 데이터를 저장하여 프로그램이 종료되더라도 데이터가 유지될 수 있게 합니다.
-    
-  
-  JPA에서 영속성은 객체(Entity)의 상태를 영속성 컨텍스트에서 관리하고, 이 상태가 데이터베이스와 연동되어 지속될 수 있게 하는 것을 의미합니다.
-  영속성 컨텍스트는 JPA에서 엔티티 객체의 상태를 관리하고, 데이터베이스와의 동기화를 처리하는 중요한 메커니즘입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-08-what-is-the-jpa.html"><h1 class="title_post">🍃[Spring] JPA란 무엇인가요?</h1></a>
-                        <a href="/Spring/2024-10-08-what-is-the-jpa.html" class="txt_post">
-                            🍃[Spring] JPA란 무엇인가요?
-
-  JPA(Java Persistence API) 는 자바 애플리케이션에서 관계형 데이터베이스와 상호작용하기 위한 ORM(Objcet-Relational Mapping) 표준 입니다.
-  JPA는 자바 객체와 데이터베이스 테이블 간의 매핑을 자동으로 처리하여, 개발자가 SQL 쿼리를 직접 작성하지 않고도 데이터베이스 작업을 수행할 수 있도록 도와줍니다.
-  JPA는 자바 EE(Enterprise Edition) 의 공식 스팩 중 하나이며, 여러 구현체(Hibernate, EclipseLink, OpenJPA 등)들이 JPA 표준을 따릅니다.
-
-
-1️⃣ JPA의 주요 개념.
-
-1. 객체-관계 매핑(ORM, Object-Relational Mapping).
-
-  JPA는 ORM(Object-Relational Mapping) 을 통해 자바 객체를 데이터베이스 테이블에 자동으로 매핑합니다.
-  이를 통해 자바 객체와 데이터베이스 간의 변환을 수동으로 처리할 필요 없이, 객체 지향적으로 데이터베이스 작업을 수행할 수 있습니다.
-  ORM은 개발자가 직접 SQL을 작성하지 않고도 자바 객체를 조작함으로써 데이터를 처리할 수 있도록 도와줍니다.
-
-
-2. 영속성(Persistence).
-
-  JPA에서 영속성은 자바 객체를 데이터베이스에 저장하고 관리하는 과정을 의미합니다.
-  JPA는 엔티티(Entity)라는 객체를 사용하여 데이터를 관리하며, 엔티티 객체는 특정 데이터베이스 테이블의 행(row)에 매핑됩니다.
-  영속성 컨텍스트(Persistence Context) 는 엔티티 객체를 관리하는 공간으로, 객체의 상태를 관리하고 변경 사항을 데이터베이스에 반영합니다.
-
-
-3. 엔티티(Entity).
-
-  JPA에서 엔티티는 데이터베이스의 테이블에 대응하는 자바 클래스입니다.
-  엔티티 클래스는 데이터베이스의 테이블을 모델링하며, 각 인스턴스는 데이터베이스 테이블의 한 행(row)에 대응됩니다.
-  엔티티 클래스는 @Entity 어노테이션으로 선언되며, 테이블의 열(column)은 클래스의 필드로 매핑됩니다.
-
-
-예시
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    private String email;
-    
-    // Getters, Setters, Constructors
-}
-
-
-4. JPQL(Java Persistence Query Language).
-
-  JPA는 JPQL이라는 쿼리 언어를 제공하며, 이를 통해 데이터베이스에 질의를 수행할 수 있습니다.
-  JPQL은 SQL과 유사하지만, SQL이 데이터베이스 테이블을 대상으로 하는 반면, JPQL은 객체를 대상으로 궈리를 수행합니다.
-  이를 통해 데이터베이스에 종속되지 않고 객체 중심으로 데이터 조작이 가능합니다.
-
-
-예시
-SELECT u FROM User u WHERE u.name = 'Kobe'
-
-
-
-  위 JPQL 쿼리는 User 엔티티 객체를 대상으로 데이터를 조회하는 쿼리입니다.
-
-
-5. 트랜잭션 관리.
-
-  JPA는 트랜잭션을 관리하여 데이터베이스 작업의 일관성과 안전성을 보장합니다.
-  트랜잭션은 데이터베이스에서 일련의 작업이 모두 성공하거나 모두 실해하는 것을 보장하는 메커니즘으로, JPA는 이를 자동으로 관리해줍니다.
-  트랜잭션이 완료되면 JPA는 데이터베이스에 모든 변경 사항을 반영하며, 문제가 발생하면 롤백합니다.
-
-
-
-  🙋‍♂️ 트랜잭션의 의미와 역할
-
-
-6. 영속성 유닛(Persistence Unit).
-
-  영속성 유닛은 JPA가 데이터베이스와 상호작용하기 위해 필요한 설정 정보(데이터베이스 URL, 사용자 정보, 드라이버 등)를 담고 있는 논리적 단위입니다.
-  JPA는 이 영속성 유닛을 통해 데이터베이스와 연결을 맺고, 필요한 작업을 수행합니다.
-  영속성 유닛은 persistence.xml 파일을 통해 설정되며, 데이터베이스와의 연결 정보가 포함됩니다.
-
-
-7. 캐싱.
-
-  JPA는 성능 최적화를 위해 1차 캐싱(영속성 컨텍스트에서 관리)와 2차 캐시를 제공합니다.
-  1차 캐시는 트랜잭션 범위 내에서 동일한 엔티티를 조회할 때 다시 데이터베이스에 접근하지 않고 캐시된 값을 사용합니다.
-
-
-2️⃣ JPA의 장점.
-
-1. 데이터베이스 독립성.
-
-  JPA는 데이터베이스에 종속되지 않는 추상화 계층을 제공하여, 특정 데이터베이스 벤더에 의존하지 않고 코드를 작성할 수 있습니다.
-    
-      이를 통해 애플리케이션 코드의 이식성과 유지보수성이 높아집니다.
-    
-  
-
-
-2. SQL 작성의 부담 감소.
-
-  JPA는 데이터를 조작하는 데 필요한 SQL 쿼리를 자동으로 생성합니다.
-  개발자는 객체 지향적인 방식으로 데이터를 처리하며, 직접 SQL을 작성하는 부담이 줄어듭니다.
-
-
-3. 객체 지향 프로그래밍과 데이터베이스의 간극 해소.
-
-  JPA는 자바의 객체 지향 모델과 관계형 데이터베이스 간의 불일치를 해결합니다.
-  자바 객체의 필드를 데이터베이스의 열(Column)과 매핑하고, 자바 객체의 상태 변화를 데이터베이스에 자동으로 반영합니다.
-
-
-4. 트랜잭션 관리 자동화.
-
-  JPA는 트랜잭션 관리를 자동화하여 개발자가 트랜잭션 범위를 명시하지 않아도, 데이터베이스 작업의 일관성을 유지할 수 있도록 도와줍니다.
-
-
-5. JPQL을 통한 객체 중심의 쿼리.
-
-  JPQL은 SQL 대신 객체 모델을 기반으로 하는 쿼리 언어로, SQL에 종속되지 않고 객체 지향적으로 데이터를 조회할 수 있게 해줍니다.
-
-
-6. 캐싱을 통한 성능 향상.
-
-  JPA는 1차 캐시와 2차 캐시를 통해 데이터베이스 접근 횟수를 줄이고, 성능을 향상시킬 수 있습니다.
-
-
-3️⃣ JPA 구현체.
-
-  JPA는 인터페이스와 규약만을 정의하는 표준이기 때문에, 실제로 동작하기 위해서는 구현체가 필요합니다.
-  대표적인 JPA 구현체로는 다음과 같은 ORM(Object-Relational Mapping) 프레임워크들이 있습니다.
-    
-      Hibernate : 가장 널리 사용되는 JPA 구현체로, JPA의 기능을 포함하면서도 JPA 이상의 기능들을 제공합니다.
-      EclipseLink : JPA의 레퍼런스 구현체로, 자바 EE 환경에서 많이 사용됩니다.
-      OpenJPA : Apache에서 제공하는 JPA 구현체입니다.
-    
-  
-
-
-4️⃣ 결론.
-
-  JPA는 자바 애플리케이션에서 데이터베이스와의 상호작용을 더 쉽게 만들기 위한 ORM(Object-Relational Mapping) 표준입니다.
-  JPA를 사용하면 객체 지향적인 방식으로 데이터베이스 작업을 수행할 수 있으며, 데이터베이스 독립적인 코드를 작성할 수 있습니다.
-  또한, JPA는 트랜잭션 관리, 캐싱, 데이터베이스 스키마 자동 생성 등의 기능을 통해 개발자에게 많은 편의성을 제공합니다.
-  JPA는 개발자가 객체 모델에 집중할 수 있게 하면서도 데이터베이스와의 상호작용을 효율적으로 처리할 수 있도록 도와줍니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-08</span>
                             
@@ -3435,153 +3691,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html"><h1 class="title_post">💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!</h1></a>
-                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="txt_post">
-                            💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!
-
-모듈(Module) 과 컴포넌트(Component) 는 소프트웨어 공부를 하면 자주 보고, 듣는 용어 중 하나입니다.
-
-이 두 용어의 개념을 자주 헷갈리거나 명확하게 알지 못해 이번에 공부를 해보았습니다.
-
-제가 생각했을 때 재미있게도 소프트웨어는 레고 블록 같습니다.
-
-그래서 이번에 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하며 정리해봤습니다.
-
-
-
-소프트웨어 공학에서의 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하면, 이해하기 쉬운 방식으로 시스템 설계를 설명할 수 있습니다.
-
-1️⃣ 레고 블록의 비유.
-
-1. 모듈은 레고 세트.
-
-  모듈은 하나의 레고 세트와 비슷합니다.
-    
-      레고 세트는 특정한 테마나 목표(예: 연필과 노트, 자동차, 집 등)를 가지고 있는 완성된 제품입니다.
-      여러 개의 레고 블록들이 모여서 더 큰 기능적 단위를 이루고, 이 세트가 완성되면 전체적인 형태나 목적을 나타냅니다.
-    
-  
-  마찬가지로, 소프트웨어 모듈은 소프트웨어 시스템 내에서 특정 기능이나 책임을 가진 완성된 구성 요소입니다.
-    
-      모듈은 독립적으로 개발될 수 있으며, 다른 모듈과 함께 결합하여 더 큰 소프트웨어 시스템을 구성합니다.
-    
-  
-
-
-비유.
-
-  예를 들어, 주문 처리 모듈은 레고 세트처럼 독립적으로 작동할 수 있지만, 레고 도시에 추가하면 그 도시의 전체 기능에 기여하게 됩니다.
-    
-      모듈은 독립적이면서도 전체 시스템의 일부로 기능할 수 있는 구조입니다.
-    
-  
-
-
-2. 컴포넌트는 레고 블록.
-
-  컴포넌트는 각각의 레고 블록에 비유할 수 있습니다.
-  레고 블록은 각자 독립적으로 존재할 수 있고, 단순한 모양에서부터 다양한 기능적 역할을 수행할 수 있는 모양까지 다양합니다.
-  이 블록들은 서로 결합하여 더 복잡한 구조를 만들고, 큰 레고 세트를 완성하는 데 사용됩니다.
-  비슷하게, 소프트웨어 컴포넌트는 각각의 독립적인 소프트웨어 단위로, 특정 기능을 수행합니다.
-  각 컴포넌트는 자신의 책임을 다하면서, 다른 컴포넌트와 상호작용하여 더 큰 모듈을 구성합니다.
-
-
-비유.
-
-  예를 들어, 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등은 각각의 레고 블록처럼 독립적으로 작동하며, 주문 처리 모듈이라는 레고 세트를 완성하는 데 기여할 수 있습니다.
-
-
-2️⃣ 모듈과 컴포넌트의 상호작용을 레고에 비유해보자.
-
-1. 모듈.
-
-  레고 세트는 여러 레고 블록(컴포넌트)으로 구성되어 있으며, 각각의 블록은 특정한 위치와 역할을 가집니다.
-  예를 들어, 자동차 레고 세트는 바퀴, 차체, 엔진 등의 블록으로 구성되며, 이 블록들이 결합되어 전체 자동차가 완성됩니다.
-
-
-2. 컴포넌트.
-
-  레고 블록은 컴포넌트에 해당하며, 각각 독립적으로 존재하지만, 결합해서 더 복잡한 기능을 수행합니다.
-  차체 블록은 독립적으로는 차제일 뿐이지만, 바퀴와 결합되면 자동차로서 기능할 수 있습니다.
-
-
-3️⃣ 결론적으로
-
-  컴포넌트는 레고 블록처럼 독립적으로 존재하며, 각각의 특정 기능을 수행하는 작은 단위입니다.
-  여러 블록을 결합하면 더 큰 구조를 형성할 수 있듯이, 여러 컴포넌트가 모여 더 복잡한 기능을 수행하는 소프트 웨어 시스템의 모듈을 형성합니다.
-  모듈은 레고 세트처럼 여러 블록(컴포넌트)을 결합해 완성된 기능적 단위로서 사용되며, 시스템 내에서 더 큰 역할을 담당하는 하나의 구성 요소가 됩니다.
-
-
-3️⃣ 그렇다면 컴포넌트가 모듈보다 작은 단위라고 생각하면 되나요?
-
-
-  네, 맞습니다! 컴포넌트는 일반적으로 모듈보다 작은 단위로 생각할 수 있습니다.
-  소프트웨어 공학에서 컴포넌트와 모듈은 모두 독립적인 기능을 수행하는 단위이지만, 컴포넌트는 더 작은 재사용 가능한 기능 단위로, 여러 컴포넌트가 모여 하나의 모듈을 구성하는 경우가 많습니다.
-
-
-1. 다시 레고 비유로 설명하자면~
-
-  컴포넌트는 개별적인 레고 블록과 같고, 각 블록은 독립적으로도 유용한 기능을 가지고 있지만, 여러 블록이 모여서 더 큰 구조(예: 연필과 노트, 자동차, 집 등)를 만듭니다.
-  모듈은 여러 레고 블록이 결합되어 완성된 레고 세트와 같다고 할 수 있습니다.
-  레고 세트는 연필과 노트, 자동차, 집 등과 같이 더 큰 단위의 구성 요소이며, 세트 내에서 여러 레고 블록(컴포넌트)이 함께 작동하여 더 복잡한 기능을 수행합니다.
-
-
-2. 소프트웨어 공학에서의 관계.
-
-
-
-1. 컴포넌트.
-
-  더 작은 기능적 단위입니다.
-  컴포넌트는 특정 작업이나 책임을 수행하는 코드의 묶음으로, 이를 독립적으로 재사용할 수 있습니다.
-  예를 들어, 결제 처리 기능, 배송 기능, 인증 기능 등이 컴포넌트가 될 수 있습니다.
-
-
-
-
-2. 모듈.
-
-  여러 컴포넌트를 포함하는 더 큰 단위입니다.
-  모듈은 하나의 주요 기능이나 책임을 수행하는 소프트웨어의 큰 부분을 나타냅니다.
-  예를 들어, 주문 처리 모듈은 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등의 여러 컴포넌트를 포함할 수 있습니다.
-
-
-4️⃣ 마지막으로
-
-  컴포넌트는 보통 모듈을 구성하는 작은 단위이며, 특정한 작업이나 기능을 수행합니다.
-  모듈은 컴포넌트들을 묶어서 더 큰 기능을 제공하는 단위로, 더 복잡한 기능을 수행하는 소프트웨어 시스템의 일부를 형성합니다.
-
-
-따라서, 컴포넌트가 모듈보다 작은 단위라고 생각하면 됩니다.
-
-
-
-📝 참고 자료.
-
-  소프트웨어 공학에서의 모듈
-  소프트웨어 공학에서의 컴포넌트
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -3814,6 +3923,335 @@ DIP는 추상화를 통해 시스템 간의 결합도를 낮추고 유연성을 
                                 <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html"><h1 class="title_post">💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!</h1></a>
+                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="txt_post">
+                            💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!
+
+모듈(Module) 과 컴포넌트(Component) 는 소프트웨어 공부를 하면 자주 보고, 듣는 용어 중 하나입니다.
+
+이 두 용어의 개념을 자주 헷갈리거나 명확하게 알지 못해 이번에 공부를 해보았습니다.
+
+제가 생각했을 때 재미있게도 소프트웨어는 레고 블록 같습니다.
+
+그래서 이번에 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하며 정리해봤습니다.
+
+
+
+소프트웨어 공학에서의 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하면, 이해하기 쉬운 방식으로 시스템 설계를 설명할 수 있습니다.
+
+1️⃣ 레고 블록의 비유.
+
+1. 모듈은 레고 세트.
+
+  모듈은 하나의 레고 세트와 비슷합니다.
+    
+      레고 세트는 특정한 테마나 목표(예: 연필과 노트, 자동차, 집 등)를 가지고 있는 완성된 제품입니다.
+      여러 개의 레고 블록들이 모여서 더 큰 기능적 단위를 이루고, 이 세트가 완성되면 전체적인 형태나 목적을 나타냅니다.
+    
+  
+  마찬가지로, 소프트웨어 모듈은 소프트웨어 시스템 내에서 특정 기능이나 책임을 가진 완성된 구성 요소입니다.
+    
+      모듈은 독립적으로 개발될 수 있으며, 다른 모듈과 함께 결합하여 더 큰 소프트웨어 시스템을 구성합니다.
+    
+  
+
+
+비유.
+
+  예를 들어, 주문 처리 모듈은 레고 세트처럼 독립적으로 작동할 수 있지만, 레고 도시에 추가하면 그 도시의 전체 기능에 기여하게 됩니다.
+    
+      모듈은 독립적이면서도 전체 시스템의 일부로 기능할 수 있는 구조입니다.
+    
+  
+
+
+2. 컴포넌트는 레고 블록.
+
+  컴포넌트는 각각의 레고 블록에 비유할 수 있습니다.
+  레고 블록은 각자 독립적으로 존재할 수 있고, 단순한 모양에서부터 다양한 기능적 역할을 수행할 수 있는 모양까지 다양합니다.
+  이 블록들은 서로 결합하여 더 복잡한 구조를 만들고, 큰 레고 세트를 완성하는 데 사용됩니다.
+  비슷하게, 소프트웨어 컴포넌트는 각각의 독립적인 소프트웨어 단위로, 특정 기능을 수행합니다.
+  각 컴포넌트는 자신의 책임을 다하면서, 다른 컴포넌트와 상호작용하여 더 큰 모듈을 구성합니다.
+
+
+비유.
+
+  예를 들어, 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등은 각각의 레고 블록처럼 독립적으로 작동하며, 주문 처리 모듈이라는 레고 세트를 완성하는 데 기여할 수 있습니다.
+
+
+2️⃣ 모듈과 컴포넌트의 상호작용을 레고에 비유해보자.
+
+1. 모듈.
+
+  레고 세트는 여러 레고 블록(컴포넌트)으로 구성되어 있으며, 각각의 블록은 특정한 위치와 역할을 가집니다.
+  예를 들어, 자동차 레고 세트는 바퀴, 차체, 엔진 등의 블록으로 구성되며, 이 블록들이 결합되어 전체 자동차가 완성됩니다.
+
+
+2. 컴포넌트.
+
+  레고 블록은 컴포넌트에 해당하며, 각각 독립적으로 존재하지만, 결합해서 더 복잡한 기능을 수행합니다.
+  차체 블록은 독립적으로는 차제일 뿐이지만, 바퀴와 결합되면 자동차로서 기능할 수 있습니다.
+
+
+3️⃣ 결론적으로
+
+  컴포넌트는 레고 블록처럼 독립적으로 존재하며, 각각의 특정 기능을 수행하는 작은 단위입니다.
+  여러 블록을 결합하면 더 큰 구조를 형성할 수 있듯이, 여러 컴포넌트가 모여 더 복잡한 기능을 수행하는 소프트 웨어 시스템의 모듈을 형성합니다.
+  모듈은 레고 세트처럼 여러 블록(컴포넌트)을 결합해 완성된 기능적 단위로서 사용되며, 시스템 내에서 더 큰 역할을 담당하는 하나의 구성 요소가 됩니다.
+
+
+3️⃣ 그렇다면 컴포넌트가 모듈보다 작은 단위라고 생각하면 되나요?
+
+
+  네, 맞습니다! 컴포넌트는 일반적으로 모듈보다 작은 단위로 생각할 수 있습니다.
+  소프트웨어 공학에서 컴포넌트와 모듈은 모두 독립적인 기능을 수행하는 단위이지만, 컴포넌트는 더 작은 재사용 가능한 기능 단위로, 여러 컴포넌트가 모여 하나의 모듈을 구성하는 경우가 많습니다.
+
+
+1. 다시 레고 비유로 설명하자면~
+
+  컴포넌트는 개별적인 레고 블록과 같고, 각 블록은 독립적으로도 유용한 기능을 가지고 있지만, 여러 블록이 모여서 더 큰 구조(예: 연필과 노트, 자동차, 집 등)를 만듭니다.
+  모듈은 여러 레고 블록이 결합되어 완성된 레고 세트와 같다고 할 수 있습니다.
+  레고 세트는 연필과 노트, 자동차, 집 등과 같이 더 큰 단위의 구성 요소이며, 세트 내에서 여러 레고 블록(컴포넌트)이 함께 작동하여 더 복잡한 기능을 수행합니다.
+
+
+2. 소프트웨어 공학에서의 관계.
+
+
+
+1. 컴포넌트.
+
+  더 작은 기능적 단위입니다.
+  컴포넌트는 특정 작업이나 책임을 수행하는 코드의 묶음으로, 이를 독립적으로 재사용할 수 있습니다.
+  예를 들어, 결제 처리 기능, 배송 기능, 인증 기능 등이 컴포넌트가 될 수 있습니다.
+
+
+
+
+2. 모듈.
+
+  여러 컴포넌트를 포함하는 더 큰 단위입니다.
+  모듈은 하나의 주요 기능이나 책임을 수행하는 소프트웨어의 큰 부분을 나타냅니다.
+  예를 들어, 주문 처리 모듈은 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등의 여러 컴포넌트를 포함할 수 있습니다.
+
+
+4️⃣ 마지막으로
+
+  컴포넌트는 보통 모듈을 구성하는 작은 단위이며, 특정한 작업이나 기능을 수행합니다.
+  모듈은 컴포넌트들을 묶어서 더 큰 기능을 제공하는 단위로, 더 복잡한 기능을 수행하는 소프트웨어 시스템의 일부를 형성합니다.
+
+
+따라서, 컴포넌트가 모듈보다 작은 단위라고 생각하면 됩니다.
+
+
+
+📝 참고 자료.
+
+  소프트웨어 공학에서의 모듈
+  소프트웨어 공학에서의 컴포넌트
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-06-when-to-use-these-annotations-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-06-when-to-use-these-annotations-2.html"><h1 class="title_post">🍃[Spring] 언제 `@Configuration`와 `@Bean`을 함께 사용할까?</h1></a>
+                        <a href="/Spring/2024-10-06-when-to-use-these-annotations-2.html" class="txt_post">
+                            🍃[Spring] 언제 @Configuration와 @Bean을 함께 사용할까?
+
+
+  @Configuration과 @Bean을 함께 사용하는 경우는 자바 기반의 설정 클래스 를 정의할 때입니다.
+  이 방식은 수동으로 빈을 정의하고 설정 과정을 세밀하게 제어하고자 할 때 사용됩니다.
+  특히 외부라이브러리나 프레임워크에서 제공하는 객체들을 빈으로 등록하거나, 빈의 생성과 초기화 과정을 커스터마이징해야 할 때 유용합니다.
+
+
+1️⃣ @Configuration과 @Bean을 함께 사용하는 주요 이유.
+
+1. 외부 라이브러리 클래스의 빈 등록.
+
+  @Configuration과 @Bean을 사용하면 외부 라이브러리의 클래스나, Spring이 직접 관리하지 않는 객체들을 빈으로 등록할 수 있습니다.
+  Spring의 자동 스캔 기능은 개발자가 작성한 클래스만 대상으로 하기 때문에, 외부 라이브러리에서 제공하는 객체는 수동으로 빈으로 등록해야 합니다.
+
+
+2. 커스텀 빈 초기화 및 설정.
+
+  @Bean 어노테이션을 사용하면 빈이 생성되는 방식을 커스터마이징할 수 있습니다.
+  생성자 파라미터, 초기화 과정, 의존성 주입 방식 등을 세부적으로 설정할 수 있으며, 이 설정을 Java 코드로 작성함으로써 XML 기반 설정을 대체할 수 있습니다.
+
+
+3. 복잡한 빈 생성 로직 처리.
+
+  빈 생성 과정이 복잡하거나 여러 의존성을 필요로 할 경우, @Configuration 클래스에서 이를 제어할 수 있습니다.
+  빈 간의 의존성, 특정 상황에 따른 빈 생성 로직 등을 자바 코드로 명확하게 관리할 수 있습니다.
+
+
+4. XML 설정의 대체.
+
+  Spring은 과거에 XML 기반 설정을 주로 사용했지만, @Configuration과 @Bean을 사용하면 이러한 설정을 자바 코드로 관리할 수 있습니다.
+  자바 기반 설정은 타입 안정성을 제공하며, 코드와 설정이 하나의 파일 내에 통합되어 유지보수하기 쉬워집니다.
+
+
+2️⃣ 예시
+
+1. 외부 라이브러리 빈 등록
+
+  예를 들어, 외부 라이브러리의 데이터베이스 커넥션 풀(HikariDataSource)을 빈으로 등록하고, 이를 커스터마이징하는 경우입니다.
+
+
+@Configuration
+public class DataSourceConfig {
+    
+    @Bean
+    public DataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
+        dataSource.setUsername("root");
+        dataSource.setPassword("password");
+        dataSource.setMaximumPoolSize(10);
+        return dataSource;
+    }
+}
+
+
+
+  @Configuration
+    
+      이 클래스가 Spring의 설정 파일로 사용되며, 빈을 정의하는 클래스임을 나타냅니다.
+    
+  
+  @Bean
+    
+      이 메서드가 반환하는 HikariDataSource 객체는 스프링 컨테이너에 빈으로 등록됩니다.
+      외부 라이브러리 객체이므로 자동 스캔이 불가능하며, 이를 수동으로 등록하는 방식입니다.
+    
+  
+
+
+2. 복잡한 빈 초기화
+
+  다음은 서비스 빈이 여러 가지 의존성을 필요로 하고, 빈 초기화 과정에서 특정 설정이 필요한 경우입니다.
+
+
+@Configuration
+public class AppConfig {
+    
+    @Bean
+    public UserService userService(UserRepository userRepository, NotificationService notificationService) {
+        UserService userService = new UserService(userRepository);
+        userService.setNotificationService(notificationService); // 추가 설정
+        return userService;
+    }
+    
+    @Bean
+    public UserRepository userRepository() {
+        return new UserRepository();
+    }
+    
+    @Bean
+    public NotificationService notificationService() {
+        return new EmailNotificationService();
+    }
+}
+
+
+  이 예에서는 UserService가 여러 의존성을 필요로 하고, 특정 추가 설정이 필요한 상황을 처리합니다.
+    
+      Configuration : 애플리케이션의 설정 클래스임을 명시합니다.
+      @Bean : UserService, UserRepository, NotificationService를 빈으로 등록하고, 의존성을 수동으로 주입하고 추가 설정을 할 수 있습니다.
+    
+  
+
+
+3. 빈 간 의존성 관리.
+
+  @Configuration 클래스에서 빈 간의 의존성을 명확하게 관리할 수 있습니다.
+  다음은 여러 빈 간의 의존성을 처리하는 예시입니다.
+    @Configuration
+public class ServiceConfig {
+    
+  @Bean
+  public UserService userService() {
+      return new UserService(userRepository());
+  }
+    
+  @Bean
+  public UserRepository userRepository() {
+      return new UserRepository();
+  }
+}
+    
+  
+  여기서 UserService는 UserRepository에 의존하며, @Bean 메서드를 통해 UserRepository 빈을 참조합니다.
+    
+      스프링은 이러한 의존성을 자동으로 해결하여 빈을 등록합니다.
+    
+  
+
+
+3️⃣ 언제 @Configuration과 @Bean을 사용해야 할까?
+
+1. 외부 라이브러리 또는 스프링이 자동으로 관리하지 않는 클래스 등록
+
+  외부 라이브러리의 클래스나 다른 프레임워크에서 제공하는 객체들을 빈으로 등록해야 할 때 @Configuration과 @Bean을 함께 사용합니다.
+
+
+2. 복잡한 빈 생성 로직이 필요할 때
+
+  빈 생성 시 의존성 주입 외에 추가적인 설정이 필요한 경우(특정 메서드 호출, 객체 초기화, 추가 설정 등) @Bean을 사용하여 수동으로 빈을 생성하고, 이를 커스터마이징할 수 있습니다.
+
+
+3. 빈 간의 명시적 의존성 관리
+
+  서로 의존하는 빈들이 있을 때, @Configuration 클래스에서 빈의 생성 순서와 의존성을 명시적으로 관리할 수 있습니다.
+
+
+4. 유연한 설정이 필요할 때
+
+  애플리케이션 설정을 자바 코드로 관리하면서, 조건부 빈 생성, 프로파일 기반 빈 관리 등과 같이 더 복잡하고 유연한 설정이 필요할 때 유용합니다.
+
+
+4️⃣ 결론
+
+  @Configuration과 @Bean은 스프링 애플리케이션에서 빈을 수동으로 등록하고 설정하는 방식으로 사용됩니다.
+  이 두 어노테이션을 함께 사용함으로써 스프링은 자바 기반으로 빈을 생성하고 관리할 수 있게 되며, 외부 라이브러리나 스프링이 자동으로 관리하지 않는 객체들도 빈으로 등록할 수 있습니다.
+  이러한 방식은 특히 더 복잡한 빈 생성 로직을 필요로 하거나 외부 리소스와의 통합이 필요할 때 유용합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-06</span>
                             
                         </div>
                     </div>
@@ -4846,284 +5284,86 @@ public class MySpringBootApplication {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-06-when-to-use-these-annotations-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-05-why-use-spring-containers.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-10-06-when-to-use-these-annotations-2.html"><h1 class="title_post">🍃[Spring] 언제 `@Configuration`와 `@Bean`을 함께 사용할까?</h1></a>
-                        <a href="/Spring/2024-10-06-when-to-use-these-annotations-2.html" class="txt_post">
-                            🍃[Spring] 언제 @Configuration와 @Bean을 함께 사용할까?
+                        <a href="/Spring/2024-10-05-why-use-spring-containers.html"><h1 class="title_post">🍃[Spring] Spring 컨테이너를 사용하는 이유.</h1></a>
+                        <a href="/Spring/2024-10-05-why-use-spring-containers.html" class="txt_post">
+                            🍃[Spring] Spring 컨테이너를 사용하는 이유.
 
+Spring 컨테이너를 사용하는 이유는 여러 가지가 있으며, 그 주요 목적은 객체의 생명주기와 의존성을 효율적으로 관리하고, 코드의 모듈화와 유연성을 높이는 데 있습니다.
 
-  @Configuration과 @Bean을 함께 사용하는 경우는 자바 기반의 설정 클래스 를 정의할 때입니다.
-  이 방식은 수동으로 빈을 정의하고 설정 과정을 세밀하게 제어하고자 할 때 사용됩니다.
-  특히 외부라이브러리나 프레임워크에서 제공하는 객체들을 빈으로 등록하거나, 빈의 생성과 초기화 과정을 커스터마이징해야 할 때 유용합니다.
+Spring 컨테이너는 이를 통해 애플리케이션 개발을 단순화하고 유지보수성을 향상시키며, 코드의 재사용성과 테스트 가능성을 높입니다.
 
+1️⃣ Spring 컨테이너를 사용하는 이유.
 
-1️⃣ @Configuration과 @Bean을 함께 사용하는 주요 이유.
+1. 의존성 주입(DI, Dependency Injection) 관리.
 
-1. 외부 라이브러리 클래스의 빈 등록.
+  Spring 컨테이너는 객체 간의 의존선을 자동으로 주입해줍니다.
+  개발자는 객체를 직접 생성하고 연결할 필요 없이, 필요한 의존성을 외부에서 주입받도록 설정할 수 있습니다.
+  이로 인해 객체 간의 결합도가 낮아지고, 시스템이 더 유연해집니다.
+  예를 들어, 애플리케이션에서 사용하는 서비스나 리포지토리 간의 관계를 컨테이너가 자동으로 설정해 주기 때문에 객체 생성과 의존성 관리의 복잡성이 크게 줄어듭니다.
 
-  @Configuration과 @Bean을 사용하면 외부 라이브러리의 클래스나, Spring이 직접 관리하지 않는 객체들을 빈으로 등록할 수 있습니다.
-  Spring의 자동 스캔 기능은 개발자가 작성한 클래스만 대상으로 하기 때문에, 외부 라이브러리에서 제공하는 객체는 수동으로 빈으로 등록해야 합니다.
 
+2. 객체의 생명주기 관리.
 
-2. 커스텀 빈 초기화 및 설정.
+  Spring 컨테이너는 객체(Bean, 빈)의 생성, 초기화, 사용, 소멸 등의 생명 주기를 관리합니다.
+  객체가 언제 생성되고, 언제 파괴되는지를 컨테이너가 자동으로 처리하므로 개발자가 객체의 상태를 일일이 관리할 필요가 없습니다.
+  이는 특히 싱글톤 빈을 사용하는 경우에 유용하며, 애플리게이션의 메모리 관리와 성능 최적화에도 기여합니다.
 
-  @Bean 어노테이션을 사용하면 빈이 생성되는 방식을 커스터마이징할 수 있습니다.
-  생성자 파라미터, 초기화 과정, 의존성 주입 방식 등을 세부적으로 설정할 수 있으며, 이 설정을 Java 코드로 작성함으로써 XML 기반 설정을 대체할 수 있습니다.
 
+3. 모듈화와 재사용성.
 
-3. 복잡한 빈 생성 로직 처리.
+  Spring 컨테이너는 각 빈(Bean)을 독립적으로 관리하므로 모듈화된 코드를 쉽게 만들 수 있습니다.
+  객체의 생성과 초기화 로직이 분리되어 있으므로, 동일한 빈을 여러 곳에서 재사용할 수 있습니다.
+  또한, 의존성을 주입받아 사용하기 때문에 코드를 더 쉽게 재사용할 수 있습니다.
 
-  빈 생성 과정이 복잡하거나 여러 의존성을 필요로 할 경우, @Configuration 클래스에서 이를 제어할 수 있습니다.
-  빈 간의 의존성, 특정 상황에 따른 빈 생성 로직 등을 자바 코드로 명확하게 관리할 수 있습니다.
 
+4. 테스트 용이성.
 
-4. XML 설정의 대체.
+  의존성 주입을 통해 객체 간의 결합도가 낮아지면, 단위 테스트가 훨씬 쉬워집니다.
+  Spring 컨테이너는 테스트 환경에서도 쉽게 사용할 수 있으며, Mock 객체를 주입해 실제 데이터베이스나 외부 시스템에 의존하지 않고도 각 객체의 동작을 검증할 수 있습니다.
+  이는 특히 자동화 테스트와 TDD(Test-Driven Development) 에서 큰 장점으로 작용합니다.
 
-  Spring은 과거에 XML 기반 설정을 주로 사용했지만, @Configuration과 @Bean을 사용하면 이러한 설정을 자바 코드로 관리할 수 있습니다.
-  자바 기반 설정은 타입 안정성을 제공하며, 코드와 설정이 하나의 파일 내에 통합되어 유지보수하기 쉬워집니다.
 
+5. 애플리케이션 설정의 일관성.
 
-2️⃣ 예시
+  Spring 컨테이너는 애플리케이션의 구성 요소를 일관되게 설정할 수 있는 환경을 제공합니다.
+  빈 설정을 XML, 자바 설정 클래스, 또는 어노테이션 기반으로 일관되게 관리할 수 있어, 애플리케이션의 구성 방식이 표준화됩니다.
+  이는 복잡한 애플리케이션에서도 설정 관리의 복잡성을 줄이는 데 큰 도움을 줍니다.
 
-1. 외부 라이브러리 빈 등록
 
-  예를 들어, 외부 라이브러리의 데이터베이스 커넥션 풀(HikariDataSource)을 빈으로 등록하고, 이를 커스터마이징하는 경우입니다.
+6. 애플리케이션 유연성 향상.
 
+  Spring 컨테이너는 의존성을 인터페이스로 추상화하고 구현체를 주입하기 때문에, 구현체의 변경이 매우 유연합니다.
+  예를 들어, 데이터베이스 저장소를 변경하거나 외부 서비스와 통신하는 방식이 바뀌더라도, 해당 구현제만 변경하면 다른 코드는 수정하지 않아도 되도록 설계할 수 있습니다.
 
-@Configuration
-public class DataSourceConfig {
-    
-    @Bean
-    public DataSource dataSource() {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
-        dataSource.setUsername("root");
-        dataSource.setPassword("password");
-        dataSource.setMaximumPoolSize(10);
-        return dataSource;
-    }
-}
 
+7. AOP(Aspect-Oriented Programming, 관점 지향 프로그래밍) 지원.
 
+  Spring 컨테이너는 AOP를 지원하므로, 비즈니스 로직과 관련 없는 횡단 관심사(로깅, 트랜잭션 관리, 보안 등)를 별도의 모듈로 분리할 수 있습니다.
+  이를 통해 코드를 더 모듈화할 수 있으며, 비즈니스 로직이 횡단 관심사로 인해 복잡해지는 것을 방지할 수 있습니다.
 
-  @Configuration
-    
-      이 클래스가 Spring의 설정 파일로 사용되며, 빈을 정의하는 클래스임을 나타냅니다.
-    
-  
-  @Bean
-    
-      이 메서드가 반환하는 HikariDataSource 객체는 스프링 컨테이너에 빈으로 등록됩니다.
-      외부 라이브러리 객체이므로 자동 스캔이 불가능하며, 이를 수동으로 등록하는 방식입니다.
-    
-  
 
+8. 트랜잭션 관리.
 
-2. 복잡한 빈 초기화
+  Spring 컨테이너는 트랜잭션 관리를 쉽게 설정할 수 있는 기능을 제공합니다.
+  트랜잭션 처리를 여러 곳에서 수동으로 관리할 필요 없이, 어노테이션을 통해 트랜잭션 경계를 정의하고 자동으로 관리되도록 설정할 수 있습니다.
+  이는 특히 데이터베이스와 관련된 작업에서 일관된 데이터 처리를 보장합니다.
 
-  다음은 서비스 빈이 여러 가지 의존성을 필요로 하고, 빈 초기화 과정에서 특정 설정이 필요한 경우입니다.
 
+9. 국제화 지원.
 
-@Configuration
-public class AppConfig {
-    
-    @Bean
-    public UserService userService(UserRepository userRepository, NotificationService notificationService) {
-        UserService userService = new UserService(userRepository);
-        userService.setNotificationService(notificationService); // 추가 설정
-        return userService;
-    }
-    
-    @Bean
-    public UserRepository userRepository() {
-        return new UserRepository();
-    }
-    
-    @Bean
-    public NotificationService notificationService() {
-        return new EmailNotificationService();
-    }
-}
+  Spring 컨테이너는 애플리케이션의 국제화(i18n) 를 지원합니다.
+  이를 통해 다국어 지원이 필요한 애플리케이션에서 메시지 번역 및 포맷팅을 쉽게 처리할 수 있습니다.
 
 
-  이 예에서는 UserService가 여러 의존성을 필요로 하고, 특정 추가 설정이 필요한 상황을 처리합니다.
-    
-      Configuration : 애플리케이션의 설정 클래스임을 명시합니다.
-      @Bean : UserService, UserRepository, NotificationService를 빈으로 등록하고, 의존성을 수동으로 주입하고 추가 설정을 할 수 있습니다.
-    
-  
+2️⃣ 결론.
 
-
-3. 빈 간 의존성 관리.
-
-  @Configuration 클래스에서 빈 간의 의존성을 명확하게 관리할 수 있습니다.
-  다음은 여러 빈 간의 의존성을 처리하는 예시입니다.
-    @Configuration
-public class ServiceConfig {
-    
-  @Bean
-  public UserService userService() {
-      return new UserService(userRepository());
-  }
-    
-  @Bean
-  public UserRepository userRepository() {
-      return new UserRepository();
-  }
-}
-    
-  
-  여기서 UserService는 UserRepository에 의존하며, @Bean 메서드를 통해 UserRepository 빈을 참조합니다.
-    
-      스프링은 이러한 의존성을 자동으로 해결하여 빈을 등록합니다.
-    
-  
-
-
-3️⃣ 언제 @Configuration과 @Bean을 사용해야 할까?
-
-1. 외부 라이브러리 또는 스프링이 자동으로 관리하지 않는 클래스 등록
-
-  외부 라이브러리의 클래스나 다른 프레임워크에서 제공하는 객체들을 빈으로 등록해야 할 때 @Configuration과 @Bean을 함께 사용합니다.
-
-
-2. 복잡한 빈 생성 로직이 필요할 때
-
-  빈 생성 시 의존성 주입 외에 추가적인 설정이 필요한 경우(특정 메서드 호출, 객체 초기화, 추가 설정 등) @Bean을 사용하여 수동으로 빈을 생성하고, 이를 커스터마이징할 수 있습니다.
-
-
-3. 빈 간의 명시적 의존성 관리
-
-  서로 의존하는 빈들이 있을 때, @Configuration 클래스에서 빈의 생성 순서와 의존성을 명시적으로 관리할 수 있습니다.
-
-
-4. 유연한 설정이 필요할 때
-
-  애플리케이션 설정을 자바 코드로 관리하면서, 조건부 빈 생성, 프로파일 기반 빈 관리 등과 같이 더 복잡하고 유연한 설정이 필요할 때 유용합니다.
-
-
-4️⃣ 결론
-
-  @Configuration과 @Bean은 스프링 애플리케이션에서 빈을 수동으로 등록하고 설정하는 방식으로 사용됩니다.
-  이 두 어노테이션을 함께 사용함으로써 스프링은 자바 기반으로 빈을 생성하고 관리할 수 있게 되며, 외부 라이브러리나 스프링이 자동으로 관리하지 않는 객체들도 빈으로 등록할 수 있습니다.
-  이러한 방식은 특히 더 복잡한 빈 생성 로직을 필요로 하거나 외부 리소스와의 통합이 필요할 때 유용합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-05-primary-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-05-primary-annotation.html"><h1 class="title_post">🍃[Spring] `@Primary` 어노테이션</h1></a>
-                        <a href="/Spring/2024-10-05-primary-annotation.html" class="txt_post">
-                            🍃[Spring] @Primary 어노테이션
-
-@Primary 어노테이션은 Spring Framework에서 빈의 우선 순위를 지정할 때 사용하는 어노테이션입니다.
-
-만약 여러 개의 빈이 동일한 타입으로 등록되어 있을 때, 어떤 빈을 주입할지 명시적으로 지정하지 않으면 Spring은 자동으로 @Primary가 붙은 빈을 우선적으로 주입하게 됩니다.
-
-이를 통해 다수의 구현체가 있을 경우 기본적으로 사용될 빈을 설정할 수 있습니다.
-
-1️⃣ @Primary의 동작 방식.
-
-  Spring 은 같은 타입의 빈이 여러 개 존재할 때 의존성 주입 시 어느 빈을 사용할지 결정해야 합니다.
-  기본적으로 타입에 맞는 빈을 자동으로 주입하려 하지만, 같은 타입의 빈이 두 개 이상 등록되어 있다면 모호성이 발생할 수 있습니다.
-  이때 @Primary를 사용하면 해당 빈을 기본적으로 주입할 빈으로 설정할 수 있습니다.
-
-
-예시
-@Component
-public class FirstService implement MyService {
-    // FirstService 구현
-}
-
-@Component
-@Primary
-public class SecondService implements MyService {
-    // SecondService 구현
-}
-
-
-
-  위 예시에서 FirstService와 SecondService가 모두 MyService 타입의 빈으로 등록되어 있습니다.
-  SecondService에는 @Primary 어노테이션이 붙어 있으므로, MyService 타입의 빈이 필요할 때 Spring은 자동으로 SecondService를 주입하게 됩니다.
-
-
-@Service
-public class MyClient {
-    private final MyService myService;
-    
-    @Autowired
-    public MyClient(MyService myService) {
-        this.myService = myService;
-    }
-    
-    // MyClient는 SecondService 빈을 주입받게 됩니다.
-}
-
-
-2️⃣ @Primary 와 @Qualifier의 차이.
-
-  @Priamry는 기본 빈을 지정할 때 사용되지만, 더 구체적인 빈을 주입해야 할 때는 @Qualifier 어노테이션을 사용할 수 있습니다.
-  @Qualifier는 특정 이름을 가진 빈을 명시적으로 지정하여 주입할 수 있도록 도와줍니다.
-
-
-@Qualifier 예시
-@Component
-@Qualifier("firstService")
-public class FirstService implement MyService {
-    // FirstService 구현
-}
-
-@Component
-@Qualifier("secondService")
-@Primary
-public class SecondService implement MyService {
-    // SecondService 구현
-}
-
-
-@Service
-public class MyClient {
-    
-    private final MyService myService;
-    
-    @Autowired
-    public MyClient(@Qualifier("firstService") MyService myService) {
-        this.myService = myService;
-    }
-    
-    // MyClient는 FirstService 빈을 주입받게 됩니다.
-}
-
-
-
-  이 경우, @Primary 가 SecondService에 지정되어 있어도 @Qualifier("firstService")가 지정된 경우에는 FirstService가 주입됩니다.
-
-
-3️⃣ 결론.
-
-  @Primary는 동일한 타입의 빈이 여러 개 등록된 경우, 기본적으로 사용될 빈을 지정하는 어노테이션입니다.
-  이 어노테이션을 사용하면 같은 타입의 빈이 여러 개 있을 때, 명시적으로 지정하지 않으면 Spring은 @Primary가 붙은 빈을 우선적으로 선택해 주입합니다.
-  보다 구체적으로 어떤 빈을 주입할지 명시할 필요하 있을 때는 @Qualifier를 함께 사용할 수 있습니다.
+  Spring 컨테이너를 사용하는 이유는 객체의 생명주기 관리와 의존성 주입을 자동화하여, 더 모듈화되고 유연한 코드를 작성할 수 있게 하기 위함입니다.
+  이를 통해 개발자는 객체 관리와 의존성 주입에 대한 복잡성을 줄이고, 비즈니스 로직 주현에 집중할 수 있습니다.
+  또한, Spring 컨테이너는 테스트 용이성, 유연성, 재사용성, 유지보수성 등을 크게 향상시켜 애플리케이션 개발의 효율성을 높이는 데 중요한 역할을 합니다.
 
 
                         </a>
@@ -5314,86 +5554,102 @@ Spring 컨테이너는 Spring 애플리케이션에서 객체(빈)의 생성, �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-05-why-use-spring-containers.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-05-primary-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-10-05-why-use-spring-containers.html"><h1 class="title_post">🍃[Spring] Spring 컨테이너를 사용하는 이유.</h1></a>
-                        <a href="/Spring/2024-10-05-why-use-spring-containers.html" class="txt_post">
-                            🍃[Spring] Spring 컨테이너를 사용하는 이유.
+                        <a href="/Spring/2024-10-05-primary-annotation.html"><h1 class="title_post">🍃[Spring] `@Primary` 어노테이션</h1></a>
+                        <a href="/Spring/2024-10-05-primary-annotation.html" class="txt_post">
+                            🍃[Spring] @Primary 어노테이션
 
-Spring 컨테이너를 사용하는 이유는 여러 가지가 있으며, 그 주요 목적은 객체의 생명주기와 의존성을 효율적으로 관리하고, 코드의 모듈화와 유연성을 높이는 데 있습니다.
+@Primary 어노테이션은 Spring Framework에서 빈의 우선 순위를 지정할 때 사용하는 어노테이션입니다.
 
-Spring 컨테이너는 이를 통해 애플리케이션 개발을 단순화하고 유지보수성을 향상시키며, 코드의 재사용성과 테스트 가능성을 높입니다.
+만약 여러 개의 빈이 동일한 타입으로 등록되어 있을 때, 어떤 빈을 주입할지 명시적으로 지정하지 않으면 Spring은 자동으로 @Primary가 붙은 빈을 우선적으로 주입하게 됩니다.
 
-1️⃣ Spring 컨테이너를 사용하는 이유.
+이를 통해 다수의 구현체가 있을 경우 기본적으로 사용될 빈을 설정할 수 있습니다.
 
-1. 의존성 주입(DI, Dependency Injection) 관리.
+1️⃣ @Primary의 동작 방식.
 
-  Spring 컨테이너는 객체 간의 의존선을 자동으로 주입해줍니다.
-  개발자는 객체를 직접 생성하고 연결할 필요 없이, 필요한 의존성을 외부에서 주입받도록 설정할 수 있습니다.
-  이로 인해 객체 간의 결합도가 낮아지고, 시스템이 더 유연해집니다.
-  예를 들어, 애플리케이션에서 사용하는 서비스나 리포지토리 간의 관계를 컨테이너가 자동으로 설정해 주기 때문에 객체 생성과 의존성 관리의 복잡성이 크게 줄어듭니다.
-
-
-2. 객체의 생명주기 관리.
-
-  Spring 컨테이너는 객체(Bean, 빈)의 생성, 초기화, 사용, 소멸 등의 생명 주기를 관리합니다.
-  객체가 언제 생성되고, 언제 파괴되는지를 컨테이너가 자동으로 처리하므로 개발자가 객체의 상태를 일일이 관리할 필요가 없습니다.
-  이는 특히 싱글톤 빈을 사용하는 경우에 유용하며, 애플리게이션의 메모리 관리와 성능 최적화에도 기여합니다.
+  Spring 은 같은 타입의 빈이 여러 개 존재할 때 의존성 주입 시 어느 빈을 사용할지 결정해야 합니다.
+  기본적으로 타입에 맞는 빈을 자동으로 주입하려 하지만, 같은 타입의 빈이 두 개 이상 등록되어 있다면 모호성이 발생할 수 있습니다.
+  이때 @Primary를 사용하면 해당 빈을 기본적으로 주입할 빈으로 설정할 수 있습니다.
 
 
-3. 모듈화와 재사용성.
+예시
+@Component
+public class FirstService implement MyService {
+    // FirstService 구현
+}
 
-  Spring 컨테이너는 각 빈(Bean)을 독립적으로 관리하므로 모듈화된 코드를 쉽게 만들 수 있습니다.
-  객체의 생성과 초기화 로직이 분리되어 있으므로, 동일한 빈을 여러 곳에서 재사용할 수 있습니다.
-  또한, 의존성을 주입받아 사용하기 때문에 코드를 더 쉽게 재사용할 수 있습니다.
-
-
-4. 테스트 용이성.
-
-  의존성 주입을 통해 객체 간의 결합도가 낮아지면, 단위 테스트가 훨씬 쉬워집니다.
-  Spring 컨테이너는 테스트 환경에서도 쉽게 사용할 수 있으며, Mock 객체를 주입해 실제 데이터베이스나 외부 시스템에 의존하지 않고도 각 객체의 동작을 검증할 수 있습니다.
-  이는 특히 자동화 테스트와 TDD(Test-Driven Development) 에서 큰 장점으로 작용합니다.
-
-
-5. 애플리케이션 설정의 일관성.
-
-  Spring 컨테이너는 애플리케이션의 구성 요소를 일관되게 설정할 수 있는 환경을 제공합니다.
-  빈 설정을 XML, 자바 설정 클래스, 또는 어노테이션 기반으로 일관되게 관리할 수 있어, 애플리케이션의 구성 방식이 표준화됩니다.
-  이는 복잡한 애플리케이션에서도 설정 관리의 복잡성을 줄이는 데 큰 도움을 줍니다.
+@Component
+@Primary
+public class SecondService implements MyService {
+    // SecondService 구현
+}
 
 
-6. 애플리케이션 유연성 향상.
 
-  Spring 컨테이너는 의존성을 인터페이스로 추상화하고 구현체를 주입하기 때문에, 구현체의 변경이 매우 유연합니다.
-  예를 들어, 데이터베이스 저장소를 변경하거나 외부 서비스와 통신하는 방식이 바뀌더라도, 해당 구현제만 변경하면 다른 코드는 수정하지 않아도 되도록 설계할 수 있습니다.
-
-
-7. AOP(Aspect-Oriented Programming, 관점 지향 프로그래밍) 지원.
-
-  Spring 컨테이너는 AOP를 지원하므로, 비즈니스 로직과 관련 없는 횡단 관심사(로깅, 트랜잭션 관리, 보안 등)를 별도의 모듈로 분리할 수 있습니다.
-  이를 통해 코드를 더 모듈화할 수 있으며, 비즈니스 로직이 횡단 관심사로 인해 복잡해지는 것을 방지할 수 있습니다.
+  위 예시에서 FirstService와 SecondService가 모두 MyService 타입의 빈으로 등록되어 있습니다.
+  SecondService에는 @Primary 어노테이션이 붙어 있으므로, MyService 타입의 빈이 필요할 때 Spring은 자동으로 SecondService를 주입하게 됩니다.
 
 
-8. 트랜잭션 관리.
+@Service
+public class MyClient {
+    private final MyService myService;
+    
+    @Autowired
+    public MyClient(MyService myService) {
+        this.myService = myService;
+    }
+    
+    // MyClient는 SecondService 빈을 주입받게 됩니다.
+}
 
-  Spring 컨테이너는 트랜잭션 관리를 쉽게 설정할 수 있는 기능을 제공합니다.
-  트랜잭션 처리를 여러 곳에서 수동으로 관리할 필요 없이, 어노테이션을 통해 트랜잭션 경계를 정의하고 자동으로 관리되도록 설정할 수 있습니다.
-  이는 특히 데이터베이스와 관련된 작업에서 일관된 데이터 처리를 보장합니다.
+
+2️⃣ @Primary 와 @Qualifier의 차이.
+
+  @Priamry는 기본 빈을 지정할 때 사용되지만, 더 구체적인 빈을 주입해야 할 때는 @Qualifier 어노테이션을 사용할 수 있습니다.
+  @Qualifier는 특정 이름을 가진 빈을 명시적으로 지정하여 주입할 수 있도록 도와줍니다.
 
 
-9. 국제화 지원.
+@Qualifier 예시
+@Component
+@Qualifier("firstService")
+public class FirstService implement MyService {
+    // FirstService 구현
+}
 
-  Spring 컨테이너는 애플리케이션의 국제화(i18n) 를 지원합니다.
-  이를 통해 다국어 지원이 필요한 애플리케이션에서 메시지 번역 및 포맷팅을 쉽게 처리할 수 있습니다.
+@Component
+@Qualifier("secondService")
+@Primary
+public class SecondService implement MyService {
+    // SecondService 구현
+}
 
 
-2️⃣ 결론.
+@Service
+public class MyClient {
+    
+    private final MyService myService;
+    
+    @Autowired
+    public MyClient(@Qualifier("firstService") MyService myService) {
+        this.myService = myService;
+    }
+    
+    // MyClient는 FirstService 빈을 주입받게 됩니다.
+}
 
-  Spring 컨테이너를 사용하는 이유는 객체의 생명주기 관리와 의존성 주입을 자동화하여, 더 모듈화되고 유연한 코드를 작성할 수 있게 하기 위함입니다.
-  이를 통해 개발자는 객체 관리와 의존성 주입에 대한 복잡성을 줄이고, 비즈니스 로직 주현에 집중할 수 있습니다.
-  또한, Spring 컨테이너는 테스트 용이성, 유연성, 재사용성, 유지보수성 등을 크게 향상시켜 애플리케이션 개발의 효율성을 높이는 데 중요한 역할을 합니다.
+
+
+  이 경우, @Primary 가 SecondService에 지정되어 있어도 @Qualifier("firstService")가 지정된 경우에는 FirstService가 주입됩니다.
+
+
+3️⃣ 결론.
+
+  @Primary는 동일한 타입의 빈이 여러 개 등록된 경우, 기본적으로 사용될 빈을 지정하는 어노테이션입니다.
+  이 어노테이션을 사용하면 같은 타입의 빈이 여러 개 있을 때, 명시적으로 지정하지 않으면 Spring은 @Primary가 붙은 빈을 우선적으로 선택해 주입합니다.
+  보다 구체적으로 어떤 빈을 주입할지 명시할 필요하 있을 때는 @Qualifier를 함께 사용할 수 있습니다.
 
 
                         </a>
@@ -5401,152 +5657,6 @@ Spring 컨테이너는 이를 통해 애플리케이션 개발을 단순화하�
                                 <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-04-Dependency.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-04-Dependency.html"><h1 class="title_post">🍃[Spring] 의존성(Dependency).</h1></a>
-                        <a href="/Spring/2024-10-04-Dependency.html" class="txt_post">
-                            🍃[Spring] 의존성(Dependency).
-
-Java 백엔드 애플리케이션에서 의존성(Dependency) 이란 한 클래스 또는 모듈이 다른 클래스 또는 모듈의 기능을 필요로 하거나, 그 존재에 따라 동작하는 관계를 의미합니다.
-
-간단히 말해, 의존성은 어떤 클래스가 다른 클래스에 의존하여 해당 클래스의 메서드나 기능을 호출하고 사용하는 것을 말합니다.
-
-의존성은 객체 지향 프로그래밍에서 자연스럽게 발생하는 관계로, 특정 객체를 필요로 할 때 발생합니다.
-
-예를 들어, 서비스 클래스가 데이터베이스와 상호작용하기 위해 리포지토리 클래스에 의존하거나, 컨트롤러가 비즈니스 로직을 수행하기 위해 서비스 클래스에 의존하는 경우가 해당됩니다.
-
-1️⃣ 의존성의 예시
-
-간단한 의존성 예
-
-
-
-public class UserService {
-    
-    private UserRepository userRepository;
-    
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-}
-
-
-
-  UserService 클래스는 UserRepository 클래스에 의존합니다.
-  UserService는 비즈니스 로직을 처리하기 위해 UserRepository의 메서드를 호출합니다.
-  만약 UserRepository가 없으면 UserService는 정상적으로 작동할 수 없습니다.
-  따라서, 이 두 클래스 간에는 의존성이 존재합니다.
-
-
-2️⃣ 의존성 관리의 중요성.
-
-의존성(Dependency)은 자연스럽게 발생하지만, 의존성을 관리하지 않으면 애플리케이션이 결합도가 높아지고, 변경에 취약해지며, 유지보수가 어려워질 수 있습니다.
-
-따라서 의존성을 적절히 관리하는 것이 중요합니다.
-
-의존성 관리의 좋은 방법으로는 의존성 주입(Dependency Injection, DI) 이 있습니다.
-
-3️⃣ 의존성 주입(Dependency Injection, DI)
-
-
-  의존성 주입(Dependency Injection, DI)은 객체 간의 의존성을 외부에서 주입해주는 디자인 패턴으로, 의존성 주입을 통해 클래스는 자신이 사용할 객체를 직접 생성하지 않고, 외부에서 생성된 객체를 주입받아 사용하게 됩니다.
-  이를 통해 클래스 간의 결합도를 낮추고, 유연성과 테스트 가능성을 높일 수 있습니다.
-
-
-의존성 주입 예시(Spring Framework)
-
-  Spring Framework에서 의존성 주입은 매우 흔하게 사용됩니다.
-  Spring은 객체 간의 의존성을 관리하고, 필요한 객체를 자동으로 주입해 줍니다.
-
-
-@Service
-public class UserService {
-    
-    private final UserRepository userRepository;
-    
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-}
-
-
-
-  @Autowired
-    
-      Spring이 UserRepository의 구현체를 자동으로 주입해줍니다.
-      개발자는 UserService가 UserRepository에 의존한다는 사실만 명시하면 되고, UserRepository 객체의 생성을 직접적으로 관리할 필요가 없습니다.
-    
-  
-
-
-4️⃣ 의존성의 종류.
-
-1. 강한 의존성 (Tight Coupling)
-
-  클래스 A가 클래스 B의 구체적인 구현에 의존할 때 발생합니다.
-  이 경우 클래스 B가 변경되면 클래스 A도 수정이 필요할 수 있습니다.
-  예를 들어, new 키워드를 사용해 직접 객체를 생성하면 강한 의존성이 발생합니다.
-
-
-2. 약한 의존성(Loose Coupling)
-
-  클래스 A가 클래스 B의 구체적인 구현이 아닌, 인터페이스나 추상 클래스에 의존할 때 발생합니다.
-  이는 결합도를 낮추어 클래스 간의 변경에 더 유연하게 대처할 수 있게 합니다.
-  의존성 주입을 통해 약한 의존성을 실현할 수 있습니다.
-
-
-5️⃣ 의존성 관리의 이점.
-
-1. 유지보수성 향상.
-
-  의존성이 적절히 관리되면, 코드가 더 모듈화되고 변경 사항이 발생할 때 수정해야 할 부분이 줄어듭니다.
-  예를 들어, 특정 클래스의 구현을 변경하더라도 의존성 주입을 통해 인터페이스만 유지하면 다른 클래스에는 영향을 주지 않습니다.
-
-
-2. 테스트 가능성.
-
-  의존성을 외부에서 주입받으면, 테스트 시에 Mock 객체를 주입하여 쉽게 단위 테스트를 수행할 수 있습니다.
-  이를 통해 더 작은 단위 테스트가 가능해지고, 테스트가 독립적으로 수행될 수 있습니다.
-
-
-3. 재사용성 향상.
-
-  클래스가 다른 클래스에 강하게 의존하지 않으면, 해당 클래스를 다른 곳에서도 재사용하기 쉽습니다.
-  인터페이스를 사용하고, 의존성 주입을 통해 다양한 구현체를 주입받아 사용할 수 있기 때문입니다.
-
-
-6️⃣ 결론.
-Java 백엔드 애플리케이션에서 의존성은 클래스 간의 관계를 의미하며, 이를 잘 관리하는 것이 중요합니다.
-의존성 주입을 사용하면 결합도를 낮추고 유연성을 높일 수 있으며, 코드의 유지보수성과 테스트 가능성을 크게 향상 시킬 수 있습니다.
-Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입을 매우 쉽게 처리할 수 있도록 지원하고 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-04</span>
                             
                         </div>
                     </div>
@@ -6026,6 +6136,290 @@ Repository 계층은 데이터베이스와 상호작용하는 모든 작업을 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-10-04-Dependency.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-04-Dependency.html"><h1 class="title_post">🍃[Spring] 의존성(Dependency).</h1></a>
+                        <a href="/Spring/2024-10-04-Dependency.html" class="txt_post">
+                            🍃[Spring] 의존성(Dependency).
+
+Java 백엔드 애플리케이션에서 의존성(Dependency) 이란 한 클래스 또는 모듈이 다른 클래스 또는 모듈의 기능을 필요로 하거나, 그 존재에 따라 동작하는 관계를 의미합니다.
+
+간단히 말해, 의존성은 어떤 클래스가 다른 클래스에 의존하여 해당 클래스의 메서드나 기능을 호출하고 사용하는 것을 말합니다.
+
+의존성은 객체 지향 프로그래밍에서 자연스럽게 발생하는 관계로, 특정 객체를 필요로 할 때 발생합니다.
+
+예를 들어, 서비스 클래스가 데이터베이스와 상호작용하기 위해 리포지토리 클래스에 의존하거나, 컨트롤러가 비즈니스 로직을 수행하기 위해 서비스 클래스에 의존하는 경우가 해당됩니다.
+
+1️⃣ 의존성의 예시
+
+간단한 의존성 예
+
+
+
+public class UserService {
+    
+    private UserRepository userRepository;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+}
+
+
+
+  UserService 클래스는 UserRepository 클래스에 의존합니다.
+  UserService는 비즈니스 로직을 처리하기 위해 UserRepository의 메서드를 호출합니다.
+  만약 UserRepository가 없으면 UserService는 정상적으로 작동할 수 없습니다.
+  따라서, 이 두 클래스 간에는 의존성이 존재합니다.
+
+
+2️⃣ 의존성 관리의 중요성.
+
+의존성(Dependency)은 자연스럽게 발생하지만, 의존성을 관리하지 않으면 애플리케이션이 결합도가 높아지고, 변경에 취약해지며, 유지보수가 어려워질 수 있습니다.
+
+따라서 의존성을 적절히 관리하는 것이 중요합니다.
+
+의존성 관리의 좋은 방법으로는 의존성 주입(Dependency Injection, DI) 이 있습니다.
+
+3️⃣ 의존성 주입(Dependency Injection, DI)
+
+
+  의존성 주입(Dependency Injection, DI)은 객체 간의 의존성을 외부에서 주입해주는 디자인 패턴으로, 의존성 주입을 통해 클래스는 자신이 사용할 객체를 직접 생성하지 않고, 외부에서 생성된 객체를 주입받아 사용하게 됩니다.
+  이를 통해 클래스 간의 결합도를 낮추고, 유연성과 테스트 가능성을 높일 수 있습니다.
+
+
+의존성 주입 예시(Spring Framework)
+
+  Spring Framework에서 의존성 주입은 매우 흔하게 사용됩니다.
+  Spring은 객체 간의 의존성을 관리하고, 필요한 객체를 자동으로 주입해 줍니다.
+
+
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+}
+
+
+
+  @Autowired
+    
+      Spring이 UserRepository의 구현체를 자동으로 주입해줍니다.
+      개발자는 UserService가 UserRepository에 의존한다는 사실만 명시하면 되고, UserRepository 객체의 생성을 직접적으로 관리할 필요가 없습니다.
+    
+  
+
+
+4️⃣ 의존성의 종류.
+
+1. 강한 의존성 (Tight Coupling)
+
+  클래스 A가 클래스 B의 구체적인 구현에 의존할 때 발생합니다.
+  이 경우 클래스 B가 변경되면 클래스 A도 수정이 필요할 수 있습니다.
+  예를 들어, new 키워드를 사용해 직접 객체를 생성하면 강한 의존성이 발생합니다.
+
+
+2. 약한 의존성(Loose Coupling)
+
+  클래스 A가 클래스 B의 구체적인 구현이 아닌, 인터페이스나 추상 클래스에 의존할 때 발생합니다.
+  이는 결합도를 낮추어 클래스 간의 변경에 더 유연하게 대처할 수 있게 합니다.
+  의존성 주입을 통해 약한 의존성을 실현할 수 있습니다.
+
+
+5️⃣ 의존성 관리의 이점.
+
+1. 유지보수성 향상.
+
+  의존성이 적절히 관리되면, 코드가 더 모듈화되고 변경 사항이 발생할 때 수정해야 할 부분이 줄어듭니다.
+  예를 들어, 특정 클래스의 구현을 변경하더라도 의존성 주입을 통해 인터페이스만 유지하면 다른 클래스에는 영향을 주지 않습니다.
+
+
+2. 테스트 가능성.
+
+  의존성을 외부에서 주입받으면, 테스트 시에 Mock 객체를 주입하여 쉽게 단위 테스트를 수행할 수 있습니다.
+  이를 통해 더 작은 단위 테스트가 가능해지고, 테스트가 독립적으로 수행될 수 있습니다.
+
+
+3. 재사용성 향상.
+
+  클래스가 다른 클래스에 강하게 의존하지 않으면, 해당 클래스를 다른 곳에서도 재사용하기 쉽습니다.
+  인터페이스를 사용하고, 의존성 주입을 통해 다양한 구현체를 주입받아 사용할 수 있기 때문입니다.
+
+
+6️⃣ 결론.
+Java 백엔드 애플리케이션에서 의존성은 클래스 간의 관계를 의미하며, 이를 잘 관리하는 것이 중요합니다.
+의존성 주입을 사용하면 결합도를 낮추고 유연성을 높일 수 있으며, 코드의 유지보수성과 테스트 가능성을 크게 향상 시킬 수 있습니다.
+Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입을 매우 쉽게 처리할 수 있도록 지원하고 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
+                        <a href="/Spring/2024-10-03-Controller.html" class="txt_post">
+                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
+
+Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
+
+Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
+
+1️⃣ Controller의 주요 역할.
+
+1. 요청 수신 및 응답 반환.
+
+  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
+  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
+  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
+
+
+2. 요청 검증.
+
+  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
+  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
+  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
+
+
+3. 비즈니스 로직 호출.
+
+  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
+  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
+  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
+
+
+4. 뷰와의 통신(View와 연동)
+
+  Controller는 View와 통신하여 적절한 응답을 생성합니다.
+  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
+  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
+
+
+5. HTTP 상태 코드 관리.
+
+  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
+  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
+
+
+6. 예외 처리
+
+  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
+  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
+
+
+2️⃣ 예시 코드
+
+Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    private final UserService userService;
+    
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
+        UserDTO user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+    
+    @PostMapping
+    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
+        UserDTO createdUser = userService.createUser(userDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+}
+
+
+3️⃣ 설명.
+
+  @RestController
+    
+      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
+      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
+    
+  
+  @RequestMapping
+    
+      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
+    
+  
+  @GetMapping
+    
+      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
+    
+  
+  @PostMapping
+    
+      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
+    
+  
+  @RequestBody, @Valid
+    
+      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
+    
+  
+  ResponseEntity
+    
+      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
+    
+  
+
+
+4️⃣ 결론
+Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
+이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-10-03-SOLID.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -6174,144 +6568,6 @@ SOLID 원칙은 유연하고 유지보수하기 쉬운 시스템을 만들기 �
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-03-Controller.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-03-Controller.html"><h1 class="title_post">🍃[Spring] 계층형 아키텍처에서 Controller의 역할.</h1></a>
-                        <a href="/Spring/2024-10-03-Controller.html" class="txt_post">
-                            🍃[Spring] 계층형 아키텍처에서 Controller의 역할.
-
-Java 백앤드 애플리케이션의 계층형 아키텍처(Layerd Architecture) 에서 Controller는 사용자(클라이언트)로부터 요청을 받아 처리하고, 그에 대한 응답을 반환하는 역할을 담당하는 중요한 계층입니다.
-
-Controller는 애플리케이션의 외부 인터페이스로 작동하며, 주로 웹 요청과 응답의 흐름을 제어하는 역할을 수행합니다.
-
-1️⃣ Controller의 주요 역할.
-
-1. 요청 수신 및 응답 반환.
-
-  Controller는 클라이언트(브라우저, 모바일 앱 등)로 부터 HTTP 요청을 수신합니다.
-  각 요청은 URL 경로 및 HTTP 메서드(GET, POST, PUT, DELETE 등)에 따라 Controller의 특정 메서드에 매핑됩니다.
-  이 메서드는 비즈니스 로직을 호출하고, 처리 결과를 다시 클라이언트에게 응답으로 반환합니다.
-
-
-2. 요청 검증.
-
-  Controller는 클라이언트로부터 전달된 요청 데이터(쿼리 파라미터, 폼 데이터, JSON 등)를 검증하는 역할을 합니다.
-  이 검증 작업은 일반적으로 요청이 비즈니스 로직으로 전달되기 전에 수행됩니다.
-  검증 실패 시, 에러 메시지나 상태 코드를 클라이언트에 반환합니다.
-
-
-3. 비즈니스 로직 호출.
-
-  Controller는 직접적으로 비즈니스 로직을 수행하지 않고, Service 계층의 메서드를 호출합니다.
-  이 방식은 역할을 분리하여 유지보수성을 높이고, 코드가 더욱 이해하기 쉽게 만듭니다.
-  Service 계층이 비즈니스 로직을 처리하고 결과를 반환하면, Controller는 이를 클라이언트에게 전달합니다.
-
-
-4. 뷰와의 통신(View와 연동)
-
-  Controller는 View와 통신하여 적절한 응답을 생성합니다.
-  웹 애플리케이션에서는 HTML이나 JSON 데이터를 반환하는 것이 일반적입니다.
-  예를 들어, 템플릿 엔진(Thymeleaf 등)을 사용해 동적인 HTML 페이지를 렌더링하거나, API 서버의 경우 JSON 포맷으로 데이터를 반환합니다.
-
-
-5. HTTP 상태 코드 관리.
-
-  Controller는 요청 처리 결과에 따라 적절한 HTTP 상태 코드(예: 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error 등) 를 설정하여 클라이언트에 전달합니다.
-  이로써 클라이언트가 요청 처리 상태를 알 수 있도록 합니다.
-
-
-6. 예외 처리
-
-  Controller는 애플리케이션에서 발생하는 예외를 처리하거나, 전역적인 예외 처리 메커니즘을 사용해 예외를 다룹니다.
-  이를 통해 적절한 에러 응답을 클라이언트에게 반환하고, 에러가 발생했을 때 애플리케이션이 비정상적으로 종료되지 않도록 합니다.
-
-
-2️⃣ 예시 코드
-
-Spring Boot 애플리케이션에서의 Controller 예시를 통해 그 역할을 더 구체적으로 볼 수 있습니다.
-
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    
-    private final UserService userService;
-    
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity&lt;UserDTO&gt; getUser(@PathVariable Long id) {
-        UserDTO user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
-    }
-    
-    @PostMapping
-    public ResponseEntity&lt;UserDTO&gt; createUser(@RequestBody @Valid UserDTO userDTO) {
-        UserDTO createdUser = userService.createUser(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-    }
-}
-
-
-3️⃣ 설명.
-
-  @RestController
-    
-      Spring에서 RESTful 웹 서비스를 만들기 위해 사용되는 어노테이션입니다.
-      JSON 또는 XML 데이터를 반환하는 컨트롤러를 정의합니다.
-    
-  
-  @RequestMapping
-    
-      이 컨트롤러가 \users 경로에 대한 요청을 처리하도록 설정합니다.
-    
-  
-  @GetMapping
-    
-      HTTP GET 요청을 처리하는 메서드로, id 경로 변수에 해당하는 사용자를 가져옵니다.
-    
-  
-  @PostMapping
-    
-      HTTP POST 요청을 처리하는 메서드로, 새로운 사용자를 생성하고 결과를 반환합니다.
-    
-  
-  @RequestBody, @Valid
-    
-      요청 본문 데이터를 객체로 매핑하고, 입력 데이터를 검증합니다.
-    
-  
-  ResponseEntity
-    
-      응답 본문과 상태 코드를 포함해 클라이언트에게 응답을 반환합니다.
-    
-  
-
-
-4️⃣ 결론
-Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청을 처리하고 그 결과를 클라이언트에게 반환하는 역할을 합니다.
-이러한 역할 분리를 통해 애플리케이션은 더욱 유연하고 관리하기 쉬운 구조를 갖추게 됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-03</span>
                             
@@ -46546,235 +46802,6 @@ hashCode() 메소드의 주요 용도
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-05-12-Input-Ouput-2.html"><h1 class="title_post">☕️[Java] 입출력(2)</h1></a>
-                        <a href="/Java/Java/2024-05-12-Input-Ouput-2.html" class="txt_post">
-                            1️⃣ 입출력(2)
-
-1. 파일 출력.
-자바 프로그래밍에서 파일 출력은 프로그램이 데이터를 쓰는 과정을 말합니다.
-이 과정을 통해 프로그램은 실행 결과를 저장하거나, 사용자가 입력한 정보를 파일에 기록하고, 다른 프로그램이나 나중에 프로그램 자체가 다시 사용할 수 있는 형태로 데이터를 출력할 수 있습니다.
-
-2. 파일 출력을 수행하기 위한 기본 방법들.
-
-  1. FileOutputStream 사용
-    
-      ‘FileOutputStream’ 클래스는 바이트 단위의 출력을 파일에 직접 쓸 때 사용됩니다.
-      이 클래스를 사용하면 이미지, 비디오 파일, 이진 데이터 등을 파일로 저장할 수 있습니다.
-```java
-import java.io.FileOutputStream;
-import java.io.IOException;
-    
-  
-
-
-public class FileOutputExample {
-    public static void main(String[] args) {
-        String data = “Hello, this is a test.”;
-        try (FileOutputStream out = new FileOutputStream(“output.txt”)) {
-            out.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **2. PrintWriter 사용**
-    - **'PrintWriter'** 는 문자 데이터를 출력할 때 사용됩니다.
-    - 이 클래스는 파일에 텍스트를 쓸 때 편리하며, 자동 플러싱 기능, 줄 단위 출력 등의 메소드를 제공합니다.
-```java
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-public class PrintWriteExample {
-    public static void main(String[] args) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
-            writer.println("Hello, this is a test.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. FileWriter 사용
-    
-      ‘FileWriter’ 는 자바에서 파일에 텍스트 데이터를 쓰기 위한 간편한 방법 중 하나입니다.
-      이 클래스는 내부적으로 문자 데이터를 파일에 쓸 수 있도록 ‘OutputStreamWriter’ 를 사용하여 바이트 스트림을 문자 스트림으로 변환합니다.
-      ‘FileWriter’ 는 텍스트 파일을 쉽게 작성할 수 있도록 해주며, 생성자를 통해 다양한 방식으로 파일을 열 수 있습니다.
-```java
-import java.io.FileWriter;
-import java.io.IOException;
-    
-  
-
-
-public class FileWriterExample {
-    pulbic static void main(String[] args) {
-        try (FileWriter writer = new FileWriter(“output.txt”, true)) {
-            writer.write(“Hello, this is a test.”);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **4. BufferedWriter 사용**
-    - **'BufferedWrite'** 는 버퍼링을 통해 효율적으로 파일에 문자 데이터를 쓸 수 있도록 합니다.
-    - **'FileWriter'** 와 함께 사용되어, 더 큰 데이터를 처리할 때 성능을 개선합니다.
-```java
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-public class BufferedWriterExample {
-    public static void main(String[] args) {
-        String content = "Hello, this is a test.";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
-            writer.write(content);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-2. 파일 입력.
-
-자바 프로그래밍에서 파일 입력은 프로그램이 파일로부터 데이터를 읽어들이는 과정을 말합니다.
-
-이 데이터는 텍스트나 바이너리 형태일 수 있으며, 파일에서 데이터를 읽어 프로그램 내에서 사용할 수 있도록 만드는 것이 목적입니다.
-
-파일 입력을 위해 자바는 다양한 입출력 클래스를 제공합니다.
-
-2.1 주로 사용되는 파일 입력 방법.
-
-
-  1. FileInputStream 사용
-    
-      ‘FileInputStream’ 은 바이트 단위로 파일에서 데이터를 읽는 데 사용됩니다.
-      이 클래스는 이미지, 비디오 파일, 실행 파일등의 이진 데이터 처리에 주로 사용됩니다.
-```java
-import java.io.FileInputStream;
-import java.io.IOException;
-    
-  
-
-
-public class FileInputStreamExample {
-    public static void main(String[] args) {
-        try (FileInputStream fis = new FileInputStream(“input.dat”)) {
-            int content;
-            while ((content = fis.read()) != -1) {
-                // content 변수에 한 바이트씩 읽어들인 데이터를 저장
-                System.out.print((char) content);
-            }
-        } catch (IOExecption e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-- **2. BufferedRead** 와 **FileReader 사용**
-    - **'BufferedReader'** 와 **'FileReader'** 는 텍스트 데이터를 효과적으로 읽기 위해 함께 사용됩니다.
-    - **'FileReader'** 는 파일에서 문자 데이터를 읽어들이며, **'BufferedReader'** 는 버퍼링을 통해 읽기 성능을 향상 시킵니다.
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-public class BufferedReaderExample {
-    public static void main(String[] args) {
-        try (BufferedReader br new BufferedReader(new FileReader("input.txt"))) {
-            String line;
-            while ((line = br.readline()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-
-  3. Scanner 사용
-    
-      ‘Scanner’ 클래스는 텍스트 파일을 읽을 때 유용하며, 특히 토큰화(tokenizing)된 데이터를 처리할 때 편리합니다.
-      ‘Scanner’ 는 정규식을 사용하여 입력을 구분자로 분리하고, 다양한 타입으로 데이터를 읽어들일 수 있습니다.
-```java
-import java.io.File;
-import java.util.Scanner;
-    
-  
-
-
-public class ScannerExample {
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(new File(“input.txt”))) {
-            while (scanner.hasNextLine()) {
-                System.out.println(scanner.nextLine());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-2.2 📝 정리.
-이렇게 다양한 방법을 통해 파일로부터 데이터를 읽을 수 있으며, 각 방법은 사용하는 데이터 타입과 처리할 데이터의 양에 따라 선택할 수 있습니다.
-파일에서 데이터를 읽는 것은 데이터를 처리하거나, 설정 정보를 불러오거나, 사용자 데이터를 읽는 등 다양한 목적으로 활용됩니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-12-TIL.html" class="txt_post">
-                            
-  입출력(2)
-  예외 처리
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-05-12-ExceptionHandling.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -46986,6 +47013,235 @@ public class Main {
     
   
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-05-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-12-TIL.html" class="txt_post">
+                            
+  입출력(2)
+  예외 처리
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-05-12-Input-Ouput-2.html"><h1 class="title_post">☕️[Java] 입출력(2)</h1></a>
+                        <a href="/Java/Java/2024-05-12-Input-Ouput-2.html" class="txt_post">
+                            1️⃣ 입출력(2)
+
+1. 파일 출력.
+자바 프로그래밍에서 파일 출력은 프로그램이 데이터를 쓰는 과정을 말합니다.
+이 과정을 통해 프로그램은 실행 결과를 저장하거나, 사용자가 입력한 정보를 파일에 기록하고, 다른 프로그램이나 나중에 프로그램 자체가 다시 사용할 수 있는 형태로 데이터를 출력할 수 있습니다.
+
+2. 파일 출력을 수행하기 위한 기본 방법들.
+
+  1. FileOutputStream 사용
+    
+      ‘FileOutputStream’ 클래스는 바이트 단위의 출력을 파일에 직접 쓸 때 사용됩니다.
+      이 클래스를 사용하면 이미지, 비디오 파일, 이진 데이터 등을 파일로 저장할 수 있습니다.
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+    
+  
+
+
+public class FileOutputExample {
+    public static void main(String[] args) {
+        String data = “Hello, this is a test.”;
+        try (FileOutputStream out = new FileOutputStream(“output.txt”)) {
+            out.write(data.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **2. PrintWriter 사용**
+    - **'PrintWriter'** 는 문자 데이터를 출력할 때 사용됩니다.
+    - 이 클래스는 파일에 텍스트를 쓸 때 편리하며, 자동 플러싱 기능, 줄 단위 출력 등의 메소드를 제공합니다.
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class PrintWriteExample {
+    public static void main(String[] args) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true))) {
+            writer.println("Hello, this is a test.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. FileWriter 사용
+    
+      ‘FileWriter’ 는 자바에서 파일에 텍스트 데이터를 쓰기 위한 간편한 방법 중 하나입니다.
+      이 클래스는 내부적으로 문자 데이터를 파일에 쓸 수 있도록 ‘OutputStreamWriter’ 를 사용하여 바이트 스트림을 문자 스트림으로 변환합니다.
+      ‘FileWriter’ 는 텍스트 파일을 쉽게 작성할 수 있도록 해주며, 생성자를 통해 다양한 방식으로 파일을 열 수 있습니다.
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+    
+  
+
+
+public class FileWriterExample {
+    pulbic static void main(String[] args) {
+        try (FileWriter writer = new FileWriter(“output.txt”, true)) {
+            writer.write(“Hello, this is a test.”);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **4. BufferedWriter 사용**
+    - **'BufferedWrite'** 는 버퍼링을 통해 효율적으로 파일에 문자 데이터를 쓸 수 있도록 합니다.
+    - **'FileWriter'** 와 함께 사용되어, 더 큰 데이터를 처리할 때 성능을 개선합니다.
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterExample {
+    public static void main(String[] args) {
+        String content = "Hello, this is a test.";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+2. 파일 입력.
+
+자바 프로그래밍에서 파일 입력은 프로그램이 파일로부터 데이터를 읽어들이는 과정을 말합니다.
+
+이 데이터는 텍스트나 바이너리 형태일 수 있으며, 파일에서 데이터를 읽어 프로그램 내에서 사용할 수 있도록 만드는 것이 목적입니다.
+
+파일 입력을 위해 자바는 다양한 입출력 클래스를 제공합니다.
+
+2.1 주로 사용되는 파일 입력 방법.
+
+
+  1. FileInputStream 사용
+    
+      ‘FileInputStream’ 은 바이트 단위로 파일에서 데이터를 읽는 데 사용됩니다.
+      이 클래스는 이미지, 비디오 파일, 실행 파일등의 이진 데이터 처리에 주로 사용됩니다.
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+    
+  
+
+
+public class FileInputStreamExample {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream(“input.dat”)) {
+            int content;
+            while ((content = fis.read()) != -1) {
+                // content 변수에 한 바이트씩 읽어들인 데이터를 저장
+                System.out.print((char) content);
+            }
+        } catch (IOExecption e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+- **2. BufferedRead** 와 **FileReader 사용**
+    - **'BufferedReader'** 와 **'FileReader'** 는 텍스트 데이터를 효과적으로 읽기 위해 함께 사용됩니다.
+    - **'FileReader'** 는 파일에서 문자 데이터를 읽어들이며, **'BufferedReader'** 는 버퍼링을 통해 읽기 성능을 향상 시킵니다.
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        try (BufferedReader br new BufferedReader(new FileReader("input.txt"))) {
+            String line;
+            while ((line = br.readline()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+  3. Scanner 사용
+    
+      ‘Scanner’ 클래스는 텍스트 파일을 읽을 때 유용하며, 특히 토큰화(tokenizing)된 데이터를 처리할 때 편리합니다.
+      ‘Scanner’ 는 정규식을 사용하여 입력을 구분자로 분리하고, 다양한 타입으로 데이터를 읽어들일 수 있습니다.
+```java
+import java.io.File;
+import java.util.Scanner;
+    
+  
+
+
+public class ScannerExample {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(new File(“input.txt”))) {
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+2.2 📝 정리.
+이렇게 다양한 방법을 통해 파일로부터 데이터를 읽을 수 있으며, 각 방법은 사용하는 데이터 타입과 처리할 데이터의 양에 따라 선택할 수 있습니다.
+파일에서 데이터를 읽는 것은 데이터를 처리하거나, 설정 정보를 불러오거나, 사용자 데이터를 읽는 등 다양한 목적으로 활용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -87090,6 +87346,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-10-10-interface-of-api.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-10"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] RESTful API란 무엇일까요?",
+            'path'     : "Network > 2024",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Network/2024/2024-10-10-what-is-the-restful-api.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-10-10"
         });
     

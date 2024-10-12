@@ -758,6 +758,7 @@
             
             
             
+            
 
     
     
@@ -1128,6 +1129,321 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-10-13-diff-between-router-and-switch.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-13-diff-between-router-and-switch.html"><h1 class="title_post">🌐[Network] 라우터와 스위치의 차이점.</h1></a>
+                        <a href="/Network/2024/2024-10-13-diff-between-router-and-switch.html" class="txt_post">
+                            🌐[Network] 라우터(Router)와 스위치(Switch)의 차이점.
+
+  라우터(Router)와 스위치(Switch)는 네트워크 장비로서, 모두 데이터를 전달하고 네트워크 장치들을 연결하는 역할을 하지만, 기능과 동작 방식에서 중요한 차이점이 있습니다.
+  주로 어느 계층에서 동작하는지, 어떤 정보를 바탕으로 데이터를 전송하는지, 그리고 어떤 네트워크 환경에서 사용되는지에 따라 구분됩니다.
+
+
+1️⃣ 기본 역할.
+
+👉 라우터(Router)
+
+  다른 네트워크 간의 통신을 담당합니다.
+    
+      라우터(Router)는 IP 주소를 사용하여 패킷(Packet)을 목적지 네트워크로 라우팅(Routing)하며, 주로 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망) 간의 연결을 담당합니다.
+        
+          즉, 네트워크와 네트워크를 연결하는 장치입니다.
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ IP(Internet Protocol)란 무엇일까?
+🙋‍♂️ WAN(Wide Area Network)이란 무엇일까요? 
+🙋‍♂️ LAN이 합쳐져서 WAN이 되는걸까?
+🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
+
+
+👉 스위치(Switch)
+
+  같은 네트워크 내 장치들 간의 통신을 관리합니다.
+    
+      스위치(Switch)는 MAC(Media Access Control) 주소를 기반으로 데이터를 전송하며, LAN(Local Area Network, 근거리 통신망) 내에서 컴퓨터, 프린터, 서버 등의 장치들이 서로 통신할 수 있도록 패킷(Packet)을 전달하는 역할을 합니다.
+        
+          즉, 장치와 장치를 연결하는 장치입니다.
+        
+      
+    
+  
+
+
+
+  🙋‍♂️MAC(Media Access Control)주소란 무엇일까요?
+
+
+2️⃣ 작동하는 계층.
+
+👉 라우터(Router)
+
+  OSI 7계층 모델의 3계층(네트워크 계층)에서 동작합니다.
+    
+      라우터(Router)는 IP(Internet Protocol) 주소를 바탕으로 패킷(Packet)의 라우팅(Routing)을 수행하며, 서로 다른 네트워크 간의 데이터 전송 경로를 설정하고 관리합니다.
+    
+  
+
+
+👉 스위치(Switch)
+
+  OSI 7 계층 모델의 2계층(데이터 링크 계층)에서 동작합니다.
+    
+      스위치(Switch)는 MAC(Media Access Control) 주소를 사용하여 데이터를 목적지 장치로 전달합니다.
+      스위치(Switch)는 장치 간 데이터 프레임을 전송하고, 네트워크 내에서 패킷(Packet)을 필터링하고 전송할 경로를 설정합니다.
+    
+  
+
+
+
+  🙋‍♂️ OSI 7계층 모델
+🙋‍♂️ OSI 7계층 모델 - 계층별 기능
+🙋‍♂️ LAN 내에서 전달되는 데이터 프레임이란 무엇일까?
+
+
+3️⃣ 주소 기반 동작.
+
+👉 라우터(Router)
+
+  IP(Internet Protocol) 주소를 사용하여 네트워크 장치 간에 패킷(Packet)을 전달합니다.
+    
+      출발지 IP(Internet Protocol) 주소와 목적지 IP(Internet Protocol) 주소를 분석하여, 데이터를 최적의 경로로 라우팅(Routing)합니다.
+        
+          라우터(Router)는 네트워크 간의 트래픽을 제어하고, 인터넷과 같은 WAN(Wide Area Network) 연결을 관리합니다.
+        
+      
+    
+  
+
+
+👉 스위치(Switch)
+
+  MAC(Media Address Control) 주소를 사용하여 데이터 프레임을 전달합니다.
+    
+      스위치(Switch)는 MAC(Media Access Control) 주소 테이블을 유지하며, 패킷(Packet)의 목적지 MAC(Media Access Control) 주소에 따라 해당 프레임을 적절한 포트로 전송합니다.
+        
+          주로 LAN(Local Area Network, 근거리 통신망) 내에서 사용됩니다.
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 네트워크 포트(Network Port)란 무엇일까?
+🙋‍♂️ 네트워크, 포트, 도메인 이름, IP, DNS
+
+
+4️⃣ 주요 기능.
+
+👉 라우터(Router)
+
+  서로 다른 네트워크(LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)) 간의 데이터 패킷(Packet) 전달 및 라우팅(Routing)
+  인터넷 연결을 공유하고, 다양한 네트워크를 연결하는 역할.
+  네트워크 트래픽 제어 및 IP(Internet Protocol) 주소 할당(DHCP), 네트워크 주소 변환(NAT)
+  방화벽(Firewall) 기능을 통해 보안 제어 가능.
+
+
+👉 스위치(Switch)
+
+  LAN(Local Area Network, 근거리 통신망) 내에서 여러 장치 간의 데이터를 빠르게 전송.
+  MAC(Media Access Control) 주소 기반으로 데이터를 필터링하고 적절한 포트(Port)로 전송.
+  네트워크(Network) 내 장치 간의 충돌 방지 및 효율적인 데이터 전송.
+  VLAN(Virtual LAN)을 설정하여 네트워크 세분화 가능.
+
+
+
+  📝 VLAN(Virtual LAN, 가상 LAN)
+
+  하나의 물리적인 네트워크 장비, 예를 들어 스위치 내에서 네트워크를 논리적으로 분리하여 여러 개의 가상 네트워크를 만드는 기술입니다.
+VLAN(Virtual LAN, 가상 LAN)은 서로 다른 네트워크 세그먼트에 속하는 장치들을 같은 스위치에 연결되어 있어도 서로 통신할 수 없도록 분리하거나, 같은 VLAN에 속한 장치들끼리만 통신할 수 있도록 합니다.
+
+
+
+  📝 Virtual Network(가상 네트워크)
+
+  물리적인 네트워크 하드웨어와 상관없이, 소프트웨어적으로 구현된 네트워크를 의미합니다.
+가상 네트워크는 물리적인 네트워크 인프라를 추상화하여, 네트워크의 연결과 관리가 소프트웨어적으로 처리되도록 구성됩니다.
+이러한 가상 네트워크는 서버, 네트워크 장비, 클라이언트 등을 물리적으로 연결하지 않고도 논리적으로 네트워크를 생성하고 관리할 수 있게 해줍니다.
+
+
+5️⃣ 사용되는 네트워크 범위.
+
+👉 라우터(Router)
+
+  다른 네트워크 간의 연결을 관리하므로, 주로 WAN(Wide Area Network, 광역 통신망)이나 인터넷 연결이 필요한 환경에서 사용됩니다.
+    
+      예를 들어, 가정에서는 라우터(Router)가 인터넷 서비스 제공업체(ISP, Internet Service Provider)와 사용자의 네트워크를 연결하는 역할을 수행합니다.
+    
+  
+
+
+👉 스위치(Switch)
+
+  같은 네트워크 내에서 장치들을 연결합니다.
+    
+      주로 LAN(Local Area Network, 근거리 통신망)에서 사용되며, 컴퓨터, 프린터, 서버 등 다양한 장치가 동일한 네트워크 내에서 데이터를 주고받는 데 사용됩니다.
+    
+  
+
+
+6️⃣ 전송 방식.
+
+👉 라우터(Router)
+
+  패킷 스위칭(Packet Switching)을 사용합니다.
+    
+      라우터(Router)는 패킷(Packet)이 어디로 갈지에 대한 최적의 경로를 계산하고, 각 패킷이 다른 경로로 이동할 수 있게 합니다.
+    
+  
+
+
+👉 스위치(Switch)
+
+  프레임 스위칭(Frame Switching)을 사용합니다.
+    
+      스위치(Switch)는 목적지 MAC(Media Address Control) 주소를 기반으로 데이터 프레임을 전송하고, 네트워크 내 장치 간의 빠른 데이터 전송을 보장합니다.
+    
+  
+
+
+7️⃣ 브로드캐스트 도메인과 충돌 도메인.
+
+👉 라우터(Router)
+
+  브로드캐스트 도메인(Broadcast Domain)을 분리합니다.
+    
+      라우터(Router)는 네트워크를 나누기 때문에, 라우터(Router)를 경우한 네트워크 간에는 브로드캐스트 트래픽이 전달되지 않습니다.
+    
+  
+
+
+👉 스위치(Switch)
+
+  브로드캐스트 도메인(Broadcast Domain)을 나누지 않고, 충돌 도메인(Collision Domain)만 분리합니다.
+    
+      스위치(Switch)는 연결된 모든 장치가 동일한 브로드캐스트 도메인에 속해 있으므로, 브로드캐스트 트래픽이 스위치(Switch)를 경유하여 네트워크(Network) 전체에 전달됩니다.
+    
+  
+
+
+
+  📝 브로드캐스트 도메인(Broadcast Domain)
+
+  브로드캐스트 도메인(Broadcast Domain)은 네트워크 내에서 브로드캐스트 트래픽이 전파되는 범위를 의미합니다.
+다시 말해, 네트워크 장치가 브로드캐스트(Broadcast) 메시지(모든 네트워크 장치에 전송되는 메시지)를 보냈을 때, 그 메시지를 받을 수 있는 네트워크 상의 모든 장치들이 속한 영역을 브로드캐스트 도메인(Broadcast Domain)이라고 합니다.
+
+
+
+  📝 충돌 도메인(Collision Domain)
+
+  충돌 도메인(Collision Domain)은 네트워크에서 두 개 이상의 장치가 동시에 데이터를 전송할 때 충돌이 발생할 수 있는 네트워크 범위를 의미합니다.
+충돌이란 동시에 전송된 데이터 패킷들이 서로 켭치거나 부딪히는 상황을 말하며, 충돌 도메인 내에서는 한 번에 하나의 장치만 데이터를 전송해야 충돌을 피할 수 있습니다.
+네트워크 장비가 데이터 충돌을 처리할 수 없는 환경에서는 충돌이 발생하면 데이터는 손실되거나 다시 전송해야 하므로, 네트워크 성능에 영향을 미칠 수 있습니다.
+
+
+8️⃣ 보안 기능.
+
+👉 라우터(Router)
+
+  보안 기능이 더 강력합니다.
+    
+      라우터는 방화벽(Firewall), NAT(Network Address Translation) 등을 통해 외부 네트워크로부터 보호하고, 네트워크 트래픽을 모니터링하고 제어할 수 있습니다.
+    
+  
+
+
+👉 스위치(Switch)
+
+  기본적으로 보안 기능이 적습니다.
+    
+      스위치는 내부 네트워크에서 장치 간의 데이터를 전송하므로, 보안 측면에서 라우터만큼 강력한 보호 기능을 제공하지는 않습니다.
+        
+          그러나 고급 스위치에서는 VLAN(Virtual LAN, 가상 LAN)을 통해 네트워크를 분리하고, 포트 보안을 설정할 수 있습니다.
+        
+      
+    
+  
+
+
+9️⃣ 주요 차이점 요약.
+
+
+  
+    
+      기능
+      라우터(Router)
+      스위치(Switch)
+    
+  
+  
+    
+      작동 계층
+      네트워크 계층(3계층, IP 주소 사용)
+      데이터 링크 계층(2계층, MAC 주소 사용)
+    
+    
+      사용하는 주소
+      IP 주소
+      MAC 주소
+    
+    
+      기본 역할
+      서로 다른 네트워크를 연결(LAN과 WAN간)
+      동일 네트워크 내의 장치들을 연결(LAN 내)
+    
+    
+      보안 기능
+      방화벽, NAT, 트래픽 제어 등 고급 보안 기능 제공제한적(고급 스위치 VLAN 및 포트 보안 사용 가능)
+      제한적(고급 스위치에서 VLAN 및 포트 보안 사용 가능)
+    
+    
+      브로드캐스트 도메인
+      분리
+      분리하지 않음
+    
+    
+      주요 사용 환경
+      WAN, 인터넷 연결, 서로 다른 네트워크 간 데이터 전송
+      LAN 내에서의 데이터 전송 및 네트워크 장치 연결
+    
+    
+      전송 방식
+      패킷 스위칭(IP 패킷)
+      프레임 스위칭(데이터 프레임)
+    
+  
+
+
+1️⃣0️⃣ 결론.
+
+  라우터(Router)는 서로 다른 네트워크 간의 연결을 관리하며, IP 주소를 통해 네트워크 간의 경로를 설정하고 데이터를 전송하는 역할을 합니다.
+  반면, 스위치(Switch)는 LAN(Local Area Network, 근거리 통신망) 내의 장치들을 연결하고 MAC(Media Access Control) 주소를 통해 데이터 프레임을 전송합니다.
+  즉, 라우터(Router)는 네트워크 간의 통신을, 스위치(Switch)는 네트워크 내부 장치들 간의 통신을 담당합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2500,6 +2816,265 @@ Hibernate
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html"><h1 class="title_post">🌐[Network] WAN(Wide Area Network)이란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="txt_post">
+                            🌐[Network] WAN(Wide Area Network)이란 무엇일까요?
+
+  WAN(Wide Area Network, 광역 통신망)은 지리적으로 멀리 떨어진 지역들을 연결하는 네트워크입니다.
+  WAN(Wide Area Network, 광역 통신망)은 도시, 국가, 심지어 전 세계에 걸쳐있는 네트워크를 연결할 수 있으며, 일반적으로 여러 LAN(Local Area Network, 근거리 통신망)이나 MAN(Metropolitan Area Network, 도시권 통신망)을 서로 연결하여 데이터를 주고받을 수 있게 해줍니다.
+  인터넷이 가장 대표적인 WAN의 예입니다.
+
+
+
+  🙋‍♂️LAN(Local Area Network)이란 무엇일까요?
+
+
+1️⃣ WAN(Wide Area Network, 광역 통신망)의 주요 특징.
+
+1️⃣ 광범위한 지리적 범위.
+
+  WAN(Wide Area Network, 광역 통신망)은 멀리 떨어진 지역에 있는 네트워크들을 연결합니다.
+    
+      예를 들면, 한 나라의 여러 도시나, 심지어 다른 나라의 네트워크까지 연결할 수 있습니다.
+      WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)과 달리 국가 간, 대륙 간 네트워크를 연결할 수 있습니다.
+    
+  
+
+
+2️⃣ 낮은 데이터 전송 속도.
+
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 상대적으로 낮은 데이터 전송 속도를 제공합니다.
+    
+      네트워크 장비 간의 물리적 거리가 멀기 때문에, 데이터 전송 속도가 느려질 수 있습니다.
+        
+          하지만 광케이블과 같은 고속 네트워크 기술을 사용하여 성능을 향상시킬 수 있습니다.
+        
+      
+    
+  
+
+
+3️⃣ 인터넷 서비스 제공업체(ISP, Internet Service Provider)를 통한 연결.
+
+  WAN(Wide Area Network)은 일반적으로 ISP(인터넷 서비스 제공업체, Internet Service Provider)를 통해 연결됩니다.
+    
+      ISP(인터넷 서비스 제공업체, Internet Service Provider)는 WAN(Wide Area Network)을 통해 여러 지역이나 국가를 연결하는 네트워크 인프라를 제공합니다.
+      개인이나 회사는 ISP(Internet Service Provider)의 WAN(Wide Area Network, 광역 통신망)을 사용해 인터넷을 통해 다른 네트워크와 연결됩니다.
+    
+  
+
+
+4️⃣ 고비용.
+
+  WAN(Wide Area Network)은 구축과 유지비용이 매우 높습니다.
+    
+      지리적으로 먼 거리를 연결하기 위해 복잡한 장비와 기술이 필요하며, 대규모 네트워크 인프라가 요구됩니다.
+      WAN(Wide Area Network, 광역 통신망) 연결을 위해 고속 광케이블, 위성 연결, 전용선등이 사용됩니다.
+    
+  
+
+
+5️⃣ 다양한 연결 기술 사용.
+
+  WAN(Wide Area Network, 광역 통신망)은 광케이블, 위성 연결, 전용선 DSL(디지털 가입자 회선), LTE/5G와 같은 여러 기술을 사용하여 데이터를 전송합니다.
+    
+      이러한 기술은 거리에 따른 속도와 성능에 영향을 미칩니다.
+    
+  
+
+
+2️⃣ WAN의 구성 요소.
+
+1️⃣ 라우터(Router)
+
+  라우터(Router)는 WAN(Wide Area Network, 광역 통신망)에서 데이터를 적절한 네트워크로 경로 설정하고 전송하는 역할을 합니다.
+    
+      여러 LAN(Local Area Network, 근거리 통신망)을 서로 연결하거나, LAN(Local Area Network, 근거리 통신망)을 인터넷과 연결하는 데 사용됩니다.
+    
+  
+
+
+2️⃣ 전용선(Leased Line)
+
+  전용선은 두 지점 간에 데이터를 전송하기 위해 전용으로 사용되는 통신 회선입니다.
+    
+      일반적으로 기업이 본사와 지사 간의 통신을 위해 전용선으로 사용하여, 보안성과 성능을 확보할 수 있습니다.
+    
+  
+
+
+3️⃣ 스위치(Switch)
+
+  스위치는 WAN(Wide Area Network, 광역 통신망)에서도 네트워크 장치 간의 데이터를 효율적으로 전달하기 위해 사용됩니다.
+    
+      LAN(Local Area Network, 근거리 통신망)에서도 많이 사용되지만, WAN(Wide Area Network, 광역 통신망)에서는 더 큰 규모의 데이터 흐름을 관리하는 스위치가 필요합니다.
+    
+  
+
+
+4️⃣ 방화벽(Firewall)
+
+  WAN(Wide Area Network, 광역 통신망)을 통한 네트워크 통신을 보호하기 위해 방화벽이 사용됩니다.
+    
+      외부에서 들어오는 불법적인 접근이나 해킹을 차단하고, 네트워크의 보안을 강화하는 역할을 합니다.
+    
+  
+
+
+5️⃣ 게이트웨이(Gateway)
+
+  서로 다른 네트워크 프로토콜을 사용하는 네트워크 간에 통신을 가능하게 해주는 장비입니다.
+    
+      WAN(Wide Area Network, 광역 통신망)에서는 여러 종류의 네트워크를 연결할 수 있으므로, 서로 다른 네트워크 간의 통신을 위해 게이트웨이가 사용됩니다.
+    
+  
+
+
+3️⃣ WAN의 예시.
+
+1️⃣ 인터넷(Internet)
+
+  인터넷(Internet)은 가장 큰 WAN(Wide Area Network, 광역 통신망)의 예입니다.
+    
+      전 세계의 수많은 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)이 인터넷을 통해 연결되어 통신을 주고받습니다.
+        
+          인터넷은 ISP(Internet Service Provider, 인터넷 서비스 제공업체)들이 제공하는 네트워크 인프라를 통해 전 세계에서 데이터를 주고받을 수 있게 해줍니다.
+        
+      
+    
+  
+
+
+2️⃣ 기업 WAN(Wide Area Network, 광역 통신망)
+
+  대기업은 본사와 여러 지사 간의 데이터를 교환하기 위해 자체적인 WAN을 구축할 수 있습니다.
+    
+      예를 들어, 서울에 본사를 둔 회사가 부산, 뉴욕, 도쿄의 지사와 WAN(Wide Area Network, 광역 통신망)을 통해 연결하여 데이터를 공유하고, 협업을 진행할 수 있습니다.
+    
+  
+
+
+3️⃣ 은행 네트워크
+
+  전 세계에 지점을 두고 있는 은행은 WAN(Wide Area Network, 광역 통신망)을 통해 각 지점 간에 데이터를 수행합니다.
+    
+      고객의 계좌 정보, 거래 내역 등을 전송하고, 실시간으로 금융 데이터를 동기화합니다.
+    
+  
+
+
+4️⃣ 정부 네트워크
+
+  여러 국가기관이 WAN(Wide Area Network, 광역 통신망)을 사용해 중앙 정부와 지방 정부 간의 데이터를 전송하거나, 다른 국가 기관과 통신하는 네트워크를 구축합니다.
+
+
+4️⃣ WAN의 장점.
+
+1️⃣ 지리적 한계를 넘는 통신.
+
+  WAN(Wide Area Network, 광역 통신망)을 사용하면 멀리 떨어진 지리적 위치에 있는 네트워크와도 쉽게 통신할 수 있습니다.
+    
+      국가 간, 대륙간 연결도 WAN(Wide Area Network, 광역 통신망)을 통해 가능합니다.
+    
+  
+
+
+2️⃣ 자원 공유.
+
+  WAN(Wide Area Network, 광역 통신망)을 통해 여러 지역에 흩어진 네트워크 사용자들이 데이터와 자원을 공유할 수 있습니다.
+    
+      예를 들어, 한 회사의 여러 지사에서 파일 서버나 데이터베이스에 접근할 수 있습니다.
+    
+  
+
+
+3️⃣ 중앙 집중 관리.
+
+  WAN(Wide Area Network, 광역 통신망)은 네트워크의 중앙 관리를 가능하게 합니다.
+    
+      본사에서 지사 네트워크 관리하거나, 중앙 서버에서 네트워크 자원을 통합적으로 관리할 수 있습니다.
+    
+  
+
+
+4️⃣ 확장성.
+
+  WAN(Wide Area Network, 광역 통신망)은 필요한 만큼 확장할 수 있습니다.
+    
+      지역이 다르거나 국가가 다르더라도, 네트워크를 확장하여 연결할 수 있습니다.
+    
+  
+
+
+5️⃣ WAN의 단점.
+
+1️⃣ 높은 비용.
+
+  WAN(Wide Area Network, 광역 통신망)을 구축하고 유지하는 데 비용이 많이 듭니다.
+    
+      전용선, 위성 링크, 광섬유 등의 인프라를 구축하는 데 많은 자원이 필요합니다.
+        
+          특히, 장거리 연결일수록 비용이 더 높아집니다.
+        
+      
+    
+  
+
+
+2️⃣ 느린 속도.
+
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 데이터 전송 속도가 느릴 수 있습니다.
+    
+      물리적 거리가 멀수록 데이터 전송에 걸리는 시간이 증가하고, 지연이 발생할 수 있습니다.
+    
+  
+
+
+3️⃣ 복잡성.
+
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)보다 구축과 관리가 훨씬 복잡합니다.
+    
+      장거리 네트워크 통신은 여러 기술과 장비의 조합이 필요하며, 문제가 발생했을 때 해결하기 어렵습니다.
+    
+  
+
+
+4️⃣ 보안 문제.
+
+  WAN(Wide Area Network, 광역 통신망)은 인터넷과 같은 공개 네트워크를 사용할 때 보안 문제가 발생할 수 있습니다.
+    
+      데이터를 안전하게 보호하기 위해서는 암호화, 방화벽 등의 보안 기술이 필요합니다.
+    
+  
+
+
+6️⃣ 결론.
+
+  WAN(Wide Area Network, 광역 통신망)은 광범위한 지역을 연결하는 네트워크로, LAN(Local Area Network, 근거리 통신망)과 MAN(Metropolitan Area Network, 도시권 통신망)을 연결하고 국가 간, 대륙 간 통신을 가능하게 합니다.
+  WAN(Wide Area Network, 광역 통신망)은 인터넷을 통해 여러 장치와 네트워크가 서로 연결될 수 있는 방법을 제공하며, 기업이나 정부, 은행 등에서 다양한 용도로 사용됩니다.
+  WAN(Wide Area Network, 광역 통신망)을 통해 먼 거리의 네트워크를 연결하여 자원 공유와 통신을 할 수 있지만, 구축 및 유지 비용이 높고 관리가 복잡할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-10-11-what-is-the-http-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -2904,265 +3479,6 @@ Content-Length: 1354
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html"><h1 class="title_post">🌐[Network] WAN(Wide Area Network)이란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="txt_post">
-                            🌐[Network] WAN(Wide Area Network)이란 무엇일까요?
-
-  WAN(Wide Area Network, 광역 통신망)은 지리적으로 멀리 떨어진 지역들을 연결하는 네트워크입니다.
-  WAN(Wide Area Network, 광역 통신망)은 도시, 국가, 심지어 전 세계에 걸쳐있는 네트워크를 연결할 수 있으며, 일반적으로 여러 LAN(Local Area Network, 근거리 통신망)이나 MAN(Metropolitan Area Network, 도시권 통신망)을 서로 연결하여 데이터를 주고받을 수 있게 해줍니다.
-  인터넷이 가장 대표적인 WAN의 예입니다.
-
-
-
-  🙋‍♂️LAN(Local Area Network)이란 무엇일까요?
-
-
-1️⃣ WAN(Wide Area Network, 광역 통신망)의 주요 특징.
-
-1️⃣ 광범위한 지리적 범위.
-
-  WAN(Wide Area Network, 광역 통신망)은 멀리 떨어진 지역에 있는 네트워크들을 연결합니다.
-    
-      예를 들면, 한 나라의 여러 도시나, 심지어 다른 나라의 네트워크까지 연결할 수 있습니다.
-      WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)과 달리 국가 간, 대륙 간 네트워크를 연결할 수 있습니다.
-    
-  
-
-
-2️⃣ 낮은 데이터 전송 속도.
-
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 상대적으로 낮은 데이터 전송 속도를 제공합니다.
-    
-      네트워크 장비 간의 물리적 거리가 멀기 때문에, 데이터 전송 속도가 느려질 수 있습니다.
-        
-          하지만 광케이블과 같은 고속 네트워크 기술을 사용하여 성능을 향상시킬 수 있습니다.
-        
-      
-    
-  
-
-
-3️⃣ 인터넷 서비스 제공업체(ISP, Internet Service Provider)를 통한 연결.
-
-  WAN(Wide Area Network)은 일반적으로 ISP(인터넷 서비스 제공업체, Internet Service Provider)를 통해 연결됩니다.
-    
-      ISP(인터넷 서비스 제공업체, Internet Service Provider)는 WAN(Wide Area Network)을 통해 여러 지역이나 국가를 연결하는 네트워크 인프라를 제공합니다.
-      개인이나 회사는 ISP(Internet Service Provider)의 WAN(Wide Area Network, 광역 통신망)을 사용해 인터넷을 통해 다른 네트워크와 연결됩니다.
-    
-  
-
-
-4️⃣ 고비용.
-
-  WAN(Wide Area Network)은 구축과 유지비용이 매우 높습니다.
-    
-      지리적으로 먼 거리를 연결하기 위해 복잡한 장비와 기술이 필요하며, 대규모 네트워크 인프라가 요구됩니다.
-      WAN(Wide Area Network, 광역 통신망) 연결을 위해 고속 광케이블, 위성 연결, 전용선등이 사용됩니다.
-    
-  
-
-
-5️⃣ 다양한 연결 기술 사용.
-
-  WAN(Wide Area Network, 광역 통신망)은 광케이블, 위성 연결, 전용선 DSL(디지털 가입자 회선), LTE/5G와 같은 여러 기술을 사용하여 데이터를 전송합니다.
-    
-      이러한 기술은 거리에 따른 속도와 성능에 영향을 미칩니다.
-    
-  
-
-
-2️⃣ WAN의 구성 요소.
-
-1️⃣ 라우터(Router)
-
-  라우터(Router)는 WAN(Wide Area Network, 광역 통신망)에서 데이터를 적절한 네트워크로 경로 설정하고 전송하는 역할을 합니다.
-    
-      여러 LAN(Local Area Network, 근거리 통신망)을 서로 연결하거나, LAN(Local Area Network, 근거리 통신망)을 인터넷과 연결하는 데 사용됩니다.
-    
-  
-
-
-2️⃣ 전용선(Leased Line)
-
-  전용선은 두 지점 간에 데이터를 전송하기 위해 전용으로 사용되는 통신 회선입니다.
-    
-      일반적으로 기업이 본사와 지사 간의 통신을 위해 전용선으로 사용하여, 보안성과 성능을 확보할 수 있습니다.
-    
-  
-
-
-3️⃣ 스위치(Switch)
-
-  스위치는 WAN(Wide Area Network, 광역 통신망)에서도 네트워크 장치 간의 데이터를 효율적으로 전달하기 위해 사용됩니다.
-    
-      LAN(Local Area Network, 근거리 통신망)에서도 많이 사용되지만, WAN(Wide Area Network, 광역 통신망)에서는 더 큰 규모의 데이터 흐름을 관리하는 스위치가 필요합니다.
-    
-  
-
-
-4️⃣ 방화벽(Firewall)
-
-  WAN(Wide Area Network, 광역 통신망)을 통한 네트워크 통신을 보호하기 위해 방화벽이 사용됩니다.
-    
-      외부에서 들어오는 불법적인 접근이나 해킹을 차단하고, 네트워크의 보안을 강화하는 역할을 합니다.
-    
-  
-
-
-5️⃣ 게이트웨이(Gateway)
-
-  서로 다른 네트워크 프로토콜을 사용하는 네트워크 간에 통신을 가능하게 해주는 장비입니다.
-    
-      WAN(Wide Area Network, 광역 통신망)에서는 여러 종류의 네트워크를 연결할 수 있으므로, 서로 다른 네트워크 간의 통신을 위해 게이트웨이가 사용됩니다.
-    
-  
-
-
-3️⃣ WAN의 예시.
-
-1️⃣ 인터넷(Internet)
-
-  인터넷(Internet)은 가장 큰 WAN(Wide Area Network, 광역 통신망)의 예입니다.
-    
-      전 세계의 수많은 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)이 인터넷을 통해 연결되어 통신을 주고받습니다.
-        
-          인터넷은 ISP(Internet Service Provider, 인터넷 서비스 제공업체)들이 제공하는 네트워크 인프라를 통해 전 세계에서 데이터를 주고받을 수 있게 해줍니다.
-        
-      
-    
-  
-
-
-2️⃣ 기업 WAN(Wide Area Network, 광역 통신망)
-
-  대기업은 본사와 여러 지사 간의 데이터를 교환하기 위해 자체적인 WAN을 구축할 수 있습니다.
-    
-      예를 들어, 서울에 본사를 둔 회사가 부산, 뉴욕, 도쿄의 지사와 WAN(Wide Area Network, 광역 통신망)을 통해 연결하여 데이터를 공유하고, 협업을 진행할 수 있습니다.
-    
-  
-
-
-3️⃣ 은행 네트워크
-
-  전 세계에 지점을 두고 있는 은행은 WAN(Wide Area Network, 광역 통신망)을 통해 각 지점 간에 데이터를 수행합니다.
-    
-      고객의 계좌 정보, 거래 내역 등을 전송하고, 실시간으로 금융 데이터를 동기화합니다.
-    
-  
-
-
-4️⃣ 정부 네트워크
-
-  여러 국가기관이 WAN(Wide Area Network, 광역 통신망)을 사용해 중앙 정부와 지방 정부 간의 데이터를 전송하거나, 다른 국가 기관과 통신하는 네트워크를 구축합니다.
-
-
-4️⃣ WAN의 장점.
-
-1️⃣ 지리적 한계를 넘는 통신.
-
-  WAN(Wide Area Network, 광역 통신망)을 사용하면 멀리 떨어진 지리적 위치에 있는 네트워크와도 쉽게 통신할 수 있습니다.
-    
-      국가 간, 대륙간 연결도 WAN(Wide Area Network, 광역 통신망)을 통해 가능합니다.
-    
-  
-
-
-2️⃣ 자원 공유.
-
-  WAN(Wide Area Network, 광역 통신망)을 통해 여러 지역에 흩어진 네트워크 사용자들이 데이터와 자원을 공유할 수 있습니다.
-    
-      예를 들어, 한 회사의 여러 지사에서 파일 서버나 데이터베이스에 접근할 수 있습니다.
-    
-  
-
-
-3️⃣ 중앙 집중 관리.
-
-  WAN(Wide Area Network, 광역 통신망)은 네트워크의 중앙 관리를 가능하게 합니다.
-    
-      본사에서 지사 네트워크 관리하거나, 중앙 서버에서 네트워크 자원을 통합적으로 관리할 수 있습니다.
-    
-  
-
-
-4️⃣ 확장성.
-
-  WAN(Wide Area Network, 광역 통신망)은 필요한 만큼 확장할 수 있습니다.
-    
-      지역이 다르거나 국가가 다르더라도, 네트워크를 확장하여 연결할 수 있습니다.
-    
-  
-
-
-5️⃣ WAN의 단점.
-
-1️⃣ 높은 비용.
-
-  WAN(Wide Area Network, 광역 통신망)을 구축하고 유지하는 데 비용이 많이 듭니다.
-    
-      전용선, 위성 링크, 광섬유 등의 인프라를 구축하는 데 많은 자원이 필요합니다.
-        
-          특히, 장거리 연결일수록 비용이 더 높아집니다.
-        
-      
-    
-  
-
-
-2️⃣ 느린 속도.
-
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 데이터 전송 속도가 느릴 수 있습니다.
-    
-      물리적 거리가 멀수록 데이터 전송에 걸리는 시간이 증가하고, 지연이 발생할 수 있습니다.
-    
-  
-
-
-3️⃣ 복잡성.
-
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)보다 구축과 관리가 훨씬 복잡합니다.
-    
-      장거리 네트워크 통신은 여러 기술과 장비의 조합이 필요하며, 문제가 발생했을 때 해결하기 어렵습니다.
-    
-  
-
-
-4️⃣ 보안 문제.
-
-  WAN(Wide Area Network, 광역 통신망)은 인터넷과 같은 공개 네트워크를 사용할 때 보안 문제가 발생할 수 있습니다.
-    
-      데이터를 안전하게 보호하기 위해서는 암호화, 방화벽 등의 보안 기술이 필요합니다.
-    
-  
-
-
-6️⃣ 결론.
-
-  WAN(Wide Area Network, 광역 통신망)은 광범위한 지역을 연결하는 네트워크로, LAN(Local Area Network, 근거리 통신망)과 MAN(Metropolitan Area Network, 도시권 통신망)을 연결하고 국가 간, 대륙 간 통신을 가능하게 합니다.
-  WAN(Wide Area Network, 광역 통신망)은 인터넷을 통해 여러 장치와 네트워크가 서로 연결될 수 있는 방법을 제공하며, 기업이나 정부, 은행 등에서 다양한 용도로 사용됩니다.
-  WAN(Wide Area Network, 광역 통신망)을 통해 먼 거리의 네트워크를 연결하여 자원 공유와 통신을 할 수 있지만, 구축 및 유지 비용이 높고 관리가 복잡할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -3405,143 +3721,6 @@ DELETE /users/3
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html"><h1 class="title_post">💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.</h1></a>
-                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="txt_post">
-                            💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
-
-  API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스는 유사한 개념을 공유하지만, 구체적인 사용 맥락과 범위에서 약간의 차이가 있습니다.
-    
-      두 개념 모두 추상화된 상호작용의 규칙을 정의한다는 공통점이 있지만, 다음과 같은 차이점과 유사점이 있습니다.
-    
-  
-
-
-1️⃣ 공통점.
-
-1️⃣ 추상화된 상호작용 규칙.
-
-  두 개념 모두 상호작용하는 시스템이나 모듈 간의 규칙을 정의합니다.
-    
-      API와 소프트웨어 공학에서의 인터페이스 모두 외부에서 내부의 구현 세부 사항을 알 필요 없이 제공된 규칙에 따라 특정 기능을 사용할 수 있도록 합니다.
-    
-  
-
-
-2️⃣ 계약(Contract) 역할.
-
-  계약처럼, 인터페이스는 어떤 기능이 제공되고, 그 기능이 어떻게 호출되는지를 규정합니다.
-    
-      사용자는(또는 클라이언트)는 이 계약에 따라 인터페이스를 호출하고 사용하게 되며, 내부 구현과는 독립적으로 동작할 수 있습니다.
-    
-  
-
-
-3️⃣ 구현의 독립성.
-
-  API와 소프트웨어 공학에서의 인터페이스 모두 구현에 독립적입니다.
-    
-      이는 사용자가 인터페이스를 통해 기능을 호출하지만, 구현이 어떻게 이루어지는지는 중요하지 않다는 원칙을 따릅니다.
-        
-          이를 통해 구현 변경이 이루어져도 인터페이스가 동일하게 유지된다면, 시스템 간의 상호작용에는 영향이 없습니다.
-        
-      
-    
-  
-
-
-2️⃣ 차이점.
-
-1️⃣ API에서의 인터페이스
-
-  범위
-    
-      API에서의 인터페이스는 주로 시스템 간 상호작용을 적용합니다.
-        
-          외부 애플리케이션이나 서비스가 제공하는 기능을 호출할 수 있는 방법을 제공하며, 이는 웹 서비스(API)나 외부 모듈과의 통신에 중점을 둡니다.
-        
-      
-    
-  
-  사용 맥락
-    
-      주로 웹 API, 라이브러리 API 등에 사용되며, 클라이언트 API 제공자의 규격에 맞춰 기능을 사용할 수 있도록 합니다.
-      API 인터페이스는 주로 함수, 메서드, HTTP 요청 등을 통한 상호작용을 다룹니다.
-      예: RESTful API에서의 HTTP 메서드(GET, POST 등), API 호출 시 제공되는 엔드포인트와 파라미터, 그리고 반환되는 데이터 형식 등이 API 인터페이스에 포함됩니다.
-    
-  
-
-
-2️⃣ 소프트웨어 공학에서의 인터페이스
-
-  범위
-    
-      소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 상호작용을 정의합니다.
-        
-          인터페이스는 객체 지향 프로그래밍(OOP)에서 사용되며, 특정 클래스나 모듈이 어떤 메서드나 속성을 제공해야 하는지를 정의합니다.
-        
-      
-    
-  
-  사용 맥락
-    
-      주로 객체 지향 언어(Java, C++, Python 등)에서 사용되는 개념으로, 인터페이스는 클래스의 행위 계약을 정의합니다.
-        
-          클래스가 특정 인터페이스를 구현하면, 해당 인터페이스에서 요구하는 메서드를 모두 정의해야 합니다.
-        
-      
-    
-  
-  예시
-    
-      Java에서의 인터페이스는 클래스가 구현해야 할 메서드의 목록을 정의하며, 이를 통해 다형성(Polymorphism)을 지원합니다.
-        
-          예를 들어, 여러 클래스가 동일한 인터페이스를 구현하여 동일한 메서드를 다르게 정의할 수 있습니다.
-        
-      
-    
-  
-
-
-3️⃣ 개념의 유사성과 차이점 요약.
-
-  API 인터페이스는 외부 시스템과의 상호작용을 위한 규칙을 정의하며, 주로 서비스 제공을 위해 시스템이나 애플리케이션에서 기능을 제공할 때 사용됩니다.
-    
-      웹 API, 라이브러리 API 등 외부 프로그램이 호출할 수 있는 방법을 설명합니다.
-    
-  
-  소프트웨어 공학에서의 인터페이스는 객체 지향 프로그래밍에서 클래스나 모듈 간의 상호작용 규칙을 정의합니다.
-    
-      주로 다형성과 구현 독립성을 지원하며, 여러 클래스가 동일한 인터페이스를 구현할 수 있도록 합니다.
-    
-  
-
-
-4️⃣ 결론.
-
-  API에서의 인터페이스는 외부 시스템이 상호작용할 수 있도록 기능을 제공하는 방법을 규정하고, 소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 계약으로서, 객체 지향 프로그래밍에서 다형성을 지원하는 데 중점을 둡니다.
-  두 개념은 상호작용 규칙을 정의하는 공통적인 개념을 공유하며, 구현과 추상화의 원칙에 기반하고 있지만, 사용되는 맥락과 범위는 다릅니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-10</span>
                             
@@ -3933,6 +4112,143 @@ DELETE /users/3
       이는 소프트웨어 구성 요소 간의 계약처럼 동작하며, 사용자와 시스템 간의 경계를 설정하고 호환성을 보장하여 원활한 통신을 가능하게 합니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html"><h1 class="title_post">💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.</h1></a>
+                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="txt_post">
+                            💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
+
+  API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스는 유사한 개념을 공유하지만, 구체적인 사용 맥락과 범위에서 약간의 차이가 있습니다.
+    
+      두 개념 모두 추상화된 상호작용의 규칙을 정의한다는 공통점이 있지만, 다음과 같은 차이점과 유사점이 있습니다.
+    
+  
+
+
+1️⃣ 공통점.
+
+1️⃣ 추상화된 상호작용 규칙.
+
+  두 개념 모두 상호작용하는 시스템이나 모듈 간의 규칙을 정의합니다.
+    
+      API와 소프트웨어 공학에서의 인터페이스 모두 외부에서 내부의 구현 세부 사항을 알 필요 없이 제공된 규칙에 따라 특정 기능을 사용할 수 있도록 합니다.
+    
+  
+
+
+2️⃣ 계약(Contract) 역할.
+
+  계약처럼, 인터페이스는 어떤 기능이 제공되고, 그 기능이 어떻게 호출되는지를 규정합니다.
+    
+      사용자는(또는 클라이언트)는 이 계약에 따라 인터페이스를 호출하고 사용하게 되며, 내부 구현과는 독립적으로 동작할 수 있습니다.
+    
+  
+
+
+3️⃣ 구현의 독립성.
+
+  API와 소프트웨어 공학에서의 인터페이스 모두 구현에 독립적입니다.
+    
+      이는 사용자가 인터페이스를 통해 기능을 호출하지만, 구현이 어떻게 이루어지는지는 중요하지 않다는 원칙을 따릅니다.
+        
+          이를 통해 구현 변경이 이루어져도 인터페이스가 동일하게 유지된다면, 시스템 간의 상호작용에는 영향이 없습니다.
+        
+      
+    
+  
+
+
+2️⃣ 차이점.
+
+1️⃣ API에서의 인터페이스
+
+  범위
+    
+      API에서의 인터페이스는 주로 시스템 간 상호작용을 적용합니다.
+        
+          외부 애플리케이션이나 서비스가 제공하는 기능을 호출할 수 있는 방법을 제공하며, 이는 웹 서비스(API)나 외부 모듈과의 통신에 중점을 둡니다.
+        
+      
+    
+  
+  사용 맥락
+    
+      주로 웹 API, 라이브러리 API 등에 사용되며, 클라이언트 API 제공자의 규격에 맞춰 기능을 사용할 수 있도록 합니다.
+      API 인터페이스는 주로 함수, 메서드, HTTP 요청 등을 통한 상호작용을 다룹니다.
+      예: RESTful API에서의 HTTP 메서드(GET, POST 등), API 호출 시 제공되는 엔드포인트와 파라미터, 그리고 반환되는 데이터 형식 등이 API 인터페이스에 포함됩니다.
+    
+  
+
+
+2️⃣ 소프트웨어 공학에서의 인터페이스
+
+  범위
+    
+      소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 상호작용을 정의합니다.
+        
+          인터페이스는 객체 지향 프로그래밍(OOP)에서 사용되며, 특정 클래스나 모듈이 어떤 메서드나 속성을 제공해야 하는지를 정의합니다.
+        
+      
+    
+  
+  사용 맥락
+    
+      주로 객체 지향 언어(Java, C++, Python 등)에서 사용되는 개념으로, 인터페이스는 클래스의 행위 계약을 정의합니다.
+        
+          클래스가 특정 인터페이스를 구현하면, 해당 인터페이스에서 요구하는 메서드를 모두 정의해야 합니다.
+        
+      
+    
+  
+  예시
+    
+      Java에서의 인터페이스는 클래스가 구현해야 할 메서드의 목록을 정의하며, 이를 통해 다형성(Polymorphism)을 지원합니다.
+        
+          예를 들어, 여러 클래스가 동일한 인터페이스를 구현하여 동일한 메서드를 다르게 정의할 수 있습니다.
+        
+      
+    
+  
+
+
+3️⃣ 개념의 유사성과 차이점 요약.
+
+  API 인터페이스는 외부 시스템과의 상호작용을 위한 규칙을 정의하며, 주로 서비스 제공을 위해 시스템이나 애플리케이션에서 기능을 제공할 때 사용됩니다.
+    
+      웹 API, 라이브러리 API 등 외부 프로그램이 호출할 수 있는 방법을 설명합니다.
+    
+  
+  소프트웨어 공학에서의 인터페이스는 객체 지향 프로그래밍에서 클래스나 모듈 간의 상호작용 규칙을 정의합니다.
+    
+      주로 다형성과 구현 독립성을 지원하며, 여러 클래스가 동일한 인터페이스를 구현할 수 있도록 합니다.
+    
+  
+
+
+4️⃣ 결론.
+
+  API에서의 인터페이스는 외부 시스템이 상호작용할 수 있도록 기능을 제공하는 방법을 규정하고, 소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 계약으로서, 객체 지향 프로그래밍에서 다형성을 지원하는 데 중점을 둡니다.
+  두 개념은 상호작용 규칙을 정의하는 공통적인 개념을 공유하며, 구현과 추상화의 원칙에 기반하고 있지만, 사용되는 맥락과 범위는 다릅니다.
 
 
                         </a>
@@ -7640,120 +7956,6 @@ Spring 컨테이너는 이를 통해 애플리케이션 개발을 단순화하�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-05-primary-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-05-primary-annotation.html"><h1 class="title_post">🍃[Spring] `@Primary` 어노테이션</h1></a>
-                        <a href="/Spring/2024-10-05-primary-annotation.html" class="txt_post">
-                            🍃[Spring] @Primary 어노테이션
-
-@Primary 어노테이션은 Spring Framework에서 빈의 우선 순위를 지정할 때 사용하는 어노테이션입니다.
-
-만약 여러 개의 빈이 동일한 타입으로 등록되어 있을 때, 어떤 빈을 주입할지 명시적으로 지정하지 않으면 Spring은 자동으로 @Primary가 붙은 빈을 우선적으로 주입하게 됩니다.
-
-이를 통해 다수의 구현체가 있을 경우 기본적으로 사용될 빈을 설정할 수 있습니다.
-
-1️⃣ @Primary의 동작 방식.
-
-  Spring 은 같은 타입의 빈이 여러 개 존재할 때 의존성 주입 시 어느 빈을 사용할지 결정해야 합니다.
-  기본적으로 타입에 맞는 빈을 자동으로 주입하려 하지만, 같은 타입의 빈이 두 개 이상 등록되어 있다면 모호성이 발생할 수 있습니다.
-  이때 @Primary를 사용하면 해당 빈을 기본적으로 주입할 빈으로 설정할 수 있습니다.
-
-
-예시
-@Component
-public class FirstService implement MyService {
-    // FirstService 구현
-}
-
-@Component
-@Primary
-public class SecondService implements MyService {
-    // SecondService 구현
-}
-
-
-
-  위 예시에서 FirstService와 SecondService가 모두 MyService 타입의 빈으로 등록되어 있습니다.
-  SecondService에는 @Primary 어노테이션이 붙어 있으므로, MyService 타입의 빈이 필요할 때 Spring은 자동으로 SecondService를 주입하게 됩니다.
-
-
-@Service
-public class MyClient {
-    private final MyService myService;
-    
-    @Autowired
-    public MyClient(MyService myService) {
-        this.myService = myService;
-    }
-    
-    // MyClient는 SecondService 빈을 주입받게 됩니다.
-}
-
-
-2️⃣ @Primary 와 @Qualifier의 차이.
-
-  @Priamry는 기본 빈을 지정할 때 사용되지만, 더 구체적인 빈을 주입해야 할 때는 @Qualifier 어노테이션을 사용할 수 있습니다.
-  @Qualifier는 특정 이름을 가진 빈을 명시적으로 지정하여 주입할 수 있도록 도와줍니다.
-
-
-@Qualifier 예시
-@Component
-@Qualifier("firstService")
-public class FirstService implement MyService {
-    // FirstService 구현
-}
-
-@Component
-@Qualifier("secondService")
-@Primary
-public class SecondService implement MyService {
-    // SecondService 구현
-}
-
-
-@Service
-public class MyClient {
-    
-    private final MyService myService;
-    
-    @Autowired
-    public MyClient(@Qualifier("firstService") MyService myService) {
-        this.myService = myService;
-    }
-    
-    // MyClient는 FirstService 빈을 주입받게 됩니다.
-}
-
-
-
-  이 경우, @Primary 가 SecondService에 지정되어 있어도 @Qualifier("firstService")가 지정된 경우에는 FirstService가 주입됩니다.
-
-
-3️⃣ 결론.
-
-  @Primary는 동일한 타입의 빈이 여러 개 등록된 경우, 기본적으로 사용될 빈을 지정하는 어노테이션입니다.
-  이 어노테이션을 사용하면 같은 타입의 빈이 여러 개 있을 때, 명시적으로 지정하지 않으면 Spring은 @Primary가 붙은 빈을 우선적으로 선택해 주입합니다.
-  보다 구체적으로 어떤 빈을 주입할지 명시할 필요하 있을 때는 @Qualifier를 함께 사용할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-05</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-10-05-Spring-container.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -7909,6 +8111,120 @@ UserService userService = context.getBean(UserService.class);
 Spring 컨테이너는 Spring 애플리케이션에서 객체(빈)의 생성, 관리, 의존성 주입 등을 자동으로 처리하는 핵심 인프라입니다.
 이를 통해 개발자는 객체 생성 및 관리의 복잡성을 줄이고, 코드의 모듈화와 유연성을 높일 수 있습니다.
 다양한 설정 방식(XML, 자바 설정, 어노테이션 등)을 통해 개발자는 컨테이너와 빈을 쉽게 구성하고 관리할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-05</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-05-primary-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-05-primary-annotation.html"><h1 class="title_post">🍃[Spring] `@Primary` 어노테이션</h1></a>
+                        <a href="/Spring/2024-10-05-primary-annotation.html" class="txt_post">
+                            🍃[Spring] @Primary 어노테이션
+
+@Primary 어노테이션은 Spring Framework에서 빈의 우선 순위를 지정할 때 사용하는 어노테이션입니다.
+
+만약 여러 개의 빈이 동일한 타입으로 등록되어 있을 때, 어떤 빈을 주입할지 명시적으로 지정하지 않으면 Spring은 자동으로 @Primary가 붙은 빈을 우선적으로 주입하게 됩니다.
+
+이를 통해 다수의 구현체가 있을 경우 기본적으로 사용될 빈을 설정할 수 있습니다.
+
+1️⃣ @Primary의 동작 방식.
+
+  Spring 은 같은 타입의 빈이 여러 개 존재할 때 의존성 주입 시 어느 빈을 사용할지 결정해야 합니다.
+  기본적으로 타입에 맞는 빈을 자동으로 주입하려 하지만, 같은 타입의 빈이 두 개 이상 등록되어 있다면 모호성이 발생할 수 있습니다.
+  이때 @Primary를 사용하면 해당 빈을 기본적으로 주입할 빈으로 설정할 수 있습니다.
+
+
+예시
+@Component
+public class FirstService implement MyService {
+    // FirstService 구현
+}
+
+@Component
+@Primary
+public class SecondService implements MyService {
+    // SecondService 구현
+}
+
+
+
+  위 예시에서 FirstService와 SecondService가 모두 MyService 타입의 빈으로 등록되어 있습니다.
+  SecondService에는 @Primary 어노테이션이 붙어 있으므로, MyService 타입의 빈이 필요할 때 Spring은 자동으로 SecondService를 주입하게 됩니다.
+
+
+@Service
+public class MyClient {
+    private final MyService myService;
+    
+    @Autowired
+    public MyClient(MyService myService) {
+        this.myService = myService;
+    }
+    
+    // MyClient는 SecondService 빈을 주입받게 됩니다.
+}
+
+
+2️⃣ @Primary 와 @Qualifier의 차이.
+
+  @Priamry는 기본 빈을 지정할 때 사용되지만, 더 구체적인 빈을 주입해야 할 때는 @Qualifier 어노테이션을 사용할 수 있습니다.
+  @Qualifier는 특정 이름을 가진 빈을 명시적으로 지정하여 주입할 수 있도록 도와줍니다.
+
+
+@Qualifier 예시
+@Component
+@Qualifier("firstService")
+public class FirstService implement MyService {
+    // FirstService 구현
+}
+
+@Component
+@Qualifier("secondService")
+@Primary
+public class SecondService implement MyService {
+    // SecondService 구현
+}
+
+
+@Service
+public class MyClient {
+    
+    private final MyService myService;
+    
+    @Autowired
+    public MyClient(@Qualifier("firstService") MyService myService) {
+        this.myService = myService;
+    }
+    
+    // MyClient는 FirstService 빈을 주입받게 됩니다.
+}
+
+
+
+  이 경우, @Primary 가 SecondService에 지정되어 있어도 @Qualifier("firstService")가 지정된 경우에는 FirstService가 주입됩니다.
+
+
+3️⃣ 결론.
+
+  @Primary는 동일한 타입의 빈이 여러 개 등록된 경우, 기본적으로 사용될 빈을 지정하는 어노테이션입니다.
+  이 어노테이션을 사용하면 같은 타입의 빈이 여러 개 있을 때, 명시적으로 지정하지 않으면 Spring은 @Primary가 붙은 빈을 우선적으로 선택해 주입합니다.
+  보다 구체적으로 어떤 빈을 주입할지 명시할 필요하 있을 때는 @Qualifier를 함께 사용할 수 있습니다.
+
 
                         </a>
                         <div class="info-post">
@@ -18308,6 +18624,158 @@ https://www.example.com/products?category=shoes&amp;brand=nike&amp;size=9&amp;pa
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html"><h1 class="title_post">🍃[Spring] `@SpringBootApplication` 애너테이션과 서버(Server)</h1></a>
+                        <a href="/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html" class="txt_post">
+                            🍃[Spring] @SpringBootApplication 애너테이션과 서버(Server).
+
+1️⃣ @SpringBootApplication 애너테이션.
+
+  @SpringBootApplication 애너테이션은 Spring Boot 애플리케이션에서 자주 사용되는 핵심 애너테이션으로, 여러 가지 기능을 결합한 복합 애너테이션입니다.
+  이를 통해 Spring Boot 애플리케이션이 자동으로 설정되고 실행됩니다.
+
+
+1. @SpringBootApplication 세 가지 중요한 애너테이션 결합.
+
+  1. @SpringBootConfiguration
+    
+      Spring의 @Configuration 과 동일한 기능을 제공하며, 이를 통해 Spring 컨텍스트에서 설정 클래스로 인식됩니다.
+    
+  
+  2. @EnableAutoConfiguration
+    
+      Spring Boot의 자동 설정 기능을 활성화합니다.
+      이 기능은 Spring Boot가 클래스패스에 있는 라이브러리들을 바탕으로 자동으로 설정을 적용하여 개발자가 일일이 설정하지 않아도 되도록 도와줍니다.
+    
+  
+  3. @ComponentScan
+    
+      현재 패키지와 그 하위 패키지에서 Spring의 컴포넌트들을 자동으로 스캔하고 등록합니다.
+      즉, @Controller, @Service, @Repository 등의 빈들이 자동으로 Spring 컨텍스트에 등록됩니다.
+    
+  
+
+
+
+
+
+  이 애너테이션은 Spring Boot 애플리케이션의 진입점을 설정하는 메인 클래스에 주로 붙습니다.
+  이로 인해 애플리케이션이 자동으로 설정되고, 실행될 수 있는 환경이 갖춰집니다.
+
+
+
+
+
+  간단히 말해, @SpringBootApplication 을 통해 개발자는 최소한의 설정으로도 Spring Boot 애플리케이션을 시작하고 구동할 수 있습니다.
+
+
+2️⃣ 서버(Server)란 무엇인가요?
+
+  서버(Server)는 네트워크 상에서 다른 컴퓨터(클라이언트)에게 데이터를 제공하거나, 요청된 서비스를 처리하는 컴퓨터 시스템 또는 소프트웨어를 말합니다.
+  서버는 클라이언트의 요청을 수신하고, 그 요청에 맞는 데이터를 처리하거나 반환하는 역할을 합니다.
+  서버는 여러 가지 유형이 있으며, 그 역할에 따라 다양한 기능을 수행합니다.
+
+
+1. 서버의 기본 기능.
+
+  요청 수신.
+    
+      서버는 클라이언트(웹 브라우저, 모바일 앱 등)로부터 요청을 받습니다.
+      이 요청은 HTTP, FTP, 또는 다른 프로토콜을 통해 이루어질 수 있습니다.
+    
+  
+  데이터 처리.
+    
+      서버는 클라이언트의 요청에 따라 데이터를 검색, 처리 또는 계산합니다.
+      예를 들어, 데이터베이스에 저장된 정보를 조회하거나, 파일을 업로드하거나 다운로드하는 기능을 수행합니다.
+    
+  
+  응답 전송.
+    
+      요청 처리 후, 서버는 클라이언트에게 그 결과를 응답으로 전송합니다.
+      예를 들어 웹 서버는 HTML 페이지를 반환하거나, API 서버는 JSON 형식의 데이터를 반환할 수 있습니다.
+    
+  
+
+
+2. 서버의 유형.
+
+  웹 서버.
+    
+      웹 페이지(HTML, CSS, JavaScript)를 클라이언트에 제공하는 서버입니다.
+      대표적인 예로 Apache HTTP Server, Nginx 등이 있습니다.
+    
+  
+  데이터베이스 서버.
+    
+      데이터를 저장하고 관리하며, 클라이언트의 데이터 요청을 처리하는 서버입니다.
+      MySQL, PostgreSQL, Oracle 등이 이에 해당합니다.
+    
+  
+  파일 서버.
+    
+      파일을 저장하고 이를 클라이언트에 제공하는 서버입니다.
+      주로 FTP(File Transfer Protocol) 서버가 이 역할을 합니다.
+    
+  
+  애플리케이션 서버.
+    
+      클라이언트가 요청한 비즈니스 로직을 처리하는 서버입니다.
+      Spring Boot나 Django 같은 프레임워크를 사용하여 웹 애플리케이션을 구동하는 서버가 이에 해당합니다.
+    
+  
+  메일 서버.
+    
+      이메일을 송수신하는 서버로, SMTP, POP3, IMAP 등의 프로토콜을 사용합니다.
+    
+  
+
+
+3. 서버의 특징.
+
+  항상 켜져 있음.
+    
+      서버는 보통 24시간 내내 작동하여 클라이언트 요청에 신속하게 응답할 수 있어야 합니다.
+    
+  
+  멀티태스킹.
+    
+      서버는 동시에 여러 클라이언트의 요청을 처리할 수 있어야 하며, 이를 위해 멀티스레드나 비동기 처리 기술을 사용합니다.
+    
+  
+  보안.
+    
+      서버는 민감한 데이터를 처리할 수 있기 때문에 보안이 중요합니다.
+      SSL/TLS를 통한 암호화, 인증 및 권한 관리 등이 필요합니다.
+    
+  
+
+
+
+
+
+  서버는 인터넷 서비스(웹 사이트, 클라우드 저장소, 이메일 등)를 제공하는 핵심적인 시스템이며, 클라이언트-서버 구조는 오늘날 대부분의 네트워크 기반 애플리케이션에서 사용되는 기본적인 구조입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-09-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-09-22-routin-function-rounting-system.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -18478,147 +18946,187 @@ https://www.example.com/products?category=shoes&amp;brand=nike&amp;size=9&amp;pa
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html"><h1 class="title_post">🍃[Spring] `@SpringBootApplication` 애너테이션과 서버(Server)</h1></a>
-                        <a href="/Spring/2024-09-22-SpringBootApplication-annotation-and-server.html" class="txt_post">
-                            🍃[Spring] @SpringBootApplication 애너테이션과 서버(Server).
+                        <a href="/CS/2024/2024-09-21-MVP-pattern.html"><h1 class="title_post">💾 [CS] MVP 패턴.</h1></a>
+                        <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="txt_post">
+                            💾 [CS] MVP 패턴.
 
-1️⃣ @SpringBootApplication 애너테이션.
+1️⃣ MVP 패턴.
 
-  @SpringBootApplication 애너테이션은 Spring Boot 애플리케이션에서 자주 사용되는 핵심 애너테이션으로, 여러 가지 기능을 결합한 복합 애너테이션입니다.
-  이를 통해 Spring Boot 애플리케이션이 자동으로 설정되고 실행됩니다.
+  MVP 패턴은 MVC 패턴으로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터(Presenter)로 교체된 패턴입니다.
 
 
-1. @SpringBootApplication 세 가지 중요한 애너테이션 결합.
 
-  1. @SpringBootConfiguration
+
+
+  뷰와 프레젠터는 일대일 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴이라고 볼 수 있습니다.
+
+
+2️⃣ 자바에서의 MVP 패턴.
+
+  자바에서의 MVP 패턴은 주로, 데스크탑 애플리케이션(JavaFX, Swing) 또는 안드로이드 애플리케이션을 개발할 때 많이 사용됩니다.
+  자바에서는 주로 MVC 패턴이 많이 사용되지만, MVP 패턴은 UI와 비즈니스 로직을 더욱 명확하게 분리할 수 있기 때문에 상황에 따라 더 적합할 수 있습니다.
+
+
+3️⃣ MVP 패턴의 구조.
+
+  MVP는 Model-View-Presenter의 약자로, 아래와 같은 세 가지 주요 구성 요소로 나뉩니다.
+  1. Model(모델)
     
-      Spring의 @Configuration 과 동일한 기능을 제공하며, 이를 통해 Spring 컨텍스트에서 설정 클래스로 인식됩니다.
-    
-  
-  2. @EnableAutoConfiguration
-    
-      Spring Boot의 자동 설정 기능을 활성화합니다.
-      이 기능은 Spring Boot가 클래스패스에 있는 라이브러리들을 바탕으로 자동으로 설정을 적용하여 개발자가 일일이 설정하지 않아도 되도록 도와줍니다.
-    
-  
-  3. @ComponentScan
-    
-      현재 패키지와 그 하위 패키지에서 Spring의 컴포넌트들을 자동으로 스캔하고 등록합니다.
-      즉, @Controller, @Service, @Repository 등의 빈들이 자동으로 Spring 컨텍스트에 등록됩니다.
-    
-  
-
-
-
-
-
-  이 애너테이션은 Spring Boot 애플리케이션의 진입점을 설정하는 메인 클래스에 주로 붙습니다.
-  이로 인해 애플리케이션이 자동으로 설정되고, 실행될 수 있는 환경이 갖춰집니다.
-
-
-
-
-
-  간단히 말해, @SpringBootApplication 을 통해 개발자는 최소한의 설정으로도 Spring Boot 애플리케이션을 시작하고 구동할 수 있습니다.
-
-
-2️⃣ 서버(Server)란 무엇인가요?
-
-  서버(Server)는 네트워크 상에서 다른 컴퓨터(클라이언트)에게 데이터를 제공하거나, 요청된 서비스를 처리하는 컴퓨터 시스템 또는 소프트웨어를 말합니다.
-  서버는 클라이언트의 요청을 수신하고, 그 요청에 맞는 데이터를 처리하거나 반환하는 역할을 합니다.
-  서버는 여러 가지 유형이 있으며, 그 역할에 따라 다양한 기능을 수행합니다.
-
-
-1. 서버의 기본 기능.
-
-  요청 수신.
-    
-      서버는 클라이언트(웹 브라우저, 모바일 앱 등)로부터 요청을 받습니다.
-      이 요청은 HTTP, FTP, 또는 다른 프로토콜을 통해 이루어질 수 있습니다.
+      애플리케이션의 데이터와 비즈니스 로직을 처리합니다.
+      데이터베이스와 상호작용하고 데이터를 가공하는 역할을 담당합니다.
+      예: 데이터베이스 접근, API 호출, 데이터 가공.
     
   
-  데이터 처리.
+  2. View(뷰)
     
-      서버는 클라이언트의 요청에 따라 데이터를 검색, 처리 또는 계산합니다.
-      예를 들어, 데이터베이스에 저장된 정보를 조회하거나, 파일을 업로드하거나 다운로드하는 기능을 수행합니다.
+      사용자 인터페이스(UI)를 담당하며, 사용자가 보는 화면을 표시하고 입력을 받습니다.
+      View는 Presenter에 의존하여 데이터를 요청하고, 그 데이터를 표시하는 역할을 합니다.
+      예: 자바의 JPanel, JFrame(Swing) 또는 Activity, Fragment(안드로이드)
     
   
-  응답 전송.
+  3. Presenter(프레젠터)
     
-      요청 처리 후, 서버는 클라이언트에게 그 결과를 응답으로 전송합니다.
-      예를 들어 웹 서버는 HTML 페이지를 반환하거나, API 서버는 JSON 형식의 데이터를 반환할 수 있습니다.
+      View와 Model간의 중재자 역할을 하며, 뷰에서 발생한 사용자 상호작용을 처리하고, 필요한 데이터를 모델에서 가져와 뷰에 전달합니다.
+      비즈니스 로직을 처리하며, View와 Model을 직접 연결하지 않고 독립적으로 관리합니다.
+      Presenter는 View 인터페이스를 통해 View와 통신하고, 테스트 가능한 구조를 만듭니다.
     
   
 
 
-2. 서버의 유형.
+4️⃣ 백엔드를 Java로 구현시 MVP 패턴이 사용되나요?
 
-  웹 서버.
-    
-      웹 페이지(HTML, CSS, JavaScript)를 클라이언트에 제공하는 서버입니다.
-      대표적인 예로 Apache HTTP Server, Nginx 등이 있습니다.
-    
-  
-  데이터베이스 서버.
-    
-      데이터를 저장하고 관리하며, 클라이언트의 데이터 요청을 처리하는 서버입니다.
-      MySQL, PostgreSQL, Oracle 등이 이에 해당합니다.
-    
-  
-  파일 서버.
-    
-      파일을 저장하고 이를 클라이언트에 제공하는 서버입니다.
-      주로 FTP(File Transfer Protocol) 서버가 이 역할을 합니다.
-    
-  
-  애플리케이션 서버.
-    
-      클라이언트가 요청한 비즈니스 로직을 처리하는 서버입니다.
-      Spring Boot나 Django 같은 프레임워크를 사용하여 웹 애플리케이션을 구동하는 서버가 이에 해당합니다.
-    
-  
-  메일 서버.
-    
-      이메일을 송수신하는 서버로, SMTP, POP3, IMAP 등의 프로토콜을 사용합니다.
-    
-  
+  일반적으로 MVP패턴(Model-View-Presenter) 은 주로 프론트엔드 또는 UI 중심 애플리케이션에서 사용됩니다.
+  MVP 패턴은 사용자 인터페이스와 비즈니스 로직을 분리하는 데 중점을 두기 때문에, 데스크탑 애플리케이션(JavaFX, Swing)이나 모바일 애플리케이션(안드로이드)에서 많이 사용됩니다.
+  따라서 백엔드 애픝리케이션을 Java로 구현할 때는 MVP 패턴이 거의 사용되지 않으며, 그 대신 다른 디자인 패턴이 주로 사용됩니다.
 
 
-3. 서버의 특징.
+1. MVP 패턴의 목적.
 
-  항상 켜져 있음.
+  MVP 패턴은 기본적으로 사용자 인터페이스(UI)를 중심으로 View와 비즈니스 로직(Presenter) 을 분리하는 데 목적이 있습니다.
+  하지만 백엔드 애플리케이션은 사용자 인터페이스가 아닌 서버 측 비즈니스 로직, 데이터 처리, API 제공 등을 다루기 때문에, UI 요소가 존재하지 않습니다.
+  따라서 View 라는 개념이 백엔드에 적합하지 않습니다.
+
+
+2. 백엔드에서는 MVC 패턴이 더 적합.
+
+  Java 기반 백엔트 개발에서는 MVC(Model-View-Controller) 패턴 이나 서비스 계층 패턴 과 같은 구조가 더 일반적입니다.
+  특히, Spring Framework 같은 인기 있는 백엔드 프레임워크에서는 MVC 패턴이 기본적으로 사용됩니다.
+  백엔드에서 컨트롤러(Controller) 가 클라이언트의 요청을 처리하고, 모델(Model) 이 데이터 처리와 비즈니스 로직을 담당하며, 뷰(View) 는 API 응답(JSON, XML 등)을 생성하는 역할을 합니다.
+
+
+백엔드에서 자주 사용되는 디자인 패턴.
+
+  1. MVC 패턴(Model-View-Controller)
     
-      서버는 보통 24시간 내내 작동하여 클라이언트 요청에 신속하게 응답할 수 있어야 합니다.
+      서버 요청을 처리하고, 데이터베이스와 상호작용하며, API 응답을 생성하는 데 사용됩니다.
     
   
-  멀티태스킹.
+  2. 서비스 계층 패턴
     
-      서버는 동시에 여러 클라이언트의 요청을 처리할 수 있어야 하며, 이를 위해 멀티스레드나 비동기 처리 기술을 사용합니다.
+      비즈니스 로직을 서비스 계층으로 분리하여 재사용성과 유지보수성을 높이는 패턴입니다.
     
   
-  보안.
+  3. Repository 패턴
     
-      서버는 민감한 데이터를 처리할 수 있기 때문에 보안이 중요합니다.
-      SSL/TLS를 통한 암호화, 인증 및 권한 관리 등이 필요합니다.
+      데이터베이스 액세스 로직을 추상화하여, 비즈니스 로직과 데이터 액세스를 분리합니다.
+    
+  
+  4. Command 패턴
+    
+      사용자의 요청이나 명령을 객체로 변환하여 처리하는 방식으로, 여러 요청을 관리하는데 유리합니다.
+    
+  
+  5. Observer 패턴
+    
+      상태 변화를 여러 객체가 구독하고 반응하는 패턴으로, 이벤트 기반 시스템에 자주 사용됩니다.
     
   
 
 
+3. 백엔드에서 사용하는 디자인 패턴의 예시.
+
+  1. Spring MVC 패턴
+    
+      Spring에서는 Controller가 HTTP 요청을 받고, Service에서 비즈니스 로직을 처리한 뒤, Model을 사용하여 데이터를 전달하고 View를 반환하는 전형적인 MVC 패턴을 사용합니다.
+      여기서 View는 HTML 또는 JSON, XML과 같은 응답 포맷을 의미합니다.
+    
+  
 
 
+@Controller
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping("/users/{id}")
+    public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
+        User user = userService.findUserById(id);
+        return new ResponseEntity&lt;&gt;(user, HttpStatus.OK);
+    }
+}
 
-  서버는 인터넷 서비스(웹 사이트, 클라우드 저장소, 이메일 등)를 제공하는 핵심적인 시스템이며, 클라이언트-서버 구조는 오늘날 대부분의 네트워크 기반 애플리케이션에서 사용되는 기본적인 구조입니다.
+
+  Controller 는 클라이언트 요청을 처리하고, 데이터를 가공한 후 응답합니다.
+  Service 는 비즈니스 로직을 처리하는 중간 계층 역할을 합니다.
+  
+    Repository 는 데이터베이스와 상호작용하는 부분입니다.
+  
+  2. 서비스 계층 패턴
+    
+      서비스 계층을 사용하면 컨트롤러가 직접 비즈니스 로직을 다루지 않고, 서비스 클래스가 이를 처리합니다.
+      이로 인해 코드가 더 구조적으로 관리되고 테스트 가능성이 높아집니다.
+```java
+@Service
+public class UserService {
+  @Autowired
+  private UserRepository userRepository;
+    
+
+    public User findUserById(Long id) {
+      return userRepository.findById(id).orElseThrow(() -&gt; new UserNotFoundException(id));
+  }
+}
+```
+  
+  3. Repository 패턴
+    
+      데이터베이스 관련 로직을 별도의 Repository 인터페이스로 분리하여 데이터 엑세스를 쉽게 관리하고 추상화할 수 있습니다.
+    
+  
+
+
+@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    // 데이터베이스 접근 로직을 추상화
+}
+
+
+4. MVP 패턴이 백엔드에서 적합하지 않은 이유.
+
+  View에 대한 의존성.
+    
+      MVP 패턴의 핵심 요소는 View 이며, 백엔드에는 UI를 다루지 않기 때문에 View의 역할이 존재하지 않습니다.
+      백엔드는 사용자 인터페이스를 렌더링하거나 다루지 않고, 데이터를 처리하고 클라이언트는 응답을 반환하는 역할을 합니다.
+    
+  
+  분리된 로직.
+    
+      백엔드는 클라이언트와 데이터를 주고받으며, 이 과정에서 비즈니스 로직, 데이터 엑세스, API 응답 생성 등과 같은 복잡한 처리가 이루어 집니다.
+      이러한 작업을 관리하는 데는 MVC 패턴 이나 레이어드 아키텍처 가 더 적합합니다.
+    
+  
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
+                                <a href="/CS" class="category">CS</a>
                             
-                                <span class="date">· 2024-09-22</span>
+                                <span class="date">· 2024-09-21</span>
                             
                         </div>
                     </div>
@@ -18845,198 +19353,6 @@ https://www.example.com/products?category=shoes&amp;brand=nike&amp;size=9&amp;pa
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-09-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-21-MVP-pattern.html"><h1 class="title_post">💾 [CS] MVP 패턴.</h1></a>
-                        <a href="/CS/2024/2024-09-21-MVP-pattern.html" class="txt_post">
-                            💾 [CS] MVP 패턴.
-
-1️⃣ MVP 패턴.
-
-  MVP 패턴은 MVC 패턴으로부터 파생되었으며 MVC에서 C에 해당하는 컨트롤러가 프레젠터(Presenter)로 교체된 패턴입니다.
-
-
-
-
-
-  뷰와 프레젠터는 일대일 관계이기 때문에 MVC 패턴보다 더 강한 결합을 지닌 디자인 패턴이라고 볼 수 있습니다.
-
-
-2️⃣ 자바에서의 MVP 패턴.
-
-  자바에서의 MVP 패턴은 주로, 데스크탑 애플리케이션(JavaFX, Swing) 또는 안드로이드 애플리케이션을 개발할 때 많이 사용됩니다.
-  자바에서는 주로 MVC 패턴이 많이 사용되지만, MVP 패턴은 UI와 비즈니스 로직을 더욱 명확하게 분리할 수 있기 때문에 상황에 따라 더 적합할 수 있습니다.
-
-
-3️⃣ MVP 패턴의 구조.
-
-  MVP는 Model-View-Presenter의 약자로, 아래와 같은 세 가지 주요 구성 요소로 나뉩니다.
-  1. Model(모델)
-    
-      애플리케이션의 데이터와 비즈니스 로직을 처리합니다.
-      데이터베이스와 상호작용하고 데이터를 가공하는 역할을 담당합니다.
-      예: 데이터베이스 접근, API 호출, 데이터 가공.
-    
-  
-  2. View(뷰)
-    
-      사용자 인터페이스(UI)를 담당하며, 사용자가 보는 화면을 표시하고 입력을 받습니다.
-      View는 Presenter에 의존하여 데이터를 요청하고, 그 데이터를 표시하는 역할을 합니다.
-      예: 자바의 JPanel, JFrame(Swing) 또는 Activity, Fragment(안드로이드)
-    
-  
-  3. Presenter(프레젠터)
-    
-      View와 Model간의 중재자 역할을 하며, 뷰에서 발생한 사용자 상호작용을 처리하고, 필요한 데이터를 모델에서 가져와 뷰에 전달합니다.
-      비즈니스 로직을 처리하며, View와 Model을 직접 연결하지 않고 독립적으로 관리합니다.
-      Presenter는 View 인터페이스를 통해 View와 통신하고, 테스트 가능한 구조를 만듭니다.
-    
-  
-
-
-4️⃣ 백엔드를 Java로 구현시 MVP 패턴이 사용되나요?
-
-  일반적으로 MVP패턴(Model-View-Presenter) 은 주로 프론트엔드 또는 UI 중심 애플리케이션에서 사용됩니다.
-  MVP 패턴은 사용자 인터페이스와 비즈니스 로직을 분리하는 데 중점을 두기 때문에, 데스크탑 애플리케이션(JavaFX, Swing)이나 모바일 애플리케이션(안드로이드)에서 많이 사용됩니다.
-  따라서 백엔드 애픝리케이션을 Java로 구현할 때는 MVP 패턴이 거의 사용되지 않으며, 그 대신 다른 디자인 패턴이 주로 사용됩니다.
-
-
-1. MVP 패턴의 목적.
-
-  MVP 패턴은 기본적으로 사용자 인터페이스(UI)를 중심으로 View와 비즈니스 로직(Presenter) 을 분리하는 데 목적이 있습니다.
-  하지만 백엔드 애플리케이션은 사용자 인터페이스가 아닌 서버 측 비즈니스 로직, 데이터 처리, API 제공 등을 다루기 때문에, UI 요소가 존재하지 않습니다.
-  따라서 View 라는 개념이 백엔드에 적합하지 않습니다.
-
-
-2. 백엔드에서는 MVC 패턴이 더 적합.
-
-  Java 기반 백엔트 개발에서는 MVC(Model-View-Controller) 패턴 이나 서비스 계층 패턴 과 같은 구조가 더 일반적입니다.
-  특히, Spring Framework 같은 인기 있는 백엔드 프레임워크에서는 MVC 패턴이 기본적으로 사용됩니다.
-  백엔드에서 컨트롤러(Controller) 가 클라이언트의 요청을 처리하고, 모델(Model) 이 데이터 처리와 비즈니스 로직을 담당하며, 뷰(View) 는 API 응답(JSON, XML 등)을 생성하는 역할을 합니다.
-
-
-백엔드에서 자주 사용되는 디자인 패턴.
-
-  1. MVC 패턴(Model-View-Controller)
-    
-      서버 요청을 처리하고, 데이터베이스와 상호작용하며, API 응답을 생성하는 데 사용됩니다.
-    
-  
-  2. 서비스 계층 패턴
-    
-      비즈니스 로직을 서비스 계층으로 분리하여 재사용성과 유지보수성을 높이는 패턴입니다.
-    
-  
-  3. Repository 패턴
-    
-      데이터베이스 액세스 로직을 추상화하여, 비즈니스 로직과 데이터 액세스를 분리합니다.
-    
-  
-  4. Command 패턴
-    
-      사용자의 요청이나 명령을 객체로 변환하여 처리하는 방식으로, 여러 요청을 관리하는데 유리합니다.
-    
-  
-  5. Observer 패턴
-    
-      상태 변화를 여러 객체가 구독하고 반응하는 패턴으로, 이벤트 기반 시스템에 자주 사용됩니다.
-    
-  
-
-
-3. 백엔드에서 사용하는 디자인 패턴의 예시.
-
-  1. Spring MVC 패턴
-    
-      Spring에서는 Controller가 HTTP 요청을 받고, Service에서 비즈니스 로직을 처리한 뒤, Model을 사용하여 데이터를 전달하고 View를 반환하는 전형적인 MVC 패턴을 사용합니다.
-      여기서 View는 HTML 또는 JSON, XML과 같은 응답 포맷을 의미합니다.
-    
-  
-
-
-@Controller
-public class UserController {
-    
-    @Autowired
-    private UserService userService;
-    
-    @GetMapping("/users/{id}")
-    public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
-        User user = userService.findUserById(id);
-        return new ResponseEntity&lt;&gt;(user, HttpStatus.OK);
-    }
-}
-
-
-  Controller 는 클라이언트 요청을 처리하고, 데이터를 가공한 후 응답합니다.
-  Service 는 비즈니스 로직을 처리하는 중간 계층 역할을 합니다.
-  
-    Repository 는 데이터베이스와 상호작용하는 부분입니다.
-  
-  2. 서비스 계층 패턴
-    
-      서비스 계층을 사용하면 컨트롤러가 직접 비즈니스 로직을 다루지 않고, 서비스 클래스가 이를 처리합니다.
-      이로 인해 코드가 더 구조적으로 관리되고 테스트 가능성이 높아집니다.
-```java
-@Service
-public class UserService {
-  @Autowired
-  private UserRepository userRepository;
-    
-
-    public User findUserById(Long id) {
-      return userRepository.findById(id).orElseThrow(() -&gt; new UserNotFoundException(id));
-  }
-}
-```
-  
-  3. Repository 패턴
-    
-      데이터베이스 관련 로직을 별도의 Repository 인터페이스로 분리하여 데이터 엑세스를 쉽게 관리하고 추상화할 수 있습니다.
-    
-  
-
-
-@Repository
-public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
-    // 데이터베이스 접근 로직을 추상화
-}
-
-
-4. MVP 패턴이 백엔드에서 적합하지 않은 이유.
-
-  View에 대한 의존성.
-    
-      MVP 패턴의 핵심 요소는 View 이며, 백엔드에는 UI를 다루지 않기 때문에 View의 역할이 존재하지 않습니다.
-      백엔드는 사용자 인터페이스를 렌더링하거나 다루지 않고, 데이터를 처리하고 클라이언트는 응답을 반환하는 역할을 합니다.
-    
-  
-  분리된 로직.
-    
-      백엔드는 클라이언트와 데이터를 주고받으며, 이 과정에서 비즈니스 로직, 데이터 엑세스, API 응답 생성 등과 같은 복잡한 처리가 이루어 집니다.
-      이러한 작업을 관리하는 데는 MVC 패턴 이나 레이어드 아키텍처 가 더 적합합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-21</span>
                             
@@ -89725,6 +90041,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-10-13-what-is-the-object.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-13"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 라우터와 스위치의 차이점.",
+            'path'     : "Network > 2024",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Network/2024/2024-10-13-diff-between-router-and-switch.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-10-13"
         });
     

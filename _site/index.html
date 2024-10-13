@@ -759,6 +759,7 @@
             
             
             
+            
 
     
     
@@ -1129,6 +1130,280 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-10-13-what-is-the-packet.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-13-what-is-the-packet.html"><h1 class="title_post">🌐[Network] 패킷(Packet)이란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-13-what-is-the-packet.html" class="txt_post">
+                            🌐[Network] 패킷(Packet)이란 무엇일까요?
+
+
+  패킷(Packet)은 네트워크 상에서 데이터를 전송하는 기본 단위입니다.
+  컴퓨터 네트워크에서 큰 데이터를 전송 할 때, 데이터를 작은 조각으로 나누어 각각의 조각을 패킷(Packet)이라고 부릅니다.
+  이러한 패킷(Packet)은 네트워크를 통해 목적지에 도달하며, 도착한 후에 다시 원래의 데이터로 재조립됩니다.
+
+
+1️⃣ 패킷의 필요성.
+
+  데이터를 전송할 때 단일 큰 데이터 덩어리로 보내는 대신, 데이터를 여러 개의 작은 패킷으로 나누는 이유는 네트워크의 효율성과 안정성을 높이기 위해서 입니다.
+
+
+1️⃣ 효율성.
+
+  데이터를 작은 단위로 나누어 전송하면 네트워크 리소스를 더 효율적으로 사용할 수 있습니다.
+    
+      대용량 데이터가 네트워크에서 하나의 덩어리로 전송된다면, 다른 데이터가 전송되는 동안 대기해야 할 수 있습니다.
+        
+          패킷(Packet)은 나뉘어 전송되므로 여러 데이터가 동시에 네트워크를 통해 흐를 수 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ 안정성.
+
+  작은 패킷(Packet) 단위로 나뉘어 전송하면 데이터 손실이 발생했을 때 일부 패킷(Packet)만 재전송하면 되므로, 전체 데이터를 다시 전송하지 않아도 됩니다.
+  네트워크 연결이 불안정하거나 문제가 발생했을 때도, 손상된 패킷(Packet)만 다시 보내 효율적으로 문제를 해결할 수 있습니다.
+
+
+3️⃣ 경로 다양성.
+
+  네트워크를 통해 전송되는 패킷(Packet)은 서로 다른 경로를 통해 목적지에 도달할 수 있습니다.
+    
+      즉, 같은 데이터를 여러 경로로 나눠 전송하므로 특정 경로에 문제가 생겨도 다른 경로를 통해 전달될 수 있습니다.
+    
+  
+
+
+2️⃣ 패킷의 구조.
+
+  패킷(Packet)은 크게 헤더(Header)와 데이터(Payload, 페이로드)로 구성됩니다.
+
+
+1️⃣ 헤더(Header)
+
+  패킷(Packet)의 헤더(Header)는 제어 정보를 담고 있으며, 네트워크에서 패킷(Packet)이 어떻게 전달되고 처리될지 결정하는 데 중요한 역할을 합니다.
+    
+      헤더(Header)에는 다음과 같은 정보가 포함됩니다.
+        
+          출발지 IP(Internet Protocol) 주소 : 패킷(Packet)을 보낸 컴퓨터의 IP(Internet Protocol) 주소.
+          목적지 IP(Internet Protocol) 주소 : 패킷(Packet)이 도착해야 할 컴퓨터 IP(Internet Protocol) 주소.
+          프로토콜(Protocol) : 패킷(Packet)이 어떤 프로토콜(예: TCP(Transmission Control Protocol), UDP(User Datagram Protocol))을 사용하는지 나타냅니다.
+          패킷 번호 : 패킷이 전체 데이터에서 몇 번째 패킷인지를 나타냅니다.
+          TTL(Time to Live) : 패킷이 네트워크에서 얼마 동안 유효한지를 나타내며, 특정 시간이나 홉(hop)을 넘으면 패킷(Packet)은 폐기됩니다.
+        
+      
+    
+  
+
+
+
+  📝 홉(hop)
+
+  네트워크에서 패킷(Packet)이 한 네트워크 장비(주로 라우터)에서 다른 장비로 이동하는 과정을 의미하는 단위입니다.
+네트워크 패킷이 출발지에서 목적지까지 이동하는 동안 라우터와 같은 중간 장비들을 통과할 때마다 하나의 홉이 발생합니다.
+
+
+2️⃣ 데이터(Payload, 페이로드)
+
+  패킷(Packet)의 데이터 부분은 실제로 전송하려는 유효 데이터(문서, 이미지, 동영상 파일의 일부 등)가 담긴 부분입니다.
+    
+      이 데이터는 네트워크 상에서 목적지에 도달한 후, 여러 패킷이 다시 모여 원래의 데이터로 재구성 됩니다.
+    
+  
+
+
+3️⃣ 트레일러(Trailer)
+
+  일부 패킷(Packet) 구조에서 트레일러(Trailer)가 포함될 수 있습니다.
+    
+      이는 패킷(Packet)이 올바르게 전송되었는지 확인하기 위한 오류 검사 정보를 포함합니다.
+        
+          예를 들어, 체크섬(Checksum)이 포함되어 패킷이 손상되었는지 확인할 수 있습니다.
+        
+      
+    
+  
+
+
+
+  📝 체크섬(Checksum)
+
+  데이터의 무결성을 확인하기 위해 사용되는 오류 검출 기법 중 하나입니다.
+데이터가 전송되거나 저장될 때, 손상되거나 변경된 부분이 없는지 확인하기 위해 사용됩니다.
+체크섬(Checksum)은 전송하려는 데이터에 대해 수학적인 계산을 수행한 후 고유한 값(체크섬 값)을 생성하고, 이 값을 데이터와 함께 전송하거나 저장합니다.
+데이터를 수신하는 측에서는 동일한 방식으로 체크섬(Checksum) 값을 계산하여 원래의 체크섬 값과 비교함으로써 데이터가 정상적으로 전송되었는지 확인할 수 있습니다.
+
+
+3️⃣ 패킷의 동작 원리.
+
+1️⃣ 데이터 나누기.
+
+  네트워크를 통해 데이터를 전송할 때, 원래의 데이터를 여러 개의 작은 패킷으로 분할합니다.
+    
+      각 패킷(Packet)은 헤더(Header)와 데이터(Payload, 페이로드)를 포함하며, 헤더(Header)에는 각 패킷(Packet)이 어디에서 어디로 가는지, 어떤 경로를 따라가야 하는지 등의 정보가 담깁니다.
+    
+  
+
+
+2️⃣ 네트워크 전송.
+
+  패킷(Packet)은 네트워크를 통해 목적지로 전송됩니다.
+    
+      이때, 패킷(Packet)은 네트워크 장치(라우터(Router, Switch 등)를 거쳐 목적지까지 전달됩니다.
+        
+          각 장치는 패킷의 헤더(Header)를 읽어 적절한 경로를 찾아 다음 목적지로 패킷(Packet)을 보냅니다.
+        
+      
+    
+  
+
+
+3️⃣ 데이터 재조립.
+
+  목적지에 도착한 패킷(Packet)들은 다시 조립되어 원래의 데이터를 복구합니다.
+    
+      전송 중에 일부 패킷(Packet)이 손실되거나 손상된 경우, 해당 패킷(Packet)만 다시 요청하여 전송받을 수 있습니다.
+    
+  
+
+
+4️⃣ 패킷 교환과 전송 방식.
+
+  네트워크에서 패킷 전송 방식을 패킷 교환(Packet Switching)이라고 합니다.
+    
+      이는 데이터를 패킷(Packet) 단위로 나누어 각 패킷(Packet)이 독립적으로 네트워크를 통해 전송되는 방식입니다.
+    
+  
+
+
+1️⃣ 패킷 교환(Packet Switching)
+
+  패킷 교환 방식은 데이터를 작은 패킷(Packet) 단위로 나누어, 각 패킷이 네트워크를 통해 독립적으로 전송됩니다.
+    
+      각 패킷(Packet)은 목적지에 도달할 때까지 다른 경로를 통해 이동할 수 있으며, 목적지에서 다시 재조립됩니다.
+    
+  
+
+
+2️⃣ 회선 교환(Circuit Switching)
+
+  회선 교환 방식은 전화 통화와 같은 네트워크에서 사용되며, 데이터를 전송하기 위해 고정된 경로를 설정한 후 데이터를 전송합니다.
+    
+      데이터 전송이 완료될 때까지 해당 경로는 다른 용도로 사용할 수 없습니다.
+    
+  
+
+
+3️⃣ 데이터그램 기반 전송.
+
+  UDP(User Datagram Protocol)는 패킷 교환 방식 중 하나로, 데이터가 순서에 상관없이 패킷 단위로 전송되며, 수신자는 도착한 패킷을 기반으로 데이터를 복원합니다.
+    
+      UDP(User Datagram Protocol)는 빠른 전송 속도가 필요하지만 데이터 정확도가 덜 중요한 경우(예: 실시간 스트리밍, 게임)에 사용됩니다.
+    
+  
+
+
+5️⃣ 패킷과 네트워크 프로토콜
+
+  패킷은 여러 네트워크 프로토콜에 의해 관리됩니다.
+    
+      주로 사용하는 프로토콜은 다음과 같습니다.
+    
+  
+
+
+1️⃣ TCP(Transmission Control Protocl) / IP(Internet Protocol)
+
+  TCP(Transmission Control Protocol) / IP(Internet Protocol)는 인터넷 프로토콜로, 패킷(Packet)이 정확하게 도착하는지 확인하고, 손실된 패킷이 있으면 다시 전송하는 방식입니다.
+    
+      TCP(Transmission Control Protocol)는 데이터의 신뢰성을 보장하고, IP(Internet Protocol)는 패킷(Packet)의 주소 지정과 경로 선택을 담당합니다.
+    
+  
+
+
+2️⃣ UDP(User Datagram Protocol)
+
+  UDP(User Datagram Protocol)는 TCP(Transmission Control Protocol)와 달리 비연결형 프로토콜로, 패킷(Packet)의 신뢰성을 보장하지 않습니다.
+    
+      속도가 중요한 경우, 예를 들어 동영상 스트리밍, 온라인 게임에서 많이 사용됩니다.
+    
+  
+
+
+6️⃣ 패킷 손실과 복구
+
+1️⃣ 패킷 손실
+
+  네트워크에서 패킷이 소실되거나 지연될 수 있습니다.
+    
+      이는 네트워크 혼잡, 라우터의 버퍼 부족, 신호 간섭 등 다양한 이유로 발생할 수 있습니다.
+    
+  
+
+
+
+  📝 라우터의 버퍼(Buffer)
+
+  라우터의 버퍼(Buffer)는 라우터가 처리해야 할 데이터 패킷(Packet)들을 임시로 저장하는 메모리 공간을 의미합니다
+
+  라우터는 네트워크를 통해 전달되는 수많은 패킷을 처리하고 전달하는 역할을 하며, 네트워크 혼잡이나 트래픽 변동 상황에서 모든 패킷을 즉시 처리할 수 없을 때 이 버퍼에 패킷을 일시적으로 저장합니다.
+
+
+2️⃣ 패킷 복수
+
+  TCP와 같은 신뢰성 있는 프로토콜은 패킷 손실이 발생했을 때 손실된 패킷을 재전송합니다.
+    
+      그러나 UDP는 패킷 손실이 발생해도 이를 처리하지 않으며, 손실된 데이터를 그대로 넘깁니다.
+    
+  
+
+
+7️⃣ 패킷의 예시.
+
+👉 웹 브라우징.
+
+  사용자가 웹 브라우저에서 특정 웹사이트에 접속할 때, 웹 서버는 HTML, CSS, 이미지 등의 파일을 패킷(Packet)으로 나누어 사용자의 컴퓨터로 전송합니다.
+    
+      사용자의 컴퓨터는 이 패킷들을 수신하고, 다시 조립하여 웹 페이지를 화면에 표시합니다.
+    
+  
+
+
+👉 이메일 전송.
+
+  이메일이 전송될 때, 이메일 본문과 첨부 파일은 여러 개의 패킷으로 나누어 네트워크를 통해 전송됩니다.
+    
+      각 패킷은 목적시 이메일 서버에 도착하면 다시 하나의 이메일로 합쳐집니다.
+    
+  
+
+
+8️⃣ 결론.
+
+  패킷(Packet)은 네트워크에서 데이터를 전송하기 위해 작게 나눈 데이터 조각으로, 네트워크 통신의 효율성과 신뢰성을 높이는 데 중요한 역할을 합니다.
+  패킷 스위칭 방식은 데이터를 독립적인 패킷으로 나누어 네트워크 경로를 유연하게 선택해 전송하며, 이를 통해 인터넷을 포함한 다양한 네트워크에서 데이터 통신의 효율성을 극대화합니다.
+  패킷은 데이터를 전송할 때 헤더, 데이터, 오류 검출 정보 등을 포함하며, 목적지에서 재조립되어 원래의 데이터로 복구됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -4506,442 +4781,6 @@ DELETE /users/3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html"><h1 class="title_post">🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="txt_post">
-                            🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?
-
-
-  MAC 주소(Media Access Control Address)는 네트워크 인터페이스 카드(NIC, Network Interface Card)에 할당된 고유한 식별자로, LAN(Local Area Network)과 같은 네트워크에서 장치들이 서로 통신할 때 사용됩니다.
-  MAC 주소는 네트워크 장치의 물리적인 하드웨어 주소이며, 네트워크에서 각 장치를 구분하는 데 사용됩니다.
-  MAC 주소는 이더넷과 Wi-Fi와 같은 여러 네트워크 기술에서 사용됩니다.
-
-
-
-  🙋‍♂️ 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?
-🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
-
-
-1️⃣ MAC 주소의 주요 특징.
-
-1️⃣ 고유성.
-
-  MAC 주소는 네트워크 카드 제조사에서 전 세계적으로 유일하게 할당되며, 각 네트워크 장치(컴퓨터, 프린터, 스마트폰 등)에 고유하게 부여됩니다.
-    
-      즉, 각 장치의 네트워크 카드(NIC, Network Interface Card)마다 하나의 고유한 MAC 주소가 존재합니다.
-    
-  
-
-
-2️⃣ 48비트 주소.
-
-  MAC 주소는 48비트(6바이트) 크기의 이진수로 표현되며, 보통 16진수로 표기됩니다.
-    
-      48비트는 총 281조 개의 고유한 MAC 주소를 생성할 수 있게 합니다.
-        
-          예: 00:1A:2B:3C:4D:5E 또는 00-1A-2B-3C-4D-5E
-        
-      
-    
-  
-
-
-3️⃣ 하드웨어 주소.
-
-  MAC 주소는 네트워크 인터페이스 카드(NIC, Network Interface Card) 자체에서 영구적으로 할당된 주소로, 장치가 네트워크에 물리적으로 연결될 때 사용됩니다.
-    
-      IP 주소는 네트워크 내에서 동적으로 할당될 수 있지만, MAC 주소는 장치의 하드웨어에 고정되어 있습니다.
-    
-  
-
-
-4️⃣ 계층 2 주소.
-
-  MAC 주소 OSI 7계층 모델의 데이터 링크 계층(Layer 2)에서 사용됩니다.
-    
-      즉, MAC 주소는 같은 네트워크(LAN) 내에서 장치 간 데이터를 전달하는 데 사용됩니다.
-      네트워크의 라우터나 스위치는 MAC 주소를 사용하여 데이터를 적절한 장치로 전달합니다.
-    
-  
-
-
-
-  🙋‍♂️ OSI 7계층 모델
-🙋‍♂️ OSI 7계층 모델 - 계층별 기능
-
-
-2️⃣ MAC 주소의 구조.
-
-  MAC 주소는 두 부분으로 나누어집니다.
-
-
-1️⃣ 제조사 식별자(OUI, Organizationally Unique Identifier)
-
-  MAC 주소의 첫 24비트(앞의 6자리 16진수)는 네트워크 카드 제조사를 나타냅니다.
-    
-      이 부분은 OUI라고 하며, 각 네트워크 카드 제조사는 고유한 OUI를 할당받습니다.
-        
-          예: 00:1A:2B -&gt; 제조사의 OUI
-        
-      
-    
-  
-
-
-2️⃣ 장치 식별자(Device Identifier)
-
-  MAC 주소의 나머지 24비트(뒤의 6자리 16진수)는 제조사가 해당 네트워크 카드나 장치에 부여한 고유 식별자입니다.
-    
-      예: 3C:4D:5E -&gt; 장치의 고유 식별자
-    
-  
-
-
-3️⃣ 결합.
-
-  이 두 부분(OUI + Device Identifier)을 결합하여 하나의 고유한 MAC 주소가 만들어집니다.
-    
-      예: 00:1A:2B:3C:4D:5E
-    
-  
-
-
-3️⃣ MAC 주소의 역할.
-
-1️⃣ 로컬 네트워크(LAN)에서 데이터 전송.
-
-  MAC 주소는 LAN(Local Area Network) 내에서 데이터 프레임을 전달할 때 사용됩니다.
-    
-      네트워크 장치가 데이터를 보낼 때, 해당 데이터는 송신자의 MAC 주소를 포함하고, 스위치와 같은 네트워크 장치가 이를 읽어 적절한 목적지로 데이터를 전달합니다.
-    
-  
-
-
-2️⃣ 데이터 링크 계층에서 통신.
-
-  MAC 주소는 데이터 링크 계층에서 장치 간 프레임을 전달하는 데 사용됩니다.
-    
-      이더넷 네트워크에서 MAC 주소는 같은 네트워크 내의 장치 간에 데이터를 정확하게 전달하기 위한 핵심 역할을 합니다.
-    
-  
-
-
-3️⃣ ARP(Address Resolution Protocol)와의 연관성.
-
-  ARP는 IP 주소와 MAC 주소를 연결해주는 프로토콜입니다.
-    
-      네트워크에서 IP 주소를 통해 데이터를 전송 할 때, ARP는 해당 IP 주소에 대한 MAC 주소를 찾아내어, 데이터를 올바른 장치로 전달할 수 있게 합니다.
-        
-          이는 특히 로컬 네트워크에서 중요한 역할을 합니다.
-        
-      
-    
-  
-
-
-4️⃣ 네트워크 장치의 고유 식별.
-
-  MAC 주소는 각 장치의 고유한 하드웨어 주소이므로, 네트워크에서 장치를 고유하게 식별하는 데 사용됩니다.
-    
-      네트워크 관리자들은 MAC 주소를 이용해 네트워크에 연결된 장치들을 추적하거나, 특정 장치에 대해 네트워크 접근을 제어할 수 있습니다.
-    
-  
-
-
-4️⃣ MAC 주소와 IP 주소의 차이점.
-
-  MAC 주소는 하드웨어 주소로, 네트워크 인터페이스 카드(NIC, Network Interface Card)에 고유하게 할당된 고정된 주소입니다.
-    
-      장치가 네트워크에 물리적으로 연결되면 MAC 주소를 통해 통신하게 됩니다.
-    
-  
-  IP 주소는 논리주소로, 네트워크 장치가 인터넷 프로토콜을 통해 통신할 때 사용됩니다.
-    
-      IP 주소는 동적으로 할당되거나 수동으로 설정할 수 있으며, 네트워크 간에 데이터를 전송할 때 사용됩니다.
-    
-  
-
-
-5️⃣ MAC 주소의 예시.
-
-1️⃣ 이더넷 프레임에서의 사용.
-
-  네트워크에서 컴퓨터 A가 컴퓨터 B로 데이터를 전송하려고 할 때, 이더넷 프레임에는 송신자의 MAC 주소와 수신자의 MAC 주소가 포함됩니다.
-    
-      이때, 네트워크 장비(예: 스위치)는 수신자의 MAC 주소를 기반으로 데이터를 올바른 장치(B)로 전달합니다.
-        [출발지 MAC 주소] -&gt; [목적지 MAC 주소]
-00:1A:2B:3C:4D:5E -&gt; 00:1A:7C:8D:9F:0A
-        
-      
-    
-  
-
-
-2️⃣ ARP(Address Resolution Protocol)를 통한 IP-MAC 매핑.
-
-  네트워크에서 컴퓨터가 IP 주소를 통해 데이터를 전송할 때, ARP 프로토콜이 IP 주소에 대응하는 MAC 주소를 찾아 프레임을 생성하고, 데이터를 전송합니다.
-    
-      예를 들어, 컴퓨터 A(192.168.1.2)가 컴퓨터 B(192.168.1.3)로 데이터를 전송 할 때 A는 ARP를 사용해 컴퓨터 B의 MAC 주소를 찾아내어 데이터를 전송합니다.
-    
-  
-
-
-6️⃣ MAC 주소의 보안 이슈.
-
-1️⃣ MAC 주소 스푸핑(Spoofing)
-
-  MAC 주소는 네트워크에서 장치를 식별하는 데 사용되지만, MAC 주소 스푸핑이라는 공격을 통해 MAC 주소를 위조할 수 있습니다.
-    
-      공격자는 자신의 장치의 MAC 주소를 다른 장치의 MAC 주소로 변경하여 네트워크에서 허가되지 않은 접근을 시도할 수 있습니다.
-    
-  
-
-
-2️⃣ MAC 주소 필터링.
-
-  네트워크 보안을 강화하기 위해 일부 네트워크 관리자들은 MAC 주소 필터링을 사용하여 허용된 장치들만 네트워크에 접속할 수 있도록 설정합니다.
-    
-      그러나 MAC 주소가 스푸핑될 수 있기 때문에, 보안 측면에서 완벽한 방법은 아닙니다.
-    
-  
-
-
-7️⃣ 결론.
-
-  MAC 주소는 네트워크 장치에 고유하게 할당된 물리적 하드웨어 주소로, 로컬 네트워크에서 데이터 전송 및 장치 식별에 중요한 역할을 합니다.
-  MAC 주소는 OSI 모델의 데이터 링크 계층(Layer 2)에서 사용되며, 이더넷과 같은 네트워크 기술에서 장치 간 통신을 가능하게 합니다.
-  MAC 주소는 고유하며 변경되지 않는 반면, IP 주소는 논리적이고 변경될 수 있습니다.
-  MAC 주소는 보안과 통신에서 중요한 역할을 하지만, 스푸핑 등의 보안 위협도 존재할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-09-what-is-the-api.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)란 무엇일까?</h1></a>
-                        <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="txt_post">
-                            “💾 [CS] API(Application Programming Interface)란 무엇일까?”
-
-  API(Application Programming Interface) 는 애플리케이션이 다른 소프트웨어나 서비스와 상호작용할 수 있도록 하는 인터페이스를 의미합니다.
-  쉽게 말하면, API는 프로그램 간의 통신을 가능하게 해주는 일종의 계약 또는 약속입니다.
-  API는 개발자가 특정 기능을 사용할 수 있게 미리 정의된 메서드와 규칙의 집합을 제공합니다.
-
-
-1️⃣ API의 기본 개념.
-
-  인터페이스
-    
-      API는 두 시스템 간의 상호작용을 정의하는 경계 역할을 합니다.
-      이를 통해 두 시스템이 서로 데이터를 주고받거나 기능을 요청할 수 있습니다.
-    
-  
-  통신
-    
-      API는 소프트웨어 애플리케이션이 다른 소프트웨어 서비스나 라이브러리와 통신하는 방법을 제공합니다.
-      예를 들어, API를 통해 애플리케이션은 외부 서비스에서 데이터를 가져오거나, 데이터베이스에 저장하는 등의 작업을 할 수 있습니다.
-    
-  
-  추상화
-    
-      API는 내부적인 구현을 숨기고, 외부 개발자가 필요한 기능만 사용할 수 있게 추상화된 기능을 제공합니다.
-      내부의 복잡한 로직을 신경 쓰지 않고, 정의된 명령만 호출하면 해당 기능을 사용할 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
-
-
-2️⃣ API의 유형.
-
-1️⃣ 웹 API
-
-  웹에서 동작하는 API로, HTTP 프로토콜을 통해 애플리케이션 간 통신을 처리합니다.
-    
-      예를 들어, RESTful API나 SOAP API는 웹을 통해 데이터를 주고받는 데 사용됩니다.
-    
-  
-  웹 API는 클라이언트와 서버 간의 통신을 쉽게 해주며, 웹 서비스 또는 클라우드 서비스에서 주로 사용됩니다.
-    
-      예: GET, POST, PUT, DELETE 메서드를 사용하여 서버와 데이터를 주고받는 API.
-    
-  
-
-
-2️⃣ 라이브러리 API
-
-  프로그래밍 언어에서 제공하는 라이브러리의 기능을 사용할 수 있게 해주는 API입니다.
-    
-      특정 기능이나 데이터 구조를 제공하여 개발자가 해당 기능을 구현할 수 있도록 도와줍니다.
-        
-          예: Java의 java.util.List API는 목록 데이터를 쉽게 다룰 수 있는 메서드와 클래스를 제공합니다.
-        
-      
-    
-  
-
-
-3️⃣ 운영체제 API
-
-  운영체제가 제공하는 시스템 자원을 애플리케이션이 사용할 수 있도록 해주는 API입니다.
-    
-      파일 시스템, 네트워크, 하드웨어 장치와의 상호작용을 처리할 수 있게 합니다.
-        
-          예: Windows API는 파일 읽기/쓰기, 네트워크 통신 등을 위한 다양한 기능을 제공합니다.
-        
-      
-    
-  
-
-
-4️⃣ 프레임워크 API
-
-  특정 프레임워크에서 제공하는 API는 해당 프레임워크의 기능을 쉽게 사용할 수 있도록 도와줍니다.
-    
-      예를 들어, Spring 프레임워크에서 제공하는 API는 웹 애플리케이션 개발에 필요한 다양한 기능을 제공합니다.
-    
-  
-
-
-
-  🙋‍♂️ 라이브러리(Library)와 프레임워크(Framework)의 차이점.
-
-
-3️⃣ API의 동작 원리.
-
-  API는 주로 요청(Request)과 응답(Response)으로 작동합니다.
-    
-      클라이언트가 특정 작업을 요청하면, 서버가 해당 작업을 처리한 후 결과를 반환하는 방식입니다.
-        
-          1. 클라이언트가 요청 : 클라이언트 애플리케이션은 API를 사용해 특정 작업을 서버에 요청합니다.
-          2. 서버가 처리 : API 서버는 요청을 처리하고, 필요한 데이터를 조회하거나 작업을 수행합니다.
-          3. 서버가 응답 : 서버는 요청에 대한 결과(데이터나 작업 성공 여부)를 클라이언트에게 응답으로 반환합니다.
-        
-      
-    
-  
-
-
-4️⃣ API의 예시.
-
-1️⃣ Google Maps API.
-
-  개발자는 Google Maps API를 사용해 자신의 애플리케이션에 지도 기능을 추가할 수 있습니다.
-    
-      이를 통해 사용자는 실시간 지도 정보를 보고, 길 안내를 받을 수 있습니다.
-        
-          예: https://maps.googleapis.com/maps/api/geocode/json?address=New+York
-        
-      
-    
-  
-
-
-2️⃣ (현)X (구)Twitter API.
-
-  (현)X (구)Twitter는 API를 통해 외부 애플리케이션이 트윗을 읽거나 작성할 수 있는 기능을 제공합니다.
-    
-      예: 특정 해시태그로 트윗 검색, 사용자 프로필 정보 조회 등.
-    
-  
-
-
-3️⃣ JPA API
-
-  JAP(Java Persistence API)는 자바 애플리케이션에서 데이터베이스와 상호작용할 수 있는 API로, 객체지향적으로 데이터베이스 작업을 할 수 있게 합니다.
-    
-      개발자는 SQL을 직접 작성하지 않고, JPA가 제공하는 메서드를 통해 데이터베이스 작업을 처리할 수 있습니다.
-    
-  
-
-
-EntityManager em = entityManagerFactory.createEntityManager();
-User user = em.find(User.class, 1L) // User 객체 조회
-
-
-
-  🙋‍♂️ 영속성(Persistence)란 무엇일까?
-
-
-4️⃣ API의 단점.
-
-1️⃣ 의존성.
-
-  외부 API를 사용할 경우, 해당 API에 의존하게 됩니다.
-    
-      만약 API가 변경되거나 중단되면 애플리케이션이 영향을 받을 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ 의존성(Dependency)
-
-
-2️⃣ 성능.
-
-  API를 사용한 통신이 느릴 수 있습니다.
-    
-      특히 원격 서버와의 API 호출은 네트워크 지연에 영향을 받을 수 있습니다.
-    
-  
-
-
-3️⃣ 제한 사항.
-
-  API 제공자는 사용량을 제한할 수 있습니다.
-    
-      예를 들어, 하루에 호출할 수 있는 API 요청 수에 제한이 있을 수 있습니다.
-    
-  
-
-
-5️⃣ 결론.
-
-  API는 소프트웨어 애플리케이션이 서로 상호작용할 수 있도록하는 중간 다리 역할을 합니다.
-    
-      이를 통해 개발자는 다른 소프트웨어의 기능을 재사용하거나, 외부 서비스와의 통신을 통해 더 풍부한 애플리케이션을 만들 수 있습니다.
-    
-  
-  API는 현대 소프트웨어 개발에서 필수적인 구성 요소로 자리 잡고 있으며, 이를 통해 애플리케이션 간 통합과 협업이 더 쉽게 이루어집니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-10-09-what-is-the-ethernet.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -5186,6 +5025,442 @@ User user = em.find(User.class, 1L) // User 객체 조회
   이더넷(Ethernet) 은 LAN(Local Area Network)에서 유선으로 데이터를 송수신하는데 사용되는 대표적인 네트워크 기술입니다.
   이더넷은 고속, 안정성, 보안성에서 뛰어나며, 전 세계적으로 가장 널리 사용되는 네트워크 표준입니다.
   현대의 고속 이더넷 기술(1Gbps, 10Gbps)은 빠르고 효율적인 네트워크 통신을 제공하며, 특히 대규모 데이터 센트와 기업 네트워크에서 중요한 역할을 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-09-what-is-the-api.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)란 무엇일까?</h1></a>
+                        <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="txt_post">
+                            “💾 [CS] API(Application Programming Interface)란 무엇일까?”
+
+  API(Application Programming Interface) 는 애플리케이션이 다른 소프트웨어나 서비스와 상호작용할 수 있도록 하는 인터페이스를 의미합니다.
+  쉽게 말하면, API는 프로그램 간의 통신을 가능하게 해주는 일종의 계약 또는 약속입니다.
+  API는 개발자가 특정 기능을 사용할 수 있게 미리 정의된 메서드와 규칙의 집합을 제공합니다.
+
+
+1️⃣ API의 기본 개념.
+
+  인터페이스
+    
+      API는 두 시스템 간의 상호작용을 정의하는 경계 역할을 합니다.
+      이를 통해 두 시스템이 서로 데이터를 주고받거나 기능을 요청할 수 있습니다.
+    
+  
+  통신
+    
+      API는 소프트웨어 애플리케이션이 다른 소프트웨어 서비스나 라이브러리와 통신하는 방법을 제공합니다.
+      예를 들어, API를 통해 애플리케이션은 외부 서비스에서 데이터를 가져오거나, 데이터베이스에 저장하는 등의 작업을 할 수 있습니다.
+    
+  
+  추상화
+    
+      API는 내부적인 구현을 숨기고, 외부 개발자가 필요한 기능만 사용할 수 있게 추상화된 기능을 제공합니다.
+      내부의 복잡한 로직을 신경 쓰지 않고, 정의된 명령만 호출하면 해당 기능을 사용할 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
+
+
+2️⃣ API의 유형.
+
+1️⃣ 웹 API
+
+  웹에서 동작하는 API로, HTTP 프로토콜을 통해 애플리케이션 간 통신을 처리합니다.
+    
+      예를 들어, RESTful API나 SOAP API는 웹을 통해 데이터를 주고받는 데 사용됩니다.
+    
+  
+  웹 API는 클라이언트와 서버 간의 통신을 쉽게 해주며, 웹 서비스 또는 클라우드 서비스에서 주로 사용됩니다.
+    
+      예: GET, POST, PUT, DELETE 메서드를 사용하여 서버와 데이터를 주고받는 API.
+    
+  
+
+
+2️⃣ 라이브러리 API
+
+  프로그래밍 언어에서 제공하는 라이브러리의 기능을 사용할 수 있게 해주는 API입니다.
+    
+      특정 기능이나 데이터 구조를 제공하여 개발자가 해당 기능을 구현할 수 있도록 도와줍니다.
+        
+          예: Java의 java.util.List API는 목록 데이터를 쉽게 다룰 수 있는 메서드와 클래스를 제공합니다.
+        
+      
+    
+  
+
+
+3️⃣ 운영체제 API
+
+  운영체제가 제공하는 시스템 자원을 애플리케이션이 사용할 수 있도록 해주는 API입니다.
+    
+      파일 시스템, 네트워크, 하드웨어 장치와의 상호작용을 처리할 수 있게 합니다.
+        
+          예: Windows API는 파일 읽기/쓰기, 네트워크 통신 등을 위한 다양한 기능을 제공합니다.
+        
+      
+    
+  
+
+
+4️⃣ 프레임워크 API
+
+  특정 프레임워크에서 제공하는 API는 해당 프레임워크의 기능을 쉽게 사용할 수 있도록 도와줍니다.
+    
+      예를 들어, Spring 프레임워크에서 제공하는 API는 웹 애플리케이션 개발에 필요한 다양한 기능을 제공합니다.
+    
+  
+
+
+
+  🙋‍♂️ 라이브러리(Library)와 프레임워크(Framework)의 차이점.
+
+
+3️⃣ API의 동작 원리.
+
+  API는 주로 요청(Request)과 응답(Response)으로 작동합니다.
+    
+      클라이언트가 특정 작업을 요청하면, 서버가 해당 작업을 처리한 후 결과를 반환하는 방식입니다.
+        
+          1. 클라이언트가 요청 : 클라이언트 애플리케이션은 API를 사용해 특정 작업을 서버에 요청합니다.
+          2. 서버가 처리 : API 서버는 요청을 처리하고, 필요한 데이터를 조회하거나 작업을 수행합니다.
+          3. 서버가 응답 : 서버는 요청에 대한 결과(데이터나 작업 성공 여부)를 클라이언트에게 응답으로 반환합니다.
+        
+      
+    
+  
+
+
+4️⃣ API의 예시.
+
+1️⃣ Google Maps API.
+
+  개발자는 Google Maps API를 사용해 자신의 애플리케이션에 지도 기능을 추가할 수 있습니다.
+    
+      이를 통해 사용자는 실시간 지도 정보를 보고, 길 안내를 받을 수 있습니다.
+        
+          예: https://maps.googleapis.com/maps/api/geocode/json?address=New+York
+        
+      
+    
+  
+
+
+2️⃣ (현)X (구)Twitter API.
+
+  (현)X (구)Twitter는 API를 통해 외부 애플리케이션이 트윗을 읽거나 작성할 수 있는 기능을 제공합니다.
+    
+      예: 특정 해시태그로 트윗 검색, 사용자 프로필 정보 조회 등.
+    
+  
+
+
+3️⃣ JPA API
+
+  JAP(Java Persistence API)는 자바 애플리케이션에서 데이터베이스와 상호작용할 수 있는 API로, 객체지향적으로 데이터베이스 작업을 할 수 있게 합니다.
+    
+      개발자는 SQL을 직접 작성하지 않고, JPA가 제공하는 메서드를 통해 데이터베이스 작업을 처리할 수 있습니다.
+    
+  
+
+
+EntityManager em = entityManagerFactory.createEntityManager();
+User user = em.find(User.class, 1L) // User 객체 조회
+
+
+
+  🙋‍♂️ 영속성(Persistence)란 무엇일까?
+
+
+4️⃣ API의 단점.
+
+1️⃣ 의존성.
+
+  외부 API를 사용할 경우, 해당 API에 의존하게 됩니다.
+    
+      만약 API가 변경되거나 중단되면 애플리케이션이 영향을 받을 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ 의존성(Dependency)
+
+
+2️⃣ 성능.
+
+  API를 사용한 통신이 느릴 수 있습니다.
+    
+      특히 원격 서버와의 API 호출은 네트워크 지연에 영향을 받을 수 있습니다.
+    
+  
+
+
+3️⃣ 제한 사항.
+
+  API 제공자는 사용량을 제한할 수 있습니다.
+    
+      예를 들어, 하루에 호출할 수 있는 API 요청 수에 제한이 있을 수 있습니다.
+    
+  
+
+
+5️⃣ 결론.
+
+  API는 소프트웨어 애플리케이션이 서로 상호작용할 수 있도록하는 중간 다리 역할을 합니다.
+    
+      이를 통해 개발자는 다른 소프트웨어의 기능을 재사용하거나, 외부 서비스와의 통신을 통해 더 풍부한 애플리케이션을 만들 수 있습니다.
+    
+  
+  API는 현대 소프트웨어 개발에서 필수적인 구성 요소로 자리 잡고 있으며, 이를 통해 애플리케이션 간 통합과 협업이 더 쉽게 이루어집니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html"><h1 class="title_post">🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="txt_post">
+                            🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?
+
+
+  MAC 주소(Media Access Control Address)는 네트워크 인터페이스 카드(NIC, Network Interface Card)에 할당된 고유한 식별자로, LAN(Local Area Network)과 같은 네트워크에서 장치들이 서로 통신할 때 사용됩니다.
+  MAC 주소는 네트워크 장치의 물리적인 하드웨어 주소이며, 네트워크에서 각 장치를 구분하는 데 사용됩니다.
+  MAC 주소는 이더넷과 Wi-Fi와 같은 여러 네트워크 기술에서 사용됩니다.
+
+
+
+  🙋‍♂️ 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?
+🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
+
+
+1️⃣ MAC 주소의 주요 특징.
+
+1️⃣ 고유성.
+
+  MAC 주소는 네트워크 카드 제조사에서 전 세계적으로 유일하게 할당되며, 각 네트워크 장치(컴퓨터, 프린터, 스마트폰 등)에 고유하게 부여됩니다.
+    
+      즉, 각 장치의 네트워크 카드(NIC, Network Interface Card)마다 하나의 고유한 MAC 주소가 존재합니다.
+    
+  
+
+
+2️⃣ 48비트 주소.
+
+  MAC 주소는 48비트(6바이트) 크기의 이진수로 표현되며, 보통 16진수로 표기됩니다.
+    
+      48비트는 총 281조 개의 고유한 MAC 주소를 생성할 수 있게 합니다.
+        
+          예: 00:1A:2B:3C:4D:5E 또는 00-1A-2B-3C-4D-5E
+        
+      
+    
+  
+
+
+3️⃣ 하드웨어 주소.
+
+  MAC 주소는 네트워크 인터페이스 카드(NIC, Network Interface Card) 자체에서 영구적으로 할당된 주소로, 장치가 네트워크에 물리적으로 연결될 때 사용됩니다.
+    
+      IP 주소는 네트워크 내에서 동적으로 할당될 수 있지만, MAC 주소는 장치의 하드웨어에 고정되어 있습니다.
+    
+  
+
+
+4️⃣ 계층 2 주소.
+
+  MAC 주소 OSI 7계층 모델의 데이터 링크 계층(Layer 2)에서 사용됩니다.
+    
+      즉, MAC 주소는 같은 네트워크(LAN) 내에서 장치 간 데이터를 전달하는 데 사용됩니다.
+      네트워크의 라우터나 스위치는 MAC 주소를 사용하여 데이터를 적절한 장치로 전달합니다.
+    
+  
+
+
+
+  🙋‍♂️ OSI 7계층 모델
+🙋‍♂️ OSI 7계층 모델 - 계층별 기능
+
+
+2️⃣ MAC 주소의 구조.
+
+  MAC 주소는 두 부분으로 나누어집니다.
+
+
+1️⃣ 제조사 식별자(OUI, Organizationally Unique Identifier)
+
+  MAC 주소의 첫 24비트(앞의 6자리 16진수)는 네트워크 카드 제조사를 나타냅니다.
+    
+      이 부분은 OUI라고 하며, 각 네트워크 카드 제조사는 고유한 OUI를 할당받습니다.
+        
+          예: 00:1A:2B -&gt; 제조사의 OUI
+        
+      
+    
+  
+
+
+2️⃣ 장치 식별자(Device Identifier)
+
+  MAC 주소의 나머지 24비트(뒤의 6자리 16진수)는 제조사가 해당 네트워크 카드나 장치에 부여한 고유 식별자입니다.
+    
+      예: 3C:4D:5E -&gt; 장치의 고유 식별자
+    
+  
+
+
+3️⃣ 결합.
+
+  이 두 부분(OUI + Device Identifier)을 결합하여 하나의 고유한 MAC 주소가 만들어집니다.
+    
+      예: 00:1A:2B:3C:4D:5E
+    
+  
+
+
+3️⃣ MAC 주소의 역할.
+
+1️⃣ 로컬 네트워크(LAN)에서 데이터 전송.
+
+  MAC 주소는 LAN(Local Area Network) 내에서 데이터 프레임을 전달할 때 사용됩니다.
+    
+      네트워크 장치가 데이터를 보낼 때, 해당 데이터는 송신자의 MAC 주소를 포함하고, 스위치와 같은 네트워크 장치가 이를 읽어 적절한 목적지로 데이터를 전달합니다.
+    
+  
+
+
+2️⃣ 데이터 링크 계층에서 통신.
+
+  MAC 주소는 데이터 링크 계층에서 장치 간 프레임을 전달하는 데 사용됩니다.
+    
+      이더넷 네트워크에서 MAC 주소는 같은 네트워크 내의 장치 간에 데이터를 정확하게 전달하기 위한 핵심 역할을 합니다.
+    
+  
+
+
+3️⃣ ARP(Address Resolution Protocol)와의 연관성.
+
+  ARP는 IP 주소와 MAC 주소를 연결해주는 프로토콜입니다.
+    
+      네트워크에서 IP 주소를 통해 데이터를 전송 할 때, ARP는 해당 IP 주소에 대한 MAC 주소를 찾아내어, 데이터를 올바른 장치로 전달할 수 있게 합니다.
+        
+          이는 특히 로컬 네트워크에서 중요한 역할을 합니다.
+        
+      
+    
+  
+
+
+4️⃣ 네트워크 장치의 고유 식별.
+
+  MAC 주소는 각 장치의 고유한 하드웨어 주소이므로, 네트워크에서 장치를 고유하게 식별하는 데 사용됩니다.
+    
+      네트워크 관리자들은 MAC 주소를 이용해 네트워크에 연결된 장치들을 추적하거나, 특정 장치에 대해 네트워크 접근을 제어할 수 있습니다.
+    
+  
+
+
+4️⃣ MAC 주소와 IP 주소의 차이점.
+
+  MAC 주소는 하드웨어 주소로, 네트워크 인터페이스 카드(NIC, Network Interface Card)에 고유하게 할당된 고정된 주소입니다.
+    
+      장치가 네트워크에 물리적으로 연결되면 MAC 주소를 통해 통신하게 됩니다.
+    
+  
+  IP 주소는 논리주소로, 네트워크 장치가 인터넷 프로토콜을 통해 통신할 때 사용됩니다.
+    
+      IP 주소는 동적으로 할당되거나 수동으로 설정할 수 있으며, 네트워크 간에 데이터를 전송할 때 사용됩니다.
+    
+  
+
+
+5️⃣ MAC 주소의 예시.
+
+1️⃣ 이더넷 프레임에서의 사용.
+
+  네트워크에서 컴퓨터 A가 컴퓨터 B로 데이터를 전송하려고 할 때, 이더넷 프레임에는 송신자의 MAC 주소와 수신자의 MAC 주소가 포함됩니다.
+    
+      이때, 네트워크 장비(예: 스위치)는 수신자의 MAC 주소를 기반으로 데이터를 올바른 장치(B)로 전달합니다.
+        [출발지 MAC 주소] -&gt; [목적지 MAC 주소]
+00:1A:2B:3C:4D:5E -&gt; 00:1A:7C:8D:9F:0A
+        
+      
+    
+  
+
+
+2️⃣ ARP(Address Resolution Protocol)를 통한 IP-MAC 매핑.
+
+  네트워크에서 컴퓨터가 IP 주소를 통해 데이터를 전송할 때, ARP 프로토콜이 IP 주소에 대응하는 MAC 주소를 찾아 프레임을 생성하고, 데이터를 전송합니다.
+    
+      예를 들어, 컴퓨터 A(192.168.1.2)가 컴퓨터 B(192.168.1.3)로 데이터를 전송 할 때 A는 ARP를 사용해 컴퓨터 B의 MAC 주소를 찾아내어 데이터를 전송합니다.
+    
+  
+
+
+6️⃣ MAC 주소의 보안 이슈.
+
+1️⃣ MAC 주소 스푸핑(Spoofing)
+
+  MAC 주소는 네트워크에서 장치를 식별하는 데 사용되지만, MAC 주소 스푸핑이라는 공격을 통해 MAC 주소를 위조할 수 있습니다.
+    
+      공격자는 자신의 장치의 MAC 주소를 다른 장치의 MAC 주소로 변경하여 네트워크에서 허가되지 않은 접근을 시도할 수 있습니다.
+    
+  
+
+
+2️⃣ MAC 주소 필터링.
+
+  네트워크 보안을 강화하기 위해 일부 네트워크 관리자들은 MAC 주소 필터링을 사용하여 허용된 장치들만 네트워크에 접속할 수 있도록 설정합니다.
+    
+      그러나 MAC 주소가 스푸핑될 수 있기 때문에, 보안 측면에서 완벽한 방법은 아닙니다.
+    
+  
+
+
+7️⃣ 결론.
+
+  MAC 주소는 네트워크 장치에 고유하게 할당된 물리적 하드웨어 주소로, 로컬 네트워크에서 데이터 전송 및 장치 식별에 중요한 역할을 합니다.
+  MAC 주소는 OSI 모델의 데이터 링크 계층(Layer 2)에서 사용되며, 이더넷과 같은 네트워크 기술에서 장치 간 통신을 가능하게 합니다.
+  MAC 주소는 고유하며 변경되지 않는 반면, IP 주소는 논리적이고 변경될 수 있습니다.
+  MAC 주소는 보안과 통신에서 중요한 역할을 하지만, 스푸핑 등의 보안 위협도 존재할 수 있습니다.
 
 
                         </a>
@@ -7207,6 +7482,395 @@ public class UserService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-10-06-Component-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-06-Component-annotation.html"><h1 class="title_post">🍃[Spring] `@Component` 어노테이션.</h1></a>
+                        <a href="/Spring/2024-10-06-Component-annotation.html" class="txt_post">
+                            🍃[Spring] @Component 어노테이션.
+
+
+  @Component 어노테이션은 Spring Framework에서 빈(Bean) 으로 등록할 클래스를 지정하기 위해 사용하는 클래스 레벨 어노테이션입니다.
+  이 어노테이션을 사용하면 해당 클래스가 Spring IoC 컨테이너에 의해 자동으로 관리되는 빈으로 등록됩니다.
+  주로 애플리케이션에서 자동으로 빈을 등록하고 싶을 때 사용 됩니다.
+
+
+
+  🙋‍♂️ Spring 컨테이너
+🙋‍♂️ Spring 컨테이너를 사용하는 이유
+
+
+
+  📝 Spring IoC 컨테이너와 Spring 컨테이너는 다른 개념인가요?
+
+  Spring IoC 컨테이너와 Spring 컨테이너는 같은 개념을 의미하는 용어입니다.
+이 두 용어는 모두 Spring Framework에서 객체(Bean, 빈)의 생성, 관리, 의존성 주입, 생명주기 관리 등을 담당하는 컨테이너를 가리킵니다.
+
+  📝 같은 개념에 대한 다양한 표현
+  
+    Spring IoC 컨테이너는 더 구체적인 용어로, Spring에서 Inversion Of Control(제어의 역적) 원칙을 구현하는 빈 관리 시스템을 가리킵니다.
+      
+        
+          이 용어는 주로 제어의 역전(Inversion of Control) 이라는 프로그래밍 원칙을 강조하기 위해 사용됩니다.
+          IoC는 개발자가 직접 객체를 생성하고 관리하지 않고, 컨테이너가 객체의 생성과 의존성을 관리하는 방식입니다.
+        
+      
+    
+    Spring 컨테이너는 더 일반적인 용어로, Spring Framework가 제공하는 객체 관리 시스템을 가리키는 표현입니다.
+      
+        
+          이 용어는 Spring이 제공하는 컨테이너의 기능을 포괄적으로 표현하며, 그 핵심 기능은 IoC 컨테이너 입니다.
+        
+      
+    
+  
+
+  📝 결론
+  
+    Spring IoC 컨테이너와 Spring 컨테이너는 같은 개념으로 볼 수 있으며, 두 용어 모두 Spring의 핵심 기능인 객체 관리와 의존성 주입을 담당하는 시스템을 가리킵니다.
+    IoC는 이 컨테이너의 작동 원리를 설명하는 용어이고, Spring 컨테이너는 이를 일반적으로 부를 때 사용하는 표현힙니다.
+  
+
+
+1️⃣ 주요 기능 및 특징.
+
+1. 자동 빈 등록.
+
+  @Component 어노테이션이 붙은 클래스는 Spring의 컴포넌트 스캔 가능에 의해 자동으로 감지되고, Spring IoC 컨테이너에 빈으로 등록됩니다.
+  개발자가 직접 빈을 등록하는 대신, Spring이 클래스 경로에서 이를 탐색하고 관리하게 됩니다.
+
+
+2. 다른 특화된 어노테이션의 기반
+
+  @Component는 Spring에서 일반적인 빈을 등록하는 용도로 사용되며, 이를 기반으로 한 더 구체적인 어노테이션이 있습니다.
+  예를 들어, @Service, @Repository, @Controller 등이 @Component의 특수화된 형태로, 각각의 역할에 맞는 빈을 구체적으로 정의합니다.
+    
+      @Service: 서비스 레이어를 정의하는 클래스에 사용.
+      @Repository: 데이터 엑세스 레이어(DAO)에 사용.
+      @Controller: 웹 컨트롤러(프레젠테이션 레이어)에 사용.
+    
+  
+
+
+3. 간편한 빈 관리
+
+  @Component는 특별한 설정 없이 클래스에 간단히 어노테이션만 붙여서 Spring IoC 컨테이너에서 관리되는 빈으로 만들 수 있습니다.
+    
+      Spring이 제공하는 기본적인 빈 등록 방식 중 하나입니다.
+    
+  
+
+
+2️⃣ 예시
+@Component
+public class MyComponent {
+    public void doSomething() {
+        System.out.println("Hello from MyComponent!");
+    }
+}
+
+
+
+  위 코드에서 MyComponent 클래스는 @Component 어노테이션 덕분에 Spring IoC 컨테이너에 자동으로 빈으로 등록됩니다.
+    
+      이제 Spring이 이 빈을 관리하며, 다른 곳에서 의존성 주입을 통해 사용할 수 있습니다.
+    
+  
+
+
+@Service
+public class MyService {
+    
+    private final MyComponent myComponent;
+    
+    @Autowired
+    public MyService(MyComponent myComponent) {
+        this.myComponent = myComponent;
+    }
+    
+    public void performAction() {
+        myComponent.doSomthing();
+    }
+}
+
+
+
+  이 예에서는 MyService 클래스가 MyComponent 빈을 주입받아 사용합니다.
+    
+      MyComponent 가 자동으로 빈으로 등록되었기 때문에, @Autowired를 통해 MyService에 주입될 수 있습니다.
+    
+  
+
+
+3️⃣ @Component와 컴포넌트 스캔
+
+  @Component 어노테이션이 사용되려면 Spring이 컴포넌트 스캔을 통해 해당 클래스를 찾아야 합니다.
+  일반적으로 @ComponentScan 어노테이션이나 Spring Boot에서는 @SpringBootApplication 어노테이션을 통해 자동으로 컴포넌트 스캔이 활성화됩니다.
+
+
+@SpringBootApplication
+public class MySpringBootApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringBootApplication.class, args);
+    }
+}
+
+
+
+  이 코드에서 @SpringBootApplication은 @ComponentScan을 포함하고 있어, @Component가 붙은 모든 클래스를 자동으로 검색하고 빈으로 등록합니다.
+
+
+4️⃣ @Component와 다른 빈 등록 방식 비교.
+
+  @Component vs @Bean
+    
+      @Component는 클래스 레벨에서 자동으로 빈을 등록하며, 컴포넌트 스캔을 통해 Spring이 클래스를 감지합니다.
+      @Bean은 메서드 레벨에서 수동으로 빈을 등록하는 방식으로, 자바 설정 클래스(@Configuration)내에서 사용됩니다.
+        
+          개발자가 직접 메서드를 통해 빈을 생성하고 초기화할 수 있습니다.
+        
+      
+    
+  
+  @Component vs @Service, @Repository, @Controller
+    
+      이들 어노테이션은 모두 @Component를 기반으로 하며, 특정 레이어의 역할을 나타내기 위해 사용됩니다.
+        
+          예를 들어, @Service는 서비스 계층을 나타내고, @Repository는 데이터 엑세스 계층을 @Controller는 프레젠테이션 계층을 나타냅니다.
+        
+      
+      기능적으로는 동일하지만, 역할에 따라 어노테이션을 사용함으로써 코드의 가독성과 의미를 더 명확하게 할 수 있습니다.
+    
+  
+
+
+5️⃣ 언제 사용해야 하는가?
+
+  일반적인 빈 등록이 필요할 때
+    
+      비즈니스 로직, 유틸리티 클래스, 도메인 객체 등 Spring IoC 컨테이너에 의해 관리되어야 하는 일반적인 클래스를 빈으로 등록할 때 사용합니다.
+    
+  
+  특정 역할이 없는 클래스
+    
+      @Service, @Repository, @Contoroller와 같은 명시적인 역할이 없는 경우, @Component를 사용하여 클래스를 빈으로 등록할 수 있습니다.
+    
+  
+
+
+6️⃣ 결론.
+
+  @Component는 Spring 애플리케이션에서 자동으로 빈을 등록하는 데 사용되는 기본적인 어노테이션입니다.
+    
+      이를 사용하면 Spring IoC 컨테이너가 클래스 경로에서 자동으로 해당 클래스를 찾아 빈으로 관리하게 됩니다.
+    
+  
+  일반적인 빈 등록을 위한 용도로 사용되며, 더 구체적인 역할을 나태내기 위해 @Service, @Repository, @Controller와 같은 특화된 어노테이션이 존재합니다.
+  @Component는 간단하게 빈을 관리하고자 할 때 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-06-Quilifier-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-06-Quilifier-annotation.html"><h1 class="title_post">🍃[Spring] `@Qualifier` 어노테이션.</h1></a>
+                        <a href="/Spring/2024-10-06-Quilifier-annotation.html" class="txt_post">
+                            🍃[Spring] @Qualifier 어노테이션.
+
+
+  @Qualifier 어노테이션은 Spring Framework에서 빈 주입 시 모호성을 해결하기 위해 사용되는 어노테이션입니다.
+  Spring은 기본적으로 타입을 기준으로 빈을 주입하지만, 동일한 타입의 빈이 여러 개 존재할 경우 어느 빈을 주입할지 모호성이 발생할 수 있습니다.
+  이때 @Qualifier 어노테이션을 사용하여 특정 빈을 명시적으로 지정할 수 있습니다.
+
+
+1️⃣ @Qualifier의 주요 기능.
+
+1. 명시적 빈 선택.
+
+  여러 개의 동일한 타입의 빈이 존재할 때, @Qualifier를 사용하여 어떤 빈을 주입할지 명시적으로 지정할 수 있습니다.
+    
+      이를 통해 Spring이 주입해야 할 빈을 명확하게 구분할 수 있습니다.
+    
+  
+
+
+2. 빈 이름 기반 주입.
+
+  @Qualifier는 빈의 이름을 기준으로 주입할 빈을 선택합니다.
+    
+      @Autowired와 함께 사용되며, 이를 통해 Spring이 어떤 빈을 주입할지 결정할 수 있습니다.
+    
+  
+
+
+2️⃣ 사용 예시
+
+1. 동일한 타입의 여러 빈이 있을 때.
+@Component
+public class FirstService implements MyService {
+    // FirstService 구현
+}
+
+@Component
+public class SecondService implements MyService {
+    // SecondService 구현
+}
+
+
+
+  위 코드에서 FirstService와 SecondService가 모두 MyService 타입으로 정의된 빈입니다.
+    
+      이 경우 MyService 타입의 빈을 주입받으려 하면 Spring이 어느 빈을 주입해야 할지 모호성이 발생합니다.
+    
+  
+
+
+2. @Qualifier로 특정 빈 주입하기.
+@Service
+public class MyClient {
+    
+    private final MyService myService;
+    
+    @Autowired
+    public MyClient(@Qualifier("secondService") MyService myService) {
+        this.myService = myService;
+    }
+    
+    public void execute() {
+        myService.performAction();
+    }
+}
+
+
+
+  설명
+    
+      위 코드에서 @Qualifier("secondService")는 SecondService 빈을 명시적으로 주입하도록 지정하고 있습니다.
+      따라서 Spring은 SecondService 빈을 주입하게 됩니다.
+      동일한 타입의 여러 빈이 있을 때, 이와 같이 명시적으로 선택할 수 있습니다.
+    
+  
+
+
+3️⃣ 사용 상황.
+
+  동일한 타입의 빈이 여러 개 있을 때
+    
+      Qualifier는 여러 개의 동일한 타입의 빈이 등록되어 있을 때, 어느 빈을 주입해야 할지 명확히 지정해야 하는 경우에 사용됩니다.
+    
+  
+  특정 빈을 주입하고 싶을 때
+    
+      일반적인 상황에서 기본 빈이 아닌, 특정한 빈을 주입하고자 할 때 사용할 수 있습니다.
+    
+  
+
+
+빈 이름 지정.
+
+  빈 이름을 명시적으로 지정하려면, @Component 또는 @Bean 어노테이션에 이름을 지정할 수 있습니다.
+```java
+@Component(“firstService”)
+public class FirstService implements MyService {
+  // 구현 내용
+}
+
+
+@Component(“secondService”)
+public class SecondService implements MyService {
+    // 구현 내용
+}
+
+- 이렇게 빈의 이름을 명시적으로 설정한 후 `@Qualifier`로 해당 이름을 지정하여 주입할 수 있습니다.
+
+## 4️⃣ `@Qualifier`와 `@Primary`의 차이
+- **`@Primary`** 
+    - 기본적으로 사용될 빈을 지정합니다.
+    - 동일한 타입의 여러 빈이 존재할 때, `@Primary`가 지정된 빈이 우선적으로 주입됩니다.
+    - 다만, 명시적으로 `@Qualifier`가 사용되면 `@Primary`는 무시됩니다.
+- **`@Qualifier`**
+    - 특정 빈을 명시적으로 주입할 때 사용됩니다.
+    - `@Primary`가 설정된 빈이 있더라도, `@Qualifier`로 명시된 빈이 우선됩니다.
+
+## 5️⃣ 예시: `@Primary`와 `@Qualifier` 함께 사용.
+```java
+@Component
+@Primary
+public class FirstService implements MyService {
+    // FirstService 구현
+}
+
+@Component
+public class SecondService implements MyService {
+    // SecondService 구현
+}
+
+
+@Service
+public class MyClient {
+    
+    private final MyService myService;
+    
+    @Autowired
+    public MyClient(@Qualifier("secondService") MyService myService) {
+        this.myService = myService;
+    }
+    
+    public void execute() {
+        myService.performAction();
+    }
+}
+
+
+
+  설명
+    
+      여기서 FirstService는 @Primary로 기본 빈으로 설정되었지만, @Qualifier("secondService")를 사용해 SecondService 빈이 명시적으로 주입됩니다.
+      @Primary는 기본 빈을 설정할 때 유용하고, @Qualifier는 특정 상황에서 특정 빈을 주입할 때 사용됩니다.
+    
+  
+
+
+6️⃣ 결론
+
+  @Qualifier 어노테이션은 Spring에서 동일한 타입의 여러 빈 중 특정 빈을 명시적으로 주입해야 할 때 사용됩니다.
+  이를 통해 빈 주입 과정에서 발생할 수 있는 모호성을 해결할 수 있으며, 개발자가 원하는 빈을 명확히 지정할 수 있습니다.
+  @Primary와 함께 사용하여 기본 빈과 특정 빈을 관리할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-10-06-how-to-register-bean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -7451,395 +8115,6 @@ public UserService userService() {
   주로 설정 클래스(@Configuration) 내에서 사용되며, 프로그래밍 방식으로 객체의 생성과 설정을 관리하는 역할을 합니다.
   이 어노테이션은 수동으로 빈을 정의할 때 사용되며, XML 설정을 대체하거나 보완하는 방식으로 사용됩니다.
   @Component와는 달리 빈 생성 로직을 더 명확하게 제어할 수 있는 점이 특징입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-06-Quilifier-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-06-Quilifier-annotation.html"><h1 class="title_post">🍃[Spring] `@Qualifier` 어노테이션.</h1></a>
-                        <a href="/Spring/2024-10-06-Quilifier-annotation.html" class="txt_post">
-                            🍃[Spring] @Qualifier 어노테이션.
-
-
-  @Qualifier 어노테이션은 Spring Framework에서 빈 주입 시 모호성을 해결하기 위해 사용되는 어노테이션입니다.
-  Spring은 기본적으로 타입을 기준으로 빈을 주입하지만, 동일한 타입의 빈이 여러 개 존재할 경우 어느 빈을 주입할지 모호성이 발생할 수 있습니다.
-  이때 @Qualifier 어노테이션을 사용하여 특정 빈을 명시적으로 지정할 수 있습니다.
-
-
-1️⃣ @Qualifier의 주요 기능.
-
-1. 명시적 빈 선택.
-
-  여러 개의 동일한 타입의 빈이 존재할 때, @Qualifier를 사용하여 어떤 빈을 주입할지 명시적으로 지정할 수 있습니다.
-    
-      이를 통해 Spring이 주입해야 할 빈을 명확하게 구분할 수 있습니다.
-    
-  
-
-
-2. 빈 이름 기반 주입.
-
-  @Qualifier는 빈의 이름을 기준으로 주입할 빈을 선택합니다.
-    
-      @Autowired와 함께 사용되며, 이를 통해 Spring이 어떤 빈을 주입할지 결정할 수 있습니다.
-    
-  
-
-
-2️⃣ 사용 예시
-
-1. 동일한 타입의 여러 빈이 있을 때.
-@Component
-public class FirstService implements MyService {
-    // FirstService 구현
-}
-
-@Component
-public class SecondService implements MyService {
-    // SecondService 구현
-}
-
-
-
-  위 코드에서 FirstService와 SecondService가 모두 MyService 타입으로 정의된 빈입니다.
-    
-      이 경우 MyService 타입의 빈을 주입받으려 하면 Spring이 어느 빈을 주입해야 할지 모호성이 발생합니다.
-    
-  
-
-
-2. @Qualifier로 특정 빈 주입하기.
-@Service
-public class MyClient {
-    
-    private final MyService myService;
-    
-    @Autowired
-    public MyClient(@Qualifier("secondService") MyService myService) {
-        this.myService = myService;
-    }
-    
-    public void execute() {
-        myService.performAction();
-    }
-}
-
-
-
-  설명
-    
-      위 코드에서 @Qualifier("secondService")는 SecondService 빈을 명시적으로 주입하도록 지정하고 있습니다.
-      따라서 Spring은 SecondService 빈을 주입하게 됩니다.
-      동일한 타입의 여러 빈이 있을 때, 이와 같이 명시적으로 선택할 수 있습니다.
-    
-  
-
-
-3️⃣ 사용 상황.
-
-  동일한 타입의 빈이 여러 개 있을 때
-    
-      Qualifier는 여러 개의 동일한 타입의 빈이 등록되어 있을 때, 어느 빈을 주입해야 할지 명확히 지정해야 하는 경우에 사용됩니다.
-    
-  
-  특정 빈을 주입하고 싶을 때
-    
-      일반적인 상황에서 기본 빈이 아닌, 특정한 빈을 주입하고자 할 때 사용할 수 있습니다.
-    
-  
-
-
-빈 이름 지정.
-
-  빈 이름을 명시적으로 지정하려면, @Component 또는 @Bean 어노테이션에 이름을 지정할 수 있습니다.
-```java
-@Component(“firstService”)
-public class FirstService implements MyService {
-  // 구현 내용
-}
-
-
-@Component(“secondService”)
-public class SecondService implements MyService {
-    // 구현 내용
-}
-
-- 이렇게 빈의 이름을 명시적으로 설정한 후 `@Qualifier`로 해당 이름을 지정하여 주입할 수 있습니다.
-
-## 4️⃣ `@Qualifier`와 `@Primary`의 차이
-- **`@Primary`** 
-    - 기본적으로 사용될 빈을 지정합니다.
-    - 동일한 타입의 여러 빈이 존재할 때, `@Primary`가 지정된 빈이 우선적으로 주입됩니다.
-    - 다만, 명시적으로 `@Qualifier`가 사용되면 `@Primary`는 무시됩니다.
-- **`@Qualifier`**
-    - 특정 빈을 명시적으로 주입할 때 사용됩니다.
-    - `@Primary`가 설정된 빈이 있더라도, `@Qualifier`로 명시된 빈이 우선됩니다.
-
-## 5️⃣ 예시: `@Primary`와 `@Qualifier` 함께 사용.
-```java
-@Component
-@Primary
-public class FirstService implements MyService {
-    // FirstService 구현
-}
-
-@Component
-public class SecondService implements MyService {
-    // SecondService 구현
-}
-
-
-@Service
-public class MyClient {
-    
-    private final MyService myService;
-    
-    @Autowired
-    public MyClient(@Qualifier("secondService") MyService myService) {
-        this.myService = myService;
-    }
-    
-    public void execute() {
-        myService.performAction();
-    }
-}
-
-
-
-  설명
-    
-      여기서 FirstService는 @Primary로 기본 빈으로 설정되었지만, @Qualifier("secondService")를 사용해 SecondService 빈이 명시적으로 주입됩니다.
-      @Primary는 기본 빈을 설정할 때 유용하고, @Qualifier는 특정 상황에서 특정 빈을 주입할 때 사용됩니다.
-    
-  
-
-
-6️⃣ 결론
-
-  @Qualifier 어노테이션은 Spring에서 동일한 타입의 여러 빈 중 특정 빈을 명시적으로 주입해야 할 때 사용됩니다.
-  이를 통해 빈 주입 과정에서 발생할 수 있는 모호성을 해결할 수 있으며, 개발자가 원하는 빈을 명확히 지정할 수 있습니다.
-  @Primary와 함께 사용하여 기본 빈과 특정 빈을 관리할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-06-Component-annotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-06-Component-annotation.html"><h1 class="title_post">🍃[Spring] `@Component` 어노테이션.</h1></a>
-                        <a href="/Spring/2024-10-06-Component-annotation.html" class="txt_post">
-                            🍃[Spring] @Component 어노테이션.
-
-
-  @Component 어노테이션은 Spring Framework에서 빈(Bean) 으로 등록할 클래스를 지정하기 위해 사용하는 클래스 레벨 어노테이션입니다.
-  이 어노테이션을 사용하면 해당 클래스가 Spring IoC 컨테이너에 의해 자동으로 관리되는 빈으로 등록됩니다.
-  주로 애플리케이션에서 자동으로 빈을 등록하고 싶을 때 사용 됩니다.
-
-
-
-  🙋‍♂️ Spring 컨테이너
-🙋‍♂️ Spring 컨테이너를 사용하는 이유
-
-
-
-  📝 Spring IoC 컨테이너와 Spring 컨테이너는 다른 개념인가요?
-
-  Spring IoC 컨테이너와 Spring 컨테이너는 같은 개념을 의미하는 용어입니다.
-이 두 용어는 모두 Spring Framework에서 객체(Bean, 빈)의 생성, 관리, 의존성 주입, 생명주기 관리 등을 담당하는 컨테이너를 가리킵니다.
-
-  📝 같은 개념에 대한 다양한 표현
-  
-    Spring IoC 컨테이너는 더 구체적인 용어로, Spring에서 Inversion Of Control(제어의 역적) 원칙을 구현하는 빈 관리 시스템을 가리킵니다.
-      
-        
-          이 용어는 주로 제어의 역전(Inversion of Control) 이라는 프로그래밍 원칙을 강조하기 위해 사용됩니다.
-          IoC는 개발자가 직접 객체를 생성하고 관리하지 않고, 컨테이너가 객체의 생성과 의존성을 관리하는 방식입니다.
-        
-      
-    
-    Spring 컨테이너는 더 일반적인 용어로, Spring Framework가 제공하는 객체 관리 시스템을 가리키는 표현입니다.
-      
-        
-          이 용어는 Spring이 제공하는 컨테이너의 기능을 포괄적으로 표현하며, 그 핵심 기능은 IoC 컨테이너 입니다.
-        
-      
-    
-  
-
-  📝 결론
-  
-    Spring IoC 컨테이너와 Spring 컨테이너는 같은 개념으로 볼 수 있으며, 두 용어 모두 Spring의 핵심 기능인 객체 관리와 의존성 주입을 담당하는 시스템을 가리킵니다.
-    IoC는 이 컨테이너의 작동 원리를 설명하는 용어이고, Spring 컨테이너는 이를 일반적으로 부를 때 사용하는 표현힙니다.
-  
-
-
-1️⃣ 주요 기능 및 특징.
-
-1. 자동 빈 등록.
-
-  @Component 어노테이션이 붙은 클래스는 Spring의 컴포넌트 스캔 가능에 의해 자동으로 감지되고, Spring IoC 컨테이너에 빈으로 등록됩니다.
-  개발자가 직접 빈을 등록하는 대신, Spring이 클래스 경로에서 이를 탐색하고 관리하게 됩니다.
-
-
-2. 다른 특화된 어노테이션의 기반
-
-  @Component는 Spring에서 일반적인 빈을 등록하는 용도로 사용되며, 이를 기반으로 한 더 구체적인 어노테이션이 있습니다.
-  예를 들어, @Service, @Repository, @Controller 등이 @Component의 특수화된 형태로, 각각의 역할에 맞는 빈을 구체적으로 정의합니다.
-    
-      @Service: 서비스 레이어를 정의하는 클래스에 사용.
-      @Repository: 데이터 엑세스 레이어(DAO)에 사용.
-      @Controller: 웹 컨트롤러(프레젠테이션 레이어)에 사용.
-    
-  
-
-
-3. 간편한 빈 관리
-
-  @Component는 특별한 설정 없이 클래스에 간단히 어노테이션만 붙여서 Spring IoC 컨테이너에서 관리되는 빈으로 만들 수 있습니다.
-    
-      Spring이 제공하는 기본적인 빈 등록 방식 중 하나입니다.
-    
-  
-
-
-2️⃣ 예시
-@Component
-public class MyComponent {
-    public void doSomething() {
-        System.out.println("Hello from MyComponent!");
-    }
-}
-
-
-
-  위 코드에서 MyComponent 클래스는 @Component 어노테이션 덕분에 Spring IoC 컨테이너에 자동으로 빈으로 등록됩니다.
-    
-      이제 Spring이 이 빈을 관리하며, 다른 곳에서 의존성 주입을 통해 사용할 수 있습니다.
-    
-  
-
-
-@Service
-public class MyService {
-    
-    private final MyComponent myComponent;
-    
-    @Autowired
-    public MyService(MyComponent myComponent) {
-        this.myComponent = myComponent;
-    }
-    
-    public void performAction() {
-        myComponent.doSomthing();
-    }
-}
-
-
-
-  이 예에서는 MyService 클래스가 MyComponent 빈을 주입받아 사용합니다.
-    
-      MyComponent 가 자동으로 빈으로 등록되었기 때문에, @Autowired를 통해 MyService에 주입될 수 있습니다.
-    
-  
-
-
-3️⃣ @Component와 컴포넌트 스캔
-
-  @Component 어노테이션이 사용되려면 Spring이 컴포넌트 스캔을 통해 해당 클래스를 찾아야 합니다.
-  일반적으로 @ComponentScan 어노테이션이나 Spring Boot에서는 @SpringBootApplication 어노테이션을 통해 자동으로 컴포넌트 스캔이 활성화됩니다.
-
-
-@SpringBootApplication
-public class MySpringBootApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MySpringBootApplication.class, args);
-    }
-}
-
-
-
-  이 코드에서 @SpringBootApplication은 @ComponentScan을 포함하고 있어, @Component가 붙은 모든 클래스를 자동으로 검색하고 빈으로 등록합니다.
-
-
-4️⃣ @Component와 다른 빈 등록 방식 비교.
-
-  @Component vs @Bean
-    
-      @Component는 클래스 레벨에서 자동으로 빈을 등록하며, 컴포넌트 스캔을 통해 Spring이 클래스를 감지합니다.
-      @Bean은 메서드 레벨에서 수동으로 빈을 등록하는 방식으로, 자바 설정 클래스(@Configuration)내에서 사용됩니다.
-        
-          개발자가 직접 메서드를 통해 빈을 생성하고 초기화할 수 있습니다.
-        
-      
-    
-  
-  @Component vs @Service, @Repository, @Controller
-    
-      이들 어노테이션은 모두 @Component를 기반으로 하며, 특정 레이어의 역할을 나타내기 위해 사용됩니다.
-        
-          예를 들어, @Service는 서비스 계층을 나타내고, @Repository는 데이터 엑세스 계층을 @Controller는 프레젠테이션 계층을 나타냅니다.
-        
-      
-      기능적으로는 동일하지만, 역할에 따라 어노테이션을 사용함으로써 코드의 가독성과 의미를 더 명확하게 할 수 있습니다.
-    
-  
-
-
-5️⃣ 언제 사용해야 하는가?
-
-  일반적인 빈 등록이 필요할 때
-    
-      비즈니스 로직, 유틸리티 클래스, 도메인 객체 등 Spring IoC 컨테이너에 의해 관리되어야 하는 일반적인 클래스를 빈으로 등록할 때 사용합니다.
-    
-  
-  특정 역할이 없는 클래스
-    
-      @Service, @Repository, @Contoroller와 같은 명시적인 역할이 없는 경우, @Component를 사용하여 클래스를 빈으로 등록할 수 있습니다.
-    
-  
-
-
-6️⃣ 결론.
-
-  @Component는 Spring 애플리케이션에서 자동으로 빈을 등록하는 데 사용되는 기본적인 어노테이션입니다.
-    
-      이를 사용하면 Spring IoC 컨테이너가 클래스 경로에서 자동으로 해당 클래스를 찾아 빈으로 관리하게 됩니다.
-    
-  
-  일반적인 빈 등록을 위한 용도로 사용되며, 더 구체적인 역할을 나태내기 위해 @Service, @Repository, @Controller와 같은 특화된 어노테이션이 존재합니다.
-  @Component는 간단하게 빈을 관리하고자 할 때 유용하게 사용됩니다.
 
 
                         </a>
@@ -31112,128 +31387,6 @@ public class PaymentService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-08-28-Protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-08-28-Protocol.html"><h1 class="title_post">🌐[Network] 프로토콜</h1></a>
-                        <a href="/Network/2024/2024-08-28-Protocol.html" class="txt_post">
-                            🌐[Network] 프로토콜.
-
-1️⃣ 프로토콜.
-
-  프로토콜(Protocol)은 통신 시스템이 데이터를 교환하기 위해 사용하는 통신 규칙입니다.
-    
-      OSI 7계층 모델에서는 각 계층에서 수행하는 프로토콜이 서로 역할을 분담하여 독립적으로 동작합니다.
-        
-          따라서 계층 1에는 계층 1끼리 통신할 수 있는 프로토콜이 존재하고, 계층 2에는 계층 2끼리 통신할 수 있는 프로토콜이 존재합니다.
-        
-      
-    
-  
-
-
-1️⃣ 프로토콜의 예.
-
-
-
-
-  위 그림은 일반인이 스마트폰으로 통화하는 규칙을 보여주고 있는데, 이러한 순서와 절차를 프로토콜이라 정의할 수 있습니다.
-    
-      시간은 위에서 아래로 흐르고, 왼쪽의 발신자가 오른쪽의 수신자에게 통화를 시도하고 있습니다.
-      연결을 설정할 때는 항상 발신자의 요청에 의하여 시작되며, 수신자는 미리 연결 대기 상태에 있어야 합니다.
-      연결 설정은 상호 간의 합의 아래 이루어지지만, 종료는 한쪽의 일방적인 종결 선언으로도 가능합니다.
-    
-  
-  전화 연결을 위한 규칙(프로토콜 - protocol) 설명.
-    
-      
-        
-          수신자는 스마트폰 전원을 켜서 발신자의 통화 요청보다 먼저 대기 상태에 있어야 합니다.
-        
-      
-      
-        
-          발신자가 수신자의 전화번호를 누르면(또는 번호를 입력한 후  버튼을 누르면)
-        
-      
-      
-        
-          수신자의 스마트폰의 벨이 울립니다.
-        
-      
-      
-        
-          수신자가  버튼을 눌러 전화를 받으면 연결이 설정됩니다(수신자가 벨 소리를 무시하고 전화를 받지 않으면 열결되지 않으므로 연결 설정은 반드시 양자의 합의가 있어야 합니다).
-        
-      
-      
-        
-          일단 연결이 설정되면 연결이 해제되기 전까지 데이터를 주고받을 수 있습니다.
-        
-      
-      
-        
-          연결 해제는 외형상 한쪽의 일방적인 종료로 이루어지지만
-            
-              실제로는 대화의 과정에서 쌍방의 합의로 이루어집니다.
-            
-            
-              실제 네트워크 프로토콜에서도 연결 해제를 한쪽의 일방적인 결정과 양자의 합의에 의한 결정으로 구분하여 설계합니다.
-            
-          
-        
-      
-    
-  
-
-
-2️⃣ 데이터 단위.
-
-
-  네트워크 프로토콜을 사용해 데이터를 교환할 때는 먼저 데이터를 특정 형태로 규격화하는 작업이 필요합니다.
-    
-      예를 들어, 우편물을 보낼 때 정해진 규격 봉투를 사용하는 것과 같은 원리입니다.
-        
-          규격 봉투에 보내는 사람 주소, 받는 사람 주소 등을 규칙에 따라 기입하는 것처럼 네트워크에서도 데이터를 프로토콜에서 정의된 데이터 규격에 맞춰 묶어주어야 합니다.
-            
-              이와 같은 한 단위의 규격으로 묶인 전송 데이터를 데이터 단위라 합니다.
-            
-          
-        
-      
-    
-  
-  OSI 7계층 모델의 각 계층에서 규격화된 데이터에는 아래의 표와 같이 고유 명칭이 있습니다.
-    
-      계층에 상관없이 사용할 때는 통칭하여 PDU(Protocol Data Unit)라 부릅니다.
-    
-  
-
-
-
-
-
-  데이터 단위의 용어 중에서 네트워크 계층에서 정의된 패킷이 인터넷에서 가장 많이 인용되며, 데이터 링크 계층에서 사용하는 프레임도 중요합니다.
-  전송 계층에서 정의된 데이터그램은 가상 회선이라는 용어와 대비되면서 중요하게 다루어지기 때문에 이들 세 용어에 익숙해질 필요가 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-08-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-08-28-shared-reference-and-side-effects.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -31728,6 +31881,128 @@ b = Address{value='부산'}
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-08-28-Protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-08-28-Protocol.html"><h1 class="title_post">🌐[Network] 프로토콜</h1></a>
+                        <a href="/Network/2024/2024-08-28-Protocol.html" class="txt_post">
+                            🌐[Network] 프로토콜.
+
+1️⃣ 프로토콜.
+
+  프로토콜(Protocol)은 통신 시스템이 데이터를 교환하기 위해 사용하는 통신 규칙입니다.
+    
+      OSI 7계층 모델에서는 각 계층에서 수행하는 프로토콜이 서로 역할을 분담하여 독립적으로 동작합니다.
+        
+          따라서 계층 1에는 계층 1끼리 통신할 수 있는 프로토콜이 존재하고, 계층 2에는 계층 2끼리 통신할 수 있는 프로토콜이 존재합니다.
+        
+      
+    
+  
+
+
+1️⃣ 프로토콜의 예.
+
+
+
+
+  위 그림은 일반인이 스마트폰으로 통화하는 규칙을 보여주고 있는데, 이러한 순서와 절차를 프로토콜이라 정의할 수 있습니다.
+    
+      시간은 위에서 아래로 흐르고, 왼쪽의 발신자가 오른쪽의 수신자에게 통화를 시도하고 있습니다.
+      연결을 설정할 때는 항상 발신자의 요청에 의하여 시작되며, 수신자는 미리 연결 대기 상태에 있어야 합니다.
+      연결 설정은 상호 간의 합의 아래 이루어지지만, 종료는 한쪽의 일방적인 종결 선언으로도 가능합니다.
+    
+  
+  전화 연결을 위한 규칙(프로토콜 - protocol) 설명.
+    
+      
+        
+          수신자는 스마트폰 전원을 켜서 발신자의 통화 요청보다 먼저 대기 상태에 있어야 합니다.
+        
+      
+      
+        
+          발신자가 수신자의 전화번호를 누르면(또는 번호를 입력한 후  버튼을 누르면)
+        
+      
+      
+        
+          수신자의 스마트폰의 벨이 울립니다.
+        
+      
+      
+        
+          수신자가  버튼을 눌러 전화를 받으면 연결이 설정됩니다(수신자가 벨 소리를 무시하고 전화를 받지 않으면 열결되지 않으므로 연결 설정은 반드시 양자의 합의가 있어야 합니다).
+        
+      
+      
+        
+          일단 연결이 설정되면 연결이 해제되기 전까지 데이터를 주고받을 수 있습니다.
+        
+      
+      
+        
+          연결 해제는 외형상 한쪽의 일방적인 종료로 이루어지지만
+            
+              실제로는 대화의 과정에서 쌍방의 합의로 이루어집니다.
+            
+            
+              실제 네트워크 프로토콜에서도 연결 해제를 한쪽의 일방적인 결정과 양자의 합의에 의한 결정으로 구분하여 설계합니다.
+            
+          
+        
+      
+    
+  
+
+
+2️⃣ 데이터 단위.
+
+
+  네트워크 프로토콜을 사용해 데이터를 교환할 때는 먼저 데이터를 특정 형태로 규격화하는 작업이 필요합니다.
+    
+      예를 들어, 우편물을 보낼 때 정해진 규격 봉투를 사용하는 것과 같은 원리입니다.
+        
+          규격 봉투에 보내는 사람 주소, 받는 사람 주소 등을 규칙에 따라 기입하는 것처럼 네트워크에서도 데이터를 프로토콜에서 정의된 데이터 규격에 맞춰 묶어주어야 합니다.
+            
+              이와 같은 한 단위의 규격으로 묶인 전송 데이터를 데이터 단위라 합니다.
+            
+          
+        
+      
+    
+  
+  OSI 7계층 모델의 각 계층에서 규격화된 데이터에는 아래의 표와 같이 고유 명칭이 있습니다.
+    
+      계층에 상관없이 사용할 때는 통칭하여 PDU(Protocol Data Unit)라 부릅니다.
+    
+  
+
+
+
+
+
+  데이터 단위의 용어 중에서 네트워크 계층에서 정의된 패킷이 인터넷에서 가장 많이 인용되며, 데이터 링크 계층에서 사용하는 프레임도 중요합니다.
+  전송 계층에서 정의된 데이터그램은 가상 회선이라는 용어와 대비되면서 중요하게 다루어지기 때문에 이들 세 용어에 익숙해질 필요가 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-08-28</span>
                             
@@ -48337,32 +48612,6 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-16-TIL.html"><h1 class="title_post">📝 [TIL] 240516 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-16-TIL.html" class="txt_post">
-                            
-  연습 문제 정리(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Post/2024-05-16-PracticeSummary-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -48433,6 +48682,32 @@ public class Main {
 “인덱스를 자유자재로 가지고 논다” 라는 말은 문자열이 주어지면 인덱스를 활용하여 문자를 삽입, 삭제, 추출, 변환 등을 자유롭게 할 줄 알아야 한다는 의미입니다.
 
 연습 문제 중 문자열에 대한 문제는 이 부분이 가장 중요시되는 것 같았습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-16-TIL.html"><h1 class="title_post">📝 [TIL] 240516 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-16-TIL.html" class="txt_post">
+                            
+  연습 문제 정리(1)
+
 
                         </a>
                         <div class="info-post">
@@ -48705,6 +48980,74 @@ first.ifPresent(System.out::println); // 출력 Alice
                                 <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-05-13-lambdaIsOnlyOne.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-05-13-lambdaIsOnlyOne.html"><h1 class="title_post">☕️[Java] 람다식은 하나만!</h1></a>
+                        <a href="/Java/Java/2024-05-13-lambdaIsOnlyOne.html" class="txt_post">
+                            람다식은 하나만!😆
+자바에서는 “하나의 추상 메소드를 갖는 인터페에스에 대해서만 람다식을 직접 사용할 수 있습니다.”
+이를 함수형 인터페이스라고 부르며, 람다식은 이런 함수형 인터페이스의 구현을 간단히 할 수 있는 방법을 제공합니다.
+
+하지만 아래의 코드와 같이 인터페이스 내에 두 개의 추상 메서드 (‘plus’, ‘minus’)가 있기 때문에, 이 인터페이스를 람다식으로 직접 구현하는 것은 불가능합니다.
+
+interface Carculator {
+    public abstract int plus(int x, int y);
+    public abstract int minus(int x, int y);
+}
+
+
+람다식을 사용하려면 함수형 인터페이스가 필요하므로, 두 메소드 각각을 위한 두 개의 별도의 인터페이스를 정의하거나 기존 인터페이스 중 하나를 수정해야 합니다.
+
+아래의 코드는 이를 위해 각 메소드를 분리하여 두 개의 함수형 인터페이스를 만든 예시입니다.
+interface Calculator {
+  public abstract int operation(int x, int y);
+}
+public class Main {
+
+  public static void main(String[] args) {
+    Calculator plus = (x, y) -&gt; { return x + y; };
+    System.out.println(plus.operation(10,2)); // 12
+    Calculator minus = (x, y) -&gt; { return x - y; };
+    System.out.println(minus.operation(10,2)); // 8
+  }
+}
+
+
+위 코드는 각 연산을 람다식으로 간단히 구현하고 있습니다.
+만약 원래의 ‘Carculator’ 인터페이스를 유지고하고 싶다면 이를 직접적으로 람다식으로 구현할 수는 없으며, 대신 익명 클래스나 정규 클래스를 사용해야 합니다.
+
+아래의 코드는 익명 클래스를 사용하는 방법을 보여줍니다.
+Calculator calclator = new Calculator() {
+    @Override
+    public int plus(int x, int y) {
+        return x + y;
+    }
+    
+    @Override
+    public int minus(int x, int y) {
+        return x - y;
+    }
+}
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-05-13</span>
                             
                         </div>
                     </div>
@@ -49308,74 +49651,6 @@ hashCode() 메소드의 주요 용도
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-05-13-lambdaIsOnlyOne.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-05-13-lambdaIsOnlyOne.html"><h1 class="title_post">☕️[Java] 람다식은 하나만!</h1></a>
-                        <a href="/Java/Java/2024-05-13-lambdaIsOnlyOne.html" class="txt_post">
-                            람다식은 하나만!😆
-자바에서는 “하나의 추상 메소드를 갖는 인터페에스에 대해서만 람다식을 직접 사용할 수 있습니다.”
-이를 함수형 인터페이스라고 부르며, 람다식은 이런 함수형 인터페이스의 구현을 간단히 할 수 있는 방법을 제공합니다.
-
-하지만 아래의 코드와 같이 인터페이스 내에 두 개의 추상 메서드 (‘plus’, ‘minus’)가 있기 때문에, 이 인터페이스를 람다식으로 직접 구현하는 것은 불가능합니다.
-
-interface Carculator {
-    public abstract int plus(int x, int y);
-    public abstract int minus(int x, int y);
-}
-
-
-람다식을 사용하려면 함수형 인터페이스가 필요하므로, 두 메소드 각각을 위한 두 개의 별도의 인터페이스를 정의하거나 기존 인터페이스 중 하나를 수정해야 합니다.
-
-아래의 코드는 이를 위해 각 메소드를 분리하여 두 개의 함수형 인터페이스를 만든 예시입니다.
-interface Calculator {
-  public abstract int operation(int x, int y);
-}
-public class Main {
-
-  public static void main(String[] args) {
-    Calculator plus = (x, y) -&gt; { return x + y; };
-    System.out.println(plus.operation(10,2)); // 12
-    Calculator minus = (x, y) -&gt; { return x - y; };
-    System.out.println(minus.operation(10,2)); // 8
-  }
-}
-
-
-위 코드는 각 연산을 람다식으로 간단히 구현하고 있습니다.
-만약 원래의 ‘Carculator’ 인터페이스를 유지고하고 싶다면 이를 직접적으로 람다식으로 구현할 수는 없으며, 대신 익명 클래스나 정규 클래스를 사용해야 합니다.
-
-아래의 코드는 익명 클래스를 사용하는 방법을 보여줍니다.
-Calculator calclator = new Calculator() {
-    @Override
-    public int plus(int x, int y) {
-        return x + y;
-    }
-    
-    @Override
-    public int minus(int x, int y) {
-        return x - y;
-    }
-}
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-05-12-Input-Ouput-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -49565,6 +49840,33 @@ public class ScannerExample {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-05-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-12-TIL.html" class="txt_post">
+                            
+  입출력(2)
+  예외 처리
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-12</span>
                             
@@ -49793,33 +50095,6 @@ public class Main {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-05-12-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-12-TIL.html"><h1 class="title_post">📝 [TIL] 240512 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-12-TIL.html" class="txt_post">
-                            
-  입출력(2)
-  예외 처리
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-12</span>
                             
@@ -50219,34 +50494,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-11-TIL.html" class="txt_post">
-                            
-  인터페이스
-  내부 클래스
-  입출력(1)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Post/2024-05-11-DifferenceFrontendAndBackend.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -50345,6 +50592,34 @@ public class Main {
 그래서 저의 적성과 맞는 것 같아요.
 
 저는 이러한 부분에서 백엔드 개발자가 제가 즐길 수 있는 부분이 서로 맞기 때문에 백엔드 개발자가 되고 싶습니다 😆
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-11-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-11-TIL.html"><h1 class="title_post">📝 [TIL] 240511 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-11-TIL.html" class="txt_post">
+                            
+  인터페이스
+  내부 클래스
+  입출력(1)
+
 
                         </a>
                         <div class="info-post">
@@ -52098,6 +52373,267 @@ public class Test {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/TIL/2024-05-06-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-06-TIL.html"><h1 class="title_post">📝 [TIL] 240506 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-06-TIL.html" class="txt_post">
+                            
+  반복문
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html"><h1 class="title_post">💾 [CS] 메모리의 주소 공간</h1></a>
+                        <a href="/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html" class="txt_post">
+                            메모리의 주소 공간.
+
+주소에는 물리 주소와 논리 주소가 있다. 이번 절에서는 이 두 주소의 개념과 차이, 그리고 두 주소 간의 변환 방법을 학습한다.
+
+1. 주소의 종류.
+지금까지 ‘메모리에 저장된 정보의 위치는 주소로 나타낼 수 있다’ 정도로만 설명했지만, 사실 주소에는 두 종류가 있습니다.
+
+
+  1. 물리주소 : 메모리 하드웨어가 사용하는 주소.
+  2. 논리주소 : CPU와 실행 중인 프로그램이 사용하는 주소.
+
+
+2. 물리 주소와 논리 주소.
+CPU와 실행 중인 프로그램은 현재 메모리 몇 번지에 무엇이 저장되어 있는지 다 알고 있지 않습니다.
+
+  그 이유는 메모리에 저장된 정보는 시시각각 변하기 때문입니다.
+
+
+메모리에는 새롭게 실행되는 프로그램이 시시때때로 적재되고, 실행이 끝난 프로그램은 삭제됩니다.
+게다가, 같은 프로그램을 실행하더라도 실행할 때마다 적재되는 주소가 달라질 수 있습니다.
+
+  예를 들어, 1500번지에 적재되었던 프로그램을 다시 실행하면 3000번지, 또 다시 실행하면 2700번지에 적재될 수 있습니다.
+
+
+그렇다면 CPU와 실행 중인 프로그램이 이해하는 주소는 무엇일까요?
+
+주소에는 메모리가 사용하는 물리 주소가 있고, CPU와 실행 중인 프로그램이 사용하는 논리 주소가 있습니다.
+
+
+  물리 주소(Physical address) : 정보가 실제로 저장된 하드웨어상의 주소를 의미.
+  논리 주소(logical address) : CPU와 실행 중인 프로그램이 사용하는 주소, 실행 중인 프로그램 각각에게 부여된 0번지부터 시작되는 주소를 의미함.
+
+
+예를 들어 현재 메모리에 메모장, 게임, 인터넷 브라우저 프로그램이 적재되어 있다고 가정해 보겠습니다.
+메모장, 게임, 인터넷 브라우저 프로그램은 현재 다른 프로그램들이 메모리 몇 번지에 저장되어 있는지,
+다시 말해 다른 프로그램들의 물리 주소가 무엇인지 굳이 알 필요가 없습니다.
+
+새로운 프로그램이 언제든 적재될 수 있고, 실행되지 않은 프로그램은 언제든 메모리에서 사라질 수 있기 때문입니다.
+
+그래서 메모장, 게임, 인터넷 브라우저는 모두 물리 주소가 아닌 0번지부터 시작하는 자신만을 위한 주소인 논리 주소를 가지고 있습니다.
+
+예를 들어, ‘10번지’라는 주소는 메모장에도, 게임에도, 인터넷 브라우저에도 논리 주소로써 존재할 수 있습니다.
+프로그램마다 같은 논리 주소가 얼마든지 있을 수 있다는 뜻입니다.
+그리고 CPU는 이 논리 주소를 받아들이고, 해석하고, 연산합니다.
+
+
+
+정리하면, 메모리가 사용하는 주소는 하드웨어상의 실제 주소인 물리 주소이고, CPU와 실행 중인 프로그램이 사용하는 주소는 각각의 프로그램에 부여된 논리 주소입니다.
+
+그런데 CPU가 이해하는 주소가 논리 주소라고는 해도 CPU가 메모리와 상호작용하려면 논리 주소와 물리 주소 간의 변환이 이루어져야 합니다.
+
+논리 주소와 물리 주소 간에 어떠한 변환도 이루어지지 않는다면 CPU와 메모리는 서로 이해할 수 없는 주소 체계를 가지고 각자 다른 이야기만 할 뿐 결코 상호작용할 수 없을 테니까요.
+
+그렇다면 논리 주소는 어떻게 물리 주소로 변환될까요?
+
+논리 주소와 물리 주소 간의 변환은 CPU와 주소 버스 사이에 위치한 메모리 관리 장치(MMU: Memory Management Unit) 라는 하드웨어에 의해 수행됩니다.
+
+
+
+MMU는 CPU가 발생시킨 논리 주소에 베이스 레지스터 값을 더하여 논리 주소를 물리 주소로 변환합니다.
+예를 들어 현재 베이스 레지스터에 15000이 저장되어 있고 CPU가 발생시킨 논리 주소가 100번지라면 이 논리 주소는 아래 그림처럼 물리 주소 15100번지(100+15000)로 변환됩니다.
+물리 주소 15000번지부터 적재된 프로그램 A의 논리 주소 100번지에는 이렇게 접근이 가능한 것 입니다.
+
+
+
+베이스 레지스터는 프로그램의 가장 작은 물리 주소, 즉 프로그램의 첫 물리 주소를 저장하는 셈이고,
+논리 주소는 프로그램의 시작점으로부터 떨어진 거리인 셈입니다.
+
+3. 메모리 보호 기법.
+메모장 프로그램의 물리 주소가 1000번지부터 1999번지, 인터넷 브라우저 프로그램의 물리 주소가 2000번지부터 2999번지, 게임 프로그램의 물리 주소가 3000번지부터 3999번지라고 가정해 보겠습니다.
+
+만약 메모장 프로그램 명령어 중 ‘(논리 주소) 1500번지에 숫자 100을 저장하라’와 같은 명령어가 있다면 숫자 100은 어떤 물리 주소에 저장될까요? 이 명령어는 실행되어도 안전할까요?
+
+혹은 인터넷 브라우저 프로그램 명령어 중 ‘(논리 주소) 1100번지의 데이터를 삭제하라’와 같은 명령어가 있다면 어떤 물리 주소의 데이터가 삭제될까요? 이 명령어는 실행되어도 안전할까요?
+
+위와 같은 명령어들은 실행되어서는 안 됩니다.
+프로그램의 논리 주소 영역을 벗어났기 때문입니다.
+위 명령어들이 실행된다면 메모장 프로그램 명령어는 애꿏은 인터넷 브라우저 프로그램에 숫자 10을 저장하고, 인터넷 브라우저 프로그램 명령어는 자신과는 전혀 관련 없는 게임 프로그램 정보를 삭제합니다.
+
+이렇게 다른 프로그램의 영역을 침범할 수 있는 명령어는 위험하기 때문에 논리 주소 범위를 벗어나는 명령어 실행을 방지하고 실행 중인 프로그램이 다른 프로그램에 영향을 받지 않도록 보호할 방법이 핑요합니다.
+
+이는 한계 레지스터(limit register) 라는 레지스터가 담당합니다.
+
+베이스 레지스터가 실행 중인 프로그램의 가장 작은 물리 주소를 저장한다면, 한계 레지스터는 논리 주소의 최대 크기를 저장합니다.
+
+즉, 프로그램의 물리 주소 범위는 베이스 레지스터 값 이상, 베이스 레지스터 값 + 한계 레지스터 값 미만이 됩니다.
+
+
+
+CPU가 접근하려는 논리 주소는 한계 레지스터가 저장한 값보다 커서는 안 됩니다.
+한계 레지스터보다 높은 주소 값에 접근하는 것은 곧 프로그램의 범위에 벗어난 메모리 공간에 접근하는 것과 같디 때문입니다.
+
+베이스 레지스터에 100, 한계 레지스터에 150이 저장되어 있다고 해 봅시다.
+이는 물리 주소 시작점이 100번지, 프로그램의 크기(논리 주소의 최대 크기)는 150임을 의미합니다.
+따라서 이 프로그램은 150번지를 넘어서는 논리 주소를 가질 수 없습니다.
+
+이번에는 베이스 레지스터에 1500, 한계 레지스터에 1000이 저장되어 있다고 해 봅시다.
+이는 물리주소 시작점이 1500번지, 프로그램 크기는 1000임을 의미합니다.
+따라서 이 프로그램은 1000번지를 넘어서는 논리 주소를 가질 수 없습니다.
+
+CPU는 메모리에 접근하기 전에 접근하고자 하는 논리 주소가 한계 레지스터보다 작은지를 항상 검사합니다.
+만약 CPU가 한계 레지스터보다 높은 논리 주소에 접근하려고 하면 인터럽트(트랩)를 발생시켜 실행을 중단합니다.
+
+이러한 방식으로 실행 중인 프로그램의 독립적인 실행 공간을 확보하고 하나의 프로그램이 다른 프로그램을 침범하지 못하게 보호할 수 있습니다.
+
+5. 키워드로 정리하는 핵심 키워드
+
+  물리 주소는 메모리 하드웨어상의 주소이고, 논리 주소는 CPU와 실행 중인 프로그램이 사용하는 주소입니다.
+  MMU는 논리 주소를 물리 주소로 변환합니다.
+  베이스 레지스터는 프로그램의 첫 물리 주소를 저장합니다.
+  한계 레지스터는 실행 중인 프로그램의 논리 주소의 최대 크기를 저장합니다.
+
+
+
+
+컴퓨터 시스템에서 “물리 주소(Physical Address)”와 “논리 주소(Logical Address)”는 메모리 관리의 중요한 개념입니다.
+각각은 다음과 같은 의미를 가지며, 시스템의 효율적인 메모리 관리를 위해 사용됩니다.
+
+1.1 논리 주소(Logical Address)
+
+  정의 : 논리 주소는 프로그램이 사용하는 주소입니다.
+    
+      이 주소는 프로그램이 실행되면서 생성되는 주소로, 사용자 또는 프로그램이 접근할 수 있는 주소입니다.
+      이 주소는 가상 메모리 주소라고도 하며, 실제 메모리의 물리적 위치와는 독립적입니다.
+    
+  
+  목적 : 논리 주소의 주요 목적은 각 프로세스가 독립된 주소 공간을 갖게 하여, 프로세스간의 메모리 충돌을 방지하고 보안을 강화하는 데 있습니다.
+    
+      또한, 프로그래밍을 단순화시키고 메모리 관리를 더 유연하게 만듭니다.
+    
+  
+
+
+1.2 물리 주소(Physical Address)
+
+  정의 : 물리 주소는 메모리 장치 내의 실제 위치를 가리키는 주소입니다.
+    
+      이 주소는 시스템의 메모리 관리 유닛(Memory Management Unit, MMU)에 의해 사용되며, 실제 RAM에서 데이터를 찾는 데 사용됩니다.
+    
+  
+  목적 : 물리 주소는 시스템의 메모리를 효율적으로 할당하고 관리하는 데 필요합니다.
+    
+      이를 통해 시스템은 실제 메모리 공간을 최적화하고, 필요한 데이터와 프로그램을 정확한 위치에서 처리할 수 있습니다.
+    
+  
+
+
+1.3 주소 변환(Address Translation)
+논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)에 의해 수행됩니다.
+이 과정은 다음과 같은 방법으로 이루어 집니다.
+
+
+  1. 페이지 테이블 : 운영체제는 페이지 테이블을 사용하여 논리 주소를 물리 주소로 매핑합니다.
+    
+      페이지 테이블을 논리 주소를 페이지로 나누고, 각 페이지가 실제 메모리의 어느 부분에 해당하는지를 나타내는 테이블입니다.
+    
+  
+  
+    2. 변환 조회 버퍼(TLB) : 변환 조회 버퍼는 자주 사용되는 주소 매핑을 캐시하는 작은 메모리로, 주소 변환 과정을 빠르게 만듭니다.
+  
+  3. 주소 변환 과정
+    
+      프로세스가 논리 주소를 생성합니다.
+      MMU는 논리 주소의 페이지 번호를 확인하고, 해당 페이지 번호가 페이지 테이블에 있는지 확인합니다.
+      페이지 테이블에서 해당 페이지의 물리 주소를 찾아 매핑합니다.
+      물리 주소를 사용하여 실제 메모리에서 데이터를 엑세스합니다.
+    
+  
+
+
+📝 정리
+이러한 주소 변환 메커니즘은 메모리 보호, 프로세스 격리, 메모리 사용의 효율성 증가 등을 가능하게 하며, 복잡한 현대의 멀티태스킹 환경에서 중요한 역할을 합니다.
+
+Q1. 물리 주소(Physical Address)’와 ‘논리 주소(Logical Address)’에 대해 설명해 주시겠습니까? 이 두 주소의 개념과 차이점을 구체적으로 말씀해 주시고, 어떻게 논리 주소가 물리 주소로 변환되는지 그 과정에 대해서도 설명해 주세요.
+
+
+  
+    논리 주소는 프로그램이 사용하는 주소로, 프로그램 코드에 의해 참조되는 주소입니다. 이는 운영체제에 의해 관리되며, 프로그램이 메모리에 로드되는 위치와 무관하게 일관성을 유지합니다. 즉, 프로그램이 메모리의 어느 위치에 로드되든지 간에 같은 논리 주소를 사용할 수 있습니다. 논리 주소는 가상 메모리 주소라고도 하며, 이를 통해 개발자는 실제 메모리 구조를 신경 쓰지 않고 프로그래밍할 수 있습니다.
+  
+  
+    물리 주소는 메모리 장치 내의 실제 물리적 위치를 가리킵니다. 즉, 물리 주소는 RAM 내의 실제 데이터나 명령어가 저장된 위치를 나타내며, 메모리 관리 유닛(MMU)에 의해 논리 주소로부터 변환됩니다.
+  
+  
+    논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)을 통해 이루어집니다. 이 과정은 다음과 같습니다:
+    
+      
+        
+          프로세스가 생성하는 논리 주소는 페이지 번호와 오프셋으로 구성됩니다.
+        
+      
+      
+        
+          페이지 번호는 페이지 테이블을 참조하여 해당 페이지가 메모리의 어느 물리적 위치에 있는지 결정합니다. 이 페이지 테이블은 운영 체제에 의해 관리되며, 각 페이지의 물리 주소를 저장합니다.
+        
+      
+      
+        
+          물리 주소는 결정된 페이지 시작 주소에 오프셋을 추가하여 최종적으로 결정됩니다.
+        
+      
+      
+        
+          변환 조회 버퍼(TLB)는 이러한 변환 과정을 가속화하기 위해 자주 사용되는 주소 변환을 캐시합니다.
+            
+              이러한 변환 과정을 통해 시스템은 효율적으로 메모리를 관리하며, 프로세스 간 메모리 격리와 보안을 유지할 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-06</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-06-loopStatement.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -52510,267 +53046,6 @@ for (String name : names) {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-05-06-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-06-TIL.html"><h1 class="title_post">📝 [TIL] 240506 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-06-TIL.html" class="txt_post">
-                            
-  반복문
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-06</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html"><h1 class="title_post">💾 [CS] 메모리의 주소 공간</h1></a>
-                        <a href="/Archive/CS_archive/2024-05-06-addressSpaceInMemory.html" class="txt_post">
-                            메모리의 주소 공간.
-
-주소에는 물리 주소와 논리 주소가 있다. 이번 절에서는 이 두 주소의 개념과 차이, 그리고 두 주소 간의 변환 방법을 학습한다.
-
-1. 주소의 종류.
-지금까지 ‘메모리에 저장된 정보의 위치는 주소로 나타낼 수 있다’ 정도로만 설명했지만, 사실 주소에는 두 종류가 있습니다.
-
-
-  1. 물리주소 : 메모리 하드웨어가 사용하는 주소.
-  2. 논리주소 : CPU와 실행 중인 프로그램이 사용하는 주소.
-
-
-2. 물리 주소와 논리 주소.
-CPU와 실행 중인 프로그램은 현재 메모리 몇 번지에 무엇이 저장되어 있는지 다 알고 있지 않습니다.
-
-  그 이유는 메모리에 저장된 정보는 시시각각 변하기 때문입니다.
-
-
-메모리에는 새롭게 실행되는 프로그램이 시시때때로 적재되고, 실행이 끝난 프로그램은 삭제됩니다.
-게다가, 같은 프로그램을 실행하더라도 실행할 때마다 적재되는 주소가 달라질 수 있습니다.
-
-  예를 들어, 1500번지에 적재되었던 프로그램을 다시 실행하면 3000번지, 또 다시 실행하면 2700번지에 적재될 수 있습니다.
-
-
-그렇다면 CPU와 실행 중인 프로그램이 이해하는 주소는 무엇일까요?
-
-주소에는 메모리가 사용하는 물리 주소가 있고, CPU와 실행 중인 프로그램이 사용하는 논리 주소가 있습니다.
-
-
-  물리 주소(Physical address) : 정보가 실제로 저장된 하드웨어상의 주소를 의미.
-  논리 주소(logical address) : CPU와 실행 중인 프로그램이 사용하는 주소, 실행 중인 프로그램 각각에게 부여된 0번지부터 시작되는 주소를 의미함.
-
-
-예를 들어 현재 메모리에 메모장, 게임, 인터넷 브라우저 프로그램이 적재되어 있다고 가정해 보겠습니다.
-메모장, 게임, 인터넷 브라우저 프로그램은 현재 다른 프로그램들이 메모리 몇 번지에 저장되어 있는지,
-다시 말해 다른 프로그램들의 물리 주소가 무엇인지 굳이 알 필요가 없습니다.
-
-새로운 프로그램이 언제든 적재될 수 있고, 실행되지 않은 프로그램은 언제든 메모리에서 사라질 수 있기 때문입니다.
-
-그래서 메모장, 게임, 인터넷 브라우저는 모두 물리 주소가 아닌 0번지부터 시작하는 자신만을 위한 주소인 논리 주소를 가지고 있습니다.
-
-예를 들어, ‘10번지’라는 주소는 메모장에도, 게임에도, 인터넷 브라우저에도 논리 주소로써 존재할 수 있습니다.
-프로그램마다 같은 논리 주소가 얼마든지 있을 수 있다는 뜻입니다.
-그리고 CPU는 이 논리 주소를 받아들이고, 해석하고, 연산합니다.
-
-
-
-정리하면, 메모리가 사용하는 주소는 하드웨어상의 실제 주소인 물리 주소이고, CPU와 실행 중인 프로그램이 사용하는 주소는 각각의 프로그램에 부여된 논리 주소입니다.
-
-그런데 CPU가 이해하는 주소가 논리 주소라고는 해도 CPU가 메모리와 상호작용하려면 논리 주소와 물리 주소 간의 변환이 이루어져야 합니다.
-
-논리 주소와 물리 주소 간에 어떠한 변환도 이루어지지 않는다면 CPU와 메모리는 서로 이해할 수 없는 주소 체계를 가지고 각자 다른 이야기만 할 뿐 결코 상호작용할 수 없을 테니까요.
-
-그렇다면 논리 주소는 어떻게 물리 주소로 변환될까요?
-
-논리 주소와 물리 주소 간의 변환은 CPU와 주소 버스 사이에 위치한 메모리 관리 장치(MMU: Memory Management Unit) 라는 하드웨어에 의해 수행됩니다.
-
-
-
-MMU는 CPU가 발생시킨 논리 주소에 베이스 레지스터 값을 더하여 논리 주소를 물리 주소로 변환합니다.
-예를 들어 현재 베이스 레지스터에 15000이 저장되어 있고 CPU가 발생시킨 논리 주소가 100번지라면 이 논리 주소는 아래 그림처럼 물리 주소 15100번지(100+15000)로 변환됩니다.
-물리 주소 15000번지부터 적재된 프로그램 A의 논리 주소 100번지에는 이렇게 접근이 가능한 것 입니다.
-
-
-
-베이스 레지스터는 프로그램의 가장 작은 물리 주소, 즉 프로그램의 첫 물리 주소를 저장하는 셈이고,
-논리 주소는 프로그램의 시작점으로부터 떨어진 거리인 셈입니다.
-
-3. 메모리 보호 기법.
-메모장 프로그램의 물리 주소가 1000번지부터 1999번지, 인터넷 브라우저 프로그램의 물리 주소가 2000번지부터 2999번지, 게임 프로그램의 물리 주소가 3000번지부터 3999번지라고 가정해 보겠습니다.
-
-만약 메모장 프로그램 명령어 중 ‘(논리 주소) 1500번지에 숫자 100을 저장하라’와 같은 명령어가 있다면 숫자 100은 어떤 물리 주소에 저장될까요? 이 명령어는 실행되어도 안전할까요?
-
-혹은 인터넷 브라우저 프로그램 명령어 중 ‘(논리 주소) 1100번지의 데이터를 삭제하라’와 같은 명령어가 있다면 어떤 물리 주소의 데이터가 삭제될까요? 이 명령어는 실행되어도 안전할까요?
-
-위와 같은 명령어들은 실행되어서는 안 됩니다.
-프로그램의 논리 주소 영역을 벗어났기 때문입니다.
-위 명령어들이 실행된다면 메모장 프로그램 명령어는 애꿏은 인터넷 브라우저 프로그램에 숫자 10을 저장하고, 인터넷 브라우저 프로그램 명령어는 자신과는 전혀 관련 없는 게임 프로그램 정보를 삭제합니다.
-
-이렇게 다른 프로그램의 영역을 침범할 수 있는 명령어는 위험하기 때문에 논리 주소 범위를 벗어나는 명령어 실행을 방지하고 실행 중인 프로그램이 다른 프로그램에 영향을 받지 않도록 보호할 방법이 핑요합니다.
-
-이는 한계 레지스터(limit register) 라는 레지스터가 담당합니다.
-
-베이스 레지스터가 실행 중인 프로그램의 가장 작은 물리 주소를 저장한다면, 한계 레지스터는 논리 주소의 최대 크기를 저장합니다.
-
-즉, 프로그램의 물리 주소 범위는 베이스 레지스터 값 이상, 베이스 레지스터 값 + 한계 레지스터 값 미만이 됩니다.
-
-
-
-CPU가 접근하려는 논리 주소는 한계 레지스터가 저장한 값보다 커서는 안 됩니다.
-한계 레지스터보다 높은 주소 값에 접근하는 것은 곧 프로그램의 범위에 벗어난 메모리 공간에 접근하는 것과 같디 때문입니다.
-
-베이스 레지스터에 100, 한계 레지스터에 150이 저장되어 있다고 해 봅시다.
-이는 물리 주소 시작점이 100번지, 프로그램의 크기(논리 주소의 최대 크기)는 150임을 의미합니다.
-따라서 이 프로그램은 150번지를 넘어서는 논리 주소를 가질 수 없습니다.
-
-이번에는 베이스 레지스터에 1500, 한계 레지스터에 1000이 저장되어 있다고 해 봅시다.
-이는 물리주소 시작점이 1500번지, 프로그램 크기는 1000임을 의미합니다.
-따라서 이 프로그램은 1000번지를 넘어서는 논리 주소를 가질 수 없습니다.
-
-CPU는 메모리에 접근하기 전에 접근하고자 하는 논리 주소가 한계 레지스터보다 작은지를 항상 검사합니다.
-만약 CPU가 한계 레지스터보다 높은 논리 주소에 접근하려고 하면 인터럽트(트랩)를 발생시켜 실행을 중단합니다.
-
-이러한 방식으로 실행 중인 프로그램의 독립적인 실행 공간을 확보하고 하나의 프로그램이 다른 프로그램을 침범하지 못하게 보호할 수 있습니다.
-
-5. 키워드로 정리하는 핵심 키워드
-
-  물리 주소는 메모리 하드웨어상의 주소이고, 논리 주소는 CPU와 실행 중인 프로그램이 사용하는 주소입니다.
-  MMU는 논리 주소를 물리 주소로 변환합니다.
-  베이스 레지스터는 프로그램의 첫 물리 주소를 저장합니다.
-  한계 레지스터는 실행 중인 프로그램의 논리 주소의 최대 크기를 저장합니다.
-
-
-
-
-컴퓨터 시스템에서 “물리 주소(Physical Address)”와 “논리 주소(Logical Address)”는 메모리 관리의 중요한 개념입니다.
-각각은 다음과 같은 의미를 가지며, 시스템의 효율적인 메모리 관리를 위해 사용됩니다.
-
-1.1 논리 주소(Logical Address)
-
-  정의 : 논리 주소는 프로그램이 사용하는 주소입니다.
-    
-      이 주소는 프로그램이 실행되면서 생성되는 주소로, 사용자 또는 프로그램이 접근할 수 있는 주소입니다.
-      이 주소는 가상 메모리 주소라고도 하며, 실제 메모리의 물리적 위치와는 독립적입니다.
-    
-  
-  목적 : 논리 주소의 주요 목적은 각 프로세스가 독립된 주소 공간을 갖게 하여, 프로세스간의 메모리 충돌을 방지하고 보안을 강화하는 데 있습니다.
-    
-      또한, 프로그래밍을 단순화시키고 메모리 관리를 더 유연하게 만듭니다.
-    
-  
-
-
-1.2 물리 주소(Physical Address)
-
-  정의 : 물리 주소는 메모리 장치 내의 실제 위치를 가리키는 주소입니다.
-    
-      이 주소는 시스템의 메모리 관리 유닛(Memory Management Unit, MMU)에 의해 사용되며, 실제 RAM에서 데이터를 찾는 데 사용됩니다.
-    
-  
-  목적 : 물리 주소는 시스템의 메모리를 효율적으로 할당하고 관리하는 데 필요합니다.
-    
-      이를 통해 시스템은 실제 메모리 공간을 최적화하고, 필요한 데이터와 프로그램을 정확한 위치에서 처리할 수 있습니다.
-    
-  
-
-
-1.3 주소 변환(Address Translation)
-논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)에 의해 수행됩니다.
-이 과정은 다음과 같은 방법으로 이루어 집니다.
-
-
-  1. 페이지 테이블 : 운영체제는 페이지 테이블을 사용하여 논리 주소를 물리 주소로 매핑합니다.
-    
-      페이지 테이블을 논리 주소를 페이지로 나누고, 각 페이지가 실제 메모리의 어느 부분에 해당하는지를 나타내는 테이블입니다.
-    
-  
-  
-    2. 변환 조회 버퍼(TLB) : 변환 조회 버퍼는 자주 사용되는 주소 매핑을 캐시하는 작은 메모리로, 주소 변환 과정을 빠르게 만듭니다.
-  
-  3. 주소 변환 과정
-    
-      프로세스가 논리 주소를 생성합니다.
-      MMU는 논리 주소의 페이지 번호를 확인하고, 해당 페이지 번호가 페이지 테이블에 있는지 확인합니다.
-      페이지 테이블에서 해당 페이지의 물리 주소를 찾아 매핑합니다.
-      물리 주소를 사용하여 실제 메모리에서 데이터를 엑세스합니다.
-    
-  
-
-
-📝 정리
-이러한 주소 변환 메커니즘은 메모리 보호, 프로세스 격리, 메모리 사용의 효율성 증가 등을 가능하게 하며, 복잡한 현대의 멀티태스킹 환경에서 중요한 역할을 합니다.
-
-Q1. 물리 주소(Physical Address)’와 ‘논리 주소(Logical Address)’에 대해 설명해 주시겠습니까? 이 두 주소의 개념과 차이점을 구체적으로 말씀해 주시고, 어떻게 논리 주소가 물리 주소로 변환되는지 그 과정에 대해서도 설명해 주세요.
-
-
-  
-    논리 주소는 프로그램이 사용하는 주소로, 프로그램 코드에 의해 참조되는 주소입니다. 이는 운영체제에 의해 관리되며, 프로그램이 메모리에 로드되는 위치와 무관하게 일관성을 유지합니다. 즉, 프로그램이 메모리의 어느 위치에 로드되든지 간에 같은 논리 주소를 사용할 수 있습니다. 논리 주소는 가상 메모리 주소라고도 하며, 이를 통해 개발자는 실제 메모리 구조를 신경 쓰지 않고 프로그래밍할 수 있습니다.
-  
-  
-    물리 주소는 메모리 장치 내의 실제 물리적 위치를 가리킵니다. 즉, 물리 주소는 RAM 내의 실제 데이터나 명령어가 저장된 위치를 나타내며, 메모리 관리 유닛(MMU)에 의해 논리 주소로부터 변환됩니다.
-  
-  
-    논리 주소에서 물리 주소로의 변환은 주로 메모리 관리 유닛(MMU)을 통해 이루어집니다. 이 과정은 다음과 같습니다:
-    
-      
-        
-          프로세스가 생성하는 논리 주소는 페이지 번호와 오프셋으로 구성됩니다.
-        
-      
-      
-        
-          페이지 번호는 페이지 테이블을 참조하여 해당 페이지가 메모리의 어느 물리적 위치에 있는지 결정합니다. 이 페이지 테이블은 운영 체제에 의해 관리되며, 각 페이지의 물리 주소를 저장합니다.
-        
-      
-      
-        
-          물리 주소는 결정된 페이지 시작 주소에 오프셋을 추가하여 최종적으로 결정됩니다.
-        
-      
-      
-        
-          변환 조회 버퍼(TLB)는 이러한 변환 과정을 가속화하기 위해 자주 사용되는 주소 변환을 캐시합니다.
-            
-              이러한 변환 과정을 통해 시스템은 효율적으로 메모리를 관리하며, 프로세스 간 메모리 격리와 보안을 유지할 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-06</span>
                             
@@ -53428,6 +53703,32 @@ public class TernaryExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-04-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(4)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-04-VariablesAndDataTypes-4.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -53630,32 +53931,6 @@ public class Box&lt;T extends Number&gt; {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-05-04-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-04-TIL.html"><h1 class="title_post">📝 [TIL] 240504 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-04-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(4)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-04</span>
                             
@@ -53946,6 +54221,34 @@ public class ArrayExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/TIL/2024-05-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-03-TIL.html"><h1 class="title_post">📝 [TIL] 240503 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-03-TIL.html" class="txt_post">
+                            
+  자바 - 변수와 자료형(2)
+  자바 - 타입 비교
+  자바 - 변수와 자료형(3)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-03</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-05-03-TypeComparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -54003,34 +54306,6 @@ if (a.getClass().equals(b.getClass())) {
                         </a>
                         <div class="info-post">
                                 <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-05-03</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-05-03-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-03-TIL.html"><h1 class="title_post">📝 [TIL] 240503 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-03-TIL.html" class="txt_post">
-                            
-  자바 - 변수와 자료형(2)
-  자바 - 타입 비교
-  자바 - 변수와 자료형(3)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-03</span>
                             
@@ -56135,178 +56410,6 @@ StringEqual(String: str1, String: str2):
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/DataStructure/2024-04-21-DataStructure3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/DataStructure/2024-04-21-DataStructure3.html"><h1 class="title_post">📦[DataStructure] 배열</h1></a>
-                        <a href="/Archive/DataStructure/2024-04-21-DataStructure3.html" class="txt_post">
-                            배열.
-일반적으로 배열(array) 은 관련된 다수의 값을 저장할 때 사용합니다.
-
-예를 들어, 1년간 매일 마신 커피의 양을 추적하고 싶다고 합시다.
-
-  이때 개별 변수(AmountDay1, AmountDay2, AmountDay3 등)를 365개 만들어서 저장할 수 있겠지만, 이 방식은 입력하기도 귀찮고 데이터를 어떤 구조로도 사용할 수 없습니다.
-    
-      AmountDay2는 단지 텍스트 꼬리표일 뿐이며, AmountDay2 전날의 정보를 AmountDay1이 저장하고 AmountDay2 다음 날의 정보를 AmountDay3가 저장한다는 사실을 프로그램이 알 수 없습니다.
-        
-          개발자만 이 정보를 알고 있습니다.
-        
-      
-    
-  
-
-
-배열은 여러 값을 연속적으로 인데스(Index) 가 부여된 상자에 저장하는 간단한 메커니즘을 제공합니다.
-
-아래의 그림처럼 배열은 사실 개별 변수들을 한 줄로 세워둔 것이며, 컴퓨터 메모리에 존재하는 같은 크기의 상자들이 연속적으로 배치된 블록입니다.
-
-
-
-
-  개별 변수처럼 배열도 어떤 메모리 덩어리를 차지하며 임의의 다른 정보와 인접할 수 있습니다.
-  배열의 각 상자에는 숫자, 문자, 포인터 또는 다른(크기가 정해져 있는) 자료 구조와 같은 타입의 값을 저장할 수 있습니다.
-
-
-일상생활에서도 배열을 매우 많이 사용합니다.
-
-  예를 들어, 고등학교 복도에 늘어선 사물함은 학생들의 책과 외투를 저장하는 물리적인 배열입니다.
-    
-      우리는 개별 사물함을 열어 내부 공간에 쉽게 접근할 수 있습니다.
-    
-  
-
-
-배열의 구조는 위치(또는 인덱스)를 지정하여 배열 내 개별 값, 즉 원소(element) 에 접근할 수 있게 해줍니다.
-
-  배열 내 상자들은 컴퓨터 메모리에서 서로 인접해 있으므로, 첫 번째 원소로부터 오프셋(offset)을 계산해서 해당하는 위치의 메모리를 읽는 방식으로 각 상자에 쉽게 접근할 수 있습니다.
-    
-      이는 접근하려는 상자의 위치와 관계없이 덧셈 한 번과 메모리 접근만 필요하다는 뜻입니다.
-        
-          이러한 구조는 우리의 일일 커피 섭취량을 추적하는 것과 같이 순서가 있는 항목을 저장할 때 특히 편리합니다.
-        
-      
-    
-  
-
-
-형식적으로 배열 A에서 인덱스 i에 있는 값을 A[i]로 참조합니다.
-
-  사물함 예제에서 인덱스는 사물함 앞에 표시된 숫자에 해당합니다.
-
-
-대부분의 프로그래밍 언어는 0부터 시작하는(zero based) 인덱스를 사용합니다.
-
-  이 말은 아래의 그림처럼 배열의 첫 번째 값은 인덱스 0, 두 번째 값은 인덱스 1, …에 위치한다는 뜻입니다.
-
-
-
-
-아래 그림은 컴퓨터 메모리 안 배열 모습을 보여줍니다.
-
-  여기서 흰 칸이 배열 원소에 해당합니다.
-
-
-
-0을 기준으로 인덱싱하면 메모리 내에서 배열의 시작점부터 오프셋을 사용해 위치를 계산할 때 편리합니다.
-
-i번째 원소의 위치는 다음과 같이 계산할 수 있습니다.
-위치(인덱스 i의 원소) = 위치(배열 시작) + 각 원소의 크기 x i
-
-
-인덱스 0의 위치는 배열 시작점과 같습니다.
-
-  예를 들어, 위 그림에서 배열 A의 다섯 번째 원소는 A[4]이며 그림 1-4를 찾아보면 그 위치에는 9라는 값이 들어 있습니다.
-
-
-
-  노트
-인덱스를 1부터 시작하는 것도 가능하며, 일부 프로그래밍 언어는 이 규칙을 따릅니다.
-1을 기준으로 인덱싱하는 경우 상자의 주소를 계산하는 식은 다음과 같습니다.
-  위치(인덱스 i의 원소) = 위치(배열 시작) + 각 원소의 크기 x (i-1)
-  
-
-
-대부분의 프로그래밍 언어에서는 배열 이름과 인덱스를 조합해 값을 가져오거나 설정합니다.
-
-  예를 들어, 다음과 같이 인덱스가 5인 상자의 값을 16으로 설정할 수 있습니다.
-
-
-A[5] = 16
-
-
-커피 추적 예제에서 하루 동안 섭취한 커피 컵 수를 저장하기 위해 Amount라는 배열을 정의하고, 해당 수량을 Amount[0] 부터 Amount[364]까지 저장할 수 있습니다.
-
-  배열을 사용하면 단 하나의 이름으로 365개 다른 값에 순서대로 접근 할 수 있는데, 이름은 비슷하지만 서로 독립적인 변수들을 연속적으로 위치시켰던 것을 수학적인 오프셋으로 전환한 것입니다.
-
-
-이 개념의 장점을 이해하려면 학교 사물함을 생각하면 됩니다.
-
-  개별 사물함을 ‘제레미의 사물함’이나 ‘K로 시작하는 세 번째 학생의 사물함’처럼 이름 붙이면 빠르게 찾기가 거의 불가능합니다.
-    
-      이런 방식을 사용하면 그냥 인덱스를 사용하는 경우와 달리 모든 사물함에 붙은 꼬리표를 일일이 찾아봐야 합니다.
-    
-  
-
-
-하지만 배열 인덱스를 사용하면 학생들은 오프셋을 사용해 사물함이 어디 있는지 결정하고 직접 해당 사물함에 접근할 수 있습니다.
-
-종종 배열을 전체 자료 구조로 시각화하고 논의하지만, 각 상자가 개별 변수처럼 작동한다는 사실을 기억하는 것이 중요합니다.
-
-  배열을 전체적으로 바꾸려면 모든 상자를 하나하나 바꿔야 합니다.
-    
-      예를 들어, 원소를 한 칸 앞으로 이동시키고 싶으면 아래 그림처럼 해야 합니다.
-
-    
-  
-
-
-배열은 책장에 꽂혀 있는 책들과 다릅니다.
-
-  ‘커피 애호가를 위한 최고의 공정 무역 커피 가이드’를 끼워넣기 위해 책 컬렉션 전체를 밀어낼 수 있지만, 배열을 그렇지 않습니다.
-
-
-배열은 오히려 일렬로 늘어선 가게와 같습니다.
-
-  서점과 미용실 사이에 커피숍을 끼어넣을 수 없습니다.
-    
-      커피숍 공간을 확보하려면 인접한 건물로 서점(또는 미용실)을 이전해서 기존 공간을 비우는 방식으로 가게를 하나씩 옮겨야만 합니다.
-    
-  
-
-
-실제로 배열에서 단순히 두 값을 교환하고 싶은 경우에도 값들을 미묘하게 조정해야 합니다.
-
-  예를 들어, 어떤 인덱스 i와 j에 있는 두 값을 교환하려면 먼저 둘 중 하나를 임시 변수에 할당해야 합니다.
-    Temp = A[i]
-A[i] = A[j]
-A[j] = Temp
-    
-  
-  그렇지 않으면 어떤 한 상자 안 값을 덮어쓰게 되어 두 상자가 동일한 값을 가지게 됩니다.
-
-
-마찬가지로 커피숍과 서점의 위치를 바꾸려고 한다면, 먼저 서점의 가구와 물품 등을 비어 있는 세 번째 임시 위치로 커피숍의 것들을 넣을 수 있는 공간을 확보해야 합니다.
-
-  그 후 커피숍을 옮길 수 있고, 서점의 가구와 물품 등을 세 번째 임시 위치에서 커피숍의 이전 위치로 옮길 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-04-21</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/DataStructure/2024-04-21-DataStructure2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -56473,6 +56576,178 @@ Boolean: had_enough_coffee = False
 
 예를 들어, 변수에 값을 대입할 때는 =을 사용합니다.
 coffee_count = coffee_count + 1
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-04-21</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/DataStructure/2024-04-21-DataStructure3.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/DataStructure/2024-04-21-DataStructure3.html"><h1 class="title_post">📦[DataStructure] 배열</h1></a>
+                        <a href="/Archive/DataStructure/2024-04-21-DataStructure3.html" class="txt_post">
+                            배열.
+일반적으로 배열(array) 은 관련된 다수의 값을 저장할 때 사용합니다.
+
+예를 들어, 1년간 매일 마신 커피의 양을 추적하고 싶다고 합시다.
+
+  이때 개별 변수(AmountDay1, AmountDay2, AmountDay3 등)를 365개 만들어서 저장할 수 있겠지만, 이 방식은 입력하기도 귀찮고 데이터를 어떤 구조로도 사용할 수 없습니다.
+    
+      AmountDay2는 단지 텍스트 꼬리표일 뿐이며, AmountDay2 전날의 정보를 AmountDay1이 저장하고 AmountDay2 다음 날의 정보를 AmountDay3가 저장한다는 사실을 프로그램이 알 수 없습니다.
+        
+          개발자만 이 정보를 알고 있습니다.
+        
+      
+    
+  
+
+
+배열은 여러 값을 연속적으로 인데스(Index) 가 부여된 상자에 저장하는 간단한 메커니즘을 제공합니다.
+
+아래의 그림처럼 배열은 사실 개별 변수들을 한 줄로 세워둔 것이며, 컴퓨터 메모리에 존재하는 같은 크기의 상자들이 연속적으로 배치된 블록입니다.
+
+
+
+
+  개별 변수처럼 배열도 어떤 메모리 덩어리를 차지하며 임의의 다른 정보와 인접할 수 있습니다.
+  배열의 각 상자에는 숫자, 문자, 포인터 또는 다른(크기가 정해져 있는) 자료 구조와 같은 타입의 값을 저장할 수 있습니다.
+
+
+일상생활에서도 배열을 매우 많이 사용합니다.
+
+  예를 들어, 고등학교 복도에 늘어선 사물함은 학생들의 책과 외투를 저장하는 물리적인 배열입니다.
+    
+      우리는 개별 사물함을 열어 내부 공간에 쉽게 접근할 수 있습니다.
+    
+  
+
+
+배열의 구조는 위치(또는 인덱스)를 지정하여 배열 내 개별 값, 즉 원소(element) 에 접근할 수 있게 해줍니다.
+
+  배열 내 상자들은 컴퓨터 메모리에서 서로 인접해 있으므로, 첫 번째 원소로부터 오프셋(offset)을 계산해서 해당하는 위치의 메모리를 읽는 방식으로 각 상자에 쉽게 접근할 수 있습니다.
+    
+      이는 접근하려는 상자의 위치와 관계없이 덧셈 한 번과 메모리 접근만 필요하다는 뜻입니다.
+        
+          이러한 구조는 우리의 일일 커피 섭취량을 추적하는 것과 같이 순서가 있는 항목을 저장할 때 특히 편리합니다.
+        
+      
+    
+  
+
+
+형식적으로 배열 A에서 인덱스 i에 있는 값을 A[i]로 참조합니다.
+
+  사물함 예제에서 인덱스는 사물함 앞에 표시된 숫자에 해당합니다.
+
+
+대부분의 프로그래밍 언어는 0부터 시작하는(zero based) 인덱스를 사용합니다.
+
+  이 말은 아래의 그림처럼 배열의 첫 번째 값은 인덱스 0, 두 번째 값은 인덱스 1, …에 위치한다는 뜻입니다.
+
+
+
+
+아래 그림은 컴퓨터 메모리 안 배열 모습을 보여줍니다.
+
+  여기서 흰 칸이 배열 원소에 해당합니다.
+
+
+
+0을 기준으로 인덱싱하면 메모리 내에서 배열의 시작점부터 오프셋을 사용해 위치를 계산할 때 편리합니다.
+
+i번째 원소의 위치는 다음과 같이 계산할 수 있습니다.
+위치(인덱스 i의 원소) = 위치(배열 시작) + 각 원소의 크기 x i
+
+
+인덱스 0의 위치는 배열 시작점과 같습니다.
+
+  예를 들어, 위 그림에서 배열 A의 다섯 번째 원소는 A[4]이며 그림 1-4를 찾아보면 그 위치에는 9라는 값이 들어 있습니다.
+
+
+
+  노트
+인덱스를 1부터 시작하는 것도 가능하며, 일부 프로그래밍 언어는 이 규칙을 따릅니다.
+1을 기준으로 인덱싱하는 경우 상자의 주소를 계산하는 식은 다음과 같습니다.
+  위치(인덱스 i의 원소) = 위치(배열 시작) + 각 원소의 크기 x (i-1)
+  
+
+
+대부분의 프로그래밍 언어에서는 배열 이름과 인덱스를 조합해 값을 가져오거나 설정합니다.
+
+  예를 들어, 다음과 같이 인덱스가 5인 상자의 값을 16으로 설정할 수 있습니다.
+
+
+A[5] = 16
+
+
+커피 추적 예제에서 하루 동안 섭취한 커피 컵 수를 저장하기 위해 Amount라는 배열을 정의하고, 해당 수량을 Amount[0] 부터 Amount[364]까지 저장할 수 있습니다.
+
+  배열을 사용하면 단 하나의 이름으로 365개 다른 값에 순서대로 접근 할 수 있는데, 이름은 비슷하지만 서로 독립적인 변수들을 연속적으로 위치시켰던 것을 수학적인 오프셋으로 전환한 것입니다.
+
+
+이 개념의 장점을 이해하려면 학교 사물함을 생각하면 됩니다.
+
+  개별 사물함을 ‘제레미의 사물함’이나 ‘K로 시작하는 세 번째 학생의 사물함’처럼 이름 붙이면 빠르게 찾기가 거의 불가능합니다.
+    
+      이런 방식을 사용하면 그냥 인덱스를 사용하는 경우와 달리 모든 사물함에 붙은 꼬리표를 일일이 찾아봐야 합니다.
+    
+  
+
+
+하지만 배열 인덱스를 사용하면 학생들은 오프셋을 사용해 사물함이 어디 있는지 결정하고 직접 해당 사물함에 접근할 수 있습니다.
+
+종종 배열을 전체 자료 구조로 시각화하고 논의하지만, 각 상자가 개별 변수처럼 작동한다는 사실을 기억하는 것이 중요합니다.
+
+  배열을 전체적으로 바꾸려면 모든 상자를 하나하나 바꿔야 합니다.
+    
+      예를 들어, 원소를 한 칸 앞으로 이동시키고 싶으면 아래 그림처럼 해야 합니다.
+
+    
+  
+
+
+배열은 책장에 꽂혀 있는 책들과 다릅니다.
+
+  ‘커피 애호가를 위한 최고의 공정 무역 커피 가이드’를 끼워넣기 위해 책 컬렉션 전체를 밀어낼 수 있지만, 배열을 그렇지 않습니다.
+
+
+배열은 오히려 일렬로 늘어선 가게와 같습니다.
+
+  서점과 미용실 사이에 커피숍을 끼어넣을 수 없습니다.
+    
+      커피숍 공간을 확보하려면 인접한 건물로 서점(또는 미용실)을 이전해서 기존 공간을 비우는 방식으로 가게를 하나씩 옮겨야만 합니다.
+    
+  
+
+
+실제로 배열에서 단순히 두 값을 교환하고 싶은 경우에도 값들을 미묘하게 조정해야 합니다.
+
+  예를 들어, 어떤 인덱스 i와 j에 있는 두 값을 교환하려면 먼저 둘 중 하나를 임시 변수에 할당해야 합니다.
+    Temp = A[i]
+A[i] = A[j]
+A[j] = Temp
+    
+  
+  그렇지 않으면 어떤 한 상자 안 값을 덮어쓰게 되어 두 상자가 동일한 값을 가지게 됩니다.
+
+
+마찬가지로 커피숍과 서점의 위치를 바꾸려고 한다면, 먼저 서점의 가구와 물품 등을 비어 있는 세 번째 임시 위치로 커피숍의 것들을 넣을 수 있는 공간을 확보해야 합니다.
+
+  그 후 커피숍을 옮길 수 있고, 서점의 가구와 물품 등을 세 번째 임시 위치에서 커피숍의 이전 위치로 옮길 수 있습니다.
 
 
                         </a>
@@ -57486,93 +57761,6 @@ sumWrapper = 499999999500000000
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-04-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-04-17-TIL.html"><h1 class="title_post">📝 [TIL] 240417 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-04-17-TIL.html" class="txt_post">
-                            Java 학습 및 정리
-
-  Java ‘래퍼 클래스 - 기본형의 한계2’ 학습.
-  Java ‘래퍼 클래스 - 기본형의 한계2’ 정리.
-  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 학습
-  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 정리
-
-
-자료구조
-
-  삽입정렬 복습 part 1
-  삽입정렬 복습 part 2
-  삽입정렬 복습 part 3
-
-
-C++ 의 ‘sizeof()’
-C++ 에서 ‘sizeof()’ 는 연산자로 사용되며, 주어진 타입이나 변수의 메모리 크기를 바이트 단위로 반환합니다.
-이 연산자는 컴파일 시간에 그 크기를 결정하므로, 프로그램 실행 도중에는 크기가 변경되지 않습니다.
-
-‘sizeof()’ 연산자의 사용 예시는 다음과 같습니다.
-
-
-  타입의 크기 확인 : ‘sizeof(int)’ 은 ‘int’ 타입의 크기를 바이트 단위로 반환합니다. 보통 ‘int’ 는 4바이트를 사용하지만 시스템에 따라 다를 수 있습니다.
-  변수의 크기 확인 : ‘int x; sizeof(x)’ 는 변수 ‘x’ 의 타입인 ‘int’ 의 크기를 반환합니다.
-  배열의 전체 크기 확인 : ‘int arr[10]; sizeof(arr)’ 는 배열 ‘arr’ 의 전체 크기를 반환합니다. 이 경우 ‘10 * sizeof(int)’ 와 같은 결과를 나타냅니다.
-
-
-‘sizeof()’ 는 특히 메모리 관리를 할 때나 데이터 타입의 크기가 중요한 연산에서 매우 유용합니다.
-
-.gitignore란?
-
-
-  보안상으로 위험성이 있는 파일
-  프로젝트와 관계없는 파일
-  용량이 너무 커서 제외해야되는 파일
-
-
-위와 같은 파일들을 .gitignore 이라는 디렉토리를 만들어 무시할 파일을 넣어 줄 수 있습니다.
-
-사용법
-
-  git init을 한 폴더에 .gitignore 이라는 이름으로 파일을 만듭니다.
-    
-      그 파일 내부에 제외할 파일 혹을 폴더를 명시하면 됩니다.
-    
-  
-
-
-
-  특정 파일 fileName 제외하기
-fileName.js
-  현재 경로에 있는 fileName_1 만 제외하기(다른경로 fileName_1은 제외되지 않음.)
-/fileName.js
-  특정 폴더 node_module 안의 파일 다 제외하기
-node_module/
-  특정 경로의 특정 파일 제외하기
-folder/my.txt
-  특정 경로 아래의 모든 fileName_2 제외하기
-folder/**/fileName_2.txt
-  특정 확장자 파일 다 제외하기
-*.txt
-  예외 만들기
-!fileName.txt
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-04-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Java_archive/2024-04-17-WrapperClass-LimitationOfBaseTypes2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -57926,6 +58114,93 @@ int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/TIL/2024-04-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-04-17-TIL.html"><h1 class="title_post">📝 [TIL] 240417 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-04-17-TIL.html" class="txt_post">
+                            Java 학습 및 정리
+
+  Java ‘래퍼 클래스 - 기본형의 한계2’ 학습.
+  Java ‘래퍼 클래스 - 기본형의 한계2’ 정리.
+  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 학습
+  Java ‘래퍼 클래스 - 자바 래퍼 클래스’ 정리
+
+
+자료구조
+
+  삽입정렬 복습 part 1
+  삽입정렬 복습 part 2
+  삽입정렬 복습 part 3
+
+
+C++ 의 ‘sizeof()’
+C++ 에서 ‘sizeof()’ 는 연산자로 사용되며, 주어진 타입이나 변수의 메모리 크기를 바이트 단위로 반환합니다.
+이 연산자는 컴파일 시간에 그 크기를 결정하므로, 프로그램 실행 도중에는 크기가 변경되지 않습니다.
+
+‘sizeof()’ 연산자의 사용 예시는 다음과 같습니다.
+
+
+  타입의 크기 확인 : ‘sizeof(int)’ 은 ‘int’ 타입의 크기를 바이트 단위로 반환합니다. 보통 ‘int’ 는 4바이트를 사용하지만 시스템에 따라 다를 수 있습니다.
+  변수의 크기 확인 : ‘int x; sizeof(x)’ 는 변수 ‘x’ 의 타입인 ‘int’ 의 크기를 반환합니다.
+  배열의 전체 크기 확인 : ‘int arr[10]; sizeof(arr)’ 는 배열 ‘arr’ 의 전체 크기를 반환합니다. 이 경우 ‘10 * sizeof(int)’ 와 같은 결과를 나타냅니다.
+
+
+‘sizeof()’ 는 특히 메모리 관리를 할 때나 데이터 타입의 크기가 중요한 연산에서 매우 유용합니다.
+
+.gitignore란?
+
+
+  보안상으로 위험성이 있는 파일
+  프로젝트와 관계없는 파일
+  용량이 너무 커서 제외해야되는 파일
+
+
+위와 같은 파일들을 .gitignore 이라는 디렉토리를 만들어 무시할 파일을 넣어 줄 수 있습니다.
+
+사용법
+
+  git init을 한 폴더에 .gitignore 이라는 이름으로 파일을 만듭니다.
+    
+      그 파일 내부에 제외할 파일 혹을 폴더를 명시하면 됩니다.
+    
+  
+
+
+
+  특정 파일 fileName 제외하기
+fileName.js
+  현재 경로에 있는 fileName_1 만 제외하기(다른경로 fileName_1은 제외되지 않음.)
+/fileName.js
+  특정 폴더 node_module 안의 파일 다 제외하기
+node_module/
+  특정 경로의 특정 파일 제외하기
+folder/my.txt
+  특정 경로 아래의 모든 fileName_2 제외하기
+folder/**/fileName_2.txt
+  특정 확장자 파일 다 제외하기
+*.txt
+  예외 만들기
+!fileName.txt
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-04-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Archive/TIL/2024-04-15-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
@@ -58054,181 +58329,6 @@ int unboxedValue = boxedValue.intValue(); // 컴파일 단계에서 추가
       
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-04-15</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/Java_archive/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 1</h1></a>
-                        <a href="/Archive/Java_archive/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="txt_post">
-                            래퍼 클래스 - 기본형의 한계 1
-
-기본형의 한계
-자바는 객체 지향 언어입니다.
-그런데 자바 안에 객체가 아닌 것이 있습니다.
-
-  바로 int, double 같은 기본형(Primitive Type)입니다.
-
-
-기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
-
-  객체가 아님: 기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다. 예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서드를 제공할 수 없습니다.
-    
-      추가로 객체 참고가 필요한 컬렉션 프레임워크를 사용할 수 없습니다. 그리고 제네릭도 사용할 수 없습니다.
-    
-  
-  null 값을 가질 수 없음: 기본형 데이터 타입은 null 값을 가질 수 없습니다. 때로는 데이터가 없음 이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-
-
-기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해봅시다.
-
-  왼쪽의 값이 더 작다 -1
-  두 값이 같다 0
-  왼쪽의 값이 더 크다 1
-
-
-package lang.wrapper;
-
-public class MyIntegerMethodMain0 {
-
-  public static void main(String[] args) {
-    int value = 10;
-    int i1 = compareTo(value, 5);
-    int i2 = compareTo(value, 10);
-    int i3 = compareTo(value, 20);
-    System.out.println("i1 = " + i1);
-    System.out.println("i2 = " + i2);
-    System.out.println("i3 = " + i3);
-  }
-
-  public static int compareTo(int value, int target) {
-    if (value &lt; target) {
-      return -1;
-    } else if (value &gt; target) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-}
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
-    
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-        
-          이런 경우 만약 value가 객체라면 value 객체 스스로 가지 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
-        
-      
-    
-  
-
-
-직접 만든 래퍼 클래스.
-int를 클래스로 만들어 봅시다.
-
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-
-
-다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
-
-  이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-
-
-package lang.wrapper;
-
-public class MyInteger {
-  private final int value;
-
-  public MyInteger(int value) {
-    this.value = value;
-  }
-
-  public int getValue() {
-    return value;
-  }
-
-  public int compareTo(int target) {
-    if (value &lt; target) {
-      return -1;
-    } else if (value &gt; target) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-}
-
-
-
-  MyInteger는 int value라는 단순한 기본형 변수를 하나 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
-      앞에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-      이 클래스는 불변으로 설계했습니다.
-    
-  
-
-
-MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-
-  덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
-
-
-package lang.wrapper;
-
-public class MyIntegerMethodMain1 {
-
-  public static void main(String[] args) {
-    MyInteger myInteger = new MyInteger(10);
-    int i1 = myInteger.compareTo(5);
-    int i2 = myInteger.compareTo(10);
-    int i3 = myInteger.compareTo(20);
-    System.out.println("i1 = " + i1);
-    System.out.println("i2 = " + i2);
-    System.out.println("i3 = " + i3);
-  }
-}
-
-
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
-
-
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
 
 
                         </a>
@@ -58510,6 +58610,181 @@ CPU는 이와 같은 과정을 반복해 나가며 프로그램을 실행한다�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/Java_archive/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계 1</h1></a>
+                        <a href="/Archive/Java_archive/2024-04-15-WrapperClass-LimitationsOfBaseTypes1.html" class="txt_post">
+                            래퍼 클래스 - 기본형의 한계 1
+
+기본형의 한계
+자바는 객체 지향 언어입니다.
+그런데 자바 안에 객체가 아닌 것이 있습니다.
+
+  바로 int, double 같은 기본형(Primitive Type)입니다.
+
+
+기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
+
+  객체가 아님: 기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다. 예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서드를 제공할 수 없습니다.
+    
+      추가로 객체 참고가 필요한 컬렉션 프레임워크를 사용할 수 없습니다. 그리고 제네릭도 사용할 수 없습니다.
+    
+  
+  null 값을 가질 수 없음: 기본형 데이터 타입은 null 값을 가질 수 없습니다. 때로는 데이터가 없음 이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+
+
+기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해봅시다.
+
+  왼쪽의 값이 더 작다 -1
+  두 값이 같다 0
+  왼쪽의 값이 더 크다 1
+
+
+package lang.wrapper;
+
+public class MyIntegerMethodMain0 {
+
+  public static void main(String[] args) {
+    int value = 10;
+    int i1 = compareTo(value, 5);
+    int i2 = compareTo(value, 10);
+    int i3 = compareTo(value, 20);
+    System.out.println("i1 = " + i1);
+    System.out.println("i2 = " + i2);
+    System.out.println("i3 = " + i3);
+  }
+
+  public static int compareTo(int value, int target) {
+    if (value &lt; target) {
+      return -1;
+    } else if (value &gt; target) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+        
+          이런 경우 만약 value가 객체라면 value 객체 스스로 가지 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+        
+      
+    
+  
+
+
+직접 만든 래퍼 클래스.
+int를 클래스로 만들어 봅시다.
+
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+
+
+다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+
+  이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+
+
+package lang.wrapper;
+
+public class MyInteger {
+  private final int value;
+
+  public MyInteger(int value) {
+    this.value = value;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  public int compareTo(int target) {
+    if (value &lt; target) {
+      return -1;
+    } else if (value &gt; target) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+}
+
+
+
+  MyInteger는 int value라는 단순한 기본형 변수를 하나 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+      앞에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+      이 클래스는 불변으로 설계했습니다.
+    
+  
+
+
+MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+
+  덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+
+
+package lang.wrapper;
+
+public class MyIntegerMethodMain1 {
+
+  public static void main(String[] args) {
+    MyInteger myInteger = new MyInteger(10);
+    int i1 = myInteger.compareTo(5);
+    int i2 = myInteger.compareTo(10);
+    int i3 = myInteger.compareTo(20);
+    System.out.println("i1 = " + i1);
+    System.out.println("i2 = " + i2);
+    System.out.println("i3 = " + i3);
+  }
+}
+
+
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-04-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Archive/Java_archive/2024-04-14-StringClassSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -58757,166 +59032,6 @@ StringBuilder를 직접 사용하는 것이 더 좋은 경우
                                 <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-04-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/Java_archive/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
-                        <a href="/Archive/Java_archive/2024-04-11-StringOptimization.html" class="txt_post">
-                            String 최적화.
-자바의 String 최적화
-자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
-
-문자열 리터럴 최적화
-컴파일 전
-String helloWorld = "Hello, " + "World!";
-
-
-컴파일 후
-String helloWorld = "Hello, World!";
-
-따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
-
-String 변수 최적화
-문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
-String result = str1 + str2;
-
-
-이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
-String result = new StringBuilder().append(str1).append(str2).toString();
-
-
-
-  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
-
-
-이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
-
-  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
-
-
-String 최적화가 어려운 경우
-다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
-package lang.string.builder;
-
-public class LoopStringMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-    String result = "";
-
-    for (int i = 0; i &lt; 100000; i++) {
-      result += "Hello Java ";
-    }
-
-    long endTime = System.currentTimeMillis();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
-String result = "";
-for (int i = 0; i &lt; 100000; i++) {
-    result = new StringBuilder().append(result).append("Hello Java ").toString();
-}
-
-
-  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
-    
-      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
-        
-          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
-            
-              따라서, 이런 상황에서는 최적화가 어렵습니다.
-            
-          
-        
-      
-    
-  
-
-
-StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 2528ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
-
-
-이럴 때는 직접 StringBuilder를 사용하면 됩니다.
-package lang.string.builder;
-
-public class LoopStringBuilderMain {
-
-  public static void main(String[] args) {
-    long startTime = System.currentTimeMillis();
-
-    StringBuilder sb = new StringBuilder();
-
-    for (int i = 0; i &lt; 100000; i++) {
-      sb.append("Hello Java ");
-    }
-
-    long endTime = System.currentTimeMillis();
-
-    String result = sb.toString();
-    System.out.println("result = " + result);
-    System.out.println("time = " + (endTime - startTime) + "ms");
-  }
-}
-
-
-실행 결과
-result = Hello Java Hello Java ...
-time = 4ms
-
-
-  1000ms = 1초
-  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
-
-
-정리
-
-  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
-
-
-StringBuilder를 직접 사용하는 것이 더 좋은 경우
-
-  반복문에서 반복해서 문자를 연결할 때
-  조건문을 통해 동적으로 문자열을 조합할 때
-  복잡한 문자열의 특정 부분을 변경해야 할 때
-  매우 긴 대용량 문자열을 다룰 때
-
-
-
-  참고: StringBuilder vs StringBuffer
-StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
-StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
-StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-04-11</span>
                             
                         </div>
                     </div>
@@ -59461,6 +59576,166 @@ CPU로 실행할 프로그램이 1000번지부터 1500번지까지 저장되어 
       호출된 서브루틴이 실행을 마치고 호출자로 돌아갈 때 사용됩니다.
     
   
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-04-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/Java_archive/2024-04-11-StringOptimization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-04-11-StringOptimization.html"><h1 class="title_post">☕️[Java] String 최적화</h1></a>
+                        <a href="/Archive/Java_archive/2024-04-11-StringOptimization.html" class="txt_post">
+                            String 최적화.
+자바의 String 최적화
+자바 컴파일러는 다음과 같이 문자열 리터럴을 더하는 부분을 자동으로 합쳐줍니다.
+
+문자열 리터럴 최적화
+컴파일 전
+String helloWorld = "Hello, " + "World!";
+
+
+컴파일 후
+String helloWorld = "Hello, World!";
+
+따라서 런타임에 별도의 문자열 결합 연산을 수행하지 않기 때문에 성능이 향상됩니다.
+
+String 변수 최적화
+문자열 변수의 경우 그 안에 어떤 값이 들어있는지 컴파일 시점에는 알 수 없기 때문에 단순하게 합칠 수 없습니다.
+String result = str1 + str2;
+
+
+이런 경우 예를 들면 다음과 같이 최적화를 수행합니다.(최적화 방식은 자바 버전에 따라 달라집니다.)
+String result = new StringBuilder().append(str1).append(str2).toString();
+
+
+
+  참고: 자바 9부터는 StringConcatFactory를 사용해서 최적화를 수행합니다.
+
+
+이렇듯 자바가 최적화를 처리해주기 때문에 지금처럼 간단한 경우에는 StringBuilder를 사용하지 않아도 됩니다.
+
+  대신에 문자열을 더하기 연산(+)을 사용하면 충분합니다.
+
+
+String 최적화가 어려운 경우
+다음과 같이 문자열을 루프안에서 문자열을 더하는 경우에는 최적화가 이루어지지 않습니다.
+package lang.string.builder;
+
+public class LoopStringMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+    String result = "";
+
+    for (int i = 0; i &lt; 100000; i++) {
+      result += "Hello Java ";
+    }
+
+    long endTime = System.currentTimeMillis();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+왜냐하면 대락 다음과 같이 최적화가 되기 때문입니다.(최적화 방식은 자바 버전에 따라 다릅니다.)
+String result = "";
+for (int i = 0; i &lt; 100000; i++) {
+    result = new StringBuilder().append(result).append("Hello Java ").toString();
+}
+
+
+  반복문의 루프 내부에서는 최적화가 되는 것 처럼 보이지만, 반복 횟수만큼 객체를 생성해야 합니다.
+    
+      반복문 내에서의 문자열 연결은, 런타임에 연결할 문자열의 개수와 내용이 결정됩니다.
+        
+          이런 경우, 컴파일러는 얼마나 많은 반복이 일어날지, 각 반복에서 문자열이 어떻게 변할지 예측할 수 없습니다.
+            
+              따라서, 이런 상황에서는 최적화가 어렵습니다.
+            
+          
+        
+      
+    
+  
+
+
+StringBuilder는 물론이고, 아마도 대략 반복 횟수인 100,000번의 String 객체를 생성했을 것입니다.
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 2528ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 2.5초가 걸렸습니다.
+
+
+이럴 때는 직접 StringBuilder를 사용하면 됩니다.
+package lang.string.builder;
+
+public class LoopStringBuilderMain {
+
+  public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i &lt; 100000; i++) {
+      sb.append("Hello Java ");
+    }
+
+    long endTime = System.currentTimeMillis();
+
+    String result = sb.toString();
+    System.out.println("result = " + result);
+    System.out.println("time = " + (endTime - startTime) + "ms");
+  }
+}
+
+
+실행 결과
+result = Hello Java Hello Java ...
+time = 4ms
+
+
+  1000ms = 1초
+  M1 맥북을 기준으로 100000회 더했을 때 약 0.004초가 걸렸습니다.
+
+
+정리
+
+  문자열을 합칠 때 대부분의 경우 최적화가 되므로 + 연산을 사용하면 됩니다.
+
+
+StringBuilder를 직접 사용하는 것이 더 좋은 경우
+
+  반복문에서 반복해서 문자를 연결할 때
+  조건문을 통해 동적으로 문자열을 조합할 때
+  복잡한 문자열의 특정 부분을 변경해야 할 때
+  매우 긴 대용량 문자열을 다룰 때
+
+
+
+  참고: StringBuilder vs StringBuffer
+StringBuilder와 똑같은 기능을 수행하는 StringBuffer 클래스도 있습니다.
+StringBuffer는 내부에 동기화가 되어 있어서, 멀티 스레드 상황에 안전하지만 동기화 오버헤드로 인해 성능이 느립니다.
+StringBuilder는 멀티 쓰레드에 상황에 안전하지 않지만 동기화 오버헤드가 없으므로 속도가 빠릅니다.
 
 
                         </a>
@@ -61911,70 +62186,6 @@ ImmutableAddress는 불변 클래스입니다. 이 클래스로 객체를 생성
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/SQL_archive/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/SQL_archive/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
-                        <a href="/Archive/SQL_archive/2024-04-02-GROUPBY.html" class="txt_post">
-                            GROUP BY
-‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
-
-  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
-  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
-
-
-‘GROUP BY’ 사용 예
-
-  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
-    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
-    
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
-  
-  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
-    SELECT category, AVG(price) FROM products GROUP BY category;
-    
-    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
-  
-  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
-    SELECT department, COUNT(*) FROM employees GROUP BY department;
-    
-    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
-  
-
-
-‘GROUP BY’ 절의 특징
-
-  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
-  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
-  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
-  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
-
-
-사용 시 고려사항
-
-  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
-  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
-
-
-‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-04-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Java_archive/2024-04-02-SharingOfBasicTypesAndReferenceTypes.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -62141,6 +62352,70 @@ Address b = a;
 
   메모리 구조를 보면 바로 답이 나오겠지만, 개발을 하다 보면 누구나 이런 실수할 수 있을 것 같다는 생각도 함께 들 것입니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-04-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/SQL_archive/2024-04-02-GROUPBY.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/SQL_archive/2024-04-02-GROUPBY.html"><h1 class="title_post">💉[SQL] GROUP BY</h1></a>
+                        <a href="/Archive/SQL_archive/2024-04-02-GROUPBY.html" class="txt_post">
+                            GROUP BY
+‘GROUP BY’ 절은 SQL에서 특정 열(들)의 값에 기반하여 행(row)들을 그룹화할 때 사용됩니다.
+
+  이 기능은 집계함수(‘SUM’, ‘AVG’, ‘COUNT’, ‘MIN’, ‘MAX’ 등)와 함꼐 사용되어, 각 그룹에 대한 집계된 데이터를 계산하고 반환하는 데 주로 활용됩니다.
+  ‘GROUP BY’ 는 데이터를 요약하고, 특정 기준에 따른 데이터의 통계를 분석할 때 유용하게 사용됩니다.
+
+
+‘GROUP BY’ 사용 예
+
+  그룹별 합계 계산: 각 부서별 총 급여를 계산하고 싶을 때
+    SELECT department, SUM(salary) FROM employees GROUP BY departmentl
+    
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 ‘salary’ 합계를 계산합니다.
+  
+  그룹별 평균 계산: 각 제품 카테고리별 평균 가격을 계산하고 싶을 때
+    SELECT category, AVG(price) FROM products GROUP BY category;
+    
+    이 쿼리는 ‘product’ 테이블에서 ‘category’ 별로 그룹화하고, 각 그룹의 price 평균을 계산합니다.
+  
+  그룹별 데이터 수 계산: 각 부서에 속한 직원 수를 세고 싶을 때
+    SELECT department, COUNT(*) FROM employees GROUP BY department;
+    
+    이 쿼리는 ‘employees’ 테이블에서 ‘department’ 별로 그룹화하고, 각 그룹의 직원 수를 세어 반환합니다.
+  
+
+
+‘GROUP BY’ 절의 특징
+
+  데이터를 그룹화하고 각 그룹에 대한 집계를 수행하여, 데이터의 요약 정보를 제공합니다.
+  여러 열을 기준으로 그룹화할 수 있으며, 이 경우 선택된 모든 열의 조합에 따라 데이터가 그룹화됩니다.
+  집계 함수와 함께 사용되어, 각 그룹별로 함계, 평균, 최소값, 최대값 등을 계산할 수 있습니다.
+  ‘HAVING’ 절과 함께 사용하여, 집계 결과에 대한 조건을 설정할 수 있습니다. 이는 ‘WHERE’ 절과 유사하지만, ‘GROUP BY’ 로 그룹화된 결과에 대해 조건을 정용하는 점이 다릅니다.
+
+
+사용 시 고려사항
+
+  ‘GROUP BY’ 를 사용할 때는 선택된 열이 ‘SELECT’ 절에 포함되어야 합니다. 그렇지 않은 경우, SQL 쿼리가 예상대로 작동하지 않을 수 있습니다.
+  대규모 데이터셋에서 ‘GROUP BY’ 를 사용할 때는 쿼리의 성능을 고려해야 합니다. 적절한 인덱스 사용과 데이터 구조의 최적화가 성능에 큰 영햫을 미칠 수 있습니다.
+
+
+‘GROUP BY’ 절은 데이터를 분석하고 요약 정보를 얻기 위한 강력한 도구로, 데이터베이스 내에서 의미 있는 인사이트를 도출하는 데 크게 기여합니다.
 
                         </a>
                         <div class="info-post">
@@ -63137,6 +63412,147 @@ System.out.println()
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/SQL_archive/2024-03-30-ANDORNOT.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/SQL_archive/2024-03-30-ANDORNOT.html"><h1 class="title_post">💉[SQL] AND, OR, NOT</h1></a>
+                        <a href="/Archive/SQL_archive/2024-03-30-ANDORNOT.html" class="txt_post">
+                            AND, OR, NOT
+
+AND
+‘AND’ 연산자는 SQL에서 여러 조건을 동시에 만족해야 할 때 사용됩니다.
+
+  즉, ‘AND’ 를 사용하는 쿼리는 모든 조건인 참(TRUE)일 때만 결과를 반환합니다.
+  이는 데이터베이스에서 더 세밀한 필터링을 수행하고자 할 때 유용하며, 특히 복잡한 데이터 집합에서 기준에 부합하는 정확한 데이터를 찾고자 할 때 중요한 역할을 합니다.
+
+
+‘AND’ 사용 예
+
+  여러 기준에 따른 데이터 검색 : 나이가 30세 이상이면서 ‘New York’에 거주하는 모든 사람을 찾고 싶을 때
+    SELECT * FROM people WHERE age &gt;= 30 AND city = 'New York' ;
+    
+    이 쿼리는 ‘age’ 열이 30 이상이면서 동시에 ‘city’ 열이 ‘New York’인 모든 행을 반환합니다.
+  
+  날짜 범위와 특정 조건을 동시에 만족하는 데이터 검색 : 2023년 1월 1일부터 2023년 3월 31일 사이에 등록되고, 상태가 ‘활성화’인 모든 계정을 찾고 싶을 때
+    SELECT * FROM account WHERE registration_date BETWEEN '2023-01-01' AND '2023-03-31' AND status = 'Active';
+    
+    이 쿼리는 ‘registration_date’ 가 지정된 날짜 범위 내에 있으며, ‘status’ 가 ‘Active’ 인 행을 반환합니다.
+  
+
+
+‘AND’ 연산자의 특징
+
+  ‘AND’ 연산자를 사용할 때는 각 조건이 서로 어떤 관계에 있는지 고려해야 합니다. 예를 들어, 상호 배타적인 조건을 ‘AND’ 로 연결하면 결과가 항상 비어 있을 것입니다.
+  성능에 영향을 미칠 수 있는 큰 데이터 세트에서는 인덱스와 조건의 효율적인 사용이 중요합니다. 가능한 한, 성능에 영향을 덜 미치는 조건을 먼저 적용하는 것이 좋습니다.
+
+
+‘AND’ 연산자는 복수의 조건을 조합하여 데이터를 필터링하고자 할 때 필수적인 도구입니다.
+이를 통해 더 정확하고 의미 있는 데이터 집합을 얻을 수 있으며, SQL 쿼리 작성 시 다양한 상황에 맞춰 유연하게 적용할 수 있습니다.
+
+
+
+OR
+‘OR’ 연산자는 SQL에서 주어진 조건 중 하나 이상이 참(TRUE)일 때 결과를 반환하고자 할 때 사용됩니다.
+
+  ‘OR’ 을 사용하면 여러 조건 중 하나라도 만족하는 데이터를 선택할 수 있어, 데이터베이스 쿼리의 유연성을 크게 향상시킬 수 있습니다.
+  ‘OR’ 은 다양한 시나리오에서 유용하게 사용되며, 특히 여러 다른 가능성을 모두 포함해야 할 때 중요한 역할을 합니다.
+
+
+‘OR’ 사용 예
+
+  여러 다른 값 중 하나를 만족하는 데이터 검색 : ‘Manager’ 또는 ‘Sales’ 부서에 속한 모든 직원을 찾고 싶을 때
+    SELECT * FROM employees WHERE department = 'Manager' OR department = 'Sales';
+    
+    이 쿼리는 ‘department’ 열이 ‘Manager’이거나 ‘Sales’인 모든 행을 반환합니다.
+  
+  여러 조건 중 하나 이상을 만족하는 데이터 검색 : 나이가 18세 미만이거나 65세 이상인 모든 사람을 찾고 싶을 때
+    SELECT * FROM people WHERE age &lt; 18 OR age &gt;= 65;
+    
+    이 쿼리는 ‘age’ 열이 18세 미만이거나 65세 이상인 모든 행을 반환합니다.
+  
+
+
+‘OR’ 연산자의 특징
+
+  ‘OR’ 연산자를 사용할 때는 주어진 조건 중 하나라도 참이면 결과 집합에 해당 행이 포함됩니다. 모든 조건이 거짓(FALSE)인 경우에만 결과에서 제외됩니다.
+  여러 개의 다른 가능성을 허용하는 데 유용하며, 특히 사용자의 입력이나 선택에 따라 다양한 결과를 보여줘야 할 때 자주 사용됩니다.
+  ‘AND’ 연산자와 함께 사용될 수 있으나, 이 경우 우선 순위에 주의해야 하며, 괄호를 사용하여 연산자 간의 우선 순위를 명확하게 구분해야 합니다.
+
+
+사용 시 고려사항
+
+  ‘OR’ 연산자를 사용할 때는 쿼리의 성능에 주의해야 합니다. 특히 대규모 데이터 셋에서는 ‘OR’ 조건이 많을 수록 쿼리 성능이 저하될 수 있습니다.
+  가능한 경우, ‘OR’ 을 사용하는 대신 다른 접근 방식을 고려해보는 것도 좋습니다. 예를 들어, ‘IN’ 연산자를 사용하면 ‘OR’ 과 유사한 결과를 더 효율적으로 얻을 수 있을 때가 많습니다.
+  복잡한 쿼리에서는 ‘OR’ 과 ‘AND’ 를 혼합하여 사용할 때 괄호를 적절히 사용하여 명확한 논리 구조를 유지하는 것이 중요합니다.
+
+
+‘OR’ 연산자는 다양한 조건을 유연하게 처리하고자 할 때 매우 유용하며, SQL 쿼리를 작성하는 과정에서 필요한 결과를 얻기 위해 다양한 시나리오를 고려할 수 있게 해줍니다.
+
+
+
+NOT
+‘NOT’ 연산자는 SQL에서 조건의 논리를 부정할 때 사용됩니다.
+
+  즉, ‘NOT’ 은 특정 조건이 거짓(FALSE)일 때 참(TRUE)인 결과를 반환하도록 합니다.
+    
+      이를 통해 특정 조건을 만족하지 않는 데이터를 검색하고자 할 때 매우 유용하게 활용할 수 있습니다.
+    
+  
+  ‘NOT’ 연산자는 ‘WHERE’ 절 내에서 다른 연산자(예: ‘IN’, ‘BETWEEN’, ‘LIKE’, ‘EXISTS’)와 함께 사용되어, 해당 조건의 반대되는 결과를 얻고자 할 때 사용됩니다.
+
+
+‘NOT’ 사용 예
+
+  특정 조건을 만족하지 않는 데이터 검색 : ‘Sales’ 부서에 속하지 않는 모든 직원을 찾고 싶을 때
+    SELECT * FROM employees WHERE NOT department = 'Sales';
+    
+    이는 ‘department’ 가 ‘Sales’ 가 아닌 모든 행을 반환합니다.
+  
+  특정 범위에 속하지 않는 데이터 검색 : 20세에서 30세 사이가 아닌 사람을 찾고 싶을 때
+    SELECT * FROM people WHERE NOT age BETWEEN 20 AND 30;
+    
+    이는 나이가 20세 이상 30세 이하가 아닌 모든 사람을 찾습니다.
+  
+  지정된 목록에 포함되지 않는 데이터 검색 : ‘Manager’와 ‘Sales’ 부서에 속하지 않은 모든 직원을 찾고 싶을 때
+    SELECT * FROM employee WHERE department NOT IN ('Manager', 'Sales');
+    
+    이 쿼리는 ‘department’ 가 ‘Manager’ 또는 ‘Sales’가 아닌 모든 행을 반환합니다.
+  
+
+
+‘NOT’ 연산자의 특징.
+
+  ‘NOT’ 연산자는 조건의 논리를 부정하여, 조건이 거짓일 때 참을 반환합니다.
+  ‘NOT’ 은 ‘WHERE’ 절에서 다양한 연산자와 함께 사용될 수 있으며, 특정 조건을 제외한 데이터를 선택하고자 할 때 유용합니다.
+  복잡한 조건에서는 ‘NOT’ 을 사용하여 예외적인 경우를 쉽게 필터링할 수 있습니다.
+
+
+사용 시 고려사항.
+
+  ‘NOT’ 연산자를 사용할 때는 쿼리의 성능에 주의해야 합니다. 특히, ‘NOT’ 이 포함된 조건은 인덱스 활용이 어려워 성능 저하를 일으킬 수 있습니다.
+  명확하지 않은 논리를 피하기 위해, 가능한 한 ‘NOT’ 의 사용을 최소화하고, 대신 명확한 조건을 사용하여 원하는 결과를 얻는 것이 좋습니다.
+
+
+‘NOT’ 연산자는 SQL 쿼리에서 특정 조건을 만족하지 않는 데이터를 필터링하고자 할 때 유용하게 사용됩니다.
+하지만, 쿼리의 명확성과 성능을 고려하여 신중하게 사용해야 합니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-03-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Archive/SQL_archive/2024-03-30-BETWEENINLIKE.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
                         
                     </div>
@@ -63263,147 +63679,6 @@ LIKE
 
 ‘LIKE’ 연산자는 문자열 필드 내에서 특정 패턴이나 부분 문자열을 기반으로 데이터를 검색할 때 매우 유용합니다.
 패턴 매칭 기능을 통해 복잡한 조건의 문자열 검색을 수행할 수 있으며, 데이터 분석이나 데이터 정제 과정에서 중요한 역할을 합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-03-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/SQL_archive/2024-03-30-ANDORNOT.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/sql.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/SQL_archive/2024-03-30-ANDORNOT.html"><h1 class="title_post">💉[SQL] AND, OR, NOT</h1></a>
-                        <a href="/Archive/SQL_archive/2024-03-30-ANDORNOT.html" class="txt_post">
-                            AND, OR, NOT
-
-AND
-‘AND’ 연산자는 SQL에서 여러 조건을 동시에 만족해야 할 때 사용됩니다.
-
-  즉, ‘AND’ 를 사용하는 쿼리는 모든 조건인 참(TRUE)일 때만 결과를 반환합니다.
-  이는 데이터베이스에서 더 세밀한 필터링을 수행하고자 할 때 유용하며, 특히 복잡한 데이터 집합에서 기준에 부합하는 정확한 데이터를 찾고자 할 때 중요한 역할을 합니다.
-
-
-‘AND’ 사용 예
-
-  여러 기준에 따른 데이터 검색 : 나이가 30세 이상이면서 ‘New York’에 거주하는 모든 사람을 찾고 싶을 때
-    SELECT * FROM people WHERE age &gt;= 30 AND city = 'New York' ;
-    
-    이 쿼리는 ‘age’ 열이 30 이상이면서 동시에 ‘city’ 열이 ‘New York’인 모든 행을 반환합니다.
-  
-  날짜 범위와 특정 조건을 동시에 만족하는 데이터 검색 : 2023년 1월 1일부터 2023년 3월 31일 사이에 등록되고, 상태가 ‘활성화’인 모든 계정을 찾고 싶을 때
-    SELECT * FROM account WHERE registration_date BETWEEN '2023-01-01' AND '2023-03-31' AND status = 'Active';
-    
-    이 쿼리는 ‘registration_date’ 가 지정된 날짜 범위 내에 있으며, ‘status’ 가 ‘Active’ 인 행을 반환합니다.
-  
-
-
-‘AND’ 연산자의 특징
-
-  ‘AND’ 연산자를 사용할 때는 각 조건이 서로 어떤 관계에 있는지 고려해야 합니다. 예를 들어, 상호 배타적인 조건을 ‘AND’ 로 연결하면 결과가 항상 비어 있을 것입니다.
-  성능에 영향을 미칠 수 있는 큰 데이터 세트에서는 인덱스와 조건의 효율적인 사용이 중요합니다. 가능한 한, 성능에 영향을 덜 미치는 조건을 먼저 적용하는 것이 좋습니다.
-
-
-‘AND’ 연산자는 복수의 조건을 조합하여 데이터를 필터링하고자 할 때 필수적인 도구입니다.
-이를 통해 더 정확하고 의미 있는 데이터 집합을 얻을 수 있으며, SQL 쿼리 작성 시 다양한 상황에 맞춰 유연하게 적용할 수 있습니다.
-
-
-
-OR
-‘OR’ 연산자는 SQL에서 주어진 조건 중 하나 이상이 참(TRUE)일 때 결과를 반환하고자 할 때 사용됩니다.
-
-  ‘OR’ 을 사용하면 여러 조건 중 하나라도 만족하는 데이터를 선택할 수 있어, 데이터베이스 쿼리의 유연성을 크게 향상시킬 수 있습니다.
-  ‘OR’ 은 다양한 시나리오에서 유용하게 사용되며, 특히 여러 다른 가능성을 모두 포함해야 할 때 중요한 역할을 합니다.
-
-
-‘OR’ 사용 예
-
-  여러 다른 값 중 하나를 만족하는 데이터 검색 : ‘Manager’ 또는 ‘Sales’ 부서에 속한 모든 직원을 찾고 싶을 때
-    SELECT * FROM employees WHERE department = 'Manager' OR department = 'Sales';
-    
-    이 쿼리는 ‘department’ 열이 ‘Manager’이거나 ‘Sales’인 모든 행을 반환합니다.
-  
-  여러 조건 중 하나 이상을 만족하는 데이터 검색 : 나이가 18세 미만이거나 65세 이상인 모든 사람을 찾고 싶을 때
-    SELECT * FROM people WHERE age &lt; 18 OR age &gt;= 65;
-    
-    이 쿼리는 ‘age’ 열이 18세 미만이거나 65세 이상인 모든 행을 반환합니다.
-  
-
-
-‘OR’ 연산자의 특징
-
-  ‘OR’ 연산자를 사용할 때는 주어진 조건 중 하나라도 참이면 결과 집합에 해당 행이 포함됩니다. 모든 조건이 거짓(FALSE)인 경우에만 결과에서 제외됩니다.
-  여러 개의 다른 가능성을 허용하는 데 유용하며, 특히 사용자의 입력이나 선택에 따라 다양한 결과를 보여줘야 할 때 자주 사용됩니다.
-  ‘AND’ 연산자와 함께 사용될 수 있으나, 이 경우 우선 순위에 주의해야 하며, 괄호를 사용하여 연산자 간의 우선 순위를 명확하게 구분해야 합니다.
-
-
-사용 시 고려사항
-
-  ‘OR’ 연산자를 사용할 때는 쿼리의 성능에 주의해야 합니다. 특히 대규모 데이터 셋에서는 ‘OR’ 조건이 많을 수록 쿼리 성능이 저하될 수 있습니다.
-  가능한 경우, ‘OR’ 을 사용하는 대신 다른 접근 방식을 고려해보는 것도 좋습니다. 예를 들어, ‘IN’ 연산자를 사용하면 ‘OR’ 과 유사한 결과를 더 효율적으로 얻을 수 있을 때가 많습니다.
-  복잡한 쿼리에서는 ‘OR’ 과 ‘AND’ 를 혼합하여 사용할 때 괄호를 적절히 사용하여 명확한 논리 구조를 유지하는 것이 중요합니다.
-
-
-‘OR’ 연산자는 다양한 조건을 유연하게 처리하고자 할 때 매우 유용하며, SQL 쿼리를 작성하는 과정에서 필요한 결과를 얻기 위해 다양한 시나리오를 고려할 수 있게 해줍니다.
-
-
-
-NOT
-‘NOT’ 연산자는 SQL에서 조건의 논리를 부정할 때 사용됩니다.
-
-  즉, ‘NOT’ 은 특정 조건이 거짓(FALSE)일 때 참(TRUE)인 결과를 반환하도록 합니다.
-    
-      이를 통해 특정 조건을 만족하지 않는 데이터를 검색하고자 할 때 매우 유용하게 활용할 수 있습니다.
-    
-  
-  ‘NOT’ 연산자는 ‘WHERE’ 절 내에서 다른 연산자(예: ‘IN’, ‘BETWEEN’, ‘LIKE’, ‘EXISTS’)와 함께 사용되어, 해당 조건의 반대되는 결과를 얻고자 할 때 사용됩니다.
-
-
-‘NOT’ 사용 예
-
-  특정 조건을 만족하지 않는 데이터 검색 : ‘Sales’ 부서에 속하지 않는 모든 직원을 찾고 싶을 때
-    SELECT * FROM employees WHERE NOT department = 'Sales';
-    
-    이는 ‘department’ 가 ‘Sales’ 가 아닌 모든 행을 반환합니다.
-  
-  특정 범위에 속하지 않는 데이터 검색 : 20세에서 30세 사이가 아닌 사람을 찾고 싶을 때
-    SELECT * FROM people WHERE NOT age BETWEEN 20 AND 30;
-    
-    이는 나이가 20세 이상 30세 이하가 아닌 모든 사람을 찾습니다.
-  
-  지정된 목록에 포함되지 않는 데이터 검색 : ‘Manager’와 ‘Sales’ 부서에 속하지 않은 모든 직원을 찾고 싶을 때
-    SELECT * FROM employee WHERE department NOT IN ('Manager', 'Sales');
-    
-    이 쿼리는 ‘department’ 가 ‘Manager’ 또는 ‘Sales’가 아닌 모든 행을 반환합니다.
-  
-
-
-‘NOT’ 연산자의 특징.
-
-  ‘NOT’ 연산자는 조건의 논리를 부정하여, 조건이 거짓일 때 참을 반환합니다.
-  ‘NOT’ 은 ‘WHERE’ 절에서 다양한 연산자와 함께 사용될 수 있으며, 특정 조건을 제외한 데이터를 선택하고자 할 때 유용합니다.
-  복잡한 조건에서는 ‘NOT’ 을 사용하여 예외적인 경우를 쉽게 필터링할 수 있습니다.
-
-
-사용 시 고려사항.
-
-  ‘NOT’ 연산자를 사용할 때는 쿼리의 성능에 주의해야 합니다. 특히, ‘NOT’ 이 포함된 조건은 인덱스 활용이 어려워 성능 저하를 일으킬 수 있습니다.
-  명확하지 않은 논리를 피하기 위해, 가능한 한 ‘NOT’ 의 사용을 최소화하고, 대신 명확한 조건을 사용하여 원하는 결과를 얻는 것이 좋습니다.
-
-
-‘NOT’ 연산자는 SQL 쿼리에서 특정 조건을 만족하지 않는 데이터를 필터링하고자 할 때 유용하게 사용됩니다.
-하지만, 쿼리의 명확성과 성능을 고려하여 신중하게 사용해야 합니다.
 
                         </a>
                         <div class="info-post">
@@ -65462,130 +65737,6 @@ public class CarMain0 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/Java_archive/2024-03-22-UsingClassesAndInterfaces.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-03-22-UsingClassesAndInterfaces.html"><h1 class="title_post">☕️[Java] 클래스와 인터페이스 활용</h1></a>
-                        <a href="/Archive/Java_archive/2024-03-22-UsingClassesAndInterfaces.html" class="txt_post">
-                            클래스와 인터페이스 활용
-
-이번에는 클래스 상속과 인터페이스 구현을 함께 사용하는 예를 알아보겠습니다.
-
-
-
-
-  AbstractAnimal은 추상 클래스입니다.
-    
-      sound() : 동물의 소리를 내기 위한 sound() 추상 메서드를 제공합니다.
-      move() : 동물의 이동을 표현하기 위한 메서드 입니다. 이 메서드는 추상 메서드가 아닙니다. 상속을 목적으로 사용됩니다.
-    
-  
-  Fly는 인터페이스 입니다. 나는 동물은 이 인터페이스를 구현할 수 있습니다.
-    
-      Bird, Chicken은 날 수 있는 동물입니다. fly() 메서드를 구현해야 합니다.
-    
-  
-
-
-예제 6
-package poly.ex6;
-
-public class SoundFlyMain {
-
-  public static void main(String[] args) {
-    Dog dog = new Dog();
-    Bird bird = new Bird();
-    Chicken chicken = new Chicken();
-
-    soundAnimal(dog);
-    soundAnimal(bird);
-    soundAnimal(chicken);
-
-    flyAnimal(bird);
-    flyAnimal(chicken);
-  }
-
-  //AbstractAnimal 사용 가능
-  private static void soundAnimal(AbstractAnimal animal) {
-    System.out.println("동물 소리 테스트 시작");
-    animal.sound();
-    System.out.println("동물 소리 테스트 종료");
-  }
-
-  //Fly 인터페이스가 있으면 사용 가능
-  private static void flyAnimal(Fly fly) {
-    System.out.println("날기 테스트 시작");
-    fly.fly();
-    System.out.println("날기 테스트 종료");
-  }
-}
-
-
-실행 결과
-동물 소리 테스트 시작
-멍멍
-동물 소리 테스트 종료
-
-동물 소리 테스트 시작
-짹짹
-동물 소리 테스트 종료
-
-동물 소리 테스트 시작
-꼬끼오
-동물 소리 테스트 종료
-
-날기 테스트 시작
-새 날기
-날기 테스트 종료
-
-날기 테스트 시작
-닭 날기
-날기 테스트 종료
-
-
-
-
-soundAnimal(AbstractAnimal animal)
-AbstractAnimal를 상속한 Dog, Bird, Chicken을 전달해서 실행할 수 있습니다.
-
-실행 과정
-
-  soundAnimal(bird)를 호출한다고 가정합시다.
-  메서드 안에서 animal.sound()를 호출하면 참조 대상인 x001 Bird 인스턴스를 찾습니다.
-  호출한 animal 변수는 AbstractAnimal 타입입니다. 따라서 AbstractAnimal.sound()를 찾습니다. 해당 메서드는 Bird.sound()에 오버라이딩 되어 있습니다.
-  Bird.sound()가 호출됩니다.
-
-
-
-
-flyAnimal(Fly fly)
-Fly 인터페이스를 구현한 Bird, Chicken을 전달해서 실행할 수 있습니다.
-
-실행과정
-
-  fly(bird)를 호출한다고 가정합시다.
-  메서드 안에서 fly.fly()를 호출하면 참조 대상인 x001 Bird 인스턴스를 찾습니다.
-  호출한 fly 변수는 Fly 타입입니다. 따라서 Fly.fly()를 찾습니다. 해당 메서드는 Bird.fly()에 오버라이딩 되어 있습니다.
-  Bird.fly()가 호출됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-03-22</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Java_archive/2024-03-22-Interface-MultipleImplementation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -65731,6 +65882,130 @@ Child.methodCommon
   b.methodCommon()을 호출하면 먼저 x001 Child 인스턴스를 찾습니다.
   변수 b가 InterfaceB 타입으로 해당 타입에서 methodCommon()을 찾습니다.
   methodCommon()은 하위 타입인 Child에서 오버라이팅 되어 있습니다. 따라서 Child의 methodCommon()이 호출됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-03-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/Java_archive/2024-03-22-UsingClassesAndInterfaces.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-03-22-UsingClassesAndInterfaces.html"><h1 class="title_post">☕️[Java] 클래스와 인터페이스 활용</h1></a>
+                        <a href="/Archive/Java_archive/2024-03-22-UsingClassesAndInterfaces.html" class="txt_post">
+                            클래스와 인터페이스 활용
+
+이번에는 클래스 상속과 인터페이스 구현을 함께 사용하는 예를 알아보겠습니다.
+
+
+
+
+  AbstractAnimal은 추상 클래스입니다.
+    
+      sound() : 동물의 소리를 내기 위한 sound() 추상 메서드를 제공합니다.
+      move() : 동물의 이동을 표현하기 위한 메서드 입니다. 이 메서드는 추상 메서드가 아닙니다. 상속을 목적으로 사용됩니다.
+    
+  
+  Fly는 인터페이스 입니다. 나는 동물은 이 인터페이스를 구현할 수 있습니다.
+    
+      Bird, Chicken은 날 수 있는 동물입니다. fly() 메서드를 구현해야 합니다.
+    
+  
+
+
+예제 6
+package poly.ex6;
+
+public class SoundFlyMain {
+
+  public static void main(String[] args) {
+    Dog dog = new Dog();
+    Bird bird = new Bird();
+    Chicken chicken = new Chicken();
+
+    soundAnimal(dog);
+    soundAnimal(bird);
+    soundAnimal(chicken);
+
+    flyAnimal(bird);
+    flyAnimal(chicken);
+  }
+
+  //AbstractAnimal 사용 가능
+  private static void soundAnimal(AbstractAnimal animal) {
+    System.out.println("동물 소리 테스트 시작");
+    animal.sound();
+    System.out.println("동물 소리 테스트 종료");
+  }
+
+  //Fly 인터페이스가 있으면 사용 가능
+  private static void flyAnimal(Fly fly) {
+    System.out.println("날기 테스트 시작");
+    fly.fly();
+    System.out.println("날기 테스트 종료");
+  }
+}
+
+
+실행 결과
+동물 소리 테스트 시작
+멍멍
+동물 소리 테스트 종료
+
+동물 소리 테스트 시작
+짹짹
+동물 소리 테스트 종료
+
+동물 소리 테스트 시작
+꼬끼오
+동물 소리 테스트 종료
+
+날기 테스트 시작
+새 날기
+날기 테스트 종료
+
+날기 테스트 시작
+닭 날기
+날기 테스트 종료
+
+
+
+
+soundAnimal(AbstractAnimal animal)
+AbstractAnimal를 상속한 Dog, Bird, Chicken을 전달해서 실행할 수 있습니다.
+
+실행 과정
+
+  soundAnimal(bird)를 호출한다고 가정합시다.
+  메서드 안에서 animal.sound()를 호출하면 참조 대상인 x001 Bird 인스턴스를 찾습니다.
+  호출한 animal 변수는 AbstractAnimal 타입입니다. 따라서 AbstractAnimal.sound()를 찾습니다. 해당 메서드는 Bird.sound()에 오버라이딩 되어 있습니다.
+  Bird.sound()가 호출됩니다.
+
+
+
+
+flyAnimal(Fly fly)
+Fly 인터페이스를 구현한 Bird, Chicken을 전달해서 실행할 수 있습니다.
+
+실행과정
+
+  fly(bird)를 호출한다고 가정합시다.
+  메서드 안에서 fly.fly()를 호출하면 참조 대상인 x001 Bird 인스턴스를 찾습니다.
+  호출한 fly 변수는 Fly 타입입니다. 따라서 Fly.fly()를 찾습니다. 해당 메서드는 Bird.fly()에 오버라이딩 되어 있습니다.
+  Bird.fly()가 호출됩니다.
 
 
                         </a>
@@ -68678,6 +68953,167 @@ Q2. 서버 개발자가 컴퓨터 구조에 대한 기본적인 지식을 갖추
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Archive/Java_archive/2024-03-13-super.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-03-13-super.html"><h1 class="title_post">☕️[Java] super - 부모 참조</h1></a>
+                        <a href="/Archive/Java_archive/2024-03-13-super.html" class="txt_post">
+                            super - 부모 참조.
+
+“부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없습니다.”
+
+  이때 super 키워드를 사용하면 부모를 참조할 수 있습니다.
+  super 는 이름 그대로 부모 클래스에 대한 참조를 나타냅니다.
+
+
+다음 예를 봅시다.
+
+  부모의 필드명과 자식의 필드명 둘 다 value로 똑같습니다.
+  메서드도 hello()로 자식에서 오버라이딩 되어 있습니다.
+    
+      이 때 자식 클래스에서 부모 클래스의 value와 hello()를 호출하고 싶다면 super 키워드를 사용하면 됩니다.
+    
+  
+
+
+
+
+Parent
+package extends1.super1;
+
+public class Parent {
+
+  public String value = "parent";
+
+  public void hello() {
+    System.out.println("Parent.hello");
+  }
+}
+
+
+Child
+package extends1.super1;
+
+public class Child extends Parent {
+  public String value = "child";
+
+  @Override
+  public void hello() {
+    System.out.println("Child.hello");
+  }
+
+  public void call() {
+    System.out.println("this value = " + this.value); // this 생략 가능
+    System.out.println("super value = " + super.value);
+
+    this.hello(); // this 생략 가능
+    super.hello();
+  }
+}
+
+
+call() 메서드를 봅시다.
+
+  this는 자기 자신의 참조를 뜻합니다. this는 생략할 수 있습니다.
+  super는 부모 클래스에 대한 참조를 뜻합니다.
+  필드 이름과 메서드 이름이 같지만 super를 사용해서 부모 클래스에 있는 기능을 사용할 수 있습니다.
+
+
+Super1Main
+package extends1.super1;
+
+public class Super1Main {
+
+  public static void main(String[] args) {
+    Child child = new Child();
+    child.call();
+  }
+}
+
+
+실행 결과
+this value = child
+super value = parent
+Child.hello
+Parent.hello
+
+
+
+  실행 결과를 보면 super를 사용한 경우 부모 클래스의 기능을 사용한 것을 확인할 수 있습니다.
+
+
+super 메모리 그림
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-03-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/Java_archive/2024-03-13-finalUsedInClassesAndMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-03-13-finalUsedInClassesAndMethods.html"><h1 class="title_post">☕️[Java] 클래스와 메서드에 사용되는 final</h1></a>
+                        <a href="/Archive/Java_archive/2024-03-13-finalUsedInClassesAndMethods.html" class="txt_post">
+                            클래스와 메서드에 사용되는 final.
+
+클래스에 final
+
+  상속 끝!
+  final로 선언된 클래스는 확장될 수 없습니다.
+    
+      다른 클래스가 final로 선언된 클래스를 상속받을 수 없습니다.
+        
+          예: public final class MyFinalClass {...}
+        
+      
+    
+  
+
+
+메서드에 final
+
+  오버라이딩 끝!
+  final로 선언된 메서드는 오버라이드 될 수 없습니다.
+    
+      상속받은 서브 클래스에서 이 메서드를 변경할 수 없습니다.
+        
+          예: public final void myFinalMethod() {...}
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-03-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Archive/Java_archive/2024-03-13-super2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -68874,167 +69310,6 @@ ClassC 생성자
   상속 관계에서 자식 클래스의 생성자 첫줄에 반드시 super(...)를 호출해야 합니다.
     
       단 기본 생성자(super())인 경우 생략 할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-03-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/Java_archive/2024-03-13-super.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-03-13-super.html"><h1 class="title_post">☕️[Java] super - 부모 참조</h1></a>
-                        <a href="/Archive/Java_archive/2024-03-13-super.html" class="txt_post">
-                            super - 부모 참조.
-
-“부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없습니다.”
-
-  이때 super 키워드를 사용하면 부모를 참조할 수 있습니다.
-  super 는 이름 그대로 부모 클래스에 대한 참조를 나타냅니다.
-
-
-다음 예를 봅시다.
-
-  부모의 필드명과 자식의 필드명 둘 다 value로 똑같습니다.
-  메서드도 hello()로 자식에서 오버라이딩 되어 있습니다.
-    
-      이 때 자식 클래스에서 부모 클래스의 value와 hello()를 호출하고 싶다면 super 키워드를 사용하면 됩니다.
-    
-  
-
-
-
-
-Parent
-package extends1.super1;
-
-public class Parent {
-
-  public String value = "parent";
-
-  public void hello() {
-    System.out.println("Parent.hello");
-  }
-}
-
-
-Child
-package extends1.super1;
-
-public class Child extends Parent {
-  public String value = "child";
-
-  @Override
-  public void hello() {
-    System.out.println("Child.hello");
-  }
-
-  public void call() {
-    System.out.println("this value = " + this.value); // this 생략 가능
-    System.out.println("super value = " + super.value);
-
-    this.hello(); // this 생략 가능
-    super.hello();
-  }
-}
-
-
-call() 메서드를 봅시다.
-
-  this는 자기 자신의 참조를 뜻합니다. this는 생략할 수 있습니다.
-  super는 부모 클래스에 대한 참조를 뜻합니다.
-  필드 이름과 메서드 이름이 같지만 super를 사용해서 부모 클래스에 있는 기능을 사용할 수 있습니다.
-
-
-Super1Main
-package extends1.super1;
-
-public class Super1Main {
-
-  public static void main(String[] args) {
-    Child child = new Child();
-    child.call();
-  }
-}
-
-
-실행 결과
-this value = child
-super value = parent
-Child.hello
-Parent.hello
-
-
-
-  실행 결과를 보면 super를 사용한 경우 부모 클래스의 기능을 사용한 것을 확인할 수 있습니다.
-
-
-super 메모리 그림
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-03-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/Java_archive/2024-03-13-finalUsedInClassesAndMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-03-13-finalUsedInClassesAndMethods.html"><h1 class="title_post">☕️[Java] 클래스와 메서드에 사용되는 final</h1></a>
-                        <a href="/Archive/Java_archive/2024-03-13-finalUsedInClassesAndMethods.html" class="txt_post">
-                            클래스와 메서드에 사용되는 final.
-
-클래스에 final
-
-  상속 끝!
-  final로 선언된 클래스는 확장될 수 없습니다.
-    
-      다른 클래스가 final로 선언된 클래스를 상속받을 수 없습니다.
-        
-          예: public final class MyFinalClass {...}
-        
-      
-    
-  
-
-
-메서드에 final
-
-  오버라이딩 끝!
-  final로 선언된 메서드는 오버라이드 될 수 없습니다.
-    
-      상속받은 서브 클래스에서 이 메서드를 변경할 수 없습니다.
-        
-          예: public final void myFinalMethod() {...}
-        
-      
     
   
 
@@ -69639,172 +69914,6 @@ public class CarMain {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/Java_archive/2024-03-08-extendRelationship.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-03-08-extendRelationship.html"><h1 class="title_post">☕️[Java] 상속관계</h1></a>
-                        <a href="/Archive/Java_archive/2024-03-08-extendRelationship.html" class="txt_post">
-                            상속관계
-
-  상속은 객체 지향 프로그래밍의 핵심 요소 중 하나로, 기존 클래스의 필드와 메서드를 새로운 클래스에서 재사용하게 해줍니다.
-    
-      이름 그대로 기존 클래스의 속성과 기능을 그대로 물려받는 것입니다.
-    
-  
-  상속을 하려면 extends 키워드를 사용하면 됩니다.
-    
-      그리고 extends 대상은 하나만 선택할 수 있습니다.
-    
-  
-
-
-용어 정리
-
-  부모 클래스(슈퍼 클래스): 상속을 통해 자신의 필드와 메서드를 다른 클래스에 제공하는 클래스
-  자식 클래스(서브 클래스): 부모 클래스로부터 필드와 메서드를 상속받는 클래스
-
-
-⛔️주의⛔️
-지금부터 코드를 작성할 때 기존 코드를 유지하기 위해, 새로운 패키지에 기존 코드를 옮겨가면서 코드를 작성할 것입니다.
-이름이 같기 때문에 패키지 명과 import 사용에 주의해야 합니다.
-
-상속 관계를 사용하도록 코드를 작성해봅시다.
-
-기존 코드를 유지하기 위해 ex2 패키지를 새로 만들겠습니다.
-package extends1.ex2;
-
-public class Car {
-
-  public void move() {
-    System.out.println("차를 이동합니다.");
-  }
-}
-
-
-package extends1.ex2;
-
-public class ElectricCar extends Car {
-
-  public void charge() {
-    System.out.println("충전합니다.");
-  }
-}
-
-
-package extends1.ex2;
-
-public class GasCar extends Car {
-
-  public void fillUp() {
-    System.out.println("기름을 주유합니다.");
-  }
-}
-
-
-package extends1.ex2;
-
-public class CarMain {
-
-  public static void main(String[] args) {
-    ElectricCar electricCar = new ElectricCar();
-    electricCar.move();
-    electricCar.charge();
-
-    GasCar gasCar = new GasCar();
-    gasCar.move();
-    gasCar.fillUp();
-  }
-}
-
-
-실행 결과
-차를 이동합니다.
-충전합니다.
-차를 이동합니다.
-기름을 주유합니다.
-
-
-
-  실행 결과는 기존 예제와 완전히 동일합니다.
-
-
-상속 구조도
-
-
-
-  전기차와 가솔린차가 Car를 상속 받은 덕분에 electricCar.move(),gasCar.move()를 사용할 수 있습니다.
-
-
-
-  참고로 당연한 이야기지만 상속은 부모의 기능을 자식이 물려 받는 것입니다.
-따라서 자식이 부모의 기능을 물려 받아서 사용할 수 있습니다.
-반대로 부모 클래스는 자식 클래스에 접근할 수 없습니다.
-자식 클래스는 부모 클래스의 기능을 물려 받기 때문에 접근할 수 있지만, 그 반대는 아닙니다.
-
-
-부모 코드를 봐봅시다!
-
-  자식에 대한 정보가 하나도 없습니다.
-    
-      반면에 자식 코드는 extends Parents를 통해서 부모를 알고 있습니다.
-    
-  
-
-
-단일 상속
-
-자바는 다중 상속을 지원하지 않습니다.
-
-  그래서 extend 대상은 하나만 선택할 수 있습니다.
-    
-      부모를 하나만 선택할 수 있다는 뜻입니다.
-        
-          물론 부모가 또 다른 부모를 하나 가지는 것은 괜찮습니다.
-        
-      
-    
-  
-
-
-다중 상속 그림
-
-
-
-만약 비행기와 자동차를 상속 받아서 하늘을 나는 자동차를 만든다고 가정해봅시다.
-
-  만약 그림과 같이 다중 상속을 사용하게 되면 AirplaneCar 입장에서 move()를 호출할 때 어떤 부모의 move()를 사용해야 할지 애매한 문제가 발생합니다.
-    
-      이것을 다이아몬드 문제라고 합니다.
-      그리고 다중 상속을 사용하면 클래스 계층 구조가 매우 복잡해질 수 있습니다.
-        
-          이런 문제점 때문에 자바는 클래스의 다중 상속을 허용하지 않습니다.
-            
-              대신에 추후에 공부할 인터페이스의 다중 구현을 허용해서 이러한 문제를 피합니다.
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-03-08</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Java_archive/2024-03-08-InheritanceAndMemoryStructure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -70052,6 +70161,172 @@ public class CarMain {
 
 
   상속 관계 덕분에 중복은 줄어들고, 새로운 수소차를 편리하게 확장(extend)한 것을 알 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-03-08</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/Java_archive/2024-03-08-extendRelationship.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-03-08-extendRelationship.html"><h1 class="title_post">☕️[Java] 상속관계</h1></a>
+                        <a href="/Archive/Java_archive/2024-03-08-extendRelationship.html" class="txt_post">
+                            상속관계
+
+  상속은 객체 지향 프로그래밍의 핵심 요소 중 하나로, 기존 클래스의 필드와 메서드를 새로운 클래스에서 재사용하게 해줍니다.
+    
+      이름 그대로 기존 클래스의 속성과 기능을 그대로 물려받는 것입니다.
+    
+  
+  상속을 하려면 extends 키워드를 사용하면 됩니다.
+    
+      그리고 extends 대상은 하나만 선택할 수 있습니다.
+    
+  
+
+
+용어 정리
+
+  부모 클래스(슈퍼 클래스): 상속을 통해 자신의 필드와 메서드를 다른 클래스에 제공하는 클래스
+  자식 클래스(서브 클래스): 부모 클래스로부터 필드와 메서드를 상속받는 클래스
+
+
+⛔️주의⛔️
+지금부터 코드를 작성할 때 기존 코드를 유지하기 위해, 새로운 패키지에 기존 코드를 옮겨가면서 코드를 작성할 것입니다.
+이름이 같기 때문에 패키지 명과 import 사용에 주의해야 합니다.
+
+상속 관계를 사용하도록 코드를 작성해봅시다.
+
+기존 코드를 유지하기 위해 ex2 패키지를 새로 만들겠습니다.
+package extends1.ex2;
+
+public class Car {
+
+  public void move() {
+    System.out.println("차를 이동합니다.");
+  }
+}
+
+
+package extends1.ex2;
+
+public class ElectricCar extends Car {
+
+  public void charge() {
+    System.out.println("충전합니다.");
+  }
+}
+
+
+package extends1.ex2;
+
+public class GasCar extends Car {
+
+  public void fillUp() {
+    System.out.println("기름을 주유합니다.");
+  }
+}
+
+
+package extends1.ex2;
+
+public class CarMain {
+
+  public static void main(String[] args) {
+    ElectricCar electricCar = new ElectricCar();
+    electricCar.move();
+    electricCar.charge();
+
+    GasCar gasCar = new GasCar();
+    gasCar.move();
+    gasCar.fillUp();
+  }
+}
+
+
+실행 결과
+차를 이동합니다.
+충전합니다.
+차를 이동합니다.
+기름을 주유합니다.
+
+
+
+  실행 결과는 기존 예제와 완전히 동일합니다.
+
+
+상속 구조도
+
+
+
+  전기차와 가솔린차가 Car를 상속 받은 덕분에 electricCar.move(),gasCar.move()를 사용할 수 있습니다.
+
+
+
+  참고로 당연한 이야기지만 상속은 부모의 기능을 자식이 물려 받는 것입니다.
+따라서 자식이 부모의 기능을 물려 받아서 사용할 수 있습니다.
+반대로 부모 클래스는 자식 클래스에 접근할 수 없습니다.
+자식 클래스는 부모 클래스의 기능을 물려 받기 때문에 접근할 수 있지만, 그 반대는 아닙니다.
+
+
+부모 코드를 봐봅시다!
+
+  자식에 대한 정보가 하나도 없습니다.
+    
+      반면에 자식 코드는 extends Parents를 통해서 부모를 알고 있습니다.
+    
+  
+
+
+단일 상속
+
+자바는 다중 상속을 지원하지 않습니다.
+
+  그래서 extend 대상은 하나만 선택할 수 있습니다.
+    
+      부모를 하나만 선택할 수 있다는 뜻입니다.
+        
+          물론 부모가 또 다른 부모를 하나 가지는 것은 괜찮습니다.
+        
+      
+    
+  
+
+
+다중 상속 그림
+
+
+
+만약 비행기와 자동차를 상속 받아서 하늘을 나는 자동차를 만든다고 가정해봅시다.
+
+  만약 그림과 같이 다중 상속을 사용하게 되면 AirplaneCar 입장에서 move()를 호출할 때 어떤 부모의 move()를 사용해야 할지 애매한 문제가 발생합니다.
+    
+      이것을 다이아몬드 문제라고 합니다.
+      그리고 다중 상속을 사용하면 클래스 계층 구조가 매우 복잡해질 수 있습니다.
+        
+          이런 문제점 때문에 자바는 클래스의 다중 상속을 허용하지 않습니다.
+            
+              대신에 추후에 공부할 인터페이스의 다중 구현을 허용해서 이러한 문제를 피합니다.
+            
+          
+        
+      
+    
+  
 
 
                         </a>
@@ -70349,202 +70624,6 @@ public class ConstantMain2 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/Java_archive/2024-03-07-finalVariableAndConstant1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Java_archive/2024-03-07-finalVariableAndConstant1.html"><h1 class="title_post">☕️[Java] final 변수와 상수 1</h1></a>
-                        <a href="/Archive/Java_archive/2024-03-07-finalVariableAndConstant1.html" class="txt_post">
-                            final 변수와 상수 1
-
-
-  final 키워드는 이름 그대로 끝! 이라는 뜻 입니다.
-  변수에 final 키워드가 붙으면 더는 값을 변경할 수 없습니다.
-
-
-
-  참고로 final은 class, method를 포함한 여러곳에 붙을 수 있습니다.
-
-
-final - 지역 변수
-package final1;
-
-public class FinalLocalMain {
-
-  public static void main(String[] args) {
-    // final 지역 변수1
-    final int data1;
-    data1 = 10; // 최초 한번만 할당 가능
-    // data1 = 20; // 컴파일 오류
-
-    // final 지역 변수2
-    final int data2 = 10;
-    // data2 = 20; // 컴파일 오류
-    method(10);
-  }
-
-  static void method(final int parameter) {
-    // parameter = 20; // 컴파일 오류
-  }
-}
-
-
-  final 을 지역 변수에 설정할 경우 최초 한번만 할당할 수 있습니다.
-    
-      이후에 변수의 값을 변경하려면 컴파일 오류가 발생합니다.
-    
-  
-  final을 지역 변수 선언시 바로 초기화 한 경우 이미 값이 할당되었기 때문에 값을 할당할 수 없습니다.
-  매개변수에 final이 붙으면 메서드 내부에서 매개변수의 값을 변셩할 수 없습니다.
-    
-      따라서 메서드 호출 시점에 사용된 값이 끝까지 사용됩니다.
-    
-  
-
-
-final - 필드(맴버변수)
-package final1;
-
-public class ConstructInit {
-
-  final int value;
-
-  public ConstructInit(int value) {
-    this.value = value;
-  }
-}
-
-
-  final 을 필드에 사용할 경우 해당 필드는 생성자를 통해서 한번만 초기화 될 수 있습니다.
-
-
-package final1;
-
-public class ConstructInit {
-
-  final int value;
-
-  public ConstructInit(int value) {
-    this.value = value;
-  }
-}
-
-
-  final 필드를 필드에서 초기화하면 이미 값이 설정되었기 때문에 생성자를 통해서도 초기화 할 수 없습니다.
-    
-      value 필드를 참고합시다.
-    
-  
-  코드에서 보는 것 처럼 static 변수에도 final을 선언할 수 있습니다.
-    
-      CONSTANT_VALUE로 변수 작명 방법이 대문자를 사용하였습니다. 이것은 상수입니다.
-    
-  
-
-
-package final1;
-
-public class FinalFieldMain {
-
-  public static void main(String[] args) {
-    // final 필드 - 생성자 초기화
-    System.out.println("생성자 초기화");
-    ConstructInit constructInit1 = new ConstructInit(10);
-    ConstructInit constructInit2 = new ConstructInit(20);
-    System.out.println(constructInit1.value);
-    System.out.println(constructInit2.value);
-
-    // final 필드 - 필드 초기화
-    System.out.println("필드 초기화");
-    FieldInit fieldInit1 = new FieldInit();
-    FieldInit fieldInit2 = new FieldInit();
-    FieldInit fieldInit3 = new FieldInit();
-    System.out.println(fieldInit1.value);
-    System.out.println(fieldInit2.value);
-    System.out.println(fieldInit3.value);
-    
-    // 상수
-    System.out.println("싱수");
-    System.out.println(FieldInit.CONST_VALUE);
-  }
-}
-
-
-실행 결과
-생성자 초기화
-10
-20
-필드 초기화
-10
-10
-10
-싱수
-10
-
-
-
-  ConstructInit과 같이 생성자를 사용해서 final 필드를 초기화 하는 경우, 각 인스턴스마다 final 필드에 다른 값을 할당할 수 있습니다.
-    
-      물론 final을 사용했기 때문에 생성 이후에 이 값을 변경하는 것은 불가능합니다.
-    
-  
-
-
-
-
-
-  FieldInit과 같이 final 필드를 필드에서 초기화 하는 경우, 모든 인스턴스가 위 그림의 오른쪽과 같이 같은 값을 가집니다.
-    
-      여기서는 FieldInit 인스턴스의 모든 value 값은 10이 됩니다.
-        
-          왜냐하면 생성자 초기화와 다르게 필드 초기화는 필드의 코드에 해당 값이 미리 정해져있기 때문입니다.
-        
-      
-    
-  
-  모든 인스턴스가 같은 값을 사용하기 때문에 결과적으로 메모리를 낭비하게 됩니다.(물론 JVM에 따라서 내부 최적화를 시도할 수 있습니다.)
-    
-      또 메모리 낭비를 떠나서 같은 값이 계속 생성되는 것은 개발자가 보기에 명확한 중복입니다.
-        
-          이럴 때 사용하면 좋은 것이 바로 static 영역입니다.
-        
-      
-    
-  
-
-
-static final
-
-  FieldInit.MY_VALUE는 static 영역에 존재합니다.
-    
-      그리고 final 키워드를 사용해서 초기화 값이 변하지 않습니다
-    
-  
-  static 영역은 단 하나만 존재하는 영역입니다.
-    
-      MY_VALUE 변수는 JVM 상에서 하나만 존재하므로 앞서 설명한 중복과 메모리 비효율 문제를 모두 해결할 수 있습니다.
-    
-  
-
-
-이런 이유로 필드에 final + 필드 초기화를 사용하는 경우 static을 붙여서 사용하는 것이 효과적입니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-03-07</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Java_archive/2024-03-07-finalSummary.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
                         
                     </div>
@@ -70778,6 +70857,202 @@ c b a
 
   이것도 정렬 알고리즘을 분류하는 기준 중 하나입니다.
 
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-03-07</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/Java_archive/2024-03-07-finalVariableAndConstant1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/java.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/Java_archive/2024-03-07-finalVariableAndConstant1.html"><h1 class="title_post">☕️[Java] final 변수와 상수 1</h1></a>
+                        <a href="/Archive/Java_archive/2024-03-07-finalVariableAndConstant1.html" class="txt_post">
+                            final 변수와 상수 1
+
+
+  final 키워드는 이름 그대로 끝! 이라는 뜻 입니다.
+  변수에 final 키워드가 붙으면 더는 값을 변경할 수 없습니다.
+
+
+
+  참고로 final은 class, method를 포함한 여러곳에 붙을 수 있습니다.
+
+
+final - 지역 변수
+package final1;
+
+public class FinalLocalMain {
+
+  public static void main(String[] args) {
+    // final 지역 변수1
+    final int data1;
+    data1 = 10; // 최초 한번만 할당 가능
+    // data1 = 20; // 컴파일 오류
+
+    // final 지역 변수2
+    final int data2 = 10;
+    // data2 = 20; // 컴파일 오류
+    method(10);
+  }
+
+  static void method(final int parameter) {
+    // parameter = 20; // 컴파일 오류
+  }
+}
+
+
+  final 을 지역 변수에 설정할 경우 최초 한번만 할당할 수 있습니다.
+    
+      이후에 변수의 값을 변경하려면 컴파일 오류가 발생합니다.
+    
+  
+  final을 지역 변수 선언시 바로 초기화 한 경우 이미 값이 할당되었기 때문에 값을 할당할 수 없습니다.
+  매개변수에 final이 붙으면 메서드 내부에서 매개변수의 값을 변셩할 수 없습니다.
+    
+      따라서 메서드 호출 시점에 사용된 값이 끝까지 사용됩니다.
+    
+  
+
+
+final - 필드(맴버변수)
+package final1;
+
+public class ConstructInit {
+
+  final int value;
+
+  public ConstructInit(int value) {
+    this.value = value;
+  }
+}
+
+
+  final 을 필드에 사용할 경우 해당 필드는 생성자를 통해서 한번만 초기화 될 수 있습니다.
+
+
+package final1;
+
+public class ConstructInit {
+
+  final int value;
+
+  public ConstructInit(int value) {
+    this.value = value;
+  }
+}
+
+
+  final 필드를 필드에서 초기화하면 이미 값이 설정되었기 때문에 생성자를 통해서도 초기화 할 수 없습니다.
+    
+      value 필드를 참고합시다.
+    
+  
+  코드에서 보는 것 처럼 static 변수에도 final을 선언할 수 있습니다.
+    
+      CONSTANT_VALUE로 변수 작명 방법이 대문자를 사용하였습니다. 이것은 상수입니다.
+    
+  
+
+
+package final1;
+
+public class FinalFieldMain {
+
+  public static void main(String[] args) {
+    // final 필드 - 생성자 초기화
+    System.out.println("생성자 초기화");
+    ConstructInit constructInit1 = new ConstructInit(10);
+    ConstructInit constructInit2 = new ConstructInit(20);
+    System.out.println(constructInit1.value);
+    System.out.println(constructInit2.value);
+
+    // final 필드 - 필드 초기화
+    System.out.println("필드 초기화");
+    FieldInit fieldInit1 = new FieldInit();
+    FieldInit fieldInit2 = new FieldInit();
+    FieldInit fieldInit3 = new FieldInit();
+    System.out.println(fieldInit1.value);
+    System.out.println(fieldInit2.value);
+    System.out.println(fieldInit3.value);
+    
+    // 상수
+    System.out.println("싱수");
+    System.out.println(FieldInit.CONST_VALUE);
+  }
+}
+
+
+실행 결과
+생성자 초기화
+10
+20
+필드 초기화
+10
+10
+10
+싱수
+10
+
+
+
+  ConstructInit과 같이 생성자를 사용해서 final 필드를 초기화 하는 경우, 각 인스턴스마다 final 필드에 다른 값을 할당할 수 있습니다.
+    
+      물론 final을 사용했기 때문에 생성 이후에 이 값을 변경하는 것은 불가능합니다.
+    
+  
+
+
+
+
+
+  FieldInit과 같이 final 필드를 필드에서 초기화 하는 경우, 모든 인스턴스가 위 그림의 오른쪽과 같이 같은 값을 가집니다.
+    
+      여기서는 FieldInit 인스턴스의 모든 value 값은 10이 됩니다.
+        
+          왜냐하면 생성자 초기화와 다르게 필드 초기화는 필드의 코드에 해당 값이 미리 정해져있기 때문입니다.
+        
+      
+    
+  
+  모든 인스턴스가 같은 값을 사용하기 때문에 결과적으로 메모리를 낭비하게 됩니다.(물론 JVM에 따라서 내부 최적화를 시도할 수 있습니다.)
+    
+      또 메모리 낭비를 떠나서 같은 값이 계속 생성되는 것은 개발자가 보기에 명확한 중복입니다.
+        
+          이럴 때 사용하면 좋은 것이 바로 static 영역입니다.
+        
+      
+    
+  
+
+
+static final
+
+  FieldInit.MY_VALUE는 static 영역에 존재합니다.
+    
+      그리고 final 키워드를 사용해서 초기화 값이 변하지 않습니다
+    
+  
+  static 영역은 단 하나만 존재하는 영역입니다.
+    
+      MY_VALUE 변수는 JVM 상에서 하나만 존재하므로 앞서 설명한 중복과 메모리 비효율 문제를 모두 해결할 수 있습니다.
+    
+  
+
+
+이런 이유로 필드에 final + 필드 초기화를 사용하는 경우 static을 붙여서 사용하는 것이 효과적입니다.
 
                         </a>
                         <div class="info-post">
@@ -90051,6 +90326,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Network",
             'url'      : "/Network/2024/2024-10-13-diff-between-router-and-switch.html",
+            'image'    : "/assets/img/thumbnail/network.jpeg",
+            'date'     : "2024-10-13"
+        });
+    
+
+        posts.push({
+            'title'    : "🌐[Network] 패킷(Packet)이란 무엇일까요?",
+            'path'     : "Network > 2024",
+            'type'     : "post",
+            'tags'     : "Network",
+            'url'      : "/Network/2024/2024-10-13-what-is-the-packet.html",
             'image'    : "/assets/img/thumbnail/network.jpeg",
             'date'     : "2024-10-13"
         });

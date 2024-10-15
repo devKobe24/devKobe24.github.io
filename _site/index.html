@@ -765,6 +765,7 @@
             
             
             
+            
 
     
     
@@ -1135,6 +1136,163 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-15-jpa-annotation-series-entity.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-15-jpa-annotation-series-entity.html"><h1 class="title_post">🍃[Spring] JPA 어노테이션 - `@Entity`</h1></a>
+                        <a href="/Spring/2024-10-15-jpa-annotation-series-entity.html" class="txt_post">
+                            🍃[Spring] JPA 어노테이션 - @Entity
+
+  @Entity는 JPA(Java Persistence API)에서 데아터베이스 테이블과 매핑되는 자바 클래스를 정의할 때 사용하는 어노테이션(Annotation)입니다.
+    
+      이 어노테이션(Annotation)을 클래스에 붙이면 해당 클래스가 JPA(Java Persistence API) 엔티티(Entity)임을 나타내며, JPA가 이를 데이터베이스 테이블과 매핑하여 관리할 수 있게 됩니다.
+    
+  
+
+
+
+  📝 엔티티(Entity)
+
+  객체 지향 프로그래밍(Object-Oriented Programming, OOP)과 데이터베이스(Database) 설계에서 모두 사용되는 개념으로, 특히 JPA(Java Persistence API)에서 자주 언급됩니다.
+
+  엔티티(Entity)는 데이터베이스 테이블과 매핑되는 자바 클래스를 의미하며, 데이터베이스의 각 행(Row)이 자바 클래스의 객체(Instance, 인스턴스)로 대응됩니다.
+
+
+1️⃣ 주요 특징.
+
+1️⃣ 엔티티 클래스(Entity Class)
+
+  @Entity가 선언된 클래스는 엔티티(Entity)라고 하며, 이는 데이터베이스 테이블에 대응하는 자바 클래스입니다.
+  엔티티 클래스의 인스턴스(Instance, 객체)는 데이터베이스 테이블의 각 행(Row)에 대응됩니다.
+  클래스는 반드시 기본 생성자(default constructor)를 가져야 하고, 기본 키(Primary Key)를 정의해야 합니다.
+
+
+2️⃣ 테이블 매핑(Table Mapping)
+
+  클래스에 @Entity 어노테이션(Annotation)을 붙이면, JPA(Java Persistence API)는 해당 클래스를 데이터베이스의 테이블과 매핑합니다.
+  테이블의 이름은 기본적으로 클래스 이름과 동일하게 매핑되지만, @Table 어노테이션(Annotation)을 사용하여 테이블 이름을 명시적으로 지정할 수도 있습니다.
+
+
+3️⃣ 기본 키(Primary Key)
+
+  엔티티 클래스는 반드시 하나의 필드를 기본 키(Primary Key)로 지정해야 하며, 이를 위해 @Id 어노테이션(Annotation)을 사용합니다.
+  기본 키(Primary Key)의 생성 전략은 @GeneratedValue 어노테이션(Annotation)을 통해 지정할 수 있습니다.
+
+
+2️⃣ 사용 예시.
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+@Entity // 이 클래스는 JPA 엔티티임을 나타냄.
+@Table(name = "users") // 매핑될 데이터베이스 테이블 이름을 지정.
+public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerarionType.IDENTITY) // 기본 키 생성 전략
+    private Long id;
+    
+    private String name;
+    private String email;
+    
+    // 기본 생성자 (필수)
+    public User() {}
+    
+    // 생성자, getter, setter 등
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+    
+    // Getter and Setter
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+3️⃣ 주요 요소.
+
+1️⃣ @Entity
+
+  이 어노테이션은 JPA(Java Persistence API)에게 해당 클래스가 데이터베이스의 테이블과 매핑되는 엔티티(Entity)임을 알립니다.
+
+
+2️⃣ @Table
+
+  테이블 이름을 명시적으로 지정하려면 @Table(name = "테이블이름")을 사용합니다.
+  @Table을 사용하지 않으면 기본적으로 클래스 이름이 테이블 이름으로 사용됩니다.
+
+
+3️⃣ @Id
+
+  해당 필드는 엔티티(Entity)의 기본 키(Primary Key)로 사용됩니다.
+    
+      모든 엔티티는 반드시 하나의 기본 키(Primary Key)를 가져야 합니다.
+    
+  
+
+
+4️⃣ @GeneratedValue
+
+  기본 키(Primary Key) 값의 생성 전략을 지정합니다.
+    
+      예를 즐어, GenerationType.IDENTITY는 데이터베이스가 자동으로 기본 키(Primary Key) 값을 증가시키는 전략을 의미합니다.
+    
+  
+
+
+4️⃣ 주의 사항.
+
+  엔티티 클래스(Entity Class)는 반드시 기본 생성자(default constructor)가 있어야 하며, public 또는 protected 접근 제어자를 가져야 합니다.
+  기본 키(Primary Key)를 @Id 어노테이션으로 반드시 지정해야 합니다.
+
+
+5️⃣ 요약.
+
+  @Entity는 JPA(Java Persistence API) 엔티티를 선언하는 어노테이션으로, 해당 클래스를 데이터베이스 테이블과 매핑합니다.
+  이를 통해 JPA는 엔티티를 자동으로 관리하고, 데이터베이스와 상호작용할 수 있게 됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-15</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -31369,6 +31527,406 @@ class Airplane implements Flyable {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-08-30-test-and-di.html"><h1 class="title_post">☕️[Java] 테스트 코드와 Dependancy Injection</h1></a>
+                        <a href="/Java/Java/2024-08-30-test-and-di.html" class="txt_post">
+                            ☕️[Java] 테스트 코드와 Dependancy Injection
+
+1️⃣ 전체 코드.
+
+// Member
+public class Member {
+
+	private Long id;
+	private String name;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+
+// MemberRepository - Interface
+import com.devkobe.hello_spring.domain.Member;
+import java.util.List;
+import java.util.Optional;
+
+public interface MemberRepository {
+	Member save(Member member);
+	Optional&lt;Member&gt; findById(Long id);
+	Optional&lt;Member&gt; findByName(String name);
+	List&lt;Member&gt; findAll();
+}
+
+// MemoryMemberRepository
+import com.devkobe.hello_spring.domain.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class MemoryMemberRepository implements MemberRepository {
+
+	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
+	private static long sequence = 0L;
+
+	@Override
+	public Member save(Member member) {
+		member.setId(++sequence);
+		store.put(member.getId(), member);
+		return member;
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findById(Long id) {
+		return Optional.ofNullable(store.get(id));
+	}
+
+	@Override
+	public Optional&lt;Member&gt; findByName(String name) {
+		return store.values().stream()
+				.filter(member -&gt; member.getName().equals(name))
+				.findAny();
+	}
+
+	@Override
+	public List&lt;Member&gt; findAll() {
+		return new ArrayList&lt;&gt;(store.values());
+	}
+
+	public void clearStore() {
+		store.clear();
+	}
+}
+
+// MemberService
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemberRepository;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import java.util.List;
+import java.util.Optional;
+
+public class MemberService {
+	private final MemberRepository memberRepository;
+
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*
+	 * 회원 가입
+	 */
+	public Long join(Member member) {
+
+		validateDuplicateMember(member); // 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
+	}
+
+	private void validateDuplicateMember(Member member) {
+		memberRepository.findByName(member.getName())
+				.ifPresent(m -&gt; {
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
+				});
+	}
+
+	/*
+	 * 전체 회원 조회
+	 */
+	public List&lt;Member&gt; findMembers() {
+		return memberRepository.findAll();
+	}
+
+	public Optional&lt;Member&gt; findOne(Long memberId) {
+		return memberRepository.findById(memberId);
+	}
+}
+
+// MemberServiceTest
+import com.devkobe.hello_spring.domain.Member;
+import com.devkobe.hello_spring.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
+class MemberServiceTest {
+
+	MemberService memberService;
+	MemoryMemberRepository memberRepository;
+
+	@BeforeEach
+	public void beforeEach() {
+		memberRepository = new MemoryMemberRepository();
+		memberService = new MemberService(memberRepository);
+	}
+
+	@AfterEach
+	public void afterEach() {
+		memberRepository.clearStore();
+	}
+
+	@Test
+	void 회원가입() {
+		// given
+		Member member = new Member();
+		member.setName("spring");
+
+		// when
+		Long saveId = memberService.join(member);
+
+		// then
+		Member findMember = memberService.findOne(saveId).get();
+		assertThat(member.getName()).isEqualTo(findMember.getName());
+	}
+
+	@Test
+	void findMembers() {
+		// given
+		Member member1 = new Member();
+		member1.setName("spring");
+
+		Member member2 = new Member();
+		member2.setName("spring");
+
+		// when
+		memberService.join(member1);
+		IllegalStateException e = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
+
+		assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+
+		// then
+	}
+
+	@Test
+	void findOne() {
+	}
+}
+
+
+2️⃣ 의존성 주입(DI, Dependency Injection).
+
+  의존성 주입(DI, Dependency Injection) 는 객체 지향 프로그래밍에서 객체 간의 의존성을 외부에서 주입하는 디자인 패턴입니다.
+
+
+1️⃣ 의존성 주입(DI, Dependency Injection)의 개념.
+
+  의존성(Dependency)
+    
+      클래스가 다른 클래스의 기능을 사용해야 하는 상황을 의미합니다.
+        
+          예를 들어, MemberService 클래스는 회원 데이터를 처리하기 위해 MemberRepository 를 필요로 합니다. 여기서 MemberService 는 MemberRepository 에 의존합니다.
+        
+      
+    
+  
+  주입(Injection)
+    
+      외부에서 객체를 생성하여 주입해주는 것을 의미합니다.
+        
+          이는 보통 생성자 주입, 세터(Setter) 주입, 필드 주입 등의 방식으로 이루어집니다.
+        
+      
+    
+  
+
+
+2️⃣ DI의 주요 목적.
+
+  느슨한 결합(Loose Coupling)
+    
+      DI를 통해 클래스 간의 결합도를 낮출 수 있습니다.
+        
+          클래스는 자신이 사용하는 의존 객체가 무엇인지 알 필요가 없고, 이로 인해 클래스 간의 결합이 느슨해집니다.
+            
+              이는 코드의 유연성을 높여주며, 코드 변셩 시 영향 범위를 줄여줍니다.
+            
+          
+        
+      
+    
+  
+  유연성 및 확장성
+    
+      의존 객체를 외부에서 주입받기 때문에, 애플리케이션이 다른 의존 객체로 쉽게 전환될 수 있습니다.
+        
+          예를 들어, 테스트 환경에서 MemoryMemberRepository 를 사용하고, 실제 운영 환경에서는 데이터베이스 연결을 사용하는 JpaMemberRepository 를 사용할 수 있습니다.
+        
+      
+    
+  
+  테스트 용이성
+    
+      DI를 통해 클래스 간의 의존 관계를 외부에서 주입받으면, 테스트 시에 쉽게 Mock 객체나 Stub 객체를 주입할 수 있어 테스트를 더 용이하게 만듭니다.
+    
+  
+
+
+3️⃣ DI의 사용 방법.
+
+  1. 생성자 주입(Constructor Injection) : 의존성을 클래스의 생성자를 통해 주입하는 방법입니다. 위 코드에서는 생성자 주입이 사용되었습니다.
+
+
+public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
+}
+
+
+
+  2. 세터 주입(Setter Injection) : 의존성을 세터 메서드를 통해 주입하는 방법입니다.
+    public void setMemberRepository(MemberRepository memberRepository) {
+  this.memberRepository = memberRepository;
+}
+    
+  
+  3. 필드 주입(Field Injection) : 의존성을 필드에 직접 주입하는 방법으로, 보통 @Autowired 와 같은 애노테이션을 사용합니다. 하지만 필드 주입은 테스트하기 어려울 수 있어 일반적으로 권장되지 않습니다.
+
+
+DI는 코드의 재사용성, 유지보수성, 테스트 용이성을 높여주는 중요한 디자인 패턴으로, 스프링 프레임워크와 같은 의존성 주입 컨테이너에서 널리 사용됩니다.
+
+3️⃣ 코드에서 의존성 주입(DI, Dependency Injection)이 사용된 부분과 설명.
+
+  위 코드에서 DI(Dependency Injection)가 사용된 부분은 MemberService 클래스의 인스턴스를 생성하는 부분입니다.
+
+
+@BeforeEach
+public void beforeEach() {
+    memberRepository = new MemoryMemberRepository();
+    memberService = new MemberService(memberRepository);
+}
+
+
+
+  이 부분에서 MemberService 클래스의 생성자에 MemoryMemberRepository 객체를 주입하고 있습니다.
+  MemberService 클래스는 생성자에서 MemberRepository 인터페이스를 받아 사용합니다.
+    
+      아렇게 함으로써, MemberService 는 직접적으로 MemoryMemberRepository 를 생성하지 않고 외부에서 주입받게 됩니다.
+    
+  
+
+
+1️⃣ 설명.
+
+  memberRepository = new MemoryMemberRepository();
+    
+      MemoryMemberRepository 객체를 생성합니다. 이는 MemberRepository 인터페이스의 구현체입니다.
+    
+  
+  memberService = new MemberService(memberRepository);
+    
+      MemberService 객체를 생성 할 때, 생성자에 memberRepository 를 주입합니다.
+    
+  
+
+
+이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
+
+예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
+                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
+                            ☕️[Java] .equalsIgnoreCase()
+
+1️⃣ .equalsIgnoreCase()
+
+  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
+    
+      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
+    
+  
+
+
+2️⃣ 예시.
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "HELLO";
+        String str4 = "World";
+        
+        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
+        
+        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
+        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
+        
+        // str1과 str4는 내용이 다르므로 false 반환
+        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
+    }
+}
+
+
+3️⃣ 주요 포인트.
+
+  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
+    
+      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
+    
+  
+  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
+    
+      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
+    
+  
+  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
+
+
+이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
+예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-08-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-08-30-test-and-reflection.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -31821,406 +32379,6 @@ class MemberServiceTest {
 
 이 방법을 통해 MemberService 를 수정하지 않고도 해당 클래스의 동작을 테스트할 수 있습니다.
 다만, 실제 코드에서는 생성자를 통한 주입이나 다른 테스트 가능한 구조로 변경하는 것이 더 바람직합니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html"><h1 class="title_post">☕️[Java] .equalsIgnoreCase()</h1></a>
-                        <a href="/Java/Java/2024-08-30-equalsIgnoreCase-method.html" class="txt_post">
-                            ☕️[Java] .equalsIgnoreCase()
-
-1️⃣ .equalsIgnoreCase()
-
-  자바에서 ".equalsIgnoreCase()" 메서드는 문자열(String) 간의 대소문자를 구분하지 않고 두 문자열이 동일한지를 비교하는 메서드입니다.
-    
-      즉, 두 문자열이 대소문자만 다르고 내용이 동일하다면 "true" 를 반환하고, 그렇지 않으면 "false" 를 반환합니다.
-    
-  
-
-
-2️⃣ 예시.
-public class Main {
-    public static void main(String[] args) {
-        String str1 = "Hello";
-        String str2 = "hello";
-        String str3 = "HELLO";
-        String str4 = "World";
-        
-        // str1 과 str2는 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str2)); // Output: true
-        
-        // str1 과 str3도 대소문자만 다르고 동일한 내용이므로 true 반환
-        System.out.println(str1.equalsIgnoreCase(str3)); // Output: true
-        
-        // str1과 str4는 내용이 다르므로 false 반환
-        System.out.prinln(str1.equalsIgnoreCase(str4)); // Output: false
-    }
-}
-
-
-3️⃣ 주요 포인트.
-
-  대소문자 무시 : ".equalsIgnoreCase()" 메서드는 비교할 때 대소문자를 무시합니다.
-    
-      예를 들어, "Hello" 와 "hello" 를 비교하면 "true" 를 반환합니다.
-    
-  
-  공백 및 특수문자 : 문자열 내의 공백이나 특수문자까지 비교 대상에 포함됩니다.
-    
-      즉, "Hello " 와 "hello" 는 공백 때문에 "false" 를 반환합니다.
-    
-  
-  반환 값 : 이 메서드는 두 문자열이 대소문자만 다르고 동일한 내용을 가지고 있으면 "true", 그렇지 않으면 "false" 를 반환합니다.
-
-
-이 메서드는 문자열 비교에서 대소문자를 구분할 필요가 없을 때 유용하게 사용됩니다.
-예를 들어, 사용자 입력을 비교할 때 유용할 수 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-08-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-08-30-test-and-di.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-08-30-test-and-di.html"><h1 class="title_post">☕️[Java] 테스트 코드와 Dependancy Injection</h1></a>
-                        <a href="/Java/Java/2024-08-30-test-and-di.html" class="txt_post">
-                            ☕️[Java] 테스트 코드와 Dependancy Injection
-
-1️⃣ 전체 코드.
-
-// Member
-public class Member {
-
-	private Long id;
-	private String name;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-}
-
-// MemberRepository - Interface
-import com.devkobe.hello_spring.domain.Member;
-import java.util.List;
-import java.util.Optional;
-
-public interface MemberRepository {
-	Member save(Member member);
-	Optional&lt;Member&gt; findById(Long id);
-	Optional&lt;Member&gt; findByName(String name);
-	List&lt;Member&gt; findAll();
-}
-
-// MemoryMemberRepository
-import com.devkobe.hello_spring.domain.Member;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-public class MemoryMemberRepository implements MemberRepository {
-
-	private static Map&lt;Long, Member&gt; store = new HashMap&lt;&gt;();
-	private static long sequence = 0L;
-
-	@Override
-	public Member save(Member member) {
-		member.setId(++sequence);
-		store.put(member.getId(), member);
-		return member;
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findById(Long id) {
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional&lt;Member&gt; findByName(String name) {
-		return store.values().stream()
-				.filter(member -&gt; member.getName().equals(name))
-				.findAny();
-	}
-
-	@Override
-	public List&lt;Member&gt; findAll() {
-		return new ArrayList&lt;&gt;(store.values());
-	}
-
-	public void clearStore() {
-		store.clear();
-	}
-}
-
-// MemberService
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemberRepository;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import java.util.List;
-import java.util.Optional;
-
-public class MemberService {
-	private final MemberRepository memberRepository;
-
-	public MemberService(MemberRepository memberRepository) {
-		this.memberRepository = memberRepository;
-	}
-
-	/*
-	 * 회원 가입
-	 */
-	public Long join(Member member) {
-
-		validateDuplicateMember(member); // 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
-	}
-
-	private void validateDuplicateMember(Member member) {
-		memberRepository.findByName(member.getName())
-				.ifPresent(m -&gt; {
-					throw new IllegalStateException("이미 존재하는 회원입니다.");
-				});
-	}
-
-	/*
-	 * 전체 회원 조회
-	 */
-	public List&lt;Member&gt; findMembers() {
-		return memberRepository.findAll();
-	}
-
-	public Optional&lt;Member&gt; findOne(Long memberId) {
-		return memberRepository.findById(memberId);
-	}
-}
-
-// MemberServiceTest
-import com.devkobe.hello_spring.domain.Member;
-import com.devkobe.hello_spring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-class MemberServiceTest {
-
-	MemberService memberService;
-	MemoryMemberRepository memberRepository;
-
-	@BeforeEach
-	public void beforeEach() {
-		memberRepository = new MemoryMemberRepository();
-		memberService = new MemberService(memberRepository);
-	}
-
-	@AfterEach
-	public void afterEach() {
-		memberRepository.clearStore();
-	}
-
-	@Test
-	void 회원가입() {
-		// given
-		Member member = new Member();
-		member.setName("spring");
-
-		// when
-		Long saveId = memberService.join(member);
-
-		// then
-		Member findMember = memberService.findOne(saveId).get();
-		assertThat(member.getName()).isEqualTo(findMember.getName());
-	}
-
-	@Test
-	void findMembers() {
-		// given
-		Member member1 = new Member();
-		member1.setName("spring");
-
-		Member member2 = new Member();
-		member2.setName("spring");
-
-		// when
-		memberService.join(member1);
-		IllegalStateException e = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
-
-		assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-
-		// then
-	}
-
-	@Test
-	void findOne() {
-	}
-}
-
-
-2️⃣ 의존성 주입(DI, Dependency Injection).
-
-  의존성 주입(DI, Dependency Injection) 는 객체 지향 프로그래밍에서 객체 간의 의존성을 외부에서 주입하는 디자인 패턴입니다.
-
-
-1️⃣ 의존성 주입(DI, Dependency Injection)의 개념.
-
-  의존성(Dependency)
-    
-      클래스가 다른 클래스의 기능을 사용해야 하는 상황을 의미합니다.
-        
-          예를 들어, MemberService 클래스는 회원 데이터를 처리하기 위해 MemberRepository 를 필요로 합니다. 여기서 MemberService 는 MemberRepository 에 의존합니다.
-        
-      
-    
-  
-  주입(Injection)
-    
-      외부에서 객체를 생성하여 주입해주는 것을 의미합니다.
-        
-          이는 보통 생성자 주입, 세터(Setter) 주입, 필드 주입 등의 방식으로 이루어집니다.
-        
-      
-    
-  
-
-
-2️⃣ DI의 주요 목적.
-
-  느슨한 결합(Loose Coupling)
-    
-      DI를 통해 클래스 간의 결합도를 낮출 수 있습니다.
-        
-          클래스는 자신이 사용하는 의존 객체가 무엇인지 알 필요가 없고, 이로 인해 클래스 간의 결합이 느슨해집니다.
-            
-              이는 코드의 유연성을 높여주며, 코드 변셩 시 영향 범위를 줄여줍니다.
-            
-          
-        
-      
-    
-  
-  유연성 및 확장성
-    
-      의존 객체를 외부에서 주입받기 때문에, 애플리케이션이 다른 의존 객체로 쉽게 전환될 수 있습니다.
-        
-          예를 들어, 테스트 환경에서 MemoryMemberRepository 를 사용하고, 실제 운영 환경에서는 데이터베이스 연결을 사용하는 JpaMemberRepository 를 사용할 수 있습니다.
-        
-      
-    
-  
-  테스트 용이성
-    
-      DI를 통해 클래스 간의 의존 관계를 외부에서 주입받으면, 테스트 시에 쉽게 Mock 객체나 Stub 객체를 주입할 수 있어 테스트를 더 용이하게 만듭니다.
-    
-  
-
-
-3️⃣ DI의 사용 방법.
-
-  1. 생성자 주입(Constructor Injection) : 의존성을 클래스의 생성자를 통해 주입하는 방법입니다. 위 코드에서는 생성자 주입이 사용되었습니다.
-
-
-public MemberService(MemberRepository memberRepository) {
-    this.memberRepository = memberRepository;
-}
-
-
-
-  2. 세터 주입(Setter Injection) : 의존성을 세터 메서드를 통해 주입하는 방법입니다.
-    public void setMemberRepository(MemberRepository memberRepository) {
-  this.memberRepository = memberRepository;
-}
-    
-  
-  3. 필드 주입(Field Injection) : 의존성을 필드에 직접 주입하는 방법으로, 보통 @Autowired 와 같은 애노테이션을 사용합니다. 하지만 필드 주입은 테스트하기 어려울 수 있어 일반적으로 권장되지 않습니다.
-
-
-DI는 코드의 재사용성, 유지보수성, 테스트 용이성을 높여주는 중요한 디자인 패턴으로, 스프링 프레임워크와 같은 의존성 주입 컨테이너에서 널리 사용됩니다.
-
-3️⃣ 코드에서 의존성 주입(DI, Dependency Injection)이 사용된 부분과 설명.
-
-  위 코드에서 DI(Dependency Injection)가 사용된 부분은 MemberService 클래스의 인스턴스를 생성하는 부분입니다.
-
-
-@BeforeEach
-public void beforeEach() {
-    memberRepository = new MemoryMemberRepository();
-    memberService = new MemberService(memberRepository);
-}
-
-
-
-  이 부분에서 MemberService 클래스의 생성자에 MemoryMemberRepository 객체를 주입하고 있습니다.
-  MemberService 클래스는 생성자에서 MemberRepository 인터페이스를 받아 사용합니다.
-    
-      아렇게 함으로써, MemberService 는 직접적으로 MemoryMemberRepository 를 생성하지 않고 외부에서 주입받게 됩니다.
-    
-  
-
-
-1️⃣ 설명.
-
-  memberRepository = new MemoryMemberRepository();
-    
-      MemoryMemberRepository 객체를 생성합니다. 이는 MemberRepository 인터페이스의 구현체입니다.
-    
-  
-  memberService = new MemberService(memberRepository);
-    
-      MemberService 객체를 생성 할 때, 생성자에 memberRepository 를 주입합니다.
-    
-  
-
-
-이 방식은 MemberService 가 MemoryMemberRepository 에 강하게 결합되지 않도록 하여, 다른 구현체로 쉽게 변경할 수 있게 만듭니다.
-
-예를 들어, 테스트 환경에서는 MemoryMemberRepository 를 사용하고, 실제 서비스에서는 데이터베이스와 연결된 구현체를 사용할 수 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -49445,71 +49603,6 @@ RAID 6 의 구성은 기본적으로 RAID 5와 같으나, 다음 그림과 같�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/Post/2024-05-17-PracticeSummary-2.html"><h1 class="title_post">📝[blog post] 연습 문제 풀이 정리(2)</h1></a>
-                        <a href="/Archive/Post/2024-05-17-PracticeSummary-2.html" class="txt_post">
-                            1️⃣ 수열과 재귀.
-
-연습 문제를 풀다보니 수열과 재귀에 대해 많은 수학적 사고력이 필요하겠다는 생각이 들었습니다.
-
-
-  수열 : 수학에서 수의 나열을 의미합니다.
-    
-      즉, 어떤 규착에 따라 나열된 수들의 집합을 말합니다.
-      수열은 각 수를 나타내는 일련의 할(terms)으로 구성되며, 각 항은 특정 위치(index)를 가집니다.
-      수열의 예로는 다음과 같은 것들이 있습니다.
-        
-          등차수열: 각 항이 일정한 값만큼 증가하거나 감소하는 수열(예: 2, 5, 8, 11…)(각 항이 3씩 증가)
-          등비수열: 각 항이 일정한 비율로 증가하거나 감소하는 수열(예: 3, 9, 27, 81…)(각 항이 이전 항의 3배)
-          피보나치 수열: 첫 두 항이 0과 1이고, 그 이후의 각 항이 바로 앞 두항의 합인 수열(예: 0, 1, 1, 2, 3, 5, 8….)
-            
-              수열은 다양한 수학적 문제를 해결하는 데 사용되며, 특히 함수, 극한, 미적분 등의 주제와 밀접한 관련이 있습니다.
-            
-          
-        
-      
-    
-  
-  재귀 : 프로그래밍과 수학에서 사용되는 개념으로, 어떤 함수나 알고리즘이 자기 자신을 호출하는 방식울 말합니다.
-    
-      재귀를 통해 복잡한 문제를 더 작은 하위 문제로 나누어 해결할 수 있습니다.
-      재귀 함수는 기본적으로 두 가지 부분으로 구성됩니다.
-        
-          1. 기저 조건(Base Case) : 재귀 호출이 더 이상 필요하지 않은 경우를 정의합니다. 기저 조건이 충족되면 함수는 더 이상 자기 자신을 호출하지 않고 종료됩니다.
-          2. 재귀 호출(Recursive Call) : 함수가 자기 자신을 호출하여 문제를 더 작은 부분으로 나누어 해결하려고 시도합니다.
-            
-              재귀는 문제를 단순하고 직관적으로 표현할 수 있는 강력한 도구이지만, 재귀 호출이 과도하면 스택 오버플로(stack overflow)가 발생할 수 있으므로 주의가 필요합니다.
-                
-                  따라서 재귀를 사용할 때는 기저 조건을 잘 정의하고, 필요할 경우 반복(iteration)으로 문제를 해결하는 방법도 고려해야 합니다.
-                
-              
-            
-          
-        
-      
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -49579,16 +49672,53 @@ RAID 6 의 구성은 기본적으로 RAID 5와 같으나, 다음 그림과 같�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Archive/Post/2024-05-17-PracticeSummary-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-17-TIL.html" class="txt_post">
-                            
-  연습 문제 풀이(2)
-  예외 처리 - 트러블슈팅
-  문자열 처리 - 트러블슈팅
+                        <a href="/Archive/Post/2024-05-17-PracticeSummary-2.html"><h1 class="title_post">📝[blog post] 연습 문제 풀이 정리(2)</h1></a>
+                        <a href="/Archive/Post/2024-05-17-PracticeSummary-2.html" class="txt_post">
+                            1️⃣ 수열과 재귀.
+
+연습 문제를 풀다보니 수열과 재귀에 대해 많은 수학적 사고력이 필요하겠다는 생각이 들었습니다.
+
+
+  수열 : 수학에서 수의 나열을 의미합니다.
+    
+      즉, 어떤 규착에 따라 나열된 수들의 집합을 말합니다.
+      수열은 각 수를 나타내는 일련의 할(terms)으로 구성되며, 각 항은 특정 위치(index)를 가집니다.
+      수열의 예로는 다음과 같은 것들이 있습니다.
+        
+          등차수열: 각 항이 일정한 값만큼 증가하거나 감소하는 수열(예: 2, 5, 8, 11…)(각 항이 3씩 증가)
+          등비수열: 각 항이 일정한 비율로 증가하거나 감소하는 수열(예: 3, 9, 27, 81…)(각 항이 이전 항의 3배)
+          피보나치 수열: 첫 두 항이 0과 1이고, 그 이후의 각 항이 바로 앞 두항의 합인 수열(예: 0, 1, 1, 2, 3, 5, 8….)
+            
+              수열은 다양한 수학적 문제를 해결하는 데 사용되며, 특히 함수, 극한, 미적분 등의 주제와 밀접한 관련이 있습니다.
+            
+          
+        
+      
+    
+  
+  재귀 : 프로그래밍과 수학에서 사용되는 개념으로, 어떤 함수나 알고리즘이 자기 자신을 호출하는 방식울 말합니다.
+    
+      재귀를 통해 복잡한 문제를 더 작은 하위 문제로 나누어 해결할 수 있습니다.
+      재귀 함수는 기본적으로 두 가지 부분으로 구성됩니다.
+        
+          1. 기저 조건(Base Case) : 재귀 호출이 더 이상 필요하지 않은 경우를 정의합니다. 기저 조건이 충족되면 함수는 더 이상 자기 자신을 호출하지 않고 종료됩니다.
+          2. 재귀 호출(Recursive Call) : 함수가 자기 자신을 호출하여 문제를 더 작은 부분으로 나누어 해결하려고 시도합니다.
+            
+              재귀는 문제를 단순하고 직관적으로 표현할 수 있는 강력한 도구이지만, 재귀 호출이 과도하면 스택 오버플로(stack overflow)가 발생할 수 있으므로 주의가 필요합니다.
+                
+                  따라서 재귀를 사용할 때는 기저 조건을 잘 정의하고, 필요할 경우 반복(iteration)으로 문제를 해결하는 방법도 고려해야 합니다.
+                
+              
+            
+          
+        
+      
+    
+  
 
 
                         </a>
@@ -49607,21 +49737,23 @@ RAID 6 의 구성은 기본적으로 RAID 5와 같으나, 다음 그림과 같�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Archive/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-16-TIL.html"><h1 class="title_post">📝 [TIL] 240516 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-16-TIL.html" class="txt_post">
+                        <a href="/Archive/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-17-TIL.html" class="txt_post">
                             
-  연습 문제 정리(1)
+  연습 문제 풀이(2)
+  예외 처리 - 트러블슈팅
+  문자열 처리 - 트러블슈팅
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Archive" class="category">Archive</a>
                             
-                                <span class="date">· 2024-05-16</span>
+                                <span class="date">· 2024-05-17</span>
                             
                         </div>
                     </div>
@@ -49703,6 +49835,32 @@ public class Main {
 “인덱스를 자유자재로 가지고 논다” 라는 말은 문자열이 주어지면 인덱스를 활용하여 문자를 삽입, 삭제, 추출, 변환 등을 자유롭게 할 줄 알아야 한다는 의미입니다.
 
 연습 문제 중 문자열에 대한 문제는 이 부분이 가장 중요시되는 것 같았습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-16-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-16-TIL.html"><h1 class="title_post">📝 [TIL] 240516 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-16-TIL.html" class="txt_post">
+                            
+  연습 문제 정리(1)
+
 
                         </a>
                         <div class="info-post">
@@ -91387,6 +91545,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Spring/2024-10-15-Relataionship-between-hibernate-and-JDBC.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-15"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] JPA 어노테이션 - `@Entity`",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-10-15-jpa-annotation-series-entity.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-15"
         });

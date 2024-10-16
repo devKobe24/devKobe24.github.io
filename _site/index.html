@@ -771,6 +771,7 @@
             
             
             
+            
 
     
     
@@ -1141,6 +1142,170 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html"><h1 class="title_post">🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html" class="txt_post">
+                            🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?
+
+  spring.jpa.hibernate.ddl-auto는 Spring Boot에서 JPA(Java Persistence API)와 Hibernate를 사용할 때 데이터베이스 스키마의 생성을 제어하는 설정 옵션입니다.
+
+
+
+  📝 스키마(Schema)
+
+  데이터베이스의 구조를 정의하는 용어로, 데이터베이스에서 데이터가 어떻게 저장되고, 어떻게 조직화되는지를 설명하는 데 사용됩니다. 
+스키마는 데이터베이스의 논리적 설계를 나타내며, 테이블, 뷰, 인덱스, 트리거, 저장 프로시저, 제약 조건 등과 같은 데이터베이스 객체들이 어떻게 구성되는지를 정의합니다.
+
+
+
+  ddl-auto에서 “DDL”은 Data Definition Language의 약자로, 데이터베이스의 테이블, 인덱스, 컬럼 등을 정의하는 SQL(Structured Query Language) 명령어입니다.
+  이 설정은 애플리케이션의 엔티티(Entity) 클래스가 데이터베이스 스키마(Schema)와 일치하도록 자동으로 처리할지 여부를 결정합니다.
+
+
+
+  🙋‍♂️ 엔티티(Entity)는 무엇일까요?
+
+
+1️⃣ 설정 값.
+
+  spring.jpa.hibernate.ddl-auto는 다음과 같은 여러 가지 값을 가질 수 있습니다.
+    
+      각 값은 Hibernate가 애플리케이션 실행 시 데이터베이스 스키마(Schema)에 대해 어떤 동작을 수행할지를 정의합니다.
+    
+  
+
+
+1️⃣ none
+
+  아무 작업도 하지 않음.
+    
+      Hibernate는 데이터베이스의 테이블 구조를 변경하지 않습니다.
+    
+  
+  데이터베이스 스키마(Schema)를 수동으로 관리할 때 사용합니다.
+
+
+2️⃣ validate
+
+  엔티티(Entity) 클래스와 데이터베이스 스키마(Schema)가 일치하는지 검증합니다.
+  애플리게이션이 시작할 때, 엔티티(Entity) 클래스와 데이터베이스 스키마(Schema)가 정확히 일치하는지 확인합니다.
+    
+      만약 일치하지 않으면 애플리케이션이 예외를 던지며 시작에 실패합니다.
+    
+  
+  스키마(Schema)가 이미 존재하고, 스키마(Schema)의 변경 없이 엔티티(Entity) 매핑이 올바른지 확인할 때 사용됩니다.
+
+
+3️⃣ update
+
+  엔티티(Entity) 클래스의 변경 사항을 기존 데이터베이스 스키마(Schema)에 반영합니다.
+  데이터베이스에 이미 존재하는 테이블 구조에 맞추어 필요한 경우 새로운 컬럼(Column,열)을 추가하거나 수정합니다.
+    
+      그러나 기존 데이터나 구조를 삭제하지는 않습니다.
+    
+  
+  개발 중 데이터베이스 스키마(Schema)가 자주 변경될 때 유용하지만, 프로덕션 환경에서는 주의해서 사용해야 합니다.
+
+
+4️⃣ create
+
+  애플리케이션 시작 시 기존 데이터베이스의 테이블을 삭제한 후 새로 생성합니다.
+  모든 기존 데이터는 삭제되며, 엔티티(Entity) 클래스에 정의된 대로 새로운 테이블과 컬럼(Column, 열)을 생성합니다.
+  개발 초기 단계에서 사용되며, 매번 데이터베이스 스키마를 새로 생성해야 할 때 적합합니다.
+
+
+5️⃣ create-drop
+
+  애플리케이션 시작 시 데이터베이스 스키마를 생성하고, 종료 시 스키마를 삭제합니다.
+  create와 유사하지만, 애플리케이션이 종료될 때 테이블을 모두 삭제하는 추가 동작이 있습니다.
+  테스트 환경에서 유용하게 사용할 수 있으며, 개발이 끝나면 프로덕션 환경에서는 사용하지 않는 것이 좋습니다.
+
+
+2️⃣ 예시.
+
+  Spring Boot의 application.properties 또는 application.yml 파일에서 spring.jpa.hibernate.ddl-auto를 설정할 수 있습니다.
+
+
+1️⃣ application.properties 예시.
+spring.jpa.hibernate.ddl-auto=update
+
+
+application.yml 예시.
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+
+  위 설정에서는 update를 사용하여 애플리케시연이 시작될 때 Hibernate가 엔티티(Entity) 클래스의 변경 사항을 데이터베이스 스키마(Schema)에 반영하지만, 기존 데이터를 삭제하지 않습니다.
+
+
+3️⃣ 각 설정 값의 적합한 사용 환경.
+
+  none
+    
+      이미 완전히 설정된 데이터베이스를 사용하고, Hibernate가 스키마(Schema)에 대해 아무런 변경도 하지 않기를 원할 때 사용.
+    
+  
+  validate
+    
+      데이터베이스 스키마(Schema)가 이미 준비되어 있고, 엔티티 클래스와 스키마 간의 불일치를 확인하고 싶을 때 사용.
+    
+  
+  update
+    
+      개발 중, 데이터베이스 스키마(Schema)를 유지하면서 엔티티(Entity) 클래스의 변경 사항을 반영하고 싶을 때 사용.
+    
+  
+  create
+    
+      개발 중, 데이터베이스 스키마(Schema)를 완전히 새로 생성하고 싶을 때 사용.
+    
+  
+  create-drop
+    
+      테스트 시, 애플리케이션 실행 중에만 데이터베이스 스키마를 생성하고 종료 시 모든 데이터를 삭제할 때 사용.
+    
+  
+
+
+4️⃣ 주의 사항.
+
+  create와 create-drop은 프로덕션 환경에서 사용하지 않는 것이 좋습니다.
+    
+      이 값들은 기존 데이터를 삭제하므로, 실 데이터베이스에 사용하면 데이터 손실이 발생할 수 있습니다.
+    
+  
+  update는 개발 환경에서 유용하지만, 프로덕션 환경에서는 예상치 못한 변경이 발생할 수 있으므로 주의가 필요합니다.
+  validate는 스키마(Schema) 검증만 수행하므로, 프로덕션 환경에서 스키마(Schema)의 일관성을 확인하는 용도로 사용될 수 있습니다.
+
+
+5️⃣ 요약.
+
+  spring.jpa.hibernate.ddl-auto는 Hibernate가 애플리케시연 시작 시 데이터베이스 스키마를 어떻게 처리할지를 정의하는 설정입니다.
+  개발, 테스트, 프로덕션 환경에 따라 적절한 값을 선택해 사용할 수 있으며, 이 설정을 통해 데이터베이스 스키마를 자동으로 생성하거나 검증, 업데이트하는 과정을 간편하게 관리할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -50598,62 +50763,21 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Archive/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html"><h1 class="title_post">☕️[Java] 예외 처리 - 트러블슈팅</h1></a>
-                        <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html" class="txt_post">
-                            1️⃣ 예외 처리.
-
-실제 코드를 작성하면서 예외 처리에 대한 문제를 맞닥뜨려 어떻게 해야 할지 고민하다 다음과 같이 풀어보았습니다.
-
-  private static int enterTheAge(Scanner scanner) {
-    while (true) {
-      try {
-        System.out.print("나이를 입력해 주세요.(숫자): ");
-        int age = scanner.nextInt();
-        return age;
-      } catch (InputMismatchException e) {
-        System.out.println("숫자를 입력해 주세요.");
-        scanner.next();
-      }
-    }
-  }
-
-
-🤔 문제 상황.
-1. 나이는 숫자만 입력되어야 한다.
-
-  숫자가 아닌 것들이 들어왔을 경우 예외 처리를 해줘서 다시 유저가 나이를 입력할 수 있게끔 하도록 만드는 과정에서 문제 상황이 발견되었습니다.
-
-
-💻 트러블슈팅.
-1. while 반복문의 사용.
-
-  while (true) 를 사용하여 무한 루프를 돌려 내부에서 숫자가 아니면 다시금 유저가 “유효하지 않은 입력입니다” 라는 예외 처리 출력문을 받고 “나이를 입력해 주세요” 라는 원래의 출력문을 받을 수 있도록 했습니다.
-
-
-2. try-catch 문의 사용.
-
-  try-catch 문을 사용하여 Scanner 클래스 메소드를 사용할 때 발생하는 예외중, 사용자가 기대하는 타입의 입력을 제공하지 않았을 때 던져지는 InputMismatchException 를 catch 문에 넣어주어 이 예외가 발생시 잡아서 실행하는 블럭 내부에 예외 처리 코드를 아래와 같이 삽입 하였습니다.
-    try {
-  System.out.print("나이를 입력해 주세요.(숫자): ");
-  int age = scanner.nextInt();
-  return age;
-} catch (InputMismatchException e) {
-  System.out.println("숫자를 입력해 주세요.");
-  scanner.next();
-}
-    
-  
-  ‘scanner.next()’ 를 호출하여 잘못된 입력을 버리고, 다음 입력을 기다리도록 합니다.
-  사용자가 유효한 숫자를 입력하면 ‘age’ 를 반환하고 메소드를 종료합니다.
+                        <a href="/Archive/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-17-TIL.html" class="txt_post">
+                            
+  연습 문제 풀이(2)
+  예외 처리 - 트러블슈팅
+  문자열 처리 - 트러블슈팅
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
+                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-17</span>
                             
@@ -50732,21 +50856,62 @@ public class ArrayListStack&lt;T&gt; implements Stack&lt;T&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-17-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-17-TIL.html"><h1 class="title_post">📝 [TIL] 240517 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-17-TIL.html" class="txt_post">
-                            
-  연습 문제 풀이(2)
-  예외 처리 - 트러블슈팅
-  문자열 처리 - 트러블슈팅
+                        <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html"><h1 class="title_post">☕️[Java] 예외 처리 - 트러블슈팅</h1></a>
+                        <a href="/Java/Java/2024-05-17-ExceptionHandling-Troubleshooting.html" class="txt_post">
+                            1️⃣ 예외 처리.
+
+실제 코드를 작성하면서 예외 처리에 대한 문제를 맞닥뜨려 어떻게 해야 할지 고민하다 다음과 같이 풀어보았습니다.
+
+  private static int enterTheAge(Scanner scanner) {
+    while (true) {
+      try {
+        System.out.print("나이를 입력해 주세요.(숫자): ");
+        int age = scanner.nextInt();
+        return age;
+      } catch (InputMismatchException e) {
+        System.out.println("숫자를 입력해 주세요.");
+        scanner.next();
+      }
+    }
+  }
+
+
+🤔 문제 상황.
+1. 나이는 숫자만 입력되어야 한다.
+
+  숫자가 아닌 것들이 들어왔을 경우 예외 처리를 해줘서 다시 유저가 나이를 입력할 수 있게끔 하도록 만드는 과정에서 문제 상황이 발견되었습니다.
+
+
+💻 트러블슈팅.
+1. while 반복문의 사용.
+
+  while (true) 를 사용하여 무한 루프를 돌려 내부에서 숫자가 아니면 다시금 유저가 “유효하지 않은 입력입니다” 라는 예외 처리 출력문을 받고 “나이를 입력해 주세요” 라는 원래의 출력문을 받을 수 있도록 했습니다.
+
+
+2. try-catch 문의 사용.
+
+  try-catch 문을 사용하여 Scanner 클래스 메소드를 사용할 때 발생하는 예외중, 사용자가 기대하는 타입의 입력을 제공하지 않았을 때 던져지는 InputMismatchException 를 catch 문에 넣어주어 이 예외가 발생시 잡아서 실행하는 블럭 내부에 예외 처리 코드를 아래와 같이 삽입 하였습니다.
+    try {
+  System.out.print("나이를 입력해 주세요.(숫자): ");
+  int age = scanner.nextInt();
+  return age;
+} catch (InputMismatchException e) {
+  System.out.println("숫자를 입력해 주세요.");
+  scanner.next();
+}
+    
+  
+  ‘scanner.next()’ 를 호출하여 잘못된 입력을 버리고, 다음 입력을 기다리도록 합니다.
+  사용자가 유효한 숫자를 입력하면 ‘age’ 를 반환하고 메소드를 종료합니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-05-17</span>
                             
@@ -92608,6 +92773,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Spring/2024-10-16-generatedValue.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-16"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-10-17"
         });
     
 

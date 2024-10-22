@@ -790,6 +790,7 @@
             
             
             
+            
 
     
     
@@ -1160,6 +1161,202 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-23-connected-with-frontand.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-23-connected-with-frontand.html"><h1 class="title_post">🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-23-connected-with-frontand.html" class="txt_post">
+                            🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?
+
+
+  Spring Boot를 사용하여 HTML, CSS, JavaScript로 만든 프런트엔드 페이지를 로컬 서버와 연결하려면 다음과 같은 단계가 필요합니다.
+    
+      이 과정에서는 정적 리소스를 Spring Boot 프로젝트에 포함하고, 컨트롤러를 통해 요청을 처리하여 정적페이지를 제공하는 방법을 설명합니다.
+    
+  
+
+
+1️⃣ Spring Boot 프로젝트에 정적 파일 추가.
+
+  HTML, CSS, JavaScript 파일은 Spring Boot 프로젝트의 정적 리소스 디렉토리에 배치합니다.
+
+
+👉 프로젝트 디렉토리 구조.
+src
+ └── main
+     ├── java
+     │    └── com.example.demo (패키지 구조)
+     │         └── DemoApplication.java
+     ├── resources
+     │    ├── static
+     │    │    ├── css
+     │    │    │    └── styles.css
+     │    │    ├── js
+     │    │    │    ├── scripts.js
+     │    │    │    └── login-scripts.js
+     │    │    ├── signup.html
+     │    │    └── login.html
+     │    └── templates (필요한 경우 Thymeleaf 템플릿 파일)
+     └── application.properties
+
+
+  static 디렉토리는 기본적으로 정적 리소스를 제공하는 역할을 하며, 여기서 CSS, JavaScript, 이미지 및 HTML 파일을 로드할 수 있습니다.
+  HTML 파일(signup.html, login.html)은 직접 static 디렉토리에 배치하여 서버가 요청을 받으면 직접 로드되도록 합니다.
+
+
+2️⃣ Spring Boot 컨트롤러 설정.
+
+  Spring Boot 에서 /login과 /signup 요청을 처리하도록 간단한 컨트롤러를 만듭니다.
+
+
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AuthController {
+    
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login.html"; // static/login.html 파일을 반환
+    }
+    
+    @GetMapping("/signup")
+    public String signupPage() {
+        return "signup.html"; // static/signup.html 파일을 반환
+    }
+}
+
+
+3️⃣ 정적 파일 및 자원 접근
+
+  HTML 파일에서 CSS 및 JavaScript 파일에 대한 경로를 수정하여 Spring Boot에서 제공하는 정적 리소스를 제대로 불러올 수 있게합니다.
+
+
+👉 login.html(예시)
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Login Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="/css/styles.css"&gt; &lt;!-- 절대 경로로 수정 --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="login-container"&gt;
+        &lt;form id="loginForm" class="login-form"&gt;
+            &lt;h2&gt;Login&lt;/h2&gt;
+            &lt;div class="input-group"&gt;
+                &lt;label for="login-email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" id="login-email" name="login-email" required&gt;
+            &lt;/div&gt;
+            &lt;div class="input-group"&gt;
+                &lt;label for="login-password"&gt;Password&lt;/label&gt;
+                &lt;input type="password" id="login-password" name="login-password" required&gt;
+            &lt;/div&gt;
+            &lt;button type="submit"&gt;Login&lt;/button&gt;
+            &lt;p class="signup-link"&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up here&lt;/a&gt;&lt;/p&gt; &lt;!-- Spring Boot 경로 사용 --&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;script src="/js/login-scripts.js"&gt;&lt;/script&gt; &lt;!-- 절대 경로로 수정 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+4️⃣ Spring Boot 애플리케이션 실행
+
+  이제 Spring Boot 애플리케이션을 실행하면 로컬 서버에서 /login 및 /signup 경로로 접근하여 프런트엔드 페이지를 볼 수 있습니다.
+
+
+👉 애플리게이션 실행 명령어
+./gradlwe bootRun #Gradle 사용시
+
+
+mvn spring-boot:run # Maven 사용시
+
+
+5️⃣ 추가 설정(필요한 경우)
+
+1️⃣ CORS 설정
+
+  프런트엔드 페이지에서 다른 서버의 API에 접근하려면 CORS 설정이 필요할 수 있습니다.
+    
+      WebMvcConfigurer를 사용하여 다음과 같이 설정할 수 있습니다.
+    
+  
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:8080")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+            }
+        };
+    }
+}
+
+
+
+  📝 CORS(Cross-Origin Resource Sharing)
+
+  웹 브라우저에서 실행되는 웹 애플리케이션이 다른 도메인에서 호스팅 되는 리소스에 접근할 수 있도록 하는 보안 메커니즘입니다.
+기본적으로 웹 브라우저는 보안상의 이유로, 한 도메인에서 로드된 웹 페이지가 다른 도메인에 요청을 보내는 것을 제한합니다.
+이를 “동일 출처 정책(Same-Origin-Policy)”라고 합니다.
+
+
+2️⃣ API와 연결.
+
+  로그인, 회원가입 등의 기능을 구현하기 위해 백엔드 API를 작성할 수 있습니다.
+    
+      예를 들어, /login API를 만들어 JavaScript에서 해당 API로 AJAX 요청을 보낼 수 있습니다.
+    
+  
+
+
+
+  📝 AJAX(Asynchronous JavaScript and XML)
+
+  웹 페이지를 새로고침하지 않고 비동기 방식으로 서버와 데이터를 주고받을 수 있게 해주는 기술을 말합니다.
+웹 페이지를 동적으로 업데이트 할 수 있기 때문에 사용자가 더 빠르고 직관적인 경험을 할 수 있도록 도와줍니다.
+
+
+6️⃣ 요약.
+
+  Spring Boot 프로젝트의 static 디렉토리에 HTML, CSS, JavaScript 파일을 넣어 정적 리소스를 제공합니다.
+  컨트롤러를 통해 /login 및 /signup 경로를 설정하고 HTML 파일을 로드합니다.
+  JavaScript 코드는 프런트엔드에서 필요한 동작을 처리하며, 추가로 API를 호출할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -4252,124 +4449,152 @@ from
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="txt_post">
-                            🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?
+                        <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html"><h1 class="title_post">🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html" class="txt_post">
+                            🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?
 
-  spring.jpa.properties.hibernate.dialect는 Spring Boot 애플리케이션에서 Hibernate가 사용하는 SQL(Structured Query Language) 방언(dialect)을 지정하는 설정입니다.
-  Hibernate Dialect는 Hibernate가 데이터베이스와 상호작용할 때 사용하는 SQL 방언을 정의합니다.
+  spring.jpa.hibernate.ddl-auto는 Spring Boot에서 JPA(Java Persistence API)와 Hibernate를 사용할 때 데이터베이스 스키마의 생성을 제어하는 설정 옵션입니다.
+
+
+
+  📝 스키마(Schema)
+
+  데이터베이스의 구조를 정의하는 용어로, 데이터베이스에서 데이터가 어떻게 저장되고, 어떻게 조직화되는지를 설명하는 데 사용됩니다. 
+스키마는 데이터베이스의 논리적 설계를 나타내며, 테이블, 뷰, 인덱스, 트리거, 저장 프로시저, 제약 조건 등과 같은 데이터베이스 객체들이 어떻게 구성되는지를 정의합니다.
+
+
+
+  ddl-auto에서 “DDL”은 Data Definition Language의 약자로, 데이터베이스의 테이블, 인덱스, 컬럼 등을 정의하는 SQL(Structured Query Language) 명령어입니다.
+  이 설정은 애플리케이션의 엔티티(Entity) 클래스가 데이터베이스 스키마(Schema)와 일치하도록 자동으로 처리할지 여부를 결정합니다.
+
+
+
+  🙋‍♂️ 엔티티(Entity)는 무엇일까요?
+
+
+1️⃣ 설정 값.
+
+  spring.jpa.hibernate.ddl-auto는 다음과 같은 여러 가지 값을 가질 수 있습니다.
     
-      즉, 서로 다른 데이터베이스마다 사용하는 SQL 문법이나 기능이 약간씩 다르기 때문에, Hibernate가 각 데이터베이스의 특성에 맞는 SQL을 생성하도록 돕는 역할을 합니다.
+      각 값은 Hibernate가 애플리케이션 실행 시 데이터베이스 스키마(Schema)에 대해 어떤 동작을 수행할지를 정의합니다.
     
   
 
 
-1️⃣ 왜 필요한가요?
+1️⃣ none
 
-  서로 다른 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 조금씩 다릅니다.
+  아무 작업도 하지 않음.
     
-      예를 들어, MySQL, Oracle, PostgreSQL, SQL Server 등은 일부 SQL 문법이나 함수의 지원 방식이 다를 수 있습니다.
-    
-  
-  Hibernate는 데이터베이스 독립성을 유지하기 위해 다양한 데이터베이스에 맞춰 동작할 수 있도록 설계되었습니다.
-    
-      그러나 이를 위해 각 데이터베이스에 맞는 적절한 SQL(Structured Query Language)을 생성해야 하며, 이를 위해 Dialect를 사용합니다.
+      Hibernate는 데이터베이스의 테이블 구조를 변경하지 않습니다.
     
   
-  Hibernate Dialect는 특정 데이터베이스에 맞춰 SQL 쿼리를 최적화하거나, 데이터베이스에 특화된 기능을 사용할 수 있도록 합니다.
+  데이터베이스 스키마(Schema)를 수동으로 관리할 때 사용합니다.
 
 
-2️⃣ 설정 방법.
+2️⃣ validate
 
-  Spring Boot에서 spring.jpa.properties.hibernate.dialect를 application.properties 또는 application.yml 파일에 설정하여, 사용하는 데이터베이스에 맞는 방언(dialect)을 명시할 수 있습니다.
+  엔티티(Entity) 클래스와 데이터베이스 스키마(Schema)가 일치하는지 검증합니다.
+  애플리게이션이 시작할 때, 엔티티(Entity) 클래스와 데이터베이스 스키마(Schema)가 정확히 일치하는지 확인합니다.
+    
+      만약 일치하지 않으면 애플리케이션이 예외를 던지며 시작에 실패합니다.
+    
+  
+  스키마(Schema)가 이미 존재하고, 스키마(Schema)의 변경 없이 엔티티(Entity) 매핑이 올바른지 확인할 때 사용됩니다.
 
 
-👉 application.properties 파일에서 설정.
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+3️⃣ update
+
+  엔티티(Entity) 클래스의 변경 사항을 기존 데이터베이스 스키마(Schema)에 반영합니다.
+  데이터베이스에 이미 존재하는 테이블 구조에 맞추어 필요한 경우 새로운 컬럼(Column,열)을 추가하거나 수정합니다.
+    
+      그러나 기존 데이터나 구조를 삭제하지는 않습니다.
+    
+  
+  개발 중 데이터베이스 스키마(Schema)가 자주 변경될 때 유용하지만, 프로덕션 환경에서는 주의해서 사용해야 합니다.
 
 
-👉 application.yml 파일에서 설정.
+4️⃣ create
+
+  애플리케이션 시작 시 기존 데이터베이스의 테이블을 삭제한 후 새로 생성합니다.
+  모든 기존 데이터는 삭제되며, 엔티티(Entity) 클래스에 정의된 대로 새로운 테이블과 컬럼(Column, 열)을 생성합니다.
+  개발 초기 단계에서 사용되며, 매번 데이터베이스 스키마를 새로 생성해야 할 때 적합합니다.
+
+
+5️⃣ create-drop
+
+  애플리케이션 시작 시 데이터베이스 스키마를 생성하고, 종료 시 스키마를 삭제합니다.
+  create와 유사하지만, 애플리케이션이 종료될 때 테이블을 모두 삭제하는 추가 동작이 있습니다.
+  테스트 환경에서 유용하게 사용할 수 있으며, 개발이 끝나면 프로덕션 환경에서는 사용하지 않는 것이 좋습니다.
+
+
+2️⃣ 예시.
+
+  Spring Boot의 application.properties 또는 application.yml 파일에서 spring.jpa.hibernate.ddl-auto를 설정할 수 있습니다.
+
+
+1️⃣ application.properties 예시.
+spring.jpa.hibernate.ddl-auto=update
+
+
+application.yml 예시.
 spring:
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
 
 
-3️⃣ 대표적인 Hibernate Dialect 예시.
 
-1️⃣ MySQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+  위 설정에서는 update를 사용하여 애플리케시연이 시작될 때 Hibernate가 엔티티(Entity) 클래스의 변경 사항을 데이터베이스 스키마(Schema)에 반영하지만, 기존 데이터를 삭제하지 않습니다.
 
 
-2️⃣ PostgreSQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+3️⃣ 각 설정 값의 적합한 사용 환경.
 
-
-3️⃣ Oracle
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
-
-
-4️⃣ H2(In-Memory Database)
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
-
-
-5️⃣ SQL Server
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
-
-
-4️⃣ 자동 설정.
-
-  Spring Boot는 대부분의 경우 spring.datasource.url 속성에 설정된 데이터베이스 URL을 기반으로 적절한 Hibernate Dialect를 자동으로 설정합니다.
+  none
     
-      그래서 보통 spring.jpa.properties.hibernate.dialect를 명시적으로 설정할 필요는 없습니다.
+      이미 완전히 설정된 데이터베이스를 사용하고, Hibernate가 스키마(Schema)에 대해 아무런 변경도 하지 않기를 원할 때 사용.
     
   
-  그러나 특정한 데이터베이스 버전에 맞는 특화된 최적화 기능을 사용하거나, 자동 설정이 제대로 동작하지 않는 경우에는 이 설정을 명시적으로 정의해야 합니다.
-
-
-5️⃣ Hibernate Dialect의 역할.
-
-1️⃣ SQL 문법 최적화.
-
-  특정 데이터베이스에 맞는 SQL 문법을 사용하도록 합니다.
+  validate
     
-      예를 들어, MySQL과 Oracle에서 자동 증가 필드(autoincrement)를 처리하는 방식이 다릅니다.
-        
-          Hibernate는 이 차이점을 Dialect를 통해 처리합니다.
-        
-      
+      데이터베이스 스키마(Schema)가 이미 준비되어 있고, 엔티티 클래스와 스키마 간의 불일치를 확인하고 싶을 때 사용.
+    
+  
+  update
+    
+      개발 중, 데이터베이스 스키마(Schema)를 유지하면서 엔티티(Entity) 클래스의 변경 사항을 반영하고 싶을 때 사용.
+    
+  
+  create
+    
+      개발 중, 데이터베이스 스키마(Schema)를 완전히 새로 생성하고 싶을 때 사용.
+    
+  
+  create-drop
+    
+      테스트 시, 애플리케이션 실행 중에만 데이터베이스 스키마를 생성하고 종료 시 모든 데이터를 삭제할 때 사용.
     
   
 
 
-2️⃣ 데이터 타입 매핑.
+4️⃣ 주의 사항.
 
-  각 데이터베이스는 서로 다른 데이터 타입을 지원합니다.
+  create와 create-drop은 프로덕션 환경에서 사용하지 않는 것이 좋습니다.
     
-      Dialect는 자바의 데이터 타입을 해당 데이터베이스에서 지원하는 데이터타입으로 변환합니다.
-    
-  
-
-
-3️⃣ 데이터베이스 특화 기능.
-
-  일부 데이터베이스는 특정 기능을 제공하며, Dialect는 이러한 기능을 활용할 수 있도록 최적화된 쿼리를 생성합니다.
-    
-      예를 들어, PostgreSQL의 시퀀스나 MySQL의 LIMIT 절 들이 그 예입니다.
+      이 값들은 기존 데이터를 삭제하므로, 실 데이터베이스에 사용하면 데이터 손실이 발생할 수 있습니다.
     
   
+  update는 개발 환경에서 유용하지만, 프로덕션 환경에서는 예상치 못한 변경이 발생할 수 있으므로 주의가 필요합니다.
+  validate는 스키마(Schema) 검증만 수행하므로, 프로덕션 환경에서 스키마(Schema)의 일관성을 확인하는 용도로 사용될 수 있습니다.
 
 
-6️⃣ 요약.
+5️⃣ 요약.
 
-  spring.jpa.properties.hibernate.dialect는 Hibernate가 사용할 데이터베이스 방언(Dialect)을 정의하는 설정입니다.
-  각 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 약간씩 다르기 때문에, Hibernate는 Dialect를 사용해 특정 데이터베이스에 맞는 SQL을 생성합니다.
-  Spring Boot는 데이터베이스 URL을 통해 자동으로 적절한 Dialect를 설정하려고 시도하지만, 명시적으로 이 설정을 지정해 데이터베이스와 상호작용을 최적화할 수도 있습니다.
+  spring.jpa.hibernate.ddl-auto는 Hibernate가 애플리케시연 시작 시 데이터베이스 스키마를 어떻게 처리할지를 정의하는 설정입니다.
+  개발, 테스트, 프로덕션 환경에 따라 적절한 값을 선택해 사용할 수 있으며, 이 설정을 통해 데이터베이스 스키마를 자동으로 생성하거나 검증, 업데이트하는 과정을 간편하게 관리할 수 있습니다.
 
 
                         </a>
@@ -4765,152 +4990,124 @@ Connection conn = DriverManager.getConnection(url, username, password);
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html"><h1 class="title_post">🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-17-spring-jpa-hibernate-ddl-auto-setting-option.html" class="txt_post">
-                            🍃[Spring] spring.jap.hibernate.ddl-auto 설정 옵션이란 무엇일까요?
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="txt_post">
+                            🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?
 
-  spring.jpa.hibernate.ddl-auto는 Spring Boot에서 JPA(Java Persistence API)와 Hibernate를 사용할 때 데이터베이스 스키마의 생성을 제어하는 설정 옵션입니다.
-
-
-
-  📝 스키마(Schema)
-
-  데이터베이스의 구조를 정의하는 용어로, 데이터베이스에서 데이터가 어떻게 저장되고, 어떻게 조직화되는지를 설명하는 데 사용됩니다. 
-스키마는 데이터베이스의 논리적 설계를 나타내며, 테이블, 뷰, 인덱스, 트리거, 저장 프로시저, 제약 조건 등과 같은 데이터베이스 객체들이 어떻게 구성되는지를 정의합니다.
-
-
-
-  ddl-auto에서 “DDL”은 Data Definition Language의 약자로, 데이터베이스의 테이블, 인덱스, 컬럼 등을 정의하는 SQL(Structured Query Language) 명령어입니다.
-  이 설정은 애플리케이션의 엔티티(Entity) 클래스가 데이터베이스 스키마(Schema)와 일치하도록 자동으로 처리할지 여부를 결정합니다.
-
-
-
-  🙋‍♂️ 엔티티(Entity)는 무엇일까요?
-
-
-1️⃣ 설정 값.
-
-  spring.jpa.hibernate.ddl-auto는 다음과 같은 여러 가지 값을 가질 수 있습니다.
+  spring.jpa.properties.hibernate.dialect는 Spring Boot 애플리케이션에서 Hibernate가 사용하는 SQL(Structured Query Language) 방언(dialect)을 지정하는 설정입니다.
+  Hibernate Dialect는 Hibernate가 데이터베이스와 상호작용할 때 사용하는 SQL 방언을 정의합니다.
     
-      각 값은 Hibernate가 애플리케이션 실행 시 데이터베이스 스키마(Schema)에 대해 어떤 동작을 수행할지를 정의합니다.
+      즉, 서로 다른 데이터베이스마다 사용하는 SQL 문법이나 기능이 약간씩 다르기 때문에, Hibernate가 각 데이터베이스의 특성에 맞는 SQL을 생성하도록 돕는 역할을 합니다.
     
   
 
 
-1️⃣ none
+1️⃣ 왜 필요한가요?
 
-  아무 작업도 하지 않음.
+  서로 다른 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 조금씩 다릅니다.
     
-      Hibernate는 데이터베이스의 테이블 구조를 변경하지 않습니다.
-    
-  
-  데이터베이스 스키마(Schema)를 수동으로 관리할 때 사용합니다.
-
-
-2️⃣ validate
-
-  엔티티(Entity) 클래스와 데이터베이스 스키마(Schema)가 일치하는지 검증합니다.
-  애플리게이션이 시작할 때, 엔티티(Entity) 클래스와 데이터베이스 스키마(Schema)가 정확히 일치하는지 확인합니다.
-    
-      만약 일치하지 않으면 애플리케이션이 예외를 던지며 시작에 실패합니다.
+      예를 들어, MySQL, Oracle, PostgreSQL, SQL Server 등은 일부 SQL 문법이나 함수의 지원 방식이 다를 수 있습니다.
     
   
-  스키마(Schema)가 이미 존재하고, 스키마(Schema)의 변경 없이 엔티티(Entity) 매핑이 올바른지 확인할 때 사용됩니다.
-
-
-3️⃣ update
-
-  엔티티(Entity) 클래스의 변경 사항을 기존 데이터베이스 스키마(Schema)에 반영합니다.
-  데이터베이스에 이미 존재하는 테이블 구조에 맞추어 필요한 경우 새로운 컬럼(Column,열)을 추가하거나 수정합니다.
+  Hibernate는 데이터베이스 독립성을 유지하기 위해 다양한 데이터베이스에 맞춰 동작할 수 있도록 설계되었습니다.
     
-      그러나 기존 데이터나 구조를 삭제하지는 않습니다.
+      그러나 이를 위해 각 데이터베이스에 맞는 적절한 SQL(Structured Query Language)을 생성해야 하며, 이를 위해 Dialect를 사용합니다.
     
   
-  개발 중 데이터베이스 스키마(Schema)가 자주 변경될 때 유용하지만, 프로덕션 환경에서는 주의해서 사용해야 합니다.
+  Hibernate Dialect는 특정 데이터베이스에 맞춰 SQL 쿼리를 최적화하거나, 데이터베이스에 특화된 기능을 사용할 수 있도록 합니다.
 
 
-4️⃣ create
+2️⃣ 설정 방법.
 
-  애플리케이션 시작 시 기존 데이터베이스의 테이블을 삭제한 후 새로 생성합니다.
-  모든 기존 데이터는 삭제되며, 엔티티(Entity) 클래스에 정의된 대로 새로운 테이블과 컬럼(Column, 열)을 생성합니다.
-  개발 초기 단계에서 사용되며, 매번 데이터베이스 스키마를 새로 생성해야 할 때 적합합니다.
+  Spring Boot에서 spring.jpa.properties.hibernate.dialect를 application.properties 또는 application.yml 파일에 설정하여, 사용하는 데이터베이스에 맞는 방언(dialect)을 명시할 수 있습니다.
 
 
-5️⃣ create-drop
-
-  애플리케이션 시작 시 데이터베이스 스키마를 생성하고, 종료 시 스키마를 삭제합니다.
-  create와 유사하지만, 애플리케이션이 종료될 때 테이블을 모두 삭제하는 추가 동작이 있습니다.
-  테스트 환경에서 유용하게 사용할 수 있으며, 개발이 끝나면 프로덕션 환경에서는 사용하지 않는 것이 좋습니다.
+👉 application.properties 파일에서 설정.
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 
-2️⃣ 예시.
-
-  Spring Boot의 application.properties 또는 application.yml 파일에서 spring.jpa.hibernate.ddl-auto를 설정할 수 있습니다.
-
-
-1️⃣ application.properties 예시.
-spring.jpa.hibernate.ddl-auto=update
-
-
-application.yml 예시.
+👉 application.yml 파일에서 설정.
 spring:
   jpa:
-    hibernate:
-      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
 
 
+3️⃣ 대표적인 Hibernate Dialect 예시.
 
-  위 설정에서는 update를 사용하여 애플리케시연이 시작될 때 Hibernate가 엔티티(Entity) 클래스의 변경 사항을 데이터베이스 스키마(Schema)에 반영하지만, 기존 데이터를 삭제하지 않습니다.
-
-
-3️⃣ 각 설정 값의 적합한 사용 환경.
-
-  none
-    
-      이미 완전히 설정된 데이터베이스를 사용하고, Hibernate가 스키마(Schema)에 대해 아무런 변경도 하지 않기를 원할 때 사용.
-    
-  
-  validate
-    
-      데이터베이스 스키마(Schema)가 이미 준비되어 있고, 엔티티 클래스와 스키마 간의 불일치를 확인하고 싶을 때 사용.
-    
-  
-  update
-    
-      개발 중, 데이터베이스 스키마(Schema)를 유지하면서 엔티티(Entity) 클래스의 변경 사항을 반영하고 싶을 때 사용.
-    
-  
-  create
-    
-      개발 중, 데이터베이스 스키마(Schema)를 완전히 새로 생성하고 싶을 때 사용.
-    
-  
-  create-drop
-    
-      테스트 시, 애플리케이션 실행 중에만 데이터베이스 스키마를 생성하고 종료 시 모든 데이터를 삭제할 때 사용.
-    
-  
+1️⃣ MySQL
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 
-4️⃣ 주의 사항.
+2️⃣ PostgreSQL
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
-  create와 create-drop은 프로덕션 환경에서 사용하지 않는 것이 좋습니다.
+
+3️⃣ Oracle
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
+
+
+4️⃣ H2(In-Memory Database)
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+
+
+5️⃣ SQL Server
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+
+
+4️⃣ 자동 설정.
+
+  Spring Boot는 대부분의 경우 spring.datasource.url 속성에 설정된 데이터베이스 URL을 기반으로 적절한 Hibernate Dialect를 자동으로 설정합니다.
     
-      이 값들은 기존 데이터를 삭제하므로, 실 데이터베이스에 사용하면 데이터 손실이 발생할 수 있습니다.
+      그래서 보통 spring.jpa.properties.hibernate.dialect를 명시적으로 설정할 필요는 없습니다.
     
   
-  update는 개발 환경에서 유용하지만, 프로덕션 환경에서는 예상치 못한 변경이 발생할 수 있으므로 주의가 필요합니다.
-  validate는 스키마(Schema) 검증만 수행하므로, 프로덕션 환경에서 스키마(Schema)의 일관성을 확인하는 용도로 사용될 수 있습니다.
+  그러나 특정한 데이터베이스 버전에 맞는 특화된 최적화 기능을 사용하거나, 자동 설정이 제대로 동작하지 않는 경우에는 이 설정을 명시적으로 정의해야 합니다.
 
 
-5️⃣ 요약.
+5️⃣ Hibernate Dialect의 역할.
 
-  spring.jpa.hibernate.ddl-auto는 Hibernate가 애플리케시연 시작 시 데이터베이스 스키마를 어떻게 처리할지를 정의하는 설정입니다.
-  개발, 테스트, 프로덕션 환경에 따라 적절한 값을 선택해 사용할 수 있으며, 이 설정을 통해 데이터베이스 스키마를 자동으로 생성하거나 검증, 업데이트하는 과정을 간편하게 관리할 수 있습니다.
+1️⃣ SQL 문법 최적화.
+
+  특정 데이터베이스에 맞는 SQL 문법을 사용하도록 합니다.
+    
+      예를 들어, MySQL과 Oracle에서 자동 증가 필드(autoincrement)를 처리하는 방식이 다릅니다.
+        
+          Hibernate는 이 차이점을 Dialect를 통해 처리합니다.
+        
+      
+    
+  
+
+
+2️⃣ 데이터 타입 매핑.
+
+  각 데이터베이스는 서로 다른 데이터 타입을 지원합니다.
+    
+      Dialect는 자바의 데이터 타입을 해당 데이터베이스에서 지원하는 데이터타입으로 변환합니다.
+    
+  
+
+
+3️⃣ 데이터베이스 특화 기능.
+
+  일부 데이터베이스는 특정 기능을 제공하며, Dialect는 이러한 기능을 활용할 수 있도록 최적화된 쿼리를 생성합니다.
+    
+      예를 들어, PostgreSQL의 시퀀스나 MySQL의 LIMIT 절 들이 그 예입니다.
+    
+  
+
+
+6️⃣ 요약.
+
+  spring.jpa.properties.hibernate.dialect는 Hibernate가 사용할 데이터베이스 방언(Dialect)을 정의하는 설정입니다.
+  각 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 약간씩 다르기 때문에, Hibernate는 Dialect를 사용해 특정 데이터베이스에 맞는 SQL을 생성합니다.
+  Spring Boot는 데이터베이스 URL을 통해 자동으로 적절한 Dialect를 설정하려고 시도하지만, 명시적으로 이 설정을 지정해 데이터베이스와 상호작용을 최적화할 수도 있습니다.
 
 
                         </a>
@@ -6772,6 +6969,272 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-10-13-what-is-the-object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-13-what-is-the-object.html"><h1 class="title_post">💾 [CS] 객체 지향 프로그래밍에서의 객체(Object)란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-10-13-what-is-the-object.html" class="txt_post">
+                            💾 [CS] 객체 지향 프로그래밍에서의 객체(Object)란 무엇일까요?
+
+
+  객체 지향 프로그래밍(Object-Oriented Programming, OOP)에서의 객체(Object)는 클래스(Class)에 의해 정의된 데이터와 그 데이터를 처리하는 동작(메소드, Method)을 포함하는 독립적인 개체입니다.
+  객체(Object)는 프로그램 내에서 상태(속성 또는 필드)와 행위(메소드 또는 함수)를 가지며, 이러한 상태와 행위를 통해 현실 세계의 사물을 모델링하거나 시스템 내의 개념을 추상화하는 방식으로 사용됩니다.
+
+
+
+  🙋‍♂️ 추상화(Abstraction)
+🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
+🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
+
+
+1️⃣ 객체의 구성 요소.
+
+1️⃣ 속성(Attributes) 또는 필드(Fields)
+
+  객체의 데이터를 나타냅니다.
+    
+      이는 객체가 가지는 상태를 표현하는 변수로, 클래스에서 정의된 속성(Attributes)에 따라 각 객체는 고유한 값을
+    
+  
+  예를 들어, “자동차” 객체에는 색상, 속도 같은 속성이 있을 수 있습니다.
+  Java에서 속성은 인스턴스 변수로 표현됩니다.
+
+
+class Car {
+    private String color;
+    private int speed;
+    
+    public Car(String color, int speed) {
+        this.color = color; // 속성
+        this.speed = this.speed; // 속성
+    }
+}
+
+
+2️⃣ 메소드(Methods)
+
+  객체의 행동을 정의하는 함수입니다.
+    
+      메소드는 객체의 데이터를 조작하거나 특정 작업을 수행할 수 있습니다.
+    
+  
+  예를 들어, “자동차” 객체(Object)는 달리기 또는 멈추기 같은 메소드(Methods)를 가질 수 있습니다.
+  Java에서 메소드(Methods)는 함수로 정의됩니다.
+
+
+class Car {
+    private String color;
+    private int speed;
+    
+    public Car(String color, int speed) {
+        this.color = color;
+        this.speed = speed;
+    }
+    
+    public void run() {
+        System.out.println("The car is running at " + this.speed + " km/h"); // 메소드(Methods)
+    }
+}
+
+
+3️⃣ 클래스(Class)
+
+  객체(Object)를 생성하기 위한 청사진 또는 설계도입니다.
+    
+      클래스는 객체의 속성(Attributes)과 메소드(Methods)를 정의하며, 객체(Object)는 이 클래스(Class)를 기반으로 생성됩니다.
+    
+  
+  예를 들어, “Car”라는 클래스(Class)는 자동차의 속성(색상, 속도)과 행동(달리기, 멈추기)을 정의하고, 이 클래스(Class)를 사용해 다양한 “자동차” 객체(Object)를 만들 수 있습니다.
+  Java에서 클래스는 다음과 같이 정의됩니다.
+
+
+class Car {
+    private String color;
+    private int speed;
+    
+    public Car(String color, int speed) {
+        this.color = color;
+        this.speed = speed;
+    }
+    
+    public void run() {
+        System.out.println("The car is running at " + this.speed + " km/h");
+    }
+}
+
+
+4️⃣ 인스턴스(Instance)
+
+  클래스(Class)로부터 생성된 실제 객체(Object)를 의미합니다.
+    
+      하나의 클래스(Class)는 여러 개의 인스턴스(Instance)를 가질 수 있으며, 각 인스턴스는 고유한 속성(Attributes) 값을 가질 수 있습니다.
+    
+  
+  예를 들어,”Car” 클래스에서 “red_car”라는 인스턴스(Instance)를 생성할 수 있습니다.
+
+
+Car redCar = new Car("red", 120);
+redCar.run(); // "The car is running at 120 km/h" 출력
+
+
+2️⃣ 객체의 특성.
+
+1️⃣ 캡슐화(Encapsulation)
+
+  객체(Object)는 자신의 데이터를 외부로부터 은닉하고, 해당 데이터를 조작하는 메소드(Methods)를 통해서만 접근을 허용하는 특성을 가집니다.
+    
+      이를 통해 데이터의 무결성을 유지할 수 있습니다.
+    
+  
+  캡슐화(Encapsulation)는 객체(Object) 내부 구현 세부 사항을 외부에서 알 필요 없이 인터페이스(Interface)만을 통해 상호작용할 수 있도록 합니다.
+
+
+2️⃣ 추상화(Abstraction)
+
+  객체(Object)는 현실 세계의 사물이나 개념을 추상화하여 나타냅니다.
+    
+      복잡한 시스템을 단순화하여 중요한 정보만을 표현하고, 불필요한 세부 사항을 숨깁니다.
+    
+  
+  예를 들어, 자동차의 복잡한 엔진 내부 구조는 숨기고, 사용자는 단순히 “달리기” 메소드(Methods)로 자동차를 움직일 수 있습니다.
+
+
+3️⃣ 상속(Inheritance)
+
+  객체 지향 프로그래밍에서 상속(Inheritance)은 한 클래스가 다른 클래스의 속성(Attributes)과 메소드(Methods)를 물려받는 것을 의미합니다.
+    
+      이를 통해 기존 클래스의 기능을 확장하거나 수정하여 새로운 클래스를 정의할 수 있습니다.
+    
+  
+  예를 들어, “Car” 클래스는 “ElectricCar”라는 하위 클래스로 확장될 수 있습니다.
+    class ElectricCar extends Car {
+  private int batteryCapacity;
+    
+  public ElectricCar(String color, int speed, int batteryCapacity) {
+      super(color, speed);
+      this.batteryCapacity = batteryCapacity;
+  }
+}
+    
+  
+
+
+4️⃣ 다형성(Polymorphism)
+
+  다형성(Polymorphism)은 객체(Object)가 같은 인터페이스(Interface)를 사용하여 다양한 방식으로 동작할 수 있는 특성입니다.
+    
+      즉, 동일한 메소드(Methods)가 다양한 클래스에서 다르게 구현될 수 있습니다.
+    
+  
+  예를 들어, “Animal”이라는 클래스에 “speak()”라는 메소드가 있다면, 이를 상속받는 “Dog”와 “Cat” 클래스는 각각의 방식으로 이 메소드를 다르게 구현할 수 있습니다.
+
+
+class Animal {
+    public void speak() {
+        // 메소드 구현 생략
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void speak() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void speak() {
+        System.out.println("Meow");
+    }
+}
+
+
+3️⃣ 객체의 예시.
+
+1️⃣ 자동차 객체 예시.
+class Car {
+    private String color;
+    private int speed;
+    
+    public Car(String color, int speed) {
+        this.color = color;
+        this.speed = speed;
+    }
+    
+    public void run() {
+        System.out.println("The " + this.color + " car is running at " + this.speed + " km/h");
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            // 인스턴스 생성
+            Car myCar = new Car("red", 100);
+            myCar.run(); // "The red car is running at 100 km/h" 출력
+        }
+    }
+}
+
+
+2️⃣ 은행 계좌 객체 예시.
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+    
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+    
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println(amount + " deposited. Ned balance: " + balance);
+    }
+    
+    public void withdraw(double amount) {
+        if (balance &gt;= amount) {
+            balance -= amount;
+            System.out.println(amount + " withdrawn. Remaining balance: " + balance);
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 인스턴스 생성.
+        BankAccount myAccount = new BankAccount("123-456", 5000);
+        myAccount.deposit(1000); // "1000 deposited. New balance: 6000" 출력
+        myAccount.withdraw(2000); // "2000 withdraw Remaining balance: 4000" 출력
+    }
+}
+
+
+4️⃣ 결론.
+
+  객체(Object)는 클래스(Class)에 정의된 속성(Attributes)과 메소드(Methods)를 가진 독립적인 개체로, 객체 지향 프로그래밍의 핵심 구성 요소입니다.
+  객체(Object)는 현실 세계의 개념이나 시스템의 구성 요소를 프로그래밍적으로 표현하며, 상태(속성)와 행위(메소드)를 가지고 있습니다.
+  객체는 추상화, 캡슐화, 상속, 다형성과 같은 객체 지향 원칙을 따르며, 재사용 가능성과 유지보수성을 향상 시킵니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-10-13-what-is-the-packet.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -7033,272 +7496,6 @@ public class Main {
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-13-what-is-the-object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-13-what-is-the-object.html"><h1 class="title_post">💾 [CS] 객체 지향 프로그래밍에서의 객체(Object)란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-10-13-what-is-the-object.html" class="txt_post">
-                            💾 [CS] 객체 지향 프로그래밍에서의 객체(Object)란 무엇일까요?
-
-
-  객체 지향 프로그래밍(Object-Oriented Programming, OOP)에서의 객체(Object)는 클래스(Class)에 의해 정의된 데이터와 그 데이터를 처리하는 동작(메소드, Method)을 포함하는 독립적인 개체입니다.
-  객체(Object)는 프로그램 내에서 상태(속성 또는 필드)와 행위(메소드 또는 함수)를 가지며, 이러한 상태와 행위를 통해 현실 세계의 사물을 모델링하거나 시스템 내의 개념을 추상화하는 방식으로 사용됩니다.
-
-
-
-  🙋‍♂️ 추상화(Abstraction)
-🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
-🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
-
-
-1️⃣ 객체의 구성 요소.
-
-1️⃣ 속성(Attributes) 또는 필드(Fields)
-
-  객체의 데이터를 나타냅니다.
-    
-      이는 객체가 가지는 상태를 표현하는 변수로, 클래스에서 정의된 속성(Attributes)에 따라 각 객체는 고유한 값을
-    
-  
-  예를 들어, “자동차” 객체에는 색상, 속도 같은 속성이 있을 수 있습니다.
-  Java에서 속성은 인스턴스 변수로 표현됩니다.
-
-
-class Car {
-    private String color;
-    private int speed;
-    
-    public Car(String color, int speed) {
-        this.color = color; // 속성
-        this.speed = this.speed; // 속성
-    }
-}
-
-
-2️⃣ 메소드(Methods)
-
-  객체의 행동을 정의하는 함수입니다.
-    
-      메소드는 객체의 데이터를 조작하거나 특정 작업을 수행할 수 있습니다.
-    
-  
-  예를 들어, “자동차” 객체(Object)는 달리기 또는 멈추기 같은 메소드(Methods)를 가질 수 있습니다.
-  Java에서 메소드(Methods)는 함수로 정의됩니다.
-
-
-class Car {
-    private String color;
-    private int speed;
-    
-    public Car(String color, int speed) {
-        this.color = color;
-        this.speed = speed;
-    }
-    
-    public void run() {
-        System.out.println("The car is running at " + this.speed + " km/h"); // 메소드(Methods)
-    }
-}
-
-
-3️⃣ 클래스(Class)
-
-  객체(Object)를 생성하기 위한 청사진 또는 설계도입니다.
-    
-      클래스는 객체의 속성(Attributes)과 메소드(Methods)를 정의하며, 객체(Object)는 이 클래스(Class)를 기반으로 생성됩니다.
-    
-  
-  예를 들어, “Car”라는 클래스(Class)는 자동차의 속성(색상, 속도)과 행동(달리기, 멈추기)을 정의하고, 이 클래스(Class)를 사용해 다양한 “자동차” 객체(Object)를 만들 수 있습니다.
-  Java에서 클래스는 다음과 같이 정의됩니다.
-
-
-class Car {
-    private String color;
-    private int speed;
-    
-    public Car(String color, int speed) {
-        this.color = color;
-        this.speed = speed;
-    }
-    
-    public void run() {
-        System.out.println("The car is running at " + this.speed + " km/h");
-    }
-}
-
-
-4️⃣ 인스턴스(Instance)
-
-  클래스(Class)로부터 생성된 실제 객체(Object)를 의미합니다.
-    
-      하나의 클래스(Class)는 여러 개의 인스턴스(Instance)를 가질 수 있으며, 각 인스턴스는 고유한 속성(Attributes) 값을 가질 수 있습니다.
-    
-  
-  예를 들어,”Car” 클래스에서 “red_car”라는 인스턴스(Instance)를 생성할 수 있습니다.
-
-
-Car redCar = new Car("red", 120);
-redCar.run(); // "The car is running at 120 km/h" 출력
-
-
-2️⃣ 객체의 특성.
-
-1️⃣ 캡슐화(Encapsulation)
-
-  객체(Object)는 자신의 데이터를 외부로부터 은닉하고, 해당 데이터를 조작하는 메소드(Methods)를 통해서만 접근을 허용하는 특성을 가집니다.
-    
-      이를 통해 데이터의 무결성을 유지할 수 있습니다.
-    
-  
-  캡슐화(Encapsulation)는 객체(Object) 내부 구현 세부 사항을 외부에서 알 필요 없이 인터페이스(Interface)만을 통해 상호작용할 수 있도록 합니다.
-
-
-2️⃣ 추상화(Abstraction)
-
-  객체(Object)는 현실 세계의 사물이나 개념을 추상화하여 나타냅니다.
-    
-      복잡한 시스템을 단순화하여 중요한 정보만을 표현하고, 불필요한 세부 사항을 숨깁니다.
-    
-  
-  예를 들어, 자동차의 복잡한 엔진 내부 구조는 숨기고, 사용자는 단순히 “달리기” 메소드(Methods)로 자동차를 움직일 수 있습니다.
-
-
-3️⃣ 상속(Inheritance)
-
-  객체 지향 프로그래밍에서 상속(Inheritance)은 한 클래스가 다른 클래스의 속성(Attributes)과 메소드(Methods)를 물려받는 것을 의미합니다.
-    
-      이를 통해 기존 클래스의 기능을 확장하거나 수정하여 새로운 클래스를 정의할 수 있습니다.
-    
-  
-  예를 들어, “Car” 클래스는 “ElectricCar”라는 하위 클래스로 확장될 수 있습니다.
-    class ElectricCar extends Car {
-  private int batteryCapacity;
-    
-  public ElectricCar(String color, int speed, int batteryCapacity) {
-      super(color, speed);
-      this.batteryCapacity = batteryCapacity;
-  }
-}
-    
-  
-
-
-4️⃣ 다형성(Polymorphism)
-
-  다형성(Polymorphism)은 객체(Object)가 같은 인터페이스(Interface)를 사용하여 다양한 방식으로 동작할 수 있는 특성입니다.
-    
-      즉, 동일한 메소드(Methods)가 다양한 클래스에서 다르게 구현될 수 있습니다.
-    
-  
-  예를 들어, “Animal”이라는 클래스에 “speak()”라는 메소드가 있다면, 이를 상속받는 “Dog”와 “Cat” 클래스는 각각의 방식으로 이 메소드를 다르게 구현할 수 있습니다.
-
-
-class Animal {
-    public void speak() {
-        // 메소드 구현 생략
-    }
-}
-
-class Dog extends Animal {
-    @Override
-    public void speak() {
-        System.out.println("Woof");
-    }
-}
-
-class Cat extends Animal {
-    @Override
-    public void speak() {
-        System.out.println("Meow");
-    }
-}
-
-
-3️⃣ 객체의 예시.
-
-1️⃣ 자동차 객체 예시.
-class Car {
-    private String color;
-    private int speed;
-    
-    public Car(String color, int speed) {
-        this.color = color;
-        this.speed = speed;
-    }
-    
-    public void run() {
-        System.out.println("The " + this.color + " car is running at " + this.speed + " km/h");
-    }
-    
-    public class Main {
-        public static void main(String[] args) {
-            // 인스턴스 생성
-            Car myCar = new Car("red", 100);
-            myCar.run(); // "The red car is running at 100 km/h" 출력
-        }
-    }
-}
-
-
-2️⃣ 은행 계좌 객체 예시.
-class BankAccount {
-    private String accountNumber;
-    private double balance;
-    
-    public BankAccount(String accountNumber, double balance) {
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-    }
-    
-    public void deposit(double amount) {
-        balance += amount;
-        System.out.println(amount + " deposited. Ned balance: " + balance);
-    }
-    
-    public void withdraw(double amount) {
-        if (balance &gt;= amount) {
-            balance -= amount;
-            System.out.println(amount + " withdrawn. Remaining balance: " + balance);
-        } else {
-            System.out.println("Insufficient balance");
-        }
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        // 인스턴스 생성.
-        BankAccount myAccount = new BankAccount("123-456", 5000);
-        myAccount.deposit(1000); // "1000 deposited. New balance: 6000" 출력
-        myAccount.withdraw(2000); // "2000 withdraw Remaining balance: 4000" 출력
-    }
-}
-
-
-4️⃣ 결론.
-
-  객체(Object)는 클래스(Class)에 정의된 속성(Attributes)과 메소드(Methods)를 가진 독립적인 개체로, 객체 지향 프로그래밍의 핵심 구성 요소입니다.
-  객체(Object)는 현실 세계의 개념이나 시스템의 구성 요소를 프로그래밍적으로 표현하며, 상태(속성)와 행위(메소드)를 가지고 있습니다.
-  객체는 추상화, 캡슐화, 상속, 다형성과 같은 객체 지향 원칙을 따르며, 재사용 가능성과 유지보수성을 향상 시킵니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-13</span>
                             
@@ -15524,6 +15721,167 @@ Contoller는 사용자 요청을 받아 Service 계층과 통신하며, 요청�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-10-02-introduce-java.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-10-02-introduce-java.html"><h1 class="title_post">☕️[Java] java에 대하여 간단하게 알아보기</h1></a>
+                        <a href="/Java/Java/2024-10-02-introduce-java.html" class="txt_post">
+                            ☕️[Java] java에 대하여 간단하게 알아보기.
+
+1️⃣ 각 코드 행의 의미.
+
+int size = 27;
+String name = "Fido";
+Dog myDog = new Dog(name, size);
+int x = size - 5;
+if (x &lt; 15) myDog.bark(8);
+
+while (x &gt; 3) {
+    myDog.play();
+}
+
+int[] numList = {2, 4, 6, 8};
+System.out.println("Hello");
+System.out.pring("Dog: " + name);
+String num = "8";
+int z = Integer.parseInt(num);
+
+try {
+    readTheFile("myFile.txt");
+}
+catch (FileNoFoundException ex) {
+    System.out.print("File not found.")
+}
+
+
+
+  ‘size’라는 정수 변수를 선언하고 27이라는 값을 대입합니다.
+  ‘name’라는 문자열 변수를 선언하고 Fido라는 값을 대입합니다.
+  ‘myDog’라는 Dog 변수를 선언하고 ‘name’과 ‘size’를 사용해 새 Dog 객체를 만듭니다.
+  27(‘size’의 값)에서 5를 뺀 값을 ‘x’라는 변수에 대입합니다.
+  만약 x(값이 22)가 15보다 작으면 개가 여덟 번 짖도록 합니다.
+  x가 3보다 크면 반복문을 사용합니다.
+  개가 놀도록 지시합니다(play() 메서드를 실행시킴)
+  반복문이 끝나는 부분입니다. {} 안에 있는 것들이 조건에 따라 반복됩니다.
+  ‘numList’라는 정수 배열을 선언하고 2,4,6,8을 집어넣습니다.
+  “Hello”를 출력합니다. (아마 명령행으로 출력될것입니다.)
+  명령행에 “Dog: Fido”를 출력합니다.
+  ‘num’라는 문자열 변수를 선언하고 “8”이라는 값을 대입합니다.
+  “8”이라는 문자열을 8이라는 숫자값으로 변환합니다.
+  무언가를 시도해 봅니다. 잘 안 될 수도 있습니다.
+  “myFile.txe”를 읽습니다
+  “시도하는 부분”이 끝이므로 여러 가지를 함께 시도할 수도 있습니다.
+  시도했던 것이 실패하면 실행됩니다.
+  실패했을 경우에 명령행에 “File not found”라고 출력합니다.
+  중괄호({}) 안의 모든것은 ‘try’ 부분이 실패한 경우에 수행할 작업입니다.
+
+
+2️⃣ 자바 코드의 구조
+
+
+
+  소스 파일 안에는 “클래스”가 들어갑니다.
+  클래스 안에는 “메서드”가 들어갑니다.
+  메서드 안에는 “명령문”이 들어갑니다.
+
+
+소스 파일 안에는 무엇이 들어갈까요?
+
+
+
+  소스 코드 파일(.java라는 확장자가 붙은 파일)은 일반적으로 클래스(class) 를 한 개씩 정의합니다.
+  클래스는 보통 프로그램의 한 부분을 나타내지만, 아주 작은 애플리케이션 중에는 단 한 개의 클래스만으로 이뤄진 것도 있습니다.
+  클래스는 한 쌍의 중괄호({})로 둘러싸인 형태여야 합니다.
+
+
+클래스 안에는 무엇이 들어갈까요?
+
+
+
+  하나의 클래스 안에는 하나 이상의 메서드(method) 가 들어갑니다.
+  예를 들어서,(개를 나타내는) Dog 클래스에는 (짖는 것을 의미하는) bark 라는 메서드가 들어갈 수 있으며, 이 메서드에는 개가 짖는 방법을 지시하는 내용이 들어갑니다.
+  메서드는 반드시 클래스 안에서 선언되어야 합니다.
+  즉, 클래스의 중괄호 안에 위치해야 합니다.
+
+
+메서드 안에는 무엇이 들어갈까요?
+
+
+
+  메서드를 감싸는 중괄호 안에는 메서드에서 처리할 일을 지시하는 내용이 들어갑니다.
+  메서드 코드는 기본적으로 일련의 명령문을 모아 놓은 것이므로 지금은 메서드를 일종의 함수나 프로시저와 비슷한 것으로 생각하면 됩니다.
+
+
+
+  🙋‍♂️ 프로시저(Procedure)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-10-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-02-Procedure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-02-Procedure.html"><h1 class="title_post">💾 [CS] 프로시저(Procedure)란?</h1></a>
+                        <a href="/CS/2024/2024-10-02-Procedure.html" class="txt_post">
+                            💾 [CS] 프로시저(Procedure)란?
+프로시저(Procedure)란 일련의 명령어를 그룹화한 것으로, 특정 작업을 수행하기 위해 재사용 가능한 코드 블록을 의미합니다.
+주로 데이터베이스 시스템이나 프로그래밍 언어에서 사용됩니다.
+
+1️⃣ 데이터베이스에서의 프로시저
+
+  프로시저는 SQL 등의 데이터베이스에서 사용되는 일종의 함수로, 복잡한 쿼리나 연산을 미리 정의한 후, 필요한 시점에 호출하여 실행할 수 있습니다.
+  이를 통해 반복적인 작업을 자동화하고 성능을 최적화할 수 있습니다.
+  예를 들어, 특정 데이터셋을 조회하거나 갱신하는 작업을 프로시저로 정의해놓고 필요할 때마다 호출하여 실행할 수 있습니다.
+    
+      저장 프로시저(Stored Procedure)
+        
+          미리 데이터베이스에 저장된 프로시저로, 여러 쿼리들을 묶어서 하나의 단위로 실행되게 합니다.
+        
+      
+    
+  
+
+
+2️⃣ 프로그래밍에서의 프로시저
+
+  프로시저는 특정 작업을 수행하는 함수와 유사한 개념으로, 코드 내에서 반복적으로 사용되는 작업을 모듈화하여 작성하는 방법입니다.
+  일반적으로 입력 값을 받아서, 그에 맞는 작업을 수행하고, 필요에 따라 출력 값을 반환할 수도 있습니다.
+
+
+프로시저는 재사용성과 코드의 가독성을 높여주며, 작업의 효율성을 크게 향상시킵니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-10-02-API-Exception.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -15752,167 +16110,6 @@ if (isUserNotExist) {
                         </a>
                         <div class="info-post">
                                 <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-02-Procedure.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-02-Procedure.html"><h1 class="title_post">💾 [CS] 프로시저(Procedure)란?</h1></a>
-                        <a href="/CS/2024/2024-10-02-Procedure.html" class="txt_post">
-                            💾 [CS] 프로시저(Procedure)란?
-프로시저(Procedure)란 일련의 명령어를 그룹화한 것으로, 특정 작업을 수행하기 위해 재사용 가능한 코드 블록을 의미합니다.
-주로 데이터베이스 시스템이나 프로그래밍 언어에서 사용됩니다.
-
-1️⃣ 데이터베이스에서의 프로시저
-
-  프로시저는 SQL 등의 데이터베이스에서 사용되는 일종의 함수로, 복잡한 쿼리나 연산을 미리 정의한 후, 필요한 시점에 호출하여 실행할 수 있습니다.
-  이를 통해 반복적인 작업을 자동화하고 성능을 최적화할 수 있습니다.
-  예를 들어, 특정 데이터셋을 조회하거나 갱신하는 작업을 프로시저로 정의해놓고 필요할 때마다 호출하여 실행할 수 있습니다.
-    
-      저장 프로시저(Stored Procedure)
-        
-          미리 데이터베이스에 저장된 프로시저로, 여러 쿼리들을 묶어서 하나의 단위로 실행되게 합니다.
-        
-      
-    
-  
-
-
-2️⃣ 프로그래밍에서의 프로시저
-
-  프로시저는 특정 작업을 수행하는 함수와 유사한 개념으로, 코드 내에서 반복적으로 사용되는 작업을 모듈화하여 작성하는 방법입니다.
-  일반적으로 입력 값을 받아서, 그에 맞는 작업을 수행하고, 필요에 따라 출력 값을 반환할 수도 있습니다.
-
-
-프로시저는 재사용성과 코드의 가독성을 높여주며, 작업의 효율성을 크게 향상시킵니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-10-02-introduce-java.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-10-02-introduce-java.html"><h1 class="title_post">☕️[Java] java에 대하여 간단하게 알아보기</h1></a>
-                        <a href="/Java/Java/2024-10-02-introduce-java.html" class="txt_post">
-                            ☕️[Java] java에 대하여 간단하게 알아보기.
-
-1️⃣ 각 코드 행의 의미.
-
-int size = 27;
-String name = "Fido";
-Dog myDog = new Dog(name, size);
-int x = size - 5;
-if (x &lt; 15) myDog.bark(8);
-
-while (x &gt; 3) {
-    myDog.play();
-}
-
-int[] numList = {2, 4, 6, 8};
-System.out.println("Hello");
-System.out.pring("Dog: " + name);
-String num = "8";
-int z = Integer.parseInt(num);
-
-try {
-    readTheFile("myFile.txt");
-}
-catch (FileNoFoundException ex) {
-    System.out.print("File not found.")
-}
-
-
-
-  ‘size’라는 정수 변수를 선언하고 27이라는 값을 대입합니다.
-  ‘name’라는 문자열 변수를 선언하고 Fido라는 값을 대입합니다.
-  ‘myDog’라는 Dog 변수를 선언하고 ‘name’과 ‘size’를 사용해 새 Dog 객체를 만듭니다.
-  27(‘size’의 값)에서 5를 뺀 값을 ‘x’라는 변수에 대입합니다.
-  만약 x(값이 22)가 15보다 작으면 개가 여덟 번 짖도록 합니다.
-  x가 3보다 크면 반복문을 사용합니다.
-  개가 놀도록 지시합니다(play() 메서드를 실행시킴)
-  반복문이 끝나는 부분입니다. {} 안에 있는 것들이 조건에 따라 반복됩니다.
-  ‘numList’라는 정수 배열을 선언하고 2,4,6,8을 집어넣습니다.
-  “Hello”를 출력합니다. (아마 명령행으로 출력될것입니다.)
-  명령행에 “Dog: Fido”를 출력합니다.
-  ‘num’라는 문자열 변수를 선언하고 “8”이라는 값을 대입합니다.
-  “8”이라는 문자열을 8이라는 숫자값으로 변환합니다.
-  무언가를 시도해 봅니다. 잘 안 될 수도 있습니다.
-  “myFile.txe”를 읽습니다
-  “시도하는 부분”이 끝이므로 여러 가지를 함께 시도할 수도 있습니다.
-  시도했던 것이 실패하면 실행됩니다.
-  실패했을 경우에 명령행에 “File not found”라고 출력합니다.
-  중괄호({}) 안의 모든것은 ‘try’ 부분이 실패한 경우에 수행할 작업입니다.
-
-
-2️⃣ 자바 코드의 구조
-
-
-
-  소스 파일 안에는 “클래스”가 들어갑니다.
-  클래스 안에는 “메서드”가 들어갑니다.
-  메서드 안에는 “명령문”이 들어갑니다.
-
-
-소스 파일 안에는 무엇이 들어갈까요?
-
-
-
-  소스 코드 파일(.java라는 확장자가 붙은 파일)은 일반적으로 클래스(class) 를 한 개씩 정의합니다.
-  클래스는 보통 프로그램의 한 부분을 나타내지만, 아주 작은 애플리케이션 중에는 단 한 개의 클래스만으로 이뤄진 것도 있습니다.
-  클래스는 한 쌍의 중괄호({})로 둘러싸인 형태여야 합니다.
-
-
-클래스 안에는 무엇이 들어갈까요?
-
-
-
-  하나의 클래스 안에는 하나 이상의 메서드(method) 가 들어갑니다.
-  예를 들어서,(개를 나타내는) Dog 클래스에는 (짖는 것을 의미하는) bark 라는 메서드가 들어갈 수 있으며, 이 메서드에는 개가 짖는 방법을 지시하는 내용이 들어갑니다.
-  메서드는 반드시 클래스 안에서 선언되어야 합니다.
-  즉, 클래스의 중괄호 안에 위치해야 합니다.
-
-
-메서드 안에는 무엇이 들어갈까요?
-
-
-
-  메서드를 감싸는 중괄호 안에는 메서드에서 처리할 일을 지시하는 내용이 들어갑니다.
-  메서드 코드는 기본적으로 일련의 명령문을 모아 놓은 것이므로 지금은 메서드를 일종의 함수나 프로시저와 비슷한 것으로 생각하면 됩니다.
-
-
-
-  🙋‍♂️ 프로시저(Procedure)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-10-02</span>
                             
@@ -32960,136 +33157,135 @@ public class MyService {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-09-04-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-04-jdbc.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/CS/2024/2024-09-04-API.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)</h1></a>
-                        <a href="/CS/2024/2024-09-04-API.html" class="txt_post">
-                            💾 [CS] API(Application Programming Interface)
+                        <a href="/Java/Java/2024-09-04-jdbc.html"><h1 class="title_post">☕️[Java] JDBC(Java Database Connectivity)</h1></a>
+                        <a href="/Java/Java/2024-09-04-jdbc.html" class="txt_post">
+                            ☕️[Java] JDBC(Java Database Connectivity)
 
-  API(Application Programming Interface) 는 소프트웨어 간의 상호작용을 가능하게 해주는 인터페이스입니다.
+  JDBC(Java Database Connectivity)는 자바 프로그램이 데이터베이스에 연결하고, SQL 쿼리를 실행하며, 데이터베이스로부터 결과를 가져오는 것을 가능하게 하는 자바 API입니다.
+  JDBC는 Java의 표준 API로, 다양한 관계형 데이터베이스 시스템(RDBMS)과의 상호 작용을 단순화하는 데 사용됩니다.
+
+
+1️⃣ 주요 기능 및 개념.
+
+  1. 데이터베이스 연결
     
-      쉽게 말해서 , API는 서로 다른 소프트웨어 시스템이나 애플리케이션이 데이터를 주고 받거나 기능을 사용할 수 있도록 도와주는 규칙과 도구들의 집합입니다.
-    
-  
-
-
-1️⃣ API의 주요 개념.
-
-  1. 인터페이스
-    
-      API는 소프트웨어 시스템이 다른 시스템이나 애플리케이션과 어떻게 소통할 수 있는지를 정의하는 인터페이스입니다.
+      JDBC를 사용하면 자바 애플리케이션에서 데이터베이스에 연결할 수 있습니다.
         
-          이 인터페이스는 어떤 데이터나 기능이 노출되고, 그것들을 어떻게 사용할 수 있는지 규정합니다.
+          이를 위해서는 데이터베이스의 URL, 사용자 이름, 비밀번호 등을 사용하여 Connection 객체를 생성합니다.
         
       
     
   
-  2. 추상화
+  2. SQL 쿼리 실행
     
-      API는 복잡한 시스템 내부의 구현 세부 사항을 숨기고, 사용자나 개발자가 이해하기 쉽게 필요한 기능만을 제공합니다.
+      연결이 설정된 후, SQL 쿼리를 실행할 수 있습니다.
         
-          예를 들어, 파일을 열거나, 데이터베이스에 쿼리를 보내거나, 웹 페이지의 데이터를 가져오는 등의 작업을 API를 통해 간단하게 수행할 수 있습니다.
-        
-      
-    
-  
-  3. 모듈화
-    
-      API는 특정 기능이나 서비스에 대한 접근을 모듈화합니다.
-        
-          이렇게 모듈화된 API를 사용하면 개발자가 시스템의 다른 부분에 영향을 주지 않고 독립적으로 기능을 사용하거나 확장할 수 있습니다.
+          이는 Statement, PreparedStatment, CallableStatement 와 같은 JDBC 인터페이스를 통해 이루어집니다.
+            
+              Statement는 정적 SQL 쿼리를 실행할 때 사용됩니다.
+              PreparedStatement는 동적 SQL 쿼리를 미리 컴파일하고, 반복 실행할 때 효율적으로 사용할 수 있습니다.
+              CallableStatement는 데이터베이스의 저장 프로시저를 호출할 때 사용됩니다.
+            
+          
         
       
     
   
-  4. 표준화
+  3. 결과 처리
     
-      API는 표준화된 방법으로 기능에 접근할 수 있게 해주기 때문에, 여러 개발자나 시스템이 일관된 방식으로 상호작용할 수 있습니다.
+      SQL 쿼리의 결과는 ResultSet 객체를 통해 얻을 수 있습니다.
         
-          예를 들어, REST API는 웹 기반 애플리케이션에서 데이터를 주고받는 표준 방식입니다.
-        
-      
-    
-  
-
-
-2️⃣ API의 유형.
-
-  1. Web API(웹 API)
-    
-      웹 서비스나 웹 애플리케이션에서 기능을 제공하는 API입니다.
-        
-          주로 HTTP를 통해 요청과 응답을 주고받으며, REST, SOAP, GraphQL 등이 그 예입니다.
+          ResultSet은 데이터베이스로 부터 검색된 데이터를 테이블 형식으로 제공합니다.
         
       
     
   
-  2. Library API
+  4. 트랜잭션 관리
     
-      특정 프로그래밍 언어에서 사용할 수 있는 라이브러리나 프레임워크의 함수와 클래스들에 대한 인터페이스입니다.
+      JDBC는 데이터베이스 트랜젝션을 관리하는 기능도 제공합니다.
         
-          예를 들어, Python의 표준 라이브러리에서 제공하는 os 나 sys 모듈도 API의 일종입니다.
-        
-      
-    
-  
-  3. Operating System API
-    
-      운영 체제가 제공하는 기능에 접근할 수 있게 해주는 API입니다.
-        
-          예를 들어, Windows API는 윈도우 애플리케이션이 운영 체제의 기능(파일 관리, UI 구성 요소, 네트워크 등)에 접근할 수 있도록 합니다.
+          기본적으로 자동 커밋 모드이지만, 필요에 따라 수동으로 트랜잭션을 관리하고 커밋하거나 롤백할 수 있습니다.
         
       
     
   
-  4. Database API
+  5. 에러 처리
     
-      데이터베이스와의 상호작용을 위해 제공되는 API입니다.
+      JDBC는 데이터베이스 관련 작업 중 발생하는 예외를 처리하기 위해 SQLException 클래스를 사용합니다.
         
-          JDBC(Java Database Connectivity)는 자바 애플리케이션이 데이터베이스와 상호작용할 수 있도록 돕는 대표적인 데이터베이스 API입니다.
+          이를 통해 에러 코드를 확인하고, 적절한 예외 처리를 할 수 있습니다.
         
       
     
   
 
 
-3️⃣ API의 예.
+2️⃣ JDBC의 구성 요소.
 
-  Google Maps API
+  Driver
     
-      개발자가 자신의 애플리케이션에 지도 기능을 통합할 수 있도록 Google에서 제공하는 API입니다.
-    
-  
-  Twitter API
-    
-      개발자가 트위터의 기능(예: 트윗 가져오기, 트윗 작성)을 자신의 애플리케이션에 통합할 수 있도록 제공되는 API입니다.
-    
-  
-  Payment Gateway API
-    
-      PayPal이나 Stripe 같은 결제 서비스에서 제공하는 API로, 애플리게이션에 결제 기능을 통합할 수 있습니다.
-    
-  
-
-
-4️⃣ API의 중요성.
-
-  API는 소프트웨어 개발에서 매우 중요한 역할을 합니다.
-    
-      그것은 소프트웨어 간의 상호 운용성을 촉진하며, 새로운 애플리케이션을 개발하거나 기존 애플리케이션에 새로운 기능을 추가하는 것을 더 쉽게 만들어 줍니다.
+      JDBC 드라이버는 특정 데이터베이스와 자바 애플리케이션 간의 통신을 담당합니다.
         
-          또한, API를 통해 외부 시스템이나 서비스와 통합할 수 있어, 다양한 기능을 제공하는 애플리케이션을 보다 효율적으로 개발할 수 있습니다.
+          각 DBMS는 고유한 JDBC 드라이버를 제공합니다.
         
       
     
   
+  Connection
+    
+      데이터베이스 연결을 표현하며, SQL 쿼리를 실행할 때 사용되는 객체를 생성합니다.
+    
+  
+  Statement
+    
+      SQL 쿼리를 데이터베이스에 전달하는 역할을 합니다.
+    
+  
+  ResultSet
+    
+      쿼리의 결과를 포함하며, 데이터를 읽을 수 있게 합니다.
+    
+  
 
+
+3️⃣ JDBC의 작동 원리.
+
+  1. 드라이버 로드
+    
+      애플리케이션이 사용할 JDBC 드라이버를 로드합니다.
+    
+  
+  2. 데이터베이스 연결
+    
+      DriverManager.getConnection() 메서드를 사용하여 데이터베이스에 연결합니다.
+    
+  
+  3. SQL 쿼리 실행
+    
+      Statement 나 PreparedStatement 객체를 사용하여 SQL 쿼리를 실행합니다.
+    
+  
+  4. 결과 처리
+    
+      ResultSet 객체를 사용하여 쿼리 결과를 처리합니다.
+    
+  
+  5. 자원 해제
+    
+      사용된 ResultSet, Statement, Connection 객체를 명시적으로 닫아 자원을 해제합니다.
+    
+  
+
+
+JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Java 애플리케이션에서 데이터베이스 연동을 위해 널리 사용됩니다.
 
                         </a>
                         <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
+                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-09-04</span>
                             
@@ -33369,135 +33565,136 @@ public class StringEqualsMain2 {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-04-jdbc.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/CS/2024/2024-09-04-API.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-04-jdbc.html"><h1 class="title_post">☕️[Java] JDBC(Java Database Connectivity)</h1></a>
-                        <a href="/Java/Java/2024-09-04-jdbc.html" class="txt_post">
-                            ☕️[Java] JDBC(Java Database Connectivity)
+                        <a href="/CS/2024/2024-09-04-API.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)</h1></a>
+                        <a href="/CS/2024/2024-09-04-API.html" class="txt_post">
+                            💾 [CS] API(Application Programming Interface)
 
-  JDBC(Java Database Connectivity)는 자바 프로그램이 데이터베이스에 연결하고, SQL 쿼리를 실행하며, 데이터베이스로부터 결과를 가져오는 것을 가능하게 하는 자바 API입니다.
-  JDBC는 Java의 표준 API로, 다양한 관계형 데이터베이스 시스템(RDBMS)과의 상호 작용을 단순화하는 데 사용됩니다.
-
-
-1️⃣ 주요 기능 및 개념.
-
-  1. 데이터베이스 연결
+  API(Application Programming Interface) 는 소프트웨어 간의 상호작용을 가능하게 해주는 인터페이스입니다.
     
-      JDBC를 사용하면 자바 애플리케이션에서 데이터베이스에 연결할 수 있습니다.
+      쉽게 말해서 , API는 서로 다른 소프트웨어 시스템이나 애플리케이션이 데이터를 주고 받거나 기능을 사용할 수 있도록 도와주는 규칙과 도구들의 집합입니다.
+    
+  
+
+
+1️⃣ API의 주요 개념.
+
+  1. 인터페이스
+    
+      API는 소프트웨어 시스템이 다른 시스템이나 애플리케이션과 어떻게 소통할 수 있는지를 정의하는 인터페이스입니다.
         
-          이를 위해서는 데이터베이스의 URL, 사용자 이름, 비밀번호 등을 사용하여 Connection 객체를 생성합니다.
+          이 인터페이스는 어떤 데이터나 기능이 노출되고, 그것들을 어떻게 사용할 수 있는지 규정합니다.
         
       
     
   
-  2. SQL 쿼리 실행
+  2. 추상화
     
-      연결이 설정된 후, SQL 쿼리를 실행할 수 있습니다.
+      API는 복잡한 시스템 내부의 구현 세부 사항을 숨기고, 사용자나 개발자가 이해하기 쉽게 필요한 기능만을 제공합니다.
         
-          이는 Statement, PreparedStatment, CallableStatement 와 같은 JDBC 인터페이스를 통해 이루어집니다.
-            
-              Statement는 정적 SQL 쿼리를 실행할 때 사용됩니다.
-              PreparedStatement는 동적 SQL 쿼리를 미리 컴파일하고, 반복 실행할 때 효율적으로 사용할 수 있습니다.
-              CallableStatement는 데이터베이스의 저장 프로시저를 호출할 때 사용됩니다.
-            
-          
+          예를 들어, 파일을 열거나, 데이터베이스에 쿼리를 보내거나, 웹 페이지의 데이터를 가져오는 등의 작업을 API를 통해 간단하게 수행할 수 있습니다.
         
       
     
   
-  3. 결과 처리
+  3. 모듈화
     
-      SQL 쿼리의 결과는 ResultSet 객체를 통해 얻을 수 있습니다.
+      API는 특정 기능이나 서비스에 대한 접근을 모듈화합니다.
         
-          ResultSet은 데이터베이스로 부터 검색된 데이터를 테이블 형식으로 제공합니다.
-        
-      
-    
-  
-  4. 트랜잭션 관리
-    
-      JDBC는 데이터베이스 트랜젝션을 관리하는 기능도 제공합니다.
-        
-          기본적으로 자동 커밋 모드이지만, 필요에 따라 수동으로 트랜잭션을 관리하고 커밋하거나 롤백할 수 있습니다.
+          이렇게 모듈화된 API를 사용하면 개발자가 시스템의 다른 부분에 영향을 주지 않고 독립적으로 기능을 사용하거나 확장할 수 있습니다.
         
       
     
   
-  5. 에러 처리
+  4. 표준화
     
-      JDBC는 데이터베이스 관련 작업 중 발생하는 예외를 처리하기 위해 SQLException 클래스를 사용합니다.
+      API는 표준화된 방법으로 기능에 접근할 수 있게 해주기 때문에, 여러 개발자나 시스템이 일관된 방식으로 상호작용할 수 있습니다.
         
-          이를 통해 에러 코드를 확인하고, 적절한 예외 처리를 할 수 있습니다.
+          예를 들어, REST API는 웹 기반 애플리케이션에서 데이터를 주고받는 표준 방식입니다.
         
       
     
   
 
 
-2️⃣ JDBC의 구성 요소.
+2️⃣ API의 유형.
 
-  Driver
+  1. Web API(웹 API)
     
-      JDBC 드라이버는 특정 데이터베이스와 자바 애플리케이션 간의 통신을 담당합니다.
+      웹 서비스나 웹 애플리케이션에서 기능을 제공하는 API입니다.
         
-          각 DBMS는 고유한 JDBC 드라이버를 제공합니다.
+          주로 HTTP를 통해 요청과 응답을 주고받으며, REST, SOAP, GraphQL 등이 그 예입니다.
         
       
     
   
-  Connection
+  2. Library API
     
-      데이터베이스 연결을 표현하며, SQL 쿼리를 실행할 때 사용되는 객체를 생성합니다.
-    
-  
-  Statement
-    
-      SQL 쿼리를 데이터베이스에 전달하는 역할을 합니다.
-    
-  
-  ResultSet
-    
-      쿼리의 결과를 포함하며, 데이터를 읽을 수 있게 합니다.
+      특정 프로그래밍 언어에서 사용할 수 있는 라이브러리나 프레임워크의 함수와 클래스들에 대한 인터페이스입니다.
+        
+          예를 들어, Python의 표준 라이브러리에서 제공하는 os 나 sys 모듈도 API의 일종입니다.
+        
+      
     
   
-
-
-3️⃣ JDBC의 작동 원리.
-
-  1. 드라이버 로드
+  3. Operating System API
     
-      애플리케이션이 사용할 JDBC 드라이버를 로드합니다.
-    
-  
-  2. 데이터베이스 연결
-    
-      DriverManager.getConnection() 메서드를 사용하여 데이터베이스에 연결합니다.
+      운영 체제가 제공하는 기능에 접근할 수 있게 해주는 API입니다.
+        
+          예를 들어, Windows API는 윈도우 애플리케이션이 운영 체제의 기능(파일 관리, UI 구성 요소, 네트워크 등)에 접근할 수 있도록 합니다.
+        
+      
     
   
-  3. SQL 쿼리 실행
+  4. Database API
     
-      Statement 나 PreparedStatement 객체를 사용하여 SQL 쿼리를 실행합니다.
-    
-  
-  4. 결과 처리
-    
-      ResultSet 객체를 사용하여 쿼리 결과를 처리합니다.
-    
-  
-  5. 자원 해제
-    
-      사용된 ResultSet, Statement, Connection 객체를 명시적으로 닫아 자원을 해제합니다.
+      데이터베이스와의 상호작용을 위해 제공되는 API입니다.
+        
+          JDBC(Java Database Connectivity)는 자바 애플리케이션이 데이터베이스와 상호작용할 수 있도록 돕는 대표적인 데이터베이스 API입니다.
+        
+      
     
   
 
 
-JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Java 애플리케이션에서 데이터베이스 연동을 위해 널리 사용됩니다.
+3️⃣ API의 예.
+
+  Google Maps API
+    
+      개발자가 자신의 애플리케이션에 지도 기능을 통합할 수 있도록 Google에서 제공하는 API입니다.
+    
+  
+  Twitter API
+    
+      개발자가 트위터의 기능(예: 트윗 가져오기, 트윗 작성)을 자신의 애플리케이션에 통합할 수 있도록 제공되는 API입니다.
+    
+  
+  Payment Gateway API
+    
+      PayPal이나 Stripe 같은 결제 서비스에서 제공하는 API로, 애플리게이션에 결제 기능을 통합할 수 있습니다.
+    
+  
+
+
+4️⃣ API의 중요성.
+
+  API는 소프트웨어 개발에서 매우 중요한 역할을 합니다.
+    
+      그것은 소프트웨어 간의 상호 운용성을 촉진하며, 새로운 애플리케이션을 개발하거나 기존 애플리케이션에 새로운 기능을 추가하는 것을 더 쉽게 만들어 줍니다.
+        
+          또한, API를 통해 외부 시스템이나 서비스와 통합할 수 있어, 다양한 기능을 제공하는 애플리케이션을 보다 효율적으로 개발할 수 있습니다.
+        
+      
+    
+  
+
 
                         </a>
                         <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-04</span>
                             
@@ -96600,6 +96797,17 @@ greeting = "Hello, Min Seong"
             'tags'     : "CS",
             'url'      : "/CS/2024/2024-10-23-garbage-collection.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-23"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-10-23-connected-with-frontand.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-10-23"
         });
     

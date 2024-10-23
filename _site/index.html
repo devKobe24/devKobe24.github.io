@@ -792,6 +792,7 @@
             
             
             
+            
 
     
     
@@ -1711,6 +1712,224 @@ module com.example.mymodule {
   가비지 컬렉터(Garbage Collector)는 주기적으로 실행되어, 참조되지 않는 객체를 감지하고 메모리를 회수합니다.
   자바에서는 세대별 가비지 컬렉션(Garbage Collection)을 통해 객체의 수명에 따라 메모리를 효율적으로 관리합니다.
   가비지 컬렉션 덕분에 개발자는 메모리 관리에 대한 부담을 덜고, 더 안정적이고 효율적인 프로그램을 작성할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-23-OOD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-23-OOD.html"><h1 class="title_post">💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-10-23-OOD.html" class="txt_post">
+                            💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?
+
+  객체지향 설계(Object-Oriented Design, OOD)는 객체지향 프로그래밍(Object-Oriented Programming, OOP)의 원칙과 개념을 바탕으로, 프로그램을 객체라는 독립적인 단위로 설계하는 방법을 의미합니다.
+  객체지향 설계(Object-Oriented Design, OOD)는 프로그램의 구성 요소를 클래스와 객체로 나누고, 이들 간의 관계를 정의하여 효율적이고 재사용 가능하며 유지보수하기 쉬운 소프트웨어를 만드는 것을 목표로 합니다.
+
+
+
+  🙋‍♂️ 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?
+
+
+1️⃣ 객체지향 설계의 핵심 개념.
+
+1️⃣ 객체(Object)
+
+  객체는 데이터(속성, 상태)와 이 데이터를 조작하는 메서드(동작)가 결합된 독립적인 단위입니다.
+  현실 세계의 사물이나 개념을 모델링하여 프로그램 내에서 사용할 수 있는 형태로 만들기 때문에, 직관적으로 이해하고 설계할 수 있습니다.
+
+
+2️⃣ 클래스(Class)
+
+  클래스는 객체를 생성하기 위한 청사진 또는 설계도입니다.
+    
+      객체가 가지는 속성과 메서드를 정의합니다.
+    
+  
+  클래스는 객체의 특성(속성)과 행동(메서드)을 정의하여, 같은 형태의 객체를 다수 생성할 수 있게 합니다.
+
+
+3️⃣ 객체 간의 관계.
+
+  객체지향 설계(Object-Oriented Design, OOD)에서는 객체 간의 관계를 정의하는 것이 중요합니다.
+    
+      이러한 관계는 다음과 같이 나뉩니다.
+        
+          연관 관계(Association)
+          집합 관계(Aggregation)
+          구성 관계(Composition)
+          상속 관계(Inheritance)
+        
+      
+    
+  
+
+
+1️⃣ 연관 관계(Association)
+
+  두 객체가 서로 관련된 관계입니다.
+    
+      예: 학생 객체와 수업 객체가 서로 연결될 수 있음.
+    
+  
+
+
+2️⃣ 집합 관계(Aggregation)
+
+  객체가 다른 객체의 일부로 포함되는 관계이지만, 부분 객체는 독립적으로 존재할 수 있습니다.
+    
+      예: 팀과 팀원.
+    
+  
+
+
+3️⃣ 구성 관계(Composition)
+
+  부분 객체가 전체 객체에 완전히 소속되어 있으며, 전체 객체가 사라지면 부분 객체도 함께 사라집니다.
+    
+      예: 집과 방.
+    
+  
+
+
+4️⃣ 상속 관계(Inheritance)
+
+  객체가 다른 객체의 특성을 상속받는 관계입니다.
+    
+      예: 동물 클래스가 있고, 이를 상속받아 개, 고양이 클래스를 정의.
+    
+  
+
+
+2️⃣ 객체지향 설계의 원칙(SOLID)
+
+  객체지향 설계(Object-Oriented Design, OOD)에서는 SOLID 원칙이 자주 언급되며, 이는 유연하고 유지보수하기 좋은 소프트웨어 설계를 위한 중요한 지침입니다.
+
+
+
+  🙋‍♂️ SOLID 원칙.
+
+
+1️⃣ 단일 책임 원칙(Single Responsibility Principle, SRP)
+
+  클래스는 하나의 책임만 가져야 하며, 그 책임을 완벽하게 수행하도록 설계해야 합니다.
+  즉, 클래스가 변경되는 이유는 하나의 이유여야 합니다.
+  예: Order 클래스가 주문 처리와 주문 데이터 저장을 모두 수행하는 것이 아니라, 주문 처리 로직을 담당하는 Order 클래스와 주문 데이터를 저장하는 OrderRespository 클래스로 나누는 것이 좋습니다.
+
+
+2️⃣ 개방-폐쇄 원칙(Open-Closed Principle, OCP)
+
+  클래스는 확장에는 열려 있고, 수정에는 닫혀 있어야 합니다.
+  즉, 기존 코드를 수정하지 않고도 기능을 추가할 수 있어야 합니다.
+  예: 새로운 기능을 추가할 때 기존 클래스의 코드를 수정하지 않고도 상속이나 인터페이스 구현을 통해 기능을 확장할 수 있어야 합니다.
+
+
+3️⃣ 리스코프 치환 원칙(Liskov Substitution Principle, LSP)
+
+  서브 클래스는 언제나 기반 클래스로 대체할 수 있어야 합니다.
+  즉, 상위 클래스의 객체를 사용하는 코드에서 하위 클래스의 객체를 사용할 수 있어야 하며, 프로그램이 정상적으로 동작해야 합니다.
+  예: Bird 클래스의 하위 클래스인 Penguin이 fly() 메서드를 구현하지만, 현실에서는 펭귄이 날지 못하기 때문에 이 원칙을 위반할 수 있습니다. 이러한 경우 설계를 다시 고려해야 합니다.
+
+
+4️⃣ 인터페이스 분리 원칙(Interface Segregation Principle, ISP)
+
+  구현하지 않는 메서드가 있는 인터페이스를 사용하지 않도록, 작고 구체적인 인터페이스로 나누어야 합니다.
+  하나의 큰 인터페이스보다는 여러 개의 작은 인터페이스를 설계하여, 필요한 기능만 구현하도록 합니다.
+  예: Printer 인터페이스가 print(), scan(), fax()를 포함하고 있을 때, 프린터만 필요한 경우에도 스캐너와 팩스 기능을 구현해야 한다면, Printable, Scannable, Faxable과 같이 인터페이스를 나누는 것이 좋습니다.
+
+
+5️⃣ 의존 역전 원칙(Dependency Inversion Principle, DIP)
+
+  상위 모듈은 하위 모듈에 의존해서는 안되며, 둘 다 추상화에 의존해야 합니다.
+  구체적인 클래스가 아닌, 추상화된 인터페이스에 의존하도록 설계하여 유연한 코드를 작성할 수 있습니다.
+  예: Service 클래스가 Repository 인터페이스를 사용하고, 실제 데이터 저장 로직은 FileRepository나 DatabaseRepository 같은 클래스에서 구현할 수 있도록 설계합니다.
+
+
+3️⃣ 객체지향 설계의 장점.
+
+1️⃣ 재사용성.
+
+  객체지향 설계(Object-Oriented Design, OOD)의 모듈성 덕분에, 하나의 객체를 다양한 프로그램에서 재사용할 수 있습니다.
+    
+      이는 코드를 재사용 가능하게 하여 개발 시간을 줄이고 비용을 절감할 수 있습니다.
+    
+  
+
+
+2️⃣ 유지보수성.
+
+  각 객체가 독립적이기 때문에, 문제가 발생했을 때 해당 객체만 수정하면 됩니다.
+    
+      다른 객체에 미치는 영향을 최소화할 수 있어, 유지보수가 용이합니다.
+    
+  
+
+
+3️⃣ 확장성.
+
+  객체지향 설계(Object-Oriented Design, OOD)는 새로운 기능을 추가할 때 기존 코드를 수정하지 않고도 확장할 수 있도록 유연한 구조를 제공합니다.
+  새로운 클래스나 메서드를 추가함으로써 기능을 확장할 수 있어, 변화하는 요구 사항에 쉽게 대응할 수 있습니다.
+
+
+4️⃣ 캡슐화.
+
+  객체지향 설계(Object-Oriented Design, OOD)는 캡슐화(Encapsulation)를 통해 객체 내부 상태를 보호하고, 외부에서 접근할 수 있는 방법을 제한합니다.
+  이는 데이터의 무결성을 유지하고, 코드의 복잡성을 줄이는 데 도움이 됩니다.
+
+
+
+  📝 데이터의 무결성(Data Integrity)
+
+  데이터가 정확하고 일관되며 신뢰할 수 있는 상태를 유지하는 것을 의미합니다.
+이는 데이터의 정확성, 일관성, 유효성을 보장하기 위한 개념으로, 데이터가 저장, 처리, 전송되는 동안 손상, 변조, 유실 등이 발생하지 않도록 하는 것을 목표로 합니다.
+데이터 무결성(Data Integrity)은 데이터베이스 시스템을 비롯한 다양한 소프트웨어 시스템에서 매우 중요한 개념으로, 데이터의 품질을 유지하는 핵심 요소입니다.
+
+
+4️⃣ 객체지향 설계의 예.
+
+1️⃣ Car 클래스 설계 예.
+public class Car {
+    private Engine engine; // 캡슐화된 엔진 객체
+    
+    public Car(Engine engine) { // 의존성 주입
+        this.engine = engine;
+    }
+    
+    public void start() {
+        engine.start();
+    }
+}
+
+
+
+  위 설계에서는 Car 클래스가 Engine 객체를 사용하지만, Engine 클래스의 구체적인 구현에 의존하지 않고, Engine 인터페이스를 통해 동작합니다.
+  만약 전기 엔진이나 가솔린 엔진을 사용하고 싶다면, Engine 인터페이스를 구현한 새로운 클래스만 추가하면 됩니다.
+    
+      이는 의존 역전 원칙(Dependency Inversion Principle, DIP)을 적용한 예입니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  객체지향 설계(Object-Oriented Design, OOD)는 객체와 클래스를 중심으로 프로그램을 설계하여, 재사용성과 유지보수성이 높은 소프트웨어를 만드는 방법입니다.
+  객체지향 설계(Object-Oriented Design, OOD)는 SOLID 원칙을 통해 효율적이고 유연한 시스템 구조를 제공하며, 캡슐화, 상속, 다형성, 추상화와 같은 객체지향 프로그래밍의 개념을 적극 활용합니다.
+  이를 통한 복잡한 시스템을 더 쉽게 이해하고 관리할 수 있으며, 변화하는 요구 사항에도 유연하게 대응할 수 있습니다.
 
 
                         </a>
@@ -4471,104 +4690,124 @@ spring.jpa.hibernate.ddl-auto=update
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="txt_post">
-                            🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="txt_post">
+                            🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?
 
-
-  spring.jpa.properties.hibernate.format_sql은 Spring Boot 애플리케이션에서 Hibernate가 생성하는 SQL(Structured Query Language) 쿼리를 읽기 쉽게 포맷하는 설정입니다.
-  이 설정을 활성화하면 Hibernate가 데이터베이스에 실행하는 SQL(Structured Query Language) 쿼리가 포맷된 형식으로 출력되며, 이를 통해 개발자는 쿼리의 구조를 더 쉽게 이해할 수 있습니다.
-
-
-1️⃣ 역할.
-
-  SQL(Structured Query Language) 쿼리 포맷팅
+  spring.jpa.properties.hibernate.dialect는 Spring Boot 애플리케이션에서 Hibernate가 사용하는 SQL(Structured Query Language) 방언(dialect)을 지정하는 설정입니다.
+  Hibernate Dialect는 Hibernate가 데이터베이스와 상호작용할 때 사용하는 SQL 방언을 정의합니다.
     
-      기본적으로 Hibernate가 출력하는 SQL(Structured Query Language) 쿼리는 모두 한 줄로 출력되기 때문에 복잡한 쿼리를 읽기가 어렵습니다.
-        
-          spring.jpa.properties.hibernate.format_sql을 true로 설정하면 SQL(Structured Query Language) 쿼리를 보기 좋게 들여쓰기가 된 형태로 출력해줍니다.
-        
-      
+      즉, 서로 다른 데이터베이스마다 사용하는 SQL 문법이나 기능이 약간씩 다르기 때문에, Hibernate가 각 데이터베이스의 특성에 맞는 SQL을 생성하도록 돕는 역할을 합니다.
     
   
-  디버깅 및 최적화
+
+
+1️⃣ 왜 필요한가요?
+
+  서로 다른 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 조금씩 다릅니다.
     
-      SQL(Structured Query Language) 쿼리가 가독성이 좋아지면, 개발자는 애플리케이션이 데이터베이스에 어떤 쿼리를 실행하는지 쉽게 파악할 수 있으며, 쿼리를 디버깅하거나 성능을 최적화하는 데 도움이 됩니다.
+      예를 들어, MySQL, Oracle, PostgreSQL, SQL Server 등은 일부 SQL 문법이나 함수의 지원 방식이 다를 수 있습니다.
     
   
+  Hibernate는 데이터베이스 독립성을 유지하기 위해 다양한 데이터베이스에 맞춰 동작할 수 있도록 설계되었습니다.
+    
+      그러나 이를 위해 각 데이터베이스에 맞는 적절한 SQL(Structured Query Language)을 생성해야 하며, 이를 위해 Dialect를 사용합니다.
+    
+  
+  Hibernate Dialect는 특정 데이터베이스에 맞춰 SQL 쿼리를 최적화하거나, 데이터베이스에 특화된 기능을 사용할 수 있도록 합니다.
 
 
 2️⃣ 설정 방법.
 
-  Spring Boot에서는 application.properties 또는 application.yml 파일에서 이 속성을 설정할 수 있습니다.
+  Spring Boot에서 spring.jpa.properties.hibernate.dialect를 application.properties 또는 application.yml 파일에 설정하여, 사용하는 데이터베이스에 맞는 방언(dialect)을 명시할 수 있습니다.
 
 
 👉 application.properties 파일에서 설정.
-spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 
-👉 application,yml 파일에서 설정.
+👉 application.yml 파일에서 설정.
 spring:
   jpa:
     properties:
       hibernate:
-        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
 
 
-3️⃣ 동작 예시.
+3️⃣ 대표적인 Hibernate Dialect 예시.
 
-  spring.jpa.properties.hibernate,format_sql=true로 설정한 후, 복잡한 SQL 쿼리를 실행하면 콘솔에 출력되는 SQL이 자동으로 들여쓰기가 적용된 상태로 출력됩니다.
-
-
-👉 설정 전(포맷팅되지 않은 SQL)
-select user0_.id as id1_0_, user0_.email as email2_0_, user0_.name as name3_0_ from user user0_
+1️⃣ MySQL
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 
-👉 설정 후(포맷팅된 SQL)
-select
-    user0_.id as id1_0_, 
-    user0_.email as email2_0_, 
-    user0_.name as name3_0_ 
-from
-    user user0_
+2️⃣ PostgreSQL
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 
+3️⃣ Oracle
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
 
-  이렇게 포맷팅된 SQL은 가독성이 높아져, 복잡한 SQL 쿼리도 쉽게 이해할 수 있습니다.
+
+4️⃣ H2(In-Memory Database)
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
 
 
-4️⃣ 관련 설정.
+5️⃣ SQL Server
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
 
-  spring.jpa.show-sql
+
+4️⃣ 자동 설정.
+
+  Spring Boot는 대부분의 경우 spring.datasource.url 속성에 설정된 데이터베이스 URL을 기반으로 적절한 Hibernate Dialect를 자동으로 설정합니다.
     
-      이 설정은 Hibernate가 실행하는 SQL 쿼리를 콘솔에 출력하도록 활성화합니다.
+      그래서 보통 spring.jpa.properties.hibernate.dialect를 명시적으로 설정할 필요는 없습니다.
+    
+  
+  그러나 특정한 데이터베이스 버전에 맞는 특화된 최적화 기능을 사용하거나, 자동 설정이 제대로 동작하지 않는 경우에는 이 설정을 명시적으로 정의해야 합니다.
+
+
+5️⃣ Hibernate Dialect의 역할.
+
+1️⃣ SQL 문법 최적화.
+
+  특정 데이터베이스에 맞는 SQL 문법을 사용하도록 합니다.
+    
+      예를 들어, MySQL과 Oracle에서 자동 증가 필드(autoincrement)를 처리하는 방식이 다릅니다.
         
-          show-sql=true로 설정하면 SQL 쿼리를 콘솔에서 확인할 수 있습니다.
-            spring.jpa.show-sql=true
-            
-          
+          Hibernate는 이 차이점을 Dialect를 통해 처리합니다.
         
       
     
   
-  spring.jpa.properties.hibernate.use_sql_comments
+
+
+2️⃣ 데이터 타입 매핑.
+
+  각 데이터베이스는 서로 다른 데이터 타입을 지원합니다.
     
-      이 설정은 쿼리 로그에 SQL 주석을 추가하여, 쿼리가 실행된 위치나 목적에 대한 추가 정보를 제공합니다.
-        spring.jpa.properties.hibernate.use_sql_comments=true
-        
-      
+      Dialect는 자바의 데이터 타입을 해당 데이터베이스에서 지원하는 데이터타입으로 변환합니다.
     
   
 
 
-5️⃣ 요약.
+3️⃣ 데이터베이스 특화 기능.
 
-  spring.jpa.properties.hibernate.format_sql은 Hibernate가 출력하는 SQL 쿼리를 읽기 쉽게 포맷팅하는 설정입니다.
-  이 설정을 true로 활성화하면 SQL 쿼리의 가독성이 향상되며, 개발자는 디버깅과 쿼리 최적화 작업을 더 쉽게 할 수 있습니다.
+  일부 데이터베이스는 특정 기능을 제공하며, Dialect는 이러한 기능을 활용할 수 있도록 최적화된 쿼리를 생성합니다.
+    
+      예를 들어, PostgreSQL의 시퀀스나 MySQL의 LIMIT 절 들이 그 예입니다.
+    
+  
+
+
+6️⃣ 요약.
+
+  spring.jpa.properties.hibernate.dialect는 Hibernate가 사용할 데이터베이스 방언(Dialect)을 정의하는 설정입니다.
+  각 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 약간씩 다르기 때문에, Hibernate는 Dialect를 사용해 특정 데이터베이스에 맞는 SQL을 생성합니다.
+  Spring Boot는 데이터베이스 URL을 통해 자동으로 적절한 Dialect를 설정하려고 시도하지만, 명시적으로 이 설정을 지정해 데이터베이스와 상호작용을 최적화할 수도 있습니다.
 
 
                         </a>
@@ -5128,124 +5367,104 @@ Connection conn = DriverManager.getConnection(url, username, password);
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-dialect.html" class="txt_post">
-                            🍃[Spring] spring.jpa.properties.hibernate.dialect이란 무엇일까요?
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="txt_post">
+                            🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?
 
-  spring.jpa.properties.hibernate.dialect는 Spring Boot 애플리케이션에서 Hibernate가 사용하는 SQL(Structured Query Language) 방언(dialect)을 지정하는 설정입니다.
-  Hibernate Dialect는 Hibernate가 데이터베이스와 상호작용할 때 사용하는 SQL 방언을 정의합니다.
+
+  spring.jpa.properties.hibernate.format_sql은 Spring Boot 애플리케이션에서 Hibernate가 생성하는 SQL(Structured Query Language) 쿼리를 읽기 쉽게 포맷하는 설정입니다.
+  이 설정을 활성화하면 Hibernate가 데이터베이스에 실행하는 SQL(Structured Query Language) 쿼리가 포맷된 형식으로 출력되며, 이를 통해 개발자는 쿼리의 구조를 더 쉽게 이해할 수 있습니다.
+
+
+1️⃣ 역할.
+
+  SQL(Structured Query Language) 쿼리 포맷팅
     
-      즉, 서로 다른 데이터베이스마다 사용하는 SQL 문법이나 기능이 약간씩 다르기 때문에, Hibernate가 각 데이터베이스의 특성에 맞는 SQL을 생성하도록 돕는 역할을 합니다.
+      기본적으로 Hibernate가 출력하는 SQL(Structured Query Language) 쿼리는 모두 한 줄로 출력되기 때문에 복잡한 쿼리를 읽기가 어렵습니다.
+        
+          spring.jpa.properties.hibernate.format_sql을 true로 설정하면 SQL(Structured Query Language) 쿼리를 보기 좋게 들여쓰기가 된 형태로 출력해줍니다.
+        
+      
     
   
-
-
-1️⃣ 왜 필요한가요?
-
-  서로 다른 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 조금씩 다릅니다.
+  디버깅 및 최적화
     
-      예를 들어, MySQL, Oracle, PostgreSQL, SQL Server 등은 일부 SQL 문법이나 함수의 지원 방식이 다를 수 있습니다.
+      SQL(Structured Query Language) 쿼리가 가독성이 좋아지면, 개발자는 애플리케이션이 데이터베이스에 어떤 쿼리를 실행하는지 쉽게 파악할 수 있으며, 쿼리를 디버깅하거나 성능을 최적화하는 데 도움이 됩니다.
     
   
-  Hibernate는 데이터베이스 독립성을 유지하기 위해 다양한 데이터베이스에 맞춰 동작할 수 있도록 설계되었습니다.
-    
-      그러나 이를 위해 각 데이터베이스에 맞는 적절한 SQL(Structured Query Language)을 생성해야 하며, 이를 위해 Dialect를 사용합니다.
-    
-  
-  Hibernate Dialect는 특정 데이터베이스에 맞춰 SQL 쿼리를 최적화하거나, 데이터베이스에 특화된 기능을 사용할 수 있도록 합니다.
 
 
 2️⃣ 설정 방법.
 
-  Spring Boot에서 spring.jpa.properties.hibernate.dialect를 application.properties 또는 application.yml 파일에 설정하여, 사용하는 데이터베이스에 맞는 방언(dialect)을 명시할 수 있습니다.
+  Spring Boot에서는 application.properties 또는 application.yml 파일에서 이 속성을 설정할 수 있습니다.
 
 
 👉 application.properties 파일에서 설정.
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.format_sql=true
 
 
-👉 application.yml 파일에서 설정.
+👉 application,yml 파일에서 설정.
 spring:
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
 
 
-3️⃣ 대표적인 Hibernate Dialect 예시.
+3️⃣ 동작 예시.
 
-1️⃣ MySQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-
-
-2️⃣ PostgreSQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+  spring.jpa.properties.hibernate,format_sql=true로 설정한 후, 복잡한 SQL 쿼리를 실행하면 콘솔에 출력되는 SQL이 자동으로 들여쓰기가 적용된 상태로 출력됩니다.
 
 
-3️⃣ Oracle
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
+👉 설정 전(포맷팅되지 않은 SQL)
+select user0_.id as id1_0_, user0_.email as email2_0_, user0_.name as name3_0_ from user user0_
 
 
-4️⃣ H2(In-Memory Database)
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+👉 설정 후(포맷팅된 SQL)
+select
+    user0_.id as id1_0_, 
+    user0_.email as email2_0_, 
+    user0_.name as name3_0_ 
+from
+    user user0_
 
 
-5️⃣ SQL Server
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+
+  이렇게 포맷팅된 SQL은 가독성이 높아져, 복잡한 SQL 쿼리도 쉽게 이해할 수 있습니다.
 
 
-4️⃣ 자동 설정.
+4️⃣ 관련 설정.
 
-  Spring Boot는 대부분의 경우 spring.datasource.url 속성에 설정된 데이터베이스 URL을 기반으로 적절한 Hibernate Dialect를 자동으로 설정합니다.
+  spring.jpa.show-sql
     
-      그래서 보통 spring.jpa.properties.hibernate.dialect를 명시적으로 설정할 필요는 없습니다.
+      이 설정은 Hibernate가 실행하는 SQL 쿼리를 콘솔에 출력하도록 활성화합니다.
+        
+          show-sql=true로 설정하면 SQL 쿼리를 콘솔에서 확인할 수 있습니다.
+            spring.jpa.show-sql=true
+            
+          
+        
+      
     
   
-  그러나 특정한 데이터베이스 버전에 맞는 특화된 최적화 기능을 사용하거나, 자동 설정이 제대로 동작하지 않는 경우에는 이 설정을 명시적으로 정의해야 합니다.
-
-
-5️⃣ Hibernate Dialect의 역할.
-
-1️⃣ SQL 문법 최적화.
-
-  특정 데이터베이스에 맞는 SQL 문법을 사용하도록 합니다.
+  spring.jpa.properties.hibernate.use_sql_comments
     
-      예를 들어, MySQL과 Oracle에서 자동 증가 필드(autoincrement)를 처리하는 방식이 다릅니다.
-        
-          Hibernate는 이 차이점을 Dialect를 통해 처리합니다.
+      이 설정은 쿼리 로그에 SQL 주석을 추가하여, 쿼리가 실행된 위치나 목적에 대한 추가 정보를 제공합니다.
+        spring.jpa.properties.hibernate.use_sql_comments=true
         
       
     
   
 
 
-2️⃣ 데이터 타입 매핑.
+5️⃣ 요약.
 
-  각 데이터베이스는 서로 다른 데이터 타입을 지원합니다.
-    
-      Dialect는 자바의 데이터 타입을 해당 데이터베이스에서 지원하는 데이터타입으로 변환합니다.
-    
-  
-
-
-3️⃣ 데이터베이스 특화 기능.
-
-  일부 데이터베이스는 특정 기능을 제공하며, Dialect는 이러한 기능을 활용할 수 있도록 최적화된 쿼리를 생성합니다.
-    
-      예를 들어, PostgreSQL의 시퀀스나 MySQL의 LIMIT 절 들이 그 예입니다.
-    
-  
-
-
-6️⃣ 요약.
-
-  spring.jpa.properties.hibernate.dialect는 Hibernate가 사용할 데이터베이스 방언(Dialect)을 정의하는 설정입니다.
-  각 데이터베이스는 SQL(Structured Query Language) 문법이나 기능이 약간씩 다르기 때문에, Hibernate는 Dialect를 사용해 특정 데이터베이스에 맞는 SQL을 생성합니다.
-  Spring Boot는 데이터베이스 URL을 통해 자동으로 적절한 Dialect를 설정하려고 시도하지만, 명시적으로 이 설정을 지정해 데이터베이스와 상호작용을 최적화할 수도 있습니다.
+  spring.jpa.properties.hibernate.format_sql은 Hibernate가 출력하는 SQL 쿼리를 읽기 쉽게 포맷팅하는 설정입니다.
+  이 설정을 true로 활성화하면 SQL 쿼리의 가독성이 향상되며, 개발자는 디버깅과 쿼리 최적화 작업을 더 쉽게 할 수 있습니다.
 
 
                         </a>
@@ -8256,241 +8475,201 @@ VLAN(Virtual LAN, 가상 LAN)은 서로 다른 네트워크 세그먼트에 속�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-12-what-is-the-tcp.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-10-12-what-is-the-network-port.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-10-12-what-is-the-tcp.html"><h1 class="title_post">🌐[Network] TCP(Transmission Control Protocol)란 무엇일까?</h1></a>
-                        <a href="/Network/2024/2024-10-12-what-is-the-tcp.html" class="txt_post">
-                            🌐[Network] TCP(Transmission Control Protocol)란 무엇일까?
+                        <a href="/Network/2024/2024-10-12-what-is-the-network-port.html"><h1 class="title_post">🌐[Network] 네트워크 포트(Network Port)란 무엇일까?</h1></a>
+                        <a href="/Network/2024/2024-10-12-what-is-the-network-port.html" class="txt_post">
+                            🌐[Network] 네트워크 포트(Network Port)란 무엇일까?
 
-  TCP(Transmisson Control Protocol)는 인터넷 프로토콜 스위트(Internet Protol Suite)의 핵심 프로토콜 중 하나로, 신뢰성 있는 데이터 전송을 보장하는 연결 지향형 프로토콜입니다.
-  TCP는 데이터 패킷을 손실 없이, 순서대로, 정확하게 전달하는 것을 목표로 하며, 인터넷을 포함한 대부분의 네트워크에서 사용됩니다.
-  TCP/IP라고도 불리며, IP(Internet Protocol)와 함께 동작하기 때문입니다.
+  네트워크 포트(Network Port)는 컴퓨터나 네트워크 장치가 서로 통신할 때, 특정 프로세스나 서비스에 대한 데이터의 출입을 식별하기 위한 논리적인 통신 경로입니다.
+  포트는 IP 주소와 함께 사용되어, 어떤 애플리케이션이 데이터를 송수신을 해야 하는지를 컴퓨터나 네트워크 장치가 알 수 있도록 도와줍니다.
+  네트워크에서, IP 주소는 장치 자체를 식별하는 역할을 하며, 포트 번호는 그 장치 내에서 특정 애플리케이션이나 서비스를 식별하는 역할을 합니다.
+  포트는 정수 값으로 표현되며, 보통 0부터 65535까지의 숫자를 가집니다.
 
 
-1️⃣ TCP의 주요 특징.
 
-1️⃣ 연결 지향형 프로토콜.
+  🙋‍♂️ 네트워크, 포트, 도메인 이름, IP, DNS
 
-  TCP는 데이터를 전송하기 전에 송신자와 수신자 간에 연결을 설정합니다.
+
+1️⃣ 네트워크 포트의 주요 역할.
+
+1️⃣ 데이터 전달 경로 지정.
+
+  IP 주소는 네트워크 상에서 장치를 식별하지만, 같은 장치 내에서 여러 프로그램이 동시에 실행될 수 있기 때문에, 포트 번호는 특정 프로그램이나 서비스로 데이터를 전달하는 경로를 지정하는 역할을 합니다.
+
+
+👉 예시.
+
+  예를 들어, 한 컴퓨터에서 웹 브라우저와 이메일 클라이언트가 동시에 실행 중일 때, IP 주소는 컴퓨터를 식별하고, 포트 번호는 각각의 서비스(웹 브라우저와 이메일 클라이언트)를 식별하여 데이터를 적절한 애플리케이션으로 전달합니다.
+
+
+2️⃣ 프로토콜 기반 통신.
+
+  포트 번호는 네트워크 프로토콜에 따라 각기 다른 애플리케이션 또는 서비스를 구분하는 데 사용됩니다.
     
-      이 연결을 통해 두 장치가 데이터를 주고받을 수 있는 가상 회선을 형성합니다.
+      예를 들어, HTTP 프로토콜은 기본적으로 포트 80을 사용하고, HTTPS는 포트 443을 사용합니다.
         
-          연결이 설정되면, 데이터가 손실되지 않고 순서대로 전달 되도록 보장합니다.
-        
-      
-    
-  
-
-
-2️⃣ 신뢰성 있는 데이터 전송.
-
-  TCP는 패킷 손실이 발생할 경우 손실된 패킷을 재전송하고, 수신한 패킷이 올바른지 확인하는 오류 검출 및 수정 메커니즘을 가지고 있습니다.
-    
-      이로 인해 데이터가 손실되거나 손상되지 않고, 정확히 목적지에 도달하도록 합니다.
-    
-  
-
-
-3️⃣ 데이터 흐름 제어.
-
-  TCP는 수신 측이 데이터를 처리할 수 있는 속도에 맞춰 데이터를 전송하는 흐름 제어 기능을 제공합니다.
-    
-      이를 통해 송신 측에서 데이터를 너무 빨리 보내 수신 측이 처리하지 못하는 상황을 방지합니다.
-    
-  
-
-
-4️⃣ 혼잡 제어.
-
-  네트워크에서 혼잡이 발생할 경우, TCP는 전송 속도를 줄여 네트워크 부하를 완화하는 혼잡 제어 기능을 수행합니다.
-    
-      이를 통해 네트워크가 과부하 상태에 빠지지 않도록 보호합니다.
-    
-  
-
-
-5️⃣ 패킷 순서 보장.
-
-  네트워크에서는 패킷이 서로 다른 경로를 통해 목적지에 도달할 수 있기 때문에, 도착 순서가 달라질 수 있습니다.
-    
-      TCP(Transmission Control Protocol)는 이러한 패킷을 올바른 순서로 재조립하여 원래의 데이터로 복원합니다.
-    
-  
-
-
-6️⃣ 패킷 오류 검출 및 수정.
-
-  TCP(Transmission Control Protocol) 패킷에 체크섬(Checksum)이라는 오류 검출 값을 포함하여, 데이터가 손상되지 않았는지 확인합니다.
-    
-      만약 패킷이 손상되었거나 도착하지 않았다면, 해당 패킷을 다시 전송합니다.
-    
-  
-
-
-2️⃣ TCP의 동작 원리.
-
-  TCP는 데이터를 송신자에서 수신자로 안전하게 전송하기 위해 세 가지 주요 단계를 거칩니다.
-
-
-1️⃣ 연결 설정(3-Way Handshake)
-
-  TCP(Transmisson Control Protocol)는 데이터 전송을 시작하기 전에 송신자와 수신자 간에 3단계 핸드셰이크(3-Way Handshake)를 통해 연결을 설정합니다.
-    
-      1️⃣ SYN : 송신자는 수신자에게 연결 요청(SYN)을 보냅니다.
-      2️⃣ SYN-ACK : 수신자는 송신자의 요청을 수락하고, 연결을 승인하는 응답(SYN-ACK)을 보냅니다.
-      3️⃣ ACK : 송신자는 수신자의 응답을 확인(ACK)하고, 데이터 전송을 시작할 준비가 완료됩니다.
-        
-          이 과정이 완료되면 송신자와 수신자는 데이터 전송을 위한 가상 연결을 확립하게 됩니다.
+          이러한 표준 포트 번호를 통해 데이터가 정확한 프로토콜과 애플리케이션으로 전달됩니다.
         
       
     
   
 
 
-2️⃣ 데이터 전송
+2️⃣ 포트 번호의 범위.
 
-  데이터를 작은 패킷으로 나누어 전송합니다.
+  포트 번호는 0번에서 65535번까지 사용할 수 있으며, 크게 세 가지 범위로 나눌 수 있습니다.
+
+
+1️⃣ Well-Known Ports(0-1023)
+
+  0번부터 1023번까지의 포트는 널리 알려진 포트로, 주로 표준 네트워크 프로토콜이 사용하는 포트입니다.
     
-      각 패킷은 순서 번호가 부여되며, 수신자는 이 번호를 이용해 패킷이 올바른 순서로 도착했는지 확인하고 재조립합니다.
+      대부분의 서비스는 고정된 포트를 사용하며, 주로 시스템 수준에서 예약된 포트입니다.
     
   
-  각 패킷이 성공적으로 도착하면 수신자는 송신자에게 ACK(Acknowledgement, 확인 응답)를 보냅니다.
+
+
+👉 예시.
+
+  포트 80 : HTTP(웹 브라우징)
+  포트 443 : HTTPS(보안 웹 브라우징)
+  포트 21 : FTP(파일 전송 프로토콜)
+  포트 22 : SSH(보안 쉘)
+  포트 25 : SMTP(이메일 전송)
+
+
+2️⃣ Registered Ports (1024-49151)
+
+  1024번 부터 49151번까지의 포트는 등록된 포트로, 특정 애플리케이션이나 서비스가 사용하도록 등록된 포트입니다.
     
-      만약 수신자가 패킷을 받지 못하거나 패킷이 손상된 경우, 송신자는 해당 패킷을 재전송합니다.
+      이는 공식적으로 IANA(Internet Assigned Numbers Authority)에서 관리되며, 특정 기업이나 애플리케이션에 할당될 수 있습니다.
     
   
 
 
-3️⃣ 연결 해제(4-Way Handshake)
+👉 예시.
 
-  데이터 전송이 완료되면, 송신자와 수신자는 4단계 핸드 셰이크(4-Way Handshake) 과정을 통해 연결을 해제합니다.
+  포트 3306 : MySQL 데이터베이스
+  포트 1433 : Microsoft SQL Server
+  포트 8080 : HTTP 대체 포트(웹 개발 또는 프록시 서버)
+
+
+3️⃣ Dynamic/Private Ports (49152-65535)
+
+  49152번부터 65535번까지의 포트는 동적 포트 또는 임시 포트로, 클라이언트 프로그램이 동적으로 할당하여 사용하는 포트입니다.
     
-      1️⃣ FIN : 송신자는 연결을 종료하기 위한 요청(FIN)을 보냅니다.
-      2️⃣ ACK : 수신자는 이 요청을 수락하고 ACK(Acknowledgement, 확인 응답)을 보냅니다.
-      3️⃣ FIN : 수신자도 연결을 종료하고 싶을 때 FIN을 보냅니다.
-      4️⃣ ACK : 송신자는 수신자의 FIN에 대한 ACK(Acknowledgement, 확인 응답)를 보냅니다.
+      주로 응용 프로그램이 실행될 때, 시스템이 자동으로 포트 번호를 할당하여 사용합니다.
+    
+  
+  이러한 포트는 주로 클라이언트 측에서 서버와의 통신을 위해 사용되며, 세션이 종료되면 포트 번호가 해제됩니다.
+
+
+3️⃣ 포트와 IP 주소의 관계.
+
+  IP 주소는 네트워크 상에서 컴퓨터나 네트워크 장치를 식별하는 주소입니다.
+    
+      포트 번호는 그 장치 내에서 어떤 애플리케이션이 통신할 것인지를 결정합니다.
+    
+  
+  예를 들어, 웹 브라우저를 사용해 http://example.com에 접속할 때, 브라우저는 포트 80(HTTP 기본 포트)으로 서버에 요청을 보냅니다.
+    
+      서버는 포트 80을 통해 요청을 받아, 웹 페이지 데이터를 클라이언트에게 반환합니다.
+    
+  
+  IP 주소와 포트 번호를 결합하여 소켓을 형성합니다.
+    
+      소켓은 네트워크 통신에서 IP 주소 + 포트 번호로 구성된 단위로, 이를 통해 통신이 이루어 집니다.
+    
+  
+
+
+4️⃣ 네트워크 포트의 예.
+
+1️⃣ HTTP와 HTTPS
+
+  포트 80은 HTTP 트래픽을 처리하는 데 사용되며, 포트 443은 HTTPS(암호화된 웹 트래픽)를 처리하는 데 사용됩니다.
+    
+      예시: http://example.com (HTTP) 또는 https://example.com:443 (HTTPS)
+    
+  
+
+
+2️⃣ SSH
+
+  포트 22는 SSH(Secure Sheel) 프로토콜을 사용하는 원격 접속 서비스에서 사용됩니다.
+    
+      SSH는 네트워크 상에서 원격 시스템에 보안 연결을 설정하는 데 사용됩니다.
+    
+  
+
+
+3️⃣ FTP
+
+  포트 21은 FTP(File Transfer Protocol)를 처리하는 데 사용됩니다.
+    
+      이를 통해 서버와 클라이언트 간에 파일을 전송할 수 있습니다.
         
-          이 과정이 완료되면 송신자와 수신자 간의 연결이 종료됩니다.
+          예시: ftp://example.com:21
         
       
     
   
 
 
-3️⃣ TCP와 IP의 관계.
+4️⃣ 데이터베이스
 
-  TCP(Transmisson Control Protocol)는 전송 계층(Transport Layer)에서 동작하는 프로토콜이며, IP(Internet Protocol)는 네트워크 계층(Network Layer)에서 동작하는 프로토콜입니다.
+  포트 3306은 MySQL 데이터베이스와 연결할 때 사용되며, 클라이언트는 이 포트를 통해 MySQL 서버에 접근합니다.
+  포트 1433은 Microsoft SQL Server가 사용하는 포트입니다.
+
+
+5️⃣ 이메일
+
+  포트 25는 SMTP(Simple Mail Transfer Protocol)를 사용하여 이메일을 전송하는 데 사용됩니다.
+  포트 993은 IMAP(Internet Message Access Protocol)을 통한 보안 이메일 접근에 사용됩니다.
+
+
+5️⃣ 포트 스캐닝과 보안.
+
+1️⃣ 포트 스캐닝.
+
+  포트 스캐닝은 네트워크 보안에서 중요한 활동입니다.
     
-      이 둘은 TCP/IP라는 이름으로 함께 사용되며, TCP(Transmisson Control Protocol)는 데이터 전송의 신뢰성을 보장하고, IP(Internet Protocol)는 신뢰성이나 순서 보장을 하지 않기 때문에, TCP(Transmisson Control Protocol)가 그 위에서 패킷의 순서 및 무결성을 보장하는 역할을 합니다.
-    
-  
-
-
-4️⃣ TCP의 장점.
-
-  1️⃣ 신뢰성 : TCP(Transmisson Control Protocol)는 데이터 손실, 패킷 오류, 순서 오류 등을 자동으로 처리하여, 데이터를 정확하게 전송합니다.
-  2️⃣ 순서 보장 : TCP는 패킷이 순서대로 도착하도록 보장하여, 전송된 데이터가 정확하게 재조립될 수 있도록 합니다.
-  3️⃣ 흐름 제어 : 수신 측의 처리 속도에 맞추어 데이터를 조절함으로써, 데이터 과부하를 방지합니다.
-  4️⃣ 혼잡 제어 : 네트워크 혼잡 상태를 관리하여, 네트워크 부하가 발생했을 때도 효율적으로 데이터 전송을 유지합니다.
-
-
-5️⃣ TCP의 단점.
-
-  1️⃣ 속도
-    
-      TCP(Transmisson Control Protocol)는 데이터의 신뢰성을 보장하기 위해 많은 오버헤드가 발생합니다.
+      해커는 시스템에 열려있는 포트를 찾기 위해 포트 스캐닝을 수행하여, 취약한 포트를 악용할 수 있습니다.
         
-          확인 응답(ACK, Acknowledgement)을 주고받고, 재전송을 수행해야 하기 때문에 UDP(User Datagram Protocol)에 비해 속도가 느릴 수 있습니다.
-        
-      
-    
-  
-  2️⃣ 복잡성
-    
-      TCP(Transmisson Control Protocol)는 상태를 유지하고, 각 패킷의 순서와 무결성을 추절해야 하기 때문에 구현이 복잡합니다.
-    
-  
-  3️⃣ 실시간 데이터 전송에 부적합
-    
-      TCP(Transmisson Control Protocol)는 실시간으로 빠르게 전송해야 하는 스트리밍 서비스나 온라인 게임 등에서는 적합하지 않습니다.
-        
-          실시간 응답보다는 신뢰성이 더 중요할 때 TCP가 사용됩니다.
+          시스템 보안을 강화하려면 필요하지 않은 포트는 차단하거나 방화벽을 통해 관리하는 것이 중요합니다.
         
       
     
   
 
 
-6️⃣ TCP와 UDP의 비교.
+2️⃣ 방화벽과 포트 차단.
 
-
-  
+  방화벽(Firewall)은 특정 포트에 대한 외부 접근을 차단하거나 허용할 수 있습니다.
     
-      특징
-      TCP(Transmisson Control Protocol)
-      UDP(User Datagram Protocol)
-    
-  
-  
-    
-      연결 방식
-      연결 지향형(3-Way Handshake)
-      비연결형
-    
-    
-      데이터 전송 보장
-      신뢰성 보장, 패킷 재정송, 순서 보장
-      신뢰성 없음, 패킷 손실 발생 가능성
-    
-    
-      속도
-      상대적으로 느림
-      상대적으로 빠름
-    
-    
-      오류 처리
-      오류 검출 및 재전송
-      오류 검출 없음
-    
-    
-      적합한 용도
-      웹 브라우징, 파일 전송, 이메일 등
-      실시간 스트리밍, 온라인 게임 등
+      보안 강화를 위해, 네트워크 관리자는 불필요한 포트를 닫고, 필요한 포트만 열어두는 것이 중요합니다.
     
   
 
 
-7️⃣ TCP의 사용 사례.
+3️⃣ 포트 포워딩.
 
-  웹 브라우징(HTTP/HTTPS)
+  포트 포워딩은 네트워크 외부에서 들어오는 트래픽을 내부 네트워크의 특정 장치로 전달하는 과정입니다.
     
-      TCP는 HTTP와 HTTPS에서 사용되며, 웹 페이지가 손상 없이 정확하게 로드 될 수 있도록 보장합니다.
-    
-  
-  파일 전송(FTP, File Transport Protocol)
-    
-      FTP(File Transport Protocol)는 TCP를 사용하여 파일을 신뢰성 있게 전송합니다.
-    
-  
-  이메일(SMTP/IMAP/POP3)
-    
-      이메일 전송 및 수신 시, SMTP, IMAP, POP3는 TCP(Transmission Control Protocol)를 사용하여 데이터가 손실되지 않고 도착하도록 보장합니다.
-    
-  
-  원격 접속(SSH, Telent)
-    
-      원격 서버에 안전하게 연결하여 명령을 전송할 때 TCP를 사용하여 신뢰성 있는 통신을 보장합니다.
+      이를 통해 외부 네트워크와 내부 네트워크 간의 통신을 원활하게 할 수 있습니다.
     
   
 
 
-8️⃣ 결론.
+6️⃣ 결론.
 
-  TCP(Transmisson Control Protocol)는 신뢰성 있는 데이터 전송을 보장하는 프로토콜로, 인터넷에서 널리 사용됩니다.
-  데이터가 정확하게, 손실 없이 전달되는 것을 보장하며, 연결을 설정한 후 데이터를 송수신하고, 전송된 데이터가 손상되지 않았는지 확인하며, 손상된 데이터는 재전송합니다.
-  웹 브라우징, 파일 전송, 이메일 전송등 신뢰성이 중요한 애플리케이션에서 주로 사용되며, 이로 인해 네트워크의 안정성을 크게 향상시킵니다.
+  네트워크 포트는 네트워크 상에서 특정 어플리케이션이나 서비스에 대한 통신 경로를 제공하는 논리적인 번호입니다.
+  포트는 IP 주소와 함께 사용되어, 어떤 애플리케이션이 데이터를 처리해야 하는지를 결정하며, 데이터 전송의 목적지를 명확히 지정해줍니다.
+  포트 번호는 네트워크 프로토콜마다 고유하게 사용되며, 이를 통해 웹 브라우징, 이메일 전송, 파일 전송과 같은 다양한 작업이 이루어집니다.
+  포트 관리와 보안은 네트워크 운영에서 매우 중요한 부분입니다.
 
 
                         </a>
@@ -9145,201 +9324,241 @@ Hibernate
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-12-what-is-the-network-port.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-10-12-what-is-the-tcp.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-10-12-what-is-the-network-port.html"><h1 class="title_post">🌐[Network] 네트워크 포트(Network Port)란 무엇일까?</h1></a>
-                        <a href="/Network/2024/2024-10-12-what-is-the-network-port.html" class="txt_post">
-                            🌐[Network] 네트워크 포트(Network Port)란 무엇일까?
+                        <a href="/Network/2024/2024-10-12-what-is-the-tcp.html"><h1 class="title_post">🌐[Network] TCP(Transmission Control Protocol)란 무엇일까?</h1></a>
+                        <a href="/Network/2024/2024-10-12-what-is-the-tcp.html" class="txt_post">
+                            🌐[Network] TCP(Transmission Control Protocol)란 무엇일까?
 
-  네트워크 포트(Network Port)는 컴퓨터나 네트워크 장치가 서로 통신할 때, 특정 프로세스나 서비스에 대한 데이터의 출입을 식별하기 위한 논리적인 통신 경로입니다.
-  포트는 IP 주소와 함께 사용되어, 어떤 애플리케이션이 데이터를 송수신을 해야 하는지를 컴퓨터나 네트워크 장치가 알 수 있도록 도와줍니다.
-  네트워크에서, IP 주소는 장치 자체를 식별하는 역할을 하며, 포트 번호는 그 장치 내에서 특정 애플리케이션이나 서비스를 식별하는 역할을 합니다.
-  포트는 정수 값으로 표현되며, 보통 0부터 65535까지의 숫자를 가집니다.
-
+  TCP(Transmisson Control Protocol)는 인터넷 프로토콜 스위트(Internet Protol Suite)의 핵심 프로토콜 중 하나로, 신뢰성 있는 데이터 전송을 보장하는 연결 지향형 프로토콜입니다.
+  TCP는 데이터 패킷을 손실 없이, 순서대로, 정확하게 전달하는 것을 목표로 하며, 인터넷을 포함한 대부분의 네트워크에서 사용됩니다.
+  TCP/IP라고도 불리며, IP(Internet Protocol)와 함께 동작하기 때문입니다.
 
 
-  🙋‍♂️ 네트워크, 포트, 도메인 이름, IP, DNS
+1️⃣ TCP의 주요 특징.
 
+1️⃣ 연결 지향형 프로토콜.
 
-1️⃣ 네트워크 포트의 주요 역할.
-
-1️⃣ 데이터 전달 경로 지정.
-
-  IP 주소는 네트워크 상에서 장치를 식별하지만, 같은 장치 내에서 여러 프로그램이 동시에 실행될 수 있기 때문에, 포트 번호는 특정 프로그램이나 서비스로 데이터를 전달하는 경로를 지정하는 역할을 합니다.
-
-
-👉 예시.
-
-  예를 들어, 한 컴퓨터에서 웹 브라우저와 이메일 클라이언트가 동시에 실행 중일 때, IP 주소는 컴퓨터를 식별하고, 포트 번호는 각각의 서비스(웹 브라우저와 이메일 클라이언트)를 식별하여 데이터를 적절한 애플리케이션으로 전달합니다.
-
-
-2️⃣ 프로토콜 기반 통신.
-
-  포트 번호는 네트워크 프로토콜에 따라 각기 다른 애플리케이션 또는 서비스를 구분하는 데 사용됩니다.
+  TCP는 데이터를 전송하기 전에 송신자와 수신자 간에 연결을 설정합니다.
     
-      예를 들어, HTTP 프로토콜은 기본적으로 포트 80을 사용하고, HTTPS는 포트 443을 사용합니다.
+      이 연결을 통해 두 장치가 데이터를 주고받을 수 있는 가상 회선을 형성합니다.
         
-          이러한 표준 포트 번호를 통해 데이터가 정확한 프로토콜과 애플리케이션으로 전달됩니다.
+          연결이 설정되면, 데이터가 손실되지 않고 순서대로 전달 되도록 보장합니다.
         
       
     
   
 
 
-2️⃣ 포트 번호의 범위.
+2️⃣ 신뢰성 있는 데이터 전송.
 
-  포트 번호는 0번에서 65535번까지 사용할 수 있으며, 크게 세 가지 범위로 나눌 수 있습니다.
-
-
-1️⃣ Well-Known Ports(0-1023)
-
-  0번부터 1023번까지의 포트는 널리 알려진 포트로, 주로 표준 네트워크 프로토콜이 사용하는 포트입니다.
+  TCP는 패킷 손실이 발생할 경우 손실된 패킷을 재전송하고, 수신한 패킷이 올바른지 확인하는 오류 검출 및 수정 메커니즘을 가지고 있습니다.
     
-      대부분의 서비스는 고정된 포트를 사용하며, 주로 시스템 수준에서 예약된 포트입니다.
+      이로 인해 데이터가 손실되거나 손상되지 않고, 정확히 목적지에 도달하도록 합니다.
     
   
 
 
-👉 예시.
+3️⃣ 데이터 흐름 제어.
 
-  포트 80 : HTTP(웹 브라우징)
-  포트 443 : HTTPS(보안 웹 브라우징)
-  포트 21 : FTP(파일 전송 프로토콜)
-  포트 22 : SSH(보안 쉘)
-  포트 25 : SMTP(이메일 전송)
-
-
-2️⃣ Registered Ports (1024-49151)
-
-  1024번 부터 49151번까지의 포트는 등록된 포트로, 특정 애플리케이션이나 서비스가 사용하도록 등록된 포트입니다.
+  TCP는 수신 측이 데이터를 처리할 수 있는 속도에 맞춰 데이터를 전송하는 흐름 제어 기능을 제공합니다.
     
-      이는 공식적으로 IANA(Internet Assigned Numbers Authority)에서 관리되며, 특정 기업이나 애플리케이션에 할당될 수 있습니다.
+      이를 통해 송신 측에서 데이터를 너무 빨리 보내 수신 측이 처리하지 못하는 상황을 방지합니다.
     
   
 
 
-👉 예시.
+4️⃣ 혼잡 제어.
 
-  포트 3306 : MySQL 데이터베이스
-  포트 1433 : Microsoft SQL Server
-  포트 8080 : HTTP 대체 포트(웹 개발 또는 프록시 서버)
-
-
-3️⃣ Dynamic/Private Ports (49152-65535)
-
-  49152번부터 65535번까지의 포트는 동적 포트 또는 임시 포트로, 클라이언트 프로그램이 동적으로 할당하여 사용하는 포트입니다.
+  네트워크에서 혼잡이 발생할 경우, TCP는 전송 속도를 줄여 네트워크 부하를 완화하는 혼잡 제어 기능을 수행합니다.
     
-      주로 응용 프로그램이 실행될 때, 시스템이 자동으로 포트 번호를 할당하여 사용합니다.
-    
-  
-  이러한 포트는 주로 클라이언트 측에서 서버와의 통신을 위해 사용되며, 세션이 종료되면 포트 번호가 해제됩니다.
-
-
-3️⃣ 포트와 IP 주소의 관계.
-
-  IP 주소는 네트워크 상에서 컴퓨터나 네트워크 장치를 식별하는 주소입니다.
-    
-      포트 번호는 그 장치 내에서 어떤 애플리케이션이 통신할 것인지를 결정합니다.
-    
-  
-  예를 들어, 웹 브라우저를 사용해 http://example.com에 접속할 때, 브라우저는 포트 80(HTTP 기본 포트)으로 서버에 요청을 보냅니다.
-    
-      서버는 포트 80을 통해 요청을 받아, 웹 페이지 데이터를 클라이언트에게 반환합니다.
-    
-  
-  IP 주소와 포트 번호를 결합하여 소켓을 형성합니다.
-    
-      소켓은 네트워크 통신에서 IP 주소 + 포트 번호로 구성된 단위로, 이를 통해 통신이 이루어 집니다.
+      이를 통해 네트워크가 과부하 상태에 빠지지 않도록 보호합니다.
     
   
 
 
-4️⃣ 네트워크 포트의 예.
+5️⃣ 패킷 순서 보장.
 
-1️⃣ HTTP와 HTTPS
-
-  포트 80은 HTTP 트래픽을 처리하는 데 사용되며, 포트 443은 HTTPS(암호화된 웹 트래픽)를 처리하는 데 사용됩니다.
+  네트워크에서는 패킷이 서로 다른 경로를 통해 목적지에 도달할 수 있기 때문에, 도착 순서가 달라질 수 있습니다.
     
-      예시: http://example.com (HTTP) 또는 https://example.com:443 (HTTPS)
+      TCP(Transmission Control Protocol)는 이러한 패킷을 올바른 순서로 재조립하여 원래의 데이터로 복원합니다.
     
   
 
 
-2️⃣ SSH
+6️⃣ 패킷 오류 검출 및 수정.
 
-  포트 22는 SSH(Secure Sheel) 프로토콜을 사용하는 원격 접속 서비스에서 사용됩니다.
+  TCP(Transmission Control Protocol) 패킷에 체크섬(Checksum)이라는 오류 검출 값을 포함하여, 데이터가 손상되지 않았는지 확인합니다.
     
-      SSH는 네트워크 상에서 원격 시스템에 보안 연결을 설정하는 데 사용됩니다.
+      만약 패킷이 손상되었거나 도착하지 않았다면, 해당 패킷을 다시 전송합니다.
     
   
 
 
-3️⃣ FTP
+2️⃣ TCP의 동작 원리.
 
-  포트 21은 FTP(File Transfer Protocol)를 처리하는 데 사용됩니다.
+  TCP는 데이터를 송신자에서 수신자로 안전하게 전송하기 위해 세 가지 주요 단계를 거칩니다.
+
+
+1️⃣ 연결 설정(3-Way Handshake)
+
+  TCP(Transmisson Control Protocol)는 데이터 전송을 시작하기 전에 송신자와 수신자 간에 3단계 핸드셰이크(3-Way Handshake)를 통해 연결을 설정합니다.
     
-      이를 통해 서버와 클라이언트 간에 파일을 전송할 수 있습니다.
+      1️⃣ SYN : 송신자는 수신자에게 연결 요청(SYN)을 보냅니다.
+      2️⃣ SYN-ACK : 수신자는 송신자의 요청을 수락하고, 연결을 승인하는 응답(SYN-ACK)을 보냅니다.
+      3️⃣ ACK : 송신자는 수신자의 응답을 확인(ACK)하고, 데이터 전송을 시작할 준비가 완료됩니다.
         
-          예시: ftp://example.com:21
+          이 과정이 완료되면 송신자와 수신자는 데이터 전송을 위한 가상 연결을 확립하게 됩니다.
         
       
     
   
 
 
-4️⃣ 데이터베이스
+2️⃣ 데이터 전송
 
-  포트 3306은 MySQL 데이터베이스와 연결할 때 사용되며, 클라이언트는 이 포트를 통해 MySQL 서버에 접근합니다.
-  포트 1433은 Microsoft SQL Server가 사용하는 포트입니다.
-
-
-5️⃣ 이메일
-
-  포트 25는 SMTP(Simple Mail Transfer Protocol)를 사용하여 이메일을 전송하는 데 사용됩니다.
-  포트 993은 IMAP(Internet Message Access Protocol)을 통한 보안 이메일 접근에 사용됩니다.
-
-
-5️⃣ 포트 스캐닝과 보안.
-
-1️⃣ 포트 스캐닝.
-
-  포트 스캐닝은 네트워크 보안에서 중요한 활동입니다.
+  데이터를 작은 패킷으로 나누어 전송합니다.
     
-      해커는 시스템에 열려있는 포트를 찾기 위해 포트 스캐닝을 수행하여, 취약한 포트를 악용할 수 있습니다.
+      각 패킷은 순서 번호가 부여되며, 수신자는 이 번호를 이용해 패킷이 올바른 순서로 도착했는지 확인하고 재조립합니다.
+    
+  
+  각 패킷이 성공적으로 도착하면 수신자는 송신자에게 ACK(Acknowledgement, 확인 응답)를 보냅니다.
+    
+      만약 수신자가 패킷을 받지 못하거나 패킷이 손상된 경우, 송신자는 해당 패킷을 재전송합니다.
+    
+  
+
+
+3️⃣ 연결 해제(4-Way Handshake)
+
+  데이터 전송이 완료되면, 송신자와 수신자는 4단계 핸드 셰이크(4-Way Handshake) 과정을 통해 연결을 해제합니다.
+    
+      1️⃣ FIN : 송신자는 연결을 종료하기 위한 요청(FIN)을 보냅니다.
+      2️⃣ ACK : 수신자는 이 요청을 수락하고 ACK(Acknowledgement, 확인 응답)을 보냅니다.
+      3️⃣ FIN : 수신자도 연결을 종료하고 싶을 때 FIN을 보냅니다.
+      4️⃣ ACK : 송신자는 수신자의 FIN에 대한 ACK(Acknowledgement, 확인 응답)를 보냅니다.
         
-          시스템 보안을 강화하려면 필요하지 않은 포트는 차단하거나 방화벽을 통해 관리하는 것이 중요합니다.
+          이 과정이 완료되면 송신자와 수신자 간의 연결이 종료됩니다.
         
       
     
   
 
 
-2️⃣ 방화벽과 포트 차단.
+3️⃣ TCP와 IP의 관계.
 
-  방화벽(Firewall)은 특정 포트에 대한 외부 접근을 차단하거나 허용할 수 있습니다.
+  TCP(Transmisson Control Protocol)는 전송 계층(Transport Layer)에서 동작하는 프로토콜이며, IP(Internet Protocol)는 네트워크 계층(Network Layer)에서 동작하는 프로토콜입니다.
     
-      보안 강화를 위해, 네트워크 관리자는 불필요한 포트를 닫고, 필요한 포트만 열어두는 것이 중요합니다.
-    
-  
-
-
-3️⃣ 포트 포워딩.
-
-  포트 포워딩은 네트워크 외부에서 들어오는 트래픽을 내부 네트워크의 특정 장치로 전달하는 과정입니다.
-    
-      이를 통해 외부 네트워크와 내부 네트워크 간의 통신을 원활하게 할 수 있습니다.
+      이 둘은 TCP/IP라는 이름으로 함께 사용되며, TCP(Transmisson Control Protocol)는 데이터 전송의 신뢰성을 보장하고, IP(Internet Protocol)는 신뢰성이나 순서 보장을 하지 않기 때문에, TCP(Transmisson Control Protocol)가 그 위에서 패킷의 순서 및 무결성을 보장하는 역할을 합니다.
     
   
 
 
-6️⃣ 결론.
+4️⃣ TCP의 장점.
 
-  네트워크 포트는 네트워크 상에서 특정 어플리케이션이나 서비스에 대한 통신 경로를 제공하는 논리적인 번호입니다.
-  포트는 IP 주소와 함께 사용되어, 어떤 애플리케이션이 데이터를 처리해야 하는지를 결정하며, 데이터 전송의 목적지를 명확히 지정해줍니다.
-  포트 번호는 네트워크 프로토콜마다 고유하게 사용되며, 이를 통해 웹 브라우징, 이메일 전송, 파일 전송과 같은 다양한 작업이 이루어집니다.
-  포트 관리와 보안은 네트워크 운영에서 매우 중요한 부분입니다.
+  1️⃣ 신뢰성 : TCP(Transmisson Control Protocol)는 데이터 손실, 패킷 오류, 순서 오류 등을 자동으로 처리하여, 데이터를 정확하게 전송합니다.
+  2️⃣ 순서 보장 : TCP는 패킷이 순서대로 도착하도록 보장하여, 전송된 데이터가 정확하게 재조립될 수 있도록 합니다.
+  3️⃣ 흐름 제어 : 수신 측의 처리 속도에 맞추어 데이터를 조절함으로써, 데이터 과부하를 방지합니다.
+  4️⃣ 혼잡 제어 : 네트워크 혼잡 상태를 관리하여, 네트워크 부하가 발생했을 때도 효율적으로 데이터 전송을 유지합니다.
+
+
+5️⃣ TCP의 단점.
+
+  1️⃣ 속도
+    
+      TCP(Transmisson Control Protocol)는 데이터의 신뢰성을 보장하기 위해 많은 오버헤드가 발생합니다.
+        
+          확인 응답(ACK, Acknowledgement)을 주고받고, 재전송을 수행해야 하기 때문에 UDP(User Datagram Protocol)에 비해 속도가 느릴 수 있습니다.
+        
+      
+    
+  
+  2️⃣ 복잡성
+    
+      TCP(Transmisson Control Protocol)는 상태를 유지하고, 각 패킷의 순서와 무결성을 추절해야 하기 때문에 구현이 복잡합니다.
+    
+  
+  3️⃣ 실시간 데이터 전송에 부적합
+    
+      TCP(Transmisson Control Protocol)는 실시간으로 빠르게 전송해야 하는 스트리밍 서비스나 온라인 게임 등에서는 적합하지 않습니다.
+        
+          실시간 응답보다는 신뢰성이 더 중요할 때 TCP가 사용됩니다.
+        
+      
+    
+  
+
+
+6️⃣ TCP와 UDP의 비교.
+
+
+  
+    
+      특징
+      TCP(Transmisson Control Protocol)
+      UDP(User Datagram Protocol)
+    
+  
+  
+    
+      연결 방식
+      연결 지향형(3-Way Handshake)
+      비연결형
+    
+    
+      데이터 전송 보장
+      신뢰성 보장, 패킷 재정송, 순서 보장
+      신뢰성 없음, 패킷 손실 발생 가능성
+    
+    
+      속도
+      상대적으로 느림
+      상대적으로 빠름
+    
+    
+      오류 처리
+      오류 검출 및 재전송
+      오류 검출 없음
+    
+    
+      적합한 용도
+      웹 브라우징, 파일 전송, 이메일 등
+      실시간 스트리밍, 온라인 게임 등
+    
+  
+
+
+7️⃣ TCP의 사용 사례.
+
+  웹 브라우징(HTTP/HTTPS)
+    
+      TCP는 HTTP와 HTTPS에서 사용되며, 웹 페이지가 손상 없이 정확하게 로드 될 수 있도록 보장합니다.
+    
+  
+  파일 전송(FTP, File Transport Protocol)
+    
+      FTP(File Transport Protocol)는 TCP를 사용하여 파일을 신뢰성 있게 전송합니다.
+    
+  
+  이메일(SMTP/IMAP/POP3)
+    
+      이메일 전송 및 수신 시, SMTP, IMAP, POP3는 TCP(Transmission Control Protocol)를 사용하여 데이터가 손실되지 않고 도착하도록 보장합니다.
+    
+  
+  원격 접속(SSH, Telent)
+    
+      원격 서버에 안전하게 연결하여 명령을 전송할 때 TCP를 사용하여 신뢰성 있는 통신을 보장합니다.
+    
+  
+
+
+8️⃣ 결론.
+
+  TCP(Transmisson Control Protocol)는 신뢰성 있는 데이터 전송을 보장하는 프로토콜로, 인터넷에서 널리 사용됩니다.
+  데이터가 정확하게, 손실 없이 전달되는 것을 보장하며, 연결을 설정한 후 데이터를 송수신하고, 전송된 데이터가 손상되지 않았는지 확인하며, 손상된 데이터는 재전송합니다.
+  웹 브라우징, 파일 전송, 이메일 전송등 신뢰성이 중요한 애플리케이션에서 주로 사용되며, 이로 인해 네트워크의 안정성을 크게 향상시킵니다.
 
 
                         </a>
@@ -15078,152 +15297,6 @@ Service 계층은 애플리케이션의 핵심 비즈니스 로직을 캡슐화�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-04-Dependency.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-04-Dependency.html"><h1 class="title_post">🍃[Spring] 의존성(Dependency).</h1></a>
-                        <a href="/Spring/2024-10-04-Dependency.html" class="txt_post">
-                            🍃[Spring] 의존성(Dependency).
-
-Java 백엔드 애플리케이션에서 의존성(Dependency) 이란 한 클래스 또는 모듈이 다른 클래스 또는 모듈의 기능을 필요로 하거나, 그 존재에 따라 동작하는 관계를 의미합니다.
-
-간단히 말해, 의존성은 어떤 클래스가 다른 클래스에 의존하여 해당 클래스의 메서드나 기능을 호출하고 사용하는 것을 말합니다.
-
-의존성은 객체 지향 프로그래밍에서 자연스럽게 발생하는 관계로, 특정 객체를 필요로 할 때 발생합니다.
-
-예를 들어, 서비스 클래스가 데이터베이스와 상호작용하기 위해 리포지토리 클래스에 의존하거나, 컨트롤러가 비즈니스 로직을 수행하기 위해 서비스 클래스에 의존하는 경우가 해당됩니다.
-
-1️⃣ 의존성의 예시
-
-간단한 의존성 예
-
-
-
-public class UserService {
-    
-    private UserRepository userRepository;
-    
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-}
-
-
-
-  UserService 클래스는 UserRepository 클래스에 의존합니다.
-  UserService는 비즈니스 로직을 처리하기 위해 UserRepository의 메서드를 호출합니다.
-  만약 UserRepository가 없으면 UserService는 정상적으로 작동할 수 없습니다.
-  따라서, 이 두 클래스 간에는 의존성이 존재합니다.
-
-
-2️⃣ 의존성 관리의 중요성.
-
-의존성(Dependency)은 자연스럽게 발생하지만, 의존성을 관리하지 않으면 애플리케이션이 결합도가 높아지고, 변경에 취약해지며, 유지보수가 어려워질 수 있습니다.
-
-따라서 의존성을 적절히 관리하는 것이 중요합니다.
-
-의존성 관리의 좋은 방법으로는 의존성 주입(Dependency Injection, DI) 이 있습니다.
-
-3️⃣ 의존성 주입(Dependency Injection, DI)
-
-
-  의존성 주입(Dependency Injection, DI)은 객체 간의 의존성을 외부에서 주입해주는 디자인 패턴으로, 의존성 주입을 통해 클래스는 자신이 사용할 객체를 직접 생성하지 않고, 외부에서 생성된 객체를 주입받아 사용하게 됩니다.
-  이를 통해 클래스 간의 결합도를 낮추고, 유연성과 테스트 가능성을 높일 수 있습니다.
-
-
-의존성 주입 예시(Spring Framework)
-
-  Spring Framework에서 의존성 주입은 매우 흔하게 사용됩니다.
-  Spring은 객체 간의 의존성을 관리하고, 필요한 객체를 자동으로 주입해 줍니다.
-
-
-@Service
-public class UserService {
-    
-    private final UserRepository userRepository;
-    
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-}
-
-
-
-  @Autowired
-    
-      Spring이 UserRepository의 구현체를 자동으로 주입해줍니다.
-      개발자는 UserService가 UserRepository에 의존한다는 사실만 명시하면 되고, UserRepository 객체의 생성을 직접적으로 관리할 필요가 없습니다.
-    
-  
-
-
-4️⃣ 의존성의 종류.
-
-1. 강한 의존성 (Tight Coupling)
-
-  클래스 A가 클래스 B의 구체적인 구현에 의존할 때 발생합니다.
-  이 경우 클래스 B가 변경되면 클래스 A도 수정이 필요할 수 있습니다.
-  예를 들어, new 키워드를 사용해 직접 객체를 생성하면 강한 의존성이 발생합니다.
-
-
-2. 약한 의존성(Loose Coupling)
-
-  클래스 A가 클래스 B의 구체적인 구현이 아닌, 인터페이스나 추상 클래스에 의존할 때 발생합니다.
-  이는 결합도를 낮추어 클래스 간의 변경에 더 유연하게 대처할 수 있게 합니다.
-  의존성 주입을 통해 약한 의존성을 실현할 수 있습니다.
-
-
-5️⃣ 의존성 관리의 이점.
-
-1. 유지보수성 향상.
-
-  의존성이 적절히 관리되면, 코드가 더 모듈화되고 변경 사항이 발생할 때 수정해야 할 부분이 줄어듭니다.
-  예를 들어, 특정 클래스의 구현을 변경하더라도 의존성 주입을 통해 인터페이스만 유지하면 다른 클래스에는 영향을 주지 않습니다.
-
-
-2. 테스트 가능성.
-
-  의존성을 외부에서 주입받으면, 테스트 시에 Mock 객체를 주입하여 쉽게 단위 테스트를 수행할 수 있습니다.
-  이를 통해 더 작은 단위 테스트가 가능해지고, 테스트가 독립적으로 수행될 수 있습니다.
-
-
-3. 재사용성 향상.
-
-  클래스가 다른 클래스에 강하게 의존하지 않으면, 해당 클래스를 다른 곳에서도 재사용하기 쉽습니다.
-  인터페이스를 사용하고, 의존성 주입을 통해 다양한 구현체를 주입받아 사용할 수 있기 때문입니다.
-
-
-6️⃣ 결론.
-Java 백엔드 애플리케이션에서 의존성은 클래스 간의 관계를 의미하며, 이를 잘 관리하는 것이 중요합니다.
-의존성 주입을 사용하면 결합도를 낮추고 유연성을 높일 수 있으며, 코드의 유지보수성과 테스트 가능성을 크게 향상 시킬 수 있습니다.
-Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입을 매우 쉽게 처리할 수 있도록 지원하고 있습니다.
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-04</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-10-04-bean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -15381,6 +15454,152 @@ public class UserService {
 스프링 빈은 스프링 IoC 컨테이너에 의해 관리되는 객체로, 애플리케이션의 주요 구성 요소를 의미합니다.
 빈은 어노테이션 또는 자바 설정 파일을 통해 등록할 수 있으며, 스프링 컨테이너는 빈의 생명주기를 자동으로 관리합니다.
 이를 통해 의존성 주입, 객체 관리, 그리고 애플리케이션 전반의 유연성을 크게 향상시킬 수 있습니다.
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-04</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-04-Dependency.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-04-Dependency.html"><h1 class="title_post">🍃[Spring] 의존성(Dependency).</h1></a>
+                        <a href="/Spring/2024-10-04-Dependency.html" class="txt_post">
+                            🍃[Spring] 의존성(Dependency).
+
+Java 백엔드 애플리케이션에서 의존성(Dependency) 이란 한 클래스 또는 모듈이 다른 클래스 또는 모듈의 기능을 필요로 하거나, 그 존재에 따라 동작하는 관계를 의미합니다.
+
+간단히 말해, 의존성은 어떤 클래스가 다른 클래스에 의존하여 해당 클래스의 메서드나 기능을 호출하고 사용하는 것을 말합니다.
+
+의존성은 객체 지향 프로그래밍에서 자연스럽게 발생하는 관계로, 특정 객체를 필요로 할 때 발생합니다.
+
+예를 들어, 서비스 클래스가 데이터베이스와 상호작용하기 위해 리포지토리 클래스에 의존하거나, 컨트롤러가 비즈니스 로직을 수행하기 위해 서비스 클래스에 의존하는 경우가 해당됩니다.
+
+1️⃣ 의존성의 예시
+
+간단한 의존성 예
+
+
+
+public class UserService {
+    
+    private UserRepository userRepository;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+}
+
+
+
+  UserService 클래스는 UserRepository 클래스에 의존합니다.
+  UserService는 비즈니스 로직을 처리하기 위해 UserRepository의 메서드를 호출합니다.
+  만약 UserRepository가 없으면 UserService는 정상적으로 작동할 수 없습니다.
+  따라서, 이 두 클래스 간에는 의존성이 존재합니다.
+
+
+2️⃣ 의존성 관리의 중요성.
+
+의존성(Dependency)은 자연스럽게 발생하지만, 의존성을 관리하지 않으면 애플리케이션이 결합도가 높아지고, 변경에 취약해지며, 유지보수가 어려워질 수 있습니다.
+
+따라서 의존성을 적절히 관리하는 것이 중요합니다.
+
+의존성 관리의 좋은 방법으로는 의존성 주입(Dependency Injection, DI) 이 있습니다.
+
+3️⃣ 의존성 주입(Dependency Injection, DI)
+
+
+  의존성 주입(Dependency Injection, DI)은 객체 간의 의존성을 외부에서 주입해주는 디자인 패턴으로, 의존성 주입을 통해 클래스는 자신이 사용할 객체를 직접 생성하지 않고, 외부에서 생성된 객체를 주입받아 사용하게 됩니다.
+  이를 통해 클래스 간의 결합도를 낮추고, 유연성과 테스트 가능성을 높일 수 있습니다.
+
+
+의존성 주입 예시(Spring Framework)
+
+  Spring Framework에서 의존성 주입은 매우 흔하게 사용됩니다.
+  Spring은 객체 간의 의존성을 관리하고, 필요한 객체를 자동으로 주입해 줍니다.
+
+
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+}
+
+
+
+  @Autowired
+    
+      Spring이 UserRepository의 구현체를 자동으로 주입해줍니다.
+      개발자는 UserService가 UserRepository에 의존한다는 사실만 명시하면 되고, UserRepository 객체의 생성을 직접적으로 관리할 필요가 없습니다.
+    
+  
+
+
+4️⃣ 의존성의 종류.
+
+1. 강한 의존성 (Tight Coupling)
+
+  클래스 A가 클래스 B의 구체적인 구현에 의존할 때 발생합니다.
+  이 경우 클래스 B가 변경되면 클래스 A도 수정이 필요할 수 있습니다.
+  예를 들어, new 키워드를 사용해 직접 객체를 생성하면 강한 의존성이 발생합니다.
+
+
+2. 약한 의존성(Loose Coupling)
+
+  클래스 A가 클래스 B의 구체적인 구현이 아닌, 인터페이스나 추상 클래스에 의존할 때 발생합니다.
+  이는 결합도를 낮추어 클래스 간의 변경에 더 유연하게 대처할 수 있게 합니다.
+  의존성 주입을 통해 약한 의존성을 실현할 수 있습니다.
+
+
+5️⃣ 의존성 관리의 이점.
+
+1. 유지보수성 향상.
+
+  의존성이 적절히 관리되면, 코드가 더 모듈화되고 변경 사항이 발생할 때 수정해야 할 부분이 줄어듭니다.
+  예를 들어, 특정 클래스의 구현을 변경하더라도 의존성 주입을 통해 인터페이스만 유지하면 다른 클래스에는 영향을 주지 않습니다.
+
+
+2. 테스트 가능성.
+
+  의존성을 외부에서 주입받으면, 테스트 시에 Mock 객체를 주입하여 쉽게 단위 테스트를 수행할 수 있습니다.
+  이를 통해 더 작은 단위 테스트가 가능해지고, 테스트가 독립적으로 수행될 수 있습니다.
+
+
+3. 재사용성 향상.
+
+  클래스가 다른 클래스에 강하게 의존하지 않으면, 해당 클래스를 다른 곳에서도 재사용하기 쉽습니다.
+  인터페이스를 사용하고, 의존성 주입을 통해 다양한 구현체를 주입받아 사용할 수 있기 때문입니다.
+
+
+6️⃣ 결론.
+Java 백엔드 애플리케이션에서 의존성은 클래스 간의 관계를 의미하며, 이를 잘 관리하는 것이 중요합니다.
+의존성 주입을 사용하면 결합도를 낮추고 유연성을 높일 수 있으며, 코드의 유지보수성과 테스트 가능성을 크게 향상 시킬 수 있습니다.
+Spring과 같은 프레임워크에서는 이러한 의존성 관리와 주입을 매우 쉽게 처리할 수 있도록 지원하고 있습니다.
 
                         </a>
                         <div class="info-post">
@@ -33417,131 +33636,133 @@ public class MyServiceIntegrationTest {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-04-jdbc.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-04-String-comparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-04-jdbc.html"><h1 class="title_post">☕️[Java] JDBC(Java Database Connectivity)</h1></a>
-                        <a href="/Java/Java/2024-09-04-jdbc.html" class="txt_post">
-                            ☕️[Java] JDBC(Java Database Connectivity)
+                        <a href="/Java/Java/2024-09-04-String-comparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
+                        <a href="/Java/Java/2024-09-04-String-comparison.html" class="txt_post">
+                            ☕️[Java] String 클래스 - 비교.
 
-  JDBC(Java Database Connectivity)는 자바 프로그램이 데이터베이스에 연결하고, SQL 쿼리를 실행하며, 데이터베이스로부터 결과를 가져오는 것을 가능하게 하는 자바 API입니다.
-  JDBC는 Java의 표준 API로, 다양한 관계형 데이터베이스 시스템(RDBMS)과의 상호 작용을 단순화하는 데 사용됩니다.
-
-
-1️⃣ 주요 기능 및 개념.
-
-  1. 데이터베이스 연결
+  String 클래스 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
     
-      JDBC를 사용하면 자바 애플리케이션에서 데이터베이스에 연결할 수 있습니다.
+      동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
+      동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인.
+    
+  
+
+
+public class StringEqualsMain1 {
+
+    public static void main(String[] args) {
+        String str1 = new String("hello");
+        String str2 = new String("hello");
+
+        System.out.println("===============================");
+        System.out.println("new String() == 비교: " + (str1 == str2));
+        System.out.println("new String() equals 비교: " + (str1.equals(str2)));
+        System.out.println("===============================");
+
+        String str3 = "hello";
+        String str4 = "hello";
+        System.out.println("리터럴 == 비교: " + (str3 == str4));
+        System.out.println("리터럴 equals 바교: " + (str3.equals(str4)));
+    }
+}
+
+
+실행 결과
+===============================
+new String() == 비교: false
+new String() equals 비교: true
+===============================
+리터럴 == 비교: true
+리터럴 equals 바교: true
+
+
+
+
+
+  str1 과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
+    
+      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
+    
+  
+  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
+    
+      따라서 동등성(equals()) 비교에 성공합니다.
+    
+  
+  참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
+
+
+
+
+
+  String str3 = "hello" 와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
+  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
+    
+      이때 같은 문자열이 있으면 만들지 않습니다.
+    
+  
+  String str3 = "hello" 와 같이 문자열 리터럴을 사용하면 문자열 풀에서 hello 라는 문자를 가진 String 인스턴스를 찾습니다.
+    
+      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
+    
+  
+  String str4 = "hello" 의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
+  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
+
+
+따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
+
+
+  참고: 풀(Pool)은 자원이 모여있는 곳을 의미합니다.
+프로그래밍에서 풀(Pool)은 공용 자원을 모아둔 곳을 뜻합니다.
+여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
+대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
+참고로 문자열 풀은 힙 영역을 사용합니다.
+그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
+
+
+그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까?
+
+public class StringEqualsMain2 {
+
+    public static void main(String[] args) {
+        String str1 = new String("hello");
+        String str2 = new String("hello");
+        System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
+
+        String str3 = "hello";
+        String str4 = "hello";
+        System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
+    }
+
+    private static boolean isSame(String x, String y) {
+        return x == y;
+        //return x.equals(y);
+    }
+}
+
+
+실행 결과
+
+메서드 호출 비교1: false
+메서드 호출 비교2: true
+
+
+
+  main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
+    
+      isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String() 으로 만들어진 것인지, 문자열 리터럴로 만들어 진 것인지 확인할 수 있는 방법이 없습니다.
         
-          이를 위해서는 데이터베이스의 URL, 사용자 이름, 비밀번호 등을 사용하여 Connection 객체를 생성합니다.
+          따라서 문자열 비교는 항상 equals() 를 사용해서 동등성 비교를 해야 합니다.
         
       
     
   
-  2. SQL 쿼리 실행
-    
-      연결이 설정된 후, SQL 쿼리를 실행할 수 있습니다.
-        
-          이는 Statement, PreparedStatment, CallableStatement 와 같은 JDBC 인터페이스를 통해 이루어집니다.
-            
-              Statement는 정적 SQL 쿼리를 실행할 때 사용됩니다.
-              PreparedStatement는 동적 SQL 쿼리를 미리 컴파일하고, 반복 실행할 때 효율적으로 사용할 수 있습니다.
-              CallableStatement는 데이터베이스의 저장 프로시저를 호출할 때 사용됩니다.
-            
-          
-        
-      
-    
-  
-  3. 결과 처리
-    
-      SQL 쿼리의 결과는 ResultSet 객체를 통해 얻을 수 있습니다.
-        
-          ResultSet은 데이터베이스로 부터 검색된 데이터를 테이블 형식으로 제공합니다.
-        
-      
-    
-  
-  4. 트랜잭션 관리
-    
-      JDBC는 데이터베이스 트랜젝션을 관리하는 기능도 제공합니다.
-        
-          기본적으로 자동 커밋 모드이지만, 필요에 따라 수동으로 트랜잭션을 관리하고 커밋하거나 롤백할 수 있습니다.
-        
-      
-    
-  
-  5. 에러 처리
-    
-      JDBC는 데이터베이스 관련 작업 중 발생하는 예외를 처리하기 위해 SQLException 클래스를 사용합니다.
-        
-          이를 통해 에러 코드를 확인하고, 적절한 예외 처리를 할 수 있습니다.
-        
-      
-    
-  
 
-
-2️⃣ JDBC의 구성 요소.
-
-  Driver
-    
-      JDBC 드라이버는 특정 데이터베이스와 자바 애플리케이션 간의 통신을 담당합니다.
-        
-          각 DBMS는 고유한 JDBC 드라이버를 제공합니다.
-        
-      
-    
-  
-  Connection
-    
-      데이터베이스 연결을 표현하며, SQL 쿼리를 실행할 때 사용되는 객체를 생성합니다.
-    
-  
-  Statement
-    
-      SQL 쿼리를 데이터베이스에 전달하는 역할을 합니다.
-    
-  
-  ResultSet
-    
-      쿼리의 결과를 포함하며, 데이터를 읽을 수 있게 합니다.
-    
-  
-
-
-3️⃣ JDBC의 작동 원리.
-
-  1. 드라이버 로드
-    
-      애플리케이션이 사용할 JDBC 드라이버를 로드합니다.
-    
-  
-  2. 데이터베이스 연결
-    
-      DriverManager.getConnection() 메서드를 사용하여 데이터베이스에 연결합니다.
-    
-  
-  3. SQL 쿼리 실행
-    
-      Statement 나 PreparedStatement 객체를 사용하여 SQL 쿼리를 실행합니다.
-    
-  
-  4. 결과 처리
-    
-      ResultSet 객체를 사용하여 쿼리 결과를 처리합니다.
-    
-  
-  5. 자원 해제
-    
-      사용된 ResultSet, Statement, Connection 객체를 명시적으로 닫아 자원을 해제합니다.
-    
-  
-
-
-JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Java 애플리케이션에서 데이터베이스 연동을 위해 널리 사용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -33702,133 +33923,131 @@ JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Jav
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-04-String-comparison.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-04-jdbc.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-04-String-comparison.html"><h1 class="title_post">☕️[Java] String 클래스 - 비교</h1></a>
-                        <a href="/Java/Java/2024-09-04-String-comparison.html" class="txt_post">
-                            ☕️[Java] String 클래스 - 비교.
+                        <a href="/Java/Java/2024-09-04-jdbc.html"><h1 class="title_post">☕️[Java] JDBC(Java Database Connectivity)</h1></a>
+                        <a href="/Java/Java/2024-09-04-jdbc.html" class="txt_post">
+                            ☕️[Java] JDBC(Java Database Connectivity)
 
-  String 클래스 비교할 때는 == 비교가 아니라 항상 equals() 비교를 해야합니다.
+  JDBC(Java Database Connectivity)는 자바 프로그램이 데이터베이스에 연결하고, SQL 쿼리를 실행하며, 데이터베이스로부터 결과를 가져오는 것을 가능하게 하는 자바 API입니다.
+  JDBC는 Java의 표준 API로, 다양한 관계형 데이터베이스 시스템(RDBMS)과의 상호 작용을 단순화하는 데 사용됩니다.
+
+
+1️⃣ 주요 기능 및 개념.
+
+  1. 데이터베이스 연결
     
-      동일성(Identity) : == 연산자를 사용해서 두 객체의 참조가 동일한 객체를 가리키고 있는지 확인.
-      동등성(Equality) : equals() 메서드를 사용하여 두 객체가 논리적으로 같은지 확인.
-    
-  
-
-
-public class StringEqualsMain1 {
-
-    public static void main(String[] args) {
-        String str1 = new String("hello");
-        String str2 = new String("hello");
-
-        System.out.println("===============================");
-        System.out.println("new String() == 비교: " + (str1 == str2));
-        System.out.println("new String() equals 비교: " + (str1.equals(str2)));
-        System.out.println("===============================");
-
-        String str3 = "hello";
-        String str4 = "hello";
-        System.out.println("리터럴 == 비교: " + (str3 == str4));
-        System.out.println("리터럴 equals 바교: " + (str3.equals(str4)));
-    }
-}
-
-
-실행 결과
-===============================
-new String() == 비교: false
-new String() equals 비교: true
-===============================
-리터럴 == 비교: true
-리터럴 equals 바교: true
-
-
-
-
-
-  str1 과 str2는 new String()을 사용해서 각각 인스턴스를 생성했습니다.
-    
-      서로 다른 인스턴스이므로 동일성(==) 비교에 실패합니다.
-    
-  
-  둘은 내부에 같은 "hello" 값을 가지고 있기 때문에 논리적으로 같습니다.
-    
-      따라서 동등성(equals()) 비교에 성공합니다.
-    
-  
-  참고로 String 클래스는 내부 문자열 값을 비교하도록 equals() 메서드를 재정의 해두었습니다.
-
-
-
-
-
-  String str3 = "hello" 와 같이 문자열 리터럴을 사용하는 경우 자바는 메모리 효율성과 성능 최적화를 위해 문자열 풀을 사용합니다.
-  자바가 실행되는 시점에 클래스에 문자열 리터럴이 있으면 문자열 풀에 String 인스턴스를 미리 만들어둡니다.
-    
-      이때 같은 문자열이 있으면 만들지 않습니다.
-    
-  
-  String str3 = "hello" 와 같이 문자열 리터럴을 사용하면 문자열 풀에서 hello 라는 문자를 가진 String 인스턴스를 찾습니다.
-    
-      그리고 찾은 인스턴스의 참조(x003)를 반환합니다.
-    
-  
-  String str4 = "hello" 의 경우 "hello" 문자열 리터럴을 사용하므로 문자열 풀에서 str3과 같은 x003 참조를 사용합니다.
-  문자열 풀 덕분에 같은 문자를 사용하는 경우 메모리 사용을 줄이고 문자를 만드는 시간도 줄어들기 때문에 성능도 최적화 할 수 있습니다.
-
-
-따라서 문자열 리터럴을 사용하는 경우 같은 참조값을 가지므로 == 비교에 성공합니다.
-
-
-  참고: 풀(Pool)은 자원이 모여있는 곳을 의미합니다.
-프로그래밍에서 풀(Pool)은 공용 자원을 모아둔 곳을 뜻합니다.
-여러 곳에서 함께 사용할 수 있는 객체를 필요할 때 마다 생성하고, 제거하는 것은 비효율적입니다.
-대신에 이렇게 문자열 풀에 필요한 String 인스턴스를 미리 만들어두고 여러곳에서 재사용할 수 있다면 성능과 메모리를 더 최적화 할 수 있습니다.
-참고로 문자열 풀은 힙 영역을 사용합니다.
-그리고 문자열 풀에서 문자를 찾을 때는 해시 알고리즘을 사용하기 때문에 매우 빠른 속도로 원하는 String 인스턴스를 찾을 수 있습니다.
-
-
-그렇다면 문자열 리터럴을 사용하면 == 비교를 하고, new String()을 직접 사용하는 경우에만 equals() 비교를 사용하면 되지 않을까?
-
-public class StringEqualsMain2 {
-
-    public static void main(String[] args) {
-        String str1 = new String("hello");
-        String str2 = new String("hello");
-        System.out.println("메서드 호출 비교1: " + isSame(str1, str2));
-
-        String str3 = "hello";
-        String str4 = "hello";
-        System.out.println("메서드 호출 비교2: " + isSame(str3, str4));
-    }
-
-    private static boolean isSame(String x, String y) {
-        return x == y;
-        //return x.equals(y);
-    }
-}
-
-
-실행 결과
-
-메서드 호출 비교1: false
-메서드 호출 비교2: true
-
-
-
-  main() 메서드를 만드는 개발자와 isSame() 메서드를 만드는 개발자가 서로 다르다고 가정해봅시다.
-    
-      isSame()의 경우 매개변수로 넘어오는 String 인스턴스가 new String() 으로 만들어진 것인지, 문자열 리터럴로 만들어 진 것인지 확인할 수 있는 방법이 없습니다.
+      JDBC를 사용하면 자바 애플리케이션에서 데이터베이스에 연결할 수 있습니다.
         
-          따라서 문자열 비교는 항상 equals() 를 사용해서 동등성 비교를 해야 합니다.
+          이를 위해서는 데이터베이스의 URL, 사용자 이름, 비밀번호 등을 사용하여 Connection 객체를 생성합니다.
+        
+      
+    
+  
+  2. SQL 쿼리 실행
+    
+      연결이 설정된 후, SQL 쿼리를 실행할 수 있습니다.
+        
+          이는 Statement, PreparedStatment, CallableStatement 와 같은 JDBC 인터페이스를 통해 이루어집니다.
+            
+              Statement는 정적 SQL 쿼리를 실행할 때 사용됩니다.
+              PreparedStatement는 동적 SQL 쿼리를 미리 컴파일하고, 반복 실행할 때 효율적으로 사용할 수 있습니다.
+              CallableStatement는 데이터베이스의 저장 프로시저를 호출할 때 사용됩니다.
+            
+          
+        
+      
+    
+  
+  3. 결과 처리
+    
+      SQL 쿼리의 결과는 ResultSet 객체를 통해 얻을 수 있습니다.
+        
+          ResultSet은 데이터베이스로 부터 검색된 데이터를 테이블 형식으로 제공합니다.
+        
+      
+    
+  
+  4. 트랜잭션 관리
+    
+      JDBC는 데이터베이스 트랜젝션을 관리하는 기능도 제공합니다.
+        
+          기본적으로 자동 커밋 모드이지만, 필요에 따라 수동으로 트랜잭션을 관리하고 커밋하거나 롤백할 수 있습니다.
+        
+      
+    
+  
+  5. 에러 처리
+    
+      JDBC는 데이터베이스 관련 작업 중 발생하는 예외를 처리하기 위해 SQLException 클래스를 사용합니다.
+        
+          이를 통해 에러 코드를 확인하고, 적절한 예외 처리를 할 수 있습니다.
         
       
     
   
 
+
+2️⃣ JDBC의 구성 요소.
+
+  Driver
+    
+      JDBC 드라이버는 특정 데이터베이스와 자바 애플리케이션 간의 통신을 담당합니다.
+        
+          각 DBMS는 고유한 JDBC 드라이버를 제공합니다.
+        
+      
+    
+  
+  Connection
+    
+      데이터베이스 연결을 표현하며, SQL 쿼리를 실행할 때 사용되는 객체를 생성합니다.
+    
+  
+  Statement
+    
+      SQL 쿼리를 데이터베이스에 전달하는 역할을 합니다.
+    
+  
+  ResultSet
+    
+      쿼리의 결과를 포함하며, 데이터를 읽을 수 있게 합니다.
+    
+  
+
+
+3️⃣ JDBC의 작동 원리.
+
+  1. 드라이버 로드
+    
+      애플리케이션이 사용할 JDBC 드라이버를 로드합니다.
+    
+  
+  2. 데이터베이스 연결
+    
+      DriverManager.getConnection() 메서드를 사용하여 데이터베이스에 연결합니다.
+    
+  
+  3. SQL 쿼리 실행
+    
+      Statement 나 PreparedStatement 객체를 사용하여 SQL 쿼리를 실행합니다.
+    
+  
+  4. 결과 처리
+    
+      ResultSet 객체를 사용하여 쿼리 결과를 처리합니다.
+    
+  
+  5. 자원 해제
+    
+      사용된 ResultSet, Statement, Connection 객체를 명시적으로 닫아 자원을 해제합니다.
+    
+  
+
+
+JDBC는 데이터베이스와의 직접적인 통신을 가능하게 하며, Java 애플리케이션에서 데이터베이스 연동을 위해 널리 사용됩니다.
 
                         </a>
                         <div class="info-post">
@@ -96925,6 +97144,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/CS/2024/2024-10-22-what-is-stack-trace.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-10-22"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-10-23-OOD.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-10-23"
         });
     
 

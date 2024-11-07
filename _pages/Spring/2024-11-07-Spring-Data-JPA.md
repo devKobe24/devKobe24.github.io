@@ -3,7 +3,7 @@ title: 🍃[Spring] Spring Data JPA를 이용해 다양한 쿼리를 작성해�
 tags:
     - Spring
     - Framework
-date: "2024-11-06"
+date: "2024-11-07"
 thumbnail: "/assets/img/thumbnail/spring.jpeg"
 ---
 

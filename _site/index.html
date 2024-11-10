@@ -807,6 +807,7 @@
             
             
             
+            
 
     
     
@@ -1177,6 +1178,138 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.</h1></a>
+                        <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.
+
+  JPA에서 연관관계를 사용할 때는 여러가지 주의해야 할 사항이 있습니다.
+
+
+1️⃣ 연관관계의 주인 설정.
+
+  연관관계에서 주인과 비주인을 올바르게 설정해야 합니다.
+    
+      주인이 아닌 쪽에서 연관관계를 수정해도 데이터베이스에는 반영되지 않기 때문에, 관계 주인을 명확히 지정하고 주인을 통해 관계를 관리해야 합니다.
+        
+          예를 들어, 양방향 연관관계에서 mappedBy 속성을 제대호 설정하지 않으면 불필요한 쿼리가 발생할 수 있습니다.
+        
+      
+    
+  
+
+
+2️⃣ 지연 로딩(Lazy Loading)과 즉시 로딩(Eager Loading).
+
+  연관된 엔티티를 언제 로드할지에 따라 성능이 크게 영향을 받을 수 있습니다.
+    
+      FetchType.LAZY는 필요한 시점에 데이터를 로드하지만, FatchType.EAGER는 엔티티를 조회할 때 즉시 연관된 모든 데이터를 로드하므로, 필요 이상의 데이터를 가져와 성능이 저하될 수 있습니다.
+        
+          예를 들어, @OneToMany 관계에서 EAGER 로딩을 사용하면 예상하지 못한 대량의 쿼리가 발생할 수 있으므로 주의해야 합니다.
+        
+      
+    
+  
+
+
+3️⃣ 무한 루프 문제.
+
+  양방향 연관관계를 JSON으로 직렬화할 때, 서로 참조하는 객체들이 계속 호출되면서 무한 루프가 발생할 수 있습니다.
+    
+      이를 방지하기 위해 @JsonIgnore 또는 @JsonManagedReference / @JsonBackReference 같은 어노테이션을 사용해 직렬화 대상에서 제외할 수 있습니다.
+    
+  
+  스프링과 같은 웹 애플리케이션에서 이를 처리하지 않으면 무한 루프가 발생하여 서버가 중단될 수 있습니다.
+
+
+4️⃣ 연관관계 매핑 시 데이터 무결성 주의.
+
+  엔티티의 상태가 일관되도록 연관관계 양쪽을 모두 설정하는 것이 중요합니다.
+    
+      예를 들어, 양방향 관계에서 한쪽만 관계를 설정하면 다른 쪽에서는 관계가 없는 것으로 익식될 수 있습니다.
+    
+  
+  두 엔티티에 대해 양방향 관계를 설정할 때는, 양쪽 필드를 모두 설정하는 핼퍼 메서드를 만드는 것이 좋습니다.
+    public void setUserProfile(UserProfile profile) {
+  this.userProfile = profile;
+  profile.setUser(this);
+}
+    
+  
+
+
+5️⃣ Cascade 옵션 사용 주의.
+
+  CascadeType 옵션(CascadeType.PERSIST, CascadeType.REMOVE 등)을 사용할 때는, 자칫 불필요하게 연관된 모든 엔티티가 영속화되거나 삭제 될 수 있습니다.
+    
+      연관된 모든 엔티티를 한 번에 영속화하거나 삭제할 때만 신중히 사용해야 합니다.
+        
+          예를 들어 CascadeType.REMOVE를 잘못 설정하면 부모 엔티티 삭제 시 연관된 자식 엔티티도 모두 삭제될 수 있습니다.
+        
+      
+    
+  
+
+
+6️⃣ N + 1 문제.
+
+  즉시 로딩(FetchType.EAGER)을 사용할 때 N+1 문제를 유발할 수 있습니다.
+    
+      예를 들어, 부모 엔티티를 조회할 때 자식 엔티티를 매번 조회하면, 추가적인 쿼리가 발생해 성능에 큰 영향을 미칩니다.
+        
+          이를 해결하기 위해 JPQL의 fetch join을 사용하여 필요한 데이터를 한 번에 조회하거나, @BatchSize 같은 옵션을 고려할 수 있습니다.
+        
+      
+    
+  
+
+
+7️⃣ 데이터 변경 시 주의.
+
+  JPA는 엔티티를 추적하는 1차 캐시를 가지고 있어 엔티티를 변경하면 자동으로 데이터베이스에 반영됩니다.
+    
+      이를 이용한 자동 반영 기능은 편리하지만, 한 트랜잭션 내에서 같은 엔티티를 여러 번 조회하거나 변경할 경우, 데이터 정합성이 깨지지 않도록 주의해야 합니다.
+    
+  
+
+
+8️⃣ 복잡한 연관관계 설계 시 신중함.
+
+  많은 연관관계가 복잡하게 얽히면 성능에 문제가 생길 수 있고, 코드의 유지 보수성이 떨어집니다.
+    
+      상황에 따라 불필요한 연관관계는 제거하고 “단방향 관계”를 사용하는 것이 좋습니다.
+    
+  
+  복잡한 연관관계를 단순화하고, 연관된 엔티티 조회가 필요할 때만 쿼리를 수행하도록 설계하면 성능과 유지보수성이 향상됩니다.
+
+
+9️⃣ 요약.
+
+  연관관계 주인을 정확히 설정하고, 무한 루프의 데이터 무결성을 주의합니다.
+  지연 로딩을 기본으로 하고, 필요에 따라 즉시 로딩과 페치 조인을 사용합니다.
+  N+1 문제를 방지하며, Cascade 옵션은 신중히 사용합니다.
+  복잡한 연관관계는 피하고 단순화할 수 있는 구조를 선택하는 것이 좋습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -8306,365 +8439,6 @@ CREATE TABLE Users (
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-16-generatedValue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-16-generatedValue.html"><h1 class="title_post">🍃[Spring] JPA 어노테이션 - `@GeneratedValue`</h1></a>
-                        <a href="/Spring/2024-10-16-generatedValue.html" class="txt_post">
-                            🍃[Spring] JPA 어노테이션 - @GeneratedValue
-
-  @GeneratedValue는 JPA(Java Persistence API)에서 기본 키(Primary Key) 값을 자동으로 생성할 때 사용하는 어노테이션입니다.
-  이 어노테이션은 엔티티(Entity)의 기본 키(Primary Key) 필드에 값을 자동으로 할당하는 방식을 정의하며, 데이터베이스에서 기본 키(Primary Key)가 생성되는 방법을 설정할 수 있습니다.
-
-
-1️⃣ 주요 특징.
-
-1️⃣ 자동으로 기본 키 값 생성.
-
-  @GeneratedValue는 기본 키(Primary Key)에 수동으로 값을 할당하지 않고, 데이터베이스나 JPA(Java Persistence API) 구현체가 기본 키(Primary Key) 값을 자동으로 생성하도록 합니다.
-
-
-2️⃣ 전략(GenerationType) 설정.
-
-  @GenerationType는 strategy 속성을 사용하여, 기본 키 값(Primary Key)을 생성하는 방식을 설정할 수 있습니다.
-  JPA(Java Persistence API)는 네 가지 생성 전략을 제공합니다.
-    
-      AUTO
-      IDENTITY
-      SEQUENCE
-      TABLE
-    
-  
-
-
-2️⃣ 생성 전략(GenerationType)
-
-1️⃣ GenerationType.AUTO
-
-  기본 키(Primary Key) 생성 전략을 JPA(Java Persistence API) 구현체(예: Hibernate)가 자동으로 선택하도록 합니다.
-  데이터베이스에 맞는 최적의 방법을 JPA(Java Persistence API)가 결정합니다.
-    
-      일부 데이터베이스에서는 SEQUENCE 방식, 다른 데이터베이스에서는 IDENTITY 방식 등을 사용할 수 있습니다.
-    
-  
-
-
-2️⃣ GenerationType.IDENTITY
-
-  기본 키 값이 자동 증가하는 컬럼(Column,열)을 사용하는 방식입니다.
-  데이터베이스가 직접 기본 키(Primary Key) 값을 생성합니다.
-    
-      예를 들어, MySQL에서는 AUTO_INCREMENT, SQL Server에서는 IDENTITY 컬럼(Column, 열)을 사용하여 값을 자동으로 증가시킵니다.
-    
-  
-  IDENTITY 전략은 데이터베이스에 의존적이며, 즉각적으로 값이 생성됩니다(데이터가 삽입되기 전에 미리 알 수 없음).
-
-
-3️⃣ GenerationType.SEQUENCE
-
-  시퀀스 객체를 사용하여 기본 키 값을 생성합니다.
-  데이터베이스의 테이블을 통한 고유한 ID 값을 관리하며, 이 방식은 데이터베이스 독립적인 방식이지만 성능이 떨어질 수 있습니다.
-
-
-3️⃣ @GeneratedValue 사용 예시.
-
-1️⃣ AUTO 전략.
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-@Entity
-public class User {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // 기본 키 생성 전략을 JPA가 자동으로 선택.
-    private Long id;
-    
-    private String name;
-    private String email;
-    
-    // 기본 생성자 및 Getter, Setter
-    public User() {}
-    
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-
-
-2️⃣ IDENTITY 전략.
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-@Entity
-public class Product {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 데이터베이스가 자동 증가하는 방식으로 기본 키(Primary Key) 생성
-    private Long productId;
-    
-    private String name;
-    private Double price;
-    
-    // 기본 생성자 및 Getter, Setter
-    public Product() {}
-    
-    public Long getProductId() {
-        return productId;
-    }
-    
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public Double getPrice() {
-        return price;
-    }
-    
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-}
-
-
-3️⃣ SEQUENCE 전략.
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
-
-@Entity
-public class Order {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq") // 시퀀스
-    @SequenceGenerator(name = "order_seq", sequenceName = "order_sequence", allocationSize = 1)
-    private Long orderId;
-    
-    private String product;
-    private int quantity;
-    
-    // 기본 생성자 및 Getter, Setter
-    public Order() {}
-    
-    public Long getOrderId() {
-        return orderId;
-    }
-    
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-    
-    public String getProduct() {
-        return product;
-    }
-    
-    public void setProduct(String product) {
-        this.product = product;
-    }
-    
-    public int getQuantity() {
-        return quantity;
-    }
-    
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-}
-
-
-
-  위 코드에서는 @SequenceGenerator를 사용하여 시퀀스에 대한 세부 설정을 지정합니다.
-    
-      sequenceName은 데이터베이스에서 사용할 시퀀스의 이름을 정의하고, allocationSize는 시퀀스 값을 미리 할당하는 크기를 지정합니다.
-    
-  
-
-
-4️⃣ 요약.
-
-  @GeneratedValue는 JPA(Java Persistence API)에서 기본 키(Primary Key)를 자동으로 생성할 때 사용하는 어노테이션입니다.
-  생성 전략(GenerationType)에는 AUTO, IDENTITY, SEQUENCE, TABLE이 있으며, 각 전략은 기본 키(Primary Key)를 생성하는 방식에 따라 다르게 동작합니다.
-  AUTO는 JPA(Java Persistence API)가 자동으로 전략을 선택하고, IDENTITY는 데이터베이스의 자동 증가 기능을 사용하며, SEQUENCE는 시퀀스 객체를 통해 기본 키(Primary Key)를 생성하고, TABLE은 별도의 테이블을 통해 고유 값을 관리합니다.
-  이를 통해 JPA는 기본 키 값을 쉽게 생성하고 관리할 수 있어, 개발자는 기본 키 생성에 대해 신경 쓰지 않아도 됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-10-16-class-object-instance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-10-16-class-object-instance.html"><h1 class="title_post">☕️[Java] 클래스, 객체, 인스턴스</h1></a>
-                        <a href="/Java/Java/2024-10-16-class-object-instance.html" class="txt_post">
-                            ☕️[Java] 클래스, 객체, 인스턴스.
-
-  클래스(Class), 객체(Object), 인스턴스(Instance)는 객체 지향 프로그래밍(Object-Oriented Programming, OOP)에서 중요한 개념이며, 서로 밀접하게 관련이 있지만 다른 의미를 가집니다.
-
-
-
-  🙋‍♂️ 객체 지향 프로그래밍(Object-Oriented Programming, OOP)
-
-
-1️⃣ 클래스(Class)
-
-  클래스(Class)는 “객체(Object)를 정의하기 위한 청사진(설계도)”입니다.
-    
-      클래스(Class)는 객체(Object)의 속성(필드)과 행동(메서드)을 정의합니다.
-    
-  
-  즉, 클래스는 어떤 유형의 객체(Object)를 만들 것인지에 대한 정보를 가지고 있으며, 객체(Object)를 생성하는 데 사용되는 틀 역할을 합니다.
-
-
-예시.
-// 클래스 선언.
-public class Car {
-    // 필드(속성)
-    String model;
-    String color;
-    
-    // 메서드(행동)
-    void drive() {
-        System.out.println("The car is driving.");
-    }
-}
-
-
-
-  위의 Car 클래스는 자동차의 모델과 색상을 나타내는 속성(필드)과, 자동차가 달리는 행동을 정의하는 메서드를 가지고 있습니다.
-    
-      이 자체는 실제 객체(Object)가 아니라 객체(Object)를 만들기 위한 설계도(blueprint, 청사진)입니다.
-    
-  
-
-
-2️⃣ 객체(Object)
-
-  객체(Object)는 클래스(Class)에 의해 생성된 실체로, 클래스의 인스턴스(Instance)라고도 불립니다.
-  객체(Object)는 클래스(Class)에서 정의된 속성(필드)과 행동(메서드)를 실제로 가지고 있는 메모리 상의 실체입니다.
-    
-      즉, 클래스의 설계도(blueprint, 청사진)을 바탕으로 만들어진 실질적인 데이터입니다.
-    
-  
-  객체(Object)는 클래스(Class)에서 정의된 구조에 따라 동작하며, 프로그램 내에서 데이터와 기능을 담당합니다.
-
-
-객체(Object) 생성 예시.
-
-public class Main {
-    public static void main(String[] args) {
-        // 객체 생성
-        Car myCar = new Car(); // Car 클래스의 객체 생성.
-        myCar.model = "Volvo xc60";
-        myCar.color = "Black";
-        myCar.drive(); // 출력: The car is driving
-    }
-}
-
-
-
-  위 코드에서 Car myCar = new Car();는 Car 클래스(Class)의 객체(Object)를 생성합니다.
-    
-      이 myCar 객체(Object)는 Car 클래스(Class)에서 정의한 속성(필드)과 행동(메서드)를 가지고 있으며, 프로그램에서 실제로 사용됩니다.
-    
-  
-
-
-3️⃣ 인스턴스(Instance)
-
-  인스턴스(Instance)는 특정 클래스(Class)에서 생성된 객체(Object)를 의미합니다.
-    
-      즉, 클래스(Class)의 인스턴스(Instance)는 그 클래스(Class)에 의해 생성된 실체 객체(Object)를 말합니다.
-    
-  
-  흔히 인스턴스(Instance)와 객체(Object)는 같은 의미로 사용되지만, “인스턴스(Instance)”는 특정 클래스(Class)에서 만들어진 객체(Object)라는 의미에 좀 더 초점을 맞추고 있습니다.
-  예를 들어, myCar는 Car 클래스의 인스턴스이며, 또한 객체입니다.
-
-
-인스턴스(Instance) 예시.
-Car myCar = new Car(); // Car 클래스의 인스턴스 생성.
-Car yourCar = new Car(); // 또 다른 Car 클래스의 인스턴스 생성.
-
-
-
-  위 코드에서 myCar와 yourCar는 모두 Car 클래스의 인스턴스(Instance)입니다.
-    
-      즉, 동일한 클래스(Class)에서 만들어진 여러개의 객체(인스턴스)를 생성할 수 있습니다.
-    
-  
-
-
-4️⃣ 요약.
-
-  클래스(Class) : 객체(Object)를 생성하기 위한 설계도(blueprint, 청사진)입니다. 속성(필드)과 행동(메서드)를 정의합니다.
-  객체(Object) : 클래스(Class)에 의해 생성된 실체입니다. 프로그램 내에서 사용되며, 클래스의 인스턴스(Instance)라고도 불립니다.
-  인스턴스(Instance) : 특정 클래스에서 생성된 객체(Object)를 가리키는 용어입니다. 클래스의 실체로서 메모리 내에 존재하는 객체(Object)를 의미합니다.
-  객체(Object)와 인스턴스(Instance)는 서로 거의 같은 의미로 사용되며, 클래스(Class)는 이 객체(Object)들을 만들기 위한 설계도(blueprint, 청사진)입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-10-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-10-16-ColumnAnnotation.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -8902,6 +8676,365 @@ public class User {
   이 어노테이션을 사용하면 컬럼(Column, 열)의 이름, nullable 여부, 고유 제약조건 등을 세밀하게 설정할 수 있습니다.
   필수는 아니지만, 명시적으로 데이터베이스 컬럼(Column, 열)의 속성을 지정해야 할 경우 유용하게 사용할 수 있습니다.
   이를 통해 개발자는 데이터베이스 테이블 구조에 맞추어 엔티티 클래스를 설계하고, 데이터베이스 컬럼(Column, 열)과의 매핑을 정확하게 설정할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-10-16-class-object-instance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-10-16-class-object-instance.html"><h1 class="title_post">☕️[Java] 클래스, 객체, 인스턴스</h1></a>
+                        <a href="/Java/Java/2024-10-16-class-object-instance.html" class="txt_post">
+                            ☕️[Java] 클래스, 객체, 인스턴스.
+
+  클래스(Class), 객체(Object), 인스턴스(Instance)는 객체 지향 프로그래밍(Object-Oriented Programming, OOP)에서 중요한 개념이며, 서로 밀접하게 관련이 있지만 다른 의미를 가집니다.
+
+
+
+  🙋‍♂️ 객체 지향 프로그래밍(Object-Oriented Programming, OOP)
+
+
+1️⃣ 클래스(Class)
+
+  클래스(Class)는 “객체(Object)를 정의하기 위한 청사진(설계도)”입니다.
+    
+      클래스(Class)는 객체(Object)의 속성(필드)과 행동(메서드)을 정의합니다.
+    
+  
+  즉, 클래스는 어떤 유형의 객체(Object)를 만들 것인지에 대한 정보를 가지고 있으며, 객체(Object)를 생성하는 데 사용되는 틀 역할을 합니다.
+
+
+예시.
+// 클래스 선언.
+public class Car {
+    // 필드(속성)
+    String model;
+    String color;
+    
+    // 메서드(행동)
+    void drive() {
+        System.out.println("The car is driving.");
+    }
+}
+
+
+
+  위의 Car 클래스는 자동차의 모델과 색상을 나타내는 속성(필드)과, 자동차가 달리는 행동을 정의하는 메서드를 가지고 있습니다.
+    
+      이 자체는 실제 객체(Object)가 아니라 객체(Object)를 만들기 위한 설계도(blueprint, 청사진)입니다.
+    
+  
+
+
+2️⃣ 객체(Object)
+
+  객체(Object)는 클래스(Class)에 의해 생성된 실체로, 클래스의 인스턴스(Instance)라고도 불립니다.
+  객체(Object)는 클래스(Class)에서 정의된 속성(필드)과 행동(메서드)를 실제로 가지고 있는 메모리 상의 실체입니다.
+    
+      즉, 클래스의 설계도(blueprint, 청사진)을 바탕으로 만들어진 실질적인 데이터입니다.
+    
+  
+  객체(Object)는 클래스(Class)에서 정의된 구조에 따라 동작하며, 프로그램 내에서 데이터와 기능을 담당합니다.
+
+
+객체(Object) 생성 예시.
+
+public class Main {
+    public static void main(String[] args) {
+        // 객체 생성
+        Car myCar = new Car(); // Car 클래스의 객체 생성.
+        myCar.model = "Volvo xc60";
+        myCar.color = "Black";
+        myCar.drive(); // 출력: The car is driving
+    }
+}
+
+
+
+  위 코드에서 Car myCar = new Car();는 Car 클래스(Class)의 객체(Object)를 생성합니다.
+    
+      이 myCar 객체(Object)는 Car 클래스(Class)에서 정의한 속성(필드)과 행동(메서드)를 가지고 있으며, 프로그램에서 실제로 사용됩니다.
+    
+  
+
+
+3️⃣ 인스턴스(Instance)
+
+  인스턴스(Instance)는 특정 클래스(Class)에서 생성된 객체(Object)를 의미합니다.
+    
+      즉, 클래스(Class)의 인스턴스(Instance)는 그 클래스(Class)에 의해 생성된 실체 객체(Object)를 말합니다.
+    
+  
+  흔히 인스턴스(Instance)와 객체(Object)는 같은 의미로 사용되지만, “인스턴스(Instance)”는 특정 클래스(Class)에서 만들어진 객체(Object)라는 의미에 좀 더 초점을 맞추고 있습니다.
+  예를 들어, myCar는 Car 클래스의 인스턴스이며, 또한 객체입니다.
+
+
+인스턴스(Instance) 예시.
+Car myCar = new Car(); // Car 클래스의 인스턴스 생성.
+Car yourCar = new Car(); // 또 다른 Car 클래스의 인스턴스 생성.
+
+
+
+  위 코드에서 myCar와 yourCar는 모두 Car 클래스의 인스턴스(Instance)입니다.
+    
+      즉, 동일한 클래스(Class)에서 만들어진 여러개의 객체(인스턴스)를 생성할 수 있습니다.
+    
+  
+
+
+4️⃣ 요약.
+
+  클래스(Class) : 객체(Object)를 생성하기 위한 설계도(blueprint, 청사진)입니다. 속성(필드)과 행동(메서드)를 정의합니다.
+  객체(Object) : 클래스(Class)에 의해 생성된 실체입니다. 프로그램 내에서 사용되며, 클래스의 인스턴스(Instance)라고도 불립니다.
+  인스턴스(Instance) : 특정 클래스에서 생성된 객체(Object)를 가리키는 용어입니다. 클래스의 실체로서 메모리 내에 존재하는 객체(Object)를 의미합니다.
+  객체(Object)와 인스턴스(Instance)는 서로 거의 같은 의미로 사용되며, 클래스(Class)는 이 객체(Object)들을 만들기 위한 설계도(blueprint, 청사진)입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-10-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-16-generatedValue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-16-generatedValue.html"><h1 class="title_post">🍃[Spring] JPA 어노테이션 - `@GeneratedValue`</h1></a>
+                        <a href="/Spring/2024-10-16-generatedValue.html" class="txt_post">
+                            🍃[Spring] JPA 어노테이션 - @GeneratedValue
+
+  @GeneratedValue는 JPA(Java Persistence API)에서 기본 키(Primary Key) 값을 자동으로 생성할 때 사용하는 어노테이션입니다.
+  이 어노테이션은 엔티티(Entity)의 기본 키(Primary Key) 필드에 값을 자동으로 할당하는 방식을 정의하며, 데이터베이스에서 기본 키(Primary Key)가 생성되는 방법을 설정할 수 있습니다.
+
+
+1️⃣ 주요 특징.
+
+1️⃣ 자동으로 기본 키 값 생성.
+
+  @GeneratedValue는 기본 키(Primary Key)에 수동으로 값을 할당하지 않고, 데이터베이스나 JPA(Java Persistence API) 구현체가 기본 키(Primary Key) 값을 자동으로 생성하도록 합니다.
+
+
+2️⃣ 전략(GenerationType) 설정.
+
+  @GenerationType는 strategy 속성을 사용하여, 기본 키 값(Primary Key)을 생성하는 방식을 설정할 수 있습니다.
+  JPA(Java Persistence API)는 네 가지 생성 전략을 제공합니다.
+    
+      AUTO
+      IDENTITY
+      SEQUENCE
+      TABLE
+    
+  
+
+
+2️⃣ 생성 전략(GenerationType)
+
+1️⃣ GenerationType.AUTO
+
+  기본 키(Primary Key) 생성 전략을 JPA(Java Persistence API) 구현체(예: Hibernate)가 자동으로 선택하도록 합니다.
+  데이터베이스에 맞는 최적의 방법을 JPA(Java Persistence API)가 결정합니다.
+    
+      일부 데이터베이스에서는 SEQUENCE 방식, 다른 데이터베이스에서는 IDENTITY 방식 등을 사용할 수 있습니다.
+    
+  
+
+
+2️⃣ GenerationType.IDENTITY
+
+  기본 키 값이 자동 증가하는 컬럼(Column,열)을 사용하는 방식입니다.
+  데이터베이스가 직접 기본 키(Primary Key) 값을 생성합니다.
+    
+      예를 들어, MySQL에서는 AUTO_INCREMENT, SQL Server에서는 IDENTITY 컬럼(Column, 열)을 사용하여 값을 자동으로 증가시킵니다.
+    
+  
+  IDENTITY 전략은 데이터베이스에 의존적이며, 즉각적으로 값이 생성됩니다(데이터가 삽입되기 전에 미리 알 수 없음).
+
+
+3️⃣ GenerationType.SEQUENCE
+
+  시퀀스 객체를 사용하여 기본 키 값을 생성합니다.
+  데이터베이스의 테이블을 통한 고유한 ID 값을 관리하며, 이 방식은 데이터베이스 독립적인 방식이지만 성능이 떨어질 수 있습니다.
+
+
+3️⃣ @GeneratedValue 사용 예시.
+
+1️⃣ AUTO 전략.
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
+public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // 기본 키 생성 전략을 JPA가 자동으로 선택.
+    private Long id;
+    
+    private String name;
+    private String email;
+    
+    // 기본 생성자 및 Getter, Setter
+    public User() {}
+    
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+
+2️⃣ IDENTITY 전략.
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
+public class Product {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 데이터베이스가 자동 증가하는 방식으로 기본 키(Primary Key) 생성
+    private Long productId;
+    
+    private String name;
+    private Double price;
+    
+    // 기본 생성자 및 Getter, Setter
+    public Product() {}
+    
+    public Long getProductId() {
+        return productId;
+    }
+    
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public Double getPrice() {
+        return price;
+    }
+    
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+}
+
+
+3️⃣ SEQUENCE 전략.
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+public class Order {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq") // 시퀀스
+    @SequenceGenerator(name = "order_seq", sequenceName = "order_sequence", allocationSize = 1)
+    private Long orderId;
+    
+    private String product;
+    private int quantity;
+    
+    // 기본 생성자 및 Getter, Setter
+    public Order() {}
+    
+    public Long getOrderId() {
+        return orderId;
+    }
+    
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+    
+    public String getProduct() {
+        return product;
+    }
+    
+    public void setProduct(String product) {
+        this.product = product;
+    }
+    
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+}
+
+
+
+  위 코드에서는 @SequenceGenerator를 사용하여 시퀀스에 대한 세부 설정을 지정합니다.
+    
+      sequenceName은 데이터베이스에서 사용할 시퀀스의 이름을 정의하고, allocationSize는 시퀀스 값을 미리 할당하는 크기를 지정합니다.
+    
+  
+
+
+4️⃣ 요약.
+
+  @GeneratedValue는 JPA(Java Persistence API)에서 기본 키(Primary Key)를 자동으로 생성할 때 사용하는 어노테이션입니다.
+  생성 전략(GenerationType)에는 AUTO, IDENTITY, SEQUENCE, TABLE이 있으며, 각 전략은 기본 키(Primary Key)를 생성하는 방식에 따라 다르게 동작합니다.
+  AUTO는 JPA(Java Persistence API)가 자동으로 전략을 선택하고, IDENTITY는 데이터베이스의 자동 증가 기능을 사용하며, SEQUENCE는 시퀀스 객체를 통해 기본 키(Primary Key)를 생성하고, TABLE은 별도의 테이블을 통해 고유 값을 관리합니다.
+  이를 통해 JPA는 기본 키 값을 쉽게 생성하고 관리할 수 있어, 개발자는 기본 키 생성에 대해 신경 쓰지 않아도 됩니다.
 
 
                         </a>
@@ -15601,136 +15734,106 @@ class NotificationManager {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html"><h1 class="title_post">💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!</h1></a>
-                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="txt_post">
-                            💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!
+                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html"><h1 class="title_post">💾 [CS] DIP의 정의에서 말하는 '추상화된 것'과 '추상화'의 개념의 차이점.</h1></a>
+                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="txt_post">
+                            “💾 [CS] DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.”
 
-모듈(Module) 과 컴포넌트(Component) 는 소프트웨어 공부를 하면 자주 보고, 듣는 용어 중 하나입니다.
-
-이 두 용어의 개념을 자주 헷갈리거나 명확하게 알지 못해 이번에 공부를 해보았습니다.
-
-제가 생각했을 때 재미있게도 소프트웨어는 레고 블록 같습니다.
-
-그래서 이번에 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하며 정리해봤습니다.
+  DIP(Dependency Inversion Principle) 에서 말하는 “추상화된 것”과 소프트웨어 공학에서 사용하는 일반적인 “추상화” 개념은 서로 밀접하게 관련된 개념이지만, 문맥에 따라 강조점이 다를 수 있습니다.
 
 
+1️⃣ DIP에서 말하는 “추상화된 것”
 
-소프트웨어 공학에서의 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하면, 이해하기 쉬운 방식으로 시스템 설계를 설명할 수 있습니다.
+  DIP에서 말하는 “추상화된 것” 은 구체적인 구현체가 아닌 인터페이스나 추상 클래스를 지칭합니다.
+  이 원칙에 따르면, 고수준 모듈(비즈니스 로직)은 저수준(세부적인 구현)에 의존해서 안 되며, 대신 두 모듈 모두 인터페이스나 추상 클래스 같은 추상화된 것에 의존해야 합니다.
+  이는 DIP에서 핵심적인 개념으로, 구현체 대신 계약(인터페이스)와 상호작용하도록 유도합니다.
 
-1️⃣ 레고 블록의 비유.
 
-1. 모듈은 레고 세트.
 
-  모듈은 하나의 레고 세트와 비슷합니다.
+  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
+🙋‍♂️ 소프트웨어 공학에서의 모듈
+🙋‍♂️ 모듈과 컴포넌트를 레고 블록에 비유해보면?!
+🙋‍♂️ 비즈니스 로직(Business Logic)이란?
+
+
+예시
+// "추상화된 것"인 인터페이스
+interface NotificationService {
+    void sendNotification(String message);
+}
+
+
+
+  위의 NotificationService 인터페이스는 DIP의 문맥에서 말하는 “추상화된 것”입니다.
+  고수준 모듈과 저수준 모듈은 이 추상화된 인터페이스를 통해서만 서로 상호작용합니다.
+
+
+2️⃣ 일반적인 “추상화” 개념.
+
+  소프트웨어 공학에서의 “추상화” 는 더 일반적인 개념으로, 세부사항을 숨기고 중요한 정보만을 드러내는 설계 기법을 의미합니다.
+  이를 통해 시스템의 복잡성을 줄이고, 설계나 구현에서 핵심적인 부분에 집중할 수 있게 해줍니다.
+  “추상화” 는 클래스, 인터페이스, 함수 등 다양한 수준에서 사용될 수 있으며, 주로 복잡한 시스템을 이해하기 쉽게 만들기 위해 사용됩니다.
+  “추상화” 는 구현 세부 사항을 감추고, 객체나 모듈 간의 상호작용을 간단하고 일관되게 만들어 줍니다.
+
+
+예시.
+abstract class Shape {
+    abstract void draw();
+}
+
+
+
+  위의 Shape 클래스는 일반적인 추상화의 예로, 다양한 구체적인 도형(원, 사각형 등)의 세부 구현을 감추고 draw()라는 공통된 동작을 정의한 것입니다.
+
+
+3️⃣ 차이점.
+
+  DIP에서의 “추상화된 것”
     
-      레고 세트는 특정한 테마나 목표(예: 연필과 노트, 자동차, 집 등)를 가지고 있는 완성된 제품입니다.
-      여러 개의 레고 블록들이 모여서 더 큰 기능적 단위를 이루고, 이 세트가 완성되면 전체적인 형태나 목적을 나타냅니다.
+      DIP에서 말하는 “추상화된 것”은 구현이 아닌 계약을 제공하는 인터페이스나 추상 클래스를 가리킵니다.
+        
+          이 계약에 의존함으로써 고수준 모듈과 저수준 모듈의 결합도를 낮춥니다.
+        
+      
+      즉, 구현이 아닌, 추상적인 계약에 의존함으로써 유연성을 확보하고 의존성의 방향을 역전시킵니다.
     
   
-  마찬가지로, 소프트웨어 모듈은 소프트웨어 시스템 내에서 특정 기능이나 책임을 가진 완성된 구성 요소입니다.
+  일반적인 “추상화”
     
-      모듈은 독립적으로 개발될 수 있으며, 다른 모듈과 함께 결합하여 더 큰 소프트웨어 시스템을 구성합니다.
-    
-  
-
-
-비유.
-
-  예를 들어, 주문 처리 모듈은 레고 세트처럼 독립적으로 작동할 수 있지만, 레고 도시에 추가하면 그 도시의 전체 기능에 기여하게 됩니다.
-    
-      모듈은 독립적이면서도 전체 시스템의 일부로 기능할 수 있는 구조입니다.
+      일반적인 “추상화” 는 더 광범위한 개념으로, 시스템 내에서 세부사항을 감추고 본질적인 개념만 드러내는 설계 기법입니다.
+        
+          추상 클래스, 인터페이스뿐만 아니라, 복잡한 로직을 간단하게 만들기 위한 여러 기법이 포함됩니다.
+        
+      
     
   
 
 
-2. 컴포넌트는 레고 블록.
+4️⃣ 공통점
 
-  컴포넌트는 각각의 레고 블록에 비유할 수 있습니다.
-  레고 블록은 각자 독립적으로 존재할 수 있고, 단순한 모양에서부터 다양한 기능적 역할을 수행할 수 있는 모양까지 다양합니다.
-  이 블록들은 서로 결합하여 더 복잡한 구조를 만들고, 큰 레고 세트를 완성하는 데 사용됩니다.
-  비슷하게, 소프트웨어 컴포넌트는 각각의 독립적인 소프트웨어 단위로, 특정 기능을 수행합니다.
-  각 컴포넌트는 자신의 책임을 다하면서, 다른 컴포넌트와 상호작용하여 더 큰 모듈을 구성합니다.
-
-
-비유.
-
-  예를 들어, 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등은 각각의 레고 블록처럼 독립적으로 작동하며, 주문 처리 모듈이라는 레고 세트를 완성하는 데 기여할 수 있습니다.
-
-
-2️⃣ 모듈과 컴포넌트의 상호작용을 레고에 비유해보자.
-
-1. 모듈.
-
-  레고 세트는 여러 레고 블록(컴포넌트)으로 구성되어 있으며, 각각의 블록은 특정한 위치와 역할을 가집니다.
-  예를 들어, 자동차 레고 세트는 바퀴, 차체, 엔진 등의 블록으로 구성되며, 이 블록들이 결합되어 전체 자동차가 완성됩니다.
+  둘 다 세부 사항을 숨긴다.
+    
+      DIP에서의 “추상화된 것”과 일반적인 “추상화” 모두 구체적인 구현 세부 사항을 감추고, 더 중요한 부분(주로 인터페이스나 상호작용)에 집중하도록 설계합니다.
+    
+  
+  유연성 제공
+    
+      두 개념 모두 코드의 유연성을 증가시키고, 변경에 쉽게 대응할 수 있는 구조를 만드는데 기여합니다.
+    
+  
 
 
-2. 컴포넌트.
+5️⃣ 결론
 
-  레고 블록은 컴포넌트에 해당하며, 각각 독립적으로 존재하지만, 결합해서 더 복잡한 기능을 수행합니다.
-  차체 블록은 독립적으로는 차제일 뿐이지만, 바퀴와 결합되면 자동차로서 기능할 수 있습니다.
-
-
-3️⃣ 결론적으로
-
-  컴포넌트는 레고 블록처럼 독립적으로 존재하며, 각각의 특정 기능을 수행하는 작은 단위입니다.
-  여러 블록을 결합하면 더 큰 구조를 형성할 수 있듯이, 여러 컴포넌트가 모여 더 복잡한 기능을 수행하는 소프트 웨어 시스템의 모듈을 형성합니다.
-  모듈은 레고 세트처럼 여러 블록(컴포넌트)을 결합해 완성된 기능적 단위로서 사용되며, 시스템 내에서 더 큰 역할을 담당하는 하나의 구성 요소가 됩니다.
+  DIP에서의 “추상화된 것” 은 DIP 원칙을 적용할 때 구체적인 구현 대신 인터페이스나 추상 클래스와 같은 추상적 계층에 의존하도록 하는 구체적인 의미를 가집니다.
+  일반적인 “추상화” 는 소프트웨어 설계에서 복잡성을 관리하기 위해 사용하는 넓은 범위의 설계 개념으로, 객체 지향 프로그래밍의 기본 원칙 중 하나입니다.
 
 
-3️⃣ 그렇다면 컴포넌트가 모듈보다 작은 단위라고 생각하면 되나요?
-
-
-  네, 맞습니다! 컴포넌트는 일반적으로 모듈보다 작은 단위로 생각할 수 있습니다.
-  소프트웨어 공학에서 컴포넌트와 모듈은 모두 독립적인 기능을 수행하는 단위이지만, 컴포넌트는 더 작은 재사용 가능한 기능 단위로, 여러 컴포넌트가 모여 하나의 모듈을 구성하는 경우가 많습니다.
-
-
-1. 다시 레고 비유로 설명하자면~
-
-  컴포넌트는 개별적인 레고 블록과 같고, 각 블록은 독립적으로도 유용한 기능을 가지고 있지만, 여러 블록이 모여서 더 큰 구조(예: 연필과 노트, 자동차, 집 등)를 만듭니다.
-  모듈은 여러 레고 블록이 결합되어 완성된 레고 세트와 같다고 할 수 있습니다.
-  레고 세트는 연필과 노트, 자동차, 집 등과 같이 더 큰 단위의 구성 요소이며, 세트 내에서 여러 레고 블록(컴포넌트)이 함께 작동하여 더 복잡한 기능을 수행합니다.
-
-
-2. 소프트웨어 공학에서의 관계.
-
-
-
-1. 컴포넌트.
-
-  더 작은 기능적 단위입니다.
-  컴포넌트는 특정 작업이나 책임을 수행하는 코드의 묶음으로, 이를 독립적으로 재사용할 수 있습니다.
-  예를 들어, 결제 처리 기능, 배송 기능, 인증 기능 등이 컴포넌트가 될 수 있습니다.
-
-
-
-
-2. 모듈.
-
-  여러 컴포넌트를 포함하는 더 큰 단위입니다.
-  모듈은 하나의 주요 기능이나 책임을 수행하는 소프트웨어의 큰 부분을 나타냅니다.
-  예를 들어, 주문 처리 모듈은 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등의 여러 컴포넌트를 포함할 수 있습니다.
-
-
-4️⃣ 마지막으로
-
-  컴포넌트는 보통 모듈을 구성하는 작은 단위이며, 특정한 작업이나 기능을 수행합니다.
-  모듈은 컴포넌트들을 묶어서 더 큰 기능을 제공하는 단위로, 더 복잡한 기능을 수행하는 소프트웨어 시스템의 일부를 형성합니다.
-
-
-따라서, 컴포넌트가 모듈보다 작은 단위라고 생각하면 됩니다.
-
-
-
-📝 참고 자료.
-
-  소프트웨어 공학에서의 모듈
-  소프트웨어 공학에서의 컴포넌트
-
+결국, DIP에서 말하는 “추상화된 것”은 일반적인 “추상화”의 측정한 적용 사례라고 볼수 있습니다.
+DIP는 추상화를 통해 시스템 간의 결합도를 낮추고 유연성을 높이는 것을 목표로 합니다.
 
                         </a>
                         <div class="info-post">
@@ -15996,106 +16099,136 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html"><h1 class="title_post">💾 [CS] DIP의 정의에서 말하는 '추상화된 것'과 '추상화'의 개념의 차이점.</h1></a>
-                        <a href="/CS/2024/2024-10-07-diff-btw-abstracted-thing-and-abstraction.html" class="txt_post">
-                            “💾 [CS] DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.”
+                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html"><h1 class="title_post">💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!</h1></a>
+                        <a href="/CS/2024/2024-10-07-compare-modules-and-components-to-lego-blocks.html" class="txt_post">
+                            💾 [CS] 모듈과 컴포넌트를 레고 블록에 비유해보면?!
 
-  DIP(Dependency Inversion Principle) 에서 말하는 “추상화된 것”과 소프트웨어 공학에서 사용하는 일반적인 “추상화” 개념은 서로 밀접하게 관련된 개념이지만, 문맥에 따라 강조점이 다를 수 있습니다.
+모듈(Module) 과 컴포넌트(Component) 는 소프트웨어 공부를 하면 자주 보고, 듣는 용어 중 하나입니다.
 
+이 두 용어의 개념을 자주 헷갈리거나 명확하게 알지 못해 이번에 공부를 해보았습니다.
 
-1️⃣ DIP에서 말하는 “추상화된 것”
+제가 생각했을 때 재미있게도 소프트웨어는 레고 블록 같습니다.
 
-  DIP에서 말하는 “추상화된 것” 은 구체적인 구현체가 아닌 인터페이스나 추상 클래스를 지칭합니다.
-  이 원칙에 따르면, 고수준 모듈(비즈니스 로직)은 저수준(세부적인 구현)에 의존해서 안 되며, 대신 두 모듈 모두 인터페이스나 추상 클래스 같은 추상화된 것에 의존해야 합니다.
-  이는 DIP에서 핵심적인 개념으로, 구현체 대신 계약(인터페이스)와 상호작용하도록 유도합니다.
-
-
-
-  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’이란 무엇일까?
-🙋‍♂️ 소프트웨어 공학에서의 모듈
-🙋‍♂️ 모듈과 컴포넌트를 레고 블록에 비유해보면?!
-🙋‍♂️ 비즈니스 로직(Business Logic)이란?
-
-
-예시
-// "추상화된 것"인 인터페이스
-interface NotificationService {
-    void sendNotification(String message);
-}
+그래서 이번에 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하며 정리해봤습니다.
 
 
 
-  위의 NotificationService 인터페이스는 DIP의 문맥에서 말하는 “추상화된 것”입니다.
-  고수준 모듈과 저수준 모듈은 이 추상화된 인터페이스를 통해서만 서로 상호작용합니다.
+소프트웨어 공학에서의 모듈(Module) 과 컴포넌트(Component) 를 레고 블록에 비유하면, 이해하기 쉬운 방식으로 시스템 설계를 설명할 수 있습니다.
 
+1️⃣ 레고 블록의 비유.
 
-2️⃣ 일반적인 “추상화” 개념.
+1. 모듈은 레고 세트.
 
-  소프트웨어 공학에서의 “추상화” 는 더 일반적인 개념으로, 세부사항을 숨기고 중요한 정보만을 드러내는 설계 기법을 의미합니다.
-  이를 통해 시스템의 복잡성을 줄이고, 설계나 구현에서 핵심적인 부분에 집중할 수 있게 해줍니다.
-  “추상화” 는 클래스, 인터페이스, 함수 등 다양한 수준에서 사용될 수 있으며, 주로 복잡한 시스템을 이해하기 쉽게 만들기 위해 사용됩니다.
-  “추상화” 는 구현 세부 사항을 감추고, 객체나 모듈 간의 상호작용을 간단하고 일관되게 만들어 줍니다.
-
-
-예시.
-abstract class Shape {
-    abstract void draw();
-}
-
-
-
-  위의 Shape 클래스는 일반적인 추상화의 예로, 다양한 구체적인 도형(원, 사각형 등)의 세부 구현을 감추고 draw()라는 공통된 동작을 정의한 것입니다.
-
-
-3️⃣ 차이점.
-
-  DIP에서의 “추상화된 것”
+  모듈은 하나의 레고 세트와 비슷합니다.
     
-      DIP에서 말하는 “추상화된 것”은 구현이 아닌 계약을 제공하는 인터페이스나 추상 클래스를 가리킵니다.
-        
-          이 계약에 의존함으로써 고수준 모듈과 저수준 모듈의 결합도를 낮춥니다.
-        
-      
-      즉, 구현이 아닌, 추상적인 계약에 의존함으로써 유연성을 확보하고 의존성의 방향을 역전시킵니다.
+      레고 세트는 특정한 테마나 목표(예: 연필과 노트, 자동차, 집 등)를 가지고 있는 완성된 제품입니다.
+      여러 개의 레고 블록들이 모여서 더 큰 기능적 단위를 이루고, 이 세트가 완성되면 전체적인 형태나 목적을 나타냅니다.
     
   
-  일반적인 “추상화”
+  마찬가지로, 소프트웨어 모듈은 소프트웨어 시스템 내에서 특정 기능이나 책임을 가진 완성된 구성 요소입니다.
     
-      일반적인 “추상화” 는 더 광범위한 개념으로, 시스템 내에서 세부사항을 감추고 본질적인 개념만 드러내는 설계 기법입니다.
-        
-          추상 클래스, 인터페이스뿐만 아니라, 복잡한 로직을 간단하게 만들기 위한 여러 기법이 포함됩니다.
-        
-      
+      모듈은 독립적으로 개발될 수 있으며, 다른 모듈과 함께 결합하여 더 큰 소프트웨어 시스템을 구성합니다.
     
   
 
 
-4️⃣ 공통점
+비유.
 
-  둘 다 세부 사항을 숨긴다.
+  예를 들어, 주문 처리 모듈은 레고 세트처럼 독립적으로 작동할 수 있지만, 레고 도시에 추가하면 그 도시의 전체 기능에 기여하게 됩니다.
     
-      DIP에서의 “추상화된 것”과 일반적인 “추상화” 모두 구체적인 구현 세부 사항을 감추고, 더 중요한 부분(주로 인터페이스나 상호작용)에 집중하도록 설계합니다.
-    
-  
-  유연성 제공
-    
-      두 개념 모두 코드의 유연성을 증가시키고, 변경에 쉽게 대응할 수 있는 구조를 만드는데 기여합니다.
+      모듈은 독립적이면서도 전체 시스템의 일부로 기능할 수 있는 구조입니다.
     
   
 
 
-5️⃣ 결론
+2. 컴포넌트는 레고 블록.
 
-  DIP에서의 “추상화된 것” 은 DIP 원칙을 적용할 때 구체적인 구현 대신 인터페이스나 추상 클래스와 같은 추상적 계층에 의존하도록 하는 구체적인 의미를 가집니다.
-  일반적인 “추상화” 는 소프트웨어 설계에서 복잡성을 관리하기 위해 사용하는 넓은 범위의 설계 개념으로, 객체 지향 프로그래밍의 기본 원칙 중 하나입니다.
+  컴포넌트는 각각의 레고 블록에 비유할 수 있습니다.
+  레고 블록은 각자 독립적으로 존재할 수 있고, 단순한 모양에서부터 다양한 기능적 역할을 수행할 수 있는 모양까지 다양합니다.
+  이 블록들은 서로 결합하여 더 복잡한 구조를 만들고, 큰 레고 세트를 완성하는 데 사용됩니다.
+  비슷하게, 소프트웨어 컴포넌트는 각각의 독립적인 소프트웨어 단위로, 특정 기능을 수행합니다.
+  각 컴포넌트는 자신의 책임을 다하면서, 다른 컴포넌트와 상호작용하여 더 큰 모듈을 구성합니다.
 
 
-결국, DIP에서 말하는 “추상화된 것”은 일반적인 “추상화”의 측정한 적용 사례라고 볼수 있습니다.
-DIP는 추상화를 통해 시스템 간의 결합도를 낮추고 유연성을 높이는 것을 목표로 합니다.
+비유.
+
+  예를 들어, 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등은 각각의 레고 블록처럼 독립적으로 작동하며, 주문 처리 모듈이라는 레고 세트를 완성하는 데 기여할 수 있습니다.
+
+
+2️⃣ 모듈과 컴포넌트의 상호작용을 레고에 비유해보자.
+
+1. 모듈.
+
+  레고 세트는 여러 레고 블록(컴포넌트)으로 구성되어 있으며, 각각의 블록은 특정한 위치와 역할을 가집니다.
+  예를 들어, 자동차 레고 세트는 바퀴, 차체, 엔진 등의 블록으로 구성되며, 이 블록들이 결합되어 전체 자동차가 완성됩니다.
+
+
+2. 컴포넌트.
+
+  레고 블록은 컴포넌트에 해당하며, 각각 독립적으로 존재하지만, 결합해서 더 복잡한 기능을 수행합니다.
+  차체 블록은 독립적으로는 차제일 뿐이지만, 바퀴와 결합되면 자동차로서 기능할 수 있습니다.
+
+
+3️⃣ 결론적으로
+
+  컴포넌트는 레고 블록처럼 독립적으로 존재하며, 각각의 특정 기능을 수행하는 작은 단위입니다.
+  여러 블록을 결합하면 더 큰 구조를 형성할 수 있듯이, 여러 컴포넌트가 모여 더 복잡한 기능을 수행하는 소프트 웨어 시스템의 모듈을 형성합니다.
+  모듈은 레고 세트처럼 여러 블록(컴포넌트)을 결합해 완성된 기능적 단위로서 사용되며, 시스템 내에서 더 큰 역할을 담당하는 하나의 구성 요소가 됩니다.
+
+
+3️⃣ 그렇다면 컴포넌트가 모듈보다 작은 단위라고 생각하면 되나요?
+
+
+  네, 맞습니다! 컴포넌트는 일반적으로 모듈보다 작은 단위로 생각할 수 있습니다.
+  소프트웨어 공학에서 컴포넌트와 모듈은 모두 독립적인 기능을 수행하는 단위이지만, 컴포넌트는 더 작은 재사용 가능한 기능 단위로, 여러 컴포넌트가 모여 하나의 모듈을 구성하는 경우가 많습니다.
+
+
+1. 다시 레고 비유로 설명하자면~
+
+  컴포넌트는 개별적인 레고 블록과 같고, 각 블록은 독립적으로도 유용한 기능을 가지고 있지만, 여러 블록이 모여서 더 큰 구조(예: 연필과 노트, 자동차, 집 등)를 만듭니다.
+  모듈은 여러 레고 블록이 결합되어 완성된 레고 세트와 같다고 할 수 있습니다.
+  레고 세트는 연필과 노트, 자동차, 집 등과 같이 더 큰 단위의 구성 요소이며, 세트 내에서 여러 레고 블록(컴포넌트)이 함께 작동하여 더 복잡한 기능을 수행합니다.
+
+
+2. 소프트웨어 공학에서의 관계.
+
+
+
+1. 컴포넌트.
+
+  더 작은 기능적 단위입니다.
+  컴포넌트는 특정 작업이나 책임을 수행하는 코드의 묶음으로, 이를 독립적으로 재사용할 수 있습니다.
+  예를 들어, 결제 처리 기능, 배송 기능, 인증 기능 등이 컴포넌트가 될 수 있습니다.
+
+
+
+
+2. 모듈.
+
+  여러 컴포넌트를 포함하는 더 큰 단위입니다.
+  모듈은 하나의 주요 기능이나 책임을 수행하는 소프트웨어의 큰 부분을 나타냅니다.
+  예를 들어, 주문 처리 모듈은 결제 컴포넌트, 배송 컴포넌트, 인증 컴포넌트 등의 여러 컴포넌트를 포함할 수 있습니다.
+
+
+4️⃣ 마지막으로
+
+  컴포넌트는 보통 모듈을 구성하는 작은 단위이며, 특정한 작업이나 기능을 수행합니다.
+  모듈은 컴포넌트들을 묶어서 더 큰 기능을 제공하는 단위로, 더 복잡한 기능을 수행하는 소프트웨어 시스템의 일부를 형성합니다.
+
+
+따라서, 컴포넌트가 모듈보다 작은 단위라고 생각하면 됩니다.
+
+
+
+📝 참고 자료.
+
+  소프트웨어 공학에서의 모듈
+  소프트웨어 공학에서의 컴포넌트
+
 
                         </a>
                         <div class="info-post">
@@ -55065,174 +55198,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Algorithm/2024/2024-05-27-CompleteBinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Algorithm/2024/2024-05-27-CompleteBinaryTree.html"><h1 class="title_post">📦[DS,Algorithm] 완전 이진 트리(Complete Binary Tree)</h1></a>
-                        <a href="/Algorithm/2024/2024-05-27-CompleteBinaryTree.html" class="txt_post">
-                            1️⃣ 완전 이진 트리(Complete Binary Tree).
-
-완전 이진 트리(Complete Binary Tree)는 이진 트리의 한 종류입니다.
-
-1️⃣ 완전 이진 트리(Complete Binary Tree)의 특성.
-
-
-  모든 레벨이 완전히 채워져 있다.
-    
-      마지막 레벨을 제외한 모든 레벨의 노드가 최대 개수로 채워져 있습니다.
-      마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져 있습니다.
-    
-  
-  노드의 배치
-    
-      트리의 높이가 ‘h’ 라면, 마지막 레벨을 제외한 모든 레벨에는 ‘2^k’ 개의 노드가 있습니다. 여기서 ‘k’ 는 해당 레벨의 깊이 입니다.
-      마지막 레벨에는 1개 이상 ‘2^h’ 개 이하의 노드가 있으며, 이 노드들은 왼쪽부터 채워집니다.
-    
-  
-
-
-2️⃣ 완전 이친 트리의 예.
-        1
-      /   \
-     2     3
-    / \   / \
-   4   5 6   7
-  / \
- 8   9
-
-
-위의 트리는 완전 이진 트리의 예입니다.
-
-모든 레벨이 완전히 채워져 있고, 마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져있습니다.
-
-3️⃣ 완전 이진 트리의 속성.
-
-
-  노드 수
-    
-      높이가 ‘h’ 인 완전 이진 트리는 최대 ‘2^(h+1) - 1’ 개의 노드를 가질 수 있습니다.
-      마지막 레벨을 제외한 모든 노드는 ‘2^h - 1’ 개의 노드를 가집니다.
-    
-  
-  높이
-    
-      노드 수가 ‘n’ 인 완전 이진 트리의 높이는 ‘O(log n)’ 입니다.
-    
-  
-  배열 표현
-    
-      완전 이진 트리는 배열을 사용하여 쉽게 표현할 수 있습니다. 이는 힙 자료구조에서 많이 사용됩니다.
-    
-  
-
-
-4️⃣ 배열을 통한 완전 이진 트리 표현
-
-완전 이진 트리는 배열을 사용하여 효율적으로 표현할 수 있습니다.
-
-노드의 인덱스를 기준으로 부모-자식 관계를 쉽게 파악할 수 있습니다.
-
-노드의 인덱스 규칙
-
-  루트 노드 : 인덱스 0
-  인덱스 ‘i’의 오른쪽 자식 노드 : ‘2*i + 1’
-  인덱스 ‘i’의 부모 노드 : ‘(i - 1) / 2’
-
-
-5️⃣ 예제 코드
-아래는 완전 이진 트리를 배열로 표현하고, 이를 출력하는 간단한 예제 코드입니다.
-public class CompleteBinaryTree {
-
-  public static void main(String[] args) {
-    int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    // 트리 출력
-    printTree(tree);
-  }
-
-  // 배열로 표현된 완전 이진 트리 출력
-  public static void printTree(int[] tree) {
-    for (int i = 0; i &lt; tree.length; i++) {
-      int leftChildIndex = 2 * i + 1;
-      int rightChildIndex = 2 * i + 2;
-
-      System.out.print("Node " + tree[i] + ": ");
-
-      if (leftChildIndex &lt; tree.length) {
-        System.out.print("Left Child: " + tree[leftChildIndex] + ", ");
-      } else {
-        System.out.print("Left Child: null, ");
-      }
-
-      if (rightChildIndex &lt; tree.length) {
-        System.out.print("Right Child: " + tree[rightChildIndex]);
-      } else {
-        System.out.print("Right Child: null");
-      }
-      System.out.println();
-    }
-  }
-}
-
-/* 출력
-Node 1: Left Child: 2, Right Child: 3
-Node 2: Left Child: 4, Right Child: 5
-Node 3: Left Child: 6, Right Child: 7
-Node 4: Left Child: 8, Right Child: 9
-Node 5: Left Child: null, Right Child: null
-Node 6: Left Child: null, Right Child: null
-Node 7: Left Child: null, Right Child: null
-Node 8: Left Child: null, Right Child: null
-Node 9: Left Child: null, Right Child: null
-*/
-
-
-설명
-
-
-  트리 배열 초기화 : int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    
-      완전 이진 트리를 배열로 표현합니다.
-    
-  
-  트리 출력 : printTree(tree)
-    
-      배열로 표현된 완전 이진 트리를 출력하는 함수입니다.
-      각 노드에 대해 왼쪽 자식과 오른쪽 자식을 출력합니다.
-    
-  
-
-
-시간 복잡도
-
-
-  삽입(Insertion) : O(log n)
-  삭제(Deletion) : O(log n)
-  탐색(Search) : O(n) (일반적으로 완전 이진 트리는 탐색보다 삽입/삭제가 주된 연산입니다.)
-
-
-
-  완전 이진 트리는 데이터의 구조적 특성 때문에 힙과 같은 자료구조에서 많이 사용됩니다.
-이는 효율적인 삽입 및 삭제 연산을 제공하며, 배열을 통한 표현이 간편하여 다양한 알고리즘에서 유용하게 사용됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Algorithm" class="category">Algorithm</a>
-                            
-                                <span class="date">· 2024-05-27</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Algorithm/2024/2024-05-27-BinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -55401,6 +55366,174 @@ public class Main {
     System.out.println("Search for 90: " + bst.search(90)); // 출력: false
   }
 }
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Algorithm" class="category">Algorithm</a>
+                            
+                                <span class="date">· 2024-05-27</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Algorithm/2024/2024-05-27-CompleteBinaryTree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Algorithm/2024/2024-05-27-CompleteBinaryTree.html"><h1 class="title_post">📦[DS,Algorithm] 완전 이진 트리(Complete Binary Tree)</h1></a>
+                        <a href="/Algorithm/2024/2024-05-27-CompleteBinaryTree.html" class="txt_post">
+                            1️⃣ 완전 이진 트리(Complete Binary Tree).
+
+완전 이진 트리(Complete Binary Tree)는 이진 트리의 한 종류입니다.
+
+1️⃣ 완전 이진 트리(Complete Binary Tree)의 특성.
+
+
+  모든 레벨이 완전히 채워져 있다.
+    
+      마지막 레벨을 제외한 모든 레벨의 노드가 최대 개수로 채워져 있습니다.
+      마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져 있습니다.
+    
+  
+  노드의 배치
+    
+      트리의 높이가 ‘h’ 라면, 마지막 레벨을 제외한 모든 레벨에는 ‘2^k’ 개의 노드가 있습니다. 여기서 ‘k’ 는 해당 레벨의 깊이 입니다.
+      마지막 레벨에는 1개 이상 ‘2^h’ 개 이하의 노드가 있으며, 이 노드들은 왼쪽부터 채워집니다.
+    
+  
+
+
+2️⃣ 완전 이친 트리의 예.
+        1
+      /   \
+     2     3
+    / \   / \
+   4   5 6   7
+  / \
+ 8   9
+
+
+위의 트리는 완전 이진 트리의 예입니다.
+
+모든 레벨이 완전히 채워져 있고, 마지막 레벨의 노드들은 왼쪽부터 오른쪽으로 채워져있습니다.
+
+3️⃣ 완전 이진 트리의 속성.
+
+
+  노드 수
+    
+      높이가 ‘h’ 인 완전 이진 트리는 최대 ‘2^(h+1) - 1’ 개의 노드를 가질 수 있습니다.
+      마지막 레벨을 제외한 모든 노드는 ‘2^h - 1’ 개의 노드를 가집니다.
+    
+  
+  높이
+    
+      노드 수가 ‘n’ 인 완전 이진 트리의 높이는 ‘O(log n)’ 입니다.
+    
+  
+  배열 표현
+    
+      완전 이진 트리는 배열을 사용하여 쉽게 표현할 수 있습니다. 이는 힙 자료구조에서 많이 사용됩니다.
+    
+  
+
+
+4️⃣ 배열을 통한 완전 이진 트리 표현
+
+완전 이진 트리는 배열을 사용하여 효율적으로 표현할 수 있습니다.
+
+노드의 인덱스를 기준으로 부모-자식 관계를 쉽게 파악할 수 있습니다.
+
+노드의 인덱스 규칙
+
+  루트 노드 : 인덱스 0
+  인덱스 ‘i’의 오른쪽 자식 노드 : ‘2*i + 1’
+  인덱스 ‘i’의 부모 노드 : ‘(i - 1) / 2’
+
+
+5️⃣ 예제 코드
+아래는 완전 이진 트리를 배열로 표현하고, 이를 출력하는 간단한 예제 코드입니다.
+public class CompleteBinaryTree {
+
+  public static void main(String[] args) {
+    int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // 트리 출력
+    printTree(tree);
+  }
+
+  // 배열로 표현된 완전 이진 트리 출력
+  public static void printTree(int[] tree) {
+    for (int i = 0; i &lt; tree.length; i++) {
+      int leftChildIndex = 2 * i + 1;
+      int rightChildIndex = 2 * i + 2;
+
+      System.out.print("Node " + tree[i] + ": ");
+
+      if (leftChildIndex &lt; tree.length) {
+        System.out.print("Left Child: " + tree[leftChildIndex] + ", ");
+      } else {
+        System.out.print("Left Child: null, ");
+      }
+
+      if (rightChildIndex &lt; tree.length) {
+        System.out.print("Right Child: " + tree[rightChildIndex]);
+      } else {
+        System.out.print("Right Child: null");
+      }
+      System.out.println();
+    }
+  }
+}
+
+/* 출력
+Node 1: Left Child: 2, Right Child: 3
+Node 2: Left Child: 4, Right Child: 5
+Node 3: Left Child: 6, Right Child: 7
+Node 4: Left Child: 8, Right Child: 9
+Node 5: Left Child: null, Right Child: null
+Node 6: Left Child: null, Right Child: null
+Node 7: Left Child: null, Right Child: null
+Node 8: Left Child: null, Right Child: null
+Node 9: Left Child: null, Right Child: null
+*/
+
+
+설명
+
+
+  트리 배열 초기화 : int[] tree = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    
+      완전 이진 트리를 배열로 표현합니다.
+    
+  
+  트리 출력 : printTree(tree)
+    
+      배열로 표현된 완전 이진 트리를 출력하는 함수입니다.
+      각 노드에 대해 왼쪽 자식과 오른쪽 자식을 출력합니다.
+    
+  
+
+
+시간 복잡도
+
+
+  삽입(Insertion) : O(log n)
+  삭제(Deletion) : O(log n)
+  탐색(Search) : O(n) (일반적으로 완전 이진 트리는 탐색보다 삽입/삭제가 주된 연산입니다.)
+
+
+
+  완전 이진 트리는 데이터의 구조적 특성 때문에 힙과 같은 자료구조에서 많이 사용됩니다.
+이는 효율적인 삽입 및 삭제 연산을 제공하며, 배열을 통한 표현이 간편하여 다양한 알고리즘에서 유용하게 사용됩니다.
 
 
                         </a>
@@ -100163,6 +100296,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Spring/2024-11-10-JPA-Association-Owner-Effect.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-10"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-10-JPA-Association-cautions-when-using.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-10"
         });

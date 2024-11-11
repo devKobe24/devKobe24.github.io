@@ -811,6 +811,7 @@
             
             
             
+            
 
     
     
@@ -1437,6 +1438,179 @@ public class Team {
 
   N:1 관계에서는 다수 쪽이 연관관계의 주인이며 외래 키를 가집니다.
   필요에 따라 지연 로딩(Lazy Loading)을 설정하여 성능을 최적화하는 것이 좋습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-11-Many-To-Many.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-11-Many-To-Many.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계</h1></a>
+                        <a href="/Spring/2024-11-11-Many-To-Many.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계
+
+  JPA에서 N:M 관계란 두 엔티티가 다대다(Many-to-Many)로 연결된 관계를 의미합니다.
+    
+      예를 들어, 학생(Student)과 강의(Course) 관계에서 하나의 학생이 여러 강의를 수강할 수 있고, 동시에 하나의 강의에 여러 학생이 수강할 수 있는 경우에 N:M 관계가 성립됩니다.
+    
+  
+
+
+1️⃣ N:M 관계의 매핑 방식.
+
+  JPA에서는 @ManyToMany 어노테이션을 사용하여 N:M 관계를 매핑할 수 있습니다.
+    
+      N:M 관계에서는 연결 테이블(Join Table)이 필요하며, JPA는 연결 테이블을 자동으로 생성하거나 개발자가 직접 정의할 수 있습니다.
+    
+  
+
+
+2️⃣ N:M 관계의 기본 매핑.
+
+  N:M 관계는 단순히 @ManyToMany 어노테이션을 사용하는 방식과, 연결 테이블을 엔티티로 분리하여 사용하는 방식 두 가지가 있습니다.
+
+
+1️⃣ 기본적인 @ManyToMany 매핑
+@Entity
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "student_course", // 연결 테이블 이름
+        joinColumns = @JoinColumn(name = "student_id"), // 현재 엔티티(Student)의 외래 키
+        inverseJoinColumns = @JoinColumn(name = "course_id") // 반대 엔티티(Course)의 외래 키
+    )
+    private List&lt;Course&gt; courses = new ArrayList&lt;&gt;();
+}
+
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GeneratioonType.IDENTITY)
+    private Long id;
+    
+    private String title;
+    
+    @ManyToMany(mappedBy = "course") // 반대쪽 엔티티와의 양방향 관계 설정.
+    private List&lt;Student&gt; students = new ArrayList&lt;&gt;();
+}
+
+
+👉 설명.
+
+  @ManyToMany 어노테이션을 사용해 Student와 Course 엔티티 간의 N:M 관계를 매핑합니다.
+  @JoinTable을 사용하여 연결 테이블(student_course)을 지정하고, 각 엔티티의 외래 키를 joinColumns와 inverseJoinColumns으로 설정합니다.
+  Student와 Course 간의 양방향 관계로 설정되었으며, mappedBy를 사용해 반대쪽의 매핑 필드를 지정합니다.
+
+
+3️⃣ 연결 엔티티를 사용한 N:M 매핑.
+
+  @ManyToMany 관계는 간단한 경우에만 사용하는 것이 좋습니다.
+    
+      관계가 복잡하거나 추가적인 속성이 필요한 경우 연결 테이블을 별도의 엔티티로 분리하여 N:1 및 1:N 관계로 매핑하는 방식이 선호됩니다.
+        
+          예를 들어, 학생과 강의 사이에 학점(Grade)과 같은 속성이 필요하다면, 연결 엔티티인 Enrollment를 추가합니다.
+```java
+@Entity
+public class Student {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+        
+      
+    
+
+    private String name;
+
+    @OneToMany(mappedBy = “student”)
+  private List enrollments = new ArrayList&lt;&gt;();
+
+    // getter, setter
+}
+  
+
+
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+private String title;
+
+@OneToMany(mappedBy = "course")
+private List&lt;Enrollment&gt; enrollments = new ArrayList&lt;&gt;();
+
+// getter, setter }
+
+
+@Entity
+public class Enrollment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+private String grade;
+
+@ManyToOne
+@JoinColumn(name = "student_id")
+private Student student;
+
+@ManyToOne
+@JoinColumn(name = "course_id")
+private Course course;
+
+// getter, setter } ```
+
+
+👉 설명.
+
+  Enrollment 엔티티를 추가하여 Student와 Course 간의 연결을 표현합니다.
+    
+      이제 Student와 Course는 Enrollment와 N:1 관계를 가집니다.
+    
+  
+  이 방식은 연결 엔티티에 추가적인 필드(예: grade)를 포함할 수 있어 유연합니다.
+
+
+4️⃣ N:M 관계 사용 시 주의사항.
+
+  직접적인 @ManyToMany 관계는 단순한 관계에서만 사용하며, 복잡한 비즈니스 요구사항이 있는 경우 연결 테이블을 엔티티로 만들어 처리합니다.
+  N:M 관계는 조인 테이블을 이용하므로, 데이터의 양이 많아지면 성능 저하를 일으킬 수 있습니다.
+    
+      지연 로딩(Lazy Loading) 설정을 통해 성능을 최적화합니다.
+    
+  
+  복잡한 관계에서의 Cascade 옵션은 신중하게 설정해야 불필요한 연관 엔티티의 저장/삭제를 방지할 수 있습니다.
+
+
+5️⃣ 요약.
+
+  N:M 관계는 @ManyToMany 어노테이션으로 쉽게 매핑할 수 있지만, 추가적인 속성이 필요하거나 관계가 복잡해지면 연결 테이블을 별도 엔티티로 분리하여 처리하는 것이 좋습니다.
+    
+      연결 엔티티를 분리하면 추가 속성을 포함할 수 있으며, 더 유연한 데이터 모델링이 가능합니다.
+    
+  
 
 
                         </a>
@@ -55318,91 +55492,150 @@ CPU와 메모리처럼 전송률이 높은 장치는 1초에도 수많은 데이
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Algorithm/2024/2024-05-27-Tree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/Algorithm/2024/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Algorithm/2024/2024-05-27-Tree.html"><h1 class="title_post">📦[DS,Algorithm] 트리(Tree)</h1></a>
-                        <a href="/Algorithm/2024/2024-05-27-Tree.html" class="txt_post">
-                            1️⃣ 트리(Tree).
+                        <a href="/Algorithm/2024/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
+                        <a href="/Algorithm/2024/2024-05-27-Node.html" class="txt_post">
+                            1️⃣ Node(노드).
 
-트리(Tree) 는 계층적 구조를 나타내는 자료구조로, 노드(Node)와 에지(Edge)로 구성됩니다.
+Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
 
-트리는 사이클이 없는 연결 그래프(Connected Graph)이며, 계층적 데이터 표현에 매우 유용합니다.
+노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
 
-트리는 부모-자식 관계를 가지며, 데이터의 조직화와 검색, 계층적 데이터 표현에 사용됩니다.
-
-1️⃣ 트리의 구성 요소.
+1️⃣ Node의 구성 요소.
 
 
   
-    노드(Node) : 트리의 기본 단위로, 데이터를 저장합니다.
+    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
   
   
-    에지(Edge) : 노드와 노드를 연결하는 선으로, 부모-자식 관계를 나타냅니다.
-  
-  
-    루트(Root) : 트리의 최상위 노드로, 부모 노드가 없습니다.
-  
-  
-    부모(Parent) : 다른 노드를 가리키는 노드입니다.
-  
-  
-    자식(Child) : 부모 노드에 의해 가리켜지는 노드입니다.
-  
-  
-    잎(Leaf) : 자식 노드가 없는 노드입니다.
-  
-  
-    내부 노드(Internal Node) : 자식 노드가 있는 노드입니다.
-  
-  
-    레벨(Level) : 루트 노드에서 특정 노드까지의 에지 수를 나타냅니다.
-  
-  
-    높이(Height) : 트리의 최대 레벨을 의미합니다.
+    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
+    
+      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
+      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
+      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
+      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
+    
   
 
 
-2️⃣ 트리의 특성.
+Singly Linked List의 Node
+Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+
+public class Node {
+  int data; // 노드가 저장하는 데이터
+  Node next; // 다음 노드를 가리키는 포인터
+
+  public Node(int data) {
+    this.data = data;
+    this.next = null;
+  }
+}
 
 
-  계층적 구조 : 트리는 계층적 구조로 데이터를 조직화합니다.
-  사이클 없음 : 트리는 사이클이 없는 그래프입니다.
-  연결성 : 모든 노드는 하나의 연결된 구성 요소로 되어 있습니다.
-  한 개의 루트 노드 : 트리는 하나의 루트 노드를 가지며, 루트 노드는 트리의 시작점입니다.
+Doubly Linked List의 Node
+Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
+public class DoublyNode {
+  int data; // 노드가 저장하는 데이터
+  DoublyNode next; // 다음 노드를 가리키는 포인터
+  DoublyNode prev; // 이전 노드를 가리키는 포인터
+
+  public DoublyNode(int data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
+}
 
 
-3️⃣ 트리의 종류.
+2️⃣ Node를 사용하는 예제.
 
+Singly Linked List
 
-  
-    이진 트리(Binary Tree) : 각 노드가 최대 두 개의 자식 노드를 가질 수 있는 트리입니다.
-  
-  
-    이진 탐색 트리(Binary Search Tree, BST) : 이진 트리의 일종으로, 왼쪽 자식 노드의 값이 부모 노드의 값보다 작고, 오른쪽 자식 노드의 값이 부모 노드의 값보다 큰 특성을 가집니다.
-  
-  
-    균형 이진 트리(Balanced Binary Tree) : AVL 트리, 레드-블랙 트리 등과 같이 트리의 높이가 균형을 이루도록 유지하는 트리입니다.
-  
-  
-    B-트리(B-Tree) : 데이터베이스와 파일 시스템에서 사용되는 트리로, 자식 노드의 수가 정해진 다진 트리(Multiway Tree)입니다.
-  
-  
-    힙(Heap) : 완전 이진 트리의 일종으로, 부모 노드의 값이 자식 노드의 값보다 크거나 작은 특성을 가집니다.
-  
-  
-    트라이(Trie) : 문자열 검색을 위한 트리 자료구조로, 접두사 검색에 유용합니다.
-  
+Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
 
+아래는 Singly Linked List를 구현한 예제입니다.
 
-4️⃣ 트리의 주요 연산.
+//SinglyLinkedList
+public class SinglyLinkedList {
+  private Node head;
 
+  public SinglyLinkedList() {
+    this.head = null;
+  }
 
-  삽입(Insertion) : 트리에 새로운 노드를 추가합니다.
-  삭제(Deletion) : 트리에서 노드를 제거합니다.
-  탐색(Search) : 트리에서 특정 값을 찾습니다.
-  순회(Traversal) : 트리의 모든 노드를 방문합니다. 전위(Preorder), 중위(Inorder), 후위(Postorder), 레벨 순회(Level Order) 방식이 있습니다.
+  // 리스트의 맨 앞에 노드 추가
+  public void addFirst(int data) {
+    Node newNode = new Node(data);
+    newNode.next = head;
+    head = newNode;
+  }
+
+  // 리스트의 맨 끝에 노드 추가
+  public void addLast(int data) {
+    Node newNode = new Node(data);
+    if (head == null) {
+      head = newNode;
+      return;
+    }
+    Node current = head;
+    while (current.next != null) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  // 리스트의 특정 값 삭제
+  public void delete(int data) {
+    if (head == null) {
+      return;
+    }
+
+    if (head.data == data) {
+      head = head.next;
+      return;
+    }
+
+    Node current = head;
+
+    while (current.next != null &amp;&amp; current.next.data != data) {
+      current = current.next;
+    }
+
+    if (current.next != null) {
+      current.next = current.next.next;
+    }
+  }
+
+  // 리스트 출력
+  public void printList() {
+    Node current = head;
+    while (current != null) {
+      System.out.print(current.data + " ");
+      current = current.next;
+    }
+    System.out.println();
+  }
+}
+
+// Main
+public class Main {
+
+  public static void main(String[] args) {
+    // Singly Linked List 생성
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+    singlyLinkedList.addFirst(1);
+    singlyLinkedList.addLast(2);
+    singlyLinkedList.addLast(3);
+    singlyLinkedList.printList(); // 1 2 3
+
+    singlyLinkedList.delete(2);
+    singlyLinkedList.printList(); // 1 3
+  }
+}
 
 
                         </a>
@@ -55775,150 +56008,91 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Algorithm/2024/2024-05-27-Node.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                            <a href="/Algorithm/2024/2024-05-27-Tree.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Algorithm/2024/2024-05-27-Node.html"><h1 class="title_post">📦[DS,Algorithm] 노드(Node)</h1></a>
-                        <a href="/Algorithm/2024/2024-05-27-Node.html" class="txt_post">
-                            1️⃣ Node(노드).
+                        <a href="/Algorithm/2024/2024-05-27-Tree.html"><h1 class="title_post">📦[DS,Algorithm] 트리(Tree)</h1></a>
+                        <a href="/Algorithm/2024/2024-05-27-Tree.html" class="txt_post">
+                            1️⃣ 트리(Tree).
 
-Node(노드) 는 연결 리스트, 트리, 그래프 등의 자료구조에서 기본적인 단위 요소를 의미합니다.
+트리(Tree) 는 계층적 구조를 나타내는 자료구조로, 노드(Node)와 에지(Edge)로 구성됩니다.
 
-노드는 데이터를 저장하며, 다른 노드와의 연결을 나타내는 포인터(참조)를 포함합니다.
+트리는 사이클이 없는 연결 그래프(Connected Graph)이며, 계층적 데이터 표현에 매우 유용합니다.
 
-1️⃣ Node의 구성 요소.
+트리는 부모-자식 관계를 가지며, 데이터의 조직화와 검색, 계층적 데이터 표현에 사용됩니다.
+
+1️⃣ 트리의 구성 요소.
 
 
   
-    데이터(Data) : 노드가 저장하는 실제 값입니다. 이는 숫자, 문자, 객체 등 모든 데이터 타입이 될 수 있습니다.
+    노드(Node) : 트리의 기본 단위로, 데이터를 저장합니다.
   
   
-    포인터(참조, Pointer) : 다음 노드(또는 다른 관련된 노드)를 가리지는 참조입니다. 포인터의 수와 종류는 자료구조에 따라 다릅니다.
-    
-      Singly Linked List : 하나의 다음 노드를 가리키는 포인터를 가집니다.
-      Doubly Linked List : 이전 노드와 다음 노드를 가리키는 두 개의 포인터를 가집니다.
-      트리(Tree) : 부모 노드, 자식 노드 등 여러 방향의 포인터를 가질 수 있습니다.
-      그래프(Graph) : 여러 개의 인접 노드를 가리키는 포인터를 가질 수 있습니다.
-    
+    에지(Edge) : 노드와 노드를 연결하는 선으로, 부모-자식 관계를 나타냅니다.
+  
+  
+    루트(Root) : 트리의 최상위 노드로, 부모 노드가 없습니다.
+  
+  
+    부모(Parent) : 다른 노드를 가리키는 노드입니다.
+  
+  
+    자식(Child) : 부모 노드에 의해 가리켜지는 노드입니다.
+  
+  
+    잎(Leaf) : 자식 노드가 없는 노드입니다.
+  
+  
+    내부 노드(Internal Node) : 자식 노드가 있는 노드입니다.
+  
+  
+    레벨(Level) : 루트 노드에서 특정 노드까지의 에지 수를 나타냅니다.
+  
+  
+    높이(Height) : 트리의 최대 레벨을 의미합니다.
   
 
 
-Singly Linked List의 Node
-Singly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-
-public class Node {
-  int data; // 노드가 저장하는 데이터
-  Node next; // 다음 노드를 가리키는 포인터
-
-  public Node(int data) {
-    this.data = data;
-    this.next = null;
-  }
-}
+2️⃣ 트리의 특성.
 
 
-Doubly Linked List의 Node
-Doubly Linked List에서의 노드는 다음과 같은 구조를 가집니다.
-public class DoublyNode {
-  int data; // 노드가 저장하는 데이터
-  DoublyNode next; // 다음 노드를 가리키는 포인터
-  DoublyNode prev; // 이전 노드를 가리키는 포인터
-
-  public DoublyNode(int data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
-  }
-}
+  계층적 구조 : 트리는 계층적 구조로 데이터를 조직화합니다.
+  사이클 없음 : 트리는 사이클이 없는 그래프입니다.
+  연결성 : 모든 노드는 하나의 연결된 구성 요소로 되어 있습니다.
+  한 개의 루트 노드 : 트리는 하나의 루트 노드를 가지며, 루트 노드는 트리의 시작점입니다.
 
 
-2️⃣ Node를 사용하는 예제.
+3️⃣ 트리의 종류.
 
-Singly Linked List
 
-Singly Linked List는 각 노드가 다음 노드를 가리키는 구조로 연결된 리스트 입니다.
+  
+    이진 트리(Binary Tree) : 각 노드가 최대 두 개의 자식 노드를 가질 수 있는 트리입니다.
+  
+  
+    이진 탐색 트리(Binary Search Tree, BST) : 이진 트리의 일종으로, 왼쪽 자식 노드의 값이 부모 노드의 값보다 작고, 오른쪽 자식 노드의 값이 부모 노드의 값보다 큰 특성을 가집니다.
+  
+  
+    균형 이진 트리(Balanced Binary Tree) : AVL 트리, 레드-블랙 트리 등과 같이 트리의 높이가 균형을 이루도록 유지하는 트리입니다.
+  
+  
+    B-트리(B-Tree) : 데이터베이스와 파일 시스템에서 사용되는 트리로, 자식 노드의 수가 정해진 다진 트리(Multiway Tree)입니다.
+  
+  
+    힙(Heap) : 완전 이진 트리의 일종으로, 부모 노드의 값이 자식 노드의 값보다 크거나 작은 특성을 가집니다.
+  
+  
+    트라이(Trie) : 문자열 검색을 위한 트리 자료구조로, 접두사 검색에 유용합니다.
+  
 
-아래는 Singly Linked List를 구현한 예제입니다.
 
-//SinglyLinkedList
-public class SinglyLinkedList {
-  private Node head;
+4️⃣ 트리의 주요 연산.
 
-  public SinglyLinkedList() {
-    this.head = null;
-  }
 
-  // 리스트의 맨 앞에 노드 추가
-  public void addFirst(int data) {
-    Node newNode = new Node(data);
-    newNode.next = head;
-    head = newNode;
-  }
-
-  // 리스트의 맨 끝에 노드 추가
-  public void addLast(int data) {
-    Node newNode = new Node(data);
-    if (head == null) {
-      head = newNode;
-      return;
-    }
-    Node current = head;
-    while (current.next != null) {
-      current = current.next;
-    }
-    current.next = newNode;
-  }
-
-  // 리스트의 특정 값 삭제
-  public void delete(int data) {
-    if (head == null) {
-      return;
-    }
-
-    if (head.data == data) {
-      head = head.next;
-      return;
-    }
-
-    Node current = head;
-
-    while (current.next != null &amp;&amp; current.next.data != data) {
-      current = current.next;
-    }
-
-    if (current.next != null) {
-      current.next = current.next.next;
-    }
-  }
-
-  // 리스트 출력
-  public void printList() {
-    Node current = head;
-    while (current != null) {
-      System.out.print(current.data + " ");
-      current = current.next;
-    }
-    System.out.println();
-  }
-}
-
-// Main
-public class Main {
-
-  public static void main(String[] args) {
-    // Singly Linked List 생성
-    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-
-    singlyLinkedList.addFirst(1);
-    singlyLinkedList.addLast(2);
-    singlyLinkedList.addLast(3);
-    singlyLinkedList.printList(); // 1 2 3
-
-    singlyLinkedList.delete(2);
-    singlyLinkedList.printList(); // 1 3
-  }
-}
+  삽입(Insertion) : 트리에 새로운 노드를 추가합니다.
+  삭제(Deletion) : 트리에서 노드를 제거합니다.
+  탐색(Search) : 트리에서 특정 값을 찾습니다.
+  순회(Traversal) : 트리의 모든 노드를 방문합니다. 전위(Preorder), 중위(Inorder), 후위(Postorder), 레벨 순회(Level Order) 방식이 있습니다.
 
 
                         </a>
@@ -100705,6 +100879,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Spring/2024-11-10-JPA-Association-cautions-when-using.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-10"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-11-Many-To-Many.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-11"
         });
     
 

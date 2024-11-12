@@ -815,6 +815,7 @@
             
             
             
+            
 
     
     
@@ -1185,6 +1186,147 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html"><h1 class="title_post">🍃[Spring] '도메인 계층에 비즈니스 로직이 들어갔다'의 의미는 무엇인가요?</h1></a>
+                        <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html" class="txt_post">
+                            🍃[Spring] ‘도메인 계층에 비즈니스 로직이 들어갔다’의 의미는 무엇인가요?
+
+  애플리케이션의 핵심적인 비즈니스 로직을 도메인 객체(주로 엔티티나 값 객체)에 포함시켰다는 것을 의미합니다.
+    
+      도메인 객체에 비즈니스 로직이 들어가면, 객체 지향 설계에서 객체 스스로 자신의 상태와 행동을 관리하는 방식으로 시스템을 설계할 수 있습니다.
+    
+  
+
+
+1️⃣ 도메인 계층이란?
+
+  도메인 계층은 애플리케이션의 핵심 비즈니스 로직을 표현하는 계층입니다.
+  애플리케이션의 복잡한 비즈니스 로직과 규칙을 포함하며, 보통 엔티티, 값 객체, 에그리게이트 등의 도메인 객체로 구성됩니다.
+
+
+
+  🙋‍♂️ 에그리게이트(Aggregate)
+
+  도메인 주도 설계(Domain-Driven Design, DDD)에서 사용하는 개념으로, 밀접하게 연관된 객체들을 하나의 단위로 묶어 관리하는 그룹입니다.
+에그리게이트(Aggregate)는 하나의 일관성 있는 변경 단위로 다뤄지며, 객체들의 집합이 단일한 도메인 개념을 표현할 때 사용됩니다.
+
+
+2️⃣ 비즈니스 로직이 도메인 계층에 위치하는 이유.
+
+  비즈니스 로직을 도메인 계층에 넣는 것은 객체 지향 원칙에 맞는 설계 방식입니다.
+    
+      객체가 자신의 상태를 스스로 관리하고, 필요한 작업도 스스로 수행하는 방식으로 설계하면 높은 응집력을 유지할 수 있으며, 코드의 재사용성과 유지보수성도 향상됩니다.
+        
+          예를 들어, Order라는 주문 엔티티가 있다고 가정할 때, 이 엔티티에 주문 추가, 총액 계산과 같은 비즈니스 로직을 포함시키면, 서비스 계층에서 단순히 데이터를 처리하기보다 Order 객체가 자신의 역할에 맞게 스스로 행동할 수 있게 됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 예제: 비즈니스 로직이 도메인 계층에 포함된 경우.
+
+  아래 예제에서는 Order 엔티티가 주문과 관련된 비즈니스 로직을 스스로 수행하도록 구현하였습니다.
+    @Entity
+public class Order {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToMany(mappedBy = "order", cascade = Cascade = CascadeType.ALL, orphanRemoval = true)
+  private List&lt;OrderItem&gt; items = new ArrayList&lt;&gt;();
+    
+  private LocalDateTime orderDate;
+    
+  public void addItem(OrderItem item) {
+      items.add(item);
+      item.setOrder(this);
+  }
+    
+  public void removeItem(OrderItem item) {
+      item.remove(item);
+      item.setOrder(null);
+  }
+    
+  public BigDecimal calculateTotalPrice() {
+      return items.stream()
+                  .map(OrderItem::getTotalPrice)
+                  .reduce(BigDecimal.ZERO, BigDecimal::add);
+  }
+    
+  public void completeOrder() {
+      if (items.isEmpty()) {
+          throw new IllegalStateException("주문 항목이 비어 있습니다.");
+      }
+      this.orderDate = LocalDateTime.now();
+  }
+  // getter, setter
+}
+    
+  
+
+
+4️⃣ 설명.
+
+  addItem 메서드 : Order 객체가 스스로 주문 항목을 추가하는 로직을 갖고 있습니다.
+  calculateTotalPrice 메서드 : 주문 항목들의 총합을 계산하는 비즈니스 로직이 Order 객체에 포함되어 있습니다.
+  completeOrder 메서드 : 주문을 완료할 때의 비즈니스 규칙(예: 주문 항목이 없으면 오류)을 Order 객체가 스스로 처리합니다.
+    
+      위와 같이 도메인 객체에 비즈니스 로직을 포함하면, 서비스 계층에서는 Order 객체의 상태를 직접 변경하거나 처리하는 대신, Order 객체에 필요한 행동을 요청할 수 있습니다.
+    
+  
+
+
+5️⃣ 도메인 계층에 비즈니스 로직을 넣는 장점.
+
+1️⃣ 응집성 강화.
+
+  데이터와 비즈니스 로직이 도메인 객체 내부에 함꼐 위치하여 서로 밀접하게 관리됩니다.
+
+
+2️⃣ 코드의 재사용성.
+
+  비즈니스 로직이 도메인 계층에 있으면, 다른 서비스에도 해당 객체의 기능을 재사용할 수 있습니다.
+
+
+3️⃣ 유지보수 용이성.
+
+  비즈니스 로직이 한 곳에 집중되므로, 코드의 유지보수가 더 쉬워집니다.
+
+
+4️⃣ 풍부한 도메인 모델.
+
+  객체가 데이터를 단순히 담는 것에 그치지 않고 스스로 의미 있는 역할을 하며, 모델 자체가 더 직관적이고 이해하기 쉬워집니다.
+
+
+5️⃣ 요약.
+
+  “도메인 계층에 비즈니스 로직이 들어갔다”는 의미는 애플리케이션의 비즈니스 로직이 서비스 계층이나 별도의 유틸리티 클래스가 아니라 도메인 객체 내부에 위치하여 객체가 스스로 비즈니스 규칙을 관리하고 수행한다는 것을 의미합니다.
+    
+      이는 응집성과 재사용성을 높이며, 객체 지향적인 설계 원칙에 따라 시스템을 설계하는 방식입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2237,6 +2379,216 @@ private List&lt;User&gt; users = new ArrayList&lt;&gt;();
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-11-10-JPA-Association-One-To-One.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-10-JPA-Association-One-To-One.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 1:1 관계</h1></a>
+                        <a href="/Spring/2024-11-10-JPA-Association-One-To-One.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 1:1 관계
+
+1️⃣ 1:1 관계.
+
+  하나의 엔티티가 다른 하나의 엔티티와 1대 1로 매핑되는 관계를 의미합니다.
+    
+      예를 들어, User와 UserProfile 엔티티가 1:1 관계에 있다고 가정해 보겠습니다.
+        
+          각 User는 하나의 UserProfile만을 가지며, 각 UserProfile은 하나의 User에만 연결될 수 있습니다.
+        
+      
+    
+  
+  1:1 관계를 JPA에서 매핑할 때는 보통 @OneToOne 어노테이션을 사용합니다.
+    
+      JPA에서는 @JoinColumn을 이용해 두 엔티티를 연결하는 외래 키를 지정할 수도 있습니다.
+    
+  
+
+
+👉 예시 코드.
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @OneToOne
+    @JoinColumn(name = "user_profile_id") // 외래 키 설정
+    private UserProfile userProfile;
+    
+    // getter, setter 등
+}
+
+@Entity
+public class UserProfile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String address;
+    private String phoneNumber;
+    
+    @OneToOne(mappedBy = "userProfile") // 연관관계 주인이 아님을 명시
+    private User user;
+    
+    // getter, setter 등
+}
+
+
+👉 설명.
+
+  User 엔티티는 UserProfile 엔티티와 1:1 관계로, userProfile 필드를 통해 UserProfile을 참조합니다.
+  @JoinColumn은 User 엔티티 테이블에 user_profile_id라는 외래 키 컬럼을 생성하여 두 엔티티를 연결합니다.
+  USerProfile 엔티티에서는 mappedBy 속성을 사용하여 양방향 관계에서의 연관 관계의 주인을 User 엔티티로 설정합니다.
+
+
+2️⃣ 단방향과 양방향.
+
+1️⃣ 단방향 1:1 관계.
+
+  하나의 엔티티에서만 다른 엔티티를 참조합니다.
+
+
+2️⃣ 양방향 1:1 관계.
+
+  두 엔티티가 서로를 참조할 수 있으며, mappedBy를 사용하여 주인을 명시합니다.
+
+
+3️⃣ 마무리.
+
+  1:1 관계는 데이터베이스에서의 테이블이 잘 분리되고 성능이 적절히 유지되어야 할 때 유용하게 사용됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-11-10-Data-Integrity.html"><h1 class="title_post">💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="txt_post">
+                            💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?
+
+  데이터의 정확성, 일관성, 신뢰성을 유지하는 것을 의미합니다.
+  데이터 정합성(Data Integrity)이 보장되면 애플리케이션의 로직과 데이터베이스 간의 데이터가 서로 일관성 있게 유지되며, 데이터가 의도하지 않은 변경 없이 신뢰성 있게 관리됩니다.
+    
+      이는 데이터베이스와 관련된 모든 시스템에서 매우 중요한 개념입니다.
+    
+  
+
+
+1️⃣ 데이터 정합성(Data Integrity)이 중요한 이유.
+
+  데이터 정합성(Data Integrity)은 애플리케이션의 데이터가 정확하고, 오류 없이 유지될 수 있도록 하여, 올바른 데이터 기반으로 시스템이 운영되게 합니다.
+    
+      만약 데이터 정합성(Data Integrity)이 깨진다면, 잘못된 데이터로 인해 애플리케이션이 잘못된 동작을 수행할 수 있으며, 이는 사용자에게 혼란을 주고, 시스템의 신뢰성을 떨어뜨릴 수 있습니다.
+    
+  
+
+
+2️⃣ 데이터 정합성(Data Integrity)의 종류.
+
+  데이터 정합성(Data Integrity)는 크게 정합성, 참조 정합성, 비즈니스 정합성으로 나눌 수 있습니다.
+
+
+1️⃣ 엔티티 정합성(Entity Integrity)
+
+  각 엔티티(테이블)의 기본 키(Primary Key)는 유일하고 중복되지 않으며 NULL이 될 수 없음을 보장합니다.
+    
+      예를 들어, User 테이블의 id 필드가 중복되지 않고 NULL 값이 없는 경우, 이는 엔티티 정합성이 유지된 것입니다.
+    
+  
+
+
+2️⃣ 참조 정합성(Referential Integrity)
+
+  데이터베이스에서 외래 키(Foreign Key)를 통해 연관된 테이블 간의 관계가 일관되게 유지됨을 의미합니다.
+    
+      예를 들어, Order 테이블이 User 테이블의 외래 키로 user_id를 가지는 경우, 모든 Order가 존재하는 user_id를 가져야 참조 정합성이 유지됩니다.
+        
+          만약 User 테이블에서 삭제된 사용자의 user_id가 Order 테이블에 남아 있으면 참조 정합성이 깨진 것입니다.
+        
+      
+    
+  
+
+
+3️⃣ 비즈니스 정합성(Business Integrity)
+
+  비즈니스 로직에 따라 특정 조건들이 일관되게 유지됨을 보장합니다.
+    
+      즉, 비즈니스 요구 사항에 맞게 데이터가 정확히 반영되는 것을 의미합니다.
+        
+          예를 들어, Account 테이블에서 계좌 잔고가 음수로 내려가지 않도록 하는 규칙이 있다면, 이 규칙을 지켜야 비즈니스 정합성이 유지됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 데이터 정합성 보장 방법.
+
+  데이터 정합성을 유지하기 위해 다음과 같은 기법이 사용됩니다.
+    
+      1. 데이터베이스 제약 조건 : 데이터베이스 수준에서 PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL 등의 제약 조건을 설정하여 정합성을 보장합니다.
+      2. 트랜잭션 : 트랜잭션은 ACID(Atomicity, Consistency, Isolation, Durability) 속성을 통해 데이터의 일관성을 유지합니다. 트랜잭션 내의 모든 작업이 성공적으로 완료되거나 모두 실패해야 데이터 정합성이 보장됩니다.
+      3. 애플리케이션 로직 : 비즈니스 정합성은 데이터베이스뿐만 아니라 애플리케이션 코드에서도 확인되어야 합니다. 예를 들어, 특정 규칙에 따라 데이터를 삽입하거나 업데이트하기 전에 로직을 통해 검증하는 방식입니다.
+    
+  
+
+
+4️⃣ JPA에서의 데이터 정합성 유지.
+
+  JPA를 사용할 때는 다음과 같은 방식으로 데이터 정합성을 유지할 수 있습니다.
+    
+      연관관계 주인 설정 : 연관관계 주인을 올바르게 설정하여, 양방향 관계에서 데이터베이스에 데이터가 일관되게 반영되도록 합니다.
+      Cascade와 Orphan 객체 처리 : CascadeType.ALL과 orphanRemoval = true 설정을 통해 부모-자식 관계에서 데이터 정합성을 유지할 수 있습니다.
+      트랜잭션 관리 : 데이터의 삽입, 수정, 삭제 작업을 트랙잭션으로 묶어, 작업 도중 에러가 발생해도 정합성이 깨지지 않도록 합니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  데이터 정합성은 데이터의 정확성과 신뢰성을 유지하기 위해 필수적인 개념입니다.
+    
+      이를 보장하려면 데이터베이스 제약 조건, 트랜잭션 관리, 애플리케이션 로직을 통한 검증이 필요하며, JPA를 사용하는 경우 연관관계와 트랜잭션을 올바르게 관리해야 합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-11-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2405,216 +2757,6 @@ public class UserProfile {
   연관관계 주인 : 데이터베이스에 외래 키를 관리하는 엔티티. @JoinColumn을 통해 설정됨.
   주인이 아닌 엔티티 : mappedBy 속성을 통해 설정되며, 읽기 전용으로 작동.
   주인만이 외래 키 수정, 삭제, 삽입을 관리하고 데이터베이스에 반영함.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-11-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-11-10-Data-Integrity.html"><h1 class="title_post">💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="txt_post">
-                            💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?
-
-  데이터의 정확성, 일관성, 신뢰성을 유지하는 것을 의미합니다.
-  데이터 정합성(Data Integrity)이 보장되면 애플리케이션의 로직과 데이터베이스 간의 데이터가 서로 일관성 있게 유지되며, 데이터가 의도하지 않은 변경 없이 신뢰성 있게 관리됩니다.
-    
-      이는 데이터베이스와 관련된 모든 시스템에서 매우 중요한 개념입니다.
-    
-  
-
-
-1️⃣ 데이터 정합성(Data Integrity)이 중요한 이유.
-
-  데이터 정합성(Data Integrity)은 애플리케이션의 데이터가 정확하고, 오류 없이 유지될 수 있도록 하여, 올바른 데이터 기반으로 시스템이 운영되게 합니다.
-    
-      만약 데이터 정합성(Data Integrity)이 깨진다면, 잘못된 데이터로 인해 애플리케이션이 잘못된 동작을 수행할 수 있으며, 이는 사용자에게 혼란을 주고, 시스템의 신뢰성을 떨어뜨릴 수 있습니다.
-    
-  
-
-
-2️⃣ 데이터 정합성(Data Integrity)의 종류.
-
-  데이터 정합성(Data Integrity)는 크게 정합성, 참조 정합성, 비즈니스 정합성으로 나눌 수 있습니다.
-
-
-1️⃣ 엔티티 정합성(Entity Integrity)
-
-  각 엔티티(테이블)의 기본 키(Primary Key)는 유일하고 중복되지 않으며 NULL이 될 수 없음을 보장합니다.
-    
-      예를 들어, User 테이블의 id 필드가 중복되지 않고 NULL 값이 없는 경우, 이는 엔티티 정합성이 유지된 것입니다.
-    
-  
-
-
-2️⃣ 참조 정합성(Referential Integrity)
-
-  데이터베이스에서 외래 키(Foreign Key)를 통해 연관된 테이블 간의 관계가 일관되게 유지됨을 의미합니다.
-    
-      예를 들어, Order 테이블이 User 테이블의 외래 키로 user_id를 가지는 경우, 모든 Order가 존재하는 user_id를 가져야 참조 정합성이 유지됩니다.
-        
-          만약 User 테이블에서 삭제된 사용자의 user_id가 Order 테이블에 남아 있으면 참조 정합성이 깨진 것입니다.
-        
-      
-    
-  
-
-
-3️⃣ 비즈니스 정합성(Business Integrity)
-
-  비즈니스 로직에 따라 특정 조건들이 일관되게 유지됨을 보장합니다.
-    
-      즉, 비즈니스 요구 사항에 맞게 데이터가 정확히 반영되는 것을 의미합니다.
-        
-          예를 들어, Account 테이블에서 계좌 잔고가 음수로 내려가지 않도록 하는 규칙이 있다면, 이 규칙을 지켜야 비즈니스 정합성이 유지됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 데이터 정합성 보장 방법.
-
-  데이터 정합성을 유지하기 위해 다음과 같은 기법이 사용됩니다.
-    
-      1. 데이터베이스 제약 조건 : 데이터베이스 수준에서 PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL 등의 제약 조건을 설정하여 정합성을 보장합니다.
-      2. 트랜잭션 : 트랜잭션은 ACID(Atomicity, Consistency, Isolation, Durability) 속성을 통해 데이터의 일관성을 유지합니다. 트랜잭션 내의 모든 작업이 성공적으로 완료되거나 모두 실패해야 데이터 정합성이 보장됩니다.
-      3. 애플리케이션 로직 : 비즈니스 정합성은 데이터베이스뿐만 아니라 애플리케이션 코드에서도 확인되어야 합니다. 예를 들어, 특정 규칙에 따라 데이터를 삽입하거나 업데이트하기 전에 로직을 통해 검증하는 방식입니다.
-    
-  
-
-
-4️⃣ JPA에서의 데이터 정합성 유지.
-
-  JPA를 사용할 때는 다음과 같은 방식으로 데이터 정합성을 유지할 수 있습니다.
-    
-      연관관계 주인 설정 : 연관관계 주인을 올바르게 설정하여, 양방향 관계에서 데이터베이스에 데이터가 일관되게 반영되도록 합니다.
-      Cascade와 Orphan 객체 처리 : CascadeType.ALL과 orphanRemoval = true 설정을 통해 부모-자식 관계에서 데이터 정합성을 유지할 수 있습니다.
-      트랜잭션 관리 : 데이터의 삽입, 수정, 삭제 작업을 트랙잭션으로 묶어, 작업 도중 에러가 발생해도 정합성이 깨지지 않도록 합니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  데이터 정합성은 데이터의 정확성과 신뢰성을 유지하기 위해 필수적인 개념입니다.
-    
-      이를 보장하려면 데이터베이스 제약 조건, 트랜잭션 관리, 애플리케이션 로직을 통한 검증이 필요하며, JPA를 사용하는 경우 연관관계와 트랜잭션을 올바르게 관리해야 합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-11-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-11-10-JPA-Association-One-To-One.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-11-10-JPA-Association-One-To-One.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 1:1 관계</h1></a>
-                        <a href="/Spring/2024-11-10-JPA-Association-One-To-One.html" class="txt_post">
-                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 1:1 관계
-
-1️⃣ 1:1 관계.
-
-  하나의 엔티티가 다른 하나의 엔티티와 1대 1로 매핑되는 관계를 의미합니다.
-    
-      예를 들어, User와 UserProfile 엔티티가 1:1 관계에 있다고 가정해 보겠습니다.
-        
-          각 User는 하나의 UserProfile만을 가지며, 각 UserProfile은 하나의 User에만 연결될 수 있습니다.
-        
-      
-    
-  
-  1:1 관계를 JPA에서 매핑할 때는 보통 @OneToOne 어노테이션을 사용합니다.
-    
-      JPA에서는 @JoinColumn을 이용해 두 엔티티를 연결하는 외래 키를 지정할 수도 있습니다.
-    
-  
-
-
-👉 예시 코드.
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    @OneToOne
-    @JoinColumn(name = "user_profile_id") // 외래 키 설정
-    private UserProfile userProfile;
-    
-    // getter, setter 등
-}
-
-@Entity
-public class UserProfile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String address;
-    private String phoneNumber;
-    
-    @OneToOne(mappedBy = "userProfile") // 연관관계 주인이 아님을 명시
-    private User user;
-    
-    // getter, setter 등
-}
-
-
-👉 설명.
-
-  User 엔티티는 UserProfile 엔티티와 1:1 관계로, userProfile 필드를 통해 UserProfile을 참조합니다.
-  @JoinColumn은 User 엔티티 테이블에 user_profile_id라는 외래 키 컬럼을 생성하여 두 엔티티를 연결합니다.
-  USerProfile 엔티티에서는 mappedBy 속성을 사용하여 양방향 관계에서의 연관 관계의 주인을 User 엔티티로 설정합니다.
-
-
-2️⃣ 단방향과 양방향.
-
-1️⃣ 단방향 1:1 관계.
-
-  하나의 엔티티에서만 다른 엔티티를 참조합니다.
-
-
-2️⃣ 양방향 1:1 관계.
-
-  두 엔티티가 서로를 참조할 수 있으며, mappedBy를 사용하여 주인을 명시합니다.
-
-
-3️⃣ 마무리.
-
-  1:1 관계는 데이터베이스에서의 테이블이 잘 분리되고 성능이 적절히 유지되어야 할 때 유용하게 사용됩니다.
 
 
                         </a>
@@ -55796,18 +55938,130 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-27-TIL.html" class="txt_post">
-                            
-  노드(Node)
-  장치 컨트롤러와 장치 드라이버
-  트리(Tree)
-  이진 트리(Binary Tree)
-  완전 이진 트리(Complete Binary Tree)
+                        <a href="/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html"><h1 class="title_post">💾 [CS] 장치 컨트롤러와 장치 드라이버</h1></a>
+                        <a href="/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html" class="txt_post">
+                            1️⃣ 장치 컨트롤러와 장치 드라이버.
+
+1️⃣ 장치 컨트롤러.
+
+입출력장치는 CPU, 메모리보다 다루기가 더 까다롭습니다.
+
+여기에는 크게 두 가지 이유가 있습니다.
+
+첫째, 입출력장치에는 종류가 너무나도 많습니다.
+
+키보드, 모니터, USB 메모리, CD-ROM, SSD, 마우스, 스피커, 프린터 등 매우 많습니다.
+
+장치가 이렇게 다양하면 자연스레 장치마다 속도, 데이터 전송 형식 등도 다양합니다.
+
+따라서 다양한 입출력장치와 정보를 주고받는 방식을 규격화하기가 어렵습니다.
+
+이는 마치 CPU와 메모리는 한국어를 사용하는데, 프린터는 영어, 스피커는 일본어, 모니터는 중국어를 사용하는 상황과 같습니다.
+
+둘째, 일반적으로 CPU와 메모리의 데이터 전송률은 높지만 입출력장치의 데이터 전송률은 낮습니다.
+
+여기서 전송률(transfer rate) 이란 데이터를 얼마나 빨리 교환할 수 있는지를 나타내는 지표입니다.
+
+CPU와 메모리처럼 전송률이 높은 장치는 1초에도 수많은 데이터를 주고받을 수 있지만, 키보드나 마우스와 같은 상대적으로 전송률이 낮은 장치는 같은 시간 동안 데이터를 조금씩만 주고받을 수 있습니다.
+
+전송률의 차이는 CPU와 메모리, 입출력 장치간의 통신을 어렵게 합니다.
+
+장치 컨트롤러(Derive Controller)
+
+물론 어떤 입출력장치는 CPU나 메모리보다 전송률이 높은 경우도 있습니다.
+
+하지만 결과적으로 CPU나 메모리와 전송률이 비슷하지 않기 때문에 같은 어려움을 겪게 됩니다.
+
+이와 같은 이유로 입출력장치는 컴퓨터에 직접 연결되지 않고 장치 컨트롤러(Drive Controller) 라는 하드웨어를 통해 연결됩니다.
+
+장치 컨트롤러는 입출력 제어기(I/O Controller), 입출력 모듈(I/O Module) 등으로 다양하게 불립니다.
+
+모든 입출력장치는 각자의 장치 컨트롤러를 통해 컴퓨터 내부와 정보를 주고받고, 장치 컨트롤러는 하나 이상의 입출력장치와 연결되어 있습니다.
+
+예를 들어 하드 디스크 또한 장치 컨트롤러가 있습니다.
+
+2️⃣ 장치 컨트롤러의 역할.
+
+장치 컨트롤러는 대표적으로 다음과 같은 역할을 통해 앞에서 언급한 문제들을 해결합니다.
+
+
+  CPU와 입풀력장치 간의 통신 중개
+  오류 검출
+  데이터 버퍼링
+
+
+입풀력장치 종류가 많이 정보 규격롸가 어려웠던 문제는 장치 컨트롤러가 일종의 번역가 역할을 함으로써 해결할 수 있습니다.
+
+그 과정에서 장치 컨트롤러는 자신과 연결된 입출력장치에 문제는 없는지 오류를 검출하기도 합니다.
+
+장치 컨트롤러의 세 번째 기능인 데이터 버퍼링은 무엇일까요?
+
+버퍼링(buffering) 이란 전송률이 높은 장치와 낮은 장치 사이에 주고받는 데이터를 버퍼(buffer) 라는 임시 저장 공간에 저장하여 전송률을 비슷하게 맞추는 방법입니다.
+
+쉽게 말해 버퍼링은 ‘버퍼에 데이터를 조금씩 모았다가 한꺼번에 내보내거나, 데이터를 한 번에 많이 받아 조금씩 내보내는 방법’이라고 보면 됩니다.
+
+즉, 장치 컨트롤러는 일반적으로 전송률이 높은 CPU와 일반적으로 전송률이 낮은 입출력장치와의 전송률 차이를 데이터 버퍼일으로 완화합니다.
+
+3️⃣ 장치 컨트롤러의 내부 구조.
+
+이번에는 장치 컨트롤러의 간략화된 내부 구조를 살펴봅시다.
+
+장치 컨트롤러 내부는 아래와 같습니다.
+
+실제로는 이보다 복잡하지만, 기억해야 하는 것은 데이터 레지스터(data register) 와 상태 레지스터(status register), 제어 레지스터(control register) 세 가지 입니다.
+
+
+
+데이터 레지스터는 CPU와 입출력장치 사이에 주고받을 데이터가 담기는 레지스터입니다.
+
+앞서 장치 컨트롤러는 데이터 버퍼링으로 전송률 차이를 완화한다고 했습니다.
+
+데이터 레지스터가 그 버퍼 역할을 합니다.
+
+최근 주고받은 데이터가 많은 입출력장치에서는 레지스터 대신 RAM을 사용하기도 합니다.
+
+상태 레지스터에는 입출력장치가 입출력 작업을 할 준비가 되었는지, 입출력 작업이 완료되었는지, 입출력장치에 오류는 없는지 등의 상태 정보가 저장됩니다.
+
+제어 레지스터는 입출력장치가 수행할 내용에 대한 제어 정보와 명령을 저장합니다.
+
+이 레지스터들에 담긴 값들은 버스를 타고 CPU나 다른 입출력장치로 전달되기도 하고, 장치 컨트롤러에 연결된 입출력장치로 전달됩니다.
+
+2️⃣ 장치 드라이버
+
+새로운 장치를 컴퓨터에 연결하려면 장치 드라이버를 설치해야 합니다.
+
+1️⃣ 장치 드라이버
+
+장치 드라이버(device driver) 란 장치 컨트롤러의 동작을 감지하고 제어함으로써 장치 컨트롤러가 컴퓨터 내부와 정보를 주고받을 수 있게 하는 프로그램입니다.
+
+프로그램이기에 당연히 실행 과정에서 메모리에 저장됩니다.
+
+장치 컨트롤러가 입출력장치를 연결하기 위한 하드웨어적인 통로라면, 장치 드라이버는 입출력장치를 연결하기 위한 소프트웨어적인 통로입니다.
+
+
+
+컴퓨터가 연결된 장치의 드라이버를 인식하고 실행할 수 있다면 그 장치는 어떤 회사에서 만들어진 제품이든, 생김새가 어떻든 상관없이 컴퓨터 내부와 정보를 주고받을 수 있습니다.
+
+반대로 장치 드라이버를 인식하거나 실행할 수 없는 상태라면 그 장치는 컴퓨터 내부와 정보를 주고받을 수 없습니다.
+
+
+  장치 드라이버를 인식하고 실행하는 주체
+
+  장치 드라이버를 인식하고 실행하는 주체는 정확히 말하자면 윈도우, macOS와 같은 운영체제입니다.
+즉, 운영체제가 장치드라이버를 인식하고 실행할 수 있다면 그 장치는 컴퓨터 내부와 정보를 주고받을 수 있습니다.
+
+  장치 드라이버는 운영체제가 기본으로 제공하는 것도 있지만, 장치 제작자가 따로 제공하기도 합니다.
+물론 장치 제작자가 장치 드라이버를 따로 제공하는 경우 입출력장치는 해당 드라이버를 직접 설치해야만 사용이 가능합니다.
+
+
+3️⃣ 키워드로 정리하는 핵심 포인트
+
+  입출력장치는 장치 컨트롤러 를 통해 컴퓨터 내부와 정보를 주고받습니다.
+  장치 드라이버는 장치 컨트롤러가 컴퓨터 내부와 정보를 주고받을 수 있게 하는 프로그램입니다.
 
 
                         </a>
@@ -56445,130 +56699,18 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                            <a href="/Archive/TIL/2024-05-27-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html"><h1 class="title_post">💾 [CS] 장치 컨트롤러와 장치 드라이버</h1></a>
-                        <a href="/Archive/CS_archive/2024-05-27-dviceControllerAndDeviceDriver.html" class="txt_post">
-                            1️⃣ 장치 컨트롤러와 장치 드라이버.
-
-1️⃣ 장치 컨트롤러.
-
-입출력장치는 CPU, 메모리보다 다루기가 더 까다롭습니다.
-
-여기에는 크게 두 가지 이유가 있습니다.
-
-첫째, 입출력장치에는 종류가 너무나도 많습니다.
-
-키보드, 모니터, USB 메모리, CD-ROM, SSD, 마우스, 스피커, 프린터 등 매우 많습니다.
-
-장치가 이렇게 다양하면 자연스레 장치마다 속도, 데이터 전송 형식 등도 다양합니다.
-
-따라서 다양한 입출력장치와 정보를 주고받는 방식을 규격화하기가 어렵습니다.
-
-이는 마치 CPU와 메모리는 한국어를 사용하는데, 프린터는 영어, 스피커는 일본어, 모니터는 중국어를 사용하는 상황과 같습니다.
-
-둘째, 일반적으로 CPU와 메모리의 데이터 전송률은 높지만 입출력장치의 데이터 전송률은 낮습니다.
-
-여기서 전송률(transfer rate) 이란 데이터를 얼마나 빨리 교환할 수 있는지를 나타내는 지표입니다.
-
-CPU와 메모리처럼 전송률이 높은 장치는 1초에도 수많은 데이터를 주고받을 수 있지만, 키보드나 마우스와 같은 상대적으로 전송률이 낮은 장치는 같은 시간 동안 데이터를 조금씩만 주고받을 수 있습니다.
-
-전송률의 차이는 CPU와 메모리, 입출력 장치간의 통신을 어렵게 합니다.
-
-장치 컨트롤러(Derive Controller)
-
-물론 어떤 입출력장치는 CPU나 메모리보다 전송률이 높은 경우도 있습니다.
-
-하지만 결과적으로 CPU나 메모리와 전송률이 비슷하지 않기 때문에 같은 어려움을 겪게 됩니다.
-
-이와 같은 이유로 입출력장치는 컴퓨터에 직접 연결되지 않고 장치 컨트롤러(Drive Controller) 라는 하드웨어를 통해 연결됩니다.
-
-장치 컨트롤러는 입출력 제어기(I/O Controller), 입출력 모듈(I/O Module) 등으로 다양하게 불립니다.
-
-모든 입출력장치는 각자의 장치 컨트롤러를 통해 컴퓨터 내부와 정보를 주고받고, 장치 컨트롤러는 하나 이상의 입출력장치와 연결되어 있습니다.
-
-예를 들어 하드 디스크 또한 장치 컨트롤러가 있습니다.
-
-2️⃣ 장치 컨트롤러의 역할.
-
-장치 컨트롤러는 대표적으로 다음과 같은 역할을 통해 앞에서 언급한 문제들을 해결합니다.
-
-
-  CPU와 입풀력장치 간의 통신 중개
-  오류 검출
-  데이터 버퍼링
-
-
-입풀력장치 종류가 많이 정보 규격롸가 어려웠던 문제는 장치 컨트롤러가 일종의 번역가 역할을 함으로써 해결할 수 있습니다.
-
-그 과정에서 장치 컨트롤러는 자신과 연결된 입출력장치에 문제는 없는지 오류를 검출하기도 합니다.
-
-장치 컨트롤러의 세 번째 기능인 데이터 버퍼링은 무엇일까요?
-
-버퍼링(buffering) 이란 전송률이 높은 장치와 낮은 장치 사이에 주고받는 데이터를 버퍼(buffer) 라는 임시 저장 공간에 저장하여 전송률을 비슷하게 맞추는 방법입니다.
-
-쉽게 말해 버퍼링은 ‘버퍼에 데이터를 조금씩 모았다가 한꺼번에 내보내거나, 데이터를 한 번에 많이 받아 조금씩 내보내는 방법’이라고 보면 됩니다.
-
-즉, 장치 컨트롤러는 일반적으로 전송률이 높은 CPU와 일반적으로 전송률이 낮은 입출력장치와의 전송률 차이를 데이터 버퍼일으로 완화합니다.
-
-3️⃣ 장치 컨트롤러의 내부 구조.
-
-이번에는 장치 컨트롤러의 간략화된 내부 구조를 살펴봅시다.
-
-장치 컨트롤러 내부는 아래와 같습니다.
-
-실제로는 이보다 복잡하지만, 기억해야 하는 것은 데이터 레지스터(data register) 와 상태 레지스터(status register), 제어 레지스터(control register) 세 가지 입니다.
-
-
-
-데이터 레지스터는 CPU와 입출력장치 사이에 주고받을 데이터가 담기는 레지스터입니다.
-
-앞서 장치 컨트롤러는 데이터 버퍼링으로 전송률 차이를 완화한다고 했습니다.
-
-데이터 레지스터가 그 버퍼 역할을 합니다.
-
-최근 주고받은 데이터가 많은 입출력장치에서는 레지스터 대신 RAM을 사용하기도 합니다.
-
-상태 레지스터에는 입출력장치가 입출력 작업을 할 준비가 되었는지, 입출력 작업이 완료되었는지, 입출력장치에 오류는 없는지 등의 상태 정보가 저장됩니다.
-
-제어 레지스터는 입출력장치가 수행할 내용에 대한 제어 정보와 명령을 저장합니다.
-
-이 레지스터들에 담긴 값들은 버스를 타고 CPU나 다른 입출력장치로 전달되기도 하고, 장치 컨트롤러에 연결된 입출력장치로 전달됩니다.
-
-2️⃣ 장치 드라이버
-
-새로운 장치를 컴퓨터에 연결하려면 장치 드라이버를 설치해야 합니다.
-
-1️⃣ 장치 드라이버
-
-장치 드라이버(device driver) 란 장치 컨트롤러의 동작을 감지하고 제어함으로써 장치 컨트롤러가 컴퓨터 내부와 정보를 주고받을 수 있게 하는 프로그램입니다.
-
-프로그램이기에 당연히 실행 과정에서 메모리에 저장됩니다.
-
-장치 컨트롤러가 입출력장치를 연결하기 위한 하드웨어적인 통로라면, 장치 드라이버는 입출력장치를 연결하기 위한 소프트웨어적인 통로입니다.
-
-
-
-컴퓨터가 연결된 장치의 드라이버를 인식하고 실행할 수 있다면 그 장치는 어떤 회사에서 만들어진 제품이든, 생김새가 어떻든 상관없이 컴퓨터 내부와 정보를 주고받을 수 있습니다.
-
-반대로 장치 드라이버를 인식하거나 실행할 수 없는 상태라면 그 장치는 컴퓨터 내부와 정보를 주고받을 수 없습니다.
-
-
-  장치 드라이버를 인식하고 실행하는 주체
-
-  장치 드라이버를 인식하고 실행하는 주체는 정확히 말하자면 윈도우, macOS와 같은 운영체제입니다.
-즉, 운영체제가 장치드라이버를 인식하고 실행할 수 있다면 그 장치는 컴퓨터 내부와 정보를 주고받을 수 있습니다.
-
-  장치 드라이버는 운영체제가 기본으로 제공하는 것도 있지만, 장치 제작자가 따로 제공하기도 합니다.
-물론 장치 제작자가 장치 드라이버를 따로 제공하는 경우 입출력장치는 해당 드라이버를 직접 설치해야만 사용이 가능합니다.
-
-
-3️⃣ 키워드로 정리하는 핵심 포인트
-
-  입출력장치는 장치 컨트롤러 를 통해 컴퓨터 내부와 정보를 주고받습니다.
-  장치 드라이버는 장치 컨트롤러가 컴퓨터 내부와 정보를 주고받을 수 있게 하는 프로그램입니다.
+                        <a href="/Archive/TIL/2024-05-27-TIL.html"><h1 class="title_post">📝 [TIL] 240527 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-27-TIL.html" class="txt_post">
+                            
+  노드(Node)
+  장치 컨트롤러와 장치 드라이버
+  트리(Tree)
+  이진 트리(Binary Tree)
+  완전 이진 트리(Complete Binary Tree)
 
 
                         </a>
@@ -101419,6 +101561,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Spring/2024-11-12-orphanRemoval-option.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-12"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] &#39;도메인 계층에 비즈니스 로직이 들어갔다&#39;의 의미는 무엇인가요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-12"
         });

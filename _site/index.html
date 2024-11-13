@@ -819,6 +819,7 @@
             
             
             
+            
 
     
     
@@ -1189,6 +1190,121 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-13-what-is-cohesion-in-association.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-13-what-is-cohesion-in-association.html"><h1 class="title_post">🍃[Spring] 연관관계에서의 "응집성"이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-11-13-what-is-cohesion-in-association.html" class="txt_post">
+                            🍃[Spring] 연관관계에서의 “응집성”이란 무엇일까요?
+
+  연관관계에서의 응집성은 밀접하게 관련된 데이터와 비즈니스 로직이 하나의 단위로 모여 서로 강하게 결합되어 있음을 의미합니다.
+  JPA 연관관계를 통해 응집성을 높이면, 서로 관련 있는 엔티티들이 하나의 일관된 비즈니스 로직을 수행하고 상태를 관리할 수 있습니다.
+    
+      이를 통해 코드의 재사용성과 유지보수성이 향상됩니다.
+    
+  
+
+
+1️⃣ 연관관계에서 응집성이 높은 설계의 예시.
+
+  응집성이 높은 설계는 주로 애그리게이트(Aggregate) 개념과 밀접한 관련이 있습니다.
+    
+      예를 들어, Order와 OrderITem이 연관된 엔티티라고 가정하면, Order 엔티티가 주문 항목 OrderItem들을 포함하고, 주문의 총 가격 계산, 항목 추가, 주문 완료와 같은 비즈니스 로직을 책임집니다.
+        
+          이러한 방식으로 연관관계가 응집성 있게 구성되면 관련 데이터와 로직이 하나의 단위로 캡슐화되며, 일관된 상태와 로직을 유지할 수 있습니다.
+        
+      
+    
+  
+
+
+@Entity
+public class Order {
+    @Id
+    @GeneratedValue(stratege = GenerationType.IDENTITY)
+    private Long id;
+    
+    private LocalDateTime orderDate;
+    private OrderStatus status;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List&lt;OrderItem&gt; items = new ArrayList&lt;&gt;();
+    
+    // 비즈니스 로직을 통해 연관 관계의 응집성 유지
+    public void addItem(OrderItem item) {
+        items.add(item);
+        item.setOrder(this);
+    }
+    
+    public BigDecimal calculateTotalPrice() {
+        return items.stream()
+                    .map(OrderItem::getTotalPrice)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+    
+    public void completeOrder() {
+        if (items.isEmpty()) {
+            throw new IllegalStateException("주문 항목이 비어 있습니다.");
+        }
+        this.status = OrderStatus.COMPLETED;
+    }
+}
+
+
+2️⃣ 예제의 응집성 설명.
+
+  Order와 OrderItem의 밀접한 관계를 반영하여, Order 엔티티는 OrderItem들을 포함하고 관리합니다.
+  Order 엔티티 내부에서 addItem, calculateTotalPrice, completeOrder 등 주문과 관련된 주요 비즈니스 로직을 처리함으로써 관련된 데이터와 로직이 한 곳에 모여 있습니다.
+    
+      이를 통해 Order 객체가 주문과 관련된 상태와 행동을 일관되게 관리할 수 있으며, Order 객체 외부에서는 이 로직을 직접적으로 접근할 필요가 없습니다.
+    
+  
+
+
+3️⃣ 응집성 높은 설계의 장점.
+
+1️⃣ 데이터의 일관성 보장.
+
+  연관된 엔티티들이 하나의 단위로 결합되어 있기 때문에, 잘못된 상태나 값이 개별적으로 변경되는 상황을 방지할 수 있습니다.
+
+
+2️⃣ 비즈니스 로직의 응집성.
+
+  관련된 데이터와 로직이 하나의 단위에 묶여있어 비즈니스 로직이 더 명확하게 정의되며, 코드가 직관적이고 이해하기 쉬워집니다.
+
+
+3️⃣ 유지보수성 향상.
+
+  관련 로직이 서로 모여 있으므로 수정 사항이 발생할 때, 해당 단위 내에서만 변경하면 되므로 유지보수가 쉬워집니다.
+
+
+3️⃣ 요약.
+
+  연관관계에서의 응집성은 관련된 데이터와 비즈니스 로직이 하나의 단위에 밀접하게 결합되어 있는 것을 의미합니다.
+    
+      이를 통해 객체가 자신의 상태와 행동을 일관되게 관리할 수 있으며, 데이터 일관성과 유지보수성이 높아집니다.
+    
+  
+  JPA에서의 응집성 높은 연관관계는 비즈니스 로직을 효율적으로 관리하고 시스템의 안정성을 향상시키는 데 도움이 됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -16033,6 +16149,215 @@ DELETE /users/3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-09-what-is-the-api.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)란 무엇일까?</h1></a>
+                        <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="txt_post">
+                            “💾 [CS] API(Application Programming Interface)란 무엇일까?”
+
+  API(Application Programming Interface) 는 애플리케이션이 다른 소프트웨어나 서비스와 상호작용할 수 있도록 하는 인터페이스를 의미합니다.
+  쉽게 말하면, API는 프로그램 간의 통신을 가능하게 해주는 일종의 계약 또는 약속입니다.
+  API는 개발자가 특정 기능을 사용할 수 있게 미리 정의된 메서드와 규칙의 집합을 제공합니다.
+
+
+1️⃣ API의 기본 개념.
+
+  인터페이스
+    
+      API는 두 시스템 간의 상호작용을 정의하는 경계 역할을 합니다.
+      이를 통해 두 시스템이 서로 데이터를 주고받거나 기능을 요청할 수 있습니다.
+    
+  
+  통신
+    
+      API는 소프트웨어 애플리케이션이 다른 소프트웨어 서비스나 라이브러리와 통신하는 방법을 제공합니다.
+      예를 들어, API를 통해 애플리케이션은 외부 서비스에서 데이터를 가져오거나, 데이터베이스에 저장하는 등의 작업을 할 수 있습니다.
+    
+  
+  추상화
+    
+      API는 내부적인 구현을 숨기고, 외부 개발자가 필요한 기능만 사용할 수 있게 추상화된 기능을 제공합니다.
+      내부의 복잡한 로직을 신경 쓰지 않고, 정의된 명령만 호출하면 해당 기능을 사용할 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
+
+
+2️⃣ API의 유형.
+
+1️⃣ 웹 API
+
+  웹에서 동작하는 API로, HTTP 프로토콜을 통해 애플리케이션 간 통신을 처리합니다.
+    
+      예를 들어, RESTful API나 SOAP API는 웹을 통해 데이터를 주고받는 데 사용됩니다.
+    
+  
+  웹 API는 클라이언트와 서버 간의 통신을 쉽게 해주며, 웹 서비스 또는 클라우드 서비스에서 주로 사용됩니다.
+    
+      예: GET, POST, PUT, DELETE 메서드를 사용하여 서버와 데이터를 주고받는 API.
+    
+  
+
+
+2️⃣ 라이브러리 API
+
+  프로그래밍 언어에서 제공하는 라이브러리의 기능을 사용할 수 있게 해주는 API입니다.
+    
+      특정 기능이나 데이터 구조를 제공하여 개발자가 해당 기능을 구현할 수 있도록 도와줍니다.
+        
+          예: Java의 java.util.List API는 목록 데이터를 쉽게 다룰 수 있는 메서드와 클래스를 제공합니다.
+        
+      
+    
+  
+
+
+3️⃣ 운영체제 API
+
+  운영체제가 제공하는 시스템 자원을 애플리케이션이 사용할 수 있도록 해주는 API입니다.
+    
+      파일 시스템, 네트워크, 하드웨어 장치와의 상호작용을 처리할 수 있게 합니다.
+        
+          예: Windows API는 파일 읽기/쓰기, 네트워크 통신 등을 위한 다양한 기능을 제공합니다.
+        
+      
+    
+  
+
+
+4️⃣ 프레임워크 API
+
+  특정 프레임워크에서 제공하는 API는 해당 프레임워크의 기능을 쉽게 사용할 수 있도록 도와줍니다.
+    
+      예를 들어, Spring 프레임워크에서 제공하는 API는 웹 애플리케이션 개발에 필요한 다양한 기능을 제공합니다.
+    
+  
+
+
+
+  🙋‍♂️ 라이브러리(Library)와 프레임워크(Framework)의 차이점.
+
+
+3️⃣ API의 동작 원리.
+
+  API는 주로 요청(Request)과 응답(Response)으로 작동합니다.
+    
+      클라이언트가 특정 작업을 요청하면, 서버가 해당 작업을 처리한 후 결과를 반환하는 방식입니다.
+        
+          1. 클라이언트가 요청 : 클라이언트 애플리케이션은 API를 사용해 특정 작업을 서버에 요청합니다.
+          2. 서버가 처리 : API 서버는 요청을 처리하고, 필요한 데이터를 조회하거나 작업을 수행합니다.
+          3. 서버가 응답 : 서버는 요청에 대한 결과(데이터나 작업 성공 여부)를 클라이언트에게 응답으로 반환합니다.
+        
+      
+    
+  
+
+
+4️⃣ API의 예시.
+
+1️⃣ Google Maps API.
+
+  개발자는 Google Maps API를 사용해 자신의 애플리케이션에 지도 기능을 추가할 수 있습니다.
+    
+      이를 통해 사용자는 실시간 지도 정보를 보고, 길 안내를 받을 수 있습니다.
+        
+          예: https://maps.googleapis.com/maps/api/geocode/json?address=New+York
+        
+      
+    
+  
+
+
+2️⃣ (현)X (구)Twitter API.
+
+  (현)X (구)Twitter는 API를 통해 외부 애플리케이션이 트윗을 읽거나 작성할 수 있는 기능을 제공합니다.
+    
+      예: 특정 해시태그로 트윗 검색, 사용자 프로필 정보 조회 등.
+    
+  
+
+
+3️⃣ JPA API
+
+  JAP(Java Persistence API)는 자바 애플리케이션에서 데이터베이스와 상호작용할 수 있는 API로, 객체지향적으로 데이터베이스 작업을 할 수 있게 합니다.
+    
+      개발자는 SQL을 직접 작성하지 않고, JPA가 제공하는 메서드를 통해 데이터베이스 작업을 처리할 수 있습니다.
+    
+  
+
+
+EntityManager em = entityManagerFactory.createEntityManager();
+User user = em.find(User.class, 1L) // User 객체 조회
+
+
+
+  🙋‍♂️ 영속성(Persistence)란 무엇일까?
+
+
+4️⃣ API의 단점.
+
+1️⃣ 의존성.
+
+  외부 API를 사용할 경우, 해당 API에 의존하게 됩니다.
+    
+      만약 API가 변경되거나 중단되면 애플리케이션이 영향을 받을 수 있습니다.
+    
+  
+
+
+
+  🙋‍♂️ 의존성(Dependency)
+
+
+2️⃣ 성능.
+
+  API를 사용한 통신이 느릴 수 있습니다.
+    
+      특히 원격 서버와의 API 호출은 네트워크 지연에 영향을 받을 수 있습니다.
+    
+  
+
+
+3️⃣ 제한 사항.
+
+  API 제공자는 사용량을 제한할 수 있습니다.
+    
+      예를 들어, 하루에 호출할 수 있는 API 요청 수에 제한이 있을 수 있습니다.
+    
+  
+
+
+5️⃣ 결론.
+
+  API는 소프트웨어 애플리케이션이 서로 상호작용할 수 있도록하는 중간 다리 역할을 합니다.
+    
+      이를 통해 개발자는 다른 소프트웨어의 기능을 재사용하거나, 외부 서비스와의 통신을 통해 더 풍부한 애플리케이션을 만들 수 있습니다.
+    
+  
+  API는 현대 소프트웨어 개발에서 필수적인 구성 요소로 자리 잡고 있으며, 이를 통해 애플리케이션 간 통합과 협업이 더 쉽게 이루어집니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-10-09-what-is-the-ethernet.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -16282,215 +16607,6 @@ DELETE /users/3
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-09-what-is-the-api.html"><h1 class="title_post">💾 [CS] API(Application Programming Interface)란 무엇일까?</h1></a>
-                        <a href="/CS/2024/2024-10-09-what-is-the-api.html" class="txt_post">
-                            “💾 [CS] API(Application Programming Interface)란 무엇일까?”
-
-  API(Application Programming Interface) 는 애플리케이션이 다른 소프트웨어나 서비스와 상호작용할 수 있도록 하는 인터페이스를 의미합니다.
-  쉽게 말하면, API는 프로그램 간의 통신을 가능하게 해주는 일종의 계약 또는 약속입니다.
-  API는 개발자가 특정 기능을 사용할 수 있게 미리 정의된 메서드와 규칙의 집합을 제공합니다.
-
-
-1️⃣ API의 기본 개념.
-
-  인터페이스
-    
-      API는 두 시스템 간의 상호작용을 정의하는 경계 역할을 합니다.
-      이를 통해 두 시스템이 서로 데이터를 주고받거나 기능을 요청할 수 있습니다.
-    
-  
-  통신
-    
-      API는 소프트웨어 애플리케이션이 다른 소프트웨어 서비스나 라이브러리와 통신하는 방법을 제공합니다.
-      예를 들어, API를 통해 애플리케이션은 외부 서비스에서 데이터를 가져오거나, 데이터베이스에 저장하는 등의 작업을 할 수 있습니다.
-    
-  
-  추상화
-    
-      API는 내부적인 구현을 숨기고, 외부 개발자가 필요한 기능만 사용할 수 있게 추상화된 기능을 제공합니다.
-      내부의 복잡한 로직을 신경 쓰지 않고, 정의된 명령만 호출하면 해당 기능을 사용할 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ DIP의 정의에서 말하는 ‘추상화된 것’과 ‘추상화’의 개념의 차이점.
-
-
-2️⃣ API의 유형.
-
-1️⃣ 웹 API
-
-  웹에서 동작하는 API로, HTTP 프로토콜을 통해 애플리케이션 간 통신을 처리합니다.
-    
-      예를 들어, RESTful API나 SOAP API는 웹을 통해 데이터를 주고받는 데 사용됩니다.
-    
-  
-  웹 API는 클라이언트와 서버 간의 통신을 쉽게 해주며, 웹 서비스 또는 클라우드 서비스에서 주로 사용됩니다.
-    
-      예: GET, POST, PUT, DELETE 메서드를 사용하여 서버와 데이터를 주고받는 API.
-    
-  
-
-
-2️⃣ 라이브러리 API
-
-  프로그래밍 언어에서 제공하는 라이브러리의 기능을 사용할 수 있게 해주는 API입니다.
-    
-      특정 기능이나 데이터 구조를 제공하여 개발자가 해당 기능을 구현할 수 있도록 도와줍니다.
-        
-          예: Java의 java.util.List API는 목록 데이터를 쉽게 다룰 수 있는 메서드와 클래스를 제공합니다.
-        
-      
-    
-  
-
-
-3️⃣ 운영체제 API
-
-  운영체제가 제공하는 시스템 자원을 애플리케이션이 사용할 수 있도록 해주는 API입니다.
-    
-      파일 시스템, 네트워크, 하드웨어 장치와의 상호작용을 처리할 수 있게 합니다.
-        
-          예: Windows API는 파일 읽기/쓰기, 네트워크 통신 등을 위한 다양한 기능을 제공합니다.
-        
-      
-    
-  
-
-
-4️⃣ 프레임워크 API
-
-  특정 프레임워크에서 제공하는 API는 해당 프레임워크의 기능을 쉽게 사용할 수 있도록 도와줍니다.
-    
-      예를 들어, Spring 프레임워크에서 제공하는 API는 웹 애플리케이션 개발에 필요한 다양한 기능을 제공합니다.
-    
-  
-
-
-
-  🙋‍♂️ 라이브러리(Library)와 프레임워크(Framework)의 차이점.
-
-
-3️⃣ API의 동작 원리.
-
-  API는 주로 요청(Request)과 응답(Response)으로 작동합니다.
-    
-      클라이언트가 특정 작업을 요청하면, 서버가 해당 작업을 처리한 후 결과를 반환하는 방식입니다.
-        
-          1. 클라이언트가 요청 : 클라이언트 애플리케이션은 API를 사용해 특정 작업을 서버에 요청합니다.
-          2. 서버가 처리 : API 서버는 요청을 처리하고, 필요한 데이터를 조회하거나 작업을 수행합니다.
-          3. 서버가 응답 : 서버는 요청에 대한 결과(데이터나 작업 성공 여부)를 클라이언트에게 응답으로 반환합니다.
-        
-      
-    
-  
-
-
-4️⃣ API의 예시.
-
-1️⃣ Google Maps API.
-
-  개발자는 Google Maps API를 사용해 자신의 애플리케이션에 지도 기능을 추가할 수 있습니다.
-    
-      이를 통해 사용자는 실시간 지도 정보를 보고, 길 안내를 받을 수 있습니다.
-        
-          예: https://maps.googleapis.com/maps/api/geocode/json?address=New+York
-        
-      
-    
-  
-
-
-2️⃣ (현)X (구)Twitter API.
-
-  (현)X (구)Twitter는 API를 통해 외부 애플리케이션이 트윗을 읽거나 작성할 수 있는 기능을 제공합니다.
-    
-      예: 특정 해시태그로 트윗 검색, 사용자 프로필 정보 조회 등.
-    
-  
-
-
-3️⃣ JPA API
-
-  JAP(Java Persistence API)는 자바 애플리케이션에서 데이터베이스와 상호작용할 수 있는 API로, 객체지향적으로 데이터베이스 작업을 할 수 있게 합니다.
-    
-      개발자는 SQL을 직접 작성하지 않고, JPA가 제공하는 메서드를 통해 데이터베이스 작업을 처리할 수 있습니다.
-    
-  
-
-
-EntityManager em = entityManagerFactory.createEntityManager();
-User user = em.find(User.class, 1L) // User 객체 조회
-
-
-
-  🙋‍♂️ 영속성(Persistence)란 무엇일까?
-
-
-4️⃣ API의 단점.
-
-1️⃣ 의존성.
-
-  외부 API를 사용할 경우, 해당 API에 의존하게 됩니다.
-    
-      만약 API가 변경되거나 중단되면 애플리케이션이 영향을 받을 수 있습니다.
-    
-  
-
-
-
-  🙋‍♂️ 의존성(Dependency)
-
-
-2️⃣ 성능.
-
-  API를 사용한 통신이 느릴 수 있습니다.
-    
-      특히 원격 서버와의 API 호출은 네트워크 지연에 영향을 받을 수 있습니다.
-    
-  
-
-
-3️⃣ 제한 사항.
-
-  API 제공자는 사용량을 제한할 수 있습니다.
-    
-      예를 들어, 하루에 호출할 수 있는 API 요청 수에 제한이 있을 수 있습니다.
-    
-  
-
-
-5️⃣ 결론.
-
-  API는 소프트웨어 애플리케이션이 서로 상호작용할 수 있도록하는 중간 다리 역할을 합니다.
-    
-      이를 통해 개발자는 다른 소프트웨어의 기능을 재사용하거나, 외부 서비스와의 통신을 통해 더 풍부한 애플리케이션을 만들 수 있습니다.
-    
-  
-  API는 현대 소프트웨어 개발에서 필수적인 구성 요소로 자리 잡고 있으며, 이를 통해 애플리케이션 간 통합과 협업이 더 쉽게 이루어집니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-09</span>
                             
@@ -34308,6 +34424,177 @@ i3 = -1
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
+                            ☕️[Java] 람다(Lambda).
+
+1️⃣ 람다 표현식(Lambda Expression)
+
+  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
+  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
+  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
+
+
+2️⃣ 람다 표현식의 기본 구조.
+
+  람다 표현식은 다음과 같은 형태로 작성됩니다.
+
+
+(parameters) -&gt; expression
+
+혹은
+
+(paramters) -&gt; { statements; }
+
+
+
+  매개변수 목록(parameters)
+    
+      메서드처럼 전달받을 인자를 정의합니다.
+      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
+    
+  
+  화살표 연산자 -&gt;
+    
+      람다 표현식의 매개변수와 본문(body)을 구분합니다.
+    
+  
+  본문(body)
+    
+      람다가 실행할 코드를 정의합니다.
+      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
+    
+  
+
+
+3️⃣ 예시
+
+
+  1. 기본적인 람다 표현식
+
+
+// 기존 익명 내부 클래스 방식
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello, Lambda!");
+    }
+};
+
+// 람다 표현식 사용
+Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
+
+
+
+  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  
+    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
+  
+  2. 매개변수와 함께 사용하는 람다 표현식
+
+
+// 기존 방식
+Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1.compareTo(o2);
+    }
+}
+
+// 람다 표현식 사용
+Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
+
+
+
+  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
+  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
+
+
+4️⃣ 함수형 인터페이스와 람다.
+
+
+  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
+  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
+
+
+예시: 함수형 인터페이스
+@FunctionalInterface
+interface MyFuncationalInterface {
+    void doSomething();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
+        myFunc.doSomething(); // 출력: Doing something!
+    }
+}
+
+
+
+  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
+
+
+5️⃣ 자주 사용되는 함수형 인터페이스
+
+  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
+    
+      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
+          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
+        
+      
+      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
+          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
+        
+      
+      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
+          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
+        
+      
+      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
+          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
+        
+      
+    
+  
+
+
+6️⃣ 장점.
+
+  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
+  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
+  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
+
+
+7️⃣ 요약.
+
+  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
+    
+      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -34463,177 +34750,6 @@ filtered.ifPresent(System.out::println); // "Hello" 출력
   Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
   Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
   Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Lambda.html"><h1 class="title_post">☕️[Java] 람다(Lambda)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Lambda.html" class="txt_post">
-                            ☕️[Java] 람다(Lambda).
-
-1️⃣ 람다 표현식(Lambda Expression)
-
-  Java 8에서 도입된 기능으로, 익명 함수(Anonymous Function)를 간결하게 표현한 것입니다.
-  람다 표현식은 메서드로 전달되거나, 변수에 할당될 수 있는 짧은 형태의 코드를 작성할 수 있게 해줍니다.
-  주로 함수형 인터페이스(Functional Interface)를 구현하는 데 사용되며, Java에서 함수형 프로그래밍 스타일을 가능하게 합니다.
-
-
-2️⃣ 람다 표현식의 기본 구조.
-
-  람다 표현식은 다음과 같은 형태로 작성됩니다.
-
-
-(parameters) -&gt; expression
-
-혹은
-
-(paramters) -&gt; { statements; }
-
-
-
-  매개변수 목록(parameters)
-    
-      메서드처럼 전달받을 인자를 정의합니다.
-      인자가 하나인 경우 괄호()를 생략 할 수 있습니다.
-    
-  
-  화살표 연산자 -&gt;
-    
-      람다 표현식의 매개변수와 본문(body)을 구분합니다.
-    
-  
-  본문(body)
-    
-      람다가 실행할 코드를 정의합니다.
-      단일 표현식일 경우 중괄호{}를 생략할 수 있으며, 여러 문장일 경우 중괄호 {}로 묶습니다.
-    
-  
-
-
-3️⃣ 예시
-
-
-  1. 기본적인 람다 표현식
-
-
-// 기존 익명 내부 클래스 방식
-Runnable runnable = new Runnable() {
-    @Override
-    public void run() {
-        System.out.println("Hello, Lambda!");
-    }
-};
-
-// 람다 표현식 사용
-Runnable lambdaRunnable = () -&gt; System.out.prinln("Hello, Lambda!");
-
-
-
-  위 코드에서 Runnable 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  
-    Runnable은 매개변수가 없고 반환값도 없는 run() 메서드를 가지고 있기 때문에, 이를 간단하게 () -&gt;로 표현할 수 있습니다.
-  
-  2. 매개변수와 함께 사용하는 람다 표현식
-
-
-// 기존 방식
-Comparator&lt;Integer&gt; comparator = new Comparator&lt;Integer&gt;() {
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
-    }
-}
-
-// 람다 표현식 사용
-Comparator&lt;Integer&gt; lambdaComparator = (o1, o2) -&gt; o1.compareTo(o2);
-
-
-
-  위 코드에서 Comparator 인터페이스를 구현하는 익명 내부 클래스를 람다 표현식으로 대체했습니다.
-  두 개의 매개변수 o1과 o2를 비교하는 코드를 람다 표현식으로 간결하게 작성할 수 있습니다.
-
-
-4️⃣ 함수형 인터페이스와 람다.
-
-
-  람다 표현식은 함수형 인터페이스를 구현하는 데 사용됩니다.
-  함수형 인터페이스는 단 하나의 추상 메서드만을 가지는 인터페이스로, @FuncationalInterface 애노테이션으로 명시할 수 있습니다.
-
-
-예시: 함수형 인터페이스
-@FunctionalInterface
-interface MyFuncationalInterface {
-    void doSomething();
-}
-
-public class Main {
-    public static void main(String[] args) {
-        MyFunctionalInterface myFunc = () -&gt; System.out.println("Doing something!");
-        myFunc.doSomething(); // 출력: Doing something!
-    }
-}
-
-
-
-  위 코드에서 MyFunctionalInterface는 함수형 인터페이스이며, 람다 표현식 () -&gt; System.out.println("Doing something!") 은 이 인터페이스의 doSomething() 메서드를 구현합니다.
-
-
-5️⃣ 자주 사용되는 함수형 인터페이스
-
-  Java 8에서는 자주 사용되는 함수형 인터페이스들이 java.util.function 패키지에 포함되어 있습니다.
-    
-      Predicate&lt;T&gt; : T 타입의 인자를 받아서 boolean을 반환하는 함수입니다.
-          Predicate&lt;String&gt; isEmpty = s -&gt; s.isEmpty();
-        
-      
-      Function&lt;T, R&gt; : T 타입의 인자를 받아 R 타입의 결과를 반환하는 함수입니다.
-          Function&lt;Integer, String&gt; intToString = i -&gt; Integer.toString(i);
-        
-      
-      Consumer&lt;T&gt; : T 타입의 인자를 받아서 소비하는(반환값이 없는) 함수입니다.
-          Consumer&lt;String&gt; print = s -&gt; System.out.println(s);
-        
-      
-      Supplier&lt;T&gt; : 인자를 받지 않고 T 타입의 결과를 반환하는 함수입니다.
-          Supplier&lt;Double&gt; randomValue = () -&gt; Math.random();
-        
-      
-    
-  
-
-
-6️⃣ 장점.
-
-  1. 코드 간결화 : 람다 표현식을 사용하면 코드가 훨씬 간결해지고 가독성이 좋아집니다.
-  2. 지연 실행 : 람다 표현식을 통해 코드를 지연 실행할 수 있어 성능 최적화에 유리합니다.
-  3. 병렬 처리 : 스트림 API와 함께 사용하여 병렬 처리 작업을 쉽게 구현할 수 있습니다.
-
-
-7️⃣ 요약.
-
-  람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
-    
-      이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
-    
-  
 
 
                         </a>
@@ -56105,32 +56221,6 @@ DMA를 위해 시스템 버스를 너무 자주 사용하면 그만큼 CPU가 �
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-28-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-28-TIL.html"><h1 class="title_post">📝 [TIL] 240528 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-28-TIL.html" class="txt_post">
-                            
-  스택(Stack)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-28</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Algorithm/2024/2024-05-28-Stack.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -56331,6 +56421,32 @@ public class Main {
                         </a>
                         <div class="info-post">
                                 <a href="/Algorithm" class="category">Algorithm</a>
+                            
+                                <span class="date">· 2024-05-28</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-28-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-28-TIL.html"><h1 class="title_post">📝 [TIL] 240528 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-28-TIL.html" class="txt_post">
+                            
+  스택(Stack)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-28</span>
                             
@@ -102011,6 +102127,17 @@ greeting = "Hello, Min Seong"
             'type'     : "post",
             'tags'     : "Spring, Framework",
             'url'      : "/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-13"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 연관관계에서의 &quot;응집성&quot;이란 무엇일까요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-13-what-is-cohesion-in-association.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-13"
         });

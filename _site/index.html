@@ -822,6 +822,7 @@
             
             
             
+            
 
     
     
@@ -1192,6 +1193,269 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-16-one-way-relationship.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-16-one-way-relationship.html"><h1 class="title_post">🍃[Spring] 단방향 관계란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-11-16-one-way-relationship.html" class="txt_post">
+                            🍃[Spring] 단방향 관계란 무엇일까요?
+
+  단방향 관계는 두 엔티티 간의 연관관계가 한쪽 방향으로만 설정된 관계를 의미합니다.
+    
+      즉, 한 엔티티는 다른 엔티티를 참조할 수 있지만, 반대 방향으로는 참조가 불가능합니다.
+    
+  
+  단방향 관계에서는 관계의 방향이 한쪽으로만 설정되기 때문에 한 엔티티만 다른 엔티티를 탐색 가능합니다.
+  데이터베이스 관점에서는 외래 키(Foregin Key)가 한쪽 테이블에만 존재하며, 반대쪽 관계 정보를 알 수 없습니다.
+
+
+1️⃣ 특징.
+
+1️⃣ 단방향 참조.
+
+  한쪽 엔티티에서만 다른 엔티티를 참조합니다.
+  반대 방향의 탐색은 불가능합니다.
+
+
+2️⃣ 설계가 간단.
+
+  관계 방향이 단순하므로 유지보수가 쉽습니다.
+  필요 이상으로 복잡한 관계를 만들지 않아도 됩니다.
+
+
+3️⃣ 외래 키(Foregin Key)
+
+  외래 키(Foregin Key)는 관계를 참조하는 엔티티(참조하는 쪽)에만 존재합니다.
+
+
+2️⃣ 단방향 관계의 종류.
+
+1️⃣ @ManyToOne
+
+  자식 엔티티(N)가 부모 엔티티(1)를 참조하는 단방향 관계.
+  외래 키(Foreign Key)는 자식 테이블에 존재.
+
+
+👉 예제
+
+  Order와 Customer 관계 : 여러 주문(Order)이 하나의 고객(Customer)을 참조.
+    @Entity
+public class Order {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @ManyToOne
+  @JoinColumn(name = "customer_id") // 외래 키
+  private Customer customer;
+    
+  // 기타 필드 및 메서드
+}
+    
+  
+  데이터베이스에서 Order 테이블은 customer_id 컬럼을 외래 키(Foreign Key)로 가집니다.
+
+
+2️⃣ @OneToMany
+
+  부모 엔티티(1)가 자식 엔티티(N)의 컬렉션을 참조하는 단방향 관계.
+  외래 키(Foreign Key)는 자식 테이블에 존재하며, 부모 테이블에는 컬렉션만 관리.
+
+
+👉 예제
+
+  Customer와 Order 관계 : 한 고객(Customer)이 여러 주문(Order)을 가짐.
+    @Entity
+public class Customer {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToMany
+  @JoinColumn(name = "customer_id") // 외래 키를 자식 테이블에 설정
+  private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
+    
+  // 기타 필드 및 메서드.
+}
+    
+  
+  데이터베이스에서는 외래 키가 여전히 Order 테이블에 존재.
+
+
+3️⃣ @OneToOne
+
+  한 엔티티가 다른 엔티티와 1:1로 매핑되는 단방향 관계.
+  외래 키는 참조하는 쪽에만 존재.
+
+
+👉 예제.
+
+  Passport와 Person 관계 : 한 사람(Person)이 하나의 여권(Passport)을 가짐.
+    @Entity
+public class Passport {
+    
+  @Id
+  @GeneratedValue(stratege = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToOne
+  @JoinColumn(name = "person_id") // 외래 키
+  private Person person;
+    
+  // 기타 필드 및 메서드
+}
+    
+  
+
+
+4️⃣ @ManyToMany
+
+  두 엔티티가 서로 다대다 관계를 가지는 단방향 관계.
+  중간 테이블을 통해 연결되며, 한쪽에서만 다른 쪽을 참조.
+
+
+👉 예제.
+
+  Student와 Course 관계 : 한 학생(Student)이 여러 수업(Course)을 듣는 경우.
+    @Entity
+public class Student {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @ManyToMany
+  @JoinTable(
+      name = "student_course",
+      joinColumns = @JoinColumn(name = "student_id"),
+      inverseJoinColumns = @JoinColumn(name = "courser_id")
+  )
+  private List&lt;Course&gt; courses = new ArrayList&lt;&gt;();
+    
+  // 기타 필드 및 메서드
+}
+    
+  
+
+
+3️⃣ 단방향 관계의 장단점.
+
+1️⃣ 장점.
+
+1️⃣ 설계 및 유지보수가 간단.
+
+  관계가 한쪽 방향으로만 설정되므로 복잡도가 줄어듭니다.
+
+
+2️⃣ 성능 최적화.
+
+  양방향 관계보다 데이터 로딩이나 관리 비용이 낮습니다.
+  불필요한 연관 데이터 로딩을 방지할 수 있습니다.
+
+
+3️⃣ 의존성 감소.
+
+  두 엔티티 간의 의존성이 낮아져 설계가 유연합니다.
+
+
+2️⃣ 단점.
+
+1️⃣ 탐색 방향 제한.
+
+  관계의 방향이 한쪽으로만 설정되므로, 반대 방향으로 데이터를 탐색하려면 별도의 쿼리가 필요합니다.
+    
+      예: Order에서 Customer는 참조 가능하지만, Customer에서 Order는 참조 불가능.
+    
+  
+
+
+2️⃣ 추가 요구사항에 대한 확장성 제한.
+
+  단방향 관계만으로 충분하지 않은 경우, 추가적으로 양방향 관계를 설정해야 할 수 있습니다.
+
+
+4️⃣ 단방향 관계 사용 시점.
+
+1️⃣ 데이터 탐색 방향이 한쪽으로만 필요한 경우.
+
+  예: 자식 -&gt; 부모(주문에서 고객을 참조)
+
+
+2️⃣ 양방향 관계가 불필요한 경우.
+
+  반대 방향 탐색이 요구되지 않으며, 간단한 설계를 원할 때.
+
+
+3️⃣ 성능 최적화가 중요한 경우,
+
+  불필요한 연관 데이터 로딩이나 복잡한 관계를 줄이고 싶은 경우.
+
+
+5️⃣ 단방향 관계와 양방향 관계 비교.
+
+
+  
+    
+      특징
+      단방향 관계
+      양방향 관계
+    
+  
+  
+    
+      참조 방향
+      한쪽에서만 참조 가능
+      양쪽에서 참조 가능
+    
+    
+      설계 복잡성
+      간단
+      복잡
+    
+    
+      사용 사례
+      단순한 관계에서 사용
+      부모와 자식 모두 탐색이 필요한 경우
+    
+    
+      외래 키 관리
+      외래 키는 관계 설정된 쪽에서만 관리
+      외래 키는 관계 주인이 관리
+    
+    
+      성능
+      낮은 연산 비용
+      추가 쿼리 및 연관 데이터 로딩 비용 증가
+    
+  
+
+
+6️⃣ 결론.
+
+  단방향 관계는 설계가 간단하고 유지보수가 쉬우며, 탐색 방향이 한쪽으로만 필요한 경우에 사용됩니다.
+  JPA에서는 @ManyToOne, @OneToMany, @OneToOne, @ManyToMany 어노테이션을 활용하여 단방향 관계를 설정할 수 있습니다.
+  양방향 관계보다 관리가 용이하므로, 필요한 경우에만 양방향 관계를 선택하는 것이 좋습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-16</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -1897,147 +2161,6 @@ public class Order {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html"><h1 class="title_post">🍃[Spring] '도메인 계층에 비즈니스 로직이 들어갔다'의 의미는 무엇인가요?</h1></a>
-                        <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html" class="txt_post">
-                            🍃[Spring] ‘도메인 계층에 비즈니스 로직이 들어갔다’의 의미는 무엇인가요?
-
-  애플리케이션의 핵심적인 비즈니스 로직을 도메인 객체(주로 엔티티나 값 객체)에 포함시켰다는 것을 의미합니다.
-    
-      도메인 객체에 비즈니스 로직이 들어가면, 객체 지향 설계에서 객체 스스로 자신의 상태와 행동을 관리하는 방식으로 시스템을 설계할 수 있습니다.
-    
-  
-
-
-1️⃣ 도메인 계층이란?
-
-  도메인 계층은 애플리케이션의 핵심 비즈니스 로직을 표현하는 계층입니다.
-  애플리케이션의 복잡한 비즈니스 로직과 규칙을 포함하며, 보통 엔티티, 값 객체, 에그리게이트 등의 도메인 객체로 구성됩니다.
-
-
-
-  🙋‍♂️ 에그리게이트(Aggregate)
-
-  도메인 주도 설계(Domain-Driven Design, DDD)에서 사용하는 개념으로, 밀접하게 연관된 객체들을 하나의 단위로 묶어 관리하는 그룹입니다.
-에그리게이트(Aggregate)는 하나의 일관성 있는 변경 단위로 다뤄지며, 객체들의 집합이 단일한 도메인 개념을 표현할 때 사용됩니다.
-
-
-2️⃣ 비즈니스 로직이 도메인 계층에 위치하는 이유.
-
-  비즈니스 로직을 도메인 계층에 넣는 것은 객체 지향 원칙에 맞는 설계 방식입니다.
-    
-      객체가 자신의 상태를 스스로 관리하고, 필요한 작업도 스스로 수행하는 방식으로 설계하면 높은 응집력을 유지할 수 있으며, 코드의 재사용성과 유지보수성도 향상됩니다.
-        
-          예를 들어, Order라는 주문 엔티티가 있다고 가정할 때, 이 엔티티에 주문 추가, 총액 계산과 같은 비즈니스 로직을 포함시키면, 서비스 계층에서 단순히 데이터를 처리하기보다 Order 객체가 자신의 역할에 맞게 스스로 행동할 수 있게 됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 예제: 비즈니스 로직이 도메인 계층에 포함된 경우.
-
-  아래 예제에서는 Order 엔티티가 주문과 관련된 비즈니스 로직을 스스로 수행하도록 구현하였습니다.
-    @Entity
-public class Order {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-    
-  @OneToMany(mappedBy = "order", cascade = Cascade = CascadeType.ALL, orphanRemoval = true)
-  private List&lt;OrderItem&gt; items = new ArrayList&lt;&gt;();
-    
-  private LocalDateTime orderDate;
-    
-  public void addItem(OrderItem item) {
-      items.add(item);
-      item.setOrder(this);
-  }
-    
-  public void removeItem(OrderItem item) {
-      item.remove(item);
-      item.setOrder(null);
-  }
-    
-  public BigDecimal calculateTotalPrice() {
-      return items.stream()
-                  .map(OrderItem::getTotalPrice)
-                  .reduce(BigDecimal.ZERO, BigDecimal::add);
-  }
-    
-  public void completeOrder() {
-      if (items.isEmpty()) {
-          throw new IllegalStateException("주문 항목이 비어 있습니다.");
-      }
-      this.orderDate = LocalDateTime.now();
-  }
-  // getter, setter
-}
-    
-  
-
-
-4️⃣ 설명.
-
-  addItem 메서드 : Order 객체가 스스로 주문 항목을 추가하는 로직을 갖고 있습니다.
-  calculateTotalPrice 메서드 : 주문 항목들의 총합을 계산하는 비즈니스 로직이 Order 객체에 포함되어 있습니다.
-  completeOrder 메서드 : 주문을 완료할 때의 비즈니스 규칙(예: 주문 항목이 없으면 오류)을 Order 객체가 스스로 처리합니다.
-    
-      위와 같이 도메인 객체에 비즈니스 로직을 포함하면, 서비스 계층에서는 Order 객체의 상태를 직접 변경하거나 처리하는 대신, Order 객체에 필요한 행동을 요청할 수 있습니다.
-    
-  
-
-
-5️⃣ 도메인 계층에 비즈니스 로직을 넣는 장점.
-
-1️⃣ 응집성 강화.
-
-  데이터와 비즈니스 로직이 도메인 객체 내부에 함꼐 위치하여 서로 밀접하게 관리됩니다.
-
-
-2️⃣ 코드의 재사용성.
-
-  비즈니스 로직이 도메인 계층에 있으면, 다른 서비스에도 해당 객체의 기능을 재사용할 수 있습니다.
-
-
-3️⃣ 유지보수 용이성.
-
-  비즈니스 로직이 한 곳에 집중되므로, 코드의 유지보수가 더 쉬워집니다.
-
-
-4️⃣ 풍부한 도메인 모델.
-
-  객체가 데이터를 단순히 담는 것에 그치지 않고 스스로 의미 있는 역할을 하며, 모델 자체가 더 직관적이고 이해하기 쉬워집니다.
-
-
-5️⃣ 요약.
-
-  “도메인 계층에 비즈니스 로직이 들어갔다”는 의미는 애플리케이션의 비즈니스 로직이 서비스 계층이나 별도의 유틸리티 클래스가 아니라 도메인 객체 내부에 위치하여 객체가 스스로 비즈니스 규칙을 관리하고 수행한다는 것을 의미합니다.
-    
-      이는 응집성과 재사용성을 높이며, 객체 지향적인 설계 원칙에 따라 시스템을 설계하는 방식입니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-11-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-11-12-orphanRemoval-option.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2501,6 +2624,312 @@ entityManager.persist(order); // Order와 OrderItem들이 함께 저장됨
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html"><h1 class="title_post">🍃[Spring] '도메인 계층에 비즈니스 로직이 들어갔다'의 의미는 무엇인가요?</h1></a>
+                        <a href="/Spring/2024-11-12-what-does-business-logic-entered-into-the-domain-layer-mean.html" class="txt_post">
+                            🍃[Spring] ‘도메인 계층에 비즈니스 로직이 들어갔다’의 의미는 무엇인가요?
+
+  애플리케이션의 핵심적인 비즈니스 로직을 도메인 객체(주로 엔티티나 값 객체)에 포함시켰다는 것을 의미합니다.
+    
+      도메인 객체에 비즈니스 로직이 들어가면, 객체 지향 설계에서 객체 스스로 자신의 상태와 행동을 관리하는 방식으로 시스템을 설계할 수 있습니다.
+    
+  
+
+
+1️⃣ 도메인 계층이란?
+
+  도메인 계층은 애플리케이션의 핵심 비즈니스 로직을 표현하는 계층입니다.
+  애플리케이션의 복잡한 비즈니스 로직과 규칙을 포함하며, 보통 엔티티, 값 객체, 에그리게이트 등의 도메인 객체로 구성됩니다.
+
+
+
+  🙋‍♂️ 에그리게이트(Aggregate)
+
+  도메인 주도 설계(Domain-Driven Design, DDD)에서 사용하는 개념으로, 밀접하게 연관된 객체들을 하나의 단위로 묶어 관리하는 그룹입니다.
+에그리게이트(Aggregate)는 하나의 일관성 있는 변경 단위로 다뤄지며, 객체들의 집합이 단일한 도메인 개념을 표현할 때 사용됩니다.
+
+
+2️⃣ 비즈니스 로직이 도메인 계층에 위치하는 이유.
+
+  비즈니스 로직을 도메인 계층에 넣는 것은 객체 지향 원칙에 맞는 설계 방식입니다.
+    
+      객체가 자신의 상태를 스스로 관리하고, 필요한 작업도 스스로 수행하는 방식으로 설계하면 높은 응집력을 유지할 수 있으며, 코드의 재사용성과 유지보수성도 향상됩니다.
+        
+          예를 들어, Order라는 주문 엔티티가 있다고 가정할 때, 이 엔티티에 주문 추가, 총액 계산과 같은 비즈니스 로직을 포함시키면, 서비스 계층에서 단순히 데이터를 처리하기보다 Order 객체가 자신의 역할에 맞게 스스로 행동할 수 있게 됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 예제: 비즈니스 로직이 도메인 계층에 포함된 경우.
+
+  아래 예제에서는 Order 엔티티가 주문과 관련된 비즈니스 로직을 스스로 수행하도록 구현하였습니다.
+    @Entity
+public class Order {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToMany(mappedBy = "order", cascade = Cascade = CascadeType.ALL, orphanRemoval = true)
+  private List&lt;OrderItem&gt; items = new ArrayList&lt;&gt;();
+    
+  private LocalDateTime orderDate;
+    
+  public void addItem(OrderItem item) {
+      items.add(item);
+      item.setOrder(this);
+  }
+    
+  public void removeItem(OrderItem item) {
+      item.remove(item);
+      item.setOrder(null);
+  }
+    
+  public BigDecimal calculateTotalPrice() {
+      return items.stream()
+                  .map(OrderItem::getTotalPrice)
+                  .reduce(BigDecimal.ZERO, BigDecimal::add);
+  }
+    
+  public void completeOrder() {
+      if (items.isEmpty()) {
+          throw new IllegalStateException("주문 항목이 비어 있습니다.");
+      }
+      this.orderDate = LocalDateTime.now();
+  }
+  // getter, setter
+}
+    
+  
+
+
+4️⃣ 설명.
+
+  addItem 메서드 : Order 객체가 스스로 주문 항목을 추가하는 로직을 갖고 있습니다.
+  calculateTotalPrice 메서드 : 주문 항목들의 총합을 계산하는 비즈니스 로직이 Order 객체에 포함되어 있습니다.
+  completeOrder 메서드 : 주문을 완료할 때의 비즈니스 규칙(예: 주문 항목이 없으면 오류)을 Order 객체가 스스로 처리합니다.
+    
+      위와 같이 도메인 객체에 비즈니스 로직을 포함하면, 서비스 계층에서는 Order 객체의 상태를 직접 변경하거나 처리하는 대신, Order 객체에 필요한 행동을 요청할 수 있습니다.
+    
+  
+
+
+5️⃣ 도메인 계층에 비즈니스 로직을 넣는 장점.
+
+1️⃣ 응집성 강화.
+
+  데이터와 비즈니스 로직이 도메인 객체 내부에 함꼐 위치하여 서로 밀접하게 관리됩니다.
+
+
+2️⃣ 코드의 재사용성.
+
+  비즈니스 로직이 도메인 계층에 있으면, 다른 서비스에도 해당 객체의 기능을 재사용할 수 있습니다.
+
+
+3️⃣ 유지보수 용이성.
+
+  비즈니스 로직이 한 곳에 집중되므로, 코드의 유지보수가 더 쉬워집니다.
+
+
+4️⃣ 풍부한 도메인 모델.
+
+  객체가 데이터를 단순히 담는 것에 그치지 않고 스스로 의미 있는 역할을 하며, 모델 자체가 더 직관적이고 이해하기 쉬워집니다.
+
+
+5️⃣ 요약.
+
+  “도메인 계층에 비즈니스 로직이 들어갔다”는 의미는 애플리케이션의 비즈니스 로직이 서비스 계층이나 별도의 유틸리티 클래스가 아니라 도메인 객체 내부에 위치하여 객체가 스스로 비즈니스 규칙을 관리하고 수행한다는 것을 의미합니다.
+    
+      이는 응집성과 재사용성을 높이며, 객체 지향적인 설계 원칙에 따라 시스템을 설계하는 방식입니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-11-JoinColumn.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-11-JoinColumn.html"><h1 class="title_post">🍃[Spring] JPA의 어노테이션 - `@JoinColumn`</h1></a>
+                        <a href="/Spring/2024-11-11-JoinColumn.html" class="txt_post">
+                            🍃[Spring] JPA의 어노테이션 - @JoinColumn
+
+  @JoinColumn은 JPA에서 두 엔티티 간의 연관관계를 매핑할 때 외래 키(Foreign Key) 컬럼을 설정하기 위해 사용하는 어노테이션입니다.
+  @JoinColumn은 관계가 설정되는 테이블에 외래 키(Foreign Key)를 정의하고, 해당 외래 키(Foreign Key) 컬럼이 연관된 엔티티를 참조하게 합니다.
+
+
+1️⃣ @JoinColumn의 주요 속성.
+
+  name
+    
+      외래 키(Foreign Key) 컬럼의 이름을 지정합니다.
+        
+          지정하지 않으면 기본적으로 참조하는 엔티티의 필드명 또는 프로퍼티명 + _id 형식으로 이름이 설정됩니다.
+        
+      
+    
+  
+  referencedColumnName
+    
+      외래 키(Foreign Key)가 참조할 대상 엔티티의 컬럼명을 지정합니다.
+        
+          기본적으로 참조 엔티티의 기본 키가 사용됩니다.
+        
+      
+    
+  
+  nullable
+    
+      외래 키(Foreign Key) 컬럼이 NULL을 허용할지 여부를 지정합니다.
+        
+          기본값은 true이며, false로 설정하면 반드시 값이 있어야 합니다.
+        
+      
+    
+  
+  unique
+    
+      외래 키(Foreign Key) 컬럼이 유일한 값인지 설정합니다.
+        
+          기본값은 false입니다.
+        
+      
+    
+  
+  insertable, updatable
+    
+      외래 키(Foreign Key) 컬럼의 값이 삽입/업데이트 가능한지 설정합니다.
+    
+  
+
+
+2️⃣ @JoinColumn 예시.
+
+  
+    팀(Team)과 회원(User)간의 다대일(N:1) 관계에서 User 엔티티의 team 필드를 통해 Team 엔티티와의 관계를 설정하며, @JoinColumn을 사용해 외래 키(Foreign Key)를 매핑할 수 있습니다.
+```java
+@Entity
+public class User {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+    private String name;
+
+    @ManyToOne
+  @JoinColumn(name = “team_id”) // 외래 키 컬럼 설정
+  private Team team;
+
+    // getter, setter
+}
+  
+
+
+@Entity
+public class Team {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+private String name;
+
+// getter, setter } ```
+
+
+👉 설명.
+
+  User 엔티티에서 team 필드는 @ManyToOne 관계를 통해 Team 엔티티와 연결됩니다.
+  @JoinColumn(name = "team_id")를 사용하여 User 테이블에 team_id라는 외래 키(Foreign Key) 컬럼이 생성되도록 지정했습니다.
+    
+      이 컬럼은 Team 엔티티의 기본 키 id를 참조하게 됩니다.
+    
+  
+
+
+3️⃣ @JoinColumn을 사용한 양방향 관계 예시.
+
+  @JoinColumn은 양방향 관계에서도 자주 사용됩니다.
+    
+      예를 들어, User와 Team 엔티티가 서로를 참조하는 양방향 관계로 설정할 수 있습니다.
+```java
+@Entity
+public class User {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+
+    private String name;
+
+    @ManyToOne
+  @JoinColumn(name = “team_id”)
+  private Team team;
+}
+  
+
+
+@Entity
+public class Team {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+private String name;
+
+@OneToMany(mappedBy = "team") // 연관관계 주인이 아님을 명시
+private List&lt;User&gt; users = new ArrayList&lt;&gt;();
+
+// getter, setter } ```
+
+
+👉 설명.
+
+  User 엔티티는 team_id 컬럼을 통해 Team 엔티티와 연결되며, 이 외래 키(Foreign Key)가 관계의 주인이 됩니다.
+  Team 엔티티는 users 필드를 통해 User 엔티티를 참조하며, mappedBy 속성을 통해 연관관계 주인이 아님을 명시했습니다.
+
+
+4️⃣ 요약.
+
+  @JoinColumn은 두 엔티티 간의 관계에서 외래 키를 설정하기 위해 사용되며, 외래 키 컬럼의 이름과 속성을 지정할 수 있습니다.
+  단방향, 양방향 관계에서 모두 사용되며, 명확한 외래 키 설정을 통해 데이터베이스 테이블 간의 관계를 정의합니다.
+  name. nullable, unique 등 다양한 속성을 설정해 데이터베이스 컬럼의 제약 조건을 조정할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-11-11-One-To-Many.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2926,171 +3355,6 @@ private Course course;
       연결 엔티티를 분리하면 추가 속성을 포함할 수 있으며, 더 유연한 데이터 모델링이 가능합니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-11-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-11-11-JoinColumn.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-11-11-JoinColumn.html"><h1 class="title_post">🍃[Spring] JPA의 어노테이션 - `@JoinColumn`</h1></a>
-                        <a href="/Spring/2024-11-11-JoinColumn.html" class="txt_post">
-                            🍃[Spring] JPA의 어노테이션 - @JoinColumn
-
-  @JoinColumn은 JPA에서 두 엔티티 간의 연관관계를 매핑할 때 외래 키(Foreign Key) 컬럼을 설정하기 위해 사용하는 어노테이션입니다.
-  @JoinColumn은 관계가 설정되는 테이블에 외래 키(Foreign Key)를 정의하고, 해당 외래 키(Foreign Key) 컬럼이 연관된 엔티티를 참조하게 합니다.
-
-
-1️⃣ @JoinColumn의 주요 속성.
-
-  name
-    
-      외래 키(Foreign Key) 컬럼의 이름을 지정합니다.
-        
-          지정하지 않으면 기본적으로 참조하는 엔티티의 필드명 또는 프로퍼티명 + _id 형식으로 이름이 설정됩니다.
-        
-      
-    
-  
-  referencedColumnName
-    
-      외래 키(Foreign Key)가 참조할 대상 엔티티의 컬럼명을 지정합니다.
-        
-          기본적으로 참조 엔티티의 기본 키가 사용됩니다.
-        
-      
-    
-  
-  nullable
-    
-      외래 키(Foreign Key) 컬럼이 NULL을 허용할지 여부를 지정합니다.
-        
-          기본값은 true이며, false로 설정하면 반드시 값이 있어야 합니다.
-        
-      
-    
-  
-  unique
-    
-      외래 키(Foreign Key) 컬럼이 유일한 값인지 설정합니다.
-        
-          기본값은 false입니다.
-        
-      
-    
-  
-  insertable, updatable
-    
-      외래 키(Foreign Key) 컬럼의 값이 삽입/업데이트 가능한지 설정합니다.
-    
-  
-
-
-2️⃣ @JoinColumn 예시.
-
-  
-    팀(Team)과 회원(User)간의 다대일(N:1) 관계에서 User 엔티티의 team 필드를 통해 Team 엔티티와의 관계를 설정하며, @JoinColumn을 사용해 외래 키(Foreign Key)를 매핑할 수 있습니다.
-```java
-@Entity
-public class User {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-    private String name;
-
-    @ManyToOne
-  @JoinColumn(name = “team_id”) // 외래 키 컬럼 설정
-  private Team team;
-
-    // getter, setter
-}
-  
-
-
-@Entity
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-private String name;
-
-// getter, setter } ```
-
-
-👉 설명.
-
-  User 엔티티에서 team 필드는 @ManyToOne 관계를 통해 Team 엔티티와 연결됩니다.
-  @JoinColumn(name = "team_id")를 사용하여 User 테이블에 team_id라는 외래 키(Foreign Key) 컬럼이 생성되도록 지정했습니다.
-    
-      이 컬럼은 Team 엔티티의 기본 키 id를 참조하게 됩니다.
-    
-  
-
-
-3️⃣ @JoinColumn을 사용한 양방향 관계 예시.
-
-  @JoinColumn은 양방향 관계에서도 자주 사용됩니다.
-    
-      예를 들어, User와 Team 엔티티가 서로를 참조하는 양방향 관계로 설정할 수 있습니다.
-```java
-@Entity
-public class User {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-    
-
-    private String name;
-
-    @ManyToOne
-  @JoinColumn(name = “team_id”)
-  private Team team;
-}
-  
-
-
-@Entity
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-private String name;
-
-@OneToMany(mappedBy = "team") // 연관관계 주인이 아님을 명시
-private List&lt;User&gt; users = new ArrayList&lt;&gt;();
-
-// getter, setter } ```
-
-
-👉 설명.
-
-  User 엔티티는 team_id 컬럼을 통해 Team 엔티티와 연결되며, 이 외래 키(Foreign Key)가 관계의 주인이 됩니다.
-  Team 엔티티는 users 필드를 통해 User 엔티티를 참조하며, mappedBy 속성을 통해 연관관계 주인이 아님을 명시했습니다.
-
-
-4️⃣ 요약.
-
-  @JoinColumn은 두 엔티티 간의 관계에서 외래 키를 설정하기 위해 사용되며, 외래 키 컬럼의 이름과 속성을 지정할 수 있습니다.
-  단방향, 양방향 관계에서 모두 사용되며, 명확한 외래 키 설정을 통해 데이터베이스 테이블 간의 관계를 정의합니다.
-  name. nullable, unique 등 다양한 속성을 설정해 데이터베이스 컬럼의 제약 조건을 조정할 수 있습니다.
 
 
                         </a>
@@ -6162,6 +6426,361 @@ public class StreamExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-10-23-OOD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-23-OOD.html"><h1 class="title_post">💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-10-23-OOD.html" class="txt_post">
+                            💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?
+
+  객체지향 설계(Object-Oriented Design, OOD)는 객체지향 프로그래밍(Object-Oriented Programming, OOP)의 원칙과 개념을 바탕으로, 프로그램을 객체라는 독립적인 단위로 설계하는 방법을 의미합니다.
+  객체지향 설계(Object-Oriented Design, OOD)는 프로그램의 구성 요소를 클래스와 객체로 나누고, 이들 간의 관계를 정의하여 효율적이고 재사용 가능하며 유지보수하기 쉬운 소프트웨어를 만드는 것을 목표로 합니다.
+
+
+
+  🙋‍♂️ 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?
+
+
+1️⃣ 객체지향 설계의 핵심 개념.
+
+1️⃣ 객체(Object)
+
+  객체는 데이터(속성, 상태)와 이 데이터를 조작하는 메서드(동작)가 결합된 독립적인 단위입니다.
+  현실 세계의 사물이나 개념을 모델링하여 프로그램 내에서 사용할 수 있는 형태로 만들기 때문에, 직관적으로 이해하고 설계할 수 있습니다.
+
+
+2️⃣ 클래스(Class)
+
+  클래스는 객체를 생성하기 위한 청사진 또는 설계도입니다.
+    
+      객체가 가지는 속성과 메서드를 정의합니다.
+    
+  
+  클래스는 객체의 특성(속성)과 행동(메서드)을 정의하여, 같은 형태의 객체를 다수 생성할 수 있게 합니다.
+
+
+3️⃣ 객체 간의 관계.
+
+  객체지향 설계(Object-Oriented Design, OOD)에서는 객체 간의 관계를 정의하는 것이 중요합니다.
+    
+      이러한 관계는 다음과 같이 나뉩니다.
+        
+          연관 관계(Association)
+          집합 관계(Aggregation)
+          구성 관계(Composition)
+          상속 관계(Inheritance)
+        
+      
+    
+  
+
+
+1️⃣ 연관 관계(Association)
+
+  두 객체가 서로 관련된 관계입니다.
+    
+      예: 학생 객체와 수업 객체가 서로 연결될 수 있음.
+    
+  
+
+
+2️⃣ 집합 관계(Aggregation)
+
+  객체가 다른 객체의 일부로 포함되는 관계이지만, 부분 객체는 독립적으로 존재할 수 있습니다.
+    
+      예: 팀과 팀원.
+    
+  
+
+
+3️⃣ 구성 관계(Composition)
+
+  부분 객체가 전체 객체에 완전히 소속되어 있으며, 전체 객체가 사라지면 부분 객체도 함께 사라집니다.
+    
+      예: 집과 방.
+    
+  
+
+
+4️⃣ 상속 관계(Inheritance)
+
+  객체가 다른 객체의 특성을 상속받는 관계입니다.
+    
+      예: 동물 클래스가 있고, 이를 상속받아 개, 고양이 클래스를 정의.
+    
+  
+
+
+2️⃣ 객체지향 설계의 원칙(SOLID)
+
+  객체지향 설계(Object-Oriented Design, OOD)에서는 SOLID 원칙이 자주 언급되며, 이는 유연하고 유지보수하기 좋은 소프트웨어 설계를 위한 중요한 지침입니다.
+
+
+
+  🙋‍♂️ SOLID 원칙.
+
+
+1️⃣ 단일 책임 원칙(Single Responsibility Principle, SRP)
+
+  클래스는 하나의 책임만 가져야 하며, 그 책임을 완벽하게 수행하도록 설계해야 합니다.
+  즉, 클래스가 변경되는 이유는 하나의 이유여야 합니다.
+  예: Order 클래스가 주문 처리와 주문 데이터 저장을 모두 수행하는 것이 아니라, 주문 처리 로직을 담당하는 Order 클래스와 주문 데이터를 저장하는 OrderRespository 클래스로 나누는 것이 좋습니다.
+
+
+2️⃣ 개방-폐쇄 원칙(Open-Closed Principle, OCP)
+
+  클래스는 확장에는 열려 있고, 수정에는 닫혀 있어야 합니다.
+  즉, 기존 코드를 수정하지 않고도 기능을 추가할 수 있어야 합니다.
+  예: 새로운 기능을 추가할 때 기존 클래스의 코드를 수정하지 않고도 상속이나 인터페이스 구현을 통해 기능을 확장할 수 있어야 합니다.
+
+
+3️⃣ 리스코프 치환 원칙(Liskov Substitution Principle, LSP)
+
+  서브 클래스는 언제나 기반 클래스로 대체할 수 있어야 합니다.
+  즉, 상위 클래스의 객체를 사용하는 코드에서 하위 클래스의 객체를 사용할 수 있어야 하며, 프로그램이 정상적으로 동작해야 합니다.
+  예: Bird 클래스의 하위 클래스인 Penguin이 fly() 메서드를 구현하지만, 현실에서는 펭귄이 날지 못하기 때문에 이 원칙을 위반할 수 있습니다. 이러한 경우 설계를 다시 고려해야 합니다.
+
+
+4️⃣ 인터페이스 분리 원칙(Interface Segregation Principle, ISP)
+
+  구현하지 않는 메서드가 있는 인터페이스를 사용하지 않도록, 작고 구체적인 인터페이스로 나누어야 합니다.
+  하나의 큰 인터페이스보다는 여러 개의 작은 인터페이스를 설계하여, 필요한 기능만 구현하도록 합니다.
+  예: Printer 인터페이스가 print(), scan(), fax()를 포함하고 있을 때, 프린터만 필요한 경우에도 스캐너와 팩스 기능을 구현해야 한다면, Printable, Scannable, Faxable과 같이 인터페이스를 나누는 것이 좋습니다.
+
+
+5️⃣ 의존 역전 원칙(Dependency Inversion Principle, DIP)
+
+  상위 모듈은 하위 모듈에 의존해서는 안되며, 둘 다 추상화에 의존해야 합니다.
+  구체적인 클래스가 아닌, 추상화된 인터페이스에 의존하도록 설계하여 유연한 코드를 작성할 수 있습니다.
+  예: Service 클래스가 Repository 인터페이스를 사용하고, 실제 데이터 저장 로직은 FileRepository나 DatabaseRepository 같은 클래스에서 구현할 수 있도록 설계합니다.
+
+
+3️⃣ 객체지향 설계의 장점.
+
+1️⃣ 재사용성.
+
+  객체지향 설계(Object-Oriented Design, OOD)의 모듈성 덕분에, 하나의 객체를 다양한 프로그램에서 재사용할 수 있습니다.
+    
+      이는 코드를 재사용 가능하게 하여 개발 시간을 줄이고 비용을 절감할 수 있습니다.
+    
+  
+
+
+2️⃣ 유지보수성.
+
+  각 객체가 독립적이기 때문에, 문제가 발생했을 때 해당 객체만 수정하면 됩니다.
+    
+      다른 객체에 미치는 영향을 최소화할 수 있어, 유지보수가 용이합니다.
+    
+  
+
+
+3️⃣ 확장성.
+
+  객체지향 설계(Object-Oriented Design, OOD)는 새로운 기능을 추가할 때 기존 코드를 수정하지 않고도 확장할 수 있도록 유연한 구조를 제공합니다.
+  새로운 클래스나 메서드를 추가함으로써 기능을 확장할 수 있어, 변화하는 요구 사항에 쉽게 대응할 수 있습니다.
+
+
+4️⃣ 캡슐화.
+
+  객체지향 설계(Object-Oriented Design, OOD)는 캡슐화(Encapsulation)를 통해 객체 내부 상태를 보호하고, 외부에서 접근할 수 있는 방법을 제한합니다.
+  이는 데이터의 무결성을 유지하고, 코드의 복잡성을 줄이는 데 도움이 됩니다.
+
+
+
+  📝 데이터의 무결성(Data Integrity)
+
+  데이터가 정확하고 일관되며 신뢰할 수 있는 상태를 유지하는 것을 의미합니다.
+이는 데이터의 정확성, 일관성, 유효성을 보장하기 위한 개념으로, 데이터가 저장, 처리, 전송되는 동안 손상, 변조, 유실 등이 발생하지 않도록 하는 것을 목표로 합니다.
+데이터 무결성(Data Integrity)은 데이터베이스 시스템을 비롯한 다양한 소프트웨어 시스템에서 매우 중요한 개념으로, 데이터의 품질을 유지하는 핵심 요소입니다.
+
+
+4️⃣ 객체지향 설계의 예.
+
+1️⃣ Car 클래스 설계 예.
+public class Car {
+    private Engine engine; // 캡슐화된 엔진 객체
+    
+    public Car(Engine engine) { // 의존성 주입
+        this.engine = engine;
+    }
+    
+    public void start() {
+        engine.start();
+    }
+}
+
+
+
+  위 설계에서는 Car 클래스가 Engine 객체를 사용하지만, Engine 클래스의 구체적인 구현에 의존하지 않고, Engine 인터페이스를 통해 동작합니다.
+  만약 전기 엔진이나 가솔린 엔진을 사용하고 싶다면, Engine 인터페이스를 구현한 새로운 클래스만 추가하면 됩니다.
+    
+      이는 의존 역전 원칙(Dependency Inversion Principle, DIP)을 적용한 예입니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  객체지향 설계(Object-Oriented Design, OOD)는 객체와 클래스를 중심으로 프로그램을 설계하여, 재사용성과 유지보수성이 높은 소프트웨어를 만드는 방법입니다.
+  객체지향 설계(Object-Oriented Design, OOD)는 SOLID 원칙을 통해 효율적이고 유연한 시스템 구조를 제공하며, 캡슐화, 상속, 다형성, 추상화와 같은 객체지향 프로그래밍의 개념을 적극 활용합니다.
+  이를 통한 복잡한 시스템을 더 쉽게 이해하고 관리할 수 있으며, 변화하는 요구 사항에도 유연하게 대응할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-23-modularization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-23-modularization.html"><h1 class="title_post">💾 [CS] 모듈화(Modularization)란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-10-23-modularization.html" class="txt_post">
+                            💾 [CS] 모듈화(Modularization)란 무엇일까요?
+
+  모듈화(Modularization)는 소프트웨어 개발에서 프로그램을 독립적이고 재사용 가능한 작은 단위(모듈)로 나누는 설계 기법입니다.
+  각 모듈은 특정 기능을 수행하며, 다른 모듈과 명확하게 정의된 인터페이스를 통해 상호작용 합니다.
+  모듈화의 목적은 코드의 가독성, 유지보수성, 재사용성을 높이고, 복잡한 시스템을 더 쉽게 관리할 수 있도록 하는 것 입니다.
+
+
+
+  🙋‍♂️ 모듈과 컴포넌트를 레고 블록에 비유해보면?!
+🙋‍♂️ 소프트웨어 공학에서의 모듈.
+🙋‍♂️ API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
+
+
+1️⃣ 모듈화의 개념.
+
+1️⃣ 모듈(Module).
+
+  모듈은 자기완결적인 독립적 코드 단위로, 특정 기능을 수행하는 코드의 집합입니다.
+  각 모듈은 하나의 기능이나 작업에 집중하며, 다른 모듈과의 의존성을 최소화하도록 설계됩니다.
+  예를 들어, 로그인 처리, 데이터베이스 접근, 파일 입출력, 사용자 인터페이스 등과 같은 각각의 기능을 담당하는 모듈이 있을 수 있습니다.
+
+
+2️⃣ 인터페이스(Interface).
+
+  모듈화(Modularization)에서 중요한 개념은 명확한 인터페이스를 정의하는 것입니다.
+  인터페이스(Interface)는 모듈(Module)이 외부에서 제공하는 기능을 정의하며, 다른 모듈이 기능을 호출할 때 사용할 수 있는 명세입니다.
+  인터페이스(Interface) 덕분에 모듈 내부의 구현이 변경되더라도, 외부 모듈과의 연결 방식은 변하지 않으므로 유연한 코드 수정이 가능합니다.
+
+
+2️⃣ 모듈화의 장점.
+
+1️⃣ 유지보수성 향상.
+
+  모듈화된 프로그램은 개별 모듈을 독립적으로 수정할 수 있기 때문에, 특정 기능에 문제가 발생해도 해당 모듈만 수정하면 됩니다.
+  전체 시스템에 영향을 주지 않고 변경이 가능하므로 유지보수가 용이합니다.
+
+
+2️⃣ 재사용성 증가.
+
+  모듈은 독립적인 기능 단위이기 때문에, 여러 프로그램에서 재사용할 수 있습니다.
+  예를 들어, 로그인 처리 모듈을 별도로 만들어 놓으면, 다른 프로젝트에서도 동일한 모듈을 재사용할 수 있어 개발 시간을 줄일 수 있습니다.
+
+
+3️⃣ 가독성 및 코드 관리.
+
+  모듈화(Modularization)는 프로그램의 구조를 체계적으로 관리할 수 있게 하며, 각각의 모듈이 명확한 기능을 담당하기 때문에 코드의 가독성이 높아집니다.
+  이는 큰 프로젝트나 복잡한 시스템에서 특히 유용하며, 코드를 이해하기 쉽고 디버깅하기도 용이합니다.
+
+
+4️⃣ 개발 팀 협업.
+
+  모듈화를 통해 개발 팀이 작업을 나눌 수 있습니다.
+    
+      각 개발자는 다른 모듈에 영향을 주기 않고 자신의 모듈을 개발할 수 있기 때문에 병렬 개발이 가능해집니다.
+    
+  
+
+
+
+  📝 병렬 개발(Parallel Development)
+
+  여러 개발자가 동시에 동일한 프로젝트에 다른 기능이나 모듈(Module)을 개발하는 소프트웨어 개발 방식을 의미합니다.
+병렬 개발(Parallel Development)을 통해 프로젝트의 개발 속도를 높이고, 기능을 더 빠르게 구현할 수 있습니다.
+대규모 프로젝트에서 흔히 사용되는 개발 방식으로, 개발 효율성을 극대화할 수 있는 장점이 있습니다.
+
+
+
+  이는 큰 프로젝트나 개발 속도를 높이고, 효율적인 협업을 가능하게 합니다.
+
+
+5️⃣ 유연성과 확장성.
+
+  모듈화(Modularization)를 통해 프로그램을 쉽게 확장할 수 있습니다.
+    
+      새로운 기능이 필요할 때, 기존 모듈(Module)을 수정하거나 새로운 모듈(Module)을 추가하는 방식으로 쉽게 확장할 수 있습니다.
+    
+  
+  시스템의 유연성이 증가하여 다양한 요구 사항에 맞개 프로그램을 조정할 수 있습니다.
+
+
+3️⃣ 모듈화의 예.
+
+1️⃣ Java에서의 모듈화.
+
+  Java 9부터는 모듈 시스템을 도입하여, 애플리케이션을 명확한 의존성을 가진 여러 모듈로 나눌 수 있게 되었습니다.
+  예를 들어, module-info.java 파일을 사용해 모듈을 정의하고, 해당 모듈이 어떤 모듈을 사용하는지, 외부에 어떤 패키지를 공개하는지 명확히 할 수 있습니다.
+
+
+module com.example.mymodule {
+    export com.example.service; // 외부에 공개할 패키지
+    requires java.sql; // 필요한 모듈
+}
+
+
+2️⃣ 프로젝트 구조의 모듈화.
+
+  웹 애플리케이션에서 일반적으로 다음과 같은 모듈로 나눌 수 있습니다.
+    
+      데이터 접근 모듈 : 데이터베이스와 상호작용하는 기능을 담당.
+      비즈니스 로직 모듈 : 애플리케이션의 핵심 로직을 처리.
+      프레젠테이션 모듈 : 사용자 인터페이스 및 요청/응답 처리.
+      유틸리티 모듈 : 다양한 모듈에서 공통적으로 사용하는 기능을 제공.
+    
+  
+  이러한 모듈 구조를 통해 개발자는 각 모듈을 독립적으로 개발, 테스트, 유지보수할 수 있으며, 각 모듈은 하나의 기능에 집중하도록 설계됩니다.
+
+
+4️⃣ 요약.
+
+  모듈화(Modularization)는 프로그램을 작고 독립적인 모듈로 나누어 가독성, 유지보수성, 재사용성을 높이는 설계 기법입니다.
+  모듈화(Modularization)된 프로그램은 기능별로 독립적인 모듈(Module)로 구성되어, 각 모듈이 특정 작업을 수행하고, 다른 모듈과 명확한 인터페이스(Interface)로 상호작용합니다.
+  이를 통해 개발, 유지보수, 확장이 쉬워지고, 팀 협업도 원활해질 수 있습니다.
+  모듈화(Modularization)를 잘 설계하면 복잡한 시스템을 체계적으로 관리할 수 있으며, 코드의 재사용성을 높여 개발 속도를 향상시킬 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-10-23-connected-with-frontand.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -6345,143 +6964,6 @@ public class WebConfig {
                         </a>
                         <div class="info-post">
                                 <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-23-modularization.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-23-modularization.html"><h1 class="title_post">💾 [CS] 모듈화(Modularization)란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-10-23-modularization.html" class="txt_post">
-                            💾 [CS] 모듈화(Modularization)란 무엇일까요?
-
-  모듈화(Modularization)는 소프트웨어 개발에서 프로그램을 독립적이고 재사용 가능한 작은 단위(모듈)로 나누는 설계 기법입니다.
-  각 모듈은 특정 기능을 수행하며, 다른 모듈과 명확하게 정의된 인터페이스를 통해 상호작용 합니다.
-  모듈화의 목적은 코드의 가독성, 유지보수성, 재사용성을 높이고, 복잡한 시스템을 더 쉽게 관리할 수 있도록 하는 것 입니다.
-
-
-
-  🙋‍♂️ 모듈과 컴포넌트를 레고 블록에 비유해보면?!
-🙋‍♂️ 소프트웨어 공학에서의 모듈.
-🙋‍♂️ API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
-
-
-1️⃣ 모듈화의 개념.
-
-1️⃣ 모듈(Module).
-
-  모듈은 자기완결적인 독립적 코드 단위로, 특정 기능을 수행하는 코드의 집합입니다.
-  각 모듈은 하나의 기능이나 작업에 집중하며, 다른 모듈과의 의존성을 최소화하도록 설계됩니다.
-  예를 들어, 로그인 처리, 데이터베이스 접근, 파일 입출력, 사용자 인터페이스 등과 같은 각각의 기능을 담당하는 모듈이 있을 수 있습니다.
-
-
-2️⃣ 인터페이스(Interface).
-
-  모듈화(Modularization)에서 중요한 개념은 명확한 인터페이스를 정의하는 것입니다.
-  인터페이스(Interface)는 모듈(Module)이 외부에서 제공하는 기능을 정의하며, 다른 모듈이 기능을 호출할 때 사용할 수 있는 명세입니다.
-  인터페이스(Interface) 덕분에 모듈 내부의 구현이 변경되더라도, 외부 모듈과의 연결 방식은 변하지 않으므로 유연한 코드 수정이 가능합니다.
-
-
-2️⃣ 모듈화의 장점.
-
-1️⃣ 유지보수성 향상.
-
-  모듈화된 프로그램은 개별 모듈을 독립적으로 수정할 수 있기 때문에, 특정 기능에 문제가 발생해도 해당 모듈만 수정하면 됩니다.
-  전체 시스템에 영향을 주지 않고 변경이 가능하므로 유지보수가 용이합니다.
-
-
-2️⃣ 재사용성 증가.
-
-  모듈은 독립적인 기능 단위이기 때문에, 여러 프로그램에서 재사용할 수 있습니다.
-  예를 들어, 로그인 처리 모듈을 별도로 만들어 놓으면, 다른 프로젝트에서도 동일한 모듈을 재사용할 수 있어 개발 시간을 줄일 수 있습니다.
-
-
-3️⃣ 가독성 및 코드 관리.
-
-  모듈화(Modularization)는 프로그램의 구조를 체계적으로 관리할 수 있게 하며, 각각의 모듈이 명확한 기능을 담당하기 때문에 코드의 가독성이 높아집니다.
-  이는 큰 프로젝트나 복잡한 시스템에서 특히 유용하며, 코드를 이해하기 쉽고 디버깅하기도 용이합니다.
-
-
-4️⃣ 개발 팀 협업.
-
-  모듈화를 통해 개발 팀이 작업을 나눌 수 있습니다.
-    
-      각 개발자는 다른 모듈에 영향을 주기 않고 자신의 모듈을 개발할 수 있기 때문에 병렬 개발이 가능해집니다.
-    
-  
-
-
-
-  📝 병렬 개발(Parallel Development)
-
-  여러 개발자가 동시에 동일한 프로젝트에 다른 기능이나 모듈(Module)을 개발하는 소프트웨어 개발 방식을 의미합니다.
-병렬 개발(Parallel Development)을 통해 프로젝트의 개발 속도를 높이고, 기능을 더 빠르게 구현할 수 있습니다.
-대규모 프로젝트에서 흔히 사용되는 개발 방식으로, 개발 효율성을 극대화할 수 있는 장점이 있습니다.
-
-
-
-  이는 큰 프로젝트나 개발 속도를 높이고, 효율적인 협업을 가능하게 합니다.
-
-
-5️⃣ 유연성과 확장성.
-
-  모듈화(Modularization)를 통해 프로그램을 쉽게 확장할 수 있습니다.
-    
-      새로운 기능이 필요할 때, 기존 모듈(Module)을 수정하거나 새로운 모듈(Module)을 추가하는 방식으로 쉽게 확장할 수 있습니다.
-    
-  
-  시스템의 유연성이 증가하여 다양한 요구 사항에 맞개 프로그램을 조정할 수 있습니다.
-
-
-3️⃣ 모듈화의 예.
-
-1️⃣ Java에서의 모듈화.
-
-  Java 9부터는 모듈 시스템을 도입하여, 애플리케이션을 명확한 의존성을 가진 여러 모듈로 나눌 수 있게 되었습니다.
-  예를 들어, module-info.java 파일을 사용해 모듈을 정의하고, 해당 모듈이 어떤 모듈을 사용하는지, 외부에 어떤 패키지를 공개하는지 명확히 할 수 있습니다.
-
-
-module com.example.mymodule {
-    export com.example.service; // 외부에 공개할 패키지
-    requires java.sql; // 필요한 모듈
-}
-
-
-2️⃣ 프로젝트 구조의 모듈화.
-
-  웹 애플리케이션에서 일반적으로 다음과 같은 모듈로 나눌 수 있습니다.
-    
-      데이터 접근 모듈 : 데이터베이스와 상호작용하는 기능을 담당.
-      비즈니스 로직 모듈 : 애플리케이션의 핵심 로직을 처리.
-      프레젠테이션 모듈 : 사용자 인터페이스 및 요청/응답 처리.
-      유틸리티 모듈 : 다양한 모듈에서 공통적으로 사용하는 기능을 제공.
-    
-  
-  이러한 모듈 구조를 통해 개발자는 각 모듈을 독립적으로 개발, 테스트, 유지보수할 수 있으며, 각 모듈은 하나의 기능에 집중하도록 설계됩니다.
-
-
-4️⃣ 요약.
-
-  모듈화(Modularization)는 프로그램을 작고 독립적인 모듈로 나누어 가독성, 유지보수성, 재사용성을 높이는 설계 기법입니다.
-  모듈화(Modularization)된 프로그램은 기능별로 독립적인 모듈(Module)로 구성되어, 각 모듈이 특정 작업을 수행하고, 다른 모듈과 명확한 인터페이스(Interface)로 상호작용합니다.
-  이를 통해 개발, 유지보수, 확장이 쉬워지고, 팀 협업도 원활해질 수 있습니다.
-  모듈화(Modularization)를 잘 설계하면 복잡한 시스템을 체계적으로 관리할 수 있으며, 코드의 재사용성을 높여 개발 속도를 향상시킬 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-10-23</span>
                             
@@ -6707,224 +7189,6 @@ module com.example.mymodule {
   가비지 컬렉터(Garbage Collector)는 주기적으로 실행되어, 참조되지 않는 객체를 감지하고 메모리를 회수합니다.
   자바에서는 세대별 가비지 컬렉션(Garbage Collection)을 통해 객체의 수명에 따라 메모리를 효율적으로 관리합니다.
   가비지 컬렉션 덕분에 개발자는 메모리 관리에 대한 부담을 덜고, 더 안정적이고 효율적인 프로그램을 작성할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-23-OOD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-23-OOD.html"><h1 class="title_post">💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-10-23-OOD.html" class="txt_post">
-                            💾 [CS] 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?
-
-  객체지향 설계(Object-Oriented Design, OOD)는 객체지향 프로그래밍(Object-Oriented Programming, OOP)의 원칙과 개념을 바탕으로, 프로그램을 객체라는 독립적인 단위로 설계하는 방법을 의미합니다.
-  객체지향 설계(Object-Oriented Design, OOD)는 프로그램의 구성 요소를 클래스와 객체로 나누고, 이들 간의 관계를 정의하여 효율적이고 재사용 가능하며 유지보수하기 쉬운 소프트웨어를 만드는 것을 목표로 합니다.
-
-
-
-  🙋‍♂️ 객체지향 설계(Object-Oriented Design, OOD)란 무엇일까요?
-
-
-1️⃣ 객체지향 설계의 핵심 개념.
-
-1️⃣ 객체(Object)
-
-  객체는 데이터(속성, 상태)와 이 데이터를 조작하는 메서드(동작)가 결합된 독립적인 단위입니다.
-  현실 세계의 사물이나 개념을 모델링하여 프로그램 내에서 사용할 수 있는 형태로 만들기 때문에, 직관적으로 이해하고 설계할 수 있습니다.
-
-
-2️⃣ 클래스(Class)
-
-  클래스는 객체를 생성하기 위한 청사진 또는 설계도입니다.
-    
-      객체가 가지는 속성과 메서드를 정의합니다.
-    
-  
-  클래스는 객체의 특성(속성)과 행동(메서드)을 정의하여, 같은 형태의 객체를 다수 생성할 수 있게 합니다.
-
-
-3️⃣ 객체 간의 관계.
-
-  객체지향 설계(Object-Oriented Design, OOD)에서는 객체 간의 관계를 정의하는 것이 중요합니다.
-    
-      이러한 관계는 다음과 같이 나뉩니다.
-        
-          연관 관계(Association)
-          집합 관계(Aggregation)
-          구성 관계(Composition)
-          상속 관계(Inheritance)
-        
-      
-    
-  
-
-
-1️⃣ 연관 관계(Association)
-
-  두 객체가 서로 관련된 관계입니다.
-    
-      예: 학생 객체와 수업 객체가 서로 연결될 수 있음.
-    
-  
-
-
-2️⃣ 집합 관계(Aggregation)
-
-  객체가 다른 객체의 일부로 포함되는 관계이지만, 부분 객체는 독립적으로 존재할 수 있습니다.
-    
-      예: 팀과 팀원.
-    
-  
-
-
-3️⃣ 구성 관계(Composition)
-
-  부분 객체가 전체 객체에 완전히 소속되어 있으며, 전체 객체가 사라지면 부분 객체도 함께 사라집니다.
-    
-      예: 집과 방.
-    
-  
-
-
-4️⃣ 상속 관계(Inheritance)
-
-  객체가 다른 객체의 특성을 상속받는 관계입니다.
-    
-      예: 동물 클래스가 있고, 이를 상속받아 개, 고양이 클래스를 정의.
-    
-  
-
-
-2️⃣ 객체지향 설계의 원칙(SOLID)
-
-  객체지향 설계(Object-Oriented Design, OOD)에서는 SOLID 원칙이 자주 언급되며, 이는 유연하고 유지보수하기 좋은 소프트웨어 설계를 위한 중요한 지침입니다.
-
-
-
-  🙋‍♂️ SOLID 원칙.
-
-
-1️⃣ 단일 책임 원칙(Single Responsibility Principle, SRP)
-
-  클래스는 하나의 책임만 가져야 하며, 그 책임을 완벽하게 수행하도록 설계해야 합니다.
-  즉, 클래스가 변경되는 이유는 하나의 이유여야 합니다.
-  예: Order 클래스가 주문 처리와 주문 데이터 저장을 모두 수행하는 것이 아니라, 주문 처리 로직을 담당하는 Order 클래스와 주문 데이터를 저장하는 OrderRespository 클래스로 나누는 것이 좋습니다.
-
-
-2️⃣ 개방-폐쇄 원칙(Open-Closed Principle, OCP)
-
-  클래스는 확장에는 열려 있고, 수정에는 닫혀 있어야 합니다.
-  즉, 기존 코드를 수정하지 않고도 기능을 추가할 수 있어야 합니다.
-  예: 새로운 기능을 추가할 때 기존 클래스의 코드를 수정하지 않고도 상속이나 인터페이스 구현을 통해 기능을 확장할 수 있어야 합니다.
-
-
-3️⃣ 리스코프 치환 원칙(Liskov Substitution Principle, LSP)
-
-  서브 클래스는 언제나 기반 클래스로 대체할 수 있어야 합니다.
-  즉, 상위 클래스의 객체를 사용하는 코드에서 하위 클래스의 객체를 사용할 수 있어야 하며, 프로그램이 정상적으로 동작해야 합니다.
-  예: Bird 클래스의 하위 클래스인 Penguin이 fly() 메서드를 구현하지만, 현실에서는 펭귄이 날지 못하기 때문에 이 원칙을 위반할 수 있습니다. 이러한 경우 설계를 다시 고려해야 합니다.
-
-
-4️⃣ 인터페이스 분리 원칙(Interface Segregation Principle, ISP)
-
-  구현하지 않는 메서드가 있는 인터페이스를 사용하지 않도록, 작고 구체적인 인터페이스로 나누어야 합니다.
-  하나의 큰 인터페이스보다는 여러 개의 작은 인터페이스를 설계하여, 필요한 기능만 구현하도록 합니다.
-  예: Printer 인터페이스가 print(), scan(), fax()를 포함하고 있을 때, 프린터만 필요한 경우에도 스캐너와 팩스 기능을 구현해야 한다면, Printable, Scannable, Faxable과 같이 인터페이스를 나누는 것이 좋습니다.
-
-
-5️⃣ 의존 역전 원칙(Dependency Inversion Principle, DIP)
-
-  상위 모듈은 하위 모듈에 의존해서는 안되며, 둘 다 추상화에 의존해야 합니다.
-  구체적인 클래스가 아닌, 추상화된 인터페이스에 의존하도록 설계하여 유연한 코드를 작성할 수 있습니다.
-  예: Service 클래스가 Repository 인터페이스를 사용하고, 실제 데이터 저장 로직은 FileRepository나 DatabaseRepository 같은 클래스에서 구현할 수 있도록 설계합니다.
-
-
-3️⃣ 객체지향 설계의 장점.
-
-1️⃣ 재사용성.
-
-  객체지향 설계(Object-Oriented Design, OOD)의 모듈성 덕분에, 하나의 객체를 다양한 프로그램에서 재사용할 수 있습니다.
-    
-      이는 코드를 재사용 가능하게 하여 개발 시간을 줄이고 비용을 절감할 수 있습니다.
-    
-  
-
-
-2️⃣ 유지보수성.
-
-  각 객체가 독립적이기 때문에, 문제가 발생했을 때 해당 객체만 수정하면 됩니다.
-    
-      다른 객체에 미치는 영향을 최소화할 수 있어, 유지보수가 용이합니다.
-    
-  
-
-
-3️⃣ 확장성.
-
-  객체지향 설계(Object-Oriented Design, OOD)는 새로운 기능을 추가할 때 기존 코드를 수정하지 않고도 확장할 수 있도록 유연한 구조를 제공합니다.
-  새로운 클래스나 메서드를 추가함으로써 기능을 확장할 수 있어, 변화하는 요구 사항에 쉽게 대응할 수 있습니다.
-
-
-4️⃣ 캡슐화.
-
-  객체지향 설계(Object-Oriented Design, OOD)는 캡슐화(Encapsulation)를 통해 객체 내부 상태를 보호하고, 외부에서 접근할 수 있는 방법을 제한합니다.
-  이는 데이터의 무결성을 유지하고, 코드의 복잡성을 줄이는 데 도움이 됩니다.
-
-
-
-  📝 데이터의 무결성(Data Integrity)
-
-  데이터가 정확하고 일관되며 신뢰할 수 있는 상태를 유지하는 것을 의미합니다.
-이는 데이터의 정확성, 일관성, 유효성을 보장하기 위한 개념으로, 데이터가 저장, 처리, 전송되는 동안 손상, 변조, 유실 등이 발생하지 않도록 하는 것을 목표로 합니다.
-데이터 무결성(Data Integrity)은 데이터베이스 시스템을 비롯한 다양한 소프트웨어 시스템에서 매우 중요한 개념으로, 데이터의 품질을 유지하는 핵심 요소입니다.
-
-
-4️⃣ 객체지향 설계의 예.
-
-1️⃣ Car 클래스 설계 예.
-public class Car {
-    private Engine engine; // 캡슐화된 엔진 객체
-    
-    public Car(Engine engine) { // 의존성 주입
-        this.engine = engine;
-    }
-    
-    public void start() {
-        engine.start();
-    }
-}
-
-
-
-  위 설계에서는 Car 클래스가 Engine 객체를 사용하지만, Engine 클래스의 구체적인 구현에 의존하지 않고, Engine 인터페이스를 통해 동작합니다.
-  만약 전기 엔진이나 가솔린 엔진을 사용하고 싶다면, Engine 인터페이스를 구현한 새로운 클래스만 추가하면 됩니다.
-    
-      이는 의존 역전 원칙(Dependency Inversion Principle, DIP)을 적용한 예입니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  객체지향 설계(Object-Oriented Design, OOD)는 객체와 클래스를 중심으로 프로그램을 설계하여, 재사용성과 유지보수성이 높은 소프트웨어를 만드는 방법입니다.
-  객체지향 설계(Object-Oriented Design, OOD)는 SOLID 원칙을 통해 효율적이고 유연한 시스템 구조를 제공하며, 캡슐화, 상속, 다형성, 추상화와 같은 객체지향 프로그래밍의 개념을 적극 활용합니다.
-  이를 통한 복잡한 시스템을 더 쉽게 이해하고 관리할 수 있으며, 변화하는 요구 사항에도 유연하게 대응할 수 있습니다.
 
 
                         </a>
@@ -9685,6 +9949,383 @@ public class UserSevice {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/DB/2024-10-17-schema.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/DB/2024-10-17-schema.html"><h1 class="title_post">💾[Database] 스키마(Schema)란 무엇일까요?</h1></a>
+                        <a href="/DB/2024-10-17-schema.html" class="txt_post">
+                            💾[Database] 스키마(Schema)란 무엇일까요?
+
+  스키마(Schema)는 데이터베이스의 구조를 정의하는 용어로, 데이터베이스에서 데이터가 어떻게 저장되고, 어떻게 조직화되는지를 설명하는 데 사용됩니다.
+  스키마(Schema)는 데이터베이스의 논리적 설계를 나타내면, 테이블, 뷰, 인덱스, 트리거, 저장 프로시저, 제약 조건 등과 같은 데이터베이스 객체들이 어떻게 구성되는지를 정의합니다.
+
+
+1️⃣ 스키마의 주요 요소.
+
+1️⃣ 테이블(Table).
+
+  스키마(Schema)에서 가장 기본적인 요소로, 데이터를 행(Row)과 열(Column) 형식으로 저장합니다.
+  각 테이블은 하나의 엔티티(예: 사용자, 제품 등)를 표현하며, 테이블의 열(Column)은 속성을, 행은 각 개체의 데이터를 나타냅니다.
+
+
+2️⃣ 컬럼(Column).
+
+  테이블의 각 필드를 나타내며, 데이터 유형(정수, 문자열 등)과 제약 조건(예: NOT NULL, UNIQUE)이 설정됩니다.
+  스키마(Schema)에서 컬럼(Column, 열)의 이름, 데이터 타입, 크기 등을 정의합니다.
+
+
+3️⃣ 기본 키(Primary Key)
+
+  테이블에서 각 행(Row)을 고유하게 식별할 수 있는 특정 열(또는 열의 조합)입니다.
+  스키마(Schema)에서 기본 키(Primary Key)는 특정 테이블에서 중복되지 않는 값으로 정의됩니다.
+
+
+4️⃣ 외래 키(Foreign Key)
+
+  다른 테이블의 기본 키(Primary Key)와 연결되는 열(Column)로, 두 테이블 간의 관계를 정의하는 데 사용됩니다.
+  스키마(Schema)에서 외래 키(Foreign Key)는 데이터베이스 테이블 간의 참조 무결성을 유지하도록 합니다.
+
+
+5️⃣ 인덱스(Index)
+
+  검색 성능을 향상시키기 위해 테이블의 특정 열(Column)에 대한 인덱스를 정의합니다.
+  스키마(Schema)에서 인덱스는 데이터의 효율적인 검색을 위한 추가적인 구조를 나타냅니다.
+
+
+6️⃣ 뷰(View)
+
+  하나 이상의 테이블에서 데이터를 추출하여 보여주는 가상의 테이블입니다.
+    
+      데이터베이스 내에 물리적으로 저장되지 않고, SQL(Structured Query Language) 쿼리 결과를 통해 생성됩니다.
+    
+  
+
+
+7️⃣ 제약 조건(Constraints)
+
+  데이터 무결성을 보장하기 위해 테이블이나 열(Column)에 적용되는 규칙입니다.
+    
+      예를 들어, NOT NULL, UNIQUE, CHECK, FOREIGN KEY 등의 제약 조건이 스키마에 정의됩니다.
+    
+  
+
+
+2️⃣ 스키마의 종류.
+
+1️⃣ 논리적 스키마(Logical Schema)
+
+  데이터베이스의 전체적인 논리적 구조를 나타냅니다.
+    
+      테이블, 뷰, 인덱스 등의 논리적인 구조를 정의하며, 데이터베이스 사용자들이 데이터를 어떻게 볼지를 설명합니다.
+    
+  
+
+
+2️⃣ 물리적 스키마(Physical Schema)
+
+  데이터가 실제로 데이터베이스에 어떻게 저장되는지를 나타냅니다.
+    
+      이는 하드웨어 레벨에서 데이터가 저장되는 방식을 설명하며, 데이터 파일, 인덱스 파일 등이 포함됩니다.
+    
+  
+
+
+3️⃣ 사용자 스키마(User Schema)
+
+  특정 사용자에게 보여지는 데이터베이스 구조를 나타냅니다.
+    
+      일반적으로 사용자는 전체 데이터베이스가 아닌, 특정 뷰나 테이블만 접근할 수 있도록 설정됩니다.
+    
+  
+
+
+3️⃣ 스키마 예시.
+
+  스키마는 SQL을 통해 정의할 수 있으며, 이를 통해 데이터베이스의 구조가 설정됩니다.
+    
+      예를 들어, 사용자 테이블의 스키마는 다음과 같이 정의할 수 있습니다.
+    
+  
+
+
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY, -- 기본 키
+    username VARCHAR(50) NOT NULL -- NULL을 허용하지 않음
+    email VARCHAR(100) UNIQUE, -- 고유한 값
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+
+
+  위 스키마 정의에서는 User 테이블이 생성되며, 다음과 같은 구조를 가집니다.
+    
+      user_id: 기본 키(Primary Key)로, 고유한 사용자 식별자입니다.
+      username: 사용자의 이름을 저장하며, NULL을 허용하지 않습니다.
+      email: 사용자의 이메일을 저장하며, 고유한 값이어야 합니다.
+      created_at: 사용자가 생성된 시간을 나타내며, 기본값으로 현재 시간을 저장합니다.
+    
+  
+
+
+4️⃣ 스키마의 역할.
+
+  데이터 구조 정의
+    
+      스키마는 데이터베이스 내의 모든 데이터 구조를 정의합니다.
+        
+          이는 테이블, 열(Column), 제약 조건 등을 명확하게 정의함으로써 데이터베이스의 일관성을 유지합니다.
+        
+      
+    
+  
+  데이터 무결성 유지
+    
+      스키마는 제약 조건과 규칙을 설정하여 데이터의 무결성을 보장합니다.
+        
+          예를 들어, 외래 키(Foreign Key) 제약 조건은 데이터 간의 참조 무결성을 유지합니다.
+        
+      
+    
+  
+  데이터베이스 관리
+    
+      스키마 데이터베이스의 관리를 용이하게 하며, 개발자나 DBA(Database Administrator)가 데이터 구조를 설계하고 유지보수할 수 있도록 돕습니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  스키마(Schema)는 데이터베이스 구조의 설계를 나타내며, 데이터가 어떻게 저장되고 조직되는지를 정의합니다.
+  테이블(Table), 열(Column), 인덱스(Index), 뷰(View), 제약 조건(Constraints) 등이 스키마에 포함되며, 이를 통해 데이터베이스의 일관성과 무결성을 보장합니다.
+  스키마(Schema)는 데이터베이스의 논리적 구조를 정의하는 데 매우 중요한 요소이며, 데이터베이스의 효율적인 운영과 관리에 필수적입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/DB" class="category">DB</a>
+                            
+                                <span class="date">· 2024-10-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/DB/2024-10-17-database-url.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/DB/2024-10-17-database-url.html"><h1 class="title_post">💾[Database] 데이터베이스 URL이란 무엇일까요?</h1></a>
+                        <a href="/DB/2024-10-17-database-url.html" class="txt_post">
+                            💾[Database] 데이터베이스 URL이란 무엇일까요?
+
+
+  데이터베이스 URL은 애플리케이션이 데이터베이스에 연결할 때 사용되는 고유한 주소입니다.
+  URL은 애플리케시연이 데이터베이스 서버를 찾고, 연결할 데이터베이스를 지정하기 위한 정보를 포함하고 있습니다.
+  이 URL은 데이터베이스 종류에 따라 고유한 형식으로 작성되며, 보통 프로토콜, 서버 위치(호스트), 포트 번호, 데이터베이스 이름 등을 포함합니다.
+
+
+1️⃣ 데이터베이스 URL의 기본 형식.
+
+
+  데이터베이스 URL은 보통 다음과 같은 형식을 따릅니다.
+
+
+jdbc:&lt;데이터베이스 유형&gt;://&lt;호스트&gt;:&lt;포트&gt;/&lt;데이터베이스 이름&gt;?&lt;옵션들&gt;
+
+
+
+  각 부분의 의미는 다음과 같습니다.
+    
+      jdbc
+        
+          Java Database Connectivity의 약자로, JDBC URL임을 나타냅니다.
+          JDBC(Java Database Connectivity)를 사용하여 데이터베이스와 연결하는 표준 방식입니다.
+        
+      
+      &lt;데이터베이스 유형&gt;
+        
+          사용하는 데이터베이스의 유형을 나타냅니다.
+            
+              예를 들어, MySQL, PostgreSQL, Oracle, SQL Server 등이 여기에 들어갑니다.
+            
+          
+        
+      
+      &lt;호스트&gt;
+        
+          데이터베이스가 실행되고 있는 서버의 주소를 나타냅니다.
+            
+              로컬에서 실행될 경우 localhost를 사용하고, 원격 서버의 경우 서버 IP 주소나 도메인 이름을 사용합니다.
+            
+          
+        
+      
+      &lt;포트&gt;
+        
+          데이터베이스 서버가 수신 대기 중인 네트워크 포트 번호입니다.
+            
+              각 데이터베이스는 기본 포트가 있지만, 필요에 따라 다른 포트를 사용할 수도 있습니다.
+                
+                  MySQL: 3306
+                  PostgreSQL: 5432
+                  Oracle: 1521
+                
+              
+            
+          
+        
+      
+      &lt;데이터베이스 이름&gt;
+        
+          연결할 데이터베이스의 이름입니다.
+            
+              같은 데이터베이스 서버에서 여러 데이터베이스를 운영할 수 있으므로, 연결할 데이터베이스를 명시합니다.
+            
+          
+        
+      
+      &lt;옵션들&gt;
+        
+          추가적으로 데이터베이스 연결을 위한 옵션을 전달할 수 있습니다.
+            
+              예를 들어, 인코딩 방식이나 SSL 사용 여부 등의 설정이 여기에 포함될 수 있습니다.
+            
+          
+        
+      
+    
+  
+
+
+
+  📝 SSL(Secure Socket Layer)
+
+  네트워크 상에서 데이터를 안전하게 암호화하여 전송하기 위한 보안 프로토콜입니다.
+SSL은 클라이언트와 서버 간의 통신을 암호화하여, 데이터가 전송되는 동안 제3자가 이를 도청하거나 위조하지 못하도록 보호합니다.
+SSL은 특히 웹 브라우저와 웹 서버 간의 안전한 통신을 보장하는 데 널리 사용되었습니다.
+
+  현재는 SSL의 후속 버전인 TLS(Transport Layer Security)가 SSL을 대체하여 사용되고 있지만, 보통 사람들은 여전히 SSL이라는 용어를 사용해 TLS도 함께 지칭합니다.
+
+
+2️⃣ 데이터베이스 URL 예시.
+
+1️⃣ MySQL
+jdbc:mysql://localhost:3306/mydatabase?useSSL=false&amp;serverTimezone=UTC
+
+
+
+  mysql : MySQL 데이터베이스 사용
+  localhost : 데이터베이스 서버의 주소 (로컬에서 실행 중인 경우)
+  3306 : MySQL의 기본 포트 번호
+  mydatabase : 연결할 데이터베이스 이름
+  useSSL=false : SSL 사용 여부 (이 예시에서는 사용하지 않음)
+  serverTimezone=UTC : 서버의 타임존 설정
+
+
+2️⃣ PostgreSQL
+jdbc:postgresql://localhost:5432/mydatabase
+
+
+
+  postgresql : PostgreSQL 데이터베이스 사용
+  localhost : 데이터베이스 서버 주소
+  5432 : PostgreSQL의 기본 포트 번호
+  mydatabase : 연결할 데이터베이스 이름
+
+
+3️⃣ Oracle
+jdbc:oracle:thin:@localhost:1521:ORCL
+
+
+
+  oracle:thin : Oracle의 JDBC 드라이버 사용
+  localhost : 데이터베이스 서버 주소
+  1521 : Oracle의 기본 포트 번호
+  ORCL : 데이터베이스 서비스 이름
+
+
+4️⃣ SQL Server
+jdbc:sqlserver://localhost:1433;databaseName=mydatabase;integratedSecurity=true;
+
+
+
+  sqlserver : Microsoft SQL Server 사용
+  localhost : 데이터베이스 서버 주소
+  1433 : SQL Sever의 기본 포트 번호
+  mydatabase : 연결할 데이터베이스 이름
+  integratedSecurity=true : 통합 보안(Windows 인증) 사용
+
+
+5️⃣ H2(In-Memory Database)
+jdbc:h2:mem:testdb
+
+
+
+  h2:mem : H2 데이터베이스의 메모리 모드 사용
+  testdb : 메모리 내에서 사용할 데이터베이스 이름
+
+
+3️⃣ 데이터베이스 URL 사용 방법.
+
+  데이터베이스 URL은 주로 Spring Boot와 같은 프레임워크나 JDBC(Java Database Connectivity) API를 통해 데이터베이스에 연결할 때 설정합니다.
+    
+      예를 들어, Spring Boot에서 application.properties나 application.yml 파일에 데이터베이스 URL을 지정할 수 있습니다.
+    
+  
+
+
+👉 application.properties에서 데이터베이스 URL 설정.
+spring.datasource.url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false&amp;serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=secret
+
+
+👉 JDBC API로 데이터베이스 연결 예시
+String url = "jdbc:mysql://localhost:3306/mydatabase?useSSL=false&amp;serverTimezone=UTC";
+String username = "root";
+String password = "secret";
+
+Connection conn = DriverManager.getConnection(url, username, password);
+
+
+4️⃣ 데이터베이스 URL의 구성 요소 요약.
+
+  프로토콜(JDBC) : jdbc:로 시작하며 JDBC(Java Database Connectivity)를 사용한 데이터베이스 연결을 의미합니다.
+  데이터베이스 유형 : 사용할 데이터베이스의 종류(MySQL, PostgreSQL, Oracle 등)를 지정합니다.
+  서버 주소(호스트와 포트) : 데이터베이스 서버의 위치를 나타냅니다(로컬 또는 원격).
+  데이터베이스 이름 : 연결하려는 데이터베이스의 이름을 지정합니다.
+  추가 옵션 : SSL 사용, 타임존 설정 등 추가적인 설정이 필요할 때 URL에 포함될 수 있습니다.
+
+
+5️⃣ 요약.
+
+  데이터베이스 URL은 애플리케이션이 데이터베이스에 연결할 때 사용하는 고유한 주소로, 데이터베이스 유형, 서버 주소, 포트 번호, 데이터베이스 이름 등의 정보를 포함하여 연결 설정을 정의합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/DB" class="category">DB</a>
+                            
+                                <span class="date">· 2024-10-17</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -10101,372 +10742,122 @@ spring:
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/DB/2024-10-17-schema.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-10-16-class-object-instance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/DB/2024-10-17-schema.html"><h1 class="title_post">💾[Database] 스키마(Schema)란 무엇일까요?</h1></a>
-                        <a href="/DB/2024-10-17-schema.html" class="txt_post">
-                            💾[Database] 스키마(Schema)란 무엇일까요?
+                        <a href="/Java/Java/2024-10-16-class-object-instance.html"><h1 class="title_post">☕️[Java] 클래스, 객체, 인스턴스</h1></a>
+                        <a href="/Java/Java/2024-10-16-class-object-instance.html" class="txt_post">
+                            ☕️[Java] 클래스, 객체, 인스턴스.
 
-  스키마(Schema)는 데이터베이스의 구조를 정의하는 용어로, 데이터베이스에서 데이터가 어떻게 저장되고, 어떻게 조직화되는지를 설명하는 데 사용됩니다.
-  스키마(Schema)는 데이터베이스의 논리적 설계를 나타내면, 테이블, 뷰, 인덱스, 트리거, 저장 프로시저, 제약 조건 등과 같은 데이터베이스 객체들이 어떻게 구성되는지를 정의합니다.
-
-
-1️⃣ 스키마의 주요 요소.
-
-1️⃣ 테이블(Table).
-
-  스키마(Schema)에서 가장 기본적인 요소로, 데이터를 행(Row)과 열(Column) 형식으로 저장합니다.
-  각 테이블은 하나의 엔티티(예: 사용자, 제품 등)를 표현하며, 테이블의 열(Column)은 속성을, 행은 각 개체의 데이터를 나타냅니다.
+  클래스(Class), 객체(Object), 인스턴스(Instance)는 객체 지향 프로그래밍(Object-Oriented Programming, OOP)에서 중요한 개념이며, 서로 밀접하게 관련이 있지만 다른 의미를 가집니다.
 
 
-2️⃣ 컬럼(Column).
 
-  테이블의 각 필드를 나타내며, 데이터 유형(정수, 문자열 등)과 제약 조건(예: NOT NULL, UNIQUE)이 설정됩니다.
-  스키마(Schema)에서 컬럼(Column, 열)의 이름, 데이터 타입, 크기 등을 정의합니다.
+  🙋‍♂️ 객체 지향 프로그래밍(Object-Oriented Programming, OOP)
 
 
-3️⃣ 기본 키(Primary Key)
+1️⃣ 클래스(Class)
 
-  테이블에서 각 행(Row)을 고유하게 식별할 수 있는 특정 열(또는 열의 조합)입니다.
-  스키마(Schema)에서 기본 키(Primary Key)는 특정 테이블에서 중복되지 않는 값으로 정의됩니다.
-
-
-4️⃣ 외래 키(Foreign Key)
-
-  다른 테이블의 기본 키(Primary Key)와 연결되는 열(Column)로, 두 테이블 간의 관계를 정의하는 데 사용됩니다.
-  스키마(Schema)에서 외래 키(Foreign Key)는 데이터베이스 테이블 간의 참조 무결성을 유지하도록 합니다.
-
-
-5️⃣ 인덱스(Index)
-
-  검색 성능을 향상시키기 위해 테이블의 특정 열(Column)에 대한 인덱스를 정의합니다.
-  스키마(Schema)에서 인덱스는 데이터의 효율적인 검색을 위한 추가적인 구조를 나타냅니다.
-
-
-6️⃣ 뷰(View)
-
-  하나 이상의 테이블에서 데이터를 추출하여 보여주는 가상의 테이블입니다.
+  클래스(Class)는 “객체(Object)를 정의하기 위한 청사진(설계도)”입니다.
     
-      데이터베이스 내에 물리적으로 저장되지 않고, SQL(Structured Query Language) 쿼리 결과를 통해 생성됩니다.
+      클래스(Class)는 객체(Object)의 속성(필드)과 행동(메서드)을 정의합니다.
+    
+  
+  즉, 클래스는 어떤 유형의 객체(Object)를 만들 것인지에 대한 정보를 가지고 있으며, 객체(Object)를 생성하는 데 사용되는 틀 역할을 합니다.
+
+
+예시.
+// 클래스 선언.
+public class Car {
+    // 필드(속성)
+    String model;
+    String color;
+    
+    // 메서드(행동)
+    void drive() {
+        System.out.println("The car is driving.");
+    }
+}
+
+
+
+  위의 Car 클래스는 자동차의 모델과 색상을 나타내는 속성(필드)과, 자동차가 달리는 행동을 정의하는 메서드를 가지고 있습니다.
+    
+      이 자체는 실제 객체(Object)가 아니라 객체(Object)를 만들기 위한 설계도(blueprint, 청사진)입니다.
     
   
 
 
-7️⃣ 제약 조건(Constraints)
+2️⃣ 객체(Object)
 
-  데이터 무결성을 보장하기 위해 테이블이나 열(Column)에 적용되는 규칙입니다.
+  객체(Object)는 클래스(Class)에 의해 생성된 실체로, 클래스의 인스턴스(Instance)라고도 불립니다.
+  객체(Object)는 클래스(Class)에서 정의된 속성(필드)과 행동(메서드)를 실제로 가지고 있는 메모리 상의 실체입니다.
     
-      예를 들어, NOT NULL, UNIQUE, CHECK, FOREIGN KEY 등의 제약 조건이 스키마에 정의됩니다.
+      즉, 클래스의 설계도(blueprint, 청사진)을 바탕으로 만들어진 실질적인 데이터입니다.
+    
+  
+  객체(Object)는 클래스(Class)에서 정의된 구조에 따라 동작하며, 프로그램 내에서 데이터와 기능을 담당합니다.
+
+
+객체(Object) 생성 예시.
+
+public class Main {
+    public static void main(String[] args) {
+        // 객체 생성
+        Car myCar = new Car(); // Car 클래스의 객체 생성.
+        myCar.model = "Volvo xc60";
+        myCar.color = "Black";
+        myCar.drive(); // 출력: The car is driving
+    }
+}
+
+
+
+  위 코드에서 Car myCar = new Car();는 Car 클래스(Class)의 객체(Object)를 생성합니다.
+    
+      이 myCar 객체(Object)는 Car 클래스(Class)에서 정의한 속성(필드)과 행동(메서드)를 가지고 있으며, 프로그램에서 실제로 사용됩니다.
     
   
 
 
-2️⃣ 스키마의 종류.
+3️⃣ 인스턴스(Instance)
 
-1️⃣ 논리적 스키마(Logical Schema)
-
-  데이터베이스의 전체적인 논리적 구조를 나타냅니다.
+  인스턴스(Instance)는 특정 클래스(Class)에서 생성된 객체(Object)를 의미합니다.
     
-      테이블, 뷰, 인덱스 등의 논리적인 구조를 정의하며, 데이터베이스 사용자들이 데이터를 어떻게 볼지를 설명합니다.
+      즉, 클래스(Class)의 인스턴스(Instance)는 그 클래스(Class)에 의해 생성된 실체 객체(Object)를 말합니다.
+    
+  
+  흔히 인스턴스(Instance)와 객체(Object)는 같은 의미로 사용되지만, “인스턴스(Instance)”는 특정 클래스(Class)에서 만들어진 객체(Object)라는 의미에 좀 더 초점을 맞추고 있습니다.
+  예를 들어, myCar는 Car 클래스의 인스턴스이며, 또한 객체입니다.
+
+
+인스턴스(Instance) 예시.
+Car myCar = new Car(); // Car 클래스의 인스턴스 생성.
+Car yourCar = new Car(); // 또 다른 Car 클래스의 인스턴스 생성.
+
+
+
+  위 코드에서 myCar와 yourCar는 모두 Car 클래스의 인스턴스(Instance)입니다.
+    
+      즉, 동일한 클래스(Class)에서 만들어진 여러개의 객체(인스턴스)를 생성할 수 있습니다.
     
   
 
 
-2️⃣ 물리적 스키마(Physical Schema)
+4️⃣ 요약.
 
-  데이터가 실제로 데이터베이스에 어떻게 저장되는지를 나타냅니다.
-    
-      이는 하드웨어 레벨에서 데이터가 저장되는 방식을 설명하며, 데이터 파일, 인덱스 파일 등이 포함됩니다.
-    
-  
-
-
-3️⃣ 사용자 스키마(User Schema)
-
-  특정 사용자에게 보여지는 데이터베이스 구조를 나타냅니다.
-    
-      일반적으로 사용자는 전체 데이터베이스가 아닌, 특정 뷰나 테이블만 접근할 수 있도록 설정됩니다.
-    
-  
-
-
-3️⃣ 스키마 예시.
-
-  스키마는 SQL을 통해 정의할 수 있으며, 이를 통해 데이터베이스의 구조가 설정됩니다.
-    
-      예를 들어, 사용자 테이블의 스키마는 다음과 같이 정의할 수 있습니다.
-    
-  
-
-
-CREATE TABLE Users (
-    user_id INT PRIMARY KEY, -- 기본 키
-    username VARCHAR(50) NOT NULL -- NULL을 허용하지 않음
-    email VARCHAR(100) UNIQUE, -- 고유한 값
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
-
-
-
-  위 스키마 정의에서는 User 테이블이 생성되며, 다음과 같은 구조를 가집니다.
-    
-      user_id: 기본 키(Primary Key)로, 고유한 사용자 식별자입니다.
-      username: 사용자의 이름을 저장하며, NULL을 허용하지 않습니다.
-      email: 사용자의 이메일을 저장하며, 고유한 값이어야 합니다.
-      created_at: 사용자가 생성된 시간을 나타내며, 기본값으로 현재 시간을 저장합니다.
-    
-  
-
-
-4️⃣ 스키마의 역할.
-
-  데이터 구조 정의
-    
-      스키마는 데이터베이스 내의 모든 데이터 구조를 정의합니다.
-        
-          이는 테이블, 열(Column), 제약 조건 등을 명확하게 정의함으로써 데이터베이스의 일관성을 유지합니다.
-        
-      
-    
-  
-  데이터 무결성 유지
-    
-      스키마는 제약 조건과 규칙을 설정하여 데이터의 무결성을 보장합니다.
-        
-          예를 들어, 외래 키(Foreign Key) 제약 조건은 데이터 간의 참조 무결성을 유지합니다.
-        
-      
-    
-  
-  데이터베이스 관리
-    
-      스키마 데이터베이스의 관리를 용이하게 하며, 개발자나 DBA(Database Administrator)가 데이터 구조를 설계하고 유지보수할 수 있도록 돕습니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  스키마(Schema)는 데이터베이스 구조의 설계를 나타내며, 데이터가 어떻게 저장되고 조직되는지를 정의합니다.
-  테이블(Table), 열(Column), 인덱스(Index), 뷰(View), 제약 조건(Constraints) 등이 스키마에 포함되며, 이를 통해 데이터베이스의 일관성과 무결성을 보장합니다.
-  스키마(Schema)는 데이터베이스의 논리적 구조를 정의하는 데 매우 중요한 요소이며, 데이터베이스의 효율적인 운영과 관리에 필수적입니다.
+  클래스(Class) : 객체(Object)를 생성하기 위한 설계도(blueprint, 청사진)입니다. 속성(필드)과 행동(메서드)를 정의합니다.
+  객체(Object) : 클래스(Class)에 의해 생성된 실체입니다. 프로그램 내에서 사용되며, 클래스의 인스턴스(Instance)라고도 불립니다.
+  인스턴스(Instance) : 특정 클래스에서 생성된 객체(Object)를 가리키는 용어입니다. 클래스의 실체로서 메모리 내에 존재하는 객체(Object)를 의미합니다.
+  객체(Object)와 인스턴스(Instance)는 서로 거의 같은 의미로 사용되며, 클래스(Class)는 이 객체(Object)들을 만들기 위한 설계도(blueprint, 청사진)입니다.
 
 
                         </a>
                         <div class="info-post">
-                                <a href="/DB" class="category">DB</a>
+                                <a href="/Java" class="category">Java</a>
                             
-                                <span class="date">· 2024-10-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/DB/2024-10-17-database-url.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/DB/2024-10-17-database-url.html"><h1 class="title_post">💾[Database] 데이터베이스 URL이란 무엇일까요?</h1></a>
-                        <a href="/DB/2024-10-17-database-url.html" class="txt_post">
-                            💾[Database] 데이터베이스 URL이란 무엇일까요?
-
-
-  데이터베이스 URL은 애플리케이션이 데이터베이스에 연결할 때 사용되는 고유한 주소입니다.
-  URL은 애플리케시연이 데이터베이스 서버를 찾고, 연결할 데이터베이스를 지정하기 위한 정보를 포함하고 있습니다.
-  이 URL은 데이터베이스 종류에 따라 고유한 형식으로 작성되며, 보통 프로토콜, 서버 위치(호스트), 포트 번호, 데이터베이스 이름 등을 포함합니다.
-
-
-1️⃣ 데이터베이스 URL의 기본 형식.
-
-
-  데이터베이스 URL은 보통 다음과 같은 형식을 따릅니다.
-
-
-jdbc:&lt;데이터베이스 유형&gt;://&lt;호스트&gt;:&lt;포트&gt;/&lt;데이터베이스 이름&gt;?&lt;옵션들&gt;
-
-
-
-  각 부분의 의미는 다음과 같습니다.
-    
-      jdbc
-        
-          Java Database Connectivity의 약자로, JDBC URL임을 나타냅니다.
-          JDBC(Java Database Connectivity)를 사용하여 데이터베이스와 연결하는 표준 방식입니다.
-        
-      
-      &lt;데이터베이스 유형&gt;
-        
-          사용하는 데이터베이스의 유형을 나타냅니다.
-            
-              예를 들어, MySQL, PostgreSQL, Oracle, SQL Server 등이 여기에 들어갑니다.
-            
-          
-        
-      
-      &lt;호스트&gt;
-        
-          데이터베이스가 실행되고 있는 서버의 주소를 나타냅니다.
-            
-              로컬에서 실행될 경우 localhost를 사용하고, 원격 서버의 경우 서버 IP 주소나 도메인 이름을 사용합니다.
-            
-          
-        
-      
-      &lt;포트&gt;
-        
-          데이터베이스 서버가 수신 대기 중인 네트워크 포트 번호입니다.
-            
-              각 데이터베이스는 기본 포트가 있지만, 필요에 따라 다른 포트를 사용할 수도 있습니다.
-                
-                  MySQL: 3306
-                  PostgreSQL: 5432
-                  Oracle: 1521
-                
-              
-            
-          
-        
-      
-      &lt;데이터베이스 이름&gt;
-        
-          연결할 데이터베이스의 이름입니다.
-            
-              같은 데이터베이스 서버에서 여러 데이터베이스를 운영할 수 있으므로, 연결할 데이터베이스를 명시합니다.
-            
-          
-        
-      
-      &lt;옵션들&gt;
-        
-          추가적으로 데이터베이스 연결을 위한 옵션을 전달할 수 있습니다.
-            
-              예를 들어, 인코딩 방식이나 SSL 사용 여부 등의 설정이 여기에 포함될 수 있습니다.
-            
-          
-        
-      
-    
-  
-
-
-
-  📝 SSL(Secure Socket Layer)
-
-  네트워크 상에서 데이터를 안전하게 암호화하여 전송하기 위한 보안 프로토콜입니다.
-SSL은 클라이언트와 서버 간의 통신을 암호화하여, 데이터가 전송되는 동안 제3자가 이를 도청하거나 위조하지 못하도록 보호합니다.
-SSL은 특히 웹 브라우저와 웹 서버 간의 안전한 통신을 보장하는 데 널리 사용되었습니다.
-
-  현재는 SSL의 후속 버전인 TLS(Transport Layer Security)가 SSL을 대체하여 사용되고 있지만, 보통 사람들은 여전히 SSL이라는 용어를 사용해 TLS도 함께 지칭합니다.
-
-
-2️⃣ 데이터베이스 URL 예시.
-
-1️⃣ MySQL
-jdbc:mysql://localhost:3306/mydatabase?useSSL=false&amp;serverTimezone=UTC
-
-
-
-  mysql : MySQL 데이터베이스 사용
-  localhost : 데이터베이스 서버의 주소 (로컬에서 실행 중인 경우)
-  3306 : MySQL의 기본 포트 번호
-  mydatabase : 연결할 데이터베이스 이름
-  useSSL=false : SSL 사용 여부 (이 예시에서는 사용하지 않음)
-  serverTimezone=UTC : 서버의 타임존 설정
-
-
-2️⃣ PostgreSQL
-jdbc:postgresql://localhost:5432/mydatabase
-
-
-
-  postgresql : PostgreSQL 데이터베이스 사용
-  localhost : 데이터베이스 서버 주소
-  5432 : PostgreSQL의 기본 포트 번호
-  mydatabase : 연결할 데이터베이스 이름
-
-
-3️⃣ Oracle
-jdbc:oracle:thin:@localhost:1521:ORCL
-
-
-
-  oracle:thin : Oracle의 JDBC 드라이버 사용
-  localhost : 데이터베이스 서버 주소
-  1521 : Oracle의 기본 포트 번호
-  ORCL : 데이터베이스 서비스 이름
-
-
-4️⃣ SQL Server
-jdbc:sqlserver://localhost:1433;databaseName=mydatabase;integratedSecurity=true;
-
-
-
-  sqlserver : Microsoft SQL Server 사용
-  localhost : 데이터베이스 서버 주소
-  1433 : SQL Sever의 기본 포트 번호
-  mydatabase : 연결할 데이터베이스 이름
-  integratedSecurity=true : 통합 보안(Windows 인증) 사용
-
-
-5️⃣ H2(In-Memory Database)
-jdbc:h2:mem:testdb
-
-
-
-  h2:mem : H2 데이터베이스의 메모리 모드 사용
-  testdb : 메모리 내에서 사용할 데이터베이스 이름
-
-
-3️⃣ 데이터베이스 URL 사용 방법.
-
-  데이터베이스 URL은 주로 Spring Boot와 같은 프레임워크나 JDBC(Java Database Connectivity) API를 통해 데이터베이스에 연결할 때 설정합니다.
-    
-      예를 들어, Spring Boot에서 application.properties나 application.yml 파일에 데이터베이스 URL을 지정할 수 있습니다.
-    
-  
-
-
-👉 application.properties에서 데이터베이스 URL 설정.
-spring.datasource.url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false&amp;serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=secret
-
-
-👉 JDBC API로 데이터베이스 연결 예시
-String url = "jdbc:mysql://localhost:3306/mydatabase?useSSL=false&amp;serverTimezone=UTC";
-String username = "root";
-String password = "secret";
-
-Connection conn = DriverManager.getConnection(url, username, password);
-
-
-4️⃣ 데이터베이스 URL의 구성 요소 요약.
-
-  프로토콜(JDBC) : jdbc:로 시작하며 JDBC(Java Database Connectivity)를 사용한 데이터베이스 연결을 의미합니다.
-  데이터베이스 유형 : 사용할 데이터베이스의 종류(MySQL, PostgreSQL, Oracle 등)를 지정합니다.
-  서버 주소(호스트와 포트) : 데이터베이스 서버의 위치를 나타냅니다(로컬 또는 원격).
-  데이터베이스 이름 : 연결하려는 데이터베이스의 이름을 지정합니다.
-  추가 옵션 : SSL 사용, 타임존 설정 등 추가적인 설정이 필요할 때 URL에 포함될 수 있습니다.
-
-
-5️⃣ 요약.
-
-  데이터베이스 URL은 애플리케이션이 데이터베이스에 연결할 때 사용하는 고유한 주소로, 데이터베이스 유형, 서버 주소, 포트 번호, 데이터베이스 이름 등의 정보를 포함하여 연결 설정을 정의합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/DB" class="category">DB</a>
-                            
-                                <span class="date">· 2024-10-17</span>
+                                <span class="date">· 2024-10-16</span>
                             
                         </div>
                     </div>
@@ -10952,133 +11343,6 @@ public class User {
                         </a>
                         <div class="info-post">
                                 <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-16</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Java/Java/2024-10-16-class-object-instance.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-10-16-class-object-instance.html"><h1 class="title_post">☕️[Java] 클래스, 객체, 인스턴스</h1></a>
-                        <a href="/Java/Java/2024-10-16-class-object-instance.html" class="txt_post">
-                            ☕️[Java] 클래스, 객체, 인스턴스.
-
-  클래스(Class), 객체(Object), 인스턴스(Instance)는 객체 지향 프로그래밍(Object-Oriented Programming, OOP)에서 중요한 개념이며, 서로 밀접하게 관련이 있지만 다른 의미를 가집니다.
-
-
-
-  🙋‍♂️ 객체 지향 프로그래밍(Object-Oriented Programming, OOP)
-
-
-1️⃣ 클래스(Class)
-
-  클래스(Class)는 “객체(Object)를 정의하기 위한 청사진(설계도)”입니다.
-    
-      클래스(Class)는 객체(Object)의 속성(필드)과 행동(메서드)을 정의합니다.
-    
-  
-  즉, 클래스는 어떤 유형의 객체(Object)를 만들 것인지에 대한 정보를 가지고 있으며, 객체(Object)를 생성하는 데 사용되는 틀 역할을 합니다.
-
-
-예시.
-// 클래스 선언.
-public class Car {
-    // 필드(속성)
-    String model;
-    String color;
-    
-    // 메서드(행동)
-    void drive() {
-        System.out.println("The car is driving.");
-    }
-}
-
-
-
-  위의 Car 클래스는 자동차의 모델과 색상을 나타내는 속성(필드)과, 자동차가 달리는 행동을 정의하는 메서드를 가지고 있습니다.
-    
-      이 자체는 실제 객체(Object)가 아니라 객체(Object)를 만들기 위한 설계도(blueprint, 청사진)입니다.
-    
-  
-
-
-2️⃣ 객체(Object)
-
-  객체(Object)는 클래스(Class)에 의해 생성된 실체로, 클래스의 인스턴스(Instance)라고도 불립니다.
-  객체(Object)는 클래스(Class)에서 정의된 속성(필드)과 행동(메서드)를 실제로 가지고 있는 메모리 상의 실체입니다.
-    
-      즉, 클래스의 설계도(blueprint, 청사진)을 바탕으로 만들어진 실질적인 데이터입니다.
-    
-  
-  객체(Object)는 클래스(Class)에서 정의된 구조에 따라 동작하며, 프로그램 내에서 데이터와 기능을 담당합니다.
-
-
-객체(Object) 생성 예시.
-
-public class Main {
-    public static void main(String[] args) {
-        // 객체 생성
-        Car myCar = new Car(); // Car 클래스의 객체 생성.
-        myCar.model = "Volvo xc60";
-        myCar.color = "Black";
-        myCar.drive(); // 출력: The car is driving
-    }
-}
-
-
-
-  위 코드에서 Car myCar = new Car();는 Car 클래스(Class)의 객체(Object)를 생성합니다.
-    
-      이 myCar 객체(Object)는 Car 클래스(Class)에서 정의한 속성(필드)과 행동(메서드)를 가지고 있으며, 프로그램에서 실제로 사용됩니다.
-    
-  
-
-
-3️⃣ 인스턴스(Instance)
-
-  인스턴스(Instance)는 특정 클래스(Class)에서 생성된 객체(Object)를 의미합니다.
-    
-      즉, 클래스(Class)의 인스턴스(Instance)는 그 클래스(Class)에 의해 생성된 실체 객체(Object)를 말합니다.
-    
-  
-  흔히 인스턴스(Instance)와 객체(Object)는 같은 의미로 사용되지만, “인스턴스(Instance)”는 특정 클래스(Class)에서 만들어진 객체(Object)라는 의미에 좀 더 초점을 맞추고 있습니다.
-  예를 들어, myCar는 Car 클래스의 인스턴스이며, 또한 객체입니다.
-
-
-인스턴스(Instance) 예시.
-Car myCar = new Car(); // Car 클래스의 인스턴스 생성.
-Car yourCar = new Car(); // 또 다른 Car 클래스의 인스턴스 생성.
-
-
-
-  위 코드에서 myCar와 yourCar는 모두 Car 클래스의 인스턴스(Instance)입니다.
-    
-      즉, 동일한 클래스(Class)에서 만들어진 여러개의 객체(인스턴스)를 생성할 수 있습니다.
-    
-  
-
-
-4️⃣ 요약.
-
-  클래스(Class) : 객체(Object)를 생성하기 위한 설계도(blueprint, 청사진)입니다. 속성(필드)과 행동(메서드)를 정의합니다.
-  객체(Object) : 클래스(Class)에 의해 생성된 실체입니다. 프로그램 내에서 사용되며, 클래스의 인스턴스(Instance)라고도 불립니다.
-  인스턴스(Instance) : 특정 클래스에서 생성된 객체(Object)를 가리키는 용어입니다. 클래스의 실체로서 메모리 내에 존재하는 객체(Object)를 의미합니다.
-  객체(Object)와 인스턴스(Instance)는 서로 거의 같은 의미로 사용되며, 클래스(Class)는 이 객체(Object)들을 만들기 위한 설계도(blueprint, 청사진)입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
                             
                                 <span class="date">· 2024-10-16</span>
                             
@@ -13936,307 +14200,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-12-what-is-the-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-10-12-what-is-the-ip.html"><h1 class="title_post">🌐[Network] IP(Internet Protocol)란 무엇일까?</h1></a>
-                        <a href="/Network/2024/2024-10-12-what-is-the-ip.html" class="txt_post">
-                            🌐[Network] IP(Internet Protocol)란 무엇일까?
-
-  IP(Internet Protocol)는 컴퓨터 네트워크에서 데이터를 전송하기 위한 주소 체계이자 프로토콜입니다.
-  IP는 패킷(Packet) 단위로 데이터를 전송하며, 데이터를 전송할 발신자와 수신자를 식별하기 위해 고유한 IP 주소를 사용합니다.
-  IP는 네트워크 계층(Network Layer)에서 동작하며, 인터넷과 같은 연결망에서 장치들이 서로 통신할 수 있도록 해줍니다.
-
-
-1️⃣ IP의 주요 역할
-
-1️⃣ 주소 지정.
-
-  IP(Internet Protocol)는 네트워크 상에서 각 장치(컴퓨터, 서버, 라우터 등)에 고유한 IP 주소를 부여하여, 주고받는 송신자와 수신자를 식별합니다.
-  IP 주소는 각 장치가 네트워크 상에서 유일하게 구분될 수 있는 식별자로, 데이터를 정확한 목적지로 전달하는 데 사용됩니다.
-
-
-2️⃣ 데이터 패킷 전송.
-
-  IP(Internet Protocol)는 데이터를 작은 패킷(Packet) 단위로 나누어 전송합니다.
-    
-      이러한 패킷(Packet)들은 각각 IP 주소를 통해 발신지에서 목적지까지 최적의 경로로 전달됩니다.
-        
-          패킷(Packet)은 서로 다른 경로를 통해 전달될 수 있으며, 목적지에서 다시 조립됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 경로 설정 및 라우팅.
-
-  IP는 네트워크 장비인 라우터를 통해 패킷(Packet)의 전송 경로를 결정합니다.
-    
-      라우터는 목적지 IP 주소를 확인하고, 패킷(Packet)이 올바른 경로로 전달되도록 합니다.
-        
-          IP(Internet Protocol)는 패킷(Packet)이 네트워크를 목적지까지 효율적으로 전달되도록 경로를 설정하는 역할을 합니다.
-        
-      
-    
-  
-
-
-2️⃣ IP 주소의 구조.
-
-  IP(Internet Protocol) 주소는 네트워크 상에서 장치를 구분하는 고유한 숫지 식별자입니다.
-  IP(Internet Protocol) 주소는 IPv4와 IPv6의 두 가지 버전으로 나뉩니다.
-
-
-1️⃣ IPv4(Internet Protocol version 4)
-
-  32비트로 구성된 주소로, 닷(deciaml) 표기법을 사용하여 4개의 숫자로 표현됩니다.
-    
-      각 숫자는 0~255 범위 내에 있으며 점(.)으로 구분됩니다.
-        
-          예시: 192.169.1.1
-        
-      
-    
-  
-  IPv4는 약 43억 개의 고유 주소를 제공하지만, 인터넷 사용이 폭발적으로 증가하면서 주소가 고갈되고 있어, 이를 대체하기 위해 IPv6가 도입되었습니다.
-
-
-2️⃣ IPv6(Internet Protocol version 6)
-
-  128비트로 구성된 주소로, 16진수를 사용해 8개의 그룹으로 표현됩니다.
-    
-      각 그룹은 콜론(,)으로 구분됩니다.
-        
-          예시: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-        
-      
-    
-  
-  IPv6는 매우 많은(340언델리온) 주소 공간을 제공하여, 미래의 인터넷 사용을 충분히 지원할 수 있습니다.
-
-
-3️⃣ IP의 주요 기능.
-
-1️⃣ 데이터 패킷화 및 전송.
-
-  IP는 데이터를 패킷(Packet) 단위로 분할아혀 전송합니다.
-    
-      각 패킷에는 발신자 IP(Internet Protocol) 주소와 수신자 IP(Internet Protocol) 주소가 포함되며, 패킷은 네트워크 상의 여러 장비(라우터 등)를 거쳐 목적지에 도달합니다.
-    
-  
-
-
-2️⃣ 최적 경로 설정.
-
-  IP는 네트워크 내에서 최적의 경로를 통해 데이터를 전달합니다.
-    
-      패킷(Packet)은 각 경로를 지나며, IP(Internet Protocol) 주소를 기반으로 라우팅됩니다.
-        
-          이를 통해 데이터가 가장 빠르고 효율적으로 전달될 수 있습니다.
-        
-      
-    
-  
-
-
-3️⃣ 비연결성.
-
-  IP는 비연결성 프로토콜입니다.
-    
-      즉, 데이터를 전송할 때 송신자와 수신자 간에 사전 연결 설정을 하지 않습니다.
-        
-          각 패킷(Packet)은 독립적으로 전송되며, 네트워크 상황에 따라 서로 다른 경로로 전달될 수 있습니다.
-        
-      
-    
-  
-
-
-4️⃣ 무결성 보장 없음.
-
-  IP(Internet Protocol)는 데이터를 전송할 때 패킷(Packet)의 신뢰성이나 순서 보장을 하지 않습니다.
-    
-      패킷(Packet)이 손실되거나, 순서가 뒤바뀔 수 있으며, 이는 상위 계층의 프로토콜(TCP, Transmission Control Protocol)이 처리합니다.
-        
-          IP(Internet Protocol)는 단지 데이터를 전송하는 역할을 수행합니다.
-        
-      
-    
-  
-
-
-
-  🙋‍♂️ TCP(Transmission Control Protocol)란 무엇일까요
-
-
-4️⃣ IP의 동작 방식.
-
-1️⃣ 패킷 생성.
-
-  송신 장치는 데이터를 작은 패킷(Packet)으로 나누고, 각 패킷에 IP 헤더를 추가합니다.
-    
-      이 헤더에는 송신자와 수신자의 IP(Internet Protocol) 주소가 포함됩니다.
-    
-  
-
-
-2️⃣ 라우팅.
-
-  패킷(Packet)이 네트워크를 통해 전송될 때, 각 패킷(Packet)은 라우터(Router)를 거쳐 최종 목적지로 향합니다.
-    
-      라우터는 패킷(Packet)의 목적지 IP 주소를 분석하여, 패킷을 적절한 경로로 전송합니다.
-    
-  
-
-
-3️⃣ 패킷 수신.
-
-  목적지 장치에서 패킷(Packet)을 수신하면, 패킷(Packet)을 다시 원래의 데이터로 재조립합니다.
-    
-      상위 계층의 프로토콜(TCP(Transmission Control Protocol) / UDP(User Datagram Protocol))은 패킷의 손신 여부나 순서를 확인하고, 데이터를 정확하게 전달하도록 보장합니다.
-    
-  
-
-
-5️⃣ IP의 종류.
-
-1️⃣ 공인 IP 주소(Public IP Address)
-
-  공인 IP 주소(Public IP Address)는 인터넷 상에서 고유한 주소로, 인터넷 서비스 제공업체(ISP, Internet Service Provider)에 의해 할당됩니다.
-    
-      이 주소는 전 세계에서 유일하며, 인터넷을 통해 다른 장치들과 통신할 수 있습니다.
-    
-  
-
-
-2️⃣ 사설 IP 주소(Private IP Address)
-
-  사설 IP 주소(Private IP Address)는 로컬 네트워크에서 사용되는 IP(Internet Protocol) 주소 입니다.
-    
-      같은 사설 IP 주소는 여러 네트워크에서 중복해서 사용할 수 있지만, 인터넷과 직접 통신할 수 없습니다.
-        
-          사설 IP는 NAT(Network Address Translation)을 통해 공인 IP(Public IP)로 변환되어 인터넷에 접근할 수 있습니다.
-        
-      
-    
-  
-
-
-👉 사설 IP 주소 대역
-
-  1.0.0.0 ~ 10.255.255.255
-  172.16.0.0 ~ 172.31.255.255
-  192.168.0.0 ~ 192.168.255.255
-
-
-6️⃣ IP 프로토콜의 버전.
-
-1️⃣ IPv4(Internet Protocol version 4)
-
-  IPv4는 인터넷이 상용화된 초기부터 사용된 프로토콜로, 32비트 주소 체계를 사용합니다.
-    
-      43억 개의 IP 주소를 제공하지만, 인터넷 장치의 폭발적 증가로 인해 IP 주소가 부족해지고 있습니다.
-    
-  
-
-
-2️⃣ IPv6(Internet Protocol version 6)
-
-  IPv6는 128비트 주소 체계를 사용하여 거대한 주소 공간을 제공합니다.
-    
-      IPv6는 IPv4의 주소 부족 문제를 해결하기 위해 도입되었으며, 주소 자동 구성 및 향상된 보안 기능을 지원합니다.
-    
-  
-
-
-7️⃣ IP 프로토콜의 역할과 TCP/IP 모델.
-
-  IP는 네트워크 계층(Network Layer)에서 동작하는 프로토콜로, 데이터가 목적지에 도달할 수 있도록 경로 설정과 주소 지정을 처리합니다.
-    
-      IP는 TCP와 함께 동장하여 데이터를 안전하게 전송하는 TCP/IP 모델의 일부입니다.
-    
-  
-  TCP(Transmission Control Protocol)는 전송 계층에서 데이터를 신뢰성 있게 전송하며, IP(Internet Protocol)는 네트워크 계층에서 패킷(Packet)을 올바른 경로로 전송합니다.
-
-
-
-  🙋‍♂️ OSI 7계층 모델
-
-
-8️⃣ IP와 관련된 주요 프로토콜.
-
-1️⃣ TCP(Transmission Control Protocol)
-
-  TCP(Transmission Control Protocol)는 신뢰성 있는 데이터 전송을 보장하는 프로토콜입니다.
-    
-      IP(Internet Protocol)는 패킷(Packet)을 목적지로 전달하는 역할을 하지만, TCP(Transmission Control Protocol)는 패킷의 무결성, 순서 보장, 오류 검출 및 수정을 담당합니다.
-    
-  
-
-
-2️⃣ UDP(User Datagram Protocol)
-
-  UDP(User Datagram Protocol)는 비연결형 프로토콜로, IP(Internet Protocol)와 마찬가지로 데이터를 전송하지만, 신뢰성을 보장하지 않습니다.
-    
-      TCP(Transmission Control Protocol)와 달리 오버헤드(Overhead)가 적고 빠르기 때문에, 실시간 스트리밍이나 온라인 게임에서 많이 사용됩니다.
-    
-  
-
-
-3️⃣ ICMP(Internet Control Message Protocol)
-
-  ICMP(Internet Control Message Protocol)는 네트워크 진단 및 오류 처리를 위한 프로토콜입니다.
-    
-      Ping 명령어는 ICMP를 사용하여 네트워크 연결 상태를 확인합니다.
-    
-  
-
-
-9️⃣ IP의 사용 사례.
-
-  인터넷 통신
-    
-      IP는 인터넷 상의 모든 장치가 서로 통신할 수 있도록 주소를 제공하고, 데이터를 전송하는 핵심 프로토콜입니다.
-    
-  
-  로컬 네트워크(LAN, Local Area Network, 근거리 통신망)
-    
-      IP는 가정이나 사무실에서 로컬 네트워크 내 장치들이 서로 데이터를 주고받을 수 있게 합니다.
-    
-  
-  네트워크 장비 간 통신
-    
-      라우터, 스위치, 서버 등 네트워크 장비들이 IP 주소를 통해 서로 통신하고 데이터를 전달합니다.
-    
-  
-
-
-1️⃣0️⃣ 결론.
-
-  IP(Internet Protocol)는 네트워크 상의 장치들이 데이터를 주고받을 수 있도록 하는 기본 프로토콜입니다.
-  IP 주소를 통해 각 장치를 고유하게 식별하고, 데이터를 패킷(Packet) 단위로 나누어 전달합니다.
-  IPv4와 IPv6 두 가지 버전이 있으며, 경로 설정, 주소 지정, 데이터 패킷화 등을 담당합니다.
-  IP는 네트워크 통신의 핵심적인 역할을 수행하며, 인터넷과 로컬 네트워크에서 모든 장치 간 통신을 가능하게 합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-12</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-10-12-data-frame.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -14559,6 +14522,307 @@ Hibernate
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-12</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-10-12-what-is-the-ip.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-12-what-is-the-ip.html"><h1 class="title_post">🌐[Network] IP(Internet Protocol)란 무엇일까?</h1></a>
+                        <a href="/Network/2024/2024-10-12-what-is-the-ip.html" class="txt_post">
+                            🌐[Network] IP(Internet Protocol)란 무엇일까?
+
+  IP(Internet Protocol)는 컴퓨터 네트워크에서 데이터를 전송하기 위한 주소 체계이자 프로토콜입니다.
+  IP는 패킷(Packet) 단위로 데이터를 전송하며, 데이터를 전송할 발신자와 수신자를 식별하기 위해 고유한 IP 주소를 사용합니다.
+  IP는 네트워크 계층(Network Layer)에서 동작하며, 인터넷과 같은 연결망에서 장치들이 서로 통신할 수 있도록 해줍니다.
+
+
+1️⃣ IP의 주요 역할
+
+1️⃣ 주소 지정.
+
+  IP(Internet Protocol)는 네트워크 상에서 각 장치(컴퓨터, 서버, 라우터 등)에 고유한 IP 주소를 부여하여, 주고받는 송신자와 수신자를 식별합니다.
+  IP 주소는 각 장치가 네트워크 상에서 유일하게 구분될 수 있는 식별자로, 데이터를 정확한 목적지로 전달하는 데 사용됩니다.
+
+
+2️⃣ 데이터 패킷 전송.
+
+  IP(Internet Protocol)는 데이터를 작은 패킷(Packet) 단위로 나누어 전송합니다.
+    
+      이러한 패킷(Packet)들은 각각 IP 주소를 통해 발신지에서 목적지까지 최적의 경로로 전달됩니다.
+        
+          패킷(Packet)은 서로 다른 경로를 통해 전달될 수 있으며, 목적지에서 다시 조립됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 경로 설정 및 라우팅.
+
+  IP는 네트워크 장비인 라우터를 통해 패킷(Packet)의 전송 경로를 결정합니다.
+    
+      라우터는 목적지 IP 주소를 확인하고, 패킷(Packet)이 올바른 경로로 전달되도록 합니다.
+        
+          IP(Internet Protocol)는 패킷(Packet)이 네트워크를 목적지까지 효율적으로 전달되도록 경로를 설정하는 역할을 합니다.
+        
+      
+    
+  
+
+
+2️⃣ IP 주소의 구조.
+
+  IP(Internet Protocol) 주소는 네트워크 상에서 장치를 구분하는 고유한 숫지 식별자입니다.
+  IP(Internet Protocol) 주소는 IPv4와 IPv6의 두 가지 버전으로 나뉩니다.
+
+
+1️⃣ IPv4(Internet Protocol version 4)
+
+  32비트로 구성된 주소로, 닷(deciaml) 표기법을 사용하여 4개의 숫자로 표현됩니다.
+    
+      각 숫자는 0~255 범위 내에 있으며 점(.)으로 구분됩니다.
+        
+          예시: 192.169.1.1
+        
+      
+    
+  
+  IPv4는 약 43억 개의 고유 주소를 제공하지만, 인터넷 사용이 폭발적으로 증가하면서 주소가 고갈되고 있어, 이를 대체하기 위해 IPv6가 도입되었습니다.
+
+
+2️⃣ IPv6(Internet Protocol version 6)
+
+  128비트로 구성된 주소로, 16진수를 사용해 8개의 그룹으로 표현됩니다.
+    
+      각 그룹은 콜론(,)으로 구분됩니다.
+        
+          예시: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+        
+      
+    
+  
+  IPv6는 매우 많은(340언델리온) 주소 공간을 제공하여, 미래의 인터넷 사용을 충분히 지원할 수 있습니다.
+
+
+3️⃣ IP의 주요 기능.
+
+1️⃣ 데이터 패킷화 및 전송.
+
+  IP는 데이터를 패킷(Packet) 단위로 분할아혀 전송합니다.
+    
+      각 패킷에는 발신자 IP(Internet Protocol) 주소와 수신자 IP(Internet Protocol) 주소가 포함되며, 패킷은 네트워크 상의 여러 장비(라우터 등)를 거쳐 목적지에 도달합니다.
+    
+  
+
+
+2️⃣ 최적 경로 설정.
+
+  IP는 네트워크 내에서 최적의 경로를 통해 데이터를 전달합니다.
+    
+      패킷(Packet)은 각 경로를 지나며, IP(Internet Protocol) 주소를 기반으로 라우팅됩니다.
+        
+          이를 통해 데이터가 가장 빠르고 효율적으로 전달될 수 있습니다.
+        
+      
+    
+  
+
+
+3️⃣ 비연결성.
+
+  IP는 비연결성 프로토콜입니다.
+    
+      즉, 데이터를 전송할 때 송신자와 수신자 간에 사전 연결 설정을 하지 않습니다.
+        
+          각 패킷(Packet)은 독립적으로 전송되며, 네트워크 상황에 따라 서로 다른 경로로 전달될 수 있습니다.
+        
+      
+    
+  
+
+
+4️⃣ 무결성 보장 없음.
+
+  IP(Internet Protocol)는 데이터를 전송할 때 패킷(Packet)의 신뢰성이나 순서 보장을 하지 않습니다.
+    
+      패킷(Packet)이 손실되거나, 순서가 뒤바뀔 수 있으며, 이는 상위 계층의 프로토콜(TCP, Transmission Control Protocol)이 처리합니다.
+        
+          IP(Internet Protocol)는 단지 데이터를 전송하는 역할을 수행합니다.
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ TCP(Transmission Control Protocol)란 무엇일까요
+
+
+4️⃣ IP의 동작 방식.
+
+1️⃣ 패킷 생성.
+
+  송신 장치는 데이터를 작은 패킷(Packet)으로 나누고, 각 패킷에 IP 헤더를 추가합니다.
+    
+      이 헤더에는 송신자와 수신자의 IP(Internet Protocol) 주소가 포함됩니다.
+    
+  
+
+
+2️⃣ 라우팅.
+
+  패킷(Packet)이 네트워크를 통해 전송될 때, 각 패킷(Packet)은 라우터(Router)를 거쳐 최종 목적지로 향합니다.
+    
+      라우터는 패킷(Packet)의 목적지 IP 주소를 분석하여, 패킷을 적절한 경로로 전송합니다.
+    
+  
+
+
+3️⃣ 패킷 수신.
+
+  목적지 장치에서 패킷(Packet)을 수신하면, 패킷(Packet)을 다시 원래의 데이터로 재조립합니다.
+    
+      상위 계층의 프로토콜(TCP(Transmission Control Protocol) / UDP(User Datagram Protocol))은 패킷의 손신 여부나 순서를 확인하고, 데이터를 정확하게 전달하도록 보장합니다.
+    
+  
+
+
+5️⃣ IP의 종류.
+
+1️⃣ 공인 IP 주소(Public IP Address)
+
+  공인 IP 주소(Public IP Address)는 인터넷 상에서 고유한 주소로, 인터넷 서비스 제공업체(ISP, Internet Service Provider)에 의해 할당됩니다.
+    
+      이 주소는 전 세계에서 유일하며, 인터넷을 통해 다른 장치들과 통신할 수 있습니다.
+    
+  
+
+
+2️⃣ 사설 IP 주소(Private IP Address)
+
+  사설 IP 주소(Private IP Address)는 로컬 네트워크에서 사용되는 IP(Internet Protocol) 주소 입니다.
+    
+      같은 사설 IP 주소는 여러 네트워크에서 중복해서 사용할 수 있지만, 인터넷과 직접 통신할 수 없습니다.
+        
+          사설 IP는 NAT(Network Address Translation)을 통해 공인 IP(Public IP)로 변환되어 인터넷에 접근할 수 있습니다.
+        
+      
+    
+  
+
+
+👉 사설 IP 주소 대역
+
+  1.0.0.0 ~ 10.255.255.255
+  172.16.0.0 ~ 172.31.255.255
+  192.168.0.0 ~ 192.168.255.255
+
+
+6️⃣ IP 프로토콜의 버전.
+
+1️⃣ IPv4(Internet Protocol version 4)
+
+  IPv4는 인터넷이 상용화된 초기부터 사용된 프로토콜로, 32비트 주소 체계를 사용합니다.
+    
+      43억 개의 IP 주소를 제공하지만, 인터넷 장치의 폭발적 증가로 인해 IP 주소가 부족해지고 있습니다.
+    
+  
+
+
+2️⃣ IPv6(Internet Protocol version 6)
+
+  IPv6는 128비트 주소 체계를 사용하여 거대한 주소 공간을 제공합니다.
+    
+      IPv6는 IPv4의 주소 부족 문제를 해결하기 위해 도입되었으며, 주소 자동 구성 및 향상된 보안 기능을 지원합니다.
+    
+  
+
+
+7️⃣ IP 프로토콜의 역할과 TCP/IP 모델.
+
+  IP는 네트워크 계층(Network Layer)에서 동작하는 프로토콜로, 데이터가 목적지에 도달할 수 있도록 경로 설정과 주소 지정을 처리합니다.
+    
+      IP는 TCP와 함께 동장하여 데이터를 안전하게 전송하는 TCP/IP 모델의 일부입니다.
+    
+  
+  TCP(Transmission Control Protocol)는 전송 계층에서 데이터를 신뢰성 있게 전송하며, IP(Internet Protocol)는 네트워크 계층에서 패킷(Packet)을 올바른 경로로 전송합니다.
+
+
+
+  🙋‍♂️ OSI 7계층 모델
+
+
+8️⃣ IP와 관련된 주요 프로토콜.
+
+1️⃣ TCP(Transmission Control Protocol)
+
+  TCP(Transmission Control Protocol)는 신뢰성 있는 데이터 전송을 보장하는 프로토콜입니다.
+    
+      IP(Internet Protocol)는 패킷(Packet)을 목적지로 전달하는 역할을 하지만, TCP(Transmission Control Protocol)는 패킷의 무결성, 순서 보장, 오류 검출 및 수정을 담당합니다.
+    
+  
+
+
+2️⃣ UDP(User Datagram Protocol)
+
+  UDP(User Datagram Protocol)는 비연결형 프로토콜로, IP(Internet Protocol)와 마찬가지로 데이터를 전송하지만, 신뢰성을 보장하지 않습니다.
+    
+      TCP(Transmission Control Protocol)와 달리 오버헤드(Overhead)가 적고 빠르기 때문에, 실시간 스트리밍이나 온라인 게임에서 많이 사용됩니다.
+    
+  
+
+
+3️⃣ ICMP(Internet Control Message Protocol)
+
+  ICMP(Internet Control Message Protocol)는 네트워크 진단 및 오류 처리를 위한 프로토콜입니다.
+    
+      Ping 명령어는 ICMP를 사용하여 네트워크 연결 상태를 확인합니다.
+    
+  
+
+
+9️⃣ IP의 사용 사례.
+
+  인터넷 통신
+    
+      IP는 인터넷 상의 모든 장치가 서로 통신할 수 있도록 주소를 제공하고, 데이터를 전송하는 핵심 프로토콜입니다.
+    
+  
+  로컬 네트워크(LAN, Local Area Network, 근거리 통신망)
+    
+      IP는 가정이나 사무실에서 로컬 네트워크 내 장치들이 서로 데이터를 주고받을 수 있게 합니다.
+    
+  
+  네트워크 장비 간 통신
+    
+      라우터, 스위치, 서버 등 네트워크 장비들이 IP 주소를 통해 서로 통신하고 데이터를 전달합니다.
+    
+  
+
+
+1️⃣0️⃣ 결론.
+
+  IP(Internet Protocol)는 네트워크 상의 장치들이 데이터를 주고받을 수 있도록 하는 기본 프로토콜입니다.
+  IP 주소를 통해 각 장치를 고유하게 식별하고, 데이터를 패킷(Packet) 단위로 나누어 전달합니다.
+  IPv4와 IPv6 두 가지 버전이 있으며, 경로 설정, 주소 지정, 데이터 패킷화 등을 담당합니다.
+  IP는 네트워크 통신의 핵심적인 역할을 수행하며, 인터넷과 로컬 네트워크에서 모든 장치 간 통신을 가능하게 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
                             
                                 <span class="date">· 2024-10-12</span>
                             
@@ -15490,6 +15754,143 @@ DELETE /users/3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html"><h1 class="title_post">💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.</h1></a>
+                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="txt_post">
+                            💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
+
+  API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스는 유사한 개념을 공유하지만, 구체적인 사용 맥락과 범위에서 약간의 차이가 있습니다.
+    
+      두 개념 모두 추상화된 상호작용의 규칙을 정의한다는 공통점이 있지만, 다음과 같은 차이점과 유사점이 있습니다.
+    
+  
+
+
+1️⃣ 공통점.
+
+1️⃣ 추상화된 상호작용 규칙.
+
+  두 개념 모두 상호작용하는 시스템이나 모듈 간의 규칙을 정의합니다.
+    
+      API와 소프트웨어 공학에서의 인터페이스 모두 외부에서 내부의 구현 세부 사항을 알 필요 없이 제공된 규칙에 따라 특정 기능을 사용할 수 있도록 합니다.
+    
+  
+
+
+2️⃣ 계약(Contract) 역할.
+
+  계약처럼, 인터페이스는 어떤 기능이 제공되고, 그 기능이 어떻게 호출되는지를 규정합니다.
+    
+      사용자는(또는 클라이언트)는 이 계약에 따라 인터페이스를 호출하고 사용하게 되며, 내부 구현과는 독립적으로 동작할 수 있습니다.
+    
+  
+
+
+3️⃣ 구현의 독립성.
+
+  API와 소프트웨어 공학에서의 인터페이스 모두 구현에 독립적입니다.
+    
+      이는 사용자가 인터페이스를 통해 기능을 호출하지만, 구현이 어떻게 이루어지는지는 중요하지 않다는 원칙을 따릅니다.
+        
+          이를 통해 구현 변경이 이루어져도 인터페이스가 동일하게 유지된다면, 시스템 간의 상호작용에는 영향이 없습니다.
+        
+      
+    
+  
+
+
+2️⃣ 차이점.
+
+1️⃣ API에서의 인터페이스
+
+  범위
+    
+      API에서의 인터페이스는 주로 시스템 간 상호작용을 적용합니다.
+        
+          외부 애플리케이션이나 서비스가 제공하는 기능을 호출할 수 있는 방법을 제공하며, 이는 웹 서비스(API)나 외부 모듈과의 통신에 중점을 둡니다.
+        
+      
+    
+  
+  사용 맥락
+    
+      주로 웹 API, 라이브러리 API 등에 사용되며, 클라이언트 API 제공자의 규격에 맞춰 기능을 사용할 수 있도록 합니다.
+      API 인터페이스는 주로 함수, 메서드, HTTP 요청 등을 통한 상호작용을 다룹니다.
+      예: RESTful API에서의 HTTP 메서드(GET, POST 등), API 호출 시 제공되는 엔드포인트와 파라미터, 그리고 반환되는 데이터 형식 등이 API 인터페이스에 포함됩니다.
+    
+  
+
+
+2️⃣ 소프트웨어 공학에서의 인터페이스
+
+  범위
+    
+      소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 상호작용을 정의합니다.
+        
+          인터페이스는 객체 지향 프로그래밍(OOP)에서 사용되며, 특정 클래스나 모듈이 어떤 메서드나 속성을 제공해야 하는지를 정의합니다.
+        
+      
+    
+  
+  사용 맥락
+    
+      주로 객체 지향 언어(Java, C++, Python 등)에서 사용되는 개념으로, 인터페이스는 클래스의 행위 계약을 정의합니다.
+        
+          클래스가 특정 인터페이스를 구현하면, 해당 인터페이스에서 요구하는 메서드를 모두 정의해야 합니다.
+        
+      
+    
+  
+  예시
+    
+      Java에서의 인터페이스는 클래스가 구현해야 할 메서드의 목록을 정의하며, 이를 통해 다형성(Polymorphism)을 지원합니다.
+        
+          예를 들어, 여러 클래스가 동일한 인터페이스를 구현하여 동일한 메서드를 다르게 정의할 수 있습니다.
+        
+      
+    
+  
+
+
+3️⃣ 개념의 유사성과 차이점 요약.
+
+  API 인터페이스는 외부 시스템과의 상호작용을 위한 규칙을 정의하며, 주로 서비스 제공을 위해 시스템이나 애플리케이션에서 기능을 제공할 때 사용됩니다.
+    
+      웹 API, 라이브러리 API 등 외부 프로그램이 호출할 수 있는 방법을 설명합니다.
+    
+  
+  소프트웨어 공학에서의 인터페이스는 객체 지향 프로그래밍에서 클래스나 모듈 간의 상호작용 규칙을 정의합니다.
+    
+      주로 다형성과 구현 독립성을 지원하며, 여러 클래스가 동일한 인터페이스를 구현할 수 있도록 합니다.
+    
+  
+
+
+4️⃣ 결론.
+
+  API에서의 인터페이스는 외부 시스템이 상호작용할 수 있도록 기능을 제공하는 방법을 규정하고, 소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 계약으로서, 객체 지향 프로그래밍에서 다형성을 지원하는 데 중점을 둡니다.
+  두 개념은 상호작용 규칙을 정의하는 공통적인 개념을 공유하며, 구현과 추상화의 원칙에 기반하고 있지만, 사용되는 맥락과 범위는 다릅니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-10-10-what-is-the-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -15868,143 +16269,6 @@ DELETE /users/3
       이는 소프트웨어 구성 요소 간의 계약처럼 동작하며, 사용자와 시스템 간의 경계를 설정하고 호환성을 보장하여 원활한 통신을 가능하게 합니다.
     
   
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html"><h1 class="title_post">💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.</h1></a>
-                        <a href="/CS/2024/2024-10-10-interface-in-api-and-interface-concepts-in-software-engineering.html" class="txt_post">
-                            💾 [CS] API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
-
-  API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스는 유사한 개념을 공유하지만, 구체적인 사용 맥락과 범위에서 약간의 차이가 있습니다.
-    
-      두 개념 모두 추상화된 상호작용의 규칙을 정의한다는 공통점이 있지만, 다음과 같은 차이점과 유사점이 있습니다.
-    
-  
-
-
-1️⃣ 공통점.
-
-1️⃣ 추상화된 상호작용 규칙.
-
-  두 개념 모두 상호작용하는 시스템이나 모듈 간의 규칙을 정의합니다.
-    
-      API와 소프트웨어 공학에서의 인터페이스 모두 외부에서 내부의 구현 세부 사항을 알 필요 없이 제공된 규칙에 따라 특정 기능을 사용할 수 있도록 합니다.
-    
-  
-
-
-2️⃣ 계약(Contract) 역할.
-
-  계약처럼, 인터페이스는 어떤 기능이 제공되고, 그 기능이 어떻게 호출되는지를 규정합니다.
-    
-      사용자는(또는 클라이언트)는 이 계약에 따라 인터페이스를 호출하고 사용하게 되며, 내부 구현과는 독립적으로 동작할 수 있습니다.
-    
-  
-
-
-3️⃣ 구현의 독립성.
-
-  API와 소프트웨어 공학에서의 인터페이스 모두 구현에 독립적입니다.
-    
-      이는 사용자가 인터페이스를 통해 기능을 호출하지만, 구현이 어떻게 이루어지는지는 중요하지 않다는 원칙을 따릅니다.
-        
-          이를 통해 구현 변경이 이루어져도 인터페이스가 동일하게 유지된다면, 시스템 간의 상호작용에는 영향이 없습니다.
-        
-      
-    
-  
-
-
-2️⃣ 차이점.
-
-1️⃣ API에서의 인터페이스
-
-  범위
-    
-      API에서의 인터페이스는 주로 시스템 간 상호작용을 적용합니다.
-        
-          외부 애플리케이션이나 서비스가 제공하는 기능을 호출할 수 있는 방법을 제공하며, 이는 웹 서비스(API)나 외부 모듈과의 통신에 중점을 둡니다.
-        
-      
-    
-  
-  사용 맥락
-    
-      주로 웹 API, 라이브러리 API 등에 사용되며, 클라이언트 API 제공자의 규격에 맞춰 기능을 사용할 수 있도록 합니다.
-      API 인터페이스는 주로 함수, 메서드, HTTP 요청 등을 통한 상호작용을 다룹니다.
-      예: RESTful API에서의 HTTP 메서드(GET, POST 등), API 호출 시 제공되는 엔드포인트와 파라미터, 그리고 반환되는 데이터 형식 등이 API 인터페이스에 포함됩니다.
-    
-  
-
-
-2️⃣ 소프트웨어 공학에서의 인터페이스
-
-  범위
-    
-      소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 상호작용을 정의합니다.
-        
-          인터페이스는 객체 지향 프로그래밍(OOP)에서 사용되며, 특정 클래스나 모듈이 어떤 메서드나 속성을 제공해야 하는지를 정의합니다.
-        
-      
-    
-  
-  사용 맥락
-    
-      주로 객체 지향 언어(Java, C++, Python 등)에서 사용되는 개념으로, 인터페이스는 클래스의 행위 계약을 정의합니다.
-        
-          클래스가 특정 인터페이스를 구현하면, 해당 인터페이스에서 요구하는 메서드를 모두 정의해야 합니다.
-        
-      
-    
-  
-  예시
-    
-      Java에서의 인터페이스는 클래스가 구현해야 할 메서드의 목록을 정의하며, 이를 통해 다형성(Polymorphism)을 지원합니다.
-        
-          예를 들어, 여러 클래스가 동일한 인터페이스를 구현하여 동일한 메서드를 다르게 정의할 수 있습니다.
-        
-      
-    
-  
-
-
-3️⃣ 개념의 유사성과 차이점 요약.
-
-  API 인터페이스는 외부 시스템과의 상호작용을 위한 규칙을 정의하며, 주로 서비스 제공을 위해 시스템이나 애플리케이션에서 기능을 제공할 때 사용됩니다.
-    
-      웹 API, 라이브러리 API 등 외부 프로그램이 호출할 수 있는 방법을 설명합니다.
-    
-  
-  소프트웨어 공학에서의 인터페이스는 객체 지향 프로그래밍에서 클래스나 모듈 간의 상호작용 규칙을 정의합니다.
-    
-      주로 다형성과 구현 독립성을 지원하며, 여러 클래스가 동일한 인터페이스를 구현할 수 있도록 합니다.
-    
-  
-
-
-4️⃣ 결론.
-
-  API에서의 인터페이스는 외부 시스템이 상호작용할 수 있도록 기능을 제공하는 방법을 규정하고, 소프트웨어 공학에서의 인터페이스는 클래스나 모듈 간의 계약으로서, 객체 지향 프로그래밍에서 다형성을 지원하는 데 중점을 둡니다.
-  두 개념은 상호작용 규칙을 정의하는 공통적인 개념을 공유하며, 구현과 추상화의 원칙에 기반하고 있지만, 사용되는 맥락과 범위는 다릅니다.
 
 
                         </a>
@@ -35108,113 +35372,133 @@ filtered.ifPresent(System.out::println); // "Hello" 출력
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
-                        <a href="/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
-                            🍃[Spring] .addAttribute() 메서드.
+                        <a href="/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `View` 객체.</h1></a>
+                        <a href="/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="txt_post">
+                            🍃[Spring] Spring MVC에서 View 객체.
 
-1️⃣ .addAttribute() 메서드.
+1️⃣ View 객체.
 
-  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
-  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
+  Spring MVC에서 View 객체는 클라이언트에게 응답을 생성하는 데 사용되는 최종 출력을 담당하는 구성 요소입니다.
+  View 객체는 주어진 모델 데이터를 사용하여 HTML, JSON, XML, PDF 등 다양한 형태로 응답을 렌더링 합니다.
+  Spring MVC의 View 객체는 추상화된 인터페이스를 통해 다양한 템플릿 엔진이나 출력 형식을 지원합니다.
 
 
-2️⃣ 주요 기능.
+2️⃣ View 객체의 주요 역할.
 
-  모델에 데이터 추가
+  1. 모델 데이터 렌더링
     
-      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
+      View 객체는 컨트롤러에서 전달된 Model 데이터를 이용해 클라이언트가 볼 수 있는 형식으로 변환합니다.
         
-          이 데이터는 이후 뷰에서 사용될 수 있습니다.
+          예를 들어, HTML 템플릿 엔진을 사용하여 웹 페이지를 생성하거나, JSON으로 데이터를 변환해 API 응답으로 보낼 수 있습니다.
         
       
     
   
-  뷰 랜더링에 데이터 전달
+  2. 응답 생성
     
-      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
+      클라이언트에게 전송될 최종 응답을 생성합니다.
+        
+          이는 브라우저에 표시될 HTML 페이지일 수도 있고, RESTful API의 JSON 응답일 수도 있습니다.
+        
+      
+    
+  
+  3. 컨텐츠 타입 설정
+    
+      View 객체는 생성된 응답 컨텐츠 타입(예: text/html, application/json, application/pdf 등)을 설정하여 클라이언트가 올바르게 해석할 수 있도록 합니다.
     
   
 
 
-3️⃣ 사용 예시.
-@Controller
-public class HomeController {
+3️⃣ View 객체의 종류.
+
+  Spring MVC에서는 여러 가지 유형의 View 객체를 지원합니다.
     
-    @GetMapping("/home")
-    public String home(Model model) {
-        // 모델에 데이터를 추가
-        model.addAttribute("message", "Welcome to the Home Page!");
-        model.addAttribute("date", LocalDate.now());
-        
-        // "home"이라는 뷰 이름을 반환
-        return "home";
+      이들은 다양한 응답 형식을 처리할 수 있도록 설계되었습니다.
+        1. JSP(JavaServer Page)
+      
+    
+  
+  Spring MVC에서 가장 전통적으로 사용되는 뷰 기술입니다.
+  JSP는 HTML과 Java 코드를 혼합하여 동적인 웹 페이지를 생성합니다.
+
+
+2. Thymeleaf
+
+  최근 많이 사용되는 템플릿 엔진으로, HTML 파일을 템플릿으로 사용하여, HTML 태그에 특수한 속성을 추가하여 동적인 콘텐츠를 생성할 수 있습니다.
+
+
+3. FreeMarker
+
+  HTML뿐만 아니라 텍스트 기반의 다양한 문서를 생성할 수 있는 템플릿 엔진입니다.
+
+
+4. Velocity
+
+  Apache 프로젝트에서 제공하는 템플릿 엔진으로, FreeMarker와 유사하게 다양한 텍스트 기반 응담을 생성할 수 있습니다.
+
+
+5. JSON/XML View
+
+  MappingJackson2JsonView 와 같은 JSON 또는 XML 뷰를 사용하여 데이터를 JSON 또는 XML 형식으로 변환하여 RESTful API 응답을 생성할 수 있습니다.
+
+
+6. PDF/Excel View
+
+  AbstractPdfView, AbstractXlsView 와 같은 뷰를 사용하여 PDF나 Excel 파일을 생성하여 응답으로 반환할 수 있습니다.
+
+
+4️⃣ View 객체 사용 예시
+
+  컨트롤러에서 View 객체를 명시적으로 사용할 수도 있고, 뷰 리졸버(View Resolver)가 자동으로 처리할 수도 있습니다.
+
+
+@Controller
+public class GreetingController {
+    
+    @GetMapping("/greeting")
+    public ModelAndView greeting() {
+        ModelAndView mav = new ModelAndView("greeting");
+        mav.addObject("message", "Hello welcome to our website!");
+        return mav;
     }
 }
 
 
 
-  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
-  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
-  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
+  위의 예제에서 ModelAndView 객체를 사용하여 View를 명시적으로 지정했습니다.
+  greeting이라는 뷰 이름은 보통 JSP나 Thymeleaf 템플릿 파일과 매핑되며, 이 템플릿 파일이 렌더링 됩니다.
 
 
-4️⃣ 뷰에서의 사용 예시(Thymeleaf)
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
-&lt;head&gt;
-    &lt;title&gt;Home Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
-    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+5️⃣ 뷰 리졸버(View Resolver)
 
-
-
-  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
-  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
-
-
-5️⃣ .addAttribute()의 다양한 사용 방법.
-
-  1. 키와 값 쌍으로 사용
+  Spring MVC에서 뷰 리졸버(View Resolver)는 컨트롤러가 반환한 뷰 이름을 실제 View 객체로 변환해주는 역할을 합니다.
+  일반적으로 뷰 리졸버는 템플릿 엔진이나 뷰 파일의 경로를 관리하고, 클라이언트에게 응답할 적절한 View 객체를 결정합니다.
     
-      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
-        model.addAttribute("username", "JohnDoe");
+      예를 들어, 다음과 같은 뷰 리졸버 설정이 있을 수 있습니다.
+        @Bean
+public InternalResourceViewResolver viewResolver() {
+  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+  resolver.setPrefix("/WEB-INF/views/");
+  resolver.setSuffix(".jsp");
+  return resolver;
+}
         
       
     
   
-  2. 키 없이 값만 전달
-    
-      키를 생략하고 값만 전달할 수도 있습니다.
-        
-          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
-            User user = new User("John", "Doe");
-model.addAttribute(user);
-// "user"라는 키로 모델에 추가됩니다.
-            
-          
-        
-      
-    
-  
-  3. 체이닝(Chaining)
-    
-      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
-        model.addAttribute("name", "Jane")
-   .addAttribute("age", 30)
-   .addAttribute("city", "New York");
-        
-      
-    
-  
-  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
+  위 설정에서는 컨트롤러가 greeting이라는 뷰 이름을 반환하면, InternalResourceViewResolver는 /WEB-INF/views/greeting.jsp 라는 JSP 파일을 찾아서 렌더링합니다.
+
+
+6️⃣ 요약.
+
+  View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
+  이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
+  Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
 
 
                         </a>
@@ -35621,133 +35905,113 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-09-12-addAttribute-method.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html"><h1 class="title_post">🍃[Spring] Spring MVC에서 `View` 객체.</h1></a>
-                        <a href="/Spring/2024-09-12-View-Object-at-the-Spring-MVC.html" class="txt_post">
-                            🍃[Spring] Spring MVC에서 View 객체.
+                        <a href="/Spring/2024-09-12-addAttribute-method.html"><h1 class="title_post">🍃[Spring] `.addAttribute()` 메서드.</h1></a>
+                        <a href="/Spring/2024-09-12-addAttribute-method.html" class="txt_post">
+                            🍃[Spring] .addAttribute() 메서드.
 
-1️⃣ View 객체.
+1️⃣ .addAttribute() 메서드.
 
-  Spring MVC에서 View 객체는 클라이언트에게 응답을 생성하는 데 사용되는 최종 출력을 담당하는 구성 요소입니다.
-  View 객체는 주어진 모델 데이터를 사용하여 HTML, JSON, XML, PDF 등 다양한 형태로 응답을 렌더링 합니다.
-  Spring MVC의 View 객체는 추상화된 인터페이스를 통해 다양한 템플릿 엔진이나 출력 형식을 지원합니다.
+  .addAttribute()는 Spring MVC에서 Model 또는 ModelMap객체의 메서드로, 컨트롤러에서 뷰로 전달할 데이터를 추가하는 데 사용됩니다.
+  이 메서드를 사용하여 컨트롤러가 처리한 결과를 뷰에 전달하고, 뷰는 이 데이터를 사용해 동적으로 콘텐츠를 렌더링합니다.
 
 
-2️⃣ View 객체의 주요 역할.
+2️⃣ 주요 기능.
 
-  1. 모델 데이터 렌더링
+  모델에 데이터 추가
     
-      View 객체는 컨트롤러에서 전달된 Model 데이터를 이용해 클라이언트가 볼 수 있는 형식으로 변환합니다.
+      addAttribute()를 사용하여 키-값 쌍 형태로 데이터를 모델에 추가합니다.
         
-          예를 들어, HTML 템플릿 엔진을 사용하여 웹 페이지를 생성하거나, JSON으로 데이터를 변환해 API 응답으로 보낼 수 있습니다.
-        
-      
-    
-  
-  2. 응답 생성
-    
-      클라이언트에게 전송될 최종 응답을 생성합니다.
-        
-          이는 브라우저에 표시될 HTML 페이지일 수도 있고, RESTful API의 JSON 응답일 수도 있습니다.
+          이 데이터는 이후 뷰에서 사용될 수 있습니다.
         
       
     
   
-  3. 컨텐츠 타입 설정
+  뷰 랜더링에 데이터 전달
     
-      View 객체는 생성된 응답 컨텐츠 타입(예: text/html, application/json, application/pdf 등)을 설정하여 클라이언트가 올바르게 해석할 수 있도록 합니다.
-    
-  
-
-
-3️⃣ View 객체의 종류.
-
-  Spring MVC에서는 여러 가지 유형의 View 객체를 지원합니다.
-    
-      이들은 다양한 응답 형식을 처리할 수 있도록 설계되었습니다.
-        1. JSP(JavaServer Page)
-      
+      모델에 추가된 데이터는 뷰 템플릿(예: Thymeleaf, JSP)에서 접근 가능하며, 이를 통해 클라이언트에게 동적으로 생성된 HTML을 반환할 수 있습니다.
     
   
-  Spring MVC에서 가장 전통적으로 사용되는 뷰 기술입니다.
-  JSP는 HTML과 Java 코드를 혼합하여 동적인 웹 페이지를 생성합니다.
 
 
-2. Thymeleaf
-
-  최근 많이 사용되는 템플릿 엔진으로, HTML 파일을 템플릿으로 사용하여, HTML 태그에 특수한 속성을 추가하여 동적인 콘텐츠를 생성할 수 있습니다.
-
-
-3. FreeMarker
-
-  HTML뿐만 아니라 텍스트 기반의 다양한 문서를 생성할 수 있는 템플릿 엔진입니다.
-
-
-4. Velocity
-
-  Apache 프로젝트에서 제공하는 템플릿 엔진으로, FreeMarker와 유사하게 다양한 텍스트 기반 응담을 생성할 수 있습니다.
-
-
-5. JSON/XML View
-
-  MappingJackson2JsonView 와 같은 JSON 또는 XML 뷰를 사용하여 데이터를 JSON 또는 XML 형식으로 변환하여 RESTful API 응답을 생성할 수 있습니다.
-
-
-6. PDF/Excel View
-
-  AbstractPdfView, AbstractXlsView 와 같은 뷰를 사용하여 PDF나 Excel 파일을 생성하여 응답으로 반환할 수 있습니다.
-
-
-4️⃣ View 객체 사용 예시
-
-  컨트롤러에서 View 객체를 명시적으로 사용할 수도 있고, 뷰 리졸버(View Resolver)가 자동으로 처리할 수도 있습니다.
-
-
+3️⃣ 사용 예시.
 @Controller
-public class GreetingController {
+public class HomeController {
     
-    @GetMapping("/greeting")
-    public ModelAndView greeting() {
-        ModelAndView mav = new ModelAndView("greeting");
-        mav.addObject("message", "Hello welcome to our website!");
-        return mav;
+    @GetMapping("/home")
+    public String home(Model model) {
+        // 모델에 데이터를 추가
+        model.addAttribute("message", "Welcome to the Home Page!");
+        model.addAttribute("date", LocalDate.now());
+        
+        // "home"이라는 뷰 이름을 반환
+        return "home";
     }
 }
 
 
 
-  위의 예제에서 ModelAndView 객체를 사용하여 View를 명시적으로 지정했습니다.
-  greeting이라는 뷰 이름은 보통 JSP나 Thymeleaf 템플릿 파일과 매핑되며, 이 템플릿 파일이 렌더링 됩니다.
+  위 코드에서 home() 메서드는 /home URL로 GET 요청이 들어오면 실행됩니다.
+  Model 객체를 사용하여 "message"와 "date"라는 두 개의 속성을 추가합니다.
+  이 속성들은 “home”이라는 뷰(예: home.html 또는 home.jsp)에서 사용됩니다.
 
 
-5️⃣ 뷰 리졸버(View Resolver)
+4️⃣ 뷰에서의 사용 예시(Thymeleaf)
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
+&lt;head&gt;
+    &lt;title&gt;Home Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 th:text="${message}"&gt;Default Message&lt;/h1&gt;
+    &lt;p&gt;Today's date is: &lt;span th:text="${date}"&gt;01/01/2024&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-  Spring MVC에서 뷰 리졸버(View Resolver)는 컨트롤러가 반환한 뷰 이름을 실제 View 객체로 변환해주는 역할을 합니다.
-  일반적으로 뷰 리졸버는 템플릿 엔진이나 뷰 파일의 경로를 관리하고, 클라이언트에게 응답할 적절한 View 객체를 결정합니다.
+
+
+  위의 Thymeleaf 템플릿에서 ${message}와 ${date}는 컨트롤러에서 addAttribute()를 통해 추가된 데이터를 나타냅니다.
+  컨트롤러에서 제공한 "Welcome to the Home Page!" 와 현재 날짜가 뷰에 렌더링됩니다.
+
+
+5️⃣ .addAttribute()의 다양한 사용 방법.
+
+  1. 키와 값 쌍으로 사용
     
-      예를 들어, 다음과 같은 뷰 리졸버 설정이 있을 수 있습니다.
-        @Bean
-public InternalResourceViewResolver viewResolver() {
-  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-  resolver.setPrefix("/WEB-INF/views/");
-  resolver.setSuffix(".jsp");
-  return resolver;
-}
+      가장 기본적인 사용 방법으로, 첫 번째 인수로 속성의 이름을, 두 번째 인수로 속성의 값을 지정합니다.
+        model.addAttribute("username", "JohnDoe");
         
       
     
   
-  위 설정에서는 컨트롤러가 greeting이라는 뷰 이름을 반환하면, InternalResourceViewResolver는 /WEB-INF/views/greeting.jsp 라는 JSP 파일을 찾아서 렌더링합니다.
-
-
-6️⃣ 요약.
-
-  View 객체는 Spring MVC에서 클라이언트에게 응답을 생성하고 렌더링하는 역할을 합니다.
-  이 객체는 모델 데이터를 사용하여 최종 응답을 생성하며, 다양한 형식의 출력을 지원합니다.
-  Spring MVC는 View 객체를 직접 사용하거나 뷰 리졸버를 통해 간접적으로 사용하여, 클라이언트에게 최종 결과를 전달합니다.
+  2. 키 없이 값만 전달
+    
+      키를 생략하고 값만 전달할 수도 있습니다.
+        
+          이 경우 Spring은 전달된 객체의 클래스 이름을 기본 키로 사용합니다.(첫 글자는 소문자로).
+            User user = new User("John", "Doe");
+model.addAttribute(user);
+// "user"라는 키로 모델에 추가됩니다.
+            
+          
+        
+      
+    
+  
+  3. 체이닝(Chaining)
+    
+      addAttribute()는 메서드 체이닝이 가능하여, 여러 개의 속성을 한 번에 추가할 수 있습니다.
+        model.addAttribute("name", "Jane")
+   .addAttribute("age", 30)
+   .addAttribute("city", "New York");
+        
+      
+    
+  
+  .addAttribute()는 Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 중요한 역할을 하며, 동적인 웹 애플리케이션 개발에 필수적인 요소입니다.
 
 
                         </a>
@@ -55774,36 +56038,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-30-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-30-TIL.html"><h1 class="title_post">📝 [TIL] 240530 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-30-TIL.html" class="txt_post">
-                            
-  다양한 입출력 방법
-  큐(Queue)
-  큐 구현(LinkedList)
-  큐 구현(List)
-  큐 구현(Array)
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-30</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Algorithm/2024/2024-05-30-Queue.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
                         
                     </div>
@@ -56161,6 +56395,36 @@ Queue의 크기 : 0
                         </a>
                         <div class="info-post">
                                 <a href="/Algorithm" class="category">Algorithm</a>
+                            
+                                <span class="date">· 2024-05-30</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-30-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-30-TIL.html"><h1 class="title_post">📝 [TIL] 240530 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-30-TIL.html" class="txt_post">
+                            
+  다양한 입출력 방법
+  큐(Queue)
+  큐 구현(LinkedList)
+  큐 구현(List)
+  큐 구현(Array)
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-05-30</span>
                             
@@ -102502,6 +102766,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Spring/2024-11-14-what-are-some-things-to-consider-when-using-associations.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-14"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 단방향 관계란 무엇일까요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-16-one-way-relationship.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-16"
         });
     
 

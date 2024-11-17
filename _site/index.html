@@ -823,6 +823,7 @@
             
             
             
+            
 
     
     
@@ -1193,6 +1194,275 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-18-what-is-a-two-way-relationship.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-18-what-is-a-two-way-relationship.html"><h1 class="title_post">🍃[Spring] 양방향 관계란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-11-18-what-is-a-two-way-relationship.html" class="txt_post">
+                            🍃[Spring] 양방향 관계란 무엇일까요?
+
+  양방향 관계는 두 엔티티가 서로를 참조할 수 있는 관계를 의미합니다.
+    
+      즉, 한 엔티티에서 다른 엔티티를 참조할 수 있을 뿐만 아니라, 반대로 다른 엔티티에서도 이를 참조할 수 있습니다.
+    
+  
+  양방향 관계를 사용하면 두 엔티티 간의 데이터 탐색이 양쪽 방향으로 모두 가능해지며, 이는 JPA에서 다음과 같은 관계 어노테이션 조합으로 구현됩니다.
+    
+      @OneToMany + @ManyToOne
+      @OneToOne + @OneToOne
+      @ManyToMany + @ManyToMany
+    
+  
+
+
+1️⃣ 양방향 관계의 특징.
+
+1️⃣ 양쪽에서 참조 가능.
+
+  양쪽 엔티티가 서로를 참조하여 데이터 탐색이 가능합니다.
+    
+      예를 들어, 부모 엔티티에서 자식 엔티티들을 조회하거나, 자식 엔티티에서 부모 엔티티를 조회할 수 있습니다.
+    
+  
+
+
+2️⃣ 주인(Owner)과 비주인(Inverse) 설정.
+
+  JPA에서 양방향 관계를 설정할 때, 반드시 주인(Owner)과 비주인(Inverse)을 명시해야 합니다.
+  주인(Owner) : 외래 키(Foreign Key)를 실제로 관리하는 쪽.
+  비주인(Inverse) : 읽기 전용으로 참조만 가능하며, mappedBy 속성을 통해 주인을 명시합니다.
+
+
+3️⃣ 데이터베이스에서 외래 키는 한쪽에만 존재.
+
+  데이터베이스의 외래 키(Foreign Key)는 관계의 주인에 해당하는 엔티티의 테이블에만 존재합니다.
+
+
+2️⃣ 양방향 관계의 구현 형태.
+
+1️⃣ @OneToMany + @ManyToOne
+
+  부모-자식 관계를 구현하며, 부모는 자식의 컬렉션을 가지고 있고, 자식은 부모를 참조합니다.
+
+
+예제: User와 UserSaveHistory
+
+  User 엔티티(부모)
+    @Entity
+public class User {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List&lt;UserSaveHistory&gt; saveHistories = new ArrayList&lt;&gt;();
+    
+  public void addSaveHistory(UserSaveHistory history) {
+      saveHistories.add(history);
+      history.setUser(this);
+  }
+    
+  public void removeSaveHistory(UserSaveHistory history) {
+      saveHistories.remove(history);
+      history.setUser(null);
+  }
+}
+    
+  
+  UserSaveHistory 엔티티(자식)
+    @Entity
+public class UserSaveHistory {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
+}
+    
+  
+
+
+2️⃣ @OneToOne + @OneToOne
+
+  1:1 관계를 구현하며, 양쪽 엔티티가 서로를 참조합니다.
+
+
+예제: Passport와 Person
+
+
+  Person 엔티티.
+    @Entity
+public class Person {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+  private Passport passport;
+}
+    
+  
+  Passport 엔티티.
+    @Entity
+public class Passport {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @OneToOne
+  @JoinColumn(name = "person_id")
+  private Person person;
+}
+    
+  
+
+
+3️⃣ @ManyToMany + @ManyToMany
+
+  다대다 관계를 구현하며, 중간 테이블을 통해 두 엔티티가 연결됩니다.
+
+
+예제: Student와 Course
+
+  Student 엔티티.
+    @Entity
+public class Student {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @ManyToMany
+  @JoinTable(
+      name = "student_course",
+      joinColumns = @JoinColumn(name = "student_id"),
+      inverseJoinColumns = @JoinColumn(name = "course_id")
+  )
+  private List&lt;Course&gt; courses = new ArrayList&lt;&gt;();
+}
+    
+  
+  Course 엔티티.
+    @Entity
+public class Course {
+    
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+    
+  @ManyToMany(mappedBy = "courses")
+  private List&lt;Student&gt; students = new ArrayList&lt;&gt;();
+}
+    
+  
+
+
+3️⃣ 양방향 관계에서 주의점.
+
+1️⃣ 주인(Owner)과 비주인(Inverse)
+
+  JPA에서는 양방향 관계를 설정할 때 반드시 주인을 명시해야 합니다.
+  주인은 외래 키(Foreign Key)를 관리하며, 데이터 변경(INSERT, UPDATE)에 영향을 미칩니다.
+  비주인은 mappedBy 속성을 사용해 주인을 지정하며, 읽기 전용입니다.
+
+
+2️⃣ 연관 관계 편의 메서드.
+
+  부모와 자식 간의 관계를 일관되게 유지하려면 편의 메서드를 사용하는 것이 좋습니다.
+    
+      예를 들어, 부모의 addChild 메서드를 호출하면 자식의 부모도 자동으로 설정되도록 구현합니다.
+        public void addSaveHistory(UserSaveHistory history) {
+  saveHistories.add(history);
+  history.setUser(this);
+}
+        
+      
+    
+  
+
+
+
+  🙋‍♂️ 편의 메서드
+
+  관계를 동기화하기 위한 편의 메서드란 양방향 연관 관계에서 두 엔티티 간의 연관 관계를 일관성 있게 유지하기 위해 사용하는 메서드를 의미합니다.
+
+
+3️⃣ 지연 로딩(Lazy Loading)
+
+  양방향 관계에서는 @OneToMany와 @ManyToOne 모두 기본적으로 지연 로딩(Lazy Loading)을 사용하여 성능을 최적화합니다.
+  필요시 fetch = FetchType.EAGER로 설정할 수 있지만, 이는 데이터 로딩 시 성능에 영향을 줄 수 있습니다.
+
+
+4️⃣ 무한 루프 문제
+
+  양방향 관계를 JSON으로 직렬화할 때, 부모와 자식이 서로를 참조하며 무한 루프가 발생할 수 있습니다.
+    
+      해결 방법
+        
+          @JsonIgnore : 특정 필드를 직렬화하지 않도록 설정.
+          @JsonManagedReference와 @JsonBackReference: Jackson 라이브러리에서 관계를 처리하는 어노테이션.
+        
+      
+    
+  
+
+
+4️⃣ 장점과 단점.
+
+1️⃣ 장점.
+
+1️⃣ 양쪽 탐색 기능.
+
+  부모와 자식 모두에서 관계를 탐색할 수 있습니다.
+
+
+2️⃣ 명확한 관계 표현.
+
+  객체 모델에서 두 엔티티 간의 관계를 명확하게 표현할 수 있습니다.
+
+
+2️⃣ 단점.
+
+1️⃣ 설계 복잡성 증가.
+
+  관계를 양쪽에서 관리해야 하므로 코드가 복잡해질 수 있습니다.
+
+
+2️⃣ 성능 문제.
+
+  양방향 관계를 사용할 경우 불필요한 데이터 로딩이 발생할 수 있으므로 로딩 전략을 신중히 선택해야 합니다.
+
+
+5️⃣ 결론.
+
+  양방향 관계는 두 엔티티 간에 상호 참조가 필요할 때 사용되며, 설계가 복잡해질 수 있지만 데이터를 양쪽 방향으로 탐색해야 하는 경우 유용합니다.
+  JPA에서는 주인(Owner)을 명확히 설정하고, 편의 메서드를 통해 관계를 관리함으로써 데이터의 일관성을 유지해야 합니다.
+  필요 없는 경우 단방향 관계를 사용하는 것이 더 간단하고 성능상 유리합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -16287,227 +16557,215 @@ DELETE /users/3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-09-what-is-the-network-interface-card.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-10-09-what-is-the-network-interface-card.html"><h1 class="title_post">🌐[Network] 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-09-what-is-the-network-interface-card.html" class="txt_post">
-                            🌐[Network] 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?”
+                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html"><h1 class="title_post">🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="txt_post">
+                            🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?
 
+
+  MAC 주소(Media Access Control Address)는 네트워크 인터페이스 카드(NIC, Network Interface Card)에 할당된 고유한 식별자로, LAN(Local Area Network)과 같은 네트워크에서 장치들이 서로 통신할 때 사용됩니다.
+  MAC 주소는 네트워크 장치의 물리적인 하드웨어 주소이며, 네트워크에서 각 장치를 구분하는 데 사용됩니다.
+  MAC 주소는 이더넷과 Wi-Fi와 같은 여러 네트워크 기술에서 사용됩니다.
+
+
+
+  🙋‍♂️ 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?
+🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
+
+
+1️⃣ MAC 주소의 주요 특징.
+
+1️⃣ 고유성.
+
+  MAC 주소는 네트워크 카드 제조사에서 전 세계적으로 유일하게 할당되며, 각 네트워크 장치(컴퓨터, 프린터, 스마트폰 등)에 고유하게 부여됩니다.
     
-
-
-네트워크 인터페이스 카드(NIC, Network Interface Card)    
-
-
-
-  네트워크 인터페이스 카드(NIC, Network Interface Card) 는 컴퓨터나 네트워크 장치가 네트워크에 연결하여 데이터를 송수신할 수 있게 해주는 하드웨어 장치입니다.
-
-
-    
-
-
-무선 네트워크 어댑터    
-
-
-
-  네트워크 인터페이스 카드(이하 NIC)는 이더넷 포트 또는 무선 네트워크 어댑터를 통해 로컬 네트워크(LAN, Local Area Network) 또는 인터넷(WAN, Wide Area Network) 과 같은 네트워크에 연결되며, 데이터를 전송하는 데 필요한 물리적인 인터페이스를 제공합니다.
-
-
-
-  🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
-
-
-1️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 주요 역할.
-
-1️⃣ 데이터 송수신.
-
-  NIC는 네트워크 상의 다른 장치와 데이터를 송수신하는 역할을 합니다.
-    
-      컴퓨터에서 데이터를 패킷 형태로 만들어 네트워크를 통해 보낼 수 있으며, 다른 장치에서 온 데이터를 받아 컴퓨터가 처리할 수 있는 형태로 변환합니다.
+      즉, 각 장치의 네트워크 카드(NIC, Network Interface Card)마다 하나의 고유한 MAC 주소가 존재합니다.
     
   
 
 
-2️⃣ 네트워크 연결.
+2️⃣ 48비트 주소.
 
-  NIC는 컴퓨터나 장치를 네트워크에 물리적으로 연결합니다.
+  MAC 주소는 48비트(6바이트) 크기의 이진수로 표현되며, 보통 16진수로 표기됩니다.
     
-      유선 네트워크의 경우 이더넷 케이블을 통해 연결되며, 무선 네트워크의 경우 Wi-Fi를 통해 네트워크에 연결할 수 있습니다.
-    
-  
-
-
-3️⃣ MAC 주소 할당.
-
-  NIC는 고유한 MAC 주소를 가지고 있습니다.
-    
-      MAC 주소는 네트워크에서 장치를 식별하는 고유 식별자로, 네트워크 상에서 데이터 패킷을 송수신할 때 특정 장치를 구분하는 데 사용됩니다.
-    
-  
-
-
-4️⃣ 데이터 변환
-
-  컴퓨터 내부에서 사용되는 디지털 신호를 네트워크에서 사용할 수 있는 신호(유선의 경우 전기 신호, 무선의 경우 무선 신호)로 변환하여 네트워크를 통해 데이터를 전송합니다.
-    
-      반대로, 네트워크에서 받은 신호를 컴퓨터가 이해할 수 있는 디지털 신호로 변환하는 기능도 수행합니다.
-    
-  
-
-
-2️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 구성요소.
-
-1️⃣ 이더넷 포트.
-
-  유선 네트워크 카드에는 이더넷 포트가 있어, 이더넷 케이블을 사용해 네트워크에 연결할 수 있습니다.
-    
-      이더넷 포트는 RJ-45 커넥터를 사용하여 네트워크 케이블을 연결합니다.
-    
-  
-
-
-2️⃣ 무선 안테나.
-
-  무선 네트워크 카드에는 Wi-Fi 신호를 주고 받기 위한 무선 안테나가 장착 되어 있습니다.
-    
-      이를 통해 무선 액세스 포인트(AP, Access Point)와 통신하여 네트워크에 접속합니다.
-    
-  
-
-
-3️⃣ 칩셋(Chipset).
-
-  NIC에는 데이터 전송 및 처리를 관리하는 칩셋(Chipset)이 장착되어 있습니다.
-    
-      이 칩셋은 네트워크 프로토콜을 처리하고, 데이터를 패킷으로 전환하거나 수신된 패킷을 해석하는 역할을 합니다.
-    
-  
-
-
-4️⃣ MAC 주소.
-
-  NIC는 네트워크에서 MAC 주소라는 고유한 하드웨어 주소를 가집니다.
-    
-      이 MAC 주소는 네트워크 상에서 장치를 고유하게 식별하는 데 사용됩니다.
-    
-  
-
-
-3️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 유형.
-
-1️⃣ 유선 네트워크 카드(Ethernet NIC).
-
-  유선 NIC는 이더넷 케이블을 통해 네트워크에 연결하는 카드입니다.
-    
-      일반적으로 데스크탑 컴퓨터, 서버, 프린터 등에서 많이 사용되며, 고속 데이터 전송이 가능합니다.
-    
-  
-  이더넷 카드의 속도는 10Mbps, 100Mbps, 1Gbps, 10Gbps 등의 다양한 속도를 지원할 수 있으며, CAT5e, CAT6 등의 케이블을 사용합니다.
-
-
-2️⃣ 무선 네트워크 카드(Wirless NIC).
-
-  무선 NIC는 Wi-Fi를 통해 무선 네트워크에 연결하는 카드입니다.
-    
-      일반적으로 노트북, 태블릿, 스마트폰 같은 휴대용 장치에서 많이 사용되며, 이동성과 유연성이 장점입니다.
-    
-  
-  무선 네트워크 카드는 다양한 Wi-Fi 표준(802.11a/b/g/n/ac/ax)을 지원하며, 무선 엑세스 포인트(AP, Access Point)와 통신하여 인터넷에 연결됩니다.
-
-
-3️⃣ 내장형 네트워크 카드.
-
-  오늘날 대부분의 컴퓨터, 노트북, 스마트폰 등에는 내장형 NIC가 장착되어 있어, 별도의 네트워크 카드를 설치하지 않아도 네트워크에 연결할 수 있습니다.
-    
-      이러한 내장형 NIC는 메인보드에 직접 통합되어 있습니다.
-    
-  
-
-
-4️⃣ 외장형 네트워크 카드.
-
-  USB 네트워크 어댑터와 같은 외장형 NIC는 USB 포트에 연결하여 사용됩니다.
-    
-      이러한 외장형 네트워크 카드는 주로 내장 NIC가 없는 장치에서 네트워크 기능을 확장하거나, 추가 네트워크 인터페이스가 필요할 때 사용됩니다.
-    
-  
-
-
-4️⃣ 네트워크 인터페이스 카드의 동작 원리.
-
-1️⃣ 데이터 패킷 전송.
-
-  NIC는 컴퓨터의 CPU나 메모리에서 데이터를 받아 이를 패킷으로 변환하고, 네트워크를 통해 전송합니다.
-    
-      이때 데이터는 이더넷 케이블이나 Wi-Fi 신호를 통해 송신됩니다.
-    
-  
-
-
-2️⃣ 데이터 패킷 수신.
-
-  NIC는 네트워크에서 전송된 데이터를 받아 컴퓨터가 처리할 수 있는 형식으로 변환하여 운영체제나 응용 프로그램에 전달합니다.
-
-
-3️⃣ 네트워크 프로토콜 처리.
-
-  NIC는 다양한 네트워크 프로토콜(예: TCP/IP, UDP 등)을 처리합니다.
-    
-      각 프로토콜에 따라 데이터를 올바르게 전송하고 수신하는 역할을 하며, 이를 통해 안정적인 네트워크 통신이 가능해집니다.
-    
-  
-
-
-4️⃣ MAC 주소 기반 통신.
-
-  네트워크 상에서 데이터는 MAC 주소를 기반으로 각 장치에 전송됩니다.
-    
-      NIC는 MAC 주소를 사용해 패킷이 올바른 목적지로 전달되도록 관리합니다.
+      48비트는 총 281조 개의 고유한 MAC 주소를 생성할 수 있게 합니다.
         
-          예를 들어, 스위치나 라우터는 패킷의 MAC 주소를 확인하여 적절한 장치로 데이터를 전달합니다.
+          예: 00:1A:2B:3C:4D:5E 또는 00-1A-2B-3C-4D-5E
         
       
     
   
 
 
-5️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 중요성.
+3️⃣ 하드웨어 주소.
 
-1️⃣ 네트워크 연결의 필수 장치.
-
-  NIC는 컴퓨터와 네트워크를 연결하는 가장 중요한 장치입니다.
+  MAC 주소는 네트워크 인터페이스 카드(NIC, Network Interface Card) 자체에서 영구적으로 할당된 주소로, 장치가 네트워크에 물리적으로 연결될 때 사용됩니다.
     
-      NIC가 없으면 컴퓨터나 장치는 네트워크에 연결될 수 없으며, 인터넷 접속이나 로컬 네트워크에서의 파일 공유, 자원 공유 등이 불가능합니다.
+      IP 주소는 네트워크 내에서 동적으로 할당될 수 있지만, MAC 주소는 장치의 하드웨어에 고정되어 있습니다.
     
   
 
 
-2️⃣ 고속 데이터 전송.
+4️⃣ 계층 2 주소.
 
-  NIC는 고속으로 데이터를 송수신할 수 있게 해주며, 특히 유선 네트워크에서는 1Gbps 이상의 속도를 제공하여 대용량 파일 전송이나 고속 인터넷 연결에 유리합니다.
-
-
-3️⃣ 다양한 네트워크 환경 지원.
-
-  NIC는 유선과 무선 네트워크 모두를 지원하며, 이를 통해 다양한 네트워크 환경에서 장치들이 자유롭게 연결되고 통신할 수 있습니다.
-
-
-4️⃣ 네트워크 보안.
-
-  NIC는 네트워크에서 보안 통신을 가능하게 하며, 데이터 암호화 및 인증을 처리하는 데 중요한 역할을 합니다.
+  MAC 주소 OSI 7계층 모델의 데이터 링크 계층(Layer 2)에서 사용됩니다.
     
-      이를 통해 데이터가 안전하게 송수신될 수 있습니다.
+      즉, MAC 주소는 같은 네트워크(LAN) 내에서 장치 간 데이터를 전달하는 데 사용됩니다.
+      네트워크의 라우터나 스위치는 MAC 주소를 사용하여 데이터를 적절한 장치로 전달합니다.
     
   
 
 
-6️⃣ 결론.
 
-  NIC는 컴퓨터나 네트워크 장치가 네트워크에 연결하여 데이터를 송수신할 수 있도록 해주는 필수적인 하드웨어입니다.
-  NIC는 네트워크 연결을 제공하고, 데이터를 패킷 단위로 변환하여 네트워크 상의 다른 장치와 통신할 수 있도록 도와줍니다.
-  유선과 무선 NIC가 있으며, 오늘날 대부분의 장치에는 NIC가 내장형으로 포함되어 있지만, 추가적인 필요에 따라 외장형 NIC를 사용할 수도 있습니다.
+  🙋‍♂️ OSI 7계층 모델
+🙋‍♂️ OSI 7계층 모델 - 계층별 기능
+
+
+2️⃣ MAC 주소의 구조.
+
+  MAC 주소는 두 부분으로 나누어집니다.
+
+
+1️⃣ 제조사 식별자(OUI, Organizationally Unique Identifier)
+
+  MAC 주소의 첫 24비트(앞의 6자리 16진수)는 네트워크 카드 제조사를 나타냅니다.
+    
+      이 부분은 OUI라고 하며, 각 네트워크 카드 제조사는 고유한 OUI를 할당받습니다.
+        
+          예: 00:1A:2B -&gt; 제조사의 OUI
+        
+      
+    
+  
+
+
+2️⃣ 장치 식별자(Device Identifier)
+
+  MAC 주소의 나머지 24비트(뒤의 6자리 16진수)는 제조사가 해당 네트워크 카드나 장치에 부여한 고유 식별자입니다.
+    
+      예: 3C:4D:5E -&gt; 장치의 고유 식별자
+    
+  
+
+
+3️⃣ 결합.
+
+  이 두 부분(OUI + Device Identifier)을 결합하여 하나의 고유한 MAC 주소가 만들어집니다.
+    
+      예: 00:1A:2B:3C:4D:5E
+    
+  
+
+
+3️⃣ MAC 주소의 역할.
+
+1️⃣ 로컬 네트워크(LAN)에서 데이터 전송.
+
+  MAC 주소는 LAN(Local Area Network) 내에서 데이터 프레임을 전달할 때 사용됩니다.
+    
+      네트워크 장치가 데이터를 보낼 때, 해당 데이터는 송신자의 MAC 주소를 포함하고, 스위치와 같은 네트워크 장치가 이를 읽어 적절한 목적지로 데이터를 전달합니다.
+    
+  
+
+
+2️⃣ 데이터 링크 계층에서 통신.
+
+  MAC 주소는 데이터 링크 계층에서 장치 간 프레임을 전달하는 데 사용됩니다.
+    
+      이더넷 네트워크에서 MAC 주소는 같은 네트워크 내의 장치 간에 데이터를 정확하게 전달하기 위한 핵심 역할을 합니다.
+    
+  
+
+
+3️⃣ ARP(Address Resolution Protocol)와의 연관성.
+
+  ARP는 IP 주소와 MAC 주소를 연결해주는 프로토콜입니다.
+    
+      네트워크에서 IP 주소를 통해 데이터를 전송 할 때, ARP는 해당 IP 주소에 대한 MAC 주소를 찾아내어, 데이터를 올바른 장치로 전달할 수 있게 합니다.
+        
+          이는 특히 로컬 네트워크에서 중요한 역할을 합니다.
+        
+      
+    
+  
+
+
+4️⃣ 네트워크 장치의 고유 식별.
+
+  MAC 주소는 각 장치의 고유한 하드웨어 주소이므로, 네트워크에서 장치를 고유하게 식별하는 데 사용됩니다.
+    
+      네트워크 관리자들은 MAC 주소를 이용해 네트워크에 연결된 장치들을 추적하거나, 특정 장치에 대해 네트워크 접근을 제어할 수 있습니다.
+    
+  
+
+
+4️⃣ MAC 주소와 IP 주소의 차이점.
+
+  MAC 주소는 하드웨어 주소로, 네트워크 인터페이스 카드(NIC, Network Interface Card)에 고유하게 할당된 고정된 주소입니다.
+    
+      장치가 네트워크에 물리적으로 연결되면 MAC 주소를 통해 통신하게 됩니다.
+    
+  
+  IP 주소는 논리주소로, 네트워크 장치가 인터넷 프로토콜을 통해 통신할 때 사용됩니다.
+    
+      IP 주소는 동적으로 할당되거나 수동으로 설정할 수 있으며, 네트워크 간에 데이터를 전송할 때 사용됩니다.
+    
+  
+
+
+5️⃣ MAC 주소의 예시.
+
+1️⃣ 이더넷 프레임에서의 사용.
+
+  네트워크에서 컴퓨터 A가 컴퓨터 B로 데이터를 전송하려고 할 때, 이더넷 프레임에는 송신자의 MAC 주소와 수신자의 MAC 주소가 포함됩니다.
+    
+      이때, 네트워크 장비(예: 스위치)는 수신자의 MAC 주소를 기반으로 데이터를 올바른 장치(B)로 전달합니다.
+        [출발지 MAC 주소] -&gt; [목적지 MAC 주소]
+00:1A:2B:3C:4D:5E -&gt; 00:1A:7C:8D:9F:0A
+        
+      
+    
+  
+
+
+2️⃣ ARP(Address Resolution Protocol)를 통한 IP-MAC 매핑.
+
+  네트워크에서 컴퓨터가 IP 주소를 통해 데이터를 전송할 때, ARP 프로토콜이 IP 주소에 대응하는 MAC 주소를 찾아 프레임을 생성하고, 데이터를 전송합니다.
+    
+      예를 들어, 컴퓨터 A(192.168.1.2)가 컴퓨터 B(192.168.1.3)로 데이터를 전송 할 때 A는 ARP를 사용해 컴퓨터 B의 MAC 주소를 찾아내어 데이터를 전송합니다.
+    
+  
+
+
+6️⃣ MAC 주소의 보안 이슈.
+
+1️⃣ MAC 주소 스푸핑(Spoofing)
+
+  MAC 주소는 네트워크에서 장치를 식별하는 데 사용되지만, MAC 주소 스푸핑이라는 공격을 통해 MAC 주소를 위조할 수 있습니다.
+    
+      공격자는 자신의 장치의 MAC 주소를 다른 장치의 MAC 주소로 변경하여 네트워크에서 허가되지 않은 접근을 시도할 수 있습니다.
+    
+  
+
+
+2️⃣ MAC 주소 필터링.
+
+  네트워크 보안을 강화하기 위해 일부 네트워크 관리자들은 MAC 주소 필터링을 사용하여 허용된 장치들만 네트워크에 접속할 수 있도록 설정합니다.
+    
+      그러나 MAC 주소가 스푸핑될 수 있기 때문에, 보안 측면에서 완벽한 방법은 아닙니다.
+    
+  
+
+
+7️⃣ 결론.
+
+  MAC 주소는 네트워크 장치에 고유하게 할당된 물리적 하드웨어 주소로, 로컬 네트워크에서 데이터 전송 및 장치 식별에 중요한 역할을 합니다.
+  MAC 주소는 OSI 모델의 데이터 링크 계층(Layer 2)에서 사용되며, 이더넷과 같은 네트워크 기술에서 장치 간 통신을 가능하게 합니다.
+  MAC 주소는 고유하며 변경되지 않는 반면, IP 주소는 논리적이고 변경될 수 있습니다.
+  MAC 주소는 보안과 통신에서 중요한 역할을 하지만, 스푸핑 등의 보안 위협도 존재할 수 있습니다.
 
 
                         </a>
@@ -16997,215 +17255,227 @@ User user = em.find(User.class, 1L) // User 객체 조회
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-10-09-what-is-the-network-interface-card.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html"><h1 class="title_post">🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-09-what-is-the-mac-address.html" class="txt_post">
-                            🌐[Network] MAC(Media Access Control) 주소란 무엇일까요?
+                        <a href="/Network/2024/2024-10-09-what-is-the-network-interface-card.html"><h1 class="title_post">🌐[Network] 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-09-what-is-the-network-interface-card.html" class="txt_post">
+                            🌐[Network] 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?”
 
-
-  MAC 주소(Media Access Control Address)는 네트워크 인터페이스 카드(NIC, Network Interface Card)에 할당된 고유한 식별자로, LAN(Local Area Network)과 같은 네트워크에서 장치들이 서로 통신할 때 사용됩니다.
-  MAC 주소는 네트워크 장치의 물리적인 하드웨어 주소이며, 네트워크에서 각 장치를 구분하는 데 사용됩니다.
-  MAC 주소는 이더넷과 Wi-Fi와 같은 여러 네트워크 기술에서 사용됩니다.
-
-
-
-  🙋‍♂️ 네트워크 인터페이스 카드(NIC, Network Interface Card)란 무엇일까요?
-🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
-
-
-1️⃣ MAC 주소의 주요 특징.
-
-1️⃣ 고유성.
-
-  MAC 주소는 네트워크 카드 제조사에서 전 세계적으로 유일하게 할당되며, 각 네트워크 장치(컴퓨터, 프린터, 스마트폰 등)에 고유하게 부여됩니다.
     
-      즉, 각 장치의 네트워크 카드(NIC, Network Interface Card)마다 하나의 고유한 MAC 주소가 존재합니다.
+
+
+네트워크 인터페이스 카드(NIC, Network Interface Card)    
+
+
+
+  네트워크 인터페이스 카드(NIC, Network Interface Card) 는 컴퓨터나 네트워크 장치가 네트워크에 연결하여 데이터를 송수신할 수 있게 해주는 하드웨어 장치입니다.
+
+
+    
+
+
+무선 네트워크 어댑터    
+
+
+
+  네트워크 인터페이스 카드(이하 NIC)는 이더넷 포트 또는 무선 네트워크 어댑터를 통해 로컬 네트워크(LAN, Local Area Network) 또는 인터넷(WAN, Wide Area Network) 과 같은 네트워크에 연결되며, 데이터를 전송하는 데 필요한 물리적인 인터페이스를 제공합니다.
+
+
+
+  🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
+
+
+1️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 주요 역할.
+
+1️⃣ 데이터 송수신.
+
+  NIC는 네트워크 상의 다른 장치와 데이터를 송수신하는 역할을 합니다.
+    
+      컴퓨터에서 데이터를 패킷 형태로 만들어 네트워크를 통해 보낼 수 있으며, 다른 장치에서 온 데이터를 받아 컴퓨터가 처리할 수 있는 형태로 변환합니다.
     
   
 
 
-2️⃣ 48비트 주소.
+2️⃣ 네트워크 연결.
 
-  MAC 주소는 48비트(6바이트) 크기의 이진수로 표현되며, 보통 16진수로 표기됩니다.
+  NIC는 컴퓨터나 장치를 네트워크에 물리적으로 연결합니다.
     
-      48비트는 총 281조 개의 고유한 MAC 주소를 생성할 수 있게 합니다.
+      유선 네트워크의 경우 이더넷 케이블을 통해 연결되며, 무선 네트워크의 경우 Wi-Fi를 통해 네트워크에 연결할 수 있습니다.
+    
+  
+
+
+3️⃣ MAC 주소 할당.
+
+  NIC는 고유한 MAC 주소를 가지고 있습니다.
+    
+      MAC 주소는 네트워크에서 장치를 식별하는 고유 식별자로, 네트워크 상에서 데이터 패킷을 송수신할 때 특정 장치를 구분하는 데 사용됩니다.
+    
+  
+
+
+4️⃣ 데이터 변환
+
+  컴퓨터 내부에서 사용되는 디지털 신호를 네트워크에서 사용할 수 있는 신호(유선의 경우 전기 신호, 무선의 경우 무선 신호)로 변환하여 네트워크를 통해 데이터를 전송합니다.
+    
+      반대로, 네트워크에서 받은 신호를 컴퓨터가 이해할 수 있는 디지털 신호로 변환하는 기능도 수행합니다.
+    
+  
+
+
+2️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 구성요소.
+
+1️⃣ 이더넷 포트.
+
+  유선 네트워크 카드에는 이더넷 포트가 있어, 이더넷 케이블을 사용해 네트워크에 연결할 수 있습니다.
+    
+      이더넷 포트는 RJ-45 커넥터를 사용하여 네트워크 케이블을 연결합니다.
+    
+  
+
+
+2️⃣ 무선 안테나.
+
+  무선 네트워크 카드에는 Wi-Fi 신호를 주고 받기 위한 무선 안테나가 장착 되어 있습니다.
+    
+      이를 통해 무선 액세스 포인트(AP, Access Point)와 통신하여 네트워크에 접속합니다.
+    
+  
+
+
+3️⃣ 칩셋(Chipset).
+
+  NIC에는 데이터 전송 및 처리를 관리하는 칩셋(Chipset)이 장착되어 있습니다.
+    
+      이 칩셋은 네트워크 프로토콜을 처리하고, 데이터를 패킷으로 전환하거나 수신된 패킷을 해석하는 역할을 합니다.
+    
+  
+
+
+4️⃣ MAC 주소.
+
+  NIC는 네트워크에서 MAC 주소라는 고유한 하드웨어 주소를 가집니다.
+    
+      이 MAC 주소는 네트워크 상에서 장치를 고유하게 식별하는 데 사용됩니다.
+    
+  
+
+
+3️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 유형.
+
+1️⃣ 유선 네트워크 카드(Ethernet NIC).
+
+  유선 NIC는 이더넷 케이블을 통해 네트워크에 연결하는 카드입니다.
+    
+      일반적으로 데스크탑 컴퓨터, 서버, 프린터 등에서 많이 사용되며, 고속 데이터 전송이 가능합니다.
+    
+  
+  이더넷 카드의 속도는 10Mbps, 100Mbps, 1Gbps, 10Gbps 등의 다양한 속도를 지원할 수 있으며, CAT5e, CAT6 등의 케이블을 사용합니다.
+
+
+2️⃣ 무선 네트워크 카드(Wirless NIC).
+
+  무선 NIC는 Wi-Fi를 통해 무선 네트워크에 연결하는 카드입니다.
+    
+      일반적으로 노트북, 태블릿, 스마트폰 같은 휴대용 장치에서 많이 사용되며, 이동성과 유연성이 장점입니다.
+    
+  
+  무선 네트워크 카드는 다양한 Wi-Fi 표준(802.11a/b/g/n/ac/ax)을 지원하며, 무선 엑세스 포인트(AP, Access Point)와 통신하여 인터넷에 연결됩니다.
+
+
+3️⃣ 내장형 네트워크 카드.
+
+  오늘날 대부분의 컴퓨터, 노트북, 스마트폰 등에는 내장형 NIC가 장착되어 있어, 별도의 네트워크 카드를 설치하지 않아도 네트워크에 연결할 수 있습니다.
+    
+      이러한 내장형 NIC는 메인보드에 직접 통합되어 있습니다.
+    
+  
+
+
+4️⃣ 외장형 네트워크 카드.
+
+  USB 네트워크 어댑터와 같은 외장형 NIC는 USB 포트에 연결하여 사용됩니다.
+    
+      이러한 외장형 네트워크 카드는 주로 내장 NIC가 없는 장치에서 네트워크 기능을 확장하거나, 추가 네트워크 인터페이스가 필요할 때 사용됩니다.
+    
+  
+
+
+4️⃣ 네트워크 인터페이스 카드의 동작 원리.
+
+1️⃣ 데이터 패킷 전송.
+
+  NIC는 컴퓨터의 CPU나 메모리에서 데이터를 받아 이를 패킷으로 변환하고, 네트워크를 통해 전송합니다.
+    
+      이때 데이터는 이더넷 케이블이나 Wi-Fi 신호를 통해 송신됩니다.
+    
+  
+
+
+2️⃣ 데이터 패킷 수신.
+
+  NIC는 네트워크에서 전송된 데이터를 받아 컴퓨터가 처리할 수 있는 형식으로 변환하여 운영체제나 응용 프로그램에 전달합니다.
+
+
+3️⃣ 네트워크 프로토콜 처리.
+
+  NIC는 다양한 네트워크 프로토콜(예: TCP/IP, UDP 등)을 처리합니다.
+    
+      각 프로토콜에 따라 데이터를 올바르게 전송하고 수신하는 역할을 하며, 이를 통해 안정적인 네트워크 통신이 가능해집니다.
+    
+  
+
+
+4️⃣ MAC 주소 기반 통신.
+
+  네트워크 상에서 데이터는 MAC 주소를 기반으로 각 장치에 전송됩니다.
+    
+      NIC는 MAC 주소를 사용해 패킷이 올바른 목적지로 전달되도록 관리합니다.
         
-          예: 00:1A:2B:3C:4D:5E 또는 00-1A-2B-3C-4D-5E
+          예를 들어, 스위치나 라우터는 패킷의 MAC 주소를 확인하여 적절한 장치로 데이터를 전달합니다.
         
       
     
   
 
 
-3️⃣ 하드웨어 주소.
+5️⃣ 네트워크 인터페이스 카드(NIC, Network Interface Card)의 중요성.
 
-  MAC 주소는 네트워크 인터페이스 카드(NIC, Network Interface Card) 자체에서 영구적으로 할당된 주소로, 장치가 네트워크에 물리적으로 연결될 때 사용됩니다.
+1️⃣ 네트워크 연결의 필수 장치.
+
+  NIC는 컴퓨터와 네트워크를 연결하는 가장 중요한 장치입니다.
     
-      IP 주소는 네트워크 내에서 동적으로 할당될 수 있지만, MAC 주소는 장치의 하드웨어에 고정되어 있습니다.
-    
-  
-
-
-4️⃣ 계층 2 주소.
-
-  MAC 주소 OSI 7계층 모델의 데이터 링크 계층(Layer 2)에서 사용됩니다.
-    
-      즉, MAC 주소는 같은 네트워크(LAN) 내에서 장치 간 데이터를 전달하는 데 사용됩니다.
-      네트워크의 라우터나 스위치는 MAC 주소를 사용하여 데이터를 적절한 장치로 전달합니다.
+      NIC가 없으면 컴퓨터나 장치는 네트워크에 연결될 수 없으며, 인터넷 접속이나 로컬 네트워크에서의 파일 공유, 자원 공유 등이 불가능합니다.
     
   
 
 
+2️⃣ 고속 데이터 전송.
 
-  🙋‍♂️ OSI 7계층 모델
-🙋‍♂️ OSI 7계층 모델 - 계층별 기능
-
-
-2️⃣ MAC 주소의 구조.
-
-  MAC 주소는 두 부분으로 나누어집니다.
+  NIC는 고속으로 데이터를 송수신할 수 있게 해주며, 특히 유선 네트워크에서는 1Gbps 이상의 속도를 제공하여 대용량 파일 전송이나 고속 인터넷 연결에 유리합니다.
 
 
-1️⃣ 제조사 식별자(OUI, Organizationally Unique Identifier)
+3️⃣ 다양한 네트워크 환경 지원.
 
-  MAC 주소의 첫 24비트(앞의 6자리 16진수)는 네트워크 카드 제조사를 나타냅니다.
+  NIC는 유선과 무선 네트워크 모두를 지원하며, 이를 통해 다양한 네트워크 환경에서 장치들이 자유롭게 연결되고 통신할 수 있습니다.
+
+
+4️⃣ 네트워크 보안.
+
+  NIC는 네트워크에서 보안 통신을 가능하게 하며, 데이터 암호화 및 인증을 처리하는 데 중요한 역할을 합니다.
     
-      이 부분은 OUI라고 하며, 각 네트워크 카드 제조사는 고유한 OUI를 할당받습니다.
-        
-          예: 00:1A:2B -&gt; 제조사의 OUI
-        
-      
+      이를 통해 데이터가 안전하게 송수신될 수 있습니다.
     
   
 
 
-2️⃣ 장치 식별자(Device Identifier)
+6️⃣ 결론.
 
-  MAC 주소의 나머지 24비트(뒤의 6자리 16진수)는 제조사가 해당 네트워크 카드나 장치에 부여한 고유 식별자입니다.
-    
-      예: 3C:4D:5E -&gt; 장치의 고유 식별자
-    
-  
-
-
-3️⃣ 결합.
-
-  이 두 부분(OUI + Device Identifier)을 결합하여 하나의 고유한 MAC 주소가 만들어집니다.
-    
-      예: 00:1A:2B:3C:4D:5E
-    
-  
-
-
-3️⃣ MAC 주소의 역할.
-
-1️⃣ 로컬 네트워크(LAN)에서 데이터 전송.
-
-  MAC 주소는 LAN(Local Area Network) 내에서 데이터 프레임을 전달할 때 사용됩니다.
-    
-      네트워크 장치가 데이터를 보낼 때, 해당 데이터는 송신자의 MAC 주소를 포함하고, 스위치와 같은 네트워크 장치가 이를 읽어 적절한 목적지로 데이터를 전달합니다.
-    
-  
-
-
-2️⃣ 데이터 링크 계층에서 통신.
-
-  MAC 주소는 데이터 링크 계층에서 장치 간 프레임을 전달하는 데 사용됩니다.
-    
-      이더넷 네트워크에서 MAC 주소는 같은 네트워크 내의 장치 간에 데이터를 정확하게 전달하기 위한 핵심 역할을 합니다.
-    
-  
-
-
-3️⃣ ARP(Address Resolution Protocol)와의 연관성.
-
-  ARP는 IP 주소와 MAC 주소를 연결해주는 프로토콜입니다.
-    
-      네트워크에서 IP 주소를 통해 데이터를 전송 할 때, ARP는 해당 IP 주소에 대한 MAC 주소를 찾아내어, 데이터를 올바른 장치로 전달할 수 있게 합니다.
-        
-          이는 특히 로컬 네트워크에서 중요한 역할을 합니다.
-        
-      
-    
-  
-
-
-4️⃣ 네트워크 장치의 고유 식별.
-
-  MAC 주소는 각 장치의 고유한 하드웨어 주소이므로, 네트워크에서 장치를 고유하게 식별하는 데 사용됩니다.
-    
-      네트워크 관리자들은 MAC 주소를 이용해 네트워크에 연결된 장치들을 추적하거나, 특정 장치에 대해 네트워크 접근을 제어할 수 있습니다.
-    
-  
-
-
-4️⃣ MAC 주소와 IP 주소의 차이점.
-
-  MAC 주소는 하드웨어 주소로, 네트워크 인터페이스 카드(NIC, Network Interface Card)에 고유하게 할당된 고정된 주소입니다.
-    
-      장치가 네트워크에 물리적으로 연결되면 MAC 주소를 통해 통신하게 됩니다.
-    
-  
-  IP 주소는 논리주소로, 네트워크 장치가 인터넷 프로토콜을 통해 통신할 때 사용됩니다.
-    
-      IP 주소는 동적으로 할당되거나 수동으로 설정할 수 있으며, 네트워크 간에 데이터를 전송할 때 사용됩니다.
-    
-  
-
-
-5️⃣ MAC 주소의 예시.
-
-1️⃣ 이더넷 프레임에서의 사용.
-
-  네트워크에서 컴퓨터 A가 컴퓨터 B로 데이터를 전송하려고 할 때, 이더넷 프레임에는 송신자의 MAC 주소와 수신자의 MAC 주소가 포함됩니다.
-    
-      이때, 네트워크 장비(예: 스위치)는 수신자의 MAC 주소를 기반으로 데이터를 올바른 장치(B)로 전달합니다.
-        [출발지 MAC 주소] -&gt; [목적지 MAC 주소]
-00:1A:2B:3C:4D:5E -&gt; 00:1A:7C:8D:9F:0A
-        
-      
-    
-  
-
-
-2️⃣ ARP(Address Resolution Protocol)를 통한 IP-MAC 매핑.
-
-  네트워크에서 컴퓨터가 IP 주소를 통해 데이터를 전송할 때, ARP 프로토콜이 IP 주소에 대응하는 MAC 주소를 찾아 프레임을 생성하고, 데이터를 전송합니다.
-    
-      예를 들어, 컴퓨터 A(192.168.1.2)가 컴퓨터 B(192.168.1.3)로 데이터를 전송 할 때 A는 ARP를 사용해 컴퓨터 B의 MAC 주소를 찾아내어 데이터를 전송합니다.
-    
-  
-
-
-6️⃣ MAC 주소의 보안 이슈.
-
-1️⃣ MAC 주소 스푸핑(Spoofing)
-
-  MAC 주소는 네트워크에서 장치를 식별하는 데 사용되지만, MAC 주소 스푸핑이라는 공격을 통해 MAC 주소를 위조할 수 있습니다.
-    
-      공격자는 자신의 장치의 MAC 주소를 다른 장치의 MAC 주소로 변경하여 네트워크에서 허가되지 않은 접근을 시도할 수 있습니다.
-    
-  
-
-
-2️⃣ MAC 주소 필터링.
-
-  네트워크 보안을 강화하기 위해 일부 네트워크 관리자들은 MAC 주소 필터링을 사용하여 허용된 장치들만 네트워크에 접속할 수 있도록 설정합니다.
-    
-      그러나 MAC 주소가 스푸핑될 수 있기 때문에, 보안 측면에서 완벽한 방법은 아닙니다.
-    
-  
-
-
-7️⃣ 결론.
-
-  MAC 주소는 네트워크 장치에 고유하게 할당된 물리적 하드웨어 주소로, 로컬 네트워크에서 데이터 전송 및 장치 식별에 중요한 역할을 합니다.
-  MAC 주소는 OSI 모델의 데이터 링크 계층(Layer 2)에서 사용되며, 이더넷과 같은 네트워크 기술에서 장치 간 통신을 가능하게 합니다.
-  MAC 주소는 고유하며 변경되지 않는 반면, IP 주소는 논리적이고 변경될 수 있습니다.
-  MAC 주소는 보안과 통신에서 중요한 역할을 하지만, 스푸핑 등의 보안 위협도 존재할 수 있습니다.
+  NIC는 컴퓨터나 네트워크 장치가 네트워크에 연결하여 데이터를 송수신할 수 있도록 해주는 필수적인 하드웨어입니다.
+  NIC는 네트워크 연결을 제공하고, 데이터를 패킷 단위로 변환하여 네트워크 상의 다른 장치와 통신할 수 있도록 도와줍니다.
+  유선과 무선 NIC가 있으며, 오늘날 대부분의 장치에는 NIC가 내장형으로 포함되어 있지만, 추가적인 필요에 따라 외장형 NIC를 사용할 수도 있습니다.
 
 
                         </a>
@@ -34708,138 +34978,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(2)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스 - 기본형의 한계(2)
-
-1️⃣ 기본형과 null.
-
-  기본형(Primitive Type)은 항상 값을 가져야 합니다.
-    
-      하지만 때로는 데이터가 ‘없음’이라는 상태가 필요할 수 있습니다.
-    
-  
-
-
-public class MyIntegerNullMain0 {
-
-	public static void main(String[] args) {
-		int[] intArr = {-1, 0, 1, 2, 3};
-		System.out.println(findValue(intArr, -1)); // -1
-		System.out.println(findValue(intArr, 0));
-		System.out.println(findValue(intArr, 1));
-		System.out.println(findValue(intArr, 100)); // -1
-
-	}
-
-	private static int findValue(int[] intArr, int target) {
-		for (int value : intArr) {
-			if (value == target) {
-				return value;
-			}
-		}
-		return -1;
-	}
-}
-
-
-
-  findValue()는 배열에 찾는 값이 있으면 해당 값을 반환하고, 찾는 값이 없으면 -1을 반환합니다.
-  findValue()는 결과로 int를 반환합니다.
-    
-      int와 같은 기본형은 항상 값이 있어야 합니다.
-      여기서도 값을 반환할 때 값을 찾지 못하면 숫자 중에 하나를 반환해야 하는데 보통 -1 또는 0을 사용합니다.
-    
-  
-
-
-실행 결과
--1
-0
-1
--1
-
-
-
-  실행 결과를 보면 입력값이 -1일 때 -1을 반환합니다.
-  그런데 배열에 없는 값인 100을 입력해도 같은 -1을 반환합니다.
-  입력값이 -1일 때를 생각해보면, 배열에 -1 값이 있어서 -1을 반환한 것인지, 아니면 -1 값이 없어서 -1을 반환한 것인지 명확하지 않습니다.
-
-
-2️⃣ 참조형과 null.
-
-  객체의 경우 데이터가 없다는 null이라는 명확한 값이 존재합니다.
-
-
-public class MyIntegerNullMain1 {
-
-	public static void main(String[] args) {
-		MyInteger[] intArr = {new MyInteger(-1), new MyInteger(0), new MyInteger(1)};
-		System.out.println(findValue(intArr, -1)); // -1
-		System.out.println(findValue(intArr, 0));
-		System.out.println(findValue(intArr, 1));
-		System.out.println(findValue(intArr, 100)); // null
-
-	}
-
-	private static MyInteger findValue(MyInteger[] intArr, int target) {
-		for (MyInteger myInteger : intArr) {
-			if (myInteger.getValue() == target) {
-				return myInteger;
-			}
-		}
-		return null;
-	}
-}
-
-
-실행 결과
--1
-0
-1
-null
-
-
-
-  이전에 만든 MyInteger 래퍼 클래스를 사용했습니다.
-  실행 결과를 보면 -1을 입력했을 때는 -1을 반환합니다.
-  100을 입력했을 때는 값이 없다는 null을 반환합니다.
-
-
-3️⃣ 요약.
-
-  기본형은 항상 값이 존재해야 합니다.
-    
-      숫자의 경우 0, -1 같은 값이라도 항상 존재해야 합니다.
-    
-  
-  객체인 참조형은 값이 없다는 null을 사용할 수 있습니다.
-    
-      null 값을 반환하는 경우 잘못하면 NullPointException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-09-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Java/Java/2024-09-13-Lambda.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -34991,6 +35129,138 @@ public class Main {
   람다 표현식은 익명 함수의 일종으로, 함수형 인터페이스를 구현하는 간결한 방법을 제공합니다.
     
       이를 통해 코드의 가독성과 유지보수성이 향상되며, 함수형 프로그래밍 패러다임을 Java에서 더욱 효과적으로 활용할 수 있게 됩니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-09-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(2)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-2.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스 - 기본형의 한계(2)
+
+1️⃣ 기본형과 null.
+
+  기본형(Primitive Type)은 항상 값을 가져야 합니다.
+    
+      하지만 때로는 데이터가 ‘없음’이라는 상태가 필요할 수 있습니다.
+    
+  
+
+
+public class MyIntegerNullMain0 {
+
+	public static void main(String[] args) {
+		int[] intArr = {-1, 0, 1, 2, 3};
+		System.out.println(findValue(intArr, -1)); // -1
+		System.out.println(findValue(intArr, 0));
+		System.out.println(findValue(intArr, 1));
+		System.out.println(findValue(intArr, 100)); // -1
+
+	}
+
+	private static int findValue(int[] intArr, int target) {
+		for (int value : intArr) {
+			if (value == target) {
+				return value;
+			}
+		}
+		return -1;
+	}
+}
+
+
+
+  findValue()는 배열에 찾는 값이 있으면 해당 값을 반환하고, 찾는 값이 없으면 -1을 반환합니다.
+  findValue()는 결과로 int를 반환합니다.
+    
+      int와 같은 기본형은 항상 값이 있어야 합니다.
+      여기서도 값을 반환할 때 값을 찾지 못하면 숫자 중에 하나를 반환해야 하는데 보통 -1 또는 0을 사용합니다.
+    
+  
+
+
+실행 결과
+-1
+0
+1
+-1
+
+
+
+  실행 결과를 보면 입력값이 -1일 때 -1을 반환합니다.
+  그런데 배열에 없는 값인 100을 입력해도 같은 -1을 반환합니다.
+  입력값이 -1일 때를 생각해보면, 배열에 -1 값이 있어서 -1을 반환한 것인지, 아니면 -1 값이 없어서 -1을 반환한 것인지 명확하지 않습니다.
+
+
+2️⃣ 참조형과 null.
+
+  객체의 경우 데이터가 없다는 null이라는 명확한 값이 존재합니다.
+
+
+public class MyIntegerNullMain1 {
+
+	public static void main(String[] args) {
+		MyInteger[] intArr = {new MyInteger(-1), new MyInteger(0), new MyInteger(1)};
+		System.out.println(findValue(intArr, -1)); // -1
+		System.out.println(findValue(intArr, 0));
+		System.out.println(findValue(intArr, 1));
+		System.out.println(findValue(intArr, 100)); // null
+
+	}
+
+	private static MyInteger findValue(MyInteger[] intArr, int target) {
+		for (MyInteger myInteger : intArr) {
+			if (myInteger.getValue() == target) {
+				return myInteger;
+			}
+		}
+		return null;
+	}
+}
+
+
+실행 결과
+-1
+0
+1
+null
+
+
+
+  이전에 만든 MyInteger 래퍼 클래스를 사용했습니다.
+  실행 결과를 보면 -1을 입력했을 때는 -1을 반환합니다.
+  100을 입력했을 때는 값이 없다는 null을 반환합니다.
+
+
+3️⃣ 요약.
+
+  기본형은 항상 값이 존재해야 합니다.
+    
+      숫자의 경우 0, -1 같은 값이라도 항상 존재해야 합니다.
+    
+  
+  객체인 참조형은 값이 없다는 null을 사용할 수 있습니다.
+    
+      null 값을 반환하는 경우 잘못하면 NullPointException이 발생할 수 있기 때문에 주의해서 사용해야 합니다.
     
   
 
@@ -56438,32 +56708,6 @@ Queue의 크기 : 0
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-05-29-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-05-29-TIL.html"><h1 class="title_post">📝 [TIL] 240529 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-05-29-TIL.html" class="txt_post">
-                            
-  스택 문제 풀이
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-05-29</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/CS_archive/2024-05-30-VariousInputOutputMethods.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -56807,6 +57051,32 @@ DMA를 위해 시스템 버스를 너무 자주 사용하면 그만큼 CPU가 �
   인터럽트 기반 입출력은 인터럽트로써 입출력을 수행하는 방법입니다.
   DMA 입출력은 CPU를 거치지 않고 메모리와 입출력장치 간의 데이터를 주고받는 입출력 방식입니다.
   입출력 버스는 입출력장치와 컴퓨터 내부를 연결 짓는 톨로로, 입출력 작업 과정에서 시스템 버스 사용 횟수를 줄여줍니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
+                            
+                                <span class="date">· 2024-05-29</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-05-29-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-05-29-TIL.html"><h1 class="title_post">📝 [TIL] 240529 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-05-29-TIL.html" class="txt_post">
+                            
+  스택 문제 풀이
 
 
                         </a>
@@ -102777,6 +103047,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Spring/2024-11-16-one-way-relationship.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-16"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] 양방향 관계란 무엇일까요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-18-what-is-a-two-way-relationship.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-18"
         });
     
 

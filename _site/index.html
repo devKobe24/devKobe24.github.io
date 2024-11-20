@@ -826,6 +826,7 @@
             
             
             
+            
 
     
     
@@ -1196,6 +1197,169 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-20-what-is-profile.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-20-what-is-profile.html"><h1 class="title_post">🍃[Spring] Profile이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-11-20-what-is-profile.html" class="txt_post">
+                            🍃[Spring] Profile이란 무엇일까요?
+
+  Profile은 애플리케이션의 실행 환경(예: 개발, 테스트, 운영)에 따라 다른 설정을 적용할 수 있도록 하는 기능입니다.
+    
+      이를 통해 환경에 따라 적합한 설정값(예: 데이터베이스 URL, 로깅 수준 등)을 간단하게 관리할 수 있습니다.
+    
+  
+
+
+1️⃣ Profile의 주요 개념.
+1️⃣ 환경별 설정 분리.
+
+  개발(Development), 테스트(Test), 운영(Production) 등 서로 다른 실행 환경에 따라 설정값을 분리하고, 특정 환경에 맞는 설정을 쉽게 적용할 수 있습니다.
+
+
+2️⃣ 설정 파일 관리.
+
+  application.properties 또는 application.yml 파일에서 환경별 설정을 작성할 수 있으며, 프로파일별로 파일을 분리해 관리할 수 있습니다.
+
+
+3️⃣ 유연한 실행.
+
+  spring.profiles.active 속성을 통해 실행 시 활성화할 프로파일을 지정할 수 있습니다.
+
+
+2️⃣ Profile 설정 방법.
+1️⃣ 기본 설정 파일 사용.
+
+  모든 환경에서 공통으로 사용하는 설정은 application.properties 또는 application.yml 파일에 작성합니다.
+  프로파일별 설정은 application-{profile}.properties 또는 application-{profile}.yml 파일로 작성합니다.
+
+
+2️⃣ 예시.
+
+  application.properties(공통 설정)
+    server.port=8080
+spring.datasource.username=root
+spring.datasource.password=common-password
+    
+  
+  application-dev.properties(개발 환경)
+    server.port=8081
+spring.datasource.url=jdbc:mysql://localhost:3306/dev_db
+    
+  
+  application-prod.properties(운영 환경)
+    server.port=8082
+spring.datasource.url=jdbc:mysql://prod-db-example.com:3306/prod_db
+spring.datasource.password=prod-password
+    
+  
+
+
+3️⃣ 활성화할 Profile 지정.
+
+  spring.profiles.active를 사용하여 실행 시 활성화할 프로파일을 지정합니다.
+
+
+1️⃣ application.properties에서 지정.
+spring.profiles.active=dev
+
+
+2️⃣ JVM 옵션으로 지정.
+java -jar -Dspring.profiles.active=prod myapp.jar
+
+
+3️⃣ 환경 변수로 지정.
+export SPRING_PROFILES_ACTIVE=dev
+
+
+4️⃣ IDE에서 지정.
+실행 설정에서 -Dspring.profile.active=dev를 추가합니다.
+
+4️⃣ 프로파일별 Bean 정의
+
+  Spring에서는 프로파일별로 Bean을 다르게 설정할 수 있습니다.
+
+
+1️⃣ 예시.
+@Configuration
+public class DataSourceConfig {
+    
+    @Bean
+    @Profile("dev")
+    public DataSource devDataSource() {
+        return DataSourceBuilder.create()
+                .url("jdbc:mysql://localhost:3306/dev_db")
+                .username("dev_user")
+                .password("dev-password")
+                .build();
+    }
+    
+    @Bean
+    @Profile("prod")
+    public DataSource prodDataSource() {
+        return DataSourceBuilder.create()
+                .url("jdbc://prod-db.example.com:3306/prod_db")
+                .username("prod-user")
+                .password("prod-password")
+                .build();
+    }
+}
+
+
+5️⃣ Profile의 활용 예시.
+1️⃣ 환경별 데이터베이스 설정.
+
+  개발 환경에서는 로컬 DB, 운영 환경에서는 클라우드 DB를 사용하도록 분리.
+
+
+2️⃣ 로깅 수준.
+
+  개발 환경에서는 DEBUG 레벨의 상세 로그를 출력하고, 운영 환경에서는 ERROR 수준의 로그만 출력.
+
+
+3️⃣ API 키나 민감 정보 관리.
+
+  테스트 환경에서는 Mock API 키를 사용하고, 운영 환경에서는 실제 API 키를 적용.
+
+
+4️⃣ 서버 포트 변경.
+
+  각 환경에 따라 애플리케이션의 실행 포트를 다르게 설정.
+
+
+6️⃣ Profile의 장점.
+1️⃣ 유지보수성 향상.
+
+  설정 파일을 환경별로 분리해 코드와 설정 간의 의존도를 줄이고, 변경 사항을 쉽게 관리할 수 있습니다.
+
+
+2️⃣ 배포 자동화에 유리.
+
+  CI/CD 파이프라인에서 환경에 맞는 프로파일을 활성화하여 배포를 자동화할 수 있습니다.
+
+
+3️⃣ 안정성
+
+  환경별로 설정을 격리함으로써 잘못된 설정(예: 운영 DB를 개발 환경에서 접근하는 문제)을 방지할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-20</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -2646,104 +2810,6 @@ public class Order {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html"><h1 class="title_post">🍃[Spring] 연관관계를 사용하면 무엇이 좋을까요?</h1></a>
-                        <a href="/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html" class="txt_post">
-                            🍃[Spring] 연관관계를 사용하면 무엇이 좋을까요?
-
-  JPA에서 연관관계를 사용하면 객체 지향적인 방법으로 데이터베이스의 테이블 간 관계를 표현하고, 데이터의 일관성을 유지하며 효율적으로 관리할 수 있습니다.
-  JPA 연관관계는 애플리케이션에서 엔티티들 간의 관계를 객체 모델로 그대로 표현하므로, SQL 중심의 데이터베이스 접근보다 직관적이고 유지보수가 쉬운 코드 작성을 돕습니다.
-
-
-1️⃣ JPA 연관관계를 사용했을 때의 장점.
-
-1️⃣ 객체 지향적인 데이터 모델링.
-
-  연관관계를 통해 엔티티들이 실제 비즈니스 도메인에서와 유사하게 연결되어 표현되므로, 객체 지향적인 데이터 모델링이 가능합니다.
-    
-      User와 Order의 관계처럼 엔티티가 서로 참조하며 관계를 표현할 수 있습니다.
-    
-  
-  이를 통해 비즈니스 로직을 코드로 더 자연스럽게 표현할 수 있으며, 개발자가 데이터베이스 구조에 대한 고민보다 비즈니스 로직에 더 집중할 수 있습니다.
-
-
-2️⃣ 자동으로 SQL을 생성하여 관리 부담 감소.
-
-  JPA는 연관관계를 설정하면 필요한 SQL을 자동으로 생성하고 실행해주므로, 연관관계를 직접 SQL로 관리하는 부담을 덜어줍니다.
-    
-      예를 들어, User와 Order 간의 관계가 설정되어 있으면, User 객체에서 Order 객체를 조회할 때 JPA가 자동으로 SQL을 생성해 데이터베이스에서 필요한 데이터를 가져옵니다.
-    
-  
-
-
-3️⃣ 일관성과 무결성 유지.
-
-  연관관계와 Cascade 옵션, orphanRemoval 옵션을 통해 객체 간 관계를 JPA가 관리해 주므로, 부모와 자식 엔티티 간 일관성을 쉽게 유지할 수 있습니다.
-  부모 엔티티가 삭제되면 자식 엔티티도 자동으로 삭제되거나 연관된 자식 엔티티가 Orphan Object(고아 객체)로 남지 않도록 관리할 수 있어 데이터 무결성을 유지하는 데 유리합니다.
-
-
-4️⃣ 성능 최적화 지원.
-
-  JPA는 연관관계 설정을 통해 지연 로딩(Lazy Loading), 즉시 로딩(Eager Loading), 페치 조인(Fetch Join) 등을 사용하여 필요할 때만 데이터를 조회할 수 있습니다.
-    
-      예를 들어, fetch = FetchType.LAZY로 설정하면 데이터베이스에서 관련된 데이터를 즉시 로드하지 않고 실제로 필요할 때 조회하게 되어 성능 최적화가 가능합니다.
-    
-  
-
-
-5️⃣ 비즈니스 로직의 응집도 향상.
-
-  연관관계를 사용하면 도메인 객체 간의 관계를 객체지향적인 방식으로 캡슐화하여 비즈니스 로직을 작성할 수 있어 응집도가 높아집니다.
-    
-      예를 들어, Order 객체에 addOrderItem() 메서드를 정의해 OrderItem을 추가할 수 있습니다.
-        
-          Order 객체에 연관된 모든 OrderItem이 자동으로 관리되므로, 비즈니스 로직이 보다 일관성 있게 유지됩니다.
-        
-      
-    
-  
-
-
-6️⃣ 복잡한 쿼리 작성 최소화.
-
-  연관관계를 통해 객체 간의 참조를 쉽게 사용할 수 있으므로, 직접 조인을 작성하는 복잡한 쿼리를 줄일 수 있습니다.
-  특히 양방향 연관관계를 통해 엔티티 간 관계를 쉽게 탐색할 수 있어 비즈니스 로직을 구현할 때 코드가 단순해집니다.
-
-
-2️⃣ 연관관계를 사용한 예제의 장점.
-
-  예를 들어, Team과 Member가 양방향 연관관계를 가지는 경우, Team 객체에서 Member 객체를 쉽게 조회할 수 있습니다.
-    Team team = entityManager.find(Team.class, teamId);
-List&lt;Member&gt; members = team.getMembers();
-    
-  
-  위와 같이 Team에서 Member를 쉽게 조회할 수 있으며, 복잡한 SQL을 작성할 필요 없이 JPA가 연관관계를 관리하여 필요한 데이터를 제공합니다.
-
-
-3️⃣ 요약.
-
-  JPA에서 연관관계를 사용하면 객체 지향적으로 데이터 모델을 표현하고, SQL을 자동으로 생성하며, 데이터 무결성과 일관성을 쉽게 유지할 수 있습니다. 또한, 지연 로딩과 같은 기능으로 성능을 최적화하고, 복잡한 비즈니스 로직을 더 직관적이고 응집력 있게 관리할 수 있게 합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-11-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-11-13-Aggregate.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -2876,6 +2942,104 @@ public class Order {
 
   애그리게이트는 밀접하게 연관된 객체들을 하나의 일관성 있는 변경 단위로 묶어 관리하는 개념입니다.
   애그리게이트 루트를 통해서만 접근이 가능하도록 캡슐화하여 데이터와 비즈니스 로직의 응집성과 일관성을 유지하며, 객체 지향적인 방식으로 시스템을 모델링할 수 있게 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html"><h1 class="title_post">🍃[Spring] 연관관계를 사용하면 무엇이 좋을까요?</h1></a>
+                        <a href="/Spring/2024-11-13-what-are-the-benefits-of-using0associations.html" class="txt_post">
+                            🍃[Spring] 연관관계를 사용하면 무엇이 좋을까요?
+
+  JPA에서 연관관계를 사용하면 객체 지향적인 방법으로 데이터베이스의 테이블 간 관계를 표현하고, 데이터의 일관성을 유지하며 효율적으로 관리할 수 있습니다.
+  JPA 연관관계는 애플리케이션에서 엔티티들 간의 관계를 객체 모델로 그대로 표현하므로, SQL 중심의 데이터베이스 접근보다 직관적이고 유지보수가 쉬운 코드 작성을 돕습니다.
+
+
+1️⃣ JPA 연관관계를 사용했을 때의 장점.
+
+1️⃣ 객체 지향적인 데이터 모델링.
+
+  연관관계를 통해 엔티티들이 실제 비즈니스 도메인에서와 유사하게 연결되어 표현되므로, 객체 지향적인 데이터 모델링이 가능합니다.
+    
+      User와 Order의 관계처럼 엔티티가 서로 참조하며 관계를 표현할 수 있습니다.
+    
+  
+  이를 통해 비즈니스 로직을 코드로 더 자연스럽게 표현할 수 있으며, 개발자가 데이터베이스 구조에 대한 고민보다 비즈니스 로직에 더 집중할 수 있습니다.
+
+
+2️⃣ 자동으로 SQL을 생성하여 관리 부담 감소.
+
+  JPA는 연관관계를 설정하면 필요한 SQL을 자동으로 생성하고 실행해주므로, 연관관계를 직접 SQL로 관리하는 부담을 덜어줍니다.
+    
+      예를 들어, User와 Order 간의 관계가 설정되어 있으면, User 객체에서 Order 객체를 조회할 때 JPA가 자동으로 SQL을 생성해 데이터베이스에서 필요한 데이터를 가져옵니다.
+    
+  
+
+
+3️⃣ 일관성과 무결성 유지.
+
+  연관관계와 Cascade 옵션, orphanRemoval 옵션을 통해 객체 간 관계를 JPA가 관리해 주므로, 부모와 자식 엔티티 간 일관성을 쉽게 유지할 수 있습니다.
+  부모 엔티티가 삭제되면 자식 엔티티도 자동으로 삭제되거나 연관된 자식 엔티티가 Orphan Object(고아 객체)로 남지 않도록 관리할 수 있어 데이터 무결성을 유지하는 데 유리합니다.
+
+
+4️⃣ 성능 최적화 지원.
+
+  JPA는 연관관계 설정을 통해 지연 로딩(Lazy Loading), 즉시 로딩(Eager Loading), 페치 조인(Fetch Join) 등을 사용하여 필요할 때만 데이터를 조회할 수 있습니다.
+    
+      예를 들어, fetch = FetchType.LAZY로 설정하면 데이터베이스에서 관련된 데이터를 즉시 로드하지 않고 실제로 필요할 때 조회하게 되어 성능 최적화가 가능합니다.
+    
+  
+
+
+5️⃣ 비즈니스 로직의 응집도 향상.
+
+  연관관계를 사용하면 도메인 객체 간의 관계를 객체지향적인 방식으로 캡슐화하여 비즈니스 로직을 작성할 수 있어 응집도가 높아집니다.
+    
+      예를 들어, Order 객체에 addOrderItem() 메서드를 정의해 OrderItem을 추가할 수 있습니다.
+        
+          Order 객체에 연관된 모든 OrderItem이 자동으로 관리되므로, 비즈니스 로직이 보다 일관성 있게 유지됩니다.
+        
+      
+    
+  
+
+
+6️⃣ 복잡한 쿼리 작성 최소화.
+
+  연관관계를 통해 객체 간의 참조를 쉽게 사용할 수 있으므로, 직접 조인을 작성하는 복잡한 쿼리를 줄일 수 있습니다.
+  특히 양방향 연관관계를 통해 엔티티 간 관계를 쉽게 탐색할 수 있어 비즈니스 로직을 구현할 때 코드가 단순해집니다.
+
+
+2️⃣ 연관관계를 사용한 예제의 장점.
+
+  예를 들어, Team과 Member가 양방향 연관관계를 가지는 경우, Team 객체에서 Member 객체를 쉽게 조회할 수 있습니다.
+    Team team = entityManager.find(Team.class, teamId);
+List&lt;Member&gt; members = team.getMembers();
+    
+  
+  위와 같이 Team에서 Member를 쉽게 조회할 수 있으며, 복잡한 SQL을 작성할 필요 없이 JPA가 연관관계를 관리하여 필요한 데이터를 제공합니다.
+
+
+3️⃣ 요약.
+
+  JPA에서 연관관계를 사용하면 객체 지향적으로 데이터 모델을 표현하고, SQL을 자동으로 생성하며, 데이터 무결성과 일관성을 쉽게 유지할 수 있습니다. 또한, 지연 로딩과 같은 기능으로 성능을 최적화하고, 복잡한 비즈니스 로직을 더 직관적이고 응집력 있게 관리할 수 있게 합니다.
 
 
                         </a>
@@ -3498,79 +3662,94 @@ public class Order {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-11-JoinColumn.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-11-11-Many-To-Many.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-11-11-JoinColumn.html"><h1 class="title_post">🍃[Spring] JPA의 어노테이션 - `@JoinColumn`</h1></a>
-                        <a href="/Spring/2024-11-11-JoinColumn.html" class="txt_post">
-                            🍃[Spring] JPA의 어노테이션 - @JoinColumn
+                        <a href="/Spring/2024-11-11-Many-To-Many.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계</h1></a>
+                        <a href="/Spring/2024-11-11-Many-To-Many.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계
 
-  @JoinColumn은 JPA에서 두 엔티티 간의 연관관계를 매핑할 때 외래 키(Foreign Key) 컬럼을 설정하기 위해 사용하는 어노테이션입니다.
-  @JoinColumn은 관계가 설정되는 테이블에 외래 키(Foreign Key)를 정의하고, 해당 외래 키(Foreign Key) 컬럼이 연관된 엔티티를 참조하게 합니다.
-
-
-1️⃣ @JoinColumn의 주요 속성.
-
-  name
+  JPA에서 N:M 관계란 두 엔티티가 다대다(Many-to-Many)로 연결된 관계를 의미합니다.
     
-      외래 키(Foreign Key) 컬럼의 이름을 지정합니다.
-        
-          지정하지 않으면 기본적으로 참조하는 엔티티의 필드명 또는 프로퍼티명 + _id 형식으로 이름이 설정됩니다.
-        
-      
-    
-  
-  referencedColumnName
-    
-      외래 키(Foreign Key)가 참조할 대상 엔티티의 컬럼명을 지정합니다.
-        
-          기본적으로 참조 엔티티의 기본 키가 사용됩니다.
-        
-      
-    
-  
-  nullable
-    
-      외래 키(Foreign Key) 컬럼이 NULL을 허용할지 여부를 지정합니다.
-        
-          기본값은 true이며, false로 설정하면 반드시 값이 있어야 합니다.
-        
-      
-    
-  
-  unique
-    
-      외래 키(Foreign Key) 컬럼이 유일한 값인지 설정합니다.
-        
-          기본값은 false입니다.
-        
-      
-    
-  
-  insertable, updatable
-    
-      외래 키(Foreign Key) 컬럼의 값이 삽입/업데이트 가능한지 설정합니다.
+      예를 들어, 학생(Student)과 강의(Course) 관계에서 하나의 학생이 여러 강의를 수강할 수 있고, 동시에 하나의 강의에 여러 학생이 수강할 수 있는 경우에 N:M 관계가 성립됩니다.
     
   
 
 
-2️⃣ @JoinColumn 예시.
+1️⃣ N:M 관계의 매핑 방식.
 
+  JPA에서는 @ManyToMany 어노테이션을 사용하여 N:M 관계를 매핑할 수 있습니다.
+    
+      N:M 관계에서는 연결 테이블(Join Table)이 필요하며, JPA는 연결 테이블을 자동으로 생성하거나 개발자가 직접 정의할 수 있습니다.
+    
   
-    팀(Team)과 회원(User)간의 다대일(N:1) 관계에서 User 엔티티의 team 필드를 통해 Team 엔티티와의 관계를 설정하며, @JoinColumn을 사용해 외래 키(Foreign Key)를 매핑할 수 있습니다.
+
+
+2️⃣ N:M 관계의 기본 매핑.
+
+  N:M 관계는 단순히 @ManyToMany 어노테이션을 사용하는 방식과, 연결 테이블을 엔티티로 분리하여 사용하는 방식 두 가지가 있습니다.
+
+
+1️⃣ 기본적인 @ManyToMany 매핑
+@Entity
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "student_course", // 연결 테이블 이름
+        joinColumns = @JoinColumn(name = "student_id"), // 현재 엔티티(Student)의 외래 키
+        inverseJoinColumns = @JoinColumn(name = "course_id") // 반대 엔티티(Course)의 외래 키
+    )
+    private List&lt;Course&gt; courses = new ArrayList&lt;&gt;();
+}
+
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GeneratioonType.IDENTITY)
+    private Long id;
+    
+    private String title;
+    
+    @ManyToMany(mappedBy = "course") // 반대쪽 엔티티와의 양방향 관계 설정.
+    private List&lt;Student&gt; students = new ArrayList&lt;&gt;();
+}
+
+
+👉 설명.
+
+  @ManyToMany 어노테이션을 사용해 Student와 Course 엔티티 간의 N:M 관계를 매핑합니다.
+  @JoinTable을 사용하여 연결 테이블(student_course)을 지정하고, 각 엔티티의 외래 키를 joinColumns와 inverseJoinColumns으로 설정합니다.
+  Student와 Course 간의 양방향 관계로 설정되었으며, mappedBy를 사용해 반대쪽의 매핑 필드를 지정합니다.
+
+
+3️⃣ 연결 엔티티를 사용한 N:M 매핑.
+
+  @ManyToMany 관계는 간단한 경우에만 사용하는 것이 좋습니다.
+    
+      관계가 복잡하거나 추가적인 속성이 필요한 경우 연결 테이블을 별도의 엔티티로 분리하여 N:1 및 1:N 관계로 매핑하는 방식이 선호됩니다.
+        
+          예를 들어, 학생과 강의 사이에 학점(Grade)과 같은 속성이 필요하다면, 연결 엔티티인 Enrollment를 추가합니다.
 ```java
 @Entity
-public class User {
+public class Student {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+        
+      
+    
 
     private String name;
 
-    @ManyToOne
-  @JoinColumn(name = “team_id”) // 외래 키 컬럼 설정
-  private Team team;
+    @OneToMany(mappedBy = “student”)
+  private List enrollments = new ArrayList&lt;&gt;();
 
     // getter, setter
 }
@@ -3578,73 +3757,66 @@ public class User {
 
 
 @Entity
-public class Team {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-private String name;
+private String title;
+
+@OneToMany(mappedBy = "course")
+private List&lt;Enrollment&gt; enrollments = new ArrayList&lt;&gt;();
+
+// getter, setter }
+
+
+@Entity
+public class Enrollment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+private String grade;
+
+@ManyToOne
+@JoinColumn(name = "student_id")
+private Student student;
+
+@ManyToOne
+@JoinColumn(name = "course_id")
+private Course course;
 
 // getter, setter } ```
 
 
 👉 설명.
 
-  User 엔티티에서 team 필드는 @ManyToOne 관계를 통해 Team 엔티티와 연결됩니다.
-  @JoinColumn(name = "team_id")를 사용하여 User 테이블에 team_id라는 외래 키(Foreign Key) 컬럼이 생성되도록 지정했습니다.
+  Enrollment 엔티티를 추가하여 Student와 Course 간의 연결을 표현합니다.
     
-      이 컬럼은 Team 엔티티의 기본 키 id를 참조하게 됩니다.
+      이제 Student와 Course는 Enrollment와 N:1 관계를 가집니다.
     
   
+  이 방식은 연결 엔티티에 추가적인 필드(예: grade)를 포함할 수 있어 유연합니다.
 
 
-3️⃣ @JoinColumn을 사용한 양방향 관계 예시.
+4️⃣ N:M 관계 사용 시 주의사항.
 
-  @JoinColumn은 양방향 관계에서도 자주 사용됩니다.
+  직접적인 @ManyToMany 관계는 단순한 관계에서만 사용하며, 복잡한 비즈니스 요구사항이 있는 경우 연결 테이블을 엔티티로 만들어 처리합니다.
+  N:M 관계는 조인 테이블을 이용하므로, 데이터의 양이 많아지면 성능 저하를 일으킬 수 있습니다.
     
-      예를 들어, User와 Team 엔티티가 서로를 참조하는 양방향 관계로 설정할 수 있습니다.
-```java
-@Entity
-public class User {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+      지연 로딩(Lazy Loading) 설정을 통해 성능을 최적화합니다.
     
-
-    private String name;
-
-    @ManyToOne
-  @JoinColumn(name = “team_id”)
-  private Team team;
-}
   
+  복잡한 관계에서의 Cascade 옵션은 신중하게 설정해야 불필요한 연관 엔티티의 저장/삭제를 방지할 수 있습니다.
 
 
-@Entity
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+5️⃣ 요약.
 
-private String name;
-
-@OneToMany(mappedBy = "team") // 연관관계 주인이 아님을 명시
-private List&lt;User&gt; users = new ArrayList&lt;&gt;();
-
-// getter, setter } ```
-
-
-👉 설명.
-
-  User 엔티티는 team_id 컬럼을 통해 Team 엔티티와 연결되며, 이 외래 키(Foreign Key)가 관계의 주인이 됩니다.
-  Team 엔티티는 users 필드를 통해 User 엔티티를 참조하며, mappedBy 속성을 통해 연관관계 주인이 아님을 명시했습니다.
-
-
-4️⃣ 요약.
-
-  @JoinColumn은 두 엔티티 간의 관계에서 외래 키를 설정하기 위해 사용되며, 외래 키 컬럼의 이름과 속성을 지정할 수 있습니다.
-  단방향, 양방향 관계에서 모두 사용되며, 명확한 외래 키 설정을 통해 데이터베이스 테이블 간의 관계를 정의합니다.
-  name. nullable, unique 등 다양한 속성을 설정해 데이터베이스 컬럼의 제약 조건을 조정할 수 있습니다.
+  N:M 관계는 @ManyToMany 어노테이션으로 쉽게 매핑할 수 있지만, 추가적인 속성이 필요하거나 관계가 복잡해지면 연결 테이블을 별도 엔티티로 분리하여 처리하는 것이 좋습니다.
+    
+      연결 엔티티를 분리하면 추가 속성을 포함할 수 있으며, 더 유연한 데이터 모델링이 가능합니다.
+    
+  
 
 
                         </a>
@@ -3933,94 +4105,79 @@ public class Team {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-11-Many-To-Many.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-11-11-JoinColumn.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-11-11-Many-To-Many.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계</h1></a>
-                        <a href="/Spring/2024-11-11-Many-To-Many.html" class="txt_post">
-                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - N:M 관계
+                        <a href="/Spring/2024-11-11-JoinColumn.html"><h1 class="title_post">🍃[Spring] JPA의 어노테이션 - `@JoinColumn`</h1></a>
+                        <a href="/Spring/2024-11-11-JoinColumn.html" class="txt_post">
+                            🍃[Spring] JPA의 어노테이션 - @JoinColumn
 
-  JPA에서 N:M 관계란 두 엔티티가 다대다(Many-to-Many)로 연결된 관계를 의미합니다.
+  @JoinColumn은 JPA에서 두 엔티티 간의 연관관계를 매핑할 때 외래 키(Foreign Key) 컬럼을 설정하기 위해 사용하는 어노테이션입니다.
+  @JoinColumn은 관계가 설정되는 테이블에 외래 키(Foreign Key)를 정의하고, 해당 외래 키(Foreign Key) 컬럼이 연관된 엔티티를 참조하게 합니다.
+
+
+1️⃣ @JoinColumn의 주요 속성.
+
+  name
     
-      예를 들어, 학생(Student)과 강의(Course) 관계에서 하나의 학생이 여러 강의를 수강할 수 있고, 동시에 하나의 강의에 여러 학생이 수강할 수 있는 경우에 N:M 관계가 성립됩니다.
-    
-  
-
-
-1️⃣ N:M 관계의 매핑 방식.
-
-  JPA에서는 @ManyToMany 어노테이션을 사용하여 N:M 관계를 매핑할 수 있습니다.
-    
-      N:M 관계에서는 연결 테이블(Join Table)이 필요하며, JPA는 연결 테이블을 자동으로 생성하거나 개발자가 직접 정의할 수 있습니다.
-    
-  
-
-
-2️⃣ N:M 관계의 기본 매핑.
-
-  N:M 관계는 단순히 @ManyToMany 어노테이션을 사용하는 방식과, 연결 테이블을 엔티티로 분리하여 사용하는 방식 두 가지가 있습니다.
-
-
-1️⃣ 기본적인 @ManyToMany 매핑
-@Entity
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    @ManyToMany
-    @JoinTable(
-        name = "student_course", // 연결 테이블 이름
-        joinColumns = @JoinColumn(name = "student_id"), // 현재 엔티티(Student)의 외래 키
-        inverseJoinColumns = @JoinColumn(name = "course_id") // 반대 엔티티(Course)의 외래 키
-    )
-    private List&lt;Course&gt; courses = new ArrayList&lt;&gt;();
-}
-
-@Entity
-public class Course {
-    @Id
-    @GeneratedValue(strategy = GeneratioonType.IDENTITY)
-    private Long id;
-    
-    private String title;
-    
-    @ManyToMany(mappedBy = "course") // 반대쪽 엔티티와의 양방향 관계 설정.
-    private List&lt;Student&gt; students = new ArrayList&lt;&gt;();
-}
-
-
-👉 설명.
-
-  @ManyToMany 어노테이션을 사용해 Student와 Course 엔티티 간의 N:M 관계를 매핑합니다.
-  @JoinTable을 사용하여 연결 테이블(student_course)을 지정하고, 각 엔티티의 외래 키를 joinColumns와 inverseJoinColumns으로 설정합니다.
-  Student와 Course 간의 양방향 관계로 설정되었으며, mappedBy를 사용해 반대쪽의 매핑 필드를 지정합니다.
-
-
-3️⃣ 연결 엔티티를 사용한 N:M 매핑.
-
-  @ManyToMany 관계는 간단한 경우에만 사용하는 것이 좋습니다.
-    
-      관계가 복잡하거나 추가적인 속성이 필요한 경우 연결 테이블을 별도의 엔티티로 분리하여 N:1 및 1:N 관계로 매핑하는 방식이 선호됩니다.
+      외래 키(Foreign Key) 컬럼의 이름을 지정합니다.
         
-          예를 들어, 학생과 강의 사이에 학점(Grade)과 같은 속성이 필요하다면, 연결 엔티티인 Enrollment를 추가합니다.
-```java
-@Entity
-public class Student {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+          지정하지 않으면 기본적으로 참조하는 엔티티의 필드명 또는 프로퍼티명 + _id 형식으로 이름이 설정됩니다.
         
       
     
+  
+  referencedColumnName
+    
+      외래 키(Foreign Key)가 참조할 대상 엔티티의 컬럼명을 지정합니다.
+        
+          기본적으로 참조 엔티티의 기본 키가 사용됩니다.
+        
+      
+    
+  
+  nullable
+    
+      외래 키(Foreign Key) 컬럼이 NULL을 허용할지 여부를 지정합니다.
+        
+          기본값은 true이며, false로 설정하면 반드시 값이 있어야 합니다.
+        
+      
+    
+  
+  unique
+    
+      외래 키(Foreign Key) 컬럼이 유일한 값인지 설정합니다.
+        
+          기본값은 false입니다.
+        
+      
+    
+  
+  insertable, updatable
+    
+      외래 키(Foreign Key) 컬럼의 값이 삽입/업데이트 가능한지 설정합니다.
+    
+  
+
+
+2️⃣ @JoinColumn 예시.
+
+  
+    팀(Team)과 회원(User)간의 다대일(N:1) 관계에서 User 엔티티의 team 필드를 통해 Team 엔티티와의 관계를 설정하며, @JoinColumn을 사용해 외래 키(Foreign Key)를 매핑할 수 있습니다.
+```java
+@Entity
+public class User {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = “student”)
-  private List enrollments = new ArrayList&lt;&gt;();
+    @ManyToOne
+  @JoinColumn(name = “team_id”) // 외래 키 컬럼 설정
+  private Team team;
 
     // getter, setter
 }
@@ -4028,66 +4185,73 @@ public class Student {
 
 
 @Entity
-public class Course {
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-private String title;
-
-@OneToMany(mappedBy = "course")
-private List&lt;Enrollment&gt; enrollments = new ArrayList&lt;&gt;();
-
-// getter, setter }
-
-
-@Entity
-public class Enrollment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-private String grade;
-
-@ManyToOne
-@JoinColumn(name = "student_id")
-private Student student;
-
-@ManyToOne
-@JoinColumn(name = "course_id")
-private Course course;
+private String name;
 
 // getter, setter } ```
 
 
 👉 설명.
 
-  Enrollment 엔티티를 추가하여 Student와 Course 간의 연결을 표현합니다.
+  User 엔티티에서 team 필드는 @ManyToOne 관계를 통해 Team 엔티티와 연결됩니다.
+  @JoinColumn(name = "team_id")를 사용하여 User 테이블에 team_id라는 외래 키(Foreign Key) 컬럼이 생성되도록 지정했습니다.
     
-      이제 Student와 Course는 Enrollment와 N:1 관계를 가집니다.
-    
-  
-  이 방식은 연결 엔티티에 추가적인 필드(예: grade)를 포함할 수 있어 유연합니다.
-
-
-4️⃣ N:M 관계 사용 시 주의사항.
-
-  직접적인 @ManyToMany 관계는 단순한 관계에서만 사용하며, 복잡한 비즈니스 요구사항이 있는 경우 연결 테이블을 엔티티로 만들어 처리합니다.
-  N:M 관계는 조인 테이블을 이용하므로, 데이터의 양이 많아지면 성능 저하를 일으킬 수 있습니다.
-    
-      지연 로딩(Lazy Loading) 설정을 통해 성능을 최적화합니다.
+      이 컬럼은 Team 엔티티의 기본 키 id를 참조하게 됩니다.
     
   
-  복잡한 관계에서의 Cascade 옵션은 신중하게 설정해야 불필요한 연관 엔티티의 저장/삭제를 방지할 수 있습니다.
 
 
-5️⃣ 요약.
+3️⃣ @JoinColumn을 사용한 양방향 관계 예시.
 
-  N:M 관계는 @ManyToMany 어노테이션으로 쉽게 매핑할 수 있지만, 추가적인 속성이 필요하거나 관계가 복잡해지면 연결 테이블을 별도 엔티티로 분리하여 처리하는 것이 좋습니다.
+  @JoinColumn은 양방향 관계에서도 자주 사용됩니다.
     
-      연결 엔티티를 분리하면 추가 속성을 포함할 수 있으며, 더 유연한 데이터 모델링이 가능합니다.
+      예를 들어, User와 Team 엔티티가 서로를 참조하는 양방향 관계로 설정할 수 있습니다.
+```java
+@Entity
+public class User {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
     
+
+    private String name;
+
+    @ManyToOne
+  @JoinColumn(name = “team_id”)
+  private Team team;
+}
   
+
+
+@Entity
+public class Team {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+private String name;
+
+@OneToMany(mappedBy = "team") // 연관관계 주인이 아님을 명시
+private List&lt;User&gt; users = new ArrayList&lt;&gt;();
+
+// getter, setter } ```
+
+
+👉 설명.
+
+  User 엔티티는 team_id 컬럼을 통해 Team 엔티티와 연결되며, 이 외래 키(Foreign Key)가 관계의 주인이 됩니다.
+  Team 엔티티는 users 필드를 통해 User 엔티티를 참조하며, mappedBy 속성을 통해 연관관계 주인이 아님을 명시했습니다.
+
+
+4️⃣ 요약.
+
+  @JoinColumn은 두 엔티티 간의 관계에서 외래 키를 설정하기 위해 사용되며, 외래 키 컬럼의 이름과 속성을 지정할 수 있습니다.
+  단방향, 양방향 관계에서 모두 사용되며, 명확한 외래 키 설정을 통해 데이터베이스 테이블 간의 관계를 정의합니다.
+  name. nullable, unique 등 다양한 속성을 설정해 데이터베이스 컬럼의 제약 조건을 조정할 수 있습니다.
 
 
                         </a>
@@ -4106,120 +4270,174 @@ private Course course;
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.</h1></a>
-                        <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="txt_post">
-                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.
+                        <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 주인 효과</h1></a>
+                        <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 주인 효과
 
-  JPA에서 연관관계를 사용할 때는 여러가지 주의해야 할 사항이 있습니다.
+1️⃣ 연관관계 주인 효과.
+
+  JPA에서 연관관계의 주인으로 설정된 엔티티만 데이터베이스의 외래 키를 반영할 수 있는 효과를 말합니다.
+  JPA에서는 연관관계의 주인(Owner)과 주인이 아닌 엔티티(Non-owner)를 구분하여, 데이터베이스에 외래 키를 저장하거나 업데이트할 때 주인으로 설정된 엔티티만 실제 SQL에 반영되도록 합니다.
 
 
-1️⃣ 연관관계의 주인 설정.
+2️⃣ 연관관계 주인 효과의 동작 방식.
 
-  연관관계에서 주인과 비주인을 올바르게 설정해야 합니다.
+  양방향 연관관계에서 두 엔티티가 서로를 참조할 때, 어느 한쪽을 “연관관계의 주인”으로 설정하고, 그 주인에서만 외래 키 값을 저장하거나 변경할 수 있습니다.
     
-      주인이 아닌 쪽에서 연관관계를 수정해도 데이터베이스에는 반영되지 않기 때문에, 관계 주인을 명확히 지정하고 주인을 통해 관계를 관리해야 합니다.
+      주인이 아닌 쪽에서는 mappedBy 속성을 통해 주인이 아님을 명시하고, 이는 읽기 전용으로 취급됩니다.
         
-          예를 들어, 양방향 연관관계에서 mappedBy 속성을 제대호 설정하지 않으면 불필요한 쿼리가 발생할 수 있습니다.
-        
-      
-    
-  
-
-
-2️⃣ 지연 로딩(Lazy Loading)과 즉시 로딩(Eager Loading).
-
-  연관된 엔티티를 언제 로드할지에 따라 성능이 크게 영향을 받을 수 있습니다.
-    
-      FetchType.LAZY는 필요한 시점에 데이터를 로드하지만, FatchType.EAGER는 엔티티를 조회할 때 즉시 연관된 모든 데이터를 로드하므로, 필요 이상의 데이터를 가져와 성능이 저하될 수 있습니다.
-        
-          예를 들어, @OneToMany 관계에서 EAGER 로딩을 사용하면 예상하지 못한 대량의 쿼리가 발생할 수 있으므로 주의해야 합니다.
+          이를 통해 JPA는 중복된 외래 키 저장을 방지하고, 실제 외래 키 관리를 일관되게 처리합니다.
         
       
     
   
 
 
-3️⃣ 무한 루프 문제.
-
-  양방향 연관관계를 JSON으로 직렬화할 때, 서로 참조하는 객체들이 계속 호출되면서 무한 루프가 발생할 수 있습니다.
+👉 예시: 1:1 관계에서의 연관관계 주인 효과.
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
-      이를 방지하기 위해 @JsonIgnore 또는 @JsonManagedReference / @JsonBackReference 같은 어노테이션을 사용해 직렬화 대상에서 제외할 수 있습니다.
+    private String name;
     
-  
-  스프링과 같은 웹 애플리케이션에서 이를 처리하지 않으면 무한 루프가 발생하여 서버가 중단될 수 있습니다.
-
-
-4️⃣ 연관관계 매핑 시 데이터 무결성 주의.
-
-  엔티티의 상태가 일관되도록 연관관계 양쪽을 모두 설정하는 것이 중요합니다.
+    @OneToOne
+    @JoinColumn(name = "user_profile_id") // 외래 키 관리
+    private UserProfile userProfile;
     
-      예를 들어, 양방향 관계에서 한쪽만 관계를 설정하면 다른 쪽에서는 관계가 없는 것으로 익식될 수 있습니다.
-    
-  
-  두 엔티티에 대해 양방향 관계를 설정할 때는, 양쪽 필드를 모두 설정하는 핼퍼 메서드를 만드는 것이 좋습니다.
-    public void setUserProfile(UserProfile profile) {
-  this.userProfile = profile;
-  profile.setUser(this);
+    // getter, setter 등
 }
+
+@Entity
+public class UserProfile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String address;
+    private String phoneNumber;
+    
+    @OneToOne(mappedBy = "userProfile") // 주인이 아님을 명시
+    private User user;
+    
+    // getter, setter 등
+}
+
+
+
+  위 코드에서 User 엔티티가 UserProfile 엔티티와 연관관계에서 주인입니다.
+    
+      userProfile 필드에 대한 설정만 데이터베이스에 반영됩니다.
     
   
 
 
-5️⃣ Cascade 옵션 사용 주의.
+👉 연관관계 주인 효과의 예시 상황.
+User user = new User();
+UserProfile profile = new UserProfile();
 
-  CascadeType 옵션(CascadeType.PERSIST, CascadeType.REMOVE 등)을 사용할 때는, 자칫 불필요하게 연관된 모든 엔티티가 영속화되거나 삭제 될 수 있습니다.
+user.setUserProfile(profile);
+profile.setUser(user);
+
+entityManager.persist(user);
+entityManager.persist(profile);
+
+
+  위와 같이 user의 userProfile을 설정하고 profile의 user를 설정해도, 실제 데이터베이스에는 User 엔티티의 userProfile에 설정된 값만 외래 키로 반영됩니다.
     
-      연관된 모든 엔티티를 한 번에 영속화하거나 삭제할 때만 신중히 사용해야 합니다.
+      UserProfile 엔티티에서 user 필드의 변경은 데이터베이스에 반영되지 않습니다.
         
-          예를 들어 CascadeType.REMOVE를 잘못 설정하면 부모 엔티티 삭제 시 연관된 자식 엔티티도 모두 삭제될 수 있습니다.
+          이를 통해 불필요한 쿼리가 발생하는 것을 방지하고, 데이터 무결성을 유지할 수 있습니다.
         
       
     
   
 
 
-6️⃣ N + 1 문제.
+3️⃣ 요약.
 
-  즉시 로딩(FetchType.EAGER)을 사용할 때 N+1 문제를 유발할 수 있습니다.
+  연관관계 주인만 데이터베이스에 외래 키 정보를 반영할 수 있습니다.
+  주인이 아닌 엔티티에서 설정한 연관관계는 데이터베이스에 반영되지 않으며, 읽기 전용으로 사용됩니다.
+  이를 통해 중복된 외래 키 저장을 방지하고, 데이터 무결성을 유지할 수 있습니다.
+
+
+4️⃣ 연관관계 주인.
+
+  외래 키(Foreign Key)를 관리하는 엔티티를 말합니다.
     
-      예를 들어, 부모 엔티티를 조회할 때 자식 엔티티를 매번 조회하면, 추가적인 쿼리가 발생해 성능에 큰 영향을 미칩니다.
-        
-          이를 해결하기 위해 JPQL의 fetch join을 사용하여 필요한 데이터를 한 번에 조회하거나, @BatchSize 같은 옵션을 고려할 수 있습니다.
-        
-      
-    
-  
-
-
-7️⃣ 데이터 변경 시 주의.
-
-  JPA는 엔티티를 추적하는 1차 캐시를 가지고 있어 엔티티를 변경하면 자동으로 데이터베이스에 반영됩니다.
-    
-      이를 이용한 자동 반영 기능은 편리하지만, 한 트랜잭션 내에서 같은 엔티티를 여러 번 조회하거나 변경할 경우, 데이터 정합성이 깨지지 않도록 주의해야 합니다.
+      이는 데이터베이스에 연관관계와 관련된 변경사항을 반영할 때 어떤 엔티티가 외래 키의 수정, 삽입, 삭제 작업을 수행하는지를 결정합니다.
     
   
 
 
-8️⃣ 복잡한 연관관계 설계 시 신중함.
+5️⃣ 연관관계 주인의 역할.
 
-  많은 연관관계가 복잡하게 얽히면 성능에 문제가 생길 수 있고, 코드의 유지 보수성이 떨어집니다.
+  연관관계에서 주인으로 지정된 엔티티는 데이터베이스의 외래 키 컬럼을 관리하며, 주인이 아닌 쪽에서는 연관관계를 읽기 전용으로 사용합니다.
     
-      상황에 따라 불필요한 연관관계는 제거하고 “단방향 관계”를 사용하는 것이 좋습니다.
+      예를 들어, 양방향 연관관계에서 @OneToOne, @OneToMany, @ManyToMany, @ManyToOne, @ManyToMany 중 주인이 되는 쪽에서만 외래 키의 값이 변경됩니다.
     
   
-  복잡한 연관관계를 단순화하고, 연관된 엔티티 조회가 필요할 때만 쿼리를 수행하도록 설계하면 성능과 유지보수성이 향상됩니다.
 
 
-9️⃣ 요약.
+6️⃣ 연관관계 주인 설정의 중요성.
 
-  연관관계 주인을 정확히 설정하고, 무한 루프의 데이터 무결성을 주의합니다.
-  지연 로딩을 기본으로 하고, 필요에 따라 즉시 로딩과 페치 조인을 사용합니다.
-  N+1 문제를 방지하며, Cascade 옵션은 신중히 사용합니다.
-  복잡한 연관관계는 피하고 단순화할 수 있는 구조를 선택하는 것이 좋습니다.
+  JPA에서 연관관계의 주인을 설정하는 이유는 양방향 연관관계에서 두 엔티티 모두 연관관계를 맺고 있는 경우, 어느 쪽이 실제로 데이터베이스에 반영할지를 명확히 하기 위함입니다.
+    
+      주인이 아닌 엔티티에서 연관관계를 설정하더라도 데이터베이스에는 반영되지 않고, 주인에서 설정된 내용만 반영됩니다.
+    
+  
+
+
+👉 예제: 1:1 관계에서의 연관관계 주인 설정.
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @OneToOne
+    @JoinColumn(name = "user_profile_id") // 외래 키 관리
+    private UserProfile userProfile;
+    
+    // getter, setter 등
+}
+
+@Entity
+public class UserProfile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String address;
+    private String phoneNumber;
+    
+    @OneToOne(mappedBy = "userProfile") // 연관관계 주인이 아님을 명시
+    private User user;
+    
+    // getter, setter 등
+}
+
+
+
+  위 코드에서 User 엔티티가 연관관계의 주인이며, UserProfile은 mappedBy 속성을 통해 연관관계 주인이 아님을 명시하고 있습니다.
+    
+      이 경우 외래 키는 User 엔티티의 user_profile_id 컬럼에 저장됩니다.
+    
+  
+
+
+7️⃣ 요약.
+
+  연관관계 주인 : 데이터베이스에 외래 키를 관리하는 엔티티. @JoinColumn을 통해 설정됨.
+  주인이 아닌 엔티티 : mappedBy 속성을 통해 설정되며, 읽기 전용으로 작동.
+  주인만이 외래 키 수정, 삭제, 삽입을 관리하고 데이터베이스에 반영함.
 
 
                         </a>
@@ -4448,174 +4666,120 @@ public class UserProfile {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                            <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 주인 효과</h1></a>
-                        <a href="/Spring/2024-11-10-JPA-Association-Owner-Effect.html" class="txt_post">
-                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 주인 효과
+                        <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.</h1></a>
+                        <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - 연관관계 사용시 주의점.
 
-1️⃣ 연관관계 주인 효과.
-
-  JPA에서 연관관계의 주인으로 설정된 엔티티만 데이터베이스의 외래 키를 반영할 수 있는 효과를 말합니다.
-  JPA에서는 연관관계의 주인(Owner)과 주인이 아닌 엔티티(Non-owner)를 구분하여, 데이터베이스에 외래 키를 저장하거나 업데이트할 때 주인으로 설정된 엔티티만 실제 SQL에 반영되도록 합니다.
+  JPA에서 연관관계를 사용할 때는 여러가지 주의해야 할 사항이 있습니다.
 
 
-2️⃣ 연관관계 주인 효과의 동작 방식.
+1️⃣ 연관관계의 주인 설정.
 
-  양방향 연관관계에서 두 엔티티가 서로를 참조할 때, 어느 한쪽을 “연관관계의 주인”으로 설정하고, 그 주인에서만 외래 키 값을 저장하거나 변경할 수 있습니다.
+  연관관계에서 주인과 비주인을 올바르게 설정해야 합니다.
     
-      주인이 아닌 쪽에서는 mappedBy 속성을 통해 주인이 아님을 명시하고, 이는 읽기 전용으로 취급됩니다.
+      주인이 아닌 쪽에서 연관관계를 수정해도 데이터베이스에는 반영되지 않기 때문에, 관계 주인을 명확히 지정하고 주인을 통해 관계를 관리해야 합니다.
         
-          이를 통해 JPA는 중복된 외래 키 저장을 방지하고, 실제 외래 키 관리를 일관되게 처리합니다.
+          예를 들어, 양방향 연관관계에서 mappedBy 속성을 제대호 설정하지 않으면 불필요한 쿼리가 발생할 수 있습니다.
         
       
     
   
 
 
-👉 예시: 1:1 관계에서의 연관관계 주인 효과.
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+2️⃣ 지연 로딩(Lazy Loading)과 즉시 로딩(Eager Loading).
+
+  연관된 엔티티를 언제 로드할지에 따라 성능이 크게 영향을 받을 수 있습니다.
     
-    private String name;
-    
-    @OneToOne
-    @JoinColumn(name = "user_profile_id") // 외래 키 관리
-    private UserProfile userProfile;
-    
-    // getter, setter 등
-}
-
-@Entity
-public class UserProfile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String address;
-    private String phoneNumber;
-    
-    @OneToOne(mappedBy = "userProfile") // 주인이 아님을 명시
-    private User user;
-    
-    // getter, setter 등
-}
-
-
-
-  위 코드에서 User 엔티티가 UserProfile 엔티티와 연관관계에서 주인입니다.
-    
-      userProfile 필드에 대한 설정만 데이터베이스에 반영됩니다.
-    
-  
-
-
-👉 연관관계 주인 효과의 예시 상황.
-User user = new User();
-UserProfile profile = new UserProfile();
-
-user.setUserProfile(profile);
-profile.setUser(user);
-
-entityManager.persist(user);
-entityManager.persist(profile);
-
-
-  위와 같이 user의 userProfile을 설정하고 profile의 user를 설정해도, 실제 데이터베이스에는 User 엔티티의 userProfile에 설정된 값만 외래 키로 반영됩니다.
-    
-      UserProfile 엔티티에서 user 필드의 변경은 데이터베이스에 반영되지 않습니다.
+      FetchType.LAZY는 필요한 시점에 데이터를 로드하지만, FatchType.EAGER는 엔티티를 조회할 때 즉시 연관된 모든 데이터를 로드하므로, 필요 이상의 데이터를 가져와 성능이 저하될 수 있습니다.
         
-          이를 통해 불필요한 쿼리가 발생하는 것을 방지하고, 데이터 무결성을 유지할 수 있습니다.
+          예를 들어, @OneToMany 관계에서 EAGER 로딩을 사용하면 예상하지 못한 대량의 쿼리가 발생할 수 있으므로 주의해야 합니다.
         
       
     
   
 
 
-3️⃣ 요약.
+3️⃣ 무한 루프 문제.
 
-  연관관계 주인만 데이터베이스에 외래 키 정보를 반영할 수 있습니다.
-  주인이 아닌 엔티티에서 설정한 연관관계는 데이터베이스에 반영되지 않으며, 읽기 전용으로 사용됩니다.
-  이를 통해 중복된 외래 키 저장을 방지하고, 데이터 무결성을 유지할 수 있습니다.
-
-
-4️⃣ 연관관계 주인.
-
-  외래 키(Foreign Key)를 관리하는 엔티티를 말합니다.
+  양방향 연관관계를 JSON으로 직렬화할 때, 서로 참조하는 객체들이 계속 호출되면서 무한 루프가 발생할 수 있습니다.
     
-      이는 데이터베이스에 연관관계와 관련된 변경사항을 반영할 때 어떤 엔티티가 외래 키의 수정, 삽입, 삭제 작업을 수행하는지를 결정합니다.
+      이를 방지하기 위해 @JsonIgnore 또는 @JsonManagedReference / @JsonBackReference 같은 어노테이션을 사용해 직렬화 대상에서 제외할 수 있습니다.
     
   
+  스프링과 같은 웹 애플리케이션에서 이를 처리하지 않으면 무한 루프가 발생하여 서버가 중단될 수 있습니다.
 
 
-5️⃣ 연관관계 주인의 역할.
+4️⃣ 연관관계 매핑 시 데이터 무결성 주의.
 
-  연관관계에서 주인으로 지정된 엔티티는 데이터베이스의 외래 키 컬럼을 관리하며, 주인이 아닌 쪽에서는 연관관계를 읽기 전용으로 사용합니다.
+  엔티티의 상태가 일관되도록 연관관계 양쪽을 모두 설정하는 것이 중요합니다.
     
-      예를 들어, 양방향 연관관계에서 @OneToOne, @OneToMany, @ManyToMany, @ManyToOne, @ManyToMany 중 주인이 되는 쪽에서만 외래 키의 값이 변경됩니다.
-    
-  
-
-
-6️⃣ 연관관계 주인 설정의 중요성.
-
-  JPA에서 연관관계의 주인을 설정하는 이유는 양방향 연관관계에서 두 엔티티 모두 연관관계를 맺고 있는 경우, 어느 쪽이 실제로 데이터베이스에 반영할지를 명확히 하기 위함입니다.
-    
-      주인이 아닌 엔티티에서 연관관계를 설정하더라도 데이터베이스에는 반영되지 않고, 주인에서 설정된 내용만 반영됩니다.
+      예를 들어, 양방향 관계에서 한쪽만 관계를 설정하면 다른 쪽에서는 관계가 없는 것으로 익식될 수 있습니다.
     
   
-
-
-👉 예제: 1:1 관계에서의 연관관계 주인 설정.
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    @OneToOne
-    @JoinColumn(name = "user_profile_id") // 외래 키 관리
-    private UserProfile userProfile;
-    
-    // getter, setter 등
+  두 엔티티에 대해 양방향 관계를 설정할 때는, 양쪽 필드를 모두 설정하는 핼퍼 메서드를 만드는 것이 좋습니다.
+    public void setUserProfile(UserProfile profile) {
+  this.userProfile = profile;
+  profile.setUser(this);
 }
-
-@Entity
-public class UserProfile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String address;
-    private String phoneNumber;
-    
-    @OneToOne(mappedBy = "userProfile") // 연관관계 주인이 아님을 명시
-    private User user;
-    
-    // getter, setter 등
-}
-
-
-
-  위 코드에서 User 엔티티가 연관관계의 주인이며, UserProfile은 mappedBy 속성을 통해 연관관계 주인이 아님을 명시하고 있습니다.
-    
-      이 경우 외래 키는 User 엔티티의 user_profile_id 컬럼에 저장됩니다.
     
   
 
 
-7️⃣ 요약.
+5️⃣ Cascade 옵션 사용 주의.
 
-  연관관계 주인 : 데이터베이스에 외래 키를 관리하는 엔티티. @JoinColumn을 통해 설정됨.
-  주인이 아닌 엔티티 : mappedBy 속성을 통해 설정되며, 읽기 전용으로 작동.
-  주인만이 외래 키 수정, 삭제, 삽입을 관리하고 데이터베이스에 반영함.
+  CascadeType 옵션(CascadeType.PERSIST, CascadeType.REMOVE 등)을 사용할 때는, 자칫 불필요하게 연관된 모든 엔티티가 영속화되거나 삭제 될 수 있습니다.
+    
+      연관된 모든 엔티티를 한 번에 영속화하거나 삭제할 때만 신중히 사용해야 합니다.
+        
+          예를 들어 CascadeType.REMOVE를 잘못 설정하면 부모 엔티티 삭제 시 연관된 자식 엔티티도 모두 삭제될 수 있습니다.
+        
+      
+    
+  
+
+
+6️⃣ N + 1 문제.
+
+  즉시 로딩(FetchType.EAGER)을 사용할 때 N+1 문제를 유발할 수 있습니다.
+    
+      예를 들어, 부모 엔티티를 조회할 때 자식 엔티티를 매번 조회하면, 추가적인 쿼리가 발생해 성능에 큰 영향을 미칩니다.
+        
+          이를 해결하기 위해 JPQL의 fetch join을 사용하여 필요한 데이터를 한 번에 조회하거나, @BatchSize 같은 옵션을 고려할 수 있습니다.
+        
+      
+    
+  
+
+
+7️⃣ 데이터 변경 시 주의.
+
+  JPA는 엔티티를 추적하는 1차 캐시를 가지고 있어 엔티티를 변경하면 자동으로 데이터베이스에 반영됩니다.
+    
+      이를 이용한 자동 반영 기능은 편리하지만, 한 트랜잭션 내에서 같은 엔티티를 여러 번 조회하거나 변경할 경우, 데이터 정합성이 깨지지 않도록 주의해야 합니다.
+    
+  
+
+
+8️⃣ 복잡한 연관관계 설계 시 신중함.
+
+  많은 연관관계가 복잡하게 얽히면 성능에 문제가 생길 수 있고, 코드의 유지 보수성이 떨어집니다.
+    
+      상황에 따라 불필요한 연관관계는 제거하고 “단방향 관계”를 사용하는 것이 좋습니다.
+    
+  
+  복잡한 연관관계를 단순화하고, 연관된 엔티티 조회가 필요할 때만 쿼리를 수행하도록 설계하면 성능과 유지보수성이 향상됩니다.
+
+
+9️⃣ 요약.
+
+  연관관계 주인을 정확히 설정하고, 무한 루프의 데이터 무결성을 주의합니다.
+  지연 로딩을 기본으로 하고, 필요에 따라 즉시 로딩과 페치 조인을 사용합니다.
+  N+1 문제를 방지하며, Cascade 옵션은 신중히 사용합니다.
+  복잡한 연관관계는 피하고 단순화할 수 있는 구조를 선택하는 것이 좋습니다.
 
 
                         </a>
@@ -7159,202 +7323,6 @@ public class StreamExample {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-23-connected-with-frontand.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-23-connected-with-frontand.html"><h1 class="title_post">🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-23-connected-with-frontand.html" class="txt_post">
-                            🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?
-
-
-  Spring Boot를 사용하여 HTML, CSS, JavaScript로 만든 프런트엔드 페이지를 로컬 서버와 연결하려면 다음과 같은 단계가 필요합니다.
-    
-      이 과정에서는 정적 리소스를 Spring Boot 프로젝트에 포함하고, 컨트롤러를 통해 요청을 처리하여 정적페이지를 제공하는 방법을 설명합니다.
-    
-  
-
-
-1️⃣ Spring Boot 프로젝트에 정적 파일 추가.
-
-  HTML, CSS, JavaScript 파일은 Spring Boot 프로젝트의 정적 리소스 디렉토리에 배치합니다.
-
-
-👉 프로젝트 디렉토리 구조.
-src
- └── main
-     ├── java
-     │    └── com.example.demo (패키지 구조)
-     │         └── DemoApplication.java
-     ├── resources
-     │    ├── static
-     │    │    ├── css
-     │    │    │    └── styles.css
-     │    │    ├── js
-     │    │    │    ├── scripts.js
-     │    │    │    └── login-scripts.js
-     │    │    ├── signup.html
-     │    │    └── login.html
-     │    └── templates (필요한 경우 Thymeleaf 템플릿 파일)
-     └── application.properties
-
-
-  static 디렉토리는 기본적으로 정적 리소스를 제공하는 역할을 하며, 여기서 CSS, JavaScript, 이미지 및 HTML 파일을 로드할 수 있습니다.
-  HTML 파일(signup.html, login.html)은 직접 static 디렉토리에 배치하여 서버가 요청을 받으면 직접 로드되도록 합니다.
-
-
-2️⃣ Spring Boot 컨트롤러 설정.
-
-  Spring Boot 에서 /login과 /signup 요청을 처리하도록 간단한 컨트롤러를 만듭니다.
-
-
-package com.example.demo.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Controller
-public class AuthController {
-    
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login.html"; // static/login.html 파일을 반환
-    }
-    
-    @GetMapping("/signup")
-    public String signupPage() {
-        return "signup.html"; // static/signup.html 파일을 반환
-    }
-}
-
-
-3️⃣ 정적 파일 및 자원 접근
-
-  HTML 파일에서 CSS 및 JavaScript 파일에 대한 경로를 수정하여 Spring Boot에서 제공하는 정적 리소스를 제대로 불러올 수 있게합니다.
-
-
-👉 login.html(예시)
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Login Page&lt;/title&gt;
-    &lt;link rel="stylesheet" href="/css/styles.css"&gt; &lt;!-- 절대 경로로 수정 --&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="login-container"&gt;
-        &lt;form id="loginForm" class="login-form"&gt;
-            &lt;h2&gt;Login&lt;/h2&gt;
-            &lt;div class="input-group"&gt;
-                &lt;label for="login-email"&gt;Email&lt;/label&gt;
-                &lt;input type="email" id="login-email" name="login-email" required&gt;
-            &lt;/div&gt;
-            &lt;div class="input-group"&gt;
-                &lt;label for="login-password"&gt;Password&lt;/label&gt;
-                &lt;input type="password" id="login-password" name="login-password" required&gt;
-            &lt;/div&gt;
-            &lt;button type="submit"&gt;Login&lt;/button&gt;
-            &lt;p class="signup-link"&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up here&lt;/a&gt;&lt;/p&gt; &lt;!-- Spring Boot 경로 사용 --&gt;
-        &lt;/form&gt;
-    &lt;/div&gt;
-    &lt;script src="/js/login-scripts.js"&gt;&lt;/script&gt; &lt;!-- 절대 경로로 수정 --&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-4️⃣ Spring Boot 애플리케이션 실행
-
-  이제 Spring Boot 애플리케이션을 실행하면 로컬 서버에서 /login 및 /signup 경로로 접근하여 프런트엔드 페이지를 볼 수 있습니다.
-
-
-👉 애플리게이션 실행 명령어
-./gradlwe bootRun #Gradle 사용시
-
-
-mvn spring-boot:run # Maven 사용시
-
-
-5️⃣ 추가 설정(필요한 경우)
-
-1️⃣ CORS 설정
-
-  프런트엔드 페이지에서 다른 서버의 API에 접근하려면 CORS 설정이 필요할 수 있습니다.
-    
-      WebMvcConfigurer를 사용하여 다음과 같이 설정할 수 있습니다.
-    
-  
-
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-@Configuration
-public class WebConfig {
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:8080")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
-            }
-        };
-    }
-}
-
-
-
-  📝 CORS(Cross-Origin Resource Sharing)
-
-  웹 브라우저에서 실행되는 웹 애플리케이션이 다른 도메인에서 호스팅 되는 리소스에 접근할 수 있도록 하는 보안 메커니즘입니다.
-기본적으로 웹 브라우저는 보안상의 이유로, 한 도메인에서 로드된 웹 페이지가 다른 도메인에 요청을 보내는 것을 제한합니다.
-이를 “동일 출처 정책(Same-Origin-Policy)”라고 합니다.
-
-
-2️⃣ API와 연결.
-
-  로그인, 회원가입 등의 기능을 구현하기 위해 백엔드 API를 작성할 수 있습니다.
-    
-      예를 들어, /login API를 만들어 JavaScript에서 해당 API로 AJAX 요청을 보낼 수 있습니다.
-    
-  
-
-
-
-  📝 AJAX(Asynchronous JavaScript and XML)
-
-  웹 페이지를 새로고침하지 않고 비동기 방식으로 서버와 데이터를 주고받을 수 있게 해주는 기술을 말합니다.
-웹 페이지를 동적으로 업데이트 할 수 있기 때문에 사용자가 더 빠르고 직관적인 경험을 할 수 있도록 도와줍니다.
-
-
-6️⃣ 요약.
-
-  Spring Boot 프로젝트의 static 디렉토리에 HTML, CSS, JavaScript 파일을 넣어 정적 리소스를 제공합니다.
-  컨트롤러를 통해 /login 및 /signup 경로를 설정하고 HTML 파일을 로드합니다.
-  JavaScript 코드는 프런트엔드에서 필요한 동작을 처리하며, 추가로 API를 호출할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-23</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/CS/2024/2024-10-23-OOD.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -7560,6 +7528,202 @@ public class Car {
                         </a>
                         <div class="info-post">
                                 <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-23</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-23-connected-with-frontand.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-23-connected-with-frontand.html"><h1 class="title_post">🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-23-connected-with-frontand.html" class="txt_post">
+                            🍃[Spring] Spring Boot를 사용하여 HTML, CSS, JS로 만든 Frontend 페이지를 로컬 서버와 연결하는 방법은 무엇일까요?
+
+
+  Spring Boot를 사용하여 HTML, CSS, JavaScript로 만든 프런트엔드 페이지를 로컬 서버와 연결하려면 다음과 같은 단계가 필요합니다.
+    
+      이 과정에서는 정적 리소스를 Spring Boot 프로젝트에 포함하고, 컨트롤러를 통해 요청을 처리하여 정적페이지를 제공하는 방법을 설명합니다.
+    
+  
+
+
+1️⃣ Spring Boot 프로젝트에 정적 파일 추가.
+
+  HTML, CSS, JavaScript 파일은 Spring Boot 프로젝트의 정적 리소스 디렉토리에 배치합니다.
+
+
+👉 프로젝트 디렉토리 구조.
+src
+ └── main
+     ├── java
+     │    └── com.example.demo (패키지 구조)
+     │         └── DemoApplication.java
+     ├── resources
+     │    ├── static
+     │    │    ├── css
+     │    │    │    └── styles.css
+     │    │    ├── js
+     │    │    │    ├── scripts.js
+     │    │    │    └── login-scripts.js
+     │    │    ├── signup.html
+     │    │    └── login.html
+     │    └── templates (필요한 경우 Thymeleaf 템플릿 파일)
+     └── application.properties
+
+
+  static 디렉토리는 기본적으로 정적 리소스를 제공하는 역할을 하며, 여기서 CSS, JavaScript, 이미지 및 HTML 파일을 로드할 수 있습니다.
+  HTML 파일(signup.html, login.html)은 직접 static 디렉토리에 배치하여 서버가 요청을 받으면 직접 로드되도록 합니다.
+
+
+2️⃣ Spring Boot 컨트롤러 설정.
+
+  Spring Boot 에서 /login과 /signup 요청을 처리하도록 간단한 컨트롤러를 만듭니다.
+
+
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AuthController {
+    
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login.html"; // static/login.html 파일을 반환
+    }
+    
+    @GetMapping("/signup")
+    public String signupPage() {
+        return "signup.html"; // static/signup.html 파일을 반환
+    }
+}
+
+
+3️⃣ 정적 파일 및 자원 접근
+
+  HTML 파일에서 CSS 및 JavaScript 파일에 대한 경로를 수정하여 Spring Boot에서 제공하는 정적 리소스를 제대로 불러올 수 있게합니다.
+
+
+👉 login.html(예시)
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Login Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="/css/styles.css"&gt; &lt;!-- 절대 경로로 수정 --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="login-container"&gt;
+        &lt;form id="loginForm" class="login-form"&gt;
+            &lt;h2&gt;Login&lt;/h2&gt;
+            &lt;div class="input-group"&gt;
+                &lt;label for="login-email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" id="login-email" name="login-email" required&gt;
+            &lt;/div&gt;
+            &lt;div class="input-group"&gt;
+                &lt;label for="login-password"&gt;Password&lt;/label&gt;
+                &lt;input type="password" id="login-password" name="login-password" required&gt;
+            &lt;/div&gt;
+            &lt;button type="submit"&gt;Login&lt;/button&gt;
+            &lt;p class="signup-link"&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up here&lt;/a&gt;&lt;/p&gt; &lt;!-- Spring Boot 경로 사용 --&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;script src="/js/login-scripts.js"&gt;&lt;/script&gt; &lt;!-- 절대 경로로 수정 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+4️⃣ Spring Boot 애플리케이션 실행
+
+  이제 Spring Boot 애플리케이션을 실행하면 로컬 서버에서 /login 및 /signup 경로로 접근하여 프런트엔드 페이지를 볼 수 있습니다.
+
+
+👉 애플리게이션 실행 명령어
+./gradlwe bootRun #Gradle 사용시
+
+
+mvn spring-boot:run # Maven 사용시
+
+
+5️⃣ 추가 설정(필요한 경우)
+
+1️⃣ CORS 설정
+
+  프런트엔드 페이지에서 다른 서버의 API에 접근하려면 CORS 설정이 필요할 수 있습니다.
+    
+      WebMvcConfigurer를 사용하여 다음과 같이 설정할 수 있습니다.
+    
+  
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:8080")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+            }
+        };
+    }
+}
+
+
+
+  📝 CORS(Cross-Origin Resource Sharing)
+
+  웹 브라우저에서 실행되는 웹 애플리케이션이 다른 도메인에서 호스팅 되는 리소스에 접근할 수 있도록 하는 보안 메커니즘입니다.
+기본적으로 웹 브라우저는 보안상의 이유로, 한 도메인에서 로드된 웹 페이지가 다른 도메인에 요청을 보내는 것을 제한합니다.
+이를 “동일 출처 정책(Same-Origin-Policy)”라고 합니다.
+
+
+2️⃣ API와 연결.
+
+  로그인, 회원가입 등의 기능을 구현하기 위해 백엔드 API를 작성할 수 있습니다.
+    
+      예를 들어, /login API를 만들어 JavaScript에서 해당 API로 AJAX 요청을 보낼 수 있습니다.
+    
+  
+
+
+
+  📝 AJAX(Asynchronous JavaScript and XML)
+
+  웹 페이지를 새로고침하지 않고 비동기 방식으로 서버와 데이터를 주고받을 수 있게 해주는 기술을 말합니다.
+웹 페이지를 동적으로 업데이트 할 수 있기 때문에 사용자가 더 빠르고 직관적인 경험을 할 수 있도록 도와줍니다.
+
+
+6️⃣ 요약.
+
+  Spring Boot 프로젝트의 static 디렉토리에 HTML, CSS, JavaScript 파일을 넣어 정적 리소스를 제공합니다.
+  컨트롤러를 통해 /login 및 /signup 경로를 설정하고 HTML 파일을 로드합니다.
+  JavaScript 코드는 프런트엔드에서 필요한 동작을 처리하며, 추가로 API를 호출할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-23</span>
                             
@@ -7940,238 +8104,6 @@ module com.example.mymodule {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-10-22-what-is-stack-trace.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-22-what-is-stack-trace.html"><h1 class="title_post">💾 [CS] 스택 트레이스(Stack Trace)란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-10-22-what-is-stack-trace.html" class="txt_post">
-                            💾 [CS] 스택 트레이스(Stack Trace)란 무엇일까요?
-
-  스택 트레이스(Stack Trace)는 프로그램 실행 중 예외(Exception)가 발생했을 때, 예외가 발생한 지점과 그 예외로 이어진 함수 호출 경로를 보여주는 디버깅 정보입니다.
-  이를 통해 개발자는 어떤 예외가 어디서 발생했는지, 그리고 그 예외가 어떻게 발생했는지를 파악할 수 있습니다.
-
-
-1️⃣ 스택 트레이스(Stack Trace)의 역할.
-
-1️⃣ 디버깅.
-
-  스택 트레이스(Stack Trace)를 통해 예외가 발생한 위치를 정확히 찾아내고, 문제를 신속하게 해결할 수  있습니다.
-
-
-2️⃣ 문제의 원인 파악.
-
-  스택 트레이스(Stack Trace)는 예외가 발생하기 전까지 어떤 함수가 호출되었는지를 순서대로 보여주기 때문에 문제와 원인을 추적할 수 있는 중요한 단서를 제공합니다.
-
-
-4️⃣ 호출 경로 이해.
-
-  프로그램에서 함수 호출 경로를 이해하는 데 도움을 주어, 코드의 흐름을 파악하고 수정할 수 있게 합니다.
-
-
-2️⃣ 스택 트레이스의 구조.
-
-  스택 트레이스(Stack Trace)는 일반적으로 예외의 종류와 메시지, 그리고 함수 호출 스택의 목록으로 구성됩니다.
-    
-      각 항목은 다음 정보를 포함합니다.
-        
-          
-            
-              예외의 종류와 메시지
-            
-          
-          
-            
-              호출된 메서드의 목록.
-            
-          
-        
-      
-    
-  
-
-
-1️⃣ 예외의 종류와 메시지.
-
-  예외의 유형과 메시지를 통해 예외의 원인에 대한 기본적인 정보를 제공합니다.
-
-
-2️⃣ 호출된 메서드의 목록.
-
-  예외가 발생한 시점까지의 함수 호출 경로를 위에서부터 아래로 표시합니다.
-    
-      가장 위의 항목은 예외가 실제로 발생한 메서드이며, 그 아래는 예외가 발생하기까지 호출된 메서드들이 표시됩니다.
-    
-  
-
-
-3️⃣ 스택 트레이스 예시 (Java)
-
-  아래의 코드는 Java 프로그램에서 NullPointerException이 발생했을 때의 스택 트레이스 예시입니다.
-
-
-public class StackTraceExample {
-    public static void main(String[] args) {
-        firstMethod();
-    }
-    
-    public static void firstMethod() {
-        secondMethod();
-    }
-    
-    public static void secondMethod() {
-        String str = null;
-        str.length(); // 여기에서 NullPointerException 발생
-    }
-}
-
-
-👉 출력되는 스택 트레이스.
-Excption in thread "main" java.lang.NullPointerException
-    at StackTraceExample.secondMethod(StackTraceExample.java:14)
-    at StackTraceExample.firstMethod(StackTraceExample.javee:9)
-    at StackTraceExample.main(StackTraceExample.java:5)
-
-
-4️⃣ 스택 트레이스의 구성 요소.
-
-1️⃣ 예외의 종류와 메시지.
-
-  Exception in thread "main" java.lang.NullPointerException
-    
-      프로그램의 메인 스레드에서 NullPointerException이 발생했다는 것을 알려줍니다.
-    
-  
-
-
-2️⃣ 호출된 메서드의 목록.
-
-  at StackTraceExample.secondMethod(StackTraceExample.java:14)
-    
-      secondMethod 메서드의 14번째 줄에서 예외가 발생했습니다.
-    
-  
-  at StackTraceExample.firstMethod(StackTraceExample.java:9)
-    
-      firstMethod가 secondMethod를 호출했습니다.
-    
-  
-  at StackTraceExample.main(StackTraceExample.java:5)
-    
-      main 메서드가 firstMethod를 호출했습니다.
-    
-  
-  스택 트레이스(Stack Trace)는 가장 최근에 호출된 메서드(예외가 발생한 메서드)부터 시작하여, 예외가 발생하기 전에 호출된 메서드들을 순차적으로 표시합니다.
-
-
-5️⃣ 스택 트레이스의 중요성.
-
-1️⃣ 오류의 원인 파악.
-
-  스택 트레이스를 보면, 예외가 발생한 정확한 위치와 어떤 함수에서 호출된 것인지를 알 수 있습니다.
-    
-      이를 통해 오류의 원인을 신속하게 파악할 수 있습니다.
-    
-  
-  예를 들어, 위의 스택 트레이스(Stack Trace)에서는 secondMethod의 str.length() 호출에서 NullPointerException이 발생했음을 알 수 있습니다.
-    
-      그 이후에는 firstMethod가 이 메서드를 호출했고, 최종적으로 main 메서드에서 firstMethod가 호출되었습니다.
-    
-  
-
-
-2️⃣ 디버깅 시간 단축.
-
-  스택 트레이스(Stack Trace)는 예외의 원인을 정확하게 지목하기 때문에, 개발자가 코드를 수정하고 디버깅하는 시간을 단축할 수 있습니다.
-    
-      디버거를 사용하지 않고도 문제의 근본 원인을 빠르게 찾을 수 있습니다.
-    
-  
-
-
-3️⃣ 호출 경로 이해.
-
-  코드의 흐름을 이해하는 데 두움을 줍니다.
-    
-      특히, 복잡한 프로그램이나 타사의 코드를 다룰 때 스택 트레이스(Stack Trace)는 코드가 어떻게 작동하는지에 대한 중요한 단서를 제공합니다.
-    
-  
-
-
-6️⃣ 스택 트레이스 읽는 방법.
-
-1️⃣ 예외 메시지를 확인.
-
-  예외 메시지는 문제의 종류와 원인에 대해 첫 번째 힌트를 제공합니다.
-    
-      예를 들어, NullPointException은 널 객체에 접근하려고 했다는 것을 의미합니다.
-    
-  
-
-
-2️⃣ 가장 위의 호출 위치 찾기.
-
-  스택 트레이스(Stack Trace)에서 가장 위의 호출 위치는 예외가 발생한 정확한 위치를 나타냅니다.
-    
-      이 부분부터 문제를 추적하기 시작해야 합니다.
-    
-  
-
-
-3️⃣ 호출 순서대로 확인.
-
-  예외가 발생한 코드의 흐름을 이해하려면 호출 순서대로 각 메서드가 어떤 역할을 하는지 분석합니다.
-    
-      이 과정을 통해 문제가 있는 부분을 빠르게 찾을 수 있습니다.
-    
-  
-
-
-7️⃣ 스텍 트레이스를 유용하게 사용하는 방법.
-
-1️⃣ 로깅(logging)과 함꼐 사용.
-
-  실제로 배포된 소프트웨어에서는 오류가 발생하면 로그에 스택 트레이스(Stack Trace)를 기록하도록 설정하는 것이 중요합니다.
-    
-      이를 통해 사용자가 오류를 보고했을 때, 개발자가 쉽게 문제의 원인을 파악할 수 있습니다.
-    
-  
-  Java에서는 예외를 잡을 때 e.printStackTrace()를 사용하여 스택 트레이스(Stack Trace)를 출력하거나, 로깅 프레임워크(logging framework)를 사용하여 로그 파일에 기록할 수 있습니다.
-
-
-2️⃣ 예외 처리에서 스택 트레이스 활용.
-
-  예외를 잡아서 처리할 때, 스택 트레이스를 출력함으로써 디버깅에 도움이 될 수 있습니다.
-    
-      특히, 예상하지 못한 예외를 디버깅할 때 유용합니다.
-    
-  
-
-
-8️⃣ 요약.
-
-  스택 트레이스(Stack Trace)는 프로그램에서 예외가 발생했을 때 예외의 원인과 호출 경로를 보여주는 디버깅 정보입니다.
-  예외의 종류와 메시지, 그리고 함수 호출 스택 목록으로 구성되어 있으며, 문제를 추적하고 해결하는 데 큰 도움이 됩니다.
-  이를 통해 개발자는 코드의 흐름을 이해하고, 예외가 발생한 정확한 위치와 원인을 파악하여 디버깅 시간을 단축할 수 있습니다.
-  스택 트레이스(Stack Trace)는 특히 로깅(logging)과 결합하여 사용하면, 배포된 소프트웨어의 문제를 진단하는 데 유용합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-22</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/CS/2024/2024-10-22-creation-and-destruction-object.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -8421,6 +8353,238 @@ try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
   반대로 객체의 소멸은 더 이상 사용되지 않는 객체를 메모리에서 해제하는 과정으로, 자바에서는 가비지 컬렉터(Garbage Collector)가 이를 자동으로 처리합니다.
   객체의 생성과 소멸을 잘 이해하고 관리하면, 메모리 누수 없이 효율적인 프로그램을 작성할 수 있습니다.
   개발자는 객체의 생명 주기를 잘 파악하고, 적절한 시점에 리소스를 해제하여 프로그램의 성능을 최적화해야 합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-10-22-what-is-stack-trace.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-22-what-is-stack-trace.html"><h1 class="title_post">💾 [CS] 스택 트레이스(Stack Trace)란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-10-22-what-is-stack-trace.html" class="txt_post">
+                            💾 [CS] 스택 트레이스(Stack Trace)란 무엇일까요?
+
+  스택 트레이스(Stack Trace)는 프로그램 실행 중 예외(Exception)가 발생했을 때, 예외가 발생한 지점과 그 예외로 이어진 함수 호출 경로를 보여주는 디버깅 정보입니다.
+  이를 통해 개발자는 어떤 예외가 어디서 발생했는지, 그리고 그 예외가 어떻게 발생했는지를 파악할 수 있습니다.
+
+
+1️⃣ 스택 트레이스(Stack Trace)의 역할.
+
+1️⃣ 디버깅.
+
+  스택 트레이스(Stack Trace)를 통해 예외가 발생한 위치를 정확히 찾아내고, 문제를 신속하게 해결할 수  있습니다.
+
+
+2️⃣ 문제의 원인 파악.
+
+  스택 트레이스(Stack Trace)는 예외가 발생하기 전까지 어떤 함수가 호출되었는지를 순서대로 보여주기 때문에 문제와 원인을 추적할 수 있는 중요한 단서를 제공합니다.
+
+
+4️⃣ 호출 경로 이해.
+
+  프로그램에서 함수 호출 경로를 이해하는 데 도움을 주어, 코드의 흐름을 파악하고 수정할 수 있게 합니다.
+
+
+2️⃣ 스택 트레이스의 구조.
+
+  스택 트레이스(Stack Trace)는 일반적으로 예외의 종류와 메시지, 그리고 함수 호출 스택의 목록으로 구성됩니다.
+    
+      각 항목은 다음 정보를 포함합니다.
+        
+          
+            
+              예외의 종류와 메시지
+            
+          
+          
+            
+              호출된 메서드의 목록.
+            
+          
+        
+      
+    
+  
+
+
+1️⃣ 예외의 종류와 메시지.
+
+  예외의 유형과 메시지를 통해 예외의 원인에 대한 기본적인 정보를 제공합니다.
+
+
+2️⃣ 호출된 메서드의 목록.
+
+  예외가 발생한 시점까지의 함수 호출 경로를 위에서부터 아래로 표시합니다.
+    
+      가장 위의 항목은 예외가 실제로 발생한 메서드이며, 그 아래는 예외가 발생하기까지 호출된 메서드들이 표시됩니다.
+    
+  
+
+
+3️⃣ 스택 트레이스 예시 (Java)
+
+  아래의 코드는 Java 프로그램에서 NullPointerException이 발생했을 때의 스택 트레이스 예시입니다.
+
+
+public class StackTraceExample {
+    public static void main(String[] args) {
+        firstMethod();
+    }
+    
+    public static void firstMethod() {
+        secondMethod();
+    }
+    
+    public static void secondMethod() {
+        String str = null;
+        str.length(); // 여기에서 NullPointerException 발생
+    }
+}
+
+
+👉 출력되는 스택 트레이스.
+Excption in thread "main" java.lang.NullPointerException
+    at StackTraceExample.secondMethod(StackTraceExample.java:14)
+    at StackTraceExample.firstMethod(StackTraceExample.javee:9)
+    at StackTraceExample.main(StackTraceExample.java:5)
+
+
+4️⃣ 스택 트레이스의 구성 요소.
+
+1️⃣ 예외의 종류와 메시지.
+
+  Exception in thread "main" java.lang.NullPointerException
+    
+      프로그램의 메인 스레드에서 NullPointerException이 발생했다는 것을 알려줍니다.
+    
+  
+
+
+2️⃣ 호출된 메서드의 목록.
+
+  at StackTraceExample.secondMethod(StackTraceExample.java:14)
+    
+      secondMethod 메서드의 14번째 줄에서 예외가 발생했습니다.
+    
+  
+  at StackTraceExample.firstMethod(StackTraceExample.java:9)
+    
+      firstMethod가 secondMethod를 호출했습니다.
+    
+  
+  at StackTraceExample.main(StackTraceExample.java:5)
+    
+      main 메서드가 firstMethod를 호출했습니다.
+    
+  
+  스택 트레이스(Stack Trace)는 가장 최근에 호출된 메서드(예외가 발생한 메서드)부터 시작하여, 예외가 발생하기 전에 호출된 메서드들을 순차적으로 표시합니다.
+
+
+5️⃣ 스택 트레이스의 중요성.
+
+1️⃣ 오류의 원인 파악.
+
+  스택 트레이스를 보면, 예외가 발생한 정확한 위치와 어떤 함수에서 호출된 것인지를 알 수 있습니다.
+    
+      이를 통해 오류의 원인을 신속하게 파악할 수 있습니다.
+    
+  
+  예를 들어, 위의 스택 트레이스(Stack Trace)에서는 secondMethod의 str.length() 호출에서 NullPointerException이 발생했음을 알 수 있습니다.
+    
+      그 이후에는 firstMethod가 이 메서드를 호출했고, 최종적으로 main 메서드에서 firstMethod가 호출되었습니다.
+    
+  
+
+
+2️⃣ 디버깅 시간 단축.
+
+  스택 트레이스(Stack Trace)는 예외의 원인을 정확하게 지목하기 때문에, 개발자가 코드를 수정하고 디버깅하는 시간을 단축할 수 있습니다.
+    
+      디버거를 사용하지 않고도 문제의 근본 원인을 빠르게 찾을 수 있습니다.
+    
+  
+
+
+3️⃣ 호출 경로 이해.
+
+  코드의 흐름을 이해하는 데 두움을 줍니다.
+    
+      특히, 복잡한 프로그램이나 타사의 코드를 다룰 때 스택 트레이스(Stack Trace)는 코드가 어떻게 작동하는지에 대한 중요한 단서를 제공합니다.
+    
+  
+
+
+6️⃣ 스택 트레이스 읽는 방법.
+
+1️⃣ 예외 메시지를 확인.
+
+  예외 메시지는 문제의 종류와 원인에 대해 첫 번째 힌트를 제공합니다.
+    
+      예를 들어, NullPointException은 널 객체에 접근하려고 했다는 것을 의미합니다.
+    
+  
+
+
+2️⃣ 가장 위의 호출 위치 찾기.
+
+  스택 트레이스(Stack Trace)에서 가장 위의 호출 위치는 예외가 발생한 정확한 위치를 나타냅니다.
+    
+      이 부분부터 문제를 추적하기 시작해야 합니다.
+    
+  
+
+
+3️⃣ 호출 순서대로 확인.
+
+  예외가 발생한 코드의 흐름을 이해하려면 호출 순서대로 각 메서드가 어떤 역할을 하는지 분석합니다.
+    
+      이 과정을 통해 문제가 있는 부분을 빠르게 찾을 수 있습니다.
+    
+  
+
+
+7️⃣ 스텍 트레이스를 유용하게 사용하는 방법.
+
+1️⃣ 로깅(logging)과 함꼐 사용.
+
+  실제로 배포된 소프트웨어에서는 오류가 발생하면 로그에 스택 트레이스(Stack Trace)를 기록하도록 설정하는 것이 중요합니다.
+    
+      이를 통해 사용자가 오류를 보고했을 때, 개발자가 쉽게 문제의 원인을 파악할 수 있습니다.
+    
+  
+  Java에서는 예외를 잡을 때 e.printStackTrace()를 사용하여 스택 트레이스(Stack Trace)를 출력하거나, 로깅 프레임워크(logging framework)를 사용하여 로그 파일에 기록할 수 있습니다.
+
+
+2️⃣ 예외 처리에서 스택 트레이스 활용.
+
+  예외를 잡아서 처리할 때, 스택 트레이스를 출력함으로써 디버깅에 도움이 될 수 있습니다.
+    
+      특히, 예상하지 못한 예외를 디버깅할 때 유용합니다.
+    
+  
+
+
+8️⃣ 요약.
+
+  스택 트레이스(Stack Trace)는 프로그램에서 예외가 발생했을 때 예외의 원인과 호출 경로를 보여주는 디버깅 정보입니다.
+  예외의 종류와 메시지, 그리고 함수 호출 스택 목록으로 구성되어 있으며, 문제를 추적하고 해결하는 데 큰 도움이 됩니다.
+  이를 통해 개발자는 코드의 흐름을 이해하고, 예외가 발생한 정확한 위치와 원인을 파악하여 디버깅 시간을 단축할 수 있습니다.
+  스택 트레이스(Stack Trace)는 특히 로깅(logging)과 결합하여 사용하면, 배포된 소프트웨어의 문제를 진단하는 데 유용합니다.
 
 
                         </a>
@@ -15569,6 +15733,390 @@ Hibernate
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Network/2024/2024-10-11-combine-lan-the-wan.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-11-combine-lan-the-wan.html"><h1 class="title_post">🌐[Network] LAN이 합쳐져서 WAN이 되는걸까?</h1></a>
+                        <a href="/Network/2024/2024-10-11-combine-lan-the-wan.html" class="txt_post">
+                            🌐[Network] LAN이 합쳐져서 WAN이 되는걸까?
+
+
+  네트워크 개념에서 LAN(Local Area Network, 근거리 통신망)이 WAN(Wide Area Network, 광역 통신망)으로 단순히 합쳐지는 것은 아닙니다.
+    
+      LAN과 WAN은 서로 다른 규모와 기능을 가진 네트워크 유형이며, 그 관계는 단순한 결합 이상의 개념입니다.
+    
+  
+
+
+1️⃣ LAN과 WAN의 차이와 관계.
+
+1️⃣ LAN(Local Area Network, 근거리 통신망)
+
+  LAN(Local Area Network, 근거리 통신망)은 지리적 범위(예: 집, 사무실, 학교) 내에서 컴퓨터, 프린터, 서버 등 장치들을 연결하는 네트워크입니다.
+  고속 데이터 전송을 제공하며, 주로 이더넷(Ethernet) 또는 Wi-Fi를 사용하여 장치 간의 통신을 처리합니다.
+
+
+2️⃣ WAN(Wide Area Network, 광역 통신망)
+
+  WAN(Wide Area Network, 광역 통신망)은 넓은 지리적 범위(예: 여러 도시, 국가, 심지어 전 세계)를 커버하는 네트워크입니다.
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)보다 느릴 수 있으며, 여러 LAN(Local Area Network, 근거리 통신망)을 연결하여 원거리 통신을 가능하게 합니다.
+  WAN(Wide Area Network, 광역 통신망)은 ISP(Internet Service Provider, 인터넷 서비스 제공업체) 또는 전용선을 통해 연결되며, 네트워크 장치 간의 물리적 거리가 매우 멀 수 있습니다.
+
+
+
+  🙋‍♂️ WAN(Wide Area Network)이란 무엇일까요?
+🙋‍♂️ 이더넷(Ethernet)이란 무엇일까요?
+🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
+
+
+2️⃣ LAN과 WAN의 관계.
+
+👉 LAN(Local Area Network, 근거리 통신망)이 WAN(Wide Area Network, 광역 통신망)에 연결된다.
+
+  여러 LAN(Local Area Network, 근거리 통신망)을 WAN(Wide Area Network, 광역 통신망)으로 연결하여 광범위한 네트워크를 형성합니다.
+    
+      예를 들어, 한 기업의 각 지사(각 지사는 LAN(Local Area Network, 근거리 통신망)을 형성)를 WAN(Wide Area Network, 광역 통신망)을 통해 연결하여 본사와 다른 지사 간에 통신할 수 있게 합니다.
+    
+  
+
+
+👉 WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)을 포함할 수 있다.
+
+  WAN(Wide Area Network, 광역 통신망)은 여러 LAN(Local Area Network, 근거리 통신망)을 포함할 수 있습니다.
+    
+      즉, WAN(Wide Area Network, 광역 통신망)의 일부는 여러 개의 LAN(Local Area Network, 근거리 통신망)을 연결하여, 전세계에 분산된 장치들이 서로 통신할 수 있게 만듭니다.
+    
+  
+
+
+3️⃣ 예시
+
+1️⃣ 회사 네트워크.
+
+
+
+  한 회사가 서울, 부산, 뉴욕에 지사를 두고 있다고 가정합니다.
+    
+      각 지사는 자체적인 LAN(Local Area Network, 근거리 통신망)을 가지고 있는데, 이 LAN(Local Area Network, 근거리 통신망)은 지사 내의 컴퓨터, 프린터, 서버 등을 연결합니다.
+    
+  
+
+
+
+
+
+  각 지사는 WAN(Wide Area Network, 광역 통신망)을 통해 본사와 다른 지사들과 연결됩니다.
+    
+      WAN(Wide Area Network, 광역 통신망)을 통해 서울 지사의 직원이 부산 지사의 서버에 접근하거나, 뉴욕 지사와 파일을 공유할 수 있습니다.
+    
+  
+
+
+2️⃣ 인터넷(Internet).
+
+  인터넷(Internet)은 세계 최대의 WAN(Wide Area Network, 광역 통신망)으로, 여러 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)을 연결하여 전 세계의 컴퓨터들이 서로 통신할 수 있도록 만듭니다.
+    
+      내가 집에서 인터넷에 접속하는 경우, 집의 LAN(예: Wi-Fi 네트워크)이 인터넷(WAN, Wide Area Network)을 통해 전 세계의 다른 컴퓨터와 연결됩니다.
+    
+  
+
+
+4️⃣ WAN(Wide Area Network, 광역 통신망)의 구현 방법.
+
+  WAN(Wide Area Network, 광역 통신망)을 구현하기 위해서는 ISP(Internet Service Provider, 인터넷 서비스 제공자), 위성 링크, 전용선, 광섬유 등의 기술이 사용됩니다.
+    
+      LAN(Local Area Network, 근거리 통신망)은 일반적으로 스위치, 라우터, 케이블을 통해 설정되지만, WAN(Wide Area Network)은 훨씬 더 복잡한 기술 인프라를 필요로 합니다.
+    
+  
+  VPN(가상 사설망)도 WAN(Wide Area Network, 광역 통신망)을 구축하는 방법 중 하나로, 여러 LAN을 공용 네트워크(인터넷, Internet)를 통해 안전하게 연결할 수 있도록 해줍니다.
+
+
+5️⃣ 결론.
+
+  LAN(Local Area Network, 근거리 통신망)이 여러개 합쳐져서 WAN(Wide Area Network, 광역 통신망)이 되는 것은 아닙니다.
+    
+      그러나 LAN(Local Area Network, 근거리 통신망)은 WAN(Wide Area Network, 광역 통신망)의 일부가 될 수 있으며, WAN(Wide Area Network, 광역 통신망)은 여러 LAN(Local Area Network, 근거리 통신망)을 연결하여 광범위한 통신망을 형성합니다.
+    
+  
+  WAN(Wide Area Network, 광역 통신망)은 주로 먼 거리의 네트워크를 연결하기 위한 것이고, LAN(Local Area Network, 근거리 통신망)은 가까운 거리에서 효율적으로 자원을 공유하고 데이터를 전송하기 위해 설계된 네트워크입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html"><h1 class="title_post">🌐[Network] WAN(Wide Area Network)이란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="txt_post">
+                            🌐[Network] WAN(Wide Area Network)이란 무엇일까요?
+
+  WAN(Wide Area Network, 광역 통신망)은 지리적으로 멀리 떨어진 지역들을 연결하는 네트워크입니다.
+  WAN(Wide Area Network, 광역 통신망)은 도시, 국가, 심지어 전 세계에 걸쳐있는 네트워크를 연결할 수 있으며, 일반적으로 여러 LAN(Local Area Network, 근거리 통신망)이나 MAN(Metropolitan Area Network, 도시권 통신망)을 서로 연결하여 데이터를 주고받을 수 있게 해줍니다.
+  인터넷이 가장 대표적인 WAN의 예입니다.
+
+
+
+  🙋‍♂️LAN(Local Area Network)이란 무엇일까요?
+
+
+1️⃣ WAN(Wide Area Network, 광역 통신망)의 주요 특징.
+
+1️⃣ 광범위한 지리적 범위.
+
+  WAN(Wide Area Network, 광역 통신망)은 멀리 떨어진 지역에 있는 네트워크들을 연결합니다.
+    
+      예를 들면, 한 나라의 여러 도시나, 심지어 다른 나라의 네트워크까지 연결할 수 있습니다.
+      WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)과 달리 국가 간, 대륙 간 네트워크를 연결할 수 있습니다.
+    
+  
+
+
+2️⃣ 낮은 데이터 전송 속도.
+
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 상대적으로 낮은 데이터 전송 속도를 제공합니다.
+    
+      네트워크 장비 간의 물리적 거리가 멀기 때문에, 데이터 전송 속도가 느려질 수 있습니다.
+        
+          하지만 광케이블과 같은 고속 네트워크 기술을 사용하여 성능을 향상시킬 수 있습니다.
+        
+      
+    
+  
+
+
+3️⃣ 인터넷 서비스 제공업체(ISP, Internet Service Provider)를 통한 연결.
+
+  WAN(Wide Area Network)은 일반적으로 ISP(인터넷 서비스 제공업체, Internet Service Provider)를 통해 연결됩니다.
+    
+      ISP(인터넷 서비스 제공업체, Internet Service Provider)는 WAN(Wide Area Network)을 통해 여러 지역이나 국가를 연결하는 네트워크 인프라를 제공합니다.
+      개인이나 회사는 ISP(Internet Service Provider)의 WAN(Wide Area Network, 광역 통신망)을 사용해 인터넷을 통해 다른 네트워크와 연결됩니다.
+    
+  
+
+
+4️⃣ 고비용.
+
+  WAN(Wide Area Network)은 구축과 유지비용이 매우 높습니다.
+    
+      지리적으로 먼 거리를 연결하기 위해 복잡한 장비와 기술이 필요하며, 대규모 네트워크 인프라가 요구됩니다.
+      WAN(Wide Area Network, 광역 통신망) 연결을 위해 고속 광케이블, 위성 연결, 전용선등이 사용됩니다.
+    
+  
+
+
+5️⃣ 다양한 연결 기술 사용.
+
+  WAN(Wide Area Network, 광역 통신망)은 광케이블, 위성 연결, 전용선 DSL(디지털 가입자 회선), LTE/5G와 같은 여러 기술을 사용하여 데이터를 전송합니다.
+    
+      이러한 기술은 거리에 따른 속도와 성능에 영향을 미칩니다.
+    
+  
+
+
+2️⃣ WAN의 구성 요소.
+
+1️⃣ 라우터(Router)
+
+  라우터(Router)는 WAN(Wide Area Network, 광역 통신망)에서 데이터를 적절한 네트워크로 경로 설정하고 전송하는 역할을 합니다.
+    
+      여러 LAN(Local Area Network, 근거리 통신망)을 서로 연결하거나, LAN(Local Area Network, 근거리 통신망)을 인터넷과 연결하는 데 사용됩니다.
+    
+  
+
+
+2️⃣ 전용선(Leased Line)
+
+  전용선은 두 지점 간에 데이터를 전송하기 위해 전용으로 사용되는 통신 회선입니다.
+    
+      일반적으로 기업이 본사와 지사 간의 통신을 위해 전용선으로 사용하여, 보안성과 성능을 확보할 수 있습니다.
+    
+  
+
+
+3️⃣ 스위치(Switch)
+
+  스위치는 WAN(Wide Area Network, 광역 통신망)에서도 네트워크 장치 간의 데이터를 효율적으로 전달하기 위해 사용됩니다.
+    
+      LAN(Local Area Network, 근거리 통신망)에서도 많이 사용되지만, WAN(Wide Area Network, 광역 통신망)에서는 더 큰 규모의 데이터 흐름을 관리하는 스위치가 필요합니다.
+    
+  
+
+
+4️⃣ 방화벽(Firewall)
+
+  WAN(Wide Area Network, 광역 통신망)을 통한 네트워크 통신을 보호하기 위해 방화벽이 사용됩니다.
+    
+      외부에서 들어오는 불법적인 접근이나 해킹을 차단하고, 네트워크의 보안을 강화하는 역할을 합니다.
+    
+  
+
+
+5️⃣ 게이트웨이(Gateway)
+
+  서로 다른 네트워크 프로토콜을 사용하는 네트워크 간에 통신을 가능하게 해주는 장비입니다.
+    
+      WAN(Wide Area Network, 광역 통신망)에서는 여러 종류의 네트워크를 연결할 수 있으므로, 서로 다른 네트워크 간의 통신을 위해 게이트웨이가 사용됩니다.
+    
+  
+
+
+3️⃣ WAN의 예시.
+
+1️⃣ 인터넷(Internet)
+
+  인터넷(Internet)은 가장 큰 WAN(Wide Area Network, 광역 통신망)의 예입니다.
+    
+      전 세계의 수많은 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)이 인터넷을 통해 연결되어 통신을 주고받습니다.
+        
+          인터넷은 ISP(Internet Service Provider, 인터넷 서비스 제공업체)들이 제공하는 네트워크 인프라를 통해 전 세계에서 데이터를 주고받을 수 있게 해줍니다.
+        
+      
+    
+  
+
+
+2️⃣ 기업 WAN(Wide Area Network, 광역 통신망)
+
+  대기업은 본사와 여러 지사 간의 데이터를 교환하기 위해 자체적인 WAN을 구축할 수 있습니다.
+    
+      예를 들어, 서울에 본사를 둔 회사가 부산, 뉴욕, 도쿄의 지사와 WAN(Wide Area Network, 광역 통신망)을 통해 연결하여 데이터를 공유하고, 협업을 진행할 수 있습니다.
+    
+  
+
+
+3️⃣ 은행 네트워크
+
+  전 세계에 지점을 두고 있는 은행은 WAN(Wide Area Network, 광역 통신망)을 통해 각 지점 간에 데이터를 수행합니다.
+    
+      고객의 계좌 정보, 거래 내역 등을 전송하고, 실시간으로 금융 데이터를 동기화합니다.
+    
+  
+
+
+4️⃣ 정부 네트워크
+
+  여러 국가기관이 WAN(Wide Area Network, 광역 통신망)을 사용해 중앙 정부와 지방 정부 간의 데이터를 전송하거나, 다른 국가 기관과 통신하는 네트워크를 구축합니다.
+
+
+4️⃣ WAN의 장점.
+
+1️⃣ 지리적 한계를 넘는 통신.
+
+  WAN(Wide Area Network, 광역 통신망)을 사용하면 멀리 떨어진 지리적 위치에 있는 네트워크와도 쉽게 통신할 수 있습니다.
+    
+      국가 간, 대륙간 연결도 WAN(Wide Area Network, 광역 통신망)을 통해 가능합니다.
+    
+  
+
+
+2️⃣ 자원 공유.
+
+  WAN(Wide Area Network, 광역 통신망)을 통해 여러 지역에 흩어진 네트워크 사용자들이 데이터와 자원을 공유할 수 있습니다.
+    
+      예를 들어, 한 회사의 여러 지사에서 파일 서버나 데이터베이스에 접근할 수 있습니다.
+    
+  
+
+
+3️⃣ 중앙 집중 관리.
+
+  WAN(Wide Area Network, 광역 통신망)은 네트워크의 중앙 관리를 가능하게 합니다.
+    
+      본사에서 지사 네트워크 관리하거나, 중앙 서버에서 네트워크 자원을 통합적으로 관리할 수 있습니다.
+    
+  
+
+
+4️⃣ 확장성.
+
+  WAN(Wide Area Network, 광역 통신망)은 필요한 만큼 확장할 수 있습니다.
+    
+      지역이 다르거나 국가가 다르더라도, 네트워크를 확장하여 연결할 수 있습니다.
+    
+  
+
+
+5️⃣ WAN의 단점.
+
+1️⃣ 높은 비용.
+
+  WAN(Wide Area Network, 광역 통신망)을 구축하고 유지하는 데 비용이 많이 듭니다.
+    
+      전용선, 위성 링크, 광섬유 등의 인프라를 구축하는 데 많은 자원이 필요합니다.
+        
+          특히, 장거리 연결일수록 비용이 더 높아집니다.
+        
+      
+    
+  
+
+
+2️⃣ 느린 속도.
+
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 데이터 전송 속도가 느릴 수 있습니다.
+    
+      물리적 거리가 멀수록 데이터 전송에 걸리는 시간이 증가하고, 지연이 발생할 수 있습니다.
+    
+  
+
+
+3️⃣ 복잡성.
+
+  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)보다 구축과 관리가 훨씬 복잡합니다.
+    
+      장거리 네트워크 통신은 여러 기술과 장비의 조합이 필요하며, 문제가 발생했을 때 해결하기 어렵습니다.
+    
+  
+
+
+4️⃣ 보안 문제.
+
+  WAN(Wide Area Network, 광역 통신망)은 인터넷과 같은 공개 네트워크를 사용할 때 보안 문제가 발생할 수 있습니다.
+    
+      데이터를 안전하게 보호하기 위해서는 암호화, 방화벽 등의 보안 기술이 필요합니다.
+    
+  
+
+
+6️⃣ 결론.
+
+  WAN(Wide Area Network, 광역 통신망)은 광범위한 지역을 연결하는 네트워크로, LAN(Local Area Network, 근거리 통신망)과 MAN(Metropolitan Area Network, 도시권 통신망)을 연결하고 국가 간, 대륙 간 통신을 가능하게 합니다.
+  WAN(Wide Area Network, 광역 통신망)은 인터넷을 통해 여러 장치와 네트워크가 서로 연결될 수 있는 방법을 제공하며, 기업이나 정부, 은행 등에서 다양한 용도로 사용됩니다.
+  WAN(Wide Area Network, 광역 통신망)을 통해 먼 거리의 네트워크를 연결하여 자원 공유와 통신을 할 수 있지만, 구축 및 유지 비용이 높고 관리가 복잡할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Network/2024/2024-10-11-what-is-the-http-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -15848,627 +16396,205 @@ Content-Length: 1354
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-10-10-what-is-the-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html"><h1 class="title_post">🌐[Network] WAN(Wide Area Network)이란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-11-what-is-the-wan.html" class="txt_post">
-                            🌐[Network] WAN(Wide Area Network)이란 무엇일까요?
+                        <a href="/Network/2024/2024-10-10-what-is-the-protocol.html"><h1 class="title_post">🌐[Network] 프로토콜(Protocol)이란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-10-what-is-the-protocol.html" class="txt_post">
+                            🌐[Network] 프로토콜(Protocol)이란 무엇일까요?
 
-  WAN(Wide Area Network, 광역 통신망)은 지리적으로 멀리 떨어진 지역들을 연결하는 네트워크입니다.
-  WAN(Wide Area Network, 광역 통신망)은 도시, 국가, 심지어 전 세계에 걸쳐있는 네트워크를 연결할 수 있으며, 일반적으로 여러 LAN(Local Area Network, 근거리 통신망)이나 MAN(Metropolitan Area Network, 도시권 통신망)을 서로 연결하여 데이터를 주고받을 수 있게 해줍니다.
-  인터넷이 가장 대표적인 WAN의 예입니다.
-
-
-
-  🙋‍♂️LAN(Local Area Network)이란 무엇일까요?
-
-
-1️⃣ WAN(Wide Area Network, 광역 통신망)의 주요 특징.
-
-1️⃣ 광범위한 지리적 범위.
-
-  WAN(Wide Area Network, 광역 통신망)은 멀리 떨어진 지역에 있는 네트워크들을 연결합니다.
+  프로토콜(Protocol) 은 컴퓨터나 네트워크 장치간에 데이터를 주고 받기 위한 일련의 규칙과 절차를 정의한 표준입니다.
     
-      예를 들면, 한 나라의 여러 도시나, 심지어 다른 나라의 네트워크까지 연결할 수 있습니다.
-      WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)과 달리 국가 간, 대륙 간 네트워크를 연결할 수 있습니다.
+      쉽게 말해, 통신하는 장치들이 서로 이해하고 데이터 교환을 원활히 할 수 있도록 정해진 약속을 말합니다.
+    
+  
+  프로토콜은 데이터 형식, 통신 속도, 오류 처리 방식, 메시지 구조 등 통신에 필요한 모든 요소를 정의합니다.
+
+
+1️⃣ 프로토콜의 주요 역할.
+
+1️⃣ 통신 규칙 제공.
+
+  서로 다른 장치나 시스템이 데이터를 주고받기 위해 따라야 할 규칙을 제공합니다.
+    
+      각 장치나 시스템이 동일한 프로토콜을 따름으로써, 서로 원활하게 정보를 주고받을 수 있습니다.
     
   
 
 
-2️⃣ 낮은 데이터 전송 속도.
+2️⃣ 데이터 형식 정의.
 
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 상대적으로 낮은 데이터 전송 속도를 제공합니다.
+  데이터를 어떻게 표현하고 전송할지에 대한 형식을 정의합니다.
     
-      네트워크 장비 간의 물리적 거리가 멀기 때문에, 데이터 전송 속도가 느려질 수 있습니다.
+      예를 들어, 메시지의 시작과 끝을 어떻게 구분할지, 데이터의 크기나 구조는 어떻게 할지 등을 결정합니다.
+    
+  
+
+
+3️⃣ 오류 검출 및 수정.
+
+  데이터 전송 중 발생할 수 있는 오류를 감지하고, 이를 처리하는 방식을 정의합니다.
+    
+      통신 중 데이터가 손상되거나 유실될 경우 이를 해결하기 위한 절차가 포함됩니다.
+    
+  
+
+
+4️⃣ 동기화
+
+  데이터를 주고 받는 송신자와 수신자 간의 동기화를 처리하여, 두 장치가 서로의 데이터를 올바르게 이해하고 처리할 수 있도록 돕습니다.
+
+
+2️⃣ 프로토콜의 종류.
+
+  네트워크 통신에서 사용되는 프로토콜은 OSI(Open Systems Interconnection) 모델이나 TCP/IP 모델의 계층에 따라 나눌 수 있습니다.
+    
+      각 계층은 서로 다른 프로토콜을 사용하여 특정 기능을 수행합니다.
+    
+  
+
+
+1️⃣ 네트워크 계층별 프로토콜.
+
+  프로토콜은 네트워크 통신의 각 단계에 해당하는 다양한 역할을 담당합니다.
+
+
+👉 응용 계층(Application Layer)
+
+  HTTP(HyperText Transfer Protocol)
+    
+      웹 브라우저와 웹 서버 간에 데이터를 주고받기 위한 프로토콜로, 웹 페이지의 전송을 담당합니다.
+    
+  
+  FTP(File Transfer Protocol)
+    
+      컴퓨터 간에 파일을 전송하는 데 사용되는 프로토콜입니다.
+    
+  
+  SMTP(Simple Mail Transfer Protocol)
+    
+      이메일 전송을 위한 프로토콜입니다.
+    
+  
+  DNS(Domain Name System)
+    
+      도메인 이름을 IP 주소로 변환하는 프로토콜입니다.
+    
+  
+
+
+👉 전송 계층(Transport Layer)
+
+  TCP(Transmission Control Protocol)
+    
+      신뢰성 있는 연결형 데이터 전송 프로토콜로, 데이터를 패킷으로 나누어 전송하고, 오류가 발생하면 재전송을 통해 안정성을 보장합니다.
+    
+  
+  UDP(User Datagram Protocol)
+    
+      비연결형 프로토콜로, 빠른 데이터 전송이 가능하지만, 데이터 전송의 신뢰성은 보장하지 않습니다.
+      주로 실시간 스트리밍이나 게임에서 사용됩니다.
+    
+  
+
+
+👉 인터넷 계층(Internet Layer)
+
+  IP(Internet Protocol)
+    
+      데이터를 패킷으로 나누어 목적지까지 전달하는 역할을 하는 프로토콜로, 인터넷에서 기본적인 데이터 전송을 담당합니다.
+    
+  
+  ICMP(Internet Control Message Protocol)
+    
+      네트워크 장비 간의 진단이나 오류 메시지를 전송하는 데 사용됩니다.
         
-          하지만 광케이블과 같은 고속 네트워크 기술을 사용하여 성능을 향상시킬 수 있습니다.
-        
-      
-    
-  
-
-
-3️⃣ 인터넷 서비스 제공업체(ISP, Internet Service Provider)를 통한 연결.
-
-  WAN(Wide Area Network)은 일반적으로 ISP(인터넷 서비스 제공업체, Internet Service Provider)를 통해 연결됩니다.
-    
-      ISP(인터넷 서비스 제공업체, Internet Service Provider)는 WAN(Wide Area Network)을 통해 여러 지역이나 국가를 연결하는 네트워크 인프라를 제공합니다.
-      개인이나 회사는 ISP(Internet Service Provider)의 WAN(Wide Area Network, 광역 통신망)을 사용해 인터넷을 통해 다른 네트워크와 연결됩니다.
-    
-  
-
-
-4️⃣ 고비용.
-
-  WAN(Wide Area Network)은 구축과 유지비용이 매우 높습니다.
-    
-      지리적으로 먼 거리를 연결하기 위해 복잡한 장비와 기술이 필요하며, 대규모 네트워크 인프라가 요구됩니다.
-      WAN(Wide Area Network, 광역 통신망) 연결을 위해 고속 광케이블, 위성 연결, 전용선등이 사용됩니다.
-    
-  
-
-
-5️⃣ 다양한 연결 기술 사용.
-
-  WAN(Wide Area Network, 광역 통신망)은 광케이블, 위성 연결, 전용선 DSL(디지털 가입자 회선), LTE/5G와 같은 여러 기술을 사용하여 데이터를 전송합니다.
-    
-      이러한 기술은 거리에 따른 속도와 성능에 영향을 미칩니다.
-    
-  
-
-
-2️⃣ WAN의 구성 요소.
-
-1️⃣ 라우터(Router)
-
-  라우터(Router)는 WAN(Wide Area Network, 광역 통신망)에서 데이터를 적절한 네트워크로 경로 설정하고 전송하는 역할을 합니다.
-    
-      여러 LAN(Local Area Network, 근거리 통신망)을 서로 연결하거나, LAN(Local Area Network, 근거리 통신망)을 인터넷과 연결하는 데 사용됩니다.
-    
-  
-
-
-2️⃣ 전용선(Leased Line)
-
-  전용선은 두 지점 간에 데이터를 전송하기 위해 전용으로 사용되는 통신 회선입니다.
-    
-      일반적으로 기업이 본사와 지사 간의 통신을 위해 전용선으로 사용하여, 보안성과 성능을 확보할 수 있습니다.
-    
-  
-
-
-3️⃣ 스위치(Switch)
-
-  스위치는 WAN(Wide Area Network, 광역 통신망)에서도 네트워크 장치 간의 데이터를 효율적으로 전달하기 위해 사용됩니다.
-    
-      LAN(Local Area Network, 근거리 통신망)에서도 많이 사용되지만, WAN(Wide Area Network, 광역 통신망)에서는 더 큰 규모의 데이터 흐름을 관리하는 스위치가 필요합니다.
-    
-  
-
-
-4️⃣ 방화벽(Firewall)
-
-  WAN(Wide Area Network, 광역 통신망)을 통한 네트워크 통신을 보호하기 위해 방화벽이 사용됩니다.
-    
-      외부에서 들어오는 불법적인 접근이나 해킹을 차단하고, 네트워크의 보안을 강화하는 역할을 합니다.
-    
-  
-
-
-5️⃣ 게이트웨이(Gateway)
-
-  서로 다른 네트워크 프로토콜을 사용하는 네트워크 간에 통신을 가능하게 해주는 장비입니다.
-    
-      WAN(Wide Area Network, 광역 통신망)에서는 여러 종류의 네트워크를 연결할 수 있으므로, 서로 다른 네트워크 간의 통신을 위해 게이트웨이가 사용됩니다.
-    
-  
-
-
-3️⃣ WAN의 예시.
-
-1️⃣ 인터넷(Internet)
-
-  인터넷(Internet)은 가장 큰 WAN(Wide Area Network, 광역 통신망)의 예입니다.
-    
-      전 세계의 수많은 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)이 인터넷을 통해 연결되어 통신을 주고받습니다.
-        
-          인터넷은 ISP(Internet Service Provider, 인터넷 서비스 제공업체)들이 제공하는 네트워크 인프라를 통해 전 세계에서 데이터를 주고받을 수 있게 해줍니다.
+          예: ping 명령.
         
       
     
   
 
 
-2️⃣ 기업 WAN(Wide Area Network, 광역 통신망)
+👉 네트워크 인터페이스 계층(Network Interface Layer)
 
-  대기업은 본사와 여러 지사 간의 데이터를 교환하기 위해 자체적인 WAN을 구축할 수 있습니다.
+  Ethernet
     
-      예를 들어, 서울에 본사를 둔 회사가 부산, 뉴욕, 도쿄의 지사와 WAN(Wide Area Network, 광역 통신망)을 통해 연결하여 데이터를 공유하고, 협업을 진행할 수 있습니다.
+      로컬 영역 네트워크(LAN)에서 사용되는 물리적 네트워크 프로토콜로, 네트워크 카드 간 데이터 전송을 처리합니다.
+    
+  
+  Wi-Fi
+    
+      무선 네트워크에서 사용되는 통신 프로토콜로, 무선 장치 간 데이터를 주고받을 때 사용됩니다.
     
   
 
 
-3️⃣ 은행 네트워크
+2️⃣ 보안 관련 프로토콜
 
-  전 세계에 지점을 두고 있는 은행은 WAN(Wide Area Network, 광역 통신망)을 통해 각 지점 간에 데이터를 수행합니다.
+  SSL/TLS(Secure Sockets Layer / Transport Layer Security)
     
-      고객의 계좌 정보, 거래 내역 등을 전송하고, 실시간으로 금융 데이터를 동기화합니다.
+      인터넷 상에서 데이터를 안전하게 암호화하여 전송하는 프로토콜입니다.
+      HTTPS는 SSL/TLS를 사용하여 HTTP 통신을 암호화합니다.
+    
+  
+  SSH(Secure Shell)
+    
+      원격 시스템에 안전하게 접속하기 위한 프로토콜로, 데이터를 암호화하여 전송합니다.
     
   
 
 
-4️⃣ 정부 네트워크
+3️⃣ 프로토콜 예시: HTTP 프로토콜
 
-  여러 국가기관이 WAN(Wide Area Network, 광역 통신망)을 사용해 중앙 정부와 지방 정부 간의 데이터를 전송하거나, 다른 국가 기관과 통신하는 네트워크를 구축합니다.
-
-
-4️⃣ WAN의 장점.
-
-1️⃣ 지리적 한계를 넘는 통신.
-
-  WAN(Wide Area Network, 광역 통신망)을 사용하면 멀리 떨어진 지리적 위치에 있는 네트워크와도 쉽게 통신할 수 있습니다.
+  HTTP(HyperText Transfer Protocol) 는 클라이언트와 서버간의 웹 페이지 데이터를 주고받는 데 사용하는 프로토콜입니다.
+  클라이언트(예: 웹 브라우저)가 HTTP 요청을 보내면, 서버는 그에 대한 응답을 HTTP 형식으로 반환합니다.
     
-      국가 간, 대륙간 연결도 WAN(Wide Area Network, 광역 통신망)을 통해 가능합니다.
-    
-  
-
-
-2️⃣ 자원 공유.
-
-  WAN(Wide Area Network, 광역 통신망)을 통해 여러 지역에 흩어진 네트워크 사용자들이 데이터와 자원을 공유할 수 있습니다.
-    
-      예를 들어, 한 회사의 여러 지사에서 파일 서버나 데이터베이스에 접근할 수 있습니다.
-    
-  
-
-
-3️⃣ 중앙 집중 관리.
-
-  WAN(Wide Area Network, 광역 통신망)은 네트워크의 중앙 관리를 가능하게 합니다.
-    
-      본사에서 지사 네트워크 관리하거나, 중앙 서버에서 네트워크 자원을 통합적으로 관리할 수 있습니다.
-    
-  
-
-
-4️⃣ 확장성.
-
-  WAN(Wide Area Network, 광역 통신망)은 필요한 만큼 확장할 수 있습니다.
-    
-      지역이 다르거나 국가가 다르더라도, 네트워크를 확장하여 연결할 수 있습니다.
-    
-  
-
-
-5️⃣ WAN의 단점.
-
-1️⃣ 높은 비용.
-
-  WAN(Wide Area Network, 광역 통신망)을 구축하고 유지하는 데 비용이 많이 듭니다.
-    
-      전용선, 위성 링크, 광섬유 등의 인프라를 구축하는 데 많은 자원이 필요합니다.
+      클라이언트의 요청(Request) : GET /index.html HTTP/1.1
+      서버의 응답(Response) : HTTP/1.1 200 OK
         
-          특히, 장거리 연결일수록 비용이 더 높아집니다.
+          이때, HTTP 프로토콜은 요청과 응답의 구조, 상태 코드(200, 404 등), 메서드(GET, POST 등) 등 모든 통신 규칙을 정의합니다.
         
       
     
   
 
 
-2️⃣ 느린 속도.
+4️⃣ 프로토콜의 필요성.
 
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)에 비해 데이터 전송 속도가 느릴 수 있습니다.
+1️⃣ 호환성 확보.
+
+  다양한 장치와 시스템 간의 호환성을 보장하기 위해 표준화된 프로토콜이 필요합니다.
     
-      물리적 거리가 멀수록 데이터 전송에 걸리는 시간이 증가하고, 지연이 발생할 수 있습니다.
-    
-  
-
-
-3️⃣ 복잡성.
-
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)보다 구축과 관리가 훨씬 복잡합니다.
-    
-      장거리 네트워크 통신은 여러 기술과 장비의 조합이 필요하며, 문제가 발생했을 때 해결하기 어렵습니다.
+      프로토콜이 없다면 서로 다른 장치나 시스템 간에 데이터를 주고받는 것이 매우 어려워질 것입니다.
     
   
 
 
-4️⃣ 보안 문제.
+2️⃣ 통신 표준 제공.
 
-  WAN(Wide Area Network, 광역 통신망)은 인터넷과 같은 공개 네트워크를 사용할 때 보안 문제가 발생할 수 있습니다.
+  프로토콜은 데이터 형식, 에러 처리 방식, 전송 속도 등 여러 요소를 표준화하여 네트워크 상의 모든 장치가 동일한 규칙을 따르도록 합니다.
     
-      데이터를 안전하게 보호하기 위해서는 암호화, 방화벽 등의 보안 기술이 필요합니다.
-    
-  
-
-
-6️⃣ 결론.
-
-  WAN(Wide Area Network, 광역 통신망)은 광범위한 지역을 연결하는 네트워크로, LAN(Local Area Network, 근거리 통신망)과 MAN(Metropolitan Area Network, 도시권 통신망)을 연결하고 국가 간, 대륙 간 통신을 가능하게 합니다.
-  WAN(Wide Area Network, 광역 통신망)은 인터넷을 통해 여러 장치와 네트워크가 서로 연결될 수 있는 방법을 제공하며, 기업이나 정부, 은행 등에서 다양한 용도로 사용됩니다.
-  WAN(Wide Area Network, 광역 통신망)을 통해 먼 거리의 네트워크를 연결하여 자원 공유와 통신을 할 수 있지만, 구축 및 유지 비용이 높고 관리가 복잡할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-10-11-combine-lan-the-wan.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-10-11-combine-lan-the-wan.html"><h1 class="title_post">🌐[Network] LAN이 합쳐져서 WAN이 되는걸까?</h1></a>
-                        <a href="/Network/2024/2024-10-11-combine-lan-the-wan.html" class="txt_post">
-                            🌐[Network] LAN이 합쳐져서 WAN이 되는걸까?
-
-
-  네트워크 개념에서 LAN(Local Area Network, 근거리 통신망)이 WAN(Wide Area Network, 광역 통신망)으로 단순히 합쳐지는 것은 아닙니다.
-    
-      LAN과 WAN은 서로 다른 규모와 기능을 가진 네트워크 유형이며, 그 관계는 단순한 결합 이상의 개념입니다.
+      이를 통해 전 세계적으로 인터넷 통신이 가능해집니다.
     
   
 
 
-1️⃣ LAN과 WAN의 차이와 관계.
+3️⃣ 효율적인 통신.
 
-1️⃣ LAN(Local Area Network, 근거리 통신망)
-
-  LAN(Local Area Network, 근거리 통신망)은 지리적 범위(예: 집, 사무실, 학교) 내에서 컴퓨터, 프린터, 서버 등 장치들을 연결하는 네트워크입니다.
-  고속 데이터 전송을 제공하며, 주로 이더넷(Ethernet) 또는 Wi-Fi를 사용하여 장치 간의 통신을 처리합니다.
-
-
-2️⃣ WAN(Wide Area Network, 광역 통신망)
-
-  WAN(Wide Area Network, 광역 통신망)은 넓은 지리적 범위(예: 여러 도시, 국가, 심지어 전 세계)를 커버하는 네트워크입니다.
-  WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)보다 느릴 수 있으며, 여러 LAN(Local Area Network, 근거리 통신망)을 연결하여 원거리 통신을 가능하게 합니다.
-  WAN(Wide Area Network, 광역 통신망)은 ISP(Internet Service Provider, 인터넷 서비스 제공업체) 또는 전용선을 통해 연결되며, 네트워크 장치 간의 물리적 거리가 매우 멀 수 있습니다.
-
-
-
-  🙋‍♂️ WAN(Wide Area Network)이란 무엇일까요?
-🙋‍♂️ 이더넷(Ethernet)이란 무엇일까요?
-🙋‍♂️ LAN(Local Area Network)이란 무엇일까요?
-
-
-2️⃣ LAN과 WAN의 관계.
-
-👉 LAN(Local Area Network, 근거리 통신망)이 WAN(Wide Area Network, 광역 통신망)에 연결된다.
-
-  여러 LAN(Local Area Network, 근거리 통신망)을 WAN(Wide Area Network, 광역 통신망)으로 연결하여 광범위한 네트워크를 형성합니다.
+  프로토콜은 데이터 전송을 최적화하고, 오류 발생 시 복구할 수 있는 메커니즘을 제공합니다.
     
-      예를 들어, 한 기업의 각 지사(각 지사는 LAN(Local Area Network, 근거리 통신망)을 형성)를 WAN(Wide Area Network, 광역 통신망)을 통해 연결하여 본사와 다른 지사 간에 통신할 수 있게 합니다.
+      또한 통신 과정에서 발생할 수 있는 여러 문제를 해결할 수 있는 방법을 정의하여 안정적이고 효율적인 데이터 전송을 보장합니다.
     
   
-
-
-👉 WAN(Wide Area Network, 광역 통신망)은 LAN(Local Area Network, 근거리 통신망)을 포함할 수 있다.
-
-  WAN(Wide Area Network, 광역 통신망)은 여러 LAN(Local Area Network, 근거리 통신망)을 포함할 수 있습니다.
-    
-      즉, WAN(Wide Area Network, 광역 통신망)의 일부는 여러 개의 LAN(Local Area Network, 근거리 통신망)을 연결하여, 전세계에 분산된 장치들이 서로 통신할 수 있게 만듭니다.
-    
-  
-
-
-3️⃣ 예시
-
-1️⃣ 회사 네트워크.
-
-
-
-  한 회사가 서울, 부산, 뉴욕에 지사를 두고 있다고 가정합니다.
-    
-      각 지사는 자체적인 LAN(Local Area Network, 근거리 통신망)을 가지고 있는데, 이 LAN(Local Area Network, 근거리 통신망)은 지사 내의 컴퓨터, 프린터, 서버 등을 연결합니다.
-    
-  
-
-
-
-
-
-  각 지사는 WAN(Wide Area Network, 광역 통신망)을 통해 본사와 다른 지사들과 연결됩니다.
-    
-      WAN(Wide Area Network, 광역 통신망)을 통해 서울 지사의 직원이 부산 지사의 서버에 접근하거나, 뉴욕 지사와 파일을 공유할 수 있습니다.
-    
-  
-
-
-2️⃣ 인터넷(Internet).
-
-  인터넷(Internet)은 세계 최대의 WAN(Wide Area Network, 광역 통신망)으로, 여러 LAN(Local Area Network, 근거리 통신망)과 WAN(Wide Area Network, 광역 통신망)을 연결하여 전 세계의 컴퓨터들이 서로 통신할 수 있도록 만듭니다.
-    
-      내가 집에서 인터넷에 접속하는 경우, 집의 LAN(예: Wi-Fi 네트워크)이 인터넷(WAN, Wide Area Network)을 통해 전 세계의 다른 컴퓨터와 연결됩니다.
-    
-  
-
-
-4️⃣ WAN(Wide Area Network, 광역 통신망)의 구현 방법.
-
-  WAN(Wide Area Network, 광역 통신망)을 구현하기 위해서는 ISP(Internet Service Provider, 인터넷 서비스 제공자), 위성 링크, 전용선, 광섬유 등의 기술이 사용됩니다.
-    
-      LAN(Local Area Network, 근거리 통신망)은 일반적으로 스위치, 라우터, 케이블을 통해 설정되지만, WAN(Wide Area Network)은 훨씬 더 복잡한 기술 인프라를 필요로 합니다.
-    
-  
-  VPN(가상 사설망)도 WAN(Wide Area Network, 광역 통신망)을 구축하는 방법 중 하나로, 여러 LAN을 공용 네트워크(인터넷, Internet)를 통해 안전하게 연결할 수 있도록 해줍니다.
 
 
 5️⃣ 결론.
 
-  LAN(Local Area Network, 근거리 통신망)이 여러개 합쳐져서 WAN(Wide Area Network, 광역 통신망)이 되는 것은 아닙니다.
-    
-      그러나 LAN(Local Area Network, 근거리 통신망)은 WAN(Wide Area Network, 광역 통신망)의 일부가 될 수 있으며, WAN(Wide Area Network, 광역 통신망)은 여러 LAN(Local Area Network, 근거리 통신망)을 연결하여 광범위한 통신망을 형성합니다.
-    
-  
-  WAN(Wide Area Network, 광역 통신망)은 주로 먼 거리의 네트워크를 연결하기 위한 것이고, LAN(Local Area Network, 근거리 통신망)은 가까운 거리에서 효율적으로 자원을 공유하고 데이터를 전송하기 위해 설계된 네트워크입니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Network" class="category">Network</a>
-                            
-                                <span class="date">· 2024-10-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html"><h1 class="title_post">🌐[Network] RESTful API란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="txt_post">
-                            🌐[Network] RESTful API란 무엇일까요?
-
-  RESTful API는 REST(Representational State Transfer) 아키텍처 스타일을 기반으로 한 웹 API를 의미합니다.
-  RESTful API는 클라이언트와 서버 간의 통신을 효율적이고 일관성 있게 설계하기 위해 HTTP 프로토콜을 활용하여 데이터를 주고 받는 방식입니다.
-  RESTful은 특정 기술이나 프로토콜을 지칭하는 것은 아니지만, REST 아키텍처의 원칙을 준수하는 API를 설명할 때 사용하는 용어입니다.
-
-
-1️⃣ REST(Representational State Transfer)의 기본 개념.
-
-  REST는 Roy Fielding이 2000년 박사 논문에서 소개한 분산 시스템을 설계하기 위한 아키텍처 스타일입니다.
-    
-      RESTful API는 이 원칙을 따르는 API로, 클라이언트-서버 구조, 무상태성, 캐싱 가능성, 계층화된 시스템과 같은 REST의 주요 제약을 따릅니다.
-    
-  
-
-
-2️⃣ REST의 주요 원칙 및 RESTful API의 특징.
-
-1️⃣ 자원(Resource) 기반.
-
-  REST에서는 모든 것을 자원으로 간주합니다.
-    
-      예를 들어, 사용자는 하나의 자원, 게시물은 또 다른 하나의 자원으로 취급됩니다.
-    
-  
-  각 자원은 고유한 URI(Uniform Resource Identifer)를 통해 식별됩니다.
-    
-      예를 들어, https://api.example.com/user/1는 id=1인 사용자 자원을 나타냅니다.
-    
-  
-
-
-👉 URI 설계 예시
-
-  GET /users -&gt; 모든 사용자 목록 가져오기
-  GET /users/1 -&gt; 특정 사용자(id=1) 가져오기
-  POST /users/1 -&gt; 새 사용자 생성
-  PUT /users/1 -&gt; 사용자 정보 업데이트
-  DELETE /users/1 -&gt; 사용자 삭제
-
-
-2️⃣ HTTP 메서드 사용.
-
-  RESTful API는 HTTP 메서드를 자원의 작업과 연관시키기 위해 사용합니다.
-    
-      주요 메서드로는 GET, POST, PUT, DELETE가 있습니다.
-        
-          GET : 자원을 조회할 때 사용합니다.
-          POST : 자원을 생성할 때 사용합니다.
-          PUT : 자원을 업데이트할 때 사용합니다.
-          DELETE : 자원을 삭제할 때 사용합니다.
-        
-      
-    
-  
-  이러한 HTTP 메서드의 사용은 요청의 목적을 명확히 하고, 클라이언트와 서버 간의 상호작용을 일관성 있게 만듭니다.
-
-
-3️⃣ 무상태성(Stateless)
-
-  RESTful API는 무상태(Stateless)해야 합니다.
-    
-      즉, 서버는 클라이언트의 상태를 저장하지 않습니다.
-        
-          클라이언트가 보낸 각각의 요청은 독립적이어야 하며, 요청에 의존해서는 안 됩니다.
-        
-      
-    
-  
-  클라이언트는 매 요청마다 필요한 모든 정보를 서버에 보내야 하며, 서버는 해당 요청만을 처리하고 응답을 반환합니다.
-
-
-4️⃣ 캐시 가능(Cacheable)
-
-  RESTful API에서 응답은 캐시 될 수 있어야 합니다.
-    
-      서버는 응답에 대한 캐싱 가능 여부를 클라이언트에게 명확히 전달합니다.
-    
-  
-  클라이언트가 자원의 불필요한 요청을 반복하지 않도록 하기 위해, 서버는 HTTP 헤더에 Cache-Control이나 Expires와 같은 캐시 관련 정보를 포함하여 응답을 보낼 수 있습니다.
-
-
-5️⃣ 계층화된 구조.
-
-  RESTful 아키텍처는 계층화된 시스템을 지원합니다.
-    
-      클라이언트는 중간 서버(프록시, 게이트웨이 등)를 통과하더라도, 요청과 응답이 처리되는 방식에 대해 신경 쓸 필요가 없습니다.
-      서버는 여러 계층을 통해 보안, 로드 밸런싱 등을 처리할 수 있습니다.
-    
-  
-
-
-6️⃣ 일관된 인터페이스.
-
-  RESTful API는 일관된 인터페이스를 제공해야 합니다.
-    
-      이는 자원에 접근하고 조작하는 방식이 명확하고 일관적이어야 하며, 클라이언트가 각 자원에 대해 동일한 방식으로 작업을 수행할 수 있어야 한다는 의미입니다.
-    
-  
-
-
-7️⃣ 표현(Representation) 전송.
-
-  자원 자체는 서버에 저장되며, 클라이언트는 서버에서 자원의 표현(Representation) 을 전송받습니다.
-    
-      일반적으로 RESTful API는 JSON이나 XML 형식으로 자원의 상태를 표현하며, 이를 클라이언트에 전달합니다.
-    
-  
-
-
-👉 예시: 서버가 사용자 자원을 클라이언트에게 JSON 형식으로 응답할 때.
-{
-    "id": 1,
-    "name": "Kobe",
-    "email": "kobe@example.com"
-}
-
-
-3️⃣ RESTful API의 HTTP 메서드와 자원의 관계.
-
-1️⃣ GET
-
-  자원을 조회하는 데 사용됩니다.
-  예: GET /users/1은 id=1인 사용자를 조회하는 요청입니다.
-
-
-2️⃣ POST
-
-  새로운 자원을 생성하는 데 사용됩니다.
-  예: POST /users는 새로운 사용자를 생성하는 요청입니다.
-  요청 본문에는 생성할 자원의 정보가 포함됩니다.
-
-
-3️⃣ PUT
-
-  기존 자원을 업데이트하는 데 사용됩니다.
-  예: PUT /users/1은 id=1인 사용자 정보를 업데이트하는 요청입니다.
-
-
-4️⃣ DELETE
-
-  자원을 삭제하는 데 사용됩니다.
-  예: DELETE /users/1은 id=1인 사용자를 삭제하는 요청입니다.
-
-
-4️⃣ RESTful API의 예
-
-👉 사용자 자원을 관리하는 RESTful API 예시.
-
-1️⃣ GET 요청 (모든 사용자 조회)
-GET /users
-
-
-응답
-[
-    {"id": 1, "name": "Kobe", "email": "kobe@example.com"},
-    {"id": 2, "name": "Eric", "email": "eric@example.com"}
-]
-
-
-2️⃣ POST 요청 (새 사용자 생성)
-POST /users
-
-
-요청 본문.
-{
-    "name": "Kobe",
-    "email": "kobe@example.com"
-}
-
-
-응답.
-PUT /users/3
-
-
-3️⃣ PUT 요청 (사용자 정보 업데이트)
-PUT /users/3
-
-
-요청 본문
-{
-    "name": "Kobe updated",
-    "email": "kobe.updated@example.com"
-}
-
-
-응답
-{
-    "id": 3,
-    "name": "Kobe updated",
-    "email": "kobe.updated@example.com"
-}
-
-
-4️⃣ DELETE 요청 (사용자 삭제)
-DELETE /users/3
-
-
-응답.
-{
-    "message": "User deleted successfully"
-}
-
-
-5️⃣ RESTful API의 장점.
-
-1️⃣ 확장성.
-
-  RESTful API는 서버와 클라이언트 간의 결합도를 낮춰, 확장 가능하고 유연한 시스템을 설계할 수 있습니다.
-
-
-2️⃣ 표준화.
-
-  HTTP 프로토콜의 표준을 기반으로 하여, 다양한 클라이언트와 쉽게 연동이 가능합니다.
-
-
-3️⃣ 경량성.
-
-  JSON 같은 경량 포맷을 사용해 데이터 전송을 최적화할 수 있습니다.
-
-
-4️⃣ 캐싱 가능.
-
-  HTTP 캐싱 메커니즘을 통해 성능을 향상시키고 네트워크 부하를 줄일 수 있습니다.
-
-
-6️⃣ 결론.
-
-  RESTful API는 웹 애플리케이션에서 서버와 클라이언트 간의 상호작용을 일관성 있고 효율적으로 처리하기 위한 API 설계 방식입니다.
-  HTTP 프로토콜을 기반으로 자원을 CRUD 방식으로 관리하며, 무상태성, 자원 기반 접근, 일관된 인터페이스 등의 REST 원칙을 따릅니다.
-  RESTful API는 다양한 클라이언트(모바일, 웹 등)와 통신할 수 있는 확장 가능하고 유연한 시스템을 구축하는 데 매우 유용합니다.
+  프로토콜(Protocol) 은 장치들 간의 통신을 위한 규칙과 표준을 정의한 중요한 요소입니다.
+  프로토콜이 없다면 네트워크 상의 다양한 시스템 간의 데이터 교환은 불가능할 것입니다.
+  인터넷과 네트워크 통신에서 프로토콜은 데이터의 정확한 전달을 보장하고, 네트워크 장치 간의 상호 운용성을 유지하기 위한 필수적인 구성 요소입니다.
 
 
                         </a>
@@ -16803,205 +16929,243 @@ DELETE /users/3
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Network/2024/2024-10-10-what-is-the-protocol.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
+                            <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Network/2024/2024-10-10-what-is-the-protocol.html"><h1 class="title_post">🌐[Network] 프로토콜(Protocol)이란 무엇일까요?</h1></a>
-                        <a href="/Network/2024/2024-10-10-what-is-the-protocol.html" class="txt_post">
-                            🌐[Network] 프로토콜(Protocol)이란 무엇일까요?
+                        <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html"><h1 class="title_post">🌐[Network] RESTful API란 무엇일까요?</h1></a>
+                        <a href="/Network/2024/2024-10-10-what-is-the-restful-api.html" class="txt_post">
+                            🌐[Network] RESTful API란 무엇일까요?
 
-  프로토콜(Protocol) 은 컴퓨터나 네트워크 장치간에 데이터를 주고 받기 위한 일련의 규칙과 절차를 정의한 표준입니다.
+  RESTful API는 REST(Representational State Transfer) 아키텍처 스타일을 기반으로 한 웹 API를 의미합니다.
+  RESTful API는 클라이언트와 서버 간의 통신을 효율적이고 일관성 있게 설계하기 위해 HTTP 프로토콜을 활용하여 데이터를 주고 받는 방식입니다.
+  RESTful은 특정 기술이나 프로토콜을 지칭하는 것은 아니지만, REST 아키텍처의 원칙을 준수하는 API를 설명할 때 사용하는 용어입니다.
+
+
+1️⃣ REST(Representational State Transfer)의 기본 개념.
+
+  REST는 Roy Fielding이 2000년 박사 논문에서 소개한 분산 시스템을 설계하기 위한 아키텍처 스타일입니다.
     
-      쉽게 말해, 통신하는 장치들이 서로 이해하고 데이터 교환을 원활히 할 수 있도록 정해진 약속을 말합니다.
-    
-  
-  프로토콜은 데이터 형식, 통신 속도, 오류 처리 방식, 메시지 구조 등 통신에 필요한 모든 요소를 정의합니다.
-
-
-1️⃣ 프로토콜의 주요 역할.
-
-1️⃣ 통신 규칙 제공.
-
-  서로 다른 장치나 시스템이 데이터를 주고받기 위해 따라야 할 규칙을 제공합니다.
-    
-      각 장치나 시스템이 동일한 프로토콜을 따름으로써, 서로 원활하게 정보를 주고받을 수 있습니다.
+      RESTful API는 이 원칙을 따르는 API로, 클라이언트-서버 구조, 무상태성, 캐싱 가능성, 계층화된 시스템과 같은 REST의 주요 제약을 따릅니다.
     
   
 
 
-2️⃣ 데이터 형식 정의.
+2️⃣ REST의 주요 원칙 및 RESTful API의 특징.
 
-  데이터를 어떻게 표현하고 전송할지에 대한 형식을 정의합니다.
+1️⃣ 자원(Resource) 기반.
+
+  REST에서는 모든 것을 자원으로 간주합니다.
     
-      예를 들어, 메시지의 시작과 끝을 어떻게 구분할지, 데이터의 크기나 구조는 어떻게 할지 등을 결정합니다.
+      예를 들어, 사용자는 하나의 자원, 게시물은 또 다른 하나의 자원으로 취급됩니다.
+    
+  
+  각 자원은 고유한 URI(Uniform Resource Identifer)를 통해 식별됩니다.
+    
+      예를 들어, https://api.example.com/user/1는 id=1인 사용자 자원을 나타냅니다.
     
   
 
 
-3️⃣ 오류 검출 및 수정.
+👉 URI 설계 예시
 
-  데이터 전송 중 발생할 수 있는 오류를 감지하고, 이를 처리하는 방식을 정의합니다.
-    
-      통신 중 데이터가 손상되거나 유실될 경우 이를 해결하기 위한 절차가 포함됩니다.
-    
-  
-
-
-4️⃣ 동기화
-
-  데이터를 주고 받는 송신자와 수신자 간의 동기화를 처리하여, 두 장치가 서로의 데이터를 올바르게 이해하고 처리할 수 있도록 돕습니다.
+  GET /users -&gt; 모든 사용자 목록 가져오기
+  GET /users/1 -&gt; 특정 사용자(id=1) 가져오기
+  POST /users/1 -&gt; 새 사용자 생성
+  PUT /users/1 -&gt; 사용자 정보 업데이트
+  DELETE /users/1 -&gt; 사용자 삭제
 
 
-2️⃣ 프로토콜의 종류.
+2️⃣ HTTP 메서드 사용.
 
-  네트워크 통신에서 사용되는 프로토콜은 OSI(Open Systems Interconnection) 모델이나 TCP/IP 모델의 계층에 따라 나눌 수 있습니다.
+  RESTful API는 HTTP 메서드를 자원의 작업과 연관시키기 위해 사용합니다.
     
-      각 계층은 서로 다른 프로토콜을 사용하여 특정 기능을 수행합니다.
-    
-  
-
-
-1️⃣ 네트워크 계층별 프로토콜.
-
-  프로토콜은 네트워크 통신의 각 단계에 해당하는 다양한 역할을 담당합니다.
-
-
-👉 응용 계층(Application Layer)
-
-  HTTP(HyperText Transfer Protocol)
-    
-      웹 브라우저와 웹 서버 간에 데이터를 주고받기 위한 프로토콜로, 웹 페이지의 전송을 담당합니다.
-    
-  
-  FTP(File Transfer Protocol)
-    
-      컴퓨터 간에 파일을 전송하는 데 사용되는 프로토콜입니다.
-    
-  
-  SMTP(Simple Mail Transfer Protocol)
-    
-      이메일 전송을 위한 프로토콜입니다.
-    
-  
-  DNS(Domain Name System)
-    
-      도메인 이름을 IP 주소로 변환하는 프로토콜입니다.
-    
-  
-
-
-👉 전송 계층(Transport Layer)
-
-  TCP(Transmission Control Protocol)
-    
-      신뢰성 있는 연결형 데이터 전송 프로토콜로, 데이터를 패킷으로 나누어 전송하고, 오류가 발생하면 재전송을 통해 안정성을 보장합니다.
-    
-  
-  UDP(User Datagram Protocol)
-    
-      비연결형 프로토콜로, 빠른 데이터 전송이 가능하지만, 데이터 전송의 신뢰성은 보장하지 않습니다.
-      주로 실시간 스트리밍이나 게임에서 사용됩니다.
-    
-  
-
-
-👉 인터넷 계층(Internet Layer)
-
-  IP(Internet Protocol)
-    
-      데이터를 패킷으로 나누어 목적지까지 전달하는 역할을 하는 프로토콜로, 인터넷에서 기본적인 데이터 전송을 담당합니다.
-    
-  
-  ICMP(Internet Control Message Protocol)
-    
-      네트워크 장비 간의 진단이나 오류 메시지를 전송하는 데 사용됩니다.
+      주요 메서드로는 GET, POST, PUT, DELETE가 있습니다.
         
-          예: ping 명령.
+          GET : 자원을 조회할 때 사용합니다.
+          POST : 자원을 생성할 때 사용합니다.
+          PUT : 자원을 업데이트할 때 사용합니다.
+          DELETE : 자원을 삭제할 때 사용합니다.
         
       
     
   
+  이러한 HTTP 메서드의 사용은 요청의 목적을 명확히 하고, 클라이언트와 서버 간의 상호작용을 일관성 있게 만듭니다.
 
 
-👉 네트워크 인터페이스 계층(Network Interface Layer)
+3️⃣ 무상태성(Stateless)
 
-  Ethernet
+  RESTful API는 무상태(Stateless)해야 합니다.
     
-      로컬 영역 네트워크(LAN)에서 사용되는 물리적 네트워크 프로토콜로, 네트워크 카드 간 데이터 전송을 처리합니다.
-    
-  
-  Wi-Fi
-    
-      무선 네트워크에서 사용되는 통신 프로토콜로, 무선 장치 간 데이터를 주고받을 때 사용됩니다.
-    
-  
-
-
-2️⃣ 보안 관련 프로토콜
-
-  SSL/TLS(Secure Sockets Layer / Transport Layer Security)
-    
-      인터넷 상에서 데이터를 안전하게 암호화하여 전송하는 프로토콜입니다.
-      HTTPS는 SSL/TLS를 사용하여 HTTP 통신을 암호화합니다.
-    
-  
-  SSH(Secure Shell)
-    
-      원격 시스템에 안전하게 접속하기 위한 프로토콜로, 데이터를 암호화하여 전송합니다.
-    
-  
-
-
-3️⃣ 프로토콜 예시: HTTP 프로토콜
-
-  HTTP(HyperText Transfer Protocol) 는 클라이언트와 서버간의 웹 페이지 데이터를 주고받는 데 사용하는 프로토콜입니다.
-  클라이언트(예: 웹 브라우저)가 HTTP 요청을 보내면, 서버는 그에 대한 응답을 HTTP 형식으로 반환합니다.
-    
-      클라이언트의 요청(Request) : GET /index.html HTTP/1.1
-      서버의 응답(Response) : HTTP/1.1 200 OK
+      즉, 서버는 클라이언트의 상태를 저장하지 않습니다.
         
-          이때, HTTP 프로토콜은 요청과 응답의 구조, 상태 코드(200, 404 등), 메서드(GET, POST 등) 등 모든 통신 규칙을 정의합니다.
+          클라이언트가 보낸 각각의 요청은 독립적이어야 하며, 요청에 의존해서는 안 됩니다.
         
       
     
   
+  클라이언트는 매 요청마다 필요한 모든 정보를 서버에 보내야 하며, 서버는 해당 요청만을 처리하고 응답을 반환합니다.
 
 
-4️⃣ 프로토콜의 필요성.
+4️⃣ 캐시 가능(Cacheable)
 
-1️⃣ 호환성 확보.
-
-  다양한 장치와 시스템 간의 호환성을 보장하기 위해 표준화된 프로토콜이 필요합니다.
+  RESTful API에서 응답은 캐시 될 수 있어야 합니다.
     
-      프로토콜이 없다면 서로 다른 장치나 시스템 간에 데이터를 주고받는 것이 매우 어려워질 것입니다.
+      서버는 응답에 대한 캐싱 가능 여부를 클라이언트에게 명확히 전달합니다.
+    
+  
+  클라이언트가 자원의 불필요한 요청을 반복하지 않도록 하기 위해, 서버는 HTTP 헤더에 Cache-Control이나 Expires와 같은 캐시 관련 정보를 포함하여 응답을 보낼 수 있습니다.
+
+
+5️⃣ 계층화된 구조.
+
+  RESTful 아키텍처는 계층화된 시스템을 지원합니다.
+    
+      클라이언트는 중간 서버(프록시, 게이트웨이 등)를 통과하더라도, 요청과 응답이 처리되는 방식에 대해 신경 쓸 필요가 없습니다.
+      서버는 여러 계층을 통해 보안, 로드 밸런싱 등을 처리할 수 있습니다.
     
   
 
 
-2️⃣ 통신 표준 제공.
+6️⃣ 일관된 인터페이스.
 
-  프로토콜은 데이터 형식, 에러 처리 방식, 전송 속도 등 여러 요소를 표준화하여 네트워크 상의 모든 장치가 동일한 규칙을 따르도록 합니다.
+  RESTful API는 일관된 인터페이스를 제공해야 합니다.
     
-      이를 통해 전 세계적으로 인터넷 통신이 가능해집니다.
-    
-  
-
-
-3️⃣ 효율적인 통신.
-
-  프로토콜은 데이터 전송을 최적화하고, 오류 발생 시 복구할 수 있는 메커니즘을 제공합니다.
-    
-      또한 통신 과정에서 발생할 수 있는 여러 문제를 해결할 수 있는 방법을 정의하여 안정적이고 효율적인 데이터 전송을 보장합니다.
+      이는 자원에 접근하고 조작하는 방식이 명확하고 일관적이어야 하며, 클라이언트가 각 자원에 대해 동일한 방식으로 작업을 수행할 수 있어야 한다는 의미입니다.
     
   
 
 
-5️⃣ 결론.
+7️⃣ 표현(Representation) 전송.
 
-  프로토콜(Protocol) 은 장치들 간의 통신을 위한 규칙과 표준을 정의한 중요한 요소입니다.
-  프로토콜이 없다면 네트워크 상의 다양한 시스템 간의 데이터 교환은 불가능할 것입니다.
-  인터넷과 네트워크 통신에서 프로토콜은 데이터의 정확한 전달을 보장하고, 네트워크 장치 간의 상호 운용성을 유지하기 위한 필수적인 구성 요소입니다.
+  자원 자체는 서버에 저장되며, 클라이언트는 서버에서 자원의 표현(Representation) 을 전송받습니다.
+    
+      일반적으로 RESTful API는 JSON이나 XML 형식으로 자원의 상태를 표현하며, 이를 클라이언트에 전달합니다.
+    
+  
+
+
+👉 예시: 서버가 사용자 자원을 클라이언트에게 JSON 형식으로 응답할 때.
+{
+    "id": 1,
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+3️⃣ RESTful API의 HTTP 메서드와 자원의 관계.
+
+1️⃣ GET
+
+  자원을 조회하는 데 사용됩니다.
+  예: GET /users/1은 id=1인 사용자를 조회하는 요청입니다.
+
+
+2️⃣ POST
+
+  새로운 자원을 생성하는 데 사용됩니다.
+  예: POST /users는 새로운 사용자를 생성하는 요청입니다.
+  요청 본문에는 생성할 자원의 정보가 포함됩니다.
+
+
+3️⃣ PUT
+
+  기존 자원을 업데이트하는 데 사용됩니다.
+  예: PUT /users/1은 id=1인 사용자 정보를 업데이트하는 요청입니다.
+
+
+4️⃣ DELETE
+
+  자원을 삭제하는 데 사용됩니다.
+  예: DELETE /users/1은 id=1인 사용자를 삭제하는 요청입니다.
+
+
+4️⃣ RESTful API의 예
+
+👉 사용자 자원을 관리하는 RESTful API 예시.
+
+1️⃣ GET 요청 (모든 사용자 조회)
+GET /users
+
+
+응답
+[
+    {"id": 1, "name": "Kobe", "email": "kobe@example.com"},
+    {"id": 2, "name": "Eric", "email": "eric@example.com"}
+]
+
+
+2️⃣ POST 요청 (새 사용자 생성)
+POST /users
+
+
+요청 본문.
+{
+    "name": "Kobe",
+    "email": "kobe@example.com"
+}
+
+
+응답.
+PUT /users/3
+
+
+3️⃣ PUT 요청 (사용자 정보 업데이트)
+PUT /users/3
+
+
+요청 본문
+{
+    "name": "Kobe updated",
+    "email": "kobe.updated@example.com"
+}
+
+
+응답
+{
+    "id": 3,
+    "name": "Kobe updated",
+    "email": "kobe.updated@example.com"
+}
+
+
+4️⃣ DELETE 요청 (사용자 삭제)
+DELETE /users/3
+
+
+응답.
+{
+    "message": "User deleted successfully"
+}
+
+
+5️⃣ RESTful API의 장점.
+
+1️⃣ 확장성.
+
+  RESTful API는 서버와 클라이언트 간의 결합도를 낮춰, 확장 가능하고 유연한 시스템을 설계할 수 있습니다.
+
+
+2️⃣ 표준화.
+
+  HTTP 프로토콜의 표준을 기반으로 하여, 다양한 클라이언트와 쉽게 연동이 가능합니다.
+
+
+3️⃣ 경량성.
+
+  JSON 같은 경량 포맷을 사용해 데이터 전송을 최적화할 수 있습니다.
+
+
+4️⃣ 캐싱 가능.
+
+  HTTP 캐싱 메커니즘을 통해 성능을 향상시키고 네트워크 부하를 줄일 수 있습니다.
+
+
+6️⃣ 결론.
+
+  RESTful API는 웹 애플리케이션에서 서버와 클라이언트 간의 상호작용을 일관성 있고 효율적으로 처리하기 위한 API 설계 방식입니다.
+  HTTP 프로토콜을 기반으로 자원을 CRUD 방식으로 관리하며, 무상태성, 자원 기반 접근, 일관된 인터페이스 등의 REST 원칙을 따릅니다.
+  RESTful API는 다양한 클라이언트(모바일, 웹 등)와 통신할 수 있는 확장 가능하고 유연한 시스템을 구축하는 데 매우 유용합니다.
 
 
                         </a>
@@ -34982,122 +35146,6 @@ public class WebConfig implements WebMvcConfigurer {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/CS/2024/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
-                        <a href="/CS/2024/2024-09-14-CDN-Service.html" class="txt_post">
-                            💾 [CS] CDN 서비스란?
-
-1️⃣ CDN 서비스.
-
-  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
-  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
-
-
-2️⃣ CDN의 주요 기능.
-
-  1. 콘텐츠 캐싱(Caching).
-    
-      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
-      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
-    
-  
-  2. 분산된 네트워크.
-    
-      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
-      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
-    
-  
-  3. 로드 밸런싱.
-    
-      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
-        
-          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
-        
-      
-    
-  
-  4. 보안 강화.
-    
-      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
-    
-  
-  5. 고가용성 및 장애 복구
-    
-      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
-    
-  
-
-
-3️⃣ CDN 서비스의 장점.
-
-  1. 빠른 콘텐츠 제공.
-    
-      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
-    
-  
-  2. 트래픽 관리.
-    
-      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
-    
-  
-  3. 전 세계적인 도달 범위.
-    
-      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
-        
-          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
-        
-      
-    
-  
-  4. 비용 절감.
-    
-      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
-    
-  
-  5. 보안 강화.
-    
-      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
-    
-  
-
-
-4️⃣ CDN 서비스의 예시.
-
-  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
-  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
-  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
-  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
-  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
-
-
-5️⃣ 요약.
-
-  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
-    
-      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-09-14-Service-primitive.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -35293,6 +35341,122 @@ Confirm
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-09-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
+                        <a href="/CS/2024/2024-09-14-CDN-Service.html" class="txt_post">
+                            💾 [CS] CDN 서비스란?
+
+1️⃣ CDN 서비스.
+
+  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
+  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
+
+
+2️⃣ CDN의 주요 기능.
+
+  1. 콘텐츠 캐싱(Caching).
+    
+      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
+      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
+    
+  
+  2. 분산된 네트워크.
+    
+      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
+      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
+    
+  
+  3. 로드 밸런싱.
+    
+      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
+        
+          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
+        
+      
+    
+  
+  4. 보안 강화.
+    
+      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
+    
+  
+  5. 고가용성 및 장애 복구
+    
+      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
+    
+  
+
+
+3️⃣ CDN 서비스의 장점.
+
+  1. 빠른 콘텐츠 제공.
+    
+      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
+    
+  
+  2. 트래픽 관리.
+    
+      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
+    
+  
+  3. 전 세계적인 도달 범위.
+    
+      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
+        
+          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
+        
+      
+    
+  
+  4. 비용 절감.
+    
+      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
+    
+  
+  5. 보안 강화.
+    
+      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
+    
+  
+
+
+4️⃣ CDN 서비스의 예시.
+
+  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
+  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
+  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
+  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
+  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
+
+
+5️⃣ 요약.
+
+  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
+    
+      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
                             
                                 <span class="date">· 2024-09-14</span>
                             
@@ -35573,176 +35737,161 @@ null
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
-                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
-                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
+                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
+                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
+                            ☕️[Java] Optional.
 
-1️⃣ 기본형의 한계.
+1️⃣ Optional.
 
-  자바는 객체 지향 언어입니다.
+  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
+  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
+
+
+2️⃣ 주요 특징
+
+  1. 값의 존재 여부를 명확히 표현.
     
-      그런데 자바 안에 객체가 아닌 것이 있습니다.
-      바로 int, double 같은 기본형(Primitive Type)입니다.
-    
-  
-  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
-    
-      객체가 아님.
+      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
         
-          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
-            
-              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
-            
-          
-        
-      
-      null 값을 가질 수 없습니다.
-        
-          기본형 데이터 타입은 null 값을 가질 수 없습니다.
-            
-              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
-            
-          
+          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
         
       
     
   
-
-
-2️⃣ 예시.
-
-  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+  2. 명시적인 null 처리.
     
-      왼쪽의 값이 더 작다: -1
-      두 값이 같다: 0
-      왼쪽의 값이 더 크다: 1
+      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+        
+          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+        
+      
+    
+  
+  3. 함수형 프로그래밍 스타일 지원.
+    
+      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
     
   
 
 
-public class MyIntegerMethodMain0 {
-
-	public static void main(String[] args) {
-		int value = 10;
-		int i1 = compareTo(value, 5);
-		int i2 = compareTo(value, 10);
-		int i3 = compareTo(value, 20);
-		System.out.println("i1 = " + i1);
-		System.out.println("i2 = " + i2);
-		System.out.println("i3 = " + i3);
-	}
-
-	public static int compareTo(int value, int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
+3️⃣ Optional 생성.
+Optional&lt;String&gt; emptyOptional = Optional.empty();
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
 
 
+Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
 
-  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+
+  null이 아닌 값으로 Optional 생성.
     
-      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
-      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
+      값이 null인 경우 NullPointerException이 발생합니다.
     
   
 
 
-3️⃣ 직접 만든 래퍼 클래스.
+Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
 
-  int를 클래스로 만들어 봅시다.
-  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
-  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+
+  null이 될 수 있는 값으로 Optional 생성.
     
-      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
-    
-  
-
-
-public class MyInteger {
-
-	private final int value;
-
-	public MyInteger(int value) {
-		this.value = value;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public int compareTo(int target) {
-		if (value &lt; target) {
-			return -1;
-		} else if (value &gt; target) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value); // 숫자를 문자로 변경
-	}
-}
-
-
-  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
-    
-      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
+      값이 null이면 빈 Optional이 생성됩니다.
+        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+        
+      
     
   
-  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
-  
-    이 클래스는 불변으로 설계했습니다.
-  
-  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
-    
-      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
+
+
+4️⃣ Optional의 사용 예
+
+  1. 값이 존재하는지 확인(isPresent / ifPresent)
 ```java
-public class MyIntegerMethodMain1 {
-    
+Optional optional = Optional.of("Hello");
 
-    public static void main(String[] args) {
-      MyInteger myInteger = new MyInteger(10);
-      int i1 = myInteger.compareTo(5);
-      int i2 = myInteger.compareTo(10);
-      int i3 = myInteger.compareTo(20);
-      System.out.println(“i1 = “ + i1);
-      System.out.println(“i2 = “ + i2);
-      System.out.println(“i3 = “ + i3);
-  }
+
+if (optional.isPresent()) {
+    System.out.println(optional.get()); // 값이 있으면 출력
 }
-```
+
+optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
+
+- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+```java
+String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
+String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
+
+
+
+  3. 값이 없으면 예외 던지기(orElseThrow)
+    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+    
+  
+  4. 값 변환(map, flatMap)
+```java
+Optional optional = Optional.of("Hello");
+
+
+Optional lengthOptional = optional.map(String::length);
+lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
+
+- **5. 조건에 따른 필터링(`filter`)**
+```java
+Optional&lt;String&gt; optional = Optional.of("Hello");
+
+Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
+filtered.ifPresent(System.out::println); // "Hello" 출력
+
+
+5️⃣ Optional 사용의 이점.
+
+  1. 명시적 코드 작성.
+    
+      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
+    
+  
+  2. NullPointerException 방지.
+    
+      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
+    
+  
+  3. 함수형 스타일.
+    
+      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
+    
   
 
 
-실행 결과
-i1 = 1
-i2 = 0
-i3 = -1
+6️⃣ Optional 사용 시 주의점.
+
+  1. 과도한 사용 자제.
+    
+      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
+        
+          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
+        
+      
+    
+  
+  2. 성능.
+    
+      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
+    
+  
 
 
+7️⃣ 요약.
 
-  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
-  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
-  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
+  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
+  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
+  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
 
 
                         </a>
@@ -35932,161 +36081,176 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-09-13-Optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-09-13-Optional.html"><h1 class="title_post">☕️[Java] Optional</h1></a>
-                        <a href="/Java/Java/2024-09-13-Optional.html" class="txt_post">
-                            ☕️[Java] Optional.
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html"><h1 class="title_post">☕️[Java] 래퍼 클래스 - 기본형의 한계(1)</h1></a>
+                        <a href="/Java/Java/2024-09-13-Wrapper-class-Limitations-of-Primitive-Type-1.html" class="txt_post">
+                            ☕️[Java] 래퍼 클래스- 기본형의 한계(1)
 
-1️⃣ Optional.
+1️⃣ 기본형의 한계.
 
-  Optional은 Java 8에서 도입된 클래스이며, 주로 null 값을 안전하게 처리하기 위해 사용됩니다.
-  Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 상황을 표현하는 컨테이너 역할을 하며, null을 직접 사용하는 것보다 안전하고 명시적인 방법을 제공합니다.
-
-
-2️⃣ 주요 특징
-
-  1. 값의 존재 여부를 명확히 표현.
+  자바는 객체 지향 언어입니다.
     
-      Optional은 값이 존재하는 경우(Optional이 비어있지 않음)와 값이 존재하지 않는 경우(Optional이 비어있음)를 명확하게 표현합니다.
-        
-          이를 통해 null 참조로 인해 발생할 수 있는 오류를 예방할 수 있습니다.
-        
-      
+      그런데 자바 안에 객체가 아닌 것이 있습니다.
+      바로 int, double 같은 기본형(Primitive Type)입니다.
     
   
-  2. 명시적인 null 처리.
+  기본형은 객체가 아니기 때문에 다음과 같은 한계가 있습니다.
     
-      Optional을 사용하면 값이 없을 때 취할 행동을 명시적으로 정의할 수 있습니다.
+      객체가 아님.
         
-          이로 인해 코드가 더 읽기 쉬워지고, NullPointerException을 피할 수 있습니다.
+          기본형 데이터는 객체가 아니기 때문에, 객체 지향 프로그래밍의 장점을 살릴 수 없습니다.
+            
+              예를 들어 객체는 유용한 메서드를 제공할 수 있는데, 기본형은 객체가 아니므로 메서르듣 제공할 수 없습니다.
+            
+          
         
       
-    
-  
-  3. 함수형 프로그래밍 스타일 지원.
-    
-      Optional은 다양한 메서드(map, flatMap, filter, ifPresent, orElse 등)를 제공하여 값의 존재 여부에 따라 함수형 프로그래밍 스타일로 작업을 수행할 수 있습니다.
-    
-  
-
-
-3️⃣ Optional 생성.
-Optional&lt;String&gt; emptyOptional = Optional.empty();
-
-
-  빈 Optional 생성 : Optional.empty()를 사용하여 비어 있는 Optional을 생성할 수 있습니다.
-
-
-Optional&lt;String&gt; nonEmptyOptional = Optional.of("Hello");
-
-
-  null이 아닌 값으로 Optional 생성.
-    
-      Optional.of()를 사용하여 null이 아닌 값으로 Optional을 생성할 수 있습니다.
-      값이 null인 경우 NullPointerException이 발생합니다.
-    
-  
-
-
-Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
-
-
-  null이 될 수 있는 값으로 Optional 생성.
-    
-      Optional.ofNullable()을 사용하여 값이 null일 수도 있는 경우 Optional을 생성할 수 있습니다.
-      값이 null이면 빈 Optional이 생성됩니다.
-        Optional&lt;String&gt; nullableOptional = Optional.ofNullable(null);
+      null 값을 가질 수 없습니다.
+        
+          기본형 데이터 타입은 null 값을 가질 수 없습니다.
+            
+              때로는 데이터가 없음이라는 상태를 나타내야 할 필요가 있는데, 기본형은 항상 값을 가지기 때문에 이런 표현을 할 수 없습니다.
+            
+          
         
       
     
   
 
 
-4️⃣ Optional의 사용 예
+2️⃣ 예시.
 
-  1. 값이 존재하는지 확인(isPresent / ifPresent)
-```java
-Optional optional = Optional.of("Hello");
+  기본형의 한계를 이해하기 위해, 두 값을 비교해서 다음과 같은 결과를 출력하는 간단한 코드를 작성해 보겠습니다.
+    
+      왼쪽의 값이 더 작다: -1
+      두 값이 같다: 0
+      왼쪽의 값이 더 크다: 1
+    
+  
 
 
-if (optional.isPresent()) {
-    System.out.println(optional.get()); // 값이 있으면 출력
+public class MyIntegerMethodMain0 {
+
+	public static void main(String[] args) {
+		int value = 10;
+		int i1 = compareTo(value, 5);
+		int i2 = compareTo(value, 10);
+		int i3 = compareTo(value, 20);
+		System.out.println("i1 = " + i1);
+		System.out.println("i2 = " + i2);
+		System.out.println("i3 = " + i3);
+	}
+
+	public static int compareTo(int value, int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
 
-optional.ifPresent(value -&gt; System.out.println(value)); // 값이 있으면 람다 표현식 실행
 
-- **2. 값이 없을 때 대체 값 제공(`orElse`, `orElseGet`)**
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
+
+
+
+  여기서는 value와 비교 대상 값을 compareTo()라는 외부 메서드를 사용해서 비교합니다.
+    
+      그런데 자기 자신인 value와 다른 값을 연산하는 것이기 때문에 항상 자기 자신의 값인 value가 사용됩니다.
+      이런 경우 만약 value가 객체라면 value 객체 스스로 자기 자신의 값과 다른 값을 비교하는 메서드를 만드는 것이 더 유용할 것입니다.
+    
+  
+
+
+3️⃣ 직접 만든 래퍼 클래스.
+
+  int를 클래스로 만들어 봅시다.
+  int는 클래스가 아니지만, int 값을 가지고 클래스를 만들면 됩니다.
+  다음 코드는 마치 int를 클래스로 감싸서 만드는 것 처럼 보입니다.
+    
+      이렇게 특정 기본형을 감싸서(Wrap) 만드는 클래스를 래퍼 클래스(Wrapper class)라 합니다.
+    
+  
+
+
+public class MyInteger {
+
+	private final int value;
+
+	public MyInteger(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int compareTo(int target) {
+		if (value &lt; target) {
+			return -1;
+		} else if (value &gt; target) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value); // 숫자를 문자로 변경
+	}
+}
+
+
+  MyInteger는 int value라는 단순한 기본형 변수 하나를 가지고 있습니다.
+    
+      그리고 이 기본형 변수를 편리하게 사용하도록 다양한 메서드를 제공합니다.
+    
+  
+  위에서 본 compareTo() 메서드를 클래스 내부로 캡슐화 했습니다.
+  
+    이 클래스는 불변으로 설계했습니다.
+  
+  MyInteger 클래스는 단순한 데이터 조각인 int를 내부에 품고, 메서드를 통해 다양한 기능을 추가했습니다.
+    
+      덕분에 데이터 조각에 불과한 int를 MyInteger를 통해 객체로 다룰 수 있게 되었습니다.
 ```java
-String result = optional.orElse("Default Value"); // 값이 없으면 "Defaul Value"
-String result = optional.orElseGet(() -&gt; "Default Value from Supplier"); // 람다로 대체 값 제공
-
-
-
-  3. 값이 없으면 예외 던지기(orElseThrow)
-    String result = optional.orElseThrow(() -&gt; new IllegalArgumentException("No value present"));
+public class MyIntegerMethodMain1 {
     
-  
-  4. 값 변환(map, flatMap)
-```java
-Optional optional = Optional.of("Hello");
 
-
-Optional lengthOptional = optional.map(String::length);
-lengthOptional.ifPresent(length -&gt; System.out.println("Length: " + length));
-
-- **5. 조건에 따른 필터링(`filter`)**
-```java
-Optional&lt;String&gt; optional = Optional.of("Hello");
-
-Optional&lt;String&gt; filtered = optional.filter(value.startsWith("H"));
-filtered.ifPresent(System.out::println); // "Hello" 출력
-
-
-5️⃣ Optional 사용의 이점.
-
-  1. 명시적 코드 작성.
-    
-      Optional을 사용하면 코드에서 값이 존재할 수 있는지 여부를 명시적으로 다루게 되어 가독성이 높아집니다.
-    
-  
-  2. NullPointerException 방지.
-    
-      Optional은 null 체크를 강제하여 NullPointerException 발생을 예방합니다.
-    
-  
-  3. 함수형 스타일.
-    
-      Optional은 함수형 프로그래밍 스타일을 지원하여 간결하고 선언적인 코드를 작성할 수 있게 합니다.
-    
+    public static void main(String[] args) {
+      MyInteger myInteger = new MyInteger(10);
+      int i1 = myInteger.compareTo(5);
+      int i2 = myInteger.compareTo(10);
+      int i3 = myInteger.compareTo(20);
+      System.out.println(“i1 = “ + i1);
+      System.out.println(“i2 = “ + i2);
+      System.out.println(“i3 = “ + i3);
+  }
+}
+```
   
 
 
-6️⃣ Optional 사용 시 주의점.
-
-  1. 과도한 사용 자제.
-    
-      모든 상황에서 Optional을 사용하는 것은 오히려 복잡성을 초래할 수 있습니다.
-        
-          예를 들어, 필드에 Optional을 사용하거나, 매우 단순한 로직에 Optional을 사용하는 것은 바람직하지 않을 수 있습니다.
-        
-      
-    
-  
-  2. 성능.
-    
-      Optional은 추가적인 객체를 생성하므로, 성능이 중요한 곳에서는 주의해서 사용해야 합니다.
-    
-  
+실행 결과
+i1 = 1
+i2 = 0
+i3 = -1
 
 
-7️⃣ 요약.
 
-  Optional은 null을 안전하게 처리하기 위한 클래스이며, 값이 있을 수도 있고 없을 수도 있는 상황을 명시적으로 표현할 수 있게 해줍니다.
-  Optional을 통해 코드의 가독성을 높이고, NullPointerException을 방지할 수 있습니다.
-  Optional은 함수형 프로그래밍 스타일을 지원하여 코드 작성의 유연성을 제공합니다.
+  myInteger.compareTo()는 자기 자신의 값을 외부의 값과 비교합니다.
+  MyInteger는 객체이므로 자신이 가진 메서드를 편리하게 호출할 수 있습니다.
+  참고로 int는 기본형이기 때문에 스스로 메서드를 가질 수 없습니다.
 
 
                         </a>
@@ -103543,6 +103707,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/Spring/2024-11-19-Deployment.html",
             'image'    : "/assets/img/thumbnail/spring.jpeg",
             'date'     : "2024-11-19"
+        });
+    
+
+        posts.push({
+            'title'    : "🍃[Spring] Profile이란 무엇일까요?",
+            'path'     : "Spring",
+            'type'     : "post",
+            'tags'     : "Spring, Framework",
+            'url'      : "/Spring/2024-11-20-what-is-profile.html",
+            'image'    : "/assets/img/thumbnail/spring.jpeg",
+            'date'     : "2024-11-20"
         });
     
 

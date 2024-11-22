@@ -835,6 +835,7 @@
             
             
             
+            
 
     
     
@@ -1213,6 +1214,126 @@
 </h1>
 <div id="category-list">
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/CS/2024/2024-11-22-artifact.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-11-22-artifact.html"><h1 class="title_post">💾 [CS] Artifact(아티팩트)란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-11-22-artifact.html" class="txt_post">
+                            💾 [CS] Artifact(아티팩트)란 무엇일까요?
+
+  Artifact는 소프트웨어 개발에서 빌드나 배포의 결과물을 지칭하는 용어입니다.
+  개발 작업의 산출물로, 프로젝트가 실행 가능한 상태나 배포 가능한 상태로 변환될 때 생성되는 모든 파일을 포함합니다.
+  Artifact는 소스 코드가 빌드, 테스트, 그리고 패키징 단계를 거치면서 만들어지며, 소프트웨어를 실행하거나 배포하는 데 필요한 핵심 구성 요소입니다.
+
+
+1️⃣ Artifact의 주요 예.
+1️⃣ 컴파일된 바이너리 파일.
+
+  .jar, .war, .ear 파일(Java).
+  .dll(Windows 라이브러리).
+  .exe(실행 파일).
+
+
+2️⃣ 라이브러리 파일.
+
+  외부에서 재사용 가능한 .jar 또는 .so 와 같은 파일.
+
+
+3️⃣ 설치 패키지.
+
+  설치 가능한 배포물(예: .deb, .rpm, .msi, .apk, ,ipa).
+
+
+4️⃣ 테스트 리포트.
+
+  빌드 프로세스 중 생성된 테스트 결과 파일(HTML, XML 등).
+
+
+5️⃣ 소스 코드 번들.
+
+  배포 또는 유지보수를 위해 포함된 소스 코드 파일.
+
+
+6️⃣ 도큐멘트.
+
+  프로젝트 문서, API 설명서(예: Javadoc, Markdown 파일)
+
+
+2️⃣ Artifact의 활용.
+1️⃣ CI/CD 파이프라인.
+
+  Continuous Integration/Continuous Deployment(CI/CD) 과정에서 생성된 아티팩트를 저장하고 이후 배포 파이프라인에서 사용합니다.
+
+
+2️⃣ 아티팩트 저장소.
+
+  생성된 아티팩트를 저장하고 공유하기 위해 Artifactory, Nexus Repository, GitHub Packages 같은 저장소를 사용합니다.
+
+
+3️⃣ 배포 및 실행.
+
+  최종 사용자에게 전달하거나 서버 환경에서 실행 가능한 소프트웨어로 사용됩니다.
+
+
+4️⃣ 버전 관리.
+
+  아티팩트는 버전 번호를 통해 추적되며, 특정 버전으로 롤백하거나 디버깅할 수 있습니다.
+
+
+3️⃣ 아티팩트의 중요성.
+
+  재현성 : 동일한 소스 코드로 동일한 결과물을 다시 생성할 수 있음.
+  이식성 : 하나의 실행 파일이나 패키지를 다양한 환경에 배포 가능.
+  추적 가능성 : 특정 버전의 소스 코드와 관련된 아티팩트를 쉽게 식별할 수 있음.
+  자동화 지원 : CI/CD 파이프라인에서 배포를 자동화하기 위한 핵심 요소.
+
+
+4️⃣ 예제: Java 프로젝트에서 아티팩트.
+
+1️⃣ Maven 프로젝트.
+
+  Maven 빌드 도구를 사용하면 pom.xml에 정의된 대로 .jar 또는 .war 파일을 생성합니다.
+    mvn package
+    
+  
+  실행 결과: target/myapp-1.0.jar(아티팩트)
+
+
+2️⃣ Gradle 프로젝트.
+
+  Gradle에서는 build.gradle 파일을 기반으로 빌드한 뒤 .jar 파일을 생성합니다.
+    gradle build
+    
+  
+  실행 결과: build/libs/myapp-1.0.jar(아티팩트)
+
+
+5️⃣ 요약.
+
+  아티팩트는 소프트웨어 개발의 결과물로, 빌드, 테스트, 패키징 등 개발 과정의 핵심 산출물입니다.
+    
+      이는 배포와 실행의 기본 단위로 사용되며, 자동화된 배포 환경(CI/CD)에서 매우 중요한 역할을 합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-11-22</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
         <li class="paginated-item">
                 <div id="article_content">
                     <div class="thumbnail_zone">
@@ -4411,6 +4532,153 @@ entityManager.persist(order); // Order와 OrderItem들이 함께 저장됨
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-11-11-One-To-Many.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-11-One-To-Many.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - `@OneToMany`</h1></a>
+                        <a href="/Spring/2024-11-11-One-To-Many.html" class="txt_post">
+                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - @OneToMany
+
+  @OneToMany는 1:N(일대다) 관계를 나타내는 어노테이션입니다.
+    
+      이는 한 개의 엔티티가 여러 개의 엔티티와 관계를 맺는 상황에서 사용됩니다.
+        
+          예를 들어, 하나의 팀(Team)이 여러 명의 회원(User)과 관계를 맺는 경우 @OneToMany를 사용하여 표현할 수 있습니다.
+        
+      
+    
+  
+
+
+1️⃣ @OneToMany 어노테이션 기본 개념.
+
+  일대다 관계에서 1(One) 쪽이 다수(N) 쪽을 참조할 때 @OneToMany 어노테이션을 사용합니다.
+  보통 다수(N) 쪽이 외래 키를 가지고 있어 일대다 관계에서 다수 쪽이 관계의 주인이 됩니다.
+  @OneToMany 어노테이션은 mappedBy 속성과 함께 사용하여 주인이 아님을 명시하고, 관계를 읽기 전용으로 설정합니다.
+
+
+👉 예시: 팀(Team)과 회원(User) 간의 1:N 관계
+
+  팀(Team) 엔티티와 회원(User) 엔티티가 1:N 관계를 가질 때, Team 엔티티에서 여러 User 엔티티를 참조하도록 설정할 수 있습니다.
+
+
+@Entity
+public class Team {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @OneToMany(mappedBy = "team") // Team이 연관관예의 주인이 아님을 명시
+    private List&lt;User&gt; users = new ArrayList&lt;&gt;();
+    
+    // getter, setter
+}
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @ManyToOne // 다대일 관계에서 User가 연관관계의 주인
+    @JoinColumn(name = "team_id") // 외래 키 컬럼 지정
+    private Team team;
+    
+    // getter, setter
+}
+
+
+👉 코드 설명
+
+  Team 엔티티는 @OneToMany(mappedBy = "team")을 사용하여 User와의 관계에서 주인이 아님을 명시합니다.
+    
+      mappedBy 속성의 값 “team”은 User 엔티티의 team 필드를 가리킵니다.
+    
+  
+  User 엔티티는 @ManyToOne과 @JoinColumn(name = "team_id")을 사용하여 왜래 키 team_id 컬럼을 생성하며, 관계의 주인이 됩니다.
+
+
+2️⃣ 단방향과 양방향 @OneToMany
+
+1️⃣ 단방향 @OneToMany
+
+  @OneToMany를 사용하여 단방향으로 관계를 설정할 수도 있습니다.
+    
+      하지만 데이터베이스에 추가적인 조인 테이블이 생성되므로, 보통 성능상의 이유로 많이 사용하지 않습니다.
+    
+  
+
+
+2️⃣ 양방향 @OneToMany
+
+  @OneToMany와 @ManyToOne을 함께 사용하여 양방향으로 설정할 수 있습니다.
+    
+      이 경우 @ManyToOne 쪽이 외래 키를 가지므로 연관관계의 주인이 됩니다.
+    
+  
+
+
+3️⃣ @OneToMany 사용 시 주의사항.
+
+1️⃣ 지연 로딩(Lazy Loading)
+
+  @OneToMany의 기본 로딩 전략은 지연 로딩입니다.
+    
+      즉, 엔티티를 조회할 때는 즉시 로딩하지 않고, 실제로 접근할 때 데이터를 로드하여 성능을 최적화합니다.
+    
+  
+
+
+2️⃣ Cascade 옵션 사용.
+
+  CascadeType.ALL 이나 CascadeType.REMOVE 등의 옵션을 사용하면, 부모 엔티티를 저장하거나 삭제할 때 자식 엔티티도 함께 저장/삭제됩니다.
+    
+      주의해서 사용해야 하며, 불필요하게 자식 엔티티가 삭제되지 않도록 합니다.
+    
+  
+
+
+3️⃣ N+1 문제.
+
+  @OneToMany는 다수의 자식 엔티티를 가져올 때 N+1 문제가 발생할 수 있으므로, 필요한 경우 페치 조인(fetch join)을 사용해 해결해야 합니다.
+
+
+👉 예시 상황.
+
+  팀(Team)과 회원(User) : 한 팀에 여러 명의 회원이 소속될 수 있음.
+  주문(Order)과 상품(Item) : 한 주문에 여러 상품이 포함될 수 있음.
+
+
+4️⃣ 요약.
+
+  @OneToMany는 1:N 관계를 표현하며, 보통 mappedBy 속성을 사용하여 연관관계의 주인이 아님을 명시합니다.
+    
+      이 어노테이션을 통해 부모-자식 관계를 설정하여 편리하게 다수의 엔티티를 관리할 수 있지만, 성능 및 데이터 일관성을 유지하기 위해 로딩 전략과 Cascade 옵션을 주의해서 설정해야 합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-11</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-11-11-N-1-Association.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -4872,265 +5140,6 @@ private List&lt;User&gt; users = new ArrayList&lt;&gt;();
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-11-11-One-To-Many.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-11-11-One-To-Many.html"><h1 class="title_post">🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - `@OneToMany`</h1></a>
-                        <a href="/Spring/2024-11-11-One-To-Many.html" class="txt_post">
-                            🍃[Spring] JPA 연관관계에 대한 추가적인 기능들에는 무엇이 있을까요? - @OneToMany
-
-  @OneToMany는 1:N(일대다) 관계를 나타내는 어노테이션입니다.
-    
-      이는 한 개의 엔티티가 여러 개의 엔티티와 관계를 맺는 상황에서 사용됩니다.
-        
-          예를 들어, 하나의 팀(Team)이 여러 명의 회원(User)과 관계를 맺는 경우 @OneToMany를 사용하여 표현할 수 있습니다.
-        
-      
-    
-  
-
-
-1️⃣ @OneToMany 어노테이션 기본 개념.
-
-  일대다 관계에서 1(One) 쪽이 다수(N) 쪽을 참조할 때 @OneToMany 어노테이션을 사용합니다.
-  보통 다수(N) 쪽이 외래 키를 가지고 있어 일대다 관계에서 다수 쪽이 관계의 주인이 됩니다.
-  @OneToMany 어노테이션은 mappedBy 속성과 함께 사용하여 주인이 아님을 명시하고, 관계를 읽기 전용으로 설정합니다.
-
-
-👉 예시: 팀(Team)과 회원(User) 간의 1:N 관계
-
-  팀(Team) 엔티티와 회원(User) 엔티티가 1:N 관계를 가질 때, Team 엔티티에서 여러 User 엔티티를 참조하도록 설정할 수 있습니다.
-
-
-@Entity
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    @OneToMany(mappedBy = "team") // Team이 연관관예의 주인이 아님을 명시
-    private List&lt;User&gt; users = new ArrayList&lt;&gt;();
-    
-    // getter, setter
-}
-
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
-    
-    @ManyToOne // 다대일 관계에서 User가 연관관계의 주인
-    @JoinColumn(name = "team_id") // 외래 키 컬럼 지정
-    private Team team;
-    
-    // getter, setter
-}
-
-
-👉 코드 설명
-
-  Team 엔티티는 @OneToMany(mappedBy = "team")을 사용하여 User와의 관계에서 주인이 아님을 명시합니다.
-    
-      mappedBy 속성의 값 “team”은 User 엔티티의 team 필드를 가리킵니다.
-    
-  
-  User 엔티티는 @ManyToOne과 @JoinColumn(name = "team_id")을 사용하여 왜래 키 team_id 컬럼을 생성하며, 관계의 주인이 됩니다.
-
-
-2️⃣ 단방향과 양방향 @OneToMany
-
-1️⃣ 단방향 @OneToMany
-
-  @OneToMany를 사용하여 단방향으로 관계를 설정할 수도 있습니다.
-    
-      하지만 데이터베이스에 추가적인 조인 테이블이 생성되므로, 보통 성능상의 이유로 많이 사용하지 않습니다.
-    
-  
-
-
-2️⃣ 양방향 @OneToMany
-
-  @OneToMany와 @ManyToOne을 함께 사용하여 양방향으로 설정할 수 있습니다.
-    
-      이 경우 @ManyToOne 쪽이 외래 키를 가지므로 연관관계의 주인이 됩니다.
-    
-  
-
-
-3️⃣ @OneToMany 사용 시 주의사항.
-
-1️⃣ 지연 로딩(Lazy Loading)
-
-  @OneToMany의 기본 로딩 전략은 지연 로딩입니다.
-    
-      즉, 엔티티를 조회할 때는 즉시 로딩하지 않고, 실제로 접근할 때 데이터를 로드하여 성능을 최적화합니다.
-    
-  
-
-
-2️⃣ Cascade 옵션 사용.
-
-  CascadeType.ALL 이나 CascadeType.REMOVE 등의 옵션을 사용하면, 부모 엔티티를 저장하거나 삭제할 때 자식 엔티티도 함께 저장/삭제됩니다.
-    
-      주의해서 사용해야 하며, 불필요하게 자식 엔티티가 삭제되지 않도록 합니다.
-    
-  
-
-
-3️⃣ N+1 문제.
-
-  @OneToMany는 다수의 자식 엔티티를 가져올 때 N+1 문제가 발생할 수 있으므로, 필요한 경우 페치 조인(fetch join)을 사용해 해결해야 합니다.
-
-
-👉 예시 상황.
-
-  팀(Team)과 회원(User) : 한 팀에 여러 명의 회원이 소속될 수 있음.
-  주문(Order)과 상품(Item) : 한 주문에 여러 상품이 포함될 수 있음.
-
-
-4️⃣ 요약.
-
-  @OneToMany는 1:N 관계를 표현하며, 보통 mappedBy 속성을 사용하여 연관관계의 주인이 아님을 명시합니다.
-    
-      이 어노테이션을 통해 부모-자식 관계를 설정하여 편리하게 다수의 엔티티를 관리할 수 있지만, 성능 및 데이터 일관성을 유지하기 위해 로딩 전략과 Cascade 옵션을 주의해서 설정해야 합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-11-11</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-11-10-Data-Integrity.html"><h1 class="title_post">💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="txt_post">
-                            💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?
-
-  데이터의 정확성, 일관성, 신뢰성을 유지하는 것을 의미합니다.
-  데이터 정합성(Data Integrity)이 보장되면 애플리케이션의 로직과 데이터베이스 간의 데이터가 서로 일관성 있게 유지되며, 데이터가 의도하지 않은 변경 없이 신뢰성 있게 관리됩니다.
-    
-      이는 데이터베이스와 관련된 모든 시스템에서 매우 중요한 개념입니다.
-    
-  
-
-
-1️⃣ 데이터 정합성(Data Integrity)이 중요한 이유.
-
-  데이터 정합성(Data Integrity)은 애플리케이션의 데이터가 정확하고, 오류 없이 유지될 수 있도록 하여, 올바른 데이터 기반으로 시스템이 운영되게 합니다.
-    
-      만약 데이터 정합성(Data Integrity)이 깨진다면, 잘못된 데이터로 인해 애플리케이션이 잘못된 동작을 수행할 수 있으며, 이는 사용자에게 혼란을 주고, 시스템의 신뢰성을 떨어뜨릴 수 있습니다.
-    
-  
-
-
-2️⃣ 데이터 정합성(Data Integrity)의 종류.
-
-  데이터 정합성(Data Integrity)는 크게 정합성, 참조 정합성, 비즈니스 정합성으로 나눌 수 있습니다.
-
-
-1️⃣ 엔티티 정합성(Entity Integrity)
-
-  각 엔티티(테이블)의 기본 키(Primary Key)는 유일하고 중복되지 않으며 NULL이 될 수 없음을 보장합니다.
-    
-      예를 들어, User 테이블의 id 필드가 중복되지 않고 NULL 값이 없는 경우, 이는 엔티티 정합성이 유지된 것입니다.
-    
-  
-
-
-2️⃣ 참조 정합성(Referential Integrity)
-
-  데이터베이스에서 외래 키(Foreign Key)를 통해 연관된 테이블 간의 관계가 일관되게 유지됨을 의미합니다.
-    
-      예를 들어, Order 테이블이 User 테이블의 외래 키로 user_id를 가지는 경우, 모든 Order가 존재하는 user_id를 가져야 참조 정합성이 유지됩니다.
-        
-          만약 User 테이블에서 삭제된 사용자의 user_id가 Order 테이블에 남아 있으면 참조 정합성이 깨진 것입니다.
-        
-      
-    
-  
-
-
-3️⃣ 비즈니스 정합성(Business Integrity)
-
-  비즈니스 로직에 따라 특정 조건들이 일관되게 유지됨을 보장합니다.
-    
-      즉, 비즈니스 요구 사항에 맞게 데이터가 정확히 반영되는 것을 의미합니다.
-        
-          예를 들어, Account 테이블에서 계좌 잔고가 음수로 내려가지 않도록 하는 규칙이 있다면, 이 규칙을 지켜야 비즈니스 정합성이 유지됩니다.
-        
-      
-    
-  
-
-
-3️⃣ 데이터 정합성 보장 방법.
-
-  데이터 정합성을 유지하기 위해 다음과 같은 기법이 사용됩니다.
-    
-      1. 데이터베이스 제약 조건 : 데이터베이스 수준에서 PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL 등의 제약 조건을 설정하여 정합성을 보장합니다.
-      2. 트랜잭션 : 트랜잭션은 ACID(Atomicity, Consistency, Isolation, Durability) 속성을 통해 데이터의 일관성을 유지합니다. 트랜잭션 내의 모든 작업이 성공적으로 완료되거나 모두 실패해야 데이터 정합성이 보장됩니다.
-      3. 애플리케이션 로직 : 비즈니스 정합성은 데이터베이스뿐만 아니라 애플리케이션 코드에서도 확인되어야 합니다. 예를 들어, 특정 규칙에 따라 데이터를 삽입하거나 업데이트하기 전에 로직을 통해 검증하는 방식입니다.
-    
-  
-
-
-4️⃣ JPA에서의 데이터 정합성 유지.
-
-  JPA를 사용할 때는 다음과 같은 방식으로 데이터 정합성을 유지할 수 있습니다.
-    
-      연관관계 주인 설정 : 연관관계 주인을 올바르게 설정하여, 양방향 관계에서 데이터베이스에 데이터가 일관되게 반영되도록 합니다.
-      Cascade와 Orphan 객체 처리 : CascadeType.ALL과 orphanRemoval = true 설정을 통해 부모-자식 관계에서 데이터 정합성을 유지할 수 있습니다.
-      트랜잭션 관리 : 데이터의 삽입, 수정, 삭제 작업을 트랙잭션으로 묶어, 작업 도중 에러가 발생해도 정합성이 깨지지 않도록 합니다.
-    
-  
-
-
-5️⃣ 요약.
-
-  데이터 정합성은 데이터의 정확성과 신뢰성을 유지하기 위해 필수적인 개념입니다.
-    
-      이를 보장하려면 데이터베이스 제약 조건, 트랜잭션 관리, 애플리케이션 로직을 통한 검증이 필요하며, JPA를 사용하는 경우 연관관계와 트랜잭션을 올바르게 관리해야 합니다.
-    
-  
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-11-10</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-11-10-JPA-Association-cautions-when-using.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -5547,6 +5556,210 @@ public class UserProfile {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-11-10-Data-Integrity.html"><h1 class="title_post">💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-11-10-Data-Integrity.html" class="txt_post">
+                            💾 [CS] 데이터 정합성(Data Integrity)이란 무엇일까요?
+
+  데이터의 정확성, 일관성, 신뢰성을 유지하는 것을 의미합니다.
+  데이터 정합성(Data Integrity)이 보장되면 애플리케이션의 로직과 데이터베이스 간의 데이터가 서로 일관성 있게 유지되며, 데이터가 의도하지 않은 변경 없이 신뢰성 있게 관리됩니다.
+    
+      이는 데이터베이스와 관련된 모든 시스템에서 매우 중요한 개념입니다.
+    
+  
+
+
+1️⃣ 데이터 정합성(Data Integrity)이 중요한 이유.
+
+  데이터 정합성(Data Integrity)은 애플리케이션의 데이터가 정확하고, 오류 없이 유지될 수 있도록 하여, 올바른 데이터 기반으로 시스템이 운영되게 합니다.
+    
+      만약 데이터 정합성(Data Integrity)이 깨진다면, 잘못된 데이터로 인해 애플리케이션이 잘못된 동작을 수행할 수 있으며, 이는 사용자에게 혼란을 주고, 시스템의 신뢰성을 떨어뜨릴 수 있습니다.
+    
+  
+
+
+2️⃣ 데이터 정합성(Data Integrity)의 종류.
+
+  데이터 정합성(Data Integrity)는 크게 정합성, 참조 정합성, 비즈니스 정합성으로 나눌 수 있습니다.
+
+
+1️⃣ 엔티티 정합성(Entity Integrity)
+
+  각 엔티티(테이블)의 기본 키(Primary Key)는 유일하고 중복되지 않으며 NULL이 될 수 없음을 보장합니다.
+    
+      예를 들어, User 테이블의 id 필드가 중복되지 않고 NULL 값이 없는 경우, 이는 엔티티 정합성이 유지된 것입니다.
+    
+  
+
+
+2️⃣ 참조 정합성(Referential Integrity)
+
+  데이터베이스에서 외래 키(Foreign Key)를 통해 연관된 테이블 간의 관계가 일관되게 유지됨을 의미합니다.
+    
+      예를 들어, Order 테이블이 User 테이블의 외래 키로 user_id를 가지는 경우, 모든 Order가 존재하는 user_id를 가져야 참조 정합성이 유지됩니다.
+        
+          만약 User 테이블에서 삭제된 사용자의 user_id가 Order 테이블에 남아 있으면 참조 정합성이 깨진 것입니다.
+        
+      
+    
+  
+
+
+3️⃣ 비즈니스 정합성(Business Integrity)
+
+  비즈니스 로직에 따라 특정 조건들이 일관되게 유지됨을 보장합니다.
+    
+      즉, 비즈니스 요구 사항에 맞게 데이터가 정확히 반영되는 것을 의미합니다.
+        
+          예를 들어, Account 테이블에서 계좌 잔고가 음수로 내려가지 않도록 하는 규칙이 있다면, 이 규칙을 지켜야 비즈니스 정합성이 유지됩니다.
+        
+      
+    
+  
+
+
+3️⃣ 데이터 정합성 보장 방법.
+
+  데이터 정합성을 유지하기 위해 다음과 같은 기법이 사용됩니다.
+    
+      1. 데이터베이스 제약 조건 : 데이터베이스 수준에서 PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL 등의 제약 조건을 설정하여 정합성을 보장합니다.
+      2. 트랜잭션 : 트랜잭션은 ACID(Atomicity, Consistency, Isolation, Durability) 속성을 통해 데이터의 일관성을 유지합니다. 트랜잭션 내의 모든 작업이 성공적으로 완료되거나 모두 실패해야 데이터 정합성이 보장됩니다.
+      3. 애플리케이션 로직 : 비즈니스 정합성은 데이터베이스뿐만 아니라 애플리케이션 코드에서도 확인되어야 합니다. 예를 들어, 특정 규칙에 따라 데이터를 삽입하거나 업데이트하기 전에 로직을 통해 검증하는 방식입니다.
+    
+  
+
+
+4️⃣ JPA에서의 데이터 정합성 유지.
+
+  JPA를 사용할 때는 다음과 같은 방식으로 데이터 정합성을 유지할 수 있습니다.
+    
+      연관관계 주인 설정 : 연관관계 주인을 올바르게 설정하여, 양방향 관계에서 데이터베이스에 데이터가 일관되게 반영되도록 합니다.
+      Cascade와 Orphan 객체 처리 : CascadeType.ALL과 orphanRemoval = true 설정을 통해 부모-자식 관계에서 데이터 정합성을 유지할 수 있습니다.
+      트랜잭션 관리 : 데이터의 삽입, 수정, 삭제 작업을 트랙잭션으로 묶어, 작업 도중 에러가 발생해도 정합성이 깨지지 않도록 합니다.
+    
+  
+
+
+5️⃣ 요약.
+
+  데이터 정합성은 데이터의 정확성과 신뢰성을 유지하기 위해 필수적인 개념입니다.
+    
+      이를 보장하려면 데이터베이스 제약 조건, 트랜잭션 관리, 애플리케이션 로직을 통한 검증이 필요하며, JPA를 사용하는 경우 연관관계와 트랜잭션을 올바르게 관리해야 합니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-11-10</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-11-09-master-of-association-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-11-09-master-of-association-jpa.html"><h1 class="title_post">🍃[Spring] JPA에서 "연관관계의 주인" 이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-11-09-master-of-association-jpa.html" class="txt_post">
+                            🍃[Spring] JPA에서 “연관관계의 주인” 이란 무엇일까요?
+
+  두 엔티티 사이에 양방향 관계가 있을 때, 외래 키(Foreign Key)를 관리하는 주체가 되는 엔티티를 말합니다.
+  연관관계의 주인이 된 엔티티만이 데이터베이스에서 외래 키를 수정할 수 있으며, 이로 인해 관계의 방향을 정의하고, 관리의 책임을 분명히 합니다.
+
+
+1️⃣ 연관관계의 주인이 필요한 이유.
+
+  객체의 관계에서는 양방향 관계를 쉽게 만들 수 있지만, 관계형 데이터베이스에서는 외래 키가 하나의 테이블에서만 존재하며, 한쪽에서만 외래 키를 업데이트할 수 있습니다.
+  JPA는 이러한 관계형 데이터베이스의 제약을 반영하여, 어느 쪽이 관계를 관리할 것인지를 지정하도록 합니다.
+
+
+2️⃣ 연관관계 주인의 설정 방법.
+
+  연관관계의 주인은 @ManyToOne 또는 @JoinToColumn 어노테이션이 있는 엔티티가 됩니다.
+  주인이 아닌 엔티티는 mappedBy 속성을 사용하여 연관관계의 주인을 지정하며, 데이터베이스에 영향을 미치지 않고 읽기 전용 필드로만 사용됩니다.
+
+
+3️⃣ 예시.
+
+  회원과 팀 사이에 다대일(@ManyToOne) 관계가 있는 경우, 회원 엔티티가 연관관계의 주인이 되어 팀에 대한 외래 키를 가지게 됩니다.
+
+
+@Entity
+public class Memeber {
+    
+    @Id
+    @GenereatedValue
+    private Long id;
+    
+    @ManyToOne // 연관관계의 주인
+    @JoinColumn(name = "team_id") // 외래 키를 매핑
+    private Team team;
+    
+    // getters and setters
+}
+
+
+@Entity
+public class Team {
+    
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @OneToManay(mappedBy = "team") // 주인이 아님을 명시
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+    
+    // getters and setters
+}
+
+
+  여기서 Memeber 엔티티가 연관관계의 주인이므로 team_id 외래 키를 직접 관리합니다.
+    
+      반면, Team 엔티티는 members 필드에 mappedBy를 사용하여 관계를 참조만 하고, 데이터베이스에 영향을 미치지 않습니다.
+    
+  
+
+
+4️⃣ 연관관계 주인의 역할과 사용.
+
+  주인 엔티티에서만 외래 키 값을 설정 및 변경할 수 있습니다.
+  주인이 아닌 엔티티에서 관계를 변경해도 데이터베이스에는 반영되지 않기 때문에, 관계를 변경할 때는 주인 엔티티에서 변경해야 합니다.
+
+
+5️⃣ 연관관계 주인을 잘못 설정했을 때 발생할 문제.
+
+  연관관계의 주인을 잘못 설정하면, 의도한 대로 데이터베이스에 관계가 반영되지 않거나 일관되지 않은 상태가 발생할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-11-09</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Spring/2024-11-09-JPA-OOP.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -5654,98 +5867,6 @@ public class Employee {
 
 
   객체지향적으로 개발할 경우, 데이터베이스 중심이 아닌 비즈니스 로직 중심으로 코드를 설계할 수 있어, 도메인 모델과 데이터베이스 간의 불필요한 매핑 복잡성을 줄이고, 코드가 더 직관적이고 확장 가능하게 됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-11-09</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-11-09-master-of-association-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-11-09-master-of-association-jpa.html"><h1 class="title_post">🍃[Spring] JPA에서 "연관관계의 주인" 이란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-11-09-master-of-association-jpa.html" class="txt_post">
-                            🍃[Spring] JPA에서 “연관관계의 주인” 이란 무엇일까요?
-
-  두 엔티티 사이에 양방향 관계가 있을 때, 외래 키(Foreign Key)를 관리하는 주체가 되는 엔티티를 말합니다.
-  연관관계의 주인이 된 엔티티만이 데이터베이스에서 외래 키를 수정할 수 있으며, 이로 인해 관계의 방향을 정의하고, 관리의 책임을 분명히 합니다.
-
-
-1️⃣ 연관관계의 주인이 필요한 이유.
-
-  객체의 관계에서는 양방향 관계를 쉽게 만들 수 있지만, 관계형 데이터베이스에서는 외래 키가 하나의 테이블에서만 존재하며, 한쪽에서만 외래 키를 업데이트할 수 있습니다.
-  JPA는 이러한 관계형 데이터베이스의 제약을 반영하여, 어느 쪽이 관계를 관리할 것인지를 지정하도록 합니다.
-
-
-2️⃣ 연관관계 주인의 설정 방법.
-
-  연관관계의 주인은 @ManyToOne 또는 @JoinToColumn 어노테이션이 있는 엔티티가 됩니다.
-  주인이 아닌 엔티티는 mappedBy 속성을 사용하여 연관관계의 주인을 지정하며, 데이터베이스에 영향을 미치지 않고 읽기 전용 필드로만 사용됩니다.
-
-
-3️⃣ 예시.
-
-  회원과 팀 사이에 다대일(@ManyToOne) 관계가 있는 경우, 회원 엔티티가 연관관계의 주인이 되어 팀에 대한 외래 키를 가지게 됩니다.
-
-
-@Entity
-public class Memeber {
-    
-    @Id
-    @GenereatedValue
-    private Long id;
-    
-    @ManyToOne // 연관관계의 주인
-    @JoinColumn(name = "team_id") // 외래 키를 매핑
-    private Team team;
-    
-    // getters and setters
-}
-
-
-@Entity
-public class Team {
-    
-    @Id
-    @GeneratedValue
-    private Long id;
-    
-    @OneToManay(mappedBy = "team") // 주인이 아님을 명시
-    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
-    
-    // getters and setters
-}
-
-
-  여기서 Memeber 엔티티가 연관관계의 주인이므로 team_id 외래 키를 직접 관리합니다.
-    
-      반면, Team 엔티티는 members 필드에 mappedBy를 사용하여 관계를 참조만 하고, 데이터베이스에 영향을 미치지 않습니다.
-    
-  
-
-
-4️⃣ 연관관계 주인의 역할과 사용.
-
-  주인 엔티티에서만 외래 키 값을 설정 및 변경할 수 있습니다.
-  주인이 아닌 엔티티에서 관계를 변경해도 데이터베이스에는 반영되지 않기 때문에, 관계를 변경할 때는 주인 엔티티에서 변경해야 합니다.
-
-
-5️⃣ 연관관계 주인을 잘못 설정했을 때 발생할 문제.
-
-  연관관계의 주인을 잘못 설정하면, 의도한 대로 데이터베이스에 관계가 반영되지 않거나 일관되지 않은 상태가 발생할 수 있습니다.
 
 
                         </a>
@@ -7563,6 +7684,220 @@ public class SumTask extends RecursiveTask&lt;Long&gt; {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-10-24-what-is-the-input-output-bounds-task.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-10-24-what-is-the-input-output-bounds-task.html"><h1 class="title_post">💾 [CS] I/O 바운드 작업(I/O-Bound Task)이란 무엇일까요?</h1></a>
+                        <a href="/CS/2024/2024-10-24-what-is-the-input-output-bounds-task.html" class="txt_post">
+                            💾 [CS] I/O 바운드 작업(I/O-Bound Task)이란 무엇일까요?
+
+  I/O 바운드 작업(I/O-Bound Task)은 입출력(Input/Output) 작업의 속도에 의해 전체 작업의 성능에 제한되는 작업을 의미합니다.
+  즉, 프로그램이 실행되는 동안 CPU가 데이터를 처리하는 것보다, 데이터를 읽고 쓰는 작업(I/O)에서 더 많은 시간이 소비되는 상황을 말합니다.
+
+
+1️⃣ I/O 바운드 작업(I/O-Bound Task)의 예.
+
+1️⃣ 파일 입출력.
+
+  하드 디스크에 파일을 읽거나 쓰는 작업은 I/O 바운드 작업(I/O-Bound Task)의 대표적인 예입니다.
+    
+      예를 들어, 대용량 파일을 읽어와서 처리하거나, 결과를 파일에 저장할 때, 디스크의 읽기/쓰기 속도에 따라 작업의 전체 시간이 결정됩니다.
+    
+  
+
+
+2️⃣ 네트워크 통신.
+
+  인터넷에서 데이터를 다운로드하거나 업로드하는 작업은 네트워크 속도에 의존합니다.
+    
+      예를 들어, 웹 페이지에서 데이터를 가져오거나 API 서버로 요청을 보내는 작업은 네트워크의 지연 시간(latency)과 대역폭(bandwidth)에 의해 제한됩니다.
+    
+  
+
+
+3️⃣ 데이터베이스 쿼리.
+
+  데이터베이스에서 데이터를 조회하거나 삽입하는 작업은 I/O 바운드 작업(I/O-Bound Task)입니다.
+    
+      디스크에 저장된 데이터를 읽어오거나, 데이터를 저장할 때 디스크 속도와 데이터베이스의 처리 성능이 작업의 속도를 좌우합니다.
+    
+  
+
+
+2️⃣ I/O 바운드 vs CPU 바운드
+
+1️⃣ I/O 바운드(I/O Bound)
+
+  작업의 성능이 I/O 속도에 의해 제한되는 상황입니다.
+    
+      네트워크, 디스크, 데이터베이스 등의 입출력 장치에서 데이터를 읽거나 쓰는 속도가 전체 성능에 영향을 미칩니다.
+    
+  
+  예를 들어, 파일 다운로드나 데이터베이스에서 대량의 데이터 조회가 I/O 바운드 작업입니다.
+    
+      이 경우, CPU는 데이터 처리할 준비가 되어 있어도, 디스크나 네트워크에서 데이터를 받아오는 동안 대기하게 됩니다.
+    
+  
+
+
+2️⃣ CPU 바운드(CPU Bound)
+
+  작업의 성능이 CPU의 처리 속도에 의해 제한되는 상황입니다.
+    
+      복잡한 계산이나 데이터 처리 작업이 많아 CPU가 대부분의 시간을 계산 작업에 소비할 때 발생합니다.
+    
+  
+  예를 들어, 암호화, 이미지 처리, 머신 러닝 모델 학습 등이 CPU 바운드 작업입니다.
+    
+      이 경우, 작업 속도는 CPU 처리 성능에 의해 결정됩니다.
+    
+  
+
+
+3️⃣ I/O Bound 작업 최적화.
+
+1️⃣ 비동기 프로그래밍(Asynchronous Programming)
+
+  비동기 I/O(Asynchronous I/O)는 I/O 작업(I/O Task)이 완료될 때까지 CPU가 대기하지 않고, 다른 작업을 계속 수행항 수 있도록 합니다.
+    
+      이를 통해 I/O 대기 시간을 줄이고, CPU를 더 효율적으로 사용할 수 있습니다.
+    
+  
+  예를 들어, 파일을 다운로드하는 동안 다른 작업을 처리할 수 있어, 작업의 전체 처리 속도를 개선할 수 있습니다.
+
+
+👉 예시 (Java 비동기 I/O)
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
+
+public class AsyncFileRead {
+    public static void main(String[] args) {
+        CompletableFuture.runAsync(() -&gt; {
+            try {
+                String content = Files.readString(Paths.get("example.txt")), StandardCharsets.UTF_8);
+                System.out.println(content);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        
+        System.out.println("파일 읽기 요청 완료");
+    }
+}
+
+
+
+  위 코드는 비동기로 파일을 읽기 때문에, 파일을 읽는 동안 다른 작업을 수행할 수 있습니다.
+
+
+2️⃣ 멀티스레딩(Multithreading)
+
+  여러 스레드(Thread)를 사용하여 동시에 I/O 작업을 수행할 수 있습니다.
+    
+      이를 통해 I/O 작업이 대기하는 동안 다른 스레드가 CPU를 사용하여 효율성을 높일 수 있습니다.
+    
+  
+  예를 들어, 네트워크에서 여러 데이터를 동시에 가져와야 할 때, 각 데이터를 개별 스레드(Thread)에서 처리하도록 하여 병렬 처리를 구현할 수 있습니다.
+
+
+👉 예시(Java 멀티스레딩)
+public class MultiThreadedDownload {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(() -&gt; downloadFile("http://example.com/file1"));
+        Thread thread2 = new Thread(() -&gt; downloadFile("http://example.com/file2"));
+        
+        thread1.start();
+        thread2.start();
+    }
+    
+    public static void downloadFile(String url) {
+        // 네트워크 파일 다운로드 작업 수행
+        System.out.println("Downloading from " + url);
+    }
+}
+
+
+3️⃣ 캐싱(Caching).
+
+  자주 사용하는 데이터를 메모리에 저장해두고, 필요할 때마다 빠르게 접근할 수 있도록 합니다.
+    
+      이를 통해 디스크나 네트워크에 불필요한 I/O 요청을 줄일 수 있습니다.
+    
+  
+  예를 들어, 웹 페이지를 로드할 때, 정적인 리소스를 캐싱(Caching)하면 네트워크 요청을 줄이고 더 빠르게 로드할 수 있습니다.
+
+
+4️⃣ 효율적인 데이터 처리.
+
+  데이터를 대량으로 한 번에 처리하여 I/O 요청을 줄입니다.
+    
+      예를 즐어, 데이터베이스에 한 번에 여러 행을 삽입하거나 조회하는 배치 작업(batch processing)을 통해, 개별적으로 여러 번 처리하는 것보다 더 효율적일 수 있습니다.
+    
+  
+
+
+👉 예시(Java 데이터베이스 배치 처리)
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class BatchProcessingExample {
+    public static void main(String[] args) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password")) {
+            String query = "INSERT INTO students (name, age) VALUES (?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            
+            conn.setAutoCommit(false);
+            
+            for (int i = 0; i &lt; 100; i++) {
+                pstmt.setString(1, "Student " + i);
+                pstmt.setInt(2, 20 + i);
+                pstmt.addBatch();
+            }
+            
+            pstmt.executeBatch();
+            conn.commit();
+            
+            System.out.println("Batch insertion completed.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+4️⃣ 요약.
+
+  I/O 바운드 작업은 입출력 작업의 속도에 의해 성능이 제한되는 작업을 말합니다.
+    
+      파일 읽기/쓰기, 네트워크 통신, 데이터베이스 조회 등이 대표적인 I/O 바운드 작업입니다.
+        
+          이러한 작업은 CPU가 데이터를 처리하는 것보다 입출력 장치에서 데이터를 가져오거나 보내는 시간이 더 오래 걸리는 경우가 많아, CPU는 대기 상태에 머무르게 됩니다.
+          이를 개선하기 위해 비동기 프로그래밍, 멀티스레딩, 캐싱 등의 기법을 활용하여 입출력 효율을 높이고, 전체 시스템 성능을 향상 시킬 수 있습니다.
+        
+      
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-10-24</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-10-24-function-programming.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -7840,220 +8175,6 @@ public class StreamExample {
   함수형 프로그래밍은 순수 함수, 불변성, 부작용 없는 코드를 강조하여, 가독성과 유지보수성, 재사용성이 높은 코드를 작성하는 프로그래밍 패러다임입니다.
   Java 8 이후의 람다 표현식(Lambda Expression)과 스트림(Stream) API는 함수형 프로그래밍(Function Programming ,FP) 스타일을 도입하여, 개발자가 더욱 간결하고 효율적인 코드를 작성할 수 있게 해줍니다.
   함수형 프로그래밍은 병렬 처리와 동시성 문제에 강점을 가지며, 작은 함수들을 조합하여 모듈화(Modularization)된 코드를 작성할 수 있어, 코드의 재사용성과 확장성을 높이는 데 유리합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-10-24</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-10-24-what-is-the-input-output-bounds-task.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-10-24-what-is-the-input-output-bounds-task.html"><h1 class="title_post">💾 [CS] I/O 바운드 작업(I/O-Bound Task)이란 무엇일까요?</h1></a>
-                        <a href="/CS/2024/2024-10-24-what-is-the-input-output-bounds-task.html" class="txt_post">
-                            💾 [CS] I/O 바운드 작업(I/O-Bound Task)이란 무엇일까요?
-
-  I/O 바운드 작업(I/O-Bound Task)은 입출력(Input/Output) 작업의 속도에 의해 전체 작업의 성능에 제한되는 작업을 의미합니다.
-  즉, 프로그램이 실행되는 동안 CPU가 데이터를 처리하는 것보다, 데이터를 읽고 쓰는 작업(I/O)에서 더 많은 시간이 소비되는 상황을 말합니다.
-
-
-1️⃣ I/O 바운드 작업(I/O-Bound Task)의 예.
-
-1️⃣ 파일 입출력.
-
-  하드 디스크에 파일을 읽거나 쓰는 작업은 I/O 바운드 작업(I/O-Bound Task)의 대표적인 예입니다.
-    
-      예를 들어, 대용량 파일을 읽어와서 처리하거나, 결과를 파일에 저장할 때, 디스크의 읽기/쓰기 속도에 따라 작업의 전체 시간이 결정됩니다.
-    
-  
-
-
-2️⃣ 네트워크 통신.
-
-  인터넷에서 데이터를 다운로드하거나 업로드하는 작업은 네트워크 속도에 의존합니다.
-    
-      예를 들어, 웹 페이지에서 데이터를 가져오거나 API 서버로 요청을 보내는 작업은 네트워크의 지연 시간(latency)과 대역폭(bandwidth)에 의해 제한됩니다.
-    
-  
-
-
-3️⃣ 데이터베이스 쿼리.
-
-  데이터베이스에서 데이터를 조회하거나 삽입하는 작업은 I/O 바운드 작업(I/O-Bound Task)입니다.
-    
-      디스크에 저장된 데이터를 읽어오거나, 데이터를 저장할 때 디스크 속도와 데이터베이스의 처리 성능이 작업의 속도를 좌우합니다.
-    
-  
-
-
-2️⃣ I/O 바운드 vs CPU 바운드
-
-1️⃣ I/O 바운드(I/O Bound)
-
-  작업의 성능이 I/O 속도에 의해 제한되는 상황입니다.
-    
-      네트워크, 디스크, 데이터베이스 등의 입출력 장치에서 데이터를 읽거나 쓰는 속도가 전체 성능에 영향을 미칩니다.
-    
-  
-  예를 들어, 파일 다운로드나 데이터베이스에서 대량의 데이터 조회가 I/O 바운드 작업입니다.
-    
-      이 경우, CPU는 데이터 처리할 준비가 되어 있어도, 디스크나 네트워크에서 데이터를 받아오는 동안 대기하게 됩니다.
-    
-  
-
-
-2️⃣ CPU 바운드(CPU Bound)
-
-  작업의 성능이 CPU의 처리 속도에 의해 제한되는 상황입니다.
-    
-      복잡한 계산이나 데이터 처리 작업이 많아 CPU가 대부분의 시간을 계산 작업에 소비할 때 발생합니다.
-    
-  
-  예를 들어, 암호화, 이미지 처리, 머신 러닝 모델 학습 등이 CPU 바운드 작업입니다.
-    
-      이 경우, 작업 속도는 CPU 처리 성능에 의해 결정됩니다.
-    
-  
-
-
-3️⃣ I/O Bound 작업 최적화.
-
-1️⃣ 비동기 프로그래밍(Asynchronous Programming)
-
-  비동기 I/O(Asynchronous I/O)는 I/O 작업(I/O Task)이 완료될 때까지 CPU가 대기하지 않고, 다른 작업을 계속 수행항 수 있도록 합니다.
-    
-      이를 통해 I/O 대기 시간을 줄이고, CPU를 더 효율적으로 사용할 수 있습니다.
-    
-  
-  예를 들어, 파일을 다운로드하는 동안 다른 작업을 처리할 수 있어, 작업의 전체 처리 속도를 개선할 수 있습니다.
-
-
-👉 예시 (Java 비동기 I/O)
-import java.nio.file.*;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.CompletableFuture;
-
-public class AsyncFileRead {
-    public static void main(String[] args) {
-        CompletableFuture.runAsync(() -&gt; {
-            try {
-                String content = Files.readString(Paths.get("example.txt")), StandardCharsets.UTF_8);
-                System.out.println(content);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        
-        System.out.println("파일 읽기 요청 완료");
-    }
-}
-
-
-
-  위 코드는 비동기로 파일을 읽기 때문에, 파일을 읽는 동안 다른 작업을 수행할 수 있습니다.
-
-
-2️⃣ 멀티스레딩(Multithreading)
-
-  여러 스레드(Thread)를 사용하여 동시에 I/O 작업을 수행할 수 있습니다.
-    
-      이를 통해 I/O 작업이 대기하는 동안 다른 스레드가 CPU를 사용하여 효율성을 높일 수 있습니다.
-    
-  
-  예를 들어, 네트워크에서 여러 데이터를 동시에 가져와야 할 때, 각 데이터를 개별 스레드(Thread)에서 처리하도록 하여 병렬 처리를 구현할 수 있습니다.
-
-
-👉 예시(Java 멀티스레딩)
-public class MultiThreadedDownload {
-    public static void main(String[] args) {
-        Thread thread1 = new Thread(() -&gt; downloadFile("http://example.com/file1"));
-        Thread thread2 = new Thread(() -&gt; downloadFile("http://example.com/file2"));
-        
-        thread1.start();
-        thread2.start();
-    }
-    
-    public static void downloadFile(String url) {
-        // 네트워크 파일 다운로드 작업 수행
-        System.out.println("Downloading from " + url);
-    }
-}
-
-
-3️⃣ 캐싱(Caching).
-
-  자주 사용하는 데이터를 메모리에 저장해두고, 필요할 때마다 빠르게 접근할 수 있도록 합니다.
-    
-      이를 통해 디스크나 네트워크에 불필요한 I/O 요청을 줄일 수 있습니다.
-    
-  
-  예를 들어, 웹 페이지를 로드할 때, 정적인 리소스를 캐싱(Caching)하면 네트워크 요청을 줄이고 더 빠르게 로드할 수 있습니다.
-
-
-4️⃣ 효율적인 데이터 처리.
-
-  데이터를 대량으로 한 번에 처리하여 I/O 요청을 줄입니다.
-    
-      예를 즐어, 데이터베이스에 한 번에 여러 행을 삽입하거나 조회하는 배치 작업(batch processing)을 통해, 개별적으로 여러 번 처리하는 것보다 더 효율적일 수 있습니다.
-    
-  
-
-
-👉 예시(Java 데이터베이스 배치 처리)
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-
-public class BatchProcessingExample {
-    public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password")) {
-            String query = "INSERT INTO students (name, age) VALUES (?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            
-            conn.setAutoCommit(false);
-            
-            for (int i = 0; i &lt; 100; i++) {
-                pstmt.setString(1, "Student " + i);
-                pstmt.setInt(2, 20 + i);
-                pstmt.addBatch();
-            }
-            
-            pstmt.executeBatch();
-            conn.commit();
-            
-            System.out.println("Batch insertion completed.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-4️⃣ 요약.
-
-  I/O 바운드 작업은 입출력 작업의 속도에 의해 성능이 제한되는 작업을 말합니다.
-    
-      파일 읽기/쓰기, 네트워크 통신, 데이터베이스 조회 등이 대표적인 I/O 바운드 작업입니다.
-        
-          이러한 작업은 CPU가 데이터를 처리하는 것보다 입출력 장치에서 데이터를 가져오거나 보내는 시간이 더 오래 걸리는 경우가 많아, CPU는 대기 상태에 머무르게 됩니다.
-          이를 개선하기 위해 비동기 프로그래밍, 멀티스레딩, 캐싱 등의 기법을 활용하여 입출력 효율을 높이고, 전체 시스템 성능을 향상 시킬 수 있습니다.
-        
-      
-    
-  
 
 
                         </a>
@@ -10170,6 +10291,182 @@ void printPairs(int[] arr) {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/Spring/2024-10-19-SimpleJpaRepository.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-19-SimpleJpaRepository.html"><h1 class="title_post">🍃[Spring] SimpleJpaRepository란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-19-SimpleJpaRepository.html" class="txt_post">
+                            🍃[Spring] SimpleJpaRepository란 무엇일까요?
+
+  SimpleJpaRepository는 Spring Data JPA(Java Persistence API)에서 제공하는 기본 Repository 구현 클래스입니다.
+  이 클래스는 Spring Data JPA의 Repository 인터페이스(CrudRepository, JpaRepository 등)를 구현하며, 일반적으로 사용되는 CRUD(생성(Create), 조회(Read), 수정(Update), 삭제(Delete)) 기능을 포함하고 있습니다.
+
+
+1️⃣ 역할.
+
+  SimpleJpaRepository는 개발자가 정의한 Repository 인터페이스의 구현체로, 데이터베이스와의 상호작용을 간편하게 처리할 수 있도록 다양한 메서드를 제공합니다.
+  개발자는 직접 CRUD 로직을 구현하지 않고도, SimpleJpaRepository를 통해 자동으로 제공되는 기본 CRUD 메서드를 활용할 수 있습니다.
+
+
+2️⃣ SimpleJpaRepository의 동작 방식.
+
+1️⃣ 기본 CRUD 메서드 제공.
+
+  SimpleJpaRepository는 save, findById, findAll, delete 등과 같은 기본적인 CRUD(생성(Create), 조회(Read), 수정(Update), 삭제(Delete)) 메서드를 구현합니다.
+  개발자가 JpaRepository 인터페이스를 확장하여 커스텀 Repository 인터페이스를 정의하면, Spring Data JPA가 런타임 시점에 SimpleJpaRepository를 사용해 해당 인터페이스의 구현체를 자동으로 생성합니다.
+
+
+2️⃣ 데이터베이스와의 자동 상호작용.
+
+  SimpleJpaRepository는 Hibernate와 같은 JPA(Java Persistence API) 구현체와 상호작용하여, 데이터를 데이터베이스에 저장하거나 조회할 때 필요한 SQL(Structured Query Language) 쿼리를 자동으로 생성하고 실행합니다.
+  개발자는 데이터베이스와의 직접적인 상호작용을 구현할 필요가 없므며, Spring Data JPA가 이 모든 것을 자동으로 처리합니다.
+
+
+3️⃣ 쿼리 메서드 지원
+
+  SimpleJpaRepository는 메서드 이름을 분석하여 쿼리 메서드를 자동으로 생성하는 기능을 지원합니다.
+    
+      예를 들어, findByName과 같은 메서드를 정의하면, Spring Data JPA는 자동으로 name 필드를 기준으로 데이터를 조회하는 쿼리를 생성합니다.
+    
+  
+
+
+3️⃣ SimpleJpaRepository의 기본적인 CRUD 메서드.
+
+  SimpleJpaRepository는 다음과 같은 기본 메서드를 제공합니다.
+    
+      save(S entity)
+        
+          엔티티를 데이터베이스에 저장합니다. 엔티티가 이미 존재하면 업데이트하고, 존재하지 않으면 새로 삽입합니다.
+        
+      
+      findById(ID id)
+        
+          지정된 ID로 데이터베이스에서 엔티티를 조회합니다.
+        
+      
+      findAll()
+        
+          데이터베이스에 저장된 모든 엔티티를 조회합니다.
+        
+      
+      delete(T entity)
+        
+          데이터베이스에서 엔티티를 삭제합니다.
+        
+      
+      deleteById(ID id)
+        
+          지정된 ID로 데이터베이스에서 엔티티를 삭제합니다.
+        
+      
+      count()
+        
+          데이터베이스에 저장된 엔티티의 총 개수를 반환합니다.
+        
+      
+    
+  
+
+
+4️⃣ 사용 예시.
+
+👉 UserRepository 인터페이스.
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UseRepository extends JpaRepository&lt;User, Long&gt; {
+    User findByName(String name);
+}
+
+
+  위 예시에서 UserRepository는 JpaRepository를 상속하고 있으며, 이를 통해 SimpleJpaRepository가 UserRepository의 구현체로 동작하게 됩니다.
+    
+      findByName, save, findById 등의 메서드를 별도로 구현하지 않아도, Spring Data JPA가 SimpleJpaRepository를 사용하여 이들을 자동으로 제공해줍니다.
+    
+  
+
+
+👉 서비스 클래스에서 사용.
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.Optional;
+
+@Sevice
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public User createUser(String name, Integer age) {
+        User user = new User(name, age);
+        return userRepository.save(user); // SimpleJpaRepository의 save 메서드 사용
+    }
+    
+    public Optional&lt;User&gt; getUserById(Long id) {
+        return userRepository.findById(id); // SimpleJpaRepository의 findById 메서드 사용
+    }
+    
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id); // SimpleJpaRepository의 deleteById 메서드 사용
+    }
+}
+
+
+5️⃣ SimpleJpaRepository의 확장 및 커스터마이징.
+
+1️⃣ 기본 기능 확장.
+
+  개발자는 SimpleJpaRepository가 제공하는 기본 기능 외에 추가적인 커스텀 기능을 Repository에 구현할 수 있습니다.
+    
+      예를 들어, 복잡한 쿼리를 직접 정의하거나, 추가적인 비즈니스 로직을 구현할 수 있습니다.
+    
+  
+
+
+2️⃣ @Query 어노테이션 사용.
+
+  @Query 어노테이션을 사용하면 복잡한 JPQL(Java Persistence Query Language) 또는 네이티브 SQL 쿼리를 직접 작성하여 메서드에 연결할 수 있습니다.
+
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    @Query("SELECT u FROM User u WHERE u.name = :name AND u.age &gt; :age")
+    List&lt;User&gt; findByNameAndAgeGreaterThan(@Param("name") String name, @Param("age") Integer age);
+}
+
+
+6️⃣ 요약.
+
+  SimpleJpaRepository는 Spring Data JPA에서 기본적으로 제공하는 CRUD 기능의 구현체로, JpaRepository 인터페이스를 통해 자동으로 생성됩니다.
+  개발자는 JpaRepository를 상속받는 Repository 인터페이스를 정의함으로써 SimpleJpaRepository가 제공하는 자동 CRUD 기능을 활용할 수 있으며, 메서드 이름 기반 쿼리, 커스텀 쿼리 등을 통해 데이터베이스와의 상호작용을 간편하게 처리할 수 있습니다.
+  Spring Data JPA는 데이터베이스와의 상호작용을 단순화하고, 코드의 가독성과 유지보수성을 높이는 데 큰 역할을 합니다.
+  SimpleJpaRepository는 이러한 Spring Data JPA의 핵심을 담당하는 기본 구현체입니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/Java/Java/2024-10-19-stream-api.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
                         
                     </div>
@@ -10376,6 +10673,243 @@ int sum = numbers.parallelStream()
   Java Stream은 데이터의 필터링, 변환. 정렬, 집계 등을 간결하고 선언적인 스타일로 작성할 수 있는 기능을 제공합니다.
   중간 연산과 최종 연산을 조합하여 복잡한 데이터 처리를 간단하게 구현할 수 있으며, 병렬 처리를 통해 성능을 향상시킬 수도 있습니다.
   Stream API를 사용하면 기존의 반복문과 조건문을 대체할 수 있어, 코드의 가독성과 유지보수성이 크게 향상됩니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Java" class="category">Java</a>
+                            
+                                <span class="date">· 2024-10-19</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Java/Java/2024-10-19-optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Java/Java/2024-10-19-optional.html"><h1 class="title_post">☕️[Java] Java Optional이란 무엇일까요?</h1></a>
+                        <a href="/Java/Java/2024-10-19-optional.html" class="txt_post">
+                            ☕️[Java] ☕️[Java] Java Optional이란 무엇일까요?
+
+
+  Optional은 Java 8에서 도입된 null 값을 안전한게 처리하기 위한 클래스입니다.
+  null 값을 직접 다루는 것에 대한 문제점(예: NullPointException)을 줄이기 위해 설계되었으며, 값이 존재할 수도 있고, 존재하지 않을 수도 있는 상황을 표현할 수 있도록 도와줍니다.
+
+
+1️⃣ Optional의 주요 목적.
+
+1️⃣ null 처리의 안정성
+
+  Java에서 null을 반환하거나 사용하는 것은 매우 흔한 일이지만, 잘못된 null 처리는 NullPointException을 유발할 수 있습니다.
+    
+      Optional을 사용하면 이런 문제를 예방할 수 있습니다.
+    
+  
+
+
+2️⃣ 의도 명확성.
+
+  Optional을 사용하면, 메서드의 반환값이 값이 없을 수 있음을 명확하게 표현할 수 있습니다.
+    
+      개발자는 반환값이 Optional 타입일 때 값이 없는 경우에 대한 처리를 고려할 수 있습니다.
+    
+  
+
+
+3️⃣ 코드의 가독성 및 유지보수성.
+
+  Optional은 null 체크를 일일이 하는 대신, 값이 없을 수 있는 상황을 안전하게 다루기 위한 여러 메서드를 제공합니다.
+    
+      이를 통해 코드의 가독성이 좋아지고 유지보수하기 쉬워집니다.
+    
+  
+
+
+2️⃣ Optional의 생성 방법.
+
+1️⃣ Optional.of(T value)
+
+  null이 아닌 값으로 Optional 객체를 생성합니다.
+    
+      값이 null일 경우 NullPointException이 발생합니다.
+        Optional&lt;String&gt; optional = Optional.of("Hello");
+        
+      
+    
+  
+
+
+2️⃣ Optional.ofNullable(T value)
+
+  전달된 값이 null일 수도 있고, 아닐 수도 있는 경우 사용합니다.
+    
+      값이 null이면 Optional.empty() 반환하고, 그렇지 않으면 Optional.of(value)와 동일한 동작을 합니다.
+        Optional&lt;String&gt; optional = Optional.ofNullable(null); // 비어있는 Optional 반환
+        
+      
+    
+  
+
+
+3️⃣ Optional.empty()
+
+  비어있는 Optional 객체를 생성합니다.
+    
+      값이 없음을 명시적으로 나타낼 때 사용합니다.
+        Optional&lt;String&gt; emptyOptional = Optional.empty();
+        
+      
+    
+  
+
+
+3️⃣ Optional의 주요 메서드.
+
+1️⃣ isPresent()
+
+  Optional에 값이 있으면 true, 없으면 false를 반환합니다.
+    Optional&lt;String&gt; optional = Optional.of("Hello");
+if (optional.isPresent()) {
+  System.out.println(optional.get()); // "Hello" 출력
+}
+    
+  
+
+
+2️⃣ ifPresent(Consumer&lt;T&gt; action)
+
+  Optional에 값이 있으면 해당 값으로 지정된 동작을 수행합니다.
+    
+      값이 없으면 아무 일도 하지 않습니다.
+        Optional&lt;String&gt; optional = Optional.of("Hello");
+optional.ifPresent(value -&gt; System.out.println(value)) // "Hello" 출력
+        
+      
+    
+  
+
+
+3️⃣ get()
+
+  Optional에 저장된 값을 반환합니다.
+    
+      값이 없으면 NoSuchElementException이 발생하므로, 주의해서 사용해야 합니다.
+        Optional&lt;String&gt; optional = Optional.of("Hello");
+String value = optional.get(); // "Hello"
+        
+      
+    
+  
+
+
+4️⃣ orElse(T other)
+
+  Optional에 값이 있으면 그 값을 반환하고, 값이 없으면 기본값을 반환합니다.
+    Optional&lt;String&gt; optional = Optional.empty();
+String value = optional.orElse("Default"); // "Default"
+    
+  
+
+
+5️⃣ orElseGet(Supplier&lt;? extends T&gt; supplier)
+
+  Optional에 값이 있으면 그 값을 반환하고, 값이 없으면 람다 표현식이나 메서드를 통해 기본값을 제공할 수 있습니다.
+    Optional&lt;String&gt; optional = Optional.empty();
+String value = optional.orElseGet(() -&gt; "Generated Default"); // "Generated Default"
+    
+  
+
+
+6️⃣ orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)
+
+  Optional에 값이 있으면 그 값을 반환하고, 값이 없으면 지정한 예외를 던집니다.
+    Optional&lt;String&gt; optional = Optional.empty();
+String value = optional.orElseThrow(() -&gt; new IllegalArgumentException("Value not found")); // 예외 발생
+    
+  
+
+
+7️⃣ map(Function&lt;? super T, ? extends U&gt; mapper)
+
+  Optional에 값이 있으면, 해당 값에 대해 함수형 변환을 적용한 결과를 새로운 Optional로 변환합니다.
+    
+      값이 없으면 빈 Optional을 반환합니다.
+        Optional&lt;String&gt; optional = Optional.of("Hello");
+Optional&lt;Integer&gt; length = optional.map(String::length); // "Hello"의 길이인 5를 포함한 Optional 반환
+        
+      
+    
+  
+
+
+8️⃣ flatMap(Function&lt;? super T, Optional&lt;U&gt;&gt; mapper)
+
+  map()과 유사하지만, 중첩된 Optional을 평평하게 만듭니다.
+    
+      Optional&lt;Optional&lt;T&gt;&gt; 형태가 아닌 Optional&lt;T&gt;를 반환합니다.
+        Optional&lt;String&gt; optional = Optional.of("Hello");
+Optional&lt;Integer&gt; length = optional.flatMap(val -&gt; Optional.of(val.length()));
+        
+      
+    
+  
+
+
+4️⃣ Optional 사용 예시.
+
+1️⃣ Optional을 이용한 안전한 null 처리.
+public Optional&lt;User&gt; findUserById(Long id) {
+    User user = userRepositoty.findById(id);
+    return Optional.ofNullable(user);
+}
+
+public void printUserName(Long userId) {
+    Optional&lt;User&gt; userOpt = findUserById(userId);
+    userOpt.ifPresent(user -&gt; System.out.println(user.getName()));
+}
+
+
+2️⃣ 기본값 제공.
+Optional&lt;String&gt; optional = Optional.empty();
+String value = optional.orElse("Default Value"); //"Default Value" 반환
+
+
+5️⃣ Optional을 사용하지 않아야 할 경우.
+
+  컬렉션 타입
+    
+      Optional을 사용하여 빈 리스트나 배열을 표현하기보다는, 단순히 빈 컬렉션을 반환하는 것이 더 일반적이고 권장됩니다.
+    
+  
+  필드 선언
+    
+      클래스의 필드로 Optional을 사용하는 것은 메모리 오버헤드가 발생할 수 있어 권장하지 않습니다.
+        
+          Optional은 반환 타입으로 사용하는 것이 좋습니다.
+        
+      
+    
+  
+  필수 값
+    
+      절대 null이 되어서는 안 되는 필드나 매개변수에 Optional을 사용할 필요는 없습니다.
+    
+  
+
+
+6️⃣ 요약.
+
+  Optional은 null 값으로 인한 문제를 예방하고, 안전하게 값을 처리할 수 있도록 설계된 클래스입니다.
+  값이 있을 수도, 없을 수도 있는 상황을 더 명확하게 표현하며, 다양한 메서드를 통해 안전하게 값의 여부를 확인하고 처리할 수 있게 도와줍니다.
+  이를 통해 코드의 가독성과 유지보수성이 크게 향상됩니다.
 
 
                         </a>
@@ -10679,408 +11213,196 @@ Java 8 이전에는 Permanent Generation(영구 영역, PermGen)이라는 공간
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Java/Java/2024-10-19-optional.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/JV.jpeg') !important"></a>
+                            <a href="/Spring/2024-10-18-what-is-the-spring-data-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Java/Java/2024-10-19-optional.html"><h1 class="title_post">☕️[Java] Java Optional이란 무엇일까요?</h1></a>
-                        <a href="/Java/Java/2024-10-19-optional.html" class="txt_post">
-                            ☕️[Java] ☕️[Java] Java Optional이란 무엇일까요?
+                        <a href="/Spring/2024-10-18-what-is-the-spring-data-jpa.html"><h1 class="title_post">🍃[Spring] Spring Data JPA란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-18-what-is-the-spring-data-jpa.html" class="txt_post">
+                            🍃[Spring] Spring Data JPA란 무엇일까요?
+
+  Spring Data JPA는 Spring Framework의 일부로, JPA(Java Persistence API)를 더욱 쉽게 사용할 수 있도록 도와주는 모듈(Module)입니다.
+  JPA(Java Persistence API)는 자바 애플리케이션에서 객체와 관계형 데이터베이스(Relational Database, RDB) 간의 매핑을 제공하는 표준 인터페이스인데, Spring Data JPA는 이를 기반으로 개발자가 더 적은 코드로 데이터베이스와 상호작용할 수 있게 도와줍니다.
 
 
-  Optional은 Java 8에서 도입된 null 값을 안전한게 처리하기 위한 클래스입니다.
-  null 값을 직접 다루는 것에 대한 문제점(예: NullPointException)을 줄이기 위해 설계되었으며, 값이 존재할 수도 있고, 존재하지 않을 수도 있는 상황을 표현할 수 있도록 도와줍니다.
+1️⃣ Spring Data JPA의 주요 특징.
+
+1️⃣ 간편한 데이터 엑세스 계층.
+
+  Spring Data JPA는 데이터베이스와의 CRUD(Create, Read, Update, Delete) 작업을 손쉽게 구현할 수 있는 방법을 제공합니다.
+  개발자는 복잡한 SQL 쿼리를 직접 작성할 필요 없이, Repository 인터페이스를 정의하는 것만으로 데이터베이스 작업을 처리할 수 있습니다.
 
 
-1️⃣ Optional의 주요 목적.
+2️⃣ 자동 구현 Repository.
 
-1️⃣ null 처리의 안정성
+  Spring Data JPA는 Repository 인터페이스를 정의하면, 런타임 시점에 해당 인터페이스의 구현체를 자동으로 생성합니다.
+  예를 들어, findById, save, delete와 같은 기본적인 데이터베이스 연산은 별도로 구현할 필요가 없습니다.
 
-  Java에서 null을 반환하거나 사용하는 것은 매우 흔한 일이지만, 잘못된 null 처리는 NullPointException을 유발할 수 있습니다.
+
+3️⃣ 메서드 이름 기반 쿼리 생성.
+
+  Spring Data JPA는 메서드 이름을 분석하여 자동으로 쿼리를 생성합니다.
     
-      Optional을 사용하면 이런 문제를 예방할 수 있습니다.
+      예를 들어, findByName과 같은 메서드를 정의하면, name 필드를 기준으로 데이터를 조회하는 쿼리를 자동으로 생성합니다.
+    
+  
+  이를 통해 복잡한 쿼리도 쉽게 작성할 수 있으며, 추가적인 코드 작성이 줄어들어 개발 속도를 높여줍니다.
+
+
+4️⃣ JPQL 및 네이티브 쿼리 지원.
+
+  필요할 경우 JPQL(Java Persistence Query Language) 또는 네이티브 SQL(Structured Query Language) 쿼리를 직접 작성할 수도 있습니다.
+    
+      복잡한 쿼리를 처리하거나 성능 최적화가 필요한 경우 유용하게 사용할 수 있습니다.
     
   
 
 
-2️⃣ 의도 명확성.
+5️⃣ 페이징 및 정렬 지원.
 
-  Optional을 사용하면, 메서드의 반환값이 값이 없을 수 있음을 명확하게 표현할 수 있습니다.
+  Spring Data JPA는 데이터 조회 시 페이징(Paging)과 정렬(Sorting) 기능을 기본적으로 지원합니다.
     
-      개발자는 반환값이 Optional 타입일 때 값이 없는 경우에 대한 처리를 고려할 수 있습니다.
-    
-  
-
-
-3️⃣ 코드의 가독성 및 유지보수성.
-
-  Optional은 null 체크를 일일이 하는 대신, 값이 없을 수 있는 상황을 안전하게 다루기 위한 여러 메서드를 제공합니다.
-    
-      이를 통해 코드의 가독성이 좋아지고 유지보수하기 쉬워집니다.
+      이를 통해 대량의 데이터를 효율적으로 처리할 수 있습니다.
     
   
 
 
-2️⃣ Optional의 생성 방법.
+2️⃣ 주요 구성 요소.
 
-1️⃣ Optional.of(T value)
+1️⃣ Entity 클래스.
 
-  null이 아닌 값으로 Optional 객체를 생성합니다.
+  데이터베이스 테이블과 매핑되는 자바 클래스입니다.
     
-      값이 null일 경우 NullPointException이 발생합니다.
-        Optional&lt;String&gt; optional = Optional.of("Hello");
-        
-      
+      JPA(Java Persistence API) 엔티티(Entity) 어노테이션(@Entity)을 사용하여 테이블 구조를 정의합니다.
     
   
 
 
-2️⃣ Optional.ofNullable(T value)
+2️⃣ Repotitory 인터페이스.
 
-  전달된 값이 null일 수도 있고, 아닐 수도 있는 경우 사용합니다.
+  Spring Data JPA에서 데이터베이스에 접근하기 위해 사용하는 인터페이스입니다.
+  CrudRepository, JpaRepository, PagingAndSortingRepository와 같은 다양한 Repository 인터페이스가 제공됩니다.
     
-      값이 null이면 Optional.empty() 반환하고, 그렇지 않으면 Optional.of(value)와 동일한 동작을 합니다.
-        Optional&lt;String&gt; optional = Optional.ofNullable(null); // 비어있는 Optional 반환
-        
-      
+      이를 확장하여 기본적인 CRUD(생성, 조회, 수정, 삭제) 기능뿐만 아니라 페이징, 정렬 등을 쉽게 구현할 수 있습니다.
     
   
 
 
-3️⃣ Optional.empty()
+3️⃣ Spring Data JPA의 어노테이션
 
-  비어있는 Optional 객체를 생성합니다.
+  @Entity: 클래스를 JPA 엔티티(Entity)로 정의합니다.
+  @Id: 기본 키(Primary Key)를 지정합니다.
+  @Repository: 데이터 접근 객체(DAO)로 사용될 인터페이스 또는 클래스에 사용합니다. Spring에서 해당 클래스를 빈으로 관리할 수 있도록 합니다.
+  @Query: JPQL 또는 네이티브 쿼리를 직접 작성할 때 사용합니다.
+
+
+
+  🙋‍♂️ API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
+🙋‍♂️ JPA 어노테이션 - @Entity
+🙋‍♂️ JPA 어노테이션 - @Id
+🙋‍♂️ 언제 @Service,@Repository,@Controller와 같은 어노테이션을 사용할까?
+🙋‍♂️ 엔티티(Entity)는 무엇일까요?
+
+
+3️⃣ Spring Data JPA 사용 예시.
+
+1️⃣ 엔티티 클래스 정의.
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneretedValue;
+import javax.persistence.GenerationType;
+
+@Entity
+public class User {
+    @Id
+    @GeneretedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
     
-      값이 없음을 명시적으로 나타낼 때 사용합니다.
-        Optional&lt;String&gt; emptyOptional = Optional.empty();
-        
-      
-    
-  
-
-
-3️⃣ Optional의 주요 메서드.
-
-1️⃣ isPresent()
-
-  Optional에 값이 있으면 true, 없으면 false를 반환합니다.
-    Optional&lt;String&gt; optional = Optional.of("Hello");
-if (optional.isPresent()) {
-  System.out.println(optional.get()); // "Hello" 출력
-}
-    
-  
-
-
-2️⃣ ifPresent(Consumer&lt;T&gt; action)
-
-  Optional에 값이 있으면 해당 값으로 지정된 동작을 수행합니다.
-    
-      값이 없으면 아무 일도 하지 않습니다.
-        Optional&lt;String&gt; optional = Optional.of("Hello");
-optional.ifPresent(value -&gt; System.out.println(value)) // "Hello" 출력
-        
-      
-    
-  
-
-
-3️⃣ get()
-
-  Optional에 저장된 값을 반환합니다.
-    
-      값이 없으면 NoSuchElementException이 발생하므로, 주의해서 사용해야 합니다.
-        Optional&lt;String&gt; optional = Optional.of("Hello");
-String value = optional.get(); // "Hello"
-        
-      
-    
-  
-
-
-4️⃣ orElse(T other)
-
-  Optional에 값이 있으면 그 값을 반환하고, 값이 없으면 기본값을 반환합니다.
-    Optional&lt;String&gt; optional = Optional.empty();
-String value = optional.orElse("Default"); // "Default"
-    
-  
-
-
-5️⃣ orElseGet(Supplier&lt;? extends T&gt; supplier)
-
-  Optional에 값이 있으면 그 값을 반환하고, 값이 없으면 람다 표현식이나 메서드를 통해 기본값을 제공할 수 있습니다.
-    Optional&lt;String&gt; optional = Optional.empty();
-String value = optional.orElseGet(() -&gt; "Generated Default"); // "Generated Default"
-    
-  
-
-
-6️⃣ orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)
-
-  Optional에 값이 있으면 그 값을 반환하고, 값이 없으면 지정한 예외를 던집니다.
-    Optional&lt;String&gt; optional = Optional.empty();
-String value = optional.orElseThrow(() -&gt; new IllegalArgumentException("Value not found")); // 예외 발생
-    
-  
-
-
-7️⃣ map(Function&lt;? super T, ? extends U&gt; mapper)
-
-  Optional에 값이 있으면, 해당 값에 대해 함수형 변환을 적용한 결과를 새로운 Optional로 변환합니다.
-    
-      값이 없으면 빈 Optional을 반환합니다.
-        Optional&lt;String&gt; optional = Optional.of("Hello");
-Optional&lt;Integer&gt; length = optional.map(String::length); // "Hello"의 길이인 5를 포함한 Optional 반환
-        
-      
-    
-  
-
-
-8️⃣ flatMap(Function&lt;? super T, Optional&lt;U&gt;&gt; mapper)
-
-  map()과 유사하지만, 중첩된 Optional을 평평하게 만듭니다.
-    
-      Optional&lt;Optional&lt;T&gt;&gt; 형태가 아닌 Optional&lt;T&gt;를 반환합니다.
-        Optional&lt;String&gt; optional = Optional.of("Hello");
-Optional&lt;Integer&gt; length = optional.flatMap(val -&gt; Optional.of(val.length()));
-        
-      
-    
-  
-
-
-4️⃣ Optional 사용 예시.
-
-1️⃣ Optional을 이용한 안전한 null 처리.
-public Optional&lt;User&gt; findUserById(Long id) {
-    User user = userRepositoty.findById(id);
-    return Optional.ofNullable(user);
-}
-
-public void printUserName(Long userId) {
-    Optional&lt;User&gt; userOpt = findUserById(userId);
-    userOpt.ifPresent(user -&gt; System.out.println(user.getName()));
+    // 기본 생성자, getter, setter 생략
 }
 
 
-2️⃣ 기본값 제공.
-Optional&lt;String&gt; optional = Optional.empty();
-String value = optional.orElse("Default Value"); //"Default Value" 반환
+2️⃣ Repository 인터페이스 정의.
+import org.springframework.data.repository.JpaRepository;
 
-
-5️⃣ Optional을 사용하지 않아야 할 경우.
-
-  컬렉션 타입
-    
-      Optional을 사용하여 빈 리스트나 배열을 표현하기보다는, 단순히 빈 컬렉션을 반환하는 것이 더 일반적이고 권장됩니다.
-    
-  
-  필드 선언
-    
-      클래스의 필드로 Optional을 사용하는 것은 메모리 오버헤드가 발생할 수 있어 권장하지 않습니다.
-        
-          Optional은 반환 타입으로 사용하는 것이 좋습니다.
-        
-      
-    
-  
-  필수 값
-    
-      절대 null이 되어서는 안 되는 필드나 매개변수에 Optional을 사용할 필요는 없습니다.
-    
-  
-
-
-6️⃣ 요약.
-
-  Optional은 null 값으로 인한 문제를 예방하고, 안전하게 값을 처리할 수 있도록 설계된 클래스입니다.
-  값이 있을 수도, 없을 수도 있는 상황을 더 명확하게 표현하며, 다양한 메서드를 통해 안전하게 값의 여부를 확인하고 처리할 수 있게 도와줍니다.
-  이를 통해 코드의 가독성과 유지보수성이 크게 향상됩니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Java" class="category">Java</a>
-                            
-                                <span class="date">· 2024-10-19</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-19-SimpleJpaRepository.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-19-SimpleJpaRepository.html"><h1 class="title_post">🍃[Spring] SimpleJpaRepository란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-19-SimpleJpaRepository.html" class="txt_post">
-                            🍃[Spring] SimpleJpaRepository란 무엇일까요?
-
-  SimpleJpaRepository는 Spring Data JPA(Java Persistence API)에서 제공하는 기본 Repository 구현 클래스입니다.
-  이 클래스는 Spring Data JPA의 Repository 인터페이스(CrudRepository, JpaRepository 등)를 구현하며, 일반적으로 사용되는 CRUD(생성(Create), 조회(Read), 수정(Update), 삭제(Delete)) 기능을 포함하고 있습니다.
-
-
-1️⃣ 역할.
-
-  SimpleJpaRepository는 개발자가 정의한 Repository 인터페이스의 구현체로, 데이터베이스와의 상호작용을 간편하게 처리할 수 있도록 다양한 메서드를 제공합니다.
-  개발자는 직접 CRUD 로직을 구현하지 않고도, SimpleJpaRepository를 통해 자동으로 제공되는 기본 CRUD 메서드를 활용할 수 있습니다.
-
-
-2️⃣ SimpleJpaRepository의 동작 방식.
-
-1️⃣ 기본 CRUD 메서드 제공.
-
-  SimpleJpaRepository는 save, findById, findAll, delete 등과 같은 기본적인 CRUD(생성(Create), 조회(Read), 수정(Update), 삭제(Delete)) 메서드를 구현합니다.
-  개발자가 JpaRepository 인터페이스를 확장하여 커스텀 Repository 인터페이스를 정의하면, Spring Data JPA가 런타임 시점에 SimpleJpaRepository를 사용해 해당 인터페이스의 구현체를 자동으로 생성합니다.
-
-
-2️⃣ 데이터베이스와의 자동 상호작용.
-
-  SimpleJpaRepository는 Hibernate와 같은 JPA(Java Persistence API) 구현체와 상호작용하여, 데이터를 데이터베이스에 저장하거나 조회할 때 필요한 SQL(Structured Query Language) 쿼리를 자동으로 생성하고 실행합니다.
-  개발자는 데이터베이스와의 직접적인 상호작용을 구현할 필요가 없므며, Spring Data JPA가 이 모든 것을 자동으로 처리합니다.
-
-
-3️⃣ 쿼리 메서드 지원
-
-  SimpleJpaRepository는 메서드 이름을 분석하여 쿼리 메서드를 자동으로 생성하는 기능을 지원합니다.
-    
-      예를 들어, findByName과 같은 메서드를 정의하면, Spring Data JPA는 자동으로 name 필드를 기준으로 데이터를 조회하는 쿼리를 생성합니다.
-    
-  
-
-
-3️⃣ SimpleJpaRepository의 기본적인 CRUD 메서드.
-
-  SimpleJpaRepository는 다음과 같은 기본 메서드를 제공합니다.
-    
-      save(S entity)
-        
-          엔티티를 데이터베이스에 저장합니다. 엔티티가 이미 존재하면 업데이트하고, 존재하지 않으면 새로 삽입합니다.
-        
-      
-      findById(ID id)
-        
-          지정된 ID로 데이터베이스에서 엔티티를 조회합니다.
-        
-      
-      findAll()
-        
-          데이터베이스에 저장된 모든 엔티티를 조회합니다.
-        
-      
-      delete(T entity)
-        
-          데이터베이스에서 엔티티를 삭제합니다.
-        
-      
-      deleteById(ID id)
-        
-          지정된 ID로 데이터베이스에서 엔티티를 삭제합니다.
-        
-      
-      count()
-        
-          데이터베이스에 저장된 엔티티의 총 개수를 반환합니다.
-        
-      
-    
-  
-
-
-4️⃣ 사용 예시.
-
-👉 UserRepository 인터페이스.
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface UseRepository extends JpaRepository&lt;User, Long&gt; {
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    // 기본 CRUD 메서드 외에 추가 메서드 정의
     User findByName(String name);
 }
 
 
-  위 예시에서 UserRepository는 JpaRepository를 상속하고 있으며, 이를 통해 SimpleJpaRepository가 UserRepository의 구현체로 동작하게 됩니다.
-    
-      findByName, save, findById 등의 메서드를 별도로 구현하지 않아도, Spring Data JPA가 SimpleJpaRepository를 사용하여 이들을 자동으로 제공해줍니다.
-    
-  
+
+  위 코드에서 UserRepository는 JpaRepository를 확장하여, User 엔티티(Entity)와 Long 타입의 기본 키(Primary Key)를 사용하는 Repository로 정의됩니다.
+  findByName: 메서드 이름을 기반으로 Spring Data JPA가 name 필드로 User를 찾는 쿼리를 자동으로 생성합니다.
 
 
-👉 서비스 클래스에서 사용.
+3️⃣ Service 클래스에서 사용.
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
+import java.util.List;
 
-@Sevice
+@Service
 public class UserService {
-    
-    private final UserRepository userRepository;
-    
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private UserRepository userRepository;
+    
+    public List&lt;User&gt; getAllUsers() {
+        return userRepository.findAll();
     }
     
-    public User createUser(String name, Integer age) {
-        User user = new User(name, age);
-        return userRepository.save(user); // SimpleJpaRepository의 save 메서드 사용
+    public User getUserByName(String name) {
+        return userRepository.findByName(name);
     }
     
-    public Optional&lt;User&gt; getUserById(Long id) {
-        return userRepository.findById(id); // SimpleJpaRepository의 findById 메서드 사용
-    }
-    
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id); // SimpleJpaRepository의 deleteById 메서드 사용
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 }
 
 
-5️⃣ SimpleJpaRepository의 확장 및 커스터마이징.
-
-1️⃣ 기본 기능 확장.
-
-  개발자는 SimpleJpaRepository가 제공하는 기본 기능 외에 추가적인 커스텀 기능을 Repository에 구현할 수 있습니다.
-    
-      예를 들어, 복잡한 쿼리를 직접 정의하거나, 추가적인 비즈니스 로직을 구현할 수 있습니다.
-    
-  
+4️⃣ Spring Boot 설정(application.properties)
+spring.datasource.url=jdbc:mysql://localhost:3306/mydatabase
+spring.datasource.username=root
+spring.datasource.password=secret
+spring.jpa.hibernate.ddl-auto=update
 
 
-2️⃣ @Query 어노테이션 사용.
+4️⃣ Spring Data JPA의 장점.
 
-  @Query 어노테이션을 사용하면 복잡한 JPQL(Java Persistence Query Language) 또는 네이티브 SQL 쿼리를 직접 작성하여 메서드에 연결할 수 있습니다.
+1️⃣ 개발 생산성 향상.
 
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
-    @Query("SELECT u FROM User u WHERE u.name = :name AND u.age &gt; :age")
-    List&lt;User&gt; findByNameAndAgeGreaterThan(@Param("name") String name, @Param("age") Integer age);
-}
+  데이터 접근 코드를 줄여주며, 메서드 이름 기반의 쿼리 생성으로 개발 속도를 높입니다.
 
 
-6️⃣ 요약.
+2️⃣ 유연성.
 
-  SimpleJpaRepository는 Spring Data JPA에서 기본적으로 제공하는 CRUD 기능의 구현체로, JpaRepository 인터페이스를 통해 자동으로 생성됩니다.
-  개발자는 JpaRepository를 상속받는 Repository 인터페이스를 정의함으로써 SimpleJpaRepository가 제공하는 자동 CRUD 기능을 활용할 수 있으며, 메서드 이름 기반 쿼리, 커스텀 쿼리 등을 통해 데이터베이스와의 상호작용을 간편하게 처리할 수 있습니다.
-  Spring Data JPA는 데이터베이스와의 상호작용을 단순화하고, 코드의 가독성과 유지보수성을 높이는 데 큰 역할을 합니다.
-  SimpleJpaRepository는 이러한 Spring Data JPA의 핵심을 담당하는 기본 구현체입니다.
+  복잡한 쿼리를 직접 작성할 수 있으며, 다양한 기능을 쉽게 확장할 수 있습니다.
+
+
+3️⃣ Spring 생태계와 통합.
+
+  Spring Framework와 쉽게 통합되며, Spring Boot를 통해 설정이 간편해집니다.
+
+
+4️⃣ 페이징 및 정렬 지원.
+
+  대량의 데이터를 효율적으로 처리할 수 있도록 기본 페이징과 정렬을 제공합니다.
+
+
+5️⃣ 요약.
+
+  Spring Data JPA는 JPA 기반의 애플리케이션 개발을 더욱 쉽게 할 수 있도록 지원하는 Spring 모듈입니다.
+  Repository 인터페이스를 통해 기본적인 CRUD(생성, 조회, 수정, 삭제) 기능과 메서드 이름 기반의 쿼리를 제공하며, 개발자가 데이터베이스와의 상호작용 코드를 줄일 수 있도록 도와줍니다.
+  이를 통해 빠르고 간편하게 데이터베이스 접근 계층을 구현할 수 있으며, 더 복잡한 쿼리가 필요한 경우 직접 쿼리를 작성할 수도 있습니다.
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Spring" class="category">Spring</a>
                             
-                                <span class="date">· 2024-10-19</span>
+                                <span class="date">· 2024-10-18</span>
                             
                         </div>
                     </div>
@@ -11286,207 +11608,6 @@ public class UserSevice {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Spring/2024-10-18-what-is-the-spring-data-jpa.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-18-what-is-the-spring-data-jpa.html"><h1 class="title_post">🍃[Spring] Spring Data JPA란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-18-what-is-the-spring-data-jpa.html" class="txt_post">
-                            🍃[Spring] Spring Data JPA란 무엇일까요?
-
-  Spring Data JPA는 Spring Framework의 일부로, JPA(Java Persistence API)를 더욱 쉽게 사용할 수 있도록 도와주는 모듈(Module)입니다.
-  JPA(Java Persistence API)는 자바 애플리케이션에서 객체와 관계형 데이터베이스(Relational Database, RDB) 간의 매핑을 제공하는 표준 인터페이스인데, Spring Data JPA는 이를 기반으로 개발자가 더 적은 코드로 데이터베이스와 상호작용할 수 있게 도와줍니다.
-
-
-1️⃣ Spring Data JPA의 주요 특징.
-
-1️⃣ 간편한 데이터 엑세스 계층.
-
-  Spring Data JPA는 데이터베이스와의 CRUD(Create, Read, Update, Delete) 작업을 손쉽게 구현할 수 있는 방법을 제공합니다.
-  개발자는 복잡한 SQL 쿼리를 직접 작성할 필요 없이, Repository 인터페이스를 정의하는 것만으로 데이터베이스 작업을 처리할 수 있습니다.
-
-
-2️⃣ 자동 구현 Repository.
-
-  Spring Data JPA는 Repository 인터페이스를 정의하면, 런타임 시점에 해당 인터페이스의 구현체를 자동으로 생성합니다.
-  예를 들어, findById, save, delete와 같은 기본적인 데이터베이스 연산은 별도로 구현할 필요가 없습니다.
-
-
-3️⃣ 메서드 이름 기반 쿼리 생성.
-
-  Spring Data JPA는 메서드 이름을 분석하여 자동으로 쿼리를 생성합니다.
-    
-      예를 들어, findByName과 같은 메서드를 정의하면, name 필드를 기준으로 데이터를 조회하는 쿼리를 자동으로 생성합니다.
-    
-  
-  이를 통해 복잡한 쿼리도 쉽게 작성할 수 있으며, 추가적인 코드 작성이 줄어들어 개발 속도를 높여줍니다.
-
-
-4️⃣ JPQL 및 네이티브 쿼리 지원.
-
-  필요할 경우 JPQL(Java Persistence Query Language) 또는 네이티브 SQL(Structured Query Language) 쿼리를 직접 작성할 수도 있습니다.
-    
-      복잡한 쿼리를 처리하거나 성능 최적화가 필요한 경우 유용하게 사용할 수 있습니다.
-    
-  
-
-
-5️⃣ 페이징 및 정렬 지원.
-
-  Spring Data JPA는 데이터 조회 시 페이징(Paging)과 정렬(Sorting) 기능을 기본적으로 지원합니다.
-    
-      이를 통해 대량의 데이터를 효율적으로 처리할 수 있습니다.
-    
-  
-
-
-2️⃣ 주요 구성 요소.
-
-1️⃣ Entity 클래스.
-
-  데이터베이스 테이블과 매핑되는 자바 클래스입니다.
-    
-      JPA(Java Persistence API) 엔티티(Entity) 어노테이션(@Entity)을 사용하여 테이블 구조를 정의합니다.
-    
-  
-
-
-2️⃣ Repotitory 인터페이스.
-
-  Spring Data JPA에서 데이터베이스에 접근하기 위해 사용하는 인터페이스입니다.
-  CrudRepository, JpaRepository, PagingAndSortingRepository와 같은 다양한 Repository 인터페이스가 제공됩니다.
-    
-      이를 확장하여 기본적인 CRUD(생성, 조회, 수정, 삭제) 기능뿐만 아니라 페이징, 정렬 등을 쉽게 구현할 수 있습니다.
-    
-  
-
-
-3️⃣ Spring Data JPA의 어노테이션
-
-  @Entity: 클래스를 JPA 엔티티(Entity)로 정의합니다.
-  @Id: 기본 키(Primary Key)를 지정합니다.
-  @Repository: 데이터 접근 객체(DAO)로 사용될 인터페이스 또는 클래스에 사용합니다. Spring에서 해당 클래스를 빈으로 관리할 수 있도록 합니다.
-  @Query: JPQL 또는 네이티브 쿼리를 직접 작성할 때 사용합니다.
-
-
-
-  🙋‍♂️ API에서의 인터페이스와 소프트웨어 공학에서의 인터페이스 개념.
-🙋‍♂️ JPA 어노테이션 - @Entity
-🙋‍♂️ JPA 어노테이션 - @Id
-🙋‍♂️ 언제 @Service,@Repository,@Controller와 같은 어노테이션을 사용할까?
-🙋‍♂️ 엔티티(Entity)는 무엇일까요?
-
-
-3️⃣ Spring Data JPA 사용 예시.
-
-1️⃣ 엔티티 클래스 정의.
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneretedValue;
-import javax.persistence.GenerationType;
-
-@Entity
-public class User {
-    @Id
-    @GeneretedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
-    
-    // 기본 생성자, getter, setter 생략
-}
-
-
-2️⃣ Repository 인터페이스 정의.
-import org.springframework.data.repository.JpaRepository;
-
-public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
-    // 기본 CRUD 메서드 외에 추가 메서드 정의
-    User findByName(String name);
-}
-
-
-
-  위 코드에서 UserRepository는 JpaRepository를 확장하여, User 엔티티(Entity)와 Long 타입의 기본 키(Primary Key)를 사용하는 Repository로 정의됩니다.
-  findByName: 메서드 이름을 기반으로 Spring Data JPA가 name 필드로 User를 찾는 쿼리를 자동으로 생성합니다.
-
-
-3️⃣ Service 클래스에서 사용.
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.List;
-
-@Service
-public class UserService {
-    @Autowired
-    private UserRepository userRepository;
-    
-    public List&lt;User&gt; getAllUsers() {
-        return userRepository.findAll();
-    }
-    
-    public User getUserByName(String name) {
-        return userRepository.findByName(name);
-    }
-    
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-}
-
-
-4️⃣ Spring Boot 설정(application.properties)
-spring.datasource.url=jdbc:mysql://localhost:3306/mydatabase
-spring.datasource.username=root
-spring.datasource.password=secret
-spring.jpa.hibernate.ddl-auto=update
-
-
-4️⃣ Spring Data JPA의 장점.
-
-1️⃣ 개발 생산성 향상.
-
-  데이터 접근 코드를 줄여주며, 메서드 이름 기반의 쿼리 생성으로 개발 속도를 높입니다.
-
-
-2️⃣ 유연성.
-
-  복잡한 쿼리를 직접 작성할 수 있으며, 다양한 기능을 쉽게 확장할 수 있습니다.
-
-
-3️⃣ Spring 생태계와 통합.
-
-  Spring Framework와 쉽게 통합되며, Spring Boot를 통해 설정이 간편해집니다.
-
-
-4️⃣ 페이징 및 정렬 지원.
-
-  대량의 데이터를 효율적으로 처리할 수 있도록 기본 페이징과 정렬을 제공합니다.
-
-
-5️⃣ 요약.
-
-  Spring Data JPA는 JPA 기반의 애플리케이션 개발을 더욱 쉽게 할 수 있도록 지원하는 Spring 모듈입니다.
-  Repository 인터페이스를 통해 기본적인 CRUD(생성, 조회, 수정, 삭제) 기능과 메서드 이름 기반의 쿼리를 제공하며, 개발자가 데이터베이스와의 상호작용 코드를 줄일 수 있도록 도와줍니다.
-  이를 통해 빠르고 간편하게 데이터베이스 접근 계층을 구현할 수 있으며, 더 복잡한 쿼리가 필요한 경우 직접 쿼리를 작성할 수도 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
-                            
-                                <span class="date">· 2024-10-18</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Spring/2024-10-18-is-spring-data-jpa-a-module.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
                         
                     </div>
@@ -11584,6 +11705,122 @@ spring.jpa.hibernate.ddl-auto=update
                                 <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-18</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?</h1></a>
+                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="txt_post">
+                            🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?
+
+
+  spring.jpa.properties.hibernate.format_sql은 Spring Boot 애플리케이션에서 Hibernate가 생성하는 SQL(Structured Query Language) 쿼리를 읽기 쉽게 포맷하는 설정입니다.
+  이 설정을 활성화하면 Hibernate가 데이터베이스에 실행하는 SQL(Structured Query Language) 쿼리가 포맷된 형식으로 출력되며, 이를 통해 개발자는 쿼리의 구조를 더 쉽게 이해할 수 있습니다.
+
+
+1️⃣ 역할.
+
+  SQL(Structured Query Language) 쿼리 포맷팅
+    
+      기본적으로 Hibernate가 출력하는 SQL(Structured Query Language) 쿼리는 모두 한 줄로 출력되기 때문에 복잡한 쿼리를 읽기가 어렵습니다.
+        
+          spring.jpa.properties.hibernate.format_sql을 true로 설정하면 SQL(Structured Query Language) 쿼리를 보기 좋게 들여쓰기가 된 형태로 출력해줍니다.
+        
+      
+    
+  
+  디버깅 및 최적화
+    
+      SQL(Structured Query Language) 쿼리가 가독성이 좋아지면, 개발자는 애플리케이션이 데이터베이스에 어떤 쿼리를 실행하는지 쉽게 파악할 수 있으며, 쿼리를 디버깅하거나 성능을 최적화하는 데 도움이 됩니다.
+    
+  
+
+
+2️⃣ 설정 방법.
+
+  Spring Boot에서는 application.properties 또는 application.yml 파일에서 이 속성을 설정할 수 있습니다.
+
+
+👉 application.properties 파일에서 설정.
+spring.jpa.properties.hibernate.format_sql=true
+
+
+👉 application,yml 파일에서 설정.
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+
+
+3️⃣ 동작 예시.
+
+  spring.jpa.properties.hibernate,format_sql=true로 설정한 후, 복잡한 SQL 쿼리를 실행하면 콘솔에 출력되는 SQL이 자동으로 들여쓰기가 적용된 상태로 출력됩니다.
+
+
+👉 설정 전(포맷팅되지 않은 SQL)
+select user0_.id as id1_0_, user0_.email as email2_0_, user0_.name as name3_0_ from user user0_
+
+
+👉 설정 후(포맷팅된 SQL)
+select
+    user0_.id as id1_0_, 
+    user0_.email as email2_0_, 
+    user0_.name as name3_0_ 
+from
+    user user0_
+
+
+
+  이렇게 포맷팅된 SQL은 가독성이 높아져, 복잡한 SQL 쿼리도 쉽게 이해할 수 있습니다.
+
+
+4️⃣ 관련 설정.
+
+  spring.jpa.show-sql
+    
+      이 설정은 Hibernate가 실행하는 SQL 쿼리를 콘솔에 출력하도록 활성화합니다.
+        
+          show-sql=true로 설정하면 SQL 쿼리를 콘솔에서 확인할 수 있습니다.
+            spring.jpa.show-sql=true
+            
+          
+        
+      
+    
+  
+  spring.jpa.properties.hibernate.use_sql_comments
+    
+      이 설정은 쿼리 로그에 SQL 주석을 추가하여, 쿼리가 실행된 위치나 목적에 대한 추가 정보를 제공합니다.
+        spring.jpa.properties.hibernate.use_sql_comments=true
+        
+      
+    
+  
+
+
+5️⃣ 요약.
+
+  spring.jpa.properties.hibernate.format_sql은 Hibernate가 출력하는 SQL 쿼리를 읽기 쉽게 포맷팅하는 설정입니다.
+  이 설정을 true로 활성화하면 SQL 쿼리의 가독성이 향상되며, 개발자는 디버깅과 쿼리 최적화 작업을 더 쉽게 할 수 있습니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Spring" class="category">Spring</a>
+                            
+                                <span class="date">· 2024-10-17</span>
                             
                         </div>
                     </div>
@@ -12259,122 +12496,6 @@ Connection conn = DriverManager.getConnection(url, username, password);
                         </a>
                         <div class="info-post">
                                 <a href="/DB" class="category">DB</a>
-                            
-                                <span class="date">· 2024-10-17</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/spring.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html"><h1 class="title_post">🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?</h1></a>
-                        <a href="/Spring/2024-10-17-spring-jpa-properties-hibernate-format-sql.html" class="txt_post">
-                            🍃[Spring] spring.jpa.properties.hibernate.format_sql이란 무엇일까요?
-
-
-  spring.jpa.properties.hibernate.format_sql은 Spring Boot 애플리케이션에서 Hibernate가 생성하는 SQL(Structured Query Language) 쿼리를 읽기 쉽게 포맷하는 설정입니다.
-  이 설정을 활성화하면 Hibernate가 데이터베이스에 실행하는 SQL(Structured Query Language) 쿼리가 포맷된 형식으로 출력되며, 이를 통해 개발자는 쿼리의 구조를 더 쉽게 이해할 수 있습니다.
-
-
-1️⃣ 역할.
-
-  SQL(Structured Query Language) 쿼리 포맷팅
-    
-      기본적으로 Hibernate가 출력하는 SQL(Structured Query Language) 쿼리는 모두 한 줄로 출력되기 때문에 복잡한 쿼리를 읽기가 어렵습니다.
-        
-          spring.jpa.properties.hibernate.format_sql을 true로 설정하면 SQL(Structured Query Language) 쿼리를 보기 좋게 들여쓰기가 된 형태로 출력해줍니다.
-        
-      
-    
-  
-  디버깅 및 최적화
-    
-      SQL(Structured Query Language) 쿼리가 가독성이 좋아지면, 개발자는 애플리케이션이 데이터베이스에 어떤 쿼리를 실행하는지 쉽게 파악할 수 있으며, 쿼리를 디버깅하거나 성능을 최적화하는 데 도움이 됩니다.
-    
-  
-
-
-2️⃣ 설정 방법.
-
-  Spring Boot에서는 application.properties 또는 application.yml 파일에서 이 속성을 설정할 수 있습니다.
-
-
-👉 application.properties 파일에서 설정.
-spring.jpa.properties.hibernate.format_sql=true
-
-
-👉 application,yml 파일에서 설정.
-spring:
-  jpa:
-    properties:
-      hibernate:
-        format_sql: true
-
-
-3️⃣ 동작 예시.
-
-  spring.jpa.properties.hibernate,format_sql=true로 설정한 후, 복잡한 SQL 쿼리를 실행하면 콘솔에 출력되는 SQL이 자동으로 들여쓰기가 적용된 상태로 출력됩니다.
-
-
-👉 설정 전(포맷팅되지 않은 SQL)
-select user0_.id as id1_0_, user0_.email as email2_0_, user0_.name as name3_0_ from user user0_
-
-
-👉 설정 후(포맷팅된 SQL)
-select
-    user0_.id as id1_0_, 
-    user0_.email as email2_0_, 
-    user0_.name as name3_0_ 
-from
-    user user0_
-
-
-
-  이렇게 포맷팅된 SQL은 가독성이 높아져, 복잡한 SQL 쿼리도 쉽게 이해할 수 있습니다.
-
-
-4️⃣ 관련 설정.
-
-  spring.jpa.show-sql
-    
-      이 설정은 Hibernate가 실행하는 SQL 쿼리를 콘솔에 출력하도록 활성화합니다.
-        
-          show-sql=true로 설정하면 SQL 쿼리를 콘솔에서 확인할 수 있습니다.
-            spring.jpa.show-sql=true
-            
-          
-        
-      
-    
-  
-  spring.jpa.properties.hibernate.use_sql_comments
-    
-      이 설정은 쿼리 로그에 SQL 주석을 추가하여, 쿼리가 실행된 위치나 목적에 대한 추가 정보를 제공합니다.
-        spring.jpa.properties.hibernate.use_sql_comments=true
-        
-      
-    
-  
-
-
-5️⃣ 요약.
-
-  spring.jpa.properties.hibernate.format_sql은 Hibernate가 출력하는 SQL 쿼리를 읽기 쉽게 포맷팅하는 설정입니다.
-  이 설정을 true로 활성화하면 SQL 쿼리의 가독성이 향상되며, 개발자는 디버깅과 쿼리 최적화 작업을 더 쉽게 할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Spring" class="category">Spring</a>
                             
                                 <span class="date">· 2024-10-17</span>
                             
@@ -14231,300 +14352,6 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/DB/2024-10-13-what-is-the-rdb.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/DB/2024-10-13-what-is-the-rdb.html"><h1 class="title_post">💾[Database] 관계형 데이터베이스(Relational Database, RDB)란 무엇일까요?</h1></a>
-                        <a href="/DB/2024-10-13-what-is-the-rdb.html" class="txt_post">
-                            💾[Database] 관계형 데이터베이스(Relational Database, RDB)란 무엇일까요?
-
-
-  관계형 데이터베이스(Relational Database, RDB)는 테이블 형식으로 데이터를 저장하고, 테이블 간의 관계를 정의하여 데이터를 관리하는 데이터 모델입니다.
-  이를 관리하기 위해 데이터베이스 관리 시스템(Database Management System, DBMS)이 사용되며, RDB(Relational Database, 관계형 데이터베이스)를 관리하는 DBMS(Database Management System, 데이터베이스 관리 시스템)는 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)이라고 합니다.
-  관계형 데이터베이스(Relational Database, RDB)는 데이터를 행(Row)과 열(Column)로 구성된 테이블(Table)에 저장되며, 각 테이블은 서로 관계를 맺어 구조화된 데이터를 관리하고 검색하기 쉽게 합니다.
-
-
-1️⃣ 관계형 데이터베이스(RDB, Relational Database)의 주요 특징.
-
-1️⃣ 테이블 구조.
-
-  관계형 데이터베이스(RDB, Relational Database)는 데이터를 테이블 형태로 저장합니다.
-    
-      각 테이블은 행(Row)과 열(Column)로 구성되며, 행(Row)은 레코드(Record)라고 하고, 열(Column)은 속성(Attribute) 또는 필드(Field)라고 부릅니다.
-    
-  
-  예를 들어, “사용자”라는 테이블이 있다면, 각 행(Row)은 사용자 정보(이름, 이메일, 나이 등)를 나타내고, 각 열(Column)은 사용자 정보를 설명하는 속성(Attribute)을 나타냅니다.
-
-
-2️⃣ 관계.
-
-  관계형 데이터베이스(Relational Database, RDB)는 여러 테이블 간의 관계를 정의할 수 있습니다.
-    
-      키(Key)를 사용해 테이블 간의 관계를 맺고, 데이터를 참조하고 연결할 수 있습니다.
-    
-  
-  예를 들어, “사용자” 테이블과 “주문” 테이블이 있다고 하면, “사용자” 테이블의 기본 키(Primary Key)가 “주문” 테이블에 외래 키(Foreign Key)로 사용되며, 사용자와 주문 간의 관계를 나타낼 수 있습니다.
-
-
-3️⃣ 고유한 키(Primary Key).
-
-  각 테이블에는 고유한 키(Primary Key)가 있습니다.
-    
-      이 키는 테이블의 각 레코드(Record)를 유일하게 식별하는 역할을 합니다.
-        
-          기본 키(Primary Key)는 중복될 수 없으며, 이를 통해 데이터를 정확하게 검색하고 관리할 수 있습니다.
-        
-      
-    
-  
-
-
-4️⃣ 데이터 무결성 및 일관성.
-
-  관계형 데이터베이스(Relational Database, RDB)는 데이터 무결성(Integrity)과 일관성(Consistency)을 유지하도록 설계되었습니다.
-    
-      이를 통해 데이터의 정확성과 신뢰성을 보장할 수 있습니다.
-    
-  
-  제약 조건(Constraints)을 통해 데이터의 무결성(Integrity)을 유지합니다.
-    
-      예를 들어, NOT NULL 제약 조건을 사용하여 특정 열이 항상 값을 가져야 한다는 것을 보장하거나, FOREIGN KEY 제약 조건을 사용해 테이블 간의 관계를 유지합니다.
-    
-  
-
-
-5️⃣ SQL(Structured Query Language)
-
-  관계형 데이터베이스(Relational Database, RDB)는 데이터를 관리하기 위해 SQL(Structured Query Language)이라는 언어를 사용합니다.
-    
-      SQL(Structured Query Language)은 데이터를 조회, 삽입, 수정, 삭제하는 데 사용되는 표준 언어입니다.
-        
-          SQL(Structured Query Language)은 관계형 데이터베이스(Relational Database, RDB)에서 데이터 검색과 조작을 위한 강력한 도구입니다.
-        
-      
-    
-  
-  예: 데이터를 삽입하기 위한 INSERT문, 데이터를 조회하기 위한 SELECT문, 데이터를 수정하기 위한 UPDATE문, 데이터를 삭제하기 위한 DELETE문 등이 있습니다.
-
-
-2️⃣ 관계형 데이터베이스(Relational Database, RDB)의 구성 요소.
-
-1️⃣ 테이블(Table)
-
-  관계형 데이터베이스(Relational Database, RDB)의 기본 단위입니다.
-    
-      데이터는 행(Row)과 열(Column)로 구성된 테이블에 저장됩니다.
-        
-          예: 사용자(Users) 테이블, 주문(Order) 테이블
-        
-      
-    
-  
-
-
-2️⃣ 기본 키(Primary Key)
-
-  각 테이블에서 고유하게 레코드를 식별하는 열(Column)입니다.
-    
-      중복될 수 없으며, 각 행(Row)을 유일하게 구분할 수 있습니다.
-    
-  
-  예: 사용자 테이블의 user_id 열(Column)은 기본 키(Primary Key)로 사용될 수 있습니다.
-
-
-3️⃣ 외래 키(Foreign Key)
-
-  다른 테이블의 기본 키(Primary Key)를 참조하는 열(Column)로, 테이블 간의 관계를 정의합니다.
-    
-      외래 키(Foreign Key)는 두 테이블을 연결하는 역할을 하며, 데이터 간의 일관성을 유지하는 데 도움을 줍니다.
-    
-  
-  예: 주문(Orders) 테이블에서 user_id 열이 사용자(Users) 테이블의 user_id를 참조하는 경우, 이를 외래키(Foreign Key)라고 합니다.
-
-
-4️⃣ 속성(Attribute)
-
-  테이블의 열(Column)을 의미하며, 각 속성(Attribute)은 특정 유형의 데이터를 저장합니다.
-    
-      예를 들어, 사용자 테이블에서 name, email, age와 같은 속성이 있을 수 있습니다.
-    
-  
-
-
-5️⃣ 레코드(Record)
-
-  테이블의 행(Row)을 의미하며, 하나의 레코드는 테이블에 저장된 데이터의 한 항목을 나타냅니다.
-    
-      예를 들어, 사용자 테이블의 한 행(Row)은 한 사용자의 정보를 나타냅니다.
-    
-  
-
-
-3️⃣ 관계형 데이터베이스(Relational Database, RDB)의 예시.
-
-  예를 들어, 전자상거래 웹사이트를 위한 데이터베이스를 설계한다고 가정해봅시다.
-    
-      여기에는 사용자와 주문 정보를 저장하기 위해 두 개의 테이블이 있을 수 있습니다.
-    
-  
-
-
-1️⃣ 사용자(Users) 테이블.
-
-  user_id(기본 키, Primary Key)
-  name`
-  email
-  address
-
-
-2️⃣ 주문(Orders) 테이블.
-
-  order_id(기본 키, Primary Key)
-  user_id(외래 키, Foreign Key, 사용자와의 관계를 나타냄)
-  product
-  quantity
-
-
-3️⃣ 설명.
-
-  이 예에서, 사용자 테이블과 주문 테이블은 user_id를 통해 관계를 맺고 있습니다.
-    
-      이를 통해 특정 사용자가 어떤 주문을 했는지 쉽게 조회할 수 있습니다.
-    
-  
-
-
-4️⃣ 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)의 예.
-
-  MySQL
-    
-      오픈 소스 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)으로, 웹 애플리케이션에서 많이 사용됩니다.
-    
-  
-  PostgreSQL
-    
-      오픈 소스 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)로, 확장성과 표준 준수에 중점을 둔 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)입니다.
-    
-  
-  Oracle
-    
-      대규모 상업용 데이터베이스로, 높은 성능과 보안성을 자랑하는 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)입니다.
-    
-  
-  Microsoft SQL Server
-    
-      마이크로소프트에서 개발한 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)으로, 기업 환경에서 많이 사용됩니다.
-    
-  
-
-
-5️⃣ 관계형 데이터베이스(Relational Database, RDB)의 장점.
-
-1️⃣ 데이터 무결성 보장.
-
-  관계형 데이터베이스(Relational Database, RDB)는 제약 조건(Constraints)을 통해 데이터의 무결성을 보장합니다.
-    
-      예를 들어, 외래 키(Foreign key)를 통해 테이블 간의 참조 무결성을 유지하고, 데이터의 일관성을 확보합니다.
-    
-  
-
-
-2️⃣ SQL을 통한 데이터 관리.
-
-  관계형 데이터베이스(Relational Database)는 SQL(Structured Query Language)이라는 표준 언어를 사용하여 데이터를 검색, 삽입, 수정, 삭제할 수 있습니다.
-    
-      SQL은 관계형 데이터베이스에서 데이터를 쉽게 관리할 수 있도록 해줍니다.
-    
-  
-
-
-3️⃣ 데이터 중복 최소화.
-
-  관계형 데이터베이스(Relational Database, RDB)는 데이터를 여러 테이블로 나누고, 중복을 최소화하여 저장합니다.
-    
-      이로 인해 데이터 저장소의 효율성이 증가하고, 데이터 일관성을 유지할 수 있습니다.
-    
-  
-
-
-4️⃣ 데이터 보안.
-
-  관계형 데이터베이스(Relational Database, RDB)는 사용자 권한을 관리하여, 데이터에 대한 접근을 제어하고 보안을 강화할 수 있습니다.
-
-
-6️⃣ 관계형 데이터베이스의 단점.
-
-1️⃣ 복잡한 구조.
-
-  데이터가 여러 테이블에 분산되어 저장되기 때문에, 데이터의 구조가 복잡해질 수 있습니다.
-    
-      특히, 데이터간의 관계가 많아질수록 관리와 설계가 어려워질 수 있습니다.
-    
-  
-
-
-2️⃣ 확장성의 한계.
-
-  관계형 데이터베이스(Relational Database, RDB)는 데이터의 수평적 확장(데이터를 여러 서버로 나누어 저장)이 어려운 경우가 많습니다.
-    
-      데이터가 크고 관계가 복잡할수록 확장성과 성능에 제약이 있을 수 있습니다.
-    
-  
-
-
-3️⃣ 고정된 스키마.
-
-  관계형 데이터베이스(Relational Database, RDB)는 고정된 스키마를 사용합니다.
-    
-      즉, 테이블 구조(열(Row)의 수와 이름 등)가 정해진 후, 이를 변경하기 어렵습니다.
-        
-          데이터 구조가 자주 변경되는 경우 유연성이 떨어질 수 있습니다.
-        
-      
-    
-  
-
-
-7️⃣ 관계형 데이터베이스(Relational Database, RDB)와 NoSQL 데이터베이스의 차이.
-
-1️⃣ 관계형 데이터베이스(Relational Database, RDB)
-
-  데이터를 테이블 형태로 저장하며, 테이블 간의 관계를 정의합니다.
-  SQL(Structured Query Language)을 사용하여 데이터를 관리합니다.
-  일관성과 무결성을 중요하게 다루며, 고정된 스키마 구조를 가집니다.
-
-
-2️⃣ NoSQL 데이터베이스
-
-  데이터를 유연한 구조로 저장하며, 문서(Document), 키-값(Key-Value), 그래프(Graph) 등 다양한 방식으로 데이터를 저장할 수 있습니다.
-  스키마가 유연하여 데이터 구조가 자주 변경될 때 유리합니다.
-  관계형 데이터베이스(Relational Database, RDB)에 비해 수평적 확장이 용이하며, 대규모 분산 시스템에 적합합니다.
-
-
-8️⃣ 결론.
-
-  관계형 데이터베이스(Relational Database, RDB)는 데이터를 테이블 형태로 저장하고, 여러 테이블 간의 관계를 정의하여 데이터를 효율적으로 관리하는 데이터베이스 관리 시스템입니다.
-  SQL을 사용해 데이터를 관리하며, 데이터 무결성과 일관성을 유지하는 데 강점을 가집니다.
-  대표적인 관계형 데이터베이스로는 MySQL, PostgreSQL, Oracle 등이 있으며, 복잡한 관계를 가지는 정형 데이터 관리에 적합합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/DB" class="category">DB</a>
-                            
-                                <span class="date">· 2024-10-13</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Network/2024/2024-10-13-what-is-the-packet.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/network.jpeg') !important"></a>
                         
                     </div>
@@ -15101,6 +14928,300 @@ VLAN(Virtual LAN, 가상 LAN)은 서로 다른 네트워크 세그먼트에 속�
                         </a>
                         <div class="info-post">
                                 <a href="/Network" class="category">Network</a>
+                            
+                                <span class="date">· 2024-10-13</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/DB/2024-10-13-what-is-the-rdb.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/database.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/DB/2024-10-13-what-is-the-rdb.html"><h1 class="title_post">💾[Database] 관계형 데이터베이스(Relational Database, RDB)란 무엇일까요?</h1></a>
+                        <a href="/DB/2024-10-13-what-is-the-rdb.html" class="txt_post">
+                            💾[Database] 관계형 데이터베이스(Relational Database, RDB)란 무엇일까요?
+
+
+  관계형 데이터베이스(Relational Database, RDB)는 테이블 형식으로 데이터를 저장하고, 테이블 간의 관계를 정의하여 데이터를 관리하는 데이터 모델입니다.
+  이를 관리하기 위해 데이터베이스 관리 시스템(Database Management System, DBMS)이 사용되며, RDB(Relational Database, 관계형 데이터베이스)를 관리하는 DBMS(Database Management System, 데이터베이스 관리 시스템)는 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)이라고 합니다.
+  관계형 데이터베이스(Relational Database, RDB)는 데이터를 행(Row)과 열(Column)로 구성된 테이블(Table)에 저장되며, 각 테이블은 서로 관계를 맺어 구조화된 데이터를 관리하고 검색하기 쉽게 합니다.
+
+
+1️⃣ 관계형 데이터베이스(RDB, Relational Database)의 주요 특징.
+
+1️⃣ 테이블 구조.
+
+  관계형 데이터베이스(RDB, Relational Database)는 데이터를 테이블 형태로 저장합니다.
+    
+      각 테이블은 행(Row)과 열(Column)로 구성되며, 행(Row)은 레코드(Record)라고 하고, 열(Column)은 속성(Attribute) 또는 필드(Field)라고 부릅니다.
+    
+  
+  예를 들어, “사용자”라는 테이블이 있다면, 각 행(Row)은 사용자 정보(이름, 이메일, 나이 등)를 나타내고, 각 열(Column)은 사용자 정보를 설명하는 속성(Attribute)을 나타냅니다.
+
+
+2️⃣ 관계.
+
+  관계형 데이터베이스(Relational Database, RDB)는 여러 테이블 간의 관계를 정의할 수 있습니다.
+    
+      키(Key)를 사용해 테이블 간의 관계를 맺고, 데이터를 참조하고 연결할 수 있습니다.
+    
+  
+  예를 들어, “사용자” 테이블과 “주문” 테이블이 있다고 하면, “사용자” 테이블의 기본 키(Primary Key)가 “주문” 테이블에 외래 키(Foreign Key)로 사용되며, 사용자와 주문 간의 관계를 나타낼 수 있습니다.
+
+
+3️⃣ 고유한 키(Primary Key).
+
+  각 테이블에는 고유한 키(Primary Key)가 있습니다.
+    
+      이 키는 테이블의 각 레코드(Record)를 유일하게 식별하는 역할을 합니다.
+        
+          기본 키(Primary Key)는 중복될 수 없으며, 이를 통해 데이터를 정확하게 검색하고 관리할 수 있습니다.
+        
+      
+    
+  
+
+
+4️⃣ 데이터 무결성 및 일관성.
+
+  관계형 데이터베이스(Relational Database, RDB)는 데이터 무결성(Integrity)과 일관성(Consistency)을 유지하도록 설계되었습니다.
+    
+      이를 통해 데이터의 정확성과 신뢰성을 보장할 수 있습니다.
+    
+  
+  제약 조건(Constraints)을 통해 데이터의 무결성(Integrity)을 유지합니다.
+    
+      예를 들어, NOT NULL 제약 조건을 사용하여 특정 열이 항상 값을 가져야 한다는 것을 보장하거나, FOREIGN KEY 제약 조건을 사용해 테이블 간의 관계를 유지합니다.
+    
+  
+
+
+5️⃣ SQL(Structured Query Language)
+
+  관계형 데이터베이스(Relational Database, RDB)는 데이터를 관리하기 위해 SQL(Structured Query Language)이라는 언어를 사용합니다.
+    
+      SQL(Structured Query Language)은 데이터를 조회, 삽입, 수정, 삭제하는 데 사용되는 표준 언어입니다.
+        
+          SQL(Structured Query Language)은 관계형 데이터베이스(Relational Database, RDB)에서 데이터 검색과 조작을 위한 강력한 도구입니다.
+        
+      
+    
+  
+  예: 데이터를 삽입하기 위한 INSERT문, 데이터를 조회하기 위한 SELECT문, 데이터를 수정하기 위한 UPDATE문, 데이터를 삭제하기 위한 DELETE문 등이 있습니다.
+
+
+2️⃣ 관계형 데이터베이스(Relational Database, RDB)의 구성 요소.
+
+1️⃣ 테이블(Table)
+
+  관계형 데이터베이스(Relational Database, RDB)의 기본 단위입니다.
+    
+      데이터는 행(Row)과 열(Column)로 구성된 테이블에 저장됩니다.
+        
+          예: 사용자(Users) 테이블, 주문(Order) 테이블
+        
+      
+    
+  
+
+
+2️⃣ 기본 키(Primary Key)
+
+  각 테이블에서 고유하게 레코드를 식별하는 열(Column)입니다.
+    
+      중복될 수 없으며, 각 행(Row)을 유일하게 구분할 수 있습니다.
+    
+  
+  예: 사용자 테이블의 user_id 열(Column)은 기본 키(Primary Key)로 사용될 수 있습니다.
+
+
+3️⃣ 외래 키(Foreign Key)
+
+  다른 테이블의 기본 키(Primary Key)를 참조하는 열(Column)로, 테이블 간의 관계를 정의합니다.
+    
+      외래 키(Foreign Key)는 두 테이블을 연결하는 역할을 하며, 데이터 간의 일관성을 유지하는 데 도움을 줍니다.
+    
+  
+  예: 주문(Orders) 테이블에서 user_id 열이 사용자(Users) 테이블의 user_id를 참조하는 경우, 이를 외래키(Foreign Key)라고 합니다.
+
+
+4️⃣ 속성(Attribute)
+
+  테이블의 열(Column)을 의미하며, 각 속성(Attribute)은 특정 유형의 데이터를 저장합니다.
+    
+      예를 들어, 사용자 테이블에서 name, email, age와 같은 속성이 있을 수 있습니다.
+    
+  
+
+
+5️⃣ 레코드(Record)
+
+  테이블의 행(Row)을 의미하며, 하나의 레코드는 테이블에 저장된 데이터의 한 항목을 나타냅니다.
+    
+      예를 들어, 사용자 테이블의 한 행(Row)은 한 사용자의 정보를 나타냅니다.
+    
+  
+
+
+3️⃣ 관계형 데이터베이스(Relational Database, RDB)의 예시.
+
+  예를 들어, 전자상거래 웹사이트를 위한 데이터베이스를 설계한다고 가정해봅시다.
+    
+      여기에는 사용자와 주문 정보를 저장하기 위해 두 개의 테이블이 있을 수 있습니다.
+    
+  
+
+
+1️⃣ 사용자(Users) 테이블.
+
+  user_id(기본 키, Primary Key)
+  name`
+  email
+  address
+
+
+2️⃣ 주문(Orders) 테이블.
+
+  order_id(기본 키, Primary Key)
+  user_id(외래 키, Foreign Key, 사용자와의 관계를 나타냄)
+  product
+  quantity
+
+
+3️⃣ 설명.
+
+  이 예에서, 사용자 테이블과 주문 테이블은 user_id를 통해 관계를 맺고 있습니다.
+    
+      이를 통해 특정 사용자가 어떤 주문을 했는지 쉽게 조회할 수 있습니다.
+    
+  
+
+
+4️⃣ 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)의 예.
+
+  MySQL
+    
+      오픈 소스 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)으로, 웹 애플리케이션에서 많이 사용됩니다.
+    
+  
+  PostgreSQL
+    
+      오픈 소스 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)로, 확장성과 표준 준수에 중점을 둔 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)입니다.
+    
+  
+  Oracle
+    
+      대규모 상업용 데이터베이스로, 높은 성능과 보안성을 자랑하는 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)입니다.
+    
+  
+  Microsoft SQL Server
+    
+      마이크로소프트에서 개발한 관계형 데이터베이스 관리시스템(RDBMS, Relational Database Management System)으로, 기업 환경에서 많이 사용됩니다.
+    
+  
+
+
+5️⃣ 관계형 데이터베이스(Relational Database, RDB)의 장점.
+
+1️⃣ 데이터 무결성 보장.
+
+  관계형 데이터베이스(Relational Database, RDB)는 제약 조건(Constraints)을 통해 데이터의 무결성을 보장합니다.
+    
+      예를 들어, 외래 키(Foreign key)를 통해 테이블 간의 참조 무결성을 유지하고, 데이터의 일관성을 확보합니다.
+    
+  
+
+
+2️⃣ SQL을 통한 데이터 관리.
+
+  관계형 데이터베이스(Relational Database)는 SQL(Structured Query Language)이라는 표준 언어를 사용하여 데이터를 검색, 삽입, 수정, 삭제할 수 있습니다.
+    
+      SQL은 관계형 데이터베이스에서 데이터를 쉽게 관리할 수 있도록 해줍니다.
+    
+  
+
+
+3️⃣ 데이터 중복 최소화.
+
+  관계형 데이터베이스(Relational Database, RDB)는 데이터를 여러 테이블로 나누고, 중복을 최소화하여 저장합니다.
+    
+      이로 인해 데이터 저장소의 효율성이 증가하고, 데이터 일관성을 유지할 수 있습니다.
+    
+  
+
+
+4️⃣ 데이터 보안.
+
+  관계형 데이터베이스(Relational Database, RDB)는 사용자 권한을 관리하여, 데이터에 대한 접근을 제어하고 보안을 강화할 수 있습니다.
+
+
+6️⃣ 관계형 데이터베이스의 단점.
+
+1️⃣ 복잡한 구조.
+
+  데이터가 여러 테이블에 분산되어 저장되기 때문에, 데이터의 구조가 복잡해질 수 있습니다.
+    
+      특히, 데이터간의 관계가 많아질수록 관리와 설계가 어려워질 수 있습니다.
+    
+  
+
+
+2️⃣ 확장성의 한계.
+
+  관계형 데이터베이스(Relational Database, RDB)는 데이터의 수평적 확장(데이터를 여러 서버로 나누어 저장)이 어려운 경우가 많습니다.
+    
+      데이터가 크고 관계가 복잡할수록 확장성과 성능에 제약이 있을 수 있습니다.
+    
+  
+
+
+3️⃣ 고정된 스키마.
+
+  관계형 데이터베이스(Relational Database, RDB)는 고정된 스키마를 사용합니다.
+    
+      즉, 테이블 구조(열(Row)의 수와 이름 등)가 정해진 후, 이를 변경하기 어렵습니다.
+        
+          데이터 구조가 자주 변경되는 경우 유연성이 떨어질 수 있습니다.
+        
+      
+    
+  
+
+
+7️⃣ 관계형 데이터베이스(Relational Database, RDB)와 NoSQL 데이터베이스의 차이.
+
+1️⃣ 관계형 데이터베이스(Relational Database, RDB)
+
+  데이터를 테이블 형태로 저장하며, 테이블 간의 관계를 정의합니다.
+  SQL(Structured Query Language)을 사용하여 데이터를 관리합니다.
+  일관성과 무결성을 중요하게 다루며, 고정된 스키마 구조를 가집니다.
+
+
+2️⃣ NoSQL 데이터베이스
+
+  데이터를 유연한 구조로 저장하며, 문서(Document), 키-값(Key-Value), 그래프(Graph) 등 다양한 방식으로 데이터를 저장할 수 있습니다.
+  스키마가 유연하여 데이터 구조가 자주 변경될 때 유리합니다.
+  관계형 데이터베이스(Relational Database, RDB)에 비해 수평적 확장이 용이하며, 대규모 분산 시스템에 적합합니다.
+
+
+8️⃣ 결론.
+
+  관계형 데이터베이스(Relational Database, RDB)는 데이터를 테이블 형태로 저장하고, 여러 테이블 간의 관계를 정의하여 데이터를 효율적으로 관리하는 데이터베이스 관리 시스템입니다.
+  SQL을 사용해 데이터를 관리하며, 데이터 무결성과 일관성을 유지하는 데 강점을 가집니다.
+  대표적인 관계형 데이터베이스로는 MySQL, PostgreSQL, Oracle 등이 있으며, 복잡한 관계를 가지는 정형 데이터 관리에 적합합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/DB" class="category">DB</a>
                             
                                 <span class="date">· 2024-10-13</span>
                             
@@ -35935,6 +36056,122 @@ Confirm
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
+                            <a href="/CS/2024/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/CS/2024/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
+                        <a href="/CS/2024/2024-09-14-CDN-Service.html" class="txt_post">
+                            💾 [CS] CDN 서비스란?
+
+1️⃣ CDN 서비스.
+
+  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
+  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
+
+
+2️⃣ CDN의 주요 기능.
+
+  1. 콘텐츠 캐싱(Caching).
+    
+      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
+      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
+    
+  
+  2. 분산된 네트워크.
+    
+      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
+      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
+    
+  
+  3. 로드 밸런싱.
+    
+      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
+        
+          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
+        
+      
+    
+  
+  4. 보안 강화.
+    
+      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
+    
+  
+  5. 고가용성 및 장애 복구
+    
+      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
+    
+  
+
+
+3️⃣ CDN 서비스의 장점.
+
+  1. 빠른 콘텐츠 제공.
+    
+      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
+    
+  
+  2. 트래픽 관리.
+    
+      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
+    
+  
+  3. 전 세계적인 도달 범위.
+    
+      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
+        
+          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
+        
+      
+    
+  
+  4. 비용 절감.
+    
+      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
+    
+  
+  5. 보안 강화.
+    
+      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
+    
+  
+
+
+4️⃣ CDN 서비스의 예시.
+
+  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
+  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
+  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
+  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
+  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
+
+
+5️⃣ 요약.
+
+  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
+    
+      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
+    
+  
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/CS" class="category">CS</a>
+                            
+                                <span class="date">· 2024-09-14</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
                             <a href="/CS/2024/2024-09-14-CORS.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
                         
                     </div>
@@ -36085,122 +36322,6 @@ public class WebConfig implements WebMvcConfigurer {
   CORS 는 웹 브라우저가 서로 다른 출처의 리소스에 안전하게 접근할 수 있도록 하기 위한 보안 기능입니다.
   CORS 는 서버가 응답 헤더를 통해 특정 출처의 요청을 허용할 수 있도록 하며, 이를 통해 웹 애플리케이션은 외부 API나 리소스에 접근할 수 있습니다.
   CORS 를 적절히 설정하면, 보안성을 유지하면서도 다양한 출처에서의 리소스 접근을 허용할 수 있습니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/CS" class="category">CS</a>
-                            
-                                <span class="date">· 2024-09-14</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/CS/2024/2024-09-14-CDN-Service.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/cs.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/CS/2024/2024-09-14-CDN-Service.html"><h1 class="title_post">💾 [CS] CDN 서비스란?</h1></a>
-                        <a href="/CS/2024/2024-09-14-CDN-Service.html" class="txt_post">
-                            💾 [CS] CDN 서비스란?
-
-1️⃣ CDN 서비스.
-
-  CDN(Content Delivery Network) 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 사용자에게 신속하고 효율적으로 전달하는 서비스입니다.
-  CDN은 웹사이트의 성능을 향상시키고, 대규모 트래픽을 효율적으로 관리하며, 전 세계 사용자에게 일관된 사용자 경험을 제공하는 데 중요한 역할을 합니다.
-
-
-2️⃣ CDN의 주요 기능.
-
-  1. 콘텐츠 캐싱(Caching).
-    
-      CDN은 원본 서버(origin server)로부터 자주 요청되는 콘텐츠(예: 이미지, 동영상, JavaScript, CSS 파일 등)를 캐싱 서버에 저장합니다.
-      사용자가 콘텐츠를 요청하면, CDN은 지리적으로 가장 가까운 서버에서 캐싱된 콘텐츠를 제공하여 응답 시간을 줄입니다.
-    
-  
-  2. 분산된 네트워크.
-    
-      CDN은 전 세계에 분산된 여러 서버(엣지 서버, Edge Servers)로 구성도어 있습니다.
-      사용자의 요청은 지리적으로 가장 가까운 엣지 서버로 라우팅되며, 이를 통해 데이터 전송 거리를 최소화하고 전송 속도를 향상시킵니다.
-    
-  
-  3. 로드 밸런싱.
-    
-      CDN은 여러 서버 간에 트래픽을 분산시켜 서버에 과부하가 걸리는 것을 방지합니다.
-        
-          이를 통해 안정적인 서비스 제공과 성능 저하를 방지합니다.
-        
-      
-    
-  
-  4. 보안 강화.
-    
-      CDN은 DDoS(Distributed Denial of Service) 공격 방어, SSL/TLS 암호화, WAF(Web Application Firewall) 등 다양한 보안 기능을 제공하여 웹사이트를 보호합니다.
-    
-  
-  5. 고가용성 및 장애 복구
-    
-      CDN은 서버가 장애를 겪을 경우에도 다른 서버에서 서비스를 제공할 수 있어, 웹사이트의 가용성을 높이고 장애 복구 능력을 향상시킵니다.
-    
-  
-
-
-3️⃣ CDN 서비스의 장점.
-
-  1. 빠른 콘텐츠 제공.
-    
-      CDN은 사용자와 가장 가까운 서버에서 콘텐츠를 제공하므로, 로딩 속도가 빨라지고 사용자 경험이 향상됩니다.
-    
-  
-  2. 트래픽 관리.
-    
-      대규모 트래픽이 발생하는 웹사이트나 이벤트에서도 CDN은 트래픽을 효율적으로 분산시켜 서버 과부하를 방지하고 안정적인 서비스를 유지할 수 있습니다.
-    
-  
-  3. 전 세계적인 도달 범위.
-    
-      CDN은 전 세계에 분산된 서버를 통해 다양한 지역의 사용자에게 일관된 성능을 제공합니다.
-        
-          이는 특히 글로벌 서비스를 제공하는 웹사이트에 중요합니다.
-        
-      
-    
-  
-  4. 비용 절감.
-    
-      CDN은 원본 서버로의 요청을 줄여 서버 부하를 줄이고, 데이터 전송 비용을 절감할 수 있습니다.
-    
-  
-  5. 보안 강화.
-    
-      CDN은 다양한 보안 기능을 제공하여 웹사이트를 공격으로부터 보호할 수 있습니다.
-    
-  
-
-
-4️⃣ CDN 서비스의 예시.
-
-  Akamai : 가장 오래된 CDN 제공업체 중 하나로, 다양한 콘텐츠 전송 및 보안 솔루션을 제공합니다.
-  ClouldFlare : CDN과 함께 DDoS 방어, WAF, DNS 관리 등의 기능을 제공하는 인기 있는 서비스입니다.
-  Amazon CloudFront : AWS의 CDN 서비스로, 다른 AWS 서비스와의 통합이 용이합니다.
-  Google Clould CDN : Google Cloud Platform에서 제공하는 CDN 서비스로, 글로벌 인프라를 활용해 빠르고 안정적인 콘텐츠 제공을 지원합니다.
-  Fastly : 실시간 콘텐츠 업데이트와 사용자 지정 가능성이 뛰어난 CDN 서비스입니다.
-
-
-5️⃣ 요약.
-
-  CDN 서비스는 전 세계에 분산된 서버 네트워크를 통해 웹 콘텐츠를 효율적으로 전달하는 서비스로, 웹사이트의 성능을 향상시키고 보안을 강화하며, 대규모 트래픽을 처리하는 데 중요한 역할을 합니다.
-    
-      이를 통해 사용자 경험을 개선하고, 글로벌 사용자에게 빠르고 안정적인 서비스를 제공할 수 있습니다.
-    
-  
 
 
                         </a>
@@ -57132,211 +57253,6 @@ IntStream 은 다양한 생성 방법과 중간 및 최종 연산을 제공하�
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Algorithm/2024/2024-06-02-ArrayOfJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Algorithm/2024/2024-06-02-ArrayOfJava.html"><h1 class="title_post">📦[DS,Algorithm] Java의 배열.</h1></a>
-                        <a href="/Algorithm/2024/2024-06-02-ArrayOfJava.html" class="txt_post">
-                            1️⃣ Java의 배열.
-
-1️⃣ 배열이란 무엇인가?
-
-배열(Array)은 동일한 타입의 여러 요소를 하나의 변수로 관리할 수 있게 해주는 자료구조입니다.
-
-배열은 연속된 메모리 공간에 할당되며, 각 요소는 인덱스를 통해 접근할 수 있습니다.
-
-2️⃣ 배열의 선언과 초기화.
-
-Java에서 배열은 다음과 같이 선언하고 초기화할 수 있습니다.
-
-int[] array = new int[5]; // 크기가 5인 정수형 배열 선언.
-int[] array = {10, 20, 30, 40, 50}; // 초기화와 동시에 배열 선언
-
-
-3️⃣ 배열의 요소와 접근.
-
-배열의 각 요소는 인덱스를 통해 접근할 수 있으며, 인덱스는 0부터 시작합니다.
-
-int firstElement = array[0]; // element = 10, 첫 번째 요소에 접근
-array[1] = 25; // [10, 25, 30, 40, 50], 두 번째 요소에 값 25를 저장
-
-
-4️⃣ 배열의 시간 복잡도.
-
-배열의 시간 복잡도는 연산의 종류에 따라 다릅니다.
-
-아래는 일반적인 배열 연산과 그 시간 복잡도를 설명한 것입니다.
-
-1. 접근(Access)
-
-
-  특정 인덱스의 요소에 접근하는 시간 복잡도는 O(1)입니다.
-    
-      이유 : 배열은 연속된 메모리 공간에 저장되므로 인덱스를 통해 바로 접근할 수 있기 때문입니다.
-    
-  
-
-
-// 접근(Access)
-int element = array[2]; 
-// element = 30,  time complexity = O(1)
-// [10, 25, 30, 40, 50]
-
-
-2. 탐색(Search)
-
-
-  배열에서 특정 값을 찾는 시간 복잡도는 O(n)입니다.
-    
-      이유: 최악의 경우 배열의 모든 요소를 검사해야 할 수도 있기 때문입니다.
-    
-  
-
-
-boolean found = false;
-int target = 30;
-
-for (int i = 0; i &lt; array.length; i++) {
-    if (array[i] == target) { // i = 2, array[i] = 30
-        found = true;
-        break;
-    }
-}
-// [10, 25, 30, 40, 50]
-
-
-3. 삽입(Insertion)
-
-
-  배열의 끝에 요소를 추가하는 시간 복잡도는 O(1)입니다.
-  배열의 특정 위치에 요소를 삽입하는 시간 복잡도는 O(n)입니다.
-    
-      이유: 특정 위치에 삽입하기 위해서는 해당 위치 이후의 모든 요소를 한 칸씩 뒤로 밀어야 하기 때문입니다.
-    
-  
-
-
-// 삽입(Insertion)
-
-// 배열 삽입시 index가 array.length가 아니고 array.length - 1인 이유는
-// array.length는 배열의 크기, 즉 5를 나타내기 때문입니다.
-// index는 0부터 시작하기 때문에 배열의 크기가 5인 배열의 끝 index는 4입니다.
-// 때문에 array.length - 1을 해줍니다.
-
-array[array.length - 1] = 60; // 배열 끝에 삽입 (O(1)), [10, 25, 30, 40, 60]
-
-// 배열 중간에 삽입하는 메서드
-public static void insertion(int[] array, int index, int insertValue) {
-  // 배열 중간에 삽입(O(n))
-  for (int i = array.length - 1; i &gt; index; i--) {
-    array[i] = array[i - 1];
-  }
-  array[index] = insertValue;
-  System.out.println(Arrays.toString(array));
-}
-
-
-4. 삭제(Deletion)
-
-
-  배열의 끝에서 요소를 제거하는 시간 복잡도는 O(1)입니다.
-  배열의 특정 위치의 요소를 제거하는 시간 복잡도는 O(n)입니다.
-    
-      이유: 특정 위치의 요소를 제거한 후에는 해당 위치 이후의 모든 요소를 한 칸씩 앞으로 당겨야 하기 때문입니다.
-    
-  
-
-
-// 삭제(Deletion)
-    array[array.length - 1] = 0; // 배열의 끝에서 삭제 ((O(1)), [10, 25, 30, 77, 0]
-    System.out.println(Arrays.toString(array));
-
-    // 배열 중간에서 삭제하는 메서드
-    int deletionValue = deletion(array, 2);
-    System.out.println(deletionValue); // 30
-
-// 배열 중간에 삭제하는 메서드
-  public static int deletion(int[] array, int index) {
-    // 배열 중간에 삭제(O(n))
-    int[] returnValue = new int[array.length];
-
-    for (int i = index, j = 0; i &lt; array.length - 1 ; i++) {
-      returnValue[j] = array[i];
-      j++;
-      array[i] = array[i + 1];
-
-    }
-    array[array.length - 1] = 0; // 마지막 요소 초기화.
-    int deletionValue = returnValue[0]; // 배열을 메모리에서 지우기
-    returnValue = null;
-    return deletionValue;
-  }
-
-
-5️⃣ 배열의 장점과 단점.
-
-장점.
-
-  빠른 접근 속도 : 인덱스를 통해 O(1) 시간에 요소를 접근할 수 있습니다.
-  메모리 효율 : 연속된 메모리 공간을 사용하므로 메모리 사용이 효율적입니다.
-
-
-단점.
-
-  고정된 크기 : 배열의 크기는 선언 시에 고정되므로, 실행 중에 크기를 변경할 수 없습니다.
-  삽입 및 삭제의 비효율성 : 배열 중간에 요소를 삽입하거나 삭제할 때 O(n)의 시간이 소요됩니다.
-  연속된 메모리 할당 필요 : 큰 배열을 사용할 떄는 연속된 메모리 공간이 필요하여 메모리 할당에 제한이 있을 수 있습니다.
-
-
-
-  배열은 이러한 특성들로 인해 빠른 접근이 필요한 상황에서는 매우 유용하지만, 삽입 및 삭제가 빈번히 일어나는 경우에는 비효율적일 수 있습니다.
-따라서 상황에 맞게 적절한 자료구조를 선택하는 것이 중요합니다.
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Algorithm" class="category">Algorithm</a>
-                            
-                                <span class="date">· 2024-06-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
-                            <a href="/Archive/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
-                        
-                    </div>
-                    <div class="box_contents">
-                        <a href="/Archive/TIL/2024-06-02-TIL.html"><h1 class="title_post">📝 [TIL] 240602 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-06-02-TIL.html" class="txt_post">
-                            
-  자바의 배열
-  JAVA DOCS 보는 법
-
-
-                        </a>
-                        <div class="info-post">
-                                <a href="/Archive" class="category">Archive</a>
-                            
-                                <span class="date">· 2024-06-02</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            </li>
-        
-        
-        <li class="paginated-item">
-                <div id="article_content">
-                    <div class="thumbnail_zone">
-                        
                             <a href="/Archive/Post/2024-06-02-HowToReadJavaDocs.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/blog.jpeg') !important"></a>
                         
                     </div>
@@ -57523,21 +57439,200 @@ public class Main {
                 <div id="article_content">
                     <div class="thumbnail_zone">
                         
-                            <a href="/Archive/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                            <a href="/Archive/TIL/2024-06-02-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
                         
                     </div>
                     <div class="box_contents">
-                        <a href="/Archive/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
-                        <a href="/Archive/TIL/2024-06-01-TIL.html" class="txt_post">
+                        <a href="/Archive/TIL/2024-06-02-TIL.html"><h1 class="title_post">📝 [TIL] 240602 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-06-02-TIL.html" class="txt_post">
                             
-  배열의 특정 인덱스의 요소를 삭제하는 방법.
+  자바의 배열
+  JAVA DOCS 보는 법
 
 
                         </a>
                         <div class="info-post">
                                 <a href="/Archive" class="category">Archive</a>
                             
-                                <span class="date">· 2024-06-01</span>
+                                <span class="date">· 2024-06-02</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Algorithm/2024/2024-06-02-ArrayOfJava.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/ds.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Algorithm/2024/2024-06-02-ArrayOfJava.html"><h1 class="title_post">📦[DS,Algorithm] Java의 배열.</h1></a>
+                        <a href="/Algorithm/2024/2024-06-02-ArrayOfJava.html" class="txt_post">
+                            1️⃣ Java의 배열.
+
+1️⃣ 배열이란 무엇인가?
+
+배열(Array)은 동일한 타입의 여러 요소를 하나의 변수로 관리할 수 있게 해주는 자료구조입니다.
+
+배열은 연속된 메모리 공간에 할당되며, 각 요소는 인덱스를 통해 접근할 수 있습니다.
+
+2️⃣ 배열의 선언과 초기화.
+
+Java에서 배열은 다음과 같이 선언하고 초기화할 수 있습니다.
+
+int[] array = new int[5]; // 크기가 5인 정수형 배열 선언.
+int[] array = {10, 20, 30, 40, 50}; // 초기화와 동시에 배열 선언
+
+
+3️⃣ 배열의 요소와 접근.
+
+배열의 각 요소는 인덱스를 통해 접근할 수 있으며, 인덱스는 0부터 시작합니다.
+
+int firstElement = array[0]; // element = 10, 첫 번째 요소에 접근
+array[1] = 25; // [10, 25, 30, 40, 50], 두 번째 요소에 값 25를 저장
+
+
+4️⃣ 배열의 시간 복잡도.
+
+배열의 시간 복잡도는 연산의 종류에 따라 다릅니다.
+
+아래는 일반적인 배열 연산과 그 시간 복잡도를 설명한 것입니다.
+
+1. 접근(Access)
+
+
+  특정 인덱스의 요소에 접근하는 시간 복잡도는 O(1)입니다.
+    
+      이유 : 배열은 연속된 메모리 공간에 저장되므로 인덱스를 통해 바로 접근할 수 있기 때문입니다.
+    
+  
+
+
+// 접근(Access)
+int element = array[2]; 
+// element = 30,  time complexity = O(1)
+// [10, 25, 30, 40, 50]
+
+
+2. 탐색(Search)
+
+
+  배열에서 특정 값을 찾는 시간 복잡도는 O(n)입니다.
+    
+      이유: 최악의 경우 배열의 모든 요소를 검사해야 할 수도 있기 때문입니다.
+    
+  
+
+
+boolean found = false;
+int target = 30;
+
+for (int i = 0; i &lt; array.length; i++) {
+    if (array[i] == target) { // i = 2, array[i] = 30
+        found = true;
+        break;
+    }
+}
+// [10, 25, 30, 40, 50]
+
+
+3. 삽입(Insertion)
+
+
+  배열의 끝에 요소를 추가하는 시간 복잡도는 O(1)입니다.
+  배열의 특정 위치에 요소를 삽입하는 시간 복잡도는 O(n)입니다.
+    
+      이유: 특정 위치에 삽입하기 위해서는 해당 위치 이후의 모든 요소를 한 칸씩 뒤로 밀어야 하기 때문입니다.
+    
+  
+
+
+// 삽입(Insertion)
+
+// 배열 삽입시 index가 array.length가 아니고 array.length - 1인 이유는
+// array.length는 배열의 크기, 즉 5를 나타내기 때문입니다.
+// index는 0부터 시작하기 때문에 배열의 크기가 5인 배열의 끝 index는 4입니다.
+// 때문에 array.length - 1을 해줍니다.
+
+array[array.length - 1] = 60; // 배열 끝에 삽입 (O(1)), [10, 25, 30, 40, 60]
+
+// 배열 중간에 삽입하는 메서드
+public static void insertion(int[] array, int index, int insertValue) {
+  // 배열 중간에 삽입(O(n))
+  for (int i = array.length - 1; i &gt; index; i--) {
+    array[i] = array[i - 1];
+  }
+  array[index] = insertValue;
+  System.out.println(Arrays.toString(array));
+}
+
+
+4. 삭제(Deletion)
+
+
+  배열의 끝에서 요소를 제거하는 시간 복잡도는 O(1)입니다.
+  배열의 특정 위치의 요소를 제거하는 시간 복잡도는 O(n)입니다.
+    
+      이유: 특정 위치의 요소를 제거한 후에는 해당 위치 이후의 모든 요소를 한 칸씩 앞으로 당겨야 하기 때문입니다.
+    
+  
+
+
+// 삭제(Deletion)
+    array[array.length - 1] = 0; // 배열의 끝에서 삭제 ((O(1)), [10, 25, 30, 77, 0]
+    System.out.println(Arrays.toString(array));
+
+    // 배열 중간에서 삭제하는 메서드
+    int deletionValue = deletion(array, 2);
+    System.out.println(deletionValue); // 30
+
+// 배열 중간에 삭제하는 메서드
+  public static int deletion(int[] array, int index) {
+    // 배열 중간에 삭제(O(n))
+    int[] returnValue = new int[array.length];
+
+    for (int i = index, j = 0; i &lt; array.length - 1 ; i++) {
+      returnValue[j] = array[i];
+      j++;
+      array[i] = array[i + 1];
+
+    }
+    array[array.length - 1] = 0; // 마지막 요소 초기화.
+    int deletionValue = returnValue[0]; // 배열을 메모리에서 지우기
+    returnValue = null;
+    return deletionValue;
+  }
+
+
+5️⃣ 배열의 장점과 단점.
+
+장점.
+
+  빠른 접근 속도 : 인덱스를 통해 O(1) 시간에 요소를 접근할 수 있습니다.
+  메모리 효율 : 연속된 메모리 공간을 사용하므로 메모리 사용이 효율적입니다.
+
+
+단점.
+
+  고정된 크기 : 배열의 크기는 선언 시에 고정되므로, 실행 중에 크기를 변경할 수 없습니다.
+  삽입 및 삭제의 비효율성 : 배열 중간에 요소를 삽입하거나 삭제할 때 O(n)의 시간이 소요됩니다.
+  연속된 메모리 할당 필요 : 큰 배열을 사용할 떄는 연속된 메모리 공간이 필요하여 메모리 할당에 제한이 있을 수 있습니다.
+
+
+
+  배열은 이러한 특성들로 인해 빠른 접근이 필요한 상황에서는 매우 유용하지만, 삽입 및 삭제가 빈번히 일어나는 경우에는 비효율적일 수 있습니다.
+따라서 상황에 맞게 적절한 자료구조를 선택하는 것이 중요합니다.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Algorithm" class="category">Algorithm</a>
+                            
+                                <span class="date">· 2024-06-02</span>
                             
                         </div>
                     </div>
@@ -57671,6 +57766,32 @@ public class Main {
                         </a>
                         <div class="info-post">
                                 <a href="/Algorithm" class="category">Algorithm</a>
+                            
+                                <span class="date">· 2024-06-01</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+        
+        <li class="paginated-item">
+                <div id="article_content">
+                    <div class="thumbnail_zone">
+                        
+                            <a href="/Archive/TIL/2024-06-01-TIL.html" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('/assets/img/thumbnail/TIL.jpeg') !important"></a>
+                        
+                    </div>
+                    <div class="box_contents">
+                        <a href="/Archive/TIL/2024-06-01-TIL.html"><h1 class="title_post">📝 [TIL] 240601 Today I Learned.</h1></a>
+                        <a href="/Archive/TIL/2024-06-01-TIL.html" class="txt_post">
+                            
+  배열의 특정 인덱스의 요소를 삭제하는 방법.
+
+
+                        </a>
+                        <div class="info-post">
+                                <a href="/Archive" class="category">Archive</a>
                             
                                 <span class="date">· 2024-06-01</span>
                             
@@ -104535,6 +104656,17 @@ greeting = "Hello, Min Seong"
             'url'      : "/CS/2024/2024-11-21-why-save-code-in-github.html",
             'image'    : "/assets/img/thumbnail/cs.jpeg",
             'date'     : "2024-11-21"
+        });
+    
+
+        posts.push({
+            'title'    : "💾 [CS] Artifact(아티팩트)란 무엇일까요?",
+            'path'     : "CS > 2024",
+            'type'     : "post",
+            'tags'     : "CS",
+            'url'      : "/CS/2024/2024-11-22-artifact.html",
+            'image'    : "/assets/img/thumbnail/cs.jpeg",
+            'date'     : "2024-11-22"
         });
     
 

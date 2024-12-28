@@ -5,7 +5,7 @@ tags:
     - Software Architecture
     - System Design
 date: "2024-12-27"
-thumbnail: "/assets/img/thumbnail/architecture.jpeg"
+thumbnail: "/assets/img/thumbnail/architecture.jpg"
 ---
 
 # 🏗️[Architecture] Stateless 방식 vs Stateful 방식.

@@ -3,7 +3,7 @@ title: 🏗️[Architecture] 멀티테넌트 아키텍처(Multi-Tenant Architect
 tags:
     - Architecture
 date: "2024-12-11"
-thumbnail: "/assets/img/thumbnail/architecture.jpeg"
+thumbnail: "/assets/img/thumbnail/architecture.jpg"
 ---
 
 # 🏗️[Architecture] 멀티테넌트 아키텍처(Multi-Tenant Architecture)란 무엇일까요?

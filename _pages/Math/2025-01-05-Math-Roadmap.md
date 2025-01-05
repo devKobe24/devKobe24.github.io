@@ -3,7 +3,7 @@ title: "💡[Math] 수학 로드맵 - 1"
 tags:
     - Math
     - Roadmap
-date: "2025-01-15"
+date: "2025-01-05"
 thumbnail: "/assets/img/thumbnail/Math.jpeg"
 ---
 

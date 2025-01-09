@@ -42,7 +42,7 @@ public MyClass() {
 
 ### 2. JPA에서의 사용.
 - ↘︎ JPA에서는 **엔티티 클래스**에 기본생성자가 필요함.
-    - ↘︎ `@NoArgsConstructor`를 사용하여 간편하게 기본 생성자를 추가할 수 있음.
+  - ↘︎ `@NoArgsConstructor`를 사용하여 간편하게 기본 생성자를 추가할 수 있음.
 ```java
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
@@ -58,7 +58,7 @@ public class User {
 
 ### 3. force 속성 사용 (final 필드와 함께)
 - ↘︎ 기본 생성자는 `final` 필드 초기화를 강제하지 않음.
-    - ↘︎ 하지만 `@NoArgsConstructor(force = true)`를 사용하면 `final` 필드도 기본값으로 초기화되도록 처리할 수 있음.
+  - ↘︎ 하지만 `@NoArgsConstructor(force = true)`를 사용하면 `final` 필드도 기본값으로 초기화되도록 처리할 수 있음.
 ```java
 import lombok.NoArgsConstructor;
 

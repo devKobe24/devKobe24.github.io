@@ -15,14 +15,8 @@ thumbnail: "/assets/img/thumbnail/BackendDevelopment.jpg"
 - 👉 **이 가정이 맞는지 한 번 확인해봅시다.**
 
 ## ✅1️⃣ 댓글 1 삭제 전의 구조 (댓글 2는 삭제 상태)
-```
-댓글 1
-  └ [삭제된 댓글입니다.] (댓글 2)
-       ├ 댓글 3
-       └ 댓글 5
-댓글 4
-  └ 댓글 6
-```
+
+<img src = "https://github.com/devKobe24/images2/blob/main/this_is_backend_img/Hierarchy_Reply_Delete_soft_delete_reple_2_and_before_delete_1.png?raw=true">
 
 - **댓글 2가 삭제 상태지만, 댓글 3과 댓글 5는 유지됨.**
 - **이 상태에서 댓글 1을 삭제하면 어떻게 될까?**
@@ -37,10 +31,7 @@ thumbnail: "/assets/img/thumbnail/BackendDevelopment.jpg"
 
 #### 👉 결과 구조 (Cascade Delete 적용 시)
 
-```
-댓글 4
-  └ 댓글 6
-```
+<img src = "https://github.com/devKobe24/images2/blob/main/this_is_backend_img/Hierarchy_Comments_Cascade_Delete.png?raw=true">
 
 - ❌ **이 방식은 가정과 다르게 댓글 1이 삭제되면서 하위 댓글도 모두 삭제됨.**
 
@@ -52,14 +43,7 @@ thumbnail: "/assets/img/thumbnail/BackendDevelopment.jpg"
 
 #### 👉 결과 구조 (Soft Delete 적용 시)
 
-```
-[삭제된 댓글입니다.] (댓글 1)
-  └ [삭제된 댓글입니다.] (댓글 2)
-       ├ 댓글 3
-       └ 댓글 5
-댓글 4
-  └ 댓글 6
-```
+<img src = "https://github.com/devKobe24/images2/blob/main/Hierarchy_Reply_Delete_soft_delete_reple_1_and_2.png?raw=true">
 
 - ✅ **이 방식이 사용자의 가정과 일치합니다.**
 - ✅ **댓글 1은 "삭제된 댓글입니다." 상태가 되고, 댓글 3과 댓글 5는 그대로 남음.**

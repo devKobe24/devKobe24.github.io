@@ -2,7 +2,7 @@
 title: "📚[Backend Development] 무한 Depth 댓글 정렬 구조의 'Path Enumeration(경로 열거) 방식'이란 무엇일까요?"
 tags:
     - Backend Ddevelopment
-date: "2025-02-20"
+date: "2025-02-21"
 thumbnail: "/assets/img/thumbnail/BackendDevelopment.jpg"
 ---
 
@@ -119,11 +119,42 @@ ORDER BY path ASC;
 |path 길이 증가 가능성|댓글이 깊어질수록 path 길이가 길어질 수 있음|
 |INSERT 성능 저하 가능성|새로운 댓글 추가 시 path를 계산해야 함|
 
-## 🚀8️⃣ 정리.
+## 🏗️8️⃣ Path Enumeration(경로 열거) 방식에서 댓글 저장 규칙.
+<img src = "https://github.com/devKobe24/images2/blob/main/this_is_backend_img/infinite-depth-example.png?raw=true">
+
+- 위 그림과 같이, 각 depth(계층)별로 5개의 문자열로 경로 정보를 저장합니다.
+    - 1 depth는 5자리 문자열, 2 depth는 10자리, 3 depth는 15자리 N depth는 (N * 5)자리로 표현됩니다.
+- 각 댓글의 경로는 **모든 상위 댓글에서 해당 댓글까지의 경로를 포함**하도록 저장됩니다.
+- **경로는 부모 경로를 상속하며, 독립적이면서 순차적인 형태를 유지합니다.**
+- 📌 **이 방식은 댓글의 계층 구조를 명확하게 표현하고, 정렬 및 검색을 효율적으로 수행할 수 있도록 도와줍니다.**
+
+## 🏗️9️⃣ Path Enumeration 방식의 계층형 댓글 구조 예시
+<img src = "https://github.com/devKobe24/images2/blob/main/this_is_backend_img/infinite-depth-example_2.png?raw=true">
+
+- 좌측 그림의 계층형 댓글 구조는, 우측 그림과 같은 경로 정보를 가질 수 있습니다.
+- 각 경로는 **부모 댓글의 경로를 상속받으며,** 각 댓글마다 독립적이고 **순차적인 경로(문자열 정렬 기준)가** 생성됩니다.
+- 📌 **이 방식은 댓글을 계층적으로 정렬하고, 빠르게 검색할 수 있도록 도와줍니다.**
+
+## 🏗️1️⃣0️⃣ Path Enumeration 방식에서 경로 표현 범위 확장 방법
+<img src = "https://github.com/devKobe24/images2/blob/main/this_is_backend_img/infinite-depth-example.png?raw=true">
+
+- 각 경로는 depth(계층)마다 5자리의 문자로 표현되므로, 사용할 수 있는 경로의 개수에는 제한이 있습니다.
+    - 만약 **각 자릿수를 숫자 (0~9)로만 사용한다면,** 한 depth당 **10⁵ = 100,000개(00000 ~ 99999)의 경로만 표현할 수 있습니다.**
+- 하지만 문자열이기 때문에, 반드시 숫자(0~9)만 사용할 필요는 없습니다.
+    - 각 자릿수는 **0~9(10개), A~Z(26개), a~z(26개) 총 62개의 문자를 사용할 수 있습니다.**
+    - 문자열의 정렬 순서는 **숫자(0~9) ➞ 대문자 알파벳(A~Z) ➞ 소문자 알파벳(a~z) 순서**로 지정됩니다.
+    - 따라서, 경로는 00000부터 zzzzz까지 순차적으로 생성됩니다.
+    - **이 방식에서는 한 depth당 62⁵ = 16,132,832개의 경로를 표현할 수 있습니다.**
+- 📌 **이러한 방식으로 경로 표현 범위를 확장하면, 더 많은 댓글을 저장할 수 있으며 트리 구조를 더욱 유연하게 유지할 수 있습니다.**
+
+## 🚀 정리.
 
 - ✅ **Path Enumeration(경로 열거) 방식은 댓글의 계층 구조를 문자열(path)로 저장하는 방식**
 - ✅ **ORDER BY path ASC를 사용하여 트리 구조를 유지하면서 정렬 가능**
 - ✅ **하위 댓글 조회 시 LIKE '경로%'를 활용하여 빠르게 검색 가능**
 - ✅ **부모 댓글이 삭제되더라도 계층 구조를 유지하는 데 유리**
 - ✅ **댓글 이동이 빈번한 경우 path 업데이트가 필요하므로 조심해야 함**
+- ✅ **Path Enumeration 방식은 무한 Depth 댓글 정렬 및 조회 성능을 최적화할 수 있는 가장 효과적인 방법 중 하나입니다.**
+- ✅ **트리 구조를 유지하면서 ORDER BY path ASC만으로 정렬이 가능하여 성능이 우수합니다.**
+- ✅ **경로 길이가 길어지는 단점을 해결하기 위해 Base62와 같은 방식을 고려할 수도 있습니다.**
 - 📌 **무한 Depth 댓글 정렬 및 조회 성능을 최적화할 수 있는 가장 효과적인 방법 중 하나입니다.**

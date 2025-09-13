@@ -29,10 +29,17 @@ plugins:
 exclude:
   - docs/
 
+# 포스트(블로그 글) 설정
+# (Jekyll은 _posts를 자동 컬렉션으로 인식하지만 permalink를 명시해두면 깔끔)
 collections:
+  posts:
+    output: true
+    permalink: /:categories/:title/
+  # 정적 문서 컬렉션
   content:
     output: true
     permalink: /:path/
+    # 예: categories: [study] 이면 /study/boolean-algebra/
 
 defaults:
   - scope:

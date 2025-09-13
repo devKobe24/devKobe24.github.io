@@ -30,18 +30,16 @@ exclude:
   - docs/
 
 collections:
-  pages:
+  content:
     output: true
-    permalink: /:path.html
+    permalink: /:path/
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
-      type: "pages"
+      type: "content"
     values:
       layout: "page"
-      date: "1900-01-01"
 
 # Markdown newline activator
 kramdown:

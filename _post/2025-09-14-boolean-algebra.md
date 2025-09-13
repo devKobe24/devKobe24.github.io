@@ -1,8 +1,9 @@
 ---
+layout: post
 title: "💾 논리 연산 - 불리언 대수"
-tags:
-    - CS
-date: "2025-09-14"
+date: 2025-09-14 09:00:00 +0900
+categories: [study]
+tags: [CS, boolean, logic]
 thumbnail: "/assets/img/thumbnail/cs.jpeg"
 ---
 

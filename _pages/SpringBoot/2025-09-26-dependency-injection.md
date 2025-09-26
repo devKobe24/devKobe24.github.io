@@ -2,7 +2,7 @@
 title: 🏛️[SpringBoot] 스프링 부트의 핵심 개념 - 의존성 주입
 tags:
     - SpringBoot
-date: "2025-09-27"
+date: "2025-09-26"
 thumbnail: "/assets/img/thumbnail/springboot.jpg"
 ---
 

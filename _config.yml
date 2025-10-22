@@ -17,7 +17,7 @@ giscus_repoId: "R_kgDOLQxRgw"
 giscus_category: "Q&A"
 giscus_categoryId: "DIC_kwDOLQxRg84CdK27"
 goatcounter_code:
-google_analytics:
+google_analytics: G-FET6WJNCPZ
 
 # Build settings
 plugins:
@@ -35,8 +35,7 @@ collections:
     permalink: /:path.html
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "pages"
     values:
